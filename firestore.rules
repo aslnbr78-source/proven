@@ -1,0 +1,112 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function userDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+
+    function isAdmin() {
+      return isSignedIn() && userDoc().data.role == 'admin';
+    }
+
+    function isTeacher() {
+      return isSignedIn() && userDoc().data.role in ['teacher', 'admin'];
+    }
+
+    match /users/{uid} {
+      allow read: if isSignedIn() && (request.auth.uid == uid || isTeacher());
+      allow create: if isSignedIn() && request.auth.uid == uid;
+      allow update: if isAdmin() || (request.auth.uid == uid && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role']));
+
+      match /skills/{skillId} {
+        allow read: if isSignedIn() && (request.auth.uid == uid || isTeacher());
+        allow write: if isSignedIn() && request.auth.uid == uid;
+      }
+
+      match /progress/{progressId} {
+        allow read: if isSignedIn() && (request.auth.uid == uid || isTeacher());
+        allow write: if isSignedIn() && request.auth.uid == uid;
+      }
+
+      match /tutorSessions/{sessionId} {
+        allow read, write: if isSignedIn() && request.auth.uid == uid;
+
+        match /messages/{messageId} {
+          allow read, write: if isSignedIn() && request.auth.uid == uid;
+        }
+      }
+    }
+
+    match /leaderboard/{uid} {
+      allow read: if true;
+      allow write: if isSignedIn() && request.auth.uid == uid;
+    }
+
+    match /courses/{courseId} {
+      allow read: if resource.data.published == true || isTeacher();
+      allow write: if isTeacher();
+
+      match /modules/{moduleId} {
+        allow read: if get(/databases/$(database)/documents/courses/$(courseId)).data.published == true || isTeacher();
+        allow write: if isTeacher();
+      }
+
+      match /assets/{assetId} {
+        allow read: if get(/databases/$(database)/documents/courses/$(courseId)).data.published == true || isTeacher();
+        allow write: if isTeacher();
+      }
+
+      match /finalTests/{moduleId} {
+        allow read, write: if isTeacher();
+
+        match /permissions/{uid} {
+          allow read: if isTeacher() || (isSignedIn() && request.auth.uid == uid);
+          allow write: if isTeacher();
+        }
+
+        match /sessions/{sessionId} {
+          allow read: if isTeacher() || (isSignedIn() && resource.data.uid == request.auth.uid);
+          allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+          allow update: if isSignedIn() && resource.data.uid == request.auth.uid;
+        }
+      }
+
+      match /finalTestOptions/{moduleId} {
+        allow read: if isSignedIn();
+        allow write: if isTeacher();
+      }
+
+      match /moduleAiOptions/{moduleId} {
+        allow read: if isSignedIn();
+        allow write: if isTeacher();
+      }
+
+      match /tutorReviewQueue/{flagId} {
+        allow read: if isTeacher();
+        allow update: if isTeacher();
+        allow create, delete: if false;
+      }
+
+      match /tutorActivity/{activityId} {
+        allow read: if isTeacher();
+        allow update: if isTeacher();
+        allow create, delete: if false;
+      }
+
+      match /studentTutorSummaries/{studentUid} {
+        allow read: if isTeacher();
+        allow write: if false;
+      }
+    }
+
+    match /liveSessions/{courseId} {
+      allow read: if isSignedIn();
+      allow write: if isTeacher();
+    }
+  }
+}

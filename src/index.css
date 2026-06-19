@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import 'tailwindcss';
+
+@layer base {
+  :root {
+    --brand-600: #4f46e5;
+    --brand-700: #4338ca;
+    --surface: #f8fafc;
+    --surface-elevated: #ffffff;
+    --text-primary: #0f172a;
+    --text-muted: #64748b;
+    --radius-lg: 1rem;
+    --shadow-soft: 0 4px 24px -4px rgb(15 23 42 / 0.08);
+    --shadow-card: 0 8px 30px -8px rgb(79 70 229 / 0.12);
+    --calc-dock-width: min(20rem, 92vw);
+    --calc-dock-height: min(26rem, 52vh);
+  }
+
+  html.calculator-open {
+    --calc-dock-width: min(20rem, 36vw);
+  }
+
+  html.calculator-open main {
+    padding-left: var(--calc-dock-width);
+    transition: padding-left 0.25s ease;
+  }
+
+  html.calculator-open .calc-aware-overlay {
+    left: var(--calc-dock-width);
+  }
+
+  @media (max-width: 768px) {
+    html.calculator-open main {
+      padding-left: 0;
+      padding-bottom: var(--calc-dock-height);
+    }
+
+    html.calculator-open .calc-aware-overlay {
+      left: 0;
+      bottom: var(--calc-dock-height);
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen antialiased;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: var(--text-primary);
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgb(199 210 254 / 0.35), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgb(186 230 253 / 0.25), transparent),
+      var(--surface);
+  }
+}
+
+@layer components {
+  .app-header {
+    @apply sticky top-0 z-40 border-b border-white/60 bg-white/75 px-6 py-3 backdrop-blur-md md:px-8;
+    box-shadow: 0 1px 0 rgb(15 23 42 / 0.04);
+  }
+
+  .brand-logo {
+    @apply bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-lg font-bold text-transparent no-underline;
+  }
+
+  .nav-link {
+    @apply rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 no-underline transition hover:bg-indigo-50 hover:text-indigo-700;
+  }
+
+  .nav-link-active {
+    @apply bg-indigo-100 text-indigo-800;
+  }
+
+  .page-container {
+    @apply mx-auto max-w-6xl px-6 py-8 md:px-8 md:py-10;
+  }
+
+  .page-title {
+    @apply text-3xl font-bold tracking-tight text-slate-900 md:text-4xl;
+  }
+
+  .page-subtitle {
+    @apply mt-2 max-w-2xl text-base leading-relaxed text-slate-600;
+  }
+
+  .card-modern {
+    @apply rounded-2xl border border-slate-200/80 bg-white p-6 transition;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-modern:hover {
+    @apply border-indigo-200;
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    @apply rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:from-indigo-700 hover:to-violet-700 disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-indigo-200 hover:bg-indigo-50/50;
+  }
+
+  .input-modern {
+    @apply rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-slate-900 shadow-sm transition focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-200 disabled:bg-slate-100;
+  }
+
+  /* Rich text markup from JSON */
+  .rt-kw {
+    @apply mx-0.5 inline rounded-md bg-indigo-100 px-1.5 py-0.5 text-sm font-semibold text-indigo-800;
+  }
+
+  .rt-def {
+    @apply font-semibold text-teal-700 underline decoration-teal-300 decoration-2 underline-offset-2;
+  }
+
+  .rt-def-detail {
+    @apply font-normal text-teal-600/90 no-underline;
+  }
+
+  .rt-imp {
+    @apply rounded bg-amber-100 px-1 font-semibold text-amber-900;
+  }
+
+  .rt-note {
+    @apply rounded-md bg-sky-100 px-1.5 py-0.5 text-sm font-medium text-sky-900;
+  }
+
+  .math-inline .katex {
+    @apply text-indigo-900;
+  }
+
+  /* Lesson section color coding */
+  .lesson-panel {
+    @apply rounded-2xl border p-6 md:p-8;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .lesson-panel-learn {
+    @apply border-indigo-100 bg-gradient-to-br from-white to-indigo-50/40;
+  }
+
+  .lesson-panel-example {
+    @apply border-emerald-100 bg-gradient-to-br from-white to-emerald-50/50;
+  }
+
+  .lesson-panel-practice {
+    @apply border-violet-200 bg-gradient-to-br from-violet-50/80 to-fuchsia-50/40;
+  }
+
+  .lesson-panel-quiz {
+    @apply border-amber-100 bg-gradient-to-br from-white to-amber-50/40;
+  }
+
+  .lesson-panel-flash {
+    @apply border-cyan-100 bg-gradient-to-br from-white to-cyan-50/40;
+  }
+
+  .lesson-panel-final-test {
+    @apply border-rose-200 bg-gradient-to-br from-white to-rose-50/50;
+  }
+
+  .section-badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide;
+  }
+
+  .section-badge-learn {
+    @apply bg-indigo-100 text-indigo-800;
+  }
+
+  .section-badge-example {
+    @apply bg-emerald-100 text-emerald-800;
+  }
+
+  .section-badge-practice {
+    @apply bg-violet-100 text-violet-800;
+  }
+
+  .section-badge-quiz {
+    @apply bg-amber-100 text-amber-900;
+  }
+
+  .section-badge-flash {
+    @apply bg-cyan-100 text-cyan-900;
+  }
+
+  .section-badge-final-test {
+    @apply bg-rose-100 text-rose-900;
+  }
+
+  .section-title {
+    @apply text-xl font-bold text-slate-900;
+  }
+
+  .hint-bubble {
+    @apply rounded-xl border border-amber-200/80 bg-amber-50 px-4 py-3 text-sm text-amber-950;
+  }
+
+  .course-sidebar {
+    @apply w-72 shrink-0 overflow-y-auto border-r border-slate-200/80 bg-white/80 p-5 backdrop-blur-sm;
+  }
+
+  .hero-gradient {
+    @apply relative overflow-hidden rounded-3xl border border-indigo-100 bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 p-8 text-white md:p-12;
+  }
+
+  .quiz-option {
+    @apply block w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-left transition hover:border-indigo-300 hover:bg-indigo-50/30;
+  }
+
+  .quiz-option-selected {
+    @apply border-indigo-400 bg-indigo-50 ring-2 ring-indigo-100;
+  }
+
+  .quiz-option-correct {
+    @apply border-emerald-400 bg-emerald-50 ring-2 ring-emerald-100;
+  }
+
+  .quiz-option-wrong {
+    @apply border-rose-400 bg-rose-50 ring-2 ring-rose-100;
+  }
+
+  .quiz-option-reveal {
+    @apply border-emerald-300 bg-emerald-50/60;
+  }
+
+  .quiz-nav {
+    @apply mt-4 flex flex-wrap gap-2;
+  }
+
+  .review-panel {
+    @apply rounded-2xl border border-slate-200 bg-white p-4 shadow-lg;
+  }
+
+  .review-panel-header {
+    @apply mb-4 flex items-start justify-between gap-3;
+  }
+
+  .review-panel-title {
+    @apply text-lg font-bold text-slate-900;
+  }
+
+  .review-panel-subtitle {
+    @apply mt-1 text-sm text-slate-600;
+  }
+
+  .review-panel-close {
+    @apply rounded-lg px-2 py-1 text-slate-500 hover:bg-slate-100 hover:text-slate-800;
+  }
+
+  .review-panel-list {
+    @apply max-h-80 space-y-2 overflow-y-auto;
+  }
+
+  .review-panel-item {
+    @apply flex w-full items-start gap-3 rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-3 text-left transition hover:border-indigo-200 hover:bg-indigo-50/40;
+  }
+
+  .review-panel-item-current {
+    @apply border-indigo-400 bg-indigo-50 ring-2 ring-indigo-100;
+  }
+
+  .review-panel-item-num {
+    @apply shrink-0 rounded-lg bg-white px-2 py-1 text-xs font-bold text-indigo-700;
+  }
+
+  .review-panel-item-body {
+    @apply min-w-0 flex-1;
+  }
+
+  .review-panel-item-preview {
+    @apply block text-sm text-slate-800;
+  }
+
+  .review-panel-status {
+    @apply mt-1 inline-block rounded-full px-2 py-0.5 text-[11px] font-semibold;
+  }
+
+  .review-panel-status-done {
+    @apply bg-emerald-100 text-emerald-800;
+  }
+
+  .review-panel-status-open {
+    @apply bg-amber-100 text-amber-900;
+  }
+
+  .review-panel-actions {
+    @apply mt-4 flex flex-wrap justify-end gap-2 border-t border-slate-200 pt-4;
+  }
+
+  .flashcard-face {
+    @apply absolute inset-0 flex items-center justify-center rounded-2xl border p-6 [backface-visibility:hidden];
+    box-shadow: var(--shadow-soft);
+  }
+
+  .flashcard-front {
+    @apply border-cyan-200 bg-gradient-to-br from-white to-cyan-50/60;
+  }
+
+  .flashcard-back {
+    @apply border-indigo-200 bg-gradient-to-br from-indigo-50 to-violet-50 [transform:rotateY(180deg)];
+  }
+
+  .calc-fab {
+    @apply fixed bottom-5 left-5 z-[90] flex h-14 min-w-14 items-center justify-center rounded-full bg-gradient-to-br from-indigo-600 to-violet-600 px-4 text-sm font-bold text-white shadow-lg transition hover:scale-105 hover:shadow-xl;
+  }
+
+  .calc-dock {
+    @apply fixed left-0 z-[90] flex flex-col border-r border-slate-200/90 bg-white shadow-xl;
+    top: 3.25rem;
+    bottom: 0;
+    width: var(--calc-dock-width);
+  }
+
+  .calc-dock-body {
+    @apply min-h-0 flex-1 overflow-y-auto;
+  }
+
+  @media (max-width: 768px) {
+    .calc-dock {
+      @apply right-0 border-r-0 border-t;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: var(--calc-dock-height);
+    }
+  }
+
+  .calc-panel-header {
+    @apply flex shrink-0 items-start justify-between gap-2 border-b border-slate-200 bg-gradient-to-r from-indigo-50 to-violet-50 px-4 py-3;
+  }
+
+  .calc-panel-title {
+    @apply text-sm font-bold text-slate-900;
+  }
+
+  .calc-panel-subtitle {
+    @apply text-[11px] text-slate-500;
+  }
+
+  .calc-close {
+    @apply rounded-lg px-2 py-1 text-sm text-slate-500 transition hover:bg-white hover:text-slate-800;
+  }
+
+  .calc-display {
+    @apply border-b border-slate-200 bg-slate-900 px-4 py-3 text-right;
+  }
+
+  .calc-expression {
+    @apply min-h-5 truncate text-xs text-slate-400;
+  }
+
+  .calc-result {
+    @apply mt-1 break-all text-3xl font-semibold tracking-tight text-white;
+  }
+
+  .calc-result-error {
+    @apply text-rose-300;
+  }
+
+  .calc-grid {
+    @apply grid gap-1.5 p-2;
+  }
+
+  .calc-grid-sci {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .calc-grid-main {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .calc-btn {
+    @apply rounded-xl border border-slate-200 bg-white px-1 py-2.5 text-sm font-semibold text-slate-800 transition hover:border-indigo-200 hover:bg-indigo-50 active:scale-95;
+  }
+
+  .calc-btn-fn {
+    @apply border-slate-200 bg-slate-50 text-[11px] font-bold text-indigo-800 hover:bg-indigo-100;
+  }
+
+  .calc-btn-op {
+    @apply border-violet-200 bg-violet-50 text-violet-900 hover:bg-violet-100;
+  }
+
+  .calc-btn-equals {
+    @apply border-indigo-600 bg-gradient-to-br from-indigo-600 to-violet-600 text-white hover:from-indigo-700 hover:to-violet-700;
+  }
+}
