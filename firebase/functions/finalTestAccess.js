@@ -1,3 +1,5 @@
+/* global module */
+
 function normalizeAccessMode(accessMode) {
   return ['passcode', 'teacher', 'either'].includes(accessMode) ? accessMode : 'either'
 }
