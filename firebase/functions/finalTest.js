@@ -1,5 +1,6 @@
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
+const { evaluatePasscodeAccess, normalizeAccessMode } = require('./finalTestAccess')
 
 if (!admin.apps.length) {
   admin.initializeApp()
@@ -38,7 +39,7 @@ exports.setFinalTestPasscode = functions
     }
 
     const mode = accessMode ?? 'either'
-    if (!['passcode', 'teacher', 'either'].includes(mode)) {
+    if (normalizeAccessMode(mode) !== mode) {
       throw new functions.https.HttpsError('invalid-argument', 'Invalid accessMode')
     }
 
@@ -48,7 +49,11 @@ exports.setFinalTestPasscode = functions
       updatedBy: context.auth.uid,
     }
 
-    if (typeof passcode === 'string' && passcode.trim()) {
+    if (mode === 'teacher') {
+      payload.passcode = admin.firestore.FieldValue.delete()
+      payload.passcodeSet = false
+      payload.passcodeExpiresAt = admin.firestore.FieldValue.delete()
+    } else if (typeof passcode === 'string' && passcode.trim()) {
       const minutes = Number(passcodeValidMinutes)
       if (!Number.isFinite(minutes) || minutes <= 0) {
         throw new functions.https.HttpsError(
@@ -83,16 +88,12 @@ exports.verifyFinalTestPasscode = functions
 
     const configSnap = await configRef(courseId, moduleId).get()
     const config = configSnap.data() ?? {}
-    const stored = config.passcode
-    if (!stored || stored !== String(passcode).trim()) {
-      return { ok: false, reason: 'invalid' }
+    const access = evaluatePasscodeAccess(config, passcode)
+    if (!access.ok) {
+      return access
     }
 
     const expiresAt = config.passcodeExpiresAt
-    if (expiresAt?.toMillis && expiresAt.toMillis() <= Date.now()) {
-      return { ok: false, reason: 'expired' }
-    }
-
     await permissionRef(courseId, moduleId, context.auth.uid).set(
       {
         allowed: true,
