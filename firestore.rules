@@ -71,8 +71,7 @@ service cloud.firestore {
 
         match /sessions/{sessionId} {
           allow read: if isTeacher() || (isSignedIn() && resource.data.uid == request.auth.uid);
-          allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
-          allow update: if isSignedIn() && resource.data.uid == request.auth.uid;
+          allow create, update, delete: if false;
         }
       }
 
