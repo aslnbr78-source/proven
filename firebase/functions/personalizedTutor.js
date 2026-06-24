@@ -85,6 +85,93 @@ function normalizeAlternatingContents(contents) {
   return normalized
 }
 
+function isGradedContext(contextType) {
+  return contextType === 'quiz' || contextType === 'final-test'
+}
+
+function normalizeContextType(contextType) {
+  return isGradedContext(contextType) ? contextType : 'lesson'
+}
+
+async function resolveTutorPolicy({
+  db,
+  uid,
+  courseId,
+  moduleId,
+  requestedContextType,
+  requestedTutorMode,
+  requestedAllowFullAnswers,
+}) {
+  const normalizedRequestContext = normalizeContextType(requestedContextType)
+
+  if (!courseId || !moduleId) {
+    if (isGradedContext(normalizedRequestContext)) {
+      throw new HttpsError(
+        'invalid-argument',
+        'courseId and moduleId are required for graded assessment tutor requests.',
+      )
+    }
+
+    return {
+      contextType: normalizedRequestContext,
+      tutorMode: requestedTutorMode ?? 'standard',
+      allowFullAnswers: Boolean(requestedAllowFullAnswers),
+    }
+  }
+
+  const [
+    moduleAiSnap,
+    moduleSnap,
+    finalTestOptionsSnap,
+    finalTestConfigSnap,
+    finalTestPermissionSnap,
+  ] = await Promise.all([
+    db.doc(`courses/${courseId}/moduleAiOptions/${moduleId}`).get(),
+    db.doc(`courses/${courseId}/modules/${moduleId}`).get(),
+    db.doc(`courses/${courseId}/finalTestOptions/${moduleId}`).get(),
+    db.doc(`courses/${courseId}/finalTests/${moduleId}`).get(),
+    db.doc(`courses/${courseId}/finalTests/${moduleId}/permissions/${uid}`).get(),
+  ])
+
+  const moduleType = moduleSnap.exists ? moduleSnap.data()?.type : null
+  const isFinalTest =
+    normalizedRequestContext === 'final-test' ||
+    moduleType === 'final-test' ||
+    finalTestOptionsSnap.exists ||
+    finalTestConfigSnap.exists ||
+    finalTestPermissionSnap.exists
+
+  if (isFinalTest) {
+    const finalTestOptions = finalTestOptionsSnap.exists ? finalTestOptionsSnap.data() : {}
+    if (!finalTestOptions.allowAiAssistant) {
+      throw new HttpsError('permission-denied', 'AI tutor is disabled for this final test.')
+    }
+
+    const moduleAi = moduleAiSnap.exists ? moduleAiSnap.data() : {}
+    return {
+      contextType: 'final-test',
+      tutorMode: moduleAi.finalTestHintOnly !== false ? 'hint-only' : 'standard',
+      allowFullAnswers: Boolean(moduleAi.finalTestAllowFullAnswers),
+    }
+  }
+
+  const isQuiz = normalizedRequestContext === 'quiz' || moduleType === 'quiz'
+  if (isQuiz) {
+    const moduleAi = moduleAiSnap.exists ? moduleAiSnap.data() : {}
+    return {
+      contextType: 'quiz',
+      tutorMode: moduleAi.quizHintOnly !== false ? 'hint-only' : 'standard',
+      allowFullAnswers: Boolean(moduleAi.quizAllowFullAnswers),
+    }
+  }
+
+  return {
+    contextType: normalizedRequestContext,
+    tutorMode: requestedTutorMode ?? 'standard',
+    allowFullAnswers: Boolean(requestedAllowFullAnswers),
+  }
+}
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
@@ -239,6 +326,15 @@ exports.personalizedTutor = onCall(async (request) => {
   const db = getFirestore()
   const userSnap = await db.doc(`users/${uid}`).get()
   const displayName = userSnap.data()?.displayName || userSnap.data()?.email
+  const tutorPolicy = await resolveTutorPolicy({
+    db,
+    uid,
+    courseId,
+    moduleId,
+    requestedContextType: contextType,
+    requestedTutorMode: tutorMode,
+    requestedAllowFullAnswers: allowFullAnswers,
+  })
 
   const answerSeekingFlagged = detectAnswerSeeking(studentMessage)
   if (courseId) {
@@ -252,8 +348,8 @@ exports.personalizedTutor = onCall(async (request) => {
         sessionId: sessionId ?? '',
         studentMessage: studentMessage.trim(),
         questionContext: (questionContext ?? '').slice(0, 500),
-        contextType: contextType ?? 'lesson',
-        tutorMode: tutorMode ?? 'standard',
+        contextType: tutorPolicy.contextType,
+        tutorMode: tutorPolicy.tutorMode,
         answerSeeking: answerSeekingFlagged,
         reviewStatus: answerSeekingFlagged ? 'pending' : 'none',
         createdAt: FieldValue.serverTimestamp(),
@@ -276,9 +372,9 @@ exports.personalizedTutor = onCall(async (request) => {
     questionContext,
     skill: activeSkill,
     displayName,
-    tutorMode: tutorMode ?? 'standard',
-    allowFullAnswers: Boolean(allowFullAnswers),
-    contextType: contextType ?? 'lesson',
+    tutorMode: tutorPolicy.tutorMode,
+    allowFullAnswers: tutorPolicy.allowFullAnswers,
+    contextType: tutorPolicy.contextType,
   })
 
   const contents = formatGeminiHistory(recentMessages, studentMessage.trim())
