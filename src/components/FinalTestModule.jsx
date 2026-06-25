@@ -231,13 +231,9 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     }
 
     const targetId = shuffledQuestions[index].id
-    setAnswered((previous) => {
-      const next = { ...previous }
-      delete next[targetId]
-      return next
-    })
+    const previousAnswer = answered[targetId]
     setCurrentIndex(index)
-    setSelectedIndex(null)
+    setSelectedIndex(previousAnswer?.selectedIndex ?? null)
     setShowReview(false)
   }
 

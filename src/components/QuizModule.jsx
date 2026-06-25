@@ -70,14 +70,10 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
     }
 
     const targetId = shuffledQuestions[index].id
-    setAnswered((previous) => {
-      const next = { ...previous }
-      delete next[targetId]
-      return next
-    })
+    const previousAnswer = answered[targetId]
     setCurrentIndex(index)
     setHintLevel(0)
-    setSelectedIndex(null)
+    setSelectedIndex(previousAnswer?.selectedIndex ?? null)
     setShowReview(false)
   }
 
