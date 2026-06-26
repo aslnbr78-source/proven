@@ -104,7 +104,12 @@ function sessionRef(courseId, moduleId, sessionId) {
 function stripAnswerFields(moduleData) {
   return {
     ...moduleData,
-    questions: (moduleData.questions ?? []).map(({ correctIndex, feedbackIfWrong, ...question }) => question),
+    questions: (moduleData.questions ?? []).map((question) => {
+      const sanitized = { ...question }
+      delete sanitized.correctIndex
+      delete sanitized.feedbackIfWrong
+      return sanitized
+    }),
   }
 }
 

@@ -177,32 +177,7 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     loadAccess()
   }, [courseId, loadUnlockedContent, moduleId, profile?.role, user?.uid])
 
-  useEffect(() => {
-    if (phase !== 'active' || finished) {
-      return undefined
-    }
-
-    const timer = window.setInterval(() => {
-      setSecondsLeft((value) => {
-        if (value <= 1) {
-          window.clearInterval(timer)
-          return 0
-        }
-        return value - 1
-      })
-      setElapsedSeconds((value) => value + 1)
-    }, 1000)
-
-    return () => window.clearInterval(timer)
-  }, [phase, finished])
-
-  useEffect(() => {
-    if (phase === 'active' && secondsLeft === 0 && !finished && !finishingRef.current) {
-      finishTest(answeredRef.current)
-    }
-  }, [secondsLeft, phase, finished])
-
-  const finishTest = async (finalAnswered) => {
+  const finishTest = useCallback(async (finalAnswered) => {
     if (finished || finishingRef.current) {
       return
     }
@@ -238,7 +213,42 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     onComplete?.()
     setAttemptsUsed((count) => count + 1)
     setPhase('finished')
-  }
+  }, [
+    courseId,
+    elapsedSeconds,
+    finished,
+    getCounters,
+    markComplete,
+    moduleId,
+    onComplete,
+    sessionId,
+    total,
+  ])
+
+  useEffect(() => {
+    if (phase !== 'active' || finished) {
+      return undefined
+    }
+
+    const timer = window.setInterval(() => {
+      setSecondsLeft((value) => {
+        if (value <= 1) {
+          window.clearInterval(timer)
+          return 0
+        }
+        return value - 1
+      })
+      setElapsedSeconds((value) => value + 1)
+    }, 1000)
+
+    return () => window.clearInterval(timer)
+  }, [phase, finished])
+
+  useEffect(() => {
+    if (phase === 'active' && secondsLeft === 0 && !finished && !finishingRef.current) {
+      finishTest(answeredRef.current)
+    }
+  }, [secondsLeft, phase, finished, finishTest])
 
   const resetForRetake = () => {
     finishingRef.current = false
