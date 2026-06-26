@@ -92,17 +92,21 @@ function CoursePlayer() {
   }, [courseId])
 
   useEffect(() => {
-    if (!moduleId) {
-      setModuleContent(null)
-      return undefined
-    }
-    if (!courseOutline) {
-      return undefined
-    }
-
     let cancelled = false
 
     async function loadModule() {
+      if (!moduleId) {
+        if (!cancelled) {
+          setModuleContent(null)
+          setModuleError('')
+          setModuleLoading(false)
+        }
+        return
+      }
+      if (!courseOutline) {
+        return
+      }
+
       setModuleLoading(true)
       setModuleError('')
       try {
