@@ -12,6 +12,38 @@ import { db } from './firebase'
 import { exportCoursePackage, getCustomModule } from './contentStore'
 import { flattenModules } from '../utils/courseOutline'
 
+function stripFinalTestAnswerFields(moduleData) {
+  if (moduleData?.type !== 'final-test') {
+    return moduleData
+  }
+
+  return {
+    ...moduleData,
+    questions: (moduleData.questions ?? []).map((question) => {
+      const sanitized = { ...question }
+      delete sanitized.correctIndex
+      delete sanitized.feedbackIfWrong
+      return sanitized
+    }),
+  }
+}
+
+function buildFinalTestAnswerKey(moduleData) {
+  if (moduleData?.type !== 'final-test') {
+    return null
+  }
+
+  const questions = (moduleData.questions ?? [])
+    .filter((question) => typeof question.correctIndex === 'number')
+    .map((question) => ({
+      id: question.id,
+      correctIndex: question.correctIndex,
+      feedbackIfWrong: question.feedbackIfWrong ?? '',
+    }))
+
+  return questions.length > 0 ? { questions } : null
+}
+
 export async function listFirestoreCourses() {
   if (!db) {
     return []
@@ -114,9 +146,22 @@ export async function publishCourseToFirestore({ courseId, outline, modules, uid
 
   Object.entries(modules).forEach(([moduleId, moduleData]) => {
     batch.set(doc(db, 'courses', courseId, 'modules', moduleId), {
-      ...moduleData,
+      ...stripFinalTestAnswerFields(moduleData),
       updatedAt: serverTimestamp(),
     })
+
+    const answerKey = buildFinalTestAnswerKey(moduleData)
+    if (answerKey) {
+      batch.set(
+        doc(db, 'courses', courseId, 'finalTests', moduleId),
+        {
+          answerKey,
+          updatedAt: serverTimestamp(),
+          updatedBy: uid ?? null,
+        },
+        { merge: true },
+      )
+    }
   })
 
   await batch.commit()

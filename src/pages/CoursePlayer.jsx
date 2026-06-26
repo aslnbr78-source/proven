@@ -92,14 +92,21 @@ function CoursePlayer() {
   }, [courseId])
 
   useEffect(() => {
-    if (!moduleId) {
-      setModuleContent(null)
-      return undefined
-    }
-
     let cancelled = false
 
     async function loadModule() {
+      if (!moduleId) {
+        if (!cancelled) {
+          setModuleContent(null)
+          setModuleError('')
+          setModuleLoading(false)
+        }
+        return
+      }
+      if (!courseOutline) {
+        return
+      }
+
       setModuleLoading(true)
       setModuleError('')
       try {
@@ -109,8 +116,19 @@ function CoursePlayer() {
         }
       } catch {
         if (!cancelled) {
-          setModuleContent(null)
-          setModuleError('Module not found')
+          const meta = findModuleInOutline(courseOutline, moduleId)
+          if (meta?.type === 'final-test') {
+            setModuleContent({
+              type: 'final-test',
+              id: moduleId,
+              title: meta.title,
+              timeLimit: null,
+              questions: [],
+            })
+          } else {
+            setModuleContent(null)
+            setModuleError('Module not found')
+          }
         }
       } finally {
         if (!cancelled) {
@@ -124,7 +142,7 @@ function CoursePlayer() {
     return () => {
       cancelled = true
     }
-  }, [courseId, moduleId])
+  }, [courseId, courseOutline, moduleId])
 
   useEffect(() => {
     if (!courseId || !moduleId) {
@@ -198,7 +216,7 @@ function CoursePlayer() {
     }
   }
 
-  const isFinalTest = moduleContent?.type === 'final-test'
+  const isFinalTest = (moduleContent?.type ?? moduleMeta?.type) === 'final-test'
   const isQuiz = moduleContent?.type === 'quiz'
   const isTeacher = role === ROLES.TEACHER || role === ROLES.ADMIN
   const showTutorPanel = showTutor && moduleContent && !isFinalTest

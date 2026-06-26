@@ -120,6 +120,40 @@ export async function verifyFinalTestPasscode({ courseId, moduleId, passcode }) 
   return { ok: Boolean(data.ok) }
 }
 
+export async function getFinalTestContent({ courseId, moduleId }) {
+  const fns = getFns()
+  if (!fns) {
+    throw new Error('Cloud Functions are not configured')
+  }
+
+  const callable = httpsCallable(fns, 'getFinalTestContent')
+  const result = await callable({ courseId, moduleId })
+  return result.data
+}
+
+export async function submitFinalTestAnswer({
+  courseId,
+  moduleId,
+  sessionId,
+  questionId,
+  selectedOriginalIndex,
+}) {
+  const fns = getFns()
+  if (!fns) {
+    throw new Error('Cloud Functions are not configured')
+  }
+
+  const callable = httpsCallable(fns, 'submitFinalTestAnswer')
+  const result = await callable({
+    courseId,
+    moduleId,
+    sessionId,
+    questionId,
+    selectedOriginalIndex,
+  })
+  return result.data
+}
+
 function timestampToDate(value) {
   if (!value) {
     return null
@@ -209,6 +243,7 @@ export async function createFinalTestSession({
     scoreCorrect: null,
     scoreTotal: null,
     status: 'in-progress',
+    answers: {},
   })
 
   return ref.id
@@ -233,20 +268,22 @@ export async function completeFinalTestSession({
   tabSwitches,
   copyAttempts,
 }) {
-  if (!db || !sessionId) {
-    return
+  const fns = getFns()
+  if (!fns || !sessionId) {
+    throw new Error('Cloud Functions are not configured')
   }
 
-  await updateDoc(doc(db, 'courses', courseId, 'finalTests', moduleId, 'sessions', sessionId), {
-    endedAt: serverTimestamp(),
+  const callable = httpsCallable(fns, 'completeFinalTestSession')
+  const result = await callable({
+    courseId,
+    moduleId,
+    sessionId,
     elapsedSeconds,
-    scoreCorrect,
-    scoreTotal,
     fullscreenExits,
     tabSwitches,
     copyAttempts,
-    status: 'completed',
   })
+  return result.data ?? { scoreCorrect, scoreTotal }
 }
 
 export async function listFinalTestSessions(courseId, moduleId) {
