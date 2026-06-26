@@ -52,7 +52,10 @@ service cloud.firestore {
       allow write: if isTeacher();
 
       match /modules/{moduleId} {
-        allow read: if get(/databases/$(database)/documents/courses/$(courseId)).data.published == true || isTeacher();
+        allow read: if isTeacher() || (
+          get(/databases/$(database)/documents/courses/$(courseId)).data.published == true &&
+          resource.data.type != 'final-test'
+        );
         allow write: if isTeacher();
       }
 
