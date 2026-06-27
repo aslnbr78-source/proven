@@ -176,12 +176,6 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     return () => window.clearInterval(timer)
   }, [phase, finished])
 
-  useEffect(() => {
-    if (phase === 'active' && secondsLeft === 0 && !finished && !finishingRef.current) {
-      finishTest(answeredRef.current)
-    }
-  }, [secondsLeft, phase, finished])
-
   const finishTest = async (finalAnswered) => {
     if (finished || finishingRef.current) {
       return
@@ -211,6 +205,12 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     setAttemptsUsed((count) => count + 1)
     setPhase('finished')
   }
+
+  useEffect(() => {
+    if (phase === 'active' && secondsLeft === 0 && !finished && !finishingRef.current) {
+      finishTest(answeredRef.current)
+    }
+  }, [secondsLeft, phase, finished])
 
   const resetForRetake = () => {
     startingRef.current = false
@@ -473,7 +473,7 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
           <p className="mt-4 rounded-xl bg-rose-50 px-4 py-2 text-sm text-rose-800">{accessError}</p>
         )}
         <button type="button" onClick={beginTest} disabled={isStarting} className="btn-primary mt-6 disabled:opacity-60">
-          {isStarting ? 'Starting…' : 'Enter fullscreen & begin'}
+          {isStarting ? 'Starting...' : 'Enter fullscreen & begin'}
         </button>
       </LessonSection>
     )
