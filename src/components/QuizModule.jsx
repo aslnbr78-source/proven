@@ -32,7 +32,7 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
   useEffect(() => {
     completionRecordedRef.current = false
     resetModuleHints()
-  }, [data.id, resetModuleHints])
+  }, [data.id, moduleId, resetModuleHints])
 
   const shuffledQuestions = useMemo(
     () =>
