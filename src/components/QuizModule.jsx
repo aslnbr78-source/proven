@@ -17,6 +17,7 @@ function shuffleArray(items) {
 
 function QuizModule({ data, courseId, moduleId, onComplete }) {
   const { user } = useAuth()
+  const uid = user?.uid
   const { canPlay, resetModuleHints, recordHint, recordWrong, awardModuleComplete } = useGamification()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [hintLevel, setHintLevel] = useState(0)
@@ -30,16 +31,8 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
 
   useEffect(() => {
     completionRecordedRef.current = false
-    setCurrentIndex(0)
-    setHintLevel(0)
-    setSelectedIndex(null)
-    setAnswered({})
-    setSecondsLeft(data.timeLimit ?? null)
-    setFinished(false)
-    setXpEarned(null)
-    setShowReview(false)
     resetModuleHints()
-  }, [data.id, data.timeLimit, moduleId, resetModuleHints])
+  }, [data.id, resetModuleHints])
 
   const shuffledQuestions = useMemo(
     () =>
@@ -64,11 +57,11 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
     setFinished(true)
     const xp = awardModuleComplete('quiz')
     setXpEarned(xp)
-    if (user?.uid && courseId && moduleId) {
-      recordMasteryGain(user.uid, courseId, moduleId).catch(() => {})
+    if (uid && courseId && moduleId) {
+      recordMasteryGain(uid, courseId, moduleId).catch(() => {})
     }
     onComplete?.()
-  }, [awardModuleComplete, courseId, moduleId, onComplete, user?.uid])
+  }, [awardModuleComplete, courseId, moduleId, onComplete, uid])
 
   useEffect(() => {
     if (!data.timeLimit || finished) {
@@ -121,8 +114,8 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
 
     if (!isCorrect) {
       recordWrong()
-      if (user?.uid && courseId && moduleId) {
-        recordWrongAnswer(user.uid, courseId, moduleId, chosen.label).catch(() => {})
+      if (uid && courseId && moduleId) {
+        recordWrongAnswer(uid, courseId, moduleId, chosen.label).catch(() => {})
       }
     }
 
