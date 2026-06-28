@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useGamification } from '../context/GamificationContext'
 import { recordMasteryGain, recordWrongAnswer } from '../services/skillTracker'
@@ -17,6 +17,7 @@ function shuffleArray(items) {
 
 function QuizModule({ data, courseId, moduleId, onComplete }) {
   const { user } = useAuth()
+  const uid = user?.uid
   const { canPlay, resetModuleHints, recordHint, recordWrong, awardModuleComplete } = useGamification()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [hintLevel, setHintLevel] = useState(0)
@@ -26,10 +27,12 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
   const [finished, setFinished] = useState(false)
   const [xpEarned, setXpEarned] = useState(null)
   const [showReview, setShowReview] = useState(false)
+  const completionRecordedRef = useRef(false)
 
   useEffect(() => {
+    completionRecordedRef.current = false
     resetModuleHints()
-  }, [data.id, resetModuleHints])
+  }, [data.id, moduleId, resetModuleHints])
 
   const shuffledQuestions = useMemo(
     () =>
@@ -45,6 +48,21 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
   const question = shuffledQuestions[currentIndex]
   const total = shuffledQuestions.length
 
+  const finishQuiz = useCallback(() => {
+    if (completionRecordedRef.current) {
+      return
+    }
+    completionRecordedRef.current = true
+    setShowReview(false)
+    setFinished(true)
+    const xp = awardModuleComplete('quiz')
+    setXpEarned(xp)
+    if (uid && courseId && moduleId) {
+      recordMasteryGain(uid, courseId, moduleId).catch(() => {})
+    }
+    onComplete?.()
+  }, [awardModuleComplete, courseId, moduleId, onComplete, uid])
+
   useEffect(() => {
     if (!data.timeLimit || finished) {
       return undefined
@@ -54,7 +72,6 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
       setSecondsLeft((value) => {
         if (value <= 1) {
           window.clearInterval(timer)
-          setFinished(true)
           return 0
         }
         return value - 1
@@ -63,6 +80,12 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
 
     return () => window.clearInterval(timer)
   }, [data.timeLimit, finished])
+
+  useEffect(() => {
+    if (data.timeLimit && secondsLeft === 0 && !finished) {
+      finishQuiz()
+    }
+  }, [data.timeLimit, finishQuiz, finished, secondsLeft])
 
   const navigateToQuestion = (index) => {
     if (index < 0 || index >= total) {
@@ -91,8 +114,8 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
 
     if (!isCorrect) {
       recordWrong()
-      if (user?.uid && courseId && moduleId) {
-        recordWrongAnswer(user.uid, courseId, moduleId, chosen.label).catch(() => {})
+      if (uid && courseId && moduleId) {
+        recordWrongAnswer(uid, courseId, moduleId, chosen.label).catch(() => {})
       }
     }
 
@@ -100,17 +123,6 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
       ...previous,
       [question.id]: { isCorrect, selectedIndex },
     }))
-  }
-
-  const finishQuiz = () => {
-    setShowReview(false)
-    setFinished(true)
-    const xp = awardModuleComplete('quiz')
-    setXpEarned(xp)
-    if (user?.uid && courseId && moduleId) {
-      recordMasteryGain(user.uid, courseId, moduleId).catch(() => {})
-    }
-    onComplete?.()
   }
 
   const goNext = () => {
