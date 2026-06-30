@@ -2,14 +2,43 @@ rules_version = '2';
 
 service firebase.storage {
   match /b/{bucket}/o {
+    function userDoc() {
+      return firestore.get(/databases/(default)/documents/users/$(request.auth.uid));
+    }
+
     function isTeacher() {
       return request.auth != null
-        && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role in ['teacher', 'admin'];
+        && userDoc().data.role in ['teacher', 'admin'];
+    }
+
+    function isAdmin() {
+      return request.auth != null && userDoc().data.role == 'admin';
+    }
+
+    function coursePath(courseId) {
+      return /databases/(default)/documents/courses/$(courseId);
+    }
+
+    function courseDoc(courseId) {
+      return firestore.get(coursePath(courseId));
+    }
+
+    function ownsCourse(courseId) {
+      return !firestore.exists(coursePath(courseId))
+        || isAdmin()
+        || courseDoc(courseId).data.ownerUid == request.auth.uid
+        || (
+          (
+            !courseDoc(courseId).data.keys().hasAny(['ownerUid'])
+            || courseDoc(courseId).data.ownerUid == null
+          )
+          && courseDoc(courseId).data.ownerEmail == userDoc().data.email
+        );
     }
 
     match /courses/{courseId}/{fileName} {
       allow read: if request.auth != null;
-      allow write: if isTeacher();
+      allow write: if isTeacher() && ownsCourse(courseId);
     }
   }
 }
