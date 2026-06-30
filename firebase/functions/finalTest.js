@@ -13,10 +13,32 @@ async function assertTeacher(uid) {
   }
 
   const userSnap = await db.doc(`users/${uid}`).get()
-  const role = userSnap.data()?.role
+  const user = userSnap.data() ?? {}
+  const role = user.role
   if (role !== 'teacher' && role !== 'admin') {
     throw new functions.https.HttpsError('permission-denied', 'Teacher access required')
   }
+
+  return { uid, ...user }
+}
+
+async function assertCourseManager(uid, courseId) {
+  const user = await assertTeacher(uid)
+  if (user.role === 'admin') {
+    return
+  }
+
+  const courseSnap = await db.doc(`courses/${courseId}`).get()
+  if (!courseSnap.exists) {
+    return
+  }
+
+  const course = courseSnap.data() ?? {}
+  if (course.ownerUid === uid || (!course.ownerUid && course.ownerEmail === user.email)) {
+    return
+  }
+
+  throw new functions.https.HttpsError('permission-denied', 'Course owner access required')
 }
 
 function configRef(courseId, moduleId) {
@@ -30,12 +52,11 @@ function permissionRef(courseId, moduleId, uid) {
 exports.setFinalTestPasscode = functions
   .region('us-central1')
   .https.onCall(async (data, context) => {
-    await assertTeacher(context.auth?.uid)
-
     const { courseId, moduleId, passcode, accessMode, passcodeValidMinutes } = data ?? {}
     if (!courseId || !moduleId) {
       throw new functions.https.HttpsError('invalid-argument', 'courseId and moduleId are required')
     }
+    await assertCourseManager(context.auth?.uid, courseId)
 
     const mode = accessMode ?? 'either'
     if (!['passcode', 'teacher', 'either'].includes(mode)) {
