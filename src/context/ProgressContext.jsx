@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useAuth } from './AuthContext'
-import { syncModuleCompletion } from '../services/progressService'
+import { getUserProgress, syncModuleCompletion } from '../services/progressService'
 
 const ProgressContext = createContext(null)
 const STORAGE_PREFIX = 'provenmath-progress'
@@ -14,18 +14,136 @@ function loadProgress(uid) {
   }
 }
 
+function saveProgress(uid, progress) {
+  try {
+    localStorage.setItem(`${STORAGE_PREFIX}-${uid ?? 'guest'}`, JSON.stringify(progress))
+  } catch {
+    // Progress still remains in memory for this session if localStorage is unavailable.
+  }
+}
+
+function completedAtToDate(value) {
+  if (!value) {
+    return null
+  }
+  if (value instanceof Date) {
+    return value
+  }
+  if (typeof value === 'string') {
+    const parsed = new Date(value)
+    return Number.isNaN(parsed.getTime()) ? null : parsed
+  }
+  if (typeof value.toDate === 'function') {
+    return value.toDate()
+  }
+  if (typeof value.seconds === 'number') {
+    return new Date(value.seconds * 1000)
+  }
+  return null
+}
+
+function normalizeCompletedAt(value) {
+  return completedAtToDate(value)?.toISOString()
+}
+
+function mergeProgressEntry(left, right) {
+  if (!left) {
+    return right
+  }
+  if (!right) {
+    return left
+  }
+
+  const leftDate = completedAtToDate(left.completedAt)
+  const rightDate = completedAtToDate(right.completedAt)
+  const completedAt =
+    rightDate && (!leftDate || rightDate.getTime() > leftDate.getTime())
+      ? normalizeCompletedAt(right.completedAt)
+      : normalizeCompletedAt(left.completedAt)
+
+  return {
+    completed: Boolean(left.completed || right.completed),
+    ...(completedAt ? { completedAt } : {}),
+  }
+}
+
+function mergeProgressMaps(...maps) {
+  const merged = {}
+
+  maps.forEach((map) => {
+    Object.entries(map ?? {}).forEach(([courseId, modules]) => {
+      merged[courseId] = merged[courseId] ?? {}
+      Object.entries(modules ?? {}).forEach(([moduleId, entry]) => {
+        merged[courseId][moduleId] = mergeProgressEntry(merged[courseId][moduleId], entry)
+      })
+    })
+  })
+
+  return merged
+}
+
+function rowsToProgress(rows) {
+  return rows.reduce((next, row) => {
+    if (!row.completed || !row.courseId || !row.moduleId) {
+      return next
+    }
+
+    next[row.courseId] = next[row.courseId] ?? {}
+    next[row.courseId][row.moduleId] = {
+      completed: true,
+      ...(normalizeCompletedAt(row.completedAt)
+        ? { completedAt: normalizeCompletedAt(row.completedAt) }
+        : {}),
+    }
+    return next
+  }, {})
+}
+
 export function ProgressProvider({ children }) {
   const { user } = useAuth()
   const uid = user?.uid ?? 'guest'
-  const [progress, setProgress] = useState(() => loadProgress(uid))
+  const [progressState, setProgressState] = useState(() => ({
+    uid,
+    progress: loadProgress(uid),
+  }))
+  const progress = progressState.uid === uid ? progressState.progress : loadProgress(uid)
 
   useEffect(() => {
-    setProgress(loadProgress(uid))
+    let cancelled = false
+    const localProgress = loadProgress(uid)
+
+    if (uid === 'guest') {
+      return () => {
+        cancelled = true
+      }
+    }
+
+    getUserProgress(uid)
+      .then((rows) => {
+        if (cancelled) {
+          return
+        }
+
+        const remoteProgress = rowsToProgress(rows)
+        setProgressState((current) => {
+          const currentProgress = current.uid === uid ? current.progress : localProgress
+          const next = mergeProgressMaps(localProgress, currentProgress, remoteProgress)
+          saveProgress(uid, next)
+          return { uid, progress: next }
+        })
+      })
+      .catch(() => {})
+
+    return () => {
+      cancelled = true
+    }
   }, [uid])
 
   const markComplete = useCallback(
     (courseId, moduleId) => {
-      setProgress((previous) => {
+      setProgressState((previousState) => {
+        const previous =
+          previousState.uid === uid ? previousState.progress : loadProgress(uid)
         const next = {
           ...previous,
           [courseId]: {
@@ -36,9 +154,9 @@ export function ProgressProvider({ children }) {
             },
           },
         }
-        localStorage.setItem(`${STORAGE_PREFIX}-${uid}`, JSON.stringify(next))
+        saveProgress(uid, next)
         syncModuleCompletion(uid, courseId, moduleId).catch(() => {})
-        return next
+        return { uid, progress: next }
       })
     },
     [uid],
