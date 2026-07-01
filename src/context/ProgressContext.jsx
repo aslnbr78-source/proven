@@ -102,12 +102,15 @@ function rowsToProgress(rows) {
 export function ProgressProvider({ children }) {
   const { user } = useAuth()
   const uid = user?.uid ?? 'guest'
-  const [progress, setProgress] = useState(() => loadProgress(uid))
+  const [progressState, setProgressState] = useState(() => ({
+    uid,
+    progress: loadProgress(uid),
+  }))
+  const progress = progressState.uid === uid ? progressState.progress : loadProgress(uid)
 
   useEffect(() => {
     let cancelled = false
     const localProgress = loadProgress(uid)
-    setProgress(localProgress)
 
     if (uid === 'guest') {
       return () => {
@@ -122,10 +125,11 @@ export function ProgressProvider({ children }) {
         }
 
         const remoteProgress = rowsToProgress(rows)
-        setProgress((current) => {
-          const next = mergeProgressMaps(localProgress, current, remoteProgress)
+        setProgressState((current) => {
+          const currentProgress = current.uid === uid ? current.progress : localProgress
+          const next = mergeProgressMaps(localProgress, currentProgress, remoteProgress)
           saveProgress(uid, next)
-          return next
+          return { uid, progress: next }
         })
       })
       .catch(() => {})
@@ -137,7 +141,9 @@ export function ProgressProvider({ children }) {
 
   const markComplete = useCallback(
     (courseId, moduleId) => {
-      setProgress((previous) => {
+      setProgressState((previousState) => {
+        const previous =
+          previousState.uid === uid ? previousState.progress : loadProgress(uid)
         const next = {
           ...previous,
           [courseId]: {
@@ -150,7 +156,7 @@ export function ProgressProvider({ children }) {
         }
         saveProgress(uid, next)
         syncModuleCompletion(uid, courseId, moduleId).catch(() => {})
-        return next
+        return { uid, progress: next }
       })
     },
     [uid],
