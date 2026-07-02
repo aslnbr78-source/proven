@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import { ROLES } from '../utils/roles'
 import { subscribeLiveSession } from '../services/liveClassService'
 
-function LiveClassFollower({ courseId, moduleId }) {
+function LiveClassFollower({ courseId, moduleId, autoSyncDisabled = false }) {
   const { role } = useAuth()
   const navigate = useNavigate()
   const [session, setSession] = useState(null)
@@ -27,12 +27,15 @@ function LiveClassFollower({ courseId, moduleId }) {
     if (!isStudent || !session?.active || !session.moduleId) {
       return
     }
+    if (autoSyncDisabled) {
+      return
+    }
     if (session.moduleId === lastSyncedModule.current) {
       return
     }
     lastSyncedModule.current = session.moduleId
     navigate(`/courses/${courseId}/modules/${session.moduleId}`, { replace: true })
-  }, [session, courseId, isStudent, navigate])
+  }, [session, courseId, isStudent, navigate, autoSyncDisabled])
 
   if (!session?.active || !isStudent) {
     return null
@@ -47,7 +50,11 @@ function LiveClassFollower({ courseId, moduleId }) {
         </p>
       </div>
       {session.moduleId !== moduleId && (
-        <span className="text-xs font-medium text-rose-700">Syncing to teacher&apos;s screen…</span>
+        <span className="text-xs font-medium text-rose-700">
+          {autoSyncDisabled
+            ? 'Finish this assessment before joining live class.'
+            : 'Syncing to teacher&apos;s screen…'}
+        </span>
       )}
     </div>
   )
