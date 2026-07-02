@@ -159,7 +159,7 @@ export async function countStudentFinalTestAttempts(courseId, moduleId, uid) {
     query(sessionsCollection(courseId, moduleId), where('uid', '==', uid)),
   )
 
-  return snap.size
+  return snap.docs.filter((item) => isFinalTestAttemptCounted(item.data())).length
 }
 
 export function hasAttemptsRemaining(attemptCount, maxAttempts) {
@@ -177,6 +177,28 @@ export function isPasscodeAccessExpired(permission) {
   }
 
   return Date.now() > expiresAt.getTime()
+}
+
+export function isFinalTestAttemptCounted(session, nowMs = Date.now()) {
+  if (session?.status === 'completed') {
+    return true
+  }
+
+  if (session?.status !== 'in-progress') {
+    return false
+  }
+
+  const timeLimitSeconds = Number(session.timeLimitSeconds)
+  if (!Number.isFinite(timeLimitSeconds) || timeLimitSeconds <= 0) {
+    return true
+  }
+
+  const startedAt = timestampToDate(session.startedAt)
+  if (!startedAt) {
+    return true
+  }
+
+  return startedAt.getTime() + timeLimitSeconds * 1000 > nowMs
 }
 
 export async function createFinalTestSession({

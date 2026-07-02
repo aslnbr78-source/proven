@@ -200,6 +200,7 @@ function CoursePlayer() {
 
   const isFinalTest = moduleContent?.type === 'final-test'
   const isQuiz = moduleContent?.type === 'quiz'
+  const isAssessment = isFinalTest || isQuiz
   const isTeacher = role === ROLES.TEACHER || role === ROLES.ADMIN
   const showTutorPanel = showTutor && moduleContent && !isFinalTest
   const tutorMode = isQuiz && moduleAiOptions.quizHintOnly ? 'hint-only' : 'standard'
@@ -216,7 +217,11 @@ function CoursePlayer() {
 
       <div className="flex min-w-0 flex-1 flex-col lg:flex-row">
         <article className="min-w-0 flex-1 overflow-y-auto p-6 md:p-8">
-          <LiveClassFollower courseId={courseId} moduleId={moduleId} />
+          <LiveClassFollower
+            courseId={courseId}
+            moduleId={moduleId}
+            autoSyncDisabled={isAssessment}
+          />
 
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
             {!isFinalTest && <GamificationBar />}
