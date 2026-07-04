@@ -44,6 +44,25 @@ function validateFillBlank(question, errors) {
   })
 }
 
+function validateCorrectIndex(question, index, errors) {
+  if (!Number.isInteger(question.correctIndex)) {
+    errors.push(`questions[${index}].correctIndex must be an integer`)
+    return
+  }
+
+  if (
+    Array.isArray(question.options) &&
+    question.options.length >= 2 &&
+    (question.correctIndex < 0 || question.correctIndex >= question.options.length)
+  ) {
+    errors.push(
+      `questions[${index}].correctIndex must reference an option index between 0 and ${
+        question.options.length - 1
+      }`,
+    )
+  }
+}
+
 function validateInteractiveLesson(data, errors) {
   if (!Array.isArray(data.explanation) || data.explanation.length === 0) {
     errors.push('explanation must be a non-empty array of strings')
@@ -93,9 +112,7 @@ function validateFinalTest(data, errors) {
     if (!Array.isArray(question.options) || question.options.length < 2) {
       errors.push(`questions[${index}].options needs at least 2 items`)
     }
-    if (typeof question.correctIndex !== 'number') {
-      errors.push(`questions[${index}].correctIndex must be a number`)
-    }
+    validateCorrectIndex(question, index, errors)
     if (!isNonEmptyString(question.feedbackIfWrong)) {
       errors.push(`questions[${index}].feedbackIfWrong is required`)
     }
@@ -118,9 +135,7 @@ function validateQuiz(data, errors) {
     if (!Array.isArray(question.options) || question.options.length < 2) {
       errors.push(`questions[${index}].options needs at least 2 items`)
     }
-    if (typeof question.correctIndex !== 'number') {
-      errors.push(`questions[${index}].correctIndex must be a number`)
-    }
+    validateCorrectIndex(question, index, errors)
     if (!Array.isArray(question.hints)) {
       errors.push(`questions[${index}].hints must be an array`)
     }
