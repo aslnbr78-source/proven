@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auto Trading Agent</title>
+    <link rel="icon" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='0' y='24' font-size='24'%3E%F0%9F%A4%96%3C/text%3E%3C/svg%3E" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              bg: '#0b0f17',
+              panel: '#111826',
+              panel2: '#0f1522',
+              border: '#1f2937',
+              accent: '#22d3ee',
+              buy: '#10b981',
+              sell: '#ef4444',
+              muted: '#94a3b8',
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="bg-bg text-slate-100 min-h-screen antialiased">
+    <header class="border-b border-border/60 bg-panel/60 backdrop-blur sticky top-0 z-10">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-emerald-400 flex items-center justify-center text-slate-900 font-bold">A</div>
+          <div>
+            <h1 class="text-lg font-semibold leading-tight">Auto Trading Agent</h1>
+            <p class="text-xs text-muted leading-tight">Paper trading, live prices, pluggable strategies.</p>
+          </div>
+        </div>
+        <div class="ml-auto flex items-center gap-3">
+          <div id="statusBadge" class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-700 text-slate-200">idle</div>
+          <div class="hidden sm:flex items-center gap-2 text-sm">
+            <span class="text-muted">Last tick:</span>
+            <span id="lastTickAt" class="tabular-nums">—</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-12 gap-6">
+      <!-- KPI row -->
+      <section class="col-span-12 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="rounded-xl bg-panel border border-border p-4">
+          <div class="text-xs uppercase tracking-wide text-muted">Portfolio equity</div>
+          <div id="kpiEquity" class="text-2xl font-semibold tabular-nums mt-1">—</div>
+          <div id="kpiEquityDelta" class="text-xs text-muted mt-0.5">vs. starting cash</div>
+        </div>
+        <div class="rounded-xl bg-panel border border-border p-4">
+          <div class="text-xs uppercase tracking-wide text-muted">Total P&amp;L</div>
+          <div id="kpiPnl" class="text-2xl font-semibold tabular-nums mt-1">—</div>
+          <div id="kpiPnlPct" class="text-xs text-muted mt-0.5">—</div>
+        </div>
+        <div class="rounded-xl bg-panel border border-border p-4">
+          <div class="text-xs uppercase tracking-wide text-muted">Cash / Position</div>
+          <div id="kpiCash" class="text-2xl font-semibold tabular-nums mt-1">—</div>
+          <div id="kpiPosition" class="text-xs text-muted mt-0.5">no position</div>
+        </div>
+        <div class="rounded-xl bg-panel border border-border p-4">
+          <div class="text-xs uppercase tracking-wide text-muted">Last price</div>
+          <div id="kpiPrice" class="text-2xl font-semibold tabular-nums mt-1">—</div>
+          <div id="kpiSymbol" class="text-xs text-muted mt-0.5">—</div>
+        </div>
+      </section>
+
+      <!-- Config -->
+      <section class="col-span-12 lg:col-span-4 order-2 lg:order-1">
+        <div class="rounded-xl bg-panel border border-border p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-muted">Agent configuration</h2>
+            <div class="flex gap-2">
+              <button id="btnStart" class="px-3 py-1.5 rounded-md bg-emerald-500 hover:bg-emerald-400 text-slate-900 text-sm font-semibold transition">Start</button>
+              <button id="btnStop"  class="px-3 py-1.5 rounded-md bg-slate-700 hover:bg-slate-600 text-slate-100 text-sm font-semibold transition">Stop</button>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <label class="block">
+              <span class="text-xs text-muted">Asset</span>
+              <select id="cfgSymbol" class="mt-1 w-full bg-panel2 border border-border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-accent"></select>
+            </label>
+
+            <label class="block">
+              <span class="text-xs text-muted">Price source</span>
+              <select id="cfgPriceSource" class="mt-1 w-full bg-panel2 border border-border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-accent">
+                <option value="coingecko">CoinGecko (live)</option>
+                <option value="synthetic">Synthetic (offline)</option>
+              </select>
+            </label>
+
+            <label class="block">
+              <span class="text-xs text-muted">Strategy</span>
+              <select id="cfgStrategy" class="mt-1 w-full bg-panel2 border border-border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-accent"></select>
+              <p id="cfgStrategyDesc" class="text-xs text-muted mt-1"></p>
+            </label>
+
+            <div id="cfgStrategyParams" class="grid grid-cols-2 gap-2"></div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <label class="block">
+                <span class="text-xs text-muted">Tick interval (sec)</span>
+                <input id="cfgTickSec" type="number" min="5" max="3600" step="1"
+                       class="mt-1 w-full bg-panel2 border border-border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-accent" />
+              </label>
+              <label class="block">
+                <span class="text-xs text-muted">Trade fraction</span>
+                <input id="cfgTradeFraction" type="number" min="0.01" max="1" step="0.01"
+                       class="mt-1 w-full bg-panel2 border border-border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-accent" />
+              </label>
+            </div>
+
+            <label class="block">
+              <span class="text-xs text-muted">Starting cash (USD) — resets required</span>
+              <input id="cfgStartingCash" type="number" min="1" step="100"
+                     class="mt-1 w-full bg-panel2 border border-border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-accent" />
+            </label>
+
+            <div class="flex gap-2 pt-1">
+              <button id="btnSave"  class="px-3 py-1.5 rounded-md bg-accent hover:bg-cyan-300 text-slate-900 text-sm font-semibold transition">Save changes</button>
+              <button id="btnReset" class="ml-auto px-3 py-1.5 rounded-md bg-rose-600 hover:bg-rose-500 text-white text-sm font-semibold transition">Reset portfolio</button>
+            </div>
+
+            <div id="errorBox" class="hidden mt-2 text-xs text-rose-300 bg-rose-900/30 border border-rose-800/50 rounded-md px-3 py-2"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Charts -->
+      <section class="col-span-12 lg:col-span-8 order-1 lg:order-2 space-y-6">
+        <div class="rounded-xl bg-panel border border-border p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-muted">Price &amp; trades</h2>
+            <div class="text-xs text-muted"><span id="priceMeta">—</span></div>
+          </div>
+          <div class="h-72"><canvas id="priceChart"></canvas></div>
+        </div>
+
+        <div class="rounded-xl bg-panel border border-border p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-muted">Equity curve</h2>
+          </div>
+          <div class="h-48"><canvas id="equityChart"></canvas></div>
+        </div>
+      </section>
+
+      <!-- Trades -->
+      <section class="col-span-12 order-3 rounded-xl bg-panel border border-border p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-muted">Trade log</h2>
+          <div class="text-xs text-muted"><span id="tradeCount">0</span> trades</div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="text-xs uppercase tracking-wide text-muted border-b border-border">
+              <tr>
+                <th class="text-left py-2 pr-3">Time</th>
+                <th class="text-left py-2 pr-3">Side</th>
+                <th class="text-right py-2 pr-3">Qty</th>
+                <th class="text-right py-2 pr-3">Price</th>
+                <th class="text-right py-2 pr-3">Value</th>
+                <th class="text-right py-2 pr-3">P&amp;L</th>
+                <th class="text-left py-2">Reason</th>
+              </tr>
+            </thead>
+            <tbody id="tradesBody" class="[&_tr]:border-b [&_tr]:border-border/50"></tbody>
+          </table>
+          <div id="tradesEmpty" class="text-center text-muted text-sm py-8">No trades yet. Start the agent to begin.</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-4 pb-8 text-xs text-muted">
+      Paper trading only. No real orders are placed. Live prices via CoinGecko public API; synthetic mode uses geometric Brownian motion.
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
