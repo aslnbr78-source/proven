@@ -8,7 +8,8 @@ import {
   setDoc,
   writeBatch,
 } from 'firebase/firestore'
-import { db } from './firebase'
+import { getFunctions, httpsCallable } from 'firebase/functions'
+import { app, db } from './firebase'
 import { exportCoursePackage, getCustomModule } from './contentStore'
 import { flattenModules } from '../utils/courseOutline'
 
@@ -124,6 +125,13 @@ export async function publishCourseToFirestore({ courseId, outline, modules, uid
 
 export async function deleteFirestoreCourse(courseId) {
   if (!db) {
+    return
+  }
+
+  if (app) {
+    const fns = getFunctions(app, 'us-central1')
+    const callable = httpsCallable(fns, 'unpublishCourse')
+    await callable({ courseId })
     return
   }
 
