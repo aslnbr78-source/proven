@@ -1,4 +1,4 @@
-import { flattenModules } from '../utils/courseOutline'
+import { flattenModules } from '../utils/courseOutline.js'
 
 export function createCourseModulePublishPlan(outline, modules = {}, existingModuleIds = []) {
   const outlineModuleIds = new Set(
