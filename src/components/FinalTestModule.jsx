@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useProgress } from '../context/ProgressContext'
 import { exitFullscreen, useProctoring } from '../hooks/useProctoring'
@@ -176,13 +176,7 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     return () => window.clearInterval(timer)
   }, [phase, finished])
 
-  useEffect(() => {
-    if (phase === 'active' && secondsLeft === 0 && !finished && !finishingRef.current) {
-      finishTest(answeredRef.current)
-    }
-  }, [secondsLeft, phase, finished])
-
-  const finishTest = async (finalAnswered) => {
+  const finishTest = useCallback(async (finalAnswered) => {
     if (finished || finishingRef.current) {
       return
     }
@@ -224,7 +218,23 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     setAttemptsUsed((count) => count + 1)
     setIsSubmitting(false)
     setPhase('finished')
-  }
+  }, [
+    courseId,
+    elapsedSeconds,
+    finished,
+    getCounters,
+    markComplete,
+    moduleId,
+    onComplete,
+    sessionId,
+    total,
+  ])
+
+  useEffect(() => {
+    if (phase === 'active' && secondsLeft === 0 && !finished && !finishingRef.current) {
+      finishTest(answeredRef.current)
+    }
+  }, [secondsLeft, phase, finished, finishTest])
 
   const resetForRetake = () => {
     finishingRef.current = false
