@@ -57,6 +57,8 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
   const [maxAttempts, setMaxAttempts] = useState(1)
   const [attemptsUsed, setAttemptsUsed] = useState(0)
   const [showReview, setShowReview] = useState(false)
+  const [submissionError, setSubmissionError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [aiOptions, setAiOptions] = useState({
     finalTestHintOnly: true,
     finalTestAllowFullAnswers: false,
@@ -185,14 +187,20 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
       return
     }
     finishingRef.current = true
-
-    setFinished(true)
-    exitFullscreen()
+    setIsSubmitting(true)
+    setSubmissionError('')
 
     const counters = getCounters()
     const correctCount = Object.values(finalAnswered).filter((item) => item.isCorrect).length
 
-    if (sessionId) {
+    if (!sessionId) {
+      setSubmissionError('Could not submit this final test because the test session was not started. Refresh and try again.')
+      setIsSubmitting(false)
+      finishingRef.current = false
+      return
+    }
+
+    try {
       await completeFinalTestSession({
         courseId,
         moduleId,
@@ -201,12 +209,20 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
         scoreCorrect: correctCount,
         scoreTotal: total,
         ...counters,
-      }).catch(() => {})
+      })
+    } catch {
+      setSubmissionError('Could not submit this final test. Check your connection and try again.')
+      setIsSubmitting(false)
+      finishingRef.current = false
+      return
     }
 
+    setFinished(true)
+    exitFullscreen()
     markComplete(courseId, moduleId)
     onComplete?.()
     setAttemptsUsed((count) => count + 1)
+    setIsSubmitting(false)
     setPhase('finished')
   }
 
@@ -220,6 +236,8 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     setSecondsLeft(data.timeLimit)
     setElapsedSeconds(0)
     setViolationNotice('')
+    setSubmissionError('')
+    setIsSubmitting(false)
     setTutorOpen(false)
     setShowReview(false)
     setPhase('ready')
@@ -288,6 +306,7 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
 
   const beginTest = async () => {
     setAccessError('')
+    setSubmissionError('')
     resetCounters()
 
     if (!hasAttemptsRemaining(attemptsUsed, maxAttempts)) {
@@ -518,6 +537,19 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
               {violationNotice}
             </p>
           )}
+          {submissionError && !finished && (
+            <div className="mb-4 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-900">
+              <p>{submissionError}</p>
+              <button
+                type="button"
+                onClick={() => finishTest(answeredRef.current)}
+                disabled={isSubmitting}
+                className="btn-secondary mt-3 !py-1.5 !text-sm disabled:opacity-50"
+              >
+                {isSubmitting ? 'Submitting...' : 'Try submitting again'}
+              </button>
+            </div>
+          )}
 
           {showReview && !contentLocked ? (
             <QuestionReviewPanel
@@ -527,7 +559,7 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
               onSelectQuestion={navigateToQuestion}
               onClose={() => setShowReview(false)}
               onSubmit={() => finishTest(answeredRef.current)}
-              submitLabel="Submit final test"
+              submitLabel={isSubmitting ? 'Submitting...' : 'Submit final test'}
             />
           ) : (
             !finished && (
