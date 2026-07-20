@@ -156,7 +156,7 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
   }, [courseId, moduleId, user?.uid])
 
   useEffect(() => {
-    if (phase !== 'active' || finished) {
+    if (phase !== 'active' || finished || !isFullscreen) {
       return undefined
     }
 
@@ -172,7 +172,7 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     }, 1000)
 
     return () => window.clearInterval(timer)
-  }, [phase, finished])
+  }, [phase, finished, isFullscreen])
 
   useEffect(() => {
     if (phase === 'active' && secondsLeft === 0 && !finished && !finishingRef.current) {
