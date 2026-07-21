@@ -44,6 +44,24 @@ function validateFillBlank(question, errors) {
   })
 }
 
+function validateUniqueQuestionIds(questions, errors) {
+  const seenIds = new Map()
+
+  questions.forEach((question, index) => {
+    if (!isNonEmptyString(question.id)) {
+      return
+    }
+
+    const firstIndex = seenIds.get(question.id)
+    if (firstIndex !== undefined) {
+      errors.push(`questions[${index}].id duplicates questions[${firstIndex}].id`)
+      return
+    }
+
+    seenIds.set(question.id, index)
+  })
+}
+
 function validateInteractiveLesson(data, errors) {
   if (!Array.isArray(data.explanation) || data.explanation.length === 0) {
     errors.push('explanation must be a non-empty array of strings')
@@ -83,6 +101,8 @@ function validateFinalTest(data, errors) {
     return
   }
 
+  validateUniqueQuestionIds(data.questions, errors)
+
   data.questions.forEach((question, index) => {
     if (!isNonEmptyString(question.id)) {
       errors.push(`questions[${index}].id is required`)
@@ -107,6 +127,8 @@ function validateQuiz(data, errors) {
     errors.push('questions must be a non-empty array')
     return
   }
+
+  validateUniqueQuestionIds(data.questions, errors)
 
   data.questions.forEach((question, index) => {
     if (!isNonEmptyString(question.id)) {
