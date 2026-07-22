@@ -1,4 +1,3 @@
-import { getCustomModule, getCustomCourse } from './contentStore'
 import { getFirestoreCourse, getFirestoreModule, listFirestoreCourses } from './courseFirestore'
 import { courses as courseCatalog } from '../data/courses'
 import {
@@ -38,11 +37,6 @@ async function loadFirestoreOutline(courseId) {
 }
 
 export async function fetchCourseOutline(courseId) {
-  const custom = getCustomCourse(courseId)
-  if (custom?.outline) {
-    return normalizeOutline(custom.outline)
-  }
-
   const [bundledOutline, firestoreOutline] = await Promise.all([
     loadBundledOutline(courseId),
     loadFirestoreOutline(courseId),
@@ -67,10 +61,6 @@ export async function fetchCourseOutline(courseId) {
 }
 
 export async function courseExists(courseId) {
-  if (getCustomCourse(courseId)?.outline) {
-    return true
-  }
-
   try {
     await fetchCourseOutline(courseId)
     return true
@@ -87,11 +77,6 @@ export async function fetchModuleContent(courseId, moduleId) {
     }
   } catch {
     /* fall through to bundled JSON */
-  }
-
-  const customModule = getCustomModule(courseId, moduleId)
-  if (customModule) {
-    return customModule
   }
 
   const response = await fetch(`/lessons/${courseId}/${moduleId}.json`)
