@@ -48,16 +48,7 @@ export async function fetchCourseOutline(courseId) {
     loadFirestoreOutline(courseId),
   ])
 
-  let outline = firestoreOutline ?? bundledOutline
-
-  if (
-    firestoreOutline &&
-    bundledOutline &&
-    countModules(firestoreOutline) === 0 &&
-    countModules(bundledOutline) > 0
-  ) {
-    outline = bundledOutline
-  }
+  const outline = firestoreOutline ?? bundledOutline
 
   if (!outline) {
     throw new Error('Course not found')
@@ -80,13 +71,17 @@ export async function courseExists(courseId) {
 }
 
 export async function fetchModuleContent(courseId, moduleId) {
-  try {
-    const firestoreModule = await getFirestoreModule(courseId, moduleId)
-    if (firestoreModule) {
-      return firestoreModule
-    }
-  } catch {
-    /* fall through to bundled JSON */
+  const [firestoreCourse, firestoreModule] = await Promise.all([
+    getFirestoreCourse(courseId),
+    getFirestoreModule(courseId, moduleId),
+  ])
+
+  if (firestoreModule) {
+    return firestoreModule
+  }
+
+  if (firestoreCourse?.published) {
+    throw new Error('Module not found')
   }
 
   const customModule = getCustomModule(courseId, moduleId)
