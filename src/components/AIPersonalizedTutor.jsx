@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
-import { askPersonalizedTutor, saveTutorMessage } from '../services/tutorService'
+import { askPersonalizedTutor } from '../services/tutorService'
 import MathBlock from './MathBlock'
 
 function buildWelcomeMessage({ profile, moduleTitle, tutorMode, contextType }) {
@@ -62,10 +62,6 @@ function AIPersonalizedTutor({
     setLoading(true)
 
     try {
-      if (user?.uid) {
-        await saveTutorMessage(user.uid, sessionId.current, 'user', text)
-      }
-
       const result = await askPersonalizedTutor({
         uid: user?.uid,
         courseId,
@@ -81,10 +77,6 @@ function AIPersonalizedTutor({
 
       const reply = result.reply ?? 'Let me think about that with you. What have you tried so far?'
       setMessages((previous) => [...previous, { role: 'assistant', content: reply }])
-
-      if (user?.uid) {
-        await saveTutorMessage(user.uid, sessionId.current, 'assistant', reply)
-      }
     } finally {
       setLoading(false)
     }

@@ -34,10 +34,12 @@ service cloud.firestore {
       }
 
       match /tutorSessions/{sessionId} {
-        allow read, write: if isSignedIn() && request.auth.uid == uid;
+        allow read: if isSignedIn() && request.auth.uid == uid;
+        allow write: if false;
 
         match /messages/{messageId} {
-          allow read, write: if isSignedIn() && request.auth.uid == uid;
+          allow read: if isSignedIn() && request.auth.uid == uid;
+          allow write: if false;
         }
       }
     }
