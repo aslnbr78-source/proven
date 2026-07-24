@@ -365,7 +365,7 @@ exports.personalizedTutor = onCall(async (request) => {
   const contents = formatGeminiHistory(recentMessages, trimmedStudentMessage)
   const { apiKey, suffix } = resolveGeminiApiKey()
 
-  let reply = null
+  let reply
   try {
     reply = await generateTutorReply({ apiKey, systemInstruction, contents })
   } catch (error) {
