@@ -19,9 +19,28 @@ async function assertTeacher(uid) {
 
   const db = getFirestore()
   const userSnap = await db.doc(`users/${uid}`).get()
-  const role = userSnap.data()?.role
+  const user = userSnap.data() ?? {}
+  const role = user.role
   if (role !== 'teacher' && role !== 'admin') {
     throw new HttpsError('permission-denied', 'Teacher access required')
+  }
+
+  return { uid, ...user }
+}
+
+async function assertCourseTeacher(db, teacher, courseId) {
+  const courseSnap = await db.doc(`courses/${courseId}`).get()
+  if (!courseSnap.exists) {
+    throw new HttpsError('not-found', 'Course not found')
+  }
+
+  const course = courseSnap.data() ?? {}
+  const ownsCourse =
+    course.updatedBy === teacher.uid ||
+    (course.ownerEmail && teacher.email && course.ownerEmail === teacher.email)
+
+  if (teacher.role !== 'admin' && !ownsCourse) {
+    throw new HttpsError('permission-denied', 'You do not have access to this course')
   }
 }
 
@@ -197,7 +216,7 @@ async function loadCourseActivity(db, courseId, limitCount = 500) {
 
 exports.getCourseTutorInsights = onCall(async (request) => {
   const uid = request.auth?.uid
-  await assertTeacher(uid)
+  const teacher = await assertTeacher(uid)
 
   const { courseId, moduleTitles = {} } = request.data ?? {}
   if (!courseId) {
@@ -205,6 +224,7 @@ exports.getCourseTutorInsights = onCall(async (request) => {
   }
 
   const db = getFirestore()
+  await assertCourseTeacher(db, teacher, courseId)
   const activity = await loadCourseActivity(db, courseId)
 
   const reviewQueue = activity.filter(
@@ -222,7 +242,7 @@ exports.getCourseTutorInsights = onCall(async (request) => {
 
 exports.summarizeStudentTutorActivity = onCall(async (request) => {
   const teacherUid = request.auth?.uid
-  await assertTeacher(teacherUid)
+  const teacher = await assertTeacher(teacherUid)
 
   const { courseId, studentUid, moduleTitles = {}, forceRefresh = false } = request.data ?? {}
   if (!courseId || !studentUid) {
@@ -230,6 +250,7 @@ exports.summarizeStudentTutorActivity = onCall(async (request) => {
   }
 
   const db = getFirestore()
+  await assertCourseTeacher(db, teacher, courseId)
   const activitySnap = await db
     .collection(`courses/${courseId}/tutorActivity`)
     .where('uid', '==', studentUid)
