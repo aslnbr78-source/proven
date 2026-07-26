@@ -6,6 +6,13 @@ if (!admin.apps.length) {
 }
 
 const db = admin.firestore()
+const MIN_PASSCODE_LENGTH = 6
+const MAX_FAILED_PASSCODE_ATTEMPTS = 5
+const PASSCODE_LOCKOUT_MS = 15 * 60 * 1000
+
+function normalizePasscode(passcode) {
+  return String(passcode ?? '').trim()
+}
 
 async function assertTeacher(uid) {
   if (!uid) {
@@ -25,6 +32,10 @@ function configRef(courseId, moduleId) {
 
 function permissionRef(courseId, moduleId, uid) {
   return db.doc(`courses/${courseId}/finalTests/${moduleId}/permissions/${uid}`)
+}
+
+function passcodeAttemptRef(courseId, moduleId, uid) {
+  return db.doc(`courses/${courseId}/finalTests/${moduleId}/passcodeAttempts/${uid}`)
 }
 
 exports.setFinalTestPasscode = functions
@@ -48,7 +59,15 @@ exports.setFinalTestPasscode = functions
       updatedBy: context.auth.uid,
     }
 
-    if (typeof passcode === 'string' && passcode.trim()) {
+    const trimmedPasscode = normalizePasscode(passcode)
+    if (trimmedPasscode) {
+      if (trimmedPasscode.length < MIN_PASSCODE_LENGTH) {
+        throw new functions.https.HttpsError(
+          'invalid-argument',
+          `Passcode must be at least ${MIN_PASSCODE_LENGTH} characters`,
+        )
+      }
+
       const minutes = Number(passcodeValidMinutes)
       if (!Number.isFinite(minutes) || minutes <= 0) {
         throw new functions.https.HttpsError(
@@ -57,7 +76,7 @@ exports.setFinalTestPasscode = functions
         )
       }
 
-      payload.passcode = passcode.trim()
+      payload.passcode = trimmedPasscode
       payload.passcodeSet = true
       payload.passcodeExpiresAt = admin.firestore.Timestamp.fromMillis(
         Date.now() + minutes * 60 * 1000,
@@ -77,31 +96,64 @@ exports.verifyFinalTestPasscode = functions
     }
 
     const { courseId, moduleId, passcode } = data ?? {}
-    if (!courseId || !moduleId || !passcode) {
+    const submittedPasscode = normalizePasscode(passcode)
+    if (!courseId || !moduleId || !submittedPasscode) {
       throw new functions.https.HttpsError('invalid-argument', 'courseId, moduleId, and passcode are required')
     }
 
-    const configSnap = await configRef(courseId, moduleId).get()
-    const config = configSnap.data() ?? {}
-    const stored = config.passcode
-    if (!stored || stored !== String(passcode).trim()) {
-      return { ok: false, reason: 'invalid' }
-    }
+    return db.runTransaction(async (transaction) => {
+      const now = Date.now()
+      const configDoc = configRef(courseId, moduleId)
+      const attemptDoc = passcodeAttemptRef(courseId, moduleId, context.auth.uid)
+      const permissionDoc = permissionRef(courseId, moduleId, context.auth.uid)
 
-    const expiresAt = config.passcodeExpiresAt
-    if (expiresAt?.toMillis && expiresAt.toMillis() <= Date.now()) {
-      return { ok: false, reason: 'expired' }
-    }
+      const [configSnap, attemptSnap] = await Promise.all([
+        transaction.get(configDoc),
+        transaction.get(attemptDoc),
+      ])
 
-    await permissionRef(courseId, moduleId, context.auth.uid).set(
-      {
-        allowed: true,
-        method: 'passcode',
-        grantedAt: admin.firestore.FieldValue.serverTimestamp(),
-        passcodeExpiresAt: expiresAt ?? null,
-      },
-      { merge: true },
-    )
+      const attempt = attemptSnap.data() ?? {}
+      const lockedUntilMillis = attempt.lockedUntil?.toMillis?.() ?? 0
+      if (lockedUntilMillis > now) {
+        throw new functions.https.HttpsError(
+          'resource-exhausted',
+          'Too many incorrect passcode attempts. Try again later.',
+        )
+      }
 
-    return { ok: true }
+      const config = configSnap.data() ?? {}
+      const stored = config.passcode
+      if (!stored || stored !== submittedPasscode) {
+        const failedCount =
+          lockedUntilMillis > 0 && lockedUntilMillis <= now ? 1 : Number(attempt.failedCount ?? 0) + 1
+        const shouldLock = failedCount >= MAX_FAILED_PASSCODE_ATTEMPTS
+        transaction.set(attemptDoc, {
+          failedCount,
+          lastFailedAt: admin.firestore.FieldValue.serverTimestamp(),
+          lockedUntil: shouldLock
+            ? admin.firestore.Timestamp.fromMillis(now + PASSCODE_LOCKOUT_MS)
+            : null,
+        })
+        return { ok: false, reason: 'invalid' }
+      }
+
+      const expiresAt = config.passcodeExpiresAt
+      if (expiresAt?.toMillis && expiresAt.toMillis() <= now) {
+        return { ok: false, reason: 'expired' }
+      }
+
+      transaction.delete(attemptDoc)
+      transaction.set(
+        permissionDoc,
+        {
+          allowed: true,
+          method: 'passcode',
+          grantedAt: admin.firestore.FieldValue.serverTimestamp(),
+          passcodeExpiresAt: expiresAt ?? null,
+        },
+        { merge: true },
+      )
+
+      return { ok: true }
+    })
   })

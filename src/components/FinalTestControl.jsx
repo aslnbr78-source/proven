@@ -12,6 +12,8 @@ import {
 } from '../services/finalTestService'
 import { getModuleAiOptions, saveModuleAiOptions } from '../services/aiInsightsService'
 
+const MIN_PASSCODE_LENGTH = 6
+
 function formatExpiry(date) {
   if (!date) {
     return ''
@@ -69,6 +71,12 @@ function FinalTestControl({ courseId, moduleId, moduleTitle }) {
 
     if (trimmedPasscode && (!Number.isFinite(minutes) || minutes <= 0)) {
       setMessage('Enter how many minutes the passcode should stay valid.')
+      setBusy(false)
+      return
+    }
+
+    if (trimmedPasscode && trimmedPasscode.length < MIN_PASSCODE_LENGTH) {
+      setMessage(`Passcode must be at least ${MIN_PASSCODE_LENGTH} characters.`)
       setBusy(false)
       return
     }
@@ -186,8 +194,12 @@ function FinalTestControl({ courseId, moduleId, moduleTitle }) {
             value={passcode}
             onChange={(e) => setPasscode(e.target.value)}
             placeholder={passcodeSet ? 'Enter new passcode' : 'Create passcode'}
+            minLength={MIN_PASSCODE_LENGTH}
             className="input-modern mt-1 w-full !py-1.5 text-sm"
           />
+          <p className="mt-1 text-xs text-slate-500">
+            Use at least {MIN_PASSCODE_LENGTH} characters to resist guessing.
+          </p>
         </div>
 
         <div>
