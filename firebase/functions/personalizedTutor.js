@@ -1,6 +1,7 @@
 const { onCall, HttpsError } = require('firebase-functions/v2/https')
 const { getFirestore, FieldValue } = require('firebase-admin/firestore')
 const { buildSystemInstruction, detectAnswerSeeking } = require('./aiTutorShared')
+const { enforceAiRateLimit } = require('./aiRateLimit')
 require('./adminInit')
 
 const GEMINI_MODELS = ['gemini-2.5-flash-lite', 'gemini-2.5-flash']
@@ -235,6 +236,13 @@ exports.personalizedTutor = onCall(async (request) => {
   if (!studentMessage?.trim()) {
     throw new HttpsError('invalid-argument', 'studentMessage is required.')
   }
+
+  await enforceAiRateLimit({
+    uid,
+    key: 'personalizedTutor',
+    minIntervalMs: 5 * 1000,
+    dailyLimit: 120,
+  })
 
   const db = getFirestore()
   const userSnap = await db.doc(`users/${uid}`).get()
