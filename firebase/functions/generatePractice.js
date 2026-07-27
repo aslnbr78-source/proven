@@ -1,6 +1,7 @@
 const { onCall, HttpsError } = require('firebase-functions/v2/https')
 require('./adminInit')
 const { callGemini } = require('./geminiClient')
+const { enforceAiRateLimit } = require('./aiRateLimit')
 
 function parseProblemsJson(raw) {
   const cleaned = String(raw)
@@ -39,6 +40,13 @@ exports.generatePractice = onCall(async (request) => {
 
   const problemCount = Math.min(Math.max(Number(count) || 5, 1), 8)
   const topic = lessonObjective || questionContext || moduleTitle || 'this math topic'
+
+  await enforceAiRateLimit({
+    uid: request.auth.uid,
+    key: 'generatePractice',
+    minIntervalMs: 30 * 1000,
+    dailyLimit: 30,
+  })
 
   const systemInstruction = `You create extra math practice for ProvenMath LMS students.
 Return ONLY valid JSON — no markdown fences, no commentary.
