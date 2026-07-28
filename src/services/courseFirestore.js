@@ -58,19 +58,16 @@ export async function isFirestoreCourse(courseId) {
 
 export async function gatherCoursePackageForPublish(courseId, outlineOverride = null) {
   const customPack = exportCoursePackage(courseId)
-  if (customPack?.courseJson) {
-    return {
-      courseJson: outlineOverride ?? customPack.courseJson,
-      modules: customPack.modules ?? {},
+  let courseJson = outlineOverride ?? customPack?.courseJson
+
+  if (!courseJson) {
+    const outlineResponse = await fetch(`/courses/${courseId}/course.json`)
+    if (!outlineResponse.ok) {
+      throw new Error('Course outline not found')
     }
+    courseJson = await outlineResponse.json()
   }
 
-  const outlineResponse = await fetch(`/courses/${courseId}/course.json`)
-  if (!outlineResponse.ok) {
-    throw new Error('Course outline not found')
-  }
-
-  const courseJson = outlineOverride ?? (await outlineResponse.json())
   const modules = {}
 
   for (const module of flattenModules(courseJson)) {
@@ -81,9 +78,10 @@ export async function gatherCoursePackageForPublish(courseId, outlineOverride = 
     }
 
     const response = await fetch(`/lessons/${courseId}/${module.id}.json`)
-    if (response.ok) {
-      modules[module.id] = await response.json()
+    if (!response.ok) {
+      throw new Error(`Lesson content not found for "${module.title ?? module.id}".`)
     }
+    modules[module.id] = await response.json()
   }
 
   return { courseJson, modules }

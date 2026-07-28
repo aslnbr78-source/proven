@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom'
 import { courses as bundledCourses } from '../data/courses'
 import {
   createCustomCourse,
-  exportCoursePackage,
   getCustomCourseIds,
   hasCustomCourse,
   loadOutline,
@@ -426,18 +425,27 @@ function CourseBuilder() {
     setMessage(`Created course "${newOutline.title}".`)
   }
 
-  const handleExport = () => {
-    saveCustomOutline(selectedCourseId, outline)
-    const exported = exportCoursePackage(selectedCourseId) ?? {
-      courseJson: outline,
-      modules: {},
+  const handleExport = async () => {
+    if (!outline) {
+      return
     }
 
-    downloadJson('course.json', exported.courseJson)
-    Object.entries(exported.modules).forEach(([moduleId, data]) => {
-      downloadJson(`${moduleId}.json`, data)
-    })
-    setMessage('Downloaded course.json and module files.')
+    setBusy(true)
+    setMessage('')
+    try {
+      saveCustomOutline(selectedCourseId, outline)
+      const exported = await gatherCoursePackageForPublish(selectedCourseId, outline)
+
+      downloadJson('course.json', exported.courseJson)
+      Object.entries(exported.modules).forEach(([moduleId, data]) => {
+        downloadJson(`${moduleId}.json`, data)
+      })
+      setMessage('Downloaded course.json and module files.')
+    } catch (error) {
+      setMessage(error.message || 'Export failed.')
+    } finally {
+      setBusy(false)
+    }
   }
 
   const handlePublish = async () => {
@@ -561,7 +569,7 @@ function CourseBuilder() {
               Reset to default
             </button>
           )}
-          <button type="button" onClick={handleExport} className="btn-secondary">
+          <button type="button" disabled={busy || !outline} onClick={handleExport} className="btn-secondary">
             Export JSON
           </button>
           <button type="button" disabled={busy || !outline} onClick={handlePublish} className="btn-primary">
