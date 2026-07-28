@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom'
 import { courses as bundledCourses } from '../data/courses'
 import {
   createCustomCourse,
-  exportCoursePackage,
   getCustomCourseIds,
   hasCustomCourse,
   loadOutline,
@@ -272,21 +271,27 @@ function ContentManager() {
     setMessage(`Created course "${newOutline.title}".`)
   }
 
-  const handleExport = () => {
-    const pack = exportCoursePackage(selectedCourseId)
-    if (!pack) {
-      saveCustomOutline(selectedCourseId, outline)
-    }
-    const exported = exportCoursePackage(selectedCourseId) ?? {
-      courseJson: outline,
-      modules: {},
+  const handleExport = async () => {
+    if (!outline) {
+      return
     }
 
-    downloadJson('course.json', exported.courseJson)
-    Object.entries(exported.modules).forEach(([moduleId, data]) => {
-      downloadJson(`${moduleId}.json`, data)
-    })
-    setMessage('Downloaded course.json and module files.')
+    setPublishing(true)
+    setMessage('')
+    try {
+      saveCustomOutline(selectedCourseId, outline)
+      const exported = await gatherCoursePackageForPublish(selectedCourseId, outline)
+
+      downloadJson('course.json', exported.courseJson)
+      Object.entries(exported.modules).forEach(([moduleId, data]) => {
+        downloadJson(`${moduleId}.json`, data)
+      })
+      setMessage('Downloaded course.json and module files.')
+    } catch (error) {
+      setMessage(error.message || 'Export failed.')
+    } finally {
+      setPublishing(false)
+    }
   }
 
   const handlePublish = async () => {
@@ -400,6 +405,7 @@ function ContentManager() {
           <button
             type="button"
             onClick={handleExport}
+            disabled={publishing || !outline}
             className="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
           >
             Export JSON files
