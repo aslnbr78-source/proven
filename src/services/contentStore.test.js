@@ -1,5 +1,4 @@
-import assert from 'node:assert/strict'
-import { beforeEach, test } from 'node:test'
+import { beforeEach, expect, test } from 'vitest'
 import { createCustomCourse, getCustomCourse } from './contentStore.js'
 
 const STORAGE_KEY = 'provenmath-custom-content'
@@ -46,17 +45,15 @@ test('createCustomCourse rejects duplicate IDs without erasing saved modules', (
     }),
   )
 
-  assert.throws(
-    () =>
-      createCustomCourse({
-        id: 'algebra-1',
-        title: 'Replacement',
-        chapters: [{ id: 'ch01', title: 'Chapter 1', subchapters: [] }],
-      }),
-    /already exists/,
-  )
+  expect(() =>
+    createCustomCourse({
+      id: 'algebra-1',
+      title: 'Replacement',
+      chapters: [{ id: 'ch01', title: 'Chapter 1', subchapters: [] }],
+    }),
+  ).toThrow(/already exists/)
 
-  assert.deepEqual(getCustomCourse('algebra-1').modules, {
+  expect(getCustomCourse('algebra-1').modules).toEqual({
     lesson01: { id: 'lesson01', title: 'Saved lesson' },
   })
 })
