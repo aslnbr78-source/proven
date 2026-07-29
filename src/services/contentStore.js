@@ -52,6 +52,10 @@ export function deleteCustomModule(courseId, moduleId) {
 
 export function createCustomCourse(outline) {
   const store = readStore()
+  if (store.courses[outline.id]) {
+    throw new Error(`Course ID "${outline.id}" already exists.`)
+  }
+
   store.courses[outline.id] = {
     outline: normalizeOutline(outline),
     modules: {},
