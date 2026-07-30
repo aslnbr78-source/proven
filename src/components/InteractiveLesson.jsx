@@ -210,13 +210,17 @@ function InteractiveLesson({ data, courseId, moduleId, onComplete }) {
   }
 
   const handleSolve = () => {
+    setSolved(true)
+    const isFirstCompletion = onComplete?.() ?? true
+    if (!isFirstCompletion) {
+      return
+    }
+
     const xp = awardModuleComplete('interactive-lesson')
     setXpEarned(xp)
-    setSolved(true)
     if (user?.uid && courseId && moduleId) {
       recordMasteryGain(user.uid, courseId, moduleId).catch(() => {})
     }
-    onComplete?.()
   }
 
   const questionProps = {

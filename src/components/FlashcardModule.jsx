@@ -26,9 +26,13 @@ function FlashcardModule({ data, onComplete }) {
     }
 
     if (seen.size === total) {
+      const isFirstCompletion = onComplete?.() ?? true
+      if (!isFirstCompletion) {
+        return
+      }
+
       const xp = awardModuleComplete('flashcard')
       setXpEarned(xp)
-      onComplete?.()
     }
   }
 

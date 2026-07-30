@@ -105,12 +105,16 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
   const finishQuiz = () => {
     setShowReview(false)
     setFinished(true)
+    const isFirstCompletion = onComplete?.() ?? true
+    if (!isFirstCompletion) {
+      return
+    }
+
     const xp = awardModuleComplete('quiz')
     setXpEarned(xp)
     if (user?.uid && courseId && moduleId) {
       recordMasteryGain(user.uid, courseId, moduleId).catch(() => {})
     }
-    onComplete?.()
   }
 
   const goNext = () => {

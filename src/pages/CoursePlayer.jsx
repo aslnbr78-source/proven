@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import AIPersonalizedTutor from '../components/AIPersonalizedTutor'
 import DownloadManager from '../components/DownloadManager'
@@ -47,7 +47,7 @@ function getQuestionContext(module) {
 
 function CoursePlayer() {
   const { courseId, moduleId } = useParams()
-  const { role } = useAuth()
+  const { role, user } = useAuth()
   const { markComplete, isComplete } = useProgress()
   const [courseOutline, setCourseOutline] = useState(null)
   const [moduleContent, setModuleContent] = useState(null)
@@ -60,6 +60,7 @@ function CoursePlayer() {
     quizHintOnly: true,
     quizAllowFullAnswers: false,
   })
+  const completedThisSessionRef = useRef(new Set())
 
   useEffect(() => {
     let cancelled = false
@@ -193,9 +194,18 @@ function CoursePlayer() {
   }
 
   const handleComplete = () => {
-    if (moduleId && !isComplete(courseId, moduleId)) {
-      markComplete(courseId, moduleId)
+    if (!moduleId) {
+      return false
     }
+
+    const completionKey = `${user?.uid ?? 'guest'}:${courseId}:${moduleId}`
+    if (isComplete(courseId, moduleId) || completedThisSessionRef.current.has(completionKey)) {
+      return false
+    }
+
+    completedThisSessionRef.current.add(completionKey)
+    markComplete(courseId, moduleId)
+    return true
   }
 
   const isFinalTest = moduleContent?.type === 'final-test'
