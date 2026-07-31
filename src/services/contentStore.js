@@ -1,3 +1,5 @@
+import { doc, getDoc } from 'firebase/firestore'
+import { db } from './firebase'
 import { normalizeOutline } from '../utils/courseOutline'
 
 const STORAGE_KEY = 'provenmath-custom-content'
@@ -90,10 +92,42 @@ export function exportCoursePackage(courseId) {
   }
 }
 
+async function loadPublishedFirestoreOutline(courseId) {
+  if (!db || !courseId) {
+    return null
+  }
+
+  try {
+    const snap = await getDoc(doc(db, 'courses', courseId))
+    if (!snap.exists()) {
+      return null
+    }
+
+    const course = snap.data()
+    if (!course.published) {
+      return null
+    }
+
+    return normalizeOutline({
+      id: snap.id,
+      title: course.title,
+      description: course.description ?? '',
+      chapters: course.chapters ?? [],
+    })
+  } catch {
+    return null
+  }
+}
+
 export async function loadOutline(courseId) {
   const custom = getCustomCourse(courseId)
   if (custom?.outline) {
     return normalizeOutline(custom.outline)
+  }
+
+  const firestoreOutline = await loadPublishedFirestoreOutline(courseId)
+  if (firestoreOutline) {
+    return firestoreOutline
   }
 
   const response = await fetch(`/courses/${courseId}/course.json`)
