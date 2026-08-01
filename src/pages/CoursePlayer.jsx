@@ -258,6 +258,7 @@ function CoursePlayer() {
               <div className="mt-8">
                 {moduleContent && (
                   <ModuleRenderer
+                    key={`${courseId}:${moduleId}`}
                     module={moduleContent}
                     courseId={courseId}
                     moduleId={moduleId}
