@@ -7,6 +7,7 @@ import {
   recordModuleAccess,
 } from '../services/navigationState'
 import { getChapterSubchapters } from '../utils/courseOutline'
+import { getSafeExternalUrl } from '../utils/safeUrl'
 
 const typeLabels = {
   'interactive-lesson': 'Lesson',
@@ -178,14 +179,10 @@ function Sidebar({ courseId, courseOutline, activeModuleId }) {
                                 </li>
                               )
                             })}
-                            {(subchapter.materials ?? []).map((material) => (
-                              <li key={material.id}>
-                                <a
-                                  href={material.url}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  className="flex items-start gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 no-underline transition hover:bg-amber-50 hover:text-amber-900"
-                                >
+                            {(subchapter.materials ?? []).map((material) => {
+                              const safeUrl = getSafeExternalUrl(material.url)
+                              const content = (
+                                <>
                                   <span className="mt-0.5 text-xs" aria-hidden="true">
                                     📎
                                   </span>
@@ -195,9 +192,28 @@ function Sidebar({ courseId, courseOutline, activeModuleId }) {
                                       {material.kind ?? 'file'}
                                     </span>
                                   </span>
-                                </a>
-                              </li>
-                            ))}
+                                </>
+                              )
+
+                              return (
+                                <li key={material.id}>
+                                  {safeUrl ? (
+                                    <a
+                                      href={safeUrl}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className="flex items-start gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 no-underline transition hover:bg-amber-50 hover:text-amber-900"
+                                    >
+                                      {content}
+                                    </a>
+                                  ) : (
+                                    <span className="flex items-start gap-2 rounded-lg px-2 py-2 text-sm text-slate-400">
+                                      {content}
+                                    </span>
+                                  )}
+                                </li>
+                              )
+                            })}
                           </ul>
                         )}
                       </div>

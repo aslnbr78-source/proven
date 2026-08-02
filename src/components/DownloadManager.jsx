@@ -3,6 +3,7 @@ import { fetchCourseOutline } from '../services/contentLoader'
 import { listCourseAssets } from '../services/courseFirestore'
 import { flattenMaterials } from '../utils/courseOutline'
 import { openFormulaCheatSheet } from '../utils/formulaCheatSheet'
+import { getSafeExternalUrl } from '../utils/safeUrl'
 
 function DownloadManager({ courseId, courseTitle }) {
   const [firestoreAssets, setFirestoreAssets] = useState([])
@@ -34,12 +35,16 @@ function DownloadManager({ courseId, courseTitle }) {
     const rows = []
 
     const add = (item) => {
-      const key = item.url || item.id
+      const url = getSafeExternalUrl(item.url)
+      const key = url || item.id
       if (!key || seen.has(key)) {
         return
       }
+      if (!url) {
+        return
+      }
       seen.add(key)
-      rows.push(item)
+      rows.push({ ...item, url })
     }
 
     outlineMaterials.forEach((material) =>

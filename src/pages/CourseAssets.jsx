@@ -5,6 +5,7 @@ import { getCustomCourseIds } from '../services/contentStore'
 import { listCourseAssets, saveCourseAsset, deleteCourseAsset, listFirestoreCourses } from '../services/courseFirestore'
 import { inferAssetKind, uploadCourseFile } from '../services/storageService'
 import { useAuth } from '../context/AuthContext'
+import { getSafeExternalUrl } from '../utils/safeUrl'
 
 function CourseAssets() {
   const { user, profile } = useAuth()
@@ -81,11 +82,17 @@ function CourseAssets() {
       return
     }
 
+    const safeUrl = getSafeExternalUrl(linkUrl)
+    if (!safeUrl) {
+      setMessage('Enter a valid http(s) link.')
+      return
+    }
+
     try {
       await saveCourseAsset(selectedCourseId, {
         kind: 'link',
         name: linkTitle.trim(),
-        url: linkUrl.trim(),
+        url: safeUrl,
         createdBy: user?.uid ?? null,
         ownerEmail: profile?.email ?? null,
       })
@@ -181,28 +188,36 @@ function CourseAssets() {
           <p className="mt-2 text-sm text-slate-500">No assets yet for this course.</p>
         ) : (
           <ul className="mt-4 space-y-2">
-            {assets.map((asset) => (
-              <li
-                key={asset.id}
-                className="flex flex-wrap items-center justify-between gap-2 rounded bg-slate-50 px-3 py-2 text-sm"
-              >
-                <div>
-                  <span className="mr-2 rounded bg-slate-200 px-1.5 py-0.5 text-xs uppercase">
-                    {asset.kind}
-                  </span>
-                  <a href={asset.url} target="_blank" rel="noreferrer" className="font-medium text-blue-700">
-                    {asset.name}
-                  </a>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => handleDelete(asset.id)}
-                  className="text-xs text-red-600 hover:underline"
+            {assets.map((asset) => {
+              const safeUrl = getSafeExternalUrl(asset.url)
+
+              return (
+                <li
+                  key={asset.id}
+                  className="flex flex-wrap items-center justify-between gap-2 rounded bg-slate-50 px-3 py-2 text-sm"
                 >
-                  Remove
-                </button>
-              </li>
-            ))}
+                  <div>
+                    <span className="mr-2 rounded bg-slate-200 px-1.5 py-0.5 text-xs uppercase">
+                      {asset.kind}
+                    </span>
+                    {safeUrl ? (
+                      <a href={safeUrl} target="_blank" rel="noreferrer" className="font-medium text-blue-700">
+                        {asset.name}
+                      </a>
+                    ) : (
+                      <span className="font-medium text-slate-500">{asset.name}</span>
+                    )}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(asset.id)}
+                    className="text-xs text-red-600 hover:underline"
+                  >
+                    Remove
+                  </button>
+                </li>
+              )
+            })}
           </ul>
         )}
       </section>
