@@ -34,6 +34,7 @@ import {
   slugify,
 } from '../utils/courseEditor'
 import { parseModuleJson } from '../utils/validateContent'
+import { getSafeExternalUrl } from '../utils/safeUrl'
 
 function CourseBuilder() {
   const { courseId: routeCourseId } = useParams()
@@ -291,6 +292,12 @@ function CourseBuilder() {
       return
     }
 
+    const safeUrl = getSafeExternalUrl(linkUrl)
+    if (!safeUrl) {
+      setMessage('Enter a valid http(s) link.')
+      return
+    }
+
     const { chapterId, subchapterId } = linkTarget
     const materialId = generateMaterialId()
     let assetId = null
@@ -299,7 +306,7 @@ function CourseBuilder() {
       assetId = await saveCourseAsset(selectedCourseId, {
         kind: 'link',
         name: linkTitle.trim(),
-        url: linkUrl.trim(),
+        url: safeUrl,
         subchapterId,
         createdBy: user?.uid ?? null,
         ownerEmail: profile?.email ?? null,
@@ -312,7 +319,7 @@ function CourseBuilder() {
       id: materialId,
       kind: 'link',
       title: linkTitle.trim(),
-      url: linkUrl.trim(),
+      url: safeUrl,
       assetId,
     }
 
@@ -716,47 +723,57 @@ function CourseBuilder() {
                         </li>
                       ))}
 
-                      {subchapter.materials.map((material) => (
-                        <li
-                          key={material.id}
-                          className="flex flex-wrap items-center gap-2 rounded-xl border border-amber-100 bg-amber-50/40 px-3 py-2.5"
-                        >
-                          <span className="text-base" aria-hidden="true">
-                            {MATERIAL_KIND_ICONS[material.kind] ?? '📎'}
-                          </span>
-                          <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-900">
-                            {MATERIAL_KIND_LABELS[material.kind] ?? material.kind}
-                          </span>
-                          <input
-                            type="text"
-                            value={material.title}
-                            onChange={(e) =>
-                              handleMaterialTitleChange(
-                                chapter.id,
-                                subchapter.id,
-                                material.id,
-                                e.target.value,
-                              )
-                            }
-                            className="input-modern min-w-0 flex-1 !py-1 text-sm"
-                          />
-                          <a
-                            href={material.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-xs font-medium text-indigo-600 no-underline hover:underline"
+                      {subchapter.materials.map((material) => {
+                        const safeUrl = getSafeExternalUrl(material.url)
+
+                        return (
+                          <li
+                            key={material.id}
+                            className="flex flex-wrap items-center gap-2 rounded-xl border border-amber-100 bg-amber-50/40 px-3 py-2.5"
                           >
-                            Open
-                          </a>
-                          <button
-                            type="button"
-                            onClick={() => removeMaterial(chapter.id, subchapter.id, material)}
-                            className="rounded-lg border border-rose-200 px-2 py-0.5 text-xs text-rose-600"
-                          >
-                            Remove
-                          </button>
-                        </li>
-                      ))}
+                            <span className="text-base" aria-hidden="true">
+                              {MATERIAL_KIND_ICONS[material.kind] ?? '📎'}
+                            </span>
+                            <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-900">
+                              {MATERIAL_KIND_LABELS[material.kind] ?? material.kind}
+                            </span>
+                            <input
+                              type="text"
+                              value={material.title}
+                              onChange={(e) =>
+                                handleMaterialTitleChange(
+                                  chapter.id,
+                                  subchapter.id,
+                                  material.id,
+                                  e.target.value,
+                                )
+                              }
+                              className="input-modern min-w-0 flex-1 !py-1 text-sm"
+                            />
+                            {safeUrl ? (
+                              <a
+                                href={safeUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-xs font-medium text-indigo-600 no-underline hover:underline"
+                              >
+                                Open
+                              </a>
+                            ) : (
+                              <span className="text-xs font-medium text-slate-500">
+                                Unsafe link blocked
+                              </span>
+                            )}
+                            <button
+                              type="button"
+                              onClick={() => removeMaterial(chapter.id, subchapter.id, material)}
+                              className="rounded-lg border border-rose-200 px-2 py-0.5 text-xs text-rose-600"
+                            >
+                              Remove
+                            </button>
+                          </li>
+                        )
+                      })}
                     </ul>
 
                     <div className="mt-4 flex flex-wrap gap-2">
