@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, EmailAuthProvider, linkWithCredential } from 'firebase/auth'
 import { useAuth } from '../context/AuthContext'
 import { auth } from '../services/firebase'
 import { ensureUserProfile } from '../services/userService'
@@ -21,7 +21,12 @@ function Signup() {
     setSubmitting(true)
 
     try {
-      const credential = await createUserWithEmailAndPassword(auth, email, password)
+      const credential = auth.currentUser?.isAnonymous
+        ? await linkWithCredential(
+            auth.currentUser,
+            EmailAuthProvider.credential(email, password),
+          )
+        : await createUserWithEmailAndPassword(auth, email, password)
       const profile = await ensureUserProfile(credential.user)
       navigate(getHomePathForRole(profile?.role))
     } catch (err) {
