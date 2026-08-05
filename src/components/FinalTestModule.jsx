@@ -63,6 +63,16 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
   })
   const finishingRef = useRef(false)
   const answeredRef = useRef({})
+  const sessionIdRef = useRef(null)
+  const phaseRef = useRef(phase)
+  const finishedRef = useRef(finished)
+  const elapsedSecondsRef = useRef(elapsedSeconds)
+  const totalRef = useRef(0)
+  const courseIdRef = useRef(courseId)
+  const moduleIdRef = useRef(moduleId)
+  const getCountersRef = useRef(null)
+  const markCompleteRef = useRef(markComplete)
+  const onCompleteRef = useRef(onComplete)
 
   useEffect(() => {
     answeredRef.current = answered
@@ -104,6 +114,72 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
       persistViolation({ copyAttempts: count })
     },
   })
+
+  useEffect(() => {
+    sessionIdRef.current = sessionId
+    phaseRef.current = phase
+    finishedRef.current = finished
+    elapsedSecondsRef.current = elapsedSeconds
+    totalRef.current = total
+    courseIdRef.current = courseId
+    moduleIdRef.current = moduleId
+    getCountersRef.current = getCounters
+    markCompleteRef.current = markComplete
+    onCompleteRef.current = onComplete
+  }, [sessionId, phase, finished, elapsedSeconds, total, courseId, moduleId, getCounters, markComplete, onComplete])
+
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      if (phaseRef.current === 'active' && !finishedRef.current) {
+        event.preventDefault()
+        event.returnValue = ''
+      }
+    }
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      const activeSessionId = sessionIdRef.current
+      if (
+        phaseRef.current !== 'active' ||
+        finishedRef.current ||
+        finishingRef.current ||
+        !activeSessionId
+      ) {
+        return
+      }
+
+      finishingRef.current = true
+      const activeCourseId = courseIdRef.current
+      const activeModuleId = moduleIdRef.current
+      const counters = getCountersRef.current?.() ?? {
+        fullscreenExits: 0,
+        tabSwitches: 0,
+        copyAttempts: 0,
+      }
+      const finalAnswered = answeredRef.current
+      const correctCount = Object.values(finalAnswered).filter((item) => item.isCorrect).length
+
+      completeFinalTestSession({
+        courseId: activeCourseId,
+        moduleId: activeModuleId,
+        sessionId: activeSessionId,
+        elapsedSeconds: elapsedSecondsRef.current,
+        scoreCorrect: correctCount,
+        scoreTotal: totalRef.current,
+        ...counters,
+      })
+        .then(() => {
+          markCompleteRef.current?.(activeCourseId, activeModuleId)
+          onCompleteRef.current?.()
+        })
+        .catch(() => {})
+      exitFullscreen()
+    }
+  }, [])
 
   useEffect(() => {
     async function loadAccess() {
@@ -452,6 +528,9 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
         <p className="mt-2 text-sm text-slate-600">
           The test runs in fullscreen. Stay on this tab until you submit.
           {allowAiAssistant && ' The AI tutor will be available inside the test.'}
+        </p>
+        <p className="mt-2 text-sm text-slate-600">
+          Leaving after you begin will submit the answers you have completed so far.
         </p>
         {accessError && (
           <p className="mt-4 rounded-xl bg-rose-50 px-4 py-2 text-sm text-rose-800">{accessError}</p>
