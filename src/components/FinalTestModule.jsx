@@ -250,12 +250,6 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     return () => window.clearInterval(timer)
   }, [phase, finished])
 
-  useEffect(() => {
-    if (phase === 'active' && secondsLeft === 0 && !finished && !finishingRef.current) {
-      finishTest(answeredRef.current)
-    }
-  }, [secondsLeft, phase, finished])
-
   const finishTest = async (finalAnswered) => {
     if (finished || finishingRef.current) {
       return
@@ -285,6 +279,12 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     setAttemptsUsed((count) => count + 1)
     setPhase('finished')
   }
+
+  useEffect(() => {
+    if (phase === 'active' && secondsLeft === 0 && !finished && !finishingRef.current) {
+      finishTest(answeredRef.current)
+    }
+  }, [secondsLeft, phase, finished, finishTest])
 
   const resetForRetake = () => {
     finishingRef.current = false
