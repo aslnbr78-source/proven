@@ -6,6 +6,12 @@ import { auth } from '../services/firebase'
 import { getAuthErrorMessage } from '../utils/authErrors'
 import { getHomePathForRole } from '../utils/roles'
 
+function removeSearchParam(paramName) {
+  const url = new URL(window.location.href)
+  url.searchParams.delete(paramName)
+  window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`)
+}
+
 function AuthCallback() {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
@@ -24,6 +30,7 @@ function AuthCallback() {
     async function run() {
       try {
         if (searchParams.get('start') === 'google') {
+          removeSearchParam('start')
           await startGoogleSignIn()
           return
         }
