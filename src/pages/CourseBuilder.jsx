@@ -19,7 +19,7 @@ import {
   publishCourseToFirestore,
   saveCourseAsset,
 } from '../services/courseFirestore'
-import { inferAssetKind, uploadCourseFile } from '../services/storageService'
+import { deleteCourseFile, inferAssetKind, uploadCourseFile } from '../services/storageService'
 import { useAuth } from '../context/AuthContext'
 import { nextChapterId, nextSubchapterId } from '../utils/courseOutline'
 import {
@@ -217,21 +217,27 @@ function CourseBuilder() {
       return
     }
 
-    if (material.assetId) {
-      try {
+    setBusy(true)
+    setMessage('')
+    try {
+      if (material.assetId) {
         await deleteCourseAsset(selectedCourseId, material.assetId)
-      } catch {
-        /* outline still updated */
+      } else if (material.storagePath) {
+        await deleteCourseFile(material.storagePath)
       }
-    }
 
-    persistOutline({
-      ...outline,
-      chapters: mapSubchapter(outline.chapters, chapterId, subchapterId, (subchapter) => ({
-        ...subchapter,
-        materials: subchapter.materials.filter((item) => item.id !== material.id),
-      })),
-    })
+      persistOutline({
+        ...outline,
+        chapters: mapSubchapter(outline.chapters, chapterId, subchapterId, (subchapter) => ({
+          ...subchapter,
+          materials: subchapter.materials.filter((item) => item.id !== material.id),
+        })),
+      })
+    } catch (error) {
+      setMessage(error.message || 'Could not remove this file. Try again.')
+    } finally {
+      setBusy(false)
+    }
   }
 
   const openImport = async (chapterId, subchapterId, templateType) => {

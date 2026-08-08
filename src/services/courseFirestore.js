@@ -10,6 +10,7 @@ import {
 } from 'firebase/firestore'
 import { db } from './firebase'
 import { exportCoursePackage, getCustomModule } from './contentStore'
+import { deleteCourseFile } from './storageService'
 import { flattenModules } from '../utils/courseOutline'
 
 export async function listFirestoreCourses() {
@@ -161,5 +162,11 @@ export async function deleteCourseAsset(courseId, assetId) {
     return
   }
 
-  await deleteDoc(doc(db, 'courses', courseId, 'assets', assetId))
+  const assetRef = doc(db, 'courses', courseId, 'assets', assetId)
+  const assetSnap = await getDoc(assetRef)
+  const storagePath = assetSnap.data()?.path
+  if (storagePath) {
+    await deleteCourseFile(storagePath)
+  }
+  await deleteDoc(assetRef)
 }
