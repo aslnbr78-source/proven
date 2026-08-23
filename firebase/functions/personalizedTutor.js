@@ -190,6 +190,53 @@ async function callGeminiRest({ apiKey, model, systemInstruction, contents }) {
   return extractReplyText(data)
 }
 
+function isTeacherRole(role) {
+  return role === 'teacher' || role === 'admin'
+}
+
+function validateCourseId(courseId) {
+  if (courseId == null || courseId === '') {
+    return null
+  }
+
+  if (typeof courseId !== 'string' || !courseId.trim() || courseId.includes('/')) {
+    throw new HttpsError('invalid-argument', 'courseId must be a valid course id.')
+  }
+
+  return courseId.trim()
+}
+
+async function loadTutorAccess(db, uid, courseId) {
+  const normalizedCourseId = validateCourseId(courseId)
+  const userPromise = db.doc(`users/${uid}`).get()
+
+  if (!normalizedCourseId) {
+    const userSnap = await userPromise
+    return {
+      userSnap,
+      courseId: null,
+      canLogActivity: false,
+    }
+  }
+
+  const [userSnap, courseSnap] = await Promise.all([
+    userPromise,
+    db.doc(`courses/${normalizedCourseId}`).get(),
+  ])
+  const role = userSnap.data()?.role
+  const course = courseSnap.data() ?? {}
+
+  if (courseSnap.exists && !isTeacherRole(role) && course.published !== true) {
+    throw new HttpsError('permission-denied', 'You do not have access to this course.')
+  }
+
+  return {
+    userSnap,
+    courseId: normalizedCourseId,
+    canLogActivity: true,
+  }
+}
+
 async function generateTutorReply({ apiKey, systemInstruction, contents }) {
   let lastError = null
 
@@ -237,13 +284,14 @@ exports.personalizedTutor = onCall(async (request) => {
   }
 
   const db = getFirestore()
-  const userSnap = await db.doc(`users/${uid}`).get()
+  const access = await loadTutorAccess(db, uid, courseId)
+  const userSnap = access.userSnap
   const displayName = userSnap.data()?.displayName || userSnap.data()?.email
 
   const answerSeekingFlagged = detectAnswerSeeking(studentMessage)
-  if (courseId) {
+  if (access.canLogActivity) {
     try {
-      await db.collection(`courses/${courseId}/tutorActivity`).add({
+      await db.collection(`courses/${access.courseId}/tutorActivity`).add({
         uid,
         studentEmail: userSnap.data()?.email ?? '',
         studentName: displayName ?? '',
@@ -266,8 +314,8 @@ exports.personalizedTutor = onCall(async (request) => {
   }
 
   let activeSkill = skill
-  if (!activeSkill && courseId && moduleId) {
-    const skillSnap = await db.doc(`users/${uid}/skills/${courseId}__${moduleId}`).get()
+  if (!activeSkill && access.courseId && moduleId) {
+    const skillSnap = await db.doc(`users/${uid}/skills/${access.courseId}__${moduleId}`).get()
     activeSkill = skillSnap.exists ? skillSnap.data() : null
   }
 
@@ -302,7 +350,7 @@ exports.personalizedTutor = onCall(async (request) => {
     const sessionRef = db.doc(`users/${uid}/tutorSessions/${sessionId}`)
     await sessionRef.set(
       {
-        courseId: courseId ?? null,
+        courseId: access.courseId ?? null,
         moduleId: moduleId ?? null,
         updatedAt: FieldValue.serverTimestamp(),
       },
@@ -354,4 +402,10 @@ function toHttpsError(error) {
 
   console.error('personalizedTutor Gemini error:', message)
   throw new HttpsError('internal', 'The AI tutor hit an unexpected error. Please try again.')
+}
+
+exports._test = {
+  isTeacherRole,
+  loadTutorAccess,
+  validateCourseId,
 }
