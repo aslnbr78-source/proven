@@ -44,6 +44,10 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
 
   const question = shuffledQuestions[currentIndex]
   const total = shuffledQuestions.length
+  const result = answered[question.id]
+  const correctCount = Object.values(answered).filter((item) => item.isCorrect).length
+  const answeredCount = shuffledQuestions.filter((item) => answered[item.id]).length
+  const allQuestionsAnswered = answeredCount === total
 
   useEffect(() => {
     if (!data.timeLimit || finished) {
@@ -103,6 +107,10 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
   }
 
   const finishQuiz = () => {
+    if (!allQuestionsAnswered) {
+      return
+    }
+
     setShowReview(false)
     setFinished(true)
     const xp = awardModuleComplete('quiz')
@@ -123,9 +131,6 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
 
     setShowReview(true)
   }
-
-  const result = answered[question.id]
-  const correctCount = Object.values(answered).filter((item) => item.isCorrect).length
 
   if (finished) {
     return (
@@ -160,6 +165,8 @@ function QuizModule({ data, courseId, moduleId, onComplete }) {
           onClose={() => setShowReview(false)}
           onSubmit={finishQuiz}
           submitLabel="Submit quiz"
+          submitDisabled={!allQuestionsAnswered}
+          submitDisabledMessage="Answer every question before submitting this quiz."
         />
       </LessonSection>
     )
