@@ -1,4 +1,5 @@
 import MathBlock from './MathBlock'
+import { countAnsweredQuestions } from '../utils/assessmentCompletion'
 
 function stripMarkup(text) {
   return String(text ?? '')
@@ -15,8 +16,10 @@ function QuestionReviewPanel({
   onClose,
   onSubmit,
   submitLabel = 'Submit',
+  submitDisabled = false,
+  submitDisabledReason = '',
 }) {
-  const answeredCount = questions.filter((item) => answered[item.id]).length
+  const answeredCount = countAnsweredQuestions(questions, answered)
   const unansweredCount = questions.length - answeredCount
 
   return (
@@ -69,10 +72,18 @@ function QuestionReviewPanel({
         <button type="button" onClick={onClose} className="btn-secondary">
           Back to test
         </button>
-        <button type="button" onClick={onSubmit} className="btn-primary">
+        <button
+          type="button"
+          onClick={onSubmit}
+          disabled={submitDisabled}
+          className="btn-primary disabled:cursor-not-allowed disabled:opacity-50"
+        >
           {submitLabel}
         </button>
       </div>
+      {submitDisabled && submitDisabledReason && (
+        <p className="mt-3 text-sm font-semibold text-rose-700">{submitDisabledReason}</p>
+      )}
     </div>
   )
 }

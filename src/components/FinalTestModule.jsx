@@ -16,6 +16,7 @@ import {
 } from '../services/finalTestService'
 import { getModuleAiOptions } from '../services/aiInsightsService'
 import { recordWrongAnswer } from '../services/skillTracker'
+import { hasAnsweredEveryQuestion } from '../utils/assessmentCompletion'
 import AIPersonalizedTutor from './AIPersonalizedTutor'
 import LessonSection from './LessonSection'
 import MathBlock from './MathBlock'
@@ -210,6 +211,15 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     setPhase('finished')
   }
 
+  const submitReviewedTest = () => {
+    const finalAnswered = answeredRef.current
+    if (!hasAnsweredEveryQuestion(shuffledQuestions, finalAnswered)) {
+      return
+    }
+
+    finishTest(finalAnswered)
+  }
+
   const resetForRetake = () => {
     finishingRef.current = false
     setFinished(false)
@@ -362,6 +372,7 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
 
   const result = answered[question.id]
   const correctCount = Object.values(answered).filter((item) => item.isCorrect).length
+  const allQuestionsAnswered = hasAnsweredEveryQuestion(shuffledQuestions, answered)
   const contentLocked = proctoringActive && !isFullscreen
 
   if (phase === 'loading') {
@@ -526,8 +537,10 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
               currentIndex={currentIndex}
               onSelectQuestion={navigateToQuestion}
               onClose={() => setShowReview(false)}
-              onSubmit={() => finishTest(answeredRef.current)}
+              onSubmit={submitReviewedTest}
               submitLabel="Submit final test"
+              submitDisabled={!allQuestionsAnswered}
+              submitDisabledReason="Answer every question before submitting the final test."
             />
           ) : (
             !finished && (
