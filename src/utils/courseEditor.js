@@ -107,6 +107,25 @@ export function buildExportFilename(courseId, moduleId = null) {
   return `${safeCourseId}-course.json`
 }
 
+/**
+ * Build { id, title } rows for export filenames.
+ * Title source of truth = outline menu `.title` only (never embedded JSON `title`).
+ * Orphan module bodies not in the outline fall back to moduleId (not payload.title).
+ */
+export function modulesForMenuExportFilenames(courseJson, modulesById = {}) {
+  const outlineModules = flattenModules(courseJson ?? {}).map((module) => ({
+    id: module.id,
+    title: module.title,
+  }))
+  const knownIds = new Set(outlineModules.map((module) => module.id))
+  for (const moduleId of Object.keys(modulesById ?? {})) {
+    if (!knownIds.has(moduleId)) {
+      outlineModules.push({ id: moduleId, title: moduleId })
+    }
+  }
+  return outlineModules
+}
+
 /** Download filename from the menu title (e.g. "Ch 4.1 — Sampling Methods" → statistics-ch-4-1-sampling-methods.json). */
 export function buildMenuExportFilename(courseId, menuTitle, { fallbackId = null, suffix = '' } = {}) {
   const safeCourseId = slugify(courseId) || 'course'
@@ -197,23 +216,17 @@ export async function exportCoursePackageToFolder(courseId, exported) {
   const lessonsRoot = await root.getDirectoryHandle('lessons', { create: true })
   const lessonDir = await lessonsRoot.getDirectoryHandle(courseId, { create: true })
 
-  const outlineModules = flattenModules(exported.courseJson ?? {}).map((module) => ({
-    id: module.id,
-    title: module.title,
-  }))
-  const knownIds = new Set(outlineModules.map((module) => module.id))
-  for (const [moduleId, data] of Object.entries(exported.modules ?? {})) {
-    if (!knownIds.has(moduleId)) {
-      outlineModules.push({ id: moduleId, title: data?.title ?? moduleId })
-    }
-  }
+  const outlineModules = modulesForMenuExportFilenames(
+    exported.courseJson,
+    exported.modules,
+  )
   const filenames = allocateMenuExportFilenames(courseId, outlineModules)
 
   await Promise.all(
     Object.entries(exported.modules ?? {}).map(async ([moduleId, data]) => {
       const primary =
         filenames.get(moduleId) ??
-        buildMenuExportFilename(courseId, data?.title, { fallbackId: moduleId })
+        buildMenuExportFilename(courseId, null, { fallbackId: moduleId })
       const hosting = `${moduleId}.json`
       await writeJsonToDirectory(lessonDir, primary, data)
       if (primary !== hosting) {

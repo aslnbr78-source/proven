@@ -862,6 +862,15 @@ function CoursePlayer() {
     }
   }, [courseId, moduleId])
 
+  // Must stay above conditional returns — calling useMemo after early returns causes React #310.
+  const tutorQuestionContext = useMemo(() => {
+    const base = getQuestionContext(moduleContent)
+    if (!linkedGameTutorContext) {
+      return base
+    }
+    return [base, linkedGameTutorContext].filter(Boolean).join('\n\n')
+  }, [moduleContent, linkedGameTutorContext])
+
   if (outlineLoading) {
     return (
       <div className="p-8">
@@ -973,13 +982,6 @@ function CoursePlayer() {
   const isFinalTest = moduleContent?.type === 'final-test'
   const isQuiz = moduleContent?.type === 'quiz'
   const showTutorOption = showTutor && moduleContent && !isFinalTest
-  const tutorQuestionContext = useMemo(() => {
-    const base = getQuestionContext(moduleContent)
-    if (!linkedGameTutorContext) {
-      return base
-    }
-    return [base, linkedGameTutorContext].filter(Boolean).join('\n\n')
-  }, [moduleContent, linkedGameTutorContext])
   const tutorMode = isQuiz && moduleAiOptions.quizHintOnly ? 'hint-only' : 'standard'
   const tutorAllowFullAnswers = isQuiz ? moduleAiOptions.quizAllowFullAnswers : false
   const tutorContextType = isQuiz ? 'quiz' : 'lesson'

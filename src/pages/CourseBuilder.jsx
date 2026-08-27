@@ -65,6 +65,7 @@ import {
   generateMaterialId,
   mapSubchapter,
   MODULE_KIND_LABELS,
+  modulesForMenuExportFilenames,
   slugify,
 } from '../utils/courseEditor'
 import { parseModuleJson } from '../utils/validateContent'
@@ -524,7 +525,11 @@ function CourseBuilder() {
       if (exists) {
         return {
           ...sc,
-          modules: currentModules.map((mod) => (mod.id === moduleData.id ? entry : mod)),
+          modules: currentModules.map((mod) =>
+            mod.id === moduleData.id
+              ? buildOutlineModuleEntry(moduleData, { menuTitle: mod.title })
+              : mod,
+          ),
         }
       }
       return { ...sc, modules: [...currentModules, entry] }
@@ -755,18 +760,24 @@ function CourseBuilder() {
       return
     }
 
+    let menuTitle = moduleData.title
     const updatedChapters = outline.chapters.map((chapter) => ({
       ...chapter,
       subchapters: chapter.subchapters.map((subchapter) => ({
         ...subchapter,
-        modules: subchapter.modules.map((mod) =>
-          mod.id === moduleData.id ? buildOutlineModuleEntry(moduleData) : mod,
-        ),
+        modules: subchapter.modules.map((mod) => {
+          if (mod.id !== moduleData.id) {
+            return mod
+          }
+          const next = buildOutlineModuleEntry(moduleData, { menuTitle: mod.title })
+          menuTitle = next.title
+          return next
+        }),
       })),
     }))
 
     persistOutline({ ...outline, chapters: updatedChapters })
-    setMessage(`Updated "${moduleData.title}".`)
+    setMessage(`Updated "${menuTitle}".`)
   }
 
   const openLinkForm = (chapterId, subchapterId) => {
@@ -991,16 +1002,10 @@ function CourseBuilder() {
     try {
       const exported = await getExportPackage()
       const moduleCount = Object.keys(exported.modules ?? {}).length
-      const outlineModules = flattenModules(exported.courseJson).map((module) => ({
-        id: module.id,
-        title: module.title,
-      }))
-      const knownIds = new Set(outlineModules.map((module) => module.id))
-      for (const [moduleId, data] of Object.entries(exported.modules ?? {})) {
-        if (!knownIds.has(moduleId)) {
-          outlineModules.push({ id: moduleId, title: data?.title ?? moduleId })
-        }
-      }
+      const outlineModules = modulesForMenuExportFilenames(
+        exported.courseJson,
+        exported.modules,
+      )
       const filenames = allocateMenuExportFilenames(selectedCourseId, outlineModules)
       const files = [
         {

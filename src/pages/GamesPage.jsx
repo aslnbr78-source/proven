@@ -213,6 +213,7 @@ function CourseGamesPage() {
   const [course, setCourse] = useState(null)
   const [loading, setLoading] = useState(true)
   const [linkedIds, setLinkedIds] = useState(() => new Set())
+  const [linkedMenuTitles, setLinkedMenuTitles] = useState(() => new Map())
   const [importOpen, setImportOpen] = useState(false)
   const [statusMessage, setStatusMessage] = useState('')
   const [statusError, setStatusError] = useState('')
@@ -242,21 +243,33 @@ function CourseGamesPage() {
 
     async function loadLinked() {
       if (!courseId || course?.gamesOnly) {
-        if (!cancelled) setLinkedIds(new Set())
+        if (!cancelled) {
+          setLinkedIds(new Set())
+          setLinkedMenuTitles(new Map())
+        }
         return
       }
       try {
         const outline = await loadOutline(courseId)
         if (cancelled) return
         const ids = new Set()
+        const titles = new Map()
         for (const mod of flattenModules(outline) ?? []) {
           if (isGameCatalogOutlineModule(mod) && mod.id) {
             ids.add(mod.id)
+            const menuTitle = String(mod.title ?? '').trim()
+            if (menuTitle) {
+              titles.set(mod.id, menuTitle)
+            }
           }
         }
         setLinkedIds(ids)
+        setLinkedMenuTitles(titles)
       } catch {
-        if (!cancelled) setLinkedIds(new Set())
+        if (!cancelled) {
+          setLinkedIds(new Set())
+          setLinkedMenuTitles(new Map())
+        }
       }
     }
 
@@ -313,7 +326,12 @@ function CourseGamesPage() {
           : 'No games linked on the current course outline to export.',
       )
     }
-    const { files, failed } = await gatherGameExports(courseId, gamesOnMenu, {
+    // Prefer Course Builder outline/menu titles over embedded JSON / catalog titles.
+    const gamesForExport = gamesOnMenu.map((game) => ({
+      ...game,
+      title: linkedMenuTitles.get(game.id) || game.title,
+    }))
+    const { files, failed } = await gatherGameExports(courseId, gamesForExport, {
       includeDraft: isAdmin,
     })
     if (files.length === 0) {
@@ -401,11 +419,12 @@ function CourseGamesPage() {
     setStatusMessage('')
     try {
       const body = await loadGameModuleAsync(courseId, game.id, { includeDraft: isAdmin })
+      const menuTitle = linkedMenuTitles.get(game.id) || game.title
       downloadJson(
-        buildGameDownloadName(courseId, game.id, game.title),
+        buildGameDownloadName(courseId, game.id, menuTitle),
         toExportableGame(body, { courseId, gameId: game.id }),
       )
-      setStatusMessage(`Exported “${game.title}”.`)
+      setStatusMessage(`Exported “${menuTitle}”.`)
     } catch (error) {
       setStatusError(error?.message || 'Could not export that game.')
     }
