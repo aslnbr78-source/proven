@@ -19,7 +19,7 @@ import {
   flattenModules,
   findModuleInOutline,
   getFirstModule,
-  mergeMissingChaptersFromSource,
+  healOutlineFromRicherSource,
   normalizeOutline,
 } from '../utils/courseOutline'
 import { isFullModuleContent } from '../utils/moduleContent'
@@ -183,14 +183,9 @@ export async function fetchStaffCourseOutline(courseId) {
             countModules(next) > countModules(best) ? next : best,
           )
     if (healFrom) {
-      const beforeIds = new Set(
-        (outline.chapters ?? []).map((chapter) => chapter.id).filter(Boolean),
-      )
-      const healed = mergeMissingChaptersFromSource(outline, healFrom)
-      const added = (healed.chapters ?? []).some(
-        (chapter) => chapter?.id && !beforeIds.has(chapter.id),
-      )
-      if (added) {
+      const beforeCount = countModules(outline)
+      const healed = healOutlineFromRicherSource(outline, healFrom)
+      if (countModules(healed) > beforeCount) {
         outline = healed
         try {
           await saveCustomOutline(courseId, outline)

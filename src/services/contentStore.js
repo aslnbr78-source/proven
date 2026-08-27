@@ -1,6 +1,6 @@
 import {
   countModules,
-  mergeMissingChaptersFromSource,
+  healOutlineFromRicherSource,
   normalizeOutline,
 } from '../utils/courseOutline'
 import { getFirestoreCourse } from './courseFirestore'
@@ -413,11 +413,9 @@ export async function loadOutline(courseId, { source = 'auto' } = {}) {
       await resetCourseToBundled(courseId)
     } else {
       try {
-        // Keep the author's draft chapters/modules, but pull in whole chapters that
-        // exist on Hub or in shipped course.json and are missing locally.
-        // A thin stale draft (or a Hub outline thinned by a bad publish) used to hide
-        // published chapters (Statistics Ch 4–5). Module JSON bodies are untouched.
-        // In-chapter deletions stay deleted until Reload from Hub.
+        // Keep local lesson JSON bodies, but when Hub/bundled has MORE modules than the
+        // IndexedDB draft, rebuild the outline tree from the richer source (Statistics
+        // Ch 4–5 stubs with the same chapter ids used to no-op the chapter-only merge).
         let outline = normalizeOutline(custom.outline)
         const [bundled, firestoreCourse] = await Promise.all([
           fetchBundledOutline(courseId),
@@ -436,14 +434,10 @@ export async function loadOutline(courseId, { source = 'auto' } = {}) {
                 countModules(next) > countModules(best) ? next : best,
               )
         if (healFrom) {
-          const beforeIds = new Set(
-            (outline.chapters ?? []).map((chapter) => chapter.id).filter(Boolean),
-          )
-          const healed = mergeMissingChaptersFromSource(outline, healFrom)
-          const added = (healed.chapters ?? []).some(
-            (chapter) => chapter?.id && !beforeIds.has(chapter.id),
-          )
-          if (added) {
+          const beforeCount = countModules(outline)
+          const healed = healOutlineFromRicherSource(outline, healFrom)
+          const afterCount = countModules(healed)
+          if (afterCount > beforeCount) {
             outline = healed
             await saveCustomOutline(courseId, outline)
           }

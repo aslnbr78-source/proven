@@ -1435,12 +1435,13 @@ function CourseBuilder() {
             )}
             {hasLocalDraft && (
               <li>
-                <strong>Local edits:</strong> This browser is showing your draft. Chapters that exist
-                on Hub but are missing here are filled in automatically (so published sections like
-                Statistics Ch 4–5 stay visible). In-chapter deletions stay deleted until you{' '}
-                <strong>Reload from Hub</strong>. <strong>Reset to bundled default</strong> loads
-                shipped files only. After a reset, click <strong>Publish to Hub</strong> so students
-                see the cleaned outline.
+                <strong>Local edits:</strong> This browser is showing your draft. If Hub or the
+                shipped outline has more modules than this draft (for example Statistics Chapters
+                4–5), the editor rebuilds the outline from Hub/bundled automatically — lesson JSON
+                bodies in this browser stay intact. Use <strong>Reload from Hub</strong> to replace
+                the outline with the live Hub tree on demand. <strong>Reset to bundled default</strong>{' '}
+                loads shipped files only. After a reset, click <strong>Publish to Hub</strong> so
+                students see the cleaned outline.
               </li>
             )}
             <li>
@@ -1479,7 +1480,7 @@ function CourseBuilder() {
                     await flushContentStore()
                     await reloadOutline(selectedCourseId, { source: 'bundled' })
                     setMessage(
-                      'Loaded full shipped Algebra I outline (Chapters 1–7 recovered from Hub lesson files). Click Publish to Hub to restore the live student outline.',
+                      `Loaded the full shipped ${selectedCourseTitle} outline from bundled course files. Lesson JSON bodies in this browser were kept. Click Publish to Hub only if you want students to match this outline.`,
                     )
                   } finally {
                     setBusy(false)
