@@ -107,7 +107,6 @@ export async function generatePracticeProblems({
   moduleTitle,
   lessonObjective,
   questionContext,
-  gameContext,
   count = 5,
 }) {
   const fns = getFns()
@@ -120,98 +119,9 @@ export async function generatePracticeProblems({
     moduleTitle,
     lessonObjective,
     questionContext,
-    gameContext: gameContext || undefined,
     count,
   })
   return result.data?.problems ?? []
-}
-
-export async function explainAdaptiveAnswer({
-  prompt,
-  options,
-  correctAnswer,
-  selectedAnswer,
-  lessonObjective,
-  moduleTitle,
-}) {
-  const fns = getFns()
-  if (!fns) {
-    throw new Error('Cloud Functions are not configured')
-  }
-
-  const callable = httpsCallable(fns, 'explainAdaptiveAnswer')
-  const result = await callable({
-    prompt,
-    options,
-    correctAnswer,
-    selectedAnswer,
-    lessonObjective,
-    moduleTitle,
-  })
-  return result.data?.explanation ?? ''
-}
-
-export async function generateAdaptiveQuestion({
-  moduleTitle,
-  lessonObjective,
-  topics,
-  difficulty,
-  priorResults,
-  questionIndex,
-}) {
-  const fns = getFns()
-  if (!fns) {
-    throw new Error('Cloud Functions are not configured')
-  }
-
-  const callable = httpsCallable(fns, 'generateAdaptiveQuestion')
-  const result = await callable({
-    moduleTitle,
-    lessonObjective,
-    topics,
-    difficulty,
-    priorResults,
-    questionIndex,
-  })
-  return result.data?.question ?? null
-}
-
-export async function generateAdaptiveBankItems({
-  count = 5,
-  difficulty = 3,
-  moduleTitle,
-  lessonObjective,
-  topics,
-}) {
-  const items = []
-  const targetCount = Math.max(1, Math.min(Number(count) || 5, 15))
-  const targetDifficulty = Math.max(1, Math.min(Number(difficulty) || 3, 5))
-
-  for (let index = 0; index < targetCount; index += 1) {
-    const generated = await generateAdaptiveQuestion({
-      moduleTitle,
-      lessonObjective,
-      topics,
-      difficulty: targetDifficulty,
-      priorResults: [],
-      questionIndex: index + 1,
-    })
-
-    if (!generated) {
-      continue
-    }
-
-    items.push({
-      id: `gen-${Date.now()}-${index + 1}`,
-      difficulty: targetDifficulty,
-      prompt: generated.prompt,
-      options: generated.options,
-      correctIndex: generated.correctIndex ?? 0,
-      feedbackIfWrong: generated.feedbackIfWrong ?? generated.hint ?? '',
-    })
-  }
-
-  return items
 }
 
 function formatTutorError(error) {
