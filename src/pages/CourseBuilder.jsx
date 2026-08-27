@@ -54,8 +54,8 @@ import {
   ensureEditorScaffold,
 } from '../utils/courseOutline'
 import {
+  allocateMenuExportFilenames,
   buildExportFilename,
-  buildMenuExportFilename,
   courseModulePreviewPath,
   coursePreviewPath,
   downloadJsonBatch,
@@ -991,18 +991,26 @@ function CourseBuilder() {
     try {
       const exported = await getExportPackage()
       const moduleCount = Object.keys(exported.modules ?? {}).length
-      const titleById = new Map(
-        flattenModules(exported.courseJson).map((module) => [module.id, module.title]),
-      )
+      const outlineModules = flattenModules(exported.courseJson).map((module) => ({
+        id: module.id,
+        title: module.title,
+      }))
+      const knownIds = new Set(outlineModules.map((module) => module.id))
+      for (const [moduleId, data] of Object.entries(exported.modules ?? {})) {
+        if (!knownIds.has(moduleId)) {
+          outlineModules.push({ id: moduleId, title: data?.title ?? moduleId })
+        }
+      }
+      const filenames = allocateMenuExportFilenames(selectedCourseId, outlineModules)
       const files = [
         {
           filename: buildExportFilename(selectedCourseId),
           data: exported.courseJson,
         },
         ...Object.entries(exported.modules).map(([moduleId, data]) => ({
-          filename: buildMenuExportFilename(selectedCourseId, titleById.get(moduleId), {
-            fallbackId: moduleId,
-          }),
+          filename:
+            filenames.get(moduleId) ??
+            `${selectedCourseId}-${moduleId}.json`,
           data,
         })),
       ]
@@ -1012,7 +1020,7 @@ function CourseBuilder() {
       setDraftExportedAt(getCourseDraftExportedAt(selectedCourseId))
       const missing = exported.missingModuleIds?.length ?? 0
       setMessage(
-        `Downloaded ${files.length} file(s) (${moduleCount} lesson JSON + course outline) as ${selectedCourseId}-*.json.` +
+        `Downloaded ${files.length} file(s) (${moduleCount} lesson JSON + course outline) named from menu titles.` +
           (missing > 0 ? ` ${missing} outline module(s) had no JSON body to export.` : ''),
       )
     } catch (error) {
@@ -1043,7 +1051,7 @@ function CourseBuilder() {
       setDraftExportedAt(getCourseDraftExportedAt(selectedCourseId))
       const missing = exported.missingModuleIds?.length ?? 0
       setMessage(
-        `Saved to ${result.coursePath} and ${result.lessonCount} lesson file(s) under lessons/${selectedCourseId}/.` +
+        `Saved to ${result.coursePath} and ${result.lessonCount} lesson file(s) under lessons/${selectedCourseId}/ (menu-title names + moduleId hosting copies).` +
           (missing > 0 ? ` ${missing} outline module(s) had no JSON body.` : ''),
       )
     } catch (error) {
