@@ -2,8 +2,16 @@ import { useState } from 'react'
 import { generatePracticeProblems } from '../services/tutorService'
 import LessonSection from './LessonSection'
 import MathBlock from './MathBlock'
+import { buildLinkedGameAiContext } from '../utils/gameQuestionSource'
 
-function PracticeGenerator({ moduleTitle, lessonObjective, questionContext }) {
+function PracticeGenerator({
+  moduleTitle,
+  lessonObjective,
+  questionContext,
+  courseId,
+  moduleId,
+  outline,
+}) {
   const [problems, setProblems] = useState([])
   const [revealed, setRevealed] = useState({})
   const [loading, setLoading] = useState(false)
@@ -14,10 +22,24 @@ function PracticeGenerator({ moduleTitle, lessonObjective, questionContext }) {
     setError('')
     setRevealed({})
     try {
+      let gameContext = ''
+      if (courseId && moduleId && outline) {
+        try {
+          gameContext = await buildLinkedGameAiContext({
+            courseId,
+            outline,
+            moduleId,
+          })
+        } catch {
+          gameContext = ''
+        }
+      }
+
       const generated = await generatePracticeProblems({
         moduleTitle,
         lessonObjective,
         questionContext,
+        gameContext,
         count: 5,
       })
       setProblems(generated)
@@ -32,7 +54,9 @@ function PracticeGenerator({ moduleTitle, lessonObjective, questionContext }) {
   return (
     <LessonSection variant="practice" title="Extra practice (AI)">
       <p className="text-sm text-slate-600">
-        Generate five more problems like this lesson. These are for practice only — not graded.
+        Generate five more problems like this lesson
+        {courseId && moduleId ? ' (including linked games in this section when available)' : ''}.
+        These are for practice only — not graded.
       </p>
       <button
         type="button"
