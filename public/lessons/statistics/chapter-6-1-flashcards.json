@@ -1,0 +1,130 @@
+{
+  "id": "chapter-6-1-flashcards",
+  "type": "flashcard",
+  "title": "Confidence Intervals for the Mean (Large Samples)",
+  "cards": [
+    {
+      "front": "What is a [[kw:point estimate]]?",
+      "back": [
+        "A single value estimate for a population parameter.",
+        "The best point estimate of $\\mu$ is the [[imp:sample mean]] $\\bar{x}$.",
+        "$\\bar{x}$ is an unbiased estimator of $\\mu$."
+      ]
+    },
+    {
+      "back": [
+        "An interval estimate provides a range of plausible values for the parameter.",
+        "It accounts for [[imp:sampling variability]].",
+        "The point estimate alone does not show how precise the estimate is."
+      ],
+      "front": "Why is an [[kw:interval estimate]] better than a point estimate?"
+    },
+    {
+      "front": "Define the [[kw:margin of error]] $E$.",
+      "back": [
+        "The greatest possible distance between the point estimate and the parameter.",
+        "$$E = z_c \\cdot \\frac{\\sigma}{\\sqrt{n}}$$",
+        "For large samples ($n \\ge 30$), use $s$ in place of $\\sigma$."
+      ]
+    },
+    {
+      "back": [
+        "90% → $z_c = 1.645$",
+        "95% → $z_c = 1.96$",
+        "99% → $z_c = 2.575$",
+        "These z‑scores capture the middle $c$ of the standard normal distribution."
+      ],
+      "front": "What are the critical values $z_c$ for 90%, 95%, and 99% confidence?"
+    },
+    {
+      "front": "Find the margin of error for $n=40$, $s=53$, 95% confidence.",
+      "back": [
+        "$z_c = 1.96$.",
+        "$E = 1.96 \\times \\frac{53}{\\sqrt{40}} \\approx 1.96 \\times 8.38 \\approx 16.4$.",
+        "The margin of error is about 16.4."
+      ]
+    },
+    {
+      "back": [
+        "$$\\bar{x} - E < \\mu < \\bar{x} + E$$",
+        "where $E = z_c \\cdot \\frac{s}{\\sqrt{n}}$ (if $n \\ge 30$).",
+        "Also written as $\\bar{x} \\pm E$ or $(\\bar{x} - E,\\, \\bar{x} + E)$."
+      ],
+      "front": "Give the formula for a [[kw:confidence interval]] for $\\mu$ (large sample)."
+    },
+    {
+      "back": [
+        "$E = 1.96 \\times 53 / \\sqrt{40} \\approx 16.4$.",
+        "Lower = $130.8 - 16.4 = 114.4$, Upper = $130.8 + 16.4 = 147.2$.",
+        "95% CI: $(114.4, 147.2)$.",
+        "We are 95% confident $\\mu$ lies between 114.4 and 147.2."
+      ],
+      "front": "Construct a 95% CI for $\\mu$: $\\bar{x}=130.8$, $s=53.0$, $n=40$."
+    },
+    {
+      "back": [
+        "If many samples are taken and a 95% CI is computed from each, about [[imp:95% of them]] will contain $\\mu$.",
+        "We do NOT say 'there is a 95% chance $\\mu$ is in this interval.'",
+        "The confidence is in the method, not a particular interval."
+      ],
+      "front": "What is the correct interpretation of a 95% confidence interval?"
+    },
+    {
+      "back": [
+        "$$n = \\left( \\frac{z_c \\cdot \\sigma}{E} \\right)^2$$",
+        "Use $s$ to estimate $\\sigma$ if a preliminary sample is available.",
+        "[[imp:Always round up]] to the next whole number."
+      ],
+      "front": "How do you determine the [[kw:minimum sample size]] $n$ to estimate $\\mu$ with margin of error $E$?"
+    },
+    {
+      "front": "Find the minimum sample size: 95% confidence, $\\sigma \\approx 53$, $E=7$.",
+      "back": [
+        "$z_c = 1.96$.",
+        "$n = \\left( \\frac{1.96 \\times 53}{7} \\right)^2 = (14.84)^2 = 220.2$.",
+        "Round up → $n = 221$."
+      ]
+    },
+    {
+      "front": "How does increasing the confidence level affect the width of a CI?",
+      "back": [
+        "Higher confidence → larger $z_c$ → larger margin of error → [[imp:wider interval]].",
+        "Example: 99% CI is wider than 95% CI for the same data."
+      ]
+    },
+    {
+      "back": [
+        "Larger $n$ → smaller $\\frac{s}{\\sqrt{n}}$ → [[imp:smaller margin of error]].",
+        "This gives a narrower, more precise interval."
+      ],
+      "front": "How does increasing the sample size affect the margin of error?"
+    },
+    {
+      "back": [
+        "When the sample size is [[imp:at least 30]] ($n \\ge 30$).",
+        "Then the Central Limit Theorem applies, and the normal approximation is valid."
+      ],
+      "front": "When can we use $s$ in place of $\\sigma$ for a confidence interval?"
+    },
+    {
+      "front": "What Google Sheets function computes the margin of error $E$?",
+      "back": [
+        "`=CONFIDENCE.NORM(alpha, standard_dev, sample_size)`",
+        "`alpha = 1 - c` (e.g., for 95%, alpha = 0.05).",
+        "Example: `=CONFIDENCE.NORM(0.05, 53, 40)`."
+      ]
+    },
+    {
+      "front": "A 90% CI is $12.0 < \\mu < 14.8$. Find the sample mean and margin of error.",
+      "back": [
+        "Sample mean is the midpoint: $\\bar{x} = \\frac{12.0 + 14.8}{2} = 13.4$.",
+        "Margin of error: $E = \\frac{14.8 - 12.0}{2} = 1.4$.",
+        "The interval is $13.4 \\pm 1.4$."
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,356 @@
+{
+  "id": "chapter-6-4-quiz",
+  "type": "quiz",
+  "title": "Confidence Intervals for Variance and Standard Deviation",
+  "questions": [
+    {
+      "correctIndex": 2,
+      "options": [
+        "Standard normal (z) distribution",
+        "t-distribution",
+        "Chi-square distribution",
+        "Binomial distribution"
+      ],
+      "feedbackIfWrong": "The chi-square distribution is used for confidence intervals for variance and standard deviation.",
+      "prompt": "Which distribution is used to construct a confidence interval for a population variance or standard deviation?",
+      "id": "q1",
+      "type": "multiple-choice",
+      "hints": [
+        "It is positively skewed and uses degrees of freedom.",
+        "Not symmetric like z or t."
+      ]
+    },
+    {
+      "feedbackIfWrong": "Degrees of freedom for a chi-square distribution used for variance is n - 1.",
+      "id": "q2",
+      "prompt": "For a sample of size n, the chi-square distribution has degrees of freedom equal to ___.",
+      "type": "fill-blank",
+      "hints": [
+        "It is one less than the sample size.",
+        "d.f. = n - 1."
+      ],
+      "blanks": [
+        {
+          "accept": [
+            "n-1",
+            "n - 1",
+            "n−1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "answers": [
+        "s²",
+        "s^2",
+        "sample variance"
+      ],
+      "hints": [
+        "It is the square of the sample standard deviation.",
+        "Denoted by s²."
+      ],
+      "feedbackIfWrong": "The point estimate for $\\sigma^2$ is the sample variance s².",
+      "prompt": "What is the point estimate for the population variance $\\sigma^2$?",
+      "answer": "s²",
+      "type": "short-answer"
+    },
+    {
+      "prompt": "What shape does the chi-square distribution have?",
+      "id": "q4",
+      "hints": [
+        "It has a long right tail.",
+        "All chi-square values are ≥ 0."
+      ],
+      "type": "multiple-choice",
+      "feedbackIfWrong": "The chi-square distribution is positively skewed.",
+      "correctIndex": 2,
+      "options": [
+        "Symmetric and bell-shaped",
+        "Uniform",
+        "Positively skewed (right-skewed)",
+        "Negatively skewed (left-skewed)"
+      ]
+    },
+    {
+      "answers": [
+        "2",
+        "two"
+      ],
+      "hints": [
+        "One is for the left tail, one for the right tail.",
+        "There are two: χ²_L and χ²_R."
+      ],
+      "feedbackIfWrong": "Two critical values are needed: χ²_L and χ²_R.",
+      "prompt": "How many critical values are needed to construct a confidence interval for a population variance using the chi-square distribution?",
+      "id": "q5",
+      "type": "short-answer",
+      "answer": "2"
+    },
+    {
+      "blanks": [
+        {
+          "accept": [
+            "0.025",
+            "2.5%",
+            ".025"
+          ]
+        }
+      ],
+      "hints": [
+        "It equals (1 - c)/2.",
+        "c = 0.95, so (1 - 0.95)/2 = ?"
+      ],
+      "feedbackIfWrong": "The area to the right of $\\chi^2_R$ is 0.025.",
+      "type": "fill-blank",
+      "id": "q6",
+      "prompt": "For a 95% confidence interval for the population variance, the area to the right of $\\chi^2_R$ is ___."
+    },
+    {
+      "hints": [
+        "The larger critical value goes in the denominator of the lower bound.",
+        "Remember: χ²_R > χ²_L."
+      ],
+      "options": [
+        "$\\frac{(n-1)s^2}{\\chi^2_L} < \\sigma^2 < \\frac{(n-1)s^2}{\\chi^2_R}$",
+        "$\\frac{(n-1)s^2}{\\chi^2_R} < \\sigma^2 < \\frac{(n-1)s^2}{\\chi^2_L}$",
+        "$\\bar{x} \\pm z_c \\frac{s}{\\sqrt{n}}$",
+        "$\\hat{p} \\pm z_c \\sqrt{\\frac{\\hat{p}\\hat{q}}{n}}$"
+      ],
+      "type": "multiple-choice",
+      "id": "q7",
+      "prompt": "The confidence interval for the population variance $\\sigma^2$ is given by:",
+      "feedbackIfWrong": "The correct formula is $\\frac{(n-1)s^2}{\\chi^2_R} < \\sigma^2 < \\frac{(n-1)s^2}{\\chi^2_L}$.",
+      "correctIndex": 1
+    },
+    {
+      "answers": [
+        "take the square root",
+        "square root",
+        "sqrt",
+        "take square roots"
+      ],
+      "answer": "take the square root",
+      "prompt": "How do you obtain a confidence interval for the population standard deviation $\\sigma$ from the interval for $\\sigma^2$?",
+      "feedbackIfWrong": "Take the square root of each endpoint of the $\\sigma^2$ interval.",
+      "type": "short-answer",
+      "hints": [
+        "It undoes the squaring.",
+        "You apply the same operation to both endpoints."
+      ],
+      "id": "q8"
+    },
+    {
+      "id": "q9",
+      "prompt": "What is the required condition for using the chi-square method to construct a confidence interval for a population variance?",
+      "feedbackIfWrong": "The population must be approximately normally distributed.",
+      "hints": [
+        "The chi-square distribution assumes a specific shape for the population.",
+        "This is unlike the z-interval for means, which can rely on large samples."
+      ],
+      "options": [
+        "The sample size must be at least 30.",
+        "The population must be normally distributed.",
+        "The population standard deviation must be known.",
+        "The data must be categorical."
+      ],
+      "type": "multiple-choice",
+      "correctIndex": 1
+    },
+    {
+      "type": "fill-blank",
+      "prompt": "In Google Sheets, to find the chi-square critical value with a right-tail probability of 0.025 and 15 degrees of freedom, you would use the formula =CHISQ.INV.RT(___, ___).",
+      "feedbackIfWrong": "The formula is =CHISQ.INV.RT(0.025, 15).",
+      "hints": [
+        "The first argument is the probability in the right tail.",
+        "The second argument is the degrees of freedom."
+      ],
+      "id": "q10",
+      "blanks": [
+        {
+          "accept": [
+            "0.025",
+            ".025"
+          ]
+        },
+        {
+          "accept": [
+            "15",
+            "fifteen"
+          ]
+        }
+      ]
+    },
+    {
+      "feedbackIfWrong": "No, because the upper bound 6.3 exceeds the limit of 5.0, we cannot be confident the requirement is met.",
+      "answers": [
+        "No",
+        "no"
+      ],
+      "answer": "No",
+      "id": "q11",
+      "type": "short-answer",
+      "prompt": "If a 95% confidence interval for $\\sigma$ is (2.5, 6.3), and a quality requirement states that $\\sigma$ must be less than 5.0, is the requirement likely met? (Yes or No)",
+      "hints": [
+        "Check if the entire interval is below the limit.",
+        "The upper bound is 6.3, which exceeds 5.0."
+      ]
+    },
+    {
+      "id": "q12",
+      "options": [
+        "Because the sample variance is biased.",
+        "Because the chi-square distribution is symmetric.",
+        "Because the chi-square distribution is skewed.",
+        "Because the sample size is too small."
+      ],
+      "correctIndex": 2,
+      "feedbackIfWrong": "The interval is not symmetric because the chi-square distribution is skewed.",
+      "type": "multiple-choice",
+      "hints": [
+        "Think about the shape of the chi-square distribution.",
+        "Symmetry of the interval would require a symmetric sampling distribution."
+      ],
+      "prompt": "Why is the confidence interval for the variance not symmetric around the sample variance?"
+    },
+    {
+      "feedbackIfWrong": "The chi-square distribution becomes more symmetric with larger degrees of freedom.",
+      "blanks": [
+        {
+          "accept": [
+            "symmetric",
+            "symmetrical"
+          ]
+        }
+      ],
+      "hints": [
+        "The skewness decreases.",
+        "It looks more bell-shaped."
+      ],
+      "type": "fill-blank",
+      "prompt": "As the sample size increases, the chi-square distribution becomes more ___ and approaches a normal distribution.",
+      "id": "q13"
+    },
+    {
+      "feedbackIfWrong": "Degrees of freedom = 25 - 1 = 24.",
+      "prompt": "A sample of size 25 has a standard deviation of s = 5.0. How many degrees of freedom are used to find the critical chi-square values?",
+      "answer": "24",
+      "id": "q14",
+      "hints": [
+        "d.f. = n - 1.",
+        "25 - 1 = ?"
+      ],
+      "answers": [
+        "24",
+        "twenty-four"
+      ],
+      "type": "short-answer"
+    },
+    {
+      "correctIndex": 1,
+      "options": [
+        "The interval becomes symmetric.",
+        "The lower bound becomes larger than the upper bound.",
+        "The interval becomes narrower.",
+        "The confidence level increases."
+      ],
+      "id": "q15",
+      "type": "multiple-choice",
+      "feedbackIfWrong": "Swapping the critical values causes the lower bound to exceed the upper bound, producing an invalid interval.",
+      "hints": [
+        "Think about which value is larger.",
+        "Dividing by a smaller number gives a larger result."
+      ],
+      "prompt": "If you incorrectly swap $\\chi^2_R$ and $\\chi^2_L$ when constructing a confidence interval for $\\sigma^2$, what happens?"
+    },
+    {
+      "feedbackIfWrong": "The area to the right of χ²_L is (1 + c)/2.",
+      "id": "q16",
+      "prompt": "The area to the right of $\\chi^2_L$ for a c-confidence interval is ___.",
+      "type": "fill-blank",
+      "hints": [
+        "It is the larger area, capturing the left tail.",
+        "It equals 1 minus the right-tail area of χ²_R."
+      ],
+      "blanks": [
+        {
+          "accept": [
+            "(1+c)/2",
+            "(1+c)÷2",
+            "(1 + c)/2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "hints": [
+        "Take the square root of each bound.",
+        "√0.80 ≈ 0.89, √3.18 ≈ 1.78."
+      ],
+      "answers": [
+        "0.89, 1.78",
+        "(0.89, 1.78)",
+        "0.89 to 1.78"
+      ],
+      "type": "short-answer",
+      "prompt": "If a 99% confidence interval for $\\sigma^2$ is (0.80, 3.18), what is the confidence interval for $\\sigma$? (Round to two decimals: lower, upper)",
+      "feedbackIfWrong": "The interval for σ is (√0.80, √3.18) ≈ (0.89, 1.78).",
+      "answer": "0.89, 1.78"
+    },
+    {
+      "correctIndex": 2,
+      "prompt": "Which of the following best describes the point estimate for the population standard deviation $\\sigma$?",
+      "feedbackIfWrong": "The best point estimate of $\\sigma$ is the sample standard deviation $s$.",
+      "id": "q18",
+      "type": "multiple-choice",
+      "hints": [
+        "It is the same statistic calculated from the sample data.",
+        "It estimates the spread of the population."
+      ],
+      "options": [
+        "The sample mean $\\bar{x}$",
+        "The sample proportion $\\hat{p}$",
+        "The sample standard deviation $s$",
+        "The sample variance $s^2$"
+      ]
+    },
+    {
+      "blanks": [
+        {
+          "accept": [
+            "0",
+            "zero"
+          ]
+        }
+      ],
+      "hints": [
+        "It cannot be negative.",
+        "The curve starts at this value."
+      ],
+      "type": "fill-blank",
+      "prompt": "The chi-square distribution can only take values that are greater than or equal to ___.",
+      "feedbackIfWrong": "Chi-square values are always ≥ 0.",
+      "id": "q19"
+    },
+    {
+      "feedbackIfWrong": "No, the intervals do not overlap, suggesting the population standard deviations are likely different.",
+      "hints": [
+        "Check if the intervals overlap.",
+        "2.8 < 3.5, so there is a gap."
+      ],
+      "type": "short-answer",
+      "answers": [
+        "No",
+        "no"
+      ],
+      "prompt": "Two independent samples yield 95% confidence intervals for $\\sigma$ of (1.2, 2.8) and (3.5, 6.1). Do these intervals suggest the populations have the same variability? (Yes or No)",
+      "answer": "No",
+      "id": "q20"
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

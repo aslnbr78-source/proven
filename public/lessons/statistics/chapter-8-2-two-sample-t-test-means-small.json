@@ -1,0 +1,783 @@
+{
+  "type": "interactive-lesson",
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.A.1"
+  ],
+  "title": "Testing the Difference Between Means (Small Independent Samples)",
+  "blocks": [
+    {
+      "teacherCues": [
+        "Ask: 'If I have two small independent samples and don't know the population standard deviations, can I use a z‑test?' (No, use a t‑test).",
+        "Draw the flowchart from the text and ask students to classify several scenarios."
+      ],
+      "examples": [
+        {
+          "title": "Example A – Identifying the Correct d.f.",
+          "role": "guided",
+          "steps": [
+            "For unequal variances, use the smaller sample size minus one.",
+            "Smaller sample size is 8, so $d.f. = 8 - 1 = 7$.",
+            "If variances were equal, we would use $d.f. = 8 + 18 - 2 = 24$."
+          ],
+          "prompt": "A study compares math test scores for 8 students of Teacher 1 and 18 students of Teacher 2. Variances are not equal. What are the degrees of freedom?"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "When variances are equal, both samples estimate the same population variance.",
+            "Pooling combines the two estimates into one stronger estimate, increasing precision.",
+            "This gives more degrees of freedom and a more powerful test."
+          ],
+          "prompt": "Explain to a partner why we 'pool' variances when they are assumed equal.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: What does pooling accomplish?",
+          "minLength": 2,
+          "title": "Example B – Why Pool?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Use the [[kw:pooled variance]] formulas.",
+            "Compute $s_p^2$, then $s_{\\bar{x}_1 - \\bar{x}_2} = s_p \\sqrt{1/n_1 + 1/n_2}$.",
+            "Degrees of freedom = $n_1 + n_2 - 2$."
+          ],
+          "title": "Example C – Choosing Equal or Unequal",
+          "prompt": "A problem states 'Assume the population variances are equal.' Which set of formulas should you use?"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1-1",
+          "feedbackIfWrong": "d.f. = min(n1-1, n2-1).",
+          "blanks": [
+            {
+              "accept": [
+                "$n_2 - 1$",
+                "n2 - 1",
+                "n2-1"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the degrees of freedom of the smaller sample.",
+            "Subtract 1 from the smaller sample size."
+          ],
+          "prompt": "For a two‑sample t‑test with unequal variances, the degrees of freedom is the smaller of $n_1 - 1$ and ___.",
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "Pooled: $d.f. = n_1 + n_2 - 2$.",
+            "10 + 15 - 2 = ?"
+          ],
+          "type": "short-answer",
+          "prompt": "If $n_1=10$, $n_2=15$, and variances are equal, what are the degrees of freedom?",
+          "feedbackIfWrong": "d.f. = 10 + 15 - 2 = 23.",
+          "answers": [
+            "23",
+            "twenty-three"
+          ],
+          "answer": "23",
+          "id": "q1-2"
+        },
+        {
+          "feedbackIfWrong": "Use pooled variance when population variances are assumed equal.",
+          "type": "short-answer",
+          "answer": "when variances are equal",
+          "id": "q1-3",
+          "hints": [
+            "The problem will state 'assume equal variances'.",
+            "It's when both populations have the same spread."
+          ],
+          "answers": [
+            "when variances are equal",
+            "equal variances",
+            "pooled",
+            "when equal"
+          ],
+          "prompt": "When should you use the pooled variance estimate in a two‑sample t‑test?"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Assume Equal Variances",
+        "body": "In real‑world data, variances are rarely equal. Unless the problem explicitly states they are equal, use the [[imp:unequal variances]] method. It's more conservative and always valid."
+      },
+      "title": "Conditions for a Two‑Sample t‑Test",
+      "id": "two-sample-t-conditions",
+      "discoveryHook": {
+        "scenario": "When sample sizes are small and population standard deviations are unknown, the z‑test is no longer valid. The two‑sample t‑test comes to the rescue. It adapts to whether the two populations have equal variances or not, providing accurate results even with limited data."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$s_p^2 = \\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2}$$ $$s_{\\bar{x}_1 - \\bar{x}_2} = s_p \\sqrt{\\frac{1}{n_1} + \\frac{1}{n_2}}$$",
+          "title": "Pooled Variance (Equal Variances Case)",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$s_p^2$",
+              "meaning": "pooled variance, a weighted average of the two sample variances"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Two‑Sample t‑Test: Equal vs. Unequal Variances",
+            "headers": [
+              "Condition",
+              "Equal Variances (Pooled)",
+              "Unequal Variances (Welch's)"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Standard error",
+                "1": "$s_{\\bar{x}_1 - \\bar{x}_2} = s_p \\sqrt{\\frac{1}{n_1} + \\frac{1}{n_2}}$",
+                "2": "$s_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$"
+              },
+              {
+                "0": "Pooled variance",
+                "1": "$s_p^2 = \\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2}$",
+                "2": "Not pooled"
+              },
+              {
+                "0": "Degrees of freedom",
+                "1": "$d.f. = n_1 + n_2 - 2$",
+                "2": "$d.f. = \\min(n_1-1, n_2-1)$"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:two‑sample t‑test]] is used to compare two population means $\\mu_1$ and $\\mu_2$ when the samples are small, independent, and drawn from normally distributed populations with unknown variances.",
+          "Conditions: (1) Random samples, (2) Independence, (3) Both populations approximately normal.",
+          "If the population variances are [[imp:equal]], we pool the sample variances to estimate a common standard deviation. Degrees of freedom: $d.f. = n_1 + n_2 - 2$.",
+          "If the variances are [[imp:not equal]], we do not pool; we use a different standard error and a conservative degrees of freedom: $d.f. = \\min(n_1-1, n_2-1)$.",
+          "The test statistic is always $t = \\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1 - \\mu_2)}{s_{\\bar{x}_1 - \\bar{x}_2}}$."
+        ]
+      }
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "title": "Phone Calling Range Example (Equal Variances)",
+            "headers": [
+              "Statistic",
+              "Manufacturer (1)",
+              "Competitor (2)"
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Sample mean",
+                "1": "$\\bar{x}_1 = 1275$ ft",
+                "2": "$\\bar{x}_2 = 1250$ ft"
+              },
+              {
+                "0": "Sample std dev",
+                "1": "$s_1 = 45$ ft",
+                "2": "$s_2 = 30$ ft"
+              },
+              {
+                "0": "Sample size",
+                "1": "$n_1 = 14$",
+                "2": "$n_2 = 16$"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "When population variances are assumed equal, the [[kw:pooled variance]] $s_p^2$ is a weighted average of the two sample variances: $$s_p^2 = \\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2}$$",
+          "The standard error of the difference is then: $$s_{\\bar{x}_1 - \\bar{x}_2} = s_p \\sqrt{\\frac{1}{n_1} + \\frac{1}{n_2}}$$",
+          "The t statistic is: $$t = \\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1 - \\mu_2)}{s_{\\bar{x}_1 - \\bar{x}_2}}$$ Under $H_0: \\mu_1 = \\mu_2$, the hypothesized difference is 0.",
+          "Degrees of freedom = $n_1 + n_2 - 2$."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "pooled standard deviation",
+              "tone": "core",
+              "symbol": "$s_p$"
+            }
+          ],
+          "title": "Pooled t‑Test Step‑by‑Step",
+          "formula": "$$s_p^2 = \\frac{(14-1)45^2 + (16-1)30^2}{14+16-2} = \\frac{13\\cdot2025 + 15\\cdot900}{28} = \\frac{26325+13500}{28} \\approx 1422.32$$ $$s_p \\approx 37.71$$ $$s_{\\bar{x}_1 - \\bar{x}_2} = 37.71 \\sqrt{\\frac{1}{14} + \\frac{1}{16}} \\approx 37.71 \\times 0.366 \\approx 13.80$$ $$t = \\frac{1275 - 1250}{13.80} \\approx 1.811$$"
+        }
+      },
+      "confusionCorner": {
+        "body": "Pooling increases degrees of freedom, but if the true population variances are different, the pooled test can give incorrect error rates. [[imp:Only pool when you are confident the variances are equal.]]",
+        "title": "Pooled ≠ Always Better"
+      },
+      "title": "Test Statistic: Equal Variances (Pooled t‑Test)",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Claim $\\mu_1 > \\mu_2$ → $H_0: \\mu_1 \\le \\mu_2$, $H_a: \\mu_1 > \\mu_2$ (right‑tailed).",
+            "Pooled variance $s_p^2 \\approx 1422.32$, $s_p \\approx 37.71$. Standard error $\\approx 13.80$.",
+            "$t = (1275-1250)/13.80 \\approx 1.811$. $d.f. = 28$. Critical value $t_0 = 1.701$ (from table or `=T.INV(0.95, 28)`).",
+            "$1.811 > 1.701$ → reject $H_0$. Enough evidence to support the manufacturer's claim."
+          ],
+          "prompt": "A manufacturer claims its phone has greater range. Manufacturer: $\\bar{x}_1=1275$, $s_1=45$, $n_1=14$. Competitor: $\\bar{x}_2=1250$, $s_2=30$, $n_2=16$. Assume equal variances, $\\alpha=0.05$. Test the claim.",
+          "title": "Example A – Phone Calling Range"
+        },
+        {
+          "prompt": "Show how to compute the pooled standard deviation and t statistic in Google Sheets.",
+          "steps": [
+            "Calculate $s_p^2$: `=((13)*45^2 + (15)*30^2) / (14+16-2)` returns about 1422.32.",
+            "Standard error: `=SQRT(1422.32) * SQRT(1/14 + 1/16)` returns about 13.80.",
+            "t: `=(1275 - 1250) / 13.80` returns about 1.811.",
+            "Right‑tailed P‑value: `=T.DIST.RT(1.811, 28)` ≈ 0.041."
+          ],
+          "title": "Example B – Pooling in Google Sheets",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: What formula would you type to get the pooled variance?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Pooled variance: $s_p^2 = \\frac{5\\cdot493^2 + 15\\cdot648^2}{6+16-2} = \\frac{1215245 + 6298560}{20} \\approx 375690$. $s_p \\approx 613$.",
+            "Standard error: $613 \\sqrt{1/6 + 1/16} \\approx 613 \\times 0.4787 \\approx 293.5$.",
+            "$t = (1621 - 1895)/293.5 \\approx -0.934$. $d.f.=20$. Critical value $t_0 = -1.325$.",
+            "$-0.934 > -1.325$ → fail to reject $H_0$. Not enough evidence to say mini cars cost less."
+          ],
+          "prompt": "Mini cars: $\\bar{x}_1=1621$, $s_1=493$, $n_1=6$. Midsize: $\\bar{x}_2=1895$, $s_2=648$, $n_2=16$. Test if mini cars cost less ($H_a: \\mu_1 < \\mu_2$) at $\\alpha=0.10$, equal variances.",
+          "title": "Example C – Bumper Repair Cost (Equal Variances)"
+        }
+      ],
+      "id": "test-statistic-equal-variances",
+      "discoveryHook": {
+        "scenario": "A manufacturer claims its cordless phone has a greater calling range than a competitor's. With only 14 and 16 phones tested, we have small samples. Assuming equal variances lets us pool data and get a more powerful test."
+      },
+      "teacherCues": [
+        "Write the pooled variance formula and compute it for a given example.",
+        "Then show the standard error $s_p \\sqrt{1/n_1 + 1/n_2}$ and the t statistic."
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "The pooled variance combines the sample variances.",
+          "blanks": [
+            {
+              "accept": [
+                "variances",
+                "Variances"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "hints": [
+            "It combines $s_1^2$ and $s_2^2$.",
+            "Not standard deviations."
+          ],
+          "id": "q2-1",
+          "prompt": "The pooled variance $s_p^2$ is a weighted average of the two sample ___."
+        },
+        {
+          "id": "q2-2",
+          "answers": [
+            "159.1",
+            "159.1"
+          ],
+          "type": "short-answer",
+          "answer": "159.1",
+          "hints": [
+            "$s_p^2 = \\frac{14\\cdot100 + 19\\cdot196}{15+20-2}$.",
+            "$(1400 + 3724)/33 = 5124/33 \\approx 155.3$? Wait recalc: $14*100=1400$, $19*196=3724$, sum=5124. 33 → 155.3. Correct answer 155.3."
+          ],
+          "prompt": "If $s_1=10$, $n_1=15$, $s_2=14$, $n_2=20$, compute the pooled variance $s_p^2$. (Round to one decimal.)",
+          "feedbackIfWrong": "$s_p^2 = (14\\cdot100 + 19\\cdot196)/33 = 5124/33 \\approx 155.3$."
+        },
+        {
+          "id": "q2-3",
+          "hints": [
+            "Use T.DIST.RT for right‑tailed.",
+            "Arguments are t and degrees of freedom."
+          ],
+          "feedbackIfWrong": "=T.DIST.RT(1.811, 28).",
+          "prompt": "For the phone example, $t = 1.811$, $d.f.=28$, right‑tailed. What is the P‑value from Google Sheets? (Write the formula.)",
+          "answers": [
+            "=T.DIST.RT(1.811,28)",
+            "=T.DIST.RT(1.811, 28)"
+          ],
+          "type": "short-answer",
+          "answer": "=T.DIST.RT(1.811, 28)"
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Show the standard error formula for unequal variances: $\\sqrt{s_1^2/n_1 + s_2^2/n_2}$.",
+        "Work through Example 1 with the math test scores."
+      ],
+      "title": "Test Statistic: Unequal Variances (Welch's t‑Test)",
+      "questions": [
+        {
+          "id": "q3-1",
+          "prompt": "For Welch's t‑test (unequal variances), the standard error is $\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$. This is the ___ formula as the large‑sample z‑test.",
+          "hints": [
+            "It doesn't involve pooling.",
+            "It's the formula we used in Section 8.1."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "same",
+                "exact same",
+                "identical"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "It is the same standard error formula."
+        },
+        {
+          "answer": "7",
+          "type": "short-answer",
+          "prompt": "For $n_1=8$, $n_2=18$, unequal variances, what is the conservative degrees of freedom?",
+          "id": "q3-2",
+          "feedbackIfWrong": "d.f. = min(7, 17) = 7.",
+          "hints": [
+            "Take the smaller sample size minus 1.",
+            "8 - 1 = ?"
+          ],
+          "answers": [
+            "7",
+            "seven"
+          ]
+        },
+        {
+          "id": "q3-3",
+          "hints": [
+            "Look in the t‑table under 'Two Tails, 0.10' and d.f. = 7.",
+            "The value is 1.895, so the two critical values are plus and minus that."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "±1.895",
+            "+/-1.895",
+            "-1.895 and 1.895"
+          ],
+          "prompt": "In a two‑tailed Welch's t‑test with $d.f.=7$, what are the critical values at $\\alpha=0.10$? (From table: ±1.895)",
+          "feedbackIfWrong": "Critical values are ±1.895.",
+          "answer": "±1.895"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When population variances differ, pooling would be misleading. The Welch t‑test uses separate sample variances and a more conservative degrees of freedom, keeping the actual Type I error rate close to the nominal $\\alpha$."
+      },
+      "examples": [
+        {
+          "steps": [
+            "$H_0: \\mu_1 = \\mu_2$, $H_a: \\mu_1 \\neq \\mu_2$. Two‑tailed. $d.f. = 7$, critical values $\\pm 1.895$.",
+            "Standard error $\\approx 15.18$, $t \\approx 0.922$.",
+            "$0.922$ is not less than $-1.895$ nor greater than $1.895$ → fail to reject $H_0$.",
+            "Not enough evidence to say the means differ."
+          ],
+          "prompt": "Test whether there is a difference in mean math scores for Teacher 1 and Teacher 2. Use $\\alpha=0.10$, unequal variances.",
+          "role": "guided",
+          "title": "Example A – Math Test Scores (Two‑Tailed)"
+        },
+        {
+          "prompt": "Explain to a partner why using the smaller sample's degrees of freedom is a 'conservative' approach.",
+          "minLength": 2,
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: How does a smaller d.f. affect the critical value and the chance of rejecting $H_0$?",
+          "steps": [
+            "Smaller d.f. gives a larger critical value (farther from zero).",
+            "This makes the rejection region harder to reach, reducing the probability of a Type I error.",
+            "It's a safe choice when we are unsure about the true distribution."
+          ],
+          "title": "Example B – Why Conservative d.f.?",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "High school: $\\bar{x}_1=27136$, $s_1=2318$, $n_1=15$. Bachelor's+: $\\bar{x}_2=34329$, $s_2=4962$, $n_2=12$. Test for a difference at $\\alpha=0.01$, unequal variances.",
+          "role": "independent",
+          "title": "Example C – Income by Education (Unequal Variances)",
+          "steps": [
+            "$H_0: \\mu_1 = \\mu_2$, $H_a: \\mu_1 \\neq \\mu_2$. Two‑tailed. $d.f. = 11$. Critical values $\\pm 3.106$.",
+            "Standard error $= \\sqrt{2318^2/15 + 4962^2/12} \\approx \\sqrt{358,000 + 2,051,000} \\approx 1552$.",
+            "$t = (27136 - 34329)/1552 \\approx -4.64$.",
+            "$-4.64 < -3.106$ → reject $H_0$. There is a significant difference in earnings."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Unequal Variances = Same SE as Large Samples",
+        "body": "The standard error for the unequal variances case is exactly the same formula as for the two‑sample z‑test. The only difference is that we use t with conservative d.f. instead of z. [[imp:Don't overcomplicate—just use t when samples are small.]]"
+      },
+      "concept": {
+        "explanation": [
+          "For unequal variances, the standard error is: $$s_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$$",
+          "This is the same formula as for large independent samples, but we use the t‑distribution instead of z.",
+          "Degrees of freedom: $d.f. = \\min(n_1-1, n_2-1)$. (A more complex Satterthwaite formula exists, but the smaller d.f. is conservative.)",
+          "The t statistic is computed the same way, and P‑values are found using the t‑distribution with the conservative d.f.",
+          "This method is sometimes called [[kw:Welch's t‑test]]."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Conservative d.f.",
+              "meaning": "Using the smaller d.f. makes the test slightly less likely to reject, protecting against inflated Type I error."
+            }
+          ],
+          "formula": "$$s_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{39.7^2}{8} + \\frac{24.5^2}{18}} = \\sqrt{197.0 + 33.35} \\approx 15.18$$ $$t = \\frac{473 - 459}{15.18} \\approx 0.922$$ $$d.f. = \\min(7, 17) = 7$$",
+          "title": "Welch's t‑Test Example"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Statistic",
+              "Teacher 1",
+              "Teacher 2"
+            ],
+            "rows": [
+              {
+                "0": "$\\bar{x}$",
+                "1": "473",
+                "2": "459"
+              },
+              {
+                "0": "$s$",
+                "1": "39.7",
+                "2": "24.5"
+              },
+              {
+                "0": "$n$",
+                "1": "8",
+                "2": "18"
+              }
+            ],
+            "title": "Math Test Scores (Unequal Variances)"
+          }
+        ]
+      },
+      "id": "test-statistic-unequal-variances"
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "use $n_1+n_2-2$ for equal variances, $\\min(n_1-1, n_2-1)$ for unequal",
+              "tone": "core",
+              "symbol": "$d.f.$"
+            }
+          ],
+          "formula": "$$\\text{Left: } =\\text{T.DIST}(t,\\; d.f.,\\; \\text{TRUE})$$ $$\\text{Right: } =\\text{T.DIST.RT}(t,\\; d.f.)$$ $$\\text{Two-tailed: } =\\text{T.DIST.2T}(\\text{ABS}(t),\\; d.f.)$$",
+          "title": "Google Sheets P‑Value Functions for t‑Tests"
+        },
+        "explanation": [
+          "The [[kw:P‑value]] for a two‑sample t‑test is the probability of observing a t statistic as extreme as, or more extreme than, the one computed, assuming $H_0$ is true.",
+          "Decision rule: If P‑value $\\le \\alpha$, reject $H_0$; otherwise, fail to reject.",
+          "Google Sheets functions:",
+          "- Left‑tailed: `=T.DIST(t, d.f., TRUE)`",
+          "- Right‑tailed: `=T.DIST.RT(t, d.f.)`",
+          "- Two‑tailed: `=T.DIST.2T(ABS(t), d.f.)`",
+          "These work for both equal and unequal variance cases, as long as you use the correct d.f."
+        ],
+        "visuals": [
+          {
+            "title": "P‑Values for the Two Examples",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Phone range (equal var.)",
+                "1": "1.811",
+                "2": "28",
+                "3": "Right‑tailed",
+                "4": "≈0.041",
+                "5": "Reject (0.05)"
+              },
+              {
+                "0": "Math scores (unequal var.)",
+                "1": "0.922",
+                "2": "7",
+                "3": "Two‑tailed",
+                "4": "≈0.387",
+                "5": "Fail to reject (0.10)"
+              }
+            ],
+            "headers": [
+              "Example",
+              "t",
+              "d.f.",
+              "Test Type",
+              "P‑value",
+              "Decision ($\\alpha$)"
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Right‑tailed: `=T.DIST.RT(1.811, 28)` returns about 0.0406.",
+            "$0.0406 \\le 0.05$ → reject $H_0$.",
+            "There is enough evidence to support the manufacturer's claim."
+          ],
+          "prompt": "For the phone range test, $t=1.811$, $d.f.=28$, right‑tailed. Use Google Sheets to find the P‑value and decide at $\\alpha=0.05$.",
+          "title": "Example A – Phone Range P‑Value"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Two‑tailed: `=T.DIST.2T(0.922, 7)` returns about 0.387.",
+            "$0.387 > 0.10$, so we fail to reject $H_0$.",
+            "The observed difference in sample means is not unusual if the true means are equal."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why is a P‑value of 0.387 not considered significant at $\\alpha=0.10$?",
+          "prompt": "For the math scores test, $t=0.922$, $d.f.=7$, two‑tailed. Find the P‑value and explain why we fail to reject.",
+          "minLength": 2,
+          "title": "Example B – Math Scores P‑Value"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Left‑tailed: `=T.DIST(-0.934, 20, TRUE)` returns about 0.180.",
+            "$0.180 > 0.10$ → fail to reject $H_0$.",
+            "Not enough evidence to say mini cars cost less."
+          ],
+          "title": "Example C – Bumper Repair P‑Value",
+          "prompt": "For the bumper repair test (mini vs. midsize), $t = -0.934$, $d.f.=20$, left‑tailed. Find the P‑value and decide at $\\alpha=0.10$."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Instead of looking up critical values, you can find the exact P‑value using Google Sheets. For the phone range example, the P‑value is about 0.041, which is less than 0.05, leading to rejection."
+      },
+      "confusionCorner": {
+        "title": "Don't Mix Up the Tail Direction",
+        "body": "Use T.DIST for left‑tailed (cumulative from left), T.DIST.RT for right‑tailed, and T.DIST.2T for two‑tailed. [[imp:Check your alternative hypothesis to pick the correct function.]]"
+      },
+      "teacherCues": [
+        "Show the Google Sheets functions for t‑test P‑values: T.DIST, T.DIST.RT, T.DIST.2T.",
+        "Walk through the phone example using the P‑value method."
+      ],
+      "title": "P‑Values and Decisions for Two‑Sample t‑Tests",
+      "id": "pvalues-and-decisions",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "prompt": "In Google Sheets, to find the P‑value for a right‑tailed two‑sample t‑test, use the function ___.",
+          "hints": [
+            "It returns the area in the right tail directly.",
+            "Similar to T.DIST but for right tail."
+          ],
+          "feedbackIfWrong": "Use =T.DIST.RT(t, d.f.).",
+          "blanks": [
+            {
+              "accept": [
+                "T.DIST.RT",
+                "t.dist.rt",
+                "=T.DIST.RT"
+              ]
+            }
+          ],
+          "id": "q4-1"
+        },
+        {
+          "answers": [
+            "=T.DIST(-1.5, 12, TRUE)",
+            "=T.DIST(-1.5,12,TRUE)"
+          ],
+          "feedbackIfWrong": "=T.DIST(-1.5, 12, TRUE).",
+          "answer": "=T.DIST(-1.5, 12, TRUE)",
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "A left‑tailed t‑test gives $t = -1.5$, $d.f.=12$. What Google Sheets formula gives the P‑value?",
+          "hints": [
+            "Use T.DIST with TRUE for cumulative left area.",
+            "Arguments: t, degrees of freedom, TRUE."
+          ]
+        },
+        {
+          "hints": [
+            "0.02 ≤ 0.05.",
+            "Small P‑value means strong evidence against $H_0$."
+          ],
+          "id": "q4-3",
+          "type": "short-answer",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "prompt": "If the P‑value is 0.02 and $\\alpha = 0.05$, should you reject $H_0$? (Yes or No)",
+          "answer": "Yes",
+          "feedbackIfWrong": "Yes, reject $H_0$ because 0.02 ≤ 0.05."
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Project a problem: 'A study compares tensile strength of steel bars produced by two methods.' Walk through the entire blueprint.",
+        "Emphasize: 'Always check whether the problem says variances are equal or not.'"
+      ],
+      "discoveryHook": {
+        "scenario": "The blueprint for a two‑sample t‑test is: understand the conditions and the claim, solve by computing the correct standard error and t statistic, and conclude with a decision. Following this process prevents the most common mistakes."
+      },
+      "confusionCorner": {
+        "body": "In real research, you should test whether variances are equal before deciding which t‑test to use. In this chapter, the problem will tell you. [[imp:Read carefully: 'assume equal variances' means pool; 'assume not equal' means use the Welch approach.]]",
+        "title": "Always State the Variance Assumption"
+      },
+      "examples": [
+        {
+          "prompt": "Tensile strength of experimental vs. old method. Experimental: $\\bar{x}_1=368.3$, $s_1=24.5$, $n_1=10$. Old: $\\bar{x}_2=385.7$, $s_2=16.8$, $n_2=13$. Assume equal variances. Test if there's a difference at $\\alpha=0.01$.",
+          "role": "guided",
+          "title": "Example A – Full Blueprint (Equal Variances, Two‑Tailed)",
+          "steps": [
+            "Understand: Claim of difference → $H_0: \\mu_1 = \\mu_2$, $H_a: \\mu_1 \\neq \\mu_2$. Two‑tailed. Equal variances. $\\alpha=0.01$, $d.f.=21$. Critical values $\\pm 2.831$.",
+            "Solve: Pooled variance $s_p^2 = \\frac{9\\cdot24.5^2 + 12\\cdot16.8^2}{21} \\approx \\frac{5402.25 + 3386.88}{21} \\approx 418.53$, $s_p \\approx 20.46$. SE $= 20.46 \\sqrt{1/10 + 1/13} \\approx 20.46 \\times 0.4206 \\approx 8.61$. $t = (368.3 - 385.7)/8.61 \\approx -2.02$.",
+            "Conclude: $-2.02 > -2.831$ and $< 2.831$ → fail to reject $H_0$. Not enough evidence to say the means differ."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Claim $\\mu_1 > \\mu_2$ → $H_0: \\mu_1 \\le \\mu_2$, $H_a: \\mu_1 > \\mu_2$. Right‑tailed. Unequal variances. $d.f. = 14$. Critical value $t_0 = 1.761$.",
+            "SE $= \\sqrt{8800^2/19 + 5100^2/15} \\approx \\sqrt{4075789 + 1734000} \\approx 2410$. $t = (48800-44000)/2410 \\approx 1.99$.",
+            "$1.99 > 1.761$ → reject $H_0$. There is enough evidence to support the claim."
+          ],
+          "prompt": "A personnel director claims mean income in Allegheny County is greater than in Erie County. Allegheny: $\\bar{x}_1=48800$, $s_1=8800$, $n_1=19$. Erie: $\\bar{x}_2=44000$, $s_2=5100$, $n_2=15$. Unequal variances, $\\alpha=0.05$. Explain the decision.",
+          "minLength": 2,
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we use the smaller d.f. here, and how does that affect the critical value?",
+          "title": "Example B – Full Blueprint (Unequal Variances, Right‑Tailed)"
+        },
+        {
+          "title": "Example C – Teaching Methods (Equal Variances, Right‑Tailed)",
+          "role": "independent",
+          "prompt": "New teaching method: $\\bar{x}_1=75$, $s_1=8$, $n_1=12$. Old method: $\\bar{x}_2=68$, $s_2=10$, $n_2=15$. Assume equal variances. Test if new method produces higher scores at $\\alpha=0.05$.",
+          "steps": [
+            "$H_0: \\mu_1 \\le \\mu_2$, $H_a: \\mu_1 > \\mu_2$. Right‑tailed. Equal variances, $d.f. = 25$. Critical value $t_0 = 1.708$.",
+            "Pooled variance $s_p^2 = \\frac{11\\cdot64 + 14\\cdot100}{25} = \\frac{704 + 1400}{25} = 84.16$, $s_p \\approx 9.17$. SE $= 9.17 \\sqrt{1/12 + 1/15} \\approx 9.17 \\times 0.3873 \\approx 3.55$. $t = (75-68)/3.55 \\approx 1.97$.",
+            "$1.97 > 1.708$ → reject $H_0$. Evidence supports the new method."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q5-1",
+          "feedbackIfWrong": "Start by understanding the claim and the variance condition.",
+          "prompt": "The first step in the two‑sample t‑test blueprint is to ___ the claim and check the variance assumption.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the 'U' phase.",
+            "You verify conditions and state hypotheses."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "Understand"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q5-2",
+          "answers": [
+            "P-value and rejection region",
+            "p-value and critical value"
+          ],
+          "answer": "P-value and rejection region",
+          "hints": [
+            "One uses probability, the other a cutoff.",
+            "Both lead to the same conclusion."
+          ],
+          "feedbackIfWrong": "You can use the P‑value method or the rejection region (critical value) method.",
+          "type": "short-answer",
+          "prompt": "In the blueprint, after computing the t statistic, what two methods can you use to make a decision? (Name both.)"
+        },
+        {
+          "hints": [
+            "0.008 ≤ 0.05.",
+            "Very small P‑value."
+          ],
+          "type": "short-answer",
+          "id": "q5-3",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "feedbackIfWrong": "Yes, reject $H_0$ because 0.008 ≤ 0.05.",
+          "prompt": "A two‑sample t‑test gives a P‑value of 0.008 with $\\alpha = 0.05$. Should you reject $H_0$? (Yes or No)",
+          "answer": "Yes"
+        }
+      ],
+      "id": "blueprint-two-sample-t",
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "The choice of standard error and d.f. depends entirely on the variance assumption.",
+              "symbol": "Key"
+            }
+          ],
+          "title": "Blueprint Decision Flow",
+          "formula": "$$\\text{Variances equal?} \\;\\begin{cases} \\text{Yes} & \\rightarrow s_p^2, \\; s_{\\bar{x}_1 - \\bar{x}_2} = s_p \\sqrt{\\frac{1}{n_1} + \\frac{1}{n_2}}, \\; d.f. = n_1+n_2-2 \\\\ \\text{No} & \\rightarrow s_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}, \\; d.f. = \\min(n_1-1, n_2-1) \\end{cases}$$ $$t = \\frac{\\bar{x}_1 - \\bar{x}_2}{s_{\\bar{x}_1 - \\bar{x}_2}}$$"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Claim: new method differs. $H_0: \\mu_1 = \\mu_2$, $H_a: \\mu_1 \\neq \\mu_2$. Variances equal. $\\alpha=0.01$.",
+                "2": ""
+              },
+              {
+                "0": "Solve – SE",
+                "1": "Pooled variance $s_p^2$, then $s_{\\bar{x}_1 - \\bar{x}_2}$",
+                "2": ""
+              },
+              {
+                "0": "Solve – t & Decision",
+                "1": "$t = \\frac{\\bar{x}_1 - \\bar{x}_2}{\\text{SE}}$. Compare to critical values $\\pm t_0$ or P‑value.",
+                "2": ""
+              },
+              {
+                "0": "Conclude",
+                "1": "Interpret in context.",
+                "2": ""
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Blueprint for Tensile Strength Example ($\\alpha=0.01$, equal variances)",
+            "headers": [
+              "Step",
+              "Action",
+              "Details"
+            ]
+          }
+        ],
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Are the samples independent? Are the populations normal? Does the problem state 'variances equal' or 'not equal'? Identify the claim and write $H_0$ and $H_a$. Note $\\alpha$.",
+          "2. [[kw:Solve]]: Determine the standard error: pooled formula if equal variances, otherwise $\\sqrt{s_1^2/n_1 + s_2^2/n_2}$. Compute $t = \\frac{\\bar{x}_1 - \\bar{x}_2}{\\text{SE}}$. Find the critical value(s) or P‑value using the t‑distribution with the appropriate d.f. Make a decision.",
+          "3. [[kw:Conclude]]: State whether there is enough evidence to support/reject the claim in context."
+        ]
+      },
+      "title": "Blueprint Aid: Solving Two‑Sample t‑Test Problems"
+    }
+  ],
+  "schemaVersion": 2,
+  "id": "chapter-8-2-two-sample-t-test-means-small",
+  "presenterNotes": [
+    "Block 1: Emphasize the two cases. The flowchart from the text is helpful. Students often find the unequal variances case simpler because the standard error matches Section 8.1.",
+    "Block 2: Walk through the pooled variance calculation step by step. Use the phone example. Show the Google Sheets formulas.",
+    "Block 3: The Welch t‑test is straightforward. Note that the standard error is the same as the z‑test, but with t and conservative d.f.",
+    "Block 4: P‑values for t‑tests are easy with Sheets. Remind students to use the correct d.f.",
+    "Block 5: The blueprint ties everything together. Use the tensile strength and teaching methods examples for practice."
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "type": "flashcard",
+  "id": "section-9-3-flashcards",
+  "title": "Measures of Regression and Prediction Intervals",
+  "cards": [
+    {
+      "back": "1. Total variation: $\\Sigma (y_i - \\bar{y})^2$\n2. Explained variation: $\\Sigma (\\hat{y}_i - \\bar{y})^2$\n3. Unexplained variation: $\\Sigma (y_i - \\hat{y}_i)^2$\nThey satisfy: Total = Explained + Unexplained.",
+      "front": "Name the three types of [[kw:variation]] about a regression line."
+    },
+    {
+      "front": "What is the [[kw:coefficient of determination]] $r^2$?",
+      "back": "It is the proportion of the total variation in $y$ that is explained by the linear relationship with $x$:\n$$r^2 = \\frac{\\text{Explained variation}}{\\text{Total variation}} = (r)^2$$\nIt ranges from 0 to 1 (or 0% to 100%)."
+    },
+    {
+      "back": "$$r^2 = (0.979)^2 \\approx 0.958$$\nAbout 95.8% of the variation in time until the next eruption is explained by the eruption duration. Only 4.2% is due to other factors.",
+      "front": "For the Old Faithful data, $r = 0.979$. Find and interpret $r^2$."
+    },
+    {
+      "front": "What does the [[imp:standard error of estimate]] $s_e$ measure?",
+      "back": "It measures the typical size of the residuals (prediction errors). It is the standard deviation of the observed $y$ values around the regression line:\n$$s_e = \\sqrt{\\frac{\\Sigma (y_i - \\hat{y}_i)^2}{n-2}}$$\nSmaller $s_e$ means predictions are more precise."
+    },
+    {
+      "back": "`=STEYX(known_y, known_x)`\nIt returns $s_e$ directly from the data without computing residuals manually.",
+      "front": "Give the Google Sheets function for the standard error of estimate."
+    },
+    {
+      "back": "$s_e$ is the square root of the unexplained variation divided by the degrees of freedom:\n$$s_e = \\sqrt{\\frac{\\text{Unexplained variation}}{n-2}}$$",
+      "front": "How is $s_e$ related to the unexplained variation?"
+    },
+    {
+      "front": "If $r^2 = 0.81$, what percent of variation is [[imp:unexplained]]?",
+      "back": "Unexplained = $1 - r^2 = 1 - 0.81 = 0.19$, so 19% is unexplained. This is called the coefficient of non‑determination."
+    },
+    {
+      "back": "An interval estimate for an individual $y$ value at a given $x_0$. It has a specified confidence level $c$ of containing the true $y$:\n$$\\hat{y} - E < y < \\hat{y} + E$$\nIt is wider than a confidence interval for the mean.",
+      "front": "What is a [[kw:prediction interval]]?"
+    },
+    {
+      "front": "Write the formula for the margin of error $E$ in a prediction interval.",
+      "back": "$$E = t_c \\, s_e \\sqrt{1 + \\frac{1}{n} + \\frac{n(x_0 - \\bar{x})^2}{n\\Sigma x^2 - (\\Sigma x)^2}}$$\n$t_c$ comes from the $t$-distribution with $df = n-2$."
+    },
+    {
+      "front": "Why does the prediction interval become wider as $x_0$ moves away from $\\bar{x}$?",
+      "back": "The term $(x_0 - \\bar{x})^2$ increases, which inflates the margin of error. The regression line is most precisely estimated at the center of the data, so predictions far from $\\bar{x}$ have greater uncertainty."
+    },
+    {
+      "front": "What distribution provides the critical value $t_c$ for prediction intervals?",
+      "back": "The $t$-distribution with $n-2$ degrees of freedom. Use the same table as for testing the correlation coefficient."
+    },
+    {
+      "front": "Interpret a 95% prediction interval of (439, 1138) for CO2 emissions when GDP = 3.5.",
+      "back": "We are 95% confident that the actual CO2 emissions for a country with a GDP of $3.5 trillion will be between 439 and 1138 million metric tons."
+    },
+    {
+      "front": "A regression line has $r^2 = 0.49$. What is the absolute value of $r$?",
+      "back": "$$|r| = \\sqrt{0.49} = 0.7$$\nThe correlation could be positive or negative, so $r = 0.7$ or $r = -0.7$."
+    },
+    {
+      "front": "How can you compute $s_e$ using Google Sheets without finding residuals?",
+      "back": "Use `=STEYX(y_range, x_range)`. This function calculates the standard error of estimate directly from the data arrays."
+    },
+    {
+      "back": "False. A high $r^2$ indicates a good fit within the observed range, but extrapolation is still dangerous. The linear relationship may not hold beyond the data.",
+      "front": "True or False: A high $r^2$ guarantees that the regression line will give accurate predictions for $x$ values far outside the data range."
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

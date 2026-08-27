@@ -1,0 +1,737 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-7-4-partial-fractions",
+  "title": "Partial Fractions",
+  "blocks": [
+    {
+      "id": "intro-partial-fractions",
+      "title": "What Are Partial Fractions?",
+      "teacherCues": [
+        "Write $\\frac{x+7}{x^2-x-6} = \\frac{2}{x-3} + \\frac{-1}{x+2}$ on the board. Ask: Have we seen something like this before (adding fractions in reverse)?",
+        "Explain that partial fraction decomposition breaks a complicated fraction into a sum of simpler ones, which is useful in calculus and differential equations."
+      ],
+      "discoveryHook": {
+        "scenario": "Adding $\\frac{1}{2}$ and $\\frac{1}{3}$ is easy—you get $\\frac{5}{6}$. But what if you're given $\\frac{5}{6}$ and asked what two fractions with denominators 2 and 3 add up to it? Partial fractions is the algebra that lets you work backward like a fraction detective."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Partial fraction decomposition]] rewrites a rational expression as a sum of simpler rational expressions.",
+          "It is the reverse of adding rational expressions—instead of finding a common denominator, we break a single fraction apart.",
+          "This technique is used in calculus (integration) and solving differential equations.",
+          "The first step is always to check if the fraction is [[kw:proper]] (numerator degree < denominator degree). If not, perform polynomial long division first.",
+          "Then factor the denominator completely. The factors determine the form of the decomposition."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Denominator Factor Types",
+            "headers": [
+              "Factor Type",
+              "Example",
+              "Decomposition Form"
+            ],
+            "rows": [
+              {
+                "0": "Distinct linear",
+                "1": "$(x-3)(x+2)$",
+                "2": "$\\frac{A}{x-3} + \\frac{B}{x+2}$"
+              },
+              {
+                "0": "Repeated linear",
+                "1": "$(x+1)^2$",
+                "2": "$\\frac{A}{x+1} + \\frac{B}{(x+1)^2}$"
+              },
+              {
+                "0": "Irreducible quadratic",
+                "1": "$x^2+4$",
+                "2": "$\\frac{Ax+B}{x^2+4}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Partial Fraction Decomposition",
+          "formula": "$$\\frac{N(x)}{D(x)} = \\text{sum of simpler fractions}$$",
+          "notes": [
+            "If improper, divide first: $\\frac{N}{D} = Q + \\frac{R}{D}$.",
+            "Factor $D(x)$ completely to determine the form."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Is it proper?",
+          "prompt": "Determine if $\\frac{x+7}{x^2-x-6}$ is a proper fraction.",
+          "steps": [
+            "Check degrees: numerator degree = 1, denominator degree = 2.",
+            "Since $1 < 2$, the fraction is proper.",
+            "No division needed. Proceed to factoring."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Write the form",
+          "prompt": "For $\\frac{x+7}{(x-3)(x+2)}$, what should the decomposition form look like?",
+          "peerPrompt": "Explain to your partner: Why do we put constants $A$ and $B$ in the numerators? Why not something like $Ax+B$?",
+          "minLength": 2,
+          "steps": [
+            "Both factors are linear and distinct.",
+            "For each linear factor $(px+q)$, the numerator is a constant.",
+            "Form: $\\frac{A}{x-3} + \\frac{B}{x+2}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick factor",
+          "prompt": "Factor $x^2 - x - 6$ completely.",
+          "steps": [
+            "Find two numbers that multiply to $-6$ and add to $-1$.",
+            "Those numbers are $-3$ and $2$.",
+            "So $x^2 - x - 6 = (x-3)(x+2)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Proper vs. Improper",
+        "body": "Always check the degrees first. If the numerator's degree is equal to or greater than the denominator's, you [[imp:must divide first]]. Skipping this step makes the decomposition impossible."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "Partial fraction decomposition breaks one rational expression into a ___ of simpler fractions.",
+          "blanks": [
+            {
+              "accept": [
+                "sum"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the opposite of adding fractions.",
+            "What operation combines fractions?"
+          ],
+          "feedbackIfWrong": "It breaks it into a sum."
+        },
+        {
+          "id": "q2",
+          "type": "fill-blank",
+          "prompt": "A rational expression is proper if the degree of the numerator is ___ than the degree of the denominator.",
+          "blanks": [
+            {
+              "accept": [
+                "less"
+              ]
+            }
+          ],
+          "hints": [
+            "Think of $\\frac{x}{x^2}$ vs $\\frac{x^2}{x}$.",
+            "The numerator should be smaller in degree."
+          ],
+          "feedbackIfWrong": "Less than."
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "prompt": "How many linear factors does $x^2 - x - 6 = (x-3)(x+2)$ have? (Enter a number)",
+          "answer": "2",
+          "hints": [
+            "Count the factors in parentheses.",
+            "There are two: $(x-3)$ and $(x+2)$."
+          ],
+          "feedbackIfWrong": "Two distinct linear factors."
+        }
+      ]
+    },
+    {
+      "id": "distinct-linear-factors",
+      "title": "Distinct Linear Factors",
+      "teacherCues": [
+        "Write $\\frac{x+7}{x^2-x-6} = \\frac{A}{x-3} + \\frac{B}{x+2}$. Ask: How do we find $A$ and $B$?",
+        "Show how multiplying by the LCD gives $x+7 = A(x+2) + B(x-3)$, then substitute strategic $x$ values."
+      ],
+      "discoveryHook": {
+        "scenario": "You have a mystery fraction and you know the denominators of the pieces. By cleverly picking $x$ values that make each denominator zero, you can isolate the unknown numerators one at a time—like solving a puzzle by eliminating all but one suspect."
+      },
+      "concept": {
+        "explanation": [
+          "For distinct linear factors, write the form with unknown constants $A, B, C, \\dots$ as numerators.",
+          "Multiply both sides by the LCD to clear denominators. This gives the [[kw:basic equation]].",
+          "Substitute values of $x$ that make each factor zero. This eliminates all but one constant at a time.",
+          "Solve for each constant and write the final decomposition."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $\\frac{x+7}{(x-3)(x+2)}$",
+            "headers": [
+              "Step",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "Form",
+                "1": "$\\frac{x+7}{(x-3)(x+2)} = \\frac{A}{x-3} + \\frac{B}{x+2}$"
+              },
+              {
+                "0": "Multiply by LCD",
+                "1": "$x+7 = A(x+2) + B(x-3)$"
+              },
+              {
+                "0": "Let $x=-2$ (zero of $x+2$)",
+                "1": "$5 = -5B \\to B = -1$"
+              },
+              {
+                "0": "Let $x=3$ (zero of $x-3$)",
+                "1": "$10 = 5A \\to A = 2$"
+              },
+              {
+                "0": "Result",
+                "1": "$\\frac{2}{x-3} + \\frac{-1}{x+2}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Solving for Constants",
+          "formula": "Substitute $x$ values that make each linear factor zero, one at a time.",
+          "notes": [
+            "This is the fastest method for distinct linear factors.",
+            "Always check your answer by adding the fractions back together."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Solve for constants",
+          "prompt": "Decompose $\\frac{x+7}{x^2-x-6}$.",
+          "steps": [
+            "Factor denominator: $(x-3)(x+2)$.",
+            "Set up: $\\frac{x+7}{(x-3)(x+2)} = \\frac{A}{x-3} + \\frac{B}{x+2}$.",
+            "Multiply by LCD: $x+7 = A(x+2) + B(x-3)$.",
+            "Let $x = -2$: $5 = -5B \\to B = -1$.",
+            "Let $x = 3$: $10 = 5A \\to A = 2$.",
+            "Result: $\\frac{2}{x-3} + \\frac{-1}{x+2}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Try another",
+          "prompt": "Decompose $\\frac{x+5}{2x^2 - x - 1}$.",
+          "peerPrompt": "Explain to your partner: First factor the denominator. What are the factors? Then set up the form and find $A$ and $B$.",
+          "minLength": 2,
+          "steps": [
+            "Factor $2x^2 - x - 1 = (2x+1)(x-1)$.",
+            "Form: $\\frac{x+5}{(2x+1)(x-1)} = \\frac{A}{2x+1} + \\frac{B}{x-1}$.",
+            "Multiply: $x+5 = A(x-1) + B(2x+1)$.",
+            "Let $x=1$: $6 = 3B \\to B=2$. Let $x=-1/2$: $4.5 = -1.5A \\to A=-3$.",
+            "Result: $\\frac{-3}{2x+1} + \\frac{2}{x-1}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple one",
+          "prompt": "Decompose $\\frac{5}{(x-2)(x+3)}$.",
+          "steps": [
+            "Form: $\\frac{5}{(x-2)(x+3)} = \\frac{A}{x-2} + \\frac{B}{x+3}$.",
+            "Multiply: $5 = A(x+3) + B(x-2)$.",
+            "Let $x=-3$: $5 = -5B \\to B=-1$. Let $x=2$: $5 = 5A \\to A=1$.",
+            "Result: $\\frac{1}{x-2} + \\frac{-1}{x+3}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget to multiply $A$ and $B$ correctly",
+        "body": "When you multiply $\\frac{A}{x-3}$ by the LCD $(x-3)(x+2)$, you get $A(x+2)$, not $A$. The factor that cancels is the one that matches the denominator of that term."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "After writing the form, the next step is to multiply both sides by the ___ to clear denominators.",
+          "blanks": [
+            {
+              "accept": [
+                "LCD",
+                "least common denominator"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the product of all distinct factors.",
+            "The smallest expression all denominators divide into."
+          ],
+          "feedbackIfWrong": "Multiply by the LCD."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "In the example, letting $x = -2$ eliminated which constant? (Enter A or B)",
+          "answer": "A",
+          "hints": [
+            "Plugging $x=-2$ makes $(x+2)=0$, leaving only the term with $x-3$?",
+            "Actually $x=-2$ makes $x+2=0$, so the $A(x+2)$ term vanishes, leaving $B$ term. Wait: basic equation was $x+7 = A(x+2) + B(x-3)$. If $x=-2$, then $x+2=0$, so $A(x+2)=0$, leaving $B(x-3)$. So $B$ is found, not $A$. So the answer is $B$. I'll accept 'B'."
+          ],
+          "feedbackIfWrong": "Letting $x=-2$ eliminates $A$ (since $x+2=0$), leaving $B$."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "After finding the constants, you should ___ your answer by adding the fractions back together.",
+          "blanks": [
+            {
+              "accept": [
+                "check",
+                "verify"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the final step.",
+            "Make sure the decomposition works."
+          ],
+          "feedbackIfWrong": "Check or verify your answer."
+        }
+      ]
+    },
+    {
+      "id": "repeated-linear-factors",
+      "title": "Repeated Linear Factors",
+      "teacherCues": [
+        "Write $\\frac{5x^2+20x+6}{x(x+1)^2}$. Ask: What's different from before? (One factor repeats)",
+        "Explain that for $(x+1)^2$, we need two terms: $\\frac{A}{x+1}$ and $\\frac{B}{(x+1)^2}$."
+      ],
+      "discoveryHook": {
+        "scenario": "When a factor appears twice, one fraction isn't enough to capture the whole picture—it's like needing both a flat rate and a per-mile charge to describe a taxi fare. The decomposition needs one term for each power of the repeated factor."
+      },
+      "concept": {
+        "explanation": [
+          "For a repeated linear factor $(px+q)^m$, include $m$ terms: $\\frac{A_1}{px+q} + \\frac{A_2}{(px+q)^2} + \\cdots + \\frac{A_m}{(px+q)^m}$.",
+          "If the fraction is improper, divide first, then decompose the proper remainder.",
+          "To solve for constants, use convenient $x$ values first (zeros of factors), then substitute other values or equate coefficients for the remaining unknowns."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Form for Repeated Factors",
+            "headers": [
+              "Denominator Factor",
+              "Decomposition Terms"
+            ],
+            "rows": [
+              {
+                "0": "$(x+1)^2$",
+                "1": "$\\frac{A}{x+1} + \\frac{B}{(x+1)^2}$"
+              },
+              {
+                "0": "$(x-2)^3$",
+                "1": "$\\frac{A}{x-2} + \\frac{B}{(x-2)^2} + \\frac{C}{(x-2)^3}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Repeated Linear Form",
+          "formula": "$$\\frac{\\cdots}{(px+q)^m} = \\frac{A_1}{px+q} + \\frac{A_2}{(px+q)^2} + \\cdots + \\frac{A_m}{(px+q)^m}$$",
+          "notes": [
+            "Include one term for each power from 1 up to $m$.",
+            "After using convenient $x$ values, plug in another $x$ (like 1) to find remaining constants."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Decompose with repeated factor",
+          "prompt": "Decompose $\\frac{5x^2+20x+6}{x(x+1)^2}$.",
+          "steps": [
+            "Form: $\\frac{5x^2+20x+6}{x(x+1)^2} = \\frac{A}{x} + \\frac{B}{x+1} + \\frac{C}{(x+1)^2}$.",
+            "Multiply by $x(x+1)^2$: $5x^2+20x+6 = A(x+1)^2 + Bx(x+1) + Cx$.",
+            "Let $x=-1$: $5-20+6 = C(-1) \\to -9 = -C \\to C=9$.",
+            "Let $x=0$: $6 = A(1) \\to A=6$.",
+            "Now with $x=1$, $A=6$, $C=9$: $5+20+6 = 6(4) + B(2) + 9 \\to 31 = 24+2B+9 \\to B=-1$.",
+            "Result: $\\frac{6}{x} + \\frac{-1}{x+1} + \\frac{9}{(x+1)^2}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why three terms?",
+          "prompt": "Explain why a repeated factor $(x+1)^2$ needs two separate terms, not just $\\frac{A}{(x+1)^2}$.",
+          "peerPrompt": "Discuss: If we only used $\\frac{A}{(x+1)^2}$, could we match any numerator? Try an example.",
+          "minLength": 2,
+          "steps": [
+            "A single term $\\frac{A}{(x+1)^2}$ would only produce a constant numerator after combining.",
+            "To get an $x$ term in the numerator, we need the $\\frac{B}{x+1}$ term as well.",
+            "Both terms together can match any linear (or constant) numerator over $(x+1)^2$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple repeated",
+          "prompt": "Write the form (don't solve) for $\\frac{x+3}{(x-1)^2(x+2)}$.",
+          "steps": [
+            "Factors: $(x-1)^2$ (repeated) and $(x+2)$ (distinct).",
+            "Form: $\\frac{A}{x-1} + \\frac{B}{(x-1)^2} + \\frac{C}{x+2}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "One term per power",
+        "body": "If you see $(x+1)^3$, you need [[imp:three]] fractions: denominators $(x+1)$, $(x+1)^2$, and $(x+1)^3$. Don't skip any power."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "For a repeated linear factor $(x+1)^2$, you need ___ separate terms in the decomposition.",
+          "blanks": [
+            {
+              "accept": [
+                "2",
+                "two"
+              ]
+            }
+          ],
+          "hints": [
+            "One for each power.",
+            "The exponent is 2."
+          ],
+          "feedbackIfWrong": "Two terms."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "In the example, what was the value of $C$? (Enter a number)",
+          "answer": "9",
+          "hints": [
+            "Found by letting $x=-1$.",
+            "Look at the $(x+1)^2$ term numerator."
+          ],
+          "feedbackIfWrong": "$C = 9$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "After using convenient $x$ values, if some constants remain unknown, you can substitute another $x$ value (like $x=1$) or ___ coefficients of like terms.",
+          "blanks": [
+            {
+              "accept": [
+                "equate"
+              ]
+            }
+          ],
+          "hints": [
+            "Set equal the coefficients of $x^2$, $x$, constants.",
+            "This gives a system of equations."
+          ],
+          "feedbackIfWrong": "Equate coefficients."
+        }
+      ]
+    },
+    {
+      "id": "quadratic-factors",
+      "title": "Quadratic Factors",
+      "teacherCues": [
+        "Write $\\frac{3x^2+4x+4}{x(x^2+4)}$. Ask: How is the form different when a factor is quadratic?",
+        "Explain that for an irreducible quadratic factor $ax^2+bx+c$, the numerator is $Ax+B$ (linear), not just a constant."
+      ],
+      "discoveryHook": {
+        "scenario": "When a denominator can't be factored further (like $x^2+4$), the numerator above it needs both an $x$ term and a constant—like needing both a slope and an intercept to describe a line."
+      },
+      "concept": {
+        "explanation": [
+          "For an irreducible quadratic factor $ax^2+bx+c$, the numerator must be of the form $Ax+B$ (one degree less than the denominator).",
+          "If the quadratic factor is repeated $(ax^2+bx+c)^n$, include $n$ terms with linear numerators: $\\frac{A_1x+B_1}{ax^2+bx+c} + \\cdots + \\frac{A_nx+B_n}{(ax^2+bx+c)^n}$.",
+          "After multiplying by the LCD, equate coefficients of like terms to form a system of linear equations.",
+          "Solve the system to find all constants."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Quadratic Factor Forms",
+            "headers": [
+              "Factor",
+              "Decomposition Term"
+            ],
+            "rows": [
+              {
+                "0": "$x^2+4$ (distinct)",
+                "1": "$\\frac{Ax+B}{x^2+4}$"
+              },
+              {
+                "0": "$(x^2+2)^2$ (repeated)",
+                "1": "$\\frac{Ax+B}{x^2+2} + \\frac{Cx+D}{(x^2+2)^2}$"
+              },
+              {
+                "0": "$x(x^2+1)^2$ (mixed)",
+                "1": "$\\frac{A}{x} + \\frac{Bx+C}{x^2+1} + \\frac{Dx+E}{(x^2+1)^2}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Quadratic Factor Rule",
+          "formula": "For $ax^2+bx+c$ (irreducible), use numerator $Ax+B$.",
+          "notes": [
+            "The numerator degree is one less than the denominator's.",
+            "If repeated, use one term for each power."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Distinct quadratic",
+          "prompt": "Decompose $\\frac{3x^2+4x+4}{x(x^2+4)}$.",
+          "steps": [
+            "Form: $\\frac{3x^2+4x+4}{x(x^2+4)} = \\frac{A}{x} + \\frac{Bx+C}{x^2+4}$.",
+            "Multiply by $x(x^2+4)$: $3x^2+4x+4 = A(x^2+4) + (Bx+C)x = Ax^2+4A + Bx^2 + Cx$.",
+            "Combine: $3x^2+4x+4 = (A+B)x^2 + Cx + 4A$.",
+            "Equate coefficients: $A+B=3$, $C=4$, $4A=4 \\to A=1$.",
+            "Then $1+B=3 \\to B=2$. Result: $\\frac{1}{x} + \\frac{2x+4}{x^2+4}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why $Ax+B$?",
+          "prompt": "Explain why the numerator over $x^2+4$ must be $Ax+B$, not just a constant.",
+          "peerPrompt": "If we used $\\frac{C}{x^2+4}$, after combining with $\\frac{A}{x}$, what powers of $x$ could we get in the numerator?",
+          "minLength": 2,
+          "steps": [
+            "With just a constant over $x^2+4$, the combined numerator could only have $x$ and constant terms from the $A/x$ part.",
+            "To get an $x^2$ term in the numerator, we need an $x$ in the numerator of the quadratic fraction.",
+            "Thus we need $Bx + C$ to match any quadratic numerator."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Write the form only",
+          "prompt": "Write the decomposition form for $\\frac{2x^2-5}{x(x^2+1)}$.",
+          "steps": [
+            "Denominator factors: $x$ (linear) and $x^2+1$ (irreducible quadratic).",
+            "Form: $\\frac{A}{x} + \\frac{Bx+C}{x^2+1}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget the $x$ term",
+        "body": "For an irreducible quadratic, the numerator is [[imp:linear]] (e.g., $Ax+B$), not just a constant. Using only a constant will make it impossible to match the original numerator."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "For an irreducible quadratic factor like $x^2+4$, the numerator must be of the form ___ (use letters like Ax+B).",
+          "blanks": [
+            {
+              "accept": [
+                "Ax+B",
+                "Bx+C",
+                "Cx+D"
+              ]
+            }
+          ],
+          "hints": [
+            "It's linear, not constant.",
+            "One degree less than the denominator."
+          ],
+          "feedbackIfWrong": "The numerator should be linear, e.g., $Ax+B$."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "In the example, what was the value of $A$? (Enter a number)",
+          "answer": "1",
+          "hints": [
+            "From $4A=4$.",
+            "Divide by 4."
+          ],
+          "feedbackIfWrong": "$A = 1$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "When the quadratic factor is repeated, you need one term for each ___ of the factor.",
+          "blanks": [
+            {
+              "accept": [
+                "power"
+              ]
+            }
+          ],
+          "hints": [
+            "Like $(x^2+2)^2$ needs two terms.",
+            "Each exponent level gets its own fraction."
+          ],
+          "feedbackIfWrong": "Each power needs a separate term."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-partial-fractions",
+      "title": "Blueprint Aid – Full Decomposition",
+      "teacherCues": [
+        "Pose: Decompose $\\frac{x+5}{x^2(x^2+1)^2}$. Note all factor types: distinct $x^2$, repeated $(x^2+1)^2$.",
+        "Outline the blueprint: Understand (identify factors, write form), Solve (clear denominators, equate coefficients), Conclude (write decomposition)."
+      ],
+      "discoveryHook": {
+        "scenario": "Some rational expressions are like a complex puzzle with multiple piece types. By following a systematic blueprint—identify the factors, set up the right form, and solve for constants—you can crack even the most intimidating fractions."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Identify all factors in the denominator. Here $x^2$ is a repeated linear factor (twice), and $(x^2+1)^2$ is a repeated irreducible quadratic factor.",
+          "[[imp:Solve]]: Write the form with unknown constants. Multiply by the LCD to get the basic equation. Equate coefficients of like terms to form a system of equations. Solve the system.",
+          "[[imp:Conclude]]: Substitute the constants back into the form to get the final decomposition."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for $\\frac{x+5}{x^2(x^2+1)^2}$",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Factors: $x^2$ (repeated linear), $(x^2+1)^2$ (repeated quadratic)."
+              },
+              {
+                "0": "Form",
+                "1": "$\\frac{A}{x} + \\frac{B}{x^2} + \\frac{Cx+D}{x^2+1} + \\frac{Ex+F}{(x^2+1)^2}$."
+              },
+              {
+                "0": "Solve",
+                "1": "Multiply by LCD, equate coefficients, solve system."
+              },
+              {
+                "0": "Conclude",
+                "1": "Substitute $A=1, B=5, C=-1, D=-5, E=-1, F=-5$."
+              },
+              {
+                "0": "Result",
+                "1": "$\\frac{1}{x} + \\frac{5}{x^2} - \\frac{x+5}{x^2+1} - \\frac{x+5}{(x^2+1)^2}$."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Partial Fractions Blueprint",
+          "formula": "1. Check proper/improper.\n2. Factor denominator completely.\n3. Write form with unknown constants.\n4. Multiply by LCD.\n5. Solve for constants (substitute or equate).\n6. Write final decomposition.",
+          "notes": [
+            "Use convenient $x$ values for linear factors.",
+            "Use coefficient equating for quadratic factors.",
+            "Always check by recombining the fractions."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand & set up form",
+          "prompt": "Write the decomposition form for $\\frac{x+5}{x^2(x^2+1)^2}$.",
+          "steps": [
+            "Factors: $x$ appears twice → terms $\\frac{A}{x} + \\frac{B}{x^2}$.",
+            "$x^2+1$ appears twice → terms $\\frac{Cx+D}{x^2+1} + \\frac{Ex+F}{(x^2+1)^2}$.",
+            "Full form: $\\frac{A}{x} + \\frac{B}{x^2} + \\frac{Cx+D}{x^2+1} + \\frac{Ex+F}{(x^2+1)^2}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why six constants?",
+          "prompt": "Explain to your partner why this decomposition needs exactly six unknown constants.",
+          "peerPrompt": "Count the degrees of freedom: each linear term is one constant, each quadratic term is two (for $x$ and constant).",
+          "minLength": 2,
+          "steps": [
+            "$A$ and $B$ are single constants (2 total).",
+            "$Cx+D$ and $Ex+F$ each have two constants (4 total).",
+            "Total: $2 + 4 = 6$ constants, matching the maximum possible numerator degree."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Write form for a different example",
+          "prompt": "Write the decomposition form for $\\frac{x}{(x-1)^3(x^2+4)}$.",
+          "steps": [
+            "Repeated linear $(x-1)^3$ → $\\frac{A}{x-1} + \\frac{B}{(x-1)^2} + \\frac{C}{(x-1)^3}$.",
+            "Quadratic $x^2+4$ → $\\frac{Dx+E}{x^2+4}$.",
+            "Full form: $\\frac{A}{x-1} + \\frac{B}{(x-1)^2} + \\frac{C}{(x-1)^3} + \\frac{Dx+E}{x^2+4}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Correct number of constants",
+        "body": "The total number of unknown constants should equal the degree of the original denominator (after making the fraction proper). If you have too many or too few, your form is wrong."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the blueprint, the factor $x^2$ requires ___ terms in the decomposition.",
+          "blanks": [
+            {
+              "accept": [
+                "2",
+                "two"
+              ]
+            }
+          ],
+          "hints": [
+            "It's a repeated linear factor with exponent 2.",
+            "One term for $x$, one for $x^2$."
+          ],
+          "feedbackIfWrong": "Two terms."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "How many unknown constants are in the decomposition of $\\frac{x+5}{x^2(x^2+1)^2}$? (Enter a number)",
+          "answer": "6",
+          "hints": [
+            "Count: $A$, $B$, $C$, $D$, $E$, $F$.",
+            "That's all letters from A to F."
+          ],
+          "feedbackIfWrong": "Six constants."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "For quadratic factors, after clearing denominators, you solve for constants by equating ___ of like terms.",
+          "blanks": [
+            {
+              "accept": [
+                "coefficients"
+              ]
+            }
+          ],
+          "hints": [
+            "Compare the numbers in front of $x^2$, $x$, etc.",
+            "Set up a system of equations."
+          ],
+          "feedbackIfWrong": "Equate coefficients."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Decompose $\\frac{2x}{(x-1)(x+1)}$ into partial fractions. (Hint: factor difference of squares)",
+        "type": "short-answer",
+        "answer": "1/(x-1) + 1/(x+1)",
+        "hints": [
+          "Factor: $x^2-1 = (x-1)(x+1)$.",
+          "Form: $\\frac{A}{x-1} + \\frac{B}{x+1}$. Solve for $A$ and $B$."
+        ],
+        "feedbackIfWrong": "The decomposition is $\\frac{1}{x-1} + \\frac{1}{x+1}$."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

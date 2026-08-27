@@ -1,0 +1,722 @@
+{
+  "title": "Section 1.1 — Sets and Expressions",
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "You already group things in your daily life — your contact list, your favorite songs. In math, a **set** is just a formal collection of objects that share something in common. It's like creating a VIP list for numbers!"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Check each element against the list inside the braces $ \\{ x, 2, 4, y \\} $.",
+            "$ y $ is listed → $ y \\in A $ is **true**.",
+            "$ 3 $ is not listed → $ 3 \\in A $ is **false**.",
+            "$ 2 $ is listed, so $ 2 \\notin A $ claims it's not an element → **false**."
+          ],
+          "role": "guided",
+          "title": "Example A — Membership",
+          "prompt": "Given $ A = \\{ x, 2, 4, y \\} $, determine whether each statement is true or false: (a) $ y \\in A $, (b) $ 3 \\in A $, (c) $ 2 \\notin A $."
+        },
+        {
+          "prompt": "Explain why the empty set $ \\emptyset $ is a subset of any set $ A $.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: If $ \\emptyset $ has no elements, how can we be sure that every element of $ \\emptyset $ is also in $ A $?",
+          "role": "peer-explain",
+          "minLength": 8,
+          "title": "Example B — The Empty Set",
+          "steps": [
+            "The definition of subset: $ B \\subseteq A $ means 'if $ x $ is in $ B $, then $ x $ is in $ A $'.",
+            "Since $ \\emptyset $ has no elements, the condition is vacuously true—there's no element to break the rule.",
+            "Thus, $ \\emptyset $ is always a subset of any set."
+          ]
+        },
+        {
+          "prompt": "List all subsets of the set $ B = \\{ a, b \\} $.",
+          "title": "Example C — Listing Subsets",
+          "role": "independent",
+          "steps": [
+            "Always include the empty set $ \\emptyset $.",
+            "List subsets with one element: $ \\{ a \\} $, $ \\{ b \\} $.",
+            "List the subset with both elements: $ \\{ a, b \\} $.",
+            "All subsets: $ \\emptyset $, $ \\{ a \\} $, $ \\{ b \\} $, $ \\{ a, b \\} $."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "emptyset",
+                "empty set",
+                "∅"
+              ]
+            }
+          ],
+          "hints": [
+            "It looks like a zero with a slash.",
+            "It's a set containing no elements."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "The empty set is denoted by ∅ (called 'emptyset').",
+          "id": "sq1",
+          "prompt": "The symbol for the empty set is ___ (write the Greek letter name or the symbol)."
+        },
+        {
+          "prompt": "If every element of set B is also in set A, then B is a ___ of A (one word).",
+          "answer": "subset",
+          "id": "sq2",
+          "type": "short-answer",
+          "feedbackIfWrong": "The correct term is 'subset'.",
+          "hints": [
+            "Starts with 's'.",
+            "Think of 'sub' as meaning 'part of'."
+          ]
+        },
+        {
+          "answer": "no",
+          "prompt": "Let $ A = \\{ 1, 3, 5 \\} $. Is $ 2 \\in A $? Answer 'yes' or 'no'.",
+          "id": "sq3",
+          "hints": [
+            "Look inside the braces.",
+            "Is 2 listed?"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "2 is not an element of {1, 3, 5}, so the answer is 'no'."
+        }
+      ],
+      "id": "sets-and-elements",
+      "teacherCues": [
+        "Write a set on the board, like A = {2, 4, 6, 8}, and ask: 'What are the elements of this set?'",
+        "Introduce ∈ and ∉ with examples: 4 ∈ A, 5 ∉ A."
+      ],
+      "confusionCorner": {
+        "body": "$ \\in $ is used between an **element** and a **set** (like $ 5 \\in A $). $ \\subseteq $ is used between two **sets** (like $ \\{ 5 \\} \\subseteq A $). Writing $ 5 \\subseteq A $ is wrong — 5 is not a set.",
+        "title": "∈ vs. ⊆ — Don't Mix Them Up!"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ \\in $",
+                "1": "is an element of",
+                "2": "$ 4 \\in \\{ 1, 3, 4, 7 \\} $"
+              },
+              {
+                "0": "$ \\notin $",
+                "1": "is not an element of",
+                "2": "$ 5 \\notin \\{ 2, 4, 6 \\} $"
+              },
+              {
+                "0": "$ \\emptyset $",
+                "1": "empty set (no elements)",
+                "2": "$ A = \\emptyset $"
+              },
+              {
+                "0": "$ \\subseteq $",
+                "1": "is a subset of",
+                "2": "$ \\{ 2, 3 \\} \\subseteq \\{ 1, 2, 3 \\} $"
+              }
+            ],
+            "title": "Set Symbols Cheat Sheet",
+            "variant": "colorful",
+            "headers": [
+              "Symbol",
+              "Meaning",
+              "Example"
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "A [[kw:set]] is a well‑defined collection of distinct objects. Each object is called an [[kw:element]] or member.",
+          "Sets are written with curly braces $ \\{ \\} $ . For example, $ A = \\{ 1, 3, 5, 7 \\} $ contains the numbers 1, 3, 5, and 7.",
+          "The symbol $ \\in $ means 'is an element of'. $ \\notin $ means 'is not an element of'.",
+          "The [[kw:empty set]] (or null set) has no elements. It is written as $ \\emptyset $ or $ \\{ \\} $.",
+          "Set $ B $ is a [[kw:subset]] of $ A $, written $ B \\subseteq A $, if every element of $ B $ is also in $ A $. The empty set is a subset of every set."
+        ],
+        "formulaCard": {
+          "formula": "$$ B \\subseteq A \\text{ means: if } x \\in B \\text{, then } x \\in A $$",
+          "notes": [
+            "Every set is a subset of itself.",
+            "The empty set $ \\emptyset $ is a subset of every set."
+          ],
+          "title": "Subset Definition"
+        }
+      },
+      "title": "Sets and Elements"
+    },
+    {
+      "questions": [
+        {
+          "answer": "Z",
+          "prompt": "Which set is larger: $ \\mathbb{Z} $ or $ \\mathbb{W} $? (Answer with symbol Z or W)",
+          "hints": [
+            "Think about which set includes more numbers.",
+            "Integers include negatives, zero, and positives."
+          ],
+          "feedbackIfWrong": "The integers $ \\mathbb{Z} $ contain all whole numbers plus negatives, so Z is larger.",
+          "type": "short-answer",
+          "id": "rq1"
+        },
+        {
+          "prompt": "A number that cannot be written as a fraction of two integers is called an ___ number.",
+          "id": "rq2",
+          "feedbackIfWrong": "Such numbers are called irrational numbers.",
+          "type": "fill-blank",
+          "hints": [
+            "Starts with 'i'.",
+            "$ \\pi $ is the most famous example."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "irrational",
+                "Irrational"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "0 is not a natural number; it belongs to whole numbers.",
+          "hints": [
+            "Natural numbers start at 1.",
+            "Zero was added later to make whole numbers."
+          ],
+          "id": "rq3",
+          "prompt": "Is $ 0 $ an element of $ \\mathbb{N} $? Answer 'yes' or 'no'.",
+          "answer": "no"
+        }
+      ],
+      "teacherCues": [
+        "Draw a nested diagram: N inside W inside Z inside Q inside R, with I as a separate bubble intersecting R.",
+        "Write '5', '-3', '0.75', '√2' on the board and ask: 'Which sets does each belong to?'"
+      ],
+      "id": "real-number-subsets",
+      "concept": {
+        "explanation": [
+          "The [[kw:real numbers]] ($ \\mathbb{R} $) include all numbers on the number line.",
+          "[[kw:Natural numbers]] ($ \\mathbb{N} $): $ \\{ 1, 2, 3, \\ldots \\} $ – the counting numbers.",
+          "[[kw:Whole numbers]] ($ \\mathbb{W} $): natural numbers plus zero $ \\{ 0, 1, 2, \\ldots \\} $.",
+          "[[kw:Integers]] ($ \\mathbb{Z} $): whole numbers and their negatives $ \\{ \\ldots, -2, -1, 0, 1, 2, \\ldots \\} $.",
+          "[[kw:Rational numbers]] ($ \\mathbb{Q} $): numbers that can be written as $ \\frac{p}{q} $ where $ p \\in \\mathbb{Z} $, $ q \\in \\mathbb{N} $.",
+          "[[kw:Irrational numbers]] ($ \\mathbb{I} $): real numbers that are **not** rational, like $ \\pi $ and $ \\sqrt{2} $."
+        ],
+        "formulaCard": {
+          "formula": "$$ \\mathbb{N} \\subset \\mathbb{W} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R} \\quad \\text{and} \\quad \\mathbb{I} \\subset \\mathbb{R} $$",
+          "title": "Set Relationships",
+          "notes": [
+            "Every natural number is an integer, but not every integer is natural.",
+            "Rational and irrational sets are disjoint—no number is both."
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Set",
+              "Symbol",
+              "Description",
+              "Examples"
+            ],
+            "variant": "colorful",
+            "title": "The Real Number Family",
+            "rows": [
+              {
+                "0": "Natural",
+                "1": "$ \\mathbb{N} $",
+                "2": "Counting numbers",
+                "3": "$ 1, 2, 3, \\ldots $"
+              },
+              {
+                "0": "Whole",
+                "1": "$ \\mathbb{W} $",
+                "2": "Naturals and zero",
+                "3": "$ 0, 1, 2, \\ldots $"
+              },
+              {
+                "0": "Integers",
+                "1": "$ \\mathbb{Z} $",
+                "2": "Whole numbers and negatives",
+                "3": "$ -2, -1, 0, 1, 2 $"
+              },
+              {
+                "0": "Rational",
+                "1": "$ \\mathbb{Q} $",
+                "2": "Fractions of integers",
+                "3": "$ \\frac{1}{2}, -3, 0.75 $"
+              },
+              {
+                "0": "Irrational",
+                "1": "$ \\mathbb{I} $",
+                "2": "Non‑repeating, non‑terminating decimals",
+                "3": "$ \\pi, \\sqrt{2} $"
+              },
+              {
+                "0": "Real",
+                "1": "$ \\mathbb{R} $",
+                "2": "All rational and irrational numbers",
+                "3": "$ 5, -1.3, \\sqrt{3} $"
+              }
+            ]
+          }
+        ]
+      },
+      "title": "Subsets of the Real Numbers",
+      "confusionCorner": {
+        "body": "[[imp:0 is a whole number but NOT a natural number.]] Negative numbers are integers but not whole or natural. Always check the definitions carefully.",
+        "title": "Zero and Negatives"
+      },
+      "discoveryHook": {
+        "scenario": "Not all numbers are created equal. Some are simple counting numbers, some include zero, some go negative, and some refuse to be written as fractions. Organizing numbers into families helps you understand their personalities!"
+      },
+      "examples": [
+        {
+          "prompt": "Classify the number $ -3 $ into as many of the sets $ \\mathbb{N}, \\mathbb{W}, \\mathbb{Z}, \\mathbb{Q}, \\mathbb{I}, \\mathbb{R} $ as possible.",
+          "title": "Example A — Classifying Numbers",
+          "role": "guided",
+          "steps": [
+            "$ -3 $ is negative → not $ \\mathbb{N} $ or $ \\mathbb{W} $.",
+            "It is an integer → $ \\mathbb{Z} $.",
+            "It can be written as $ \\frac{-3}{1} $ → $ \\mathbb{Q} $.",
+            "It is not irrational → not $ \\mathbb{I} $.",
+            "All these are real → $ \\mathbb{R} $."
+          ]
+        },
+        {
+          "title": "Example B — Rational or Irrational?",
+          "steps": [
+            "A rational number can be written as a fraction of two integers.",
+            "The decimal $ 0.333... = 0.\\overline{3} = \\frac{1}{3} $, so it is rational.",
+            "Only decimals that never repeat and never terminate are irrational."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does 'repeating' mean rational, while 'non‑repeating' means irrational?",
+          "prompt": "Is the number $ 0.333... $ rational or irrational? Explain.",
+          "minLength": 8,
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "$ \\sqrt{5} $ is not a perfect square — it's a non‑terminating, non‑repeating decimal.",
+            "Irrational numbers are exactly those that cannot be expressed as a fraction.",
+            "Thus, $ \\sqrt{5} $ is irrational → the statement is **true**."
+          ],
+          "prompt": "Determine if the statement is true or false: $ \\sqrt{5} \\in \\mathbb{I} $.",
+          "title": "Example C — True or False?"
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "When you combine your music playlist with a friend's, you get a giant collection — that's a **union**. When you find the songs you both love, that's the **intersection**. Set operations are just a formal way to mix and match groups!"
+      },
+      "examples": [
+        {
+          "title": "Example A — Computing Union",
+          "prompt": "Let $ A = \\{ 4, 6, 8, 20 \\} $ and $ B = \\{ 6, 8, 9, 15 \\} $. Find $ A \\cup B $.",
+          "steps": [
+            "List all elements that appear in either set: 4, 6, 8, 20 from A; 6, 8, 9, 15 from B.",
+            "Combine without repeating: 4, 6, 8, 20, 9, 15.",
+            "So $ A \\cup B = \\{ 4, 6, 8, 9, 15, 20 \\} $."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 8,
+          "prompt": "Explain why $ A \\cap B $ is always a subset of $ A $.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does the definition of intersection guarantee that every element of $ A \\cap B $ must also be in $ A $?",
+          "steps": [
+            "$ A \\cap B $ contains only elements that are in **both** $ A $ and $ B $.",
+            "So every element in the intersection is automatically an element of $ A $.",
+            "By definition of subset, $ A \\cap B \\subseteq A $."
+          ],
+          "title": "Example B — Intersection and Subsets"
+        },
+        {
+          "title": "Example C — Disjoint Sets",
+          "prompt": "Let $ C = \\{ \\text{all even numbers} \\} $ and $ D = \\{ \\text{all odd numbers} \\} $. Find $ C \\cap D $ and $ C \\cup D $.",
+          "steps": [
+            "No number is both even and odd → $ C \\cap D = \\emptyset $.",
+            "Every integer is either even or odd → $ C \\cup D $ is the set of all integers $ \\mathbb{Z} $."
+          ],
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "The intersection symbol is ∩.",
+          "type": "fill-blank",
+          "hints": [
+            "It looks like an upside‑down U.",
+            "Union uses a U shape."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "∩",
+                "cap"
+              ]
+            }
+          ],
+          "id": "uq1",
+          "prompt": "The symbol for intersection is ___ (type the symbol)."
+        },
+        {
+          "prompt": "If $ A = \\{ 1, 2 \\} $ and $ B = \\{ 2, 3 \\} $, what is $ A \\cap B $? Write the set with braces.",
+          "answer": "{2}",
+          "id": "uq2",
+          "type": "short-answer",
+          "feedbackIfWrong": "The only common element is 2, so $ A \\cap B = \\{ 2 \\} $.",
+          "hints": [
+            "Find the element common to both.",
+            "Intersection means the overlap."
+          ]
+        },
+        {
+          "answer": "disjoint",
+          "prompt": "If two sets share no elements, they are called ___ (one word).",
+          "hints": [
+            "Starts with 'd'.",
+            "It means 'not connected'."
+          ],
+          "feedbackIfWrong": "Sets with empty intersection are called disjoint.",
+          "type": "short-answer",
+          "id": "uq3"
+        }
+      ],
+      "teacherCues": [
+        "Use two intersecting hula‑hoops on the floor. Place number cards to model union (all cards) and intersection (overlap).",
+        "Write on the board: If A = {1,2,3} and B = {2,3,4}, then A ∪ B = {1,2,3,4} and A ∩ B = {2,3}."
+      ],
+      "id": "unions-and-intersections",
+      "title": "Unions and Intersections",
+      "confusionCorner": {
+        "body": "Don't count repeated elements twice. The union $ \\{ 2, 3 \\} \\cup \\{ 2, 4 \\} $ is $ \\{ 2, 3, 4 \\} $, not $ \\{ 2, 2, 3, 4 \\} $. Sets ignore duplicates.",
+        "title": "Union Does Not Add"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Set Operations at a Glance",
+            "variant": "colorful",
+            "headers": [
+              "Operation",
+              "Symbol",
+              "Meaning",
+              "Example"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Union",
+                "1": "$ \\cup $",
+                "2": "Elements in either set",
+                "3": "$ A \\cup B = \\{ 1,2,3,4 \\} $"
+              },
+              {
+                "0": "Intersection",
+                "1": "$ \\cap $",
+                "2": "Elements in both sets",
+                "3": "$ A \\cap B = \\{ 2,3 \\} $"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "The [[kw:union]] of two sets $ A $ and $ B $, written $ A \\cup B $, is the set of all elements that are in $ A $, in $ B $, or in both.",
+          "The [[kw:intersection]] of $ A $ and $ B $, written $ A \\cap B $, is the set of elements common to both $ A $ and $ B $.",
+          "If $ A \\cap B = \\emptyset $, the sets are called **disjoint** — they share no elements.",
+          "Union and intersection are like 'or' and 'and' for sets."
+        ],
+        "formulaCard": {
+          "formula": "$$ A \\cup B = \\{ x \\mid x \\in A \\text{ or } x \\in B \\} \\\\ A \\cap B = \\{ x \\mid x \\in A \\text{ and } x \\in B \\} $$",
+          "title": "Union & Intersection Definitions",
+          "notes": [
+            "In a union, don't list duplicates.",
+            "Order of elements inside braces doesn't matter."
+          ]
+        }
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "You use unknown numbers all the time — the price of a gift before you check the tag, the hours until your favorite show. Algebra lets you work with those mysteries by giving them a name, like a variable. Then you can write recipes (expressions) to describe how quantities relate!"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Rewrite the expression to clearly see the multiplier: $ 7 + (-3)x $.",
+            "The number attached to $ x $ is $ -3 $.",
+            "So the coefficient is $ -3 $."
+          ],
+          "prompt": "Find the coefficient of $ x $ in the expression $ 7 - 3x $.",
+          "title": "Example A — Identify the Coefficient"
+        },
+        {
+          "prompt": "In the expression $ -k $, what is the coefficient? Is it 0, 1, or -1?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does a single letter like $ k $ still have a coefficient, even though no number is written?",
+          "role": "peer-explain",
+          "minLength": 8,
+          "title": "Example B — Variable vs. Coefficient",
+          "steps": [
+            "A variable written alone is the same as $ 1 \\times k $.",
+            "Here, $ -k $ means $ -1 \\times k $.",
+            "Thus, the coefficient is $ -1 $."
+          ]
+        },
+        {
+          "title": "Example C — Evaluate",
+          "prompt": "Evaluate $ 2x + 3y $ when $ x = 5 $ and $ y = -1 $.",
+          "steps": [
+            "Substitute: $ 2(5) + 3(-1) $.",
+            "Multiply first: $ 10 + (-3) $.",
+            "Add: $ 7 $."
+          ],
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "answer": "-2",
+          "prompt": "What is the coefficient of $ k $ in $ 5 - 2k $?",
+          "hints": [
+            "Look at the number directly multiplying $ k $.",
+            "Remember to include the sign."
+          ],
+          "feedbackIfWrong": "The coefficient is -2.",
+          "type": "short-answer",
+          "id": "eq1"
+        },
+        {
+          "id": "eq2",
+          "hints": [
+            "Substitute 0 for x.",
+            "10 times 0 is 0, then add 2."
+          ],
+          "feedbackIfWrong": "10(0) + 2 = 0 + 2 = 2.",
+          "type": "short-answer",
+          "answer": "2",
+          "prompt": "Evaluate $ 10x + 2 $ when $ x = 0 $. What is the value?"
+        },
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "It's a numeric (or numerical) expression.",
+          "blanks": [
+            {
+              "accept": [
+                "numeric",
+                "Numerical"
+              ]
+            }
+          ],
+          "hints": [
+            "Starts with 'n'.",
+            "Opposite of algebraic."
+          ],
+          "id": "eq3",
+          "prompt": "An expression that contains only numbers and operation symbols, with no variables, is called a ___ expression."
+        }
+      ],
+      "confusionCorner": {
+        "body": "If you see $ x $ alone, the coefficient is 1 (or -1 with a minus sign). It is **not** 0! A zero coefficient would make the term disappear ($ 0x = 0 $).",
+        "title": "Missing Coefficient ≠ 0"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:numeric expression]] contains only numbers and operation symbols, like $ 3 + 4 \\times 2 $. You can compute its value.",
+          "An [[kw:algebraic expression]] contains at least one [[kw:variable]] (a letter standing for an unknown number), like $ 2x + 5 $.",
+          "A [[kw:coefficient]] is the number multiplying a variable. In $ 2.54x $, the coefficient is $ 2.54 $. If no number is written, the coefficient is $ 1 $ (or $ -1 $ if there's a minus sign).",
+          "To [[kw:evaluate]] an algebraic expression, substitute given numbers for the variables and simplify using the order of operations."
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{If } x = a, \\text{ then } f(x) = f(a) $$",
+          "title": "Evaluating an Expression",
+          "notes": [
+            "Replace every variable with its given number.",
+            "Use parentheses when substituting negative numbers."
+          ]
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Numeric",
+                "1": "No",
+                "2": "$ 15.75 + 1.30 $"
+              },
+              {
+                "0": "Algebraic",
+                "1": "Yes",
+                "2": "$ 100d $ (cents in $d$ dollars)"
+              },
+              {
+                "0": "Algebraic",
+                "1": "Yes",
+                "2": "$ 2l + 3 $ (three more than twice length)"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Type",
+              "Contains Variables?",
+              "Example"
+            ],
+            "variant": "colorful",
+            "title": "Expression Types"
+          }
+        ]
+      },
+      "title": "Expressions and Coefficients",
+      "teacherCues": [
+        "Write on the board: 2x + 5. Circle the coefficient and ask: 'What does this number do to x?'",
+        "Contrast numeric expression (3 + 4) with algebraic expression (x + 4)."
+      ],
+      "id": "expressions-coefficients"
+    },
+    {
+      "title": "Blueprint: Evaluate Expressions",
+      "confusionCorner": {
+        "body": "When substituting a negative number, always wrap it in parentheses. Writing $ -3^2 $ without parentheses means $ -(3^2) = -9 $, but $ (-3)^2 = 9 $. The parentheses are your safety net!",
+        "title": "The Negative Trap"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "List expression and values. E.g., $ E = 2x + 5 $, $ x = 3 $."
+              },
+              {
+                "0": "2. Solve",
+                "1": "Substitute and simplify: $ 2(3) + 5 = 6 + 5 $."
+              },
+              {
+                "0": "3. Conclude",
+                "1": "State the answer: $ 11 $."
+              }
+            ],
+            "headers": [
+              "Stage",
+              "Action"
+            ],
+            "type": "table",
+            "title": "The Evaluation Blueprint",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Always follow the order of operations (PEMDAS).",
+            "Check for negative signs carefully."
+          ],
+          "title": "Blueprint Steps",
+          "formula": "$$ \\text{Expression}(x) \\xrightarrow{x=a} \\text{Expression}(a) \\xrightarrow{\\text{simplify}} \\text{Value} $$"
+        },
+        "explanation": [
+          "The **Understand → Solve → Conclude** blueprint breaks down evaluation into three clear stages.",
+          "[[imp:Understand:]] Identify the expression, the variables, and the values you must substitute.",
+          "[[imp:Solve:]] Replace each variable with its given value (use parentheses for negative numbers), then simplify using the correct order of operations.",
+          "[[imp:Conclude:]] Write the final value clearly, and if the problem asks for units, include them."
+        ]
+      },
+      "teacherCues": [
+        "Model the Understand–Solve–Conclude pattern on the board for a simple expression: $ 3a - 2 $ when $ a = 4 $.",
+        "Emphasize that substituting a negative value requires parentheses."
+      ],
+      "id": "blueprint-evaluating",
+      "questions": [
+        {
+          "hints": [
+            "Multiply first: $ 5 \\times 2 $.",
+            "Then subtract 1."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "5(2) - 1 = 10 - 1 = 9.",
+          "id": "bq1",
+          "answer": "9",
+          "prompt": "Evaluate $ 5x - 1 $ when $ x = 2 $. What is the answer?"
+        },
+        {
+          "prompt": "In the blueprint, the first stage where you identify the expression and the variable values is called ___.",
+          "id": "bq2",
+          "feedbackIfWrong": "The first stage is 'Understand'.",
+          "type": "fill-blank",
+          "hints": [
+            "It starts with 'U'.",
+            "It's the 'figure out what you have' step."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "Understand",
+                "understand"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "When substituting a negative number, you should always wrap it in what? (one word)",
+          "answer": "parentheses",
+          "id": "bq3",
+          "feedbackIfWrong": "Always use parentheses.",
+          "type": "short-answer",
+          "hints": [
+            "They look like ( ).",
+            "These symbols protect the negative sign."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "**Understand:** Expression $ E = 4t - 3 $, variable $ t = 2 $.",
+            "**Solve:** Substitute: $ 4(2) - 3 $. Multiply: $ 8 - 3 $. Subtract: $ 5 $.",
+            "**Conclude:** The value is $ 5 $."
+          ],
+          "prompt": "Use the blueprint to evaluate $ 4t - 3 $ when $ t = 2 $.",
+          "title": "Example A — Simple Substitution"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is it important to put $ (-3) $ in parentheses when substituting? What would happen if you wrote $ -(-3)^2 $ without them?",
+          "prompt": "Evaluate $ -x^2 + 2x $ for $ x = -3 $.",
+          "minLength": 8,
+          "role": "peer-explain",
+          "title": "Example B — Negative Substitution",
+          "steps": [
+            "**Understand:** $ E = -x^2 + 2x $, $ x = -3 $.",
+            "**Solve:** Substitute with parentheses: $ -(-3)^2 + 2(-3) $.",
+            "Exponent first: $ (-3)^2 = 9 $, so $ -9 + (-6) $.",
+            "Add: $ -15 $.",
+            "**Conclude:** The value is $ -15 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "**Understand:** $ E = 2a + 3b - c $, $ a = 1 $, $ b = 4 $, $ c = 5 $.",
+            "**Solve:** Substitute: $ 2(1) + 3(4) - 5 = 2 + 12 - 5 $.",
+            "Add/Subtract left to right: $ 14 - 5 = 9 $.",
+            "**Conclude:** The value is $ 9 $."
+          ],
+          "prompt": "Evaluate $ 2a + 3b - c $ for $ a = 1 $, $ b = 4 $, $ c = 5 $.",
+          "title": "Example C — Two Variables"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Evaluating an expression is like following a recipe. You gather your ingredients (the variable values), follow the steps (substitute and simplify), and present the finished dish (the final numeric answer). Use this blueprint every time!"
+      }
+    }
+  ],
+  "id": "section-1-1-sets-and-expressions",
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1784402286,
+    "_nanoseconds": 297000000
+  }
+}

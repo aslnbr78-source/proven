@@ -1,0 +1,71 @@
+{
+  "type": "flashcard",
+  "id": "section-10-4-flashcards",
+  "cards": [
+    {
+      "back": "It compares the means of three or more populations to determine if at least one mean is different from the others. It analyzes variances (between and within groups) to test this.",
+      "front": "What is [[kw:one‑way ANOVA]] used for?"
+    },
+    {
+      "front": "State the null and alternative hypotheses for a one‑way ANOVA.",
+      "back": "$H_0: \\mu_1 = \\mu_2 = \\dots = \\mu_k$ (all population means are equal). $H_a$: At least one mean is different from the others."
+    },
+    {
+      "front": "What are the three conditions for a one‑way ANOVA test?",
+      "back": "1. Each sample is randomly selected from a normal (or approximately normal) population. 2. The samples are independent. 3. Each population has the same variance (homogeneity of variance)."
+    },
+    {
+      "back": "It measures the variation between the sample means. A large MSB indicates that the group means are far apart. It is calculated as $MSB = SSB / (k-1)$.",
+      "front": "What does [[kw:MSB]] (Mean Square Between) measure?"
+    },
+    {
+      "back": "It measures the variation within the samples, pooling the sample variances. It estimates the natural variability inside groups. $MSW = SSW / (N-k)$.",
+      "front": "What does [[kw:MSW]] (Mean Square Within) measure?"
+    },
+    {
+      "back": "$$F = \\frac{MSB}{MSW}$$ It follows an F‑distribution with $d.f._N = k-1$ and $d.f._D = N-k$.",
+      "front": "What is the test statistic for one‑way ANOVA?"
+    },
+    {
+      "back": "The F‑statistic is a ratio of variances (always ≥ 0). If $H_0$ is true, $F \\approx 1$. If $H_0$ is false, $F > 1$. So we reject only for large F values.",
+      "front": "Why is ANOVA always a [[imp:right‑tailed test]]?"
+    },
+    {
+      "back": "Numerator df: $d.f._N = k - 1$ (k = number of groups). Denominator df: $d.f._D = N - k$ (N = total number of observations across all groups).",
+      "front": "How do you calculate the degrees of freedom for ANOVA?"
+    },
+    {
+      "front": "What is the [[kw:grand mean]]?",
+      "back": "The mean of all the data values from all samples combined. It is used to compute the between‑group variation (SSB)."
+    },
+    {
+      "front": "In the pain reliever example, $F \\approx 1.50$, critical value $7.56$. Decision?",
+      "back": "Fail to reject $H_0$. There is not enough evidence to conclude that the mean relief times differ among the three medications."
+    },
+    {
+      "front": "If you reject $H_0$ in ANOVA, what do you conclude?",
+      "back": "You conclude that at least one population mean is different from the others. You do NOT know which specific means differ without further post‑hoc tests."
+    },
+    {
+      "back": "$$SSB = \\sum_{i=1}^{k} n_i (\\bar{x}_i - \\bar{x})^2$$ where $n_i$ is the sample size of group $i$, $\\bar{x}_i$ its mean, and $\\bar{x}$ the grand mean.",
+      "front": "What formula computes [[kw:SSB]] (Sum of Squares Between)?"
+    },
+    {
+      "back": "$$SSW = \\sum_{i=1}^{k} (n_i - 1) s_i^2$$ It pools the within‑group variability. Alternatively, sum the squared deviations from each group's mean.",
+      "front": "What formula computes [[kw:SSW]] (Sum of Squares Within) using sample variances?"
+    },
+    {
+      "front": "What Google Sheets function gives the p‑value from an F‑statistic?",
+      "back": "`=F.DIST.RT(F, d.f.N, d.f.D)` returns the right‑tailed probability. If the p‑value < $\\alpha$, reject $H_0$."
+    },
+    {
+      "back": "It lists the sources of variation (Between, Within), their Sum of Squares (SSB, SSW), degrees of freedom, Mean Squares (MSB, MSW), and the F‑statistic.",
+      "front": "What does the ANOVA summary table contain?"
+    }
+  ],
+  "title": "Analysis of Variance (One‑Way ANOVA)",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

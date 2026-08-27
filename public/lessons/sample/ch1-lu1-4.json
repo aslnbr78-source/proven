@@ -1,0 +1,791 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "ch1-lu1-4",
+  "title": "Functions",
+  "standards": [
+    "HSF.IF.A.1",
+    "HSF.IF.A.2",
+    "HSF.IF.C.7"
+  ],
+  "blocks": [
+    {
+      "id": "function-definition",
+      "title": "1. What is a Function?",
+      "teacherCues": [
+        "Ask: 'If I tell you a time of day, can you tell me the exact temperature right now?'",
+        "Define a function as a rule that assigns exactly one output to each input."
+      ],
+      "discoveryHook": {
+        "scenario": "The simple interest $ I $ earned on $1000$ for one year depends on the annual interest rate $ r $ by the formula $ I = 1000r $. For each rate $ r $, there is exactly one interest amount. This kind of relation—each input matching exactly one output—is a [[kw:function]]. Functions are the building blocks of mathematical models."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:function]] $ f $ from a set $ A $ to a set $ B $ assigns to each input $ x $ in $ A $ exactly one output $ y $ in $ B $.",
+          "The set $ A $ is the [[kw:domain]] (all possible inputs), and the set $ B $ contains the [[kw:range]] (all actual outputs).",
+          "Functions can be represented: verbally (a sentence), numerically (a table of ordered pairs), graphically (a curve), or algebraically (an equation).",
+          "Key characteristic: each input $ x $ corresponds to exactly one output $ y $. No input can map to two different outputs.",
+          "[[imp: If any $ x $ value is paired with more than one $ y $ value, the relation is NOT a function.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Testing for a Function",
+            "variant": "colorful",
+            "headers": [
+              "Representation",
+              "Function?",
+              "Reason"
+            ],
+            "rows": [
+              {
+                "0": "Verbal: $ x $ = number of reps, $ y $ = number of senators",
+                "1": "Yes",
+                "2": "Always $ y = 2 $, constant function."
+              },
+              {
+                "0": "Table: $ x = 2 $ gives $ y = 11 $ and $ y = 10 $",
+                "1": "No",
+                "2": "Input 2 maps to two outputs."
+              },
+              {
+                "0": "Graph: passes Vertical Line Test",
+                "1": "Yes",
+                "2": "Each $ x $ has one $ y $."
+              }
+            ],
+            "caption": "A quick check: for each input, there must be only one output."
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Determine if a table represents a function",
+          "prompt": "Does the table below represent $ y $ as a function of $ x $?",
+          "steps": [
+            "Look at each input $ x $. For $ x = -2 $, the output is 4. For $ x = -1 $, output is 1. For $ x = 0 $, output is 0. For $ x = 1 $, output is 1. For $ x = 2 $, output is 4.",
+            "No $ x $ value appears with two different $ y $ values.",
+            "Therefore, $ y $ is a function of $ x $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why the vertical line test works",
+          "prompt": "Explain how drawing vertical lines on a graph helps determine if the graph is a function.",
+          "peerPrompt": "Think about what a vertical line represents.",
+          "minLength": 2,
+          "steps": [
+            "A vertical line corresponds to a specific $ x $ value.",
+            "If that line hits the graph more than once, that $ x $ value has multiple $ y $ values, violating the function definition.",
+            "Thus, if every vertical line hits the graph at most once, the graph passes the test and is a function."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Function or not?",
+          "prompt": "Determine whether the set of ordered pairs $ \\{ (1, 5), (2, 7), (1, 8), (3, 6) \\} $ represents a function.",
+          "steps": [
+            "Check the input $ x = 1 $. It is paired with $ y = 5 $ and also $ y = 8 $.",
+            "An input cannot have two outputs.",
+            "Therefore, it is not a function."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't confuse 'each input has exactly one output' with 'each output must come from a unique input.' A function may have different inputs that give the same output. [[imp: The restriction is on inputs, not outputs.]]"
+      },
+      "questions": [
+        {
+          "id": "b1q1",
+          "type": "fill-blank",
+          "prompt": "A relation where each input has exactly one output is called a ___.",
+          "blanks": [
+            {
+              "accept": [
+                "function"
+              ]
+            }
+          ],
+          "hints": [
+            "Not just a relation.",
+            "Passes the vertical line test."
+          ],
+          "feedbackIfWrong": "function."
+        },
+        {
+          "id": "b1q2",
+          "type": "short-answer",
+          "prompt": "Is $ \\{ (0, 3), (1, 4), (2, 5), (0, 6) \\} $ a function? (yes or no)",
+          "answers": [
+            "no"
+          ],
+          "hints": [
+            "Check repeated inputs.",
+            "Input 0 appears twice with different outputs."
+          ],
+          "feedbackIfWrong": "no."
+        },
+        {
+          "id": "b1q3",
+          "type": "short-answer",
+          "prompt": "The set of all possible inputs for a function is called the ___ (domain or range).",
+          "answers": [
+            "domain"
+          ],
+          "hints": [
+            "The $ x $ values.",
+            "Where the function starts."
+          ],
+          "feedbackIfWrong": "domain."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A function is defined by the equation $ y = x^2 $. Could we also say $ x $ is a function of $ y $? Explain.",
+        "type": "short-answer",
+        "answers": [
+          "no",
+          "because for a given y there are two x values (except y=0)"
+        ],
+        "hints": [
+          "Solve for $ x $: $ x = \\pm\\sqrt{y} $.",
+          "For $ y = 4 $, $ x $ could be $ 2 $ or $ -2 $, so not a function."
+        ]
+      }
+    },
+    {
+      "id": "algebraic-tests",
+      "title": "2. Testing Equations for Functions",
+      "teacherCues": [
+        "Ask: 'Given an equation, how can we decide if it defines $ y $ as a function of $ x $?'",
+        "Demonstrate solving for $ y $ and examining the result."
+      ],
+      "discoveryHook": {
+        "scenario": "The equation $ x^2 + y = 1 $ defines $ y = 1 - x^2 $, giving exactly one $ y $ for each $ x $. But $ -x + y^2 = 1 $ leads to $ y = \\pm\\sqrt{1 + x} $, meaning some $ x $ values produce two $ y $ values. Algebraically, a relation is a function if solving for $ y $ yields only one expression without a $ \\pm $ sign."
+      },
+      "concept": {
+        "explanation": [
+          "To determine whether an equation represents $ y $ as a function of $ x $, solve for $ y $ in terms of $ x $.",
+          "If the result gives exactly one value of $ y $ for each $ x $ (no $ \\pm $ or absolute value ambiguity), then $ y $ is a function of $ x $.",
+          "If the result contains a $ \\pm $ or indicates two possible $ y $ values for some $ x $, then $ y $ is NOT a function of $ x $.",
+          "[[imp: You are checking that for each $ x $, there is exactly one $ y $. The $ \\pm $ symbol is a red flag.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Algebraic Test for Functions",
+            "variant": "colorful",
+            "headers": [
+              "Equation",
+              "Solve for $ y $",
+              "Function?"
+            ],
+            "rows": [
+              {
+                "0": "$ x^2 + y = 1 $",
+                "1": "$ y = 1 - x^2 $",
+                "2": "Yes (one $ y $ for each $ x $)"
+              },
+              {
+                "0": "$ -x + y^2 = 1 $",
+                "1": "$ y = \\pm\\sqrt{1 + x} $",
+                "2": "No ($ \\pm $ gives two $ y $'s for $ x > -1 $)"
+              },
+              {
+                "0": "$ y - 4x^2 = 36 $",
+                "1": "$ y = 4x^2 + 36 $",
+                "2": "Yes"
+              },
+              {
+                "0": "$ x^2 + y^2 = 8 $",
+                "1": "$ y = \\pm\\sqrt{8 - x^2} $",
+                "2": "No"
+              }
+            ],
+            "caption": "If solving yields $ \\pm $, it's not a function. Otherwise it is."
+          }
+        ],
+        "formulaCard": {
+          "title": "Algebraic Function Test",
+          "formula": "$$ \\text{Solve for } y. \\text{ If } y = \\text{(single expression)}, \\text{ it's a function. If } y = \\pm\\text{(expression)}, \\text{ it's not.} $$",
+          "notes": [
+            "The $ \\pm $ symbol indicates two outputs for a single input.",
+            "Even if the $ \\pm $ only appears for some inputs, the relation is not a function."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Algebraic test",
+          "prompt": "Determine if $ x^2 + y = 4 $ represents $ y $ as a function of $ x $.",
+          "steps": [
+            "Solve for $ y $: $ y = 4 - x^2 $.",
+            "For any $ x $, the right side gives exactly one value.",
+            "Thus, $ y $ is a function of $ x $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why $ \\pm $ fails the function test",
+          "prompt": "Explain why the $ \\pm $ sign in $ y = \\pm\\sqrt{x} $ indicates the relation is not a function.",
+          "peerPrompt": "Think about what the $ \\pm $ means for a specific input.",
+          "minLength": 2,
+          "steps": [
+            "The $ \\pm $ symbol means 'plus or minus', i.e., two possible values.",
+            "For any positive $ x $, there are two outputs: $ \\sqrt{x} $ and $ -\\sqrt{x} $.",
+            "Thus an input $ x $ maps to two outputs, violating the definition of a function."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Practice",
+          "prompt": "Does $ 3x - y = 7 $ represent $ y $ as a function of $ x $?",
+          "steps": [
+            "Solve: $ -y = 7 - 3x $ → $ y = 3x - 7 $.",
+            "One expression, no ambiguity.",
+            "Yes, $ y $ is a function of $ x $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Just because an equation involves $ x $ and $ y $ doesn't mean $ y $ is a function of $ x $. [[imp: Always solve for $ y $ first, then check for multiple outputs.]]"
+      },
+      "questions": [
+        {
+          "id": "b2q1",
+          "type": "fill-blank",
+          "prompt": "If solving an equation for $ y $ produces a $ \\pm $ sign, then $ y $ is ___ a function of $ x $ (always, sometimes, or never).",
+          "blanks": [
+            {
+              "accept": [
+                "not",
+                "never"
+              ]
+            }
+          ],
+          "hints": [
+            "The $ \\pm $ means two outputs.",
+            "One input, two outputs."
+          ],
+          "feedbackIfWrong": "not (or never)."
+        },
+        {
+          "id": "b2q2",
+          "type": "short-answer",
+          "prompt": "Does $ y = 5x - 2 $ represent $ y $ as a function of $ x $? (yes or no)",
+          "answers": [
+            "yes"
+          ],
+          "hints": [
+            "Already solved for $ y $.",
+            "One $ y $ for each $ x $."
+          ],
+          "feedbackIfWrong": "yes."
+        },
+        {
+          "id": "b2q3",
+          "type": "short-answer",
+          "prompt": "Solve $ 2x + 3y = 6 $ for $ y $. Does it represent a function? (type the expression after $ y = $)",
+          "answers": [
+            "2 - (2/3)x",
+            "2-2/3x",
+            "(6-2x)/3"
+          ],
+          "hints": [
+            "Isolate $ y $: $ 3y = 6 - 2x $.",
+            "Divide by 3."
+          ],
+          "feedbackIfWrong": "$ y = 2 - \\frac{2}{3}x $, yes it is a function."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Determine if $ x = y^2 + 3 $ represents $ y $ as a function of $ x $.",
+        "type": "short-answer",
+        "answers": [
+          "no"
+        ],
+        "hints": [
+          "Solve for $ y $: $ y^2 = x - 3 $ → $ y = \\pm\\sqrt{x-3} $.",
+          "The $ \\pm $ indicates it is not a function."
+        ]
+      }
+    },
+    {
+      "id": "function-notation",
+      "title": "3. Function Notation and Evaluation",
+      "teacherCues": [
+        "Write $ f(x) = 3x + 1 $ on the board. Ask: 'What does $ f(2) $ mean?'",
+        "Show how to substitute inputs: $ f(\\text{something}) $."
+      ],
+      "discoveryHook": {
+        "scenario": "Instead of always writing $ y = $, mathematicians use [[kw:function notation]] $ f(x) $ to name the function and indicate the input. For $ f(x) = x^2 + 3 $, we read ' $ f $ of $ x $ '. The symbol $ f(x) $ is the output, and we evaluate it by plugging in a value for $ x $."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Function notation]]: $ f(x) $ is read ' $ f $ of $ x $ ' and represents the output value of the function $ f $ at input $ x $.",
+          "To evaluate $ f(a) $, replace every occurrence of $ x $ in the function's formula with the value $ a $, then simplify.",
+          "The independent variable (often $ x $) is the placeholder. You can use any letter, like $ g(t) = t^2 $.",
+          "[[imp: $ f(x) $ does NOT mean $ f $ times $ x $. It is a single symbol.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Evaluating $ g(x) = -x^2 + 4x + 1 $",
+            "variant": "colorful",
+            "headers": [
+              "Input",
+              "Substitution",
+              "Output"
+            ],
+            "rows": [
+              {
+                "0": "$ g(2) $",
+                "1": "$ -(2)^2 + 4(2) + 1 $",
+                "2": "$ 5 $"
+              },
+              {
+                "0": "$ g(t) $",
+                "1": "$ -(t)^2 + 4t + 1 $",
+                "2": "$ -t^2 + 4t + 1 $"
+              },
+              {
+                "0": "$ g(x+2) $",
+                "1": "$ -(x+2)^2 + 4(x+2) + 1 $",
+                "2": "$ -x^2 + 5 $"
+              }
+            ],
+            "caption": "The input replaces every $ x $ in the formula."
+          }
+        ],
+        "formulaCard": {
+          "title": "Function Notation",
+          "formula": "$$ f(x) = \\text{expression in } x $$ $$ f(a) \\text{ means replace } x \\text{ with } a $$",
+          "notes": [
+            "The argument (in parentheses) is the input.",
+            "Be careful with signs when substituting negative numbers."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Evaluate at a number",
+          "prompt": "Given $ f(x) = 10 - 3x^2 $, find $ f(2) $ and $ f(-4) $.",
+          "steps": [
+            "$ f(2) = 10 - 3(2)^2 = 10 - 12 = -2 $.",
+            "$ f(-4) = 10 - 3(-4)^2 = 10 - 3(16) = 10 - 48 = -38 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why $ f(x+2) $ isn't $ f(x) + 2 $",
+          "prompt": "Explain why $ f(x+2) $ is generally not equal to $ f(x) + 2 $, using $ f(x) = x^2 $ as an example.",
+          "peerPrompt": "Compute both and compare.",
+          "minLength": 2,
+          "steps": [
+            "For $ f(x) = x^2 $, $ f(x+2) = (x+2)^2 = x^2 + 4x + 4 $.",
+            "But $ f(x) + 2 = x^2 + 2 $.",
+            "These are different expressions. The $ +2 $ is inside the function's argument, altering how the function processes it.",
+            "Thus $ f(x+2) \\neq f(x) + 2 $ in general."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Evaluate expression",
+          "prompt": "Let $ h(t) = t^2 - 3t $. Find $ h(t+1) $ and simplify.",
+          "steps": [
+            "$ h(t+1) = (t+1)^2 - 3(t+1) = (t^2 + 2t + 1) - 3t - 3 = t^2 - t - 2 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "When substituting an expression like $ x+2 $, put parentheses around it. [[imp: $ f(x+2) \\neq f(x) + f(2) $.]]"
+      },
+      "questions": [
+        {
+          "id": "b3q1",
+          "type": "fill-blank",
+          "prompt": "The notation $ f(x) $ is read '___ of $ x $ '.",
+          "blanks": [
+            {
+              "accept": [
+                "f"
+              ]
+            }
+          ],
+          "hints": [
+            "The name of the function.",
+            "The letter before the parentheses."
+          ],
+          "feedbackIfWrong": "f."
+        },
+        {
+          "id": "b3q2",
+          "type": "short-answer",
+          "prompt": "If $ f(x) = 2x - 5 $, find $ f(3) $. (number only)",
+          "answers": [
+            "1"
+          ],
+          "hints": [
+            "$ 2(3) - 5 = 6 - 5 $.",
+            "= 1."
+          ],
+          "feedbackIfWrong": "1."
+        },
+        {
+          "id": "b3q3",
+          "type": "short-answer",
+          "prompt": "If $ g(x) = x^2 + x $, find $ g(-2) $. (number only)",
+          "answers": [
+            "2"
+          ],
+          "hints": [
+            "$ (-2)^2 + (-2) = 4 - 2 $.",
+            "= 2."
+          ],
+          "feedbackIfWrong": "2."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Given $ f(x) = 3x^2 - 2x + 1 $, compute the difference quotient $ \\frac{f(x+h) - f(x)}{h} $, where $ h \\neq 0 $.",
+        "type": "short-answer",
+        "answers": [
+          "6x + 3h - 2"
+        ],
+        "hints": [
+          "$ f(x+h) = 3(x+h)^2 - 2(x+h) + 1 = 3x^2 + 6xh + 3h^2 - 2x - 2h + 1 $.",
+          "Subtract $ f(x) $ and divide by $ h $, simplify."
+        ]
+      }
+    },
+    {
+      "id": "piecewise",
+      "title": "4. Piecewise-Defined Functions",
+      "teacherCues": [
+        "Ask: 'What if a function has different formulas depending on the input range?'",
+        "Show a piecewise function and how to evaluate it."
+      ],
+      "discoveryHook": {
+        "scenario": "A taxi charges $3 per mile for the first 5 miles and $2 per mile thereafter. The cost function has two parts: $ C(x) = 3x $ for $ x \\leq 5 $ and $ C(x) = 15 + 2(x-5) $ for $ x > 5 $. Functions like this, defined by different formulas on different intervals, are [[kw:piecewise‑defined functions]]."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:piecewise‑defined function]] uses different rules for different parts of its domain.",
+          "Each piece applies to a specific interval of $ x $ values, often given with inequalities.",
+          "To evaluate, first determine which interval the input belongs to, then use the corresponding formula.",
+          "Example: $$ f(x) = \\begin{cases} x^2 + 1, & x < 0 \\\\ x - 1, & x \\geq 0 \\end{cases} $$",
+          "[[imp: The intervals must not overlap; each $ x $ must belong to exactly one piece.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Evaluating $ f(x) = \\begin{cases} x^2+1, & x<0 \\\\ x-1, & x\\ge 0 \\end{cases} $",
+            "variant": "colorful",
+            "headers": [
+              "$ x $",
+              "Which piece?",
+              "Formula used",
+              "$ f(x) $"
+            ],
+            "rows": [
+              {
+                "0": "$ -1 $",
+                "1": "$ x < 0 $",
+                "2": "$ x^2+1 $",
+                "3": "$ 2 $"
+              },
+              {
+                "0": "$ 0 $",
+                "1": "$ x \\geq 0 $",
+                "2": "$ x-1 $",
+                "3": "$ -1 $"
+              },
+              {
+                "0": "$ 1 $",
+                "1": "$ x \\geq 0 $",
+                "2": "$ x-1 $",
+                "3": "$ 0 $"
+              }
+            ],
+            "caption": "Always check the condition before picking the formula."
+          }
+        ],
+        "formulaCard": {
+          "title": "Piecewise Function Example",
+          "formula": "$$ f(x) = \\begin{cases} \\text{expression 1}, & \\text{condition 1} \\\\ \\text{expression 2}, & \\text{condition 2} \\end{cases} $$",
+          "notes": [
+            "The conditions are usually inequalities.",
+            "The open circle $ \\circ $ and closed circle $ \\bullet $ in graphs show endpoints."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Evaluate piecewise",
+          "prompt": "Given $ f(x) = \\begin{cases} 2x, & x \\leq 3 \\\\ -x+9, & x > 3 \\end{cases} $, find $ f(2) $ and $ f(5) $.",
+          "steps": [
+            "For $ x=2 $: $ 2 \\leq 3 $, use first piece: $ f(2) = 2(2) = 4 $.",
+            "For $ x=5 $: $ 5 > 3 $, use second piece: $ f(5) = -5 + 9 = 4 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why piecewise?",
+          "prompt": "Explain why a step function (like postage based on weight) is an example of a piecewise function.",
+          "peerPrompt": "Think about how the price changes at certain weight thresholds.",
+          "minLength": 2,
+          "steps": [
+            "Postage is constant for a range of weights, then jumps to a new constant for the next range.",
+            "Each weight interval has a different constant cost, making it piecewise.",
+            "The function is not a single smooth formula; it's defined in pieces."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find function value",
+          "prompt": "$ g(x) = \\begin{cases} x+2, & x < -1 \\\\ x^2, & -1 \\leq x \\leq 2 \\\\ 5, & x > 2 \\end{cases} $. Find $ g(-2) $, $ g(0) $, $ g(3) $.",
+          "steps": [
+            "$ -2 < -1 $: use $ x+2 $ → $ g(-2) = 0 $.",
+            "$ 0 $ is between $ -1 $ and $ 2 $: use $ x^2 $ → $ g(0) = 0 $.",
+            "$ 3 > 2 $: use $ 5 $ → $ g(3) = 5 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Check endpoint conditions carefully. [[imp: If the condition is $ x \\leq 0 $ and $ x > 0 $, the value at $ x = 0 $ belongs to the first piece only.]]"
+      },
+      "questions": [
+        {
+          "id": "b4q1",
+          "type": "fill-blank",
+          "prompt": "A function that uses different formulas for different parts of its domain is called a ___ function.",
+          "blanks": [
+            {
+              "accept": [
+                "piecewise",
+                "piecewise-defined"
+              ]
+            }
+          ],
+          "hints": [
+            "It's in pieces.",
+            "Not continuous necessarily."
+          ],
+          "feedbackIfWrong": "piecewise (or piecewise-defined)."
+        },
+        {
+          "id": "b4q2",
+          "type": "short-answer",
+          "prompt": "$ f(x) = \\begin{cases} 3, & x < 2 \\\\ 5, & x \\geq 2 \\end{cases} $. Find $ f(1) $. (number only)",
+          "answers": [
+            "3"
+          ],
+          "hints": [
+            "$ 1 < 2 $, use first piece.",
+            "It's a constant."
+          ],
+          "feedbackIfWrong": "3."
+        },
+        {
+          "id": "b4q3",
+          "type": "short-answer",
+          "prompt": "Same function, find $ f(2) $. (number only)",
+          "answers": [
+            "5"
+          ],
+          "hints": [
+            "$ 2 \\geq 2 $, so second piece.",
+            "The condition includes equality."
+          ],
+          "feedbackIfWrong": "5."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Write a piecewise function for the absolute value $ f(x) = |x| $ using two pieces.",
+        "type": "short-answer",
+        "answers": [
+          "f(x) = { -x, x<0; x, x>=0 }"
+        ],
+        "hints": [
+          "For $ x < 0 $, $ |x| = -x $.",
+          "For $ x \\geq 0 $, $ |x| = x $."
+        ]
+      }
+    },
+    {
+      "id": "blueprint-functions",
+      "title": "5. Blueprint Aid for Function Analysis",
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that requires determining if a relation is a function, evaluating, and analyzing domain."
+      ],
+      "discoveryHook": {
+        "scenario": "Given the equation $ y = \\sqrt{4 - x} $, use the blueprint to decide if $ y $ is a function of $ x $, find the domain, and evaluate at a few points. The blueprint helps organize the analysis and avoid common mistakes with square roots and domains."
+      },
+      "concept": {
+        "explanation": [
+          "Apply the blueprint to function problems:",
+          "1. **Understand**: Is the relation given as a set of pairs, a graph, or an equation? What is asked?",
+          "2. **Solve**: a) Determine if it's a function (check for multiple outputs). b) If applicable, evaluate at given values. c) Find the domain by identifying $ x $ values that make the expression undefined or produce non‑real results (e.g., square roots of negatives, division by zero).",
+          "3. **Conclude**: State whether it's a function, provide function values, express domain in interval notation.",
+          "[[imp: Domain is all real numbers except where expression is undefined or yields non‑real values.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Blueprint: Analyzing $ y = \\sqrt{4 - x} $",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Equation $ y = \\sqrt{4 - x} $. Determine if function, domain, $ f(0) $.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Function?",
+                "1": "For each $ x $, square root gives one non‑negative $ y $. No $ \\pm $.",
+                "2": "Yes, $ y $ is a function of $ x $."
+              },
+              {
+                "0": "2. Solve – Domain",
+                "1": "Radicand $ 4 - x \\geq 0 $ → $ x \\leq 4 $.",
+                "2": "Domain: $ (-\\infty, 4] $."
+              },
+              {
+                "0": "2. Solve – Evaluate",
+                "1": "$ f(0) = \\sqrt{4-0} = 2 $; $ f(-5) = \\sqrt{9} = 3 $.",
+                "2": "Values at 0 and -5."
+              },
+              {
+                "0": "3. Conclude",
+                "1": "$ y = \\sqrt{4-x} $ is a function with domain $ (-\\infty, 4] $.",
+                "2": ""
+              }
+            ],
+            "caption": "Follow the blueprint to methodically analyze any function."
+          }
+        ],
+        "formulaCard": {
+          "title": "Function Analysis Blueprint",
+          "formula": "$$ \\text{Function? Solve for } y \\text{ and check for } \\pm. $$ $$ \\text{Domain: set of } x \\text{ for which expression is defined.} $$ $$ \\text{Evaluate: substitute input into function.} $$",
+          "notes": [
+            "Square root functions: radicand $ \\geq 0 $.",
+            "Rational functions: denominator $ \\neq 0 $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full blueprint",
+          "prompt": "Analyze the equation $ y = \\frac{1}{x-3} $. Is $ y $ a function of $ x $? Find the domain.",
+          "steps": [
+            "Solve for $ y $: already solved. For each $ x $ (except 3), there is exactly one $ y $ → yes, it's a function.",
+            "Domain: denominator $ x-3 \\neq 0 $ → $ x \\neq 3 $. Domain: $ (-\\infty, 3) \\cup (3, \\infty) $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why domain matters",
+          "prompt": "Explain why finding the domain is an important step before graphing or using a function.",
+          "peerPrompt": "What happens if you try to use a value outside the domain?",
+          "minLength": 2,
+          "steps": [
+            "The domain tells you the allowed input values.",
+            "Using a value outside the domain leads to undefined expressions (division by zero) or imaginary numbers.",
+            "Knowing the domain focuses your attention on the relevant part of the graph."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Domain and evaluation",
+          "prompt": "Let $ f(x) = \\sqrt{2x + 6} $. Find the domain and $ f(5) $.",
+          "steps": [
+            "Domain: radicand $ 2x + 6 \\geq 0 $ → $ 2x \\geq -6 $ → $ x \\geq -3 $. Domain $ [-3, \\infty) $.",
+            "$ f(5) = \\sqrt{2(5) + 6} = \\sqrt{16} = 4 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "For square root functions, remember that the radicand must be $ \\geq 0 $. [[imp: The domain excludes any $ x $ that makes the expression under the root negative.]]"
+      },
+      "questions": [
+        {
+          "id": "b5q1",
+          "type": "fill-blank",
+          "prompt": "The first step of the blueprint is to ___ the problem.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "hints": [
+            "Identify knowns.",
+            "U in U‑S‑C."
+          ],
+          "feedbackIfWrong": "understand."
+        },
+        {
+          "id": "b5q2",
+          "type": "short-answer",
+          "prompt": "Find the domain of $ f(x) = \\sqrt{x-5} $. Use inequality: $ x \\geq $ ___.",
+          "answers": [
+            "5"
+          ],
+          "hints": [
+            "Radicand $ \\geq 0 $.",
+            "$ x-5 \\geq 0 $."
+          ],
+          "feedbackIfWrong": "5."
+        },
+        {
+          "id": "b5q3",
+          "type": "short-answer",
+          "prompt": "If $ f(x) = \\frac{2}{x+1} $, what value is excluded from the domain? (number only)",
+          "answers": [
+            "-1"
+          ],
+          "hints": [
+            "Denominator $ x+1 \\neq 0 $.",
+            "Solve."
+          ],
+          "feedbackIfWrong": "-1."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Find the domain of $ f(x) = \\frac{\\sqrt{x}}{x-2} $. Express in interval notation.",
+        "type": "short-answer",
+        "answers": [
+          "[0,2) U (2,∞)"
+        ],
+        "hints": [
+          "Numerator $ \\sqrt{x} $ requires $ x \\geq 0 $.",
+          "Denominator $ x-2 \\neq 0 $ → $ x \\neq 2 $. Combine."
+        ]
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

@@ -1,0 +1,894 @@
+{
+  "title": "Modified Accelerated Cost Recovery System (MACRS)",
+  "standards": [
+    "BUSMATH.17.4"
+  ],
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "A company buys a $50,000 machine. For its financial statements, it might use straight‑line over 10 years. But for its tax return, the IRS requires [[kw:MACRS]], which assigns a shorter recovery period and accelerated deductions. This reduces taxable income sooner, saving cash."
+      },
+      "id": "macrs-overview",
+      "confusionCorner": {
+        "body": "MACRS rates are applied to the original cost, not the declining book value. [[imp:Unlike DDB, you don't multiply by the current book value; you use the fixed rate from the IRS table.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "prompt": "A company buys office furniture for $30,000. Under MACRS, furniture is 7‑year property. Year 1 rate = 14.29%. Compute Year 1 depreciation.",
+        "optional": true,
+        "answers": [
+          "4287"
+        ],
+        "hints": [
+          "30,000 × 0.1429 = 4,287.",
+          "MACRS Year 1 rate for 7‑year property is 14.29%."
+        ],
+        "type": "short-answer"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Recovery.",
+          "hints": [
+            "It's about recovering the cost.",
+            "Starts with R."
+          ],
+          "prompt": "MACRS stands for Modified Accelerated Cost ___ System.",
+          "blanks": [
+            {
+              "accept": [
+                "Recovery"
+              ]
+            }
+          ],
+          "id": "b1q1",
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "0.",
+          "hints": [
+            "Depreciated to nothing.",
+            "No salvage considered."
+          ],
+          "prompt": "Under MACRS, residual value is generally assumed to be ___ (number).",
+          "id": "b1q2",
+          "type": "short-answer",
+          "answers": [
+            "0",
+            "zero"
+          ]
+        },
+        {
+          "prompt": "MACRS 5‑year property Year 1 rate is 20%. Cost $25,000. Year 1 depreciation? (number only, no $)",
+          "answers": [
+            "5000",
+            "5,000"
+          ],
+          "id": "b1q3",
+          "hints": [
+            "25,000 × 0.20.",
+            "= 5,000."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "5,000."
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "caption": "Recovery periods are set by the IRS, not by the company.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "3‑year",
+                "1": "3 years",
+                "2": "Tractors, racehorses"
+              },
+              {
+                "0": "5‑year",
+                "1": "5 years",
+                "2": "Computers, cars, trucks"
+              },
+              {
+                "0": "7‑year",
+                "1": "7 years",
+                "2": "Office furniture, fixtures"
+              },
+              {
+                "0": "10‑year",
+                "1": "10 years",
+                "2": "Water transportation equipment"
+              },
+              {
+                "0": "15‑year",
+                "1": "15 years",
+                "2": "Land improvements (sidewalks)"
+              },
+              {
+                "0": "27.5‑year",
+                "1": "27.5 years",
+                "2": "Residential rental property"
+              },
+              {
+                "0": "39‑year",
+                "1": "39 years",
+                "2": "Non‑residential real property"
+              }
+            ],
+            "title": "MACRS Recovery Periods (Selected Assets)",
+            "headers": [
+              "Asset Class",
+              "Recovery Period",
+              "Examples"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "MACRS Depreciation Formula",
+          "notes": [
+            "Residual value is ignored (depreciated to $0).",
+            "Half‑year convention: only ½ year depreciation in the first and last years."
+          ],
+          "formula": "$$\\text{Annual Depreciation} = \\text{Cost} \\times \\text{MACRS Rate from Table}$$"
+        },
+        "explanation": [
+          "[[kw:Modified Accelerated Cost Recovery System (MACRS)]] is the method required by the IRS for depreciating assets placed in service after 1986.",
+          "MACRS ignores residual value—assets are depreciated to zero over specified recovery periods (e.g., 3, 5, 7, 10 years).",
+          "Recovery periods are set by law based on asset class, not necessarily the asset's actual useful life.",
+          "The system uses a declining‑balance method switching to straight‑line, with a [[kw:half‑year convention]] (asset treated as placed in service mid‑year).",
+          "[[imp:MACRS is for tax purposes; companies often keep a separate set of books for financial reporting (GAAP).]]"
+        ]
+      },
+      "title": "1. Tax Depreciation vs. Book Depreciation",
+      "teacherCues": [
+        "Ask: 'Why would the IRS require companies to use a different depreciation method for taxes than they use for financial reporting?'",
+        "Explain that MACRS is the current tax depreciation system in the United States."
+      ],
+      "examples": [
+        {
+          "prompt": "A company buys a computer. What MACRS recovery period applies?",
+          "title": "A – Determine recovery period",
+          "steps": [
+            "Computers are 5‑year property under MACRS.",
+            "The depreciation will be spread over 5 years (actually 6 tax years due to half‑year convention)."
+          ],
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Think about assets purchased at different times during the year.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "The half‑year convention simplifies tax calculations by assuming all assets are placed in service mid‑year.",
+            "This avoids tracking exact purchase dates.",
+            "It gives half the first year's full depreciation, regardless of the actual month purchased."
+          ],
+          "prompt": "Explain why MACRS uses a half‑year convention.",
+          "title": "B – Why half‑year convention?"
+        },
+        {
+          "title": "C – MACRS rate for 5‑year property",
+          "steps": [
+            "Year 1: $10,000 × 0.20 = $2,000.",
+            "Year 2: $10,000 × 0.32 = $3,200."
+          ],
+          "prompt": "For 5‑year MACRS property, Year 1 rate is 20%, Year 2 is 32%. If an asset costs $10,000, find Year 1 and Year 2 MACRS depreciation.",
+          "role": "independent"
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "The IRS publishes tables with annual depreciation rates for each recovery class. For 5‑year property, the rates are 20%, 32%, 19.2%, 11.52%, 11.52%, 5.76%. You simply multiply the asset's cost by the given rate each year."
+      },
+      "confusionCorner": {
+        "body": "The rates are applied to the original cost, not to the declining book value. [[imp:Don't calculate DDB on your own; use the provided MACRS table.]]",
+        "title": "Watch out!"
+      },
+      "id": "macrs-rates",
+      "challengeCorner": {
+        "answers": [
+          "8000",
+          "12800",
+          "7680"
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "prompt": "A business buys a $40,000 truck (5‑year property). Using the MACRS table, compute depreciation for Years 1 through 3.",
+        "hints": [
+          "Yr1: 40k × 20% = 8,000; Yr2: 40k × 32% = 12,800; Yr3: 40k × 19.2% = 7,680.",
+          "These rates are from the 5‑year MACRS table."
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Year 1: $8,000 × 20% = $1,600.",
+            "Year 2: $8,000 × 32% = $2,560."
+          ],
+          "title": "A – 5‑year MACRS depreciation",
+          "prompt": "A company buys a computer for $8,000. Using the 5‑year MACRS table, find Year 1 and Year 2 depreciation."
+        },
+        {
+          "peerPrompt": "Think about the half‑year convention and the switch to straight‑line.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain why the IRS table rates are not the same each year.",
+          "title": "B – Why different rates?",
+          "steps": [
+            "The first year takes only half the normal depreciation because of the half‑year convention.",
+            "The middle years use the accelerated rate, then switch to straight‑line to finish.",
+            "The last year also takes a half‑year, resulting in an extra year beyond the recovery period."
+          ]
+        },
+        {
+          "steps": [
+            "Yes, the percentages sum to 100%.",
+            "The asset is fully depreciated to $0 by the end of Year 6."
+          ],
+          "role": "independent",
+          "title": "C – Total depreciation",
+          "prompt": "Using the 5‑year table rates, will total depreciation over 6 years equal the original cost?"
+        }
+      ],
+      "title": "2. MACRS Depreciation Rates for Common Classes",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Rates come from IRS Publication 946.",
+            "The recovery period determines which column to use."
+          ],
+          "title": "MACRS Depreciation Calculation",
+          "formula": "$$\\text{Annual Depreciation} = \\text{Cost} \\times \\text{Table Rate}$$"
+        },
+        "explanation": [
+          "The [[kw:MACRS percentage tables]] provide the annual depreciation rate for each year of the recovery period.",
+          "Rates are applied to the original cost each year, not the remaining book value.",
+          "The half‑year convention is built into the first‑ and last‑year rates.",
+          "Example for 5‑year property: Year 1 = 20%, Year 2 = 32%, Year 3 = 19.20%, Year 4 = 11.52%, Year 5 = 11.52%, Year 6 = 5.76%.",
+          "[[imp:The asset is fully depreciated after the last year in the table.]]"
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "MACRS Rates for Selected Recovery Periods",
+            "headers": [
+              "Year",
+              "3‑Year",
+              "5‑Year",
+              "7‑Year"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "33.33%",
+                "2": "20.00%",
+                "3": "14.29%"
+              },
+              {
+                "0": "2",
+                "1": "44.45%",
+                "2": "32.00%",
+                "3": "24.49%"
+              },
+              {
+                "0": "3",
+                "1": "14.81%",
+                "2": "19.20%",
+                "3": "17.49%"
+              },
+              {
+                "0": "4",
+                "1": "7.41%",
+                "2": "11.52%",
+                "3": "12.49%"
+              },
+              {
+                "0": "5",
+                "1": "",
+                "2": "11.52%",
+                "3": "8.93%"
+              },
+              {
+                "0": "6",
+                "1": "",
+                "2": "5.76%",
+                "3": "8.92%"
+              },
+              {
+                "0": "7",
+                "1": "",
+                "2": "",
+                "3": "8.93%"
+              },
+              {
+                "0": "8",
+                "1": "",
+                "2": "",
+                "3": "4.46%"
+              }
+            ],
+            "caption": "Each year's rate is multiplied by the original cost. Percentages sum to 100%."
+          }
+        ]
+      },
+      "teacherCues": [
+        "Display the IRS MACRS tables for 3‑, 5‑, and 7‑year property.",
+        "Explain that the table rates already incorporate the half‑year convention and switch to straight‑line."
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "table",
+                "MACRS"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "table (MACRS).",
+          "prompt": "MACRS annual depreciation = Cost × ___ rate.",
+          "type": "fill-blank",
+          "id": "b2q1",
+          "hints": [
+            "From the IRS table.",
+            "Not the DDB rate."
+          ]
+        },
+        {
+          "id": "b2q2",
+          "type": "short-answer",
+          "feedbackIfWrong": "19.2.",
+          "prompt": "Using the 5‑year table, what is the Year 3 rate? (percent, just the number, one decimal)",
+          "answers": [
+            "19.2"
+          ],
+          "hints": [
+            "Look at the table.",
+            "Year 3 for 5‑year property."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "prompt": "Cost $10,000, 5‑year MACRS Year 1 depreciation? (number only, no $)",
+          "answers": [
+            "2000",
+            "2,000"
+          ],
+          "id": "b2q3",
+          "feedbackIfWrong": "2,000.",
+          "hints": [
+            "$10,000 × 20%.",
+            "= 2,000."
+          ]
+        }
+      ]
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Year",
+              "Full‑Year DDB",
+              "Half‑Year Adjusted",
+              "Table Rate"
+            ],
+            "title": "Effect of Half‑Year Convention (5‑Year Property)",
+            "caption": "The table already incorporates the half‑year convention and switch to SL.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "40%",
+                "2": "20%",
+                "3": "20%"
+              },
+              {
+                "0": "2",
+                "1": "40% of remaining",
+                "2": "Full",
+                "3": "32%"
+              },
+              {
+                "0": "3",
+                "1": "40% of remaining",
+                "2": "Full",
+                "3": "19.2%"
+              },
+              {
+                "0": "4",
+                "1": "Switch to SL",
+                "2": "Full",
+                "3": "11.52%"
+              },
+              {
+                "0": "5",
+                "1": "SL",
+                "2": "Half",
+                "3": "11.52%"
+              },
+              {
+                "0": "6",
+                "1": "",
+                "2": "",
+                "3": "5.76%"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "The [[kw:half‑year convention]] assumes assets are placed in service (or disposed of) at the midpoint of the tax year.",
+          "This results in:",
+          "- Year 1: half the normal first‑year depreciation.",
+          "- Middle years: full depreciation.",
+          "- Final year: the remaining half‑year.",
+          "Thus, a 5‑year property takes 6 tax years to fully depreciate.",
+          "[[imp:The half‑year convention is automatic under MACRS; you do not need to calculate it separately if using the table.]]"
+        ],
+        "formulaCard": {
+          "title": "Half‑Year Convention",
+          "notes": [
+            "Use the MACRS table directly; the half‑year adjustment is already included.",
+            "For assets purchased late in the year, a mid‑quarter convention may apply instead."
+          ],
+          "formula": "$$\\text{Year 1 Depreciation} = \\text{Full‑Year Amount} \\times \\frac{1}{2}$$ $$\\text{Last Year Depreciation} = \\text{Remaining Balance}$$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "Even if you bought a computer in January, MACRS treats it as if you bought it in July. So you only get 50% of the first year's depreciation. This is why Year 1 rates are roughly half of the full‑year rate, and an extra year is added at the end."
+      },
+      "id": "half-year-convention",
+      "examples": [
+        {
+          "prompt": "Without the half‑year convention, a 5‑year 200% DDB would give Year 1 depreciation = 40% of cost. With half‑year, it's 20%. Confirm from 5‑year table.",
+          "role": "guided",
+          "steps": [
+            "200% DDB full year: (2/5) = 40%. Half‑year = 20%.",
+            "Table Year 1 rate = 20%. Matches."
+          ],
+          "title": "A – Half‑year effect"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Explain why 5‑year MACRS property has 6 years of depreciation.",
+          "minLength": 2,
+          "title": "B – Why add a year?",
+          "peerPrompt": "Think about the half‑year at both ends.",
+          "steps": [
+            "The first year takes only half the normal depreciation.",
+            "The leftover half is pushed to a sixth year.",
+            "So a 5‑year recovery period becomes 6 tax years."
+          ]
+        },
+        {
+          "steps": [
+            "It represents the remaining half‑year of depreciation after the switch to straight‑line.",
+            "It finishes depreciating the asset to zero."
+          ],
+          "prompt": "For 5‑year property, the Year 6 rate is 5.76%. Why is it smaller than the other years?",
+          "title": "C – Last year's rate",
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "The half‑year convention is mandatory for most assets. [[imp:Do not attempt to override it unless you qualify for mid‑quarter convention.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "hints": [
+          "14.29% is exactly half of 28.57%.",
+          "Half‑year convention reduces first year by 50%."
+        ],
+        "answers": [
+          "half"
+        ],
+        "optional": true,
+        "type": "short-answer",
+        "prompt": "A 7‑year property has a Year 1 MACRS rate of 14.29%. If the full‑year DDB rate is 28.57%, explain the relationship."
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "Not the beginning.",
+            "Not the end."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "midpoint",
+                "middle"
+              ]
+            }
+          ],
+          "prompt": "The half‑year convention assumes assets are placed in service at the ___ of the year.",
+          "feedbackIfWrong": "midpoint.",
+          "id": "b3q1"
+        },
+        {
+          "id": "b3q2",
+          "hints": [
+            "5 + 1 extra due to half‑year.",
+            "= 6."
+          ],
+          "prompt": "Under MACRS, a 5‑year property takes how many tax years to fully depreciate? (number)",
+          "feedbackIfWrong": "6.",
+          "answers": [
+            "6"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "40% ÷ 2.",
+            "= 20."
+          ],
+          "answers": [
+            "20"
+          ],
+          "feedbackIfWrong": "20.",
+          "type": "short-answer",
+          "prompt": "If the full‑year DDB rate is 40%, the half‑year rate is ___% (number only).",
+          "id": "b3q3"
+        }
+      ],
+      "teacherCues": [
+        "Explain that MACRS assumes all assets are placed in service mid‑year.",
+        "Show how this affects the first and last year."
+      ],
+      "title": "3. Half‑Year Convention and First‑Year Calculation"
+    },
+    {
+      "questions": [
+        {
+          "id": "b4q1",
+          "hints": [
+            "Fully depreciated.",
+            "No residual value."
+          ],
+          "prompt": "In a MACRS schedule, the adjusted basis eventually reaches ___.",
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "zero"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "0.",
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "3,840.",
+          "id": "b4q2",
+          "hints": [
+            "$12,000 × 0.32.",
+            "= 3,840."
+          ],
+          "prompt": "Cost $12,000, 5‑year property, Year 2 depreciation? (rate 32%, number only, no $)",
+          "answers": [
+            "3840",
+            "3,840"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "type": "short-answer",
+          "id": "b4q3",
+          "answers": [
+            "tax"
+          ],
+          "feedbackIfWrong": "tax.",
+          "prompt": "MACRS is required for ___ reporting purposes. (type: financial or tax)",
+          "hints": [
+            "Not GAAP.",
+            "IRS requires it."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "MACRS depreciation is not the same as book depreciation reported to shareholders. [[imp:Financial statement users must understand that tax returns may show different depreciation.]]",
+        "title": "Watch out!"
+      },
+      "title": "4. MACRS Depreciation Schedule Example",
+      "challengeCorner": {
+        "optional": true,
+        "answers": [
+          "56270"
+        ],
+        "hints": [
+          "Yr1: 100k×14.29%=14,290; Yr2: 100k×24.49%=24,490; Yr3: 100k×17.49%=17,490.",
+          "Sum = 14,290 + 24,490 + 17,490 = 56,270."
+        ],
+        "type": "short-answer",
+        "prompt": "A company buys a $100,000 piece of equipment (7‑year MACRS). Using the table rates (14.29%, 24.49%, 17.49%, 12.49%, 8.93%, 8.92%, 8.93%, 4.46%), compute the total depreciation taken in the first three years."
+      },
+      "discoveryHook": {
+        "scenario": "A company buys a $15,000 computer (5‑year property). Using the MACRS table, we can create a depreciation schedule that shows the expense each year and the remaining book value (for tax purposes)."
+      },
+      "teacherCues": [
+        "Build a schedule for a 5‑year asset using the MACRS table.",
+        "Show the depreciation expense, accumulated depreciation, and book value each year."
+      ],
+      "examples": [
+        {
+          "title": "A – Complete a MACRS row",
+          "steps": [
+            "Depreciation = $20,000 × 0.1429 = $2,858.",
+            "Accumulated = $2,858; Adjusted basis = $20,000 – $2,858 = $17,142."
+          ],
+          "prompt": "Cost $20,000, 7‑year property. Year 1 rate = 14.29%. Find depreciation, accumulated, and adjusted basis.",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "MACRS is required by the IRS and uses predetermined recovery periods and rates, ignoring residual.",
+            "GAAP allows companies to choose straight‑line or other methods based on actual useful life and residual.",
+            "The differences create temporary book‑tax differences that are tracked separately."
+          ],
+          "title": "B – MACRS vs. GAAP",
+          "minLength": 2,
+          "prompt": "Explain why a company must keep separate records for tax depreciation (MACRS) and financial reporting depreciation.",
+          "peerPrompt": "Think about differences in methods and useful lives."
+        },
+        {
+          "title": "C – Total depreciation",
+          "steps": [
+            "20% + 32% + 19.2% + 11.52% + 11.52% + 5.76% = 100%.",
+            "Thus the asset is fully depreciated to $0."
+          ],
+          "prompt": "Verify that the sum of rates for 5‑year MACRS equals 100%.",
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "To build a [[kw:MACRS depreciation schedule]]:",
+          "1. Identify the asset's recovery class and the corresponding table rates.",
+          "2. For each tax year, multiply the original cost by the table rate to get the depreciation deduction.",
+          "3. Accumulated depreciation is the sum of deductions taken so far.",
+          "4. Adjusted tax basis = Original cost – Accumulated depreciation (eventually $0).",
+          "[[imp:MACRS schedules are for tax returns; GAAP schedules are separate.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Annual Depreciation} = \\text{Cost} \\times \\text{Year Rate}$$ $$\\text{Accumulated} = \\sum \\text{Depreciation}$$ $$\\text{Adjusted Basis} = \\text{Cost} - \\text{Accumulated}$$",
+          "title": "MACRS Schedule Formulas",
+          "notes": [
+            "Rates are fixed per the IRS table for the asset's class.",
+            "No residual value is considered."
+          ]
+        },
+        "visuals": [
+          {
+            "caption": "Total depreciation = $15,000; asset is fully depreciated after 6 years.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "20%",
+                "2": "$3,000",
+                "3": "$3,000",
+                "4": "$12,000"
+              },
+              {
+                "0": "2",
+                "1": "32%",
+                "2": "$4,800",
+                "3": "$7,800",
+                "4": "$7,200"
+              },
+              {
+                "0": "3",
+                "1": "19.2%",
+                "2": "$2,880",
+                "3": "$10,680",
+                "4": "$4,320"
+              },
+              {
+                "0": "4",
+                "1": "11.52%",
+                "2": "$1,728",
+                "3": "$12,408",
+                "4": "$2,592"
+              },
+              {
+                "0": "5",
+                "1": "11.52%",
+                "2": "$1,728",
+                "3": "$14,136",
+                "4": "$864"
+              },
+              {
+                "0": "6",
+                "1": "5.76%",
+                "2": "$864",
+                "3": "$15,000",
+                "4": "$0"
+              }
+            ],
+            "headers": [
+              "Year",
+              "Rate",
+              "Depreciation",
+              "Accumulated Depreciation",
+              "Adjusted Tax Basis"
+            ],
+            "variant": "colorful",
+            "title": "MACRS Schedule: $15,000 Computer, 5‑Year Property"
+          }
+        ]
+      },
+      "id": "macrs-example"
+    },
+    {
+      "discoveryHook": {
+        "scenario": "A business purchases office furniture for $25,000. Furniture is 7‑year property under MACRS. Use the blueprint to determine the depreciation for the first two years."
+      },
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Walk through a problem that asks for MACRS depreciation for a specific asset."
+      ],
+      "id": "blueprint-macrs",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "Identify cost, recovery class.",
+            "U in U‑S‑C."
+          ],
+          "feedbackIfWrong": "understand.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "id": "b5q1",
+          "prompt": "The first blueprint step is to ___ the problem."
+        },
+        {
+          "answers": [
+            "4287"
+          ],
+          "type": "short-answer",
+          "id": "b5q2",
+          "prompt": "Using 7‑year MACRS, Year 1 rate 14.29%, cost $30,000. Year 1 depreciation? (number only, no $)",
+          "hints": [
+            "30,000 × 0.1429.",
+            "= 4,287."
+          ],
+          "feedbackIfWrong": "4,287."
+        },
+        {
+          "id": "b5q3",
+          "prompt": "In the blueprint's Conclude step, you should verify that the MACRS rates sum to ___%.",
+          "hints": [
+            "Total depreciation should equal the cost.",
+            "The whole asset is depreciated."
+          ],
+          "feedbackIfWrong": "100.",
+          "type": "short-answer",
+          "answers": [
+            "100"
+          ]
+        }
+      ],
+      "title": "5. Blueprint Aid for MACRS Depreciation Problems",
+      "concept": {
+        "explanation": [
+          "Apply the blueprint to MACRS problems:",
+          "1. Understand: identify the asset's cost, its MACRS recovery class, and the first tax year.",
+          "2. Solve: locate the correct column in the MACRS table; multiply the cost by each year's rate to compute depreciation.",
+          "3. Conclude: verify that the rates sum to 100%; confirm the asset will be fully depreciated after the required number of years.",
+          "This approach ensures you use the correct recovery period and table."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Depreciation} = \\text{Cost} \\times \\text{Year's Table Rate}$$",
+          "notes": [
+            "Table rates are fixed per IRS.",
+            "No need to calculate book value; just multiply cost by rate."
+          ],
+          "title": "MACRS Blueprint"
+        },
+        "visuals": [
+          {
+            "title": "Blueprint: Office Furniture MACRS",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Cost $25,000, 7‑year property, placed in service this year.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Year 1",
+                "1": "Rate 14.29% × $25,000 = $3,572.50.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Year 2",
+                "1": "Rate 24.49% × $25,000 = $6,122.50.",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Rates sum to 100%; asset will be fully depreciated by end of year 8.",
+                "2": ""
+              }
+            ],
+            "caption": "Always use the correct MACRS table column."
+          }
+        ]
+      },
+      "confusionCorner": {
+        "body": "MACRS is mandatory for most tangible business property. [[imp:Be careful to use the current IRS tables; rates can change with tax law updates.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A farmer buys a tractor for $80,000 (3‑year MACRS). Rates: 33.33%, 44.45%, 14.81%, 7.41%. Compute total depreciation after 2 years and the remaining adjusted basis.",
+        "answers": [
+          "62224",
+          "17776"
+        ],
+        "hints": [
+          "Yr1: 80k×33.33%=26,664; Yr2: 80k×44.45%=35,560; accum = 26,664+35,560 = 62,224.",
+          "Adjusted basis = 80,000 – 62,224 = 17,776."
+        ],
+        "type": "short-answer"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A company buys a $50,000 delivery truck (5‑year property). Calculate Year 1 and Year 2 MACRS depreciation.",
+          "steps": [
+            "Year 1: $50,000 × 20% = $10,000.",
+            "Year 2: $50,000 × 32% = $16,000.",
+            "The truck is depreciated over 6 tax years."
+          ],
+          "title": "A – Full blueprint"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Think about the half‑year convention and switch to SL.",
+          "role": "peer-explain",
+          "steps": [
+            "The MACRS table already incorporates the half‑year convention, the switch to straight‑line, and the exact rates.",
+            "You don't need to compute book value each year or worry about residual.",
+            "It's a simple multiplication."
+          ],
+          "title": "B – Why use tables?",
+          "prompt": "Explain why using the MACRS table is easier than computing DDB manually."
+        },
+        {
+          "role": "independent",
+          "prompt": "Add the 5‑year MACRS rates: 20%, 32%, 19.2%, 11.52%, 11.52%, 5.76%. Do they total 100%?",
+          "steps": [
+            "Sum = 20+32+19.2+11.52+11.52+5.76 = 100%.",
+            "Yes, the asset is fully depreciated."
+          ],
+          "title": "C – Check sum of rates"
+        }
+      ]
+    }
+  ],
+  "id": "ch17-lu17-4",
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

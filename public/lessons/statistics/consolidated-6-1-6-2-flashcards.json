@@ -1,0 +1,232 @@
+{
+  "type": "flashcard",
+  "id": "consolidated-6-1-6-2-flashcards",
+  "cards": [
+    {
+      "front": "What is a [[kw:point estimate]] for the population mean $\\mu$?",
+      "back": [
+        "A single value estimate. The best point estimate of $\\mu$ is the [[imp:sample mean]] $\\bar{x}$.",
+        "$\\bar{x}$ is an unbiased estimator — its average over all possible samples equals $\\mu$."
+      ]
+    },
+    {
+      "back": [
+        "It gives a range of plausible values for $\\mu$, reflecting sampling variability.",
+        "A point estimate alone gives no indication of precision."
+      ],
+      "front": "Why is an [[kw:interval estimate]] better than a point estimate?"
+    },
+    {
+      "front": "Define the [[kw:margin of error]] $E$ for a large‑sample confidence interval for $\\mu$.",
+      "back": [
+        "The maximum likely difference between $\\bar{x}$ and $\\mu$.",
+        "$$E = z_c \\cdot \\frac{\\sigma}{\\sqrt{n}}$$",
+        "If $n \\ge 30$, use $s$ in place of $\\sigma$."
+      ]
+    },
+    {
+      "front": "Give the critical values $z_c$ for 90%, 95%, and 99% confidence.",
+      "back": [
+        "90% → $z_c = 1.645$",
+        "95% → $z_c = 1.96$",
+        "99% → $z_c = 2.575$",
+        "These z‑scores capture the middle area $c$ of the standard normal distribution."
+      ]
+    },
+    {
+      "back": [
+        "$$\\bar{x} - E < \\mu < \\bar{x} + E$$",
+        "where $E = z_c \\cdot \\frac{s}{\\sqrt{n}}$ (for $n \\ge 30$).",
+        "Also written $\\bar{x} \\pm E$ or $(\\bar{x} - E,\\, \\bar{x} + E)$."
+      ],
+      "front": "Write the large‑sample [[kw:confidence interval for $\\mu$]]."
+    },
+    {
+      "front": "Find a 95% CI for $\\mu$: $\\bar{x}=130.8$, $s=53.0$, $n=40$.",
+      "back": [
+        "$E = 1.96 \\times \\frac{53.0}{\\sqrt{40}} \\approx 16.4$.",
+        "Lower = $130.8 - 16.4 = 114.4$, Upper = $130.8 + 16.4 = 147.2$.",
+        "95% CI: $(114.4, 147.2)$. We are 95% confident $\\mu$ lies in this interval."
+      ]
+    },
+    {
+      "back": [
+        "If we take many samples and build a 95% CI from each, about [[imp:95% of them]] will contain $\\mu$.",
+        "We do NOT say “there is a 95% chance $\\mu$ is in this interval.”"
+      ],
+      "front": "Interpret a 95% confidence interval correctly."
+    },
+    {
+      "back": [
+        "$$n = \\left( \\frac{z_c \\cdot \\sigma}{E} \\right)^2$$",
+        "Use $s$ as an estimate of $\\sigma$. [[imp:Always round up]] to the next whole number."
+      ],
+      "front": "How do you find the minimum sample size $n$ to estimate $\\mu$ with margin of error $E$?"
+    },
+    {
+      "front": "Find the minimum sample size: 95% confidence, $E=7$, $s \\approx 53$.",
+      "back": [
+        "$n = \\left( \\frac{1.96 \\times 53}{7} \\right)^2 = (14.84)^2 = 220.2$.",
+        "Round up → $n = 221$."
+      ]
+    },
+    {
+      "front": "How does increasing the confidence level affect the width of a confidence interval?",
+      "back": [
+        "Higher confidence → larger $z_c$ → larger $E$ → [[imp:wider interval]].",
+        "Example: 99% CI is wider than 95% CI for the same data."
+      ]
+    },
+    {
+      "front": "How does increasing the sample size affect the margin of error?",
+      "back": [
+        "Larger $n$ → smaller $\\frac{s}{\\sqrt{n}}$ → [[imp:smaller margin of error]].",
+        "This yields a narrower, more precise interval."
+      ]
+    },
+    {
+      "front": "When can you use $s$ in place of $\\sigma$ in the z‑interval formula?",
+      "back": [
+        "When $n \\ge 30$ (by the Central Limit Theorem).",
+        "The sampling distribution of $\\bar{x}$ is approximately normal, and $s$ is a good estimate of $\\sigma$."
+      ]
+    },
+    {
+      "back": [
+        "`=CONFIDENCE.NORM(alpha, s, n)`",
+        "$alpha = 1 - c$ (e.g., 0.05 for 95% confidence).",
+        "Example: `=CONFIDENCE.NORM(0.05, 53, 40)` returns about 16.4."
+      ],
+      "front": "What is the Google Sheets function for the margin of error $E$ in a z‑interval?"
+    },
+    {
+      "front": "When should you use a [[kw:t‑distribution]] instead of the normal distribution for a CI for $\\mu$?",
+      "back": [
+        "When $\\sigma$ is [[imp:unknown]] and the sample size is small ($n < 30$).",
+        "The population must be approximately normally distributed."
+      ]
+    },
+    {
+      "back": [
+        "1. Bell‑shaped and symmetric about 0.",
+        "2. [[imp:Thicker tails]] than the standard normal distribution.",
+        "3. The exact shape depends on the degrees of freedom: $d.f. = n-1$.",
+        "As $d.f.$ increase, the t‑distribution approaches the standard normal."
+      ],
+      "front": "List three key properties of the [[kw:t‑distribution]]."
+    },
+    {
+      "front": "How many degrees of freedom does a t‑distribution have for a sample of size $n$?",
+      "back": [
+        "$$d.f. = n - 1$$",
+        "Example: $n=15$ → $d.f.=14$."
+      ]
+    },
+    {
+      "back": [
+        "From the t‑table: $t_c = 2.131$.",
+        "In Google Sheets: `=T.INV.2T(0.05, 15)` returns about 2.131."
+      ],
+      "front": "Find the critical value $t_c$ for a 95% CI with $n=16$ (d.f.=15)."
+    },
+    {
+      "back": [
+        "$$E = t_c \\cdot \\frac{s}{\\sqrt{n}}$$",
+        "The only difference from the z‑interval is that $t_c$ replaces $z_c$."
+      ],
+      "front": "Write the margin of error formula when using a t‑distribution."
+    },
+    {
+      "front": "Give the formula for a [[kw:confidence interval for $\\mu$]] using the t‑distribution.",
+      "back": [
+        "$$\\bar{x} \\pm t_c \\frac{s}{\\sqrt{n}}$$",
+        "Conditions: $\\sigma$ unknown, population approximately normal, $n < 30$."
+      ]
+    },
+    {
+      "back": [
+        "$d.f.=15$, $t_c=2.131$. $E = 2.131 \\times \\frac{10.0}{\\sqrt{16}} = 5.3$.",
+        "Interval: $162.0 \\pm 5.3 = (156.7,\\; 167.3)$.",
+        "We are 95% confident the true mean temperature is between 156.7°F and 167.3°F."
+      ],
+      "front": "Construct a 95% t‑CI for coffee temperature: $n=16$, $\\bar{x}=162.0$, $s=10.0$."
+    },
+    {
+      "front": "Construct a 99% t‑CI for days on a car lot: $n=20$, $\\bar{x}=9.75$, $s=2.39$.",
+      "back": [
+        "$d.f.=19$, $t_c=2.861$. $E = 2.861 \\times \\frac{2.39}{\\sqrt{20}} \\approx 1.53$.",
+        "Interval: $9.75 \\pm 1.53 = (8.22,\\; 11.28)$.",
+        "We are 99% confident the true mean days on the lot is between 8.22 and 11.28."
+      ]
+    },
+    {
+      "back": [
+        "The t‑distribution has thicker tails, so $t_c > z_c$ for the same confidence level.",
+        "A larger critical value gives a larger margin of error, hence a wider interval.",
+        "This extra width accounts for the uncertainty of estimating $\\sigma$ with $s$."
+      ],
+      "front": "Why is a t‑interval wider than a z‑interval for the same data?"
+    },
+    {
+      "front": "What condition must be checked before using a t‑interval for a small sample?",
+      "back": [
+        "The population must be [[imp:approximately normally distributed]].",
+        "If the population is heavily skewed and $n$ is small, the t‑interval is not valid."
+      ]
+    },
+    {
+      "back": [
+        "When the sample size is [[imp:at least 30]] ($n \\ge 30$).",
+        "The Central Limit Theorem ensures normality, and $s$ is a good substitute for $\\sigma$."
+      ],
+      "front": "When can you use a z‑interval even if $\\sigma$ is unknown?"
+    },
+    {
+      "front": "Decide which distribution to use: $n=25$, $\\sigma$ unknown, population normal.",
+      "back": [
+        "$\\sigma$ unknown and $n=25 < 30$ → use the [[kw:t‑distribution]].",
+        "If $\\sigma$ were known, we could use z."
+      ]
+    },
+    {
+      "front": "Decide which distribution to use: $n=45$, $\\sigma$ unknown, any population.",
+      "back": [
+        "$n=45 \\ge 30$ → use the [[kw:normal (z) distribution]] with $s$ in place of $\\sigma$.",
+        "The CLT ensures the sampling distribution is approximately normal."
+      ]
+    },
+    {
+      "back": [
+        "The two‑tailed critical value $t_c$ for a 95% CI with 14 degrees of freedom.",
+        "It returns about 2.145."
+      ],
+      "front": "What does the function `=T.INV.2T(0.05, 14)` return?"
+    },
+    {
+      "front": "How does the t‑distribution change as the degrees of freedom increase?",
+      "back": [
+        "The tails become thinner and the distribution approaches the [[imp:standard normal distribution]].",
+        "For $d.f. \\ge 30$, the t and z critical values are nearly identical."
+      ]
+    },
+    {
+      "back": [
+        "$$E = 2.365 \\times \\frac{7.2}{\\sqrt{8}} \\approx 2.365 \\times 2.546 = 6.02$$"
+      ],
+      "front": "A sample of size 8 has $\\bar{x}=35.5$, $s=7.2$. For 95% confidence, $t_c=2.365$. Find $E$."
+    },
+    {
+      "back": [
+        "1. The confidence level (higher $c$ → larger $E$).",
+        "2. The sample standard deviation (larger $s$ → larger $E$).",
+        "3. The sample size (larger $n$ → smaller $E$)."
+      ],
+      "front": "What does a confidence interval's margin of error depend on?"
+    }
+  ],
+  "title": "Chapters 6.1 & 6.2 Review",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

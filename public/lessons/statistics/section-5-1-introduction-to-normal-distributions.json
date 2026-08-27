@@ -1,0 +1,687 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "section-5-1-introduction-to-normal-distributions",
+  "title": "Standard Normal Distribution",
+  "standards": [
+    "HSS.ID.A.4",
+    "HSS.MD.B.7"
+  ],
+  "blocks": [
+    {
+      "id": "properties-of-normal-distribution",
+      "title": "Properties of a Normal Distribution",
+      "teacherCues": [
+        "Ask: 'What shape comes to mind when you hear bell curve?'",
+        "Draw two normal curves with different means and standard deviations. Ask: 'Which has the greater mean? Which is more spread out?'"
+      ],
+      "discoveryHook": {
+        "scenario": "From human blood pressure to the lifetimes of televisions, many real-world measurements follow a bell-shaped pattern. This pattern, called a normal distribution, is the most important continuous probability distribution in statistics—it helps us model everything from test scores to housing costs!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:normal distribution]] is a continuous probability distribution for a random variable $x$. Its graph is called a normal curve.",
+          "The mean, median, and mode are all equal.",
+          "The normal curve is bell-shaped and symmetric about the mean.",
+          "The total area under the curve is 1.",
+          "The curve approaches but never touches the x-axis as it extends away from the mean.",
+          "Between $\\mu - \\sigma$ and $\\mu + \\sigma$, the graph curves downward. The points where curvature changes are [[kw:inflection points]]."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Properties of a Normal Distribution",
+            "headers": [
+              "Property",
+              "Description"
+            ],
+            "rows": [
+              {
+                "0": "Mean, median, mode",
+                "1": "All equal"
+              },
+              {
+                "0": "Shape",
+                "1": "Bell-shaped and symmetric about the mean"
+              },
+              {
+                "0": "Total area",
+                "1": "1"
+              },
+              {
+                "0": "Inflection points",
+                "1": "At $\\mu - \\sigma$ and $\\mu + \\sigma$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Normal Probability Density Function",
+          "formula": "$$ y = \\frac{1}{\\sigma \\sqrt{2\\pi}} e^{-(x-\\mu)^2/(2\\sigma^2)} $$",
+          "notes": [
+            "$\\mu$ = mean, $\\sigma$ = standard deviation.",
+            "$e \\approx 2.718$, $\\pi \\approx 3.14$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Compare Two Normal Curves",
+          "prompt": "Two normal curves A and B have lines of symmetry at $x=15$ and $x=12$. Which has the greater mean? If B is more spread out, which has the greater standard deviation?",
+          "steps": [
+            "The mean is the line of symmetry. Curve A has line at $x=15$, curve B at $x=12$.",
+            "So curve A has the greater mean.",
+            "Greater spread means greater standard deviation. So curve B has the greater standard deviation."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Inflection Points",
+          "prompt": "Explain what inflection points are on a normal curve and where they occur.",
+          "peerPrompt": "Explain to a partner: Why do the inflection points help you estimate the standard deviation?",
+          "minLength": 2,
+          "steps": [
+            "Inflection points are where the curve changes from curving downward to curving upward.",
+            "They occur at one standard deviation from the mean: $\\mu - \\sigma$ and $\\mu + \\sigma$.",
+            "The distance from the mean to an inflection point is the standard deviation."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Estimate Mean and Standard Deviation",
+          "prompt": "A normal curve is symmetric at $x=675$. Inflection points appear near $x=640$ and $x=710$. Estimate the mean and standard deviation.",
+          "steps": [
+            "Mean $\\mu$ is the line of symmetry: 675.",
+            "Distance from mean to inflection point: $710 - 675 = 35$.",
+            "So standard deviation $\\sigma \\approx 35$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Mean vs. Standard Deviation",
+        "body": "The mean tells you the center; the standard deviation tells you the spread. Two curves can have the same mean but different standard deviations, or the same spread but different centers."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "The total area under a normal curve is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "Probability distributions must sum to 1.",
+            "It is the whole area."
+          ],
+          "feedbackIfWrong": "The total area is 1."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "In a normal distribution, are the mean, median, and mode equal? (yes/no)",
+          "answer": "yes",
+          "hints": [
+            "Normal distribution is symmetric.",
+            "All measures of center align."
+          ],
+          "feedbackIfWrong": "Yes, they are all equal in a normal distribution."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "If curve A is more spread out than curve B, which has the greater standard deviation?",
+          "answer": "A",
+          "hints": [
+            "Spread is measured by standard deviation.",
+            "More spread = larger $\\sigma$."
+          ],
+          "feedbackIfWrong": "Curve A has the greater standard deviation."
+        }
+      ]
+    },
+    {
+      "id": "standard-normal-distribution",
+      "title": "The Standard Normal Distribution",
+      "teacherCues": [
+        "Define standard normal: mean 0, standard deviation 1.",
+        "Write z-score formula on board and demonstrate with a sample x-value."
+      ],
+      "discoveryHook": {
+        "scenario": "With infinitely many possible normal distributions, how can we compare them? The standard normal distribution—mean 0, standard deviation 1—provides a common yardstick. By converting any x-value to a z-score, we can use one table to find probabilities for any normal distribution!"
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:standard normal distribution]] is a normal distribution with mean 0 and standard deviation 1.",
+          "The horizontal scale of the standard normal curve is labeled with [[kw:z-scores]].",
+          "A z-score tells how many standard deviations a value is from the mean: $$ z = \\frac{x - \\mu}{\\sigma} $$",
+          "Transform any normally distributed x-value to a z-score, and the standard normal curve can be used to find probabilities.",
+          "The standard normal curve has total area 1 centered at 0."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Standard Normal vs. General Normal",
+            "headers": [
+              "Feature",
+              "Standard Normal",
+              "General Normal"
+            ],
+            "rows": [
+              {
+                "0": "Mean $\\mu$",
+                "1": "0",
+                "2": "$\\mu$"
+              },
+              {
+                "0": "Standard deviation $\\sigma$",
+                "1": "1",
+                "2": "$\\sigma$"
+              },
+              {
+                "0": "Variable",
+                "1": "$z$",
+                "2": "$x$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Z-Score",
+          "formula": "$$ z = \\frac{x - \\mu}{\\sigma} $$",
+          "notes": [
+            "$x$ = raw score, $\\mu$ = mean, $\\sigma$ = standard deviation.",
+            "Round z to the nearest hundredth."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Convert to Z-Score",
+          "prompt": "For a normal distribution with $\\mu = 100$ and $\\sigma = 15$, find the z-score for $x = 118$.",
+          "steps": [
+            "Use the formula $z = \\frac{x - \\mu}{\\sigma}$.",
+            "Substitute: $z = \\frac{118 - 100}{15} = \\frac{18}{15} = 1.2$.",
+            "The z-score is 1.2."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Interpret a Negative Z-Score",
+          "prompt": "For the same distribution, explain the meaning of a z-score of -2.",
+          "peerPrompt": "Explain to a partner: Why does a negative z-score mean the x-value is below the mean?",
+          "minLength": 2,
+          "steps": [
+            "A negative z-score means $x$ is less than the mean.",
+            "Specifically, $x$ is 2 standard deviations below $\\mu$.",
+            "For this example, $x = 100 - 2(15) = 70$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find Z-Score",
+          "prompt": "Scores on a test have $\\mu = 500$ and $\\sigma = 100$. Find the z-score for a score of 650.",
+          "steps": [
+            "$z = \\frac{650 - 500}{100} = \\frac{150}{100} = 1.5$.",
+            "The z-score is 1.5."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Raw Score vs. Z-Score",
+        "body": "A raw score $x$ is in the original units. A z-score tells how many standard deviations $x$ is from the mean. The standard normal distribution uses z-scores, not raw scores."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "The standard normal distribution has a mean of ___ and a standard deviation of 1.",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "It is centered at 0.",
+            "The z-scale starts at 0."
+          ],
+          "feedbackIfWrong": "The mean is 0."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "If $\\mu = 50$, $\\sigma = 5$, and $x = 60$, what is the z-score?",
+          "answer": "2",
+          "hints": [
+            "Use $z = \\frac{x-\\mu}{\\sigma}$.",
+            "$60 - 50 = 10$, then divide by 5."
+          ],
+          "feedbackIfWrong": "$z = \\frac{60-50}{5} = 2$."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "If a z-score is negative, is the x-value above or below the mean?",
+          "answer": "below",
+          "hints": [
+            "Negative means less than the mean.",
+            "Not above."
+          ],
+          "feedbackIfWrong": "A negative z-score means below the mean."
+        }
+      ]
+    },
+    {
+      "id": "using-standard-normal-table",
+      "title": "Using the Standard Normal Table",
+      "teacherCues": [
+        "Show how to find area for z = 1.15 using table.",
+        "Demonstrate area to left, right, and between z-scores with sketches."
+      ],
+      "discoveryHook": {
+        "scenario": "The standard normal table lists cumulative areas to the left of any z-score from -3.49 to 3.49. With this table, you can find the area under the curve in any region—left, right, or between—turning z-scores into probabilities!"
+      },
+      "concept": {
+        "explanation": [
+          "The standard normal table gives the cumulative area to the left of a z-score.",
+          "To find area to the left of z: look up z directly in the table.",
+          "To find area to the right of z: find area to left, then subtract from 1.",
+          "To find area between two z-scores: find area to left of each, then subtract smaller from larger.",
+          "When z is not in the table, use the closest entry or average if midway."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Finding Areas Under Standard Normal Curve",
+            "headers": [
+              "Region",
+              "Method"
+            ],
+            "rows": [
+              {
+                "0": "To the left of z",
+                "1": "Look up z in table directly"
+              },
+              {
+                "0": "To the right of z",
+                "1": "$1 -$ (area to left)"
+              },
+              {
+                "0": "Between z1 and z2",
+                "1": "Area(z2) - Area(z1)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Area Rules",
+          "formula": "$$ P(z < a) = \\text{table value} $$ $$ P(z > a) = 1 - P(z < a) $$ $$ P(a < z < b) = P(z < b) - P(z < a) $$",
+          "notes": [
+            "Total area = 1.",
+            "Table gives area to the left."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Area to the Left",
+          "prompt": "Find the cumulative area for z = 1.15.",
+          "steps": [
+            "In the standard normal table, find row 1.1 and column 0.05.",
+            "The intersection value is 0.8749.",
+            "So the area to the left of z = 1.15 is 0.8749."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Area to the Right",
+          "prompt": "Find the area to the right of z = 1.06.",
+          "peerPrompt": "Explain to a partner: Why do you subtract the table value from 1?",
+          "minLength": 2,
+          "steps": [
+            "Table gives area to left of z = 1.06 as 0.8554.",
+            "Total area is 1.",
+            "Area to right = 1 - 0.8554 = 0.1446."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Area Between Two Z-Scores",
+          "prompt": "Find the area between z = -1.5 and z = 1.25.",
+          "steps": [
+            "Area to left of z = 1.25 is 0.8944.",
+            "Area to left of z = -1.5 is 0.0668.",
+            "Area between = 0.8944 - 0.0668 = 0.8276."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Left vs. Right",
+        "body": "The table always gives area to the left. For area to the right, always subtract from 1. A common mistake is to forget the subtraction."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "The standard normal table gives the cumulative area to the ___ of a z-score.",
+          "blanks": [
+            {
+              "accept": [
+                "left"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the direction the area is accumulated from -∞.",
+            "Not to the right."
+          ],
+          "feedbackIfWrong": "The table gives area to the left."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "If the area to the left of z = 1.5 is 0.9332, what is the area to the right?",
+          "answer": "0.0668",
+          "hints": [
+            "Total area is 1.",
+            "$1 - 0.9332$."
+          ],
+          "feedbackIfWrong": "$1 - 0.9332 = 0.0668$."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "What is the area to the left of z = 0?",
+          "answer": "0.5",
+          "hints": [
+            "It is the center of the distribution.",
+            "Half the area is on each side."
+          ],
+          "feedbackIfWrong": "Area left of z = 0 is 0.5."
+        }
+      ]
+    },
+    {
+      "id": "finding-areas-and-probabilities",
+      "title": "Finding Areas and Probabilities",
+      "teacherCues": [
+        "Show how area under normal curve equals probability.",
+        "Demonstrate unusual events: z > 2 or z < -2 are unusual; z > 3 or z < -3 very unusual."
+      ],
+      "discoveryHook": {
+        "scenario": "The area under the normal curve is probability. If you know the z-score, you know the probability of observing that value or less. Values more than two standard deviations from the mean are unusual—more than three are very unusual!"
+      },
+      "concept": {
+        "explanation": [
+          "The area under the standard normal curve to the left of a z-score gives $P(z < \\text{that z-score})$.",
+          "Use the table to find probabilities for any region.",
+          "A z-score greater than 2 or less than -2 indicates an [[imp:unusual]] value.",
+          "A z-score greater than 3 or less than -3 indicates a [[imp:very unusual]] value.",
+          "Technology can also compute these probabilities directly."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Unusual Events",
+            "headers": [
+              "Z-Score Range",
+              "Interpretation"
+            ],
+            "rows": [
+              {
+                "0": "$z > 2$ or $z < -2$",
+                "1": "Unusual"
+              },
+              {
+                "0": "$z > 3$ or $z < -3$",
+                "1": "Very unusual"
+              },
+              {
+                "0": "$-2 \\le z \\le 2$",
+                "1": "Not unusual"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Probability from Area",
+          "formula": "$$ P(z < a) = \\text{area to left of } a $$",
+          "notes": [
+            "Total probability = 1.",
+            "Use table or technology."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Probability Less Than",
+          "prompt": "Find $P(z < -0.99)$.",
+          "steps": [
+            "From the standard normal table, area to left of z = -0.99 is 0.1611.",
+            "So $P(z < -0.99) = 0.1611$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Probability Greater Than",
+          "prompt": "Find $P(z > 1.23)$.",
+          "peerPrompt": "Explain to a partner: Why is this equal to 1 minus the table value for 1.23?",
+          "minLength": 2,
+          "steps": [
+            "Table gives $P(z < 1.23) = 0.8907$.",
+            "$P(z > 1.23) = 1 - 0.8907 = 0.1093$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Unusual Event",
+          "prompt": "Is a z-score of 2.5 unusual?",
+          "steps": [
+            "Compare to threshold 2.",
+            "2.5 > 2, so it is unusual.",
+            "Not greater than 3, so not very unusual."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Area = Probability",
+        "body": "For continuous distributions, probability is area under the curve. $P(z < a)$ is exactly the area to the left of $a$. There is no difference between 'less than' and 'less than or equal to' for continuous variables."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "In a continuous probability distribution, probability is represented by ___ under the curve.",
+          "blanks": [
+            {
+              "accept": [
+                "area"
+              ]
+            }
+          ],
+          "hints": [
+            "It is found using the table.",
+            "Total area is 1."
+          ],
+          "feedbackIfWrong": "Probability is area under the curve."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "If $P(z < 1.5) = 0.9332$, what is $P(z > 1.5)$?",
+          "answer": "0.0668",
+          "hints": [
+            "Total probability is 1.",
+            "$1 - 0.9332$."
+          ],
+          "feedbackIfWrong": "$1 - 0.9332 = 0.0668$."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "Is a z-score of -2.7 unusual or very unusual?",
+          "answer": "unusual",
+          "hints": [
+            "It is more than 2 but less than 3 in magnitude.",
+            "Not beyond 3."
+          ],
+          "feedbackIfWrong": "-2.7 is unusual, but not very unusual because it is not less than -3."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-normal-distribution",
+      "title": "Blueprint Aid – Solving Normal Distribution Problems",
+      "teacherCues": [
+        "Display Understand → Solve → Conclude. Walk through a z-score and probability problem.",
+        "Emphasize: Understand identifies mean, standard deviation, and region. Solve converts to z and finds area. Conclude interprets probability."
+      ],
+      "discoveryHook": {
+        "scenario": "With the standard normal table, you can find the probability of nearly any normally distributed event. The blueprint helps you organize: Understand the problem, Solve using z-scores and the table, and Conclude with the probability and whether it is unusual."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]] – Read the problem. Identify the mean $\\mu$, standard deviation $\\sigma$, the raw score $x$, and the region (left, right, between).",
+          "[[imp:Solve]] – Convert $x$ to z-score: $z = \\frac{x-\\mu}{\\sigma}$. Use the standard normal table or technology to find the area.",
+          "[[imp:Conclude]] – State the probability. Determine if the event is unusual (|z| > 2). Interpret in context."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Normal Distribution",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Find $\\mu$, $\\sigma$, $x$, and region."
+              },
+              {
+                "0": "Solve",
+                "1": "Compute z-score; use table for area."
+              },
+              {
+                "0": "Conclude",
+                "1": "State probability; check unusual; interpret."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Z-Score and Probability",
+          "formula": "$$ z = \\frac{x - \\mu}{\\sigma} \\qquad P = \\text{area from table} $$",
+          "notes": [
+            "Round z to nearest hundredth.",
+            "Use table or technology."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full Blueprint: Probability",
+          "prompt": "Use blueprint: Normal distribution with $\\mu = 100$, $\\sigma = 15$. Find probability x is less than 118.",
+          "steps": [
+            "Understand: $\\mu = 100$, $\\sigma = 15$, $x = 118$, region left.",
+            "Solve: $z = \\frac{118-100}{15} = 1.2$. Table area left of 1.2 = 0.8849.",
+            "Conclude: $P(x < 118) = 0.8849$. Not unusual."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Full Blueprint: Right Tail",
+          "prompt": "Use blueprint: Test scores with $\\mu = 500$, $\\sigma = 100$. Find probability score is greater than 650.",
+          "peerPrompt": "Explain to a partner: After finding the z-score, why do you subtract from 1?",
+          "minLength": 2,
+          "steps": [
+            "Understand: $x = 650$, region right.",
+            "Solve: $z = \\frac{650-500}{100} = 1.5$. Area left = 0.9332. Area right = 1 - 0.9332 = 0.0668.",
+            "Conclude: Probability is 0.0668. Not unusual since z = 1.5 < 2."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Decide and Compute",
+          "prompt": "Use blueprint: Heights have $\\mu = 65$ inches, $\\sigma = 3$ inches. Find probability height is less than 59 inches.",
+          "steps": [
+            "Understand: $x = 59$.",
+            "Solve: $z = \\frac{59-65}{3} = -2$. Area left of -2 = 0.0228.",
+            "Conclude: Probability = 0.0228. Unusual since |z| = 2."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Forget to Convert",
+        "body": "Never use raw x-values directly in the standard normal table. Always convert to z-scores first. The table is built for z-scores, not raw scores."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "What is the first thing you identify in the Understand phase?",
+          "answer": "mean",
+          "hints": [
+            "Also standard deviation.",
+            "You need $\\mu$ and $\\sigma$."
+          ],
+          "feedbackIfWrong": "Identify the mean $\\mu$ and standard deviation $\\sigma$."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "In the Solve phase, convert the raw score $x$ to a ___ using the formula $z = \\frac{x-\\mu}{\\sigma}$.",
+          "blanks": [
+            {
+              "accept": [
+                "z-score"
+              ]
+            }
+          ],
+          "hints": [
+            "It starts with 'z'.",
+            "It standardizes the value."
+          ],
+          "feedbackIfWrong": "Convert x to a z-score."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "If |z| = 2.3, is the event unusual? (yes/no)",
+          "answer": "yes",
+          "hints": [
+            "Compare to 2.",
+            "2.3 > 2."
+          ],
+          "feedbackIfWrong": "Yes, |z| > 2 so it is unusual."
+        }
+      ]
+    }
+  ],
+  "presenterNotes": [
+    "Start with the intuition of the bell curve. Draw several curves to show how mean and standard deviation affect shape.",
+    "The standard normal table is central. Practice reading it with students for various z-scores.",
+    "Emphasize the difference between area to the left, right, and between z-scores. Use sketches to reinforce.",
+    "Connect z-scores back to Empirical Rule: z = ±1, ±2, ±3 correspond to 68%, 95%, 99.7%.",
+    "The blueprint helps students remember to convert to z-scores before using the table."
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

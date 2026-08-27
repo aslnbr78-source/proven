@@ -1,0 +1,591 @@
+{
+  "type": "interactive-lesson",
+  "id": "10-5-rotation",
+  "title": "Conics",
+  "blocks": [
+    {
+      "id": "rotation-intro",
+      "title": "Why Rotate Axes?",
+      "teacherCues": [
+        "Write Ax² + Bxy + Cy² + ... on board. Ask: What term forces rotation?",
+        "Draw tilted ellipse: show axes aligned with its symmetry vs. coordinate axes."
+      ],
+      "discoveryHook": {
+        "scenario": "A satellite dish might be tilted; its cross-section is a parabola rotated relative to the ground. To analyze it, we rotate the coordinate axes to align with its symmetry."
+      },
+      "concept": {
+        "explanation": [
+          "A general conic with an $ xy $-term: $$ Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0 $$ cannot have axes parallel to the coordinate axes when $ B \\ne 0 $.",
+          "We [[kw:rotate axes]] through an angle $ \\theta $ to eliminate the $ xy $-term, producing an equation in $ x' $ and $ y' $ without $ x'y' $.",
+          "The angle $ \\theta $ satisfies: $$ \\cot 2\\theta = \\frac{A - C}{B} $$",
+          "The rotation formulas: $$ x = x' \\cos \\theta - y' \\sin \\theta $$ $$ y = x' \\sin \\theta + y' \\cos \\theta $$",
+          "Substitute these into the original equation to obtain the [[kw:rotated equation]] in $ x', y' $ with no $ xy $-term."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Key Formulas",
+            "headers": [
+              "Quantity",
+              "Formula"
+            ],
+            "rows": [
+              {
+                "0": "Angle of rotation",
+                "1": "$ \\cot 2\\theta = \\frac{A-C}{B} $"
+              },
+              {
+                "0": "$ x $ in new coordinates",
+                "1": "$ x = x' \\cos \\theta - y' \\sin \\theta $"
+              },
+              {
+                "0": "$ y $ in new coordinates",
+                "1": "$ y = x' \\sin \\theta + y' \\cos \\theta $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Rotation of Axes",
+          "formula": "$$ \\cot 2\\theta = \\frac{A-C}{B} $$",
+          "notes": [
+            "$ B \\ne 0 $ for rotation to be needed.",
+            "Choose acute $ \\theta $ such that $ 0 < \\theta < \\pi/2 $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Finding the Rotation Angle",
+          "prompt": "Find $ \\theta $ to eliminate the $ xy $-term in $ 7x^2 - 6\\sqrt{3}xy + 13y^2 - 16 = 0 $.",
+          "steps": [
+            "$ A=7, B=-6\\sqrt{3}, C=13 $. $ \\cot 2\\theta = \\frac{7-13}{-6\\sqrt{3}} = \\frac{-6}{-6\\sqrt{3}} = \\frac{1}{\\sqrt{3}} $.",
+            "$ \\cot 2\\theta = 1/\\sqrt{3} \\Rightarrow 2\\theta = \\pi/3 \\Rightarrow \\theta = \\pi/6 $.",
+            "Double-check: $ \\cot(\\pi/3) = 1/\\sqrt{3} $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Rotating $ xy = 1 $",
+          "prompt": "For $ xy - 1 = 0 $, find $ \\theta $ and transformed equation.",
+          "peerPrompt": "With a partner: 'What are A, B, C? How does $ \\cot 2\\theta = 0 $ give $ \\theta = \\pi/4 $?'",
+          "minLength": 2,
+          "steps": [
+            "$ A=0, B=1, C=0 \\Rightarrow \\cot 2\\theta = 0 \\Rightarrow 2\\theta = \\pi/2 \\Rightarrow \\theta = \\pi/4 $.",
+            "Substitute: $ x = \\frac{x'-y'}{\\sqrt{2}}, y = \\frac{x'+y'}{\\sqrt{2}} $ into $ xy=1 $.",
+            "Result: $ \\frac{(x')^2 - (y')^2}{2} = 1 $ → $ \\frac{(x')^2}{2} - \\frac{(y')^2}{2} = 1 $, a hyperbola."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick $ \\theta $ calculation",
+          "prompt": "If $ A=3, B=4, C=3 $, find $ \\theta $.",
+          "steps": [
+            "$ \\cot 2\\theta = \\frac{3-3}{4} = 0 \\Rightarrow 2\\theta = \\pi/2 \\Rightarrow \\theta = \\pi/4 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Degenerate case?",
+        "body": "If $ A = C $, then $ \\cot 2\\theta = 0 $, always giving $ \\theta = 45^\\circ $. Many conics with equal $ A $ and $ C $ are rotated by 45°."
+      },
+      "questions": [
+        {
+          "id": "q-rot-1",
+          "type": "fill-blank",
+          "prompt": "The formula to find the rotation angle for eliminating the $ xy $-term is $ \\cot 2\\theta = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "(A-C)/B"
+              ]
+            }
+          ],
+          "hints": [
+            "It involves the coefficients A, B, C.",
+            "Difference of A and C divided by B."
+          ],
+          "feedbackIfWrong": "$ \\cot 2\\theta = (A-C)/B $."
+        },
+        {
+          "id": "q-rot-2",
+          "type": "short-answer",
+          "prompt": "If $ B = 0 $ in the general conic equation, is rotation necessary? (yes or no)",
+          "answer": "no",
+          "hints": [
+            "The xy-term is missing.",
+            "Axes are already parallel to coordinate axes."
+          ],
+          "feedbackIfWrong": "No."
+        },
+        {
+          "id": "q-rot-3",
+          "type": "short-answer",
+          "prompt": "After rotation, the new equation should have no ___ term.",
+          "answer": "x'y'",
+          "hints": [
+            "It's the mixed term.",
+            "We rotate specifically to eliminate it."
+          ],
+          "feedbackIfWrong": "x'y' (or xy) term."
+        }
+      ]
+    },
+    {
+      "id": "rotation-examples",
+      "title": "Rotating Specific Conics",
+      "teacherCues": [
+        "Work through the hyperbola xy=1 rotation. Show that it becomes a standard hyperbola.",
+        "For the ellipse 7x²-6√3 xy+13y²=16, show the algebra simplifying to standard form."
+      ],
+      "discoveryHook": {
+        "scenario": "By rotating axes, we can turn an equation with a 'messy' xy term into a standard parabola, ellipse, or hyperbola, making it easy to graph."
+      },
+      "concept": {
+        "explanation": [
+          "To apply rotation:",
+          "1. Identify $ A, B, C $. Compute $ \\cot 2\\theta $ and find $ \\theta $.",
+          "2. Find $ \\sin \\theta, \\cos \\theta $ (often special angles, or use half-angle formulas).",
+          "3. Substitute $ x, y $ in terms of $ x', y' $ into the original equation.",
+          "4. Expand and simplify; the $ x'y' $ term should vanish. Collect $ (x')^2 $ and $ (y')^2 $ terms.",
+          "5. Write in standard form (complete square if needed)."
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Hyperbola $ xy=1 $",
+          "prompt": "Rotate $ xy - 1 = 0 $ to standard form.",
+          "steps": [
+            "$ A=C=0, B=1 $ → $ \\theta = 45^\\circ $. $ \\sin\\theta=\\cos\\theta=1/\\sqrt{2} $.",
+            "Substitute: $ x = (x'-y')/\\sqrt{2} $, $ y = (x'+y')/\\sqrt{2} $.",
+            "Equation becomes $ (x'^2 - y'^2)/2 = 1 $ → $ x'^2/2 - y'^2/2 = 1 $. Hyperbola with $ a=b=\\sqrt{2} $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Ellipse with radical coefficients",
+          "prompt": "Rotate $ 7x^2 - 6\\sqrt{3}xy + 13y^2 - 16 = 0 $.",
+          "peerPrompt": "Work with a partner: 'How do we manage the radicals when substituting?'",
+          "minLength": 2,
+          "steps": [
+            "$ \\theta = 30^\\circ $, $ \\cos\\theta=\\sqrt{3}/2 $, $ \\sin\\theta=1/2 $.",
+            "Substitutions: $ x = \\frac{\\sqrt{3}x' - y'}{2} $, $ y = \\frac{x' + \\sqrt{3}y'}{2} $.",
+            "After algebra, the $ x'y' $ term cancels, leaving $ 4(x')^2 + 16(y')^2 = 16 $ → $ \\frac{(x')^2}{4} + \\frac{(y')^2}{1} = 1 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Parabola with non-special angle",
+          "prompt": "For $ x^2 - 4xy + 4y^2 + 5\\sqrt{5}y + 1 = 0 $, $ \\theta $ satisfies $ \\cot 2\\theta = 3/4 $. Show $ \\sin\\theta = 1/\\sqrt{5}, \\cos\\theta = 2/\\sqrt{5} $.",
+          "steps": [
+            "$ \\cot 2\\theta = 3/4 $ → draw right triangle with adjacent 3, opposite 4 → hypotenuse 5. So $ \\cos 2\\theta = 3/5 $.",
+            "Half-angle: $ \\sin\\theta = \\sqrt{\\frac{1-3/5}{2}} = 1/\\sqrt{5} $, $ \\cos\\theta = \\sqrt{\\frac{1+3/5}{2}} = 2/\\sqrt{5} $.",
+            "Substitution yields a parabola in $ x',y' $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Checking cancellation",
+        "body": "After substitution, if the $ x'y' $ term doesn't cancel, the $ \\theta $ or algebra is wrong. [[imp:Always verify the term cancels.]]"
+      },
+      "questions": [
+        {
+          "id": "q-ex-1",
+          "type": "fill-blank",
+          "prompt": "After rotating $ xy = 1 $, the resulting conic is a ___.",
+          "blanks": [
+            {
+              "accept": [
+                "hyperbola"
+              ]
+            }
+          ],
+          "hints": [
+            "The standard form has a minus sign between x'² and y'².",
+            "Think of the graph of xy=1."
+          ],
+          "feedbackIfWrong": "hyperbola."
+        },
+        {
+          "id": "q-ex-2",
+          "type": "short-answer",
+          "prompt": "For the ellipse example, $ a $ (semi-major axis length) in the rotated system is:",
+          "answer": "2",
+          "hints": [
+            "In $ \\frac{(x')^2}{4} + \\frac{(y')^2}{1} = 1 $, a² is the larger denominator.",
+            "a = 2."
+          ],
+          "feedbackIfWrong": "2."
+        },
+        {
+          "id": "q-ex-3",
+          "type": "short-answer",
+          "prompt": "In the rotation formulas, if $ \\theta = 0 $, what are $ x $ and $ y $? (Write as x = ?, y = ?)",
+          "answer": "x = x', y = y'",
+          "hints": [
+            "cos 0 = 1, sin 0 = 0.",
+            "Plug into the formulas."
+          ],
+          "feedbackIfWrong": "x = x', y = y'."
+        }
+      ]
+    },
+    {
+      "id": "invariants-discriminant",
+      "title": "Invariants & Discriminant",
+      "teacherCues": [
+        "Write the three invariants: F = F', A+C = A'+C', B²-4AC = (B')²-4A'C'.",
+        "Explain the discriminant: Δ = B²-4AC. Its sign classifies the conic."
+      ],
+      "discoveryHook": {
+        "scenario": "Without rotating, you can identify a conic by its discriminant. A quick calculation tells you whether it's an ellipse, parabola, or hyperbola, even if it's rotated."
+      },
+      "concept": {
+        "explanation": [
+          "Under rotation, certain combinations of coefficients remain unchanged ([[kw:invariants]]):",
+          "1. $ F' = F $ (constant term unchanged)",
+          "2. $ A' + C' = A + C $ (sum of squared coefficients)",
+          "3. $ B^2 - 4AC = (B')^2 - 4A'C' $ (discriminant invariant)",
+          "Since after rotation $ B' = 0 $, the discriminant becomes $ -4A'C' $. Its sign tells the type of conic:",
+          "If $ B^2 - 4AC < 0 $: ellipse (or circle)",
+          "If $ B^2 - 4AC = 0 $: parabola",
+          "If $ B^2 - 4AC > 0 $: hyperbola"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Classification by Discriminant",
+            "headers": [
+              "Discriminant Δ = B²-4AC",
+              "Conic"
+            ],
+            "rows": [
+              {
+                "0": "Δ < 0",
+                "1": "Ellipse (or circle)"
+              },
+              {
+                "0": "Δ = 0",
+                "1": "Parabola"
+              },
+              {
+                "0": "Δ > 0",
+                "1": "Hyperbola"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Classify using discriminant",
+          "prompt": "Classify the conic $ 2x^2 - 3xy + 2y^2 - 2x = 0 $.",
+          "steps": [
+            "$ A=2, B=-3, C=2 $ → $ \\Delta = (-3)^2 - 4(2)(2) = 9 - 16 = -7 < 0 $.",
+            "Therefore, ellipse (or circle)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Identify parabola",
+          "prompt": "Classify $ x^2 - 6xy + 9y^2 - 2y + 1 = 0 $.",
+          "peerPrompt": "Discuss: 'Compute Δ. Why does Δ=0 indicate a parabola?'",
+          "minLength": 2,
+          "steps": [
+            "$ A=1, B=-6, C=9 $ → $ \\Delta = 36 - 36 = 0 $.",
+            "The conic is a parabola."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Recognize hyperbola",
+          "prompt": "Classify $ 3x^2 + 8xy + 4y^2 - 7 = 0 $.",
+          "steps": [
+            "$ \\Delta = 64 - 48 = 16 > 0 $ → hyperbola."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Not just a number",
+        "body": "The discriminant tells you the type but not the specific dimensions. For details, you still need to rotate or complete squares."
+      },
+      "questions": [
+        {
+          "id": "q-disc-1",
+          "type": "fill-blank",
+          "prompt": "The expression $ B^2 - 4AC $ is called the ___ of a conic.",
+          "blanks": [
+            {
+              "accept": [
+                "discriminant"
+              ]
+            }
+          ],
+          "hints": [
+            "It's like the quadratic discriminant.",
+            "It classifies the conic."
+          ],
+          "feedbackIfWrong": "discriminant."
+        },
+        {
+          "id": "q-disc-2",
+          "type": "short-answer",
+          "prompt": "If $ B^2 - 4AC = 0 $, the conic is a ___.",
+          "answer": "parabola",
+          "hints": [
+            "It's the only case with zero.",
+            "Think of one squared term."
+          ],
+          "feedbackIfWrong": "parabola."
+        },
+        {
+          "id": "q-disc-3",
+          "type": "short-answer",
+          "prompt": "If $ A + C = A' + C' $, this quantity is an ___ under rotation.",
+          "answer": "invariant",
+          "hints": [
+            "It doesn't change.",
+            "Stays the same after rotation."
+          ],
+          "feedbackIfWrong": "invariant."
+        }
+      ]
+    },
+    {
+      "id": "graphing-rotated",
+      "title": "Graphing Rotated Conics (Using Quadratic Formula)",
+      "teacherCues": [
+        "Show how to solve the rotated equation for y to graph using a calculator.",
+        "Demonstrate the two parts (top and bottom) from the quadratic formula."
+      ],
+      "discoveryHook": {
+        "scenario": "Even without rotating axes manually, you can graph a rotated conic by solving for y using the Quadratic Formula. This gives two functions that together trace the curve."
+      },
+      "concept": {
+        "explanation": [
+          "A general second-degree equation can be written as a quadratic in $ y $: $$ a y^2 + b y + c = 0 $$ where $ a = C $, $ b = Bx + E $, $ c = Ax^2 + Dx + F $.",
+          "Solve for $ y $ using the Quadratic Formula: $$ y = \\frac{-(Bx+E) \\pm \\sqrt{(Bx+E)^2 - 4C(Ax^2+Dx+F)}}{2C} $$",
+          "This yields two functions $ y_1 $ (top half) and $ y_2 $ (bottom half) that can be graphed.",
+          "The discriminant $ \\Delta $ inside the square root determines the conic type and the domain."
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Graphing $ 2x^2 - 3xy + 2y^2 - 2x = 0 $",
+          "prompt": "Solve for y and identify the two functions.",
+          "steps": [
+            "Rewrite as $ 2y^2 - 3xy + (2x^2 - 2x) = 0 $. $ a=2, b=-3x, c=2x^2-2x $.",
+            "Quadratic formula: $ y = \\frac{3x \\pm \\sqrt{(-3x)^2 - 8(2x^2 - 2x)}}{4} = \\frac{3x \\pm \\sqrt{x(16-7x)}}{4} $.",
+            "Top half: $ y_1 = (3x + \\sqrt{x(16-7x)})/4 $; bottom: $ y_2 = (3x - \\sqrt{x(16-7x)})/4 $. Domain $ 0 \\le x \\le 16/7 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Parabola example",
+          "prompt": "Graph $ x^2 - 6xy + 9y^2 - 2y + 1 = 0 $ using the quadratic formula approach.",
+          "peerPrompt": "With a partner: 'Why does this produce a single connected graph?'",
+          "minLength": 2,
+          "steps": [
+            "Rewrite as $ 9y^2 - (6x+2)y + (x^2+1) = 0 $. $ a=9, b=-(6x+2), c=x^2+1 $.",
+            "Discriminant: $ (6x+2)^2 - 36(x^2+1) = 36x^2+24x+4 - 36x^2 - 36 = 24x - 32 $.",
+            "$ y = \\frac{6x+2 \\pm \\sqrt{24x-32}}{18} $. Domain $ x \\ge 4/3 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Your turn",
+          "prompt": "Classify and graph $ 3x^2 + 8xy + 4y^2 - 7 = 0 $ by solving for y.",
+          "steps": [
+            "Rewrite: $ 4y^2 + 8xy + (3x^2 - 7) = 0 $ → $ a=4, b=8x, c=3x^2-7 $.",
+            "Discriminant: $ (8x)^2 - 16(3x^2-7) = 64x^2 - 48x^2 + 112 = 16x^2 + 112 $.",
+            "$ y = \\frac{-8x \\pm \\sqrt{16x^2+112}}{8} = \\frac{-8x \\pm 4\\sqrt{x^2+7}}{8} = -x \\pm \\frac{\\sqrt{x^2+7}}{2} $. This is a hyperbola."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Domain issues",
+        "body": "The expression under the square root must be non-negative. The domain of the graph is restricted to those $ x $ values. [[imp:Check the discriminant's sign for valid intervals.]]"
+      },
+      "questions": [
+        {
+          "id": "q-graph-1",
+          "type": "fill-blank",
+          "prompt": "To graph a rotated conic without rotating axes, we solve the equation for ___ using the quadratic formula.",
+          "blanks": [
+            {
+              "accept": [
+                "y"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the variable we isolate.",
+            "We get two functions."
+          ],
+          "feedbackIfWrong": "y."
+        },
+        {
+          "id": "q-graph-2",
+          "type": "short-answer",
+          "prompt": "How many separate functions do you graph to display a complete conic (except parabolas)?",
+          "answer": "2",
+          "hints": [
+            "One for the + sign, one for the - sign.",
+            "Top and bottom (or left and right)."
+          ],
+          "feedbackIfWrong": "2."
+        },
+        {
+          "id": "q-graph-3",
+          "type": "short-answer",
+          "prompt": "If the expression under the square root is always negative, how many points does the graph contain?",
+          "answer": "0",
+          "hints": [
+            "No real values.",
+            "Graph is empty."
+          ],
+          "feedbackIfWrong": "0."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-rotation",
+      "title": "Blueprint Aid: Rotation of Conics",
+      "teacherCues": [
+        "Write Understand → Solve → Conclude. Ask: 'How do we decide whether rotation is needed?'",
+        "Emphasize checking discriminant first to know the conic type."
+      ],
+      "discoveryHook": {
+        "scenario": "When you encounter a messy xy-term, the blueprint helps: Understand the equation type via discriminant, Solve by rotating to standard form or graphing via quadratic formula, and Conclude with classification and sketch."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Understand]]: Identify A, B, C, D, E, F. Compute discriminant Δ = B²-4AC to classify conic. If B ≠ 0, rotation is needed; else axes are parallel to coordinate axes.",
+          "[[kw:Solve]]: If B ≠ 0, compute cot 2θ, find θ, and use rotation formulas to write equation in x', y' with no x'y' term. Alternatively, solve for y as quadratic to graph directly.",
+          "[[kw:Conclude]]: State the standard form in rotated coordinates (and/or original), give key features (center, vertices, foci), and sketch the graph."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Rotation Workflow",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Compute discriminant to classify"
+              },
+              {
+                "0": "2",
+                "1": "If B≠0, find θ using cot 2θ = (A-C)/B"
+              },
+              {
+                "0": "3",
+                "1": "Substitute x,y in terms of x',y'"
+              },
+              {
+                "0": "4",
+                "1": "Simplify to standard form"
+              },
+              {
+                "0": "5",
+                "1": "Identify features and sketch"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example 1: Classify & Rotate",
+          "prompt": "For $ 2x^2 - 3xy + 2y^2 - 2x = 0 $, classify and rotate to show it's an ellipse.",
+          "steps": [
+            "Understand: $ A=2, B=-3, C=2 $ → Δ = 9-16 = -7 (ellipse).",
+            "Solve: cot 2θ = (2-2)/(-3) = 0 → θ=45°. After rotation, the equation becomes $ 4(x')^2 + ? (y')^2 ... = something. (Detailed algebra yields standard form.)",
+            "Conclude: The conic is an ellipse; rotate axes 45° to obtain standard form."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example 2: Parabola Rotation",
+          "prompt": "Show that $ x^2 - 4xy + 4y^2 + 5\\sqrt{5}y + 1 = 0 $ is a parabola and rotate to get standard form.",
+          "peerPrompt": "Discuss: 'How does completing the square in the rotated system give the vertex?'",
+          "minLength": 2,
+          "steps": [
+            "Understand: A=1, B=-4, C=4 → Δ = 16-16=0 → parabola.",
+            "Solve: cot 2θ = (1-4)/(-4)=3/4 → using triangle gives sinθ=1/√5, cosθ=2/√5. Substituting and simplifying yields $ 5(y'+1)^2 = -5 x' + 4 $ → $ (y'+1)^2 = -1 (x' - 4/5) $.",
+            "Conclude: Rotated parabola with vertex at (4/5, -1) in x'y'-system."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Your Turn",
+          "prompt": "Classify and sketch $ xy + 6 = 0 $.",
+          "steps": [
+            "Understand: A=0,C=0,B=1 → Δ = 1 > 0 → hyperbola.",
+            "Solve: cot 2θ = 0 → θ=45°. Substituting yields $ (x')^2 - (y')^2 = -12 $ → standard form $ \\frac{(y')^2}{12} - \\frac{(x')^2}{12} = 1 $.",
+            "Conclude: Hyperbola with vertices (0,±√12) in x'y'-system; opens along y' axis."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Common error",
+        "body": "Forgetting to check that after substitution, the $ x'y' $-term vanishes. If it doesn't, the angle is wrong or algebra mistake."
+      },
+      "questions": [
+        {
+          "id": "q-blue-1",
+          "type": "fill-blank",
+          "prompt": "Before rotating axes, we should use the ___ to classify the conic.",
+          "blanks": [
+            {
+              "accept": [
+                "discriminant"
+              ]
+            }
+          ],
+          "hints": [
+            "It's $ B^2 - 4AC $.",
+            "It tells us the type without rotation."
+          ],
+          "feedbackIfWrong": "discriminant."
+        },
+        {
+          "id": "q-blue-2",
+          "type": "short-answer",
+          "prompt": "If $ A = C $, what angle does the rotation formula suggest? (degrees)",
+          "answer": "45",
+          "hints": [
+            "cot 2θ = 0 → 2θ = 90°.",
+            "θ = 45°."
+          ],
+          "feedbackIfWrong": "45°."
+        },
+        {
+          "id": "q-blue-3",
+          "type": "short-answer",
+          "prompt": "After rotation, the new equation has no $ x'y' $-term. The coefficient $ B' $ becomes ___.",
+          "answer": "0",
+          "hints": [
+            "That's the whole point of rotation.",
+            "We chose θ to make B'=0."
+          ],
+          "feedbackIfWrong": "0."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

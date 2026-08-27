@@ -1,0 +1,71 @@
+{
+  "id": "section-10-1-flashcards",
+  "title": "Chi‑Square Goodness‑of‑Fit Test",
+  "cards": [
+    {
+      "front": "What is a [[kw:multinomial experiment]]?",
+      "back": "A probability experiment with a fixed number of independent trials, each having more than two possible outcomes with fixed probabilities. The chi‑square goodness‑of‑fit test is based on this."
+    },
+    {
+      "front": "What does the [[kw:chi‑square goodness‑of‑fit test]] do?",
+      "back": "It tests whether a frequency distribution from a sample fits a claimed or expected distribution. The null hypothesis states that the distribution fits; the alternative says it does not."
+    },
+    {
+      "front": "Define [[kw:observed frequency]] $O$ and [[kw:expected frequency]] $E$.",
+      "back": "Observed frequency $O$ is the actual count in each category from the sample. Expected frequency $E$ is the count predicted under the null hypothesis: $$E = n \\times p$$ where $n$ is the sample size and $p$ is the claimed proportion."
+    },
+    {
+      "front": "What is the [[imp:chi‑square test statistic]] formula?",
+      "back": "$$\\chi^2 = \\sum \\frac{(O - E)^2}{E}$$ where the sum is over all categories. Larger values indicate a bigger discrepancy between observed and expected frequencies."
+    },
+    {
+      "front": "How do you calculate degrees of freedom for a goodness‑of‑fit test?",
+      "back": "$$df = k - 1$$ where $k$ is the number of categories. It does not depend on the sample size $n$."
+    },
+    {
+      "front": "What condition must expected frequencies satisfy to use the chi‑square test?",
+      "back": "Each expected frequency must be at least 5. If any $E < 5$, combine categories until all expected counts are $\\ge 5$."
+    },
+    {
+      "back": "[[imp:Always right‑tailed]]. The test statistic is always non‑negative, and only large values indicate a poor fit, so we reject $H_0$ for large $\\chi^2$.",
+      "front": "Is the chi‑square goodness‑of‑fit test left‑tailed, right‑tailed, or two‑tailed?"
+    },
+    {
+      "front": "How do you find the critical value for a chi‑square test?",
+      "back": "Use the chi‑square table (Table 6) with $df = k-1$ and the given $\\alpha$. The rejection region is $\\chi^2 > \\chi^2_{\\alpha}$. In Google Sheets, use `=CHISQ.INV.RT(\\alpha, df)`."
+    },
+    {
+      "back": "Reject $H_0$ because $35.12 > 13.277$. There is enough evidence to conclude the distribution of tax preparation methods differs from the claimed distribution.",
+      "front": "In the tax preparation example, the $\\chi^2$ statistic was 35.12 with $df=4$, $\\alpha=0.01$, critical value 13.277. What is the decision?"
+    },
+    {
+      "front": "What does a uniform distribution mean in a goodness‑of‑fit test?",
+      "back": "All categories have the same probability. The expected frequency for each category is $$E = \\frac{n}{k}$$ For example, a fair die has $k=6$, so each face is expected $n/6$ times."
+    },
+    {
+      "back": "Fail to reject $H_0$. The observed counts are consistent with a uniform distribution; there is not enough evidence to say the colors are not equally distributed.",
+      "front": "In the M&M example, $\\chi^2 \\approx 3.016$, $df=5$, $\\alpha=0.10$, critical value 9.236. What is the conclusion?"
+    },
+    {
+      "front": "What Google Sheets function returns the p‑value for a chi‑square test?",
+      "back": "`=CHISQ.TEST(observed_range, expected_range)` returns the p‑value directly. Compare p‑value to $\\alpha$; if p < $\\alpha$, reject $H_0$."
+    },
+    {
+      "back": "$H_0$: The frequency distribution of the population fits the specified (claimed) distribution. $H_a$: The frequency distribution does not fit the specified distribution.",
+      "front": "What is the [[imp:null hypothesis]] for a goodness‑of‑fit test in words?"
+    },
+    {
+      "front": "How do you interpret a small $\\chi^2$ value?",
+      "back": "A small $\\chi^2$ (near 0) means the observed and expected frequencies are very close. This provides no evidence against the null hypothesis, so you fail to reject $H_0$."
+    },
+    {
+      "front": "Why must you check expected frequencies before running the test?",
+      "back": "The chi‑square approximation is reliable only when all expected frequencies are $\\ge 5$. If any are less, the test statistic may not follow a chi‑square distribution, leading to inaccurate conclusions."
+    }
+  ],
+  "type": "flashcard",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

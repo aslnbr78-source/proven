@@ -1,0 +1,719 @@
+{
+  "schemaVersion": 2,
+  "presenterNotes": [
+    "The sign test is the simplest nonparametric test. Emphasize that it only uses direction (sign), not magnitude.",
+    "Always check sample size to decide whether to use Table 8 or normal approximation.",
+    "Remind students to ignore ties (zeros) when computing n.",
+    "For Google Sheets, the sign test can be done by counting + and − with COUNTIF, then using BINOM.DIST or NORM.S.DIST for p‑values."
+  ],
+  "id": "section-11-1-sign-test",
+  "title": "The Sign Test",
+  "blocks": [
+    {
+      "id": "sign-test-intro",
+      "examples": [
+        {
+          "steps": [
+            "Compare each number to 10: 12 > 10 → +; 8 < 10 → −; 15 > 10 → +; 10 = 10 → 0; 7 < 10 → −.",
+            "Count: 2 plus signs (+), 2 minus signs (−), 1 zero (ignored).",
+            "Smaller count is $x = 2$.",
+            "Sample size $n = 4$ (only + and −)."
+          ],
+          "role": "guided",
+          "title": "Example A – Assigning Signs",
+          "prompt": "Data: 12, 8, 15, 10, 7. Test if the median is 10. Assign signs."
+        },
+        {
+          "prompt": "Why is the test statistic x the smaller of the number of + and − signs?",
+          "peerPrompt": "Without looking back...\n\nDiscuss: If the true median is k, how many + and − signs would you expect? What would a very small number of one sign indicate?",
+          "steps": [
+            "Under $H_0$, about half the signs should be + and half −.",
+            "If one sign appears much less often than expected, it suggests the median is not k.",
+            "The smaller count measures how extreme the imbalance is; a very small number indicates the data are shifted away from k."
+          ],
+          "role": "peer-explain",
+          "title": "Example B – Why Use the Smaller Count?",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Hypotheses Setup",
+          "prompt": "An economist claims the median income in a region is less than $50,000. Write $H_0$ and $H_a$.",
+          "steps": [
+            "The claim is that the median is less than 50,000, so $H_a: \\text{median} < 50,000$.",
+            "The null hypothesis is the opposite: $H_0: \\text{median} \\ge 50,000$.",
+            "This is a left‑tailed test."
+          ],
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A website administrator claims the median daily visitors is at most 1500. You have a sample of 20 days, but the data is skewed. Instead of a t‑test, you can use a simple sign test: just count how many days are above or below 1500. If the median really is 1500, about half should be above and half below."
+      },
+      "teacherCues": [
+        "Write on the board: parametric vs. nonparametric. Ask: What if your data isn't normal?",
+        "Show how to assign +, −, and 0 to data points compared to a hypothesized median k."
+      ],
+      "confusionCorner": {
+        "title": "Zeros Are Ignored",
+        "body": "Data values exactly equal to the hypothesized median are assigned a 0 and are [[imp:not counted]] in the sample size $n$. They provide no evidence for or against the null hypothesis."
+      },
+      "title": "Nonparametric Tests and the Sign Test",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ H_0: \\text{median} = k \\quad H_a: \\text{median} \\ne k $$ $$ H_0: \\text{median} \\le k \\quad H_a: \\text{median} > k $$ $$ H_0: \\text{median} \\ge k \\quad H_a: \\text{median} < k $$",
+          "notes": [
+            "Use the two‑tailed version when the claim is 'different from'.",
+            "For one‑tailed, match the direction of the claim to $H_a$.",
+            "The test statistic is always the smaller count of + or −."
+          ],
+          "title": "Hypotheses for the Sign Test"
+        },
+        "explanation": [
+          "A [[kw:nonparametric test]] does not require the population to have a specific distribution (like normal). It is 'distribution‑free'.",
+          "The [[kw:sign test]] is a nonparametric test for a population [[imp:median]]. It uses only the signs (+, −, 0) of data compared to a hypothesized median $k$.",
+          "For each data value: if value $< k$, assign [[imp:−]]; if $> k$, assign [[imp:+]]; if $= k$, assign [[imp:0]] (and ignore zeros).",
+          "The test statistic $x$ is the [[imp:smaller]] of the number of + signs and − signs. If $x$ is too small, we reject $H_0$.",
+          "The sign test is based on the binomial distribution with $p = 0.5$, because if the true median is $k$, each value has a 50% chance of being above or below."
+        ],
+        "visuals": [
+          {
+            "title": "Assigning Signs (Hypothesized Median = 1500)",
+            "rows": [
+              {
+                "0": "1469",
+                "1": "−"
+              },
+              {
+                "0": "1634",
+                "1": "+"
+              },
+              {
+                "0": "1500",
+                "1": "0"
+              },
+              {
+                "0": "1570",
+                "1": "+"
+              },
+              {
+                "0": "1452",
+                "1": "−"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Data",
+              "Sign"
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "id": "q11-1-1",
+          "feedbackIfWrong": "The sign test tests a population median.",
+          "type": "short-answer",
+          "answer": "median",
+          "hints": [
+            "It is not the mean.",
+            "It is the middle value of a distribution."
+          ],
+          "prompt": "The sign test is a nonparametric test for a population ___."
+        },
+        {
+          "prompt": "In the sign test, data values above the hypothesized median are assigned a ___ sign.",
+          "hints": [
+            "It is the mathematical symbol for 'greater than'.",
+            "Opposite of minus."
+          ],
+          "type": "fill-blank",
+          "id": "q11-1-2",
+          "blanks": [
+            {
+              "accept": [
+                "+",
+                "plus"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Values above the median get a + (plus) sign."
+        },
+        {
+          "feedbackIfWrong": "They are assigned 0 and ignored (not counted in the sample size).",
+          "answer": "ignored",
+          "prompt": "What happens to data values exactly equal to the hypothesized median? (Answer: ignored or 0)",
+          "type": "short-answer",
+          "hints": [
+            "They are assigned 0.",
+            "They are not counted in n."
+          ],
+          "id": "q11-1-3"
+        }
+      ]
+    },
+    {
+      "title": "Sign Test for n ≤ 25 (Table 8)",
+      "discoveryHook": {
+        "scenario": "For small samples (n ≤ 25), we use a special table of critical values. The test statistic x is the smaller number of + or − signs. If x is less than or equal to the critical value, we reject H₀."
+      },
+      "examples": [
+        {
+          "steps": [
+            "Smaller count $x = \\min(7, 12) = 7$.",
+            "From Table 8, one‑tailed α = 0.05, n = 19 → critical value = 5.",
+            "Compare: 7 ≤ 5? No.",
+            "Thus, fail to reject $H_0$."
+          ],
+          "role": "guided",
+          "prompt": "In a sample of 19 non‑zero signs, there are 7 minus signs and 12 plus signs. At α = 0.05 for a right‑tailed test (but we use smaller count = 7), critical value from Table 8 is 5. Is x ≤ 5?",
+          "title": "Example A – Using Table 8"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "With only 10 signs, even if the true median is k, it's not unusual to get as few as 2 of one sign.",
+            "The critical value 1 means you need almost all signs to be the same (only 1 or 0 of the other) to reject.",
+            "Small sample sizes require extreme imbalance to conclude the median is different."
+          ],
+          "minLength": 2,
+          "prompt": "For n = 10 and α = 0.05 two‑tailed, the critical value from Table 8 is 1. Explain what it means.",
+          "peerPrompt": "Without looking back...\n\nDiscuss: If your smaller sign count is 1 or 0, you reject H₀. If it's 2 or more, you fail to reject. Why is the critical value so small?",
+          "title": "Example B – Two‑Tailed Critical Value"
+        },
+        {
+          "title": "Example C – Decision Making",
+          "prompt": "n=15, plus signs=3, minus signs=12. α=0.025 one‑tailed. Critical value from Table 8 is 2. Decision?",
+          "steps": [
+            "Smaller count $x = 3$.",
+            "Critical value = 2. Since 3 ≤ 2? No.",
+            "Fail to reject $H_0$."
+          ],
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "type": "short-answer",
+          "answer": "Table 8",
+          "id": "q11-1-4",
+          "hints": [
+            "It's the table specifically for the sign test.",
+            "Not the t‑table or z‑table."
+          ],
+          "feedbackIfWrong": "Use Table 8 for the sign test when n ≤ 25.",
+          "prompt": "For n ≤ 25, the sign test critical value is found in which table? (Answer: Table 8)"
+        },
+        {
+          "feedbackIfWrong": "Reject H₀ if x ≤ critical value.",
+          "id": "q11-1-5",
+          "blanks": [
+            {
+              "accept": [
+                "reject"
+              ]
+            }
+          ],
+          "hints": [
+            "We conclude the median is different from the hypothesized value.",
+            "The evidence is strong enough."
+          ],
+          "prompt": "If the smaller number of signs is less than or equal to the critical value, we ___ the null hypothesis.",
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "x = min(8, 3) = 3.",
+          "hints": [
+            "x is the smaller of the two counts.",
+            "min(8, 3) = ?"
+          ],
+          "id": "q11-1-6",
+          "answer": "3",
+          "prompt": "In a sample, there are 8 plus signs and 3 minus signs. What is the test statistic x?"
+        }
+      ],
+      "teacherCues": [
+        "Show Table 8 in Appendix B. Walk through finding the critical value for a given n and α (one‑tailed or two‑tailed).",
+        "Emphasize that x must be ≤ critical value to reject H₀."
+      ],
+      "confusionCorner": {
+        "title": "Smaller Count, Left‑Tail Rejection",
+        "body": "Because the test statistic is the smaller number of signs, a very small value suggests the signs are unbalanced. Therefore, the rejection region is [[imp:always in the left tail]]. You reject if $x$ is too small."
+      },
+      "concept": {
+        "explanation": [
+          "When the total number of + and − signs $n \\le 25$, use [[kw:Table 8]] to find the critical value.",
+          "The test statistic $x$ is the [[imp:smaller]] of the number of + signs and − signs.",
+          "For a given significance level $\\alpha$ and sample size $n$, Table 8 gives a critical value. If $x$ is [[imp:less than or equal to]] the critical value, reject $H_0$.",
+          "For a two‑tailed test, use the two‑tailed critical values; for a one‑tailed test, use the one‑tailed values.",
+          "Remember: because $x$ is the smaller count, the rejection region is always in the left tail."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Portion of Table 8 (Critical Values for Sign Test)",
+            "headers": [
+              "n",
+              "α = 0.05 (one‑tailed)",
+              "α = 0.025 (one‑tailed)",
+              "α = 0.05 (two‑tailed)"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "10",
+                "1": "1",
+                "2": "0",
+                "3": "1"
+              },
+              {
+                "0": "15",
+                "1": "3",
+                "2": "2",
+                "3": "3"
+              },
+              {
+                "0": "19",
+                "1": "5",
+                "2": "4",
+                "3": "4"
+              },
+              {
+                "0": "20",
+                "1": "5",
+                "2": "4",
+                "3": "5"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "$x$ = smaller number of + or − signs.",
+            "$n$ = total number of + and − signs (zeros ignored).",
+            "Use Table 8 for critical values."
+          ],
+          "formula": "$$ \\text{Reject } H_0 \\text{ if } x \\le \\text{critical value} $$",
+          "title": "Decision Rule (n ≤ 25)"
+        }
+      },
+      "id": "sign-test-small-sample"
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Normal Approximation for Sign Test",
+            "rows": [
+              {
+                "0": "Mean under H₀",
+                "1": "$0.5n$"
+              },
+              {
+                "0": "Standard deviation",
+                "1": "$\\sqrt{n} / 2$"
+              },
+              {
+                "0": "z‑statistic",
+                "1": "$\\frac{(x + 0.5) - 0.5n}{\\sqrt{n}/2}$"
+              },
+              {
+                "0": "Rejection (left‑tailed)",
+                "1": "$z \\le -z_\\alpha$"
+              }
+            ],
+            "headers": [
+              "Quantity",
+              "Formula"
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ z = \\frac{(x + 0.5) - 0.5n}{\\sqrt{n}/2} $$",
+          "title": "z‑Statistic for Sign Test (n > 25)",
+          "notes": [
+            "$x$ = smaller number of + or − signs.",
+            "$n$ = total + and − signs.",
+            "Continuity correction adds 0.5 to x.",
+            "Use standard normal table for critical values."
+          ]
+        },
+        "explanation": [
+          "When $n > 25$, the sign test uses a [[kw:normal approximation]] to the binomial distribution.",
+          "The test statistic is $$z = \\frac{(x + 0.5) - 0.5n}{\\sqrt{n}/2}$$ where $x$ is the [[imp:smaller]] number of + or − signs.",
+          "The term $+0.5$ is a [[kw:continuity correction]] because the binomial is discrete and the normal is continuous.",
+          "Use the standard normal table (Table 4) to find critical values. For a left‑tailed test, reject if $z \\le -z_\\alpha$; for two‑tailed, reject if $z \\le -z_{\\alpha/2}$.",
+          "Remember, because $x$ is the smaller count, the rejection region is always in the left tail of the normal distribution."
+        ]
+      },
+      "title": "Sign Test for n > 25 (Normal Approximation)",
+      "confusionCorner": {
+        "body": "The formula uses $x + 0.5$, not $x$ alone. This correction improves the normal approximation. [[imp:Always add 0.5 to the smaller count before computing z.]]",
+        "title": "Don't Forget the Continuity Correction!"
+      },
+      "id": "sign-test-large-sample",
+      "discoveryHook": {
+        "scenario": "When the sample size is larger than 25, the binomial distribution can be approximated by a normal distribution. We convert the smaller sign count x into a z‑score and use the standard normal table to find critical values."
+      },
+      "teacherCues": [
+        "Write the z formula on the board: z = ( (x + 0.5) − 0.5n ) / (√n / 2).",
+        "Explain the continuity correction (+0.5) and that n is the number of non‑zero signs."
+      ],
+      "questions": [
+        {
+          "id": "q11-1-7",
+          "feedbackIfWrong": "The normal approximation is used when n > 25.",
+          "type": "short-answer",
+          "answer": "normal",
+          "hints": [
+            "It's the bell‑shaped distribution.",
+            "We compute a z‑score."
+          ],
+          "prompt": "When n > 25, the sign test uses a ___ approximation to the binomial distribution."
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "continuity"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "It's the continuity correction.",
+          "hints": [
+            "It bridges the gap between discrete and continuous.",
+            "Starts with 'c'."
+          ],
+          "id": "q11-1-8",
+          "prompt": "In the z formula for the sign test, the term 0.5 added to x is called the ___ correction."
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "Yes, reject H₀.",
+          "hints": [
+            "Rejection region is in the left tail.",
+            "If z is more negative than critical, reject."
+          ],
+          "answer": "yes",
+          "id": "q11-1-9",
+          "prompt": "If the computed z is less than the critical z (e.g., -3.27 < -2.33), do we reject H₀? (yes or no)"
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "n=121 signs, smaller count x=42. Compute the z‑statistic.",
+          "title": "Example A – Computing z",
+          "steps": [
+            "Mean = $0.5 \\times 121 = 60.5$; standard deviation = $\\sqrt{121}/2 = 5.5$.",
+            "$z = \\frac{(42 + 0.5) - 60.5}{5.5} = \\frac{42.5 - 60.5}{5.5} = \\frac{-18}{5.5} \\approx -3.27$.",
+            "This z is very low, indicating strong evidence against H₀."
+          ],
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "The binomial can only take integer values; the normal is continuous.",
+            "When approximating P(X ≤ x), the continuity correction uses x+0.5 to better match the area under the normal curve.",
+            "This makes the normal approximation more accurate, especially for moderate sample sizes."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss: The binomial is discrete, but the normal is continuous. How does adding 0.5 help make the approximation better?",
+          "minLength": 2,
+          "title": "Example B – Continuity Correction",
+          "prompt": "Why do we add 0.5 to x in the z formula?",
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C – Decision with z",
+          "role": "independent",
+          "prompt": "For a left‑tailed test at α=0.01, z-critical = -2.33. Your z = -3.27. Decision?",
+          "steps": [
+            "Since -3.27 < -2.33, z falls in the rejection region.",
+            "Reject H₀.",
+            "There is enough evidence to conclude the median is less than the claimed value."
+          ]
+        }
+      ]
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "Differences: 10−7=3 (+), 12−11=1 (+), 8−9=-1 (−).",
+            "Count: 2 plus signs, 1 minus sign.",
+            "Smaller count $x = 1$, $n = 3$."
+          ],
+          "prompt": "Before: 10, 12, 8. After: 7, 11, 9. Find the signs of the differences.",
+          "role": "guided",
+          "title": "Example A – Computing Differences and Signs"
+        },
+        {
+          "minLength": 2,
+          "prompt": "Explain when you would choose the paired‑sample sign test over the paired t‑test.",
+          "peerPrompt": "Without looking back...\n\nDiscuss: What if the differences are not normally distributed or have outliers?",
+          "steps": [
+            "The paired t‑test assumes the differences are normally distributed.",
+            "If the normality assumption is violated or outliers are present, the sign test is a robust alternative.",
+            "The sign test only uses the sign of the difference, not its magnitude, so it is less affected by extreme values."
+          ],
+          "role": "peer-explain",
+          "title": "Example B – Why Use Medians Here?"
+        },
+        {
+          "title": "Example C – Decision",
+          "steps": [
+            "Smaller count $x = 1$.",
+            "Critical value = 1. Since x ≤ 1, reject H₀.",
+            "There is evidence that the rehabilitation course reduces repeat offenders."
+          ],
+          "role": "independent",
+          "prompt": "In the prison example, there are 9 plus signs and 1 minus sign, n=10. α=0.025 one‑tailed, critical value from Table 8 is 1. Decision?"
+        }
+      ],
+      "id": "paired-sample-sign-test",
+      "discoveryHook": {
+        "scenario": "A psychologist wants to see if a rehabilitation course reduces repeat offenders. She records the number before and after the course at 10 prisons. She subtracts after from before; a positive difference means a decrease. If the course works, we expect mostly positive signs."
+      },
+      "teacherCues": [
+        "Show a before‑and‑after table. Subtract: before − after. Assign +, −, 0 based on sign of difference.",
+        "Explain that this is the nonparametric version of the paired t‑test."
+      ],
+      "questions": [
+        {
+          "prompt": "The paired‑sample sign test is the nonparametric alternative to the paired ___ test.",
+          "hints": [
+            "It's a parametric test for dependent samples.",
+            "Uses the t‑distribution."
+          ],
+          "type": "short-answer",
+          "answer": "t",
+          "feedbackIfWrong": "It is the alternative to the paired t‑test.",
+          "id": "q11-1-10"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "ignore"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "We ignore pairs with a difference of zero.",
+          "id": "q11-1-11",
+          "type": "fill-blank",
+          "prompt": "In the paired‑sample sign test, if the difference is zero, we ___ that pair.",
+          "hints": [
+            "It is not counted as + or −.",
+            "Same as in the one‑sample sign test."
+          ]
+        },
+        {
+          "id": "q11-1-12",
+          "type": "short-answer",
+          "answer": "median",
+          "hints": [
+            "Not the mean.",
+            "The same parameter as the regular sign test."
+          ],
+          "feedbackIfWrong": "It tests the median of the differences.",
+          "prompt": "The paired‑sample sign test tests the ___ of the differences."
+        }
+      ],
+      "title": "Paired‑Sample Sign Test",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Zeros (ties) are ignored.",
+            "$n$ = total number of + and − signs.",
+            "Use Table 8 if $n \\le 25$, normal approximation if $n > 25$."
+          ],
+          "title": "Paired‑Sample Sign Test Statistic",
+          "formula": "$$ x = \\min(\\text{number of +, number of −}) $$"
+        },
+        "explanation": [
+          "The [[kw:paired‑sample sign test]] is a nonparametric alternative to the paired t‑test. It tests the median of the differences between paired data.",
+          "For each pair, compute the difference $d = x_1 - x_2$. Assign a [[imp:+]] if $d > 0$, a [[imp:−]] if $d < 0$, and [[imp:0]] if $d = 0$.",
+          "The test statistic $x$ is the [[imp:smaller]] number of + or − signs. Use Table 8 (n ≤ 25) or the normal approximation (n > 25).",
+          "Hypotheses are about the population median of the differences, often denoted $M_d$. For example, $H_0: M_d = 0$ (no difference) vs. $H_a: M_d \\ne 0$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Prison",
+              "Before",
+              "After",
+              "Difference (Before−After)",
+              "Sign"
+            ],
+            "title": "Paired Data: Before and After Rehabilitation",
+            "rows": [
+              {
+                "0": "1",
+                "1": "21",
+                "2": "19",
+                "3": "2",
+                "4": "+"
+              },
+              {
+                "0": "2",
+                "1": "34",
+                "2": "22",
+                "3": "12",
+                "4": "+"
+              },
+              {
+                "0": "3",
+                "1": "9",
+                "2": "16",
+                "3": "-7",
+                "4": "−"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Order of Subtraction Matters!",
+        "body": "In the paired‑sample sign test, the sign of the difference depends on the order of subtraction (before − after or vice versa). [[imp:Choose the order consistent with the claim and stick to it.]]"
+      }
+    },
+    {
+      "confusionCorner": {
+        "body": "Because the test statistic is always the smaller count, the rejection region is always in the left tail, even for a two‑tailed test. [[imp:For a two‑tailed test, still use the left‑tailed critical value from the table.]]",
+        "title": "Two‑Tailed Uses Left‑Tailed Critical Value"
+      },
+      "examples": [
+        {
+          "title": "Example A – Understand",
+          "role": "guided",
+          "prompt": "Identify the claim, hypotheses, and test type.",
+          "steps": [
+            "Claim: median age is 9.4 years. Two‑tailed test because claim is equality.",
+            "$H_0: \\text{median} = 9.4$, $H_a: \\text{median} \\ne 9.4$.",
+            "$\\alpha = 0.10$, large sample (n>25)."
+          ]
+        },
+        {
+          "minLength": 2,
+          "title": "Example B – Solve: Compute z",
+          "role": "peer-explain",
+          "steps": [
+            "$0.5n = 0.5 \\times 92 = 46$.",
+            "$x+0.5 = 41.5$.",
+            "Numerator: $41.5 - 46 = -4.5$.",
+            "Denominator: $\\sqrt{92}/2 \\approx 9.59/2 = 4.795$.",
+            "$z = -4.5/4.795 \\approx -0.94$."
+          ],
+          "peerPrompt": "Without looking back...\n\nWork with a partner: $z = \\frac{(41+0.5) - 0.5(92)}{\\sqrt{92}/2}$. Calculate step by step.",
+          "prompt": "From the data, n=92, x=41. Compute the z‑statistic."
+        },
+        {
+          "prompt": "With z = -0.94 and critical z = ±1.645 (two‑tailed), what is the decision?",
+          "steps": [
+            "For a two‑tailed test, the rejection region is $z \\le -1.645$ or $z \\ge 1.645$ (using left‑tailed critical).",
+            "Since -0.94 > -1.645, z is not in the rejection region.",
+            "Fail to reject H₀. The data are consistent with the median being 9.4 years."
+          ],
+          "role": "independent",
+          "title": "Example C – Conclude"
+        }
+      ],
+      "id": "blueprint-sign-test",
+      "questions": [
+        {
+          "feedbackIfWrong": "n = 41 + 51 = 92.",
+          "id": "q11-1-13",
+          "hints": [
+            "Add the number of + and − signs.",
+            "41 + 51 = ?"
+          ],
+          "prompt": "In the car age example, what is the sample size n (ignoring ties)?",
+          "answer": "92",
+          "type": "short-answer"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "left"
+              ]
+            }
+          ],
+          "id": "q11-1-14",
+          "hints": [
+            "Because the test statistic is the smaller count.",
+            "The rejection region is always in this tail."
+          ],
+          "feedbackIfWrong": "Use the left‑tailed critical value.",
+          "prompt": "For a two‑tailed sign test, you still use the ___-tailed critical value from Table 8 or the z‑table.",
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "Is -0.94 less than -1.645?",
+            "If not, fail to reject."
+          ],
+          "type": "short-answer",
+          "id": "q11-1-15",
+          "feedbackIfWrong": "No, -0.94 > -1.645, so fail to reject H₀.",
+          "prompt": "With z = -0.94 and critical z = -1.645, do we reject H₀? (yes or no)",
+          "answer": "no"
+        }
+      ],
+      "title": "Blueprint Aid: Complete Sign Test Walkthrough",
+      "discoveryHook": {
+        "scenario": "An organization claims the median age of cars on the road is 9.4 years. A sample of 95 cars shows 41 are younger, 51 are older, and 3 are exactly 9.4. Let's test this claim at α = 0.10 using the sign test."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Less than 9.4 years ( − )",
+                "1": "41"
+              },
+              {
+                "0": "Equal to 9.4 years (0)",
+                "1": "3"
+              },
+              {
+                "0": "More than 9.4 years ( + )",
+                "1": "51"
+              }
+            ],
+            "headers": [
+              "Category",
+              "Count"
+            ],
+            "title": "Car Age Data Summary",
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "**Understand**: Claim: median = 9.4. $H_0: \\text{median} = 9.4$, $H_a: \\text{median} \\ne 9.4$ (two‑tailed). $\\alpha = 0.10$.",
+          "**Solve**: n = 41 + 51 = 92 (>25). Smaller count x = 41. $z = \\frac{(41+0.5) - 0.5(92)}{\\sqrt{92}/2} = \\frac{41.5 - 46}{4.8} \\approx -0.94$. Critical z for two‑tailed α=0.10 is ±1.645 (left‑tailed critical is -1.645).",
+          "**Conclude**: Since -0.94 > -1.645, z is not in the rejection region. Fail to reject $H_0$. Not enough evidence to dispute the claim."
+        ]
+      },
+      "teacherCues": [
+        "Walk students through Understand–Solve–Conclude with a realistic example: median age of cars.",
+        "Show the process: assign signs, count, find critical value or compute z, decide."
+      ]
+    }
+  ],
+  "standards": [
+    "HSS.IC.B.4",
+    "HSS.IC.B.5"
+  ],
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

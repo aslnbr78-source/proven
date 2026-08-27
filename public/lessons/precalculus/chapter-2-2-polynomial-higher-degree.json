@@ -1,0 +1,724 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-2-2-polynomial-higher-degree",
+  "title": "Polynomial Functions of Higher Degree",
+  "standards": [
+    "HSF.IF.C.7c",
+    "HSF.IF.B.4",
+    "HSA.APR.B.3"
+  ],
+  "blocks": [
+    {
+      "id": "polynomial-graphs",
+      "title": "1. Graphs of Polynomial Functions",
+      "teacherCues": [
+        "Sketch a polynomial graph and a piecewise function with a gap. Ask: \"Which is continuous?\"",
+        "Write $ f(x) = x^n $ for even and odd $ n $ and ask: \"How do the shapes differ near the origin?\""
+      ],
+      "discoveryHook": {
+        "scenario": "Polynomial functions are everywhere—from the smooth trajectory of a roller coaster to the growth curve of a tree. Unlike functions that break or have sharp corners, polynomial graphs are [[imp:continuous and smooth]], making them predictable and powerful modeling tools."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:polynomial function]] of degree $ n $ is of the form $ f(x) = a_n x^n + a_{n-1} x^{n-1} + \\dots + a_1 x + a_0 $, with $ a_n \\ne 0 $.",
+          "Its graph has no breaks, holes, or gaps — it is [[imp:continuous]].",
+          "The graph has only [[imp:smooth, rounded turns]]; no sharp corners (like an absolute value graph).",
+          "A [[kw:monomial function]] $ f(x) = x^n $ is the simplest polynomial. For even $ n $, the graph is U‑shaped, touching the $ x $‑axis at the origin. For odd $ n $, it passes through the origin like a cubic.",
+          "Transformations (shifts, stretches, reflections) of monomials allow you to sketch many higher‑degree polynomials quickly."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Graph Behavior of $ f(x) = x^n $",
+            "headers": [
+              "$ n $ (degree)",
+              "Even $ n $",
+              "Odd $ n $"
+            ],
+            "rows": [
+              {
+                "0": "Shape near origin",
+                "1": "Touches $ x $‑axis",
+                "2": "Crosses $ x $‑axis"
+              },
+              {
+                "0": "Example",
+                "1": "$ y = x^2, x^4 $",
+                "2": "$ y = x^3, x^5 $"
+              },
+              {
+                "0": "End behavior sketch",
+                "1": "Both arms up",
+                "2": "Left down, right up"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Monomial Transformation Template",
+          "formula": "$$ f(x) = a(x - h)^n + k $$",
+          "notes": [
+            "$ a $: vertical stretch/shrink; if negative, reflect across $ x $‑axis.",
+            "$ h $: horizontal shift (opposite sign).",
+            "$ k $: vertical shift.",
+            "$ n $: degree; even/odd determines basic shape."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Transforming a Monomial",
+          "prompt": "Sketch $ f(x) = -x^5 $ and describe its shape compared to $ y = x^5 $.",
+          "steps": [
+            "$ y = x^5 $ is an odd‑degree monomial: left down, right up.",
+            "The negative coefficient reflects it across the $ x $‑axis.",
+            "So $ f(x) = -x^5 $: left up, right down.",
+            "The graph still passes through $ (0,0) $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Shifts of Even Monomials",
+          "prompt": "Describe the transformation of $ h(x) = (x + 1)^4 $ relative to $ y = x^4 $.",
+          "peerPrompt": "Explain to a partner: Why does adding 1 inside the parentheses shift the graph left, not right?",
+          "minLength": 2,
+          "steps": [
+            "Standard transformation: $ (x - h)^4 $ shifts right by $ h $.",
+            "Here $ h = -1 $ because $ (x + 1) = (x - (-1)) $.",
+            "So the graph of $ y = x^4 $ shifts left by 1 unit.",
+            "The vertex is now at $ (-1, 0) $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Combining Transformations",
+          "prompt": "Sketch $ k(x) = \\frac{1}{2}(x - 3)^4 - 2 $.",
+          "steps": [
+            "Start with $ y = x^4 $ (even degree, symmetric).",
+            "Vertical shrink by factor $ \\frac{1}{2} $ (wider).",
+            "Shift right by 3 units.",
+            "Shift down by 2 units. Vertex: $ (3, -2) $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sharp Turns vs. Smooth Turns",
+        "body": "A polynomial graph never has a sharp point. If you see a V‑shape (like $ |x| $) or a cusp, the function is [[imp:not a polynomial]]."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "The graph of a polynomial function is always ___ (no breaks or holes).",
+          "blanks": [
+            {
+              "accept": [
+                "continuous"
+              ]
+            }
+          ],
+          "hints": [
+            "It starts with 'c'.",
+            "The opposite of discontinuous."
+          ],
+          "feedbackIfWrong": "A polynomial graph is continuous."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "Does the graph of $ f(x) = x^3 $ touch or cross the $ x $‑axis at the origin?",
+          "answers": [
+            "cross",
+            "Cross",
+            "crosses"
+          ],
+          "hints": [
+            "Odd‑degree monomials pass through.",
+            "Think of a cubic curve."
+          ],
+          "feedbackIfWrong": "Odd degree: the graph crosses the $ x $‑axis."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "Give the $ x $‑coordinate of the vertex of $ f(x) = (x + 2)^4 $.",
+          "answer": "-2",
+          "hints": [
+            "Vertex form: $ a(x - h)^4 + k $.",
+            "$ (x + 2) = (x - (-2)) $."
+          ],
+          "feedbackIfWrong": "The vertex is at $ x = -2 $."
+        }
+      ]
+    },
+    {
+      "id": "leading-coefficient-test",
+      "title": "2. The Leading Coefficient Test",
+      "teacherCues": [
+        "Write $ f(x) = 2x^3 - x $ and $ f(x) = -x^4 + 3x^2 $. Ask: \"Can you predict the left and right ends?\"",
+        "Draw arrows on the board representing the four possible end behaviors and have students match equations."
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine a roller coaster's track: you can't see the whole ride, but you know the direction it enters and exits. The Leading Coefficient Test tells you exactly that—how a polynomial's graph behaves as $ x $ goes to the far left or right, without plotting a single point."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Leading Coefficient Test]] uses the degree $ n $ and leading coefficient $ a_n $ to determine end behavior.",
+          "For [[imp:odd degree]]: if $ a_n > 0 $, graph falls left, rises right; if $ a_n < 0 $, rises left, falls right.",
+          "For [[imp:even degree]]: if $ a_n > 0 $, rises both left and right; if $ a_n < 0 $, falls both left and right.",
+          "The test describes behavior as $ x \\to \\infty $ and $ x \\to -\\infty $; it does not tell what happens in the middle."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Leading Coefficient Test Summary",
+            "headers": [
+              "Degree $ n $",
+              "$ a_n > 0 $",
+              "$ a_n < 0 $"
+            ],
+            "rows": [
+              {
+                "0": "Odd",
+                "1": "Falls left, rises right",
+                "2": "Rises left, falls right"
+              },
+              {
+                "0": "Even",
+                "1": "Rises both ends",
+                "2": "Falls both ends"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Leading Coefficient Test",
+          "formula": "$$ f(x) = a_n x^n + \\dots \\quad (a_n \\ne 0) $$",
+          "notes": [
+            "Check parity of $ n $.",
+            "Check sign of $ a_n $.",
+            "End behavior: left and right arrows."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Odd Degree, Negative Leading Coefficient",
+          "prompt": "Describe the left‑hand and right‑hand behavior of $ f(x) = -x^3 + 4x $.",
+          "steps": [
+            "Degree $ n = 3 $ (odd).",
+            "Leading coefficient $ a_n = -1 $ (negative).",
+            "For odd degree, negative: rises left ($ x \\to -\\infty, f(x) \\to \\infty $), falls right ($ x \\to \\infty, f(x) \\to -\\infty $)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Even Degree, Positive Leading Coefficient",
+          "prompt": "What is the end behavior of $ f(x) = x^4 - 5x^2 + 4 $?",
+          "peerPrompt": "Discuss with a partner: Why does an even degree with positive leading coefficient mean both ends go up, regardless of the middle terms?",
+          "minLength": 2,
+          "steps": [
+            "$ n = 4 $ (even), $ a_n = 1 > 0 $.",
+            "Even degree: both ends behave the same.",
+            "Positive: both ends rise ($ x \\to \\pm\\infty, f(x) \\to \\infty $)."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Apply to a Higher Degree",
+          "prompt": "For $ f(x) = -2x^5 + 3x^2 - 1 $, determine the left and right end behavior.",
+          "steps": [
+            "Degree $ n = 5 $ (odd), leading coefficient $ -2 $ (negative).",
+            "Odd + negative: rises left, falls right.",
+            "As $ x \\to -\\infty, f(x) \\to \\infty $; as $ x \\to \\infty, f(x) \\to -\\infty $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Ignore the Degree",
+        "body": "Students sometimes look only at the sign. But [[imp:odd vs. even determines whether the arms go in opposite or same directions]]. Always check both degree and coefficient."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "short-answer",
+          "prompt": "If $ n $ is even and $ a_n > 0 $, does the graph rise or fall on both ends?",
+          "answers": [
+            "rise",
+            "rises"
+          ],
+          "hints": [
+            "Think of $ y = x^2 $.",
+            "Positive even degree: both arms up."
+          ],
+          "feedbackIfWrong": "Both ends rise."
+        },
+        {
+          "id": "q2-2",
+          "type": "fill-blank",
+          "prompt": "For an odd‑degree polynomial with a negative leading coefficient, the graph rises to the ___ and falls to the right.",
+          "blanks": [
+            {
+              "accept": [
+                "left"
+              ]
+            }
+          ],
+          "hints": [
+            "Opposite behavior: left vs right.",
+            "Odd + negative: left up, right down."
+          ],
+          "feedbackIfWrong": "It rises to the left."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "What is the leading coefficient of $ f(x) = x^5 - x $?",
+          "answers": [
+            "1"
+          ],
+          "hints": [
+            "It's the coefficient of the highest power.",
+            "The term is $ 1 \\cdot x^5 $."
+          ],
+          "feedbackIfWrong": "The leading coefficient is 1."
+        }
+      ]
+    },
+    {
+      "id": "real-zeros",
+      "title": "3. Real Zeros and Multiplicity",
+      "teacherCues": [
+        "Write $ f(x) = (x-2)^3(x+1)^2 $ and ask: \"What happens at $ x=2 $ vs. $ x=-1 $?\"",
+        "Draw a graph that crosses and one that touches the axis, then ask for possible multiplicities."
+      ],
+      "discoveryHook": {
+        "scenario": "A bouncing ball touches the ground briefly, while a rocket passing through a cloud goes straight through. Zeros of polynomials behave the same way: some just touch the axis and turn around, while others cross—it all depends on the zero's [[kw:multiplicity]]."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:real zero]] of a polynomial $ f(x) $ is a number $ a $ such that $ f(a) = 0 $. Equivalent: $ x = a $ is a solution of $ f(x) = 0 $, $ (x - a) $ is a factor, and $ (a, 0) $ is an $ x $‑intercept.",
+          "A factor $ (x - a)^k $ gives a [[kw:repeated zero]] of multiplicity $ k $.",
+          "If $ k $ is odd, the graph [[imp:crosses]] the $ x $‑axis at $ x = a $.",
+          "If $ k $ is even, the graph [[imp:touches]] the $ x $‑axis at $ x = a $ but does not cross.",
+          "A polynomial of degree $ n $ has at most $ n $ real zeros and at most $ n - 1 $ turning points."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Multiplicity Effects",
+            "headers": [
+              "Multiplicity $ k $",
+              "Behavior at Zero",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "Odd ($ k = 1, 3, ... $)",
+                "1": "Crosses $ x $‑axis",
+                "2": "$ f(x) = (x - 1)^3 $"
+              },
+              {
+                "0": "Even ($ k = 2, 4, ... $)",
+                "1": "Touches $ x $‑axis",
+                "2": "$ f(x) = (x + 2)^2 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Zeros and Multiplicity",
+          "formula": "$$ f(x) = a(x - r_1)^{m_1}(x - r_2)^{m_2} \\cdots $$",
+          "notes": [
+            "$ r_i $ are the real zeros.",
+            "Total multiplicities sum to $ n $.",
+            "Cross if $ m_i $ odd; touch if $ m_i $ even."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Finding Zeros and Their Multiplicities",
+          "prompt": "Find the real zeros of $ f(x) = -2x^4 + 2x^2 $ and state their multiplicities.",
+          "steps": [
+            "Set $ -2x^4 + 2x^2 = 0 $ → factor out $ -2x^2 $: $ -2x^2(x^2 - 1) = 0 $.",
+            "Factor further: $ -2x^2(x - 1)(x + 1) = 0 $.",
+            "Zeros: $ x = 0 $ (multiplicity 2, even → touches), $ x = 1 $ (multiplicity 1, odd → crosses), $ x = -1 $ (crosses)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Multiplicity and Graph Behavior",
+          "prompt": "Explain why $ f(x) = (x - 2)^2(x + 3)^3 $ has a touch at $ x = 2 $ and a cross at $ x = -3 $.",
+          "peerPrompt": "Discuss with your partner: What would the graph look like near $ x = 2 $? Near $ x = -3 $?",
+          "minLength": 2,
+          "steps": [
+            "At $ x = 2 $: multiplicity 2 (even) → graph touches the axis and turns around.",
+            "At $ x = -3 $: multiplicity 3 (odd) → graph crosses the axis, possibly with a flattening shape."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Maximum Turning Points",
+          "prompt": "For $ f(x) = x^3 - 12x^2 + 36x $, find all real zeros and the maximum number of turning points.",
+          "steps": [
+            "Factor: $ f(x) = x(x^2 - 12x + 36) = x(x - 6)^2 $.",
+            "Zeros: $ x = 0 $ (multiplicit 1 → cross), $ x = 6 $ (multiplicity 2 → touch).",
+            "Degree $ n = 3 $ → max turning points $ = n - 1 = 2 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Zero vs. Factor vs. Intercept",
+        "body": "A zero is a number $ a $; a factor is $ (x - a) $; an $ x $‑intercept is the point $ (a, 0) $. They are equivalent but represented differently. [[imp:Don't write a zero as a point!]]"
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "short-answer",
+          "prompt": "For $ f(x) = -2x^4 + 2x^2 $, what is the multiplicity of the zero at $ x = 0 $?",
+          "answers": [
+            "2"
+          ],
+          "hints": [
+            "Look at the exponent of the factor $ x $.",
+            "Factor $ -2x^2 $ gives $ x^2 $."
+          ],
+          "feedbackIfWrong": "The multiplicity is 2."
+        },
+        {
+          "id": "q3-2",
+          "type": "fill-blank",
+          "prompt": "When a zero has an odd multiplicity, the graph ___ the $ x $‑axis.",
+          "blanks": [
+            {
+              "accept": [
+                "crosses",
+                "cross"
+              ]
+            }
+          ],
+          "hints": [
+            "Opposite of touch.",
+            "Think of crossing a street."
+          ],
+          "feedbackIfWrong": "The graph crosses the axis."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "A polynomial of degree 5 can have at most how many turning points?",
+          "answers": [
+            "4"
+          ],
+          "hints": [
+            "Maximum turning points = degree minus 1.",
+            "5 - 1 = ?"
+          ],
+          "feedbackIfWrong": "At most 4 turning points."
+        }
+      ]
+    },
+    {
+      "id": "intermediate-value-theorem",
+      "title": "4. Intermediate Value Theorem",
+      "teacherCues": [
+        "Sketch a continuous curve crossing from negative to positive. Ask: \"Must it cross the axis?\"",
+        "Emphasize that the IVT only applies on an interval where the function is continuous."
+      ],
+      "discoveryHook": {
+        "scenario": "If you're hiking from a valley (negative elevation) to a mountain peak, you must cross sea level at some point. The Intermediate Value Theorem guarantees that a continuous polynomial will take every value between its extremes—helping you pinpoint hidden zeros."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Intermediate Value Theorem (IVT)]]: If $ f $ is continuous on $ [a, b] $ and $ N $ is any number between $ f(a) $ and $ f(b) $, then there exists at least one $ c $ in $ (a, b) $ with $ f(c) = N $.",
+          "For zeros: If $ f(a) $ and $ f(b) $ have opposite signs, there is at least one real zero between $ a $ and $ b $.",
+          "This helps locate zeros without factoring—use a table of values to find sign changes.",
+          "The IVT can be applied repeatedly to zoom in on a zero (the bisection method)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Using IVT to Locate Zeros",
+            "headers": [
+              "$ x $",
+              "$ f(x) $",
+              "Sign"
+            ],
+            "rows": [
+              {
+                "0": "$ -2 $",
+                "1": "$ -5 $",
+                "2": "negative"
+              },
+              {
+                "0": "$ -1 $",
+                "1": "$ 3 $",
+                "2": "positive"
+              },
+              {
+                "0": "Conclusion: Zero exists between $ -2 $ and $ -1 $.",
+                "1": "",
+                "2": ""
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Intermediate Value Theorem",
+          "formula": "$$ \\text{If } f \\text{ continuous on } [a,b] \\text{ and } N \\text{ between } f(a) \\text{ and } f(b) \\Rightarrow \\exists c \\in (a,b): f(c)=N $$",
+          "notes": [
+            "Applies to all polynomial functions.",
+            "Sign change between $ f(a) $ and $ f(b) $ guarantees at least one zero.",
+            "Does not tell how many zeros."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Locating a Zero with IVT",
+          "prompt": "Show that $ f(x) = x^3 - x - 1 $ has a real zero between $ 1 $ and $ 2 $.",
+          "steps": [
+            "Evaluate: $ f(1) = 1^3 - 1 - 1 = -1 $ (negative).",
+            "$ f(2) = 2^3 - 2 - 1 = 5 $ (positive).",
+            "Since signs change and $ f $ is continuous, by IVT there is at least one $ c $ in $ (1,2) $ with $ f(c) = 0 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Explaining the Need for Continuity",
+          "prompt": "Why must a function be continuous for the IVT to apply?",
+          "peerPrompt": "With a partner, think of a function with a jump: can it skip a value without hitting it?",
+          "minLength": 2,
+          "steps": [
+            "If there's a break or hole, the function can jump over a value.",
+            "A continuous curve cannot jump; it must pass through every intermediate value.",
+            "Polynomials are continuous everywhere, so IVT always applies."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Finding an Interval with a Zero",
+          "prompt": "Use a table of values to find an interval of length 1 that contains a zero of $ f(x) = 2x^3 - 3x^2 - 11x + 6 $.",
+          "steps": [
+            "Try integers: $ f(0) = 6 $ (pos), $ f(1) = 2 - 3 - 11 + 6 = -6 $ (neg).",
+            "Sign change between $ x = 0 $ and $ x = 1 $.",
+            "By IVT, there is a zero in $ (0, 1) $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "IVT Only Guarantees Existence",
+        "body": "If there is a sign change, a zero exists, but the theorem does not tell you exactly how many zeros or their exact values. Use it to [[imp:narrow down the search, then use a graph or numerical methods]]."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "short-answer",
+          "prompt": "If $ f(1) = -4 $ and $ f(5) = 3 $, does IVT guarantee a zero in $ (1,5) $ for a polynomial? Answer 'yes' or 'no'.",
+          "answers": [
+            "yes"
+          ],
+          "hints": [
+            "Opposite signs imply a sign change.",
+            "Polynomials are continuous."
+          ],
+          "feedbackIfWrong": "Yes, because of the sign change and continuity."
+        },
+        {
+          "id": "q4-2",
+          "type": "fill-blank",
+          "prompt": "The Intermediate Value Theorem requires the function to be ___ on the interval.",
+          "blanks": [
+            {
+              "accept": [
+                "continuous"
+              ]
+            }
+          ],
+          "hints": [
+            "No breaks or holes.",
+            "Starts with 'c'."
+          ],
+          "feedbackIfWrong": "The function must be continuous."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "For $ f(x) = x^3 - 3x + 1 $, find an integer interval of length 1 containing a zero. Use $ f(0) = 1 $ and $ f(1) = -1 $. Give the interval.",
+          "answers": [
+            "(0,1)"
+          ],
+          "hints": [
+            "Sign change between $ x = 0 $ and $ x = 1 $.",
+            "Interval notation."
+          ],
+          "feedbackIfWrong": "There is a zero in $ (0, 1) $."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Use the IVT to show that $ f(x) = x^5 - 3x^4 + 2x^3 - x^2 + x - 1 $ has at least one real zero between $ 0 $ and $ 2 $.",
+        "type": "short-answer",
+        "answers": [
+          "f(0)=-1, f(2)=13, sign change, so yes"
+        ],
+        "hints": [
+          "Compute $ f(0) $ and $ f(2) $.",
+          "Check for sign change."
+        ],
+        "feedbackIfWrong": "Since $ f(0) = -1 $ and $ f(2) = 13 $, there is a sign change and IVT guarantees at least one zero in $ (0,2) $."
+      }
+    },
+    {
+      "id": "blueprint-aid",
+      "title": "5. Blueprint Aid: Sketching Higher‑Degree Polynomials",
+      "teacherCues": [
+        "Walk through a complete graph sketch: leading coefficient test, zeros, multiplicities, IVT, and a table of test points.",
+        "Emphasize the Understand → Solve → Conclude cycle and how each tool contributes to the final graph."
+      ],
+      "discoveryHook": {
+        "scenario": "An engineer needs to know how a beam bends under weight—modeled by a polynomial. To design it safely, she must sketch the curve, find critical points, and predict failure loads. The Blueprint Aid combines all the tools from this section into a powerful graph‑sketching strategy."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Understand]]: Identify the polynomial's degree, leading coefficient, and factor it if possible. Determine end behavior.",
+          "[[kw:Solve]]: Find all real zeros and their multiplicities; use a sign chart or test points to see where the graph is positive/negative; apply the IVT if zeros are not obvious; note maximum turning points.",
+          "[[kw:Conclude]]: Combine end behavior, intercepts, and sign information to sketch a smooth curve. Label intercepts and turning points."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Graphing $ f(x) = x^3 - 3x^2 - x + 3 $",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Degree 3 (odd), leading coefficient 1 (positive) → ends: falls left, rises right."
+              },
+              {
+                "0": "Solve",
+                "1": "Factor: $ f(x) = (x-3)(x-1)(x+1) $. Zeros: $ x=3, 1, -1 $ (all multiplicity 1 → cross). Test points: $ f(0)=3 $ positive, so between -1 and 1 it's positive; between 1 and 3 negative, etc."
+              },
+              {
+                "0": "Conclude",
+                "1": "Sketch: crosses at -1, 1, 3. Passes through (0,3). Turning points at most 2."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Polynomial Graphing Blueprint",
+          "formula": "$$ f(x) = a_n x^n + \\dots + a_1 x + a_0 $$",
+          "notes": [
+            "1. Degree and leading coefficient → end behavior.",
+            "2. Factor → zeros and multiplicities.",
+            "3. Sign chart / IVT → graph regions.",
+            "4. Plot key points and sketch smoothly."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full Sketching Example",
+          "prompt": "Sketch $ f(x) = x^4 - 5x^2 + 4 $.",
+          "steps": [
+            "Understand: Degree 4 (even), leading coefficient +1 → rises both ends.",
+            "Factor: $ f(x) = (x^2-4)(x^2-1) = (x-2)(x+2)(x-1)(x+1) $. Zeros: $ x = \\pm 2, \\pm 1 $ (all multiplicity 1 → cross).",
+            "Test intervals to determine sign. $ y $-intercept: $ (0,4) $.",
+            "Max turning points: 3. Sketch smooth curve passing through intercepts."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Discussing Sign Charts",
+          "prompt": "Explain how to create a sign chart for a polynomial given its zeros.",
+          "peerPrompt": "Talk through the process: place zeros on a number line, pick test points, and record signs. Why does the sign only change at zeros with odd multiplicity?",
+          "minLength": 2,
+          "steps": [
+            "Place zeros on a number line; they divide the line into intervals.",
+            "Choose a test point in each interval and evaluate the sign of $ f(x) $.",
+            "Sign can only change when crossing a zero of odd multiplicity."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Apply Blueprint to a Higher Degree",
+          "prompt": "Use the blueprint to sketch $ f(x) = -2x^3 + 4x^2 $.",
+          "steps": [
+            "Understand: Degree 3 odd, leading coefficient -2 negative → rises left, falls right.",
+            "Factor: $ f(x) = -2x^2(x - 2) $. Zeros: $ x = 0 $ (mult 2 → touch), $ x = 2 $ (mult 1 → cross).",
+            "Sign chart: $ x<0 $, test $ x=-1 $: $ f(-1) = -2(1)(-3) = 6 $ positive. Between 0 and 2: $ f(1)= -2(1)(-1)=2 $ positive. Greater than 2: $ f(3) = -18 $ negative.",
+            "Sketch: rises left, crosses at 2 to negative, touches at 0 and stays positive on both sides. $ y $-intercept: (0,0)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Rely on One Tool Alone",
+        "body": "End behavior tells you the far ends, zeros give you intercepts, multiplicities tell you cross or touch, and sign charts reveal shape. [[imp:Use them all together for an accurate sketch]]."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "Which tool tells you whether a polynomial eventually rises or falls?",
+          "answers": [
+            "Leading Coefficient Test"
+          ],
+          "hints": [
+            "It uses the degree and leading coefficient.",
+            "First two words."
+          ],
+          "feedbackIfWrong": "The Leading Coefficient Test determines end behavior."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "When sketching a polynomial, after finding zeros, you should create a ___ chart to determine where the graph is positive or negative.",
+          "blanks": [
+            {
+              "accept": [
+                "sign"
+              ]
+            }
+          ],
+          "hints": [
+            "It's a table that shows + or - signs.",
+            "Not a number chart, but a sign chart."
+          ],
+          "feedbackIfWrong": "You need a sign chart."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "A polynomial of degree 4 can have at most how many turning points?",
+          "answers": [
+            "3"
+          ],
+          "hints": [
+            "Maximum = degree minus 1.",
+            "4 - 1 = ?"
+          ],
+          "feedbackIfWrong": "At most 3 turning points."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

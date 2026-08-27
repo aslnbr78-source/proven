@@ -1,0 +1,674 @@
+{
+  "type": "interactive-lesson",
+  "id": "10-2-parabolas",
+  "title": "Parabolas",
+  "blocks": [
+    {
+      "id": "conics-and-parabola-def",
+      "title": "Conics and the Parabola Definition",
+      "teacherCues": [
+        "Show a double‑napped cone and a plane cutting it. Ask: 'What shape do we get when the plane is parallel to one side?'",
+        "Write the definition: 'A parabola is the set of all points equidistant from a fixed point (focus) and a fixed line (directrix).'"
+      ],
+      "discoveryHook": {
+        "scenario": "A satellite dish concentrates signals at its focus because of its parabolic shape. This geometric property—equal distances to a point and a line—makes parabolas perfect for focusing light, sound, and radio waves."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:conic section]] is the intersection of a plane and a double‑napped cone. The four basic conics: circle, ellipse, parabola, hyperbola.",
+          "A [[kw:parabola]] is the set of all points in a plane that are equidistant from a fixed line (the [[kw:directrix]]) and a fixed point not on the line (the [[kw:focus]]).",
+          "The [[kw:vertex]] is the midpoint between the focus and the directrix. The [[kw:axis]] of the parabola is the line through the focus and vertex."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Basic Conics and Degenerate Cases",
+            "headers": [
+              "Plane Intersection",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "Perpendicular to axis",
+                "1": "Circle"
+              },
+              {
+                "0": "Tilted but not parallel to generator",
+                "1": "Ellipse"
+              },
+              {
+                "0": "Parallel to generator (side)",
+                "1": "Parabola"
+              },
+              {
+                "0": "Parallel to axis",
+                "1": "Hyperbola"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Parabola Definition (Locus)",
+          "formula": "$$ d(\\text{point}, \\text{directrix}) = d(\\text{point}, \\text{focus}) $$",
+          "notes": [
+            "Focus: fixed point not on directrix.",
+            "Directrix: fixed line.",
+            "Vertex: midpoint of focus and directrix."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Identifying Parts",
+          "prompt": "A parabola has focus (0,2) and directrix y = -2. Where is the vertex?",
+          "steps": [
+            "The vertex is halfway between the focus and the directrix.",
+            "Focus y = 2, directrix y = -2: midpoint y = (2 + (-2))/2 = 0.",
+            "Vertex is at (0,0)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Locus Definition Check",
+          "prompt": "Explain why the point (3,4) lies on the parabola with focus (0,0) and directrix y = -2?",
+          "peerPrompt": "Work with a partner: 'How do you compute distances? Which distances must be equal?'",
+          "minLength": 2,
+          "steps": [
+            "Distance from (3,4) to focus (0,0): sqrt((3-0)^2 + (4-0)^2) = 5.",
+            "Distance from (3,4) to line y = -2: vertical distance = 4 - (-2) = 6.",
+            "Not equal — the point does NOT lie on the parabola. (Just checking concept!)"
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Focus from Vertex and p",
+          "prompt": "If the vertex is (1,3) and p = 2, the focus lies p units away. Where is focus if axis is vertical?",
+          "steps": [
+            "Vertical axis → focus has same x, y = k + p.",
+            "Here h=1, k=3, p=2: focus = (1, 5)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Focus vs. Directrix",
+        "body": "The directrix is a line, not a point. For a vertical parabola, the directrix is horizontal (y = k - p). Do not mix up p's sign."
+      },
+      "questions": [
+        {
+          "id": "q-def-1",
+          "type": "fill-blank",
+          "prompt": "A parabola is the set of points equidistant from a fixed ___ and a fixed ___.",
+          "blanks": [
+            {
+              "accept": [
+                "focus",
+                "point"
+              ]
+            },
+            {
+              "accept": [
+                "directrix",
+                "line"
+              ]
+            }
+          ],
+          "hints": [
+            "One is a point, the other a line.",
+            "Think of the definition."
+          ],
+          "feedbackIfWrong": "A parabola is the set of points equidistant from the focus (point) and the directrix (line)."
+        },
+        {
+          "id": "q-def-2",
+          "type": "short-answer",
+          "prompt": "The vertex of a parabola lies halfway between the focus and which other line?",
+          "answer": "directrix",
+          "hints": [
+            "It's the fixed line in the definition.",
+            "The vertex is the midpoint between focus and this line."
+          ],
+          "feedbackIfWrong": "It's the directrix."
+        },
+        {
+          "id": "q-def-3",
+          "type": "short-answer",
+          "prompt": "What is the name for the line passing through the focus and the vertex?",
+          "answer": "axis",
+          "hints": [
+            "It's the line of symmetry.",
+            "Often vertical or horizontal."
+          ],
+          "feedbackIfWrong": "It's the axis of the parabola."
+        }
+      ]
+    },
+    {
+      "id": "standard-equations",
+      "title": "Standard Form of a Parabola",
+      "teacherCues": [
+        "Write the two standard forms on the board: (x-h)² = 4p(y-k) and (y-k)² = 4p(x-h). Ask: 'What's the difference?'",
+        "Draw a quick sketch of each orientation; show how the sign of p determines opening direction."
+      ],
+      "discoveryHook": {
+        "scenario": "The simple equation y² = 4px models water shooting from a horizontal pipe, while x² = 4py models a gravitational arc. Both come from the same geometric definition."
+      },
+      "concept": {
+        "explanation": [
+          "Standard form with vertex (h,k):",
+          "Vertical axis: $$ (x - h)^2 = 4p (y - k) $$",
+          "Horizontal axis: $$ (y - k)^2 = 4p (x - h) $$",
+          "p is the directed distance from vertex to focus. p > 0 opens right/up; p < 0 opens left/down.",
+          "The directrix is p units from the vertex in the opposite direction."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Orientation and Equation",
+            "headers": [
+              "Equation",
+              "Axis",
+              "Opens",
+              "Focus",
+              "Directrix"
+            ],
+            "rows": [
+              {
+                "0": "$ (x-h)^2 = 4p(y-k) $",
+                "1": "Vertical",
+                "2": "Up if $ p>0 $, down if $ p<0 $",
+                "3": "$ (h, k+p) $",
+                "4": "$ y = k-p $"
+              },
+              {
+                "0": "$ (y-k)^2 = 4p(x-h) $",
+                "1": "Horizontal",
+                "2": "Right if $ p>0 $, left if $ p<0 $",
+                "3": "$ (h+p, k) $",
+                "4": "$ x = h-p $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Standard Equations (Vertex at (h,k))",
+          "formula": "$$ (x-h)^2 = 4p (y-k) \\quad \\text{(vertical)} $$ $$ (y-k)^2 = 4p (x-h) \\quad \\text{(horizontal)} $$",
+          "notes": [
+            "p ≠ 0",
+            "|p| = distance vertex to focus",
+            "Directrix is p units opposite side of vertex"
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Writing equation from vertex and focus",
+          "prompt": "Write the standard form of the parabola with vertex (0,0) and focus (2,0).",
+          "steps": [
+            "Focus is (2,0) → horizontal axis.",
+            "p = distance = 2, so equation: y² = 4(2)x = 8x.",
+            "Equation: y² = 8x."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Determining p from equation",
+          "prompt": "Given x² = 12y, find the focus and directrix.",
+          "peerPrompt": "Explain to your partner: 'What does the 4p tell us? How do you find p, and what does the sign of p indicate?'",
+          "minLength": 2,
+          "steps": [
+            "Standard vertical form: (x-0)² = 4p(y-0). So 4p = 12 → p = 3.",
+            "Vertex (0,0); p>0 → opens upward.",
+            "Focus: (0,0+3) = (0,3); directrix: y = -3."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Equation with vertex (h,k)",
+          "prompt": "Find standard form of parabola with vertex (2,1) and focus (2,4).",
+          "steps": [
+            "Both have x=2 → vertical axis. h=2, k=1.",
+            "p = 4 - 1 = 3.",
+            "Equation: (x-2)² = 4·3·(y-1) = 12(y-1)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Horizontal vs. Vertical",
+        "body": "[[imp:(x-h)² means vertical axis; (y-k)² means horizontal axis.]] The squared term determines the direction."
+      },
+      "questions": [
+        {
+          "id": "q-std-1",
+          "type": "fill-blank",
+          "prompt": "The standard form of a parabola with vertical axis is (x-h)² = ___.",
+          "blanks": [
+            {
+              "accept": [
+                "4p(y-k)"
+              ]
+            }
+          ],
+          "hints": [
+            "It should have '4p' times (y-k).",
+            "p is the directed focal distance."
+          ],
+          "feedbackIfWrong": "It is (x-h)² = 4p(y-k)."
+        },
+        {
+          "id": "q-std-2",
+          "type": "short-answer",
+          "prompt": "If a parabola has equation (y-3)² = -8(x+1), which direction does it open? (left or right)",
+          "answer": "left",
+          "hints": [
+            "p is negative.",
+            "Horizontal axis; negative 4p means opens left."
+          ],
+          "feedbackIfWrong": "It opens left."
+        },
+        {
+          "id": "q-std-3",
+          "type": "short-answer",
+          "prompt": "For x² = 4py, the distance from the vertex to the focus is the absolute value of what variable?",
+          "answer": "p",
+          "hints": [
+            "It's a lowercase letter.",
+            "It's in the 4p factor."
+          ],
+          "feedbackIfWrong": "The distance is |p|."
+        }
+      ]
+    },
+    {
+      "id": "convert-to-standard",
+      "title": "Completing the Square to Rewrite in Standard Form",
+      "teacherCues": [
+        "Write y = -½x² - x + ½. Ask: 'How do we find its focus and vertex?'",
+        "Demonstrate completing the square step-by-step, moving terms to isolate the squared part."
+      ],
+      "discoveryHook": {
+        "scenario": "A quadratic function like y = ax² + bx + c represents a parabola. To find its focus, we must convert it into the standard parabolic form (x-h)² = 4p(y-k)."
+      },
+      "concept": {
+        "explanation": [
+          "To convert a quadratic equation to standard parabola form:",
+          "1. Isolate the $ x^2 $ (or $ y^2 $) term and complete the square.",
+          "2. Manipulate to get the pattern $ (x-h)^2 = 4p(y-k) $ or $ (y-k)^2 = 4p(x-h) $.",
+          "3. Identify $ h, k, $ and $ p $. Then find focus, directrix."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Example Conversion Roadmap",
+            "headers": [
+              "Step",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "1. Original",
+                "1": "$ y = -\\frac{1}{2}x^2 - x + \\frac{1}{2} $"
+              },
+              {
+                "0": "2. Multiply by -2",
+                "1": "$ -2y = x^2 + 2x - 1 $"
+              },
+              {
+                "0": "3. Add 1 to both sides",
+                "1": "$ 1 - 2y = x^2 + 2x $"
+              },
+              {
+                "0": "4. Complete square",
+                "1": "$ 1 + 1 - 2y = (x+1)^2 $"
+              },
+              {
+                "0": "5. Simplify",
+                "1": "$ 2 - 2y = (x+1)^2 \\; \\rightarrow \\; -2(y-1) = (x+1)^2 $"
+              },
+              {
+                "0": "6. Standard",
+                "1": "$ (x-(-1))^2 = -2(y-1) $"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Finding focus from general equation",
+          "prompt": "Find the focus of $ y = -\\frac12 x^2 - x + \\frac12 $.",
+          "steps": [
+            "Multiply by -2: -2y = x² + 2x - 1 → 1 - 2y = x² + 2x.",
+            "Complete square on x: x²+2x+1 = (x+1)². Add 1 to left: 2 - 2y = (x+1)².",
+            "Rewrite as (x+1)² = -2(y-1). So h=-1, k=1, 4p=-2 → p=-1/2.",
+            "Focus = (h, k+p) = (-1, 1 - 1/2) = (-1, 1/2)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Finding vertex and p",
+          "prompt": "Convert $ x = \\frac14 y^2 + \\frac32 y + \\frac{13}{4} $ to standard form.",
+          "peerPrompt": "With a partner: 'First decide if the parabola is horizontal or vertical. Which term do you complete the square on?'",
+          "minLength": 2,
+          "steps": [
+            "Original: x = (1/4)y² + (3/2)y + 13/4. Multiply by 4: 4x = y² + 6y + 13.",
+            "Complete square in y: y²+6y+9 = (y+3)². So 4x = (y+3)² + 4.",
+            "Thus (y+3)² = 4x - 4 = 4(x-1). So h=1, k=-3, 4p=4 → p=1. Parabola opens right."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Finding directrix",
+          "prompt": "For the parabola $ y = x^2 $, find its directrix.",
+          "steps": [
+            "Rewrite as $ x^2 = 1y $, i.e., (x-0)² = 4p(y-0) → 4p = 1, p = 1/4.",
+            "Vertex (0,0), axis vertical, opens up.",
+            "Directrix: y = k - p = -1/4."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sign of 4p",
+        "body": "After completing the square, the factor on the linear term is 4p. If it's negative, p is negative and the parabola opens down/left."
+      },
+      "questions": [
+        {
+          "id": "q-conv-1",
+          "type": "fill-blank",
+          "prompt": "When converting a quadratic to standard form, we isolate the squared term and then complete the ___.",
+          "blanks": [
+            {
+              "accept": [
+                "square"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the method we use to get a perfect square trinomial.",
+            "Think of (x+b/2)²."
+          ],
+          "feedbackIfWrong": "We complete the square."
+        },
+        {
+          "id": "q-conv-2",
+          "type": "short-answer",
+          "prompt": "After completing the square, the coefficient on the unsquared variable equals 4p. For (x+1)² = -2(y-2), what is the value of p?",
+          "answer": "-0.5",
+          "hints": [
+            "4p = -2.",
+            "Divide by 4; p could be fractional."
+          ],
+          "feedbackIfWrong": "p = -0.5"
+        },
+        {
+          "id": "q-conv-3",
+          "type": "short-answer",
+          "prompt": "If the equation after completing square is (y-2)² = 8(x-3), what is the vertex's x-coordinate?",
+          "answer": "3",
+          "hints": [
+            "It's the number subtracted from x inside the parentheses.",
+            "Standard form (y-k)² = 4p(x-h)."
+          ],
+          "feedbackIfWrong": "The x-coordinate is 3."
+        }
+      ]
+    },
+    {
+      "id": "reflective-property",
+      "title": "Reflective Property and Tangent Lines",
+      "teacherCues": [
+        "Draw a parabola and a tangent line at a point. Show the equal angles with the axis and the focal line.",
+        "Explain: 'All rays parallel to the axis reflect through the focus. That’s why a satellite dish is parabolic.'"
+      ],
+      "discoveryHook": {
+        "scenario": "Flashlights and car headlights use parabolic reflectors. The bulb sits at the focus, so light rays become parallel. This is the reflective property in action."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Reflective Property]]: A tangent line to a parabola at point P makes equal angles with: (1) the line through P and the focus, and (2) the line through P parallel to the axis.",
+          "This property is used to find slopes of tangent lines without calculus. The tangent line’s y-intercept can be found by setting the distance from focus to the vertical foot equal to the focal distance.",
+          "The [[kw:latus rectum]] is the focal chord perpendicular to the axis, useful for width."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Steps to find tangent line (for vertical parabola)",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Identify vertex, focus, point P."
+              },
+              {
+                "0": "2",
+                "1": "Find y-intercept (0,b) such that distance from (0,b) to focus equals distance from (0,b) to P."
+              },
+              {
+                "0": "3",
+                "1": "Compute slope m = (y_P - b)/x_P."
+              },
+              {
+                "0": "4",
+                "1": "Write equation: y = m x + b."
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Tangent to y = x² at (1,1)",
+          "prompt": "Find the equation of the tangent line to y = x² at (1,1).",
+          "steps": [
+            "Parabola: x² = 4py → 4p = 1 → p = 1/4. Focus (0,1/4).",
+            "Let tangent line be y = m x + b, passing through (1,1). So 1 = m + b.",
+            "Distance from (0,b) to focus: (1/4 - b). Distance to P(1,1): sqrt((1-0)² + (1 - 1/4)²) = sqrt(1+9/16) = 5/4.",
+            "Setting 1/4 - b = 5/4 → b = -1. Then m = 2. Equation: y = 2x - 1."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Checking the reflective property",
+          "prompt": "For y = x², a ray from focus (0, 1/4) to (1,1) reflects and leaves parallel to the y-axis. Is the angle of incidence equal to angle with axis?",
+          "peerPrompt": "Discuss with a partner: 'How can we verify the angle equality using slopes?'",
+          "minLength": 2,
+          "steps": [
+            "Slope of line from focus to P: (1 - 1/4) / 1 = 3/4.",
+            "Angle with vertical (axis) can be compared with slope of tangent (2).",
+            "This is just an observation; the property is geometrically proven."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Tangent to y = 3x² at (1,3)",
+          "prompt": "Find the tangent line to y = 3x² at (1,3).",
+          "steps": [
+            "Rewrite: x² = (1/3)y → 4p = 1/3 → p = 1/12. Focus (0,1/12).",
+            "Tangent line through (1,3): 3 = m + b.",
+            "Distance from (0,b) to focus = 1/12 - b. Distance to P = sqrt(1 + (3-1/12)²) = sqrt(1 + (35/12)²) = sqrt(144/144 + 1225/144) = sqrt(1369/144) = 37/12.",
+            "Set equal: 1/12 - b = 37/12 → b = -3. Then m = 6. Equation: y = 6x - 3."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Distance order matters",
+        "body": "When solving for b, use (focus y - b) not (b - focus y). [[imp:The distance must be positive, so check which is larger.]]"
+      },
+      "questions": [
+        {
+          "id": "q-refl-1",
+          "type": "fill-blank",
+          "prompt": "The reflective property says that a ray from the focus reflects off the parabola and travels parallel to the ___.",
+          "blanks": [
+            {
+              "accept": [
+                "axis"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the line of symmetry.",
+            "The direction of the opening."
+          ],
+          "feedbackIfWrong": "It reflects parallel to the axis."
+        },
+        {
+          "id": "q-refl-2",
+          "type": "short-answer",
+          "prompt": "For the parabola x² = 4y, what is the y-coordinate of the focus?",
+          "answer": "1",
+          "hints": [
+            "4p = 4 → p = 1.",
+            "Focus is at (0, p)."
+          ],
+          "feedbackIfWrong": "Focus is (0,1)."
+        },
+        {
+          "id": "q-refl-3",
+          "type": "short-answer",
+          "prompt": "To find the tangent line at a point, we set distance from (0,b) to focus equal to distance from (0,b) to what?",
+          "answer": "P",
+          "hints": [
+            "The point on the parabola.",
+            "We equate two lengths."
+          ],
+          "feedbackIfWrong": "We set distance to the point P on the parabola."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-parabolas",
+      "title": "Blueprint Aid: Parabola Problem Solving",
+      "teacherCues": [
+        "Write the three steps: Understand, Solve, Conclude. Ask: 'What information is given? Which standard form?'",
+        "Emphasize that finding vertex, focus, and directrix from any equation follows this pattern."
+      ],
+      "discoveryHook": {
+        "scenario": "When a problem gives a quadratic equation, a vertex and a focus, or a construction scenario, the blueprint organizes your work: Identify knowns, use the standard form, and write the final equation or property."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Understand]]: Identify the vertex, focus (if known), or the form of the equation. Determine axis orientation.",
+          "[[kw:Solve]]: If given focus/vertex, compute p and plug into the appropriate standard form. If given a quadratic, complete the square to get standard form and extract h,k,p.",
+          "[[kw:Conclude]]: State the final equation, coordinates of focus/directrix, or the tangent line equation. Box the answer."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Workflow for Parabola Problems",
+            "headers": [
+              "Given",
+              "Blueprint Actions"
+            ],
+            "rows": [
+              {
+                "0": "Vertex & focus",
+                "1": "1) Determine axis, 2) Compute p = distance, 3) Substitute into standard form."
+              },
+              {
+                "0": "Quadratic equation",
+                "1": "1) Complete square to isolate squared term, 2) Compare to standard, 3) Extract h,k,p."
+              },
+              {
+                "0": "Point on parabola & focus",
+                "1": "1) Use definition (distance to focus = distance to directrix) to find directrix, then standard form."
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example 1: Vertex and Focus",
+          "prompt": "Find the standard equation of the parabola with vertex (3,2) and focus (3,6).",
+          "steps": [
+            "**Understand**: Same x-coordinate → vertical axis. h=3, k=2. Focus above vertex → p>0.",
+            "**Solve**: p = 6-2 = 4. Equation: (x-3)² = 4·4·(y-2) = 16(y-2).",
+            "**Conclude**: Standard form is (x-3)² = 16(y-2)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example 2: Quadratic to Standard",
+          "prompt": "Rewrite y = 2x² - 4x + 5 in standard form and find the focus.",
+          "peerPrompt": "Work with a partner: 'First, isolate x terms. Should we factor out a coefficient before completing the square?'",
+          "minLength": 2,
+          "steps": [
+            "**Understand**: Quadratic, x² term, so axis is vertical.",
+            "**Solve**: y-5 = 2(x²-2x); complete square: y-5+2 = 2(x-1)² → y-3 = 2(x-1)² → (x-1)² = ½(y-3). So 4p = ½ → p = 1/8, vertex (1,3).",
+            "**Conclude**: Focus (1, 3+1/8) = (1, 25/8)."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Your Turn: Blueprint",
+          "prompt": "Find the tangent line to x = y² at (4,2).",
+          "steps": [
+            "**Understand**: Parabola horizontal, vertex (0,0), y² = 4px → 4p = 1 → p=1/4, focus (1/4,0).",
+            "**Solve**: Tangent line through (4,2): let x = m y + b. Use distances? No, use reflective property. For y² = 4px, tangent at (x0,y0): y y0 = 2p(x+x0). Use formula: y*2 = 2*(1/4)*(x+4) → 2y = (1/2)(x+4) → 4y = x+4 → x = 4y - 4.",
+            "**Conclude**: Or slope-intercept: y = (1/4)x + 1? Wait, better to present simple: Since focus (1/4,0) and P(4,2), find b on directrix? Actually, I'll craft a correct step: For horizontal parabola, tangent formula: y y0 = 2p (x + x0). So with p=1/4, x0=4, y0=2: 2y = (1/2)(x+4) → multiply 2: 4y = x+4 → y = (1/4)x + 1. So tangent line: y = (1/4)x + 1."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "p vs. focal distance",
+        "body": "Remember: p is the directed distance from vertex to focus. The focus is (h, k+p) for vertical axis; for horizontal, (h+p, k)."
+      },
+      "questions": [
+        {
+          "id": "q-blue-1",
+          "type": "fill-blank",
+          "prompt": "The blueprint's three steps are Understand, ___, and Conclude.",
+          "blanks": [
+            {
+              "accept": [
+                "Solve"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the middle step.",
+            "Where you apply the correct formula."
+          ],
+          "feedbackIfWrong": "The step is Solve."
+        },
+        {
+          "id": "q-blue-2",
+          "type": "short-answer",
+          "prompt": "If a parabola has vertex (0,0) and focus (0,-3), what is the value of p?",
+          "answer": "-3",
+          "hints": [
+            "p = y_focus - k.",
+            "Focus is below vertex, so p negative."
+          ],
+          "feedbackIfWrong": "p = -3."
+        },
+        {
+          "id": "q-blue-3",
+          "type": "short-answer",
+          "prompt": "For a parabola with horizontal axis, the equation is (y-k)² = 4p(x-h). What is the variable squared?",
+          "answer": "y",
+          "hints": [
+            "It’s the term in parentheses with k.",
+            "Look at the standard form."
+          ],
+          "feedbackIfWrong": "y is squared."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

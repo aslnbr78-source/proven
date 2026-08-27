@@ -1,0 +1,793 @@
+{
+  "id": "chapter-8-2-analyzing-arithmetic-sequences-and-series",
+  "title": "Analyzing Arithmetic Sequences and Series",
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "id": "identifying-arithmetic-sequences",
+      "title": "Identifying Arithmetic Sequences",
+      "examples": [
+        {
+          "steps": [
+            "Subtract consecutive terms: $ -2 - (-9) = 7 $.",
+            "Next: $ 5 - (-2) = 7 $; $ 12 - 5 = 7 $; $ 19 - 12 = 7 $.",
+            "All differences equal $ 7 $, so the sequence is arithmetic with $ d = 7 $."
+          ],
+          "role": "guided",
+          "prompt": "Tell whether $ -9, -2, 5, 12, 19, \\dots $ is arithmetic. If so, find the common difference.",
+          "title": "Example A — Finding the Common Difference"
+        },
+        {
+          "prompt": "Is the sequence $ 8, 4, 2, 1, \\frac{1}{2}, \\dots $ arithmetic? Explain.",
+          "minLength": 8,
+          "role": "peer-explain",
+          "steps": [
+            "Differences: $ 4-8 = -4 $, $ 2-4 = -2 $, $ 1-2 = -1 $, $ \\frac{1}{2}-1 = -\\frac{1}{2} $.",
+            "The differences are not constant.",
+            "This sequence is not arithmetic; it is geometric (each term is multiplied by $ \\frac{1}{2} $)."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Compute the differences between consecutive terms. Are they the same? What type of sequence might this be instead?",
+          "title": "Example B — Not Arithmetic"
+        },
+        {
+          "title": "Example C — Is It Arithmetic?",
+          "prompt": "Determine if $ \\frac{1}{2}, \\frac{3}{4}, 1, \\frac{5}{4}, \\frac{3}{2}, \\dots $ is arithmetic.",
+          "role": "independent",
+          "steps": [
+            "Compute differences: $ \\frac{3}{4} - \\frac{1}{2} = \\frac{1}{4} $.",
+            "$ 1 - \\frac{3}{4} = \\frac{1}{4} $; $ \\frac{5}{4} - 1 = \\frac{1}{4} $; $ \\frac{3}{2} - \\frac{5}{4} = \\frac{1}{4} $.",
+            "All differences equal $ \\frac{1}{4} $, so the sequence is arithmetic with $ d = \\frac{1}{4} $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "For arithmetic sequences, check the [[imp:difference]] (subtraction). Don't confuse with geometric sequences, where you check the ratio (division). A common mistake is to divide instead of subtract.",
+        "title": "Difference vs. Ratio"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "$ -9, -2, 5, 12, 19, \\dots $",
+                "1": "$ 7, 7, 7, 7 $",
+                "2": "Yes, $ d = 7 $"
+              },
+              {
+                "0": "$ 23, 15, 9, 5, 3, \\dots $",
+                "1": "$ -8, -6, -4, -2 $",
+                "2": "No, differences vary"
+              },
+              {
+                "0": "$ 36, 18, 9, \\frac{9}{2}, \\dots $",
+                "1": "$ -18, -9, -\\frac{9}{2} $",
+                "2": "No, not constant"
+              }
+            ],
+            "title": "Checking for a Common Difference",
+            "variant": "colorful",
+            "headers": [
+              "Sequence",
+              "Differences",
+              "Arithmetic?"
+            ]
+          }
+        ],
+        "explanation": [
+          "An [[kw:arithmetic sequence]] is a sequence where the difference between consecutive terms is constant.",
+          "This constant difference is called the [[kw:common difference]], denoted by $ d $. You find $ d $ by subtracting any term from the next term: $ d = a_{n+1} - a_n $.",
+          "If the differences are not all the same, the sequence is not arithmetic.",
+          "Examples: $ 2, 5, 8, 11, 14, \\dots $ is arithmetic with $ d = 3 $. $ 15, 9, 3, -3, -9, \\dots $ is arithmetic with $ d = -6 $.",
+          "The graph of an arithmetic sequence is a set of points that lie on a straight line."
+        ],
+        "formulaCard": {
+          "formula": "$$ d = a_{n+1} - a_n $$",
+          "legend": [
+            {
+              "symbol": "$ d $",
+              "tone": "core",
+              "meaning": "common difference (can be negative)"
+            },
+            {
+              "tone": "subtle",
+              "symbol": "$ a_n $",
+              "meaning": "the $ n $th term"
+            }
+          ]
+        }
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "difference"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "id": "q8-2-1",
+          "prompt": "In an arithmetic sequence, the constant difference between consecutive terms is called the common ___.",
+          "feedbackIfWrong": "The constant value is the common difference.",
+          "hints": [
+            "It is denoted by $ d $.",
+            "You find it by subtracting a term from the next term."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "No, the differences ($ 3, 5, 7, 9 $) are not constant.",
+          "hints": [
+            "Check the differences: $ 8-5=3 $, $ 13-8=5 $.",
+            "Are the differences the same?"
+          ],
+          "answers": [
+            "no"
+          ],
+          "id": "q8-2-2",
+          "prompt": "Is the sequence $ 5, 8, 13, 20, 29, \\dots $ arithmetic? (yes/no)"
+        },
+        {
+          "feedbackIfWrong": "The common difference is $ -6 $.",
+          "type": "short-answer",
+          "answers": [
+            "-6",
+            "negative 6"
+          ],
+          "prompt": "What is the common difference of the arithmetic sequence $ 12, 6, 0, -6, \\dots $?",
+          "hints": [
+            "Subtract the first term from the second.",
+            "$ 6 - 12 = ? $"
+          ],
+          "id": "q8-2-3"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine climbing a staircase where each step is the same height. That's an arithmetic sequence—each term is the previous term plus a fixed 'step' called the common difference. Recognizing this pattern unlocks fast predictions for any term."
+      },
+      "teacherCues": [
+        "Write the sequence 3, 8, 13, 18, … and ask: What do we add each time to get the next term?",
+        "Write the sequence 23, 15, 9, 5, 3, … and ask: Are the differences constant? Is this arithmetic?"
+      ]
+    },
+    {
+      "confusionCorner": {
+        "title": "Why $ n-1 $?",
+        "body": "The formula uses $ n-1 $ because the first term already has 0 differences added. To get to the $ n $th term, you add the common difference [[imp:$ n-1 $ times]], not $ n $ times."
+      },
+      "examples": [
+        {
+          "title": "Example A — Write a Rule and Find a Term",
+          "prompt": "Write a rule for the nth term of $ 3, 8, 13, 18, \\dots $ and find $ a_{15} $.",
+          "steps": [
+            "Identify $ a_1 = 3 $ and $ d = 8-3 = 5 $.",
+            "Plug into formula: $ a_n = 3 + (n-1)5 $.",
+            "Simplify: $ a_n = 5n - 2 $.",
+            "Find $ a_{15} $: $ a_{15} = 5(15) - 2 = 75 - 2 = 73 $."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 8,
+          "role": "peer-explain",
+          "prompt": "One term is $ a_{19} = -45 $ and $ d = -3 $. Write a rule for $ a_n $.",
+          "steps": [
+            "Use $ a_n = a_1 + (n-1)d $ with $ n=19 $: $ -45 = a_1 + 18(-3) $.",
+            "Solve: $ -45 = a_1 - 54 \\rightarrow a_1 = 9 $.",
+            "Now write the rule: $ a_n = 9 + (n-1)(-3) = -3n + 12 $."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How can you use the formula to find $ a_1 $? Why do we substitute $ n=19 $?",
+          "title": "Example B — Given a Term and Common Difference"
+        },
+        {
+          "title": "Example C — Given Two Terms",
+          "prompt": "If $ a_7 = 17 $ and $ a_{26} = 93 $, write a rule for $ a_n $.",
+          "steps": [
+            "Set up equations: $ a_1 + 6d = 17 $, $ a_1 + 25d = 93 $.",
+            "Subtract: $ 19d = 76 \\rightarrow d = 4 $.",
+            "Substitute back: $ a_1 + 6(4) = 17 \\rightarrow a_1 = -7 $.",
+            "Rule: $ a_n = -7 + (n-1)4 = 4n - 11 $."
+          ],
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Write the formula $ a_n = a_1 + (n-1)d $ on the board. Ask: What does each part represent?",
+        "Pose: If $ a_1 = 3 $ and $ d = 5 $, what is $ a_n $? Then find $ a_{15} $."
+      ],
+      "discoveryHook": {
+        "scenario": "Once you know the first term and the common difference, you can jump directly to any term—like the 100th term—without listing all 99 before it. The formula $ a_n = a_1 + (n-1)d $ is your teleporter through the sequence."
+      },
+      "questions": [
+        {
+          "id": "q8-2-4",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "1",
+                "one"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The formula is $ a_n = a_1 + (n-1)d $.",
+          "prompt": "The rule for the $ n $th term of an arithmetic sequence is $ a_n = a_1 + (n-___ )d $.",
+          "hints": [
+            "It's one less than the term number.",
+            "For the second term, you add $ d $ once."
+          ]
+        },
+        {
+          "feedbackIfWrong": "$ a_{15} = 7 + 14 \\cdot 4 = 7 + 56 = 63 $.",
+          "id": "q8-2-5",
+          "type": "short-answer",
+          "prompt": "An arithmetic sequence has $ a_1 = 7 $ and $ d = 4 $. What is $ a_{15} $? (Enter a number)",
+          "hints": [
+            "Use $ a_{15} = 7 + (15-1)4 $.",
+            "Compute $ 7 + 14 \\cdot 4 $."
+          ],
+          "answers": [
+            "63",
+            "sixty three"
+          ]
+        },
+        {
+          "prompt": "If $ a_5 = 23 $ and $ d = 6 $, what is $ a_1 $?",
+          "type": "short-answer",
+          "hints": [
+            "Use $ a_5 = a_1 + 4d $.",
+            "$ 23 = a_1 + 24 \\rightarrow a_1 = -1 $."
+          ],
+          "feedbackIfWrong": "Solving $ 23 = a_1 + 24 $ gives $ a_1 = -1 $.",
+          "id": "q8-2-6",
+          "answers": [
+            "-1",
+            "negative 1"
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:rule for the nth term]] of an arithmetic sequence is: $$ a_n = a_1 + (n-1)d $$",
+          "Here $ a_1 $ is the first term, $ d $ is the common difference, and $ n $ is the term number.",
+          "You can also write it in simplified linear form: $ a_n = dn + c $, where $ c = a_1 - d $.",
+          "If you know any term and the common difference, you can work backward to find $ a_1 $, then write the full rule.",
+          "If you know two terms, set up a system of equations to solve for $ a_1 $ and $ d $."
+        ],
+        "formulaCard": {
+          "formula": "$$ a_n = a_1 + (n-1)d $$",
+          "legend": [
+            {
+              "symbol": "$ a_1 $",
+              "tone": "core",
+              "meaning": "first term of the sequence"
+            },
+            {
+              "meaning": "common difference",
+              "symbol": "$ d $",
+              "tone": "core"
+            },
+            {
+              "tone": "subtle",
+              "meaning": "term position (1st, 2nd, …)",
+              "symbol": "$ n $"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Term",
+              "Pattern",
+              "Formula"
+            ],
+            "title": "Building the Rule $ a_n = a_1 + (n-1)d $",
+            "rows": [
+              {
+                "0": "$ a_1 $",
+                "1": "Start",
+                "2": "$ a_1 $"
+              },
+              {
+                "0": "$ a_2 $",
+                "1": "$ a_1 + 1d $",
+                "2": "$ a_1 + d $"
+              },
+              {
+                "0": "$ a_3 $",
+                "1": "$ a_1 + 2d $",
+                "2": "$ a_1 + 2d $"
+              },
+              {
+                "0": "$ a_n $",
+                "1": "$ a_1 + (n-1)d $",
+                "2": "$ a_1 + (n-1)d $"
+              }
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "title": "Writing Rules for the nth Term",
+      "id": "writing-rules-for-arithmetic-sequences"
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Young Gauss stunned his teacher by instantly summing 1 to 100. His trick? He noticed that pairing numbers from both ends (1+100, 2+99, …) always gives the same sum. This insight gives us the formula for any arithmetic series."
+      },
+      "id": "sums-of-arithmetic-series",
+      "teacherCues": [
+        "Tell the story of Gauss summing 1 to 100 by pairing. Ask: Why does pairing first and last work?",
+        "Write the formula $ S_n = n \\left( \\frac{a_1 + a_n}{2} \\right) $ and explain it as 'average of first and last times number of terms'."
+      ],
+      "concept": {
+        "explanation": [
+          "The sum of the first $ n $ terms of an arithmetic sequence is called an [[kw:arithmetic series]], denoted $ S_n $.",
+          "The formula is: $$ S_n = n \\left( \\frac{a_1 + a_n}{2} \\right) $$",
+          "In words: the sum is the number of terms times the average of the first and last terms.",
+          "This works because pairing terms from the beginning and end gives equal sums, just like Gauss's method.",
+          "To find $ S_n $, you need the first term, the last term, and the number of terms."
+        ],
+        "formulaCard": {
+          "formula": "$$ S_n = n \\left( \\frac{a_1 + a_n}{2} \\right) $$",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$ S_n $",
+              "meaning": "sum of the first $ n $ terms"
+            },
+            {
+              "tone": "core",
+              "symbol": "$ a_1 $",
+              "meaning": "first term"
+            },
+            {
+              "symbol": "$ a_n $",
+              "tone": "core",
+              "meaning": "last (nth) term"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Pair",
+              "Sum"
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Gauss's Pairing Method for $ 1 + 2 + \\dots + 100 $",
+            "rows": [
+              {
+                "0": "$ 1 + 100 $",
+                "1": "101"
+              },
+              {
+                "0": "$ 2 + 99 $",
+                "1": "101"
+              },
+              {
+                "0": "$ 3 + 98 $",
+                "1": "101"
+              },
+              {
+                "0": "…",
+                "1": "…"
+              },
+              {
+                "0": "50 pairs",
+                "1": "$ 50 \\times 101 = 5050 $"
+              }
+            ]
+          }
+        ]
+      },
+      "confusionCorner": {
+        "body": "In the sum formula, $ n $ is the number of terms, and $ a_n $ is the last term. If you have 20 terms, $ n=20 $, not the value of the 20th term. [[imp:Count terms carefully.]]",
+        "title": "Don't Confuse $ n $ and $ a_n $"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Identify the first term: $ a_1 = 3(1) + 7 = 10 $.",
+            "Identify the last (20th) term: $ a_{20} = 3(20) + 7 = 67 $.",
+            "Number of terms $ n = 20 $.",
+            "Apply formula: $ S_{20} = 20 \\left( \\frac{10 + 67}{2} \\right) = 20 \\times 38.5 = 770 $."
+          ],
+          "prompt": "Find the sum $ \\sum_{i=1}^{20} (3i + 7) $.",
+          "title": "Example A — Finding a Sum Using the Formula"
+        },
+        {
+          "minLength": 8,
+          "steps": [
+            "Sequence: $ 3, 6, 9, \\dots $. This is arithmetic with $ a_1 = 3 $, $ d = 3 $.",
+            "The 12th row has $ a_{12} = 3(12) = 36 $ cards.",
+            "Number of terms $ n = 12 $.",
+            "Total cards: $ S_{12} = 12 \\left( \\frac{3 + 36}{2} \\right) = 12 \\times 19.5 = 234 $."
+          ],
+          "role": "peer-explain",
+          "title": "Example B — House of Cards",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What is the first term? The last term? How do you use the formula to find the total?",
+          "prompt": "A house of cards has 12 rows. The top row has 3 cards, and each row has 3 more than the row above. How many cards total?"
+        },
+        {
+          "steps": [
+            "$ a_1 = 2 $, $ a_{15} = 30 $, $ n = 15 $.",
+            "$ S_{15} = 15 \\left( \\frac{2 + 30}{2} \\right) = 15 \\times 16 = 240 $."
+          ],
+          "prompt": "Find the sum of the first 15 positive even integers: $ 2 + 4 + 6 + \\dots + 30 $.",
+          "role": "independent",
+          "title": "Example C — Sum of First n Even Numbers"
+        }
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "average",
+                "mean"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "The sum of a finite arithmetic series is found by multiplying the number of terms $ n $ by the ___ of the first and last terms.",
+          "feedbackIfWrong": "The formula uses the average (or mean) of the first and last terms.",
+          "id": "q8-2-7",
+          "hints": [
+            "Add the first and last, then divide by 2.",
+            "It's the arithmetic mean of $ a_1 $ and $ a_n $."
+          ]
+        },
+        {
+          "hints": [
+            "First term: $ 9(1)=9 $; last term: $ 9(10)=90 $.",
+            "Use $ S_{10} = 10 \\left( \\frac{9+90}{2} \\right) $."
+          ],
+          "answers": [
+            "495",
+            "four hundred ninety five"
+          ],
+          "id": "q8-2-8",
+          "type": "short-answer",
+          "prompt": "Find the sum $ \\sum_{i=1}^{10} 9i $. (Enter a number)",
+          "feedbackIfWrong": "$ S_{10} = 10 \\times 49.5 = 495 $."
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Sequence: 3, 6, 9, …, a_8 = 24.",
+            "Use $ S_8 = 8 \\left( \\frac{3+24}{2} \\right) $."
+          ],
+          "prompt": "How many cards are needed for a house of cards with 8 rows, starting with 3 cards and adding 3 per row?",
+          "id": "q8-2-9",
+          "feedbackIfWrong": "$ 8 \\times 13.5 = 108 $ cards.",
+          "answers": [
+            "108",
+            "one hundred eight"
+          ]
+        }
+      ],
+      "title": "Sums of Finite Arithmetic Series"
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "It's $ S_n $, not just $ a_n $.",
+            "You are adding all the terms together."
+          ],
+          "feedbackIfWrong": "Use the sum formula $ S_n $ to find the total.",
+          "id": "q8-2-10",
+          "type": "fill-blank",
+          "prompt": "In a real‑life arithmetic problem, to find a total amount after several steps, you use the ___ formula.",
+          "blanks": [
+            {
+              "accept": [
+                "sum",
+                "series"
+              ]
+            }
+          ]
+        },
+        {
+          "hints": [
+            "Sequence: 6, 12, 18, … common difference 6.",
+            "$ a_5 = 6 + 4 \\cdot 6 $."
+          ],
+          "prompt": "A honeycomb starts with 1 cell, and each ring adds 6 cells more than the previous ring. How many cells in the 5th ring? (First ring has 6 cells? Actually the problem states sequence 6, 12, 18? Let's use the textbook: first ring 6, second 12, third 18. So $ a_1=6, d=6 $. Then $ a_5 = ? $)",
+          "answers": [
+            "30",
+            "thirty"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "$ a_5 = 6 + 24 = 30 $ cells.",
+          "id": "q8-2-11"
+        },
+        {
+          "hints": [
+            "$ a_1 = 20 $, $ d = 3 $, $ n = 8 $.",
+            "Find $ a_8 $, then $ S_8 $."
+          ],
+          "answers": [
+            "244",
+            "two hundred forty four"
+          ],
+          "prompt": "You save $\\$20$ in week 1, and increase savings by $\\$3$ each week. How much total after 8 weeks? (Enter a number)",
+          "feedbackIfWrong": "$ a_8 = 20 + 7 \\cdot 3 = 41 $; $ S_8 = 8 \\left( \\frac{20+41}{2} \\right) = 8 \\times 30.5 = 244 $.",
+          "type": "short-answer",
+          "id": "q8-2-12"
+        }
+      ],
+      "teacherCues": [
+        "Pose: A marching band has 3 members in row 1, and each row has 2 more than the row above. How many total members in 7 rows?",
+        "Ask: What is the sequence? What is the series sum representing?"
+      ],
+      "title": "Real‑Life Applications of Arithmetic Series",
+      "confusionCorner": {
+        "title": "Units and Interpretation",
+        "body": "Always check that your answer makes sense in context. Total seats cannot be fractional; total savings should be in dollars. [[imp:Re‑read the problem to ensure you answered the right question (term vs. sum).]]"
+      },
+      "examples": [
+        {
+          "prompt": "A marching band's first row has 3 members, and each row after has 2 more. Write a rule and find the total members in 7 rows.",
+          "role": "guided",
+          "steps": [
+            "Sequence: $ a_1 = 3 $, $ d = 2 $. Rule: $ a_n = 3 + (n-1)2 = 2n + 1 $.",
+            "Row 7 has $ a_7 = 2(7) + 1 = 15 $ members.",
+            "Total members: $ S_7 = 7 \\left( \\frac{3 + 15}{2} \\right) = 7 \\times 9 = 63 $.",
+            "So, 63 band members in 7 rows."
+          ],
+          "title": "Example A — Marching Band Formation"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "$ a_1 = 25 $, $ d = 2 $, $ n = 20 $.",
+            "Last row: $ a_{20} = 25 + 19 \\cdot 2 = 25 + 38 = 63 $.",
+            "Total seats: $ S_{20} = 20 \\left( \\frac{25 + 63}{2} \\right) = 20 \\times 44 = 880 $."
+          ],
+          "title": "Example B — Seating in a Theater",
+          "prompt": "A theater has 20 rows. The first row has 25 seats, and each row has 2 more seats than the row in front. How many seats in total?",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: How do you find the number of seats in the last row? Then how do you find the total?",
+          "minLength": 8
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "$ a_1 = 10 $, $ d = 5 $, $ n = 10 $.",
+            "Week 10 savings: $ a_{10} = 10 + 9 \\cdot 5 = 55 $.",
+            "Total saved: $ S_{10} = 10 \\left( \\frac{10+55}{2} \\right) = 10 \\times 32.5 = 325 $ dollars."
+          ],
+          "title": "Example C — Saving with a Fixed Increase",
+          "prompt": "You save $\\$10$ the first week, and each week you save $\\$5$ more than the previous week. How much have you saved after 10 weeks?"
+        }
+      ],
+      "id": "real-life-arithmetic-applications",
+      "discoveryHook": {
+        "scenario": "From stacking apples in a pyramid to arranging a marching band, arithmetic sequences and series model real‑world patterns where growth is constant. Knowing the formula helps you plan without counting one by one."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Marching band rows",
+                "1": "3 members",
+                "2": "2",
+                "3": "Total band members"
+              },
+              {
+                "0": "House of cards rows",
+                "1": "3 cards",
+                "2": "3",
+                "3": "Total cards"
+              },
+              {
+                "0": "Weekly savings",
+                "1": "$\\$5$",
+                "2": "$\\$3$ more each week",
+                "3": "Total saved after $ n $ weeks"
+              }
+            ],
+            "headers": [
+              "Situation",
+              "$ a_1 $",
+              "$ d $",
+              "What $ S_n $ Represents"
+            ],
+            "title": "Real‑Life Arithmetic Patterns",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ a_n = a_1 + (n-1)d $$ $$ S_n = n \\left( \\frac{a_1 + a_n}{2} \\right) $$",
+          "legend": [
+            {
+              "symbol": "$ a_1, d $",
+              "meaning": "from the real‑life pattern",
+              "tone": "core"
+            },
+            {
+              "symbol": "$ S_n $",
+              "meaning": "total quantity after $ n $ steps",
+              "tone": "core"
+            }
+          ]
+        },
+        "explanation": [
+          "Many real‑life situations involve a constant rate of increase or decrease, forming an arithmetic pattern.",
+          "Examples: rows in a marching band, seats in a theater, layers of a pyramid with constant increase, weekly savings with a fixed increment.",
+          "Step 1: Identify $ a_1 $ and $ d $ from the description.",
+          "Step 2: Write the rule $ a_n = a_1 + (n-1)d $ to find any term.",
+          "Step 3: Use the sum formula $ S_n = n \\left( \\frac{a_1 + a_n}{2} \\right) $ to find totals."
+        ]
+      }
+    },
+    {
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude steps. Model the process: 'An arithmetic sequence has $ a_5 = 41 $ and $ a_{10} = 96 $. Find the rule and the sum of the first 20 terms.'",
+        "Ask: What do we need to find first? How do we use the two known terms?"
+      ],
+      "discoveryHook": {
+        "scenario": "When given scattered information about an arithmetic sequence, the Blueprint organizes your approach: find $ a_1 $ and $ d $ first, then write the rule, then use it to find any term or sum. It's your strategy guide for arithmetic puzzles."
+      },
+      "title": "Blueprint Aid — Solving Arithmetic Sequence and Series Problems",
+      "id": "blueprint-aid-arithmetic-sequences-series",
+      "examples": [
+        {
+          "prompt": "Given $ a_7 = 17 $ and $ a_{26} = 93 $, write the rule and find the sum of the first 20 terms.",
+          "title": "Example A — Full Blueprint from Two Terms to Sum",
+          "role": "guided",
+          "steps": [
+            "Understand: We need $ a_1 $ and $ d $ from the two terms.",
+            "Solve: Set up equations: $ a_1 + 6d = 17 $, $ a_1 + 25d = 93 $. Subtract to get $ 19d = 76 \\rightarrow d = 4 $. Then $ a_1 = -7 $.",
+            "Rule: $ a_n = -7 + (n-1)4 = 4n - 11 $.",
+            "Find $ a_{20} = 4(20) - 11 = 69 $. Then $ S_{20} = 20 \\left( \\frac{-7 + 69}{2} \\right) = 20 \\times 31 = 620 $.",
+            "Conclude: The rule is $ a_n = 4n - 11 $, and the sum of the first 20 terms is 620."
+          ]
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What are $ a_1 $ and $ d $? After finding the total in cents, how do you convert to dollars?",
+          "title": "Example B — Interpreting the Sum in Context",
+          "steps": [
+            "Understand: $ a_1 = 1 $ cent, $ d = 2 $ cents. $ n = 30 $. Need total cents.",
+            "Solve: $ a_{30} = 1 + 29 \\cdot 2 = 59 $ cents.",
+            "$ S_{30} = 30 \\left( \\frac{1 + 59}{2} \\right) = 30 \\times 30 = 900 $ cents.",
+            "Conclude: Total saved is 900 cents, or $\\$9.00$."
+          ],
+          "minLength": 8,
+          "role": "peer-explain",
+          "prompt": "A student saves pennies: 1 on day 1, 3 on day 2, 5 on day 3, etc. How much after 30 days? Use the Blueprint."
+        },
+        {
+          "title": "Example C — Find the Rule from a Sum",
+          "steps": [
+            "Understand: $ S_6 = 75 $, $ a_1 = 5 $, $ n = 6 $.",
+            "Solve: $ S_6 = 6 \\left( \\frac{5 + a_6}{2} \\right) = 75 \\rightarrow 3(5 + a_6) = 75 \\rightarrow 5 + a_6 = 25 \\rightarrow a_6 = 20 $.",
+            "Now use $ a_6 = a_1 + 5d $: $ 20 = 5 + 5d \\rightarrow 5d = 15 \\rightarrow d = 3 $.",
+            "Rule: $ a_n = 5 + (n-1)3 = 3n + 2 $.",
+            "Conclude: The rule is $ a_n = 3n + 2 $."
+          ],
+          "role": "independent",
+          "prompt": "The sum of the first 6 terms of an arithmetic sequence is 75, and the first term is 5. Find the rule."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Solving for $ a_1 $ and $ d $",
+        "body": "When given two terms, always set up equations using $ a_n = a_1 + (n-1)d $. Subtract the equations to eliminate $ a_1 $ and solve for $ d $ first. [[imp:Don't guess $ d $—compute it.]]"
+      },
+      "questions": [
+        {
+          "answers": [
+            "4",
+            "four"
+          ],
+          "hints": [
+            "From the system of equations, $ d = 4 $.",
+            "It was found by subtracting the two equations."
+          ],
+          "prompt": "In Example A, what is the common difference $ d $? (Enter a number)",
+          "id": "q8-2-13",
+          "feedbackIfWrong": "$ d = 4 $, found from $ 19d = 76 $.",
+          "type": "short-answer"
+        },
+        {
+          "id": "q8-2-14",
+          "hints": [
+            "It's the common difference.",
+            "The letter that represents the constant amount added."
+          ],
+          "feedbackIfWrong": "The formula is $ a_n = a_1 + (n-1)d $.",
+          "blanks": [
+            {
+              "accept": [
+                "d"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "After finding $ a_1 $ and $ d $, the rule for the $ n $th term is written using the formula $ a_n = a_1 + (n-1) $ ___."
+        },
+        {
+          "type": "short-answer",
+          "prompt": "An arithmetic sequence has $ S_5 = 40 $ and $ a_1 = 4 $. What is $ d $? (Enter a number)",
+          "hints": [
+            "First find $ a_5 $ using $ S_5 = 5 \\left( \\frac{4 + a_5}{2} \\right) = 40 $.",
+            "Then use $ a_5 = a_1 + 4d $."
+          ],
+          "feedbackIfWrong": "$ a_5 = 12 $, so $ 12 = 4 + 4d \\rightarrow d = 2 $.",
+          "answers": [
+            "2",
+            "two"
+          ],
+          "id": "q8-2-15"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ a_n = a_1 + (n-1)d $$ $$ S_n = n \\left( \\frac{a_1 + a_n}{2} \\right) $$",
+          "legend": [
+            {
+              "symbol": "$ a_1, d $",
+              "tone": "core",
+              "meaning": "key parameters to find first"
+            }
+          ]
+        },
+        "explanation": [
+          "[[imp:Understand]]: Identify what is given (two terms? one term and $ d $? a series sum?). Determine whether you need to find a specific term, a rule, or a sum.",
+          "[[imp:Solve]]: 1) If needed, find $ a_1 $ and $ d $ using the general term formula or a system of equations. 2) Write the rule $ a_n = a_1 + (n-1)d $. 3) If a sum is required, find the needed last term and apply $ S_n = n \\left( \\frac{a_1 + a_n}{2} \\right) $.",
+          "[[imp:Conclude]]: State the requested term, rule, or sum. Check that the answer is consistent with given information (e.g., common difference matches)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify known values; decide goal (rule, term, sum)."
+              },
+              {
+                "0": "Solve",
+                "1": "Find $ a_1 $ and $ d $; write $ a_n $; compute sum if needed."
+              },
+              {
+                "0": "Conclude",
+                "1": "State the answer; verify with given data."
+              }
+            ],
+            "variant": "colorful",
+            "title": "Blueprint for Arithmetic Sequences/Series"
+          }
+        ]
+      }
+    }
+  ],
+  "standards": [
+    "HSF.IF.A.3",
+    "HSF.BF.A.1a",
+    "HSF.BF.A.2",
+    "HSA.SSE.B.4"
+  ],
+  "presenterNotes": [
+    "Emphasize that the common difference can be found by subtracting any term from the following term. Consistent differences = arithmetic.",
+    "When writing the rule, students often forget the $ n-1 $ and use $ n $ instead. Remind them that the first term has zero differences added.",
+    "For the sum formula, connect to the average of the first and last terms. Gauss's story is a great hook.",
+    "In real‑life problems, help students distinguish between finding a specific term and finding a total sum. The wording usually indicates which.",
+    "The Blueprint block ties everything together. Use it to model the systematic approach: find $ a_1 $ and $ d $ first, then answer the question."
+  ],
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

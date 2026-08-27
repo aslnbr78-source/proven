@@ -1,0 +1,708 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-6-1-law-of-sines",
+  "title": "Law of Sines",
+  "blocks": [
+    {
+      "id": "intro-law-of-sines",
+      "title": "Introduction to the Law of Sines",
+      "teacherCues": [
+        "Draw a non‑right triangle and label sides a, b, c opposite angles A, B, C. Ask: What ratio might be constant?",
+        "Write the Law of Sines on the board. Emphasize: works for any oblique triangle, not just right triangles."
+      ],
+      "discoveryHook": {
+        "scenario": "Surveyors used the Law of Sines to measure the height of Mount Everest more than 150 years ago, within 30 feet of the true height."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Law of Sines]] says: $$\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}.$$",
+          "You can also flip it: $$\\frac{\\sin A}{a} = \\frac{\\sin B}{b} = \\frac{\\sin C}{c}.$$",
+          "Use it to find missing sides or angles in any triangle."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "When to use Law of Sines",
+            "headers": [
+              "Given",
+              "Case"
+            ],
+            "rows": [
+              {
+                "0": "Two angles + a side (AAS or ASA)",
+                "1": "Use directly"
+              },
+              {
+                "0": "Two sides + an opposite angle (SSA)",
+                "1": "Ambiguous – check possibilities"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Law of Sines",
+          "formula": "$$\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}$$",
+          "notes": [
+            "a opposite A, b opposite B, c opposite C.",
+            "Pick two ratios that include the unknown."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find missing angle",
+          "prompt": "In triangle ABC, A = 50°, B = 60°. Find C.",
+          "steps": [
+            "Sum of angles is always 180°.",
+            "C = 180° – A – B = 180° – 50° – 60° = 70°."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Set up proportion",
+          "prompt": "Given a = 10, A = 30°, B = 45°. Set up the proportion to find b.",
+          "peerPrompt": "Explain to your partner: Which two ratios do you use? Why can you leave out the third?",
+          "minLength": 2,
+          "steps": [
+            "Write: a / sin A = b / sin B.",
+            "Plug in: 10 / sin30° = b / sin45°.",
+            "Solve: b = 10 × (sin45° / sin30°) ≈ 14.14."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find side c",
+          "prompt": "From B's triangle, now find c if C = 105°.",
+          "steps": [
+            "Use a / sin A = c / sin C.",
+            "c = 10 × (sin105° / sin30°) ≈ 19.32."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Labeling Tip",
+        "body": "Always label side a opposite angle A, side b opposite B, side c opposite C. Then the law is [[imp:easy to write]]."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "The Law of Sines says a / sin A = b / sin B = c / ___.",
+          "blanks": [
+            {
+              "accept": [
+                "sin C"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the sine of the third angle.",
+            "Same pattern: side over sine of its opposite angle."
+          ],
+          "feedbackIfWrong": "It's sin C."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "How many angles do you need to know to use Law of Sines for an AAS triangle? (Enter a number)",
+          "answer": "2",
+          "hints": [
+            "AAS means Angle-Angle-Side.",
+            "You know two angles; the third can be found."
+          ],
+          "feedbackIfWrong": "You need 2 angles."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "If A = 50° and B = 60°, then C = ___°.",
+          "blanks": [
+            {
+              "accept": [
+                "70"
+              ]
+            }
+          ],
+          "hints": [
+            "Sum of angles = 180°.",
+            "Subtract from 180."
+          ],
+          "feedbackIfWrong": "C = 70°."
+        }
+      ]
+    },
+    {
+      "id": "solving-aas-asa",
+      "title": "Solving AAS and ASA Triangles",
+      "teacherCues": [
+        "Draw a triangle with known A, B, and side a. Ask: How do we find b? (use proportion).",
+        "Example: A=30°, B=45°, a=32 cm. Find b and c together."
+      ],
+      "discoveryHook": {
+        "scenario": "A leaning pole casts a 22‑foot shadow at an angle of 43°. By measuring two angles and the shadow, you can find the pole’s height without climbing."
+      },
+      "concept": {
+        "explanation": [
+          "For AAS or ASA: first find the third angle (C = 180° – A – B).",
+          "Use the pair you know (e.g., a and A) to find another side: b = a × (sin B / sin A).",
+          "Repeat for the third side."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "AAS Example (A=30°, B=45°, a=32 cm)",
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "Find C",
+                "1": "C = 180 – 30 – 45 = 105°"
+              },
+              {
+                "0": "Find b",
+                "1": "b = 32 × (sin45° / sin30°) ≈ 45.25 cm"
+              },
+              {
+                "0": "Find c",
+                "1": "c = 32 × (sin105° / sin30°) ≈ 61.82 cm"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Side from a known pair",
+          "formula": "$$b = a \\cdot \\frac{\\sin B}{\\sin A}$$",
+          "notes": [
+            "a and A are a known side-angle pair.",
+            "Multiply by sin of the angle opposite the side you want."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find b and c",
+          "prompt": "Given A=49°, B=29°, b=28 ft. Find a and c.",
+          "steps": [
+            "C = 180° – 49° – 29° = 102°.",
+            "a = b × (sin A / sin B) = 28 × (sin49° / sin29°) ≈ 43.59 ft.",
+            "c = b × (sin C / sin B) ≈ 56.49 ft."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Leaning pole",
+          "prompt": "Pole tilts 8° from vertical, shadow 22 ft, angle of elevation 43°. Find height.",
+          "peerPrompt": "Explain: What is angle B? (Hint: vertical line + tilt = 98°). Then apply Law of Sines.",
+          "minLength": 2,
+          "steps": [
+            "A = 43°, B = 90°+8° = 98°, C = 180°–43°–98°=39°.",
+            "a / sin43° = 22 / sin39° → a = 22 × sin43° / sin39° ≈ 23.84 ft."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find b directly",
+          "prompt": "Given A=30°, B=45°, a=32 cm. Find b without finding C.",
+          "steps": [
+            "b = a × (sin B / sin A) = 32 × (sin45° / sin30°) ≈ 45.25 cm."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "ASA vs AAS",
+        "body": "The method is the same: find the third angle, then use the known side-angle pair. The law [[imp:doesn't care]] which arrangement you have."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "To find side b when you know a, A, and B, multiply a by (sin B / sin ___ ).",
+          "blanks": [
+            {
+              "accept": [
+                "A"
+              ]
+            }
+          ],
+          "hints": [
+            "The denominator is sin of the known angle.",
+            "The known side a is opposite A."
+          ],
+          "feedbackIfWrong": "It's sin A."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "If A = 30°, B = 45°, a = 10, what is b approximately? (Enter a number, e.g., 14.14)",
+          "answer": "14.14",
+          "hints": [
+            "b = a × sin B / sin A = 10 × sin45° / sin30°.",
+            "sin45° ≈ 0.7071, sin30° = 0.5."
+          ],
+          "feedbackIfWrong": "b ≈ 14.14."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "In the leaning pole problem, the angle between the pole and the vertical is 8°, so angle B = 90° + 8° = ___°.",
+          "blanks": [
+            {
+              "accept": [
+                "98"
+              ]
+            }
+          ],
+          "hints": [
+            "Vertical is 90°; add tilt.",
+            "90 + 8 = 98."
+          ],
+          "feedbackIfWrong": "B = 98°."
+        }
+      ]
+    },
+    {
+      "id": "ssa-ambiguous-case",
+      "title": "The Ambiguous Case (SSA)",
+      "teacherCues": [
+        "Draw acute angle A, side b, and a short side a. Show that a might not reach the base.",
+        "Explain: if a is too short (a < b sin A), no triangle exists. If a = b sin A, right triangle. If a ≥ b, one triangle. If between, two triangles."
+      ],
+      "discoveryHook": {
+        "scenario": "Given two sides and an angle not between them, sometimes no triangle can be formed, sometimes one, and sometimes two different triangles are possible — like a puzzle with multiple solutions."
+      },
+      "concept": {
+        "explanation": [
+          "SSA means you know two sides and an angle opposite one of them.",
+          "Compute height h = b sin A (if A is acute).",
+          "If a < h → no triangle.",
+          "If a = h → one right triangle.",
+          "If a ≥ b → one triangle.",
+          "If h < a < b → two triangles (ambiguous).",
+          "For obtuse A: if a ≤ b, no triangle; if a > b, one triangle."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "SSA Quick Guide (A acute)",
+            "headers": [
+              "Condition",
+              "Number of triangles"
+            ],
+            "rows": [
+              {
+                "0": "a < h",
+                "1": "0"
+              },
+              {
+                "0": "a = h",
+                "1": "1 (right)"
+              },
+              {
+                "0": "a ≥ b",
+                "1": "1"
+              },
+              {
+                "0": "h < a < b",
+                "1": "2"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Height formula",
+          "formula": "$$h = b \\sin A$$",
+          "notes": [
+            "h is the perpendicular from C to side c.",
+            "If a cannot reach the base, no triangle."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – No triangle",
+          "prompt": "Show a=15 ft, b=25 ft, A=85° gives no triangle.",
+          "steps": [
+            "sin B = b × sin A / a = 25 × sin85° / 15 ≈ 1.66 > 1.",
+            "Sine cannot exceed 1 → no triangle."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – One triangle",
+          "prompt": "a=22 in, b=12 in, A=42°. Find B.",
+          "peerPrompt": "Explain: Because a > b, only one triangle exists. Compute sin B and find B acute.",
+          "minLength": 2,
+          "steps": [
+            "sin B = b × sin A / a = 12 × sin42° / 22 ≈ 0.3650.",
+            "B ≈ 21.41° (only acute)."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Two triangles",
+          "prompt": "a=12 m, b=31 m, A=20.5°. Find both possible B.",
+          "steps": [
+            "sin B = 31 × sin20.5° / 12 ≈ 0.9047.",
+            "B₁ ≈ 64.8°, B₂ = 180° – 64.8° = 115.2°.",
+            "Both work because A + B₂ < 180°."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check Supplementary Angle",
+        "body": "When using sin⁻¹ to find B, always check if 180° – B also works. If A + (180° – B) < 180°, then two triangles exist."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "In SSA with acute A, compute h = b sin ___. Compare a to h to know how many triangles.",
+          "blanks": [
+            {
+              "accept": [
+                "A"
+              ]
+            }
+          ],
+          "hints": [
+            "The angle given is A.",
+            "h = b sin A."
+          ],
+          "feedbackIfWrong": "It's sin A."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "If a = 10, b = 20, A = 30°. What is h? (Enter a number)",
+          "answer": "10",
+          "hints": [
+            "h = b sin A = 20 × sin30° = 20 × 0.5 = 10.",
+            "Since a = 10 equals h, one right triangle."
+          ],
+          "feedbackIfWrong": "h = 10."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "In the ambiguous case, if sin B > 1, the number of triangles is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "Sine cannot exceed 1.",
+            "If sin B is greater than 1, no triangle exists."
+          ],
+          "feedbackIfWrong": "0 triangles."
+        }
+      ]
+    },
+    {
+      "id": "area-oblique-triangle",
+      "title": "Area of an Oblique Triangle",
+      "teacherCues": [
+        "Draw any triangle. Highlight that area = 1/2 × product of two sides × sine of their included angle.",
+        "Compare with right triangle area: if the angle is 90°, sin90°=1, giving 1/2 base × height."
+      ],
+      "discoveryHook": {
+        "scenario": "A triangular garden with two known sides and the angle between them: you can find its area instantly, without measuring a height."
+      },
+      "concept": {
+        "explanation": [
+          "Area = ½ × (side1) × (side2) × sin(included angle).",
+          "Three versions: $$\\text{Area} = \\frac{1}{2}bc \\sin A = \\frac{1}{2}ab \\sin C = \\frac{1}{2}ac \\sin B.$$",
+          "Works for any triangle, even right triangles (sin90° = 1)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Choose the Right Formula",
+            "headers": [
+              "Known sides",
+              "Included angle",
+              "Area formula"
+            ],
+            "rows": [
+              {
+                "0": "b, c",
+                "1": "A",
+                "2": "½ bc sin A"
+              },
+              {
+                "0": "a, b",
+                "1": "C",
+                "2": "½ ab sin C"
+              },
+              {
+                "0": "a, c",
+                "1": "B",
+                "2": "½ ac sin B"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Area Formula",
+          "formula": "$$\\text{Area} = \\frac{1}{2}bc \\sin A$$",
+          "notes": [
+            "Angle must be between the two sides.",
+            "If the angle is 90°, area = ½ bc."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find area",
+          "prompt": "Sides 90 m and 52 m, included angle 102°. Find area.",
+          "steps": [
+            "Area = ½ × 90 × 52 × sin102°.",
+            "sin102° ≈ 0.9781.",
+            "Area ≈ 0.5 × 4680 × 0.9781 ≈ 2289 m²."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Choose the formula",
+          "prompt": "If you know sides a=5, c=8, and angle B=60°, which formula?",
+          "peerPrompt": "Explain to a partner: Which two sides are given? Which angle is between them? Write the area expression.",
+          "minLength": 2,
+          "steps": [
+            "Sides a and c are given; angle B is between them.",
+            "Area = ½ × a × c × sin B = ½ × 5 × 8 × sin60° ≈ 17.32."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Right triangle check",
+          "prompt": "If C=90°, a=6, b=8, find area using the general formula.",
+          "steps": [
+            "Area = ½ × a × b × sin C = ½ × 6 × 8 × sin90° = ½ × 48 × 1 = 24.",
+            "Matches ½ base × height."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Included Angle Only",
+        "body": "Don't use the angle opposite one of the sides. The angle must be the one [[imp:between the two sides]]."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "Area = ½ × b × c × sin ___, where A is the angle between b and c.",
+          "blanks": [
+            {
+              "accept": [
+                "A"
+              ]
+            }
+          ],
+          "hints": [
+            "The angle opposite side a is A.",
+            "But here use sides b and c, so include angle A."
+          ],
+          "feedbackIfWrong": "It's sin A."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "If sides 10 and 14 include an angle of 30°, what is the area? (Enter a number)",
+          "answer": "35",
+          "hints": [
+            "½ × 10 × 14 × sin30° = 70 × 0.5 = 35.",
+            "The .5 and the ½ multiply to give ¼ of product? Actually ½×10×14 = 70, times 0.5 = 35."
+          ],
+          "feedbackIfWrong": "Area = 35."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "If the included angle is 90°, the area formula gives the same as ½ × base × height because sin90° = ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "Sine of 90 degrees is 1.",
+            "Check the unit circle."
+          ],
+          "feedbackIfWrong": "sin90° = 1."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-application",
+      "title": "Blueprint Aid – Boat Race Application",
+      "teacherCues": [
+        "Sketch the course: Start A, B at S 52° W, C at S 40° E, and back to A. C is 8 km south of A.",
+        "Use parallel lines to find angles, then Law of Sines."
+      ],
+      "discoveryHook": {
+        "scenario": "A sailboat race has a triangular course. By knowing one leg and the bearings, you can compute the total distance before leaving the dock."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Draw the triangle. AC = 8 km. From bearings, ∠A = 52°, ∠C = 40°. Then ∠B = 180° – 52° – 40° = 88°.",
+          "[[imp:Solve]]: Use Law of Sines with known side b = 8 km opposite B. Find a and c.",
+          "[[imp:Conclude]]: Add the three sides to get total distance."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Boat Race Solution",
+            "headers": [
+              "Side",
+              "Calculation",
+              "Value (km)"
+            ],
+            "rows": [
+              {
+                "0": "a (BC)",
+                "1": "8 × sin52° / sin88°",
+                "2": "≈ 6.31"
+              },
+              {
+                "0": "c (AB)",
+                "1": "8 × sin40° / sin88°",
+                "2": "≈ 5.15"
+              },
+              {
+                "0": "b (AC)",
+                "1": "-",
+                "2": "8"
+              },
+              {
+                "0": "Total",
+                "1": "a + b + c",
+                "2": "≈ 19.46"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Law of Sines (solving for side)",
+          "formula": "$$a = \\frac{b \\sin A}{\\sin B}$$",
+          "notes": [
+            "b is known (8 km), B is found (88°).",
+            "Plug in A and C to find a and c."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand",
+          "prompt": "Identify the angles A, B, C from the bearings.",
+          "steps": [
+            "A = bearing angle at A = 52° (south of west).",
+            "C = 40° (south of east, given).",
+            "B = 180° – 52° – 40° = 88°."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve",
+          "prompt": "Find sides a and c.",
+          "peerPrompt": "Work with partner: Use law of sines. Check your calculations with a calculator.",
+          "minLength": 2,
+          "steps": [
+            "a = 8 × sin52° / sin88° ≈ 6.31 km.",
+            "c = 8 × sin40° / sin88° ≈ 5.15 km."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude",
+          "prompt": "Compute total distance.",
+          "steps": [
+            "Total = 6.31 + 8 + 5.15 = 19.46 km."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Parallel Lines Help",
+        "body": "Because AC is north‑south and BD is parallel, alternate interior angles let you transfer the bearing angles into the triangle."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the boat problem, angle B = 180° – 52° – ___°.",
+          "blanks": [
+            {
+              "accept": [
+                "40"
+              ]
+            }
+          ],
+          "hints": [
+            "The other given angle is 40°.",
+            "Subtract 52° and 40° from 180°."
+          ],
+          "feedbackIfWrong": "It's 40°."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is side a (BC) approximately? (Enter a number like 6.31)",
+          "answer": "6.31",
+          "hints": [
+            "a = 8 × sin52° / sin88°.",
+            "Use calculator."
+          ],
+          "feedbackIfWrong": "a ≈ 6.31 km."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The total race distance is about 19.46 km, which is the sum of a, b, and ___.",
+          "blanks": [
+            {
+              "accept": [
+                "c"
+              ]
+            }
+          ],
+          "hints": [
+            "Three sides: a, b, c.",
+            "We added a + b + c."
+          ],
+          "feedbackIfWrong": "It's c."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "In the swimming problem: A to B N28°E, B to C N58°W, then back to A directly north. AC = 800 m. Find total distance.",
+        "type": "short-answer",
+        "answers": [
+          "1746"
+        ],
+        "hints": [
+          "Find angle A: 28° + 58° = 86°.",
+          "Then use Law of Sines with AC = 800 m."
+        ],
+        "feedbackIfWrong": "Total distance ≈ 1746 m."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

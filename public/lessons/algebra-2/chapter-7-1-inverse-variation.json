@@ -1,0 +1,801 @@
+{
+  "blocks": [
+    {
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "constant of variation (nonzero)",
+              "tone": "core",
+              "symbol": "$a$"
+            },
+            {
+              "symbol": "$x, y$",
+              "tone": "subtle",
+              "meaning": "variables"
+            }
+          ],
+          "formula": "$$ \\text{Direct: } y = ax \\quad \\text{Inverse: } y = \\frac{a}{x}, \\; a \\neq 0 $$"
+        },
+        "explanation": [
+          "Two variables show [[kw:direct variation]] when $y = ax$ for some nonzero constant $a$. As $x$ increases, $y$ increases proportionally. The ratio $\\frac{y}{x}$ is constant.",
+          "Two variables show [[kw:inverse variation]] when $y = \\frac{a}{x}$ (or $xy = a$) for some nonzero constant $a$, called the [[kw:constant of variation]]. As $x$ increases, $y$ decreases.",
+          "To classify an equation, solve for $y$ and check the form: $y = ax$ (direct), $y = \\frac{a}{x}$ (inverse), or neither.",
+          "For data pairs $(x, y)$: if the ratios $\\frac{y}{x}$ are constant, it's direct variation. If the products $xy$ are constant, it's inverse variation.",
+          "If neither pattern is constant, the relationship is neither direct nor inverse variation."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Equation form",
+                "1": "$y = ax$",
+                "2": "$y = \\frac{a}{x}$ or $xy = a$"
+              },
+              {
+                "0": "Constant feature",
+                "1": "$\\frac{y}{x}$ is constant",
+                "2": "$xy$ is constant"
+              },
+              {
+                "0": "Behavior as $x$ increases",
+                "1": "$y$ increases",
+                "2": "$y$ decreases"
+              },
+              {
+                "0": "Graph",
+                "1": "Straight line through origin",
+                "2": "Curve (hyperbola), never touches axes"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Characteristic",
+              "Direct Variation",
+              "Inverse Variation"
+            ],
+            "title": "Direct vs. Inverse Variation",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "steps": [
+            "Solve for $y$: divide both sides by $x$ to get $y = \\frac{5}{x}$.",
+            "This is of the form $y = \\frac{a}{x}$ with $a = 5$.",
+            "So $x$ and $y$ show inverse variation.",
+            "Check: as $x$ doubles, $y$ halves. Product $xy$ is always 5."
+          ],
+          "role": "guided",
+          "prompt": "Tell whether $x$ and $y$ show direct variation, inverse variation, or neither in $xy = 5$.",
+          "title": "Example A — Classifying Equations"
+        },
+        {
+          "minLength": 8,
+          "prompt": "Determine whether the data shows direct, inverse, or neither variation: $x = 2,4,6,8$ and $y = -12,-6,-4,-3$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you check for inverse variation in a table? What calculation should you do for each pair?",
+          "role": "peer-explain",
+          "title": "Example B — Using a Table of Data",
+          "steps": [
+            "Compute the products $xy$: $2(-12) = -24$, $4(-6) = -24$, $6(-4) = -24$, $8(-3) = -24$.",
+            "All products equal $-24$, so they are constant.",
+            "Constant product means inverse variation with $a = -24$.",
+            "The equation is $y = \\frac{-24}{x}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Check ratios: $\\frac{2}{1} = 2$, $\\frac{4}{2} = 2$, $\\frac{8}{3} \\approx 2.67$, $\\frac{16}{4} = 4$. Not constant → not direct.",
+            "Check products: $1 \\cdot 2 = 2$, $2 \\cdot 4 = 8$, $3 \\cdot 8 = 24$, $4 \\cdot 16 = 64$. Not constant → not inverse.",
+            "Neither direct nor inverse variation.",
+            "In fact, $y = 2^x$, so it's exponential."
+          ],
+          "prompt": "Tell whether $x = 1,2,3,4$ and $y = 2,4,8,16$ show direct, inverse, or neither variation.",
+          "title": "Example C — Classifying Another Table"
+        }
+      ],
+      "teacherCues": [
+        "Write $y = 2x$ and $y = \\frac{12}{x}$ on the board. Ask: How are these equations different? What happens to $y$ as $x$ increases in each?",
+        "Write $xy = 5$ and ask: Can you solve for $y$? What type of variation does this represent?"
+      ],
+      "confusionCorner": {
+        "title": "Constant Ratio vs. Constant Product",
+        "body": "Direct variation: $\\frac{y}{x}$ is constant (division). Inverse variation: $xy$ is constant (multiplication). [[imp:Don't mix them up!]] Use the right operation to test the pattern."
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "prompt": "When two variables show inverse variation, their ___ is constant.",
+          "hints": [
+            "It's the result of multiplication.",
+            "For each pair $(x,y)$, multiply them."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "product",
+                "products"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Inverse variation means $xy$ (the product) is constant.",
+          "id": "q7-1-1"
+        },
+        {
+          "feedbackIfWrong": "It is of the form $y = \\frac{a}{x}$, so it's inverse variation.",
+          "type": "short-answer",
+          "answers": [
+            "inverse"
+          ],
+          "id": "q7-1-2",
+          "hints": [
+            "Compare to the form $y = \\frac{a}{x}$.",
+            "Is the variable $x$ in the denominator?"
+          ],
+          "prompt": "Does $y = \\frac{8}{x}$ represent direct, inverse, or neither variation?"
+        },
+        {
+          "id": "q7-1-3",
+          "type": "short-answer",
+          "hints": [
+            "Multiply any pair, e.g., $1 \\times 8$.",
+            "Check another: $2 \\times 4$."
+          ],
+          "prompt": "If a table has $x = 1,2,4,8$ and $y = 8,4,2,1$, what is the constant product $xy$?",
+          "answers": [
+            "8",
+            "eight"
+          ],
+          "feedbackIfWrong": "Each product $xy = 8$, so the constant is 8."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When you hang weights on a spring, doubling the weight doubles the stretch—that's direct variation. But when building a playground, doubling the volunteers halves the time—that's inverse variation. Recognizing these patterns helps us model real-world relationships instantly."
+      },
+      "id": "classifying-variation",
+      "title": "Classifying Direct and Inverse Variation"
+    },
+    {
+      "teacherCues": [
+        "Write the general form $y = \\frac{a}{x}$ and ask: If we know $x=3$ and $y=4$, how do we find $a$?",
+        "Show that $a = xy$, so you can just multiply the given values."
+      ],
+      "questions": [
+        {
+          "id": "q7-1-4",
+          "hints": [
+            "Multiply the two variables together.",
+            "From $y = a/x$, multiply both sides by $x$."
+          ],
+          "feedbackIfWrong": "The constant $a$ equals the product $xy$.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "product"
+              ]
+            }
+          ],
+          "prompt": "For inverse variation $y = \\frac{a}{x}$, the constant $a$ is equal to the ___ of $x$ and $y$."
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The constant $a = xy = 4 \\cdot 5 = 20$.",
+          "answers": [
+            "20",
+            "twenty"
+          ],
+          "id": "q7-1-5",
+          "prompt": "If $x$ and $y$ vary inversely and $y = 5$ when $x = 4$, what is the constant of variation?",
+          "hints": [
+            "Multiply $x$ and $y$.",
+            "$4 \\times 5 = ?$"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The equation is $y = \\frac{-10}{x}$.",
+          "prompt": "Write the inverse variation equation if $a = -10$. (Use format y = -10/x)",
+          "answers": [
+            "y = -10/x",
+            "y=-10/x"
+          ],
+          "id": "q7-1-6",
+          "hints": [
+            "Start with $y = a/x$.",
+            "Substitute $a = -10$."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Start with $y = \\frac{a}{x}$. Substitute $x=3$, $y=4$: $4 = \\frac{a}{3}$.",
+            "Multiply both sides by 3: $a = 12$.",
+            "The equation is $y = \\frac{12}{x}$.",
+            "When $x = -2$: $y = \\frac{12}{-2} = -6$."
+          ],
+          "prompt": "The variables $x$ and $y$ vary inversely, and $y = 4$ when $x = 3$. Write an equation relating $x$ and $y$, and find $y$ when $x = -2$.",
+          "title": "Example A — Finding the Equation from One Point"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Starting from $y = \\frac{a}{x}$, how can you rearrange to get $a = xy$? Why is this a useful shortcut?",
+          "steps": [
+            "From $y = \\frac{a}{x}$, multiply both sides by $x$ to get $xy = a$.",
+            "So the product of any $x$ and $y$ that satisfy the equation is always $a$.",
+            "Given $x = -3$, $y = 8$: $a = (-3)(8) = -24$.",
+            "Equation: $y = \\frac{-24}{x}$."
+          ],
+          "title": "Example B — Using the Product Shortcut",
+          "minLength": 8,
+          "role": "peer-explain",
+          "prompt": "Explain why $a = xy$ is always true for inverse variation, and use it to write the equation when $x = -3$, $y = 8$."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "$a = xy = \\frac{1}{2} \\cdot 16 = 8$.",
+            "Equation: $y = \\frac{8}{x}$.",
+            "When $x = 2$: $y = \\frac{8}{2} = 4$."
+          ],
+          "title": "Example C — Finding y for a Given x",
+          "prompt": "$x$ and $y$ vary inversely. When $x = \\frac{1}{2}$, $y = 16$. Write the equation and find $y$ when $x = 2$."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Once you know two variables vary inversely, a single data point is all you need to find the complete equation. Multiply $x$ and $y$ to get the constant of variation, then you can predict any other pair."
+      },
+      "title": "Writing Inverse Variation Equations",
+      "confusionCorner": {
+        "body": "For inverse variation, the equation is $y = \\frac{a}{x}$ (not $y = ax$). The constant is found by [[imp:multiplying]] $x$ and $y$, not dividing. If you divide, you're looking for direct variation.",
+        "title": "Don't Confuse with Direct Variation"
+      },
+      "id": "writing-inverse-variation-equations",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ y = \\frac{a}{x} \\quad \\text{or} \\quad xy = a $$",
+          "legend": [
+            {
+              "meaning": "constant of variation ($a = xy$)",
+              "symbol": "$a$",
+              "tone": "core"
+            }
+          ]
+        },
+        "explanation": [
+          "To write an inverse variation equation, start with the general form $y = \\frac{a}{x}$ or equivalently $xy = a$.",
+          "The constant $a$ is called the [[kw:constant of variation]]. It can be found by multiplying any known pair of $x$ and $y$ values: $a = xy$.",
+          "Once $a$ is known, substitute it back into $y = \\frac{a}{x}$ to get the specific equation.",
+          "Use this equation to find $y$ for any given $x$, or $x$ for any given $y$.",
+          "Always check that the constant product makes sense with other given data."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "title": "Steps to Write an Inverse Variation Equation",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Write the general equation $y = \\frac{a}{x}$."
+              },
+              {
+                "0": "2",
+                "1": "Substitute the given $x$ and $y$ values."
+              },
+              {
+                "0": "3",
+                "1": "Solve for the constant $a$."
+              },
+              {
+                "0": "4",
+                "1": "Write the specific equation $y = \\frac{a}{x}$."
+              },
+              {
+                "0": "5",
+                "1": "Use the equation to find other values."
+              }
+            ],
+            "type": "table"
+          }
+        ]
+      }
+    },
+    {
+      "examples": [
+        {
+          "prompt": "The time $t$ (hours) to build a playground varies inversely with the number $n$ of volunteers. Ten volunteers take 8 hours. Find the model and make a table for $n = 15, 20, 25, 30$.",
+          "title": "Example A — Playground Build Time",
+          "steps": [
+            "Write $t = \\frac{a}{n}$. Substitute $n=10$, $t=8$: $8 = \\frac{a}{10}$ → $a = 80$.",
+            "Model: $t = \\frac{80}{n}$.",
+            "For $n=15$: $t = \\frac{80}{15} = 5\\frac{1}{3}$ hours (5 hr 20 min).",
+            "For $n=20$: $t = 4$ hr; $n=25$: $t = 3.2$ hr (3 hr 12 min); $n=30$: $t \\approx 2.67$ hr (2 hr 40 min).",
+            "As volunteers increase, time decreases."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 8,
+          "role": "peer-explain",
+          "title": "Example B — MP3 Player Storage",
+          "prompt": "An MP3 player stores 2500 songs when the average song size is 4 MB. Explain why this is inverse variation and predict songs for 5 MB songs.",
+          "steps": [
+            "Number of songs $y$ and song size $x$ vary inversely: larger songs → fewer songs fit.",
+            "Constant $a = y \\cdot x = 2500 \\cdot 4 = 10000$ MB (total storage capacity).",
+            "Model: $y = \\frac{10000}{x}$.",
+            "For $x=5$ MB: $y = \\frac{10000}{5} = 2000$ songs."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What is the constant in this situation? What does it represent physically?"
+        },
+        {
+          "prompt": "Pressure $P$ (psi) on snow varies inversely with area $A$ (sq in) of footwear. With snowshoes ($A = 360$ sq in), $P = 0.43$ psi. Find $P$ with boots ($A = 60$ sq in).",
+          "title": "Example C — Snow Pressure",
+          "role": "independent",
+          "steps": [
+            "Constant $a = P \\cdot A = 0.43 \\cdot 360 = 154.8$.",
+            "Model: $P = \\frac{154.8}{A}$.",
+            "With boots: $P = \\frac{154.8}{60} \\approx 2.58$ psi.",
+            "Smaller area means higher pressure—boots sink more in snow."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "From sharing pizza equally among friends to the time it takes a group to complete a task, inverse variation is everywhere. More people means less work per person or less time to finish—the total stays constant."
+      },
+      "id": "modeling-inverse-variation",
+      "teacherCues": [
+        "Pose a problem: 'The time to build a playground varies inversely with the number of volunteers. 10 volunteers take 8 hours.' Ask: What happens with 20 volunteers?",
+        "Show the table approach: find $a$ first, then compute $t$ for various $n$."
+      ],
+      "concept": {
+        "explanation": [
+          "Many real‑life situations involve inverse variation: as one quantity increases, another decreases so that their product remains constant.",
+          "Examples: time to complete a job vs. number of workers, number of songs on a device vs. average song size, pressure vs. area.",
+          "To model these, identify the two variables, find the constant $a$ from one known data point, then write $y = \\frac{a}{x}$.",
+          "Use the model to create a table or make predictions for other values.",
+          "The graph of an inverse variation model is a curve (hyperbola) that approaches but never touches the axes."
+        ],
+        "formulaCard": {
+          "formula": "$$ t = \\frac{a}{n} \\quad \\text{(time and workers)} $$",
+          "legend": [
+            {
+              "meaning": "time to complete task",
+              "tone": "core",
+              "symbol": "$t$"
+            },
+            {
+              "tone": "core",
+              "symbol": "$n$",
+              "meaning": "number of workers/volunteers"
+            },
+            {
+              "tone": "subtle",
+              "symbol": "$a$",
+              "meaning": "total work (person‑hours)"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Situation",
+              "Variables",
+              "Constant Meaning"
+            ],
+            "rows": [
+              {
+                "0": "Playground build",
+                "1": "Time $t$, number of volunteers $n$",
+                "2": "$a = t \\cdot n$ = total person‑hours"
+              },
+              {
+                "0": "MP3 player storage",
+                "1": "Number of songs $y$, average size $x$",
+                "2": "$a = y \\cdot x$ = total storage (MB)"
+              },
+              {
+                "0": "Snow pressure",
+                "1": "Pressure $P$, area $A$",
+                "2": "$a = P \\cdot A$ = total weight on snow"
+              }
+            ],
+            "title": "Real-Life Inverse Variation Examples",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Doubling the workers halves the time, because the product stays constant.",
+          "type": "fill-blank",
+          "id": "q7-1-7",
+          "blanks": [
+            {
+              "accept": [
+                "halve",
+                "half",
+                "cut in half"
+              ]
+            }
+          ],
+          "prompt": "If time varies inversely with the number of workers, then doubling the number of workers will ___ the time.",
+          "hints": [
+            "Think: more workers, less time.",
+            "With inverse variation, multiplying x by 2 divides y by 2."
+          ]
+        },
+        {
+          "prompt": "In the playground example with $a=80$, how long would 40 volunteers take? (Enter a number of hours)",
+          "id": "q7-1-8",
+          "type": "short-answer",
+          "hints": [
+            "Use $t = \\frac{80}{n}$.",
+            "$n=40$."
+          ],
+          "answers": [
+            "2",
+            "two"
+          ],
+          "feedbackIfWrong": "$t = \\frac{80}{40} = 2$ hours."
+        },
+        {
+          "feedbackIfWrong": "$\\frac{10000}{2.5} = 4000$ songs.",
+          "answers": [
+            "4000",
+            "four thousand"
+          ],
+          "prompt": "If an MP3 player has 10,000 MB capacity, how many 2.5 MB songs can it hold? (Enter a number)",
+          "type": "short-answer",
+          "id": "q7-1-9",
+          "hints": [
+            "Use $y = \\frac{10000}{x}$.",
+            "$x = 2.5$."
+          ]
+        }
+      ],
+      "title": "Modeling Real-Life Inverse Variation",
+      "confusionCorner": {
+        "title": "Meaning of the Constant",
+        "body": "In real‑life problems, the constant $a$ has a physical meaning: total person‑hours, total storage space, total weight. [[imp:Always identify what $a$ represents]] to check if your model makes sense."
+      }
+    },
+    {
+      "teacherCues": [
+        "Graph $y = \\frac{12}{x}$ and ask: What happens as $x$ gets very large? As $x$ gets close to zero?",
+        "Point out the asymptotes $x=0$ and $y=0$. Ask: Why does the graph never touch the axes?"
+      ],
+      "discoveryHook": {
+        "scenario": "The graph of $y = \\frac{a}{x}$ is a beautiful curve called a hyperbola. It swoops in two separate branches, forever approaching the axes but never crossing them. Understanding this shape helps you visualize inverse relationships instantly."
+      },
+      "title": "Graphs and Properties of Inverse Variation Functions",
+      "confusionCorner": {
+        "body": "The graph of $y = \\frac{a}{x}$ has [[imp:no $x$- or $y$-intercepts]]. It never crosses either axis. This is because $y$ can never be 0 (would require $a=0$), and $x$ can never be 0 (division by zero).",
+        "title": "Asymptotes, Not Intercepts"
+      },
+      "questions": [
+        {
+          "hints": [
+            "It's the value that makes the denominator zero.",
+            "Division by zero is undefined."
+          ],
+          "id": "q7-1-10",
+          "prompt": "The vertical asymptote of $y = \\frac{a}{x}$ is the line $x =$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "zero"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "The vertical asymptote is $x = 0$, the $y$-axis."
+        },
+        {
+          "prompt": "What is the domain of $y = \\frac{5}{x}$? (Use $x \\neq 0$ or similar)",
+          "type": "short-answer",
+          "hints": [
+            "Where is the function undefined?",
+            "Division by zero."
+          ],
+          "answers": [
+            "x ≠ 0",
+            "x != 0",
+            "all real numbers except 0"
+          ],
+          "id": "q7-1-11",
+          "feedbackIfWrong": "The domain is all real numbers except $x = 0$."
+        },
+        {
+          "hints": [
+            "Divide 10 by 0.5.",
+            "$10 \\div 0.5 = 10 \\times 2$."
+          ],
+          "feedbackIfWrong": "$y = \\frac{10}{0.5} = 20$.",
+          "type": "short-answer",
+          "answers": [
+            "20",
+            "twenty"
+          ],
+          "id": "q7-1-12",
+          "prompt": "For $y = \\frac{10}{x}$, what is $y$ when $x = 0.5$?"
+        }
+      ],
+      "id": "graphing-inverse-variation",
+      "examples": [
+        {
+          "title": "Example A — Graphing $y = \\frac{12}{x}$",
+          "steps": [
+            "$a = 12 > 0$, so branches are in QI and QIII.",
+            "Make a table: $x = 1,2,3,4,6,12$ gives $y = 12,6,4,3,2,1$. Also negative $x$: $x = -1,-2,-3,-4,-6,-12$ gives $y = -12,-6,-4,-3,-2,-1$.",
+            "Plot points and draw two smooth curves approaching axes.",
+            "Asymptotes: $x=0$ (vertical), $y=0$ (horizontal). Domain: $x \\neq 0$. Range: $y \\neq 0$."
+          ],
+          "prompt": "Sketch the graph of $y = \\frac{12}{x}$. Identify the asymptotes, domain, and range.",
+          "role": "guided"
+        },
+        {
+          "prompt": "Explain why the graph of $y = \\frac{a}{x}$ gets closer and closer to the $x$-axis as $x$ gets very large, but never touches it.",
+          "minLength": 8,
+          "title": "Example B — Why the Axes Are Asymptotes",
+          "steps": [
+            "As $x$ gets very large, $\\frac{a}{x}$ becomes a tiny fraction, but never zero.",
+            "For example, $\\frac{12}{1000} = 0.012$, $\\frac{12}{1{,}000{,}000} = 0.000012$.",
+            "No finite value of $x$ makes $\\frac{a}{x} = 0$ because division by a nonzero number can never yield exactly zero.",
+            "Thus $y=0$ is a horizontal asymptote. Similarly, as $x$ approaches 0, $|y|$ grows without bound, so $x=0$ is a vertical asymptote."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What happens to $\\frac{a}{x}$ when $x = 1000$? What about $x = 1{,}000{,}000$? Does it ever reach exactly 0?"
+        },
+        {
+          "role": "independent",
+          "prompt": "Describe the graph of $y = \\frac{-8}{x}$. Where are its branches?",
+          "title": "Example C — Negative Constant of Variation",
+          "steps": [
+            "$a = -8 < 0$, so the branches are in quadrants II and IV.",
+            "When $x > 0$, $y$ is negative; when $x < 0$, $y$ is positive.",
+            "Asymptotes still $x=0$ and $y=0$. The function is increasing on each branch."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ y = \\frac{a}{x} $$ $$ \\text{Domain: } x \\neq 0, \\text{ Range: } y \\neq 0 $$",
+          "legend": [
+            {
+              "symbol": "$a$",
+              "meaning": "nonzero constant of variation",
+              "tone": "core"
+            },
+            {
+              "symbol": "asymptote",
+              "meaning": "$x=0$ and $y=0$",
+              "tone": "subtle"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Domain",
+                "1": "All real numbers except $x = 0$"
+              },
+              {
+                "0": "Range",
+                "1": "All real numbers except $y = 0$"
+              },
+              {
+                "0": "Asymptotes",
+                "1": "$x = 0$ (vertical) and $y = 0$ (horizontal)"
+              },
+              {
+                "0": "Symmetry",
+                "1": "Odd function (origin symmetry)"
+              },
+              {
+                "0": "Shape ($a > 0$)",
+                "1": "Decreasing, branches in QI and QIII"
+              },
+              {
+                "0": "Shape ($a < 0$)",
+                "1": "Increasing, branches in QII and QIV"
+              }
+            ],
+            "headers": [
+              "Feature",
+              "Description"
+            ],
+            "title": "Key Features of $y = \\frac{a}{x}$",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "The graph of an inverse variation function $y = \\frac{a}{x}$ (with $a > 0$) is a [[kw:hyperbola]] with two branches, one in the first quadrant and one in the third.",
+          "The $x$-axis ($y = 0$) and $y$-axis ($x = 0$) are [[kw:asymptotes]]—the graph approaches but never touches them.",
+          "Domain: all real numbers except $x = 0$ ($x \\neq 0$). Range: all real numbers except $y = 0$ ($y \\neq 0$).",
+          "For $a > 0$, the function is decreasing on each branch. As $x$ increases, $y$ decreases toward 0.",
+          "For $a < 0$, the branches are in the second and fourth quadrants, and the function is increasing on each branch.",
+          "The graph is symmetric about the origin (it is an odd function: $f(-x) = -f(x)$)."
+        ]
+      }
+    },
+    {
+      "questions": [
+        {
+          "answers": [
+            "find a",
+            "find the constant",
+            "write general equation"
+          ],
+          "id": "q7-1-13",
+          "feedbackIfWrong": "Find the constant $a$ by multiplying the given $x$ and $y$ values.",
+          "hints": [
+            "You need the constant of variation.",
+            "Use the known pair to compute it."
+          ],
+          "type": "short-answer",
+          "prompt": "In the Blueprint, what is the first step after identifying the variables?"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "area"
+              ]
+            }
+          ],
+          "prompt": "In the computer chip problem, the constant $a = 25984$ represents the total usable ___ of the wafer in square millimeters.",
+          "type": "fill-blank",
+          "hints": [
+            "It's measured in square millimeters.",
+            "Chips $\\times$ chip area gives this."
+          ],
+          "id": "q7-1-14",
+          "feedbackIfWrong": "The constant is the total usable area of the wafer."
+        },
+        {
+          "prompt": "If a job takes 12 hours with 5 workers, how many hours with 15 workers? (Enter a number)",
+          "answers": [
+            "4",
+            "four"
+          ],
+          "id": "q7-1-15",
+          "type": "short-answer",
+          "hints": [
+            "Find $a = 5 \\times 12 = 60$.",
+            "Then $t = \\frac{60}{15}$."
+          ],
+          "feedbackIfWrong": "$a = 60$, so $t = \\frac{60}{15} = 4$ hours."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When a problem says 'varies inversely,' the Blueprint guides you: identify the variables, find the constant from the given data, write the equation, and then answer the specific question. It's a foolproof method for every inverse variation scenario."
+      },
+      "id": "blueprint-aid-inverse-variation",
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude steps. Model the playground problem from start to finish.",
+        "Ask: What is the first question you should ask when reading an inverse variation word problem?"
+      ],
+      "title": "Blueprint Aid — Solving Inverse Variation Problems",
+      "confusionCorner": {
+        "title": "Check the Direction",
+        "body": "In inverse variation, if $x$ increases, $y$ should decrease. If your answer shows the opposite, you've likely used the wrong equation ($y = ax$ instead of $y = \\frac{a}{x}$). [[imp:Always verify the direction makes sense.]]"
+      },
+      "examples": [
+        {
+          "prompt": "The number $c$ of computer chips from a wafer varies inversely with the chip area $A$. When $A = 58$ mm², $c = 448$. Find the model and predict $c$ when $A = 81$ mm².",
+          "title": "Example A — Complete Blueprint for Computer Chips",
+          "role": "guided",
+          "steps": [
+            "Understand: $c$ and $A$ vary inversely. Known: $A=58$, $c=448$.",
+            "Solve: $c = \\frac{a}{A}$. Find $a = 58 \\cdot 448 = 25984$.",
+            "Model: $c = \\frac{25984}{A}$.",
+            "For $A=81$: $c = \\frac{25984}{81} \\approx 321$ chips.",
+            "Conclude: A larger chip area yields fewer chips per wafer, which makes sense."
+          ]
+        },
+        {
+          "minLength": 8,
+          "steps": [
+            "The constant 80 represents the total amount of work needed: 10 people $\\times$ 8 hours = 80 person‑hours.",
+            "This stays constant as long as the task doesn't change. More people just distribute the same total work.",
+            "If the playground were larger, $a$ would be larger (more total work needed).",
+            "So $a$ captures the fixed size of the job."
+          ],
+          "prompt": "In the playground problem, $a = 80$ (person‑hours). Explain what this number means and why it must stay constant.",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If 10 people take 8 hours, the total work is 80 person‑hours. What would happen to $a$ if we changed the playground design to be larger?",
+          "title": "Example B — Interpreting the Constant",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Understand: $y = \\frac{a}{x}$. Given: $x=5$, $y=2000$ → $a = 10000$.",
+            "Solve: Model $y = \\frac{10000}{x}$.",
+            "At $x=8$: $y = \\frac{10000}{8} = 1250$ songs.",
+            "Conclude: Larger song files mean fewer songs fit on the same device."
+          ],
+          "prompt": "The number of songs $y$ varies inversely with song size $x$. A 10,000 MB player holds 2000 songs at 5 MB each. How many songs at 8 MB each?",
+          "title": "Example C — Finding an Unknown Pair"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ y = \\frac{a}{x}, \\quad a = xy $$",
+          "legend": [
+            {
+              "symbol": "$a$",
+              "tone": "core",
+              "meaning": "constant of variation (found from one known pair)"
+            },
+            {
+              "tone": "subtle",
+              "symbol": "$x, y$",
+              "meaning": "inverse varying quantities"
+            }
+          ]
+        },
+        "explanation": [
+          "[[imp:Understand]]: Identify the two variables that vary inversely. Determine which is independent (input) and which is dependent (output). Note any given pair of values.",
+          "[[imp:Solve]]: Write the general inverse variation equation $y = \\frac{a}{x}$. Substitute the known pair to find $a$. Write the specific model. Use it to compute the required values or create a table.",
+          "[[imp:Conclude]]: State the answer with units. Interpret what the constant $a$ represents in context. Check that the result makes sense (e.g., more workers → less time)."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify variables; note known pair; confirm inverse relationship."
+              },
+              {
+                "0": "Solve",
+                "1": "Write $y = a/x$; find $a = xy$; write model; compute needed values."
+              },
+              {
+                "0": "Conclude",
+                "1": "State answer with units; interpret constant; check reasonableness."
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Inverse Variation Problems"
+          }
+        ]
+      }
+    }
+  ],
+  "id": "chapter-7-1-inverse-variation",
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "standards": [
+    "HSA.CED.A.2",
+    "HSA.CED.A.4",
+    "HSF.BF.A.1"
+  ],
+  "presenterNotes": [
+    "Students often confuse direct and inverse variation. Emphasize the testing methods: ratios constant → direct, products constant → inverse.",
+    "The shortcut $a = xy$ for finding the constant of inverse variation is powerful. Reinforce it with multiple examples.",
+    "When modeling, always ask students to interpret what the constant represents in context. This deepens understanding.",
+    "The graph of $y = a/x$ is their first encounter with asymptotes that are not just axes for some transformed functions. Highlight that the function never touches $x=0$ or $y=0$.",
+    "In the Blueprint block, walk through the steps methodically. The structure helps students organize word problems that can feel messy otherwise."
+  ],
+  "title": "Inverse Variation",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

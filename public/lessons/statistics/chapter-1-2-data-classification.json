@@ -1,0 +1,828 @@
+{
+  "standards": [
+    "HSS.ID.A.1",
+    "HSS.IC.A.1"
+  ],
+  "schemaVersion": 2,
+  "title": "Data Classification",
+  "blocks": [
+    {
+      "confusionCorner": {
+        "title": "Numbers That Aren't Quantitative!",
+        "body": "Some numbers are just labels, like phone numbers, ZIP codes, or student ID numbers. They don't measure a quantity; they identify a category. Always ask: [[imp:Does it make sense to add or average these numbers?]] If not, they're qualitative."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Qualitative data]] consist of [[imp:attributes, labels, or nonnumerical entries]]. They describe qualities, not quantities.",
+          "[[kw:Quantitative data]] consist of [[imp:numerical measurements or counts]]. You can perform meaningful arithmetic on them.",
+          "Examples of qualitative data: car models, eye colors, survey responses (yes/no), political party, jersey numbers (when used as labels).",
+          "Examples of quantitative data: prices, heights, temperatures, number of home runs, wait times."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Feature",
+              "Qualitative",
+              "Quantitative"
+            ],
+            "type": "table",
+            "title": "Qualitative vs. Quantitative Data",
+            "rows": [
+              {
+                "0": "What it is",
+                "1": "Descriptive labels / categories",
+                "2": "Numerical measures / counts"
+              },
+              {
+                "0": "Arithmetic operations",
+                "1": "Cannot be performed",
+                "2": "Can be performed (sum, average, etc.)"
+              },
+              {
+                "0": "Example",
+                "1": "Mustang, Fusion, Edge (car models)",
+                "2": "$\\$15,995$, $\\$19,270$ (prices)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Data Type} = \\begin{cases} \\text{Qualitative} & \\text{if labels/attributes} \\\\ \\text{Quantitative} & \\text{if numbers that measure or count} \\end{cases}$$",
+          "legend": [
+            {
+              "symbol": "Qualitative",
+              "tone": "core",
+              "meaning": "also called categorical data"
+            },
+            {
+              "tone": "subtle",
+              "meaning": "also called numerical data",
+              "symbol": "Quantitative"
+            }
+          ],
+          "title": "Key Distinction"
+        }
+      },
+      "examples": [
+        {
+          "steps": [
+            "The table has two columns: 'Model' and 'Suggested retail price'.",
+            "Model names like Focus, Mustang are nonnumerical labels → [[kw:qualitative data]].",
+            "Prices like $15,995 are numerical measures of cost → [[kw:quantitative data]].",
+            "You could average the prices, but you couldn't average the model names."
+          ],
+          "prompt": "The table shows several Ford vehicles and their suggested retail prices. Identify the qualitative and quantitative data.",
+          "title": "Example A — Classifying by Type",
+          "role": "guided"
+        },
+        {
+          "title": "Example B — Jersey Numbers: Quantitative or Qualitative?",
+          "prompt": "Are the numbers on sports jerseys (e.g., 23, 45) qualitative or quantitative? Explain to a partner.",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Even though jersey numbers are digits, why can't you add them together to get a meaningful total?",
+          "steps": [
+            "Jersey numbers are used as [[imp:labels]] to identify players, not to measure anything.",
+            "Adding two jersey numbers gives a meaningless result (e.g., 23 + 45 = 68 has no practical meaning).",
+            "Therefore, they are [[kw:qualitative data]], even though they are numbers.",
+            "This shows that not all numbers are quantitative!"
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "The numbers represent counts of people.",
+            "You can add them, find averages, etc.",
+            "So these are [[kw:quantitative data]].",
+            "City names themselves would be qualitative, but the population figures are quantitative."
+          ],
+          "prompt": "Consider the populations of U.S. cities: Baltimore 636,919; Jacksonville 807,815; Memphis 669,651. Are these qualitative or quantitative?",
+          "title": "Example C — Population Data"
+        }
+      ],
+      "title": "Types of Data: Qualitative and Quantitative",
+      "id": "types-of-data",
+      "discoveryHook": {
+        "scenario": "Imagine you're a data analyst at a car magazine. You have a table with vehicle models and their retail prices. One column names the models, the other lists prices. Even before doing any calculations, you already know the prices can be averaged, but the model names cannot. This difference is the first step in data classification!"
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "Qualitative data describe qualities, not numbers.",
+          "blanks": [
+            {
+              "accept": [
+                "qualitative",
+                "Qualitative"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the opposite of quantitative.",
+            "Think of 'quality', not 'quantity'."
+          ],
+          "id": "q1-1",
+          "prompt": "Data that consist of names, labels, or categories are called ___ data."
+        },
+        {
+          "prompt": "Is the list of species of trees in a forest qualitative or quantitative? (Answer with one word)",
+          "feedbackIfWrong": "Tree species are labels, so they are qualitative data.",
+          "id": "q1-2",
+          "hints": [
+            "Tree species are names like 'oak' or 'pine'.",
+            "You can't do math on tree names."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "qualitative",
+            "Qualitative"
+          ]
+        },
+        {
+          "feedbackIfWrong": "Heights are numerical measurements, so they are quantitative data.",
+          "type": "short-answer",
+          "prompt": "Are the heights of hot air balloons qualitative or quantitative?",
+          "answers": [
+            "quantitative",
+            "Quantitative"
+          ],
+          "hints": [
+            "Height is a measurement.",
+            "You can find the average height."
+          ],
+          "id": "q1-3"
+        }
+      ],
+      "teacherCues": [
+        "Hold up a list of car models and their prices. Ask: 'Which column contains numbers that measure something, and which column contains names?'",
+        "Write on the board: 'Qualitative = labels; Quantitative = numbers you can do math with.'"
+      ]
+    },
+    {
+      "id": "nominal-and-ordinal",
+      "confusionCorner": {
+        "body": "Ordinal data gives you order but not equal spacing. For example, the gap between a rank of #1 and #2 in TV ratings may be millions of viewers, while the gap between #2 and #3 could be tiny. [[imp:Don't assume differences are consistent.]]",
+        "title": "Ordinal ≠ Equal Differences"
+      },
+      "title": "Nominal and Ordinal Levels of Measurement",
+      "questions": [
+        {
+          "feedbackIfWrong": "The nominal level only allows categorization by name or label.",
+          "blanks": [
+            {
+              "accept": [
+                "nominal",
+                "Nominal"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "Data that can be categorized, but not ordered, are at the ___ level of measurement.",
+          "hints": [
+            "It's the lowest level.",
+            "It's named after 'name'."
+          ],
+          "id": "q2-1"
+        },
+        {
+          "feedbackIfWrong": "Standings give an order, so they are ordinal.",
+          "id": "q2-2",
+          "hints": [
+            "Standings put teams in order.",
+            "But the difference between 1st and 2nd isn't measured."
+          ],
+          "answers": [
+            "ordinal",
+            "Ordinal"
+          ],
+          "prompt": "Are the final standings (1st, 2nd, 3rd) of an NBA division nominal or ordinal?",
+          "type": "short-answer"
+        },
+        {
+          "prompt": "A list of your friends' favorite pizza toppings: pepperoni, mushroom, olives. What level of measurement is this?",
+          "answers": [
+            "nominal",
+            "Nominal"
+          ],
+          "feedbackIfWrong": "Pizza toppings are categories with no natural order, so nominal.",
+          "type": "short-answer",
+          "id": "q2-3",
+          "hints": [
+            "Can you rank these toppings inherently?",
+            "They are just names."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A — Classifying Level",
+          "steps": [
+            "The numbers 1, 2, 3, 4, 5 represent ranks.",
+            "Ranks can be ordered (1st is higher than 2nd).",
+            "However, the difference between 1st and 2nd is not a measurable quantity (e.g., number of viewers).",
+            "So these data are at the [[kw:ordinal level]]."
+          ],
+          "prompt": "The final rankings of the top five TV programs are: 1. American Idol, 2. Dancing with the Stars, etc. Identify the level of measurement.",
+          "role": "guided"
+        },
+        {
+          "title": "Example B — Call Letters",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Can you put these call letters in a meaningful order? What does that tell you about the level?",
+          "steps": [
+            "Call letters are simply [[imp:labels]] for TV stations.",
+            "There is no natural ordering (ABC isn't 'higher' than CBS in this context).",
+            "Therefore, they are at the [[kw:nominal level]].",
+            "This level only allows categorization."
+          ],
+          "prompt": "A list of network affiliates in Pittsburgh: WTAE, WPXI, KDKA, WPGH. At what level are these data? Explain to a partner.",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "title": "Example C — MPA Ratings",
+          "prompt": "Motion Picture Association of America ratings: G, PG, PG‑13, R, NC‑17. What level of measurement?",
+          "steps": [
+            "These ratings can be ordered by level of restriction (G is least, NC‑17 is most).",
+            "So they can be ranked.",
+            "But the 'distance' between G and PG is not the same as between PG‑13 and R.",
+            "Thus, they are [[kw:ordinal data]]."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "[[kw:Nominal level]] data are [[imp:qualitative only]]. They can be categorized by names or labels, but cannot be put in a meaningful order.",
+          "Examples: types of TV shows (comedy, drama), eye colors, political party, network call letters.",
+          "[[kw:Ordinal level]] data can be [[imp:arranged in order or ranked]], but differences between values are not meaningful.",
+          "Examples: TV show ratings (1, 2, 3...), class ranks, education level (high school, bachelor's, master's).",
+          "The ordinal level is one step above nominal because it adds the property of order."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Data type",
+                "1": "Qualitative only",
+                "2": "Qualitative or quantitative"
+              },
+              {
+                "0": "Put in categories?",
+                "1": "Yes",
+                "2": "Yes"
+              },
+              {
+                "0": "Put in order?",
+                "1": "No",
+                "2": "Yes"
+              },
+              {
+                "0": "Meaningful differences?",
+                "1": "No",
+                "2": "No"
+              },
+              {
+                "0": "Example",
+                "1": "Network affiliates (ABC, CBS, NBC)",
+                "2": "Show rankings (#1, #2, #3...)"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Property",
+              "Nominal",
+              "Ordinal"
+            ],
+            "title": "Nominal vs. Ordinal"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Nominal} \\;\\xrightarrow{\\text{+ order}}\\; \\text{Ordinal}$$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "data that are names or categories only",
+              "symbol": "Nominal"
+            },
+            {
+              "tone": "subtle",
+              "symbol": "Ordinal",
+              "meaning": "nominal + the ability to rank"
+            }
+          ],
+          "title": "Levels (lowest to highest): Nominal → Ordinal"
+        }
+      },
+      "teacherCues": [
+        "Show a list of TV show ranks (1st, 2nd, 3rd...). Ask: 'Can I say the difference between 1st and 2nd is the same as between 2nd and 3rd? Not really — but I can put them in order.'",
+        "Display a list of network call letters (ABC, CBS, NBC). Ask: 'Can I put these in order? No, they're just names.'"
+      ],
+      "discoveryHook": {
+        "scenario": "You're looking at a top-five list of TV programs: 1. American Idol, 2. Dancing with the Stars, etc. The ranks tell you the order, but the gap between #1 and #2 isn't a measurable distance like seconds. Meanwhile, the call letters of network affiliates (like WTAE, WPXI) are just labels — no order at all. These differences define the lowest two levels of measurement."
+      }
+    },
+    {
+      "teacherCues": [
+        "Ask: 'If it's 0°C outside, does that mean there is no heat at all?' (No, it's just a point on the scale.) Then ask: 'If you have $0 in your pocket, do you have any money?' (No, that's a true zero.)",
+        "Write: 'Interval: zero is just a position. Ratio: zero means none.'"
+      ],
+      "title": "Interval and Ratio Levels of Measurement",
+      "discoveryHook": {
+        "scenario": "Temperature and money both use numbers, but a zero balance means something very different from 0°F. That's the key difference between the interval and ratio levels. Recognizing which one you have tells you whether you can say 'twice as much' is meaningful."
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Celsius temperature has an arbitrary zero, so it's interval.",
+          "blanks": [
+            {
+              "accept": [
+                "interval",
+                "Interval"
+              ]
+            }
+          ],
+          "id": "q3-1",
+          "hints": [
+            "0°C does not mean 'no heat'.",
+            "You cannot say 40°C is 'twice as hot' as 20°C."
+          ],
+          "prompt": "Temperature measured in degrees Celsius is an example of the ___ level of measurement.",
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "Is the weight of an athlete ratio or interval? (Answer with one word)",
+          "hints": [
+            "Zero pounds means no weight.",
+            "You can say one athlete weighs twice as much as another."
+          ],
+          "id": "q3-2",
+          "type": "short-answer",
+          "answers": [
+            "ratio",
+            "Ratio"
+          ],
+          "feedbackIfWrong": "Weight has a true zero and ratios are meaningful, so it's ratio."
+        },
+        {
+          "prompt": "Years of historical events (e.g., 1776, 1945) are typically at which level? interval or ratio?",
+          "answers": [
+            "interval",
+            "Interval"
+          ],
+          "hints": [
+            "The year 0 does not mean 'the absence of time'.",
+            "You can subtract years, but 'twice the year' has no meaning."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "Calendar years have an arbitrary zero point, so interval.",
+          "id": "q3-3"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Not every scale with a zero is ratio! If zero is just an arbitrary point on a continuous scale (like 0°C, which doesn't mean 'no temperature'), it's interval. [[imp:Always ask: Does zero mean complete absence of the thing being measured?]]",
+        "title": "The 'Zero Trap'"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Victory years: differences make sense (2009 – 1923 = 86 years), but a year 0 doesn't mean 'no time'. Ratios like 2009 is 'twice the year' of 1004.5 have no meaning. → [[kw:Interval level]].",
+            "Home run totals: differences are meaningful, and zero home runs means no home runs. Ratios: 244 home runs is about 1.5 times 160. → [[kw:Ratio level]]."
+          ],
+          "role": "guided",
+          "title": "Example A — Years vs. Home Runs",
+          "prompt": "The Yankees' World Series victory years (1923, 1927, ...) and 2009 American League home run totals (team counts) are given. Identify the level of each."
+        },
+        {
+          "title": "Example B — Body Temperature vs. Heart Rate",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: If your heart rate is 0 bpm, what does that mean? What if your body temperature is 0°F?",
+          "minLength": 2,
+          "prompt": "Body temperature ( °F ) and heart rate (beats per minute) during exercise. Which is interval, which is ratio?",
+          "steps": [
+            "Body temperature: 0°F does not mean 'no heat'; it's just a point on the Fahrenheit scale. Differences are meaningful, but ratios are not. → [[kw:Interval]].",
+            "Heart rate: 0 bpm means no heartbeat. Twice a heart rate of 60 is 120, which makes sense. → [[kw:Ratio]]."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Average monthly precipitation in Orlando, FL (inches): Jan 2.4, Jul 7.2, ... Determine the level of measurement.",
+          "role": "independent",
+          "title": "Example C — Average Monthly Precipitation",
+          "steps": [
+            "Precipitation amounts can be ordered.",
+            "Differences are meaningful (July has 4.8 inches more than January).",
+            "Zero inches means no rain, a true zero.",
+            "You can say June (7.4 inches) has twice as much rain as May (3.7 inches). Therefore, [[kw:ratio level]]."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "zero is a point on a scale, not absence",
+              "symbol": "Interval",
+              "tone": "core"
+            },
+            {
+              "symbol": "Ratio",
+              "meaning": "zero means complete absence, ratios make sense",
+              "tone": "subtle"
+            }
+          ],
+          "formula": "$$\\text{If zero means 'none'} \\implies \\text{Ratio level}$$",
+          "title": "Interval vs. Ratio: The Zero Test"
+        },
+        "explanation": [
+          "[[kw:Interval level]] data can be ordered, and [[imp:differences between values are meaningful]], but there is no true zero (zero is just a position on a scale).",
+          "Examples: temperature in °F or °C, calendar years, IQ scores.",
+          "[[kw:Ratio level]] data have all the properties of interval, plus a [[imp:true zero]] that means 'none'. Ratios like 'twice as much' are meaningful.",
+          "Examples: heights, weights, prices, home run totals, rainfall amounts.",
+          "[[imp:Key test for ratio: Does zero mean 'none', and can you say one value is twice another?]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Property",
+              "Interval",
+              "Ratio"
+            ],
+            "title": "Interval vs. Ratio",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Order",
+                "1": "Yes",
+                "2": "Yes"
+              },
+              {
+                "0": "Meaningful differences",
+                "1": "Yes",
+                "2": "Yes"
+              },
+              {
+                "0": "True zero",
+                "1": "No (zero is arbitrary)",
+                "2": "Yes (zero means none)"
+              },
+              {
+                "0": "Ratios (twice as much)",
+                "1": "No",
+                "2": "Yes"
+              },
+              {
+                "0": "Example",
+                "1": "Temperature ( °F ) — 40°F is not twice as hot as 20°F",
+                "2": "Weight — 20 lbs is twice 10 lbs"
+              }
+            ]
+          }
+        ]
+      },
+      "id": "interval-and-ratio"
+    },
+    {
+      "concept": {
+        "explanation": [
+          "The four levels of measurement form a hierarchy. Each higher level adds more mathematical possibilities.",
+          "[[kw:Nominal]]: categorize only (e.g., types of TV shows).",
+          "[[kw:Ordinal]]: + order (e.g., show rankings).",
+          "[[kw:Interval]]: + meaningful differences, no true zero (e.g., temperature in °F).",
+          "[[kw:Ratio]]: + true zero, ratios meaningful (e.g., home run totals, rainfall).",
+          "Always assign the [[imp:highest level]] that applies."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Level} = \\begin{cases} \\text{Nominal} & \\text{if only categories} \\\\ \\text{Ordinal} & \\text{if + order} \\\\ \\text{Interval} & \\text{if + differences, no true 0} \\\\ \\text{Ratio} & \\text{if + true 0 and ratios} \\end{cases}$$",
+          "legend": [
+            {
+              "symbol": "True 0",
+              "tone": "core",
+              "meaning": "zero means absence of the quantity"
+            }
+          ],
+          "title": "Quick Classification Checklist"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Level",
+              "Categories",
+              "Order",
+              "Differences",
+              "Ratios",
+              "Example"
+            ],
+            "title": "Hierarchy of Measurement Levels",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Nominal",
+                "1": "Yes",
+                "2": "No",
+                "3": "No",
+                "4": "No",
+                "5": "Types of TV shows"
+              },
+              {
+                "0": "Ordinal",
+                "1": "Yes",
+                "2": "Yes",
+                "3": "No",
+                "4": "No",
+                "5": "MPAA ratings (G, PG, ...)"
+              },
+              {
+                "0": "Interval",
+                "1": "Yes",
+                "2": "Yes",
+                "3": "Yes",
+                "4": "No",
+                "5": "Temperature ( °F )"
+              },
+              {
+                "0": "Ratio",
+                "1": "Yes",
+                "2": "Yes",
+                "3": "Yes",
+                "4": "Yes",
+                "5": "Home run totals"
+              }
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "title": "Summary of Four Levels of Measurement",
+      "questions": [
+        {
+          "prompt": "The level of measurement that allows data to be ordered and differences calculated, but lacks a true zero, is called ___.",
+          "hints": [
+            "It's between ordinal and ratio.",
+            "Think of temperature scales."
+          ],
+          "id": "q4-1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "interval",
+                "Interval"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Interval level data have meaningful differences but no true zero."
+        },
+        {
+          "prompt": "At which level of measurement is a person's height? (nominal, ordinal, interval, ratio)",
+          "answers": [
+            "ratio",
+            "Ratio"
+          ],
+          "hints": [
+            "Zero height means no height.",
+            "You can say someone is twice as tall as another."
+          ],
+          "type": "short-answer",
+          "id": "q4-2",
+          "feedbackIfWrong": "Height has a true zero and allows ratios, so it is ratio level."
+        },
+        {
+          "answers": [
+            "ordinal",
+            "Ordinal"
+          ],
+          "hints": [
+            "You can order these responses.",
+            "But the difference between 'neutral' and 'satisfied' is not a precise number."
+          ],
+          "prompt": "A survey asks you to rate your satisfaction as 'very dissatisfied', 'dissatisfied', 'neutral', 'satisfied', 'very satisfied'. This is an example of which level?",
+          "feedbackIfWrong": "Satisfaction ratings have order but not equal intervals, so they are ordinal.",
+          "type": "short-answer",
+          "id": "q4-3"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "You now have all four levels: nominal, ordinal, interval, ratio. But the real skill is quickly identifying which level applies to a given data set. Using a simple checklist — Can I categorize? Can I order? Can I subtract? Can I divide? — you can classify any data in seconds."
+      },
+      "confusionCorner": {
+        "title": "Which Level is Most 'Powerful'?",
+        "body": "Ratio level data allow the most mathematical operations. But sometimes we choose a lower level for practical reasons. For example, a pain scale of 0–10 is often treated as ordinal because the perception of pain is subjective — a 4 is not necessarily 'twice as painful' as a 2. [[imp:Context matters!]]"
+      },
+      "teacherCues": [
+        "Project the summary table from the textbook. Walk through each row, asking students to give examples.",
+        "Quiz the class: 'What level is phone number? Social Security number? Rank in class? Shoe size?'"
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Physician's Intake Form",
+          "prompt": "Identify the level of measurement for each item: (a) Temperature, (b) Allergies, (c) Weight, (d) Pain level (0–10).",
+          "steps": [
+            "Temperature (in °F): has order and differences, but 0°F is not true zero → [[kw:interval]].",
+            "Allergies (list of substances): names only, no order → [[kw:nominal]].",
+            "Weight: has order, differences, true zero, ratios → [[kw:ratio]].",
+            "Pain level (0–10): can be ordered, but differences between a 2 and 3 may not be the same as between 7 and 8. Usually treated as [[kw:ordinal]]."
+          ]
+        },
+        {
+          "title": "Example B — Employment Application",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is 'year of college graduation' interval and not ratio?",
+          "prompt": "Classify: (a) Highest grade level completed, (b) Gender, (c) Year of college graduation, (d) Number of years at last job.",
+          "steps": [
+            "Highest grade completed: can be ordered (sophomore, junior, ...) but differences are not standard → [[kw:ordinal]].",
+            "Gender: categories only → [[kw:nominal]].",
+            "Year of graduation: differences make sense, but year 0 is not true zero → [[kw:interval]].",
+            "Number of years at last job: counts, true zero, ratios → [[kw:ratio]]."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Prices are numbers that can be ordered.",
+            "Differences between prices are meaningful.",
+            "Zero dollars means no money, a true zero.",
+            "You can say $149 is about 1.64 times $91. Therefore, [[kw:ratio level]]."
+          ],
+          "prompt": "Average ticket prices for Broadway shows: $149, $128, $124, $91, ... Determine the level of measurement.",
+          "title": "Example C — Average Ticket Prices",
+          "role": "independent"
+        }
+      ],
+      "id": "summary-levels"
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Data} \\;\\xrightarrow{\\text{Type}}\\; \\begin{cases} \\text{Qual} \\\\ \\text{Quant} \\end{cases} \\;\\xrightarrow{\\text{Level Check}} \\; \\begin{matrix} \\text{Nominal} \\\\ \\text{Ordinal} \\\\ \\text{Interval} \\\\ \\text{Ratio} \\end{matrix}$$",
+          "title": "Data Classification Blueprint",
+          "legend": [
+            {
+              "meaning": "qualitative (labels) or quantitative (numbers for math)",
+              "tone": "core",
+              "symbol": "Type"
+            },
+            {
+              "symbol": "Level",
+              "meaning": "nominal, ordinal, interval, or ratio",
+              "tone": "subtle"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Blueprint for Data Classification",
+            "headers": [
+              "Step",
+              "Action",
+              "Key Question"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Examine the data and context",
+                "2": "What do the entries represent?"
+              },
+              {
+                "0": "Solve – Type",
+                "1": "Classify as qualitative or quantitative",
+                "2": "Are the entries labels or measurements/counts?"
+              },
+              {
+                "0": "Solve – Level",
+                "1": "Run the checklist: Categories? Order? Differences? Ratios?",
+                "2": "What is the highest level that applies?"
+              },
+              {
+                "0": "Conclude",
+                "1": "State type and level with reasoning",
+                "2": "Example: 'Weight is quantitative, ratio level because zero means none and ratios are meaningful.'"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "Follow a simple [[imp:Understand → Solve → Conclude]] process to classify any data set.",
+          "Step 1 – [[kw:Understand]]: Look at the data and its context. What do the entries represent? Are they words or numbers?",
+          "Step 2 – [[kw:Solve]]: First, decide if the data are qualitative or quantitative. Then, apply the measurement level checklist: Can you categorize? Order? Subtract? Divide?",
+          "Step 3 – [[kw:Conclude]]: State the type and the highest level that fits, with justification."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "You encounter a new column of numbers: '102', '87', '144', '203'. Without context, you can't classify them. Are they test scores (ratio)? Ranks (ordinal)? Just ID numbers (nominal)? Use this blueprint to systematically determine both the data type and the level of measurement."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "prompt": "The first step in the classification blueprint is to ___ the data and its context.",
+          "feedbackIfWrong": "The first step is to understand the data and its meaning.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the 'U' in Understand-Solve-Conclude.",
+            "You need to know what the entries represent before classifying."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "examine"
+              ]
+            }
+          ]
+        },
+        {
+          "answers": [
+            "ordinal",
+            "Ordinal"
+          ],
+          "id": "q5-2",
+          "type": "short-answer",
+          "feedbackIfWrong": "Data with order but no meaningful differences are ordinal.",
+          "hints": [
+            "It has order but not equal intervals.",
+            "It's above nominal but below interval."
+          ],
+          "prompt": "If data can be put in order, but differences are not meaningful, what is the highest level it can be? (Answer with one word)"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Only one level has true zero and meaningful ratios.",
+            "It's the highest level."
+          ],
+          "prompt": "A data set is quantitative and has a true zero. What level of measurement is it?",
+          "answers": [
+            "ratio",
+            "Ratio"
+          ],
+          "id": "q5-3",
+          "feedbackIfWrong": "Quantitative data with a true zero is at the ratio level."
+        }
+      ],
+      "id": "blueprint-classify-data",
+      "confusionCorner": {
+        "title": "Context Is Everything",
+        "body": "The same number can be at different levels depending on context. The number 5 could be a nominal label (jersey #5), an ordinal rank (5th place), an interval value (5°C), or a ratio value (5 dollars). [[imp:Always consider what the number represents, not just the digit.]]"
+      },
+      "teacherCues": [
+        "Provide a mixed list of data (e.g., ZIP codes, exam scores, movie genres). Ask students to apply the blueprint.",
+        "Remind them: 'First decide type (qual or quant), then work through the levels checklist.'"
+      ],
+      "examples": [
+        {
+          "title": "Example A — Step by Step",
+          "prompt": "Classify the data: The lengths (in inches) of a sample of striped bass: 16, 17.25, 19, 18.75, 21...",
+          "steps": [
+            "Understand: The numbers represent lengths of fish in inches.",
+            "Solve – Type: Numbers are measurements → [[kw:quantitative]].",
+            "Solve – Level: Can be ordered, differences are meaningful (e.g., 21 – 16 = 5 inches), zero inches means no fish, and a 20‑inch fish is twice as long as a 10‑inch fish → [[kw:ratio level]].",
+            "Conclude: Quantitative, ratio."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "title": "Example B — Beware of Numbers",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: If you added all the phone numbers in a directory, would the total mean anything?",
+          "prompt": "Classify the data: Telephone numbers in a directory. Explain to a partner why they are not quantitative.",
+          "steps": [
+            "Understand: Phone numbers are just identifiers.",
+            "Solve – Type: Although numbers, they serve as labels → [[kw:qualitative]].",
+            "Solve – Level: You can categorize but not order meaningfully → [[kw:nominal]].",
+            "Conclude: Qualitative, nominal. Context overrides appearance."
+          ]
+        },
+        {
+          "prompt": "Classify the data set: Gold, Silver, Bronze medals won by countries.",
+          "title": "Example C — Olympic Medals",
+          "role": "independent",
+          "steps": [
+            "Understand: The medals represent levels of achievement.",
+            "Solve – Type: They are names, not numbers → [[kw:qualitative]].",
+            "Solve – Level: They have a natural order (Gold > Silver > Bronze) but differences aren't measured → [[kw:ordinal]].",
+            "Conclude: Qualitative, ordinal."
+          ]
+        }
+      ],
+      "title": "Blueprint Aid: Classifying Data — Type & Level"
+    }
+  ],
+  "id": "chapter-1-2-data-classification",
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "In Block 1, the distinction between qualitative and quantitative is foundational. Use plenty of real-world examples, especially numbers used as labels (jersey numbers, phone numbers).",
+    "Block 2 covers nominal and ordinal. The key point is that ordinal adds order, but differences are not equal. Use TV show rankings to illustrate.",
+    "Block 3's interval vs. ratio is often the trickiest. Emphasize the true zero test with money vs. temperature. Also mention that ratio level allows the most statistical calculations.",
+    "Block 4 is a consolidation. The summary table should be displayed prominently. Reinforce that we assign the highest level that applies.",
+    "The Blueprint Aid (Block 5) gives a step-by-step method for classification. Encourage students to use the checklist (categories → order → differences → ratios) on any data they encounter."
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,759 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-2-5-zeros-of-polynomials",
+  "title": "Zeros of Polynomial Functions",
+  "standards": [
+    "HSN.CN.C.9",
+    "HSA.APR.B.2",
+    "HSA.APR.B.3",
+    "HSA.REI.B.4"
+  ],
+  "blocks": [
+    {
+      "id": "how-many-zeros",
+      "title": "1. How many zeros does a polynomial have?",
+      "teacherCues": [
+        "Ask: \"How many solutions does x² = 4 have? What about x² = –4?\" Then discuss that complex numbers make every polynomial have a complete set of solutions.",
+        "Write f(x) = (x–1)²(x+2)³ and ask: \"How many zeros? How many distinct?\""
+      ],
+      "discoveryHook": {
+        "scenario": "Every polynomial of degree n can be broken down into exactly n linear factors—some real, some complex, some repeated. This guarantee, called the [[kw:Fundamental Theorem of Algebra]], tells us that we always have the right number of zeros, even if we can't see them on a graph."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Fundamental Theorem of Algebra]] says: Every polynomial of degree n ≥ 1 has at least one complex zero.",
+          "From this, the [[kw:Linear Factorization Theorem]] follows: A degree‑n polynomial can be written as $ f(x) = a_n (x - c_1)(x - c_2) \\cdots (x - c_n) $, where each $c_i$ is a complex number.",
+          "This means a polynomial of degree n has exactly n zeros, counting multiplicity (repeated zeros count).",
+          "Zeros can be real or complex. Complex zeros with real coefficients always come in conjugate pairs (more on that later)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Counting zeros (real and complex, with multiplicities)",
+            "headers": [
+              "Polynomial",
+              "Degree",
+              "Zeros",
+              "Total (with mult.)"
+            ],
+            "rows": [
+              {
+                "0": "$ f(x) = x - 2 $",
+                "1": "1",
+                "2": "$ x = 2 $",
+                "3": "1"
+              },
+              {
+                "0": "$ f(x) = x^2 - 6x + 9 = (x-3)^2 $",
+                "1": "2",
+                "2": "$ x = 3 $ (twice)",
+                "3": "2"
+              },
+              {
+                "0": "$ f(x) = x^3 + 4x = x(x-2i)(x+2i) $",
+                "1": "3",
+                "2": "$ 0, 2i, -2i $",
+                "3": "3"
+              },
+              {
+                "0": "$ f(x) = x^4 - 1 $",
+                "1": "4",
+                "2": "$ 1, -1, i, -i $",
+                "3": "4"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Linear Factorization",
+          "formula": "$$ f(x) = a_n (x-c_1)(x-c_2)\\cdots (x-c_n) $$",
+          "notes": [
+            "$c_i$ are the zeros (roots).",
+            "Count of factors = degree = number of zeros.",
+            "Some factors may be repeated."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Count the zeros",
+          "prompt": "How many zeros does $ f(x)=x^4-1 $ have? List them.",
+          "steps": [
+            "Degree is 4 → exactly 4 zeros.",
+            "Factor: $ (x^2-1)(x^2+1) = (x-1)(x+1)(x-i)(x+i) $.",
+            "Zeros: 1, –1, i, –i (all distinct)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Repeated zero counts as two",
+          "prompt": "Explain why $ f(x) = (x-3)^2 $ has two zeros.",
+          "peerPrompt": "Talk to a partner: If you solve (x-3)² = 0, how many solutions do you get? Does the graph cross the axis?",
+          "minLength": 2,
+          "steps": [
+            "The equation (x-3)² = 0 gives x = 3 (a double root).",
+            "The factorization has (x-3) twice → zero of multiplicity 2.",
+            "Graph touches and turns at x=3; it still counts as two zeros."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Complex zeros also count",
+          "prompt": "State the number of zeros for $ f(x)=x^2+4 $ and identify them.",
+          "steps": [
+            "Degree 2 → two zeros.",
+            "Solve x²+4=0 → x² = –4 → x = ±2i.",
+            "Zeros are 2i and –2i (complex)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Total zeros = degree, always",
+        "body": "Even if you can't see a zero on the graph (like a complex zero), it still exists. The Fundamental Theorem guarantees the exact number, counting multiplicities."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "A polynomial of degree 5 has exactly ___ zeros in the complex number system (counting multiplicities).",
+          "blanks": [
+            {
+              "accept": [
+                "5"
+              ]
+            }
+          ],
+          "hints": [
+            "The degree tells you how many.",
+            "Think of the Linear Factorization Theorem."
+          ],
+          "feedbackIfWrong": "5."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "How many distinct zeros does $ f(x)=(x+1)^3(x-2) $ have?",
+          "answers": [
+            "2"
+          ],
+          "hints": [
+            "Distinct means different values.",
+            "The zeros are –1 (three times) and 2 (once)."
+          ],
+          "feedbackIfWrong": "2 distinct zeros."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "True or false: A cubic polynomial with real coefficients must have at least one real zero.",
+          "answers": [
+            "true"
+          ],
+          "hints": [
+            "Complex zeros come in pairs.",
+            "Odd degree means you can't pair all zeros as complex."
+          ],
+          "feedbackIfWrong": "True."
+        }
+      ]
+    },
+    {
+      "id": "rational-zero-test",
+      "title": "2. The Rational Zero Test — making a list",
+      "teacherCues": [
+        "Write $ f(x)=2x^3+3x^2-8x+3 $ and ask: \"What are all the possible fractions that could be zeros?\"",
+        "Demonstrate listing factors of constant term over factors of leading coefficient."
+      ],
+      "discoveryHook": {
+        "scenario": "When factoring doesn't work, how do we find if a polynomial has a rational zero? The [[kw:Rational Zero Test]] gives us a short list of candidates — fractions formed from the factors of the constant term and the leading coefficient."
+      },
+      "concept": {
+        "explanation": [
+          "If a polynomial $ f(x)=a_n x^n + ... + a_0 $ has integer coefficients, any rational zero $ p/q $ (in lowest terms) must have:",
+          "- $ p $ = factor of the constant term $ a_0 $",
+          "- $ q $ = factor of the leading coefficient $ a_n $",
+          "So the possible rational zeros are: $ \\pm \\frac{\\text{factors of } a_0}{\\text{factors of } a_n} $.",
+          "This gives a list of candidates. You then test each one using synthetic division (or substitution)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Making the candidate list for $ f(x)=2x^3+3x^2-8x+3 $",
+            "headers": [
+              "Constant term $ a_0 = 3 $",
+              "Leading coeff $ a_n = 2 $",
+              "Possible $ p $",
+              "Possible $ q $",
+              "All possible $ p/q $"
+            ],
+            "rows": [
+              {
+                "0": "3",
+                "1": "2",
+                "2": "±1, ±3",
+                "3": "±1, ±2",
+                "4": "±1, ±3, ±1/2, ±3/2"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Rational Zero Test",
+          "formula": "$$ \\text{Possible rational zeros: } \\frac{\\text{factors of } a_0}{\\text{factors of } a_n} $$",
+          "notes": [
+            "Requires integer coefficients.",
+            "List includes both positive and negative.",
+            "It doesn't tell you which are actual zeros; you must test."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Leading coefficient 1",
+          "prompt": "List the possible rational zeros of $ f(x)=x^3 + x + 1 $.",
+          "steps": [
+            "Constant term = 1; factors: ±1.",
+            "Leading coefficient = 1; factors: ±1.",
+            "Possible zeros: ±1.",
+            "Test: $ f(1)=3 $, $ f(‑1)=‑1 $. Neither zero → no rational zeros."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Making a list for a non‑1 leading coefficient",
+          "prompt": "List all possible rational zeros of $ f(x)=3x^3-4x^2+2x-5 $.",
+          "peerPrompt": "With a partner, write down the factors of 5 and 3, then form all fractions. How many candidates do you get?",
+          "minLength": 2,
+          "steps": [
+            "Constant term –5 → factors: ±1, ±5.",
+            "Leading coeff 3 → factors: ±1, ±3.",
+            "Fractions: ±1, ±5, ±1/3, ±5/3."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Test some candidates",
+          "prompt": "For $ f(x)=x^4-x^3+x^2-3x-6 $, list possible rational zeros and find the actual ones.",
+          "steps": [
+            "Constant –6 factors: ±1,±2,±3,±6; leading coeff 1 → candidates: ±1,±2,±3,±6.",
+            "Test x=‑1: synthetic division gives remainder 0 → zero.",
+            "Quotient: $ x^3-2x^2+3x-6 $. Test x=2 on this: remainder 0 → zero.",
+            "Quotient $ x^2+3 $ has no real zeros. Rational zeros: –1, 2."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Possible ≠ Actual",
+        "body": "The test only gives possibilities. Always test each candidate by plugging in or using synthetic division — otherwise you might miss the real answers."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "In the Rational Zero Test, p comes from factors of the ___ term.",
+          "blanks": [
+            {
+              "accept": [
+                "constant"
+              ]
+            }
+          ],
+          "hints": [
+            "The term without x.",
+            "It's a₀."
+          ],
+          "feedbackIfWrong": "constant."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "List the possible rational zeros of $ f(x)=x^3-5x+2 $.",
+          "answers": [
+            "±1, ±2"
+          ],
+          "hints": [
+            "Constant term is 2, leading coeff 1.",
+            "Factors of 2."
+          ],
+          "feedbackIfWrong": "±1, ±2."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "Is 1/2 a possible rational zero of $ f(x)=2x^3+5x-3 $? (yes/no)",
+          "answers": [
+            "yes"
+          ],
+          "hints": [
+            "p: factors of –3 (±1,±3); q: factors of 2 (±1,±2).",
+            "1/2 is in the list."
+          ],
+          "feedbackIfWrong": "Yes."
+        }
+      ]
+    },
+    {
+      "id": "find-zeros-smartly",
+      "title": "3. Smart searching: graphs + synthetic division",
+      "teacherCues": [
+        "Show $ f(x)=2x^3+x^2-13x+6 $ and ask: \"We have 12 possible rational zeros. How can a graph reduce the work?\"",
+        "Demonstrate synthetic division repeatedly to factor out found zeros."
+      ],
+      "discoveryHook": {
+        "scenario": "When the candidate list is long, you don't have to test blindly. A quick sketch or graphing tool shows where the curve crosses the x‑axis, and the [[kw:Intermediate Value Theorem]] helps locate zeros. Then synthetic division confirms them and reduces the polynomial for further searching."
+      },
+      "concept": {
+        "explanation": [
+          "Strategy to find zeros efficiently:",
+          "1. List all possible rational zeros (Rational Zero Test).",
+          "2. Use a graph (or a table of values) to estimate where the zeros might be. Focus on x‑intercepts near nice numbers.",
+          "3. Test the most promising candidates first (integers and simple fractions).",
+          "4. Once you find a zero, use synthetic division to divide the polynomial. The quotient has a lower degree, making it easier to find remaining zeros.",
+          "5. Repeat until the polynomial is fully factored."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Finding zeros of $ 2x^3+x^2-13x+6 $",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1. List candidates",
+                "1": "$\\pm 1, \\pm 2, \\pm 3, \\pm 6, \\pm 1/2, \\pm 3/2$"
+              },
+              {
+                "0": "2. Estimate from graph",
+                "1": "Looks like zeros near –3, 1/2, 2"
+              },
+              {
+                "0": "3. Test a likely integer",
+                "1": "Try x=2 → synthetic div remainder 0 → zero"
+              },
+              {
+                "0": "4. Divide & get quotient",
+                "1": "Quotient $2x^2+5x-3$"
+              },
+              {
+                "0": "5. Factor quotient",
+                "1": "$(2x-1)(x+3)$ → zeros 1/2, –3"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Zero‑finding loop",
+          "formula": "$$ \\text{Candidates } \\to \\text{graph/TV} \\to \\text{test} \\to \\text{divide} \\to \\text{repeat} $$",
+          "notes": [
+            "Graph gives approximate zeros.",
+            "Synthetic division confirms and reduces degree.",
+            "Remaining zeros are found from the reduced polynomial."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Use a graph to find zeros",
+          "prompt": "Find all real zeros of $ f(x)=2x^3+x^2-13x+6 $.",
+          "steps": [
+            "Candidates: ±1, ±2, ±3, ±6, ±1/2, ±3/2.",
+            "A graph shows intersections near –3, 0.5, 2.",
+            "Test x=2: synthetic division → remainder 0.",
+            "Quotient $ 2x^2+5x-3 = (2x-1)(x+3) $.",
+            "Zeros: 2, 1/2, –3."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Explain why the quotient helps",
+          "prompt": "Once you find one zero, why is it easier to find the remaining zeros?",
+          "peerPrompt": "Talk it through: After dividing by (x–2), the polynomial becomes a quadratic. How does that change the possible zeros list?",
+          "minLength": 2,
+          "steps": [
+            "Dividing by (x–2) reduces the degree from 3 to 2.",
+            "The new polynomial is $ 2x^2+5x-3 $, which can be factored or solved by quadratic formula.",
+            "No need for long candidate lists anymore."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Apply the loop",
+          "prompt": "Find all real zeros of $ f(x)=x^4-x^3+x^2-3x-6 $ (same as earlier, but now use the loop).",
+          "steps": [
+            "Candidates: ±1,±2,±3,±6.",
+            "Graph suggests zeros near –1 and 2.",
+            "Test x=–1 → zero, quotient $ x^3-2x^2+3x-6 $.",
+            "Test x=2 on quotient → zero, quotient $ x^2+3 $.",
+            "$ x^2+3=0 $ gives no real zeros. Real zeros: –1, 2."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Graph estimates are not exact",
+        "body": "A graph may show a zero near 1.5, but the exact rational zero could be 3/2. Always verify with synthetic division to get the precise value."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "short-answer",
+          "prompt": "After finding that x=2 is a zero of a cubic, what degree is the quotient after synthetic division?",
+          "answers": [
+            "2"
+          ],
+          "hints": [
+            "Original degree minus 1.",
+            "The quotient is quadratic."
+          ],
+          "feedbackIfWrong": "2."
+        },
+        {
+          "id": "q3-2",
+          "type": "fill-blank",
+          "prompt": "To narrow down a long list of possible rational zeros, use a ___ to see where the function crosses the x‑axis.",
+          "blanks": [
+            {
+              "accept": [
+                "graph",
+                "graphing utility"
+              ]
+            }
+          ],
+          "hints": [
+            "A visual picture.",
+            "It shows intercepts."
+          ],
+          "feedbackIfWrong": "graph."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "For $ f(x)=2x^3+x^2-13x+6 $, after synthetic division by x=2, the quotient is $ 2x^2+5x-3 $. Factor it.",
+          "answers": [
+            "(2x-1)(x+3)"
+          ],
+          "hints": [
+            "Factor by grouping or decomposition.",
+            "Product 2*‑3=‑6, sum 5 → 6 and –1."
+          ],
+          "feedbackIfWrong": "(2x-1)(x+3)."
+        }
+      ]
+    },
+    {
+      "id": "complex-conjugates",
+      "title": "4. Complex zeros come in pairs",
+      "teacherCues": [
+        "Ask: \"If 2+3i is a zero of a polynomial with real coefficients, what else must be a zero?\" Show the conjugate.",
+        "Illustrate building a polynomial from its zeros, using conjugate pairs."
+      ],
+      "discoveryHook": {
+        "scenario": "If a polynomial with real coefficients has a complex zero like 2+i, its conjugate 2–i is automatically a zero. This pairing makes complex zeros predictable and helps us construct polynomials from given zeros."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Complex Conjugate Zeros Theorem]]: For a polynomial with real coefficients, if $ a+bi $ (b ≠ 0) is a zero, then $ a–bi $ is also a zero.",
+          "Complex zeros always appear in conjugate pairs.",
+          "A real‑coefficient polynomial of odd degree must have at least one real zero (because complex zeros come in twos).",
+          "When building a polynomial from given zeros, if a complex zero appears, you must include its conjugate."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Building a polynomial from zeros",
+            "headers": [
+              "Given zeros",
+              "Conjugate pair needed?",
+              "Factors",
+              "Resulting polynomial"
+            ],
+            "rows": [
+              {
+                "0": "–1, –1, 3i",
+                "1": "Yes, –3i",
+                "2": "$ (x+1)^2(x-3i)(x+3i) $",
+                "3": "$ x^4+2x^3+10x^2+18x+9 $"
+              },
+              {
+                "0": "2, –2, –7i",
+                "1": "Yes, 7i",
+                "2": "$ (x-2)(x+2)(x+7i)(x-7i) $",
+                "3": "$ x^4 - 4x^2 + 49 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Conjugate Pair Theorem",
+          "formula": "$$ \\text{If } f(a+bi)=0 \\text{ (real coeffs), then } f(a-bi)=0 $$",
+          "notes": [
+            "Requires real coefficients.",
+            "Complex zeros come in twos.",
+            "An odd‑degree real polynomial must have at least one real zero."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find all zeros given one complex",
+          "prompt": "A cubic polynomial with real coefficients has zeros 2 and 3i. Find the third zero.",
+          "steps": [
+            "Since 3i is a zero, its conjugate –3i must also be a zero.",
+            "Zeros: 2, 3i, –3i.",
+            "The polynomial would be $(x-2)(x-3i)(x+3i) = (x-2)(x^2+9) = x^3 - 2x^2 + 9x - 18$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why odd degree forces a real zero",
+          "prompt": "Explain why a cubic polynomial with real coefficients must have at least one real zero.",
+          "peerPrompt": "Discuss: If all three zeros were complex, could they be paired as conjugates?",
+          "minLength": 2,
+          "steps": [
+            "Complex zeros come in conjugate pairs (two at a time).",
+            "A cubic has 3 zeros total.",
+            "It's impossible to have three complex zeros without an unpaired one, so at least one must be real."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Build a polynomial from zeros",
+          "prompt": "Find a 4th‑degree polynomial with real coefficients having zeros 1, 1, and 2–i.",
+          "steps": [
+            "Conjugate of 2–i is 2+i, so zeros: 1 (mult 2), 2–i, 2+i.",
+            "Factors: $(x-1)^2 (x-(2-i))(x-(2+i))$.",
+            "Simplify the complex pair: $(x-2)^2 + 1 = x^2-4x+5$.",
+            "Multiply with $(x-1)^2 = x^2-2x+1$ to get $ x^4 - 6x^3 + 14x^2 - 14x + 5 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Only for real coefficients!",
+        "body": "The conjugate pair rule applies only when the polynomial's coefficients are real. If any coefficient is not real, the conjugate may not be a zero."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "short-answer",
+          "prompt": "If 4 – i is a zero of a real‑coefficient polynomial, what other zero must it have?",
+          "answers": [
+            "4+i"
+          ],
+          "hints": [
+            "Change the sign of the imaginary part.",
+            "Conjugate."
+          ],
+          "feedbackIfWrong": "4+i."
+        },
+        {
+          "id": "q4-2",
+          "type": "fill-blank",
+          "prompt": "A polynomial with real coefficients and degree 5 must have at least one real zero because complex zeros come in ___ pairs.",
+          "blanks": [
+            {
+              "accept": [
+                "conjugate"
+              ]
+            }
+          ],
+          "hints": [
+            "a+bi and a‑bi.",
+            "Two at a time."
+          ],
+          "feedbackIfWrong": "conjugate."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "If a cubic polynomial has zeros 1 and i, what is the third zero?",
+          "answers": [
+            "-i"
+          ],
+          "hints": [
+            "Conjugate of i is –i.",
+            "Must appear with i."
+          ],
+          "feedbackIfWrong": "-i."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid",
+      "title": "5. Blueprint Aid: Putting it all together",
+      "teacherCues": [
+        "Walk through a full example: use Rational Zero Test, graph, synthetic division, then conjugate pairs to find all zeros (real and complex).",
+        "Emphasize the Understand → Solve → Conclude flow."
+      ],
+      "discoveryHook": {
+        "scenario": "Now we combine every tool: the Rational Zero Test, graph, synthetic division, and the Conjugate Pair Theorem. With this blueprint, you can tackle any polynomial zero‑finding problem step by step."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Understand]]: Identify the polynomial's degree, leading coefficient, and constant term. List all possible rational zeros.",
+          "[[kw:Solve]]: Use a graph (or IVT) to estimate zeros. Test candidates with synthetic division. After finding one zero, divide and continue with the quotient. For complex zeros, remember they come in pairs.",
+          "[[kw:Conclude]]: Write the complete factorization with all zeros (real and complex), in standard form."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Full blueprint: $ f(x) = x^3 - 5x^2 + 7x - 3 $",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Degree 3, leading coeff 1, constant -3. Possible rational zeros: ±1, ±3."
+              },
+              {
+                "0": "Solve",
+                "1": "Graph suggests zero near 1. Test x=1: synthetic div → remainder 0. Quotient: $ x^2 - 4x + 3 = (x-1)(x-3) $."
+              },
+              {
+                "0": "Conclude",
+                "1": "Zeros: 1 (multiplicity 2), 3. All real. Factor: $ (x-1)^2(x-3) $."
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Full blueprint with complex zeros: $ f(x) = x^3 - 2x^2 + x - 2 $",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Degree 3, leading coeff 1, constant -2. Candidates: ±1, ±2."
+              },
+              {
+                "0": "Solve",
+                "1": "Test x=2 → zero. Quotient: $ x^2 + 1 $ → zeros: i, –i."
+              },
+              {
+                "0": "Conclude",
+                "1": "Zeros: 2, i, –i. Factor: $ (x-2)(x-i)(x+i) $."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Zero‑Finding Blueprint",
+          "formula": "$$ f(x) = a_n (x-c_1)(x-c_2)\\cdots(x-c_n) $$",
+          "notes": [
+            "1. List possible rational zeros.",
+            "2. Graph/IVT → test with synthetic division.",
+            "3. Reduce degree and repeat.",
+            "4. Complex zeros appear in conjugate pairs."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – All‑in‑one example",
+          "prompt": "Find all zeros of $ f(x)=x^3-2x^2+x-2 $.",
+          "steps": [
+            "List possible rational zeros: ±1, ±2.",
+            "Test x=2 → f(2)=0 → zero. Synthetic division gives quotient $ x^2+1 $.",
+            "Solve $ x^2+1=0 $ → $ x = i, -i $.",
+            "All zeros: 2, i, –i. Factorization: $(x-2)(x-i)(x+i)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Explain the strategy",
+          "prompt": "Why do we use the Rational Zero Test first, then grapht, then synthetic division? Could we do it in a different order?",
+          "peerPrompt": "Discuss with a partner the pros and cons of each order.",
+          "minLength": 2,
+          "steps": [
+            "Rational Zero Test gives a complete list of possibilities.",
+            "Graph helps to pick likely candidates quickly.",
+            "Synthetic division confirms and reduces the polynomial for easier further solving.",
+            "The order is flexible but this sequence is efficient."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Independent practice",
+          "prompt": "Find all zeros (real and complex) of $ f(x)=x^4-1 $.",
+          "steps": [
+            "Possible rational zeros: ±1.",
+            "Test x=1 → zero, quotient $ x^3+x^2+x+1 $. Test x=–1 → zero, quotient $ x^2+1 $.",
+            "$ x^2+1=0 $ → zeros i, –i.",
+            "All zeros: 1, –1, i, –i."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Keep track of multiplicities",
+        "body": "When listing zeros, always note multiplicity. A zero of multiplicity 2 still counts as two zeros in the total count, even if the graph just touches."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "In the blueprint, after finding a zero, what is the next step?",
+          "answers": [
+            "synthetic division",
+            "divide",
+            "synthetic"
+          ],
+          "hints": [
+            "Reduce the polynomial.",
+            "Use the zero to factor."
+          ],
+          "feedbackIfWrong": "Perform synthetic division."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "When some zeros are complex, they always occur in ___ pairs.",
+          "blanks": [
+            {
+              "accept": [
+                "conjugate"
+              ]
+            }
+          ],
+          "hints": [
+            "a+bi and a–bi.",
+            "Two complex numbers that are mirrors."
+          ],
+          "feedbackIfWrong": "conjugate."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "After finding that x=2 is a zero of $ f(x)=x^3-2x^2+x-2 $, what is the remaining quotient?",
+          "answers": [
+            "x^2+1"
+          ],
+          "hints": [
+            "Synthetic division with 2 on coefficients 1, -2, 1, -2.",
+            "Result: 1, 0, 1, 0 → x²+0x+1."
+          ],
+          "feedbackIfWrong": "x²+1."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "type": "flashcard",
+  "cards": [
+    {
+      "front": "What is a [[kw:contingency table]]?",
+      "back": "A table that displays the observed frequencies for two categorical variables. The rows represent one variable, the columns the other. The intersection of a row and column is called a cell."
+    },
+    {
+      "back": "Marginal frequencies are the totals of each row and column, found at the margins. Joint frequencies are the counts inside the cells (the observed data).",
+      "front": "Define [[kw:marginal frequencies]] and [[kw:joint frequencies]]."
+    },
+    {
+      "back": "$$E = \\frac{(\\text{row total}) \\times (\\text{column total})}{n}$$ where $n$ is the total sample size. This is the count we would expect if the two variables were independent.",
+      "front": "How do you calculate the [[imp:expected frequency]] for a cell in a contingency table assuming independence?"
+    },
+    {
+      "back": "1. The observed frequencies must come from a random sample. 2. Each expected frequency must be at least 5. If any expected count is less than 5, you should combine categories if possible.",
+      "front": "What are the conditions for a chi‑square test for independence?"
+    },
+    {
+      "front": "State the null and alternative hypotheses for a chi‑square test for independence.",
+      "back": "$H_0$: The two variables are independent. $H_a$: The two variables are dependent (i.e., there is an association). The test is always right‑tailed."
+    },
+    {
+      "back": "$$df = (r - 1)(c - 1)$$ where $r$ is the number of rows and $c$ is the number of columns in the contingency table.",
+      "front": "What is the formula for degrees of freedom in the chi‑square test for independence?"
+    },
+    {
+      "back": "$$df = (3 - 1)(4 - 1) = 2 \\times 3 = 6$$ The chi‑square statistic will follow a chi‑square distribution with 6 degrees of freedom.",
+      "front": "Compute $df$ for a contingency table with 3 rows and 4 columns."
+    },
+    {
+      "front": "Why is the chi‑square independence test always right‑tailed?",
+      "back": "The test statistic $\\chi^2 = \\sum (O-E)^2/E$ is always non‑negative. Small values indicate good agreement (independence); large values indicate discrepancies (dependence). Thus, we reject $H_0$ only for large $\\chi^2$."
+    },
+    {
+      "back": "Reject $H_0$ because $32.63 > 13.277$. There is enough evidence to conclude that ice cream preference and gender are dependent (associated).",
+      "front": "In the ice cream/gender example, $\\chi^2 \\approx 32.63$, $df=4$, critical value $13.277$ at $\\alpha=0.01$. Decision?"
+    },
+    {
+      "front": "What does a small chi‑square statistic (e.g., $\\chi^2 = 1.5$) indicate?",
+      "back": "The observed frequencies are close to the expected frequencies, providing no evidence against independence. You would fail to reject $H_0$."
+    },
+    {
+      "front": "How do you find the critical value for a chi‑square independence test?",
+      "back": "Use the chi‑square distribution table (Table 6) with $df = (r-1)(c-1)$ and the given significance level $\\alpha$. The rejection region is $\\chi^2 > \\chi^2_\\alpha$."
+    },
+    {
+      "back": "`=CHISQ.TEST(observed_range, expected_range)`. You must first compute the expected frequencies in a separate range. If the p‑value < $\\alpha$, reject $H_0$.",
+      "front": "What Google Sheets function gives the p‑value for a chi‑square independence test?"
+    },
+    {
+      "front": "How do you compute the expected frequency range in Google Sheets?",
+      "back": "For each cell, use a formula like `= (row_total * column_total) / grand_total`. Use absolute references (e.g., `$E$2`) for row/column totals and grand total so you can copy the formula across the entire table."
+    },
+    {
+      "back": "The goodness‑of‑fit test (10.1) compares a single sample distribution to a claimed distribution. The independence test (10.2) compares two categorical variables from one sample to see if they are associated.",
+      "front": "What is the difference between the goodness‑of‑fit test and the independence test?"
+    },
+    {
+      "back": "False. The test shows an association, not causation. Additional studies (e.g., experiments) are needed to establish causality.",
+      "front": "True or False: If the chi‑square test for independence is significant, the two variables have a cause‑and‑effect relationship."
+    }
+  ],
+  "title": "Chi‑Square Test for Independence",
+  "id": "section-10-2-flashcards",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,827 @@
+{
+  "schemaVersion": 2,
+  "id": "ch21-lu21-2",
+  "title": "Bonds",
+  "blocks": [
+    {
+      "title": "1. Bond Basics: Face Value, Coupon Rate, and Interest",
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Term",
+              "Definition",
+              "Example"
+            ],
+            "caption": "Bonds provide regular interest payments and return of principal.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Face Value",
+                "1": "Amount paid at maturity",
+                "2": "$1,000"
+              },
+              {
+                "0": "Coupon Rate",
+                "1": "Annual interest rate paid on face value",
+                "2": "6%"
+              },
+              {
+                "0": "Annual Interest",
+                "1": "Face Value × Coupon Rate",
+                "2": "$1,000 × 0.06 = $60"
+              },
+              {
+                "0": "Maturity Date",
+                "1": "Date when bond principal is repaid",
+                "2": "10 years from issue"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Key Bond Terms"
+          }
+        ],
+        "explanation": [
+          "A [[kw:bond]] is a long-term debt instrument issued by a corporation or government.",
+          "The [[kw:face value]] (par value) is the amount the bondholder will receive at maturity (usually $1,000).",
+          "The [[kw:coupon rate]] is the annual interest rate stated on the bond, paid on the face value.",
+          "Annual interest = Face value × Coupon rate. For example, a 5% coupon bond with $1,000 face pays $50 per year.",
+          "Bondholders are creditors, not owners; they receive interest, not dividends."
+        ],
+        "formulaCard": {
+          "title": "Bond Interest",
+          "formula": "$$\\text{Annual Interest} = \\text{Face Value} \\times \\text{Coupon Rate}$$",
+          "notes": [
+            "Interest is usually paid semiannually (half each six months).",
+            "Bonds may be sold at face value, at a premium (above face), or at a discount (below face)."
+          ]
+        }
+      },
+      "id": "bond-basics",
+      "discoveryHook": {
+        "scenario": "A company issues $1,000 bonds with a 6% coupon rate. Each year, the bondholder receives $60 interest (6% of $1,000). At maturity, the company repays the $1,000 [[kw:face value]]. Bonds provide fixed income and return of principal at maturity."
+      },
+      "teacherCues": [
+        "Ask: 'What is the difference between a stock and a bond?'",
+        "Write on the board: Bondholders are creditors, not owners."
+      ],
+      "examples": [
+        {
+          "prompt": "A $5,000 bond has a 4% coupon rate. Find the annual interest.",
+          "role": "guided",
+          "steps": [
+            "Annual interest = $5,000 × 0.04 = $200.",
+            "If paid semiannually, each payment = $100."
+          ],
+          "title": "A – Compute annual interest"
+        },
+        {
+          "minLength": 2,
+          "title": "B – Bonds vs. stocks",
+          "role": "peer-explain",
+          "steps": [
+            "Bondholders lend money to the company; they don't own it.",
+            "They have no voting rights.",
+            "In bankruptcy, bondholders are paid before stockholders."
+          ],
+          "peerPrompt": "Think about voting rights and priority in bankruptcy.",
+          "prompt": "Explain why a bondholder is a creditor rather than an owner."
+        },
+        {
+          "prompt": "A $10,000 bond has a 3.5% coupon rate. How much interest is received every six months?",
+          "title": "C – Semiannual interest",
+          "role": "independent",
+          "steps": [
+            "Annual interest = $10,000 × 0.035 = $350.",
+            "Semiannual payment = $350 ÷ 2 = $175."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "The amount the bondholder receives at maturity is the ___ value.",
+          "hints": [
+            "Usually $1,000.",
+            "Not market price."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "face",
+                "par"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "face (or par).",
+          "id": "b1q1"
+        },
+        {
+          "prompt": "A $1,000 bond with a 5% coupon pays annual interest of $___ (number only).",
+          "feedbackIfWrong": "50.",
+          "hints": [
+            "1,000 × 0.05.",
+            "= 50."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "50",
+            "50.00"
+          ],
+          "id": "b1q2"
+        },
+        {
+          "hints": [
+            "They loan money.",
+            "Not stockholders."
+          ],
+          "answers": [
+            "creditors",
+            "lenders"
+          ],
+          "prompt": "Bondholders are ___ of the company, not owners. (word)",
+          "feedbackIfWrong": "creditors.",
+          "type": "short-answer",
+          "id": "b1q3"
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A $2,000 bond with a 7% coupon matures in 10 years. What total interest will the bondholder receive over the life of the bond?",
+        "type": "short-answer",
+        "optional": true,
+        "hints": [
+          "Annual interest = 2,000×0.07 = 140.",
+          "Over 10 years: 140 × 10 = 1,400."
+        ],
+        "answers": [
+          "1400",
+          "1,400"
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The coupon rate is fixed when the bond is issued. [[imp:Market interest rate changes affect the bond's price, not its coupon payments.]]"
+      }
+    },
+    {
+      "title": "2. Reading Bond Quotations",
+      "discoveryHook": {
+        "scenario": "A bond listing shows: IBM 5.5% 2030, price 102.5, current yield 5.37%. The price 102.5 means the bond sells for 102.5% of its face value, or $1,025 per $1,000 bond. The [[kw:current yield]] is the annual interest divided by the current market price."
+      },
+      "confusionCorner": {
+        "body": "The current yield does not account for the gain or loss at maturity. [[imp:Yield to maturity (YTM) is a more complete measure, but current yield is a quick approximation.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "4890",
+          "4.60"
+        ],
+        "optional": true,
+        "hints": [
+          "Market price = 5,000 × 0.978 = 4,890.",
+          "Annual interest = 225; current yield = (225/4,890)×100 ≈ 4.60%."
+        ],
+        "prompt": "A bond has face value $5,000, coupon 4.5%, quoted price 97.8. Find the market price and current yield."
+      },
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Quoted price is percent of face (e.g., 102.5 means 102.5% of face).",
+            "Current yield differs from coupon rate when the bond is not at par."
+          ],
+          "title": "Bond Quote Formulas",
+          "formula": "$$\\text{Market Price (\\$)} = \\text{Face Value} \\times \\frac{\\text{Quoted Price}}{100}$$ $$\\text{Current Yield} = \\frac{\\text{Annual Interest}}{\\text{Market Price}} \\times 100$$"
+        },
+        "explanation": [
+          "[[kw:Bond quotations]] in financial news include: issuer, coupon rate, maturity year, price (as a percent of face value), and current yield.",
+          "Price is quoted as a percentage of face value. A price of 98.5 means the bond sells for 98.5% of face ($985 for a $1,000 bond).",
+          "[[kw:Current yield]] = Annual interest ÷ Current market price × 100.",
+          "A bond selling above face value (price > 100) is a [[kw:premium bond]]; below face (price < 100) is a [[kw:discount bond]].",
+          "[[imp:Bond prices move inversely to market interest rates.]]"
+        ],
+        "visuals": [
+          {
+            "title": "Sample Bond Quote (IBM 5.5% 2030)",
+            "variant": "colorful",
+            "caption": "Price as a percent of face; current yield is based on market price.",
+            "headers": [
+              "Item",
+              "Value",
+              "Meaning"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Issuer",
+                "1": "IBM",
+                "2": "Company issuing the bond"
+              },
+              {
+                "0": "Coupon Rate",
+                "1": "5.5%",
+                "2": "Annual interest rate on face value"
+              },
+              {
+                "0": "Maturity",
+                "1": "2030",
+                "2": "Year bond is repaid"
+              },
+              {
+                "0": "Price",
+                "1": "102.5",
+                "2": "102.5% of face ($1,025)"
+              },
+              {
+                "0": "Current Yield",
+                "1": "5.37%",
+                "2": "Annual interest ÷ Current price × 100"
+              }
+            ]
+          }
+        ]
+      },
+      "id": "bond-quotations",
+      "teacherCues": [
+        "Show a sample bond quote: issuer, coupon, maturity, price, yield.",
+        "Explain that bond prices are quoted as a percentage of face value."
+      ],
+      "examples": [
+        {
+          "title": "A – Convert quoted price to dollars",
+          "prompt": "A $1,000 bond is quoted at 96.25. What is its current market price?",
+          "steps": [
+            "Market price = $1,000 × (96.25 / 100) = $1,000 × 0.9625 = $962.50.",
+            "This bond is selling at a discount."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Think about which bond is more attractive.",
+          "steps": [
+            "The 6% coupon bond pays more than the current market rate of 5%.",
+            "Investors are willing to pay more than face value to get the higher interest.",
+            "Thus the bond price rises above 100 (premium)."
+          ],
+          "prompt": "Explain why a bond with a 6% coupon might sell at a premium when market rates are 5%.",
+          "title": "B – Premium vs. discount"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Annual interest = $1,000 × 0.06 = $60.",
+            "Current yield = ($60 / $1,200) × 100 = 5%.",
+            "The current yield is less than the coupon rate because the bond is at a premium."
+          ],
+          "prompt": "A bond with face $1,000 and coupon 6% is priced at $1,200. Find current yield.",
+          "title": "C – Current yield"
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "face (or par).",
+          "id": "b2q1",
+          "blanks": [
+            {
+              "accept": [
+                "face",
+                "par"
+              ]
+            }
+          ],
+          "prompt": "Bond prices are quoted as a percentage of ___ value.",
+          "hints": [
+            "Usually $1,000.",
+            "Not market."
+          ]
+        },
+        {
+          "hints": [
+            "1,000 × 1.055.",
+            "= 1,055."
+          ],
+          "answers": [
+            "1055",
+            "1,055"
+          ],
+          "feedbackIfWrong": "1,055.",
+          "prompt": "A $1,000 bond quoted at 105.5 has a market price of $___ (number only, no $).",
+          "type": "short-answer",
+          "id": "b2q2"
+        },
+        {
+          "feedbackIfWrong": "premium.",
+          "id": "b2q3",
+          "type": "short-answer",
+          "prompt": "If a bond's market price is above its face value, it is selling at a ___ (word).",
+          "hints": [
+            "Above par.",
+            "Not discount."
+          ],
+          "answers": [
+            "premium"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. Bond Premiums, Discounts, and Yield to Maturity",
+      "examples": [
+        {
+          "prompt": "Market rate is 4%. A bond has a 5% coupon. Will it sell at premium, discount, or par?",
+          "role": "guided",
+          "steps": [
+            "Coupon (5%) > market rate (4%), so the bond is more attractive.",
+            "Investors bid up the price above face → premium."
+          ],
+          "title": "A – Determine if premium or discount"
+        },
+        {
+          "peerPrompt": "Think about what new bonds offer.",
+          "steps": [
+            "When rates rise, new bonds are issued with higher coupons.",
+            "Existing bonds with lower coupons become less attractive.",
+            "Their prices must fall so their effective yield matches the new higher market rate."
+          ],
+          "title": "B – Inverse relationship",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain why bond prices fall when market interest rates rise."
+        },
+        {
+          "prompt": "A $1,000 bond with 6% coupon is bought for $920. Find the annual interest and current yield.",
+          "title": "C – Current yield for discount bond",
+          "role": "independent",
+          "steps": [
+            "Annual interest = $1,000 × 0.06 = $60.",
+            "Current yield = ($60 / $920) × 100 ≈ 6.52%.",
+            "The current yield is higher than the coupon rate because of the discount."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "For a discount bond, the effective yield is higher than current yield due to the capital gain at maturity.",
+            "For a premium bond, the effective yield is lower.",
+            "Yield to maturity (YTM) considers both coupon and price change."
+          ],
+          "title": "Current Yield (approximate)",
+          "formula": "$$\\text{Current Yield} = \\frac{\\text{Annual Interest}}{\\text{Market Price}} \\times 100$$"
+        },
+        "explanation": [
+          "A bond's price is determined by comparing its coupon rate to the prevailing market interest rate.",
+          "If coupon rate > market rate, the bond sells at a [[kw:premium]] (above face).",
+          "If coupon rate < market rate, the bond sells at a [[kw:discount]] (below face).",
+          "If coupon rate = market rate, the bond sells at [[kw:par]] (face value).",
+          "The effective yield for an investor who holds to maturity includes both interest and the gain/loss from the price difference.",
+          "While [[kw:yield to maturity (YTM)]] is complex, the current yield (annual interest ÷ price) gives a quick snapshot."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Bond Pricing Scenarios (Face $1,000, 5% coupon)",
+            "headers": [
+              "Market Rate",
+              "Bond Price",
+              "Selling At"
+            ],
+            "caption": "Bond price moves inversely to market interest rate.",
+            "rows": [
+              {
+                "0": "4%",
+                "1": "> $1,000",
+                "2": "Premium"
+              },
+              {
+                "0": "5%",
+                "1": "$1,000",
+                "2": "Par"
+              },
+              {
+                "0": "6%",
+                "1": "< $1,000",
+                "2": "Discount"
+              }
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "id": "premium-discount",
+      "questions": [
+        {
+          "id": "b3q1",
+          "type": "fill-blank",
+          "feedbackIfWrong": "discount.",
+          "blanks": [
+            {
+              "accept": [
+                "discount"
+              ]
+            }
+          ],
+          "prompt": "When a bond's price is below its face value, it is selling at a ___.",
+          "hints": [
+            "Below par.",
+            "Opposite of premium."
+          ]
+        },
+        {
+          "hints": [
+            "Coupon > market.",
+            "More valuable."
+          ],
+          "answers": [
+            "premium"
+          ],
+          "id": "b3q2",
+          "type": "short-answer",
+          "prompt": "A 7% coupon bond when market rates are 5% will sell at a ___ (premium, discount, or par).",
+          "feedbackIfWrong": "premium."
+        },
+        {
+          "prompt": "A $1,000, 5% bond purchased at $1,100 has a current yield of approximately ___% (number, one decimal).",
+          "id": "b3q3",
+          "answers": [
+            "4.5"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "Interest = $50.",
+            "50/1,100 × 100 ≈ 4.545 → 4.5."
+          ],
+          "feedbackIfWrong": "4.5."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "type": "short-answer",
+        "hints": [
+          "Market price = 5,000 × 0.925 = $4,625; annual interest = $5,000 × 0.048 = $240.",
+          "Current yield = (240/4,625)×100 ≈ 5.19%; since price < face, it's a discount."
+        ],
+        "answers": [
+          "4625",
+          "5.19",
+          "discount"
+        ],
+        "prompt": "A $5,000 bond with 4.8% coupon is priced at 92.5. Find market price, current yield, and state whether it's premium or discount."
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Current yield ignores the eventual return of face value. [[imp:A discount bond's true return is higher than current yield; a premium bond's is lower.]]"
+      },
+      "teacherCues": [
+        "Explain that bonds trade at premium, discount, or par based on coupon vs. market rates.",
+        "Show how to calculate the approximate yield to maturity (use current yield here)."
+      ],
+      "discoveryHook": {
+        "scenario": "If you buy a 5% coupon bond for $950 (a discount), you not only receive $50 annual interest but also a $50 gain when it matures at $1,000. This increases your effective return above the coupon rate. Conversely, buying at a premium reduces the effective return."
+      }
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$1,100",
+                "1": "Premium",
+                "2": "$60",
+                "3": "5.45%"
+              },
+              {
+                "0": "$1,000",
+                "1": "Par",
+                "2": "$60",
+                "3": "6.00%"
+              },
+              {
+                "0": "$900",
+                "1": "Discount",
+                "2": "$60",
+                "3": "6.67%"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Bond Price",
+              "Classification",
+              "Annual Interest",
+              "Current Yield"
+            ],
+            "caption": "Lower purchase price yields a higher current yield.",
+            "title": "Coupon Rate vs. Current Yield ($1,000 face, 6% coupon)"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Premium: } \\frac{I}{P} < \\text{Coupon Rate}$$ $$\\text{Discount: } \\frac{I}{P} > \\text{Coupon Rate}$$",
+          "title": "Current Yield Pattern",
+          "notes": [
+            "I = annual interest, P = market price.",
+            "This pattern helps you quickly assess a bond's attractiveness."
+          ]
+        },
+        "explanation": [
+          "The relationship between coupon rate, market price, and current yield is:",
+          "- Premium bond: Current yield < Coupon rate.",
+          "- Par bond: Current yield = Coupon rate.",
+          "- Discount bond: Current yield > Coupon rate.",
+          "This occurs because the annual interest is fixed, but the price you pay changes.",
+          "[[imp:When buying a bond, don't just look at the coupon rate; consider the current yield based on the price you pay.]]"
+        ]
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "b4q1",
+          "blanks": [
+            {
+              "accept": [
+                "lower"
+              ]
+            }
+          ],
+          "prompt": "For a premium bond, current yield is ___ than the coupon rate. (word: higher or lower)",
+          "feedbackIfWrong": "lower.",
+          "hints": [
+            "You paid more than face.",
+            "Less return on your price."
+          ]
+        },
+        {
+          "feedbackIfWrong": "5.6.",
+          "id": "b4q2",
+          "type": "short-answer",
+          "prompt": "A $1,000, 5% bond is priced at $900. Current yield? (percent, one decimal, no % sign)",
+          "hints": [
+            "Interest = 50.",
+            "50/900 × 100 ≈ 5.56 → 5.6."
+          ],
+          "answers": [
+            "5.6"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "coupon.",
+          "answers": [
+            "coupon"
+          ],
+          "hints": [
+            "The stated rate.",
+            "Not market rate."
+          ],
+          "id": "b4q3",
+          "prompt": "If a bond's price equals its face value, current yield equals the ___ rate. (word)"
+        }
+      ],
+      "teacherCues": [
+        "Show a table: coupon rate, price, current yield.",
+        "Demonstrate that for a premium bond, current yield < coupon rate; for a discount, current yield > coupon rate."
+      ],
+      "challengeCorner": {
+        "type": "short-answer",
+        "hints": [
+          "Market price = 5,000 × 0.925 = $4,625; annual interest = $5,000 × 0.048 = $240.",
+          "Current yield = (240/4,625)×100 ≈ 5.19%; since price < face, it's a discount."
+        ],
+        "answers": [
+          "4625",
+          "5.19",
+          "discount"
+        ],
+        "optional": true,
+        "prompt": "A $5,000 bond with 4.8% coupon is priced at 92.5. Find market price, current yield, and state whether it's premium or discount."
+      },
+      "discoveryHook": {
+        "scenario": "Three bonds with face $1,000 and 6% coupon are priced at $1,100 (premium), $1,000 (par), and $900 (discount). Their current yields: 5.45%, 6%, 6.67%. Notice the inverse relationship: lower price → higher current yield."
+      },
+      "confusionCorner": {
+        "body": "Current yield does not include the capital gain/loss at maturity. [[imp:If you hold to maturity, your actual return (yield to maturity) will differ from current yield.]]",
+        "title": "Watch out!"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Interest = $70. Current yield = ($70 / $1,050) × 100 ≈ 6.67%.",
+            "6.67% < 7%, so current yield is less than coupon because it's a premium bond."
+          ],
+          "role": "guided",
+          "title": "A – Compare yields",
+          "prompt": "A $1,000 bond with 7% coupon is priced at $1,050. Find current yield and compare to coupon."
+        },
+        {
+          "title": "B – Why current yield matters",
+          "steps": [
+            "The coupon rate is based on face value, not on what you paid.",
+            "Current yield tells you the return on the actual dollars invested.",
+            "If you buy at a premium, your true yield is lower than the coupon rate."
+          ],
+          "prompt": "Explain why an investor should look at current yield rather than just the coupon rate.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Think about what you actually earn on your investment."
+        },
+        {
+          "title": "C – Discount bond yield",
+          "steps": [
+            "Interest = $40. Current yield = ($40 / $800) × 100 = 5%.",
+            "5% > 4%, so current yield exceeds coupon rate because the bond is at a discount."
+          ],
+          "prompt": "A $1,000 bond with 4% coupon is bought at $800. Find current yield.",
+          "role": "independent"
+        }
+      ],
+      "title": "4. Comparing Bond Yields to Premiums and Discounts",
+      "id": "bond-yield-compare"
+    },
+    {
+      "concept": {
+        "explanation": [
+          "Apply the blueprint to bond problems:",
+          "1. Understand: identify face value (usually $1,000), coupon rate, quoted price (as a percent), and maturity.",
+          "2. Solve: compute market price (Face × quoted price/100), annual interest, current yield, and classify as premium/discount/par.",
+          "3. Conclude: state the findings; compare current yield to coupon rate.",
+          "This structured approach ensures you don't confuse quoted price with dollar price."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Quoted price is percent of face.",
+            "Current yield > coupon rate for discount; < for premium."
+          ],
+          "title": "Bond Analysis Blueprint",
+          "formula": "$$\\text{Market Price (\\$)} = \\text{Face} \\times \\frac{\\text{Quoted}}{100}$$ $$\\text{Annual Interest} = \\text{Face} \\times \\text{Coupon Rate}$$ $$\\text{Current Yield} = \\frac{\\text{Interest}}{\\text{Price}} \\times 100$$"
+        },
+        "visuals": [
+          {
+            "title": "Blueprint: Bond Analysis",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Face $1,000, Coupon 5.75%, Quoted 98.25.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Price",
+                "1": "$1,000 × (98.25/100) = $982.50.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Interest",
+                "1": "$1,000 × 0.0575 = $57.50.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Current Yield",
+                "1": "($57.50 / $982.50) × 100 ≈ 5.85%.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Classification",
+                "1": "Price < Face → Discount.",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Discount bond; current yield 5.85% > coupon 5.75%.",
+                "2": ""
+              }
+            ],
+            "type": "table",
+            "caption": "Follow the steps; always convert quoted price to dollars."
+          }
+        ]
+      },
+      "confusionCorner": {
+        "body": "Some bonds have face values other than $1,000. [[imp:Always confirm the face value, especially for government or corporate bonds with different denominations.]]",
+        "title": "Watch out!"
+      },
+      "id": "blueprint-bonds",
+      "challengeCorner": {
+        "answers": [
+          "509",
+          "26",
+          "5.11",
+          "208"
+        ],
+        "hints": [
+          "Market price = 500 × 1.018 = $509; annual interest = 26.",
+          "Current yield = (26/509)×100 ≈ 5.11%; premium bond. Total interest over 8 years = 26×8 = $208."
+        ],
+        "prompt": "A bond with face $500, coupon 5.2%, quoted 101.8. Find market price, annual interest, current yield, and classification. Also, compute total interest over 8 years if held to maturity.",
+        "type": "short-answer",
+        "optional": true
+      },
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that involves quoted price, current yield, and classification."
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Market price = $1,000 × 1.045 = $1,045.",
+            "Annual interest = $1,000 × 0.065 = $65.",
+            "Current yield = ($65 / $1,045) × 100 ≈ 6.22%.",
+            "Since price > face, premium bond."
+          ],
+          "role": "guided",
+          "title": "A – Full blueprint",
+          "prompt": "A $1,000 bond has a 6.5% coupon and is quoted at 104.5. Find market price, current yield, and classification."
+        },
+        {
+          "peerPrompt": "Think about the units.",
+          "minLength": 2,
+          "prompt": "Explain how the blueprint helps avoid mistaking quoted price for dollar price.",
+          "title": "B – Blueprint prevents confusion",
+          "steps": [
+            "The 'Understand' step notes that the quoted price is a percent.",
+            "The 'Solve' step explicitly converts it to dollars.",
+            "Without this, you might use 104.5 as dollars, which would be wrong."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "A bond with face $2,000, coupon 3.8%, quoted 88.75. Find price, interest, current yield, and classification.",
+          "title": "C – Practice blueprint",
+          "role": "independent",
+          "steps": [
+            "Price = $2,000 × 0.8875 = $1,775.",
+            "Interest = $2,000 × 0.038 = $76.",
+            "Current yield = ($76 / $1,775) × 100 ≈ 4.28%.",
+            "Discount bond (price < face)."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "An investor sees a bond listing: Ford 5.75% 2035, price 98.25. She wants to know the market price, annual interest, current yield, and whether the bond is at a premium or discount."
+      },
+      "questions": [
+        {
+          "hints": [
+            "Identify knowns.",
+            "U in U‑S‑C."
+          ],
+          "prompt": "The first step of the blueprint is to ___ the problem.",
+          "feedbackIfWrong": "understand.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "id": "b5q1",
+          "type": "fill-blank"
+        },
+        {
+          "id": "b5q2",
+          "answers": [
+            "950"
+          ],
+          "prompt": "A $1,000 bond quoted at 95.0 has a market price of $___ (number only, no $).",
+          "type": "short-answer",
+          "hints": [
+            "1,000 × 0.95.",
+            "= 950."
+          ],
+          "feedbackIfWrong": "950."
+        },
+        {
+          "answers": [
+            "par"
+          ],
+          "hints": [
+            "Face value.",
+            "Neither premium nor discount."
+          ],
+          "prompt": "In the conclusion step, you should state whether the bond is at a premium, discount, or ___.",
+          "id": "b5q3",
+          "feedbackIfWrong": "par.",
+          "type": "short-answer"
+        }
+      ],
+      "title": "5. Blueprint Aid for Bond Problems"
+    }
+  ],
+  "type": "interactive-lesson",
+  "standards": [
+    "BUSMATH.21.2"
+  ],
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

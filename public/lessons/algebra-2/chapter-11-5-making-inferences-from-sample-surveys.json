@@ -1,0 +1,712 @@
+{
+  "title": "Making Inferences",
+  "standards": [
+    "HSS.IC.A.1",
+    "HSS.IC.B.4",
+    "HSS.IC.B.6"
+  ],
+  "id": "chapter-11-5-making-inferences-from-sample-surveys",
+  "presenterNotes": [
+    "Use real polling data from news websites to show confidence intervals and margins of error in action.",
+    "Have students run a physical simulation: give each a die or coin to simulate sample proportions under a claim.",
+    "Emphasize that larger sample sizes narrow the margin of error, which is a key reason why major polls use samples of 1000+."
+  ],
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A random sample of 40 teens has a total of 11,966 friends. Estimate the population mean number of friends $\\mu$.",
+          "steps": [
+            "Compute the sample mean: $ \\bar{x} = \\frac{11,966}{40} = 299.15 $.",
+            "The sample mean 299.15 is our best estimate of $ \\mu $.",
+            "We estimate the average teen has about 299 friends."
+          ],
+          "title": "Example A – Estimating a Mean"
+        },
+        {
+          "prompt": "In a survey of 200 randomly selected city residents, 118 said they will vote for Candidate A. Estimate the proportion of all residents who will vote for Candidate A.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is 118/200 a good estimate, but not exactly the true proportion? What would happen if we took another random sample of 200?",
+          "steps": [
+            "The sample proportion $ \\hat{p} = \\frac{118}{200} = 0.59 $.",
+            "We estimate that 59% of all residents will vote for Candidate A.",
+            "Due to sampling variability, another sample might give 57% or 61%."
+          ],
+          "title": "Example B – Estimating a Proportion"
+        },
+        {
+          "prompt": "Four surveys about the incumbent class president show: n=10, 70%; n=20, 55%; n=30, 43.3%; n=40, 42.5%. Do you think the incumbent will be reelected?",
+          "title": "Example C – Class President Survey",
+          "steps": [
+            "Small samples (n=10, 20) suggested the incumbent would win (>50%).",
+            "But larger, more reliable samples (n=30, 40) show support dropping to about 43%.",
+            "Since 43% < 50%, we predict the incumbent will likely not be reelected."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "estimating-population-parameters",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\bar{x} = \\frac{\\sum x}{n} \\quad \\text{estimates } \\mu $$ $$ \\hat{p} = \\frac{\\text{successes}}{n} \\quad \\text{estimates } p $$",
+          "title": "Point Estimates",
+          "notes": [
+            "These are called point estimates because they give a single value.",
+            "Different samples give different estimates – this is sampling variability."
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "",
+              "Statistic (Sample)",
+              "Parameter (Population)"
+            ],
+            "variant": "colorful",
+            "title": "Statistics vs. Parameters",
+            "rows": [
+              {
+                "0": "Mean",
+                "1": "$ \\bar{x} $",
+                "2": "$ \\mu $"
+              },
+              {
+                "0": "Proportion",
+                "1": "$ \\hat{p} $",
+                "2": "$ p $"
+              },
+              {
+                "0": "Standard Deviation",
+                "1": "$ s $",
+                "2": "$ \\sigma $"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "[[kw:Inferential statistics]] uses sample data to draw conclusions about a population. [[kw:Descriptive statistics]] only summarizes the sample itself.",
+          "A [[kw:sample mean]] ($ \\bar{x} $) is the best estimate of the unknown [[kw:population mean]] ($ \\mu $).",
+          "Formula for sample mean: $$ \\bar{x} = \\frac{\\sum x}{n} $$",
+          "A [[kw:sample proportion]] ($ \\hat{p} $) estimates the [[kw:population proportion]] ($p$). $$ \\hat{p} = \\frac{\\text{number of successes}}{n} $$",
+          "[[imp:Larger sample sizes]] tend to give more accurate estimates because they reduce sampling variability."
+        ]
+      },
+      "title": "Estimating Population Parameters",
+      "discoveryHook": {
+        "scenario": "You want to know the average number of friends a teen has on social media. Surveying every teen is impossible, but you can randomly survey a few hundred and use their average to estimate the true population mean. This is the essence of inferential statistics: using a sample to make a smart guess about a whole population!"
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "mean",
+                "Mean",
+                "μ",
+                "mu"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The sample mean estimates the population mean (μ).",
+          "id": "q1-1",
+          "prompt": "The sample mean $ \\bar{x} $ is used to estimate the population ___.",
+          "hints": [
+            "It's the Greek letter μ.",
+            "It represents the average of the whole population."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "20/50 = 0.4.",
+          "hints": [
+            "Divide the number of 'yes' by the total sample size.",
+            "20 / 50 = ?"
+          ],
+          "answer": "0.4",
+          "type": "short-answer",
+          "id": "q1-2",
+          "prompt": "In a sample of 50 students, 20 prefer an upgraded phone. What is the sample proportion? Answer as a decimal."
+        },
+        {
+          "feedbackIfWrong": "Larger samples generally give more accurate estimates.",
+          "type": "short-answer",
+          "hints": [
+            "Think about the election surveys: which were closer to the final 59%?",
+            "Larger samples reduce the impact of unusual individuals."
+          ],
+          "answer": "more",
+          "id": "q1-3",
+          "prompt": "Do larger sample sizes tend to produce more or less accurate estimates of a population parameter? (Answer 'more' or 'less')"
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'If I want to know the average number of texts sent by all teens, why can't I just ask everyone?' Introduce the idea of using a sample mean to estimate a population mean.",
+        "Write x̄ = Σx / n on the board. Emphasize that x̄ is a statistic used to estimate the parameter μ."
+      ],
+      "confusionCorner": {
+        "body": "In Example C, the first two small surveys suggested a win, but larger samples revealed the truth. [[imp:Always be skeptical of conclusions drawn from tiny samples!]]",
+        "title": "Small Samples Can Mislead"
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "A polling company claims 34% of adults say math is the most valuable subject. You survey 50 people and only 30% say math. Is the company wrong, or did you just get an unusual sample? A simulation can tell you how likely your result is if the claim were true!"
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "false",
+                "False",
+                "not accurate",
+                "inaccurate"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "An extreme result suggests the claim is probably false.",
+          "id": "q2-1",
+          "prompt": "When a sample proportion falls in the far tail of a simulation distribution, the claimed population proportion is probably ___.",
+          "hints": [
+            "Extreme results cast doubt on the claim.",
+            "The claim is likely not true."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "id": "q2-2",
+          "prompt": "In a simulation of 100 samples assuming a claim is true, your sample result only appears 2 times. Is your result 'likely' or 'unlikely' under the claim?",
+          "feedbackIfWrong": "2 out of 100 is unlikely (2%).",
+          "type": "short-answer",
+          "answer": "unlikely",
+          "hints": [
+            "2 out of 100 is a small percentage.",
+            "Compare to 5% or 10% benchmarks."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "prompt": "A claim says p = 0.50. You simulate samples of size 50 and find 95% of sample proportions fall between 0.36 and 0.64. Your survey gives $\\hat{p} = 0.66$. Is the claim plausible? (Answer 'yes' or 'no')",
+          "answer": "no",
+          "hints": [
+            "Is 0.66 inside the interval 0.36 to 0.64?",
+            "If it's outside the 95% interval, it's suspicious."
+          ],
+          "feedbackIfWrong": "0.66 is outside the typical range, so the claim is not plausible.",
+          "id": "q2-3"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Even if a sample proportion is extreme, the claim might still be true — you just got a very unusual sample. Statistics can never be 100% certain, but we can say a claim is 'probably' true or false.",
+        "title": "Rare ≠ Impossible"
+      },
+      "id": "simulation-hypothesis-testing",
+      "title": "Analyzing a Claim with Simulation",
+      "concept": {
+        "explanation": [
+          "A claimed population proportion is a hypothesis. To test it, we can run a simulation.",
+          "Steps: 1) Assume the claimed proportion is true. 2) Simulate many random samples of size $n$. 3) Record the sample proportion for each. 4) Build a dot plot or histogram.",
+          "If the actual sample proportion falls [[imp:in the tail]] (occurs very rarely), the claim is probably false.",
+          "If it falls [[imp:near the center]] (occurs often), the claim is plausible.",
+          "This method uses the variability of sample proportions to judge how extreme a result is."
+        ],
+        "visuals": [
+          {
+            "title": "Simulation Decision Rule",
+            "headers": [
+              "Sample Proportion Location",
+              "Conclusion"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Near the center of the simulation distribution",
+                "1": "The claim is probably accurate."
+              },
+              {
+                "0": "Far in the tail (very rare)",
+                "1": "The claim is probably not accurate."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Using Simulation to Test a Claim",
+          "notes": [
+            "The simulation models the sampling distribution of $\\hat{p}$.",
+            "Typically, a result is 'extreme' if it occurs in less than 5% of simulated samples."
+          ],
+          "formula": "$$ \\text{If } \\hat{p} \\text{ is extreme under the claim } p_0 \\text{, reject the claim.} $$"
+        }
+      },
+      "teacherCues": [
+        "Remind students of hypothesis testing from 11.2. Ask: 'How can we tell if a sample result is unusual under a claimed population proportion?'",
+        "Show a dot plot from a simulation and ask where the sample proportion falls."
+      ],
+      "examples": [
+        {
+          "title": "Example A – 15 out of 50 Say Math",
+          "steps": [
+            "The sample proportion is $ \\hat{p} = 15/50 = 0.30 $.",
+            "In the simulation assuming the claim is true, 0.30 occurred 7/80 = 8.75% of the time.",
+            "This is not extremely rare; it can easily happen by chance.",
+            "Conclusion: The company's claim is probably accurate."
+          ],
+          "prompt": "Claim: 34% of adults say math is most valuable. You survey 50 randomly and find 15 (30%) say math. In a simulation, 30% occurred in 7 out of 80 random samples. What do you conclude?",
+          "role": "guided"
+        },
+        {
+          "title": "Example B – 25 out of 50 Say Math",
+          "steps": [
+            "Sample proportion = 25/50 = 0.50.",
+            "In the simulation, 0.50 occurred only 1/80 = 1.25% of the time.",
+            "This is very unlikely if the true proportion were 0.34.",
+            "Conclusion: The company's claim is probably not accurate."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does 1 out of 80 make us doubt the claim? What could we do to be more certain?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "Same claim (34%). Your survey of 50 finds 25 (50%) say math. The simulation shows 50% occurred in only 1 out of 80 samples. What do you conclude?"
+        },
+        {
+          "steps": [
+            "$ \\hat{p} = 21/50 = 0.42 $.",
+            "0.42 lies inside the 95% interval (0.20 to 0.48).",
+            "So this result is not unusual; it falls within the typical range of variation.",
+            "The company's claim is plausible."
+          ],
+          "prompt": "Claim is 34%. You get 21 out of 50 (42%). The simulation shows that sample proportions between 0.20 and 0.48 contain 95% of the results. What do you conclude?",
+          "title": "Example C – 21 out of 50",
+          "role": "independent"
+        }
+      ]
+    },
+    {
+      "title": "Margin of Error",
+      "questions": [
+        {
+          "answer": "0.05",
+          "hints": [
+            "Margin of error = 1 / √400.",
+            "√400 = 20, so 1/20 = ?"
+          ],
+          "prompt": "Find the margin of error for a survey with sample size n = 400. Answer as a decimal.",
+          "id": "q3-1",
+          "feedbackIfWrong": "1/√400 = 1/20 = 0.05 (5%).",
+          "type": "short-answer"
+        },
+        {
+          "id": "q3-2",
+          "hints": [
+            "Smaller sample → larger margin. So larger sample → ?",
+            "You can be more precise with more data."
+          ],
+          "prompt": "As the sample size increases, the margin of error ___.",
+          "blanks": [
+            {
+              "accept": [
+                "decreases",
+                "Decreases"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The margin of error decreases as sample size increases.",
+          "type": "fill-blank"
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "hints": [
+            "Margin of error = 1/√2500 = 0.02.",
+            "Upper bound = 0.60 + 0.02 = ?"
+          ],
+          "prompt": "A survey of 2500 people gives a sample proportion of 0.60. What is the upper bound of the confidence interval? Answer as a decimal.",
+          "answer": "0.62",
+          "feedbackIfWrong": "0.60 + 1/50 = 0.60 + 0.02 = 0.62."
+        }
+      ],
+      "id": "margin-of-error",
+      "teacherCues": [
+        "Ask: 'If a poll says 55% with a margin of error of ±3%, what could the true percentage be?'",
+        "Write the margin of error formula: ±1/√n. Show how it decreases as n increases."
+      ],
+      "discoveryHook": {
+        "scenario": "You hear that 60% of voters support a new law, with a margin of error of 4%. That means the true support is likely between 56% and 64%. The margin of error tells you how precise a survey result is — and it depends on the sample size!"
+      },
+      "confusionCorner": {
+        "body": "The formula $ \\pm 1/\\sqrt{n} $ works for sample proportions (percentages). For sample means, a different (and more complex) formula involving the standard deviation is used.",
+        "title": "Margin of Error Applies to Proportions"
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:margin of error]] gives a range around a sample statistic that likely contains the true population parameter.",
+          "For a large population and a random sample of size $n$: $$ \\text{Margin of error} = \\pm \\frac{1}{\\sqrt{n}} $$",
+          "This formula gives the margin of error for a [[imp:proportion]] at a 95% confidence level.",
+          "As sample size $n$ increases, the margin of error decreases. To cut the margin of error in half, you need to quadruple the sample size.",
+          "A confidence interval is calculated as: $$ \\hat{p} \\pm \\frac{1}{\\sqrt{n}} $$"
+        ],
+        "formulaCard": {
+          "title": "Margin of Error Formula",
+          "notes": [
+            "For a proportion, expressed as a decimal. Multiply by 100 for percent.",
+            "Gives an interval that likely (95% confidence) contains the true population proportion.",
+            "Assumes a simple random sample from a large population."
+          ],
+          "formula": "$$ \\text{Margin of error} = \\pm \\frac{1}{\\sqrt{n}} $$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Sample Size $n$",
+              "Margin of Error"
+            ],
+            "variant": "colorful",
+            "title": "Sample Size and Margin of Error",
+            "type": "table",
+            "rows": [
+              {
+                "0": "100",
+                "1": "$\\pm 10\\%$"
+              },
+              {
+                "0": "400",
+                "1": "$\\pm 5\\%$"
+              },
+              {
+                "0": "1600",
+                "1": "$\\pm 2.5\\%$"
+              },
+              {
+                "0": "2500",
+                "1": "$\\pm 2\\%$"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "In a survey of 2048 people, 55% said TV is their main news source. Find the margin of error and the likely interval for the true percent.",
+          "title": "Example A – TV News Survey",
+          "role": "guided",
+          "steps": [
+            "Margin of error = $ \\pm 1/\\sqrt{2048} \\approx \\pm 0.022 = \\pm 2.2\\% $.",
+            "Interval: 55% $ \\pm $ 2.2% → (52.8%, 57.2%).",
+            "We are confident the true population percent is between 52.8% and 57.2%."
+          ]
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does a smaller sample (1028 vs 2048) have a larger margin of error? How would the interval change if we surveyed 4000 people?",
+          "steps": [
+            "Margin of error = $ \\pm 1/\\sqrt{1028} \\approx \\pm 0.031 = \\pm 3.1\\% $.",
+            "Interval: 87% $ \\pm $ 3.1% → (83.9%, 90.1%).",
+            "A larger sample would narrow this interval."
+          ],
+          "role": "peer-explain",
+          "title": "Example B – Internet Usage",
+          "prompt": "A survey of 1028 people found 87% use the Internet. Find the margin of error and the confidence interval.",
+          "minLength": 2
+        },
+        {
+          "prompt": "In a survey of 1020 U.S. adults, 41% said retirement is their top savings priority. Find the margin of error and the likely interval for the true percent.",
+          "role": "independent",
+          "steps": [
+            "Margin of error = $ \\pm 1/\\sqrt{1020} \\approx \\pm 0.0313 = \\pm 3.1\\% $.",
+            "Interval: 41% $ \\pm $ 3.1% → (37.9%, 44.1%).",
+            "We estimate the true percentage is between 37.9% and 44.1%."
+          ],
+          "title": "Example C – Retirement Priority"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "confidence",
+                "Confidence"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "A range of values likely to contain the true population parameter is called a ___ interval.",
+          "hints": [
+            "Starts with 'c'.",
+            "It gives a range, not a single point."
+          ],
+          "id": "q4-1",
+          "feedbackIfWrong": "It's called a confidence interval."
+        },
+        {
+          "hints": [
+            "Compute the interval: 52% ± 3%.",
+            "49% is inside the interval? Yes."
+          ],
+          "answer": "yes",
+          "feedbackIfWrong": "The interval is 49% to 55%, so it includes 49% (below 50%). Yes, it's possible.",
+          "prompt": "A survey finds 52% support with a margin of error of ±3%. Is it possible that the true support is less than 50%? Answer 'yes' or 'no'.",
+          "type": "short-answer",
+          "id": "q4-2"
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "feedbackIfWrong": "Yes, the entire interval is above 50%, so the candidate likely has a majority.",
+          "hints": [
+            "Is the entire interval above 50%?",
+            "53% is the lower bound, which is >50%."
+          ],
+          "prompt": "If a confidence interval for a candidate's vote share is 53% to 59%, does the candidate have a clear majority? Answer 'yes' or 'no'.",
+          "answer": "yes"
+        }
+      ],
+      "title": "Interpreting Survey Results",
+      "confusionCorner": {
+        "title": "Don't Compare Overlapping Intervals Visually",
+        "body": "If two confidence intervals overlap, it doesn't necessarily mean the two proportions are not significantly different. Proper statistical tests are needed for comparison. However, for a single proportion against a benchmark like 50%, the interval method is fine."
+      },
+      "id": "interpreting-confidence-intervals",
+      "teacherCues": [
+        "Display a survey result: '52% approve, margin of error ±3%.' Ask: 'Can we be sure the majority approves?'",
+        "Explain that if the interval overlaps 50%, the result is too close to call."
+      ],
+      "discoveryHook": {
+        "scenario": "A poll says 52% of voters favor Candidate X with a margin of error of 3%. The interval is 49% to 55%. Since it includes 49% (below 50%), the race is still a toss-up! Understanding how to read a margin of error helps you separate a clear lead from a statistical tie."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Interval: 56% ± 2.5% = 53.5% to 58.5%.",
+            "The entire interval is above 50%.",
+            "Yes, we can be confident the measure has majority support."
+          ],
+          "prompt": "A survey of 1600 voters finds 56% support a bond measure. Margin of error is ±2.5%. Does the measure likely have majority support?",
+          "title": "Example A – Clear Majority?"
+        },
+        {
+          "minLength": 2,
+          "prompt": "A poll of 400 voters shows Candidate X with 51% support. Margin of error is ±5%. Should Candidate X feel confident?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does 51% with a 5% margin of error not guarantee a win? What interval does this produce?",
+          "role": "peer-explain",
+          "steps": [
+            "Interval: 51% ± 5% = 46% to 56%.",
+            "This interval includes values below 50% (46%, 47%, etc.).",
+            "So the true support could be less than 50%. The race is too close to call."
+          ],
+          "title": "Example B – Too Close to Call"
+        },
+        {
+          "prompt": "Poll 1: n=500, 54% support. Poll 2: n=2000, 53% support. Which poll gives a narrower interval? Does the second poll's result show a clear majority?",
+          "role": "independent",
+          "title": "Example C – Comparing Two Polls",
+          "steps": [
+            "Poll 1 margin: ±1/√500 ≈ 4.5%. Interval: 49.5%–58.5% (overlaps 50%).",
+            "Poll 2 margin: ±1/√2000 ≈ 2.2%. Interval: 50.8%–55.2% (entirely above 50%).",
+            "Poll 2 shows a clear majority; Poll 1 is too close to call."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "A confidence interval gives a plausible range for the true population parameter.",
+          "If the interval for a candidate's support is entirely above 50%, we can be confident they are in the lead.",
+          "If the interval overlaps 50%, the race is too close to call – the candidate might actually have less than 50% support.",
+          "The margin of error also depends on the confidence level; $ \\pm 1/\\sqrt{n} $ gives about 95% confidence."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Survey Result",
+              "Margin of Error",
+              "Interval",
+              "Conclusion"
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Candidate A: 59%",
+                "1": "$\\pm 3\\%$",
+                "2": "56% to 62%",
+                "3": "A is likely winning (>50% entirely)"
+              },
+              {
+                "0": "Candidate A: 52%",
+                "1": "$\\pm 3\\%$",
+                "2": "49% to 55%",
+                "3": "Too close to call (overlaps 50%)"
+              },
+              {
+                "0": "Yes on Prop B: 48%",
+                "1": "$\\pm 4\\%$",
+                "2": "44% to 52%",
+                "3": "Prop B might pass or fail (overlaps 50%)"
+              }
+            ],
+            "title": "Making Decisions from Polls"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{If interval is entirely above 0.5, majority is likely.} $$ $$ \\text{If interval overlaps 0.5, too close to call.} $$",
+          "notes": [
+            "An interval gives a range, not a single number.",
+            "Always check whether the margin of error changes the conclusion."
+          ],
+          "title": "Confidence Interval Decision Rule"
+        }
+      }
+    },
+    {
+      "id": "blueprint-survey-inference",
+      "questions": [
+        {
+          "prompt": "In the inference blueprint, what is the first step? (Answer: Understand, Estimate, Quantify, or Conclude?)",
+          "id": "q5-1",
+          "type": "short-answer",
+          "answer": "Understand",
+          "feedbackIfWrong": "The first step is Understand.",
+          "hints": [
+            "Starts with 'U'.",
+            "You identify the population and parameter here."
+          ]
+        },
+        {
+          "hints": [
+            "Starts with 'p'.",
+            "It's the unknown true value we are estimating."
+          ],
+          "id": "q5-2",
+          "feedbackIfWrong": "The margin of error gives a range for the population parameter.",
+          "prompt": "The margin of error gives a range that likely contains the true population ___.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "parameter",
+                "Parameter",
+                "proportion",
+                "mean"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "Margin of error = 1/√100 = 0.1 (10%).",
+          "type": "short-answer",
+          "id": "q5-3",
+          "prompt": "A survey of 100 people finds 60% favor a new park. What is the margin of error? Answer as a decimal.",
+          "answer": "0.1",
+          "hints": [
+            "1 / √100 = 1/10.",
+            "That's 0.1."
+          ]
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "variant": "colorful",
+            "title": "Inference Blueprint for Sample Surveys",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify population and parameter ($\\mu$ or $p$)."
+              },
+              {
+                "0": "Estimate",
+                "1": "Compute $\\bar{x}$ or $\\hat{p}$ from the sample data."
+              },
+              {
+                "0": "Quantify Precision",
+                "1": "Calculate margin of error = $ \\pm 1/\\sqrt{n} $; form interval."
+              },
+              {
+                "0": "Conclude",
+                "1": "Interpret the interval; decide if a claim is supported or if a threshold is met."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Inference Blueprint Formulas",
+          "notes": [
+            "For proportions, use $ \\pm 1/\\sqrt{n} $ for the interval.",
+            "For means with large samples, a similar concept applies (using standard error)."
+          ],
+          "formula": "$$ \\text{Point estimate: } \\bar{x} \\text{ or } \\hat{p} $$ $$ \\text{Confidence interval: estimate } \\pm \\frac{1}{\\sqrt{n}} $$"
+        },
+        "explanation": [
+          "1. [[imp:Understand]] – What is the population and the parameter of interest (mean or proportion)? What does the sample tell us?",
+          "2. [[imp:Estimate]] – Calculate the sample mean $\\bar{x}$ or sample proportion $\\hat{p}$. This is your best single-number guess.",
+          "3. [[imp:Quantify Precision]] – Find the margin of error $ \\pm 1/\\sqrt{n} $. Construct a confidence interval.",
+          "4. [[imp:Conclude]] – Interpret the interval in context. Does it support a claim? Is it above/below a critical threshold? Acknowledge that the true parameter is likely in this interval, but not certain."
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example A – Full Inference",
+          "steps": [
+            "Understand: Population = all students at the school. Parameter = proportion $p$ who plan to attend college.",
+            "Estimate: $\\hat{p} = 468/900 = 0.52$. So we estimate 52% plan to attend.",
+            "Quantify Precision: Margin of error = $ \\pm 1/\\sqrt{900} = \\pm 1/30 \\approx \\pm 0.033 = \\pm 3.3\\%$. Interval: (48.7%, 55.3%).",
+            "Conclude: We are confident the true proportion is between 48.7% and 55.3%. Since this interval overlaps 50%, we cannot be certain that a majority plan to attend college."
+          ],
+          "role": "guided",
+          "prompt": "A survey of 900 randomly selected students finds that 468 plan to attend college. Make an inference about the proportion of all students at the school who plan to attend college."
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Estimate: $\\hat{p} = 264/400 = 0.66$. Margin of error = $ \\pm 1/\\sqrt{400} = \\pm 0.05$. Interval: (0.61, 0.71) or 61% to 71%.",
+            "The claim of 70% lies within our interval, so it's plausible. Our sample does not provide strong evidence against the company's claim.",
+            "If the interval had been (58%, 66%), 70% would be outside, suggesting the claim is too high."
+          ],
+          "title": "Example B – Testing a Claim",
+          "prompt": "A company claims 70% of customers are satisfied. You survey 400 customers and find 264 satisfied. Use the blueprint to evaluate the claim.",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does the confidence interval help you evaluate the claim? What if the interval were (58%, 66%)?"
+        },
+        {
+          "title": "Example C – Election Prediction",
+          "prompt": "A poll of 1600 likely voters shows Candidate A with 55% support. Predict the election outcome using the inference blueprint.",
+          "steps": [
+            "Estimate: $\\hat{p} = 0.55$. Margin of error = $ \\pm 1/\\sqrt{1600} = \\pm 0.025$.",
+            "Interval: 52.5% to 57.5%.",
+            "The entire interval is above 50%, so we can be confident Candidate A will win, barring major changes before the election."
+          ],
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Walk through a complete problem: 'A survey of 900 voters finds 54% support a candidate. What can we infer about the election?'",
+        "Use the steps: 1) Identify the parameter of interest. 2) Compute the point estimate. 3) Check simulation or compute margin of error. 4) Draw a conclusion."
+      ],
+      "confusionCorner": {
+        "title": "Confidence Interval Does Not Guarantee Truth",
+        "body": "A 95% confidence interval means that if we repeated the survey many times, about 95% of the intervals we construct would contain the true population parameter. We can't say there's a 95% chance that *this particular* interval contains the truth, but it's a standard way to express uncertainty."
+      },
+      "discoveryHook": {
+        "scenario": "You've conducted a survey. How do you go from your sample percentage to a conclusion about the whole population? The Inference Blueprint guides you: estimate the parameter, gauge the precision with margin of error, and make a reasoned decision!"
+      },
+      "title": "Blueprint Aid – Making Inferences from a Survey"
+    }
+  ],
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

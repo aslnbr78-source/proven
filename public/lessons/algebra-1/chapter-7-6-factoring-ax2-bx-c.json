@@ -1,0 +1,745 @@
+{
+  "title": "Chapter 7.6 — Factoring ax² + bx + c",
+  "id": "chapter-7-6-factoring-ax2-bx-c",
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Find the GCF: GCF of 5, 15, and 10 is 5. Factor it out: $5(x^2 + 3x + 2)$.",
+            "Now factor the inside trinomial: $x^2+3x+2 = (x+1)(x+2)$.",
+            "So $5x^2+15x+10 = 5(x+1)(x+2)$."
+          ],
+          "title": "Example A — GCF First",
+          "prompt": "Factor $5x^2 + 15x + 10$."
+        },
+        {
+          "steps": [
+            "No GCF. $a=3$, $c=2$ (positive), $b=-7$ (negative) → factors of $c$ must be negative.",
+            "Factors of 3: 1,3. Factors of 2: -1,-2 and -2,-1.",
+            "Test (1x-1)(3x-2): middle = -2x-3x = -5x ✗. Test (1x-2)(3x-1): middle = -x-6x = -7x ✓.",
+            "So $3x^2-7x+2 = (x-2)(3x-1)$."
+          ],
+          "title": "Example B — Table Method for ac Positive",
+          "prompt": "Factor $3x^2 - 7x + 2$.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why do we test different factor orders for 3 and 2? How does the table help avoid missing the correct combination?"
+        },
+        {
+          "prompt": "Factor $3h^2 + 11h + 6$.",
+          "title": "Example C — Practice",
+          "role": "independent",
+          "steps": [
+            "No GCF. $a=3$, $c=6$, $b=11$ positive → factors of 6 positive.",
+            "Factors of 3: 1,3. Factors of 6: 1,6; 2,3; 3,2; 6,1.",
+            "Test (h+2)(3h+3) -> 3h+6h=9h ✗. Test (h+3)(3h+2): 2h+9h=11h ✓.",
+            "So $(h+3)(3h+2)$."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Factoring ax² + bx + c (ac > 0)",
+          "notes": [
+            "Always factor out GCF first.",
+            "If $c>0$, $q$ and $s$ have the same sign as $b$.",
+            "Test all combinations systematically."
+          ],
+          "formula": "$$ ax^2 + bx + c = (px + q)(rx + s) $$ where $p \\cdot r = a$, $q \\cdot s = c$, and $p \\cdot s + q \\cdot r = b$."
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Factors of 4",
+              "Factors of 3",
+              "Possible Factorization",
+              "Middle Term",
+              "Check"
+            ],
+            "rows": [
+              {
+                "0": "1, 4",
+                "1": "1, 3",
+                "2": "$(x+1)(4x+3)$",
+                "3": "$3x+4x=7x$",
+                "4": "✗"
+              },
+              {
+                "0": "1, 4",
+                "1": "3, 1",
+                "2": "$(x+3)(4x+1)$",
+                "3": "$x+12x=13x$",
+                "4": "✓"
+              },
+              {
+                "0": "2, 2",
+                "1": "1, 3",
+                "2": "$(2x+1)(2x+3)$",
+                "3": "$6x+2x=8x$",
+                "4": "✗"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Factoring 4x² + 13x + 3 (ac positive, b positive)"
+          }
+        ],
+        "explanation": [
+          "For $ax^2 + bx + c$ with $a \\neq 1$, first factor out the [[kw:greatest common factor (GCF)]] if there is one.",
+          "If no GCF, list the factor pairs of $a$ and $c$. Form possible binomials $(px + q)(rx + s)$ where $p$ and $r$ are factors of $a$, and $q$ and $s$ are factors of $c$.",
+          "Check the middle term from [[kw:FOIL]]: $p \\cdot s + q \\cdot r$ must equal $b$.",
+          "When $ac$ is positive, $b$ and $c$ have the same sign; the factors of $c$ take that sign.",
+          "Use a table to test combinations. The order of factors matters because the outer and inner terms change."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "When the leading coefficient isn't 1, factoring becomes a puzzle. But the same idea applies: find factors of a and c that combine to give the middle term b. Like trying different key combinations to unlock a treasure chest!"
+      },
+      "teacherCues": [
+        "Write 5x²+15x+10. Ask: 'What's the GCF? Factor it out first — always the first step!'",
+        "Then write 4x²+13x+3. Say: 'No GCF, so we need a table for factors of a and c. Let's test each pair.'"
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "prompt": "When factoring $ax^2+bx+c$, always look first for a greatest common ___ to factor out.",
+          "blanks": [
+            {
+              "accept": [
+                "factor",
+                "GCF"
+              ]
+            }
+          ],
+          "hints": [
+            "It's a monomial dividing all terms.",
+            "GCF stands for Greatest Common Factor."
+          ],
+          "id": "q1-1",
+          "feedbackIfWrong": "Always factor out the GCF first."
+        },
+        {
+          "id": "q1-2",
+          "feedbackIfWrong": "The coefficient is 4.",
+          "type": "short-answer",
+          "prompt": "In $4x^2+13x+3$, after factoring we get $(x+3)(4x+1)$. What is the coefficient of $x$ in the second binomial?",
+          "hints": [
+            "Look at the second factor: $(4x+1)$.",
+            "The number attached to $x$."
+          ],
+          "answers": [
+            "4"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "The factorization is $(x-2)(3x-1)$.",
+            "The first binomial's constant is -2."
+          ],
+          "prompt": "Factor $3x^2-7x+2$. What is the constant term in the first binomial? (e.g., from $(x-2)$ answer -2)",
+          "feedbackIfWrong": "The constant is -2.",
+          "answers": [
+            "-2",
+            "negative 2"
+          ],
+          "id": "q1-3"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Order Matters!",
+        "body": "In $(px+q)(rx+s)$, switching the order of the binomials changes the outer and inner products. Always check both $(1x+1)(4x+3)$ and $(1x+3)(4x+1)$ — they give different middle terms."
+      },
+      "id": "factoring-gcf-and-ac-positive",
+      "title": "Factoring ax² + bx + c with GCF and ac Positive"
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "Product is negative.",
+            "One positive, one negative."
+          ],
+          "feedbackIfWrong": "They must have different signs.",
+          "id": "q2-1",
+          "blanks": [
+            {
+              "accept": [
+                "different",
+                "opposite"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "When $c$ is negative in $ax^2+bx+c$, the factors of $c$ must have ___ signs."
+        },
+        {
+          "answers": [
+            "-7"
+          ],
+          "hints": [
+            "The second binomial is $(2x-7)$.",
+            "Constant is -7."
+          ],
+          "prompt": "In $2x^2-5x-7=(x+1)(2x-7)$, what is the constant term of the second binomial?",
+          "type": "short-answer",
+          "feedbackIfWrong": "The constant is -7.",
+          "id": "q2-2"
+        },
+        {
+          "hints": [
+            "The factorization given is $(2x+3)(3x-4)$.",
+            "The first binomial has $2x$."
+          ],
+          "type": "short-answer",
+          "id": "q2-3",
+          "feedbackIfWrong": "The coefficient is 2.",
+          "answers": [
+            "2"
+          ],
+          "prompt": "Factor $6x^2+x-12$. What is the coefficient of $x$ in the first binomial of $(2x+3)(3x-4)$? (Type the number)"
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "No GCF. $a=2$, $c=-7$, $b=-5$. Factors of 2: 1,2. Factors of -7: 1,-7; 7,-1; -1,7; -7,1.",
+            "Test $(x+1)(2x-7)$: middle = $1\\cdot(-7) + 1\\cdot2?$ Actually compute: Outer: $x\\cdot(-7) = -7x$, Inner: $1\\cdot 2x = 2x$, sum = -5x ✓.",
+            "So $2x^2 - 5x - 7 = (x+1)(2x-7)$."
+          ],
+          "role": "guided",
+          "title": "Example A — Factor with Table",
+          "prompt": "Factor $2x^2 - 5x - 7$."
+        },
+        {
+          "prompt": "Factor $3n^2 + 5n - 2$.",
+          "peerPrompt": "Explain to a partner: How do you decide which factor of $c$ gets the positive sign when $b$ is positive?",
+          "steps": [
+            "$a=3$, $c=-2$, $b=5$. Factors of 3: 1,3. Factors of -2: 1,-2; 2,-1; -1,2; -2,1.",
+            "Try $(n+2)(3n-1)$: outer $n\\cdot(-1)=-n$, inner $2\\cdot 3n=6n$, sum=5n ✓. So $(n+2)(3n-1)$."
+          ],
+          "role": "peer-explain",
+          "title": "Example B — b Positive, c Negative",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "$a=4$, $c=-3$, $b=4$. Factors of 4: 1,4; 2,2. Factors of -3: 1,-3; 3,-1; -1,3; -3,1.",
+            "Test $(2z-1)(2z+3)$: outer $2z\\cdot3=6z$, inner $(-1)\\cdot2z=-2z$, sum=4z ✓. So $(2z-1)(2z+3)$."
+          ],
+          "prompt": "Factor $4z^2 + 4z - 3$.",
+          "title": "Example C — Practice"
+        }
+      ],
+      "teacherCues": [
+        "Write 2x² - 5x - 7. Point to -7. 'c is negative, so the factors of c must have opposite signs.'",
+        "Remind them: the sign of b tells you the sign of the larger product sum."
+      ],
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "$q \\cdot s = c$ (negative).",
+            "The sign of $b$ is the sign of the larger absolute cross product sum.",
+            "Test all pairs of factors of $a$ and factors of $c$ with both sign assignments."
+          ],
+          "title": "Factoring ax² + bx + c (c < 0)",
+          "formula": "$$ ax^2 + bx + c = (px + q)(rx + s) $$ with $q$ and $s$ having opposite signs."
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Factoring 2x² - 5x - 7 (ac negative, b negative)",
+            "variant": "colorful",
+            "headers": [
+              "Factors of 2",
+              "Factors of -7",
+              "Possible Factorization",
+              "Middle Term",
+              "Check"
+            ],
+            "rows": [
+              {
+                "0": "1, 2",
+                "1": "1, -7",
+                "2": "$(x+1)(2x-7)$",
+                "3": "$-7x+2x = -5x$",
+                "4": "✓"
+              },
+              {
+                "0": "1, 2",
+                "1": "7, -1",
+                "2": "$(x+7)(2x-1)$",
+                "3": "$-x+14x = 13x$",
+                "4": "✗"
+              },
+              {
+                "0": "1, 2",
+                "1": "-1, 7",
+                "2": "$(x-1)(2x+7)$",
+                "3": "$7x-2x = 5x$",
+                "4": "✗"
+              },
+              {
+                "0": "1, 2",
+                "1": "-7, 1",
+                "2": "$(x-7)(2x+1)$",
+                "3": "$x-14x = -13x$",
+                "4": "✗"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "If $c$ is negative, the factors $q$ and $s$ must have [[imp:different signs]] — their product is negative.",
+          "The middle term $b$ equals the sum of the outer and inner products. The sign of $b$ indicates which cross product dominates.",
+          "List factor pairs of $|c|$ with alternating signs. Pair them with factors of $a$, and compute $p\\cdot s + q\\cdot r$.",
+          "Use a table to systematically test combinations."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "When the constant c is negative, the two numbers from factoring have opposite signs — like a tug-of-war. The winner (larger absolute value) takes the sign of b."
+      },
+      "id": "factoring-ac-negative",
+      "title": "Factoring ax² + bx + c (ac Negative)",
+      "confusionCorner": {
+        "body": "Compute $p \\cdot s$ (outer coefficient) and $q \\cdot r$ (inner coefficient) carefully. Their sum must equal $b$. A sign error flips the whole factorization.",
+        "title": "Double-Check the Outer and Inner"
+      }
+    },
+    {
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "-1",
+                "negative 1"
+              ]
+            }
+          ],
+          "hints": [
+            "It makes the leading coefficient positive.",
+            "It's the smallest negative factor."
+          ],
+          "feedbackIfWrong": "Factor out -1.",
+          "prompt": "When the leading coefficient $a$ is negative, first factor out ___ from the trinomial.",
+          "id": "q3-1",
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "In $-4x^2-8x+5$, after factoring we get $-(2x-1)(2x+5)$. What is the constant term of the first binomial inside?",
+          "answers": [
+            "-1"
+          ],
+          "id": "q3-2",
+          "hints": [
+            "Inside: $(2x-1)$.",
+            "Constant is -1."
+          ],
+          "feedbackIfWrong": "The constant is -1.",
+          "type": "short-answer"
+        },
+        {
+          "id": "q3-3",
+          "answers": [
+            "1"
+          ],
+          "hints": [
+            "The first binomial is $(x+1)$.",
+            "Coefficient of $x$ is 1."
+          ],
+          "type": "short-answer",
+          "prompt": "Factor $-3x^2 - x + 2$. What is the coefficient of $x$ in the first binomial of the factorization $-(x+1)(3x-2)$? (Type the number)",
+          "feedbackIfWrong": "The coefficient is 1."
+        }
+      ],
+      "teacherCues": [
+        "Write -4x² - 8x + 5. Say: 'When a is negative, factor out -1 first. This flips all signs.'",
+        "Then factor the inside trinomial as usual."
+      ],
+      "title": "Factoring When a Is Negative",
+      "id": "factoring-a-negative",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "title": "Factoring -4x² - 8x + 5",
+            "headers": [
+              "Step",
+              "Work"
+            ],
+            "rows": [
+              {
+                "0": "Factor out -1",
+                "1": "$-(4x^2 + 8x - 5)$"
+              },
+              {
+                "0": "Factor inside",
+                "1": "Test factors of 4 and -5: (2x-1)(2x+5) gives middle 10x-2x=8x ✓"
+              },
+              {
+                "0": "Final",
+                "1": "$-(2x-1)(2x+5)$"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "When $a$ is negative, first factor out $-1$ from every term. Example: $-4x^2-8x+5 = -(4x^2+8x-5)$.",
+          "Then factor the resulting trinomial with positive $a$ using the table method.",
+          "Don't forget to keep the negative sign outside the parentheses in the final answer.",
+          "Check by multiplying back: the leading term must be negative."
+        ],
+        "formulaCard": {
+          "title": "Factoring When a < 0",
+          "notes": [
+            "The sign of the leading term becomes positive inside.",
+            "After factoring inside, the negative sign stays in front."
+          ],
+          "formula": "$$ -ax^2 - bx + c = -(ax^2 + bx - c) $$ then factor inside."
+        }
+      },
+      "discoveryHook": {
+        "scenario": "A negative leading coefficient can look intimidating, but just pull out a -1 and the trinomial inside becomes friendly again. It's like turning a frown upside down!"
+      },
+      "examples": [
+        {
+          "title": "Example A — Factor Out -1",
+          "prompt": "Factor $-4x^2 - 8x + 5$.",
+          "steps": [
+            "Factor out -1: $-(4x^2 + 8x - 5)$.",
+            "Factor inside: find factors of 4 and -5. (2x-1)(2x+5) gives $10x - 2x = 8x$ ✓.",
+            "So $-4x^2-8x+5 = -(2x-1)(2x+5)$."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why do we factor out -1 even though the middle term becomes positive? How does this help?",
+          "minLength": 2,
+          "steps": [
+            "Factor out -1: $-(3t^2 - 11t + 6)$.",
+            "Now $a=3$, $b=-11$, $c=6$ positive → both factors negative. Try $(t-3)(3t-2)$: middle $-2t-9t=-11t$ ✓.",
+            "So $-(t-3)(3t-2)$."
+          ],
+          "prompt": "Factor $-3t^2 + 11t - 6$.",
+          "title": "Example B — Negative a, Practice"
+        },
+        {
+          "prompt": "Factor $-5m^2 + 6m - 1$.",
+          "title": "Example C — Practice",
+          "role": "independent",
+          "steps": [
+            "Factor out -1: $-(5m^2 - 6m + 1)$.",
+            "Inside: $5m^2-6m+1$. Factors of 5: 1,5; factors of 1: -1,-1. $(m-1)(5m-1)$ gives $-m-5m=-6m$ ✓.",
+            "So $-(m-1)(5m-1)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Forget the Minus Sign",
+        "body": "After factoring, the negative sign stays in front. If you distribute it back into one binomial, you change the factors. Keep it as $-(...)$."
+      }
+    },
+    {
+      "teacherCues": [
+        "Write 5x² - 5x - 30 = 0. Factor out GCF: 5(x² - x - 6) = 0. Then factor inside: 5(x-3)(x+2)=0.",
+        "Then apply Zero-Product Property: x-3=0 or x+2=0, giving x=3 or x=-2."
+      ],
+      "questions": [
+        {
+          "hints": [
+            "It's the property that says if product=0, then factor=0.",
+            "Named after the number 0."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "Zero-Product",
+                "zero product"
+              ]
+            }
+          ],
+          "id": "q4-1",
+          "feedbackIfWrong": "Use the Zero-Product Property.",
+          "prompt": "After factoring $ax^2+bx+c=0$, use the ___ Property to set each factor equal to zero.",
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "Solve $5x^2 - 5x - 30 = 0$. What is the positive root?",
+          "answers": [
+            "3"
+          ],
+          "id": "q4-2",
+          "hints": [
+            "Factor: $5(x-3)(x+2)=0$.",
+            "Roots: 3 and -2."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "The positive root is 3."
+        },
+        {
+          "feedbackIfWrong": "The positive root is $0.75$ or $3/4$.",
+          "prompt": "In the equation $-12n^2 - 11n = -15$, after rearranging and factoring you get $-(3n+5)(4n-3)=0$. What is the positive root as a decimal?",
+          "hints": [
+            "$4n-3=0$ gives $n=3/4$.",
+            "That's 0.75."
+          ],
+          "answers": [
+            "0.75",
+            "3/4"
+          ],
+          "id": "q4-3",
+          "type": "short-answer"
+        }
+      ],
+      "confusionCorner": {
+        "body": "When you factor out a GCF like 5, and the equation equals 0, the factor 5 is never zero. So you can divide both sides by 5 and just solve the remaining trinomial = 0. But keep the GCF factor in factored form for completeness.",
+        "title": "Don't Divide by the GCF and Forget It"
+      },
+      "discoveryHook": {
+        "scenario": "Now that you can factor any ax² + bx + c, you can solve a whole new universe of equations! Factor, then use the Zero-Product Property — the same magic from Chapter 7.4."
+      },
+      "examples": [
+        {
+          "title": "Example A — GCF and Factor",
+          "prompt": "Solve $5x^2 - 5x - 30 = 0$.",
+          "steps": [
+            "Factor out GCF 5: $5(x^2 - x - 6) = 0$.",
+            "Factor inside: $x^2-x-6 = (x-3)(x+2)$.",
+            "So $5(x-3)(x+2)=0$. Ignore the 5, set $x-3=0$ or $x+2=0$.",
+            "Solutions: $x=3$ and $x=-2$."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: Why do we move the -15 to the left instead of dividing by -1? What does the Zero-Product Property require?",
+          "steps": [
+            "Add 15 to both sides: $-12n^2 - 11n + 15 = 0$.",
+            "Factor out -1: $-(12n^2 + 11n - 15) = 0$. Factor inside: $(3n+5)(4n-3) = 12n^2 -9n +20n -15 = 12n^2+11n-15$ ✓.",
+            "So $-(3n+5)(4n-3)=0$. Set each binomial =0: $3n+5=0$ → $n=-5/3$; $4n-3=0$ → $n=3/4$."
+          ],
+          "title": "Example B — Equation Not = 0",
+          "prompt": "Solve $-12n^2 - 11n = -15$."
+        },
+        {
+          "steps": [
+            "No GCF. Factor directly: $2k^2-5k-18$. Factors of 2: 1,2. Factors of -18: 2,-9 gives $(k+2)(2k-9)$? Check: $-9k+4k=-5k$ ✓.",
+            "So $(k+2)(2k-9)=0$ → $k=-2$ or $k=9/2$."
+          ],
+          "prompt": "Solve $2k^2 - 5k - 18 = 0$.",
+          "role": "independent",
+          "title": "Example C — Practice"
+        }
+      ],
+      "id": "solving-ax2-bx-c-equations",
+      "title": "Solving ax² + bx + c = 0 by Factoring",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Factor completely before applying Zero-Product.",
+            "Roots may be fractions or negative."
+          ],
+          "title": "Solving ax² + bx + c = 0",
+          "formula": "$$ ax^2 + bx + c = 0 \\quad\\Rightarrow\\quad (px+q)(rx+s) = 0 \\quad\\Rightarrow\\quad x = -\\frac{q}{p} \\text{ or } x = -\\frac{s}{r} $$"
+        },
+        "explanation": [
+          "To solve $ax^2+bx+c=0$: 1) Ensure one side is 0. 2) Factor completely (GCF first, then factor the trinomial). 3) Use [[kw:Zero-Product Property]] to set each factor = 0. 4) Solve for the variable.",
+          "If the equation isn't = 0, rearrange terms to make it = 0 first.",
+          "Always check if a GCF can be factored out — it simplifies the trinomial inside.",
+          "Reject solutions that don't make sense in real-world problems (like negative lengths)."
+        ],
+        "visuals": [
+          {
+            "title": "Solving 5x² - 5x - 30 = 0",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Given",
+                "1": "$5x^2 - 5x - 30 = 0$"
+              },
+              {
+                "0": "Factor GCF 5",
+                "1": "$5(x^2 - x - 6) = 0$"
+              },
+              {
+                "0": "Factor inside",
+                "1": "$5(x-3)(x+2) = 0$"
+              },
+              {
+                "0": "Zero-Product",
+                "1": "$x-3=0$ or $x+2=0$"
+              },
+              {
+                "0": "Solutions",
+                "1": "$x=3$ or $x=-2$"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Step",
+              "Work"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "teacherCues": [
+        "Draw a rectangle labeled width w, length 2w+1. Area = w(2w+1) = 55.",
+        "Expand, set =0, factor using table, solve, reject negative width."
+      ],
+      "concept": {
+        "explanation": [
+          "Real-world rectangles often lead to equations like $w(2w+1)=A$. This expands to $2w^2 + w - A = 0$.",
+          "1. Understand: width = $w$, length = $2w+1$, area = 55.",
+          "2. Solve: $2w^2 + w - 55 = 0$. Factor using table. Factors of 2 and -55: $(w-5)(2w+11)=0$.",
+          "3. Conclude: $w=5$ (positive) or $w=-11/2$ (reject). Width = 5 miles."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Width $w$, length $2w+1$, area $w(2w+1)=55$"
+              },
+              {
+                "0": "Set =0",
+                "1": "$2w^2 + w - 55 = 0$"
+              },
+              {
+                "0": "Factor (table)",
+                "1": "$(w-5)(2w+11)$: check $-5w+22w?$ Actually $(w-5)(2w+11)$ outer $11w$, inner $-10w$, sum $w$ ✓"
+              },
+              {
+                "0": "Solve",
+                "1": "$w-5=0$ or $2w+11=0$ → $w=5$ or $w=-5.5$"
+              },
+              {
+                "0": "Conclude",
+                "1": "Width = 5 miles. Length = 11 miles."
+              }
+            ],
+            "headers": [
+              "Step",
+              "Work"
+            ],
+            "title": "Blueprint: Game Reserve",
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ w(L) = A \\quad\\Rightarrow\\quad w(aw+b) = A \\quad\\Rightarrow\\quad aw^2 + bw - A = 0 $$",
+          "notes": [
+            "Set =0, factor, solve.",
+            "Reject negative widths."
+          ],
+          "title": "Area Model to Quadratic"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "A game reserve is a rectangle where the length is 1 mile more than twice the width. The area is 55 square miles. Can you find the width? Factoring a quadratic reveals the answer, and the blueprint Understand → Solve → Conclude guides the way."
+      },
+      "title": "Blueprint Aid: Rectangular Reserve Area",
+      "questions": [
+        {
+          "prompt": "In the game reserve problem, what is the width of the reserve (in miles) when area is 55 mi²?",
+          "type": "short-answer",
+          "id": "q5-1",
+          "feedbackIfWrong": "The width is 5 miles.",
+          "answers": [
+            "5"
+          ],
+          "hints": [
+            "Solved: $w=5$.",
+            "Reject -5.5."
+          ]
+        },
+        {
+          "id": "q5-2",
+          "prompt": "In the area model $w(2w+1)=55$, expanding gives $2w^2 + w - 55 = 0$. The factored form is $(w-5)(2w+11)=0$. The factor $(2w+11)$ gives a root of ___.",
+          "blanks": [
+            {
+              "accept": [
+                "-5.5",
+                "-11/2"
+              ]
+            }
+          ],
+          "hints": [
+            "Set $2w+11=0$, solve for $w$.",
+            "Divide -11 by 2."
+          ],
+          "feedbackIfWrong": "The root from $2w+11=0$ is $w = -5.5$ or $-11/2$.",
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "17"
+          ],
+          "feedbackIfWrong": "Length = 17 miles.",
+          "hints": [
+            "$w=8$, so $2(8)+1$.",
+            "16+1."
+          ],
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "If the area of the reserve were 136 mi², the width would be 8 miles. What would be the length? (2w+1)"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check Your Middle Term!",
+        "body": "When factoring $2w^2 + w - 55$, the correct pair gives $w$ (coefficient 1). Be careful: in $(w-5)(2w+11)$, outer is $11w$, inner is $-10w$, sum $w$. Don't miscalculate the inner as $+10w$."
+      },
+      "examples": [
+        {
+          "prompt": "A game reserve's length is 1 mile more than twice its width. Area = 55 mi². Find width.",
+          "title": "Example A — Original Problem",
+          "role": "guided",
+          "steps": [
+            "Let $w$ = width. Length = $2w+1$. Equation: $w(2w+1)=55$.",
+            "Expand: $2w^2 + w = 55$ → $2w^2 + w - 55 = 0$.",
+            "Factor: $(w-5)(2w+11)=0$ (check: $11w -10w = w$).",
+            "$w=5$ or $w=-5.5$. Reject negative. Width = 5 miles."
+          ]
+        },
+        {
+          "title": "Example B — Different Area",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: After setting up $2w^2 + w - 136 = 0$, how would you find the factors? What strategy would you use to test pairs?",
+          "prompt": "What if the area is 136 square miles? Find the width.",
+          "steps": [
+            "Equation: $2w^2 + w - 136 = 0$.",
+            "Factors of 2: 1,2. Factors of -136: find a pair that gives middle $+w$. Try 16 and -17? $(w+16)(2w-17)$ gives $-17w+32w=15w$ ✗. Try 17 and -8? Not factors of 136? Actually 8*17=136. $(w-8)(2w+17)$ gives $17w -16w = w$ ✓.",
+            "So $w=8$ or $w=-17/2$ → width = 8 miles."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Area = length × width. So length = Area ÷ width.",
+            "Factor $15x^2 - x - 2$. Factors: $(5x-2)(3x+1)$ gives $5x+...$ check: $5x*1 + (-2)*3x = 5x-6x = -x$ ✓.",
+            "So length = $5x-2$ feet."
+          ],
+          "role": "independent",
+          "title": "Example C — School Sign Area",
+          "prompt": "School sign area is $15x^2 - x - 2$ square feet, with width $(3x+1)$ ft. Find the length."
+        }
+      ],
+      "id": "blueprint-game-reserve"
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

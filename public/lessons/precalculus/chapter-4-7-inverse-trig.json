@@ -1,0 +1,706 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-4-7-inverse-trig",
+  "title": "Inverse Trigonometric Functions",
+  "standards": [
+    "HSF.TF.B.6",
+    "HSF.TF.B.7",
+    "HSF.BF.B.4d"
+  ],
+  "blocks": [
+    {
+      "id": "inverse-sine",
+      "title": "Inverse Sine (arcsin) – Simple",
+      "teacherCues": [
+        "Ask: If you know sinθ = 0.5, what is θ? (Many answers). Explain that arcsin picks the one between -90° and 90°.",
+        "Draw the sine graph on [-π/2, π/2] and reflect over y = x to show the arcsin curve."
+      ],
+      "discoveryHook": {
+        "scenario": "Your phone’s tilt sensor reports the sine of the tilt angle as 0.3. What is the angle? The arcsin button gives you the answer, always between -90° and 90°."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:inverse sine function]] is written as $ y = \\arcsin x $ or $ y = \\sin^{-1} x $.",
+          "It answers: 'The angle whose sine is $ x $'.",
+          "Domain (input): only numbers from -1 to 1. Range (output): angles from $ -\\pi/2 $ to $ \\pi/2 $ (-90° to 90°).",
+          "Example: $ \\arcsin(1/2) $ is the angle between -π/2 and π/2 that has sine 1/2. That angle is $ \\pi/6 $ (30°).",
+          "[[imp: $ \\sin^{-1} x $ does NOT mean 1/sin x. It means the inverse function.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Easy arcsin Values",
+            "headers": [
+              "Input (x)",
+              "Output (arcsin x)"
+            ],
+            "rows": [
+              {
+                "0": "-1",
+                "1": "-π/2 (-90°)"
+              },
+              {
+                "0": "-1/2",
+                "1": "-π/6 (-30°)"
+              },
+              {
+                "0": "0",
+                "1": "0 (0°)"
+              },
+              {
+                "0": "1/2",
+                "1": "π/6 (30°)"
+              },
+              {
+                "0": "1",
+                "1": "π/2 (90°)"
+              }
+            ],
+            "caption": "Learn these common values."
+          }
+        ],
+        "formulaCard": {
+          "title": "arcsin Definition",
+          "formula": "$$ y = \\arcsin x \\quad \\text{means} \\quad \\sin y = x,\\; -1 \\le x \\le 1,\\; -\\pi/2 \\le y \\le \\pi/2 $$",
+          "notes": [
+            "Use only if x is between -1 and 1.",
+            "Answer is an angle in radians (or degrees if specified)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Find arcsin(1/2)",
+          "prompt": "What is $ \\arcsin(\\frac{1}{2}) $?",
+          "steps": [
+            "You need an angle y between -π/2 and π/2 whose sine is 1/2.",
+            "sin(π/6) = 1/2, and π/6 is between -π/2 and π/2.",
+            "So $ \\arcsin(\\frac{1}{2}) = \\pi/6 $ (or 30°)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "arcsin of a negative",
+          "prompt": "Explain to a partner: why $ \\arcsin(-\\frac{1}{2}) = -\\pi/6 $?",
+          "peerPrompt": "Think of an angle in Quadrant IV (negative angle) with sine -1/2.",
+          "minLength": 2,
+          "steps": [
+            "We need an angle with sine -1/2 in the range [-π/2, π/2].",
+            "sin(-π/6) = -1/2.",
+            "So $ \\arcsin(-\\frac{1}{2}) = -\\pi/6 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Undefined case",
+          "prompt": "Is $ \\arcsin(2) $ defined? Why not?",
+          "steps": [
+            "The input must be between -1 and 1.",
+            "2 is not in that interval.",
+            "So $ \\arcsin(2) $ is undefined."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out! Not reciprocal",
+        "body": "$ \\sin^{-1} x $ is NOT $ \\frac{1}{\\sin x} $. The -1 means inverse function. For reciprocal we use $ \\csc x $."
+      },
+      "questions": [
+        {
+          "id": "q4-7-1-1",
+          "type": "fill-blank",
+          "prompt": "arcsin(0) = ___ (enter a number).",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "The angle with sine 0 that lies between -π/2 and π/2.",
+            "sin 0 = 0."
+          ],
+          "feedbackIfWrong": "arcsin(0) = 0."
+        },
+        {
+          "id": "q4-7-1-2",
+          "type": "short-answer",
+          "prompt": "What is the range of y = arcsin x? (Answer like '[-pi/2, pi/2]'.)",
+          "answer": "[-pi/2, pi/2]",
+          "hints": [
+            "Output angles are between -π/2 and π/2.",
+            "From -90° to 90°."
+          ],
+          "feedbackIfWrong": "Range is [-π/2, π/2]."
+        },
+        {
+          "id": "q4-7-1-3",
+          "type": "short-answer",
+          "prompt": "True or false: arcsin(0.5) = π/6. (Answer 'True' or 'False'.)",
+          "answer": "True",
+          "hints": [
+            "sin(π/6) = 0.5.",
+            "π/6 is in the range."
+          ],
+          "feedbackIfWrong": "True, arcsin(0.5) = π/6."
+        }
+      ]
+    },
+    {
+      "id": "inverse-cosine",
+      "title": "Inverse Cosine (arccos) – Simple",
+      "teacherCues": [
+        "Ask: If cosθ = 0.5, what angles have that cosine? Which one does arccos choose? (Answer: between 0 and π).",
+        "Graph cosine on [0, π] and reflect to get arccos."
+      ],
+      "discoveryHook": {
+        "scenario": "A ladder leans against a wall. The ratio of its base distance to its length gives the cosine of the angle. arccos turns that ratio back into the angle, always between 0° and 180°."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:inverse cosine function]] is $ y = \\arccos x $ or $ \\cos^{-1} x $.",
+          "It gives the angle between 0 and π (0° to 180°) whose cosine is $ x $.",
+          "Domain: $ [-1, 1] $. Range: $ [0, \\pi] $.",
+          "Example: $ \\arccos(1/2) $ = angle in [0,π] with cosine 1/2 → $ \\pi/3 $ (60°).",
+          "If $ x $ is negative, the angle is in Quadrant II, between π/2 and π."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Easy arccos Values",
+            "headers": [
+              "Input (x)",
+              "Output (arccos x)"
+            ],
+            "rows": [
+              {
+                "0": "-1",
+                "1": "π (180°)"
+              },
+              {
+                "0": "-1/2",
+                "1": "2π/3 (120°)"
+              },
+              {
+                "0": "0",
+                "1": "π/2 (90°)"
+              },
+              {
+                "0": "1/2",
+                "1": "π/3 (60°)"
+              },
+              {
+                "0": "1",
+                "1": "0 (0°)"
+              }
+            ],
+            "caption": "Arccos never gives a negative angle."
+          }
+        ],
+        "formulaCard": {
+          "title": "arccos Definition",
+          "formula": "$$ y = \\arccos x \\quad \\text{means} \\quad \\cos y = x,\\; -1 \\le x \\le 1,\\; 0 \\le y \\le \\pi $$",
+          "notes": [
+            "Input must be between -1 and 1.",
+            "Output is an angle in radians."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Find arccos(√2/2)",
+          "prompt": "What is $ \\arccos(\\frac{\\sqrt{2}}{2}) $?",
+          "steps": [
+            "Look for an angle between 0 and π with cosine = √2/2.",
+            "cos(π/4) = √2/2, and π/4 is in [0,π].",
+            "So $ \\arccos(\\frac{\\sqrt{2}}{2}) = \\pi/4 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "arccos of a negative number",
+          "prompt": "Explain why $ \\arccos(-\\frac{1}{2}) = \\frac{2\\pi}{3} $.",
+          "peerPrompt": "Which angle between 0 and π has cosine -1/2?",
+          "minLength": 2,
+          "steps": [
+            "Cosine is negative in Quadrant II.",
+            "Reference angle with cos = 1/2 is π/3.",
+            "In Quadrant II, the angle is π - π/3 = 2π/3.",
+            "Thus arccos(-1/2) = 2π/3."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Undefined example",
+          "prompt": "Can you evaluate $ \\arccos(3) $? Why or why not?",
+          "steps": [
+            "The input must be between -1 and 1.",
+            "3 is too large; no angle has cosine 3.",
+            "Therefore $ \\arccos(3) $ is undefined."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "arccos range is different",
+        "body": "Unlike arcsin, arccos gives answers from 0 to π, never negative. So $ \\arccos(-x) $ is always in Quadrant II."
+      },
+      "questions": [
+        {
+          "id": "q4-7-2-1",
+          "type": "fill-blank",
+          "prompt": "arccos(1) = ___ (enter a number).",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "What angle has cosine 1?",
+            "cos 0 = 1."
+          ],
+          "feedbackIfWrong": "arccos(1) = 0."
+        },
+        {
+          "id": "q4-7-2-2",
+          "type": "short-answer",
+          "prompt": "What is the domain of y = arccos x? (Answer like '[-1,1]'.)",
+          "answer": "[-1,1]",
+          "hints": [
+            "You can only input values that a cosine can produce.",
+            "Cosine outputs between -1 and 1."
+          ],
+          "feedbackIfWrong": "Domain is [-1, 1]."
+        },
+        {
+          "id": "q4-7-2-3",
+          "type": "short-answer",
+          "prompt": "True or false: arccos(-1) = π. (Answer 'True'.)",
+          "answer": "True",
+          "hints": [
+            "cos(π) = -1.",
+            "π is in the range [0,π]."
+          ],
+          "feedbackIfWrong": "True, arccos(-1) = π."
+        }
+      ]
+    },
+    {
+      "id": "inverse-tangent",
+      "title": "Inverse Tangent (arctan) – Simple",
+      "teacherCues": [
+        "Ask: If the grade of a road is 10% (rise/run = 0.1), what is the angle of incline? arctan(0.1) gives the answer.",
+        "Show arctan's graph with horizontal asymptotes at ±π/2."
+      ],
+      "discoveryHook": {
+        "scenario": "A wheelchair ramp rises 1 foot for every 12 feet of length. The slope is 1/12. arctan(1/12) tells you the angle of the ramp, between 0° and 90°."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:inverse tangent function]] is $ y = \\arctan x $ or $ \\tan^{-1} x $.",
+          "It gives the angle between -π/2 and π/2 whose tangent is $ x $.",
+          "Domain: all real numbers. Range: $ (-\\pi/2, \\pi/2) $.",
+          "Example: $ \\arctan(1) $ = angle with tan = 1 → $ \\pi/4 $ (45°).",
+          "If $ x $ is negative, the angle is negative (Quadrant IV)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Easy arctan Values",
+            "headers": [
+              "Input (x)",
+              "Output (arctan x)"
+            ],
+            "rows": [
+              {
+                "0": "-√3",
+                "1": "-π/3 (-60°)"
+              },
+              {
+                "0": "-1",
+                "1": "-π/4 (-45°)"
+              },
+              {
+                "0": "0",
+                "1": "0 (0°)"
+              },
+              {
+                "0": "1",
+                "1": "π/4 (45°)"
+              },
+              {
+                "0": "√3",
+                "1": "π/3 (60°)"
+              }
+            ],
+            "caption": "Arctan gives angles between -90° and 90°."
+          }
+        ],
+        "formulaCard": {
+          "title": "arctan Definition",
+          "formula": "$$ y = \\arctan x \\quad \\text{means} \\quad \\tan y = x,\\; -\\infty < x < \\infty,\\; -\\pi/2 < y < \\pi/2 $$",
+          "notes": [
+            "Can input any real number.",
+            "Answer is always between -π/2 and π/2, not including the endpoints."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Find arctan(1)",
+          "prompt": "What is $ \\arctan(1) $?",
+          "steps": [
+            "We need an angle y between -π/2 and π/2 with tan y = 1.",
+            "tan(π/4) = 1.",
+            "So $ \\arctan(1) = \\pi/4 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "arctan of a negative",
+          "prompt": "Why is $ \\arctan(-\\sqrt{3}) = -\\pi/3 $?",
+          "peerPrompt": "What negative angle in Quadrant IV has tangent -√3?",
+          "minLength": 2,
+          "steps": [
+            "tan(-π/3) = -√3.",
+            "-π/3 is between -π/2 and π/2.",
+            "So $ \\arctan(-\\sqrt{3}) = -\\pi/3 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "arctan of a large number",
+          "prompt": "What happens to arctan x as x gets very large?",
+          "steps": [
+            "As x → ∞, arctan x approaches π/2 but never reaches it.",
+            "So the output gets close to 90°."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Arctan output is limited",
+        "body": "Arctan never gives 90° or -90°. It only gives angles strictly between -π/2 and π/2."
+      },
+      "questions": [
+        {
+          "id": "q4-7-3-1",
+          "type": "fill-blank",
+          "prompt": "arctan(0) = ___ (enter a number).",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "tan(0) = 0.",
+            "0 is in the range."
+          ],
+          "feedbackIfWrong": "arctan(0) = 0."
+        },
+        {
+          "id": "q4-7-3-2",
+          "type": "short-answer",
+          "prompt": "What is the range of y = arctan x? (Answer like '(-pi/2, pi/2)'.)",
+          "answer": "(-pi/2, pi/2)",
+          "hints": [
+            "Open interval, does not include -π/2 or π/2.",
+            "Answer is always between -π/2 and π/2."
+          ],
+          "feedbackIfWrong": "Range is (-π/2, π/2)."
+        },
+        {
+          "id": "q4-7-3-3",
+          "type": "short-answer",
+          "prompt": "True or false: arctan(1000) is undefined. (Answer 'False'.)",
+          "answer": "False",
+          "hints": [
+            "arctan accepts any real number.",
+            "It just gives a value close to π/2."
+          ],
+          "feedbackIfWrong": "False, arctan(1000) is defined."
+        }
+      ]
+    },
+    {
+      "id": "inverse-properties",
+      "title": "Cancellation Rules (Easy)",
+      "teacherCues": [
+        "Write: sin(arcsin x) = x (if x between -1 and 1). Ask: Does arcsin(sin 60°) always give 60°? (Only if 60° is in the range of arcsin, which it is not, but in radians? Actually 60° = π/3, and π/3 is in [-π/2, π/2] so yes. Provide example like sin(arcsin 0.8) = 0.8.",
+        "Then show a counterexample: arcsin(sin 120°). 120° is not between -90° and 90°, so you need to find a coterminal angle that is."
+      ],
+      "discoveryHook": {
+        "scenario": "If you lock a safe, then unlock it, you return to where you started. Inverse trig functions work like that, but only if the original angle was within the right range."
+      },
+      "concept": {
+        "explanation": [
+          "For any valid x: $ \\sin(\\arcsin x) = x $, $ \\cos(\\arccos x) = x $, $ \\tan(\\arctan x) = x $.",
+          "But $ \\arcsin(\\sin y) = y $ only if $ y $ is between $ -\\pi/2 $ and $ \\pi/2 $.",
+          "Similarly, $ \\arccos(\\cos y) = y $ only if $ y $ is between $ 0 $ and $ \\pi $.",
+          "$ \\arctan(\\tan y) = y $ only if $ y $ is between $ -\\pi/2 $ and $ \\pi/2 $ (not including endpoints).",
+          "If the angle is outside the range, find a coterminal angle inside the range first."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "When cancellation works",
+            "headers": [
+              "Expression",
+              "Equals y only if..."
+            ],
+            "rows": [
+              {
+                "0": "arcsin(sin y)",
+                "1": "y is between -π/2 and π/2"
+              },
+              {
+                "0": "arccos(cos y)",
+                "1": "y is between 0 and π"
+              },
+              {
+                "0": "arctan(tan y)",
+                "1": "y is between -π/2 and π/2"
+              }
+            ],
+            "caption": "If y is outside, adjust it to be inside the range."
+          }
+        ],
+        "formulaCard": {
+          "title": "Cancellation Rules",
+          "formula": "$$ \\sin(\\arcsin x) = x \\; (-1 \\le x \\le 1),\\quad \\arcsin(\\sin y) = y \\; ( -\\pi/2 \\!\\le\\! y \\!\\le\\! \\pi/2) $$",
+          "notes": [
+            "First rule always works within domain.",
+            "Second rule needs the output range condition."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "sin(arcsin 0.3)",
+          "prompt": "Simplify $ \\sin(\\arcsin 0.3) $.",
+          "steps": [
+            "0.3 is between -1 and 1, so the rule applies.",
+            "$ \\sin(\\arcsin 0.3) = 0.3 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "arcsin(sin 120°)",
+          "prompt": "Evaluate $ \\arcsin(\\sin 120°) $.",
+          "peerPrompt": "120° is not in [-90°,90°]. So first change 120° to an equivalent angle that is.",
+          "minLength": 2,
+          "steps": [
+            "sin 120° = sin 60° (sine is positive in QII, reference 60°).",
+            "60° (π/3) is in [-π/2, π/2].",
+            "So $ \\arcsin(\\sin 120°) = 60° $ or π/3."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "arccos(cos(-60°))",
+          "prompt": "Find $ \\arccos(\\cos(-60°)) $.",
+          "steps": [
+            "-60° is not in [0°,180°]. Use evenness: cos(-60°) = cos 60°.",
+            "60° is in [0°,180°].",
+            "So $ \\arccos(\\cos(-60°)) = 60° $ or π/3."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't just cancel blindly",
+        "body": "Always check if the original angle is in the allowed range before you cancel arcsin(sin y) or arccos(cos y)."
+      },
+      "questions": [
+        {
+          "id": "q4-7-4-1",
+          "type": "fill-blank",
+          "prompt": "$ \\cos(\\arccos 0.8) = $ ___ (just the number).",
+          "blanks": [
+            {
+              "accept": [
+                "0.8"
+              ]
+            }
+          ],
+          "hints": [
+            "0.8 is in [-1,1].",
+            "Cosine and arccos cancel."
+          ],
+          "feedbackIfWrong": "cos(arccos 0.8) = 0.8."
+        },
+        {
+          "id": "q4-7-4-2",
+          "type": "short-answer",
+          "prompt": "Evaluate $ \\arctan(\\tan(-\\pi/4)) $. (Answer like '-pi/4'.)",
+          "answer": "-pi/4",
+          "hints": [
+            "-π/4 is in the range (-π/2, π/2).",
+            "So they cancel."
+          ],
+          "feedbackIfWrong": "arctan(tan(-π/4)) = -π/4."
+        },
+        {
+          "id": "q4-7-4-3",
+          "type": "short-answer",
+          "prompt": "True or false: $ \\arcsin(\\sin \\pi) = \\pi $. (Answer 'False'.)",
+          "answer": "False",
+          "hints": [
+            "π is not between -π/2 and π/2.",
+            "sin π = 0, arcsin(0) = 0, not π."
+          ],
+          "feedbackIfWrong": "False, it's 0."
+        }
+      ]
+    },
+    {
+      "id": "compositions-right-triangle",
+      "title": "Compositions with Right Triangles (Easy)",
+      "teacherCues": [
+        "Draw a right triangle. Label one acute angle u. If you know sin u = 3/5, label opposite 3, hypotenuse 5, then find adjacent.",
+        "Show how to find cos(arcsin(3/5)) without a calculator."
+      ],
+      "discoveryHook": {
+        "scenario": "A skateboard ramp: the height is 4 feet, length is 5 feet. The sine of the angle is 4/5. Using a triangle, you can find the cosine of that angle (the base distance) as 3/5, without ever finding the angle itself."
+      },
+      "concept": {
+        "explanation": [
+          "To find something like $ \\cos(\\arcsin v) $, set $ u = \\arcsin v $, so $ \\sin u = v $.",
+          "Draw a right triangle with acute angle u. Opposite = v, hypotenuse = 1 (or scale). Find the adjacent side using Pythagorean theorem.",
+          "Then find the cosine (or other function) from the triangle sides.",
+          "If v is negative, put the angle in Quadrant IV (for arcsin) – opposite negative, hypotenuse positive – then find the missing side and keep signs correct.",
+          "This method works for any composition like $ \\sin(\\arctan x) $."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Triangle Setup for arcsin(v)",
+            "headers": [
+              "Side",
+              "Length"
+            ],
+            "rows": [
+              {
+                "0": "Opposite",
+                "1": "v (or |v|, sign later)"
+              },
+              {
+                "0": "Hypotenuse",
+                "1": "1"
+              },
+              {
+                "0": "Adjacent",
+                "1": "$ \\sqrt{1 - v^2} $ (positive)"
+              }
+            ],
+            "caption": "Use this for cos(arcsin v) = adjacent / hypotenuse = √(1 - v²)."
+          }
+        ],
+        "formulaCard": {
+          "title": "Triangle trick",
+          "formula": "$$ \\cos(\\arcsin v) = \\sqrt{1 - v^2} \\quad (-1 \\le v \\le 1) $$",
+          "notes": [
+            "Works for arcsin; similar for arctan.",
+            "If v is negative, the cosine will still be positive (since arcsin angle is in QI or IV where cos ≥ 0)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "cos(arcsin(3/5))",
+          "prompt": "Find the exact value of $ \\cos(\\arcsin\\frac{3}{5}) $.",
+          "steps": [
+            "Let u = arcsin(3/5), so sin u = 3/5, u in QI.",
+            "Triangle: opposite = 3, hypotenuse = 5. Adjacent = √(25 - 9) = 4.",
+            "cos u = adjacent/hypotenuse = 4/5."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "cos(arctan(1))",
+          "prompt": "Explain to a partner: why $ \\cos(\\arctan 1) = \\frac{\\sqrt{2}}{2} $?",
+          "peerPrompt": "arctan 1 = 45°, but without that, how would you use a triangle?",
+          "minLength": 2,
+          "steps": [
+            "Let u = arctan(1), so tan u = 1 = 1/1. u in QI.",
+            "Triangle: opposite = 1, adjacent = 1. Hypotenuse = √2.",
+            "cos u = adjacent/hypotenuse = 1/√2 = √2/2."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "sin(arctan(-2))",
+          "prompt": "Find $ \\sin(\\arctan(-2)) $ exactly.",
+          "steps": [
+            "Let u = arctan(-2), so tan u = -2 (QI or QIV; since tan negative, u in QIV).",
+            "Triangle: opposite = -2, adjacent = 1. Hypotenuse = √(4+1)=√5.",
+            "sin u = opposite/hypotenuse = -2/√5 = -2√5/5."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Signs from quadrant",
+        "body": "Always use the quadrant of u (determined by the inverse function) to assign the correct sign to sides."
+      },
+      "questions": [
+        {
+          "id": "q4-7-5-1",
+          "type": "short-answer",
+          "prompt": "If u = arcsin(5/13) and u is acute, what is cos u? (Fraction like '12/13'.)",
+          "answer": "12/13",
+          "hints": [
+            "sin u = 5/13, opposite=5, hyp=13.",
+            "adjacent = √(169-25)=12, cos = adj/hyp."
+          ],
+          "feedbackIfWrong": "cos u = 12/13."
+        },
+        {
+          "id": "q4-7-5-2",
+          "type": "fill-blank",
+          "prompt": "For u = arcsin(1/4), cos u = ___ (write as fraction like '√15/4').",
+          "blanks": [
+            {
+              "accept": [
+                "√15/4",
+                "sqrt(15)/4"
+              ]
+            }
+          ],
+          "hints": [
+            "Triangle: opposite=1, hyp=4, adj = √(16-1)=√15.",
+            "cos u = adj/hyp."
+          ],
+          "feedbackIfWrong": "cos u = √15/4."
+        },
+        {
+          "id": "q4-7-5-3",
+          "type": "short-answer",
+          "prompt": "Find cos(arctan(1)). (Answer as '√2/2' or 'sqrt(2)/2'.)",
+          "answer": "sqrt(2)/2",
+          "hints": [
+            "arctan(1) = 45°, but using triangle: adj=1, opp=1, hyp=√2.",
+            "cos = adj/hyp = 1/√2 = √2/2."
+          ],
+          "feedbackIfWrong": "cos(arctan(1)) = √2/2."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

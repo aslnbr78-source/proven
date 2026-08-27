@@ -1,0 +1,696 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "section-5-5-normal-approximations-to-binomial-distributions",
+  "title": "Normal Approximations",
+  "standards": [
+    "HSS.IC.B.4",
+    "HSS.MD.B.7"
+  ],
+  "blocks": [
+    {
+      "id": "when-to-approximate",
+      "title": "When to Use a Normal Approximation to a Binomial",
+      "teacherCues": [
+        "Ask: 'If a binomial experiment has n=150 and p=0.85, why is using the binomial formula for P(x<100) impractical?'",
+        "Write the conditions np ≥ 5 and nq ≥ 5 on the board. Emphasize these must both be true."
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine a doctor performs a surgical procedure with an 85% success rate on 150 patients. Finding the probability of fewer than 100 successes using the binomial formula would require summing 100 individual probabilities—a tedious task. A normal approximation turns this into a simple z-score problem!"
+      },
+      "concept": {
+        "explanation": [
+          "A binomial distribution can be approximated by a normal distribution when both $ n p \\ge 5 $ and $ n q \\ge 5 $.",
+          "If these conditions are met, the binomial random variable $x$ is approximately normally distributed.",
+          "The mean of the approximating normal distribution is $ \\mu = n p $.",
+          "The standard deviation is $ \\sigma = \\sqrt{n p q} $, where $ q = 1 - p $.",
+          "This approximation works well when $n$ is large enough that the distribution appears bell-shaped."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Normal Approximation Conditions",
+            "headers": [
+              "Condition",
+              "Value",
+              "Can Approximate?"
+            ],
+            "rows": [
+              {
+                "0": "$ n p $",
+                "1": "$ 45 \\times 0.62 = 27.9 $",
+                "2": "Yes (≥5)"
+              },
+              {
+                "0": "$ n q $",
+                "1": "$ 45 \\times 0.38 = 17.1 $",
+                "2": "Yes (≥5)"
+              },
+              {
+                "0": "$ n p $ for $p=0.12, n=30$",
+                "1": "$ 30 \\times 0.12 = 3.6 $",
+                "2": "No (<5)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Normal Approximation to Binomial",
+          "formula": "$$ \\mu = n p, \\qquad \\sigma = \\sqrt{n p q} $$",
+          "notes": [
+            "Only valid if $ n p \\ge 5 $ and $ n q \\ge 5 $.",
+            "$q = 1 - p$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Decide and Find Parameters",
+          "prompt": "Sixty-two percent of adults have an HDTV. You randomly select 45 adults and ask if they have an HDTV. Decide if you can use a normal approximation and find the mean and standard deviation.",
+          "steps": [
+            "Identify $n=45$, $p=0.62$, $q=0.38$.",
+            "Check $np = 45 \\times 0.62 = 27.9 \\ge 5$ and $nq = 45 \\times 0.38 = 17.1 \\ge 5$.",
+            "Both conditions met, so normal approximation is appropriate.",
+            "Mean $\\mu = np = 27.9$; standard deviation $\\sigma = \\sqrt{45 \\times 0.62 \\times 0.38} \\approx 3.26$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why Not Approximate?",
+          "prompt": "Twelve percent of adults without an HDTV plan to buy one. You randomly select 30 such adults. Decide if you can use a normal approximation and explain.",
+          "peerPrompt": "Explain to a partner: Which condition fails? Why does that matter?",
+          "minLength": 2,
+          "steps": [
+            "Identify $n=30$, $p=0.12$, $q=0.88$.",
+            "Compute $np = 30 \\times 0.12 = 3.6 < 5$.",
+            "Since $np < 5$, the normal approximation is not appropriate; the distribution is too skewed."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Planning to Buy 3D TV",
+          "prompt": "Five percent of adults plan to buy a 3D TV. You randomly select 125 adults. Decide if you can use a normal approximation and find the mean and standard deviation if so.",
+          "steps": [
+            "Identify $n=125$, $p=0.05$, $q=0.95$.",
+            "Check $np = 125 \\times 0.05 = 6.25 \\ge 5$ and $nq = 125 \\times 0.95 = 118.75 \\ge 5$.",
+            "Both conditions met.",
+            "Mean $\\mu = 6.25$; standard deviation $\\sigma = \\sqrt{125 \\times 0.05 \\times 0.95} \\approx 2.44$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check Both np and nq",
+        "body": "Both $ n p \\ge 5 $ and $ n q \\ge 5 $ must be true. If either is below 5, the binomial distribution is too skewed for a normal approximation."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "To use a normal approximation to a binomial distribution, both $ n p $ and $ n q $ must be at least ___.",
+          "blanks": [
+            {
+              "accept": [
+                "5"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the minimum threshold for each product.",
+            "The condition is often stated as $np \\ge 5$ and $nq \\ge 5$."
+          ],
+          "feedbackIfWrong": "Both products must be at least 5."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "For a binomial experiment with $n=50$, $p=0.3$, what is the mean $\\mu$?",
+          "answer": "15",
+          "hints": [
+            "Use $\\mu = n p$.",
+            "Multiply 50 by 0.3."
+          ],
+          "feedbackIfWrong": "$\\mu = 50 \\times 0.3 = 15$."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "If $n=20$, $p=0.85$, $q=0.15$, can you use a normal approximation? (yes/no)",
+          "answer": "no",
+          "hints": [
+            "Check $nq$.",
+            "$20 \\times 0.15 = 3$."
+          ],
+          "feedbackIfWrong": "No, because $nq = 3 < 5$."
+        }
+      ]
+    },
+    {
+      "id": "continuity-correction",
+      "title": "Applying the Continuity Correction",
+      "teacherCues": [
+        "Draw a binomial histogram bar centered at x = c. Shade the rectangle. Then overlay a normal curve and show the interval c−0.5 to c+0.5.",
+        "Ask: 'Why do we add or subtract 0.5 when approximating a discrete variable with a continuous one?'"
+      ],
+      "discoveryHook": {
+        "scenario": "A binomial distribution uses bars with width 1. A normal curve is continuous. To match them, we extend each discrete value by half a unit on each side. This 'continuity correction' ensures the area under the normal curve matches the binomial probability more accurately."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:continuity correction]] adjusts a discrete binomial interval to a continuous normal interval by adding or subtracting 0.5.",
+          "For $P(x \\ge c)$ (at least c), use $x > c - 0.5$.",
+          "For $P(x \\le c)$ (at most c), use $x < c + 0.5$.",
+          "For $P(x = c)$ (exactly c), use $c - 0.5 < x < c + 0.5$.",
+          "For intervals like 'between a and b inclusive', use $a - 0.5 < x < b + 0.5$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Continuity Correction Examples",
+            "headers": [
+              "Binomial Interval",
+              "Normal Interval"
+            ],
+            "rows": [
+              {
+                "0": "Between 270 and 310 inclusive",
+                "1": "$269.5 < x < 310.5$"
+              },
+              {
+                "0": "At least 158",
+                "1": "$x > 157.5$"
+              },
+              {
+                "0": "Fewer than 63",
+                "1": "$x < 62.5$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Continuity Correction Rule",
+          "formula": "$$ \\text{Discrete } c \\rightarrow \\text{Continuous interval } (c-0.5, c+0.5) $$",
+          "notes": [
+            "Add 0.5 to upper bound for ≤ or <.",
+            "Subtract 0.5 from lower bound for ≥ or >."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Inclusive Interval",
+          "prompt": "Convert the binomial probability of getting between 270 and 310 successes inclusive to a normal distribution interval.",
+          "steps": [
+            "The discrete values are 270, 271, ..., 310.",
+            "Include 0.5 below the lowest and 0.5 above the highest.",
+            "Normal interval: $269.5 < x < 310.5$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – At Least",
+          "prompt": "Convert the binomial probability of getting at least 158 successes to a normal distribution interval.",
+          "peerPrompt": "Explain to a partner: Why do you subtract 0.5 from 158 instead of adding?",
+          "minLength": 2,
+          "steps": [
+            "At least 158 includes 158, 159, ...",
+            "The lower bound is 158, so subtract 0.5 to include the entire bar for 158.",
+            "Normal interval: $x > 157.5$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Fewer Than",
+          "prompt": "Convert the binomial probability of getting fewer than 63 successes to a normal distribution interval.",
+          "steps": [
+            "Fewer than 63 means 0 through 62.",
+            "The highest integer included is 62, so add 0.5.",
+            "Normal interval: $x < 62.5$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Direction of Correction",
+        "body": "For 'at least', subtract 0.5 from the lower bound. For 'at most' or 'fewer than', add 0.5 to the upper bound. Getting the direction wrong reverses the inequality."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "When approximating a binomial probability with a normal distribution, you apply a ___ correction by adding or subtracting 0.5.",
+          "blanks": [
+            {
+              "accept": [
+                "continuity"
+              ]
+            }
+          ],
+          "hints": [
+            "The word starts with 'c'.",
+            "It adjusts for the discrete nature of the binomial."
+          ],
+          "feedbackIfWrong": "It is called a continuity correction."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "For the binomial probability $P(x \\le 109)$, what normal interval should you use?",
+          "answer": "x < 109.5",
+          "hints": [
+            "At most 109 includes 109.",
+            "Add 0.5 to the upper bound."
+          ],
+          "feedbackIfWrong": "Use $x < 109.5$."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "For the binomial probability $P(x > 109)$, what normal interval should you use?",
+          "answer": "x > 109.5",
+          "hints": [
+            "Greater than 109 means 110 and above.",
+            "Subtract 0.5 from 110 or add 0.5 to 109."
+          ],
+          "feedbackIfWrong": "Use $x > 109.5$."
+        }
+      ]
+    },
+    {
+      "id": "approximating-binomial-probabilities",
+      "title": "Approximating Binomial Probabilities",
+      "teacherCues": [
+        "Walk through the steps: verify conditions, compute μ and σ, apply continuity correction, find z-score, use table.",
+        "Use Example 3 (fewer than 20 respond yes) to illustrate the full process."
+      ],
+      "discoveryHook": {
+        "scenario": "With the normal approximation, a binomial probability that would require summing many terms becomes a simple matter of finding a z-score and looking up an area. This is the power of the Central Limit Theorem applied to binomial data."
+      },
+      "concept": {
+        "explanation": [
+          "To approximate a binomial probability using a normal distribution, follow these steps.",
+          "1. Verify $ n p \\ge 5 $ and $ n q \\ge 5 $.",
+          "2. Compute the mean $ \\mu = n p $ and standard deviation $ \\sigma = \\sqrt{n p q} $.",
+          "3. Apply the continuity correction to rewrite the probability in terms of a normal interval.",
+          "4. Convert the boundary to a z-score using $ z = \\frac{x - \\mu}{\\sigma} $.",
+          "5. Use the standard normal table to find the probability."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Steps for Normal Approximation",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Check np ≥ 5 and nq ≥ 5."
+              },
+              {
+                "0": "2",
+                "1": "Compute μ = np and σ = √(npq)."
+              },
+              {
+                "0": "3",
+                "1": "Apply continuity correction."
+              },
+              {
+                "0": "4",
+                "1": "Find z-score(s)."
+              },
+              {
+                "0": "5",
+                "1": "Use standard normal table."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Z-Score for Normal Approximation",
+          "formula": "$$ z = \\frac{x - \\mu}{\\sigma} = \\frac{x - n p}{\\sqrt{n p q}} $$",
+          "notes": [
+            "Use the continuity-corrected x-value.",
+            "σ is the standard deviation of the binomial distribution."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Fewer Than 20 Respond Yes",
+          "prompt": "Sixty-two percent of adults have an HDTV. You select 45 adults. Find the probability that fewer than 20 respond yes.",
+          "steps": [
+            "From earlier, $\\mu = 27.9$, $\\sigma \\approx 3.26$. Normal approximation is valid.",
+            "Continuity correction: fewer than 20 becomes $x < 19.5$.",
+            "Compute $z = \\frac{19.5 - 27.9}{3.26} \\approx -2.58$.",
+            "Table area left of -2.58 is 0.0049. So probability ≈ 0.0049."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – At Least 120 Never Wear Helmet",
+          "prompt": "Fifty-eight percent of adults never wear a helmet when riding. You select 200 adults. Find the probability that at least 120 say they never wear a helmet.",
+          "peerPrompt": "Explain to a partner: Why do you use 119.5 instead of 120 in the z-score?",
+          "minLength": 2,
+          "steps": [
+            "Check: $np = 200 \\times 0.58 = 116$, $nq = 200 \\times 0.42 = 84$; both ≥ 5.",
+            "Mean $\\mu = 116$, $\\sigma = \\sqrt{200 \\times 0.58 \\times 0.42} \\approx 6.98$.",
+            "Continuity correction: at least 120 becomes $x > 119.5$.",
+            "$z = \\frac{119.5 - 116}{6.98} \\approx 0.50$; area right = $1 - 0.6915 = 0.3085$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – More Than 9 Respond Yes",
+          "prompt": "Five percent of adults plan to buy a 3D TV. You select 125 adults. Find the probability that more than 9 respond yes.",
+          "steps": [
+            "Mean $\\mu = 125 \\times 0.05 = 6.25$, $\\sigma = \\sqrt{125 \\times 0.05 \\times 0.95} \\approx 2.44$.",
+            "Continuity correction: more than 9 becomes $x > 9.5$.",
+            "$z = \\frac{9.5 - 6.25}{2.44} \\approx 1.33$.",
+            "Area right = $1 - 0.9082 = 0.0918$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Continuity Correction Before Z-Score",
+        "body": "Always apply the continuity correction before computing the z-score. If you skip it, the probability may be noticeably off, especially for small to moderate n."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "In the normal approximation, the z-score formula uses the ___ of the binomial distribution in the denominator.",
+          "blanks": [
+            {
+              "accept": [
+                "standard deviation"
+              ]
+            }
+          ],
+          "hints": [
+            "It is $\\sqrt{npq}$.",
+            "Not the standard error; this is a single sample of counts."
+          ],
+          "feedbackIfWrong": "The denominator is the standard deviation $\\sigma = \\sqrt{npq}$."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "For $n=45$, $p=0.62$, $\\mu=27.9$, $\\sigma=3.26$, and continuity-corrected x=19.5, what is the z-score? Round to two decimal places.",
+          "answer": "-2.58",
+          "hints": [
+            "$z = (19.5 - 27.9)/3.26$.",
+            "The result is negative."
+          ],
+          "feedbackIfWrong": "$z = \\frac{19.5 - 27.9}{3.26} \\approx -2.58$."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "If the area to the left of z = -2.58 is 0.0049, what is the probability that fewer than 20 respond yes?",
+          "answer": "0.0049",
+          "hints": [
+            "The table gives the cumulative area directly.",
+            "No subtraction needed."
+          ],
+          "feedbackIfWrong": "The probability is 0.0049."
+        }
+      ]
+    },
+    {
+      "id": "approximating-exact-probabilities",
+      "title": "Approximating 'Exactly' Probabilities",
+      "teacherCues": [
+        "Explain that for P(x = c), the continuity interval is c−0.5 to c+0.5.",
+        "Use Example 5 with exactly 96 to show two z-scores and subtract areas."
+      ],
+      "discoveryHook": {
+        "scenario": "What if you need the probability of exactly 96 successes? The normal approximation treats this as the area under the curve between 95.5 and 96.5. Two z-scores and a subtraction give the answer—far faster than the binomial formula for large n."
+      },
+      "concept": {
+        "explanation": [
+          "To approximate $P(x = c)$ with a normal distribution, use the continuity interval $c - 0.5 < x < c + 0.5$.",
+          "Find the z-score for $c - 0.5$ and for $c + 0.5$.",
+          "The probability is the difference of the two cumulative areas.",
+          "This works because for a continuous distribution, the probability of an interval equals the area under the curve over that interval.",
+          "Remember: $P(x = c) \\approx P(c - 0.5 < x < c + 0.5)$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Exact Value Approximation",
+            "headers": [
+              "Binomial",
+              "Normal Interval",
+              "Z-Scores"
+            ],
+            "rows": [
+              {
+                "0": "$P(x = c)$",
+                "1": "$c - 0.5 < x < c + 0.5$",
+                "2": "$z_1 = \\frac{c-0.5-\\mu}{\\sigma}$, $z_2 = \\frac{c+0.5-\\mu}{\\sigma}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Approximating Exactly c",
+          "formula": "$$ P(x = c) \\approx P(z_1 < z < z_2) $$",
+          "notes": [
+            "$z_1 = \\frac{c-0.5 - \\mu}{\\sigma}$, $z_2 = \\frac{c+0.5 - \\mu}{\\sigma}$.",
+            "Then subtract table areas."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Exactly 96 Use Internet Explorer",
+          "prompt": "Sixty-two percent of Internet users use Internet Explorer. You select 150 users. Find the probability that exactly 96 say yes.",
+          "steps": [
+            "Check: $np = 150 \\times 0.62 = 93$, $nq = 57$; both ≥ 5.",
+            "Mean $\\mu = 93$, $\\sigma = \\sqrt{150 \\times 0.62 \\times 0.38} \\approx 5.94$.",
+            "Continuity interval: $95.5 < x < 96.5$.",
+            "z-scores: $z_1 = \\frac{95.5-93}{5.94} \\approx 0.42$, $z_2 = \\frac{96.5-93}{5.94} \\approx 0.59$. Areas: 0.6628 and 0.7224. Probability = 0.7224 - 0.6628 = 0.0596."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Exactly 27 Use Firefox",
+          "prompt": "Twenty-four percent of Internet users use Firefox. You select 150 users. Find the probability that exactly 27 say yes.",
+          "peerPrompt": "Explain to a partner: Why do you need two z-scores for an 'exactly' probability?",
+          "minLength": 2,
+          "steps": [
+            "Check: $np = 150 \\times 0.24 = 36$, $nq = 114$; both ≥ 5.",
+            "Mean $\\mu = 36$, $\\sigma = \\sqrt{150 \\times 0.24 \\times 0.76} \\approx 5.23$.",
+            "Continuity interval: $26.5 < x < 27.5$.",
+            "z-scores: $z_1 = \\frac{26.5-36}{5.23} \\approx -1.82$, $z_2 = \\frac{27.5-36}{5.23} \\approx -1.63$. Areas: 0.0344 and 0.0516. Probability ≈ 0.0516 - 0.0344 = 0.0172."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Exactly 50 Use Internet",
+          "prompt": "Seventy percent of adults ages 50-64 use the Internet. You select 80 adults. Find the probability that exactly 50 say yes.",
+          "steps": [
+            "Mean $\\mu = 80 \\times 0.70 = 56$, $\\sigma = \\sqrt{80 \\times 0.70 \\times 0.30} \\approx 4.10$.",
+            "Continuity interval: $49.5 < x < 50.5$.",
+            "z-scores: $z_1 = \\frac{49.5-56}{4.10} \\approx -1.59$, $z_2 = \\frac{50.5-56}{4.10} \\approx -1.34$.",
+            "Areas: 0.0559 and 0.0901. Probability = 0.0901 - 0.0559 = 0.0342."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Exact vs. At Least",
+        "body": "For 'exactly c', use the interval (c−0.5, c+0.5). For 'at least c', use x > c−0.5. The two are different and require different boundaries."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "To approximate $P(x = c)$ with a normal distribution, use the interval $c - 0.5 < x < c + $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "0.5"
+              ]
+            }
+          ],
+          "hints": [
+            "It is half a unit above c.",
+            "The interval is symmetric around c."
+          ],
+          "feedbackIfWrong": "The upper bound is $c + 0.5$."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "For $\\mu = 93$, $\\sigma = 5.94$, what is the z-score for $x = 95.5$? Round to two decimal places.",
+          "answer": "0.42",
+          "hints": [
+            "$z = (95.5 - 93)/5.94$.",
+            "The result is positive."
+          ],
+          "feedbackIfWrong": "$z = \\frac{95.5 - 93}{5.94} \\approx 0.42$."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "If the areas for z = 0.42 and z = 0.59 are 0.6628 and 0.7224, what is the probability of exactly 96 successes?",
+          "answer": "0.0596",
+          "hints": [
+            "Subtract the smaller area from the larger area.",
+            "$0.7224 - 0.6628$."
+          ],
+          "feedbackIfWrong": "Probability = 0.7224 - 0.6628 = 0.0596."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-normal-approximation",
+      "title": "Blueprint Aid – Solving Normal Approximation Problems",
+      "teacherCues": [
+        "Display Understand → Solve → Conclude. Walk through a full binomial approximation problem, e.g., at most 75 favorite sport.",
+        "Emphasize: Understand verifies conditions; Solve applies continuity correction and z-score; Conclude interprets probability."
+      ],
+      "discoveryHook": {
+        "scenario": "The blueprint keeps you organized when approximating binomial probabilities. Understand the problem and check conditions, Solve with mean, standard deviation, continuity correction, and z-scores, then Conclude with the probability and its meaning."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]] – Read the problem. Identify n, p, q. Verify $ n p \\ge 5 $ and $ n q \\ge 5 $. Determine the type of probability (≤, ≥, <, >, =) and the required continuity correction.",
+          "[[imp:Solve]] – Compute $ \\mu = n p $ and $ \\sigma = \\sqrt{n p q} $. Apply the continuity correction. Find z-score(s). Use the standard normal table to find the probability.",
+          "[[imp:Conclude]] – State the probability. Determine if unusual (< 0.05). Interpret in context."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Normal Approximation",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify n, p, q; check conditions; determine continuity correction."
+              },
+              {
+                "0": "Solve",
+                "1": "Compute μ and σ; find z; use table."
+              },
+              {
+                "0": "Conclude",
+                "1": "State probability; check unusual; interpret."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Key Formulas",
+          "formula": "$$ \\mu = n p, \\quad \\sigma = \\sqrt{n p q}, \\quad z = \\frac{x - \\mu}{\\sigma} $$",
+          "notes": [
+            "Use continuity-corrected x.",
+            "For exactly c, use two z-scores."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full Blueprint: At Most 75",
+          "prompt": "Use blueprint: 35% of adults say favorite sport is football. You select 150 adults. Find probability at most 75 say yes.",
+          "steps": [
+            "Understand: $n=150$, $p=0.35$, $q=0.65$. Check $np=52.5$, $nq=97.5$; both ≥5. At most 75 includes 75, so continuity correction $x < 75.5$.",
+            "Solve: $\\mu = 52.5$, $\\sigma = \\sqrt{150 \\times 0.35 \\times 0.65} \\approx 5.84$. $z = \\frac{75.5 - 52.5}{5.84} \\approx 3.94$. Area left ≈ 0.9999.",
+            "Conclude: Probability ≈ 0.9999, not unusual."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Full Blueprint: More Than 40",
+          "prompt": "Using same data, find probability more than 40 say yes.",
+          "peerPrompt": "Explain to a partner: Why do we use 40.5 instead of 40?",
+          "minLength": 2,
+          "steps": [
+            "Understand: More than 40 means x > 40, continuity correction x > 40.5.",
+            "Solve: $z = \\frac{40.5 - 52.5}{5.84} \\approx -2.05$. Area right = $1 - 0.0202 = 0.9798$.",
+            "Conclude: Probability ≈ 0.9798."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Decide and Compute",
+          "prompt": "Use blueprint: 34% of workers are college graduates. You select 50 workers. Find probability that more than 23 are graduates.",
+          "steps": [
+            "Understand: $n=50$, $p=0.34$, $q=0.66$. Check $np=17$, $nq=33$; both ≥5. More than 23 means x > 23.5.",
+            "Solve: $\\mu = 17$, $\\sigma = \\sqrt{50 \\times 0.34 \\times 0.66} \\approx 3.36$. $z = \\frac{23.5 - 17}{3.36} \\approx 1.93$. Area right = $1 - 0.9732 = 0.0268$.",
+            "Conclude: Probability = 0.0268, unusual (<0.05)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Continuity Correction Direction",
+        "body": "Always confirm the direction: at most includes the endpoint, so add 0.5; more than excludes the endpoint, so add 0.5; at least includes, so subtract 0.5; fewer than excludes, so subtract 0.5. If unsure, list the integers included."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "In the Understand phase, what two products must be at least 5?",
+          "answer": "np and nq",
+          "hints": [
+            "They involve n, p, and q.",
+            "The conditions are np ≥ 5 and nq ≥ 5."
+          ],
+          "feedbackIfWrong": "Check $np$ and $nq$."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "In the Solve phase, apply the continuity correction, then compute the ___ using $z = \\frac{x - \\mu}{\\sigma}$.",
+          "blanks": [
+            {
+              "accept": [
+                "z-score"
+              ]
+            }
+          ],
+          "hints": [
+            "It standardizes the boundary.",
+            "Starts with 'z'."
+          ],
+          "feedbackIfWrong": "Compute the z-score."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "If a probability is 0.0268, is the event unusual? (yes/no)",
+          "answer": "yes",
+          "hints": [
+            "Compare to 0.05.",
+            "0.0268 < 0.05."
+          ],
+          "feedbackIfWrong": "Yes, 0.0268 < 0.05, so unusual."
+        }
+      ]
+    }
+  ],
+  "presenterNotes": [
+    "Start by motivating why a normal approximation is needed for large n. Use a histogram of binomial distributions for different n to show convergence to normal.",
+    "Drill the conditions np ≥ 5 and nq ≥ 5. Emphasize both must hold.",
+    "The continuity correction is the trickiest part. Use visual aids with bars and curves to show why 0.5 is added or subtracted.",
+    "Practice all forms: ≤, ≥, <, >, =. Students often confuse the direction of the correction.",
+    "The blueprint helps structure multi-step problems. Encourage students to always verify conditions first."
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "When should you use a t‑distribution instead of a normal distribution to construct a confidence interval for the mean?",
+      "type": "multiple-choice",
+      "feedbackIfWrong": "The t‑distribution is used when $\\sigma$ is unknown and $n < 30$, provided the population is approximately normal.",
+      "hints": [
+        "Think about whether you know $\\sigma$ or only have $s$.",
+        "The t‑distribution is used to account for extra uncertainty."
+      ],
+      "correctIndex": 1,
+      "options": [
+        "When the population standard deviation is known and the sample size is large.",
+        "When the population standard deviation is unknown and the sample size is small.",
+        "When the sample mean is large.",
+        "When the sample size is exactly 30."
+      ]
+    },
+    {
+      "id": "q2",
+      "blanks": [
+        {
+          "accept": [
+            "9",
+            "nine"
+          ]
+        }
+      ],
+      "type": "fill-blank",
+      "feedbackIfWrong": "d.f. = n – 1 = 9.",
+      "hints": [
+        "Degrees of freedom = $n - 1$.",
+        "10 – 1 = ?"
+      ],
+      "prompt": "For a sample of size $n=10$, the degrees of freedom for the t‑distribution is ___."
+    },
+    {
+      "feedbackIfWrong": "With d.f. = 15, $t_c = 2.131$ for 95% confidence.",
+      "hints": [
+        "d.f. = 15.",
+        "Look in the t‑table under 95% and row 15."
+      ],
+      "type": "short-answer",
+      "prompt": "Find the critical value $t_c$ for a 95% confidence interval with $n=16$. (Assume a two‑tailed table value.)",
+      "id": "q3",
+      "answers": [
+        "2.131",
+        "2.131"
+      ],
+      "answer": "2.131"
+    },
+    {
+      "prompt": "Which distribution has thicker tails?",
+      "hints": [
+        "Thicker tails mean more area in the extremes.",
+        "This reflects extra uncertainty when $\\sigma$ is unknown."
+      ],
+      "id": "q4",
+      "type": "multiple-choice",
+      "correctIndex": 1,
+      "feedbackIfWrong": "The t‑distribution, especially with few degrees of freedom, has thicker tails than the standard normal distribution.",
+      "options": [
+        "The standard normal distribution.",
+        "The t‑distribution with 2 degrees of freedom.",
+        "Both have the same tail thickness.",
+        "The normal distribution always has thicker tails."
+      ]
+    },
+    {
+      "prompt": "In a t‑confidence interval, the margin of error is $t_c$ multiplied by the ___ error of the mean.",
+      "hints": [
+        "It is $s / \\sqrt{n}$.",
+        "Two words, second word is 'error'."
+      ],
+      "id": "q5",
+      "type": "fill-blank",
+      "feedbackIfWrong": "The margin of error is $t_c \\times (s / \\sqrt{n})$, and $s/\\sqrt{n}$ is the standard error.",
+      "blanks": [
+        {
+          "accept": [
+            "standard",
+            "Standard"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "A sample of 16 coffee temperatures has $\\bar{x}=162.0$, $s=10.0$. For 95% confidence ($t_c=2.131$), compute the margin of error. (Round to one decimal.)",
+      "hints": [
+        "Use $E = t_c \\times s / \\sqrt{n}$.",
+        "$2.131 \\times 10.0 / 4 = ?$"
+      ],
+      "type": "short-answer",
+      "answers": [
+        "5.3",
+        "5.3"
+      ],
+      "answer": "5.3",
+      "id": "q6",
+      "feedbackIfWrong": "$E = 2.131 \\times 10.0 / 4 = 5.3$ (rounded)."
+    },
+    {
+      "id": "q7",
+      "correctIndex": 1,
+      "options": [
+        "There is a 95% chance that $\\mu$ is between 156.7 and 167.3.",
+        "We are 95% confident that $\\mu$ lies between 156.7 and 167.3.",
+        "95% of the coffee temperatures are between 156.7 and 167.3.",
+        "The sample mean has a 95% probability of being exactly 162.0."
+      ],
+      "hints": [
+        "Confidence refers to the method, not a probability for a specific interval.",
+        "We say 'confident', not 'chance'."
+      ],
+      "feedbackIfWrong": "We are 95% confident that the interval captures the true population mean $\\mu$.",
+      "prompt": "A 95% t‑confidence interval for $\\mu$ is (156.7, 167.3). Which is the correct interpretation?",
+      "type": "multiple-choice"
+    },
+    {
+      "feedbackIfWrong": "The t‑interval is wider because $t_c > z_c$, giving a larger margin of error.",
+      "answer": "larger",
+      "prompt": "Why is a t‑confidence interval wider than a z‑confidence interval for the same data? (Answer: because $t_c$ is ___)",
+      "answers": [
+        "larger",
+        "bigger",
+        "greater"
+      ],
+      "type": "short-answer",
+      "id": "q8",
+      "hints": [
+        "Compare the critical values.",
+        "The t‑distribution has thicker tails, so you must go further out."
+      ]
+    },
+    {
+      "feedbackIfWrong": "=T.INV.2T(0.05, 14) returns the two‑tailed critical value.",
+      "options": [
+        "=T.INV(0.95, 14)",
+        "=T.INV.2T(0.05, 14)",
+        "=T.DIST(0.05, 14)",
+        "=CONFIDENCE.T(0.05, 14)"
+      ],
+      "id": "q9",
+      "type": "multiple-choice",
+      "correctIndex": 1,
+      "hints": [
+        "The function uses the total tail area, not the confidence level.",
+        "Total tail area $= 1 - 0.95 = 0.05$."
+      ],
+      "prompt": "In Google Sheets, which function returns the two‑tailed critical value $t_c$ for a 95% confidence interval with 14 degrees of freedom?"
+    },
+    {
+      "feedbackIfWrong": "Use the normal (z) distribution when $\\sigma$ is known.",
+      "blanks": [
+        {
+          "accept": [
+            "normal",
+            "z",
+            "Normal",
+            "Z"
+          ]
+        }
+      ],
+      "type": "fill-blank",
+      "prompt": "If the population standard deviation $\\sigma$ is known and the population is normal, you should use the ___ distribution to construct a confidence interval, even for a small sample.",
+      "id": "q10",
+      "hints": [
+        "The t‑distribution is only needed when $\\sigma$ is unknown.",
+        "This distribution uses $\\sigma$ directly in the formula."
+      ]
+    },
+    {
+      "type": "short-answer",
+      "feedbackIfWrong": "$E = 2.365 \\times 7.2 / \\sqrt{8} \\approx 6.02$.",
+      "hints": [
+        "$E = 2.365 \\times 7.2 / \\sqrt{8}$.",
+        "$7.2 / 2.828 \\approx 2.546$, times 2.365 ≈ ?"
+      ],
+      "answer": "6.02",
+      "prompt": "A sample of 8 commute times has $\\bar{x}=35.5$, $s=7.2$. For 95% confidence, $t_c=2.365$. Compute the margin of error. (Round to two decimals.)",
+      "answers": [
+        "6.02",
+        "6.02"
+      ],
+      "id": "q11"
+    },
+    {
+      "prompt": "Which of the following is required to use a t‑interval for a small sample?",
+      "hints": [
+        "The t‑distribution assumes a particular shape for the population.",
+        "Normality is a key condition."
+      ],
+      "options": [
+        "The sample must be exactly of size 30.",
+        "The population must be approximately normally distributed.",
+        "The population standard deviation must be known.",
+        "The sample mean must be positive."
+      ],
+      "type": "multiple-choice",
+      "feedbackIfWrong": "The population must be approximately normal for the t‑interval to be valid.",
+      "id": "q12",
+      "correctIndex": 1
+    },
+    {
+      "blanks": [
+        {
+          "accept": [
+            "standard",
+            "Standard"
+          ]
+        }
+      ],
+      "hints": [
+        "It's the z‑distribution.",
+        "The mean is 0 and standard deviation is 1."
+      ],
+      "type": "fill-blank",
+      "feedbackIfWrong": "The t‑distribution approaches the standard normal distribution as d.f. increase.",
+      "prompt": "As the degrees of freedom increase, the t‑distribution approaches the ___ normal distribution.",
+      "id": "q13"
+    },
+    {
+      "id": "q14",
+      "type": "short-answer",
+      "answer": "t",
+      "hints": [
+        "$n < 30$ and $\\sigma$ unknown, but normal population.",
+        "This is exactly the t‑distribution case."
+      ],
+      "answers": [
+        "t",
+        "T"
+      ],
+      "prompt": "If $n=25$, $\\sigma$ is unknown, and the population is normal, should you use z or t? (Answer with one letter.)",
+      "feedbackIfWrong": "Use the t‑distribution."
+    },
+    {
+      "hints": [
+        "Look at the critical values.",
+        "$t_c$ is larger than $z_c$."
+      ],
+      "type": "multiple-choice",
+      "id": "q15",
+      "options": [
+        "Narrower.",
+        "Wider.",
+        "The same width.",
+        "Sometimes narrower, sometimes wider."
+      ],
+      "feedbackIfWrong": "The t‑interval is wider because $t_c > z_c$.",
+      "prompt": "Compared to a z‑interval, a t‑interval with the same data and confidence level will be:",
+      "correctIndex": 1
+    }
+  ],
+  "type": "quiz",
+  "id": "chapter-6-2-quiz",
+  "title": "Confidence Intervals for the Mean (Small Samples)",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

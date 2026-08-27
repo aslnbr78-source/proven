@@ -1,0 +1,682 @@
+{
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Emphasize the pooled estimate concept — it's the only new piece compared to the one‑sample proportion test.",
+    "Students often confuse when to use $\\bar{p}$ vs. sample proportions in the standard error. Reinforce that the test statistic always uses $\\bar{p}$.",
+    "Use technology to compute z and p‑values quickly, but ensure students can also do the four condition checks by hand."
+  ],
+  "schemaVersion": 2,
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.A.1",
+    "HSS.IC.B.4"
+  ],
+  "title": "Testing the Difference Between Proportions",
+  "blocks": [
+    {
+      "confusionCorner": {
+        "title": "Check Conditions with Pooled $\\bar{p}$, Not Sample Proportions",
+        "body": "The rule $n_1p \\ge 5$ and the others refer to the pooled $\\bar{p}$ under $H_0$, not $\\hat{p}_1$ and $\\hat{p}_2$. [[imp:Always compute $\\bar{p}$ first, then check the four conditions.]]"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Compute $x_1 = 0.86 \\times 150 = 129$, $x_2 = 0.74 \\times 200 = 148$.",
+            "Pooled estimate $\\bar{p} = (129+148)/(150+200) = 277/350 \\approx 0.7914$, $\\bar{q} = 0.2086$.",
+            "Check: $n_1\\bar{p} = 150 \\times 0.7914 \\approx 118.7 \\ge 5$, $n_1\\bar{q} = 31.3 \\ge 5$, $n_2\\bar{p} = 158.3 \\ge 5$, $n_2\\bar{q} = 41.7 \\ge 5$.",
+            "All four values are $\\ge 5$, so the normal approximation can be used."
+          ],
+          "title": "Example A – Checking Conditions",
+          "role": "guided",
+          "prompt": "In a survey, 86% of 150 car occupants and 74% of 200 truck occupants wore seat belts. Is the normal approximation appropriate?"
+        },
+        {
+          "title": "Example B – Why Pool the Proportions?",
+          "minLength": 8,
+          "prompt": "Explain why we combine the two samples to get a single estimate $\\bar{p}$ under $H_0$.",
+          "steps": [
+            "Under $H_0$, both samples come from populations with the same $p$, so it makes sense to combine all successes and trials.",
+            "The pooled estimate $\\bar{p} = (x_1 + x_2)/(n_1 + n_2)$ is a weighted average that gives more influence to the larger sample.",
+            "This yields a more precise estimate of the common proportion than either sample proportion alone."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If $H_0$ says the two population proportions are equal, what single number best estimates that common proportion?"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Hypotheses Setup",
+          "prompt": "A study claims the proportion of male students who smoke is different from the proportion of female students. Write $H_0$ and $H_a$.",
+          "steps": [
+            "The claim is 'different', so it is a two‑tailed test.",
+            "$H_0: p_1 = p_2$ (no difference).",
+            "$H_a: p_1 \\ne p_2$ (there is a difference)."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "answer": "pooled",
+          "id": "q8-4-1",
+          "prompt": "What do we call $\\bar{p}$, the combined estimate of the common population proportion? (One word)",
+          "feedbackIfWrong": "The combined estimate is called the pooled estimate $\\bar{p}$.",
+          "type": "short-answer",
+          "hints": [
+            "It's a weighted average of the two sample proportions.",
+            "The word starts with 'p'."
+          ]
+        },
+        {
+          "hints": [
+            "They all involve $n_i \\bar{p}$ and $n_i \\bar{q}$ being at least 5.",
+            "There are two samples, each with two checks."
+          ],
+          "feedbackIfWrong": "You need four checks: $n_1\\bar{p} \\ge 5$, $n_1\\bar{q} \\ge 5$, $n_2\\bar{p} \\ge 5$, $n_2\\bar{q} \\ge 5$.",
+          "id": "q8-4-2",
+          "type": "short-answer",
+          "prompt": "How many conditions must be checked to use the normal approximation in the two‑sample proportion z‑test? (A number)",
+          "answer": "4"
+        },
+        {
+          "id": "q8-4-3",
+          "type": "fill-blank",
+          "prompt": "Under $H_0: p_1 = p_2$, the test statistic uses the ___ estimate of the common proportion.",
+          "feedbackIfWrong": "The pooled (or combined) estimate $\\bar{p}$ is used.",
+          "hints": [
+            "It's the same word as in question 1.",
+            "It is denoted $\\bar{p}$."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "pooled",
+                "combined",
+                "weighted"
+              ]
+            }
+          ]
+        }
+      ],
+      "title": "Two‑Sample z‑Test for Proportions",
+      "discoveryHook": {
+        "scenario": "A medical team wants to know if a new drug reduces the chance of getting diabetes. They give the drug to 2,623 people and a placebo to 2,646. 17.1% of the drug group got diabetes, and 18.5% of the placebo group did. Is that difference real, or just random fluctuation? The two‑sample z‑test for proportions tells us."
+      },
+      "teacherCues": [
+        "Write the formula for a one‑sample proportion z‑test on the board. Then extend it to two samples.",
+        "Ask: When comparing two percentages, why can't we just subtract and use a one‑sample test?"
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Two‑Sample z‑Test for Proportions (Conditions)",
+          "formula": "$$ \\text{Check: } n_1\\bar{p} \\ge 5,\\; n_1\\bar{q} \\ge 5,\\; n_2\\bar{p} \\ge 5,\\; n_2\\bar{q} \\ge 5 $$",
+          "notes": [
+            "Use $\\bar{p}$ and $\\bar{q} = 1 - \\bar{p}$ for the checks.",
+            "Samples must be independent and random.",
+            "The normal approximation to the binomial must be valid."
+          ]
+        },
+        "explanation": [
+          "We compare two [[kw:population proportions]] $p_1$ and $p_2$ using independent random samples.",
+          "The [[kw:sample proportions]] are $\\hat{p}_1 = x_1/n_1$ and $\\hat{p}_2 = x_2/n_2$, where $x$ is the number of successes.",
+          "The test statistic is based on $\\hat{p}_1 - \\hat{p}_2$. Under $H_0: p_1 = p_2$, the two proportions are equal, so we pool the data to estimate the common proportion.",
+          "Three conditions must be met: (1) samples are random, (2) samples are independent, (3) the sample sizes are large enough: $n_1 p \\ge 5$, $n_1 q \\ge 5$, $n_2 p \\ge 5$, $n_2 q \\ge 5$, where $p$ is the pooled estimate."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$p_1, p_2$",
+                "1": "Population proportions"
+              },
+              {
+                "0": "$\\hat{p}_1, \\hat{p}_2$",
+                "1": "Sample proportions"
+              },
+              {
+                "0": "$x_1, x_2$",
+                "1": "Number of successes in each sample"
+              },
+              {
+                "0": "$n_1, n_2$",
+                "1": "Sample sizes"
+              },
+              {
+                "0": "$\\bar{p}$",
+                "1": "Weighted (pooled) estimate of $p$"
+              }
+            ],
+            "headers": [
+              "Symbol",
+              "Meaning"
+            ],
+            "variant": "colorful",
+            "title": "Notation for Two‑Sample Proportion z‑Test",
+            "type": "table"
+          }
+        ]
+      },
+      "id": "two-sample-z-test-proportions-intro"
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Once we agree that the two groups might have the same proportion, we can combine all the data into one big group to get the best estimate of that proportion. This simple idea gives us the pooled $\\bar{p}$ and a special standard error formula."
+      },
+      "id": "pooled-estimate-standard-error",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Numerator: observed difference in sample proportions.",
+            "Denominator: standard error under $H_0$ using $\\bar{p}$.",
+            "Compare $z$ to critical values from the standard normal distribution."
+          ],
+          "formula": "$$ z = \\frac{\\hat{p}_1 - \\hat{p}_2}{\\sqrt{\\bar{p}\\bar{q}\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}} $$",
+          "title": "z‑Test Statistic for Two Proportions"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Formula",
+              "Example (cars/trucks)"
+            ],
+            "rows": [
+              {
+                "0": "Pooled $\\bar{p}$",
+                "1": "$\\bar{p} = \\frac{x_1+x_2}{n_1+n_2}$",
+                "2": "$\\frac{129+148}{150+200} = 0.7914$"
+              },
+              {
+                "0": "$\\bar{q}$",
+                "1": "$1-\\bar{p}$",
+                "2": "$0.2086$"
+              },
+              {
+                "0": "Standard error",
+                "1": "$\\sqrt{\\bar{p}\\bar{q}(1/n_1+1/n_2)}$",
+                "2": "$\\sqrt{0.7914\\times0.2086(1/150+1/200)}\\approx 0.0439$"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Computing the Pooled Estimate and Standard Error"
+          }
+        ],
+        "explanation": [
+          "The [[kw:pooled estimate]] of the common proportion is $$\\bar{p} = \\frac{x_1 + x_2}{n_1 + n_2}$$ and $\\bar{q} = 1 - \\bar{p}$.",
+          "This $\\bar{p}$ is used to compute the standard error of the difference under $H_0$: $$s_{\\hat{p}_1 - \\hat{p}_2} = \\sqrt{\\bar{p}\\bar{q}\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}$$",
+          "The [[imp:standardized test statistic]] is $$z = \\frac{(\\hat{p}_1 - \\hat{p}_2) - 0}{\\sqrt{\\bar{p}\\bar{q}\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}}$$",
+          "Because we assume $p_1 = p_2$, the numerator subtracts the hypothesized difference of 0."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Don't Use Sample Proportions in the Standard Error",
+        "body": "When computing the standard error for the z‑test, always use the pooled $\\bar{p}$, not $\\hat{p}_1$ and $\\hat{p}_2$ separately. The formula $\\sqrt{\\hat{p}_1\\hat{q}_1/n_1 + \\hat{p}_2\\hat{q}_2/n_2}$ is for confidence intervals, not hypothesis tests. [[imp:Use $\\bar{p}$ for the test statistic!]]"
+      },
+      "teacherCues": [
+        "Demonstrate computing $\\bar{p}$ from $x_1, x_2, n_1, n_2$ step by step.",
+        "Show the formula for the standard error under the null: $\\sqrt{\\bar{p}\\bar{q}(1/n_1 + 1/n_2)}$."
+      ],
+      "title": "Pooled Estimate $\\bar{p}$ and Standard Error",
+      "questions": [
+        {
+          "feedbackIfWrong": "The numerator is the total number of successes, $x_1 + x_2$.",
+          "prompt": "In the pooled estimate formula $\\bar{p} = (x_1 + x_2)/(n_1 + n_2)$, what is the numerator? (Two words or symbols, e.g., 'total successes')",
+          "answer": "total successes",
+          "hints": [
+            "It's the sum of the number of successes in both samples.",
+            "Think $x_1 + x_2$."
+          ],
+          "id": "q8-4-4",
+          "type": "short-answer"
+        },
+        {
+          "prompt": "For the seat belt example, what is the value of $\\bar{q}$? (Round to four decimal places: 0.2086)",
+          "id": "q8-4-5",
+          "hints": [
+            "$\\bar{q} = 1 - \\bar{p}$.",
+            "$\\bar{p} \\approx 0.7914$, so subtract from 1."
+          ],
+          "answer": "0.2086",
+          "type": "short-answer",
+          "feedbackIfWrong": "$\\bar{q} = 1 - 0.7914 = 0.2086$."
+        },
+        {
+          "id": "q8-4-6",
+          "type": "short-answer",
+          "feedbackIfWrong": "We use the standard normal (z) distribution.",
+          "answer": "z",
+          "hints": [
+            "It's the standard normal distribution.",
+            "We use the same table as for one‑sample proportion tests."
+          ],
+          "prompt": "What distribution do we use to find critical values for the two‑sample proportion test? (One letter)"
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "For the seat belt example ($n_1=150$, $\\hat{p}_1=0.86$, $n_2=200$, $\\hat{p}_2=0.74$), compute $\\bar{p}$, $\\bar{q}$, the standard error, and $z$.",
+          "title": "Example A – Computing $\\bar{p}$ and $z$",
+          "role": "guided",
+          "steps": [
+            "$x_1 = 150 \\times 0.86 = 129$, $x_2 = 200 \\times 0.74 = 148$.",
+            "$\\bar{p} = (129+148)/(150+200) = 277/350 \\approx 0.7914$, $\\bar{q} = 0.2086$.",
+            "Standard error $= \\sqrt{0.7914 \\times 0.2086 \\times (1/150+1/200)} \\approx 0.0439$.",
+            "$z = (0.86 - 0.74)/0.0439 \\approx 2.73$."
+          ]
+        },
+        {
+          "title": "Example B – Why $1/n_1 + 1/n_2$?",
+          "peerPrompt": "Without looking back...\n\nIf we are subtracting two independent sample proportions, how do their individual variances add?",
+          "prompt": "Explain to a partner why the standard error formula has $1/n_1 + 1/n_2$ instead of just one of them.",
+          "minLength": 8,
+          "steps": [
+            "The variance of $\\hat{p}_1 - \\hat{p}_2$ is the sum of the individual variances: $\\sigma^2_{\\hat{p}_1} + \\sigma^2_{\\hat{p}_2}$.",
+            "Under $H_0$, both have variance $\\bar{p}\\bar{q}/n_i$, so the total variance is $\\bar{p}\\bar{q}/n_1 + \\bar{p}\\bar{q}/n_2$.",
+            "Factor out $\\bar{p}\\bar{q}$ to get $\\bar{p}\\bar{q}(1/n_1 + 1/n_2)$, and the standard error is the square root of that."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "prompt": "In a drug study, 301 of 4700 treated patients died, and 357 of 4300 placebo patients died. Find $\\bar{p}$.",
+          "title": "Example C – Pooling with Given $x$'s",
+          "steps": [
+            "Total deaths $= 301+357 = 658$.",
+            "Total patients $= 4700+4300 = 9000$.",
+            "$\\bar{p} = 658/9000 \\approx 0.0731$."
+          ]
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Walk through the seat belt example from the section: claim 'same proportion', two‑tailed, α=0.10.",
+        "Show the calculation of z=2.73 and compare to ±1.645."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Seat Belt Study Summary",
+            "headers": [
+              "",
+              "Passenger Cars",
+              "Pickup Trucks"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Sample size",
+                "1": "$n_1 = 150$",
+                "2": "$n_2 = 200$"
+              },
+              {
+                "0": "Number wearing belts",
+                "1": "$x_1 = 129$",
+                "2": "$x_2 = 148$"
+              },
+              {
+                "0": "Sample proportion",
+                "1": "$\\hat{p}_1 = 0.86$",
+                "2": "$\\hat{p}_2 = 0.74$"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "The claim is that the proportions are equal, so the hypotheses are two‑tailed: $H_0: p_1 = p_2$, $H_a: p_1 \\ne p_2$.",
+          "Significance level $\\alpha=0.10$ gives critical values $z = \\pm 1.645$ (from the standard normal table).",
+          "We already computed $\\bar{p}=0.7914$, standard error $\\approx 0.0439$, and test statistic $z \\approx 2.73$.",
+          "Since $2.73 > 1.645$, $z$ falls in the right‑tail rejection region.",
+          "Decision: Reject $H_0$. There is enough evidence to say the proportions are different."
+        ]
+      },
+      "title": "Two‑Tailed Test: Seat Belt Use",
+      "questions": [
+        {
+          "prompt": "What is the critical z‑value for a two‑tailed test at α=0.10? (Give the positive value, e.g., 1.645)",
+          "hints": [
+            "Each tail has area 0.05.",
+            "Use the standard normal table to find the z with cumulative area 0.95."
+          ],
+          "id": "q8-4-7",
+          "answer": "1.645",
+          "type": "short-answer",
+          "feedbackIfWrong": "For α=0.10 two‑tailed, critical values are $\\pm 1.645$."
+        },
+        {
+          "answer": "reject",
+          "prompt": "The test statistic for the seat belt example was 2.73. Since 2.73 > 1.645, do we reject or fail to reject $H_0$?",
+          "id": "q8-4-8",
+          "feedbackIfWrong": "Since $2.73 > 1.645$, we reject $H_0$.",
+          "type": "short-answer",
+          "hints": [
+            "If the test statistic is more extreme than the critical value, we reject.",
+            "The decision is a single word."
+          ]
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "proportions",
+                "percentages"
+              ]
+            }
+          ],
+          "id": "q8-4-9",
+          "hints": [
+            "It's $\\hat{p}_1 - \\hat{p}_2$.",
+            "They are denoted with a hat."
+          ],
+          "type": "fill-blank",
+          "prompt": "In the two‑sample proportion z‑test, the numerator of the test statistic is the difference between the two sample ___.",
+          "feedbackIfWrong": "The numerator is the difference of the sample proportions $\\hat{p}_1 - \\hat{p}_2$."
+        }
+      ],
+      "id": "two-tailed-example-seatbelts",
+      "discoveryHook": {
+        "scenario": "A safety agency wants to know if the proportion of seat belt wearers is the same for car and truck occupants. They survey 150 car occupants (86% wear belts) and 200 truck occupants (74% wear belts). At α=0.10, can we reject the claim of equal proportions?"
+      },
+      "confusionCorner": {
+        "body": "With a two‑tailed alternative $p_1 \\ne p_2$, you must check both directions. A large positive $z$ or a large negative $z$ will reject $H_0$. [[imp:Always split α equally and use both critical values.]]",
+        "title": "Two‑Tailed Tests Have Two Rejection Regions"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Split α equally: each tail has 0.05.",
+            "Look up the z‑score with area 0.05 to the right (or 0.95 to the left) → $z = 1.645$.",
+            "Critical values are $\\pm 1.645$.",
+            "Reject $H_0$ if $z < -1.645$ or $z > 1.645$."
+          ],
+          "title": "Example A – Find Critical Values",
+          "prompt": "For a two‑tailed test at α=0.10, what are the critical z‑values and rejection regions?",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Rejecting $H_0$ means the difference is statistically significant; it's unlikely due to chance.",
+            "The positive $z$ indicates $\\hat{p}_1$ (cars) is significantly larger than $\\hat{p}_2$ (trucks).",
+            "We can conclude that the proportion is higher for car occupants in this study, but not necessarily that it's 'definitely' higher in the population—only that there's evidence."
+          ],
+          "prompt": "We rejected $H_0$. What does that tell us about seat belt use in cars vs. trucks?",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Does rejecting $H_0$ mean the proportion of car occupants wearing belts is definitely higher? Could it be lower?",
+          "minLength": 8,
+          "title": "Example B – Interpret the Decision"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – p‑Value Approach",
+          "prompt": "The two‑tailed p‑value for this test is 0.0063. Using α=0.10, what is the decision?",
+          "steps": [
+            "Compare p‑value to α: $0.0063 < 0.10$.",
+            "Since p‑value < α, reject $H_0$.",
+            "The result is statistically significant."
+          ]
+        }
+      ]
+    },
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Set Up Hypotheses",
+          "prompt": "Translate 'the death rate is lower for the drug' into $H_0$ and $H_a$.",
+          "steps": [
+            "Let $p_1$ = death rate for medication, $p_2$ = death rate for placebo.",
+            "Claim: $p_1 < p_2$.",
+            "$H_0: p_1 \\ge p_2$ (status quo: drug not better).",
+            "$H_a: p_1 < p_2$ (left‑tailed)."
+          ]
+        },
+        {
+          "title": "Example B – Finding Critical Value",
+          "prompt": "Find the critical value for a left‑tailed test at α=0.01.",
+          "minLength": 8,
+          "role": "peer-explain",
+          "steps": [
+            "Left‑tailed test: rejection region is in the left tail, so the critical value is negative.",
+            "Look up the z‑score that has cumulative area 0.01 → $z = -2.33$.",
+            "Reject $H_0$ if $z < -2.33$."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Why is the critical value negative? How do we find it in the z‑table?"
+        },
+        {
+          "prompt": "With $z = -3.46$ and critical value $-2.33$, what is the decision?",
+          "title": "Example C – Decision Making",
+          "steps": [
+            "Compare $z = -3.46$ to $-2.33$: $-3.46$ is less than $-2.33$, so it falls in the rejection region.",
+            "Therefore, reject $H_0$.",
+            "Conclusion: There is sufficient evidence to support the claim that the medication lowers the death rate."
+          ],
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Present the medication example: 301 deaths out of 4700 in treatment group, 357 out of 4300 in placebo.",
+        "Show the hypotheses: $H_0: p_1 \\ge p_2$, $H_a: p_1 < p_2$ (claim)."
+      ],
+      "id": "left-tailed-example-cholesterol",
+      "discoveryHook": {
+        "scenario": "A study tests whether a cholesterol drug reduces heart disease deaths. Of 4,700 patients on the drug, 301 died. Of 4,300 on placebo, 357 died. Is the death rate lower for the drug group? We'll perform a left‑tailed test at α=0.01."
+      },
+      "title": "Left‑Tailed Test: Cholesterol Medication",
+      "questions": [
+        {
+          "feedbackIfWrong": "For α=0.01 left‑tailed, critical value is $z = -2.33$.",
+          "hints": [
+            "Use the standard normal table for area 0.01 in the left tail.",
+            "It's the negative of the value for right‑tail 0.01."
+          ],
+          "id": "q8-4-10",
+          "prompt": "What is the critical z‑value for a left‑tailed test at α=0.01? (e.g., -2.33)",
+          "type": "short-answer",
+          "answer": "-2.33"
+        },
+        {
+          "type": "short-answer",
+          "answer": "yes",
+          "hints": [
+            "Compare -3.46 to -2.33.",
+            "If it's more negative than the critical value, we reject."
+          ],
+          "id": "q8-4-11",
+          "prompt": "The test statistic for the cholesterol study was -3.46. Do we reject $H_0$? (yes or no)",
+          "feedbackIfWrong": "Yes, $-3.46 < -2.33$, so reject $H_0$."
+        },
+        {
+          "id": "q8-4-12",
+          "type": "short-answer",
+          "feedbackIfWrong": "Left‑tailed alternative: $H_a: p_1 < p_2$.",
+          "hints": [
+            "Left‑tailed means the alternative states $p_1$ is less than $p_2$.",
+            "The symbol points to the left."
+          ],
+          "answer": "<",
+          "prompt": "In a left‑tailed two‑sample proportion test, the alternative hypothesis uses which symbol? (<, >, or ≠)"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Cholesterol Medication Study",
+            "rows": [
+              {
+                "0": "Sample size",
+                "1": "$n_1 = 4700$",
+                "2": "$n_2 = 4300$"
+              },
+              {
+                "0": "Deaths",
+                "1": "$x_1 = 301$",
+                "2": "$x_2 = 357$"
+              },
+              {
+                "0": "Death rate",
+                "1": "$\\hat{p}_1 = 0.064$",
+                "2": "$\\hat{p}_2 = 0.083$"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "",
+              "Medication",
+              "Placebo"
+            ]
+          }
+        ],
+        "explanation": [
+          "The claim is that the death rate is lower for the drug, so $p_1 < p_2$. This is a left‑tailed test: $H_0: p_1 \\ge p_2$, $H_a: p_1 < p_2$.",
+          "We compute $\\bar{p} = (301+357)/(4700+4300) = 658/9000 \\approx 0.0731$, $\\bar{q}=0.9269$.",
+          "Standard error $= \\sqrt{0.0731 \\times 0.9269 \\times (1/4700 + 1/4300)} \\approx 0.00554$.",
+          "Test statistic: $z = (0.064 - 0.083)/0.00554 \\approx -3.46$ (using $\\hat{p}_1=301/4700=0.064$, $\\hat{p}_2=357/4300=0.083$).",
+          "For α=0.01 left‑tailed, critical value $z_{0.01} = -2.33$. Since $-3.46 < -2.33$, reject $H_0$. There is evidence the drug lowers death rate."
+        ]
+      },
+      "confusionCorner": {
+        "body": "A negative z just means $\\hat{p}_1$ is less than $\\hat{p}_2$. In a left‑tailed test, that's exactly what we expect if the alternative is true. [[imp:Always look at the sign of z relative to the tail direction.]]",
+        "title": "Negative z‑Value Doesn't Mean Wrong"
+      }
+    },
+    {
+      "questions": [
+        {
+          "feedbackIfWrong": "$\\bar{p} = (359+221)/(485+315) = 580/800 = 0.725$.",
+          "id": "q8-4-13",
+          "answer": "0.725",
+          "prompt": "What is the pooled estimate $\\bar{p}$ for the Internet example? (0.725)",
+          "type": "short-answer",
+          "hints": [
+            "Total Internet users divided by total sample size.",
+            "$580/800$."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "id": "q8-4-14",
+          "feedbackIfWrong": "The critical value for α=0.10 right‑tailed is $z = 1.28$.",
+          "answer": "1.28",
+          "hints": [
+            "Area to the right is 0.10, so cumulative area 0.90.",
+            "Look up in the z‑table."
+          ],
+          "prompt": "What is the critical value for a right‑tailed test at α=0.10? (1.28)"
+        },
+        {
+          "feedbackIfWrong": "Yes, $1.29 > 1.28$, so reject $H_0$.",
+          "type": "short-answer",
+          "answer": "yes",
+          "id": "q8-4-15",
+          "hints": [
+            "Compare the test statistic 1.29 to the critical value 1.28.",
+            "If $z$ > critical value, reject."
+          ],
+          "prompt": "Do we reject $H_0$ in the Internet example? (yes or no)"
+        }
+      ],
+      "title": "Blueprint Aid: Two‑Sample Proportion z‑Test",
+      "teacherCues": [
+        "Use a real‑world example to walk through Understand–Solve–Conclude.",
+        "Have students practice identifying the claim, pooling, and making decisions."
+      ],
+      "id": "blueprint-aid-proportions",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ z = \\frac{\\hat{p}_1 - \\hat{p}_2}{\\sqrt{\\bar{p}\\bar{q}(1/n_1 + 1/n_2)}} $$",
+          "title": "Blueprint Steps for Two‑Proportion z‑Test",
+          "notes": [
+            "1. State hypotheses and α.",
+            "2. Pooled estimate $\\bar{p} = (x_1+x_2)/(n_1+n_2)$.",
+            "3. Standard error and $z$.",
+            "4. Compare to critical value or use p‑value.",
+            "5. Write conclusion in context."
+          ]
+        },
+        "explanation": [
+          "**Understand**: Claim is $p_{urban} > p_{rural}$. So $H_0: p_1 \\le p_2$, $H_a: p_1 > p_2$ (right‑tailed). $\\alpha=0.10$.",
+          "**Solve**: Compute sample proportions, pooled estimate, standard error, test statistic.",
+          "**Conclude**: Compare $z$ to critical value 1.28, make a decision, and interpret.",
+          "We'll do each step together."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "",
+              "Urban ($p_1$)",
+              "Rural ($p_2$)"
+            ],
+            "variant": "colorful",
+            "title": "Internet Usage Data",
+            "rows": [
+              {
+                "0": "Sample size",
+                "1": "$n_1 = 485$",
+                "2": "$n_2 = 315$"
+              },
+              {
+                "0": "Number using Internet",
+                "1": "$x_1 = 359$",
+                "2": "$x_2 = 221$"
+              },
+              {
+                "0": "Sample proportion",
+                "1": "$\\hat{p}_1 = 0.7402$",
+                "2": "$\\hat{p}_2 = 0.7016$"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "steps": [
+            "Claim: urban proportion > rural proportion.",
+            "$H_0: p_1 \\le p_2$ (no difference or urban not greater).",
+            "$H_a: p_1 > p_2$ (right‑tailed).",
+            "$\\alpha = 0.10$."
+          ],
+          "role": "guided",
+          "title": "Example A – Understand",
+          "prompt": "State the hypotheses and identify the test type."
+        },
+        {
+          "title": "Example B – Solve",
+          "peerPrompt": "Without looking back...\n\nWork with a partner: Calculate $\\bar{p}$, then the standard error, and finally the test statistic $z$. Round $z$ to two decimals.",
+          "minLength": 8,
+          "role": "peer-explain",
+          "prompt": "Compute $\\bar{p}$, standard error, and $z$ for the Internet data.",
+          "steps": [
+            "$\\bar{p} = (359+221)/(485+315) = 580/800 = 0.725$.",
+            "$\\bar{q} = 0.275$, standard error $= \\sqrt{0.725 \\times 0.275 (1/485 + 1/315)} \\approx 0.0299$.",
+            "$z = (0.7402 - 0.7016)/0.0299 \\approx 1.29$."
+          ]
+        },
+        {
+          "title": "Example C – Conclude",
+          "steps": [
+            "Right‑tailed critical value is $1.28$.",
+            "Our $z = 1.29 > 1.28$, so reject $H_0$.",
+            "There is enough evidence at the 10% level to support the claim that Internet usage is higher in urban areas."
+          ],
+          "prompt": "Using the critical value $z_{0.10} = 1.28$, make a decision and interpret.",
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "A right‑tailed test rejects $H_0$ only for large positive $z$. If $z$ were negative, we would not reject even if $|z|$ is large, because that would mean the sample goes in the opposite direction of the claim. [[imp:Always verify that the sign of $z$ matches the direction of $H_a$ before rejecting.]]",
+        "title": "Check the Direction of the Alternative"
+      },
+      "discoveryHook": {
+        "scenario": "A survey claims that the proportion of adults who use the Internet is greater in urban areas than in rural areas. In a sample of 485 urban adults, 359 use the Internet. In a sample of 315 rural adults, 221 use the Internet. Test the claim at α=0.10 using the Understand‑Solve‑Conclude framework."
+      }
+    }
+  ],
+  "id": "section-8-4-proportions-z-test",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

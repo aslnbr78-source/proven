@@ -1,0 +1,139 @@
+{
+  "cards": [
+    {
+      "front": "What is the [[kw:point estimate]] for a population proportion $p$?",
+      "back": [
+        "The [[kw:sample proportion]] $\\hat{p} = \\frac{x}{n}$, where $x$ is the number of successes and $n$ is the sample size.",
+        "The estimate for the proportion of failures is $\\hat{q} = 1 - \\hat{p}$.",
+        "$\\hat{p}$ is an [[imp:unbiased estimator]] of the true proportion $p$."
+      ]
+    },
+    {
+      "back": [
+        "The sampling distribution of $\\hat{p}$ must be approximately normal.",
+        "Check: $n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$.",
+        "If these conditions are met, you can use the normal distribution with the standard error $\\sqrt{\\frac{\\hat{p}\\hat{q}}{n}}$."
+      ],
+      "front": "What conditions must be checked before constructing a confidence interval for a proportion?"
+    },
+    {
+      "back": [
+        "$$E = z_c \\sqrt{\\frac{\\hat{p} \\hat{q}}{n}}$$",
+        "$z_c$ is the critical value for the confidence level $c$ (e.g., 1.96 for 95%).",
+        "$\\hat{p}$ is the sample proportion, $\\hat{q} = 1 - \\hat{p}$, and $n$ is the sample size."
+      ],
+      "front": "Give the formula for the [[kw:margin of error]] $E$ for a population proportion."
+    },
+    {
+      "front": "Construct a 95% confidence interval for the proportion of adults who check personal e‑mail at work: $n=1000$, $x=662$.",
+      "back": [
+        "$\\hat{p} = \\frac{662}{1000} = 0.662$, $\\hat{q} = 0.338$.",
+        "Check: $n\\hat{p}=662 \\ge 5$, $n\\hat{q}=338 \\ge 5$ (OK).",
+        "$z_c = 1.96$. $E = 1.96 \\sqrt{\\frac{0.662 \\cdot 0.338}{1000}} \\approx 0.029$.",
+        "95% CI: $0.662 \\pm 0.029 = (0.633, 0.691)$.",
+        "We are 95% confident the true proportion is between 63.3% and 69.1%."
+      ]
+    },
+    {
+      "front": "A survey of 498 adults found 71% think teenagers are more dangerous drivers. Construct a 99% confidence interval.",
+      "back": [
+        "$\\hat{p} = 0.71$, $\\hat{q} = 0.29$, $n = 498$.",
+        "Check: $n\\hat{p} \\approx 354$, $n\\hat{q} \\approx 144$, both $\\ge 5$.",
+        "99% confidence → $z_c = 2.575$.",
+        "$E = 2.575 \\sqrt{\\frac{0.71 \\cdot 0.29}{498}} \\approx 0.052$.",
+        "99% CI: $0.71 \\pm 0.052 = (0.658, 0.762)$.",
+        "With 99% confidence, the true proportion is between 65.8% and 76.2%."
+      ]
+    },
+    {
+      "back": [
+        "$$n = \\hat{p} \\hat{q} \\left( \\frac{z_c}{E} \\right)^2$$",
+        "$E$ is the desired margin of error (as a decimal).",
+        "If no preliminary estimate of $\\hat{p}$ is available, use $\\hat{p} = 0.5$ and $\\hat{q} = 0.5$ (the most conservative choice).",
+        "[[imp:Always round up]] to the next whole number."
+      ],
+      "front": "What is the formula for the [[kw:minimum sample size]] needed to estimate a population proportion?"
+    },
+    {
+      "back": [
+        "The product $\\hat{p} \\hat{q}$ is maximized when $\\hat{p} = 0.5$ ($0.5 \\times 0.5 = 0.25$).",
+        "This gives the [[imp:largest possible sample size]], ensuring the margin of error will not exceed $E$ even if the true proportion is different.",
+        "It is a conservative (safe) approach."
+      ],
+      "front": "Why do we use $\\hat{p} = 0.5$ when no prior estimate of the proportion is available?"
+    },
+    {
+      "back": [
+        "Use $\\hat{p} = 0.5$, $\\hat{q} = 0.5$, $z_c = 1.96$.",
+        "$n = 0.25 \\left( \\frac{1.96}{0.03} \\right)^2 = 0.25 (65.33)^2 = 0.25 \\times 4268.4 \\approx 1067.1$.",
+        "Round up → $n = 1068$.",
+        "A sample of at least 1068 is needed."
+      ],
+      "front": "Find the minimum sample size: 95% confidence, desired margin of error $E = 0.03$, no preliminary estimate."
+    },
+    {
+      "front": "Find the minimum sample size: 95% confidence, $E = 0.03$, preliminary estimate $\\hat{p} = 0.31$.",
+      "back": [
+        "$\\hat{q} = 0.69$, product $= 0.2139$, $z_c = 1.96$.",
+        "$n = 0.2139 \\left( \\frac{1.96}{0.03} \\right)^2 = 0.2139 \\times 4268.4 \\approx 913.0$.",
+        "Round up → $n = 914$.",
+        "The sample size is smaller than with no prior estimate because $0.2139 < 0.25$."
+      ]
+    },
+    {
+      "front": "What is the correct interpretation of a 95% confidence interval for a population proportion?",
+      "back": [
+        "If many random samples are taken and a 95% confidence interval is computed from each, about [[imp:95% of these intervals]] will contain the true population proportion $p$.",
+        "We do NOT say \"there is a 95% chance that $p$ is in this specific interval.\"",
+        "The confidence level refers to the method, not a single interval."
+      ]
+    },
+    {
+      "back": [
+        "The intervals do [[imp:not overlap]] (the first ends at 0.47, the second begins at 0.61).",
+        "This strongly suggests the true proportions are different.",
+        "Conversely, overlapping intervals suggest the proportions might be equal, but formal hypothesis testing is needed for a definitive answer."
+      ],
+      "front": "Two 95% confidence intervals for proportions are $(0.39, 0.47)$ and $(0.61, 0.69)$. What can you conclude about the true proportions?"
+    },
+    {
+      "front": "How do you compute the margin of error for a proportion in Google Sheets?",
+      "back": [
+        "There is no single built‑in function like CONFIDENCE.NORM for proportions.",
+        "Compute directly: `=z_c * SQRT(p_hat * q_hat / n)`.",
+        "For example, 95% CI: `=1.96 * SQRT(0.662 * 0.338 / 1000)`."
+      ]
+    },
+    {
+      "front": "What does the margin of error in a poll's reported percentage represent?",
+      "back": [
+        "In a poll, the margin of error is usually for 95% confidence.",
+        "It is calculated as $E = z_c \\sqrt{\\frac{\\hat{p} \\hat{q}}{n}}$.",
+        "For example, \"52% ± 3%\" means the 95% confidence interval is $(0.49, 0.55)$.",
+        "If the interval includes 50%, it is plausible the true proportion is not a majority."
+      ]
+    },
+    {
+      "front": "What must you check before using the normal approximation to construct a confidence interval for a proportion?",
+      "back": [
+        "The sample must be large enough: $n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$.",
+        "If either is less than 5, the normal approximation is not appropriate; exact binomial methods should be used."
+      ]
+    },
+    {
+      "front": "A 90% confidence interval for a proportion is $(0.245, 0.475)$. Find the sample proportion $\\hat{p}$ and margin of error.",
+      "back": [
+        "$\\hat{p}$ is the midpoint: $\\frac{0.245 + 0.475}{2} = 0.360$.",
+        "Margin of error: $E = \\frac{0.475 - 0.245}{2} = 0.115$.",
+        "The interval can be written as $0.360 \\pm 0.115$."
+      ]
+    }
+  ],
+  "title": "Confidence Intervals for Population Proportions",
+  "id": "chapter-6-3-flashcards",
+  "type": "flashcard",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

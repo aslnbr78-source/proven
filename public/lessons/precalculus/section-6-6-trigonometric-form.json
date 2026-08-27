@@ -1,0 +1,724 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-6-6-trigonometric-form",
+  "title": "Trigonometric Form of a Complex Number",
+  "blocks": [
+    {
+      "id": "trigonometric-form-intro",
+      "title": "Trigonometric (Polar) Form",
+      "teacherCues": [
+        "Write a complex number a+bi and ask: How could we express it using distance r and angle θ from the origin?",
+        "Use triangle: cos θ = a/r, sin θ = b/r → a = r cos θ, b = r sin θ. So a+bi = r(cos θ + i sin θ)."
+      ],
+      "discoveryHook": {
+        "scenario": "Complex numbers have both a direction and a distance from the origin, like a vector. The trigonometric form captures that direction with an angle, making multiplication and powers as simple as adding angles and multiplying lengths."
+      },
+      "concept": {
+        "explanation": [
+          "A complex number $z = a+bi$ can be written in [[kw:trigonometric (polar) form]]: $$z = r(\\cos\\theta + i\\sin\\theta),$$",
+          "where $r = |z| = \\sqrt{a^2+b^2}$ is the [[kw:modulus]] and $\\theta$ is an [[kw:argument]] (angle from the positive real axis).",
+          "To find $\\theta$, use $\\tan\\theta = \\frac{b}{a}$ and choose the correct quadrant.",
+          "To convert back: $a = r\\cos\\theta$, $b = r\\sin\\theta$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example Conversion",
+            "headers": [
+              "Complex number",
+              "r (modulus)",
+              "θ (argument) in [0,2π)",
+              "Trigonometric form"
+            ],
+            "rows": [
+              {
+                "0": "$-2 - 2\\sqrt{3}i$",
+                "1": "$\\sqrt{4+12}=4$",
+                "2": "$\\pi + \\arctan(\\sqrt{3}) = 4\\pi/3$",
+                "3": "$4(\\cos\\frac{4\\pi}{3} + i\\sin\\frac{4\\pi}{3})$"
+              },
+              {
+                "0": "$6 - 6i$",
+                "1": "$\\sqrt{72}=6\\sqrt{2}$",
+                "2": "$7\\pi/4$",
+                "3": "$6\\sqrt{2}(\\cos\\frac{7\\pi}{4} + i\\sin\\frac{7\\pi}{4})$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Trigonometric Form",
+          "formula": "$$z = r(\\cos\\theta + i\\sin\\theta)$$",
+          "notes": [
+            "$r = \\sqrt{a^2+b^2}$",
+            "$\\tan\\theta = b/a$; adjust quadrant based on signs of $a$ and $b$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find modulus and argument",
+          "prompt": "Write $z = -2 - 2\\sqrt{3}i$ in trigonometric form.",
+          "steps": [
+            "Compute $r = \\sqrt{(-2)^2 + (-2\\sqrt{3})^2} = \\sqrt{4+12} = 4$.",
+            "$\\tan\\theta = \\frac{-2\\sqrt{3}}{-2} = \\sqrt{3}$, reference angle $\\pi/3$.",
+            "Since both parts negative, Quadrant III → $\\theta = \\pi + \\frac{\\pi}{3} = \\frac{4\\pi}{3}$.",
+            "Trig form: $z = 4(\\cos\\frac{4\\pi}{3} + i\\sin\\frac{4\\pi}{3})$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Convert back to standard form",
+          "prompt": "Write $\\sqrt{8}[ \\cos(-\\pi/3) + i\\sin(-\\pi/3) ]$ in standard form $a+bi$.",
+          "peerPrompt": "Explain to a partner: Use $\\cos(-\\pi/3) = 1/2$, $\\sin(-\\pi/3) = -\\sqrt{3}/2$, then multiply by $\\sqrt{8}=2\\sqrt{2}$.",
+          "minLength": 2,
+          "steps": [
+            "$\\sqrt{8} = 2\\sqrt{2}$.",
+            "$a = 2\\sqrt{2}\\cos(-\\pi/3) = 2\\sqrt{2}(1/2) = \\sqrt{2}$.",
+            "$b = 2\\sqrt{2}\\sin(-\\pi/3) = 2\\sqrt{2}(-\\sqrt{3}/2) = -\\sqrt{6}$.",
+            "Result: $\\sqrt{2} - \\sqrt{6} i$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple polar conversion",
+          "prompt": "Write $z = -3$ (pure real) in trigonometric form with $0 \\le \\theta < 2\\pi$.",
+          "steps": [
+            "$r = 3$.",
+            "On negative real axis, angle $\\theta = \\pi$.",
+            "So $z = 3(\\cos\\pi + i\\sin\\pi)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Quadrant selection for θ",
+        "body": "Use the signs of a and b to pick the correct quadrant before using arctan. Remember: Quadrant II and III require adding $\\pi$ to the arctan value."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "In the trigonometric form $z = r(\\cos\\theta + i\\sin\\theta)$, the distance $r$ is called the ___ of $z$.",
+          "blanks": [
+            {
+              "accept": [
+                "modulus"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the absolute value or length.",
+            "Starts with 'm'."
+          ],
+          "feedbackIfWrong": "It is called the modulus."
+        },
+        {
+          "id": "q2",
+          "type": "fill-blank",
+          "prompt": "For $z = -2 - 2\\sqrt{3}i$, the modulus $r$ is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "4"
+              ]
+            }
+          ],
+          "hints": [
+            "Compute $\\sqrt{(-2)^2 + (-2\\sqrt{3})^2}$.",
+            "Calculate the squares and add."
+          ],
+          "feedbackIfWrong": "$r = \\sqrt{4+12} = 4$."
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "prompt": "If $\\tan\\theta = 1$ and the complex number is in Quadrant I, what is $\\theta$ in radians? (Use pi/4)",
+          "answer": "pi/4",
+          "hints": [
+            "arctan(1) = 45° which is ? rad.",
+            "The reference angle is $\\pi/4$."
+          ],
+          "feedbackIfWrong": "$\\theta = \\pi/4$."
+        }
+      ]
+    },
+    {
+      "id": "multiplication-division-trig-form",
+      "title": "Multiplication and Division in Trig Form",
+      "teacherCues": [
+        "Write product rule: multiply moduli, add arguments. Quotient: divide moduli, subtract arguments.",
+        "Demonstrate: $2(\\cos30^\\circ + i\\sin30^\\circ) \\cdot 3(\\cos40^\\circ + i\\sin40^\\circ) = 6(\\cos70^\\circ + i\\sin70^\\circ)$."
+      ],
+      "discoveryHook": {
+        "scenario": "Multiplying complex numbers in trigonometric form is incredibly easy—just multiply their distances and add their angles. It's like combining two rotations."
+      },
+      "concept": {
+        "explanation": [
+          "For $z_1 = r_1(\\cos\\theta_1 + i\\sin\\theta_1)$ and $z_2 = r_2(\\cos\\theta_2 + i\\sin\\theta_2)$:",
+          "[[kw:Product]]: $z_1z_2 = r_1r_2[\\cos(\\theta_1+\\theta_2) + i\\sin(\\theta_1+\\theta_2)]$.",
+          "[[kw:Quotient]]: $\\frac{z_1}{z_2} = \\frac{r_1}{r_2}[\\cos(\\theta_1-\\theta_2) + i\\sin(\\theta_1-\\theta_2)]$, $z_2 \\neq 0$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Examples",
+            "headers": [
+              "Operation",
+              "Given",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "Product",
+                "1": "$2(\\cos20^\\circ + i\\sin20^\\circ)$ & $5(\\cos30^\\circ + i\\sin30^\\circ)$",
+                "2": "$10(\\cos50^\\circ + i\\sin50^\\circ)$"
+              },
+              {
+                "0": "Quotient",
+                "1": "$\\frac{24(\\cos300^\\circ + i\\sin300^\\circ)}{8(\\cos75^\\circ + i\\sin75^\\circ)}$",
+                "2": "$3(\\cos225^\\circ + i\\sin225^\\circ)$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Multiplying & Dividing",
+          "formula": "$$z_1 z_2 = r_1 r_2 [\\cos(\\theta_1+\\theta_2) + i\\sin(\\theta_1+\\theta_2)]$$ $$\\frac{z_1}{z_2} = \\frac{r_1}{r_2} [\\cos(\\theta_1-\\theta_2) + i\\sin(\\theta_1-\\theta_2)]$$",
+          "notes": [
+            "Angles may exceed $2\\pi$ or be negative; add/subtract $2\\pi$ to get back to $[0,2\\pi)$.",
+            "Moduli multiply or divide as usual."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Multiply",
+          "prompt": "Find the product of $3(\\cos\\frac{\\pi}{4} + i\\sin\\frac{\\pi}{4})$ and $2(\\cos\\frac{3\\pi}{4} + i\\sin\\frac{3\\pi}{4})$.",
+          "steps": [
+            "Multiply moduli: $3 \\times 2 = 6$.",
+            "Add arguments: $\\frac{\\pi}{4} + \\frac{3\\pi}{4} = \\pi$.",
+            "So product = $6(\\cos\\pi + i\\sin\\pi) = 6(-1 + 0i) = -6$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Divide",
+          "prompt": "Find $\\frac{24(\\cos300^\\circ + i\\sin300^\\circ)}{8(\\cos75^\\circ + i\\sin75^\\circ)}$.",
+          "peerPrompt": "Explain to partner: Divide the moduli, subtract the arguments. Then convert back to a+bi if needed.",
+          "minLength": 2,
+          "steps": [
+            "Modulus: $24/8 = 3$.",
+            "Angle: $300^\\circ - 75^\\circ = 225^\\circ$.",
+            "So result = $3(\\cos225^\\circ + i\\sin225^\\circ) = 3(-\\sqrt{2}/2 - i\\sqrt{2}/2) = -\\frac{3\\sqrt{2}}{2} - \\frac{3\\sqrt{2}}{2}i$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple product",
+          "prompt": "Multiply $2(\\cos30^\\circ + i\\sin30^\\circ)$ and $4(\\cos60^\\circ + i\\sin60^\\circ)$. Give answer in trig form.",
+          "steps": [
+            "Product modulus: $2 \\times 4 = 8$.",
+            "Sum angle: $30^\\circ + 60^\\circ = 90^\\circ$.",
+            "Answer: $8(\\cos90^\\circ + i\\sin90^\\circ)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't add angles when dividing",
+        "body": "For division, subtract the angles: $\\theta_1 - \\theta_2$. If you accidentally add, you'll get a wrong rotation."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "To multiply two complex numbers in trigonometric form, you ___ their moduli.",
+          "blanks": [
+            {
+              "accept": [
+                "multiply"
+              ]
+            }
+          ],
+          "hints": [
+            "The moduli are the r values.",
+            "What operation do you perform on the r's?"
+          ],
+          "feedbackIfWrong": "You multiply the moduli."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "If $z_1 = 2(\\cos20^\\circ + i\\sin20^\\circ)$ and $z_2 = 5(\\cos30^\\circ + i\\sin30^\\circ)$, the product has modulus ___.",
+          "answer": "10",
+          "hints": [
+            "Multiply the two numbers in front.",
+            "2 × 5 = ?"
+          ],
+          "feedbackIfWrong": "The modulus is 2 × 5 = 10."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "In the quotient $\\frac{z_1}{z_2} = 3[\\cos(225^\\circ) + i\\sin(225^\\circ)]$, the modulus 3 came from dividing 24 by ___.",
+          "blanks": [
+            {
+              "accept": [
+                "8"
+              ]
+            }
+          ],
+          "hints": [
+            "Look at the original numbers: $24/8$.",
+            "The modulus of denominator is 8."
+          ],
+          "feedbackIfWrong": "It's 8."
+        }
+      ]
+    },
+    {
+      "id": "demoivres-theorem",
+      "title": "DeMoivre's Theorem (Powers)",
+      "teacherCues": [
+        "Write $(r(\\cos\\theta + i\\sin\\theta))^n = r^n(\\cos n\\theta + i\\sin n\\theta)$. Show how exponent multiplies the angle.",
+        "Example: Find $(-1+\\sqrt{3}i)^{12}$ using polar form first."
+      ],
+      "discoveryHook": {
+        "scenario": "Raising a complex number to a high power is painful in rectangular form, but in trig form, you just raise the modulus to the power and multiply the angle. It's like magic."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:DeMoivre's Theorem]] states: For any integer $n$, $$[r(\\cos\\theta + i\\sin\\theta)]^n = r^n (\\cos n\\theta + i\\sin n\\theta).$$",
+          "Steps: Convert to trig form, then apply the theorem.",
+          "If result angle > $2\\pi$ or negative, reduce to $[0,2\\pi)$ for final form."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Power Example",
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "Original",
+                "1": "$-1+\\sqrt{3}i$"
+              },
+              {
+                "0": "Trig form",
+                "1": "$2(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3})$"
+              },
+              {
+                "0": "Raise to 12",
+                "1": "$2^{12}(\\cos(12\\cdot\\frac{2\\pi}{3}) + i\\sin(12\\cdot\\frac{2\\pi}{3}))$"
+              },
+              {
+                "0": "Simplify",
+                "1": "$4096(\\cos 8\\pi + i\\sin 8\\pi) = 4096$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "DeMoivre's Theorem",
+          "formula": "$$[r(\\cos\\theta + i\\sin\\theta)]^n = r^n (\\cos n\\theta + i\\sin n\\theta)$$",
+          "notes": [
+            "$n$ can be any integer (positive, negative, zero).",
+            "For negative $n$, it also works, linking to roots."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Compute power",
+          "prompt": "Find $(-1+\\sqrt{3}i)^{12}$.",
+          "steps": [
+            "Modulus: $\\sqrt{1+3}=2$, argument: $\\theta = \\pi - \\arctan(\\sqrt{3}) = 2\\pi/3$.",
+            "So $z = 2(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3})$.",
+            "$z^{12} = 2^{12}(\\cos(12\\cdot\\frac{2\\pi}{3}) + i\\sin 8\\pi) = 4096(1+0)=4096$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Another integer power",
+          "prompt": "Find $(1+i)^6$ using DeMoivre.",
+          "peerPrompt": "Explain to partner: Convert $1+i$ to trig form, then apply theorem.",
+          "minLength": 2,
+          "steps": [
+            "$1+i$: $r=\\sqrt{2}$, $\\theta = \\pi/4$.",
+            "$(\\sqrt{2})^6 = 8$, $6\\times\\pi/4 = 3\\pi/2$.",
+            "Result: $8(\\cos\\frac{3\\pi}{2} + i\\sin\\frac{3\\pi}{2}) = 8(0 - i) = -8i$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple power",
+          "prompt": "Find $(2(\\cos30^\\circ + i\\sin30^\\circ))^3$.",
+          "steps": [
+            "$2^3=8$, angle $3\\times30^\\circ=90^\\circ$.",
+            "Result: $8(\\cos90^\\circ + i\\sin90^\\circ) = 8i$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Reduce angle after multiplying",
+        "body": "If $n\\theta$ is larger than $2\\pi$, subtract multiples of $2\\pi$ to get an equivalent angle in $[0,2\\pi)$."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "DeMoivre's Theorem states that $(r(\\cos\\theta + i\\sin\\theta))^n = r^n(\\cos n\\theta + i\\sin n\\theta)$. The exponent $n$ must be a(n) ___.",
+          "blanks": [
+            {
+              "accept": [
+                "integer"
+              ]
+            }
+          ],
+          "hints": [
+            "It works for whole numbers, also for fractions (roots).",
+            "The letter 'n' typically stands for an integer."
+          ],
+          "feedbackIfWrong": "n is an integer."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "If $z = 2(\\cos30^\\circ + i\\sin30^\\circ)$, then $z^3$ has modulus ___.",
+          "answer": "8",
+          "hints": [
+            "The modulus is $2^3$.",
+            "2 cubed."
+          ],
+          "feedbackIfWrong": "$2^3 = 8$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "For $z = -1-\\sqrt{3}i$, the argument is $4\\pi/3$. Then $z^2$ has argument $8\\pi/3$, which is coterminal with ___ (enter as 2pi/3).",
+          "blanks": [
+            {
+              "accept": [
+                "2pi/3"
+              ]
+            }
+          ],
+          "hints": [
+            "Subtract $2\\pi$ from $8\\pi/3$ to get an angle in $[0,2\\pi)$.",
+            "$8\\pi/3 - 2\\pi = ?$"
+          ],
+          "feedbackIfWrong": "$8\\pi/3 - 2\\pi = 2\\pi/3$."
+        }
+      ]
+    },
+    {
+      "id": "roots-of-complex-numbers",
+      "title": "Roots of Complex Numbers",
+      "teacherCues": [
+        "Write the nth root formula: $n$th roots of $r(\\cos\\theta + i\\sin\\theta)$ are $r^{1/n}[\\cos(\\frac{\\theta+2\\pi k}{n}) + i\\sin(\\frac{\\theta+2\\pi k}{n})]$ for $k=0,1,\\dots,n-1$.",
+        "Example: find cube roots of $8(\\cos60^\\circ + i\\sin60^\\circ)$."
+      ],
+      "discoveryHook": {
+        "scenario": "Just like a number has two square roots, a complex number has three cube roots, four fourth roots, and so on, lying evenly spaced on a circle."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:nth roots]] of $z = r(\\cos\\theta + i\\sin\\theta)$ are: $$\\sqrt[n]{r}\\left[\\cos\\left(\\frac{\\theta+2\\pi k}{n}\\right) + i\\sin\\left(\\frac{\\theta+2\\pi k}{n}\\right)\\right],$$ for $k = 0, 1, \\dots, n-1$.",
+          "The modulus of each root is $r^{1/n}$ (the positive real $n$th root). The arguments are equally spaced.",
+          "There are exactly $n$ distinct $n$th roots."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Cube Roots of 8 (real)",
+            "headers": [
+              "Trig form of 8",
+              "Roots ($k=0,1,2$)"
+            ],
+            "rows": [
+              {
+                "0": "$8 = 8(\\cos 0 + i\\sin 0)$",
+                "1": "$\\sqrt[3]{8}[\\cos(\\frac{0+2\\pi k}{3}) + i\\sin(\\frac{0+2\\pi k}{3})]$"
+              },
+              {
+                "0": "",
+                "1": "$k=0: 2(\\cos0 + i\\sin0) = 2$"
+              },
+              {
+                "0": "",
+                "1": "$k=1: 2(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3})$"
+              },
+              {
+                "0": "",
+                "1": "$k=2: 2(\\cos\\frac{4\\pi}{3} + i\\sin\\frac{4\\pi}{3})$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "nth Root Formula",
+          "formula": "$$\\sqrt[n]{z} = \\sqrt[n]{r}\\left[\\cos\\left(\\frac{\\theta+2\\pi k}{n}\\right) + i\\sin\\left(\\frac{\\theta+2\\pi k}{n}\\right)\\right], \\quad k=0,1,\\dots,n-1$$",
+          "notes": [
+            "$\\sqrt[n]{r}$ is the real $n$th root of $r$.",
+            "The angles are spaced by $2\\pi/n$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find cube roots of 8",
+          "prompt": "Find all cube roots of 8 (real number).",
+          "steps": [
+            "Write $8 = 8(\\cos 0 + i\\sin 0)$ ($r=8$, $\\theta=0$).",
+            "$n=3$, $\\sqrt[3]{8}=2$, $k=0,1,2$.",
+            "$k=0$: $2(\\cos 0 + i\\sin 0) = 2$.",
+            "$k=1$: $2(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}) = -1 + i\\sqrt{3}$.",
+            "$k=2$: $2(\\cos\\frac{4\\pi}{3} + i\\sin\\frac{4\\pi}{3}) = -1 - i\\sqrt{3}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Square roots",
+          "prompt": "Find the two square roots of $4(\\cos60^\\circ + i\\sin60^\\circ)$.",
+          "peerPrompt": "Discuss: The modulus of the roots will be $\\sqrt{4}=2$. The angles: $(60^\\circ+360^\\circ k)/2$ for $k=0,1$.",
+          "minLength": 2,
+          "steps": [
+            "$\\sqrt{4}=2$, angles: $k=0$: $60^\\circ/2=30^\\circ$; $k=1$: $(60^\\circ+360^\\circ)/2=210^\\circ$.",
+            "Roots: $2(\\cos30^\\circ + i\\sin30^\\circ) = \\sqrt{3}+i$, $2(\\cos210^\\circ + i\\sin210^\\circ) = -\\sqrt{3}-i$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Fourth roots of 1",
+          "prompt": "Write the fourth roots of 1.",
+          "steps": [
+            "$1 = 1(\\cos0 + i\\sin0)$, $r=1$, $\\sqrt[4]{1}=1$.",
+            "Angles: $0, \\pi/2, \\pi, 3\\pi/2$ → $1, i, -1, -i$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Different starting angle for different numbers",
+        "body": "Always write the number in trig form first. The formula works with any $\\theta$, not just 0."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "To find the cube roots of a complex number, set $n =$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "3"
+              ]
+            }
+          ],
+          "hints": [
+            "Cube root means $n$ is the number 3.",
+            "How many roots? The index."
+          ],
+          "feedbackIfWrong": "n = 3."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "What is the modulus of each cube root of $8i$? (Hint: $|8i|=8$, cube root of 8)",
+          "answer": "2",
+          "hints": [
+            "Modulus is the cube root of the original modulus.",
+            "Cube root of 8."
+          ],
+          "feedbackIfWrong": "The modulus is $\\sqrt[3]{8}=2$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "For $n$th roots, the angles are spaced by $2\\pi$ divided by ___.",
+          "blanks": [
+            {
+              "accept": [
+                "n"
+              ]
+            }
+          ],
+          "hints": [
+            "The difference between successive angles is $2\\pi/n$.",
+            "The denominator is the same as the root index."
+          ],
+          "feedbackIfWrong": "It's $n$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-solve-polynomial",
+      "title": "Blueprint Aid – Solve a Polynomial Equation Using Roots",
+      "teacherCues": [
+        "Problem: Solve $x^3 = -8$. That means find all cube roots of -8.",
+        "Write -8 in trig form: $8(\\cos\\pi + i\\sin\\pi)$, then use root formula."
+      ],
+      "discoveryHook": {
+        "scenario": "Equations like $x^3 + 8 = 0$ have three complex solutions, not just $x = -2$. The other two are complex numbers lying on a circle."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: The equation $x^3 = -8$ asks for the cube roots of $-8$.",
+          "[[imp:Solve]]: Write $-8 = 8(\\cos\\pi + i\\sin\\pi)$. $r=8$, $\\theta = \\pi$. Then $x = \\sqrt[3]{8}[\\cos(\\frac{\\pi+2\\pi k}{3}) + i\\sin(\\frac{\\pi+2\\pi k}{3})]$ for $k=0,1,2$.",
+          "[[imp:Conclude]]: The three roots are $2(\\cos\\frac{\\pi}{3}+i\\sin\\frac{\\pi}{3})=1+i\\sqrt{3}$, $2(\\cos\\pi+i\\sin\\pi)=-2$, $2(\\cos\\frac{5\\pi}{3}+i\\sin\\frac{5\\pi}{3})=1-i\\sqrt{3}$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Cube roots of -8",
+            "headers": [
+              "k",
+              "Angle",
+              "Root"
+            ],
+            "rows": [
+              {
+                "0": "0",
+                "1": "$\\pi/3$",
+                "2": "$1 + i\\sqrt{3}$"
+              },
+              {
+                "0": "1",
+                "1": "$\\pi$",
+                "2": "$-2$"
+              },
+              {
+                "0": "2",
+                "1": "$5\\pi/3$",
+                "2": "$1 - i\\sqrt{3}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Roots of a Negative Real",
+          "formula": "$$\\sqrt[3]{-8} = \\sqrt[3]{8}\\left[\\cos\\left(\\frac{\\pi+2\\pi k}{3}\\right) + i\\sin\\left(\\frac{\\pi+2\\pi k}{3}\\right)\\right], \\ k=0,1,2$$",
+          "notes": [
+            "Always start with trig form.",
+            "Use $\\theta = \\pi$ for negative real numbers (if $r>0$)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Set up trig form",
+          "prompt": "Write $-8$ in trigonometric form with $0 \\le \\theta < 2\\pi$.",
+          "steps": [
+            "$|-8|=8$, on negative real axis, so $\\theta = \\pi$.",
+            "Thus $-8 = 8(\\cos\\pi + i\\sin\\pi)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Find the three roots",
+          "prompt": "Now use the root formula to find all three cube roots.",
+          "peerPrompt": "Work with partner: compute for $k=0,1,2$, simplify each.",
+          "minLength": 2,
+          "steps": [
+            "Modulus = $\\sqrt[3]{8}=2$.",
+            "$k=0$: angle $\\pi/3$ → $2(1/2 + i\\sqrt{3}/2) = 1 + i\\sqrt{3}$.",
+            "$k=1$: angle $\\pi$ → $2(-1+0i) = -2$.",
+            "$k=2$: angle $5\\pi/3$ → $2(1/2 - i\\sqrt{3}/2) = 1 - i\\sqrt{3}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Solve similar equation",
+          "prompt": "Find all cube roots of $-27$.",
+          "steps": [
+            "$-27 = 27(\\cos\\pi + i\\sin\\pi)$, $\\sqrt[3]{27}=3$.",
+            "Roots: $3(\\cos\\pi/3 + i\\sin\\pi/3) = \\frac{3}{2} + i\\frac{3\\sqrt{3}}{2}$, $3(\\cos\\pi + i\\sin\\pi) = -3$, $3(\\cos5\\pi/3 + i\\sin5\\pi/3) = \\frac{3}{2} - i\\frac{3\\sqrt{3}}{2}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget the $2\\pi k$",
+        "body": "If you omit $2\\pi k$, you only get one root. Always include the $k$ values to generate all $n$ roots."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "To find cube roots of $-8$, we first write it in trig form as $8(\\cos ___ + i\\sin ___)$.",
+          "blanks": [
+            {
+              "accept": [
+                "pi",
+                "π"
+              ]
+            },
+            {
+              "accept": [
+                "pi",
+                "π"
+              ]
+            }
+          ],
+          "hints": [
+            "The angle for a negative real number on the negative x-axis.",
+            "It's 180° in radians."
+          ],
+          "feedbackIfWrong": "The angle is $\\pi$ for both blanks."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is the modulus of each cube root of $-27$? (Enter a number)",
+          "answer": "3",
+          "hints": [
+            "The cube root of the modulus 27.",
+            "$27^{1/3} = ?$"
+          ],
+          "feedbackIfWrong": "The modulus is 3."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The three cube roots of a number are separated by an angle of $2\\pi/3$ radians. How many degrees apart? ___°",
+          "blanks": [
+            {
+              "accept": [
+                "120"
+              ]
+            }
+          ],
+          "hints": [
+            "$2\\pi/3$ radians converted to degrees: multiply by $180/\\pi$.",
+            "$2\\pi/3 \\times 180/\\pi = 120$."
+          ],
+          "feedbackIfWrong": "They are 120° apart."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Find the three cube roots of $8i$. (Hint: Modulus 8, argument $\\pi/2$.)",
+        "type": "short-answer",
+        "answers": [
+          "√3+i, -√3+i, -2i"
+        ],
+        "hints": [
+          "Write $8i = 8(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2})$.",
+          "Apply the formula with $n=3$, $k=0,1,2$."
+        ],
+        "feedbackIfWrong": "The roots are $\\sqrt{3}+i$, $-\\sqrt{3}+i$, $-2i$."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

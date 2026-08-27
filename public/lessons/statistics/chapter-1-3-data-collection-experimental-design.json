@@ -1,0 +1,824 @@
+{
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "title": "Methods of Data Collection",
+      "examples": [
+        {
+          "title": "Example A – Choosing a Method",
+          "role": "guided",
+          "steps": [
+            "You want to measure the effect of a specific treatment (eating oatmeal) on blood pressure.",
+            "An [[kw:experiment]] is appropriate: you can give oatmeal to one group and a regular diet to another.",
+            "This allows comparison and control over variables."
+          ],
+          "prompt": "A study investigates the effect of eating oatmeal on lowering blood pressure. Which data collection method should you use?"
+        },
+        {
+          "prompt": "A study observes how fourth graders solve a puzzle without any intervention. Is this an experiment?",
+          "steps": [
+            "In an experiment, you deliberately impose a treatment.",
+            "Here, researchers are only watching and recording behavior.",
+            "No treatment is applied, so it's an [[kw:observational study]]."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is this an observational study and not an experiment?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "title": "Example B – Observational vs. Experiment"
+        },
+        {
+          "prompt": "A study examines how changing flight patterns affects airplane accidents. Why is simulation the best choice?",
+          "role": "independent",
+          "title": "Example C – Simulation Necessity",
+          "steps": [
+            "It would be unethical and dangerous to deliberately change flight patterns and cause accidents.",
+            "A [[kw:simulation]] can model different scenarios using software without real-world harm.",
+            "Thus, simulation is the only feasible method."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "You're a medical researcher. You need to find out if a new drug lowers blood pressure. Do you just observe people who happen to take it? Do you give it to some and compare to others? The way you collect data determines whether your conclusions will be trusted. Welcome to the art of data collection — where asking the right question is only half the battle."
+      },
+      "concept": {
+        "formulaCard": {
+          "title": "Choosing a Method",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Key idea",
+              "meaning": "The study's goal determines the best method."
+            }
+          ],
+          "formula": "$$\\text{Method} = \\begin{cases} \\text{Observational} & \\text{if only watching} \\\\ \\text{Experiment} & \\text{if applying a treatment} \\\\ \\text{Simulation} & \\text{if real study is impossible/dangerous} \\\\ \\text{Survey} & \\text{if asking opinions/facts} \\end{cases}$$"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Observational Study",
+                "1": "Observe without intervening",
+                "2": "Record mouthing behavior of children"
+              },
+              {
+                "0": "Experiment",
+                "1": "Apply treatment, compare responses",
+                "2": "Diabetics take cinnamon extract; control group takes none"
+              },
+              {
+                "0": "Simulation",
+                "1": "Use a model to mimic reality",
+                "2": "Crash test dummies in car safety tests"
+              },
+              {
+                "0": "Survey",
+                "1": "Ask questions to a sample",
+                "2": "Presidential approval poll"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Method",
+              "What Happens",
+              "Example"
+            ],
+            "type": "table",
+            "title": "Four Methods of Data Collection"
+          }
+        ],
+        "explanation": [
+          "There are four main methods of data collection: [[kw:observational study]], [[kw:experiment]], [[kw:simulation]], and [[kw:survey]].",
+          "In an [[kw:observational study]], a researcher observes and measures characteristics without influencing the subjects. No treatment is applied.",
+          "In an [[kw:experiment]], a treatment is applied to part of a population, and responses are observed. A control group may receive a placebo.",
+          "A [[kw:simulation]] uses a mathematical or physical model to reproduce a situation, often when real study is impractical or dangerous.",
+          "A [[kw:survey]] collects data by asking questions, often through interviews, mail, or phone. Question wording must be neutral to avoid bias."
+        ]
+      },
+      "teacherCues": [
+        "Show a picture of a researcher observing animals in the wild vs. a lab experiment. Ask: 'What's the difference between watching and intervening?'",
+        "Write the four methods on the board: Observational Study, Experiment, Simulation, Survey. Ask students to match each to a real-world example."
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "An experiment involves applying a treatment.",
+          "id": "q1-1",
+          "prompt": "In an ___, a researcher deliberately applies a treatment before observing responses.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the opposite of an observational study.",
+            "You compare a treatment group to a control group."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "experiment",
+                "Experiment"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "What method would you use to study the effect of a fat substitute on the human digestive system? (Answer with one word: experiment, observational, simulation, survey)",
+          "answers": [
+            "experiment",
+            "Experiment"
+          ],
+          "hints": [
+            "You're applying a treatment (the fat substitute).",
+            "You need to compare to a control group."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "Because a treatment is applied and responses compared, an experiment is best.",
+          "id": "q1-2"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "survey",
+            "Survey"
+          ],
+          "prompt": "Which data collection method involves asking questions to a sample, often by phone or mail?",
+          "hints": [
+            "It's the most common for opinion polls.",
+            "The word starts with 's'."
+          ],
+          "id": "q1-3",
+          "feedbackIfWrong": "A survey collects data by asking questions."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Survey Bias — It's All in the Wording",
+        "body": "A survey question that suggests an answer can lead to biased results. For example, 'Do you agree that whole grains improve health?' is leading. Better: 'How do you think whole grains affect health?' [[imp:Neutral wording is crucial.]]"
+      },
+      "id": "methods-of-data-collection"
+    },
+    {
+      "concept": {
+        "explanation": [
+          "A well-designed experiment must have three key elements: [[kw:control]], [[kw:randomization]], and [[kw:replication]].",
+          "[[kw:Control]] means limiting the effects of variables other than the treatment. A control group often receives a [[kw:placebo]].",
+          "[[kw:Randomization]] randomly assigns subjects to treatment or control groups to reduce bias.",
+          "[[kw:Replication]] is repeating the experiment under the same or similar conditions to verify results. A larger sample size increases reliability.",
+          "A [[kw:confounding variable]] occurs when an outside factor influences the response and you can't tell which factor caused the effect.",
+          "[[kw:Blinding]] means subjects don't know if they receive real treatment; double‑blind means neither subjects nor experimenters know until after data collection."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Control",
+                "1": "Limit outside influences",
+                "2": "Using a placebo for the control group"
+              },
+              {
+                "0": "Randomization",
+                "1": "Randomly assign subjects",
+                "2": "Coin flip decides treatment or control"
+              },
+              {
+                "0": "Replication",
+                "1": "Repeat with many subjects",
+                "2": "10,000 subjects instead of 10"
+              },
+              {
+                "0": "Blinding",
+                "1": "Subjects unaware of treatment",
+                "2": "Double‑blind drug trial"
+              }
+            ],
+            "headers": [
+              "Element",
+              "Definition",
+              "Example"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Key Elements of Experimental Design"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "minimize confounding variables",
+              "symbol": "Control"
+            },
+            {
+              "meaning": "reduce selection bias",
+              "symbol": "Randomization",
+              "tone": "subtle"
+            },
+            {
+              "meaning": "ensure results aren't a fluke",
+              "symbol": "Replication",
+              "tone": "subtle"
+            }
+          ],
+          "title": "Valid Experiment Checklist",
+          "formula": "$$\\text{Valid Experiment} = \\text{Control} + \\text{Randomization} + \\text{Replication}$$"
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "The sample size is only 10 subjects, which is very small.",
+            "A valid experiment requires [[kw:replication]] — more subjects to ensure the result isn't due to chance.",
+            "Improvement: Use a much larger sample, e.g., 1,000 subjects, to improve reliability."
+          ],
+          "prompt": "A company tests a new quit‑smoking gum on 10 heavy smokers. Five get the gum, five get a placebo. After two months, the gum group quit. Identify a design flaw.",
+          "title": "Example A – Spotting the Flaw"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: If you can't tell whether it was the colors or the mall that caused the increase, what is that called?",
+          "steps": [
+            "Both the remodeling and the mall opening happened at the same time.",
+            "It's impossible to separate their effects on customer traffic.",
+            "Thus, the new mall is a [[kw:confounding variable]].",
+            "To avoid confounding, change only one variable at a time."
+          ],
+          "prompt": "The coffee shop remodel (bright colors) and a new nearby mall. Business increases. Explain why the color effect is confounded.",
+          "title": "Example B – Confounding"
+        },
+        {
+          "steps": [
+            "Subjects are first grouped by a characteristic (age).",
+            "Then, within each block, random assignment occurs.",
+            "This is a [[kw:randomized block design]] — it controls for the block variable.",
+            "It's similar to stratified sampling in surveys."
+          ],
+          "prompt": "In testing a new weight‑loss drink, researchers divide subjects into age groups (30‑39, 40‑49, 50+) and then randomly assign treatment/control within each group. Name this design.",
+          "title": "Example C – Blocking by Gender",
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "A confounding variable obscures the true effect of the treatment.",
+          "prompt": "A variable that makes it impossible to tell which factor caused the result is called a ___ variable.",
+          "id": "q2-1",
+          "hints": [
+            "It 'confounds' the results.",
+            "Think of the coffee shop example."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "confounding",
+                "confounding variable"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "id": "q2-2",
+          "hints": [
+            "It's a stronger version of blinding.",
+            "It involves two parties being unaware."
+          ],
+          "type": "short-answer",
+          "prompt": "What is the technique where neither the subjects nor the experimenters know who gets the real treatment? (Answer: double‑blind)",
+          "feedbackIfWrong": "A double‑blind experiment keeps both subjects and experimenters unaware.",
+          "answers": [
+            "double-blind",
+            "double blind",
+            "Double-blind",
+            "Double blind"
+          ]
+        },
+        {
+          "hints": [
+            "Larger samples reduce the role of chance.",
+            "It makes results more trustworthy."
+          ],
+          "type": "short-answer",
+          "prompt": "Why is replication important in an experiment? (Answer with one word: reliability)",
+          "feedbackIfWrong": "Replication increases the reliability (and validity) of the results.",
+          "id": "q2-3",
+          "answers": [
+            "reliability",
+            "Reliability",
+            "validity",
+            "Validity",
+            "accuracy",
+            "Accuracy"
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Placebo vs. Hawthorne Effect",
+        "body": "The [[imp:placebo effect]] is a positive response to an inactive treatment due to belief. The [[imp:Hawthorne effect]] is a change in behavior simply because subjects know they're being observed. Both can bias results; blinding helps control them."
+      },
+      "discoveryHook": {
+        "scenario": "A coffee shop owner remodels with bright colors and, coincidentally, a new mall opens next door. Business goes up. Did the colors help? The mall's opening is a confounding variable — you can't separate the effects. Good experimental design uses control, randomization, and replication to avoid such confusion."
+      },
+      "title": "Experimental Design: Key Principles",
+      "id": "experimental-design-principles",
+      "teacherCues": [
+        "Ask: 'If I give a new energy drink to 5 athletes and they all run faster, can I trust the result? What's missing?'",
+        "Write 'Control, Randomization, Replication' on the board. Ask: 'What happens if one is missing?'"
+      ]
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "Key",
+              "meaning": "The goal is always a representative sample.",
+              "tone": "core"
+            }
+          ],
+          "title": "Choosing a Sampling Method",
+          "formula": "$$\\text{Method} = \\begin{cases} \\text{SRS} & \\text{if simple and unbiased needed} \\\\ \\text{Stratified} & \\text{if key subgroups must be included} \\\\ \\text{Cluster} & \\text{if natural groups exist, pick whole groups} \\\\ \\text{Systematic} & \\text{if a list exists and you want simplicity} \\end{cases}$$"
+        },
+        "visuals": [
+          {
+            "title": "Sampling Techniques Summary",
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Technique",
+              "How It's Done",
+              "When to Use",
+              "Potential Bias"
+            ],
+            "rows": [
+              {
+                "0": "Simple Random",
+                "1": "Randomly select from full list",
+                "2": "When you have a complete list and need unbiased sample",
+                "3": "None if truly random"
+              },
+              {
+                "0": "Stratified",
+                "1": "Split into strata, then random within each",
+                "2": "When groups differ and you want each represented",
+                "3": "Strata must be meaningful"
+              },
+              {
+                "0": "Cluster",
+                "1": "Randomly choose whole groups",
+                "2": "When population is spread geographically",
+                "3": "Clusters must be similar to each other"
+              },
+              {
+                "0": "Systematic",
+                "1": "Pick every k‑th after random start",
+                "2": "Quick and easy when ordering exists",
+                "3": "Risk of pattern in the data"
+              },
+              {
+                "0": "Convenience",
+                "1": "Use whoever is available",
+                "2": "Pilot studies only",
+                "3": "High bias, not representative"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:census]] collects data from an entire population. Often impractical, so we use sampling.",
+          "A [[kw:simple random sample]] (SRS) gives every member an equal chance, and every possible sample of the same size has an equal chance. Use random number tables or generators.",
+          "[[kw:Stratified sampling]] divides the population into subgroups (strata) sharing a characteristic, then takes a random sample from each stratum. Ensures representation across groups.",
+          "[[kw:Cluster sampling]] divides the population into naturally occurring clusters (e.g., zip codes, classrooms), then randomly selects one or more clusters and includes all members from those clusters.",
+          "[[kw:Systematic sampling]] assigns numbers, randomly chooses a start, and selects every k‑th member. Easy to use but can miss patterns.",
+          "[[kw:Convenience sampling]] uses readily available subjects — it's quick but often biased."
+        ]
+      },
+      "confusionCorner": {
+        "body": "Both divide the population into groups, but in stratified sampling you take a sample [[imp:from every]] stratum; in cluster sampling you take [[imp:all members]] from only some clusters. Stratified ensures each subgroup is represented; cluster is a shortcut that can miss subgroups if clusters aren't diverse.",
+        "title": "Stratified ≠ Cluster"
+      },
+      "title": "Sampling Techniques",
+      "examples": [
+        {
+          "steps": [
+            "Number students from 1 to 731.",
+            "In a random number table, read digits in groups of 3 (since 731 is 3 digits).",
+            "Ignore numbers > 731 or repeats.",
+            "The first eight distinct numbers between 1 and 731 become the sample."
+          ],
+          "title": "Example A – Simple Random Sample",
+          "prompt": "There are 731 statistics students. Select a random sample of 8 using a random number table.",
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Stratified vs. Cluster",
+          "prompt": "You want student opinions on campus safety. You could split by class year and sample from each, or pick a few entire dormitories. Which is stratified, which is cluster?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why would you choose stratified sampling here instead of cluster?",
+          "steps": [
+            "Splitting by class year and sampling within each is [[kw:stratified sampling]] — you're ensuring representation from each class.",
+            "Randomly choosing entire dormitories and surveying everyone in them is [[kw:cluster sampling]].",
+            "Stratified is better when class year opinions might differ; cluster is easier if students in each dorm are similar."
+          ]
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "The selection uses a fixed interval (every 50th) after a random start.",
+            "This is [[kw:systematic sampling]].",
+            "It's efficient but must be checked for patterns in the production process."
+          ],
+          "prompt": "A quality control engineer tests every 50th light bulb from a production line, starting with a randomly chosen bulb. Identify the sampling technique.",
+          "title": "Example C – Systematic Sampling"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "You need to survey students' opinions about cafeteria food. You could randomly select 100 students from the entire roster, or pick a few entire homerooms, or line them up and take every 10th student. Each method has strengths and weaknesses. Choosing the right sampling technique is critical to getting a representative picture."
+      },
+      "teacherCues": [
+        "Hold up a bag of colored candies. Show how to take a simple random sample by shaking and blindly picking 5. Then show stratified by picking 1 from each color.",
+        "Draw a grid of houses. Show cluster sampling: pick two blocks and survey all houses in those blocks. Show systematic: pick every 5th house."
+      ],
+      "id": "sampling-techniques",
+      "questions": [
+        {
+          "feedbackIfWrong": "Stratified sampling ensures representation from each subgroup.",
+          "prompt": "In ___ sampling, you divide the population into subgroups and randomly select some members from each subgroup.",
+          "id": "q3-1",
+          "type": "fill-blank",
+          "hints": [
+            "It's like making sure each flavor of candy is represented.",
+            "Starts with 's' and is not 'simple'."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "stratified",
+                "Stratified"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q3-2",
+          "feedbackIfWrong": "Using a random number generator for selection is a simple random sample.",
+          "answers": [
+            "simple random sample",
+            "SRS",
+            "simple random",
+            "Simple Random Sample",
+            "simple random sampling"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "Every possible sample of that size has the same chance.",
+            "It's the most basic random method."
+          ],
+          "prompt": "You assign each student a number and use a random number generator to pick your sample. What technique is this?"
+        },
+        {
+          "hints": [
+            "It's the easiest but least representative.",
+            "It uses readily available subjects."
+          ],
+          "type": "short-answer",
+          "prompt": "A sample that consists only of people who walk by a booth in the student center is an example of what biased sampling?",
+          "feedbackIfWrong": "This is a convenience sample, often biased.",
+          "id": "q3-3",
+          "answers": [
+            "convenience",
+            "Convenience",
+            "convenience sample",
+            "convenience sampling"
+          ]
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Draw two columns: 'Before' and 'After' for a weight loss program. Explain that each person is their own control in a matched‑pairs design.",
+        "Show a diagram of a randomized block design and ask: 'How is this like stratified sampling for experiments?'"
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Gender is a blocking variable — it may influence quitting success.",
+            "Randomization occurs separately for males and females.",
+            "This ensures an equal mix of genders in treatment and control groups.",
+            "The design is a [[kw:randomized block design]]."
+          ],
+          "prompt": "An experiment tests a new quit‑smoking gum with 1,000 smokers. The researcher divides subjects by gender and then randomizes within each gender. Identify the design.",
+          "title": "Example A – Blocking by Gender",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Twins share nearly identical genetics, eliminating that source of variability.",
+            "Any difference in acne can be more confidently attributed to the cream.",
+            "This is a [[kw:matched‑pairs design]] — specifically, matching based on genetic similarity.",
+            "It increases the sensitivity of the experiment."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does matching on genetics control for confounding variables that regular randomization might miss?",
+          "minLength": 2,
+          "prompt": "A study recruits 30 pairs of identical twins. One twin in each pair uses a new acne cream; the other uses a placebo. Why is this powerful?",
+          "title": "Example B – Matched Pairs with Identical Twins"
+        },
+        {
+          "prompt": "A blood pressure drug is tested by measuring each patient's pressure before taking the drug and again after 4 weeks. What design is this?",
+          "role": "independent",
+          "steps": [
+            "Each subject serves as their own control — same person measured twice.",
+            "This is a [[kw:matched‑pairs design]] where the 'pair' is the same subject under two conditions.",
+            "It eliminates between‑subject variability, making the drug effect clearer."
+          ],
+          "title": "Example C – Before/After as Matched Pairs"
+        }
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "randomized",
+                "Randomized"
+              ]
+            }
+          ],
+          "hints": [
+            "It's like stratified sampling but for experiments.",
+            "The second word is 'block'."
+          ],
+          "feedbackIfWrong": "A randomized block design groups subjects before random assignment.",
+          "type": "fill-blank",
+          "prompt": "In a ___ block design, subjects are grouped by a characteristic before randomization.",
+          "id": "q4-1"
+        },
+        {
+          "answers": [
+            "matched pairs",
+            "matched-pairs",
+            "matched pairs design",
+            "matched-pairs design",
+            "Matched pairs",
+            "Matched-pairs"
+          ],
+          "type": "short-answer",
+          "prompt": "If identical twins are paired and one gets Treatment A, the other Treatment B, what design is this?",
+          "id": "q4-2",
+          "hints": [
+            "It involves pairing based on similarity.",
+            "It's not just random assignment."
+          ],
+          "feedbackIfWrong": "Pairing twins creates a matched‑pairs design."
+        },
+        {
+          "hints": [
+            "It helps isolate the treatment effect.",
+            "It removes differences between subjects."
+          ],
+          "prompt": "Why might a researcher choose a matched‑pairs design over a completely randomized one? (Answer with one word: control)",
+          "type": "short-answer",
+          "id": "q4-3",
+          "answers": [
+            "control",
+            "Control",
+            "reduce variability",
+            "reduce variation",
+            "precision"
+          ],
+          "feedbackIfWrong": "A matched‑pairs design controls for extraneous variability, increasing precision."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Block ≠ Stratified, Matched ≠ Just Two Groups",
+        "body": "Blocking is for experiments; stratified sampling is for surveys. In a matched‑pairs design, it's not enough to just have two groups — they must be deliberately paired on a relevant characteristic. [[imp:Random assignment within pairs or block is essential.]]"
+      },
+      "concept": {
+        "explanation": [
+          "Beyond the basic completely randomized design, we use [[kw:randomized block design]] when subjects have known characteristics that affect response (e.g., age, gender).",
+          "In a randomized block design, subjects are divided into blocks (like strata), and then within each block, randomly assigned to treatments. This controls for the blocking variable.",
+          "A [[kw:matched‑pairs design]] pairs subjects based on similarity, then one receives Treatment A and the other Treatment B. Or the same subject is measured under both treatments (before/after).",
+          "These designs reduce variability due to extraneous factors, making the treatment effect easier to detect."
+        ],
+        "visuals": [
+          {
+            "title": "Block Design vs. Matched Pairs",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Randomized Block",
+                "1": "Divide into blocks (e.g., age groups), randomize within each",
+                "2": "Weight‑loss drink tested on 30‑39, 40‑49, 50+ age groups"
+              },
+              {
+                "0": "Matched Pairs",
+                "1": "Pair similar subjects, randomly assign treatments; or same subject receives both",
+                "2": "Sunscreen A vs. B on left/right arm of same person"
+              }
+            ],
+            "headers": [
+              "Design",
+              "How It Works",
+              "Example"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "title": "Why Blocking Helps",
+          "formula": "$$\\text{Reduced Variability} = \\text{Control for Known Factor}$$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "accounting for a variable that may influence outcome",
+              "symbol": "Blocking"
+            }
+          ]
+        }
+      },
+      "id": "experiment-designs-matched-pairs",
+      "title": "Advanced Designs: Blocks and Matched Pairs",
+      "discoveryHook": {
+        "scenario": "Testing a new sunscreen? Pair subjects by skin type, then randomly assign one to the new formula and one to the old. Or measure the same person's skin before and after application. These advanced designs — blocking and matched pairs — squeeze out more precise results by controlling for individual differences."
+      }
+    },
+    {
+      "confusionCorner": {
+        "body": "Rushing to collect data without a clear plan leads to wasted effort and unreliable conclusions. Always define your population, variables, method, and design before the first data point is collected. [[imp:A well‑designed study is replicable and defensible.]]",
+        "title": "Don't Skip the Blueprint!"
+      },
+      "title": "Blueprint Aid: Designing a Statistical Study",
+      "discoveryHook": {
+        "scenario": "You're asked to design a study on whether a new teaching method improves test scores. Where do you start? The blueprint — Understand, Solve, Conclude — guides you: define your population and variables, choose data collection and sampling methods, design the experiment, then analyze and interpret. A solid plan leads to solid conclusions."
+      },
+      "examples": [
+        {
+          "prompt": "Design a study to test the effect of sleep deprivation on motor skills. Eighteen volunteers are available.",
+          "role": "guided",
+          "title": "Example A – Design a Study (Sleep Deprivation)",
+          "steps": [
+            "Understand: Variable = motor skill score; population = volunteers (assume representativeness).",
+            "Solve (Design): Perform an [[kw:experiment]]. Randomly assign 9 subjects to the treatment group (stay awake 24 hours) and 9 to control (normal sleep). Use random number generator for assignment. Use a placebo‑controlled, double‑blind if possible (though hard with sleep).",
+            "Solve (Details): Ensure all subjects follow same protocols except sleep. Measure motor skills with a standardized test.",
+            "Conclude: After experiment, compare group means, infer whether sleep deprivation affects motor skills, note small sample size as limitation."
+          ]
+        },
+        {
+          "minLength": 2,
+          "prompt": "You want to survey college students' study habits at a large university. Describe a sampling plan using stratified sampling.",
+          "steps": [
+            "Understand: Population = all enrolled students; variable = study hours.",
+            "Solve: Use [[kw:stratified sampling]] with strata = class year (freshman, sophomore, junior, senior) because study habits may differ by year.",
+            "Randomly select, say, 50 students from each stratum. This guarantees representation from each class year.",
+            "Conclude: If a simple random sample happened to miss seniors, results might be skewed; stratified prevents that."
+          ],
+          "title": "Example B – Choosing Sampling for a Survey",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What strata would you use, and why would stratified be better than a simple random sample?"
+        },
+        {
+          "role": "independent",
+          "prompt": "A researcher wants to know if a new vitamin boosts memory. She recruits 20 people from a gym, gives them the vitamin, and after a month tests their memory with a crossword puzzle. All do well. Identify flaws in the design.",
+          "steps": [
+            "Understand: Variable = memory performance; population = gym members (convenience sample).",
+            "Solve (Design): No control group — all received the vitamin, so no comparison. No randomization. Small sample size. The test (crossword puzzle) may not be a valid measure. Subjects may have improved due to practice, not the vitamin.",
+            "Conclude: The study lacks control, randomization, replication. A better design: randomly assign a larger, representative sample to vitamin or placebo, use a validated memory test, and blind participants."
+          ],
+          "title": "Example C – Identifying Flaws"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Question} \\;\\xrightarrow{\\text{Understand}} \\; \\text{Plan} \\;\\xrightarrow{\\text{Solve}} \\; \\text{Data} \\;\\xrightarrow{\\text{Conclude}} \\; \\text{Decision}$$",
+          "title": "Study Design Blueprint",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Question",
+              "meaning": "what you want to learn"
+            },
+            {
+              "meaning": "methods, sampling, design",
+              "tone": "subtle",
+              "symbol": "Plan"
+            },
+            {
+              "symbol": "Decision",
+              "meaning": "inference, margin of error",
+              "tone": "subtle"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Define population, variables, purpose",
+                "2": "Population: all students at a school; variable: test score"
+              },
+              {
+                "0": "Solve (Design)",
+                "1": "Choose method, sampling, experimental design",
+                "2": "Method: experiment; design: randomized block by grade level"
+              },
+              {
+                "0": "Conclude",
+                "1": "Collect data, analyze, interpret, check errors",
+                "2": "Compute means, run hypothesis test, state margin of error"
+              }
+            ],
+            "title": "Blueprint for Designing a Study",
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Phase",
+              "Key Actions",
+              "Examples"
+            ]
+          }
+        ],
+        "explanation": [
+          "Designing a statistical study follows a logical sequence: Understand → Solve → Conclude.",
+          "Step 1 – [[kw:Understand]]: Identify the variable(s) of interest, the population, and the goal. What do you want to know?",
+          "Step 2 – [[kw:Solve]]: Develop a plan. Choose method of data collection (observational, experiment, survey, simulation). If sampling, select an appropriate technique (SRS, stratified, cluster, systematic). If experimenting, decide on design (completely randomized, block, matched pairs). Ensure control, randomization, replication.",
+          "Step 3 – [[kw:Conclude]]: Collect data, describe it with descriptive statistics, then use inferential statistics to make decisions. Identify possible errors or biases."
+        ]
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "variable",
+                "variables",
+                "Variable",
+                "Variables"
+              ]
+            }
+          ],
+          "id": "q5-1",
+          "type": "fill-blank",
+          "hints": [
+            "It's what you're measuring or studying.",
+            "Examples: blood pressure, test score, opinion."
+          ],
+          "prompt": "The first step in designing a statistical study is to identify the ___ of interest.",
+          "feedbackIfWrong": "The first step is to identify the variable(s) of interest."
+        },
+        {
+          "id": "q5-2",
+          "prompt": "What type of sampling would you use if you want to ensure each grade level in a high school is proportionally represented?",
+          "answers": [
+            "stratified",
+            "Stratified",
+            "stratified sampling",
+            "Stratified sampling"
+          ],
+          "hints": [
+            "It involves dividing into subgroups first.",
+            "Not cluster sampling."
+          ],
+          "feedbackIfWrong": "Stratified sampling ensures representation from each subgroup.",
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "It's the branch that draws conclusions.",
+            "It's not descriptive."
+          ],
+          "prompt": "After analyzing data, the blueprint's 'Conclude' phase involves using ___ statistics to make decisions about the population.",
+          "feedbackIfWrong": "The Conclude phase uses inferential statistics to make decisions.",
+          "type": "short-answer",
+          "answers": [
+            "inferential",
+            "Inferential"
+          ],
+          "id": "q5-3"
+        }
+      ],
+      "id": "blueprint-design-study",
+      "teacherCues": [
+        "Project the six‑step guideline from the textbook. Ask students to apply each step to a hypothetical study of caffeine's effect on sleep.",
+        "Model a think‑aloud: 'First, what is my variable? Then, how will I collect data? What sampling technique? What experimental design?'"
+      ]
+    }
+  ],
+  "schemaVersion": 2,
+  "id": "chapter-1-3-data-collection-experimental-design",
+  "title": "Data Collection and Experimental Design",
+  "standards": [
+    "HSS.IC.A.1",
+    "HSS.IC.B.3",
+    "HSS.IC.B.5"
+  ],
+  "presenterNotes": [
+    "In Block 1, emphasize the distinction between observational studies and experiments. Use the coffee shop confounding example to preview the next block.",
+    "Block 2 covers the heart of experimental design. The three pillars (control, randomization, replication) should be memorized. The blinding and placebo concepts are essential.",
+    "Block 3 walks through all major sampling techniques. Use props or drawings to illustrate stratified vs. cluster. The confusion corner note on stratified vs. cluster is key.",
+    "Block 4 introduces randomized block and matched pairs. Relate block design to stratified sampling from Block 3. The twin example makes matched pairs memorable.",
+    "The Blueprint Aid (Block 5) ties everything together. Use the six‑step guideline from the textbook but adapt to the Understand‑Solve‑Conclude format. Encourage students to apply the blueprint to any study they encounter."
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

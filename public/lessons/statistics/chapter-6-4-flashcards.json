@@ -1,0 +1,138 @@
+{
+  "cards": [
+    {
+      "front": "What distribution is used to construct a confidence interval for a population variance $\\sigma^2$ or standard deviation $\\sigma$?",
+      "back": [
+        "The [[kw:chi‑square distribution]] ($\\chi^2$).",
+        "It is used when the population is [[imp:normally distributed]].",
+        "The point estimate for $\\sigma^2$ is the sample variance $s^2$, and for $\\sigma$ is the sample standard deviation $s$."
+      ]
+    },
+    {
+      "front": "List four key properties of the [[kw:chi‑square distribution]].",
+      "back": [
+        "1. All values are $\\ge 0$.",
+        "2. The distribution is [[imp:positively skewed]] (right‑skewed).",
+        "3. It is a family of curves determined by the degrees of freedom $d.f. = n-1$.",
+        "4. As $d.f.$ increases, the distribution becomes more symmetric and approaches a normal shape."
+      ]
+    },
+    {
+      "front": "How many degrees of freedom does the chi‑square distribution have for a sample of size $n$?",
+      "back": [
+        "$$ d.f. = n - 1 $$",
+        "Example: for $n=20$, $d.f. = 19$.",
+        "The degrees of freedom are one less than the sample size."
+      ]
+    },
+    {
+      "front": "For a confidence interval for $\\sigma^2$, how many critical values are needed and what are they called?",
+      "back": [
+        "Two critical values: $\\chi^2_R$ (right‑tail) and $\\chi^2_L$ (left‑tail).",
+        "The area to the right of $\\chi^2_R$ is $\\frac{1-c}{2}$.",
+        "The area to the right of $\\chi^2_L$ is $\\frac{1+c}{2}$.",
+        "Because the chi‑square distribution is not symmetric, the two critical values differ."
+      ]
+    },
+    {
+      "back": [
+        "Right‑tail area for $\\chi^2_R$: $(1-0.95)/2 = 0.025$.",
+        "Right‑tail area for $\\chi^2_L$: $(1+0.95)/2 = 0.975$.",
+        "From the chi‑square table: $\\chi^2_R = 30.191$ and $\\chi^2_L = 7.564$.",
+        "95% of the area under the chi‑square curve with d.f.=17 lies between 7.564 and 30.191."
+      ],
+      "front": "Find $\\chi^2_R$ and $\\chi^2_L$ for a 95% confidence interval with $n=18$ (d.f.=17)."
+    },
+    {
+      "front": "In Google Sheets, how do you find the chi‑square critical value with a given right‑tail probability?",
+      "back": [
+        "Use `=CHISQ.INV.RT(probability, degrees_freedom)`.",
+        "For $\\chi^2_R$ (right‑tail): `=CHISQ.INV.RT((1-c)/2, d.f.)`.",
+        "For $\\chi^2_L$ (left‑tail): `=CHISQ.INV.RT((1+c)/2, d.f.)`.",
+        "Example: 95% CI, $n=18$ → `=CHISQ.INV.RT(0.025, 17)` returns about 30.191."
+      ]
+    },
+    {
+      "back": [
+        "$$\\frac{(n-1)s^2}{\\chi^2_R} < \\sigma^2 < \\frac{(n-1)s^2}{\\chi^2_L}$$",
+        "$\\chi^2_R$ is the larger critical value; $\\chi^2_L$ is the smaller.",
+        "The larger critical value goes in the denominator of the [[imp:lower]] bound.",
+        "The smaller critical value goes in the denominator of the [[imp:upper]] bound."
+      ],
+      "front": "Give the formula for a confidence interval for the population variance $\\sigma^2$."
+    },
+    {
+      "front": "How do you obtain a confidence interval for the population standard deviation $\\sigma$ from the interval for $\\sigma^2$?",
+      "back": [
+        "Take the [[imp:square root]] of each endpoint of the $\\sigma^2$ interval.",
+        "$$\\sqrt{\\frac{(n-1)s^2}{\\chi^2_R}} < \\sigma < \\sqrt{\\frac{(n-1)s^2}{\\chi^2_L}}$$",
+        "The interval for $\\sigma$ is also not symmetric around $s$."
+      ]
+    },
+    {
+      "back": [
+        "$d.f.=29$, $c=0.99$. Right‑tail areas: $0.005$ and $0.995$.",
+        "$\\chi^2_R = 52.336$, $\\chi^2_L = 13.121$.",
+        "For $\\sigma^2$: $\\frac{29 \\times 1.44}{52.336} \\approx 0.80$ and $\\frac{29 \\times 1.44}{13.121} \\approx 3.18$.",
+        "For $\\sigma$: $\\sqrt{0.80} \\approx 0.89$ mg and $\\sqrt{3.18} \\approx 1.78$ mg.",
+        "We are 99% confident $0.89 < \\sigma < 1.78$ mg."
+      ],
+      "front": "Construct a 99% CI for $\\sigma$: $n=30$, $s=1.20$ mg (normal population)."
+    },
+    {
+      "front": "Why is the confidence interval for $\\sigma^2$ not symmetric around $s^2$?",
+      "back": [
+        "Because the [[kw:chi‑square distribution]] is [[imp:positively skewed]] (right‑skewed).",
+        "This causes the interval to stretch further to the right than to the left of the point estimate $s^2$.",
+        "Unlike the z‑ and t‑distributions, the chi‑square distribution is not symmetric."
+      ]
+    },
+    {
+      "back": [
+        "The population must be [[imp:approximately normally distributed]].",
+        "If the population is heavily skewed, the chi‑square method is not valid.",
+        "Check normality with a histogram or normal probability plot of the sample data."
+      ],
+      "front": "What is the required condition for using the chi‑square distribution to construct a confidence interval for $\\sigma^2$?"
+    },
+    {
+      "front": "A 95% CI for $\\sigma$ is (0.195, 0.348). A specification requires $\\sigma \\le 0.30$. Is the process acceptable?",
+      "back": [
+        "The upper bound of the CI is 0.348, which [[imp:exceeds]] the limit of 0.30.",
+        "We cannot be 95% confident that $\\sigma \\le 0.30$.",
+        "The process may need improvement to reduce variability."
+      ]
+    },
+    {
+      "back": [
+        "If we repeatedly take samples of the same size and construct 99% CIs, about [[imp:99% of those intervals]] will contain the true population standard deviation $\\sigma$.",
+        "We do NOT say 'there is a 99% chance that $\\sigma$ is in this interval.'",
+        "Confidence refers to the method, not a specific interval."
+      ],
+      "front": "What does it mean to say 'We are 99% confident that $0.89 < \\sigma < 1.78$ mg'?"
+    },
+    {
+      "back": [
+        "The distribution becomes [[imp:less skewed]] and more [[imp:symmetric]].",
+        "For large degrees of freedom, the chi‑square distribution approximates a normal distribution.",
+        "This is why the critical values for large $n$ are closer together."
+      ],
+      "front": "What happens to the shape of the chi‑square distribution as the sample size (and degrees of freedom) increases?"
+    },
+    {
+      "front": "How can you tell if you accidentally swapped $\\chi^2_R$ and $\\chi^2_L$ when constructing a confidence interval?",
+      "back": [
+        "If the lower bound ends up being [[imp:larger]] than the upper bound, you have swapped them.",
+        "Always check that $\\chi^2_R > \\chi^2_L$ (the right‑tail critical value is larger).",
+        "The larger critical value must go in the denominator of the lower bound to make it smaller."
+      ]
+    }
+  ],
+  "title": "Confidence Intervals for Variance and Standard Deviation",
+  "id": "chapter-6-4-flashcards",
+  "type": "flashcard",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,701 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-4-8-applications",
+  "title": "Applications and Models",
+  "standards": [
+    "HSG.SRT.C.8",
+    "HSG.SRT.D.10",
+    "HSF.TF.B.5"
+  ],
+  "blocks": [
+    {
+      "id": "right-triangle-basics",
+      "title": "Solving Right Triangles",
+      "teacherCues": [
+        "Draw a right triangle, label angles A, B, C (C=90°), and sides a, b, c (c hypotenuse). Ask: If we know one acute angle and one side, how do we find the rest?",
+        "Write SOH‑CAH‑TOA on the board and remind students to choose the correct ratio."
+      ],
+      "discoveryHook": {
+        "scenario": "A carpenter needs to cut a rafter for a roof. She knows the horizontal run and the angle of the roof, but needs the length of the rafter (the hypotenuse). Right triangle trig gives the answer without climbing on the roof!"
+      },
+      "concept": {
+        "explanation": [
+          "In a right triangle, we label the acute angles $ A $ and $ B $, and the right angle $ C = 90° $.",
+          "Sides: $ a $ opposite $ A $, $ b $ opposite $ B $, $ c $ hypotenuse.",
+          "To 'solve' a right triangle means to find all unknown sides and angles.",
+          "Use the given information and trig ratios ($ \\sin, \\cos, \\tan $) to set up equations.",
+          "Remember: $ A + B = 90° $ because the angles of a triangle sum to 180° and one is 90°."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "How to Choose a Trig Function",
+            "headers": [
+              "Known",
+              "Unknown",
+              "Use"
+            ],
+            "rows": [
+              {
+                "0": "Angle and adjacent side",
+                "1": "Opposite side",
+                "2": "$ \\tan $"
+              },
+              {
+                "0": "Angle and adjacent side",
+                "1": "Hypotenuse",
+                "2": "$ \\cos $"
+              },
+              {
+                "0": "Angle and opposite side",
+                "1": "Hypotenuse",
+                "2": "$ \\sin $"
+              },
+              {
+                "0": "Two sides",
+                "1": "Angle",
+                "2": "Inverse function"
+              }
+            ],
+            "caption": "Pick the function that connects the known and unknown pieces."
+          }
+        ],
+        "formulaCard": {
+          "title": "SOH‑CAH‑TOA",
+          "formula": "$$ \\sin A = \\frac{a}{c}, \\quad \\cos A = \\frac{b}{c}, \\quad \\tan A = \\frac{a}{b} $$",
+          "notes": [
+            "$ a $ = opposite $ A $, $ b $ = adjacent to $ A $, $ c $ = hypotenuse.",
+            "Use these to solve for missing sides or angles."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Finding Missing Sides",
+          "prompt": "In a right triangle, angle $ A = 30° $ and side $ b = 10 $. Find $ a $ and $ c $.",
+          "steps": [
+            "Draw: $ b $ is adjacent to $ A $, so $ \\tan 30° = a/b $ and $ \\cos 30° = b/c $.",
+            "$ a = b \\tan 30° = 10 \\times \\frac{1}{\\sqrt{3}} \\approx 5.77 $.",
+            "$ c = \\frac{b}{\\cos 30°} = \\frac{10}{\\sqrt{3}/2} = \\frac{20}{\\sqrt{3}} \\approx 11.55 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Finding an Angle",
+          "prompt": "In a right triangle, $ a = 4 $, $ b = 5 $. Find $ A $.",
+          "peerPrompt": "Explain to a partner: which trig function relates opposite and adjacent? Then what inverse do you use?",
+          "minLength": 2,
+          "steps": [
+            "$ \\tan A = a/b = 4/5 $.",
+            "So $ A = \\arctan(4/5) \\approx 38.66° $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Using Complementary Angle",
+          "prompt": "In a right triangle, $ A = 25° $. Find $ B $.",
+          "steps": [
+            "$ A + B = 90° $, so $ B = 90° - 25° = 65° $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Opposite vs Adjacent",
+        "body": "Opposite side is across from the angle. Adjacent is next to the angle and not the hypotenuse. Always sketch the triangle first."
+      },
+      "questions": [
+        {
+          "id": "q4-8-1-1",
+          "type": "fill-blank",
+          "prompt": "In a right triangle, if $ A = 40° $, then $ B = $ ___° (just number).",
+          "blanks": [
+            {
+              "accept": [
+                "50"
+              ]
+            }
+          ],
+          "hints": [
+            "A and B sum to 90°.",
+            "90 - 40 = ?"
+          ],
+          "feedbackIfWrong": "B = 50°."
+        },
+        {
+          "id": "q4-8-1-2",
+          "type": "short-answer",
+          "prompt": "If $ \\tan A = 3/4 $, what function gives $ A $? (Write 'arctan' or 'tan^{-1}'.)",
+          "answer": "arctan",
+          "hints": [
+            "You need the inverse of tangent.",
+            "It's often called arc tangent."
+          ],
+          "feedbackIfWrong": "Use arctan or tan⁻¹."
+        },
+        {
+          "id": "q4-8-1-3",
+          "type": "short-answer",
+          "prompt": "Given $ a = 6 $, $ c = 10 $, $ \\sin A = $ ? (Fraction like '3/5'.)",
+          "answer": "3/5",
+          "hints": [
+            "sin A = opposite/hypotenuse.",
+            "a is opposite, c hypotenuse."
+          ],
+          "feedbackIfWrong": "sin A = 6/10 = 3/5."
+        }
+      ]
+    },
+    {
+      "id": "angle-elevation-depression",
+      "title": "Angle of Elevation and Depression",
+      "teacherCues": [
+        "Draw a horizontal line and a line of sight going upward; label angle of elevation. Repeat for downward (depression). Ask: How are these angles used in word problems?",
+        "Show a sketch of a lighthouse problem: from a boat, the angle of elevation to the top of the lighthouse is given, and horizontal distance is known."
+      ],
+      "discoveryHook": {
+        "scenario": "A forest ranger in a tower spots a fire. The angle of depression to the fire is 10°. Knowing the tower height, the ranger can find the distance to the fire using tangent."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:angle of elevation]] is the angle measured upward from the horizontal to a line of sight.",
+          "The [[kw:angle of depression]] is the angle measured downward from the horizontal to a line of sight.",
+          "In diagrams, these angles often form right triangles. The vertical side is opposite, the horizontal is adjacent.",
+          "Use $ \\tan \\theta = \\frac{\\text{opposite}}{\\text{adjacent}} $ frequently.",
+          "If two angles are involved (e.g., top and bottom of an object), subtract to find a height difference."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Common Trig Setups",
+            "headers": [
+              "Situation",
+              "Trig Equation"
+            ],
+            "rows": [
+              {
+                "0": "Height of object, given distance and elevation",
+                "1": "$ \\tan(\\text{angle}) = \\frac{\\text{height}}{\\text{distance}} $"
+              },
+              {
+                "0": "Distance from base, given height and depression",
+                "1": "$ \\tan(\\text{angle}) = \\frac{\\text{height}}{\\text{distance}} $"
+              },
+              {
+                "0": "Problem with two elevations",
+                "1": "Subtract two tangent equations"
+              }
+            ],
+            "caption": "Almost always use tangent for these problems."
+          }
+        ],
+        "formulaCard": {
+          "title": "Angle of Elevation/Depression",
+          "formula": "$$ \\tan\\theta = \\frac{\\text{vertical change}}{\\text{horizontal distance}} $$",
+          "notes": [
+            "$ \\theta $ is the angle from horizontal.",
+            "If the angle is given in degrees, make sure to use degree mode in calculations."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Height from Elevation",
+          "prompt": "A surveyor stands 100 ft from a tower. The angle of elevation to the top is 35°. How tall is the tower?",
+          "steps": [
+            "Draw: adjacent = 100 ft, angle = 35°, opposite = height $ h $.",
+            "$ \\tan 35° = h/100 $.",
+            "$ h = 100 \\tan 35° \\approx 100 \\times 0.7002 = 70.0 $ ft."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Depression to find Distance",
+          "prompt": "From a cliff 200 ft high, the angle of depression to a boat is 12°. How far is the boat from the cliff base?",
+          "peerPrompt": "Is the angle in the right triangle the same as the depression? Explain to a partner.",
+          "minLength": 2,
+          "steps": [
+            "Angle of depression = angle of elevation from boat to cliff top (alternate interior).",
+            "So $ \\tan 12° = 200/d $, $ d = 200/\\tan 12° \\approx 200/0.2126 \\approx 941 $ ft."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Two Angles",
+          "prompt": "From a point 50 m from a flagpole, the angles of elevation to the bottom and top of a statue on top are 30° and 40°. Find the statue height.",
+          "steps": [
+            "Let $ h_1 $ = height of pole, $ h_2 $ = total height.",
+            "$ h_1 = 50 \\tan 30° $, $ h_2 = 50 \\tan 40° $.",
+            "Statue height = $ h_2 - h_1 = 50(\\tan 40° - \\tan 30°) \\approx 50(0.8391 - 0.5774) \\approx 13.1 $ m."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Depression vs Elevation",
+        "body": "The angle of depression is measured down from the horizontal, but it's equal to the angle of elevation from the other point. So you can always use the same right triangle."
+      },
+      "questions": [
+        {
+          "id": "q4-8-2-1",
+          "type": "short-answer",
+          "prompt": "If the angle of elevation to a tree top from 30 m away is 50°, which trig function relates height and distance? (sin, cos, tan)",
+          "answer": "tan",
+          "hints": [
+            "Height is opposite, distance is adjacent.",
+            "Opp/adj = tan."
+          ],
+          "feedbackIfWrong": "Use tangent."
+        },
+        {
+          "id": "q4-8-2-2",
+          "type": "fill-blank",
+          "prompt": "From a 150‑ft tower, the angle of depression to a car is 25°. The horizontal distance $ d $ satisfies $ \\tan 25° = 150 / $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "d"
+              ]
+            }
+          ],
+          "hints": [
+            "Opposite is 150 ft, adjacent is d.",
+            "tan = opp/adj."
+          ],
+          "feedbackIfWrong": "tan 25° = 150 / d."
+        },
+        {
+          "id": "q4-8-2-3",
+          "type": "short-answer",
+          "prompt": "True or false: The angle of depression is always measured from the vertical. (Answer 'False'.)",
+          "answer": "False",
+          "hints": [
+            "Depression is measured from the horizontal.",
+            "Think of looking down from a window."
+          ],
+          "feedbackIfWrong": "It's measured from the horizontal, not vertical."
+        }
+      ]
+    },
+    {
+      "id": "bearings",
+      "title": "Directional Bearings",
+      "teacherCues": [
+        "Draw a north‑south line. Show a bearing N 30° E: start at north, rotate 30° toward the east. Ask: What acute angle does this make with the north‑south line?",
+        "Contrast with regular angle measures: bearings always use north or south as the first reference."
+      ],
+      "discoveryHook": {
+        "scenario": "A ship's captain reports her position as 'bearing N 47° W from the lighthouse'. This means if you face north and turn 47° toward west, you'll be looking at the ship. Bearings are essential for navigation."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:bearing]] is given as an acute angle measured from north or south toward east or west.",
+          "Format: N __° E or N __° W or S __° E or S __° W.",
+          "For example, S 35° E means start at south, rotate 35° toward east.",
+          "Bearings are used in navigation and surveying.",
+          "When solving bearing problems, draw the path and create right triangles; use sine/cosine to find distances."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Examples of Bearings",
+            "headers": [
+              "Bearing",
+              "Meaning"
+            ],
+            "rows": [
+              {
+                "0": "N 45° E",
+                "1": "45° east of north"
+              },
+              {
+                "0": "S 60° W",
+                "1": "60° west of south"
+              },
+              {
+                "0": "N 30° W",
+                "1": "30° west of north"
+              },
+              {
+                "0": "S 15° E",
+                "1": "15° east of south"
+              }
+            ],
+            "caption": "Bearings are always acute angles (less than 90°)."
+          }
+        ],
+        "formulaCard": {
+          "title": "Bearing Notation",
+          "formula": "$$ \\text{N } \\theta \\text{ E} \\quad \\text{means} \\quad \\text{rotate } \\theta \\text{ from north toward east} $$",
+          "notes": [
+            "First letter always N or S.",
+            "Second letter always E or W.",
+            "Angle is between 0° and 90°."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Interpreting a Bearing",
+          "prompt": "A ship travels on a bearing of S 40° W for 10 miles. Draw a diagram and find how far south and west it has traveled.",
+          "steps": [
+            "Draw a south line and rotate 40° toward west.",
+            "Distance south = $ 10 \\cos 40° \\approx 7.66 $ mi, distance west = $ 10 \\sin 40° \\approx 6.43 $ mi.",
+            "So the ship is 7.66 mi south and 6.43 mi west of start."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Finding Bearing from Coordinates",
+          "prompt": "A plane flies 50 mi east and 30 mi north. What is its bearing from the starting point?",
+          "peerPrompt": "Draw a right triangle. Which trig function gives the angle from the north‑south line?",
+          "minLength": 2,
+          "steps": [
+            "The plane is 50 mi east, 30 mi north; it's northeast of start.",
+            "Angle from north: $ \\tan \\theta = 50/30 \\Rightarrow \\theta \\approx 59.0° $.",
+            "So bearing = N 59.0° E."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Boat Changing Course",
+          "prompt": "A boat goes 5 mi due north, then 8 mi N 30° E. Find final distance and bearing from start.",
+          "steps": [
+            "First leg: 5 mi north.",
+            "Second leg: 8 mi at N 30° E → east component = $ 8 \\sin 30° = 4 $, north component = $ 8 \\cos 30° = 6.928 $ mi.",
+            "Total north = 11.928 mi, east = 4 mi. Distance = $ \\sqrt{11.928^2+4^2} \\approx 12.6 $ mi. Bearing: $ \\theta = \\arctan(4/11.928) \\approx 18.5° $, so N 18.5° E."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Mix Up N/S and E/W",
+        "body": "Always start by locating the north‑south line. If the bearing is S 40° W, you face south, then turn 40° toward the west. The east component is opposite to the angle (sin), the north/south component is adjacent (cos) if you measure from the appropriate axis."
+      },
+      "questions": [
+        {
+          "id": "q4-8-3-1",
+          "type": "fill-blank",
+          "prompt": "A bearing of N 25° W means rotate from ___ toward west by 25°.",
+          "blanks": [
+            {
+              "accept": [
+                "north"
+              ]
+            }
+          ],
+          "hints": [
+            "The first letter tells you the starting direction.",
+            "It's one of the cardinal directions."
+          ],
+          "feedbackIfWrong": "Start from north."
+        },
+        {
+          "id": "q4-8-3-2",
+          "type": "short-answer",
+          "prompt": "A ship sails 20 mi on a bearing of S 50° E. Which component uses cosine? (North‑south or east‑west?)",
+          "answer": "north-south",
+          "hints": [
+            "The bearing angle is measured from south.",
+            "The south component is adjacent to the angle."
+          ],
+          "feedbackIfWrong": "The north‑south component (south) uses cosine."
+        },
+        {
+          "id": "q4-8-3-3",
+          "type": "short-answer",
+          "prompt": "True or false: A bearing can be N 120° E. (Answer 'False'.)",
+          "answer": "False",
+          "hints": [
+            "Bearings are always acute (less than 90°).",
+            "N 120° E is not a standard bearing."
+          ],
+          "feedbackIfWrong": "False, bearings are always ≤ 90°."
+        }
+      ]
+    },
+    {
+      "id": "harmonic-motion",
+      "title": "Simple Harmonic Motion",
+      "teacherCues": [
+        "Demonstrate a mass on a spring bouncing up and down. Ask: What kind of graph would its height vs. time produce?",
+        "Introduce the equation $ d = a \\sin \\omega t $ or $ d = a \\cos \\omega t $ and explain amplitude and period."
+      ],
+      "discoveryHook": {
+        "scenario": "A guitar string vibrates back and forth when plucked. Its motion is modeled by a sine wave. The loudness depends on the amplitude, and the pitch depends on the frequency."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Simple harmonic motion]] describes a back‑and‑forth movement that repeats regularly, like a spring or pendulum.",
+          "Its equation is $ d = a \\sin \\omega t $ or $ d = a \\cos \\omega t $, where $ d $ is displacement from rest.",
+          "$ a $ = amplitude (maximum displacement). $ |a| $ tells the height of the wave.",
+          "Period $ = \\frac{2\\pi}{\\omega} $ (time for one full cycle).",
+          "Frequency $ = \\frac{\\omega}{2\\pi} $ (number of cycles per unit time)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Harmonic Motion Parameters",
+            "headers": [
+              "Symbol",
+              "Name",
+              "Meaning"
+            ],
+            "rows": [
+              {
+                "0": "$ a $",
+                "1": "Amplitude",
+                "2": "Maximum distance from equilibrium"
+              },
+              {
+                "0": "$ \\omega $",
+                "1": "Angular frequency",
+                "2": "How fast the oscillation occurs"
+              },
+              {
+                "0": "$ T $",
+                "1": "Period $ = 2\\pi/\\omega $",
+                "2": "Time for one complete cycle"
+              },
+              {
+                "0": "$ f $",
+                "1": "Frequency $ = \\omega/(2\\pi) $",
+                "2": "Cycles per second"
+              }
+            ],
+            "caption": "Use the given information to find these values."
+          }
+        ],
+        "formulaCard": {
+          "title": "Harmonic Motion Equations",
+          "formula": "$$ d = a \\sin \\omega t \\quad \\text{or} \\quad d = a \\cos \\omega t $$",
+          "notes": [
+            "Amplitude = $ |a| $",
+            "Period $ T = \\frac{2\\pi}{\\omega} $",
+            "If $ d=0 $ at $ t=0 $, use sine; if $ d = \\pm a $ at $ t=0 $, use cosine."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Writing an Equation",
+          "prompt": "A spring bounces up and down. At $ t=0 $, it is at equilibrium and moving upward. Amplitude = 5 cm, period = 2 seconds. Write the equation.",
+          "steps": [
+            "Since $ d=0 $ at $ t=0 $, use sine: $ d = a \\sin \\omega t $.",
+            "Amplitude $ a = 5 $ (cm). Period $ = 2\\pi/\\omega = 2 \\Rightarrow \\omega = \\pi $.",
+            "Equation: $ d = 5 \\sin(\\pi t) $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Finding Period from Equation",
+          "prompt": "Given $ d = 4 \\cos(3t) $, find the period and frequency.",
+          "peerPrompt": "Identify $ \\omega = 3 $. Then use the formulas. Explain to a partner.",
+          "minLength": 2,
+          "steps": [
+            "$ \\omega = 3 $.",
+            "Period $ = 2\\pi/3 $ seconds.",
+            "Frequency $ = 3/(2\\pi) $ cycles per second."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Finding Displacement at a Time",
+          "prompt": "For $ d = 6 \\sin(\\frac{\\pi}{2} t) $, find $ d $ when $ t = 3 $.",
+          "steps": [
+            "Plug in: $ d = 6 \\sin(\\frac{\\pi}{2} \\times 3) = 6 \\sin(\\frac{3\\pi}{2}) = 6(-1) = -6 $.",
+            "So the object is 6 units below equilibrium."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sinusoidal Models",
+        "body": "Real harmonic motion may be damped, but we study ideal simple harmonic motion. If the problem does not specify starting position, you may choose sine or cosine with a phase shift."
+      },
+      "questions": [
+        {
+          "id": "q4-8-4-1",
+          "type": "fill-blank",
+          "prompt": "If a harmonic motion equation is $ d = a \\sin \\omega t $, the amplitude is ___ (give symbol).",
+          "blanks": [
+            {
+              "accept": [
+                "a",
+                "|a|"
+              ]
+            }
+          ],
+          "hints": [
+            "Amplitude is the coefficient in front of sine.",
+            "It's usually denoted by a."
+          ],
+          "feedbackIfWrong": "Amplitude = |a|."
+        },
+        {
+          "id": "q4-8-4-2",
+          "type": "short-answer",
+          "prompt": "A pendulum has period 4 seconds. What is $ \\omega $? (Answer like 'pi/2'.)",
+          "answer": "pi/2",
+          "hints": [
+            "Period = 2π/ω = 4 → ω = 2π/4.",
+            "Simplify."
+          ],
+          "feedbackIfWrong": "ω = π/2."
+        },
+        {
+          "id": "q4-8-4-3",
+          "type": "short-answer",
+          "prompt": "True or false: In $ d = 3 \\cos(2t) $, the frequency is $ 3/(2\\pi) $. (Answer 'False'.)",
+          "answer": "False",
+          "hints": [
+            "Frequency = ω/(2π) = 2/(2π) = 1/π.",
+            "The amplitude 3 is not part of frequency."
+          ],
+          "feedbackIfWrong": "False, frequency = 2/(2π) = 1/π."
+        }
+      ]
+    },
+    {
+      "id": "right-triangle-blueprint",
+      "title": "Solving Real‑Life Problems — Understand → Solve → Conclude",
+      "teacherCues": [
+        "Present a problem: 'A ramp rises 3 ft over a horizontal distance of 12 ft. Find the angle of incline.' Walk through the blueprint.",
+        "Emphasize: Understand the given sides and unknown; solve using inverse tangent; conclude with a statement including units."
+      ],
+      "discoveryHook": {
+        "scenario": "Everyday problems, like finding the angle of a wheelchair ramp or the length of a shadow, boil down to solving a right triangle. The blueprint method organizes your thinking."
+      },
+      "concept": {
+        "explanation": [
+          "For any right‑triangle application, follow these steps:",
+          "Understand: Identify the given sides/angles, what needs to be found, and draw a diagram.",
+          "Solve: Choose the correct trig function (or inverse) and set up an equation. Solve for the unknown.",
+          "Conclude: State the answer with units and check if it makes sense (e.g., angles between 0° and 90°, lengths positive)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Right Triangle Problems",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Read problem, draw triangle, label sides, identify unknown."
+              },
+              {
+                "0": "Solve",
+                "1": "Write trig equation, isolate unknown, compute."
+              },
+              {
+                "0": "Conclude",
+                "1": "Write answer with correct units, check reasonableness."
+              }
+            ],
+            "caption": "This works for all right‑triangle applications."
+          }
+        ],
+        "formulaCard": {
+          "title": "Problem‑Solving Skeleton",
+          "formula": "$$ \\text{1. Diagram} \\quad \\text{2. Trig equation} \\quad \\text{3. Solve} \\quad \\text{4. Conclude} $$",
+          "notes": [
+            "Always declare what you are finding.",
+            "Keep units consistent."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Ladder Angle",
+          "prompt": "A 15‑ft ladder leans against a wall and reaches 12 ft high. Find the angle the ladder makes with the ground.",
+          "steps": [
+            "Understand: Opposite = 12 ft, hypotenuse = 15 ft. Need angle $ \\theta $.",
+            "Solve: $ \\sin \\theta = 12/15 = 0.8 $, so $ \\theta = \\arcsin(0.8) \\approx 53.1° $.",
+            "Conclude: The ladder makes approximately a 53° angle with the ground."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Shadow Length",
+          "prompt": "A 20‑ft tree casts a shadow when the sun is at an angle of elevation of 40°. How long is the shadow?",
+          "peerPrompt": "Draw the triangle. Which sides do you know? Which trig function relates them?",
+          "minLength": 2,
+          "steps": [
+            "Understand: Opposite = 20 ft, angle = 40°, need adjacent (shadow).",
+            "Solve: $ \\tan 40° = 20/x \\Rightarrow x = 20/\\tan 40° \\approx 23.8 $ ft.",
+            "Conclude: The shadow is about 23.8 feet long."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Height of a Building",
+          "prompt": "From 100 ft away, the angle of elevation to the top of a building is 50°. To the bottom of an antenna on top, it's 45°. Find the antenna height.",
+          "steps": [
+            "Understand: Two heights: building $ h_1 $, total $ h_2 $. Adjacent = 100 ft.",
+            "Solve: $ h_1 = 100 \\tan 45° = 100 $ ft; $ h_2 = 100 \\tan 50° \\approx 119.2 $ ft.",
+            "Conclude: Antenna height = $ 119.2 - 100 = 19.2 $ ft."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Inverse Functions for Angles",
+        "body": "When you need to find an angle, use the inverse trig functions: $ \\arcsin, \\arccos, \\arctan $. They give angles in degrees or radians depending on mode."
+      },
+      "questions": [
+        {
+          "id": "q4-8-5-1",
+          "type": "short-answer",
+          "prompt": "To find an angle given opposite and adjacent, you use: tan, arcsin, or arccos? (Answer 'arctan'.)",
+          "answer": "arctan",
+          "hints": [
+            "Opp/adj = tan.",
+            "To find angle, use inverse tan."
+          ],
+          "feedbackIfWrong": "Use arctan."
+        },
+        {
+          "id": "q4-8-5-2",
+          "type": "fill-blank",
+          "prompt": "A 30‑ft wire from ground to top of a pole makes a 60° angle with the ground. The pole height is $ 30 \\times $ ___ (sin 60° or cos 60°)?",
+          "blanks": [
+            {
+              "accept": [
+                "sin 60°"
+              ]
+            }
+          ],
+          "hints": [
+            "Height is opposite the angle.",
+            "Hypotenuse is 30, so use sine."
+          ],
+          "feedbackIfWrong": "Use sin 60°: height = 30 sin 60°."
+        },
+        {
+          "id": "q4-8-5-3",
+          "type": "short-answer",
+          "prompt": "True or false: In a right triangle problem, you can use the Pythagorean theorem to find an angle directly. (Answer 'False'.)",
+          "answer": "False",
+          "hints": [
+            "Pythagorean theorem finds sides, not angles.",
+            "For angles, use inverse trig."
+          ],
+          "feedbackIfWrong": "False, you need trig functions or inverse trig."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

@@ -1,0 +1,762 @@
+{
+  "blocks": [
+    {
+      "examples": [
+        {
+          "prompt": "Find the inverse of $f(x) = 3x - 1$.",
+          "role": "guided",
+          "title": "Example A — Finding an Inverse from a Formula",
+          "steps": [
+            "Write $y = 3x - 1$.",
+            "Switch $x$ and $y$: $x = 3y - 1$.",
+            "Solve for $y$: $x + 1 = 3y$, so $y = \\frac{x + 1}{3}$.",
+            "The inverse is $f^{-1}(x) = \\frac{x + 1}{3}$, or $f^{-1}(x) = \\frac{1}{3}x + \\frac{1}{3}$."
+          ]
+        },
+        {
+          "prompt": "For $f(x) = 2x + 3$, find the input when the output is $-7$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does solving for $x$ in $y = f(x)$ help you find the input for a given output? Why does this process give a formula for the inverse?",
+          "minLength": 8,
+          "role": "peer-explain",
+          "title": "Example B — Input from Output",
+          "steps": [
+            "Set $y = 2x + 3$. We want $x$ when $y = -7$.",
+            "Solve $2x + 3 = -7$ → $2x = -10$ → $x = -5$.",
+            "Alternate: the inverse function is $f^{-1}(x) = \\frac{x-3}{2}$, so $f^{-1}(-7) = \\frac{-10}{2} = -5$.",
+            "The input is $-5$."
+          ]
+        },
+        {
+          "role": "independent",
+          "prompt": "Find the inverse of $f(x) = -\\frac{1}{2}x + 4$.",
+          "title": "Example C — Another Linear Inverse",
+          "steps": [
+            "$y = -\\frac{1}{2}x + 4$. Switch: $x = -\\frac{1}{2}y + 4$.",
+            "Solve: $x - 4 = -\\frac{1}{2}y$ → multiply by $-2$: $-2x + 8 = y$.",
+            "So $f^{-1}(x) = -2x + 8$."
+          ]
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "title": "Steps to Find an Inverse Algebraically",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Write $y = f(x)$."
+              },
+              {
+                "0": "2",
+                "1": "Switch $x$ and $y$."
+              },
+              {
+                "0": "3",
+                "1": "Solve the new equation for $y$."
+              },
+              {
+                "0": "4",
+                "1": "Replace $y$ with $f^{-1}(x)$."
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "An [[kw:inverse function]] reverses the effect of the original function. If $f(a) = b$, then $f^{-1}(b) = a$.",
+          "To find an inverse algebraically, write $y = f(x)$, switch $x$ and $y$, then solve for $y$. The resulting expression is $f^{-1}(x)$.",
+          "For a [[kw:linear function]] $f(x) = mx + b$ (with $m \\neq 0$), the inverse is always a function: $f^{-1}(x) = \\frac{x - b}{m}$.",
+          "The domain and range of a function and its inverse are swapped: the domain of $f$ becomes the range of $f^{-1}$, and vice versa.",
+          "Graphically, the inverse function is a [[kw:reflection]] of the original function across the line $y = x$."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$f^{-1}(x)$",
+              "meaning": "inverse function of $f$"
+            },
+            {
+              "tone": "subtle",
+              "symbol": "$f(x)$",
+              "meaning": "original function"
+            }
+          ],
+          "formula": "$$ f^{-1}(x) \\text{ is the inverse of } f(x) \\text{ if } f(f^{-1}(x)) = x \\text{ and } f^{-1}(f(x)) = x $$"
+        }
+      },
+      "title": "Finding Inverses of Linear Functions",
+      "confusionCorner": {
+        "body": "The notation $f^{-1}(x)$ does [[imp:not]] mean $\\frac{1}{f(x)}$. It is the inverse function, a completely different concept. The $-1$ is just a symbol meaning 'inverse'.",
+        "title": "Not an Exponent!"
+      },
+      "discoveryHook": {
+        "scenario": "Imagine a machine that adds 3 to any number and then doubles it. The inverse machine would take the result, halve it, and then subtract 3, returning the original number. Functions that 'undo' each other are called inverse functions, and they're all around us—from converting currencies to decoding secret messages."
+      },
+      "id": "introduction-to-inverses",
+      "teacherCues": [
+        "Write $f(x) = 2x + 3$. Ask: How do we find the input if we know the output? Solve $y = 2x + 3$ for $x$.",
+        "Then switch $x$ and $y$ to get $y = \\frac{x-3}{2}$. Explain that this new function is the inverse, denoted $f^{-1}(x)$."
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "y"
+              ]
+            }
+          ],
+          "id": "q5-6-1",
+          "prompt": "To find the inverse of a function algebraically, you switch the roles of $x$ and ___.",
+          "feedbackIfWrong": "You switch $x$ and $y$, then solve for $y$.",
+          "hints": [
+            "In the equation $y = f(x)$, the other variable.",
+            "You interchange input and output."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "id": "q5-6-2",
+          "prompt": "Find the inverse of $f(x) = 6x$.",
+          "feedbackIfWrong": "$f^{-1}(x) = \\frac{x}{6}$.",
+          "hints": [
+            "Switch $x$ and $y$, then divide by 6.",
+            "The inverse operation of multiplying by 6 is dividing by 6."
+          ],
+          "answers": [
+            "x/6",
+            "\\frac{x}{6}",
+            "1/6 x",
+            "\\frac{1}{6}x"
+          ]
+        },
+        {
+          "hints": [
+            "Inverse functions reverse the mapping.",
+            "If $f$ sends 3 to 7, the inverse sends 7 back to 3."
+          ],
+          "answers": [
+            "3",
+            "three"
+          ],
+          "prompt": "If $f(3) = 7$, what is $f^{-1}(7)$?",
+          "type": "short-answer",
+          "feedbackIfWrong": "By definition, $f^{-1}(7) = 3$.",
+          "id": "q5-6-3"
+        }
+      ]
+    },
+    {
+      "concept": {
+        "explanation": [
+          "The graph of $f^{-1}$ is the reflection of the graph of $f$ across the line $y = x$.",
+          "If $(a, b)$ lies on the graph of $f$, then $(b, a)$ lies on the graph of $f^{-1}$.",
+          "The domain of $f$ is the range of $f^{-1}$; the range of $f$ is the domain of $f^{-1}$.",
+          "When graphing both, plot a few points on $f$, swap coordinates to get points on $f^{-1}$, and draw the curves.",
+          "This reflection property holds for any function and its inverse, whether linear or nonlinear."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Point on $f(x)$",
+              "Point on $f^{-1}(x)$"
+            ],
+            "variant": "colorful",
+            "title": "Coordinates Swap for Inverses",
+            "rows": [
+              {
+                "0": "$(-2, -1)$",
+                "1": "$(-1, -2)$"
+              },
+              {
+                "0": "$(0, 1)$",
+                "1": "$(1, 0)$"
+              },
+              {
+                "0": "$(2, 5)$",
+                "1": "$(5, 2)$"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "line of reflection for inverses",
+              "tone": "core",
+              "symbol": "$y = x$"
+            }
+          ],
+          "formula": "$$ (x, y) \\text{ on } f \\iff (y, x) \\text{ on } f^{-1} $$"
+        }
+      },
+      "examples": [
+        {
+          "title": "Example A — Reflecting a Linear Function",
+          "steps": [
+            "We previously found $f^{-1}(x) = \\frac{x+1}{3}$.",
+            "Graph $f$: passes through $(-1, -4)$ and $(1, 2)$.",
+            "Graph $f^{-1}$: passes through $(-4, -1)$ and $(2, 1)$.",
+            "The line $y = x$ is the perpendicular bisector between corresponding points."
+          ],
+          "role": "guided",
+          "prompt": "Graph $f(x) = 3x - 1$ and its inverse, and identify the line of symmetry."
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What test on the original graph tells you if the inverse will be a function? Draw a parabola and a cubic to illustrate.",
+          "minLength": 8,
+          "role": "peer-explain",
+          "title": "Example B — Checking Inverses Graphically",
+          "steps": [
+            "The Horizontal Line Test: If any horizontal line intersects the graph of $f$ more than once, the inverse is NOT a function.",
+            "For $f(x) = x^2$, a horizontal line $y = 4$ hits the graph twice. So its inverse is not a function (it's a sideways parabola).",
+            "For $f(x) = x^3$, every horizontal line hits exactly once. So its inverse is a function (the cube root).",
+            "So, if $f$ passes the horizontal line test, $f^{-1}$ is a function."
+          ],
+          "prompt": "Explain how you can use the graph of a function to determine whether its inverse is also a function."
+        },
+        {
+          "steps": [
+            "Swap coordinates: $(2,5)$ on $f$ becomes $(5,2)$ on $f^{-1}$.",
+            "$(-3,4)$ becomes $(4,-3)$.",
+            "These are two points on the inverse's graph."
+          ],
+          "title": "Example C — Swapping Points",
+          "role": "independent",
+          "prompt": "The graph of $f$ contains $(2, 5)$ and $(-3, 4)$. Name two points on the graph of $f^{-1}$."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "If you take a graph on a transparency and flip it over the line $y = x$, you get the graph of its inverse! This visual symmetry is a powerful check—if you can draw the mirror image, you've found the inverse."
+      },
+      "confusionCorner": {
+        "title": "Reflection, Not Rotation",
+        "body": "The inverse is reflected over the line $y = x$, not rotated 90°. It's a mirror image, not a turn. [[imp:Check that the distances to the line $y = x$ are equal.]]"
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "y = x",
+                "y=x"
+              ]
+            }
+          ],
+          "id": "q5-6-4",
+          "prompt": "The graph of an inverse function is a reflection of the original graph across the line ___.",
+          "hints": [
+            "It's the line where $x$ and $y$ coordinates are equal.",
+            "Diagonal line through the origin at 45 degrees."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "The line of reflection is $y = x$."
+        },
+        {
+          "feedbackIfWrong": "Swap: $(4, 1)$ is on the inverse.",
+          "type": "short-answer",
+          "id": "q5-6-5",
+          "prompt": "If $(1, 4)$ is on the graph of $f$, what point is on the graph of $f^{-1}$? (Enter as (4,1) without spaces)",
+          "hints": [
+            "Swap the coordinates.",
+            "The $x$ and $y$ values exchange places."
+          ],
+          "answers": [
+            "(4,1)"
+          ]
+        },
+        {
+          "answers": [
+            "1",
+            "one"
+          ],
+          "prompt": "A function passes the Horizontal Line Test if every horizontal line intersects the graph at most ___ time(s). (Enter a number)",
+          "type": "short-answer",
+          "hints": [
+            "If a horizontal line hits more than once, the inverse fails the vertical line test.",
+            "To have an inverse function, the original must be one-to-one."
+          ],
+          "feedbackIfWrong": "At most once. Otherwise, the inverse is not a function.",
+          "id": "q5-6-6"
+        }
+      ],
+      "title": "Graphing Inverse Functions",
+      "id": "graphing-inverses",
+      "teacherCues": [
+        "Graph $f(x) = 2x$ and its inverse on the same axes. Point out the symmetry across the line $y = x$.",
+        "Ask: If a point $(a,b)$ is on $f$, where is it on the graph of $f^{-1}$?"
+      ]
+    },
+    {
+      "id": "inverses-nonlinear",
+      "questions": [
+        {
+          "hints": [
+            "It fails the vertical line test after reflection.",
+            "Inverse is a relation that may not pass the function test."
+          ],
+          "feedbackIfWrong": "The inverse would not be a function.",
+          "type": "fill-blank",
+          "prompt": "The Horizontal Line Test: If any horizontal line intersects the graph more than once, the inverse is NOT a ___.",
+          "blanks": [
+            {
+              "accept": [
+                "function"
+              ]
+            }
+          ],
+          "id": "q5-6-7"
+        },
+        {
+          "hints": [
+            "Switch $x$ and $y$, then add 1 to both sides, then take cube root.",
+            "It's a cubic, so no domain restriction needed."
+          ],
+          "id": "q5-6-8",
+          "feedbackIfWrong": "$f^{-1}(x) = \\sqrt[3]{x+1}$.",
+          "prompt": "Find the inverse of $f(x) = x^3 - 1$.",
+          "answers": [
+            "\\sqrt[3]{x+1}",
+            "cube root of (x+1)"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "type": "short-answer",
+          "prompt": "For $f(x) = 2\\sqrt{x-3}$, the range of $f$ is $y \\ge 0$. What is the domain of $f^{-1}$? (Use x >= ...)",
+          "feedbackIfWrong": "Domain of $f^{-1}$ is $x \\ge 0$.",
+          "answers": [
+            "x >= 0",
+            "x ≥ 0",
+            "[0, ∞)"
+          ],
+          "hints": [
+            "The domain of the inverse equals the range of the original.",
+            "The smallest output of $f$ is 0."
+          ],
+          "id": "q5-6-9"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Choosing the Correct Branch",
+        "body": "When taking a square root to find an inverse, you get $\\pm$. Use the restriction on the original domain to decide which sign to keep. [[imp:If the original $x$'s were nonnegative, choose the positive root; if nonpositive, choose the negative.]]"
+      },
+      "examples": [
+        {
+          "title": "Example A — Inverse of a Quadratic with Restriction",
+          "steps": [
+            "Write $y = 4x^2$, with $x \\le 0$.",
+            "Switch: $x = 4y^2$. Solve: $\\frac{x}{4} = y^2$ → $y = \\pm \\sqrt{\\frac{x}{4}} = \\pm \\frac{\\sqrt{x}}{2}$.",
+            "Since the original $x \\le 0$ (negative or zero), the outputs $y$ are from the negative branch. So choose the negative root.",
+            "Thus $f^{-1}(x) = -\\frac{\\sqrt{x}}{2}$, with domain $x \\ge 0$."
+          ],
+          "role": "guided",
+          "prompt": "Find the inverse of $f(x) = 4x^2$, $x \\le 0$."
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Cubic Inverse Always a Function",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does a cubic function always have an inverse that is a function, but a quadratic does not? Use the Horizontal Line Test in your explanation.",
+          "prompt": "Find the inverse of $f(x) = 2x^3 + 1$ and explain why it is a function.",
+          "steps": [
+            "Set $y = 2x^3 + 1$. Switch: $x = 2y^3 + 1$.",
+            "Solve: $x - 1 = 2y^3$ → $\\frac{x-1}{2} = y^3$ → $y = \\sqrt[3]{\\frac{x-1}{2}}$.",
+            "The cube root is defined for all real numbers, so $f^{-1}(x) = \\sqrt[3]{\\frac{x-1}{2}}$ is a function for all real $x$.",
+            "The original cubic passes the Horizontal Line Test (one-to-one), so its inverse is a function."
+          ],
+          "minLength": 8
+        },
+        {
+          "steps": [
+            "Domain of $f$: $x-3 \\ge 0$ → $x \\ge 3$. Range: $y \\ge 0$.",
+            "Set $y = 2\\sqrt{x-3}$. Switch: $x = 2\\sqrt{y-3}$.",
+            "Solve: $\\frac{x}{2} = \\sqrt{y-3}$ → square: $\\frac{x^2}{4} = y-3$ → $y = \\frac{1}{4}x^2 + 3$.",
+            "Because range of $f$ is $y \\ge 0$, the domain of $f^{-1}$ is $x \\ge 0$. So $f^{-1}(x) = \\frac{1}{4}x^2 + 3$, $x \\ge 0$."
+          ],
+          "role": "independent",
+          "title": "Example C — Radical Function Inverse",
+          "prompt": "Find the inverse of $f(x) = 2\\sqrt{x-3}$, and state any domain restrictions on the inverse."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Square and square root are inverses, but only when we restrict the domain. Similarly, cubing and cube root are perfect inverses with no restrictions. Understanding domain restrictions is the secret to making inverses work for quadratics and other even-powered functions."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Original $f(x)$",
+              "Restriction",
+              "Inverse $f^{-1}(x)$"
+            ],
+            "title": "Domain Restrictions for Inverses to be Functions",
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$x^2$",
+                "1": "$x \\ge 0$",
+                "2": "$\\sqrt{x}$"
+              },
+              {
+                "0": "$x^2$",
+                "1": "$x \\le 0$",
+                "2": "$-\\sqrt{x}$"
+              },
+              {
+                "0": "$2x^4$",
+                "1": "$x \\ge 0$",
+                "2": "$\\sqrt[4]{x/2}$"
+              },
+              {
+                "0": "$\\sqrt{x-3}$",
+                "1": "Domain $x \\ge 3$, Range $y \\ge 0$",
+                "2": "$x^2 + 3$, $x \\ge 0$"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "The inverse of a nonlinear function may or may not be a function. Use the [[kw:Horizontal Line Test]] to decide.",
+          "For $f(x) = x^2$, the inverse is $x = y^2$, which is not a function. But if we restrict the domain of $f$ to $x \\ge 0$, the inverse is $f^{-1}(x) = \\sqrt{x}$, a function.",
+          "For $f(x) = x^3$, the inverse is $f^{-1}(x) = \\sqrt[3]{x}$, always a function.",
+          "For a radical function like $f(x) = 2\\sqrt{x-3}$, we find the inverse by switching, squaring, and solving, then restricting the domain of the inverse to match the range of the original.",
+          "When finding inverses of functions with even powers or even roots, [[imp:pay attention to domain restrictions]] to keep the inverse a function."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$n$",
+              "meaning": "integer power",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ f(x) = x^n \\text{ (odd n)} \\implies f^{-1}(x) = \\sqrt[n]{x} $$ $$ f(x) = x^n \\text{ (even n)}, x \\ge 0 \\implies f^{-1}(x) = \\sqrt[n]{x} $$"
+        }
+      },
+      "title": "Inverses of Nonlinear Functions",
+      "teacherCues": [
+        "Graph $f(x) = x^2$ and reflect it. Ask: Is the reflection a function? No, it fails the vertical line test.",
+        "Then restrict to $x \\ge 0$. The inverse is $g(x) = \\sqrt{x}$, a function."
+      ]
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "composition returns input",
+              "symbol": "$f \\circ g = x$",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ f(g(x)) = x \\quad \\text{and} \\quad g(f(x)) = x $$"
+        },
+        "explanation": [
+          "Two functions $f$ and $g$ are [[kw:inverse functions]] if and only if both compositions return the input:",
+          "1. $f(g(x)) = x$ for all $x$ in the domain of $g$.",
+          "2. $g(f(x)) = x$ for all $x$ in the domain of $f$.",
+          "To verify, compute $f(g(x))$ by substituting $g(x)$ into $f$, and simplify to see if it equals $x$. Repeat for $g(f(x))$.",
+          "If both compositions yield $x$, the functions are confirmed inverses. If either fails, they are not inverses."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1",
+                "1": "Compute $f(g(x))$ and simplify."
+              },
+              {
+                "0": "2",
+                "1": "The result should be $x$."
+              },
+              {
+                "0": "3",
+                "1": "Compute $g(f(x))$ and simplify."
+              },
+              {
+                "0": "4",
+                "1": "This result should also be $x$."
+              },
+              {
+                "0": "Both equal $x$",
+                "1": "→ $f$ and $g$ are inverses."
+              }
+            ],
+            "type": "table",
+            "title": "Composition Check for Inverses",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example A — Verifying Linear Inverses",
+          "steps": [
+            "Compute $f(g(x))$: $f\\left(\\frac{x+1}{3}\\right) = 3\\left(\\frac{x+1}{3}\\right) - 1 = (x+1) - 1 = x$. ✓",
+            "Compute $g(f(x))$: $g(3x - 1) = \\frac{(3x - 1) + 1}{3} = \\frac{3x}{3} = x$. ✓",
+            "Both equal $x$, so they are inverses."
+          ],
+          "role": "guided",
+          "prompt": "Verify that $f(x) = 3x - 1$ and $g(x) = \\frac{x+1}{3}$ are inverses."
+        },
+        {
+          "minLength": 8,
+          "steps": [
+            "Check $f(g(x))$: $f\\left(\\frac{x}{2} + 9\\right) = 2\\left(\\frac{x}{2} + 9\\right) - 9 = x + 18 - 9 = x + 9 \\neq x$.",
+            "Since $f(g(x)) \\neq x$, they are NOT inverses. (No need to check the other direction; one failure is enough.)"
+          ],
+          "title": "Example B — Testing a Pair",
+          "role": "peer-explain",
+          "prompt": "Determine whether $f(x) = 2x - 9$ and $g(x) = \\frac{x}{2} + 9$ are inverses.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you check if two functions are inverses? What result are you looking for?"
+        },
+        {
+          "prompt": "Verify that $f(x) = 8x^3$ and $g(x) = \\frac{\\sqrt[3]{x}}{2}$ are inverses.",
+          "role": "independent",
+          "steps": [
+            "$f(g(x)) = 8\\left(\\frac{\\sqrt[3]{x}}{2}\\right)^3 = 8 \\cdot \\frac{x}{8} = x$. ✓",
+            "$g(f(x)) = \\frac{\\sqrt[3]{8x^3}}{2} = \\frac{2x}{2} = x$. ✓",
+            "They are inverses."
+          ],
+          "title": "Example C — Cubic and Cube Root"
+        }
+      ],
+      "id": "verifying-inverses",
+      "title": "Verifying Inverse Functions",
+      "teacherCues": [
+        "Write $f(x) = 3x - 1$ and $g(x) = \\frac{x+1}{3}$. Ask: How can we be sure they are inverses?",
+        "Show that $f(g(x)) = x$ and $g(f(x)) = x$."
+      ],
+      "confusionCorner": {
+        "title": "Both Directions Must Work",
+        "body": "Some pairs may work in one order but not the other. For inverses, [[imp:both compositions]] must equal $x$. Check both $f(g(x))$ and $g(f(x))$."
+      },
+      "questions": [
+        {
+          "hints": [
+            "The composition returns the original input.",
+            "The function and its inverse cancel each other out."
+          ],
+          "id": "q5-6-10",
+          "prompt": "If $f$ and $g$ are inverse functions, then $f(g(x)) =$ ___ and $g(f(x)) = x$.",
+          "feedbackIfWrong": "Both compositions must equal $x$.",
+          "blanks": [
+            {
+              "accept": [
+                "x"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "If $f(x) = x + 5$ and $g(x) = x - 5$, what is $f(g(2))$?",
+          "hints": [
+            "First compute $g(2) = -3$.",
+            "Then $f(-3) = -3 + 5 = 2$."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "$f(g(2)) = f(-3) = 2$. Since the functions are inverses, the result is the original input.",
+          "id": "q5-6-11",
+          "answers": [
+            "2",
+            "two"
+          ]
+        },
+        {
+          "id": "q5-6-12",
+          "feedbackIfWrong": "Both $f(g(x))$ and $g(f(x))$ must equal $x$.",
+          "answers": [
+            "x"
+          ],
+          "hints": [
+            "It's the variable representing the input.",
+            "The compositions should simplify to just the independent variable."
+          ],
+          "type": "short-answer",
+          "prompt": "To verify inverses, you must check that both compositions equal what? (One letter)"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "You've found a candidate for an inverse function. But is it really the inverse? The ultimate test is to plug one into the other—if you get back the original input $x$ both ways, they truly undo each other. It's the mathematical seal of approval."
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Don't Blindly Swap",
+        "body": "In real‑life formulas, the letters have meaning ($v$ = velocity, $r$ = radius). Solving for the other variable without swapping keeps the meaning clear. [[imp:Only swap letters when working with abstract $x$ and $y$.]]"
+      },
+      "discoveryHook": {
+        "scenario": "Formulas in science and engineering often express one quantity in terms of another—like surface area as a function of radius. To find the radius from the area, we need the inverse function. The Blueprint keeps the meaningful variables intact while solving for the desired input."
+      },
+      "title": "Blueprint Aid — Solving Real‑Life Problems Using Inverse Functions",
+      "teacherCues": [
+        "Display the surface area of a sphere: $S = 4\\pi r^2$. Ask: If we know the area, how do we find the radius?",
+        "Guide: Solve for $r$ without switching variables, since $S$ and $r$ have meaningful names."
+      ],
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Identify the given formula and which variable is the input (independent) and which is the output (dependent). Determine what you need to solve for (the inverse).",
+          "[[imp:Solve]]: Instead of switching variable names, solve the equation for the independent variable in terms of the dependent variable. This preserves the real‑world meaning.",
+          "[[imp:Conclude]]: Write the inverse relationship as a new formula. Use it to calculate the desired quantity and check that the result is reasonable (e.g., positive length)."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify variables; note which is input (independent) and which is output (dependent)."
+              },
+              {
+                "0": "Solve",
+                "1": "Algebraically solve the formula for the independent variable."
+              },
+              {
+                "0": "Conclude",
+                "1": "Write the inverse formula; plug in the known output to find the required input; check reasonableness."
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "title": "Blueprint for Real‑Life Inverse Problems"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$S$",
+              "tone": "core",
+              "meaning": "surface area (output)"
+            },
+            {
+              "meaning": "radius (input)",
+              "symbol": "$r$",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ S = 4\\pi r^2 \\implies r = \\sqrt{\\frac{S}{4\\pi}} $$"
+        }
+      },
+      "id": "blueprint-aid-real-life-inverses",
+      "questions": [
+        {
+          "answers": [
+            "r"
+          ],
+          "id": "q5-6-13",
+          "hints": [
+            "Which one can you choose freely?",
+            "The surface area depends on the radius."
+          ],
+          "feedbackIfWrong": "$r$ is the independent variable; $S$ depends on $r$.",
+          "prompt": "In the sphere formula $S = 4\\pi r^2$, which variable is the independent variable (input)? (Type r or S)",
+          "type": "short-answer"
+        },
+        {
+          "prompt": "To find the inverse in a real‑life formula, solve the equation for the ___ variable instead of switching letters.",
+          "feedbackIfWrong": "Solve for the independent variable (the input).",
+          "blanks": [
+            {
+              "accept": [
+                "independent",
+                "input"
+              ]
+            }
+          ],
+          "id": "q5-6-14",
+          "hints": [
+            "It's the one on the right side of the original formula.",
+            "In $y = f(x)$, it's $x$."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "id": "q5-6-15",
+          "type": "short-answer",
+          "feedbackIfWrong": "$t = \\sqrt{\\frac{122.5}{4.9}} = \\sqrt{25} = 5.0$ seconds.",
+          "hints": [
+            "Use $t = \\sqrt{\\frac{d}{4.9}}$.",
+            "$\\frac{122.5}{4.9} = 25$."
+          ],
+          "prompt": "For $d = 4.9t^2$, find the time $t$ when $d = 122.5$ meters. (Round to one decimal, e.g., 5.0)",
+          "answers": [
+            "5.0",
+            "5"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "The surface area of a sphere is $S = 4\\pi r^2$. Find the inverse function that gives radius $r$ in terms of $S$, and determine the radius when $S = 100\\pi$ square feet.",
+          "title": "Example A — Surface Area of a Sphere",
+          "role": "guided",
+          "steps": [
+            "Understand: $S$ is output, $r$ is input. We need $r$ as a function of $S$.",
+            "Solve: $\\frac{S}{4\\pi} = r^2$ → $r = \\sqrt{\\frac{S}{4\\pi}}$ (positive root only, since radius > 0).",
+            "Conclude: For $S = 100\\pi$, $r = \\sqrt{\\frac{100\\pi}{4\\pi}} = \\sqrt{25} = 5$ feet.",
+            "The inverse formula is $r(S) = \\sqrt{\\frac{S}{4\\pi}}$."
+          ]
+        },
+        {
+          "steps": [
+            "Solve $v = 1.34\\sqrt{\\ell}$ for $\\ell$: $\\frac{v}{1.34} = \\sqrt{\\ell}$ → $\\ell = \\left(\\frac{v}{1.34}\\right)^2$.",
+            "This inverse gives the waterline length needed for a desired speed.",
+            "For $v = 7.5$: $\\ell = \\left(\\frac{7.5}{1.34}\\right)^2 \\approx (5.597)^2 \\approx 31.3$ feet.",
+            "The inverse is $\\ell(v) = \\left(\\frac{v}{1.34}\\right)^2$."
+          ],
+          "role": "peer-explain",
+          "title": "Example B — Boat Speed and Length",
+          "prompt": "The maximum speed $v$ (knots) of a boat is $v = 1.34\\sqrt{\\ell}$, where $\\ell$ is waterline length (ft). Find the inverse function and the length needed for a speed of 7.5 knots.",
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Why don't we switch variable names when solving for $\\ell$? How does keeping the variable names help interpret the result?"
+        },
+        {
+          "steps": [
+            "Solve for $t$: $\\frac{d}{4.9} = t^2$ → $t = \\sqrt{\\frac{d}{4.9}}$ (positive root).",
+            "For $d = 50$: $t = \\sqrt{\\frac{50}{4.9}} \\approx \\sqrt{10.2} \\approx 3.19$ seconds.",
+            "The inverse is $t(d) = \\sqrt{\\frac{d}{4.9}}$."
+          ],
+          "role": "independent",
+          "title": "Example C — Falling Object",
+          "prompt": "The distance $d$ (meters) a dropped object falls in $t$ seconds is $d = 4.9t^2$. Find the inverse function and the time to fall 50 meters."
+        }
+      ]
+    }
+  ],
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "The idea of 'undoing' a function is intuitive; build on that with the formal switch-and-solve method.",
+    "The Horizontal Line Test is critical. Use graphs of $x^2$ vs $x^3$ to make the point visually.",
+    "When verifying inverses, emphasize that both compositions must yield $x$; one direction is not enough.",
+    "For real‑life problems, explicitly state that we do not switch variable names to keep context. Students often mistakenly swap $S$ and $r$ just because they see $x$ and $y$ switching earlier."
+  ],
+  "schemaVersion": 2,
+  "id": "chapter-5-6-inverse-of-a-function",
+  "standards": [
+    "HSF.BF.B.4",
+    "HSF.BF.B.4a",
+    "HSF.BF.B.4d"
+  ],
+  "title": "Inverse of a Function",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

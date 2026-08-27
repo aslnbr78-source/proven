@@ -1,0 +1,788 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "title": "Defining and Using Sequences and Series",
+  "id": "chapter-8-1-defining-and-using-sequences-and-series",
+  "presenterNotes": [
+    "When introducing sequences, emphasize the connection to functions: the domain is the position number, the range is the term values.",
+    "For writing rules, encourage students to look for arithmetic (constant difference), geometric (constant ratio), or other recognizable patterns (squares, cubes, products).",
+    "Summation notation can be intimidating; break down the parts (sigma, index, limits, expression) with a simple example like $\\sum_{i=1}^{4} 2i$.",
+    "The special sum formulas are powerful time-savers. Derive the sum of integers formula visually (pairing first and last) to make it memorable.",
+    "The Blueprint block ties everything together. Use it as a summary of the problem-solving approach for the whole lesson."
+  ],
+  "blocks": [
+    {
+      "title": "Writing Terms of Sequences",
+      "examples": [
+        {
+          "prompt": "Write the first six terms of $ a_n = 2n + 5 $.",
+          "title": "Example A — Finding Terms from a Rule",
+          "role": "guided",
+          "steps": [
+            "Substitute $ n=1 $: $ a_1 = 2(1)+5 = 7 $.",
+            "Substitute $ n=2 $: $ a_2 = 2(2)+5 = 9 $.",
+            "Continue: $ n=3 \\to 11 $, $ n=4 \\to 13 $, $ n=5 \\to 15 $, $ n=6 \\to 17 $.",
+            "The first six terms are 7, 9, 11, 13, 15, 17."
+          ]
+        },
+        {
+          "steps": [
+            "$ f(1) = (-3)^{0} = 1 $ (positive).",
+            "$ f(2) = (-3)^{1} = -3 $ (negative).",
+            "$ f(3) = (-3)^{2} = 9 $ (positive).",
+            "The base is negative, so even exponents give positive terms, odd exponents give negative terms.",
+            "First six terms: 1, -3, 9, -27, 81, -243."
+          ],
+          "role": "peer-explain",
+          "title": "Example B — Alternating Signs",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the sign alternate? What happens when the exponent is even? Odd?",
+          "minLength": 8,
+          "prompt": "Write the first six terms of $ f(n) = (-3)^{n-1} $ and explain the sign pattern."
+        },
+        {
+          "steps": [
+            "$ n=1 $: $ a_1 = \\frac{1}{2} $.",
+            "$ n=2 $: $ a_2 = \\frac{2}{3} $.",
+            "$ n=3 $: $ a_3 = \\frac{3}{4} $.",
+            "$ n=4 $: $ a_4 = \\frac{4}{5} $; $ n=5 $: $ a_5 = \\frac{5}{6} $."
+          ],
+          "role": "independent",
+          "title": "Example C — Fractional Rule",
+          "prompt": "Write the first five terms of $ a_n = \\frac{n}{n+1} $."
+        }
+      ],
+      "confusionCorner": {
+        "body": "Unless the problem states otherwise, the first term of a sequence corresponds to $ n = 1 $, not $ n = 0 $. [[imp:Always check the starting index.]]",
+        "title": "Don't Start at Zero Unless Told"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "From Rule to Terms",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$ 2(1) + 5 $",
+                "2": "7"
+              },
+              {
+                "0": "2",
+                "1": "$ 2(2) + 5 $",
+                "2": "9"
+              },
+              {
+                "0": "3",
+                "1": "$ 2(3) + 5 $",
+                "2": "11"
+              },
+              {
+                "0": "4",
+                "1": "$ 2(4) + 5 $",
+                "2": "13"
+              }
+            ],
+            "headers": [
+              "$ n $ (position)",
+              "Rule $ a_n = 2n + 5 $",
+              "Term $ a_n $"
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "the term's position (1st, 2nd, 3rd, …)",
+              "tone": "core",
+              "symbol": "$ n $"
+            },
+            {
+              "symbol": "$ a_n $",
+              "meaning": "the $ n $th term of the sequence",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ a_n = \\text{rule involving } n $$"
+        },
+        "explanation": [
+          "A [[kw:sequence]] is an ordered list of numbers. Each number is called a [[kw:term]] of the sequence.",
+          "A sequence can be [[imp:finite]] (ends after a certain number of terms) or [[imp:infinite]] (continues forever).",
+          "The domain of a sequence is the set of positive integers (usually starting at $ 1 $). The range is the set of term values.",
+          "You can write the terms of a sequence by evaluating the rule for $ n = 1, 2, 3, \\dots $",
+          "Two common ways to write a rule: $ a_n = \\dots $ or $ f(n) = \\dots $. Both give the $ n $th term."
+        ]
+      },
+      "id": "writing-terms-of-sequences",
+      "discoveryHook": {
+        "scenario": "Imagine a row of dominoes, each representing a number. A sequence is just an ordered list of numbers following a rule. By plugging in $ n = 1, 2, 3 $ into a formula, we can predict any domino in the line!"
+      },
+      "teacherCues": [
+        "Write $ a_n = 2n + 5 $ and ask: What is $ a_1 $? $ a_2 $? How do we get the terms?",
+        "Write $ f(n) = (-3)^{n-1} $ and ask: What pattern do you see in the signs of the terms?"
+      ],
+      "questions": [
+        {
+          "id": "q8-1-1",
+          "feedbackIfWrong": "The numbers are called terms of the sequence.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "terms"
+              ]
+            }
+          ],
+          "prompt": "The individual numbers in a sequence are called ___.",
+          "hints": [
+            "They are the values in the list.",
+            "We call them 'terms of the sequence'."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Substitute $ n=3 $ into the rule.",
+            "$ 3 + 4 = ? $"
+          ],
+          "id": "q8-1-2",
+          "answers": [
+            "7",
+            "seven"
+          ],
+          "prompt": "For $ a_n = n + 4 $, what is the third term $ a_3 $? (Enter a number)",
+          "feedbackIfWrong": "$ a_3 = 3 + 4 = 7 $."
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "3",
+            "three"
+          ],
+          "feedbackIfWrong": "$ f(1) = 4(1) - 1 = 3 $.",
+          "prompt": "If $ f(n) = 4n - 1 $, what is $ f(1) $?",
+          "hints": [
+            "Plug in $ n=1 $.",
+            "$ 4(1) - 1 = 4 - 1 $."
+          ],
+          "id": "q8-1-3"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "The difference between terms is always 2.",
+            "It starts with 'a'."
+          ],
+          "feedbackIfWrong": "Since the difference is constant, it's an arithmetic sequence.",
+          "id": "q8-1-4",
+          "prompt": "For the sequence 2, 4, 6, 8, … the rule for the $ n $th term is $ a_n = 2n $. This is an example of an ___ sequence (constant difference).",
+          "blanks": [
+            {
+              "accept": [
+                "arithmetic"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "id": "q8-1-5",
+          "type": "short-answer",
+          "prompt": "What is the next term in the sequence 1, 4, 9, 16, 25, …? (Enter a number)",
+          "answers": [
+            "36",
+            "thirty six"
+          ],
+          "hints": [
+            "These are perfect squares.",
+            "$ 6^2 = ? $"
+          ],
+          "feedbackIfWrong": "The pattern is $ n^2 $, so the 6th term is $ 6^2 = 36 $."
+        },
+        {
+          "hints": [
+            "Each term is 5 times its position.",
+            "First term: $ 5 \\cdot 1 $, second: $ 5 \\cdot 2 $."
+          ],
+          "id": "q8-1-6",
+          "answers": [
+            "a_n = 5n",
+            "5n"
+          ],
+          "feedbackIfWrong": "The rule is $ a_n = 5n $.",
+          "prompt": "Write a rule for the sequence 5, 10, 15, 20, … (Use format like a_n = 5n)",
+          "type": "short-answer"
+        }
+      ],
+      "confusionCorner": {
+        "title": "More Than One Possible Rule",
+        "body": "Sometimes a sequence can be described by different rules, especially if you only see the first few terms. Always check your rule on all given terms. [[imp:Test your rule on at least three terms.]]"
+      },
+      "concept": {
+        "explanation": [
+          "To write a rule for the $ n $th term, look for a [[kw:pattern]] in the numbers. Common patterns: adding a constant, multiplying by a constant, squares, cubes, etc.",
+          "For an [[kw:arithmetic sequence]], the difference between consecutive terms is constant. The rule is linear: $ a_n = dn + c $.",
+          "For a [[kw:geometric sequence]], each term is multiplied by a constant ratio. The rule is exponential: $ a_n = a_1 \\cdot r^{n-1} $.",
+          "Sometimes a sequence matches $ n^2 $, $ n^3 $, or other simple functions of $ n $.",
+          "Write the rule using $ n $ as the position number, then test it on the known terms to verify."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Pattern",
+              "Example",
+              "Rule"
+            ],
+            "rows": [
+              {
+                "0": "Add constant",
+                "1": "3, 5, 7, 9, …",
+                "2": "$ a_n = 2n + 1 $"
+              },
+              {
+                "0": "Multiply constant",
+                "1": "1, 2, 4, 8, …",
+                "2": "$ a_n = 2^{n-1} $"
+              },
+              {
+                "0": "Perfect squares",
+                "1": "1, 4, 9, 16, …",
+                "2": "$ a_n = n^2 $"
+              },
+              {
+                "0": "Perfect cubes",
+                "1": "1, 8, 27, 64, …",
+                "2": "$ a_n = n^3 $"
+              }
+            ],
+            "title": "Common Sequence Patterns",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Look for a pattern relating the term value to its position } n. $$",
+          "legend": [
+            {
+              "symbol": "$ n $",
+              "tone": "core",
+              "meaning": "position (1st, 2nd, 3rd, …)"
+            }
+          ]
+        }
+      },
+      "id": "writing-rules-for-sequences",
+      "title": "Writing Rules for the nth Term",
+      "examples": [
+        {
+          "prompt": "Describe the pattern and write a rule for the sequence -1, -8, -27, -64, …",
+          "title": "Example A — Cubes with Negative Signs",
+          "steps": [
+            "Rewrite as $ (-1)^3, (-2)^3, (-3)^3, (-4)^3 $.",
+            "The next term would be $ (-5)^3 = -125 $.",
+            "A rule for the $ n $th term is $ a_n = (-n)^3 $, or $ a_n = -n^3 $."
+          ],
+          "role": "guided"
+        },
+        {
+          "prompt": "Describe the pattern and write a rule for 0, 2, 6, 12, …",
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: How can you write each term as a product of two numbers? Look at $ n $ and the term before it.",
+          "role": "peer-explain",
+          "title": "Example B — Product Pattern",
+          "steps": [
+            "Rewrite: $ 0 \\cdot 1, 1 \\cdot 2, 2 \\cdot 3, 3 \\cdot 4 $.",
+            "Notice the first factor is one less than $ n $, the second is $ n $.",
+            "So the rule is $ f(n) = (n-1)n $, or $ a_n = n(n-1) $.",
+            "Next term: $ a_5 = 4 \\cdot 5 = 20 $."
+          ]
+        },
+        {
+          "prompt": "The number of apples in layer $ n $ of a square pyramid is given by the sequence 1, 4, 9, 16, … Write a rule.",
+          "title": "Example C — Finding a Rule from a Table",
+          "role": "independent",
+          "steps": [
+            "Layer 1 has $ 1^2 = 1 $ apple.",
+            "Layer 2 has $ 2^2 = 4 $ apples.",
+            "So layer $ n $ has $ n^2 $ apples.",
+            "Rule: $ a_n = n^2 $."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Detectives look for patterns to solve crimes; mathematicians look for patterns in numbers to write formulas. Once you crack the code of a sequence, you can predict any term—like finding the 100th number without listing them all!"
+      },
+      "teacherCues": [
+        "Write the sequence 3, 5, 7, 9, … and ask: What do you add each time? What kind of rule can we write?",
+        "Write the sequence 1, 4, 9, 16, … and ask: These are perfect squares. How can we express the nth term?"
+      ]
+    },
+    {
+      "concept": {
+        "explanation": [
+          "A [[kw:series]] is the sum of the terms of a sequence. It can be finite (ending) or infinite (continuing forever).",
+          "[[kw:Summation notation]] (also called [[kw:sigma notation]]) uses the Greek letter $ \\sum $ to write a series compactly.",
+          "The notation $ \\sum_{i=1}^{n} a_i $ means the sum of terms $ a_i $ from $ i=1 $ to $ i=n $.",
+          "The variable $ i $ is the [[kw:index of summation]], $ 1 $ is the [[kw:lower limit]], and $ n $ is the [[kw:upper limit]].",
+          "The index does not have to be $ i $; any letter can be used, and it can start at values other than $ 1 $."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Part",
+              "Meaning",
+              "Example: $ \\sum_{i=1}^{4} 2i $"
+            ],
+            "variant": "colorful",
+            "title": "Parts of Summation Notation",
+            "type": "table",
+            "rows": [
+              {
+                "0": "$ \\sum $",
+                "1": "Summation symbol (sigma)",
+                "2": "Add the terms"
+              },
+              {
+                "0": "$ i $",
+                "1": "Index of summation",
+                "2": "Starts at 1, goes to 4"
+              },
+              {
+                "0": "$ 1 $",
+                "1": "Lower limit",
+                "2": "First value of $ i $"
+              },
+              {
+                "0": "$ 4 $",
+                "1": "Upper limit",
+                "2": "Last value of $ i $"
+              },
+              {
+                "0": "$ 2i $",
+                "1": "Expression",
+                "2": "The term to add: $ 2+4+6+8 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\sum_{i=1}^{n} a_i = a_1 + a_2 + \\dots + a_n $$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "summation (sigma)",
+              "symbol": "$ \\sum $"
+            },
+            {
+              "tone": "core",
+              "meaning": "index (counting variable)",
+              "symbol": "$ i $"
+            },
+            {
+              "symbol": "$ a_i $",
+              "tone": "subtle",
+              "meaning": "expression for the $ i $th term"
+            }
+          ]
+        }
+      },
+      "questions": [
+        {
+          "hints": [
+            "It looks like a sideways 'M'.",
+            "It's the Greek 'S' for 'sum'."
+          ],
+          "prompt": "The uppercase Greek letter ___ is used to denote a sum in summation notation.",
+          "blanks": [
+            {
+              "accept": [
+                "sigma"
+              ]
+            }
+          ],
+          "id": "q8-1-7",
+          "type": "fill-blank",
+          "feedbackIfWrong": "The symbol is sigma ($ \\sum $)."
+        },
+        {
+          "feedbackIfWrong": "The upper limit is 4.",
+          "answers": [
+            "4",
+            "four"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "It's the number on top of the sigma.",
+            "The index stops at this value."
+          ],
+          "id": "q8-1-8",
+          "prompt": "In $ \\sum_{i=1}^{4} 2i $, what is the upper limit of summation? (Enter a number)"
+        },
+        {
+          "hints": [
+            "Count from lower limit to upper limit inclusive.",
+            "From 1 to 7 is 7 terms."
+          ],
+          "feedbackIfWrong": "There are 7 terms (k = 1 through 7).",
+          "type": "short-answer",
+          "prompt": "How many terms are in the series $ \\sum_{k=1}^{7} (3k) $? (Enter a number)",
+          "id": "q8-1-9",
+          "answers": [
+            "7",
+            "seven"
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A series is just the sum of a sequence—like adding up your daily savings over a month. The Greek letter sigma ($ \\sum $) is a compact way to write long sums without writing every term."
+      },
+      "teacherCues": [
+        "Write $ 2 + 4 + 6 + 8 $ and ask: This is the sum of the terms of a sequence. What do we call it?",
+        "Introduce the sigma symbol $ \\sum $ and explain the parts: index, lower limit, upper limit, expression."
+      ],
+      "confusionCorner": {
+        "title": "Index Can Start Anywhere",
+        "body": "The index does not have to start at 1. In $ \\sum_{k=3}^{6} k^2 $, the first term is $ 3^2 = 9 $, not $ 1^2 $. [[imp:Pay attention to the lower limit!]]"
+      },
+      "examples": [
+        {
+          "prompt": "Write the series $ 25 + 50 + 75 + \\dots + 250 $ using summation notation.",
+          "title": "Example A — Writing a Series in Summation Notation",
+          "steps": [
+            "Notice each term is a multiple of 25: $ 25(1), 25(2), 25(3), \\dots, 25(10) $.",
+            "So the $ i $th term is $ a_i = 25i $.",
+            "The index $ i $ goes from 1 to 10.",
+            "Summation notation: $ \\sum_{i=1}^{10} 25i $."
+          ],
+          "role": "guided"
+        },
+        {
+          "prompt": "Write the infinite series $ \\frac{1}{2} + \\frac{2}{3} + \\frac{3}{4} + \\frac{4}{5} + \\dots $ in summation notation.",
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does the numerator relate to the denominator? What happens as the series goes on forever?",
+          "role": "peer-explain",
+          "steps": [
+            "For the $ i $th term, numerator is $ i $, denominator is $ i + 1 $.",
+            "So $ a_i = \\frac{i}{i+1} $.",
+            "Since it's infinite, the upper limit is $ \\infty $.",
+            "Summation notation: $ \\sum_{i=1}^{\\infty} \\frac{i}{i+1} $."
+          ],
+          "title": "Example B — Infinite Series Notation"
+        },
+        {
+          "prompt": "Write the series $ 5 + 6 + 7 + \\dots + 12 $ using summation notation with index starting at 1.",
+          "role": "independent",
+          "steps": [
+            "The first term is 5, which can be written as $ 1 + 4 $.",
+            "The rule for the $ i $th term is $ a_i = i + 4 $.",
+            "The terms go from $ 5 $ to $ 12 $, so $ i $ goes from 1 to 8.",
+            "Summation notation: $ \\sum_{i=1}^{8} (i + 4) $."
+          ],
+          "title": "Example C — Series with Different Starting Index"
+        }
+      ],
+      "id": "series-and-summation-notation",
+      "title": "Series and Summation Notation"
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ \\sum_{i=1}^{n} 1 $",
+                "1": "$ n $",
+                "2": "5"
+              },
+              {
+                "0": "$ \\sum_{i=1}^{n} i $",
+                "1": "$ \\frac{n(n+1)}{2} $",
+                "2": "$ \\frac{5 \\cdot 6}{2} = 15 $"
+              },
+              {
+                "0": "$ \\sum_{i=1}^{n} i^2 $",
+                "1": "$ \\frac{n(n+1)(2n+1)}{6} $",
+                "2": "$ \\frac{5 \\cdot 6 \\cdot 11}{6} = 55 $"
+              }
+            ],
+            "type": "table",
+            "title": "Special Summation Formulas",
+            "variant": "colorful",
+            "headers": [
+              "Series",
+              "Formula",
+              "Example ($ n=5 $)"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\sum_{i=1}^{n} i = \\frac{n(n+1)}{2} $$ $$ \\sum_{i=1}^{n} i^2 = \\frac{n(n+1)(2n+1)}{6} $$",
+          "legend": [
+            {
+              "symbol": "$ n $",
+              "meaning": "number of terms (upper limit when starting at 1)",
+              "tone": "core"
+            }
+          ]
+        },
+        "explanation": [
+          "To find the sum of a series written in summation notation, you can evaluate each term and add them, but this is tedious for many terms.",
+          "Three useful [[kw:formulas for special series]]:",
+          "1. Sum of $ n $ ones: $ \\sum_{i=1}^{n} 1 = n $.",
+          "2. Sum of first $ n $ positive integers: $ \\sum_{i=1}^{n} i = \\frac{n(n+1)}{2} $.",
+          "3. Sum of squares: $ \\sum_{i=1}^{n} i^2 = \\frac{n(n+1)(2n+1)}{6} $.",
+          "These formulas only work when the index starts at $ 1 $. If it starts elsewhere, adjust the limits or add/subtract terms."
+        ]
+      },
+      "id": "finding-sums-of-series",
+      "confusionCorner": {
+        "title": "Formulas Require Starting at 1",
+        "body": "The special formulas work for $ i = 1 $ to $ n $. If your series starts at a different number, write out the terms or rewrite the sum as a difference. [[imp:Don't plug a non-1 lower limit directly into the formula.]]"
+      },
+      "title": "Finding Sums of Series",
+      "examples": [
+        {
+          "title": "Example A — Sum with Given Limits",
+          "steps": [
+            "Write out the terms: $ (3+4^2) + (3+5^2) + (3+6^2) + (3+7^2) + (3+8^2) $.",
+            "Compute each: $ 19 + 28 + 39 + 52 + 67 $.",
+            "Add: the sum is $ 205 $."
+          ],
+          "prompt": "Find the sum $ \\sum_{k=4}^{8} (3 + k^2) $.",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Using the Square Sum Formula",
+          "prompt": "Find the total number of apples in a square pyramid with 7 layers using the formula for sum of squares.",
+          "steps": [
+            "Layer $ i $ has $ i^2 $ apples. Total = $ 1^2 + 2^2 + \\dots + 7^2 $.",
+            "Use the formula with $ n=7 $: $ \\frac{7(7+1)(2 \\cdot 7 + 1)}{6} $.",
+            "Compute: $ \\frac{7 \\cdot 8 \\cdot 15}{6} = \\frac{840}{6} = 140 $.",
+            "There are 140 apples in total."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why can we use $ \\sum_{i=1}^{7} i^2 $ to find the total apples? What does each $ i^2 $ represent?",
+          "minLength": 8
+        },
+        {
+          "title": "Example C — Sum of First n Integers",
+          "steps": [
+            "Use the formula $ \\frac{n(n+1)}{2} $ with $ n=20 $.",
+            "$ \\frac{20 \\cdot 21}{2} = \\frac{420}{2} = 210 $.",
+            "The sum is 210."
+          ],
+          "role": "independent",
+          "prompt": "Find the sum of the first 20 positive integers: $ 1 + 2 + \\dots + 20 $."
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "2",
+                "two"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The formula is $ \\frac{n(n+1)}{2} $.",
+          "id": "q8-1-10",
+          "prompt": "The formula for the sum of the first $ n $ positive integers is $ \\frac{n(n+1)}{___} $.",
+          "hints": [
+            "It's the denominator of the formula.",
+            "$ n(n+1) $ divided by this."
+          ]
+        },
+        {
+          "prompt": "Evaluate $ \\sum_{i=1}^{4} i^2 $ using the special formula. (Enter a number)",
+          "type": "short-answer",
+          "hints": [
+            "Use $ n=4 $ in the sum of squares formula.",
+            "$ \\frac{4 \\cdot 5 \\cdot 9}{6} = ? $"
+          ],
+          "answers": [
+            "30",
+            "thirty"
+          ],
+          "id": "q8-1-11",
+          "feedbackIfWrong": "$ \\frac{4 \\cdot 5 \\cdot 9}{6} = \\frac{180}{6} = 30 $."
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "The sum of $ n $ ones equals $ n $.",
+            "The upper limit tells you how many ones."
+          ],
+          "feedbackIfWrong": "The sum $ \\sum_{i=1}^{35} 1 $ has 35 terms, and its value is 35.",
+          "id": "q8-1-12",
+          "answers": [
+            "35",
+            "thirty five"
+          ],
+          "prompt": "How many terms are in the sum $ \\sum_{i=1}^{35} 1 $? (Enter a number)"
+        }
+      ],
+      "teacherCues": [
+        "Write $ \\sum_{k=4}^{8} (3 + k^2) $ and ask: How would you find this sum without a formula?",
+        "Then introduce the special sum formulas for $ \\sum 1 $, $ \\sum i $, and $ \\sum i^2 $. Ask: How can these save time?"
+      ],
+      "discoveryHook": {
+        "scenario": "Adding up hundreds of terms by hand would take forever. Mathematicians have discovered shortcut formulas for common series. With just the upper limit, you can instantly find the sum of the first $ n $ counting numbers or their squares!"
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "When faced with a sequence or series problem, the Blueprint helps you break it down: identify the type, write the rule or summation notation, apply formulas if applicable, and interpret the result."
+      },
+      "id": "blueprint-aid-sequences-and-series",
+      "title": "Blueprint Aid — Working with Sequences and Series",
+      "examples": [
+        {
+          "title": "Example A — Full Blueprint for Sum of Integers",
+          "steps": [
+            "Understand: This is a series summing the first 25 positive integers. Rule is $ a_k = k $, lower limit 1, upper limit 25.",
+            "Solve: Use the formula $ \\frac{n(n+1)}{2} $ with $ n=25 $.",
+            "$ \\frac{25 \\cdot 26}{2} = \\frac{650}{2} = 325 $.",
+            "Conclude: The sum of the first 25 positive integers is 325."
+          ],
+          "role": "guided",
+          "prompt": "Find the sum $ \\sum_{k=1}^{25} k $ using the Blueprint."
+        },
+        {
+          "minLength": 8,
+          "title": "Example B — Applying Blueprint to a Real-Life Problem",
+          "steps": [
+            "Understand: Daily savings: $ 1, 2, 3, \\dots, 100 $ cents. Total = $ 1 + 2 + \\dots + 100 $.",
+            "Solve: Sum of first 100 integers = $ \\frac{100 \\cdot 101}{2} = 5050 $ cents.",
+            "Conclude: You saved 5050 cents, or $\\$50.50$, after 100 days."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What sequence does the daily savings follow? What series represents the total savings?",
+          "role": "peer-explain",
+          "prompt": "You save a penny on day 1, two pennies on day 2, three on day 3, and so on. How much have you saved after 100 days?"
+        },
+        {
+          "title": "Example C — Find a Term and Sum",
+          "prompt": "The sequence is given by $ a_n = n^2 + 3 $. Find $ a_6 $ and the sum of the first 6 terms.",
+          "steps": [
+            "Understand: Rule $ a_n = n^2 + 3 $. Need $ a_6 $ and $ \\sum_{n=1}^{6} a_n $.",
+            "Solve: $ a_6 = 6^2 + 3 = 39 $.",
+            "Sum: $ (1^2+3) + (2^2+3) + \\dots + (6^2+3) = \\sum_{n=1}^{6} n^2 + \\sum_{n=1}^{6} 3 $.",
+            "Use formulas: $ \\frac{6 \\cdot 7 \\cdot 13}{6} + 6 \\cdot 3 = 91 + 18 = 109 $.",
+            "Conclude: $ a_6 = 39 $, sum = 109."
+          ],
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude steps. Model the process: 'Find the sum of the first 15 positive integers using summation notation and the formula.'",
+        "Ask: What should we identify first? How do we choose the right formula?"
+      ],
+      "confusionCorner": {
+        "title": "Don't Forget the Constant Term",
+        "body": "When summing $ a_n = n^2 + 3 $, you must sum the $ n^2 $ part and the constant 3 separately. The sum of a constant $ c $ over $ n $ terms is $ c \\cdot n $. [[imp:Break the sum into parts you know.]]"
+      },
+      "questions": [
+        {
+          "prompt": "In Example C, what is the sum of the first 6 squares, $ \\sum_{n=1}^{6} n^2 $? (Enter a number)",
+          "feedbackIfWrong": "$ 1^2 + \\dots + 6^2 = \\frac{6 \\cdot 7 \\cdot 13}{6} = 91 $.",
+          "answers": [
+            "91",
+            "ninety one"
+          ],
+          "hints": [
+            "Use the formula: $ \\frac{6 \\cdot 7 \\cdot 13}{6} $.",
+            "The 6 cancels, leaving $ 7 \\cdot 13 $."
+          ],
+          "type": "short-answer",
+          "id": "q8-1-13"
+        },
+        {
+          "id": "q8-1-14",
+          "hints": [
+            "It's the second step.",
+            "You apply formulas or write terms."
+          ],
+          "prompt": "In the Blueprint, after you understand the problem, the next step is to ___ it.",
+          "feedbackIfWrong": "The second step is Solve.",
+          "blanks": [
+            {
+              "accept": [
+                "solve"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "How much money (in dollars) is saved after 100 days if you save $ n $ pennies on day $ n $? (Enter a number like 50.50)",
+          "id": "q8-1-15",
+          "feedbackIfWrong": "5050 cents = $\\$50.50$.",
+          "answers": [
+            "50.50",
+            "50.5"
+          ],
+          "hints": [
+            "Sum of first 100 integers = 5050 cents.",
+            "Divide by 100 to convert cents to dollars."
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\sum_{i=1}^{n} i = \\frac{n(n+1)}{2} $$ $$ \\sum_{i=1}^{n} i^2 = \\frac{n(n+1)(2n+1)}{6} $$",
+          "legend": [
+            {
+              "meaning": "number of terms (upper limit if starting at 1)",
+              "tone": "core",
+              "symbol": "$ n $"
+            }
+          ]
+        },
+        "explanation": [
+          "[[imp:Understand]]: Identify whether you are working with a sequence (list) or a series (sum). Determine the pattern or rule, and note the starting index.",
+          "[[imp:Solve]]: For sequences, use the rule to find specific terms. For series, write the summation notation if not given. Use special formulas ($ \\sum i $, $ \\sum i^2 $) to find sums quickly when applicable.",
+          "[[imp:Conclude]]: State the requested term, sum, or rule. Interpret the result in context if it's a real-life problem (e.g., total apples, total savings)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify sequence or series; find pattern/rule; note index limits."
+              },
+              {
+                "0": "Solve",
+                "1": "Generate terms; write summation notation; apply sum formulas if possible."
+              },
+              {
+                "0": "Conclude",
+                "1": "State the term or sum; interpret in context; check reasonableness."
+              }
+            ],
+            "variant": "colorful",
+            "title": "Blueprint for Sequences and Series",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "standards": [
+    "HSF.IF.A.3",
+    "HSF.BF.A.1a",
+    "HSA.SSE.B.4"
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

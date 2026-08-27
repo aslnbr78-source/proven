@@ -1,0 +1,717 @@
+{
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "Imagine a fence that separates two fields. A linear inequality draws a boundary line, and every point on one side of the line is a solution. Checking a point is like testing which side of the fence it's on—does it satisfy the condition or not?"
+      },
+      "confusionCorner": {
+        "body": "For $ \\le $ or $ \\ge $, if the two sides are equal, the point is a solution. For $ < $ or $ > $, equality makes the statement false.",
+        "title": "Strict vs. Non-Strict"
+      },
+      "title": "Checking Solutions of Linear Inequalities",
+      "questions": [
+        {
+          "hints": [
+            "They can be positive, negative, or zero.",
+            "Starts with 'r'."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "real"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Real numbers.",
+          "prompt": "A linear inequality in two variables can be written in the form $ ax + by < c $, where $ a $, $ b $, and $ c $ are ___ numbers.",
+          "type": "fill-blank",
+          "id": "q1-1"
+        },
+        {
+          "hints": [
+            "Substitute $ x=0, y=0 $.",
+            "$ 0 - 0 \\ge 5 $ → $ 0 \\ge 5 $ is false."
+          ],
+          "answer": "no",
+          "id": "q1-2",
+          "feedbackIfWrong": "No, because $ 0 \\ge 5 $ is false.",
+          "prompt": "Is $ (0, 0) $ a solution of $ 4x - y \\ge 5 $? (yes/no)",
+          "type": "short-answer"
+        },
+        {
+          "id": "q1-3",
+          "feedbackIfWrong": "The ordered pair must make the inequality a true statement.",
+          "hints": [
+            "After substituting, the statement must be true.",
+            "The inequality sign determines the result."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "makes the inequality true",
+            "satisfies the inequality"
+          ],
+          "prompt": "What must be true for an ordered pair to be a solution of a linear inequality?"
+        }
+      ],
+      "teacherCues": [
+        "Write the inequality $ 2x + y < -3 $ on the board. Ask: 'If I plug in $ (-1, 9) $, is it a solution? How do we check?'",
+        "Emphasize that the process is the same as checking equations, but with an inequality sign."
+      ],
+      "examples": [
+        {
+          "prompt": "Is $ (-1, 9) $ a solution of $ 2x + y < -3 $?",
+          "title": "A – Checking an Ordered Pair",
+          "steps": [
+            "Substitute $ x = -1 $ and $ y = 9 $: $ 2(-1) + 9 < -3 $.",
+            "Simplify: $ -2 + 9 = 7 $. So $ 7 < -3 $?",
+            "False. Therefore, $ (-1, 9) $ is not a solution."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: Why does the 'or equal to' part matter in this check?",
+          "title": "B – Checking with ≥",
+          "steps": [
+            "Substitute: $ 2 - 3(-2) \\ge 8 $ → $ 2 + 6 \\ge 8 $ → $ 8 \\ge 8 $.",
+            "Since 8 is equal to 8, the inequality is true.",
+            "Yes, $ (2, -2) $ is a solution."
+          ],
+          "prompt": "Is $ (2, -2) $ a solution of $ x - 3y \\ge 8 $?",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Substitute: $ 5(-4) - 2(-1) \\le -1 $ → $ -20 + 2 \\le -1 $ → $ -18 \\le -1 $.",
+            "True. So, $ (-4, -1) $ is a solution."
+          ],
+          "prompt": "Is $ (-4, -1) $ a solution of $ 5x - 2y \\le -1 $?",
+          "title": "C – Practice"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Checking a Solution",
+          "formula": "$$ \\text{Substitute } (x, y) \\text{ into } ax + by < c \\text{ and simplify.} $$",
+          "notes": [
+            "Use the order of operations.",
+            "Be careful with negative signs."
+          ]
+        },
+        "explanation": [
+          "A [[kw:linear inequality in two variables]] can be written as $ ax + by < c $, $ \\le c $, $ > c $, or $ \\ge c $.",
+          "A [[kw:solution of a linear inequality]] is an ordered pair $ (x, y) $ that makes the inequality true.",
+          "To check a solution, substitute the $ x $ and $ y $ values into the inequality and simplify.",
+          "If the resulting statement is true, the point is a solution. If false, it is not.",
+          "The graph of a linear inequality shows [[imp:all solutions]] in a coordinate plane, divided into two half-planes by a boundary line."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Checking Solutions of $ 2x + y < -3 $",
+            "type": "table",
+            "rows": [
+              {
+                "0": "$ (-1, 9) $",
+                "1": "$ 2(-1) + 9 < -3 $",
+                "2": "$ 7 < -3 $",
+                "3": "No ✗"
+              },
+              {
+                "0": "$ (0, -4) $",
+                "1": "$ 2(0) + (-4) < -3 $",
+                "2": "$ -4 < -3 $",
+                "3": "Yes ✓"
+              }
+            ],
+            "headers": [
+              "Ordered Pair",
+              "Substitution",
+              "Simplified",
+              "Solution?"
+            ]
+          }
+        ]
+      },
+      "id": "checking-solutions"
+    },
+    {
+      "title": "Graphing Linear Inequalities in Two Variables",
+      "questions": [
+        {
+          "hints": [
+            "Points on the line are not solutions.",
+            "It's not a solid line."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "dashed",
+                "broken"
+              ]
+            }
+          ],
+          "id": "q2-1",
+          "prompt": "For an inequality with $ < $ or $ > $, the boundary line is drawn as a ___ line.",
+          "feedbackIfWrong": "Dashed line."
+        },
+        {
+          "type": "short-answer",
+          "id": "q2-2",
+          "answer": "dashed",
+          "hints": [
+            "Look at the inequality symbol.",
+            "$ > $ means the boundary is not included."
+          ],
+          "feedbackIfWrong": "Dashed, because the inequality is strict ($ > $).",
+          "prompt": "When graphing $ y > -2x - 4 $, should the boundary line be solid or dashed?"
+        },
+        {
+          "type": "short-answer",
+          "id": "q2-3",
+          "answers": [
+            "the other side",
+            "opposite side"
+          ],
+          "prompt": "If a test point makes the inequality false, which side do you shade?",
+          "feedbackIfWrong": "Shade the half-plane that does not contain the test point.",
+          "hints": [
+            "The test point is not a solution.",
+            "Shade the region that does NOT contain the test point."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The graph of a linear inequality is a [[imp:half-plane]] on one side of a boundary line.",
+          "Step 1: Graph the boundary line. Use a [[imp:dashed line]] for $ < $ or $ > $; use a [[imp:solid line]] for $ \\le $ or $ \\ge $.",
+          "Step 2: Pick a test point not on the line (usually $ (0,0) $ if it's not on the line).",
+          "Step 3: If the test point makes the inequality true, shade that side. If false, shade the opposite side.",
+          "All points in the shaded region are solutions."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Use $ y = mx + b $ form for the boundary line.",
+            "Any point not on the line can be a test point."
+          ],
+          "formula": "$$ \\text{Graph boundary } \\rightarrow \\text{Test point } \\rightarrow \\text{Shade} $$",
+          "title": "Steps to Graph an Inequality"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Inequality Symbol",
+              "Boundary Line Type",
+              "Meaning"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$ < $ or $ > $",
+                "1": "Dashed",
+                "2": "Points on the line are NOT solutions."
+              },
+              {
+                "0": "$ \\le $ or $ \\ge $",
+                "1": "Solid",
+                "2": "Points on the line ARE solutions."
+              }
+            ],
+            "title": "Boundary Line Rules"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Draw the graph of $ y = 2 $ as a solid line. Ask: 'How do we decide which side to shade?'",
+        "Introduce the test point concept: pick a point not on the line, like $ (0, 0) $, and see if it satisfies the inequality."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Graph $ y \\le 2 $ in a coordinate plane.",
+          "steps": [
+            "Graph the boundary line $ y = 2 $. Use a solid line because of $ \\le $.",
+            "Test $ (0, 0) $: $ 0 \\le 2 $ is true.",
+            "Shade the half-plane containing $ (0, 0) $, which is below the line."
+          ],
+          "title": "A – Graphing a Simple Inequality"
+        },
+        {
+          "steps": [
+            "Rewrite boundary as $ y = \\frac{1}{2}x + 1 $. Graph with a dashed line because of $ > $.",
+            "Test $ (0, 0) $: $ -0 + 2(0) > 2 $ → $ 0 > 2 $, false.",
+            "Shade the half-plane that does NOT contain $ (0, 0) $."
+          ],
+          "title": "B – Graphing with a Dashed Line",
+          "role": "peer-explain",
+          "prompt": "Graph $ -x + 2y > 2 $ in a coordinate plane.",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: Why did we use a dashed line, and why did we shade the side without $ (0, 0) $?"
+        },
+        {
+          "prompt": "Graph $ x + y \\le -4 $.",
+          "steps": [
+            "Boundary: $ y = -x - 4 $. Solid line ($ \\le $).",
+            "Test $ (0, 0) $: $ 0 + 0 \\le -4 $ is false.",
+            "Shade the side opposite $ (0, 0) $."
+          ],
+          "role": "independent",
+          "title": "C – Graphing $ x + y \\le -4 $"
+        }
+      ],
+      "id": "graphing-linear-inequalities",
+      "discoveryHook": {
+        "scenario": "When you have a fence (the boundary line), you need to know which side to paint. A test point is like a scout: you send it out to one side, and if it satisfies the inequality, that's the side to shade. The other side remains empty!"
+      },
+      "confusionCorner": {
+        "title": "Test Point on the Boundary",
+        "body": "Never use a test point that lies exactly on the boundary line. If the line passes through $ (0,0) $, choose another easy point like $ (1,0) $ or $ (0,1) $."
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Budgeting is a real-world inequality! You have at most $10 for fruit. The inequality $ 2.5x + y \\le 10 $ shows all the possible combinations of grapes and apples you can buy. The graph makes your options visible at a glance."
+      },
+      "concept": {
+        "explanation": [
+          "Real-life constraints often involve 'at most' ($ \\le $) or 'at least' ($ \\ge $).",
+          "Define variables for the quantities. Write the inequality from the verbal model.",
+          "Because quantities can't be negative, usually restrict the graph to the [[imp:first quadrant]].",
+          "Graph the inequality using the steps. Points in the shaded region represent realistic solutions.",
+          "Points on the solid line are also solutions (if $ \\le $ or $ \\ge $)."
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Cost}_x \\cdot x + \\text{Cost}_y \\cdot y \\le \\text{Budget} $$",
+          "title": "Modeling with Inequalities",
+          "notes": [
+            "Use $ \\le $ for 'at most' or 'no more than'.",
+            "Restrict to $ x \\ge 0 $, $ y \\ge 0 $ for real quantities."
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Fruit Salad Budget ($2.50 grapes, $1 apples, $10 max)",
+            "rows": [
+              {
+                "0": "$ x $",
+                "1": "Pounds of grapes",
+                "2": "$ x \\ge 0 $"
+              },
+              {
+                "0": "$ y $",
+                "1": "Pounds of apples",
+                "2": "$ y \\ge 0 $"
+              },
+              {
+                "0": "Inequality",
+                "1": "$ 2.5x + y \\le 10 $",
+                "2": ""
+              }
+            ],
+            "headers": [
+              "Variable",
+              "Meaning",
+              "Constraint"
+            ],
+            "variant": "colorful",
+            "type": "table"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Pose the fruit salad problem: 'At most $10 on grapes ($2.50/lb) and apples ($1/lb). Write and graph the inequality.'",
+        "Guide: Define variables, write $ 2.5x + y \\le 10 $, graph in Quadrant I only."
+      ],
+      "confusionCorner": {
+        "body": "In the arcade problem, you can't buy half a game. The real solutions are [[imp:whole-number points]] in the shaded region. The continuous shaded graph shows all mathematical solutions, but only integer points are practical.",
+        "title": "Discrete vs. Continuous"
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "answers": [
+            "spending exactly $10",
+            "maximum budget line"
+          ],
+          "prompt": "In the fruit salad problem, what does the boundary line $ 2.5x + y = 10 $ represent?",
+          "id": "q3-1",
+          "feedbackIfWrong": "It represents spending exactly $10 (the budget maximum).",
+          "hints": [
+            "It's where the cost equals the budget.",
+            "Points on the line use the full $10."
+          ]
+        },
+        {
+          "feedbackIfWrong": "≥ (greater than or equal to).",
+          "prompt": "For the ticket sales goal, the inequality symbol should be ___ because they need at least $1500.",
+          "type": "fill-blank",
+          "hints": [
+            "At least means greater than or equal.",
+            "They cannot fall short of the goal."
+          ],
+          "id": "q3-2",
+          "blanks": [
+            {
+              "accept": [
+                "≥",
+                ">="
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "Because negative amounts of fruit cannot be purchased.",
+          "answers": [
+            "negative quantities don't make sense",
+            "cannot buy negative pounds"
+          ],
+          "hints": [
+            "Can you buy -3 pounds of apples?",
+            "The variables represent amounts."
+          ],
+          "prompt": "Why do we only graph in the first quadrant for the fruit salad problem?",
+          "type": "short-answer",
+          "id": "q3-3"
+        }
+      ],
+      "id": "real-life-applications-inequalities",
+      "examples": [
+        {
+          "title": "A – Fruit Salad Budget",
+          "prompt": "Grapes $2.50/lb, apples $1/lb. At most $10 to spend. Write and graph the inequality. Find two solutions.",
+          "steps": [
+            "Let $ x $ = pounds grapes, $ y $ = pounds apples. Inequality: $ 2.5x + y \\le 10 $.",
+            "Graph boundary $ y = -2.5x + 10 $ solid line in Quadrant I. Test $ (0,0) $: $ 0 \\le 10 $ true. Shade below.",
+            "Two solutions: $ (1, 6) $ (1 lb grapes, 6 lb apples) and $ (2, 5) $ (2 lb grapes, 5 lb apples)."
+          ],
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "$ 0.75x + 2.25y \\le 20 $. Graph boundary. Solid line.",
+            "Test $ (0,0) $: true. Shade below the line in Quadrant I.",
+            "Solutions are whole numbers of games and snacks."
+          ],
+          "title": "B – Arcade Budget",
+          "peerPrompt": "Explain to a partner: Why do we only graph in the first quadrant?",
+          "prompt": "Games cost $0.75 each, snacks $2.25 each. At most $20. Write and graph the inequality.",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "A club needs at least $1500 from ticket sales. Adult tickets $10, student $8. Write and graph.",
+          "title": "C – Ticket Sales Goal",
+          "role": "independent",
+          "steps": [
+            "Let $ x $ = adult tickets, $ y $ = student tickets. Inequality: $ 10x + 8y \\ge 1500 $.",
+            "Graph boundary $ y = -1.25x + 187.5 $ solid line. Test $ (0,0) $: false. Shade above.",
+            "Interpret solutions: any combination of tickets that raises at least $1500."
+          ]
+        }
+      ],
+      "title": "Real-Life Applications"
+    },
+    {
+      "title": "Writing Inequalities from Graphs",
+      "confusionCorner": {
+        "body": "When the equation is not solved for $ y $, don't assume 'above' means $ > $. Always test a point to be sure. The safe method is to plug a point from the shaded region into the original expression.",
+        "title": "Above vs. Below in Standard Form"
+      },
+      "teacherCues": [
+        "Display a graph of a shaded half-plane with a boundary line. Ask: 'How can we write the inequality that represents this graph?'",
+        "Guide: Identify the boundary line equation, decide solid/dashed, then test a point to determine the inequality symbol."
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "not"
+              ]
+            }
+          ],
+          "hints": [
+            "Think of the dashed line as a fence you can't stand on.",
+            "Only the shaded region counts."
+          ],
+          "prompt": "If a boundary line is dashed, the inequality symbol must be either $ < $ or $ > $ (strict). This means points on the line are ___ solutions.",
+          "feedbackIfWrong": "Points on a dashed line are not solutions.",
+          "id": "q4-1",
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "A graph has a solid line $ y = -x + 2 $ and shading below. Write the inequality.",
+          "id": "q4-2",
+          "feedbackIfWrong": "$ y \\le -x + 2 $.",
+          "hints": [
+            "Solid → $ \\le $ or $ \\ge $. Below → less than.",
+            "Combine: $ y \\le -x + 2 $."
+          ],
+          "type": "short-answer",
+          "answer": "y ≤ -x + 2"
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "Test a point in the shaded region to determine the correct symbol.",
+          "prompt": "When writing an inequality from a graph, what should you do after identifying the line and line type?",
+          "id": "q4-3",
+          "answers": [
+            "test a point",
+            "test a shaded point"
+          ],
+          "hints": [
+            "Pick a point in the shaded region.",
+            "Use it to decide the direction of the inequality."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "To write an inequality from a graph, first write the equation of the boundary line in slope-intercept form.",
+          "Determine if the line is solid (use $ \\le $ or $ \\ge $) or dashed (use $ < $ or $ > $).",
+          "Pick a test point in the shaded region. Plug it into the boundary equation.",
+          "The inequality symbol is chosen so that the test point makes the inequality true.",
+          "Write the final inequality with $ y $ on the left."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Solid line",
+                "1": "Points on line are solutions",
+                "2": "$ \\le $ or $ \\ge $"
+              },
+              {
+                "0": "Dashed line",
+                "1": "Points on line are not solutions",
+                "2": "$ < $ or $ > $"
+              },
+              {
+                "0": "Shading above the line",
+                "1": "$ y $ is greater than expression",
+                "2": "$ > $ or $ \\ge $"
+              },
+              {
+                "0": "Shading below the line",
+                "1": "$ y $ is less than expression",
+                "2": "$ < $ or $ \\le $"
+              }
+            ],
+            "title": "From Graph to Inequality",
+            "variant": "colorful",
+            "headers": [
+              "Graph Feature",
+              "Meaning",
+              "Symbol"
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ y = mx + b \\;\\rightarrow\\; y \\; \\text{?} \\; mx + b $$",
+          "notes": [
+            "Use the line type to choose strict/non-strict.",
+            "Test a shaded point to determine $ < $ or $ > $."
+          ],
+          "title": "Writing an Inequality from a Graph"
+        }
+      },
+      "id": "writing-inequalities-from-graphs",
+      "examples": [
+        {
+          "prompt": "A graph shows a dashed line $ y = -x + 3 $ with shading above the line. Write the inequality.",
+          "title": "A – Write an Inequality from a Graph",
+          "steps": [
+            "Boundary: $ y = -x + 3 $. Dashed → strict inequality ($ < $ or $ > $).",
+            "Shading is above the line, so $ y $ is greater than the expression.",
+            "Inequality: $ y > -x + 3 $."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Solid line → include equality ($ \\le $ or $ \\ge $).",
+            "Shading below → $ y $ is less than the expression.",
+            "Inequality: $ y \\le 2x - 5 $."
+          ],
+          "title": "B – Solid Line, Shading Below",
+          "minLength": 2,
+          "prompt": "A graph has a solid line $ y = 2x - 5 $ and shading below. Write the inequality.",
+          "peerPrompt": "Explain to a partner: How did you decide between $ \\le $ and $ < $?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Boundary: $ 3x - 2y = 6 $. Dashed → strict. Test $ (0,0) $: $ 3(0) - 2(0) = 0 < 6 $.",
+            "Since $ 0 < 6 $, the inequality is $ 3x - 2y < 6 $."
+          ],
+          "title": "C – Standard Form Boundary",
+          "prompt": "A graph shows a dashed line for $ 3x - 2y = 6 $ with shading containing $ (0,0) $. Write the inequality."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Just like a detective, you can look at a shaded graph and determine the inequality that created it. Find the line, check if it's solid or dashed, and test a point to decide the direction of the inequality symbol. It's reverse-engineering the graph!"
+      }
+    },
+    {
+      "concept": {
+        "explanation": [
+          "The blueprint for graphing linear inequalities: [[imp:Understand]] – Identify the boundary line equation and the inequality symbol. Is the line solid or dashed?",
+          "[[imp:Solve]] – Graph the boundary line with the correct style. Choose a test point and determine which side to shade.",
+          "[[imp:Conclude]] – Shade the correct half-plane. If in context, identify and interpret solutions. Check that your shading makes sense."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify boundary equation, symbol, and line type."
+              },
+              {
+                "0": "Solve",
+                "1": "Graph boundary; test a point; decide shading."
+              },
+              {
+                "0": "Conclude",
+                "1": "Shade correct region; list solutions if word problem; check."
+              }
+            ],
+            "title": "Inequality Blueprint",
+            "headers": [
+              "Phase",
+              "Action"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Blueprint Steps",
+          "notes": [
+            "Use $ (0,0) $ as test point unless it's on the line.",
+            "Double-check inequality direction."
+          ],
+          "formula": "$$ \\text{Boundary} \\;\\rightarrow\\; \\text{Test} \\;\\rightarrow\\; \\text{Shade} $$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "The Understand → Solve → Conclude blueprint makes graphing inequalities straightforward. Understand the boundary and symbol, Solve by drawing and testing, and Conclude with the shaded region and real-world meaning. It's your step-by-step guide to mastering inequalities!"
+      },
+      "title": "Blueprint Aid – Graphing Linear Inequalities",
+      "questions": [
+        {
+          "prompt": "In the blueprint, what is the first thing you do in the Understand phase?",
+          "answers": [
+            "identify the boundary line and symbol",
+            "find the boundary equation"
+          ],
+          "id": "q5-1",
+          "type": "short-answer",
+          "hints": [
+            "Look at the inequality.",
+            "It involves the equation of the line."
+          ],
+          "feedbackIfWrong": "Identify the boundary line equation and the inequality symbol."
+        },
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "line",
+                "boundary"
+              ]
+            }
+          ],
+          "prompt": "In the Solve phase, after graphing the boundary, you must choose a test point not on the line. The origin $ (0,0) $ is often used, unless it lies on the ___.",
+          "hints": [
+            "You can't use a point that is on the fence.",
+            "It's where the equation is true."
+          ],
+          "id": "q5-2",
+          "feedbackIfWrong": "Unless it lies on the boundary line."
+        },
+        {
+          "hints": [
+            "What do the points in the shaded region mean?",
+            "Relate it back to the real-life context."
+          ],
+          "answers": [
+            "interpret solutions",
+            "list examples",
+            "check points"
+          ],
+          "id": "q5-3",
+          "feedbackIfWrong": "Interpret the solutions in the context of the problem.",
+          "prompt": "After shading, what should you do in the Conclude phase for a word problem?",
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude framework. Walk through the fruit salad problem using the blueprint.",
+        "Emphasize: 'Understand' identifies the boundary line and inequality type. 'Solve' graphs and shades. 'Conclude' interprets solutions."
+      ],
+      "examples": [
+        {
+          "prompt": "Use the blueprint to graph $ 0.75x + 2.25y \\le 20 $.",
+          "role": "guided",
+          "steps": [
+            "Understand: Boundary $ 0.75x + 2.25y = 20 $ ($ y = -\\frac{1}{3}x + \\frac{80}{9} $). Solid line ($ \\le $).",
+            "Solve: Plot intercepts or points. Test $ (0,0) $: $ 0 \\le 20 $ true. Shade below.",
+            "Conclude: The shaded region shows affordable combinations of games and snacks."
+          ],
+          "title": "A – Full Blueprint: Arcade"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "Understand: Dashed → strict. Shading above → $ y $ greater than.",
+            "Solve: Test point $ (0,2) $ (above line): $ 2 > 2(0)+1 $ → $ 2 > 1 $ true. Symbol is $ > $.",
+            "Conclude: Inequality is $ y > 2x + 1 $."
+          ],
+          "prompt": "A graph shows a dashed line $ y = 2x + 1 $ with shading above. Use the blueprint to write the inequality.",
+          "title": "B – Blueprint from a Graph",
+          "peerPrompt": "Explain to a partner: How did the blueprint help you decide between $ > $ and $ \\ge $?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Understand: $ 75x + 40y + 200 \\le 2000 $ → $ 75x + 40y \\le 1800 $. Solid line.",
+            "Solve: Graph $ y = -\\frac{15}{8}x + 45 $. Test $ (0,0) $: true. Shade below in Quadrant I.",
+            "Conclude: Points in the shaded region are safe combinations."
+          ],
+          "title": "C – Elevator Weight",
+          "prompt": "Large boxes 75 lb, small boxes 40 lb. Delivery person 200 lb. Elevator limit 2000 lb. Write and graph inequality."
+        }
+      ],
+      "id": "blueprint-aid-inequalities",
+      "confusionCorner": {
+        "body": "Always solve for $ y $ when graphing to easily identify slope and intercept. The inequality symbol must be applied to the original form, not the rearranged form, unless you keep track of the sign. Testing a point eliminates any confusion.",
+        "title": "Boundary Equation Form"
+      }
+    }
+  ],
+  "presenterNotes": [
+    "Emphasize the three-step process: boundary, test, shade. This is the foundation for graphing all linear inequalities.",
+    "When choosing a test point, $(0,0)$ is almost always the easiest. Students should only use another point if $(0,0)$ lies exactly on the boundary line.",
+    "In real-world problems, remind students to consider the domain (often $x \\ge 0$, $y \\ge 0$) and whether the solutions should be whole numbers.",
+    "The connection to writing inequalities from graphs is a higher-order skill. Use the 'test point in the shaded region' method to determine the symbol direction."
+  ],
+  "id": "chapter-5-6-graphing-linear-inequalities-two-variables",
+  "standards": [
+    "HSA.REI.D.12",
+    "HSA.CED.A.3"
+  ],
+  "title": "Chapter 5.6 — Graphing Linear Inequalities in Two Variables",
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

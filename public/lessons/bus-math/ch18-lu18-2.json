@@ -1,0 +1,835 @@
+{
+  "standards": [
+    "BUSMATH.18.2"
+  ],
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "0.60",
+          "4200"
+        ],
+        "optional": true,
+        "prompt": "A store has goods available at cost $42,000, at retail $70,000. Net sales were $63,000. Compute the cost ratio and the estimated ending inventory at cost.",
+        "hints": [
+          "Cost ratio = 42,000/70,000 = 0.60.",
+          "Ending retail = 70,000 – 63,000 = 7,000; ending cost = 7,000×0.60 = 4,200."
+        ]
+      },
+      "id": "retail-method",
+      "discoveryHook": {
+        "scenario": "A clothing store knows its cost of goods available and the retail selling prices. By calculating a [[kw:cost ratio]] (cost ÷ retail), it can estimate the cost of ending inventory from the retail value of unsold goods. This is the [[kw:retail method]], often used for interim financial statements."
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The cost ratio is not a fixed number; it should be recalculated each period. [[imp:Changes in markups or markdowns affect the ratio.]]"
+      },
+      "questions": [
+        {
+          "hints": [
+            "The selling price basis.",
+            "Not cost."
+          ],
+          "prompt": "Cost ratio = Goods available at cost ÷ Goods available at ___.",
+          "feedbackIfWrong": "retail.",
+          "blanks": [
+            {
+              "accept": [
+                "retail"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "id": "b1q1"
+        },
+        {
+          "feedbackIfWrong": "8,400.",
+          "prompt": "Cost ratio 0.70, ending inventory at retail $12,000. Estimated ending inventory at cost? (number only, no $)",
+          "type": "short-answer",
+          "id": "b1q2",
+          "answers": [
+            "8400",
+            "8,400"
+          ],
+          "hints": [
+            "12,000 × 0.70.",
+            "= 8,400."
+          ]
+        },
+        {
+          "feedbackIfWrong": "0.",
+          "hints": [
+            "Sold more than available.",
+            "No goods left."
+          ],
+          "prompt": "If net sales exceed goods available at retail, ending inventory at retail is ___ (number).",
+          "type": "short-answer",
+          "answers": [
+            "0",
+            "zero"
+          ],
+          "id": "b1q3"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Beginning Inventory",
+                "1": "$10,000",
+                "2": "$16,000"
+              },
+              {
+                "0": "Net Purchases",
+                "1": "$40,000",
+                "2": "$64,000"
+              },
+              {
+                "0": "Goods Available",
+                "1": "$50,000",
+                "2": "$80,000"
+              },
+              {
+                "0": "Cost Ratio = $50,000 ÷ $80,000 = 62.5%",
+                "1": "",
+                "2": ""
+              },
+              {
+                "0": "Less: Net Sales",
+                "1": "",
+                "2": "$70,000"
+              },
+              {
+                "0": "Ending Inventory at Retail",
+                "1": "",
+                "2": "$10,000"
+              },
+              {
+                "0": "Ending Inventory at Cost ($10,000 × 0.625)",
+                "1": "$6,250",
+                "2": ""
+              }
+            ],
+            "title": "Retail Method Example",
+            "headers": [
+              "",
+              "Cost",
+              "Retail"
+            ],
+            "caption": "Cost ratio links retail value to cost value."
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Cost Ratio} = \\frac{\\text{Goods Available at Cost}}{\\text{Goods Available at Retail}}$$ $$\\text{Ending Inventory at Retail} = \\text{Goods Available at Retail} - \\text{Net Sales}$$ $$\\text{Ending Inventory at Cost} = \\text{Ending Inventory at Retail} \\times \\text{Cost Ratio}$$",
+          "title": "Retail Method Formulas",
+          "notes": [
+            "Net sales = Gross sales – Returns and allowances.",
+            "The cost ratio should reflect the relationship between cost and retail for the current period."
+          ]
+        },
+        "explanation": [
+          "The [[kw:retail method]] estimates ending inventory cost by converting retail prices to cost using a cost‑to‑retail ratio.",
+          "Steps: 1. Calculate goods available at cost and at retail. 2. Compute the cost ratio: $$\\text{Cost Ratio} = \\frac{\\text{Goods Available at Cost}}{\\text{Goods Available at Retail}}$$.",
+          "3. Subtract net sales (at retail) from goods available at retail to get ending inventory at retail. 4. Multiply ending inventory at retail by the cost ratio to estimate ending inventory at cost.",
+          "[[imp:This method is useful for interim reports and insurance claims, but still requires a physical count for annual statements.]]"
+        ]
+      },
+      "title": "1. Retail Method of Estimating Inventory",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Goods available at cost $30,000, at retail $50,000. What is the cost ratio?",
+          "steps": [
+            "Cost ratio = $30,000 ÷ $50,000 = 0.60 = 60%.",
+            "This means each dollar of retail represents $0.60 of cost."
+          ],
+          "title": "A – Find the cost ratio"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Think about time and cost.",
+          "steps": [
+            "Physical counts are time‑consuming and expensive.",
+            "For quarterly or monthly internal reports, the retail method provides a quick, reasonable estimate.",
+            "It's also used for insurance claims when inventory is destroyed and a physical count is impossible."
+          ],
+          "title": "B – When is the retail method useful?",
+          "prompt": "Explain when a company would use the retail method instead of taking a physical count.",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "prompt": "Cost ratio = 55%. Ending inventory at retail = $18,000. Find ending inventory at cost.",
+          "steps": [
+            "Ending inventory at cost = $18,000 × 0.55 = $9,900.",
+            "The estimated cost of unsold goods is $9,900."
+          ],
+          "title": "C – Compute ending inventory at cost"
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'How can a store estimate its ending inventory without a physical count?'",
+        "Explain the retail method uses the cost‑to‑retail ratio."
+      ]
+    },
+    {
+      "id": "gross-profit-method",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "COGS = 80,000 × 0.65 = 52,000.",
+            "Ending inventory = 60,000 – 52,000 = 8,000."
+          ],
+          "title": "A – Estimate ending inventory",
+          "prompt": "Goods available $50,000, net sales $80,000, historical GP rate 35%. Find estimated ending inventory."
+        },
+        {
+          "prompt": "Explain why the gross profit method relies on a historical gross profit rate.",
+          "title": "B – Why use historical rate?",
+          "steps": [
+            "The method is used when a physical count is impossible (e.g., fire, theft).",
+            "Companies often know their typical gross profit percentage from past income statements.",
+            "Applying it to current sales gives a reasonable estimate of COGS and ending inventory."
+          ],
+          "peerPrompt": "Think about the purpose of the estimate.",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Estimated COGS = $200,000 × (1 – 0.30) = $200,000 × 0.70 = $140,000.",
+            "If goods available were $180,000, ending inventory = $180,000 – $140,000 = $40,000."
+          ],
+          "prompt": "Net sales $200,000, GP rate 30%. Find estimated COGS.",
+          "title": "C – Calculate estimated COGS"
+        }
+      ],
+      "title": "2. Gross Profit Method of Estimating Inventory",
+      "concept": {
+        "visuals": [
+          {
+            "caption": "The method relies on a stable gross profit rate.",
+            "rows": [
+              {
+                "0": "1. Goods available at cost",
+                "1": "Given",
+                "2": "$80,000"
+              },
+              {
+                "0": "2. Net sales",
+                "1": "Given",
+                "2": "$120,000"
+              },
+              {
+                "0": "3. Historical GP rate",
+                "1": "40%",
+                "2": ""
+              },
+              {
+                "0": "4. Estimated COGS",
+                "1": "$120,000 × (1 – 0.40)",
+                "2": "$72,000"
+              },
+              {
+                "0": "5. Estimated ending inventory",
+                "1": "$80,000 – $72,000",
+                "2": "$8,000"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Step",
+              "Calculation",
+              "Amount"
+            ],
+            "variant": "colorful",
+            "title": "Gross Profit Method Example"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "GP rate = Gross Profit ÷ Net Sales (historical).",
+            "If GP rate is given as a percent of cost, adjust accordingly."
+          ],
+          "title": "Gross Profit Method",
+          "formula": "$$\\text{Estimated COGS} = \\text{Net Sales} \\times (1 - \\text{GP Rate})$$ $$\\text{Ending Inventory} = \\text{Goods Available at Cost} - \\text{Estimated COGS}$$"
+        },
+        "explanation": [
+          "The [[kw:gross profit method]] estimates ending inventory based on the historical relationship between gross profit and net sales.",
+          "Steps: 1. Calculate the gross profit rate: $$\\text{GP Rate} = \\frac{\\text{Gross Profit}}{\\text{Net Sales}}$$.",
+          "2. Estimate COGS = Net sales × (1 – GP rate).",
+          "3. Ending inventory = Goods available at cost – Estimated COGS.",
+          "This method is often used after a disaster or when physical counts are not possible.",
+          "[[imp:It assumes the gross profit rate is stable; changes in pricing or theft can distort the estimate.]]"
+        ]
+      },
+      "teacherCues": [
+        "Explain that this method uses the historical gross profit rate to estimate COGS and then ending inventory.",
+        "Show the formula: Ending Inventory = Goods Available – Estimated COGS."
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "gross"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "Gross profit method estimates inventory using the historical ___ profit rate.",
+          "feedbackIfWrong": "gross.",
+          "id": "b2q1",
+          "hints": [
+            "It's gross, not net.",
+            "From the income statement."
+          ]
+        },
+        {
+          "feedbackIfWrong": "49,500.",
+          "prompt": "Net sales $90,000, GP rate 45%. Estimated COGS? (number only, no $)",
+          "hints": [
+            "COGS = Sales × (1 – GP rate).",
+            "90,000 × 0.55 = ?"
+          ],
+          "type": "short-answer",
+          "answers": [
+            "49500",
+            "49,500"
+          ],
+          "id": "b2q2"
+        },
+        {
+          "prompt": "Goods available $100,000, estimated COGS $75,000. Estimated ending inventory? (number only, no $)",
+          "feedbackIfWrong": "25,000.",
+          "hints": [
+            "Ending inventory = Goods available – COGS.",
+            "100,000 – 75,000 = ?"
+          ],
+          "id": "b2q3",
+          "answers": [
+            "25000",
+            "25,000"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The gross profit rate is based on sales, not cost. [[imp:If the problem gives GP rate as a percentage of cost, convert it: GP rate on sales = GP% on cost / (1 + GP% on cost).]]"
+      },
+      "discoveryHook": {
+        "scenario": "A fire destroys a store's inventory. To file an insurance claim, the owner must estimate the lost inventory cost. Using the [[kw:gross profit method]], if sales were $100,000 and the store normally has a 40% gross profit rate, estimated COGS = $100,000 × (1 – 0.40) = $60,000. Then ending inventory = Goods available – $60,000."
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "prompt": "A fire destroyed a store's inventory. Goods available at cost $125,000, net sales since last inventory $180,000, historical gross profit rate 40% on sales. Estimate the lost inventory cost.",
+        "hints": [
+          "COGS = 180,000 × 0.60 = 108,000.",
+          "Ending inventory = 125,000 – 108,000 = 17,000."
+        ],
+        "optional": true,
+        "answers": [
+          "17000",
+          "17,000"
+        ]
+      }
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "Not ending inventory alone.",
+            "Mean of beginning and ending."
+          ],
+          "id": "b3q1",
+          "feedbackIfWrong": "average.",
+          "type": "fill-blank",
+          "prompt": "Inventory turnover = COGS ÷ ___ inventory.",
+          "blanks": [
+            {
+              "accept": [
+                "average"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "4"
+          ],
+          "prompt": "COGS $360,000, average inventory $90,000. Inventory turnover? (number only, one decimal if needed)",
+          "id": "b3q2",
+          "feedbackIfWrong": "4.",
+          "hints": [
+            "360,000 ÷ 90,000.",
+            "= 4."
+          ]
+        },
+        {
+          "prompt": "A high inventory turnover generally indicates ___ inventory management. (word: efficient or poor)",
+          "answers": [
+            "efficient"
+          ],
+          "hints": [
+            "Selling quickly.",
+            "Not sitting on stock."
+          ],
+          "feedbackIfWrong": "efficient.",
+          "type": "short-answer",
+          "id": "b3q3"
+        }
+      ],
+      "title": "3. Inventory Turnover",
+      "discoveryHook": {
+        "scenario": "A grocery store wants to know how quickly it sells its stock. If COGS is $500,000 and the average inventory is $100,000, the [[kw:inventory turnover]] is 5 times per year. Higher turnover means efficient inventory management; lower turnover may indicate overstocking or slow sales."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "COGS $400,000, beginning inventory $80,000, ending inventory $120,000. Find inventory turnover.",
+          "title": "A – Compute turnover",
+          "steps": [
+            "Average inventory = ($80,000 + $120,000) ÷ 2 = $100,000.",
+            "Turnover = $400,000 ÷ $100,000 = 4 times."
+          ]
+        },
+        {
+          "steps": [
+            "Positively, it indicates strong sales and efficient inventory management.",
+            "Negatively, it might mean inventory levels are too low, leading to stock‑outs and lost sales.",
+            "The ideal level balances holding costs with meeting customer demand."
+          ],
+          "prompt": "Explain what a very high inventory turnover might indicate (both positive and negative).",
+          "title": "B – High vs low turnover",
+          "minLength": 2,
+          "peerPrompt": "Think about stock‑outs versus efficiency.",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Days to sell = 365 ÷ 6 ≈ 60.8 days.",
+            "On average, inventory sits about 61 days before being sold."
+          ],
+          "prompt": "If inventory turnover is 6 times per year, what is the average number of days to sell the inventory?",
+          "title": "C – Days to sell",
+          "role": "independent"
+        }
+      ],
+      "challengeCorner": {
+        "type": "short-answer",
+        "hints": [
+          "Average = (160k+140k)/2 = 150k; turnover = 750k/150k = 5.",
+          "Days = 365/5 = 73."
+        ],
+        "optional": true,
+        "answers": [
+          "5",
+          "73"
+        ],
+        "prompt": "A company has COGS $750,000, beginning inventory $160,000, ending inventory $140,000. Compute inventory turnover and the average days to sell."
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Use COGS in the numerator, not net sales. [[imp:Mixing sales (retail) with inventory (cost) inflates the turnover artificially.]]"
+      },
+      "teacherCues": [
+        "Define inventory turnover: how many times inventory is sold and replaced in a period.",
+        "Formula: Inventory Turnover = COGS ÷ Average Inventory."
+      ],
+      "id": "inventory-turnover",
+      "concept": {
+        "visuals": [
+          {
+            "title": "Inventory Turnover Calculation",
+            "variant": "colorful",
+            "caption": "The store turned over its inventory 5 times during the year.",
+            "headers": [
+              "Item",
+              "Amount"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "COGS",
+                "1": "$600,000"
+              },
+              {
+                "0": "Beginning Inventory",
+                "1": "$110,000"
+              },
+              {
+                "0": "Ending Inventory",
+                "1": "$130,000"
+              },
+              {
+                "0": "Average Inventory",
+                "1": "($110,000 + $130,000) ÷ 2 = $120,000"
+              },
+              {
+                "0": "Inventory Turnover",
+                "1": "$600,000 ÷ $120,000 = 5 times"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "[[kw:Inventory turnover]] measures how many times a company's inventory is sold and replaced over a period (usually a year).",
+          "Formula: $$\\text{Inventory Turnover} = \\frac{\\text{Cost of Goods Sold}}{\\text{Average Inventory}}$$.",
+          "Average inventory = (Beginning inventory + Ending inventory) ÷ 2.",
+          "A higher ratio indicates faster sales and less money tied up in inventory.",
+          "[[imp:Turnover varies widely by industry; compare with industry benchmarks.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Average Inventory} = \\frac{\\text{Beginning Inventory} + \\text{Ending Inventory}}{2}$$ $$\\text{Inventory Turnover} = \\frac{\\text{COGS}}{\\text{Average Inventory}}$$",
+          "title": "Inventory Turnover",
+          "notes": [
+            "Use COGS, not sales, because inventory is valued at cost.",
+            "Days to sell inventory = 365 ÷ Turnover."
+          ]
+        }
+      }
+    },
+    {
+      "id": "overhead-concept",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "caption": "Rent is allocated proportionally to the space used.",
+            "title": "Allocating Rent Based on Floor Space",
+            "type": "table",
+            "headers": [
+              "Department",
+              "Square Feet",
+              "Fraction",
+              "Rent Allocated ($120,000 total)"
+            ],
+            "rows": [
+              {
+                "0": "Shoes",
+                "1": "2,000",
+                "2": "2,000/5,000 = 40%",
+                "3": "$48,000"
+              },
+              {
+                "0": "Clothing",
+                "1": "3,000",
+                "2": "3,000/5,000 = 60%",
+                "3": "$72,000"
+              },
+              {
+                "0": "Total",
+                "1": "5,000",
+                "2": "100%",
+                "3": "$120,000"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Floor space is often used for rent and utilities.",
+            "Sales or direct labor hours may be used for other overhead items."
+          ],
+          "title": "Overhead Allocation",
+          "formula": "$$\\text{Allocated Overhead} = \\text{Total Overhead} \\times \\frac{\\text{Department's Base}}{\\text{Total Base}}$$"
+        },
+        "explanation": [
+          "[[kw:Overhead]] (indirect costs) includes expenses like rent, utilities, insurance, and management salaries that benefit multiple departments.",
+          "Since these cannot be directly traced, they are allocated using a reasonable basis.",
+          "Common allocation bases: [[kw:floor space]] (square footage), [[kw:sales volume]], number of employees.",
+          "Allocation formula: $$\\text{Department's Share} = \\text{Total Overhead} \\times \\frac{\\text{Department's Base}}{\\text{Total Base}}$$.",
+          "[[imp:The choice of allocation base should reflect the cause‑and‑effect relationship with the cost.]]"
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Total area = 1,000 sq ft.",
+            "A: $10,000 × (600/1,000) = $6,000; B: $10,000 × (400/1,000) = $4,000."
+          ],
+          "title": "A – Allocate by floor space",
+          "prompt": "Total rent $10,000. Department A occupies 600 sq ft, Department B 400 sq ft. Allocate rent."
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Think about determining profitability.",
+          "minLength": 2,
+          "steps": [
+            "To know if a department is truly profitable, all costs it incurs (including indirect costs) must be assigned to it.",
+            "Without allocation, some departments might appear more profitable than they really are.",
+            "It also helps in pricing and performance evaluation."
+          ],
+          "prompt": "Explain why overhead must be allocated to departments.",
+          "title": "B – Why allocate overhead?"
+        },
+        {
+          "role": "independent",
+          "prompt": "Total advertising expense $5,000. Department X has sales of $60,000, Department Y $40,000. Allocate advertising based on sales.",
+          "steps": [
+            "Total sales = $100,000.",
+            "X: $5,000 × (60,000/100,000) = $3,000; Y: $5,000 × (40,000/100,000) = $2,000."
+          ],
+          "title": "C – Allocate by sales"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A department store pays $120,000 in rent for the entire building. How much should the shoe department pay vs. the clothing department? Overhead costs like rent, utilities, and insurance are allocated using a base such as [[kw:floor space]] or [[kw:sales]]. This ensures each department bears its fair share."
+      },
+      "teacherCues": [
+        "Define overhead: indirect costs of running a business not directly tied to a product.",
+        "Explain that overhead must be allocated to departments for accurate costing."
+      ],
+      "title": "4. Concept of Overhead and Allocation Bases",
+      "challengeCorner": {
+        "optional": true,
+        "type": "short-answer",
+        "hints": [
+          "Total area = 2,000 sq ft. P: 18,000×(800/2,000)=7,200.",
+          "Q: 18,000×(1,200/2,000)=10,800."
+        ],
+        "prompt": "A building has total annual utilities cost of $18,000. Department P occupies 800 sq ft, Department Q 1,200 sq ft. If utilities are allocated by floor space, how much is allocated to each?",
+        "answers": [
+          "7200",
+          "10800"
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Not all overhead items use the same base. [[imp:Rent is typically based on floor space; advertising may be based on sales; supervision on number of employees.]]"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "overhead.",
+          "prompt": "Indirect costs that cannot be directly traced to a department are called ___.",
+          "hints": [
+            "Examples: rent, utilities.",
+            "Not direct materials or labor."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "overhead"
+              ]
+            }
+          ],
+          "id": "b4q1",
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "3200",
+            "3,200"
+          ],
+          "prompt": "Total rent $8,000. Dept A has 40% of floor space. Rent allocated to A? (number only, no $)",
+          "id": "b4q2",
+          "feedbackIfWrong": "3,200.",
+          "hints": [
+            "8,000 × 0.40.",
+            "= 3,200."
+          ]
+        },
+        {
+          "answers": [
+            "rent"
+          ],
+          "type": "short-answer",
+          "id": "b4q3",
+          "hints": [
+            "It depends on the area occupied.",
+            "Not sales."
+          ],
+          "prompt": "Allocating costs based on floor space is most appropriate for which expense? (word: rent, advertising, or insurance)",
+          "feedbackIfWrong": "rent."
+        }
+      ]
+    },
+    {
+      "title": "5. Blueprint Aid for Inventory Estimation and Overhead Allocation",
+      "id": "blueprint-overhead",
+      "concept": {
+        "formulaCard": {
+          "title": "Inventory Estimation & Overhead Blueprint",
+          "notes": [
+            "Retail method: cost ratio = cost/retail; ending inventory = ending retail × ratio.",
+            "Inventory turnover = COGS / Average inventory."
+          ],
+          "formula": "$$\\text{COGS (GP method)} = \\text{Sales} \\times (1 - \\text{GP rate})$$ $$\\text{Ending Inventory} = \\text{Goods Available} - \\text{COGS}$$ $$\\text{Allocated Overhead} = \\text{Total Overhead} \\times \\frac{\\text{Dept Base}}{\\text{Total Base}}$$"
+        },
+        "visuals": [
+          {
+            "title": "Blueprint: Gross Profit Method & Overhead Allocation",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "caption": "Separate sections for each type of problem within the blueprint.",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "GP rate 30%, net sales $150,000, goods available $130,000. Also, rent $6,000, dept X 200 sq ft, Y 400 sq ft.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – COGS",
+                "1": "$150,000 × (1–0.30) = $105,000.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Ending Inv.",
+                "1": "$130,000 – $105,000 = $25,000.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Rent X",
+                "1": "$6,000 × (200/600) = $2,000.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Rent Y",
+                "1": "$6,000 × (400/600) = $4,000.",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Ending inventory $25,000; rent allocated $2,000 and $4,000.",
+                "2": ""
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "Apply the blueprint to hybrid inventory/overhead problems:",
+          "1. Understand: identify which method is required (retail, gross profit, turnover, or overhead), and list the given data.",
+          "2. Solve: apply the appropriate formulas step‑by‑step. For inventory estimation, compute COGS and ending inventory. For overhead, compute allocation fractions and dollars.",
+          "3. Conclude: verify that estimates are reasonable (e.g., ending inventory cannot be negative), and that allocated overhead sums to the total.",
+          "This ensures you don't confuse the methods or ignore key data."
+        ]
+      },
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that combines retail method, gross profit method, or overhead allocation."
+      ],
+      "questions": [
+        {
+          "hints": [
+            "Identify what's given.",
+            "U in U‑S‑C."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "understand.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "prompt": "The first step of the blueprint is to ___ the problem.",
+          "id": "b5q1"
+        },
+        {
+          "hints": [
+            "50,000 – 38,000.",
+            "= 12,000."
+          ],
+          "feedbackIfWrong": "12,000.",
+          "id": "b5q2",
+          "type": "short-answer",
+          "prompt": "Goods available $50,000, estimated COGS $38,000. Ending inventory? (number only, no $)",
+          "answers": [
+            "12000",
+            "12,000"
+          ]
+        },
+        {
+          "id": "b5q3",
+          "prompt": "Total overhead $5,000, Dept X has 60% of the base. Allocation to X? (number only, no $)",
+          "type": "short-answer",
+          "feedbackIfWrong": "3,000.",
+          "answers": [
+            "3000",
+            "3,000"
+          ],
+          "hints": [
+            "5,000 × 0.60.",
+            "= 3,000."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A store needs to estimate its ending inventory for an insurance claim (gross profit method) and also allocate its rent to two departments (overhead). The blueprint organizes the information and ensures each step is followed correctly."
+      },
+      "challengeCorner": {
+        "answers": [
+          "7400",
+          "5000"
+        ],
+        "hints": [
+          "COGS = 140,000×0.62 = 86,800; ending = 95,000–86,800 = 8,200.",
+          "Total area = 4,000; Dept2 = 8,000×(2,500/4,000) = 5,000."
+        ],
+        "prompt": "A company has goods available $95,000, net sales $140,000, GP rate 38% on sales. Also, allocate $8,000 of janitorial cost based on floor space: Dept 1 (1,500 sq ft), Dept 2 (2,500 sq ft). Find ending inventory and janitorial cost for Dept 2.",
+        "type": "short-answer",
+        "optional": true
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "When using the gross profit method, ensure the GP rate matches the base (sales or cost). [[imp:If the rate is on cost, first convert to sales basis or adjust the formula.]]"
+      },
+      "examples": [
+        {
+          "title": "A – Combined blueprint",
+          "steps": [
+            "COGS = $90,000 × 0.60 = $54,000. Ending inventory = $60,000 – $54,000 = $6,000.",
+            "Rent Dept 1 = $10,000 × (60,000/100,000) = $6,000; Dept 2 = $10,000 × (40,000/100,000) = $4,000."
+          ],
+          "prompt": "A store has goods available at cost $60,000. Net sales were $90,000. The usual gross profit rate is 40% on sales. Estimate ending inventory. Also, allocate $10,000 rent to two departments based on sales: Dept 1 $60,000, Dept 2 $40,000.",
+          "role": "guided"
+        },
+        {
+          "title": "B – Blueprint prevents confusion",
+          "steps": [
+            "The 'Understand' step identifies two distinct tasks: inventory and overhead.",
+            "The 'Solve' step applies different formulas to each task without mixing them.",
+            "The 'Conclude' step checks both results separately."
+          ],
+          "peerPrompt": "Think about keeping separate sections.",
+          "prompt": "Explain how the blueprint helps when a problem includes both inventory estimation and overhead allocation.",
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "prompt": "Goods available $80,000, net sales $120,000, GP rate 35% on sales. Also, insurance $3,600 allocated by floor space: Dept A 500 sq ft, Dept B 700 sq ft. Find ending inventory and insurance for Dept A.",
+          "steps": [
+            "COGS = $120,000 × 0.65 = $78,000; ending inventory = $80,000 – $78,000 = $2,000.",
+            "Total area = 1,200 sq ft. Insurance A = $3,600 × (500/1,200) = $1,500."
+          ],
+          "role": "independent",
+          "title": "C – Practice"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 2,
+  "title": "Retail Methods",
+  "id": "ch18-lu18-2",
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

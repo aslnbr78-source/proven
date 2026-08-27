@@ -1,0 +1,131 @@
+{
+  "type": "flashcard",
+  "id": "consolidated-flashcards-11-1-11-2",
+  "title": "Ch 11.1 & 11.2 Review",
+  "cards": [
+    {
+      "back": "A hypothesis test that does not require the population to have a specific distribution (like normal). Nonparametric tests are distribution‑free and often use signs or ranks.",
+      "front": "What is a [[kw:nonparametric test]]?"
+    },
+    {
+      "front": "What population parameter does the [[kw:sign test]] test?",
+      "back": "The sign test tests a population [[imp:median]] against a hypothesized value $k$."
+    },
+    {
+      "front": "How do you assign signs in a one‑sample sign test?",
+      "back": "Compare each data value to $k$: if value $< k$, assign −; if $> k$, assign +; if $= k$, assign 0 (ignored). The test statistic $x$ is the smaller count of + or −."
+    },
+    {
+      "front": "What is the test statistic $x$ for the sign test when $n \\le 25$?",
+      "back": "$x$ is the [[imp:smaller]] number of + and − signs. Critical values are in Table 8. Reject $H_0$ if $x \\le$ critical value."
+    },
+    {
+      "front": "What is the test statistic for the sign test when $n > 25$?",
+      "back": "$$z = \\frac{(x + 0.5) - 0.5n}{\\sqrt{n}/2}$$ where $x$ is the smaller sign count. The +0.5 is a [[imp:continuity correction]]. Use standard normal table."
+    },
+    {
+      "front": "How are ties (values equal to the median) handled in the sign test?",
+      "back": "They are assigned 0 and [[imp:ignored]] — not counted in $n$."
+    },
+    {
+      "back": "Because the test statistic $x$ is the smaller number of signs. A very small $x$ suggests imbalance, so we reject when $x$ is too small (left tail).",
+      "front": "Why is the sign test rejection region always in the left tail?"
+    },
+    {
+      "back": "$H_0: \\text{median} \\ge k$\n$H_a: \\text{median} < k$ (claim)\nWe expect mostly minus signs, so the smaller count would be plus signs.",
+      "front": "State the hypotheses for a left‑tailed sign test (claim: median < k)."
+    },
+    {
+      "front": "What is the [[kw:paired‑sample sign test]]?",
+      "back": "A nonparametric test for two dependent samples. It computes differences $d = x_1 - x_2$, assigns signs to the differences, and tests the median of the differences."
+    },
+    {
+      "back": "Count the + and − signs of the differences. Ignore zeros. $x$ = smaller count. Use Table 8 or normal approximation as in the one‑sample test.",
+      "front": "How is the test statistic for the paired‑sample sign test determined?"
+    },
+    {
+      "back": "A nonparametric test for two dependent (paired) samples. It uses the [[imp:magnitude]] of differences, not just their sign. Differences are ranked by absolute value, signs attached, and the test statistic $w_s$ is the smaller absolute sum of signed ranks.",
+      "front": "What is the [[kw:Wilcoxon signed‑rank test]]?"
+    },
+    {
+      "back": "1. Compute differences $d = x_1 - x_2$ (ignore zeros).\n2. Rank absolute differences (1 = smallest).\n3. Attach sign of $d$ to each rank.\n4. Sum positive and negative signed ranks separately.\n5. $w_s = \\min(|\\text{sum of positive ranks}|, |\\text{sum of negative ranks}|)$.",
+      "front": "How do you compute the test statistic $w_s$ for the signed‑rank test?"
+    },
+    {
+      "back": "Tied absolute differences receive the [[imp:average]] rank. For example, two values tied for 3rd and 4th both get rank 3.5. The next rank is 5.",
+      "front": "How are ties handled in the signed‑rank test?"
+    },
+    {
+      "back": "[[imp:Table 9]] in Appendix B. Reject $H_0$ if $w_s$ (smaller absolute sum of signed ranks) is less than or equal to the critical value.",
+      "front": "What table provides critical values for the Wilcoxon signed‑rank test?"
+    },
+    {
+      "front": "In the golf example, $n=9$, $w_s=6.5$, critical value (one‑tailed, $\\alpha=0.05$) is 8. Decision?",
+      "back": "Reject $H_0$ because $6.5 \\le 8$. There is evidence that the new clubs lower scores."
+    },
+    {
+      "back": "A nonparametric test for two [[imp:independent]] samples. It ranks all data together and tests whether the two populations have the same distribution. It is the alternative to the two‑sample t‑test.",
+      "front": "What is the [[kw:Wilcoxon rank sum test]]?"
+    },
+    {
+      "back": "Both sample sizes must be at least 10 to use the normal approximation. Let $n_1$ be the smaller sample size and $n_2$ the larger.",
+      "front": "What is the sample size requirement for the Wilcoxon rank sum test?"
+    },
+    {
+      "front": "How is the test statistic $z$ computed for the rank sum test?",
+      "back": "Combine and rank all data. Let $R$ = sum of ranks for the smaller sample.\n$$z = \\frac{R - \\mu_R}{\\sigma_R}$$\n$$\\mu_R = \\frac{n_1(n_1+n_2+1)}{2}, \\quad \\sigma_R = \\sqrt{\\frac{n_1 n_2 (n_1+n_2+1)}{12}}$$"
+    },
+    {
+      "back": "$$\\mu_R = \\frac{10(10+12+1)}{2} = \\frac{10 \\times 23}{2} = 115$$",
+      "front": "In the earnings example, $n_1=10$, $n_2=12$, $R=138$. Compute $\\mu_R$."
+    },
+    {
+      "front": "What decision do you make for the earnings example if $z=1.52$ and $\\alpha=0.10$ two‑tailed (critical $\\pm1.645$)?",
+      "back": "Fail to reject $H_0$ because $1.52$ is not in the rejection region ($-1.645 < z < 1.645$). No significant difference in earnings."
+    },
+    {
+      "back": "Use the [[imp:signed‑rank test for paired (dependent) samples]] and the [[imp:rank sum test for independent samples]]. The study design determines the correct test.",
+      "front": "How do you decide between the signed‑rank test and the rank sum test?"
+    },
+    {
+      "front": "Why is the Wilcoxon signed‑rank test more powerful than the sign test?",
+      "back": "The sign test only uses the direction of differences. The signed‑rank test also uses the [[imp:magnitude]] of differences, giving larger differences more weight. This makes it more likely to detect a real effect."
+    },
+    {
+      "back": "$H_0$: The two populations have the same distribution (there is no difference). $H_a$ can be one‑tailed (population 1 is shifted left/right) or two‑tailed (they differ).",
+      "front": "What is the null hypothesis for the Wilcoxon rank sum test?"
+    },
+    {
+      "front": "In a rank sum test, what does a very large positive $z$ indicate?",
+      "back": "It indicates that the ranks in the smaller sample are much larger than expected under $H_0$. This suggests that the population for that sample tends to have [[imp:larger values]] than the other population."
+    },
+    {
+      "front": "What is the sign test with $n=30$, smaller count $x=9$, $\\alpha=0.05$? Compute $z$ and decide.",
+      "back": "$$z = \\frac{(9+0.5) - 0.5(30)}{\\sqrt{30}/2} = \\frac{9.5 - 15}{2.74} \\approx -2.01$$ Critical z = -1.645 (left‑tailed). Reject $H_0$ because $-2.01 < -1.645$."
+    },
+    {
+      "front": "In a signed‑rank test, differences of zero are handled by:",
+      "back": "Ignoring them. They are not ranked and do not affect the sample size $n$."
+    },
+    {
+      "front": "A Wilcoxon signed‑rank test yields $w_s = 4$ with $n=12$, critical value from Table 9 (one‑tailed $\\alpha=0.05$) is 17. Decision?",
+      "back": "Reject $H_0$ because $4 \\le 17$. There is evidence of a difference between the paired populations."
+    },
+    {
+      "front": "In a Wilcoxon rank sum test, $n_1=10$, $n_2=15$, $R=105$. Compute $\\sigma_R$.",
+      "back": "$$\\sigma_R = \\sqrt{\\frac{10 \\cdot 15 (10+15+1)}{12}} = \\sqrt{\\frac{150 \\cdot 26}{12}} = \\sqrt{325} \\approx 18.03$$"
+    },
+    {
+      "back": "Ties (or zeros). They are assigned a 0 and are not counted in the sample size $n$.",
+      "front": "The sign test ignores data points exactly equal to the hypothesized median. What are these called?"
+    },
+    {
+      "back": "Adding 0.5 to the smaller sign count $x$ in the z‑formula to improve the normal approximation to the binomial distribution.",
+      "front": "What is the continuity correction in the large‑sample sign test?"
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

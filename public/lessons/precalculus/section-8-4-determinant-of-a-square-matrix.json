@@ -1,0 +1,732 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-8-4-determinant-of-a-square-matrix",
+  "title": "The Determinant of a Square Matrix",
+  "blocks": [
+    {
+      "id": "determinant-2x2",
+      "title": "Determinant of a 2×2 Matrix",
+      "teacherCues": [
+        "Write the matrix $A = \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}$ and ask: How do we compute $ad - bc$?",
+        "Show that if the determinant is zero, the matrix is singular (no inverse)."
+      ],
+      "discoveryHook": {
+        "scenario": "The determinant tells you if a matrix is invertible, just like checking if a number is zero before dividing. For a 2×2 matrix, it's simply the product of the main diagonal minus the product of the other diagonal."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:determinant]] of a $2 \\times 2$ matrix $A = \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}$ is the number $ \\det(A) = |A| = ad - bc $.",
+          "It can be positive, negative, or zero. If $\\det(A) = 0$, then $A$ is singular (not invertible).",
+          "The determinant is calculated by multiplying the main diagonal entries and subtracting the product of the off-diagonal entries."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "2×2 Determinant Examples",
+            "headers": [
+              "Matrix",
+              "$ad-bc$",
+              "Determinant"
+            ],
+            "rows": [
+              {
+                "0": "$\\begin{bmatrix} 2 & -3 \\\\ 1 & 2 \\end{bmatrix}$",
+                "1": "$2\\cdot2 - (-3)\\cdot1 = 4+3=7$",
+                "2": "7"
+              },
+              {
+                "0": "$\\begin{bmatrix} 2 & 1 \\\\ 4 & 2 \\end{bmatrix}$",
+                "1": "$2\\cdot2 - 1\\cdot4 = 4-4=0$",
+                "2": "0"
+              },
+              {
+                "0": "$\\begin{bmatrix} 0 & 3/2 \\\\ 2 & 4 \\end{bmatrix}$",
+                "1": "$0\\cdot4 - (3/2)\\cdot2 = 0-3=-3$",
+                "2": "-3"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Determinant of a 2×2 Matrix",
+          "formula": "$$\\det\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} = ad - bc$$",
+          "notes": [
+            "Also written as $|A|$.",
+            "If $ad - bc = 0$, the matrix has no inverse."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find the determinant",
+          "prompt": "Compute $\\det\\begin{bmatrix} 2 & -3 \\\\ 1 & 2 \\end{bmatrix}$.",
+          "steps": [
+            "Identify $a=2$, $b=-3$, $c=1$, $d=2$.",
+            "Compute $ad - bc = 2\\cdot2 - (-3)\\cdot1 = 4 + 3 = 7$.",
+            "Result: $\\det(A) = 7$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – When is it zero?",
+          "prompt": "For what value of $k$ is the determinant of $\\begin{bmatrix} 3 & k \\\\ 6 & 2 \\end{bmatrix}$ equal to zero?",
+          "peerPrompt": "Explain to your partner: set up $ad-bc=0$, plug in, and solve for $k$.",
+          "minLength": 2,
+          "steps": [
+            "Determinant = $3\\cdot2 - k\\cdot6 = 6 - 6k$.",
+            "Set $6 - 6k = 0 \\Rightarrow k = 1$.",
+            "So when $k=1$, the determinant is zero, and the matrix is singular."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick determinant",
+          "prompt": "Find $\\det\\begin{bmatrix} 4 & 0 \\\\ -3 & 5 \\end{bmatrix}$.",
+          "steps": [
+            "$ad - bc = 4\\cdot5 - 0\\cdot(-3) = 20 - 0 = 20$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't mix up the order",
+        "body": "It's always $ad - bc$, not $bc - ad$. The product of the main diagonal minus the product of the other diagonal."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "The determinant of $\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}$ is $ad$ minus ___.",
+          "blanks": [
+            {
+              "accept": [
+                "bc"
+              ]
+            }
+          ],
+          "hints": [
+            "The product of the other diagonal.",
+            "It's $b$ times $c$."
+          ],
+          "feedbackIfWrong": "It's $bc$."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "What is the determinant of $\\begin{bmatrix} 5 & 2 \\\\ 3 & 4 \\end{bmatrix}$? (Enter a number)",
+          "answer": "14",
+          "hints": [
+            "Compute $5\\cdot4 - 2\\cdot3$.",
+            "$20 - 6 = ?$"
+          ],
+          "feedbackIfWrong": "The determinant is $5\\cdot4 - 2\\cdot3 = 20 - 6 = 14$."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "If the determinant of a matrix is zero, the matrix is called ___.",
+          "blanks": [
+            {
+              "accept": [
+                "singular"
+              ]
+            }
+          ],
+          "hints": [
+            "It has no inverse.",
+            "The opposite of invertible."
+          ],
+          "feedbackIfWrong": "It is singular."
+        }
+      ]
+    },
+    {
+      "id": "minors-cofactors",
+      "title": "Minors and Cofactors",
+      "teacherCues": [
+        "Write a 3×3 matrix. Show how to delete a row and column to form a 2×2 determinant (the minor).",
+        "Then multiply by $(-1)^{i+j}$ to get the cofactor. Display the checkerboard sign pattern."
+      ],
+      "discoveryHook": {
+        "scenario": "To find the determinant of a larger matrix, we break it down into smaller 2×2 pieces called minors, then adjust their signs with a checkerboard pattern. This process, called cofactor expansion, unlocks the determinant of any size."
+      },
+      "concept": {
+        "explanation": [
+          "For a square matrix, the [[kw:minor]] $M_{ij}$ is the determinant of the submatrix formed by deleting row $i$ and column $j$.",
+          "The [[kw:cofactor]] $C_{ij}$ is $(-1)^{i+j} M_{ij}$, which adjusts the sign according to a checkerboard pattern (positive for even $i+j$, negative for odd).",
+          "These cofactors are the building blocks for finding determinants of matrices $3\\times3$ or larger."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Sign Pattern for Cofactors (3×3)",
+            "headers": [
+              "Row\\Col",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "$+$",
+                "2": "$-$",
+                "3": "$+$"
+              },
+              {
+                "0": "2",
+                "1": "$-$",
+                "2": "$+$",
+                "3": "$-$"
+              },
+              {
+                "0": "3",
+                "1": "$+$",
+                "2": "$-$",
+                "3": "$+$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Cofactor Formula",
+          "formula": "$$C_{ij} = (-1)^{i+j} M_{ij}$$",
+          "notes": [
+            "$M_{ij}$: determinant of matrix without row $i$, column $j$.",
+            "Sign: positive if $i+j$ is even, negative if odd."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find a minor and cofactor",
+          "prompt": "For $A = \\begin{bmatrix} 2 & 0 & 1 \\\\ 3 & -1 & 2 \\\\ 1 & 4 & 0 \\end{bmatrix}$, find $M_{11}$ and $C_{11}$.",
+          "steps": [
+            "Delete row 1 and column 1: $M_{11} = \\det\\begin{bmatrix} -1 & 2 \\\\ 4 & 0 \\end{bmatrix} = (-1)\\cdot0 - 2\\cdot4 = -8$.",
+            "$C_{11} = (-1)^{1+1} M_{11} = (+1)(-8) = -8$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Find $C_{12}$",
+          "prompt": "Using the same matrix, find the cofactor $C_{12}$.",
+          "peerPrompt": "Explain to your partner: delete the first row and second column. Compute the 2×2 determinant, then apply the sign from the checkerboard.",
+          "minLength": 2,
+          "steps": [
+            "$M_{12} = \\det\\begin{bmatrix} 3 & 2 \\\\ 1 & 0 \\end{bmatrix} = 3\\cdot0 - 2\\cdot1 = -2$.",
+            "$C_{12} = (-1)^{1+2} M_{12} = (-1)(-2) = 2$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick cofactor",
+          "prompt": "Find $C_{22}$ for the same $A$.",
+          "steps": [
+            "$M_{22} = \\det\\begin{bmatrix} 2 & 1 \\\\ 1 & 0 \\end{bmatrix} = 2\\cdot0 - 1\\cdot1 = -1$.",
+            "$C_{22} = (-1)^{2+2} (-1) = +1(-1) = -1$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sign errors are common",
+        "body": "Remember the checkerboard: position (1,1) is +, (1,2) is -, (1,3) is +, etc. For $C_{ij}$, multiply the minor by $(-1)^{i+j}$."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "The minor $M_{ij}$ is the determinant of the matrix after deleting row $i$ and column ___.",
+          "blanks": [
+            {
+              "accept": [
+                "j"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the column index.",
+            "Same as the second subscript."
+          ],
+          "feedbackIfWrong": "Column $j$."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "In the sign pattern for cofactors, what is the sign for $C_{23}$? (+ or -)",
+          "answer": "-",
+          "hints": [
+            "$2+3=5$, odd.",
+            "Odd sum gives negative sign."
+          ],
+          "feedbackIfWrong": "The sign is negative."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "The cofactor $C_{ij}$ equals $(-1)^{i+j}$ times the ___ $M_{ij}$.",
+          "blanks": [
+            {
+              "accept": [
+                "minor"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the determinant of the smaller matrix.",
+            "Starts with 'm'."
+          ],
+          "feedbackIfWrong": "It's the minor."
+        }
+      ]
+    },
+    {
+      "id": "determinant-3x3-and-higher",
+      "title": "Determinant of 3×3 and Higher",
+      "teacherCues": [
+        "Write a 3×3 matrix and show expansion by cofactors along the first row: $a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}$.",
+        "Emphasize that any row or column can be used, but picking one with zeros simplifies the work."
+      ],
+      "discoveryHook": {
+        "scenario": "Expanding by cofactors is like systematically reducing a large matrix into many 2×2 determinants. By choosing a row or column with zeros, many terms vanish, making the calculation much faster."
+      },
+      "concept": {
+        "explanation": [
+          "The determinant of an $n \\times n$ matrix (for $n \\ge 2$) is the sum of the entries in any row (or column) multiplied by their cofactors: $\\det(A) = \\sum_{j=1}^{n} a_{ij} C_{ij}$ (expansion along row $i$).",
+          "For a $3 \\times 3$ matrix, expanding along the first row gives $a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}$.",
+          "This works for any size; each cofactor involves a determinant one size smaller."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Expanding Along First Row ($A = \\begin{bmatrix} 2 & 0 & 1 \\\\ 3 & -1 & 2 \\\\ 1 & 4 & 0 \\end{bmatrix}$)",
+            "headers": [
+              "Entry",
+              "Cofactor",
+              "Product"
+            ],
+            "rows": [
+              {
+                "0": "$a_{11}=2$",
+                "1": "$C_{11}=-8$",
+                "2": "$-16$"
+              },
+              {
+                "0": "$a_{12}=0$",
+                "1": "$C_{12}=2$",
+                "2": "$0$"
+              },
+              {
+                "0": "$a_{13}=1$",
+                "1": "$C_{13}=13$",
+                "2": "$13$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Cofactor Expansion",
+          "formula": "$$\\det(A) = a_{i1}C_{i1} + a_{i2}C_{i2} + \\cdots + a_{in}C_{in}$$ for any row $i$.",
+          "notes": [
+            "Choose the row or column with the most zeros to simplify.",
+            "Sign pattern must be respected."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – 3×3 determinant by first row",
+          "prompt": "Find $\\det\\begin{bmatrix} 2 & 0 & 1 \\\\ 3 & -1 & 2 \\\\ 1 & 4 & 0 \\end{bmatrix}$ using cofactor expansion along the first row.",
+          "steps": [
+            "Compute cofactors: $C_{11} = +\\det\\begin{bmatrix} -1 & 2 \\\\ 4 & 0 \\end{bmatrix} = -8$.",
+            "$C_{12} = -\\det\\begin{bmatrix} 3 & 2 \\\\ 1 & 0 \\end{bmatrix} = -(-2)=2$.",
+            "$C_{13} = +\\det\\begin{bmatrix} 3 & -1 \\\\ 1 & 4 \\end{bmatrix} = 3\\cdot4 - (-1)\\cdot1 = 12+1=13$.",
+            "Sum: $2(-8) + 0(2) + 1(13) = -16 + 13 = -3$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Expand along a different row",
+          "prompt": "Using the same matrix, expand along the second row to verify the determinant is $-3$.",
+          "peerPrompt": "Work with your partner: compute the three cofactors for row 2, then multiply by the entries and sum.",
+          "minLength": 2,
+          "steps": [
+            "Row 2: entries $3, -1, 2$.",
+            "$C_{21} = -\\det\\begin{bmatrix} 0 & 1 \\\\ 4 & 0 \\end{bmatrix} = -(-4)=4$.",
+            "$C_{22} = +\\det\\begin{bmatrix} 2 & 1 \\\\ 1 & 0 \\end{bmatrix} = -1$.",
+            "$C_{23} = -\\det\\begin{bmatrix} 2 & 0 \\\\ 1 & 4 \\end{bmatrix} = -(8)= -8$.",
+            "Sum: $3(4) + (-1)(-1) + 2(-8) = 12 + 1 - 16 = -3$. Matches."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Verify with first column",
+          "prompt": "Expand along the first column of the same matrix and confirm you still get $-3$.",
+          "steps": [
+            "First column: $2, 3, 1$.",
+            "$C_{11} = -8$, $C_{21} = 4$, $C_{31} = +\\det\\begin{bmatrix} 0 & 1 \\\\ -1 & 2 \\end{bmatrix} = 1$.",
+            "Sum: $2(-8) + 3(4) + 1(1) = -16 + 12 + 1 = -3$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check your signs",
+        "body": "The most common mistake is forgetting the minus signs in cofactors. Use the checkerboard pattern: top-left is +, then alternate."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "Expanding by cofactors means multiplying each entry of a row by its cofactor and then taking the ___.",
+          "blanks": [
+            {
+              "accept": [
+                "sum"
+              ]
+            }
+          ],
+          "hints": [
+            "Add them all up.",
+            "The result is the determinant."
+          ],
+          "feedbackIfWrong": "You sum the products."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "In the expansion along the first row of the example matrix, what was the cofactor $C_{12}$? (Enter a number)",
+          "answer": "2",
+          "hints": [
+            "It was the cofactor of the entry $0$.",
+            "We computed it as $2$."
+          ],
+          "feedbackIfWrong": "The cofactor was $2$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "To minimize work, expand along the row or column with the most ___.",
+          "blanks": [
+            {
+              "accept": [
+                "zeros",
+                "zeroes"
+              ]
+            }
+          ],
+          "hints": [
+            "Entries that are zero make the term vanish.",
+            "You skip many calculations."
+          ],
+          "feedbackIfWrong": "Choose the row or column with the most zeros."
+        }
+      ]
+    },
+    {
+      "id": "determinant-with-zeros",
+      "title": "Using Zeros to Simplify",
+      "teacherCues": [
+        "Show a 4×4 matrix with a column of zeros. Ask: Which column would you expand along? Why?",
+        "Demonstrate that only one cofactor needs to be computed because the others are multiplied by zero."
+      ],
+      "discoveryHook": {
+        "scenario": "A 4×4 matrix looks intimidating, but if you spot a column with three zeros, the determinant reduces to just one 3×3 determinant—saving a ton of work. Smart expansion is the key."
+      },
+      "concept": {
+        "explanation": [
+          "When a row or column has many zeros, expanding along that row/column simplifies the calculation dramatically.",
+          "For each zero entry, the term $a_{ij}C_{ij}$ is zero, so you only need to compute cofactors for the nonzero entries.",
+          "This works for any size matrix; just pick the row or column with the fewest nonzeros."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "4×4 Example: Column 3 has mostly zeros",
+            "headers": [
+              "Row",
+              "Entry in Col 3",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "$3$ (nonzero)",
+                "2": "Compute $C_{13}$"
+              },
+              {
+                "0": "2",
+                "1": "$0$",
+                "2": "Skip"
+              },
+              {
+                "0": "3",
+                "1": "$0$",
+                "2": "Skip"
+              },
+              {
+                "0": "4",
+                "1": "$0$",
+                "2": "Skip"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Smart Expansion",
+          "formula": "If a column has only one nonzero entry $a_{ij}$, then $\\det(A) = a_{ij} C_{ij}$ (no sum needed).",
+          "notes": [
+            "Always look for rows or columns with many zeros.",
+            "The cofactor $C_{ij}$ itself may be expanded similarly."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – 4×4 with a column of zeros",
+          "prompt": "Find $\\det\\begin{bmatrix} 1 & -2 & 3 & 0 \\\\ -1 & 1 & 0 & 2 \\\\ 0 & 2 & 0 & 3 \\\\ 3 & 4 & 0 & 2 \\end{bmatrix}$ by expanding along column 3.",
+          "steps": [
+            "Column 3 entries: $3, 0, 0, 0$. Only $a_{13}=3$ is nonzero.",
+            "$\\det(A) = 3 \\cdot C_{13}$. $C_{13} = (-1)^{1+3} M_{13} = M_{13}$.",
+            "$M_{13}$ is the determinant of the submatrix after removing row 1 and column 3: $\\begin{bmatrix} -1 & 1 & 2 \\\\ 0 & 2 & 3 \\\\ 3 & 4 & 2 \\end{bmatrix}$.",
+            "Expand that 3×3 along row 2 (zeros? row2 has 0,2,3): $0\\cdot C_{21} + 2\\cdot C_{22} + 3\\cdot C_{23}$.",
+            "$C_{22} = +\\det\\begin{bmatrix} -1 & 2 \\\\ 3 & 2 \\end{bmatrix} = -8$. $C_{23} = -\\det\\begin{bmatrix} -1 & 1 \\\\ 3 & 4 \\end{bmatrix} = -(-7)=7$.",
+            "So $M_{13} = 2(-8) + 3(7) = 5$. Thus $\\det(A) = 3 \\cdot 5 = 15$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why choose that column?",
+          "prompt": "Explain why expanding along column 3 was the smart choice.",
+          "peerPrompt": "Discuss: How many zero entries are in column 3? How many terms do we actually compute?",
+          "minLength": 2,
+          "steps": [
+            "Column 3 has entries: $3, 0, 0, 0$.",
+            "Only the first entry is nonzero, so we only need its cofactor $C_{13}$.",
+            "The other three terms are zero, saving us from computing three 3×3 determinants."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find determinant of a 3×3 with zeros",
+          "prompt": "Use expansion along a row/column with zeros: $\\begin{bmatrix} 2 & 0 & 0 \\\\ 1 & 3 & 0 \\\\ 4 & 5 & 6 \\end{bmatrix}$.",
+          "steps": [
+            "Expand along first row (two zeros): $2 \\cdot C_{11}$. $C_{11} = \\det\\begin{bmatrix} 3 & 0 \\\\ 5 & 6 \\end{bmatrix} = 18$.",
+            "So determinant = $2 \\cdot 18 = 36$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget the sign on the cofactor",
+        "body": "Even when expanding along a column with only one nonzero, you must still multiply by $(-1)^{i+j}$. For $C_{13}$, the sign is positive because $1+3=4$ (even)."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "When a column has only one nonzero entry $a_{ij}$, the determinant simplifies to $a_{ij}$ times its ___.",
+          "blanks": [
+            {
+              "accept": [
+                "cofactor"
+              ]
+            }
+          ],
+          "hints": [
+            "It's $C_{ij}$.",
+            "The signed minor."
+          ],
+          "feedbackIfWrong": "It's the cofactor."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "In the 4×4 example, what was the value of the determinant? (Enter a number)",
+          "answer": "15",
+          "hints": [
+            "Look at the final result.",
+            "3 times 5 = 15."
+          ],
+          "feedbackIfWrong": "The determinant was $15$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "Expanding along a row or column with many zeros ___ the number of calculations.",
+          "blanks": [
+            {
+              "accept": [
+                "reduces",
+                "decreases",
+                "minimizes"
+              ]
+            }
+          ],
+          "hints": [
+            "Makes it smaller.",
+            "Opposite of increases."
+          ],
+          "feedbackIfWrong": "It reduces the calculations."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-determinant",
+      "title": "Blueprint Aid – Determinant of a 3×3 via First Row",
+      "teacherCues": [
+        "Pose: Find the determinant of $A = \\begin{bmatrix} 1 & 3 & -2 \\\\ 0 & -2 & 1 \\\\ 4 & 1 & 0 \\end{bmatrix}$ using cofactor expansion along the first row.",
+        "Outline Understand (identify row, compute cofactors), Solve (compute each cofactor, multiply and sum), Conclude (state determinant)."
+      ],
+      "discoveryHook": {
+        "scenario": "By following a systematic blueprint—choose a row, compute the three cofactors, and add the products—you can find the determinant of any 3×3 matrix accurately."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Choose the first row: $a_{11}=1$, $a_{12}=3$, $a_{13}=-2$. Compute their cofactors $C_{11}$, $C_{12}$, $C_{13}$.",
+          "[[imp:Solve]]: $C_{11} = +\\det\\begin{bmatrix} -2 & 1 \\\\ 1 & 0 \\end{bmatrix} = (-2)\\cdot0 - 1\\cdot1 = -1$. $C_{12} = -\\det\\begin{bmatrix} 0 & 1 \\\\ 4 & 0 \\end{bmatrix} = -(0\\cdot0 - 1\\cdot4) = 4$. $C_{13} = +\\det\\begin{bmatrix} 0 & -2 \\\\ 4 & 1 \\end{bmatrix} = 0\\cdot1 - (-2)\\cdot4 = 8$.",
+          "[[imp:Conclude]]: $\\det(A) = 1(-1) + 3(4) + (-2)(8) = -1 + 12 - 16 = -5$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint Steps",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Pick row 1: entries 1, 3, -2."
+              },
+              {
+                "0": "Solve",
+                "1": "Compute $C_{11}=-1$, $C_{12}=4$, $C_{13}=8$."
+              },
+              {
+                "0": "Sum",
+                "1": "$1(-1)+3(4)+(-2)(8) = -5$"
+              },
+              {
+                "0": "Conclude",
+                "1": "Determinant = $-5$."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Cofactor Expansion",
+          "formula": "$$\\det(A) = a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}$$",
+          "notes": [
+            "Use checkerboard signs.",
+            "Any row or column works."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand the setup",
+          "prompt": "Write the first row entries and the corresponding checkerboard signs.",
+          "steps": [
+            "Row 1: $1$ (sign +), $3$ (sign -), $-2$ (sign +)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Compute cofactors",
+          "prompt": "Work with a partner to find $C_{11}$, $C_{12}$, $C_{13}$.",
+          "peerPrompt": "For each, delete the first row and the column, compute the 2×2 determinant, then apply the sign.",
+          "minLength": 2,
+          "steps": [
+            "$C_{11}$: minor $\\begin{vmatrix} -2 & 1 \\\\ 1 & 0 \\end{vmatrix} = -1$, sign +, so $-1$.",
+            "$C_{12}$: minor $\\begin{vmatrix} 0 & 1 \\\\ 4 & 0 \\end{vmatrix} = -4$, sign -, so $+4$.",
+            "$C_{13}$: minor $\\begin{vmatrix} 0 & -2 \\\\ 4 & 1 \\end{vmatrix} = 8$, sign +, so $8$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude",
+          "prompt": "Sum the products to get the determinant.",
+          "steps": [
+            "$1(-1) + 3(4) + (-2)(8) = -1 + 12 - 16 = -5$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sign of the middle entry",
+        "body": "Remember that for position (1,2), the sign is negative. So $C_{12} = -M_{12}$."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the blueprint, the cofactor $C_{11}$ had a ___ sign.",
+          "blanks": [
+            {
+              "accept": [
+                "positive",
+                "plus",
+                "+"
+              ]
+            }
+          ],
+          "hints": [
+            "$i+j=2$, even.",
+            "Even sum gives positive."
+          ],
+          "feedbackIfWrong": "Positive sign."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What was the determinant of the blueprint matrix? (Enter a number)",
+          "answer": "-5",
+          "hints": [
+            "The sum was $-1+12-16$.",
+            "Negative five."
+          ],
+          "feedbackIfWrong": "The determinant was $-5$."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "Expanding along the first row requires computing ___ cofactors for a $3 \\times 3$ matrix.",
+          "blanks": [
+            {
+              "accept": [
+                "three",
+                "3"
+              ]
+            }
+          ],
+          "hints": [
+            "One for each column.",
+            "Three entries in the row."
+          ],
+          "feedbackIfWrong": "Three cofactors."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Find the determinant of $\\begin{bmatrix} 2 & 0 & 0 & 1 \\\\ 0 & 3 & 0 & 0 \\\\ 1 & 0 & 0 & 2 \\\\ 0 & 0 & 4 & 0 \\end{bmatrix}$ by expanding along a row/column with zeros. (Hint: choose row 2 or column 3 for lots of zeros.)",
+        "type": "short-answer",
+        "answer": "24",
+        "hints": [
+          "Expand along row 2: only $a_{22}=3$ is nonzero, so det = $3 C_{22}$.",
+          "Compute $C_{22}$ from the submatrix, then multiply."
+        ],
+        "feedbackIfWrong": "The determinant is $24$."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

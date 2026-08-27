@@ -1,0 +1,717 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-8-5-applications-of-matrices-and-determinants",
+  "title": "Applications of Matrices and Determinants",
+  "blocks": [
+    {
+      "id": "cramers-rule-2x2",
+      "title": "Cramer’s Rule for 2×2 Systems",
+      "teacherCues": [
+        "Write the system $4x - 2y = 10$, $3x - 5y = 11$. Ask: What is the determinant of the coefficient matrix?",
+        "Explain that Cramer’s Rule uses determinants to find $x$ and $y$ directly."
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine solving a puzzle where you can find each unknown by simply replacing one column of a matrix with the answers and computing a ratio of two numbers. That’s exactly what Cramer’s Rule does—no back-substitution needed."
+      },
+      "concept": {
+        "explanation": [
+          "For a system $\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$, Cramer’s Rule gives $x = \\frac{D_x}{D}$, $y = \\frac{D_y}{D}$, provided $D \\neq 0$.",
+          "$D = \\begin{vmatrix} a_1 & b_1 \\\\ a_2 & b_2 \\end{vmatrix}$ is the determinant of the coefficient matrix.",
+          "$D_x = \\begin{vmatrix} c_1 & b_1 \\\\ c_2 & b_2 \\end{vmatrix}$ (replace $x$‑column with constants).",
+          "$D_y = \\begin{vmatrix} a_1 & c_1 \\\\ a_2 & c_2 \\end{vmatrix}$ (replace $y$‑column with constants).",
+          "If $D = 0$, Cramer’s Rule cannot be used—the system may have no solution or infinitely many."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $4x - 2y = 10$, $3x - 5y = 11$",
+            "headers": [
+              "Determinant",
+              "Set-up",
+              "Value"
+            ],
+            "rows": [
+              {
+                "0": "$D$",
+                "1": "$\\begin{vmatrix} 4 & -2 \\\\ 3 & -5 \\end{vmatrix}$",
+                "2": "$4(-5) - (-2)(3) = -20 + 6 = -14$"
+              },
+              {
+                "0": "$D_x$",
+                "1": "$\\begin{vmatrix} 10 & -2 \\\\ 11 & -5 \\end{vmatrix}$",
+                "2": "$10(-5) - (-2)(11) = -50 + 22 = -28$"
+              },
+              {
+                "0": "$D_y$",
+                "1": "$\\begin{vmatrix} 4 & 10 \\\\ 3 & 11 \\end{vmatrix}$",
+                "2": "$4(11) - 10(3) = 44 - 30 = 14$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Cramer’s Rule (2×2)",
+          "formula": "$$x = \\frac{\\begin{vmatrix} c_1 & b_1 \\\\ c_2 & b_2 \\end{vmatrix}}{\\begin{vmatrix} a_1 & b_1 \\\\ a_2 & b_2 \\end{vmatrix}},\\quad y = \\frac{\\begin{vmatrix} a_1 & c_1 \\\\ a_2 & c_2 \\end{vmatrix}}{\\begin{vmatrix} a_1 & b_1 \\\\ a_2 & b_2 \\end{vmatrix}}$$",
+          "notes": [
+            "Denominator $D$ must be nonzero.",
+            "Numerators replace the column of the variable you are solving for with the constants."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Solve using Cramer’s Rule",
+          "prompt": "Solve $\\begin{cases} 4x - 2y = 10 \\\\ 3x - 5y = 11 \\end{cases}$ as shown above.",
+          "steps": [
+            "Compute $D = 4(-5) - (-2)(3) = -20 + 6 = -14$.",
+            "Compute $D_x = 10(-5) - (-2)(11) = -50 + 22 = -28$, so $x = \\frac{-28}{-14} = 2$.",
+            "Compute $D_y = 4(11) - 10(3) = 44 - 30 = 14$, so $y = \\frac{14}{-14} = -1$.",
+            "Solution: $(2, -1)$. Check in original equations."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Try another system",
+          "prompt": "Use Cramer’s Rule to solve $\\begin{cases} 3x + 2y = 8 \\\\ x - y = 1 \\end{cases}$.",
+          "peerPrompt": "Explain to your partner: Which column do we replace with the constants to find $D_x$? Then compute together.",
+          "minLength": 2,
+          "steps": [
+            "Coefficient matrix $\\begin{bmatrix} 3 & 2 \\\\ 1 & -1 \\end{bmatrix}$, $D = 3(-1) - 2(1) = -3 - 2 = -5$.",
+            "$D_x = \\begin{vmatrix} 8 & 2 \\\\ 1 & -1 \\end{vmatrix} = 8(-1) - 2(1) = -8 - 2 = -10$, $x = \\frac{-10}{-5} = 2$.",
+            "$D_y = \\begin{vmatrix} 3 & 8 \\\\ 1 & 1 \\end{vmatrix} = 3(1) - 8(1) = 3 - 8 = -5$, $y = \\frac{-5}{-5} = 1$.",
+            "Solution $(2,1)$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Solve on your own",
+          "prompt": "Solve $\\begin{cases} 2x + 3y = 7 \\\\ 4x - 3y = 5 \\end{cases}$ using Cramer’s Rule.",
+          "steps": [
+            "$D = 2(-3) - 3(4) = -6 - 12 = -18$.",
+            "$D_x = \\begin{vmatrix} 7 & 3 \\\\ 5 & -3 \\end{vmatrix} = 7(-3) - 3(5) = -21 - 15 = -36$, $x = 2$.",
+            "$D_y = \\begin{vmatrix} 2 & 7 \\\\ 4 & 5 \\end{vmatrix} = 2(5) - 7(4) = 10 - 28 = -18$, $y = 1$.",
+            "Solution $(2,1)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don’t mix up the columns",
+        "body": "$D_x$ is formed by replacing the $x$‑coefficients with the constants. $D_y$ replaces the $y$‑coefficients. The constants go into the column of the variable you want to find."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "In Cramer’s Rule for a $2 \\times 2$ system, the denominator is the determinant of the ___ matrix.",
+          "blanks": [
+            {
+              "accept": [
+                "coefficient"
+              ]
+            }
+          ],
+          "hints": [
+            "It contains the coefficients of $x$ and $y$.",
+            "Not the constants."
+          ],
+          "feedbackIfWrong": "It's the coefficient matrix."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "For the system $4x - 2y = 10$, $3x - 5y = 11$, what is $D_x$? (Enter the number)",
+          "answer": "-28",
+          "hints": [
+            "Replace the $x$ column with the constants.",
+            "Compute $10(-5) - (-2)(11)$."
+          ],
+          "feedbackIfWrong": "$D_x = -28$."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "If the determinant $D$ of the coefficient matrix is zero, Cramer’s Rule ___ be used.",
+          "blanks": [
+            {
+              "accept": [
+                "cannot"
+              ]
+            }
+          ],
+          "hints": [
+            "Division by zero is undefined.",
+            "The system may have no or many solutions."
+          ],
+          "feedbackIfWrong": "Cramer’s Rule cannot be used."
+        }
+      ]
+    },
+    {
+      "id": "cramers-rule-3x3",
+      "title": "Cramer’s Rule for 3×3 Systems",
+      "teacherCues": [
+        "Write the system $x + y + z = 0$, $2x - y + z = 1$, $x + y - z = 2$. Ask: How can we extend Cramer’s Rule to three variables?",
+        "Explain that each variable’s numerator is a determinant formed by replacing the corresponding column with the constants."
+      ],
+      "discoveryHook": {
+        "scenario": "For three equations, Cramer’s Rule still works—just with larger determinants. You replace the column of the variable you want by the constants, compute the $3 \\times 3$ determinant, and divide by the coefficient determinant."
+      },
+      "concept": {
+        "explanation": [
+          "For a $3 \\times 3$ system, $$x = \\frac{D_x}{D},\\; y = \\frac{D_y}{D},\\; z = \\frac{D_z}{D}$$ where $D$ is the determinant of the $3 \\times 3$ coefficient matrix.",
+          "$D_x$ replaces the first column (the $x$‑coefficients) with the constants.",
+          "$D_y$ replaces the second column (the $y$‑coefficients) with the constants.",
+          "$D_z$ replaces the third column (the $z$‑coefficients) with the constants.",
+          "If $D = 0$, Cramer’s Rule fails."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $x+y+z=0$, $2x-y+z=1$, $x+y-z=2$",
+            "headers": [
+              "Determinant",
+              "Value",
+              "How to Compute"
+            ],
+            "rows": [
+              {
+                "0": "$D$",
+                "1": "6",
+                "2": "$\\begin{vmatrix}1&1&1\\\\ 2&-1&1\\\\ 1&1&-1\\end{vmatrix}$ expanded along row 1"
+              },
+              {
+                "0": "$D_x$",
+                "1": "6",
+                "2": "Replace first column with $(0,1,2)$ → determinant = 6"
+              },
+              {
+                "0": "$D_y$",
+                "1": "0",
+                "2": "Replace second column → determinant = 0"
+              },
+              {
+                "0": "$D_z$",
+                "1": "–6",
+                "2": "Replace third column → determinant = –6"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Cramer’s Rule (3×3)",
+          "formula": "$$x = \\frac{\\begin{vmatrix} c_1 & b_1 & \\cdots \\\\ c_2 & b_2 & \\cdots \\\\ c_3 & b_3 & \\cdots \\end{vmatrix}}{\\begin{vmatrix} a_1 & b_1 & \\cdots \\\\ a_2 & b_2 & \\cdots \\\\ a_3 & b_3 & \\cdots \\end{vmatrix}},\\quad y = \\frac{\\begin{vmatrix} a_1 & c_1 & \\cdots \\\\ a_2 & c_2 & \\cdots \\\\ a_3 & c_3 & \\cdots \\end{vmatrix}}{\\text{denominator}},\\quad z = \\cdots$$",
+          "notes": [
+            "Each numerator replaces the column of the variable with the constants.",
+            "Compute the $3 \\times 3$ determinants using cofactor expansion (pick row/column with zeros)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Compute $D$ and $D_x$",
+          "prompt": "For the system $x+y+z=0$, $2x-y+z=1$, $x+y-z=2$, find $D$ and $D_x$.",
+          "steps": [
+            "Coefficient matrix $A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 2 & -1 & 1 \\\\ 1 & 1 & -1 \\end{bmatrix}$.",
+            "Expand $D$ along row 1: $1\\cdot\\begin{vmatrix} -1 & 1 \\\\ 1 & -1 \\end{vmatrix} - 1\\cdot\\begin{vmatrix} 2 & 1 \\\\ 1 & -1 \\end{vmatrix} + 1\\cdot\\begin{vmatrix} 2 & -1 \\\\ 1 & 1 \\end{vmatrix} = 1(1-1) -1(-2-1) +1(2+1)=0+3+3=6$.",
+            "$D_x$: replace first column with $(0,1,2)$, expand along row 1: $0\\cdot\\begin{vmatrix} -1 & 1 \\\\ 1 & -1 \\end{vmatrix} -1\\cdot\\begin{vmatrix} 1 & 1 \\\\ 2 & -1 \\end{vmatrix} +1\\cdot\\begin{vmatrix} 1 & -1 \\\\ 2 & 1 \\end{vmatrix} = 0 -1(-1-2) +1(1+2)=3+3=6$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Compute $D_y$ and $D_z$",
+          "prompt": "Using the same system, compute $D_y$ and $D_z$, then find $y$ and $z$.",
+          "peerPrompt": "Work with a partner: set up the determinants for $D_y$ and $D_z$, then expand them. Which rows or columns have zeros?",
+          "minLength": 2,
+          "steps": [
+            "$D_y$: replace second column with $(0,1,2)$: $\\begin{vmatrix} 1 & 0 & 1 \\\\ 2 & 1 & 1 \\\\ 1 & 2 & -1 \\end{vmatrix}$. Expand along row1: $1\\cdot\\begin{vmatrix}1&1\\\\2&-1\\end{vmatrix} -0 +1\\cdot\\begin{vmatrix}2&1\\\\1&2\\end{vmatrix}=1(-1-2)+1(4-1)= -3+3=0$.",
+            "$D_z$: replace third column: $\\begin{vmatrix} 1 & 1 & 0 \\\\ 2 & -1 & 1 \\\\ 1 & 1 & 2 \\end{vmatrix}$. Expand along row1: $1\\cdot\\begin{vmatrix}-1&1\\\\1&2\\end{vmatrix} -1\\cdot\\begin{vmatrix}2&1\\\\1&2\\end{vmatrix} +0 =1(-2-1) -1(4-1)= -3-3=-6$.",
+            "So $y = \\frac{D_y}{D} = \\frac{0}{6}=0$, $z = \\frac{-6}{6}=-1$. Together with $x=\\frac{6}{6}=1$, solution $(1,0,-1)$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick check",
+          "prompt": "Verify that $(1,0,-1)$ satisfies the first equation $x+y+z=0$.",
+          "steps": [
+            "$1+0+(-1)=0$ ✓."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Be careful with signs in cofactor expansion",
+        "body": "When computing $3 \\times 3$ determinants, remember the checkerboard signs. Expand along a row or column with zeros to minimise work."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "In Cramer’s Rule for a $3 \\times 3$ system, $D_y$ is formed by replacing the ___ column of the coefficient matrix with the constants.",
+          "blanks": [
+            {
+              "accept": [
+                "second"
+              ]
+            }
+          ],
+          "hints": [
+            "It corresponds to the variable $y$.",
+            "It's the middle column."
+          ],
+          "feedbackIfWrong": "The second column."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "In the example, what was the value of $z$? (Enter a number)",
+          "answer": "-1",
+          "hints": [
+            "Look at the solution.",
+            "It's the third variable."
+          ],
+          "feedbackIfWrong": "$z = -1$."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "If the coefficient determinant $D = 0$ in a $3 \\times 3$ system, Cramer’s Rule ___ be applied.",
+          "blanks": [
+            {
+              "accept": [
+                "cannot"
+              ]
+            }
+          ],
+          "hints": [
+            "Division by zero.",
+            "No unique solution."
+          ],
+          "feedbackIfWrong": "Cannot be applied."
+        }
+      ]
+    },
+    {
+      "id": "area-collinear",
+      "title": "Area of a Triangle and Collinear Points",
+      "teacherCues": [
+        "Write the formula for the area of a triangle using determinant. Plug in vertices $(1,0),(2,2),(4,3)$ and compute.",
+        "Ask: What does it mean if the determinant (and thus area) is zero? (Points are collinear.)"
+      ],
+      "discoveryHook": {
+        "scenario": "You can find the area of any triangle using its coordinates and a determinant—no need to draw it. If the area comes out zero, the three points lie on a straight line."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:area of a triangle]] with vertices $(x_1,y_1), (x_2,y_2), (x_3,y_3)$ is $$\\text{Area} = \\pm \\frac{1}{2} \\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix},$$ choosing the sign to make the area positive.",
+          "If the determinant is zero, the points are [[kw:collinear]] (lie on the same line).",
+          "This provides a quick test: three points are collinear if and only if that determinant equals zero."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: Area of triangle with vertices (1,0), (2,2), (4,3)",
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "Determinant",
+                "1": "$\\begin{vmatrix} 1 & 0 & 1 \\\\ 2 & 2 & 1 \\\\ 4 & 3 & 1 \\end{vmatrix} = -3$"
+              },
+              {
+                "0": "Area",
+                "1": "$-\\frac12 (-3) = \\frac32$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Triangle Area using Determinant",
+          "formula": "$$\\text{Area} = \\pm \\frac12 \\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix}$$",
+          "notes": [
+            "Choose $+$ or $-$ to make area positive.",
+            "Determinant zero → collinear points."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find area",
+          "prompt": "Find the area of the triangle with vertices $(1,0)$, $(2,2)$, $(4,3)$.",
+          "steps": [
+            "Set up the determinant: $\\begin{vmatrix} 1 & 0 & 1 \\\\ 2 & 2 & 1 \\\\ 4 & 3 & 1 \\end{vmatrix}$.",
+            "Expand: $1\\cdot\\begin{vmatrix}2&1\\\\3&1\\end{vmatrix} -0 +1\\cdot\\begin{vmatrix}2&2\\\\4&3\\end{vmatrix} = 1(2-3) + 1(6-8) = -1 -2 = -3$.",
+            "Area $= -\\frac12(-3) = \\frac32$ square units."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Test for collinearity",
+          "prompt": "Are the points $(0,1)$, $(2,2)$, $(4,3)$ collinear?",
+          "peerPrompt": "Compute the determinant; if it’s zero, they are collinear. Explain why the area of their triangle is zero.",
+          "minLength": 2,
+          "steps": [
+            "Determinant: $\\begin{vmatrix} 0 & 1 & 1 \\\\ 2 & 2 & 1 \\\\ 4 & 3 & 1 \\end{vmatrix}$.",
+            "Expand along row1: $0\\cdot\\begin{vmatrix}2&1\\\\3&1\\end{vmatrix} -1\\cdot\\begin{vmatrix}2&1\\\\4&1\\end{vmatrix} +1\\cdot\\begin{vmatrix}2&2\\\\4&3\\end{vmatrix} = 0 -1(2-4) +1(6-8)= -1(-2) +1(-2)=2-2=0$.",
+            "Determinant is zero, so the points are collinear."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick area",
+          "prompt": "Find the area of the triangle with vertices $(0,0)$, $(4,1)$, $(2,5)$.",
+          "steps": [
+            "Determinant: $\\begin{vmatrix} 0 & 0 & 1 \\\\ 4 & 1 & 1 \\\\ 2 & 5 & 1 \\end{vmatrix}$. Expand along row1: $1\\cdot\\begin{vmatrix}4&1\\\\2&5\\end{vmatrix} = 1(20-2)=18$.",
+            "Area $= \\frac12(18) = 9$ square units."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sign of area",
+        "body": "If the determinant is negative, simply take the negative of the result to get a positive area. The formula uses $\\pm$ for this reason."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "The area of a triangle is computed as $\\pm \\frac12$ times a $3 \\times 3$ determinant whose last column consists of all ___.",
+          "blanks": [
+            {
+              "accept": [
+                "ones",
+                "1",
+                "1s"
+              ]
+            }
+          ],
+          "hints": [
+            "Each vertex gets a row: $x, y, 1$.",
+            "The number 1."
+          ],
+          "feedbackIfWrong": "The last column is all 1's."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "If the determinant in the area formula equals zero, what does that tell about the three points? (Answer: collinear)",
+          "answer": "collinear",
+          "hints": [
+            "They lie on the same line.",
+            "No area."
+          ],
+          "feedbackIfWrong": "The points are collinear."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "For the triangle with vertices $(1,0)$, $(2,2)$, $(4,3)$, the determinant was ___.",
+          "blanks": [
+            {
+              "accept": [
+                "-3"
+              ]
+            }
+          ],
+          "hints": [
+            "We computed it as $-3$.",
+            "The area became $3/2$."
+          ],
+          "feedbackIfWrong": "The determinant was $-3$."
+        }
+      ]
+    },
+    {
+      "id": "line-equation",
+      "title": "Equation of a Line Through Two Points",
+      "teacherCues": [
+        "Write the determinant formula for the line passing through $(2,4)$ and $(-1,3)$. Evaluate to get $x - 3y + 10 = 0$.",
+        "Explain that this works for any two points, including vertical lines."
+      ],
+      "discoveryHook": {
+        "scenario": "You can find the equation of a line through two points without finding the slope-intercept form—just set up a determinant and expand, and the line’s equation appears."
+      },
+      "concept": {
+        "explanation": [
+          "An equation of the line passing through two points $(x_1, y_1)$ and $(x_2, y_2)$ is given by $$\\begin{vmatrix} x & y & 1 \\\\ x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\end{vmatrix} = 0.$$",
+          "Expand the determinant and simplify to obtain the equation in $x$ and $y$.",
+          "This method works for all lines, including vertical ones."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: Points $(2,4)$ and $(-1,3)$",
+            "headers": [
+              "Step",
+              "Determinant/Equation"
+            ],
+            "rows": [
+              {
+                "0": "Set up",
+                "1": "$\\begin{vmatrix} x & y & 1 \\\\ 2 & 4 & 1 \\\\ -1 & 3 & 1 \\end{vmatrix} = 0$"
+              },
+              {
+                "0": "Expand",
+                "1": "$x(4-3) - y(2-(-1)) + 1(6-(-4)) = 0$"
+              },
+              {
+                "0": "Simplify",
+                "1": "$x - 3y + 10 = 0$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Two-Point Form of a Line",
+          "formula": "$$\\begin{vmatrix} x & y & 1 \\\\ x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\end{vmatrix} = 0$$",
+          "notes": [
+            "Works for any distinct points.",
+            "Expanding gives the line equation in general form."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find equation",
+          "prompt": "Use the determinant method to find the equation of the line through $(2,4)$ and $(-1,3)$.",
+          "steps": [
+            "Set up determinant: $\\begin{vmatrix} x & y & 1 \\\\ 2 & 4 & 1 \\\\ -1 & 3 & 1 \\end{vmatrix}=0$.",
+            "Expand along first row: $x\\cdot\\begin{vmatrix}4&1\\\\3&1\\end{vmatrix} - y\\cdot\\begin{vmatrix}2&1\\\\-1&1\\end{vmatrix} + 1\\cdot\\begin{vmatrix}2&4\\\\-1&3\\end{vmatrix}=0$.",
+            "Simplify: $x(4-3) - y(2-(-1)) + 1(6-(-4)) = x - 3y + 10 = 0$.",
+            "Equation: $x - 3y + 10 = 0$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Another pair",
+          "prompt": "Find the equation of the line through $(1,2)$ and $(3,6)$ using the determinant.",
+          "peerPrompt": "Work with your partner: set up the determinant, expand, and simplify. What is the slope of this line?",
+          "minLength": 2,
+          "steps": [
+            "Determinant: $\\begin{vmatrix} x & y & 1 \\\\ 1 & 2 & 1 \\\\ 3 & 6 & 1 \\end{vmatrix}=0$.",
+            "Expand: $x(2-6) - y(1-3) + 1(6-6) = -4x + 2y + 0 = 0$.",
+            "Simplify: $-4x + 2y = 0 \\to 2y = 4x \\to y = 2x$.",
+            "Equation in general form: $4x - 2y = 0$ or $y = 2x$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Vertical line",
+          "prompt": "Use the determinant to find the equation of the line through $(5,2)$ and $(5,-3)$.",
+          "steps": [
+            "Set up: $\\begin{vmatrix} x & y & 1 \\\\ 5 & 2 & 1 \\\\ 5 & -3 & 1 \\end{vmatrix}=0$.",
+            "Expand: $x(2-(-3)) - y(5-5) + 1(5(-3)-2\\cdot5) = x(5) - y(0) + 1(-15-10)=5x -25=0$.",
+            "Simplify: $5x = 25 \\to x = 5$, a vertical line."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Order of points doesn't matter",
+        "body": "You can label either point as $(x_1,y_1)$ and the other as $(x_2,y_2)$; the determinant will yield the same line equation."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "The determinant form for a line through two points has the variable $x$ in the first column, $y$ in the second column, and ___ in the third column of the first row.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "The number one.",
+            "Every point gets a 1 in the third column."
+          ],
+          "feedbackIfWrong": "It's 1."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "What is the constant term in the equation $x - 3y + 10 = 0$? (Enter a number)",
+          "answer": "10",
+          "hints": [
+            "It's the number without a variable.",
+            "The constant at the end."
+          ],
+          "feedbackIfWrong": "The constant term is $10$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "For the vertical line through $(5,2)$ and $(5,-3)$, the coefficient of $y$ in the final equation was ___.",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "The line is $x=5$, so there is no $y$ term.",
+            "Coefficient of $y$ is zero."
+          ],
+          "feedbackIfWrong": "The coefficient of $y$ is $0$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-cramers-rule",
+      "title": "Blueprint Aid – Solving a System with Cramer’s Rule",
+      "teacherCues": [
+        "Pose: Solve the system $3x + 4y = 2$, $2x - y = 5$ using Cramer’s Rule.",
+        "Outline the steps: Understand (identify $D$, $D_x$, $D_y$), Solve (compute determinants), Conclude (find $x$ and $y$, check)."
+      ],
+      "discoveryHook": {
+        "scenario": "A gardener mixes two fertilizers to get a total nitrogen and phosphorus. The equations model the amounts. Using Cramer’s Rule, you can compute the exact quantity of each fertilizer needed."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Write the system in matrix form. The coefficient determinant $D = \\begin{vmatrix} 3 & 4 \\\\ 2 & -1 \\end{vmatrix}$.",
+          "[[imp:Solve]]: Compute $D = 3(-1) - 4(2) = -3 - 8 = -11$. $D_x = \\begin{vmatrix} 2 & 4 \\\\ 5 & -1 \\end{vmatrix} = 2(-1) - 4(5) = -2 - 20 = -22$. $D_y = \\begin{vmatrix} 3 & 2 \\\\ 2 & 5 \\end{vmatrix} = 3(5) - 2(2) = 15 - 4 = 11$.",
+          "[[imp:Conclude]]: $x = \\frac{-22}{-11} = 2$, $y = \\frac{11}{-11} = -1$. The solution is $(2,-1)$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint Steps",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Set up $D$, $D_x$, $D_y$ from the system."
+              },
+              {
+                "0": "Solve",
+                "1": "Compute determinants and ratios."
+              },
+              {
+                "0": "Conclude",
+                "1": "Write solution as ordered pair, and verify."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Cramer’s Rule Blueprint",
+          "formula": "$$x = \\frac{D_x}{D},\\quad y = \\frac{D_y}{D}$$ with $D \\neq 0$.",
+          "notes": [
+            "Replace the $x$ column with constants for $D_x$, $y$ column for $D_y$.",
+            "Check the solution in both original equations."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand the setup",
+          "prompt": "Identify $D$, $D_x$, and $D_y$ for the system $3x+4y=2$, $2x-y=5$.",
+          "steps": [
+            "Coefficients: $a_1=3,b_1=4,c_1=2$; $a_2=2,b_2=-1,c_2=5$.",
+            "$D = \\begin{vmatrix} 3 & 4 \\\\ 2 & -1 \\end{vmatrix}$; $D_x = \\begin{vmatrix} 2 & 4 \\\\ 5 & -1 \\end{vmatrix}$; $D_y = \\begin{vmatrix} 3 & 2 \\\\ 2 & 5 \\end{vmatrix}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve with a partner",
+          "prompt": "Compute each determinant and find $x$ and $y$.",
+          "peerPrompt": "Work together: one person computes $D$ and $D_x$, the other computes $D_y$. Then combine to get the solution.",
+          "minLength": 2,
+          "steps": [
+            "$D = 3(-1) - 4(2) = -3 - 8 = -11$.",
+            "$D_x = 2(-1) - 4(5) = -2 - 20 = -22$.",
+            "$D_y = 3(5) - 2(2) = 15 - 4 = 11$.",
+            "$x = \\frac{-22}{-11}=2$, $y = \\frac{11}{-11} = -1$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude and check",
+          "prompt": "Verify that $(2,-1)$ satisfies both original equations.",
+          "steps": [
+            "First eq: $3(2) + 4(-1) = 6 - 4 = 2$ ✓.",
+            "Second eq: $2(2) - (-1) = 4 + 1 = 5$ ✓."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sign of $D_y$",
+        "body": "Be careful with signs when computing $D_y$: keep the constants in the second column."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the blueprint example, $D_x$ was computed as ___.",
+          "blanks": [
+            {
+              "accept": [
+                "-22"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the determinant with the $x$ column replaced.",
+            "Value: $-22$."
+          ],
+          "feedbackIfWrong": "$D_x = -22$."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is the value of $y$ in the solution? (Enter a number)",
+          "answer": "-1",
+          "hints": [
+            "Look at the ordered pair.",
+            "The second component."
+          ],
+          "feedbackIfWrong": "$y = -1$."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "Cramer’s Rule gives the solution as a ratio of two determinants. The denominator is always $D$, the determinant of the ___ matrix.",
+          "blanks": [
+            {
+              "accept": [
+                "coefficient"
+              ]
+            }
+          ],
+          "hints": [
+            "It contains the coefficients of the variables.",
+            "Not the constants."
+          ],
+          "feedbackIfWrong": "It's the coefficient matrix."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Use Cramer’s Rule to solve the system $x + y = 5$, $2x - y = 1$. What are $x$ and $y$?",
+        "type": "short-answer",
+        "answer": "(2,3)",
+        "hints": [
+          "Set up $D$, $D_x$, $D_y$.",
+          "$D = 1(-1) - 1(2) = -1-2 = -3$; $D_x = 5(-1) - 1(1) = -5-1=-6$; $D_y = 1(1) - 5(2) = 1-10=-9$. Then $x = 2$, $y = 3$."
+        ],
+        "feedbackIfWrong": "The solution is $(2,3)$."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

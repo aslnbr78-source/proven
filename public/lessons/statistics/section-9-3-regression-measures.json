@@ -1,0 +1,764 @@
+{
+  "id": "section-9-3-regression-measures",
+  "standards": [
+    "HSS.ID.B.6a",
+    "HSS.ID.C.7",
+    "HSS.ID.C.8"
+  ],
+  "schemaVersion": 2,
+  "presenterNotes": [
+    "Emphasize the meaning of r² as 'percent of variation explained' — a key concept for interpreting regression.",
+    "Show how se and r² are related: a larger r² generally means a smaller se relative to sy.",
+    "Demonstrate constructing a prediction interval manually, then show how Google Sheets can simplify: STEYX for se, FORECAST for ŷ, and manual formula for E.",
+    "Remind students that prediction intervals are only valid if the linear model is appropriate and errors are approximately normal."
+  ],
+  "blocks": [
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Identifying Deviations",
+          "prompt": "For the GDP data, the mean CO₂ emission is ȳ = 555.4. For the point (2.7, 571.8), the predicted value is ŷ = 631.9. Calculate the three deviations.",
+          "steps": [
+            "Total deviation: $571.8 - 555.4 = 16.4$.",
+            "Explained deviation: $631.9 - 555.4 = 76.5$ (line overestimates the mean by 76.5).",
+            "Unexplained deviation: $571.8 - 631.9 = -60.1$ (point is below the line).",
+            "Check: $16.4 = 76.5 + (-60.1)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Interpreting Explained Variation",
+          "steps": [
+            "A large explained variation means the regression line accounts for most of the differences in y.",
+            "This indicates a strong linear relationship, with small residuals relative to the spread of y.",
+            "It suggests x is a good predictor of y."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nIf explained variation is much larger than unexplained, what does that say about how well x predicts y?",
+          "prompt": "Explain to a partner what a large explained variation relative to total variation suggests about the relationship."
+        },
+        {
+          "prompt": "Given Σ(y − ȳ)² = 2500 and Σ(y − ŷ)² = 400, find the explained variation.",
+          "title": "Example C – Calculating Variation from Sums",
+          "steps": [
+            "Use the identity: Total = Explained + Unexplained.",
+            "Explained = Total − Unexplained = 2500 − 400 = 2100.",
+            "Thus, the line explains 2100 out of the total 2500 variation."
+          ],
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "The difference $y_i - \\bar{y}$ is called the ___ deviation.",
+          "id": "q9-3-1",
+          "hints": [
+            "It measures the distance from the point to the overall mean.",
+            "It is the sum of the explained and unexplained parts."
+          ],
+          "answer": "total",
+          "feedbackIfWrong": "That is the total deviation.",
+          "type": "short-answer"
+        },
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "unexplained",
+                "residual"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the part not accounted for by the regression line.",
+            "It equals the sum of squared residuals."
+          ],
+          "id": "q9-3-2",
+          "feedbackIfWrong": "Total variation is the sum of explained and unexplained variation.",
+          "prompt": "Total variation = Explained variation + ___ variation."
+        },
+        {
+          "prompt": "If explained variation is 1500 and total variation is 2000, what is the unexplained variation?",
+          "hints": [
+            "Unexplained = Total − Explained.",
+            "2000 − 1500 = ?"
+          ],
+          "type": "short-answer",
+          "answer": "500",
+          "feedbackIfWrong": "Unexplained variation = 2000 − 1500 = 500.",
+          "id": "q9-3-3"
+        }
+      ],
+      "teacherCues": [
+        "Draw a scatter plot with a regression line and a horizontal line at y = ȳ. Ask: Which line explains the data better?",
+        "Write the formulas: Total variation = Σ(y − ȳ)², Explained = Σ(ŷ − ȳ)², Unexplained = Σ(y − ŷ)². Emphasize they sum: Total = Explained + Unexplained."
+      ],
+      "title": "Variation About a Regression Line",
+      "discoveryHook": {
+        "scenario": "Imagine a tight cluster of points around a line. Some of the vertical spread is because the line slopes (explained by x), but some points still scatter off the line (unexplained). We can measure these two types of variation to see how well the line fits."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Total",
+                "1": "$y_i - \\bar{y}$",
+                "2": "How far the point is from the mean of y"
+              },
+              {
+                "0": "Explained",
+                "1": "$\\hat{y}_i - \\bar{y}$",
+                "2": "How far the line's prediction is from the mean"
+              },
+              {
+                "0": "Unexplained",
+                "1": "$y_i - \\hat{y}_i$",
+                "2": "The residual (distance from point to line)"
+              }
+            ],
+            "title": "Deviations for a Single Data Point",
+            "headers": [
+              "Deviation",
+              "Formula",
+              "What It Measures"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "For a given data point $(x_i, y_i)$, three deviations are defined:",
+          "[[kw:Total deviation]]: $y_i - \\bar{y}$ – the difference between the observed y and the mean of all y.",
+          "[[kw:Explained deviation]]: $\\hat{y}_i - \\bar{y}$ – the part of the total deviation that the regression line accounts for.",
+          "[[kw:Unexplained deviation]]: $y_i - \\hat{y}_i$ – the residual, the part not explained by the line.",
+          "These deviations are squared and summed across all points to get three [[kw:variations]]:",
+          "$$\\text{Total variation} = \\Sigma (y_i - \\bar{y})^2$$",
+          "$$\\text{Explained variation} = \\Sigma (\\hat{y}_i - \\bar{y})^2$$",
+          "$$\\text{Unexplained variation} = \\Sigma (y_i - \\hat{y}_i)^2$$",
+          "Always: [[imp:Total variation = Explained variation + Unexplained variation]]."
+        ],
+        "formulaCard": {
+          "title": "Partition of Variation",
+          "formula": "$$ \\Sigma (y_i - \\bar{y})^2 = \\Sigma (\\hat{y}_i - \\bar{y})^2 + \\Sigma (y_i - \\hat{y}_i)^2 $$",
+          "notes": [
+            "Total SS = Explained SS + Residual SS.",
+            "A good regression line has large explained variation relative to total.",
+            "These sums are used to compute r² and se."
+          ]
+        }
+      },
+      "id": "variation-about-regression",
+      "confusionCorner": {
+        "body": "Variation is the sum of squared deviations, not the sum of deviations. Squaring eliminates negatives and gives greater weight to larger deviations. [[imp:Never add raw deviations; they always sum to zero.]]",
+        "title": "Squares vs. Deviations"
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "We want a single number that tells us what fraction of the variability in y can be accounted for by x. That number is r², the coefficient of determination. It's simply r squared, but its interpretation is powerful."
+      },
+      "teacherCues": [
+        "Write on the board: r² = Explained variation / Total variation.",
+        "Show that r² is literally the square of the correlation coefficient. Ask: If r = 0.90, how much variation is explained?"
+      ],
+      "title": "The Coefficient of Determination r²",
+      "examples": [
+        {
+          "prompt": "For the Old Faithful data, r = 0.979. Find and interpret r².",
+          "title": "Example A – Computing r² from r",
+          "steps": [
+            "$r^2 = (0.979)^2 \\approx 0.958$.",
+            "Interpretation: About 95.8% of the variation in the time until the next eruption is explained by the duration of the eruption.",
+            "Only about 4.2% of the variation is due to other factors or random error."
+          ],
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "65% of the variability in test scores can be explained by differences in study hours.",
+            "The remaining 35% is due to other factors like prior knowledge, sleep, test anxiety, etc.",
+            "So, study hours are a strong predictor, but not the only one."
+          ],
+          "prompt": "If r² = 0.65 for the relationship between study hours and test scores, explain what that means to a student.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "title": "Example B – What Does r² Mean in Practice?",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If r² = 0.65, can you predict test scores perfectly from study hours? What else affects the score?"
+        },
+        {
+          "steps": [
+            "Take the square root: $|r| = \\sqrt{0.64} = 0.8$.",
+            "The correlation could be positive or negative; r² doesn't show the sign.",
+            "So r could be 0.8 or −0.8."
+          ],
+          "prompt": "A regression output gives r² = 0.64. What is the absolute value of the correlation coefficient r?",
+          "title": "Example C – Finding r from r²",
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "answer": "0.64",
+          "type": "short-answer",
+          "prompt": "If r = 0.8, what is r²? (Answer as a decimal, e.g., 0.64)",
+          "id": "q9-3-4",
+          "hints": [
+            "Square 0.8.",
+            "0.8 × 0.8 = ?"
+          ],
+          "feedbackIfWrong": "$r^2 = (0.8)^2 = 0.64$."
+        },
+        {
+          "id": "q9-3-5",
+          "blanks": [
+            {
+              "accept": [
+                "explained",
+                "accounted for"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "r² is the proportion of variation explained by the regression line.",
+          "prompt": "The coefficient of determination r² represents the proportion of the total variation in y that is ___ by the linear relationship with x.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the part that the regression line captures.",
+            "Opposite of unexplained."
+          ]
+        },
+        {
+          "feedbackIfWrong": "The unexplained percentage is $(1 - 0.49) \\times 100 = 51\\%$.",
+          "id": "q9-3-6",
+          "hints": [
+            "Unexplained = 1 − r².",
+            "1 − 0.49 = 0.51, then convert to percent."
+          ],
+          "prompt": "If r² = 0.49, what percent of the variation in y is unexplained?",
+          "answer": "51",
+          "type": "short-answer"
+        }
+      ],
+      "id": "coefficient-of-determination",
+      "confusionCorner": {
+        "title": "r² ≠ 2 × r",
+        "body": "r² is the square of r, not twice r. For instance, r = 0.5 gives r² = 0.25, not 1.0. A correlation of 0.5 explains only 25% of the variation, not half. [[imp:Small r can yield much smaller r².]]"
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ r^2 = \\frac{\\text{Explained variation}}{\\text{Total variation}} = (r)^2 $$",
+          "title": "Coefficient of Determination",
+          "notes": [
+            "Multiply by 100 to express as a percentage.",
+            "A high r² means the regression line fits the data well.",
+            "r² does not indicate whether the relationship is causal."
+          ]
+        },
+        "explanation": [
+          "The [[kw:coefficient of determination]] $r^2$ is the proportion of the total variation in $y$ that is explained by the linear relationship with $x$.",
+          "$$r^2 = \\frac{\\text{Explained variation}}{\\text{Total variation}}$$",
+          "It can also be obtained by squaring the correlation coefficient: $r^2 = (r)^2$.",
+          "$r^2$ is always between $0$ and $1$ (or $0\\%$ and $100\\%$). For example, $r = 0.882$ gives $r^2 \\approx 0.778$, meaning $77.8\\%$ of the variation in $y$ is explained by $x$.",
+          "The remaining $1 - r^2$ (or $22.2\\%$) is the [[imp:coefficient of non‑determination]], the fraction unexplained."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "r² Value",
+              "Interpretation"
+            ],
+            "rows": [
+              {
+                "0": "0.90",
+                "1": "90% of the variation in y is explained by x; 10% is due to other factors."
+              },
+              {
+                "0": "0.50",
+                "1": "50% explained; the line is moderately useful for prediction."
+              },
+              {
+                "0": "0.10",
+                "1": "Only 10% explained; x is a weak predictor of y."
+              },
+              {
+                "0": "1.00",
+                "1": "Perfect linear fit; all points lie exactly on the line."
+              }
+            ],
+            "type": "table",
+            "title": "Interpreting r²"
+          }
+        ]
+      }
+    },
+    {
+      "id": "standard-error-of-estimate",
+      "confusionCorner": {
+        "title": "se vs. Standard Deviation of y",
+        "body": "The standard deviation $s_y$ measures spread around the mean; $s_e$ measures spread around the regression line. For a strong linear relationship, $s_e$ will be much smaller than $s_y$. [[imp:Don't confuse the two!]]"
+      },
+      "discoveryHook": {
+        "scenario": "Even with a strong correlation, predictions are not perfect. The standard error of estimate measures how much the observed y-values typically deviate from the regression line. Think of it as the 'average' prediction error."
+      },
+      "title": "The Standard Error of Estimate se",
+      "concept": {
+        "explanation": [
+          "The [[kw:standard error of estimate]] $s_e$ is the standard deviation of the observed $y_i$ about the predicted $\\hat{y}_i$ values.",
+          "$$s_e = \\sqrt{\\frac{\\Sigma (y_i - \\hat{y}_i)^2}{n - 2}}$$ where $n - 2$ is the degrees of freedom.",
+          "Alternatively, use the computational formula with sums: $$s_e = \\sqrt{\\frac{\\Sigma y^2 - b\\Sigma y - m\\Sigma xy}{n - 2}}$$",
+          "A smaller $s_e$ indicates that the observed points lie closer to the regression line, meaning predictions are more precise.",
+          "$s_e$ has the same units as the response variable $y$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Computing se for GDP/CO₂ Data (Partial)",
+            "headers": [
+              "x",
+              "y",
+              "ŷ",
+              "(y − ŷ)²"
+            ],
+            "rows": [
+              {
+                "0": "1.6",
+                "1": "428.2",
+                "2": "416.132",
+                "3": "145.632"
+              },
+              {
+                "0": "3.6",
+                "1": "828.8",
+                "2": "808.436",
+                "3": "414.684"
+              },
+              {
+                "0": "4.9",
+                "1": "1214.2",
+                "2": "1063.434",
+                "3": "22730.447"
+              },
+              {
+                "0": "...",
+                "1": "...",
+                "2": "...",
+                "3": "..."
+              },
+              {
+                "0": "Sum",
+                "1": "",
+                "2": "",
+                "3": "152,916.021"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Degrees of freedom: $n - 2$.",
+            "It is the square root of the unexplained variation divided by $n-2$.",
+            "Can be computed with Google Sheets: `=STEYX(known_y, known_x)`."
+          ],
+          "formula": "$$ s_e = \\sqrt{\\frac{\\Sigma (y_i - \\hat{y}_i)^2}{n - 2}} $$",
+          "title": "Standard Error of Estimate"
+        }
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The degrees of freedom is $n - 2$.",
+          "hints": [
+            "We lose 2 df because we estimated slope and intercept.",
+            "Same as in the t-test for correlation."
+          ],
+          "answer": "n-2",
+          "id": "q9-3-7",
+          "prompt": "What is the degrees of freedom used in the formula for standard error of estimate? (e.g., n-2)"
+        },
+        {
+          "id": "q9-3-8",
+          "blanks": [
+            {
+              "accept": [
+                "residuals",
+                "errors",
+                "prediction errors"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "hints": [
+            "It's the spread of the points around the regression line.",
+            "It is the square root of the average squared residual."
+          ],
+          "feedbackIfWrong": "It measures the typical size of the residuals (or prediction errors).",
+          "prompt": "The standard error of estimate measures the typical size of the ___."
+        },
+        {
+          "feedbackIfWrong": "$s_e = \\sqrt{400/10} = \\sqrt{40} \\approx 6.3$.",
+          "type": "short-answer",
+          "answer": "6.3",
+          "hints": [
+            "First compute the ratio: 400 / (12 − 2) = 400 / 10 = 40.",
+            "Then take the square root of 40."
+          ],
+          "id": "q9-3-9",
+          "prompt": "If Σ(y − ŷ)² = 400 and n = 12, what is se? (Round to one decimal, e.g., 6.3)"
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Plug into formula: $s_e = \\sqrt{\\frac{152,916.02}{10 - 2}} = \\sqrt{\\frac{152,916.02}{8}} \\approx \\sqrt{19,114.50} \\approx 138.255$.",
+            "Interpretation: The typical error in predicting CO₂ emissions is about 138.255 million metric tons."
+          ],
+          "prompt": "For the GDP data, Σ(y − ŷ)² = 152,916.02 and n = 10. Find se.",
+          "role": "guided",
+          "title": "Example A – Computing se from a Table"
+        },
+        {
+          "title": "Example B – What Does a Large se Mean?",
+          "peerPrompt": "Without looking back...\n\nDiscuss: se measures the spread of residuals. Would you trust predictions more when se is small or large?",
+          "steps": [
+            "se is like a standard deviation of the errors; smaller se means points are closer to the line.",
+            "Thus, the line with se = 50 gives more precise predictions.",
+            "However, se alone does not tell you if the model is appropriate—always check the scatter plot and r²."
+          ],
+          "role": "peer-explain",
+          "prompt": "If se = 200 for one data set and se = 50 for another, which regression line provides more accurate predictions?",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "prompt": "You have y-values in B2:B11 and x-values in A2:A11. What Google Sheets function returns the standard error of estimate?",
+          "steps": [
+            "Use `=STEYX(B2:B11, A2:A11)`.",
+            "The first argument is the range of y-values, then x-values.",
+            "This function directly computes se without needing to find residuals."
+          ],
+          "title": "Example C – Using Google Sheets"
+        }
+      ],
+      "teacherCues": [
+        "Write the formula: se = √[ Σ(y − ŷ)² / (n − 2) ].",
+        "Explain that se is the standard deviation of the residuals. A smaller se means the points are closer to the line."
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "A [[kw:prediction interval]] is for a single new observation. A [[kw:confidence interval]] is for the mean of y at a given x. The prediction interval is wider because it includes both the uncertainty in estimating the line and the natural variation of individuals. [[imp:Use the correct formula for each.]]",
+        "title": "Prediction Interval vs. Confidence Interval"
+      },
+      "title": "Constructing a Prediction Interval",
+      "questions": [
+        {
+          "prompt": "What distribution is used to find the critical value for a prediction interval? (Answer: t)",
+          "hints": [
+            "It's the same distribution used for testing slope and correlation.",
+            "The degrees of freedom are n − 2."
+          ],
+          "type": "short-answer",
+          "answer": "t",
+          "feedbackIfWrong": "The t‑distribution is used, with $df = n-2$.",
+          "id": "q9-3-10"
+        },
+        {
+          "id": "q9-3-11",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "increases",
+                "gets larger",
+                "widens"
+              ]
+            }
+          ],
+          "hints": [
+            "The term $(x_0 - \\bar{x})^2$ grows.",
+            "The interval becomes wider at the extremes of the data."
+          ],
+          "feedbackIfWrong": "The margin of error increases as $x_0$ moves away from $\\bar{x}$.",
+          "prompt": "As $x_0$ moves farther from $\\bar{x}$, the margin of error in a prediction interval ___."
+        },
+        {
+          "feedbackIfWrong": "E = 30 − 25 = 5.",
+          "hints": [
+            "The interval is ŷ ± E.",
+            "25 + E = 30, so E = ?"
+          ],
+          "type": "short-answer",
+          "prompt": "If a 95% prediction interval for y at x=10 is (20, 30), and ŷ = 25, what is the margin of error E?",
+          "id": "q9-3-12",
+          "answer": "5"
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Compute $n(x_0 - \\bar{x})^2 = 10(3.5 - 2.31)^2 = 10(1.19)^2 = 10 \\times 1.4161 = 14.161$.",
+            "Denominator inside sqrt: $n\\Sigma x^2 - (\\Sigma x)^2$ — but note that $(\\Sigma x)^2 = (23.1)^2 = 533.61$, so $10(67.35) - 533.61 = 673.5 - 533.61 = 139.89$.",
+            "Fraction: $14.161 / 139.89 \\approx 0.1012$.",
+            "Sum under sqrt: $1 + 1/10 + 0.1012 = 1 + 0.1 + 0.1012 = 1.2012$.",
+            "Sqrt: $\\sqrt{1.2012} \\approx 1.096$.",
+            "Finally, $E = 2.306 \\times 138.255 \\times 1.096 \\approx 349.4$."
+          ],
+          "prompt": "Given n=10, x̄=2.31, Σx²=67.35, se=138.255, tc=2.306, and x0=3.5, compute the margin of error E.",
+          "title": "Example A – Computing the Margin of Error"
+        },
+        {
+          "title": "Example B – Why Intervals Widen Away from x̄",
+          "prompt": "Explain to a partner why the prediction interval is narrowest at x = x̄ and gets wider as x moves away.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nThink about the uncertainty in the regression line's position. Where are we most confident about the line's height?",
+          "steps": [
+            "The regression line is anchored at (x̄, ȳ). Small changes in slope rotate the line around this point.",
+            "At x = x̄, the line's height is exactly ȳ, regardless of slope uncertainty. So there is less variability in ŷ.",
+            "Away from x̄, uncertainty in the slope causes larger changes in ŷ, widening the prediction interval."
+          ]
+        },
+        {
+          "steps": [
+            "We are 95% confident that the actual y value for a randomly chosen observation with x=20 will fall between 45 and 75.",
+            "It is not a confidence interval for the mean of y; it is for an individual response.",
+            "Prediction intervals are always wider than confidence intervals for the mean."
+          ],
+          "prompt": "A 95% prediction interval for y when x=20 is (45, 75). What does this mean?",
+          "title": "Example C – Interpreting a Prediction Interval",
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Write the prediction interval formula: ŷ ± E, where E = tc * se * sqrt(1 + 1/n + n(x0 − x̄)² / (nΣx² − (Σx)²)).",
+        "Explain that it gives a range of plausible values for an individual y, not the mean."
+      ],
+      "discoveryHook": {
+        "scenario": "A point prediction is a single number, but we know there is uncertainty. A prediction interval provides a range that has a specified confidence of containing the actual y value for a given x. It's like a confidence interval for an individual response."
+      },
+      "id": "prediction-intervals",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Use $t$ with $n-2$ degrees of freedom.",
+            "The interval is for an individual y, not the mean of y.",
+            "Wider near the edges of the data range."
+          ],
+          "formula": "$$ \\hat{y} \\pm t_c \\, s_e \\sqrt{1 + \\frac{1}{n} + \\frac{n(x_0 - \\bar{x})^2}{n\\Sigma x^2 - (\\Sigma x)^2}} $$",
+          "title": "Prediction Interval for y"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$n$",
+                "1": "10"
+              },
+              {
+                "0": "$df$",
+                "1": "8"
+              },
+              {
+                "0": "$t_c$ (c=0.95, df=8)",
+                "1": "2.306"
+              },
+              {
+                "0": "$s_e$",
+                "1": "138.255"
+              },
+              {
+                "0": "$\\bar{x}$",
+                "1": "2.31"
+              },
+              {
+                "0": "$\\Sigma x^2$",
+                "1": "67.35"
+              },
+              {
+                "0": "$\\hat{y}$ at $x_0=3.5$",
+                "1": "788.821"
+              },
+              {
+                "0": "$E$",
+                "1": "349.424"
+              },
+              {
+                "0": "Interval",
+                "1": "$(439.397, 1138.245)$"
+              }
+            ],
+            "title": "Prediction Interval for GDP = 3.5 (95% Confidence)",
+            "headers": [
+              "Quantity",
+              "Value"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "Given a linear regression equation $\\hat{y} = mx + b$, a [[kw:c‑prediction interval]] for the true $y$ at a specific $x_0$ is $$\\hat{y} - E < y < \\hat{y} + E$$",
+          "The margin of error is $$E = t_c \\, s_e \\sqrt{1 + \\frac{1}{n} + \\frac{n(x_0 - \\bar{x})^2}{n\\Sigma x^2 - (\\Sigma x)^2}}$$",
+          "$t_c$ is the critical value from the $t$-distribution with $df = n-2$ for confidence level $c$.",
+          "$s_e$ is the standard error of estimate. The term under the square root accounts for the uncertainty in the line and the variation of individual points.",
+          "The interval is wider when $x_0$ is far from $\\bar{x}$ and when $s_e$ is large."
+        ]
+      }
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "We want a prediction interval, not a confidence interval for the mean.",
+            "We'll compute $\\hat{y}$ at $x_0=7.0$, then the margin of error $E$.",
+            "The interval will be $(\\hat{y} - E, \\hat{y} + E)$."
+          ],
+          "prompt": "Identify the given: n=8, regression line $\\hat{y} = 1.23x + 0.45$ (hypothetical), $s_e=0.33$, $\\bar{x}=6.7$, $\\Sigma x^2=362$, $t_c$ for 95% and df=6 is 2.447.",
+          "role": "guided",
+          "title": "Example A – Understand the Problem"
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Solve: Compute E and the Interval",
+          "peerPrompt": "Without looking back...\n\nWork with a partner to plug the numbers into the margin of error formula. Check your steps.",
+          "prompt": "Using the numbers from Example A, compute $E$ and the prediction interval.",
+          "steps": [
+            "$\\hat{y} = 1.23(7.0) + 0.45 = 8.61 + 0.45 = 9.06$.",
+            "Compute $(x_0 - \\bar{x})^2 = (7.0 - 6.7)^2 = 0.09$.",
+            "Compute the term: $1 + 1/8 + \\frac{8(0.09)}{8(362) - (\\Sigma x)^2}$ — need $(\\Sigma x)^2$. Assume $\\Sigma x = 53.6$, so $(53.6)^2 = 2872.96$. Denominator $= 8(362) - 2872.96 = 2896 - 2872.96 = 23.04$. Fraction $= 0.72 / 23.04 = 0.03125$.",
+            "Sum under sqrt: $1 + 0.125 + 0.03125 = 1.15625$. Sqrt $= 1.0753$.",
+            "Finally, $E = 2.447 \\times 0.33 \\times 1.0753 \\approx 0.868$.",
+            "Interval: $(9.06 - 0.868, 9.06 + 0.868) = (8.19, 9.93)$ years."
+          ],
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Conclude",
+          "prompt": "Interpret the interval (8.19, 9.93) in context.",
+          "steps": [
+            "We are 95% confident that when the median age of cars is 7.0 years, the median age of trucks will be between 8.19 and 9.93 years.",
+            "This accounts for both the uncertainty in the line and the natural variation in truck ages.",
+            "The interval is reasonable; if it were too wide to be useful, we might need more data."
+          ],
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A study relates the median age of cars (x) to the median age of trucks (y) on U.S. roads. We want to predict the truck age when cars are 7 years old, with 95% confidence. We'll use the Understand–Solve–Conclude framework."
+      },
+      "title": "Blueprint Aid: Full Prediction Interval Construction",
+      "confusionCorner": {
+        "body": "The denominator in the fraction is $n\\Sigma x^2 - (\\Sigma x)^2$, not $(n-1)\\Sigma x^2$. Remember, $\\Sigma x$ is the sum of x-values, then squared. [[imp:Use a spreadsheet to compute these sums accurately.]]",
+        "title": "Don't Mix Up Sums!"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "The function is STEYX.",
+          "id": "q9-3-13",
+          "answer": "STEYX",
+          "type": "short-answer",
+          "hints": [
+            "It starts with 'STEY'.",
+            "It stands for standard error of Y on X."
+          ],
+          "prompt": "What Google Sheets function directly gives the standard error of estimate? (e.g., STEYX)"
+        },
+        {
+          "feedbackIfWrong": "The prediction interval is wider because it accounts for the scatter of individual points.",
+          "prompt": "The prediction interval for an individual y is always ___ than the confidence interval for the mean y at the same x.",
+          "hints": [
+            "It includes additional variability of individual points.",
+            "Individual predictions are less precise than average predictions."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "wider",
+                "larger",
+                "broader"
+              ]
+            }
+          ],
+          "id": "q9-3-14"
+        },
+        {
+          "id": "q9-3-15",
+          "feedbackIfWrong": "$\\hat{y} = 2(10) + 5 = 25$.",
+          "answer": "25",
+          "type": "short-answer",
+          "hints": [
+            "Plug x=10 into the equation.",
+            "2(10) + 5 = ?"
+          ],
+          "prompt": "If the regression equation is ŷ = 2x + 5, and a 90% prediction interval for y when x=10 is (24.2, 25.8), what is ŷ at x=10?"
+        }
+      ],
+      "teacherCues": [
+        "Walk through a complete example: Car age vs. truck age data.",
+        "Show how to compute or obtain ŷ, se, t-critical, and the sums needed for E."
+      ],
+      "id": "blueprint-prediction-interval",
+      "concept": {
+        "explanation": [
+          "**Understand**: We have n=8 pairs, regression line $\\hat{y} = a + bx$, and want a 95% prediction interval for y at $x_0=7.0$.",
+          "**Solve**: Obtain $s_e$, $\\bar{x}$, $\\Sigma x^2$, $t_c$, compute $\\hat{y}$ and $E$.",
+          "**Conclude**: State the interval and interpret it in context.",
+          "All calculations can be done in Google Sheets: `=STEYX(y_range, x_range)` for $s_e$, and `=FORECAST` for $\\hat{y}$, then use formulas for $E$."
+        ],
+        "visuals": [
+          {
+            "title": "Car and Truck Ages (years)",
+            "type": "table",
+            "headers": [
+              "Cars, x",
+              "Trucks, y"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "6.0",
+                "1": "5.9"
+              },
+              {
+                "0": "6.3",
+                "1": "6.5"
+              },
+              {
+                "0": "6.5",
+                "1": "6.5"
+              },
+              {
+                "0": "6.8",
+                "1": "6.9"
+              },
+              {
+                "0": "6.9",
+                "1": "7.6"
+              },
+              {
+                "0": "7.0",
+                "1": "? (predict)"
+              },
+              {
+                "0": "...",
+                "1": "..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "type": "interactive-lesson",
+  "title": "Measures of Regression and Prediction Intervals",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

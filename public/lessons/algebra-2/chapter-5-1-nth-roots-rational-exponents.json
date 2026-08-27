@@ -1,0 +1,774 @@
+{
+  "title": "Roots and Rational Exponents",
+  "id": "chapter-5-1-nth-roots-rational-exponents",
+  "standards": [
+    "HSN.RN.A.1",
+    "HSN.RN.A.2",
+    "HSA.REI.A.2"
+  ],
+  "schemaVersion": 2,
+  "presenterNotes": [
+    "Students often confuse when to use ±. Emphasize: odd index → one root; even index, positive radicand → two roots (principal and negative).",
+    "When evaluating rational exponents, remind them they can take the root first or the power first. The root-first method usually yields smaller numbers.",
+    "For calculator use, stress the need for parentheses around fractional exponents to avoid order-of-operations errors.",
+    "The depreciation formula is a great real-world application. Walk through each variable carefully, and show that (S/C)^(1/n) is an nth root."
+  ],
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "title": "Finding nth Roots",
+      "examples": [
+        {
+          "prompt": "Find the real cube root of $a = -216$ when $n=3$.",
+          "role": "guided",
+          "steps": [
+            "Because $n=3$ is odd and $a<0$, there is exactly one real cube root.",
+            "Find $b$ such that $b^3 = -216$. Since $(-6)^3 = -216$, $b = -6$.",
+            "Thus $\\sqrt[3]{-216} = -6$ or $(-216)^{1/3} = -6$."
+          ],
+          "title": "Example A — Cube Root of a Negative"
+        },
+        {
+          "prompt": "Find the real fourth roots of $81$.",
+          "minLength": 8,
+          "title": "Example B — Even Index, Positive Radicand",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does $81$ have two real fourth roots, but $-81$ has none?",
+          "role": "peer-explain",
+          "steps": [
+            "$n=4$ is even, $a=81 > 0$ → two real fourth roots.",
+            "Find $b$ such that $b^4 = 81$. $3^4 = 81$ and $(-3)^4 = 81$.",
+            "So $\\sqrt[4]{81} = \\pm 3$ or $\\pm 81^{1/4} = \\pm 3$."
+          ]
+        },
+        {
+          "title": "Example C — Odd Index, Positive",
+          "role": "independent",
+          "prompt": "Find the real fifth root of $243$.",
+          "steps": [
+            "$n=5$ is odd → one real root.",
+            "$3^5 = 243$, so $\\sqrt[5]{243} = 3$."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "If $b^n = a$, then $b$ is an [[kw:nth root]] of $a$. Written as $\\sqrt[n]{a}$ or $a^{1/n}$.",
+          "The integer $n$ (greater than 1) is the [[kw:index]] of the radical.",
+          "When $n$ is even and $a>0$, there are two real nth roots: $\\pm \\sqrt[n]{a}$. When $a<0$, there are no real nth roots.",
+          "When $n$ is odd, there is exactly one real nth root for any real $a$. For $a<0$, the root is negative.",
+          "The principal root is the positive root when $n$ is even. For odd $n$, it's the unique real root."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Even",
+                "1": "No real roots",
+                "2": "One real root: $0$",
+                "3": "Two real roots: $\\pm \\sqrt[n]{a}$"
+              },
+              {
+                "0": "Odd",
+                "1": "One real root: $\\sqrt[n]{a}$ (negative)",
+                "2": "One real root: $0$",
+                "3": "One real root: $\\sqrt[n]{a}$ (positive)"
+              }
+            ],
+            "title": "Real nth Roots of $a$",
+            "headers": [
+              "$n$",
+              "$a < 0$",
+              "$a = 0$",
+              "$a > 0$"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "index (integer > 1)",
+              "symbol": "$n$"
+            },
+            {
+              "symbol": "$a$",
+              "meaning": "radicand",
+              "tone": "core"
+            },
+            {
+              "tone": "subtle",
+              "symbol": "$b$",
+              "meaning": "an nth root of $a$"
+            }
+          ],
+          "formula": "$$ b^n = a \\iff b = \\sqrt[n]{a} $$"
+        }
+      },
+      "id": "finding-nth-roots",
+      "discoveryHook": {
+        "scenario": "Square roots and cube roots are just the beginning! We can take fourth roots, fifth roots, and beyond. These 'nth roots' allow us to solve equations like $x^5 = 32$ instantly, and they're the key to understanding rational exponents."
+      },
+      "teacherCues": [
+        "Ask: What is a square root? What is a cube root? Extend to fourth roots, fifth roots, etc.",
+        "Write $b^n = a$ and ask: If $n=3$ and $a=8$, what is $b$? What about $n=4$ and $a=81$?"
+      ],
+      "confusionCorner": {
+        "body": "If $n$ is even and $a<0$, like $\\sqrt[4]{-16}$, there is [[imp:no real nth root]] because any real number raised to an even power is nonnegative.",
+        "title": "Negative Under Even Root?"
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "2",
+                "two"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "There are two real nth roots when $n$ is even and $a>0$.",
+          "id": "q5-1-1",
+          "prompt": "For an even index $n$ and a positive radicand $a$, there are exactly ___ real nth roots.",
+          "hints": [
+            "Think of square roots of 9: both 3 and -3 work.",
+            "Even index means positive and negative roots."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "What is $\\sqrt[3]{-125}$?",
+          "type": "short-answer",
+          "feedbackIfWrong": "The cube root of -125 is -5.",
+          "answers": [
+            "-5",
+            "negative 5"
+          ],
+          "hints": [
+            "Cube root: find a number whose cube is -125.",
+            "$(-5)^3 = -125$."
+          ],
+          "id": "q5-1-2"
+        },
+        {
+          "answers": [
+            "no"
+          ],
+          "feedbackIfWrong": "No real fourth root exists for a negative number.",
+          "hints": [
+            "Even index (4) with negative radicand.",
+            "A real number raised to the 4th power can't be negative."
+          ],
+          "id": "q5-1-3",
+          "type": "short-answer",
+          "prompt": "Does $\\sqrt[4]{-256}$ have a real value? (yes/no)"
+        }
+      ]
+    },
+    {
+      "title": "Rational Exponents and Radical Form",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ a^{m/n} = (\\sqrt[n]{a})^m = \\sqrt[n]{a^m} $$",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$a$",
+              "meaning": "real number (if $n$ even, $a \\ge 0$)"
+            },
+            {
+              "meaning": "rational exponent in lowest terms",
+              "symbol": "$m/n$",
+              "tone": "core"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Radical Form",
+              "Rational Exponent Form"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "$\\sqrt[3]{5}$",
+                "1": "$5^{1/3}$"
+              },
+              {
+                "0": "$(\\sqrt[3]{5})^4$",
+                "1": "$5^{4/3}$"
+              },
+              {
+                "0": "$\\frac{1}{\\sqrt[4]{5}}$",
+                "1": "$5^{-1/4}$"
+              },
+              {
+                "0": "$\\sqrt[4]{5^3}$",
+                "1": "$5^{3/4}$"
+              }
+            ],
+            "title": "Converting Between Radical and Exponent Forms",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "An nth root can be written as a [[kw:rational exponent]]: $$ \\sqrt[n]{a} = a^{1/n} $$",
+          "For any positive integer $m$: $$ a^{m/n} = (\\sqrt[n]{a})^m = \\sqrt[n]{a^m} $$",
+          "A negative rational exponent indicates a reciprocal: $$ a^{-m/n} = \\frac{1}{a^{m/n}} $$",
+          "You can evaluate by taking the root first, then the power, or vice versa – whichever is easier."
+        ]
+      },
+      "teacherCues": [
+        "Write $\\sqrt{a} = a^{1/2}$ and $\\sqrt[3]{a} = a^{1/3}$. Ask: What do you think $a^{m/n}$ means?",
+        "Show the equivalence: $a^{m/n} = (\\sqrt[n]{a})^m = \\sqrt[n]{a^m}$."
+      ],
+      "confusionCorner": {
+        "title": "Parentheses Matter!",
+        "body": "When typing into a calculator, $9^{1/5}$ must be entered as 9^(1/5). Without parentheses, 9^1/5 = 1.8, which is [[imp:wrong]]. Always enclose the exponent in parentheses."
+      },
+      "questions": [
+        {
+          "hints": [
+            "The denominator of the fraction is the index.",
+            "$1/4$ means index 4."
+          ],
+          "id": "q5-1-4",
+          "feedbackIfWrong": "$x^{1/4} = \\sqrt[4]{x}$, the fourth root.",
+          "prompt": "The expression $x^{1/4}$ is equivalent to the ___ root of $x$.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "fourth",
+                "4th"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "$25^{3/2} = (\\sqrt{25})^3 = 5^3 = 125$.",
+          "answers": [
+            "125"
+          ],
+          "hints": [
+            "Take the square root of 25 first, then cube it.",
+            "$\\sqrt{25}=5$, then $5^3 = 125$."
+          ],
+          "type": "short-answer",
+          "id": "q5-1-5",
+          "prompt": "Evaluate $25^{3/2}$ without a calculator."
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "The numerator of the exponent is the power.",
+            "The denominator is the index."
+          ],
+          "id": "q5-1-6",
+          "answers": [
+            "x^(2/3)"
+          ],
+          "prompt": "Rewrite $\\sqrt[3]{x^2}$ using a rational exponent. (Use x^(2/3) format without spaces)",
+          "feedbackIfWrong": "$\\sqrt[3]{x^2} = x^{2/3}$."
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "Evaluate $16^{3/2}$ without a calculator.",
+          "title": "Example A — Evaluating $16^{3/2}$",
+          "steps": [
+            "Rewrite as $(16^{1/2})^3$: take the square root first, then cube.",
+            "$\\sqrt{16} = 4$, then $4^3 = 64$.",
+            "Alternatively, $(\\sqrt{16})^3 = 4^3 = 64$.",
+            "So $16^{3/2} = 64$."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Negative Exponent",
+          "minLength": 8,
+          "prompt": "Evaluate $32^{-3/5}$.",
+          "steps": [
+            "Negative exponent: $32^{-3/5} = \\frac{1}{32^{3/5}}$.",
+            "Now evaluate $32^{3/5} = (32^{1/5})^3$: $\\sqrt[5]{32}=2$, so $2^3=8$.",
+            "Thus $32^{-3/5} = \\frac{1}{8}$."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does a negative exponent result in a fraction? What does the $5$ in the denominator of the exponent mean?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Enter $12^{3/8}$ in calculator as 12^(3/8).",
+            "Result is about $2.54$."
+          ],
+          "prompt": "Approximate $12^{3/8}$ to two decimal places.",
+          "title": "Example C — Using a Calculator"
+        }
+      ],
+      "id": "rational-exponents-radicals",
+      "discoveryHook": {
+        "scenario": "Writing roots as exponents unifies radicals and powers. Instead of juggling square root symbols, you can use the compact notation $a^{1/n}$ — and extend it to any rational exponent like $8^{2/3}$."
+      }
+    },
+    {
+      "teacherCues": [
+        "Write $4x^5 = 128$ on the board. Ask: What inverse operation undoes the 5th power?",
+        "Show that for even powers, we must use $\\pm$ when taking the even root."
+      ],
+      "examples": [
+        {
+          "title": "Example A — Odd Power Equation",
+          "steps": [
+            "Divide both sides by 4: $x^5 = 32$.",
+            "Take the fifth root (odd, so one solution): $x = \\sqrt[5]{32} = 2$.",
+            "Check: $4(2)^5 = 4 \\cdot 32 = 128$, correct.",
+            "Solution: $x=2$."
+          ],
+          "role": "guided",
+          "prompt": "Find all real solutions of $4x^5 = 128$."
+        },
+        {
+          "steps": [
+            "Take the fourth root of both sides: $x-3 = \\pm \\sqrt[4]{21}$.",
+            "Add 3: $x = 3 \\pm \\sqrt[4]{21}$.",
+            "Approximate: $\\sqrt[4]{21} \\approx 2.14$, so $x \\approx 5.14$ or $x \\approx 0.86$.",
+            "Both satisfy the original equation."
+          ],
+          "role": "peer-explain",
+          "title": "Example B — Even Power Equation",
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we need the $\\pm$ sign when taking the fourth root? What would we miss if we wrote only the positive root?",
+          "prompt": "Solve $(x-3)^4 = 21$."
+        },
+        {
+          "role": "independent",
+          "prompt": "Does $x^4 = -16$ have real solutions?",
+          "steps": [
+            "Even power (4) cannot yield a negative real number.",
+            "No real solution.",
+            "The equation has complex solutions, but no real ones."
+          ],
+          "title": "Example C — No Real Solutions"
+        }
+      ],
+      "title": "Solving Equations Using nth Roots",
+      "concept": {
+        "explanation": [
+          "To solve $u^n = d$, where $u$ is an algebraic expression and $n$ is an integer $>1$, take the [[kw:nth root]] of both sides.",
+          "If $n$ is odd: $u = \\sqrt[n]{d}$ (one real solution).",
+          "If $n$ is even and $d \\ge 0$: $u = \\pm \\sqrt[n]{d}$ (two real solutions if $d>0$; one if $d=0$). If $d<0$, no real solutions.",
+          "After taking the root, isolate the variable and simplify. Use a calculator to approximate if needed."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "expression containing variable",
+              "tone": "core",
+              "symbol": "$u$"
+            },
+            {
+              "tone": "core",
+              "symbol": "$n$",
+              "meaning": "integer exponent > 1"
+            }
+          ],
+          "formula": "$$ u^n = d \\implies u = \\begin{cases} \\sqrt[n]{d}, & n \\text{ odd} \\\\ \\pm \\sqrt[n]{d}, & n \\text{ even}, d \\ge 0 \\end{cases} $$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "$n$",
+              "Number of real solutions",
+              "How to solve"
+            ],
+            "variant": "colorful",
+            "title": "Solving $u^n = d$",
+            "rows": [
+              {
+                "0": "Odd",
+                "1": "Exactly 1",
+                "2": "$u = \\sqrt[n]{d}$"
+              },
+              {
+                "0": "Even, $d > 0$",
+                "1": "2",
+                "2": "$u = \\pm \\sqrt[n]{d}$"
+              },
+              {
+                "0": "Even, $d = 0$",
+                "1": "1",
+                "2": "$u = 0$"
+              },
+              {
+                "0": "Even, $d < 0$",
+                "1": "0 real solutions",
+                "2": "No real number satisfies"
+              }
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Don't Forget the $\\pm$ for Even Roots",
+        "body": "When $n$ is even and $d>0$, $u^n = d$ has [[imp:two real solutions]]. Write $\\pm \\sqrt[n]{d}$. Many students forget the negative root and lose a solution."
+      },
+      "discoveryHook": {
+        "scenario": "Equations like $x^3 = 27$ are easy—just cube root both sides. But what about $(x-3)^4 = 21$? Taking fourth roots gives two solutions, and nth roots are the key to unlocking them."
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The cube root of 64 is 4.",
+          "prompt": "Solve $x^3 = 64$. What is the real solution?",
+          "answers": [
+            "4",
+            "four"
+          ],
+          "hints": [
+            "Take the cube root of 64.",
+            "$4^3 = 64$."
+          ],
+          "id": "q5-1-7"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "±",
+                "+/-",
+                "plus or minus"
+              ]
+            }
+          ],
+          "prompt": "To solve $(x+1)^4 = 81$, you take the fourth root and write $x+1 = $ ___ $3$.",
+          "type": "fill-blank",
+          "hints": [
+            "Even power → two roots.",
+            "Positive and negative root."
+          ],
+          "feedbackIfWrong": "You must write $x+1 = \\pm 3$ because the index 4 is even.",
+          "id": "q5-1-8"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Even power, negative right side.",
+            "Any real number raised to the 6th power is nonnegative."
+          ],
+          "prompt": "Does $x^6 = -64$ have any real solutions? (yes/no)",
+          "id": "q5-1-9",
+          "answers": [
+            "no"
+          ],
+          "feedbackIfWrong": "No, an even power never gives a negative result."
+        }
+      ],
+      "id": "solving-equations-nth-roots"
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Businesses use nth roots to calculate depreciation rates. Knowing how to manipulate roots and rational exponents lets you compute the annual loss in value of equipment—a real-world algebra skill!"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Plug into formula: $r = 1 - (8000/50000)^{1/10}$.",
+            "Simplify fraction: $8000/50000 = 8/50 = 4/25$.",
+            "Compute $(4/25)^{1/10}$ using a calculator: about $0.833$.",
+            "$r = 1 - 0.833 = 0.167$, so about $16.7\\%$."
+          ],
+          "title": "Example A — Depreciation Rate",
+          "role": "guided",
+          "prompt": "An ultrasound machine costs $C = 50{,}000$, salvage value $S = 8{,}000$, life $n = 10$ years. Find $r$."
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "The declining balance method applies a constant rate each year to the remaining value, not the original cost.",
+            "This is exponential decay: $S = C(1-r)^n$.",
+            "Solving for $r$ gives $r = 1 - (S/C)^{1/n}$, which uses an nth root because of the exponent $n$.",
+            "Simple division wouldn't capture the compounding effect."
+          ],
+          "minLength": 8,
+          "prompt": "Why does the depreciation formula use the nth root rather than division by n?",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If you simply divided the loss by the number of years, would the annual rate be constant? How does the nth root account for compounding?",
+          "title": "Example B — Why nth Root?"
+        },
+        {
+          "title": "Example C — Adjusting Salvage Value",
+          "steps": [
+            "Fraction: $6000/50000 = 6/50 = 3/25 = 0.12$.",
+            "Compute $(0.12)^{1/10} \\approx 0.801$.",
+            "$r = 1 - 0.801 = 0.199$, about $19.9\\%$."
+          ],
+          "prompt": "If the salvage value drops to $S = 6000$, find the new rate $r$ (same $C$, $n$).",
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "ratio of salvage to cost",
+              "symbol": "$S/C$"
+            },
+            {
+              "symbol": "$1/n$",
+              "meaning": "nth root",
+              "tone": "subtle"
+            }
+          ],
+          "formula": "$$ r = 1 - \\left( \\frac{S}{C} \\right)^{1/n} $$"
+        },
+        "explanation": [
+          "Many real‑life formulas involve nth roots, such as the declining balance depreciation formula: $$ r = 1 - \\left( \\frac{S}{C} \\right)^{1/n} $$",
+          "Here $C$ is original cost, $S$ is salvage value after $n$ years, $r$ is the annual depreciation rate (as a decimal).",
+          "Plug in the known values, simplify the fraction inside the parentheses, then raise to the $1/n$ power (take the nth root).",
+          "Finally, subtract from 1 to find $r$, and convert to a percentage if needed."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$C$",
+                "1": "Original cost (dollars)"
+              },
+              {
+                "0": "$S$",
+                "1": "Salvage value after $n$ years (dollars)"
+              },
+              {
+                "0": "$n$",
+                "1": "Useful life (years)"
+              },
+              {
+                "0": "$r$",
+                "1": "Annual depreciation rate (decimal)"
+              }
+            ],
+            "type": "table",
+            "title": "Depreciation Formula Variables",
+            "headers": [
+              "Variable",
+              "Meaning"
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Calculator Precision",
+        "body": "When computing $(S/C)^{1/n}$, use parentheses carefully: (S/C)^(1/n). Round only at the end to avoid cumulative errors. [[imp:Use enough decimal places]] for accurate results."
+      },
+      "teacherCues": [
+        "Show the depreciation formula $r = 1 - (S/C)^{1/n}$. Ask: What does each variable represent?",
+        "Pose: If a machine costs $50,000, salvage value $8,000, useful life 10 years, find depreciation rate."
+      ],
+      "questions": [
+        {
+          "answers": [
+            "life",
+            "years",
+            "time"
+          ],
+          "type": "short-answer",
+          "prompt": "In the depreciation formula $r = 1 - (S/C)^{1/n}$, what does $n$ represent? (one word)",
+          "id": "q5-1-10",
+          "feedbackIfWrong": "$n$ is the useful life in years.",
+          "hints": [
+            "It's the number of years the asset is useful.",
+            "Useful ___."
+          ]
+        },
+        {
+          "feedbackIfWrong": "The simplified fraction is $4/25$.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "25"
+              ]
+            }
+          ],
+          "id": "q5-1-11",
+          "hints": [
+            "Divide numerator and denominator by 2000.",
+            "$8000/2000 = 4$, $50000/2000 = 25$."
+          ],
+          "prompt": "In Example 5, the salvage value is $S = 8000$ and cost $C = 50000$. The ratio $S/C$ simplifies to $4/$___."
+        },
+        {
+          "id": "q5-1-12",
+          "hints": [
+            "Multiply the decimal by 100.",
+            "$0.167 \\times 100 = 16.7$."
+          ],
+          "answers": [
+            "16.7",
+            "16.7%"
+          ],
+          "prompt": "If $r \\approx 0.167$, what is the annual depreciation rate as a percentage? (Enter the number only, e.g., 16.7)",
+          "feedbackIfWrong": "The rate is about 16.7%.",
+          "type": "short-answer"
+        }
+      ],
+      "title": "Real-Life Applications with nth Roots",
+      "id": "real-life-applications"
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$u$",
+              "tone": "core",
+              "meaning": "expression containing the variable"
+            },
+            {
+              "meaning": "integer exponent",
+              "symbol": "$n$",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ u^n = d \\implies u = \\sqrt[n]{d} \\text{ (odd } n\\text{), or } u = \\pm\\sqrt[n]{d} \\text{ (even } n, d>0\\text{)} $$"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify $n$, isolate power, note even/odd for ±."
+              },
+              {
+                "0": "Solve",
+                "1": "Take nth root; use calculator if needed; simplify."
+              },
+              {
+                "0": "Conclude",
+                "1": "State solution(s); verify in original equation/context."
+              }
+            ],
+            "title": "Blueprint for nth Root Problems",
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ]
+          }
+        ],
+        "explanation": [
+          "[[imp:Understand]]: Identify the equation type ($u^n = d$) or formula. Note the given values and what you must solve for.",
+          "[[imp:Solve]]: If it's a simple power equation, isolate $u^n$, then take the nth root. Remember $\\pm$ for even $n$. If it's a formula, substitute known values and simplify using rational exponents.",
+          "[[imp:Conclude]]: Write the solution(s), round appropriately, and check if they make sense in context (e.g., depreciation rates between 0 and 1)."
+        ]
+      },
+      "id": "blueprint-aid-rational-exponents",
+      "discoveryHook": {
+        "scenario": "You're an accountant calculating asset depreciation. Using the Blueprint, you'll confidently set up the formula, solve with nth roots, and interpret the rate as a percentage—turning math into a professional tool."
+      },
+      "teacherCues": [
+        "Display the blueprint steps: Understand the equation, isolate the power, take the nth root, check for ± when even.",
+        "Model the ultrasound depreciation problem using the Understand → Solve → Conclude structure."
+      ],
+      "confusionCorner": {
+        "title": "Check Your Rate",
+        "body": "A depreciation rate must be between 0 and 1. If you get a negative or a number >1, you've made an error. [[imp:Always check that the rate makes sense.]]"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Understand: $u = x-3$, $n=4$ (even), $d=21>0$ → two real solutions.",
+            "Solve: Take fourth root: $x-3 = \\pm \\sqrt[4]{21}$. Add 3: $x = 3 \\pm \\sqrt[4]{21}$.",
+            "Conclude: $x \\approx 3 + 2.14 = 5.14$, $x \\approx 3 - 2.14 = 0.86$ (both valid)."
+          ],
+          "title": "Example A — Solving a Power Equation (Blueprint)",
+          "prompt": "Solve $(x-3)^4 = 21$ using the Blueprint."
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If the machine loses 16.7% of its current value each year, how would you calculate the value after 1 year? After 2 years?",
+          "steps": [
+            "16.7% as a decimal is 0.167. Each year, the value multiplies by $(1-0.167)=0.833$.",
+            "After 1 year: $50000 \\times 0.833 \\approx 41650$.",
+            "After 10 years: $50000 \\times (0.833)^{10} \\approx 8000$, which matches the salvage value.",
+            "So the rate is correct."
+          ],
+          "prompt": "Explain why a depreciation rate of $r=0.167$ means the machine loses about 16.7% of its value per year.",
+          "title": "Example B — Interpreting the Depreciation Rate",
+          "minLength": 8,
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Using the same cost and life, if the salvage value is $10,000, what is $r$? (Use a calculator, round to three decimal places)",
+          "title": "Example C — Try Another Value",
+          "role": "independent",
+          "steps": [
+            "Fraction: $10000/50000 = 0.2$.",
+            "Compute $(0.2)^{1/10} \\approx 0.851$.",
+            "$r = 1 - 0.851 = 0.149$ (14.9%)."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q5-1-13",
+          "hints": [
+            "Get the power term alone on one side.",
+            "You want $u^n$ by itself."
+          ],
+          "prompt": "In the Blueprint, what is the first step when solving $u^n = d$?",
+          "feedbackIfWrong": "First isolate the power expression $u^n$.",
+          "answers": [
+            "isolate",
+            "isolate power"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "You must write $\\pm$ to capture both the positive and negative roots.",
+          "blanks": [
+            {
+              "accept": [
+                "±",
+                "+/-",
+                "plus or minus"
+              ]
+            }
+          ],
+          "prompt": "For even $n$, taking the nth root of both sides of $u^n = d$ (with $d>0$) introduces a ___ sign.",
+          "type": "fill-blank",
+          "id": "q5-1-14",
+          "hints": [
+            "There are two opposite solutions.",
+            "The symbol is two stacked signs."
+          ]
+        },
+        {
+          "id": "q5-1-15",
+          "prompt": "After finding $r$ in decimal form, how do you express it as a percentage? (one word)",
+          "hints": [
+            "Move the decimal point two places.",
+            "To convert a decimal to a percent, do this operation."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "multiply",
+            "multiply by 100"
+          ],
+          "feedbackIfWrong": "Multiply by 100 to convert a decimal to a percentage."
+        }
+      ],
+      "title": "Blueprint Aid — Solving Problems with nth Roots"
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

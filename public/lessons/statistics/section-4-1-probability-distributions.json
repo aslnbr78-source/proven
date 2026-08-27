@@ -1,0 +1,711 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-4-1-probability-distributions",
+  "title": "Probability Distributions",
+  "blocks": [
+    {
+      "id": "discrete-vs-continuous",
+      "title": "Discrete and Continuous Random Variables",
+      "teacherCues": [
+        "Ask: 'How many calls did you make yesterday?' vs. 'How long did you spend on calls?' Which can be counted? Which can be measured?",
+        "Write on board: discrete = countable, continuous = interval."
+      ],
+      "discoveryHook": {
+        "scenario": "A telemarketer might count the number of calls made in a day, or measure the total time spent on calls. One is a list of whole numbers, the other can be any value in a range. Understanding this difference is the first step to building probability distributions!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:random variable]] is a numerical value determined by chance for each outcome of an experiment.",
+          "A [[kw:discrete random variable]] has a finite or countable number of possible outcomes that can be listed.",
+          "A [[kw:continuous random variable]] has an uncountable number of possible outcomes, represented by an interval on the number line.",
+          "Discrete variables usually come from counting; continuous variables usually come from measuring.",
+          "Examples: number of dogs in a household is discrete; time to drive to work is continuous."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Discrete vs. Continuous",
+            "headers": [
+              "Discrete",
+              "Continuous"
+            ],
+            "rows": [
+              {
+                "0": "Countable number of outcomes",
+                "1": "Uncountable number of outcomes"
+              },
+              {
+                "0": "Listed as points on a number line",
+                "1": "Represented by an interval"
+              },
+              {
+                "0": "Examples: number of books, number of tornadoes",
+                "1": "Examples: volume of blood, time, distance"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Key Distinction",
+          "formula": "$$ \\text{Discrete: } x \\in \\{0,1,2,\\dots\\} \\qquad \\text{Continuous: } x \\in [a,b] $$",
+          "notes": [
+            "Discrete values can be listed.",
+            "Continuous values fill an interval."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Classify the Random Variable",
+          "prompt": "Let $x$ represent the number of Fortune 500 companies that lost money last year. Decide whether $x$ is discrete or continuous.",
+          "steps": [
+            "The number of companies can be counted: 0, 1, 2, ..., 500.",
+            "The set of possible outcomes is finite and listable.",
+            "Therefore, $x$ is a discrete random variable."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Measured vs. Counted",
+          "prompt": "Let $x$ represent the volume of gasoline in a 21-gallon tank. Is $x$ discrete or continuous?",
+          "peerPrompt": "Explain to a partner: Why can't we list every possible volume of gasoline? What does that tell us about the variable type?",
+          "minLength": 2,
+          "steps": [
+            "Gasoline volume can be any value from 0 to 21 gallons, including fractions and decimals.",
+            "There are infinitely many possible values in that interval.",
+            "So $x$ is a continuous random variable."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Speed of a Space Shuttle",
+          "prompt": "Let $x$ represent the speed of a Space Shuttle. Discrete or continuous?",
+          "steps": [
+            "Speed is measured, not counted.",
+            "It can take any value within a range.",
+            "So $x$ is continuous."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Rounded Values Can Mislead",
+        "body": "Age, height, and weight are often rounded to whole numbers, but they are [[imp:continuous]] because they come from measuring. Always ask: was the data counted or measured?"
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "short-answer",
+          "prompt": "Is the number of calves born on a farm in one year discrete or continuous?",
+          "answer": "discrete",
+          "hints": [
+            "Can you list all possible values?",
+            "Calves are counted, not measured."
+          ],
+          "feedbackIfWrong": "Number of calves is countable, so it is discrete."
+        },
+        {
+          "id": "q1-2",
+          "type": "fill-blank",
+          "prompt": "A continuous random variable has an ___ number of possible outcomes, represented by an interval.",
+          "blanks": [
+            {
+              "accept": [
+                "uncountable"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the opposite of countable.",
+            "The word starts with 'un'."
+          ],
+          "feedbackIfWrong": "Continuous variables have an uncountable number of outcomes."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "Is the amount of snow (in inches) that fell in Nome last winter discrete or continuous?",
+          "answer": "continuous",
+          "hints": [
+            "Snowfall is measured, not counted.",
+            "It can be any value in a range."
+          ],
+          "feedbackIfWrong": "Snowfall is measured, so it is continuous."
+        }
+      ]
+    },
+    {
+      "id": "constructing-probability-distribution",
+      "title": "Constructing and Graphing a Discrete Probability Distribution",
+      "teacherCues": [
+        "Show frequency table of employee test scores (1 to 5). Ask: How do we turn frequencies into probabilities?",
+        "Write: probability = frequency / total frequency. Emphasize sum of probabilities = 1."
+      ],
+      "discoveryHook": {
+        "scenario": "An industrial psychologist gives 150 employees a personality test with scores from 1 to 5. Each score has a frequency. By dividing each frequency by 150, we get the probability distribution—a powerful way to see the likelihood of each outcome!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:discrete probability distribution]] lists each possible value of a discrete random variable together with its probability.",
+          "Two conditions must hold: each probability is between 0 and 1 inclusive, and the sum of all probabilities is 1.",
+          "To construct a distribution: make a frequency distribution, find total frequency, divide each frequency by the total to get probabilities.",
+          "The distribution can be graphed using a relative frequency histogram.",
+          "The area of each bar equals the probability of that outcome."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Probability Distribution for Personality Test",
+            "headers": [
+              "Score x",
+              "Frequency f",
+              "Probability P(x)"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "24",
+                "2": "$24/150 = 0.16$"
+              },
+              {
+                "0": "2",
+                "1": "33",
+                "2": "$33/150 = 0.22$"
+              },
+              {
+                "0": "3",
+                "1": "42",
+                "2": "$42/150 = 0.28$"
+              },
+              {
+                "0": "4",
+                "1": "30",
+                "2": "$30/150 = 0.20$"
+              },
+              {
+                "0": "5",
+                "1": "21",
+                "2": "$21/150 = 0.14$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Probability from Frequency",
+          "formula": "$$ P(x) = \\frac{\\text{frequency of } x}{\\text{total frequency}} $$",
+          "notes": [
+            "Sum of all probabilities must equal 1.",
+            "Each probability must be between 0 and 1."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Building a Distribution",
+          "prompt": "A company tracks daily sales of a new employee over 100 days. Sales per day and number of days are: 0:16, 1:19, 2:15, 3:21, 4:9, 5:10, 6:8, 7:2. Construct the probability distribution.",
+          "steps": [
+            "Total days = 16+19+15+21+9+10+8+2 = 100.",
+            "Divide each frequency by 100: P(0)=0.16, P(1)=0.19, P(2)=0.15, P(3)=0.21, P(4)=0.09, P(5)=0.10, P(6)=0.08, P(7)=0.02.",
+            "Check: all probabilities between 0 and 1; sum = 1.00."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why Sum to 1?",
+          "prompt": "For a valid discrete probability distribution, why must the sum of all probabilities equal 1?",
+          "peerPrompt": "Explain to a partner: If the probabilities didn't sum to 1, what would that imply about the experiment?",
+          "minLength": 2,
+          "steps": [
+            "Probabilities represent all possible outcomes of the experiment.",
+            "One of the outcomes must happen, so the total probability is 1 (certainty).",
+            "If sum is not 1, it's not a valid probability distribution."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Graph the Distribution",
+          "prompt": "Using the probability distribution from Example A (daily sales), describe how you would graph it as a histogram.",
+          "steps": [
+            "Use x-axis for sales per day (0 to 7).",
+            "Use y-axis for probability P(x).",
+            "Draw bars of width 1 with heights equal to each probability."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Frequency vs. Probability",
+        "body": "A frequency distribution lists counts; a probability distribution lists relative frequencies. Probabilities are always between 0 and 1, but frequencies can be any non-negative integer."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "In a discrete probability distribution, the sum of all probabilities must be ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "Total probability of all outcomes.",
+            "It is the whole."
+          ],
+          "feedbackIfWrong": "The sum must be 1."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "Given frequencies 10, 20, 30, 40 for outcomes 1,2,3,4, what is P(3)?",
+          "answer": "0.3",
+          "hints": [
+            "Total frequency = 100.",
+            "30 divided by 100."
+          ],
+          "feedbackIfWrong": "P(3) = 30/100 = 0.3."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "What is the total area of all bars in a probability histogram?",
+          "answer": "1",
+          "hints": [
+            "Area equals probability.",
+            "Sum of all probabilities."
+          ],
+          "feedbackIfWrong": "Total area is 1."
+        }
+      ]
+    },
+    {
+      "id": "verifying-probability-distributions",
+      "title": "Verifying Probability Distributions",
+      "teacherCues": [
+        "Show two distributions: one with sum > 1, one with negative probability. Ask: Are these valid? Why not?",
+        "Emphasize two conditions: each P(x) between 0 and 1; sum = 1."
+      ],
+      "discoveryHook": {
+        "scenario": "Not every table of numbers is a valid probability distribution. Some have negative 'probabilities' or sums that exceed 1. Learning to verify distributions protects you from incorrect statistical conclusions!"
+      },
+      "concept": {
+        "explanation": [
+          "To verify a probability distribution, check two conditions.",
+          "Condition 1: $0 \\le P(x) \\le 1$ for every value of $x$.",
+          "Condition 2: $\\sum P(x) = 1$.",
+          "If either condition fails, the distribution is not a probability distribution.",
+          "Probabilities can never be negative or greater than 1."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Valid vs. Invalid Distributions",
+            "headers": [
+              "Distribution",
+              "Sum",
+              "Each P(x) between 0 and 1?",
+              "Valid?"
+            ],
+            "rows": [
+              {
+                "0": "$P(1)=0.2, P(2)=0.3, P(3)=0.5$",
+                "1": "1.0",
+                "2": "Yes",
+                "3": "Yes"
+              },
+              {
+                "0": "$P(1)=0.6, P(2)=0.5, P(3)=0.1$",
+                "1": "1.2",
+                "2": "Yes",
+                "3": "No (sum > 1)"
+              },
+              {
+                "0": "$P(1)=1.2, P(2)=-0.2, P(3)=0$",
+                "1": "1.0",
+                "2": "No",
+                "3": "No (P(1)>1, P(2)<0)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Verification Checklist",
+          "formula": "$$ 0 \\le P(x) \\le 1 \\quad \\text{and} \\quad \\sum P(x) = 1 $$",
+          "notes": [
+            "Both conditions must hold.",
+            "Check every individual probability first, then the sum."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Verify a Distribution",
+          "prompt": "Verify that the distribution with probabilities 0.216, 0.432, 0.288, 0.064 for x=0,1,2,3 is a probability distribution.",
+          "steps": [
+            "Each probability is between 0 and 1: 0.216, 0.432, 0.288, 0.064.",
+            "Sum = 0.216 + 0.432 + 0.288 + 0.064 = 1.0.",
+            "Both conditions met, so valid."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Spot the Problem",
+          "prompt": "Decide if the distribution with P(1)=0.09, P(2)=0.36, P(3)=0.49, P(4)=0.06 is valid.",
+          "peerPrompt": "Explain to a partner: What two things must you check? Does this distribution pass both?",
+          "minLength": 2,
+          "steps": [
+            "All probabilities between 0 and 1? Yes.",
+            "Sum = 0.09+0.36+0.49+0.06 = 1.00? Yes.",
+            "Valid probability distribution."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Negative Probability",
+          "prompt": "Is the distribution with P(1)=0.5, P(2)=0.25, P(3)=0.5, P(4)=-0.25 valid?",
+          "steps": [
+            "P(4) = -0.25 is negative.",
+            "Fails condition 1.",
+            "Not a probability distribution."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sum = 1 Is Not Enough",
+        "body": "Even if probabilities sum to 1, a single negative probability or one greater than 1 makes the distribution invalid. Always check both conditions."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "A probability cannot be ___ or greater than 1.",
+          "blanks": [
+            {
+              "accept": [
+                "negative"
+              ]
+            }
+          ],
+          "hints": [
+            "It starts with 'n'.",
+            "Probabilities are between 0 and 1 inclusive."
+          ],
+          "feedbackIfWrong": "Probabilities cannot be negative."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "For a distribution with probabilities 0.2, 0.3, 0.4, 0.2, is it valid?",
+          "answer": "no",
+          "hints": [
+            "Check the sum.",
+            "Sum = 0.2+0.3+0.4+0.2 = ?"
+          ],
+          "feedbackIfWrong": "Sum = 1.1, so not valid."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "If a distribution has a probability of 0.07 for one outcome, is that possible?",
+          "answer": "yes",
+          "hints": [
+            "0.07 is between 0 and 1.",
+            "Probability can be any number in [0,1]."
+          ],
+          "feedbackIfWrong": "Yes, 0.07 is a valid probability."
+        }
+      ]
+    },
+    {
+      "id": "mean-variance-standard-deviation",
+      "title": "Mean, Variance, and Standard Deviation",
+      "teacherCues": [
+        "Use the personality test distribution (P(1)=0.16, etc.). Walk through computing mean: multiply x by P(x), sum.",
+        "Then show variance: sum of (x - mean)^2 * P(x). Standard deviation is square root."
+      ],
+      "discoveryHook": {
+        "scenario": "The mean of a probability distribution tells you the expected center, but it doesn't show how spread out the outcomes are. Variance and standard deviation measure that spread—essential for understanding risk and variability!"
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:mean]] of a discrete random variable is $ \\mu = \\sum x P(x) $. It is the theoretical average over many trials.",
+          "The [[kw:variance]] measures spread: $ \\sigma^2 = \\sum (x - \\mu)^2 P(x) $.",
+          "The [[kw:standard deviation]] is the square root of variance: $ \\sigma = \\sqrt{\\sigma^2} $.",
+          "Use a table to organize calculations: columns for x, P(x), xP(x), and (x - μ)^2 P(x).",
+          "Round mean, variance, and standard deviation to one more decimal place than x."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Calculating Mean and Variance (Personality Test)",
+            "headers": [
+              "x",
+              "P(x)",
+              "xP(x)",
+              "(x - μ)^2 P(x)"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "0.16",
+                "2": "0.16",
+                "3": "$(1-2.94)^2(0.16) = 0.602$"
+              },
+              {
+                "0": "2",
+                "1": "0.22",
+                "2": "0.44",
+                "3": "$(2-2.94)^2(0.22) = 0.194$"
+              },
+              {
+                "0": "3",
+                "1": "0.28",
+                "2": "0.84",
+                "3": "$(3-2.94)^2(0.28) = 0.001$"
+              },
+              {
+                "0": "4",
+                "1": "0.20",
+                "2": "0.80",
+                "3": "$(4-2.94)^2(0.20) = 0.225$"
+              },
+              {
+                "0": "5",
+                "1": "0.14",
+                "2": "0.70",
+                "3": "$(5-2.94)^2(0.14) = 0.594$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Mean, Variance, Standard Deviation",
+          "formula": "$$ \\mu = \\sum x P(x) $$ $$ \\sigma^2 = \\sum (x - \\mu)^2 P(x) $$ $$ \\sigma = \\sqrt{\\sigma^2} $$",
+          "notes": [
+            "Mean is also called expected value.",
+            "Variance is always non-negative."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find Mean and Standard Deviation",
+          "prompt": "For the personality test distribution (P(1)=0.16, P(2)=0.22, P(3)=0.28, P(4)=0.20, P(5)=0.14), find mean and standard deviation.",
+          "steps": [
+            "Mean: μ = 1(0.16)+2(0.22)+3(0.28)+4(0.20)+5(0.14) = 2.94.",
+            "Variance: σ² = (1-2.94)²(0.16) + (2-2.94)²(0.22) + (3-2.94)²(0.28) + (4-2.94)²(0.20) + (5-2.94)²(0.14) ≈ 1.616.",
+            "Standard deviation: σ = √1.616 ≈ 1.3."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why Square Deviations?",
+          "prompt": "Why do we square the deviations (x - μ) in the variance formula?",
+          "peerPrompt": "Explain to a partner: What would happen if we just added (x - μ)P(x) without squaring?",
+          "minLength": 2,
+          "steps": [
+            "Deviations (x - μ) can be negative and positive.",
+            "Summing them directly may cancel out to zero.",
+            "Squaring makes all deviations non-negative, so variance measures spread."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Expected Value of a Raffle",
+          "prompt": "1500 raffle tickets sold at $2 each. Prizes: $500, $250, $150, $75. You buy one ticket. Find expected gain.",
+          "steps": [
+            "Gains: 498, 248, 148, 73, -2.",
+            "Probabilities: 1/1500 for each prize, 1496/1500 for -2.",
+            "Expected value = 498(1/1500) + 248(1/1500) + 148(1/1500) + 73(1/1500) + (-2)(1496/1500) ≈ -$1.35."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Mean vs. Expected Value",
+        "body": "The mean of a discrete random variable is exactly the same as its expected value. Both are found by $ \\sum x P(x) $. Expected value can be negative, like in a raffle."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "The mean of a discrete random variable is also called the ___ value.",
+          "blanks": [
+            {
+              "accept": [
+                "expected"
+              ]
+            }
+          ],
+          "hints": [
+            "It is what you expect on average.",
+            "Starts with 'e'."
+          ],
+          "feedbackIfWrong": "Mean is the expected value."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "For distribution P(0)=0.2, P(1)=0.3, P(2)=0.5, what is the mean?",
+          "answer": "1.3",
+          "hints": [
+            "Multiply each x by its probability and add.",
+            "0(0.2)+1(0.3)+2(0.5)."
+          ],
+          "feedbackIfWrong": "Mean = 0.3 + 1.0 = 1.3."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "If variance is 1.616, what is the standard deviation? Round to one decimal place.",
+          "answer": "1.3",
+          "hints": [
+            "Standard deviation is square root of variance.",
+            "$\\sqrt{1.616}$."
+          ],
+          "feedbackIfWrong": "√1.616 ≈ 1.3."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-probability-distributions",
+      "title": "Blueprint Aid – Solving Probability Distribution Problems",
+      "teacherCues": [
+        "Display Understand → Solve → Conclude. Walk through a raffle expected value problem using the blueprint.",
+        "Emphasize: Understand identifies variable type and required formula. Solve applies formula. Conclude interprets result, including unusual events."
+      ],
+      "discoveryHook": {
+        "scenario": "Whether you're verifying a distribution, finding its mean, or computing expected gain, a blueprint keeps you on track. Understand the problem, Solve with the right formula, and Conclude with a clear interpretation."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]] – Read the problem. Is the variable discrete or continuous? Are you constructing a distribution, verifying one, or finding mean/variance? Identify given data.",
+          "[[imp:Solve]] – Apply the correct formula: $\\mu = \\sum x P(x)$ for mean; $\\sigma^2 = \\sum (x-\\mu)^2 P(x)$ for variance. For expected value, same as mean.",
+          "[[imp:Conclude]] – State the result. Interpret what it means in context. For expected value, discuss whether gain/loss is expected."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Probability Distributions",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify variable type; list outcomes and probabilities; check validity if needed."
+              },
+              {
+                "0": "Solve",
+                "1": "Compute mean, variance, or expected value using correct formula."
+              },
+              {
+                "0": "Conclude",
+                "1": "Interpret the result in context; state if unusual."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Key Formulas",
+          "formula": "$$ \\mu = \\sum x P(x) \\qquad \\sigma^2 = \\sum (x-\\mu)^2 P(x) $$",
+          "notes": [
+            "Mean = expected value.",
+            "For unusual events, probability < 0.05."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full Blueprint: Expected Value",
+          "prompt": "Use the blueprint: 2000 raffle tickets sold at $5 each. Prizes: $2000, $1000, $500, $250, $100. You buy one ticket. Find expected gain.",
+          "steps": [
+            "Understand: Gains = prize - $5. Probabilities = 1/2000 for each prize, 1995/2000 for -$5.",
+            "Solve: Expected value = 1995(1/2000) + 995(1/2000) + 495(1/2000) + 245(1/2000) + 95(1/2000) + (-5)(1995/2000) ≈ -$3.53.",
+            "Conclude: On average, you lose about $3.53 per ticket."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Full Blueprint: Verify and Find Mean",
+          "prompt": "Use the blueprint: A distribution has probabilities 0.1, 0.2, 0.3, 0.4 for x=0,1,2,3. Verify and find the mean.",
+          "peerPrompt": "Explain to a partner: What do you check first? Then how do you compute the mean?",
+          "minLength": 2,
+          "steps": [
+            "Understand: Check each probability between 0 and 1, sum = 1.0. Valid.",
+            "Solve: Mean = 0(0.1)+1(0.2)+2(0.3)+3(0.4) = 2.0.",
+            "Conclude: The mean is 2.0, the expected value over many trials."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Decide and Compute",
+          "prompt": "A game costs $3. You win $10 with probability 0.2, win $5 with probability 0.3, and lose otherwise. Find expected gain using blueprint.",
+          "steps": [
+            "Understand: Gains: 7, 2, -3. Probabilities: 0.2, 0.3, 0.5.",
+            "Solve: E = 7(0.2) + 2(0.3) + (-3)(0.5) = 1.4 + 0.6 - 1.5 = 0.5.",
+            "Conclude: Expected gain is $0.50 per play; the game is favorable."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Unusual Events in Probability Distributions",
+        "body": "An outcome with probability less than 0.05 is considered unusual. For expected value, a negative result means an average loss; a positive result means an average gain."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "In the blueprint, what is the first thing you do in the Understand phase?",
+          "answer": "identify",
+          "hints": [
+            "You determine the type of problem.",
+            "Look for keywords like discrete, mean, expected value."
+          ],
+          "feedbackIfWrong": "Identify the variable type and what you need to find."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "For expected value problems, the formula is $E(x) = \\sum x \\cdot $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "P(x)"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the probability of each x.",
+            "The formula is mean."
+          ],
+          "feedbackIfWrong": "E(x) = Σ x · P(x)."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "If expected value is -$1.35, do you expect to gain or lose on average?",
+          "answer": "lose",
+          "hints": [
+            "Negative expected value means average loss.",
+            "Not a gain."
+          ],
+          "feedbackIfWrong": "Negative expected value indicates an average loss."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

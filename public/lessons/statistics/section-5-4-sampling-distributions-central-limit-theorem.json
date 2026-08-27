@@ -1,0 +1,678 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "section-5-4-sampling-distributions-central-limit-theorem",
+  "title": "Central Limit Theorem",
+  "standards": [
+    "HSS.IC.A.1",
+    "HSS.IC.B.4"
+  ],
+  "blocks": [
+    {
+      "id": "sampling-distributions",
+      "title": "Sampling Distributions",
+      "teacherCues": [
+        "Ask: 'If we take many samples from a population and compute their means, what pattern do those means follow?'",
+        "Use a small population {1,3,5,7} and list all samples of size 2 with replacement. Show that the sample means cluster around the population mean."
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine repeatedly sampling 5 students' test scores from a class and averaging them. Each sample mean might differ slightly. The distribution of all those sample means—called a sampling distribution—tells us how much variation to expect and forms the foundation for making inferences about a population from a sample!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:sampling distribution]] is the probability distribution of a sample statistic (such as the sample mean) formed when samples of size n are repeatedly taken from a population.",
+          "The sampling distribution of sample means has these properties: its mean is equal to the population mean: $ m_{\\bar{x}} = \\mu $.",
+          "Its standard deviation is called the [[kw:standard error of the mean]], equal to the population standard deviation divided by the square root of the sample size: $ \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} $.",
+          "The sample means vary less than individual values; the standard error is smaller than the population standard deviation.",
+          "If sampling is with replacement, an infinite number of samples can be drawn."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Properties of Sampling Distribution of Sample Means",
+            "headers": [
+              "Property",
+              "Formula"
+            ],
+            "rows": [
+              {
+                "0": "Mean",
+                "1": "$ m_{\\bar{x}} = \\mu $"
+              },
+              {
+                "0": "Standard error",
+                "1": "$ \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Sampling Distribution Parameters",
+          "formula": "$$ m_{\\bar{x}} = \\mu, \\qquad \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} $$",
+          "notes": [
+            "$\\bar{x}$ = sample mean, $\\mu$ = population mean, $\\sigma$ = population standard deviation, $n$ = sample size."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Build a Sampling Distribution",
+          "prompt": "Population: {1, 3, 5, 7}. Take all samples of size n = 2 with replacement. List all 16 samples, compute their means, and find the mean and standard error of the sample means.",
+          "steps": [
+            "List all 16 ordered samples: (1,1), (1,3), ..., (7,7). Compute each mean.",
+            "Create a frequency distribution of sample means: 1 (1), 2 (2), 3 (3), 4 (4), 5 (3), 6 (2), 7 (1).",
+            "Mean of sample means: $ m_{\\bar{x}} = \\frac{1(1)+2(2)+3(3)+4(4)+5(3)+6(2)+7(1)}{16} = 4 $.",
+            "Standard error: first find variance $ \\sigma_{\\bar{x}}^2 = \\frac{5}{2} = 2.5 $, so $ \\sigma_{\\bar{x}} = \\sqrt{2.5} \\approx 1.581 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Compare with Population Parameters",
+          "prompt": "For the population {1,3,5,7}, the population mean is μ = 4 and population standard deviation σ ≈ 2.236. Explain why the standard error of the sample means is smaller than σ.",
+          "peerPrompt": "Explain to a partner: Why does the standard error decrease as the sample size increases?",
+          "minLength": 2,
+          "steps": [
+            "Population standard deviation σ ≈ 2.236.",
+            "Standard error σ_x̄ = σ/√n = 2.236/√2 ≈ 1.581.",
+            "Dividing by √n reduces the spread because averaging tends to cancel out extreme individual values."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – List All Samples of Size 3",
+          "prompt": "Population: {1, 3, 5, 7}. List all samples of size n = 3 with replacement and calculate the standard error. Compare to n = 2.",
+          "steps": [
+            "There are 4³ = 64 samples. The sampling distribution mean remains μ = 4.",
+            "Standard error: σ_x̄ = σ/√3 = 2.236/√3 ≈ 1.291.",
+            "As n increases, the standard error decreases."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Standard Deviation vs. Standard Error",
+        "body": "The standard deviation of the population ($\\sigma$) measures spread of individual values. The standard error of the mean ($\\sigma_{\\bar{x}}$) measures spread of sample means and is always smaller. Don't confuse them."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "The standard deviation of the sampling distribution of sample means is called the ___ of the mean.",
+          "blanks": [
+            {
+              "accept": [
+                "standard error"
+              ]
+            }
+          ],
+          "hints": [
+            "It is found by $\\sigma / \\sqrt{n}$.",
+            "The term starts with 'standard'."
+          ],
+          "feedbackIfWrong": "It is the standard error of the mean."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "If a population has $\\mu = 50$ and $\\sigma = 10$, and samples of size $n = 25$ are drawn, what is the mean of the sampling distribution?",
+          "answer": "50",
+          "hints": [
+            "The sampling distribution mean equals the population mean.",
+            "No calculation needed."
+          ],
+          "feedbackIfWrong": "$m_{\\bar{x}} = \\mu = 50$."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "Using the same values, what is the standard error of the mean?",
+          "answer": "2",
+          "hints": [
+            "Divide $\\sigma$ by $\\sqrt{n}$.",
+            "$10 / \\sqrt{25} = 10/5$."
+          ],
+          "feedbackIfWrong": "$\\sigma_{\\bar{x}} = 10/\\sqrt{25} = 10/5 = 2$."
+        }
+      ]
+    },
+    {
+      "id": "central-limit-theorem",
+      "title": "The Central Limit Theorem",
+      "teacherCues": [
+        "State the CLT: For n ≥ 30, the sampling distribution of sample means is approximately normal regardless of population shape. If population is normal, it's normal for any n.",
+        "Sketch two scenarios: skewed population with n=30 vs. normal population with n=4."
+      ],
+      "discoveryHook": {
+        "scenario": "Even if individual data are heavily skewed, the averages of large samples tend to be normally distributed. This remarkable fact—the Central Limit Theorem—is the reason many statistical methods work, allowing us to make probability statements about sample means even when the population is not normal!"
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Central Limit Theorem]] (CLT) states that if samples of size $n \\ge 30$ are drawn from any population with mean $\\mu$ and standard deviation $\\sigma$, the sampling distribution of sample means approximates a normal distribution.",
+          "If the population itself is normally distributed, the sampling distribution is exactly normal for any sample size $n$.",
+          "In both cases, the sampling distribution has mean $ m_{\\bar{x}} = \\mu $ and standard error $ \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} $.",
+          "The larger the sample size, the better the normal approximation.",
+          "The CLT enables us to use z-scores to find probabilities for sample means."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "CLT Conditions",
+            "headers": [
+              "Population Distribution",
+              "Sample Size",
+              "Sampling Distribution Shape"
+            ],
+            "rows": [
+              {
+                "0": "Any",
+                "1": "$n \\ge 30$",
+                "2": "Approximately normal"
+              },
+              {
+                "0": "Normal",
+                "1": "Any $n$",
+                "2": "Exactly normal"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Z-Score for Sample Mean",
+          "formula": "$$ z = \\frac{\\bar{x} - \\mu}{\\sigma / \\sqrt{n}} $$",
+          "notes": [
+            "$\\bar{x}$ = sample mean, $\\mu$ = population mean, $\\sigma$ = population standard deviation, $n$ = sample size."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Phone Bills (n = 100)",
+          "prompt": "Cellular phone bills have mean $63 and standard deviation $11. Random samples of 100 bills are drawn. Find the mean and standard error of the sampling distribution, and sketch it.",
+          "steps": [
+            "Mean: $ m_{\\bar{x}} = \\mu = 63 $.",
+            "Standard error: $ \\sigma_{\\bar{x}} = 11/\\sqrt{100} = 1.1 $.",
+            "Since n ≥ 30, the distribution is approximately normal with mean 63 and standard deviation 1.1."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Normal Population, Small n",
+          "prompt": "Training heart rates are normally distributed with μ = 135 bpm, σ = 18 bpm. Random samples of size n = 4 are drawn. Why is the sampling distribution normal even though n < 30?",
+          "peerPrompt": "Explain to a partner: What allows us to use the normal model for n = 4 here?",
+          "minLength": 2,
+          "steps": [
+            "The population itself is normally distributed.",
+            "By the CLT, if the population is normal, the sampling distribution is normal for any sample size.",
+            "Therefore, with n = 4, the sampling distribution is exactly normal with μ_x̄ = 135 and σ_x̄ = 18/√4 = 9."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Diameters of Oak Trees",
+          "prompt": "Diameters of fully grown white oak trees are normally distributed with μ = 3.5 feet, σ = 0.2 foot. Random samples of size 16 are drawn. Find the mean and standard error.",
+          "steps": [
+            "Mean: $ m_{\\bar{x}} = 3.5 $ feet.",
+            "Standard error: $ \\sigma_{\\bar{x}} = 0.2/\\sqrt{16} = 0.05 $ foot.",
+            "The sampling distribution is normal with mean 3.5 and standard deviation 0.05."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "n ≥ 30 vs. Normal Population",
+        "body": "The rule n ≥ 30 is only needed when the population distribution is not normal or unknown. If the population is known to be normal, any sample size works."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "The Central Limit Theorem states that for $n \\ge 30$, the sampling distribution of sample means is approximately ___ regardless of the population distribution.",
+          "blanks": [
+            {
+              "accept": [
+                "normal"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the bell-shaped distribution.",
+            "The theorem is about approximation to normal."
+          ],
+          "feedbackIfWrong": "The sampling distribution is approximately normal."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "If $\\mu = 100$, $\\sigma = 20$, and $n = 36$, what is the standard error of the mean? Round to two decimal places.",
+          "answer": "3.33",
+          "hints": [
+            "Standard error = $\\sigma / \\sqrt{n}$.",
+            "$20 / \\sqrt{36} = 20/6$."
+          ],
+          "feedbackIfWrong": "$\\sigma_{\\bar{x}} = 20/\\sqrt{36} = 20/6 \\approx 3.33$."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "If the population is normally distributed, the sampling distribution of sample means is normal for which sample sizes?",
+          "answer": "any",
+          "hints": [
+            "It does not require a minimum n.",
+            "All sample sizes."
+          ],
+          "feedbackIfWrong": "Any sample size works because the population is normal."
+        }
+      ]
+    },
+    {
+      "id": "probability-and-clt",
+      "title": "Probability and the Central Limit Theorem",
+      "teacherCues": [
+        "Show how to compute probability for a sample mean: first calculate standard error, then z-score, then use normal table.",
+        "Use Example 4 (driving times) to illustrate between two values."
+      ],
+      "discoveryHook": {
+        "scenario": "If the average driving time of 50 teens is between 24.7 and 25.5 minutes, what is the probability? By converting the sample mean to a z-score using the standard error, we can use the normal table—just like we did for individual values, but now for averages!"
+      },
+      "concept": {
+        "explanation": [
+          "To find probabilities for sample means, first find the mean $ m_{\\bar{x}} = \\mu $ and standard error $ \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} $.",
+          "Convert the sample mean $\\bar{x}$ to a z-score: $$ z = \\frac{\\bar{x} - \\mu}{\\sigma / \\sqrt{n}} $$",
+          "Then use the standard normal table (or technology) to find the cumulative area.",
+          "For intervals between two sample means, find two z-scores and subtract areas.",
+          "This process is valid only if the CLT conditions are met."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Steps to Find Probability for Sample Mean",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Compute $m_{\\bar{x}} = \\mu$ and $\\sigma_{\\bar{x}} = \\sigma/\\sqrt{n}$."
+              },
+              {
+                "0": "2",
+                "1": "Convert $\\bar{x}$ to z-score."
+              },
+              {
+                "0": "3",
+                "1": "Use standard normal table to find probability."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Z-Score for Sample Mean",
+          "formula": "$$ z = \\frac{\\bar{x} - \\mu}{\\sigma / \\sqrt{n}} $$",
+          "notes": [
+            "Use standard error in denominator.",
+            "Not the population standard deviation."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Probability Between Two Means",
+          "prompt": "Driving times have μ = 25 min, σ = 1.5 min. For a sample of n = 50 drivers, find P(24.7 < x̄ < 25.5).",
+          "steps": [
+            "Standard error: $ \\sigma_{\\bar{x}} = 1.5/\\sqrt{50} \\approx 0.21213 $.",
+            "z₁ = (24.7 - 25)/0.21213 ≈ -1.41; z₂ = (25.5 - 25)/0.21213 ≈ 2.36.",
+            "Areas: left of -1.41 = 0.0793, left of 2.36 = 0.9909.",
+            "Probability = 0.9909 - 0.0793 = 0.9116."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Probability Less Than a Mean",
+          "prompt": "Room and board expenses have μ = $7540, σ = $1245, normal. For a sample of n = 9 colleges, find P(x̄ < 7800).",
+          "peerPrompt": "Explain to a partner: Why is it acceptable to use the normal table even though n < 30?",
+          "minLength": 2,
+          "steps": [
+            "Population is normal, so sampling distribution is normal for any n.",
+            "Standard error: $ \\sigma_{\\bar{x}} = 1245/\\sqrt{9} = 415 $.",
+            "z = (7800 - 7540)/415 ≈ 0.63; area left = 0.7357.",
+            "So P(x̄ < 7800) = 0.7357."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Probability Greater Than a Mean",
+          "prompt": "Sales price of houses has μ = $290,600, σ = $36,000, normal. For a sample of n = 12, find P(x̄ > 265,000).",
+          "steps": [
+            "Standard error: $ \\sigma_{\\bar{x}} = 36000/\\sqrt{12} \\approx 10392.3 $.",
+            "z = (265000 - 290600)/10392.3 ≈ -2.46.",
+            "Area left of -2.46 ≈ 0.0069; area right = 1 - 0.0069 = 0.9931.",
+            "Probability is 0.9931."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Use Standard Error, Not σ",
+        "body": "When dealing with sample means, the denominator in the z-score is $\\sigma/\\sqrt{n}$, not just $\\sigma$. Using the wrong denominator leads to incorrect probabilities."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "In the z-score formula for a sample mean, the denominator is $\\sigma$ divided by the square root of ___.",
+          "blanks": [
+            {
+              "accept": [
+                "n",
+                "sample size"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the sample size.",
+            "The denominator is the standard error."
+          ],
+          "feedbackIfWrong": "The denominator is $\\sigma/\\sqrt{n}$, where n is the sample size."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "If $\\mu = 60$, $\\sigma = 8$, $n = 16$, and $\\bar{x} = 62$, what is the z-score?",
+          "answer": "1",
+          "hints": [
+            "Compute standard error: $8/\\sqrt{16} = 2$.",
+            "Then $(62-60)/2 = 1$."
+          ],
+          "feedbackIfWrong": "z = (62-60)/(8/√16) = 2/2 = 1."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "If the area to the left of z is 0.7357, what is the area to the right?",
+          "answer": "0.2643",
+          "hints": [
+            "Total area is 1.",
+            "$1 - 0.7357$."
+          ],
+          "feedbackIfWrong": "Area to the right = 1 - 0.7357 = 0.2643."
+        }
+      ]
+    },
+    {
+      "id": "comparing-individual-vs-sample-mean",
+      "title": "Comparing Probabilities: Individual vs. Sample Mean",
+      "teacherCues": [
+        "Contrast P(x < value) vs P(x̄ < value). Show that sample mean probabilities are more extreme (farther from 0.5) for the same value when n > 1.",
+        "Use credit card debt example: individual less than $2700 vs mean of 25 less than $2700."
+      ],
+      "discoveryHook": {
+        "scenario": "A credit card company claims the average undergraduate debt is $3173. If one student has less than $2700, that's not too surprising (34% chance). But if the average of 25 students is less than $2700, that's very unlikely (2% chance). This comparison helps detect false claims!"
+      },
+      "concept": {
+        "explanation": [
+          "For individual values, use $ z = \\frac{x - \\mu}{\\sigma} $.",
+          "For sample means, use $ z = \\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}} $.",
+          "Sample means are less variable than individual values, so extreme sample means are less likely.",
+          "A small probability for a sample mean (< 0.05) suggests the claimed population mean may be incorrect.",
+          "This is the basis for hypothesis testing."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Individual vs. Sample Mean",
+            "headers": [
+              "Scenario",
+              "Formula for z",
+              "Standard deviation used"
+            ],
+            "rows": [
+              {
+                "0": "Individual value",
+                "1": "$ z = \\frac{x - \\mu}{\\sigma} $",
+                "2": "$\\sigma$"
+              },
+              {
+                "0": "Sample mean",
+                "1": "$ z = \\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}} $",
+                "2": "$\\sigma/\\sqrt{n}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Compare Probabilities",
+          "formula": "$$ P(x < a) \\quad \\text{vs} \\quad P(\\bar{x} < a) $$",
+          "notes": [
+            "For $n > 1$, the sample mean distribution is narrower, so tail probabilities are smaller."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Individual vs. Sample Mean",
+          "prompt": "Credit card debts have μ = $3173, σ = $1120, normal. Find P(x < 2700) and P(x̄ < 2700) for n = 25.",
+          "steps": [
+            "For individual: z = (2700 - 3173)/1120 ≈ -0.42, area = 0.3372.",
+            "For sample mean: standard error = 1120/√25 = 224; z = (2700-3173)/224 ≈ -2.11, area = 0.0174.",
+            "P(x < 2700) = 0.3372, P(x̄ < 2700) = 0.0174."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why the Difference?",
+          "prompt": "Explain why the probability for the sample mean is much smaller than for an individual value.",
+          "peerPrompt": "Explain to a partner: What causes the distribution of sample means to be narrower?",
+          "minLength": 2,
+          "steps": [
+            "The standard error of the mean is smaller than the population standard deviation ($\\sigma/\\sqrt{n}$).",
+            "Averages are more stable; extreme averages are less common.",
+            "Therefore, tail probabilities shrink as n increases."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Unusual Event",
+          "prompt": "If the probability of a sample mean being less than $2700 is 0.0174, is this event unusual?",
+          "steps": [
+            "Compare to 0.05.",
+            "0.0174 < 0.05, so yes, it is unusual.",
+            "This suggests the claim μ = $3173 may be incorrect."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Mix Formulas",
+        "body": "For individual x, use $\\sigma$. For sample mean x̄, use $\\sigma/\\sqrt{n}$. Using the wrong denominator leads to wrong probabilities."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "When finding probabilities for a sample mean, the standard deviation used is the ___ of the mean.",
+          "blanks": [
+            {
+              "accept": [
+                "standard error"
+              ]
+            }
+          ],
+          "hints": [
+            "It is $\\sigma/\\sqrt{n}$.",
+            "It is smaller than $\\sigma$."
+          ],
+          "feedbackIfWrong": "The standard error of the mean."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "If P(x < 2700) = 0.3372 and P(x̄ < 2700) = 0.0174 for n = 25, which is more unusual?",
+          "answer": "sample mean",
+          "hints": [
+            "Smaller probability is more unusual.",
+            "0.0174 < 0.3372."
+          ],
+          "feedbackIfWrong": "The sample mean probability is smaller, so it is more unusual."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "A probability of 0.0174 is considered unusual. (yes/no)",
+          "answer": "yes",
+          "hints": [
+            "Less than 0.05.",
+            "It is a small probability."
+          ],
+          "feedbackIfWrong": "Yes, 0.0174 < 0.05, so unusual."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-sampling-distributions",
+      "title": "Blueprint Aid – Solving Sampling Distribution Problems",
+      "teacherCues": [
+        "Display Understand → Solve → Conclude. Walk through a full problem: find P(sample mean between two values).",
+        "Emphasize: Understand identifies μ, σ, n, and region; Solve computes standard error and z; Conclude interprets probability."
+      ],
+      "discoveryHook": {
+        "scenario": "The blueprint helps you navigate sampling distribution problems: identify the parameters, compute the standard error, convert to z-scores, and make a conclusion. With practice, you can confidently handle any CLT probability problem!"
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]] – Read the problem. Identify the population mean $\\mu$, standard deviation $\\sigma$, sample size $n$, and the sample mean(s) or region of interest.",
+          "[[imp:Solve]] – Compute the standard error $ \\sigma_{\\bar{x}} = \\sigma/\\sqrt{n} $. Convert sample mean(s) to z-score(s) using $ z = \\frac{\\bar{x} - \\mu}{\\sigma_{\\bar{x}}} $. Find area with table or technology.",
+          "[[imp:Conclude]] – State the probability. Determine if unusual (< 0.05). Interpret in context, possibly questioning the claimed population mean."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Sampling Distribution Problems",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify $\\mu$, $\\sigma$, $n$, and region for $\\bar{x}$."
+              },
+              {
+                "0": "Solve",
+                "1": "Compute standard error; find z-score(s); use table."
+              },
+              {
+                "0": "Conclude",
+                "1": "State probability; check unusual; interpret."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Key Formulas",
+          "formula": "$$ \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}}, \\qquad z = \\frac{\\bar{x} - \\mu}{\\sigma_{\\bar{x}}} $$",
+          "notes": [
+            "Use standard error in z formula.",
+            "CLT conditions apply."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full Blueprint: Between Two Means",
+          "prompt": "Use blueprint: Mean price of gasoline is $2.714 with σ = $0.045. Sample of 32 stations. Find P(2.695 < x̄ < 2.725).",
+          "steps": [
+            "Understand: μ = 2.714, σ = 0.045, n = 32, region between 2.695 and 2.725.",
+            "Solve: standard error = 0.045/√32 ≈ 0.00796. z₁ = (2.695-2.714)/0.00796 ≈ -2.39, z₂ = (2.725-2.714)/0.00796 ≈ 1.38. Areas: 0.0084 and 0.9162; probability = 0.9162 - 0.0084 = 0.9078.",
+            "Conclude: There is about a 90.8% chance the sample mean is in that range."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Full Blueprint: Less Than",
+          "prompt": "Use blueprint: Mean annual salary for specialists is $63,500 with σ = $6100. Sample of 35. Find P(x̄ < 60000).",
+          "peerPrompt": "Explain to a partner: Why is the z-score negative? What does the probability tell us?",
+          "minLength": 2,
+          "steps": [
+            "Understand: μ = 63500, σ = 6100, n = 35, left tail.",
+            "Solve: standard error = 6100/√35 ≈ 1031.1. z = (60000-63500)/1031.1 ≈ -3.39. Area ≈ 0.0003.",
+            "Conclude: Probability is 0.0003, very unusual; suggests the true mean may be lower."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Decide and Compute",
+          "prompt": "Use blueprint: Heights of women have μ = 64.3 inches, σ = 2.6 inches, normal. Sample of 60. Find P(x̄ > 66).",
+          "steps": [
+            "Understand: μ = 64.3, σ = 2.6, n = 60, right tail.",
+            "Solve: standard error = 2.6/√60 ≈ 0.3357. z = (66-64.3)/0.3357 ≈ 5.06. Area right ≈ 0.0000.",
+            "Conclude: Probability is extremely small; unusual event."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check CLT Conditions",
+        "body": "Before computing, verify: either n ≥ 30 or population is normal. Otherwise, the normal approximation may not be valid."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "In the Understand phase, what four values must you identify?",
+          "answer": "mu, sigma, n, xbar",
+          "hints": [
+            "Population mean, standard deviation, sample size, sample mean(s).",
+            "$\\mu$, $\\sigma$, $n$, $\\bar{x}$."
+          ],
+          "feedbackIfWrong": "Identify $\\mu$, $\\sigma$, $n$, and the sample mean(s) or region."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "In the Solve phase, first compute the standard error using the formula $\\sigma_{\\bar{x}} = \\sigma / $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "sqrt(n)",
+                "square root of n"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the square root of the sample size.",
+            "$\\sqrt{n}$."
+          ],
+          "feedbackIfWrong": "Standard error = $\\sigma/\\sqrt{n}$."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "If a probability for a sample mean is 0.0003, is the event unusual? (yes/no)",
+          "answer": "yes",
+          "hints": [
+            "Compare to 0.05.",
+            "0.0003 < 0.05."
+          ],
+          "feedbackIfWrong": "Yes, 0.0003 is much less than 0.05, very unusual."
+        }
+      ]
+    }
+  ],
+  "presenterNotes": [
+    "Start with a concrete small population to build intuition for sampling distributions. List all samples and compute means.",
+    "Introduce the CLT gradually: first for normal populations (any n), then for non-normal with n ≥ 30. Use visual sketches.",
+    "The z-score formula for sample means is central. Emphasize the standard error in the denominator.",
+    "Contrast individual and sample mean probabilities to show why averages are more reliable.",
+    "Use the blueprint to tie everything together. Practice with real-world data."
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

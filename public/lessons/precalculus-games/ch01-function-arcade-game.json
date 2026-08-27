@@ -1,0 +1,118 @@
+{
+  "type": "math-game",
+  "id": "ch01-function-arcade",
+  "courseId": "precalculus",
+  "title": "Function Arcade",
+  "subtitle": "Eight machines in the pool — six drawn each run. Tap, type, match, and sort before the clock kills you.",
+  "description": "A mixed-mechanic arcade run through Chapter 1. Every run draws six rounds from a pool of eight, so answer positions never settle in.",
+  "chapterHint": "Chapter 1 · Functions review",
+  "game": "choice-rounds",
+  "promptLabel": "Take the shot",
+  "lives": 3,
+  "timer": 40,
+  "roundsPerRun": 6,
+  "rounds": [
+    {
+      "kind": "choice",
+      "prompt": "Shift $f(x) = x^2$ right 3 and down 2. Which equation lands the shot?",
+      "choices": [
+        { "id": "a", "label": "$y = (x - 3)^2 - 2$" },
+        { "id": "b", "label": "$y = (x + 3)^2 - 2$" },
+        { "id": "c", "label": "$y = (x - 3)^2 + 2$" },
+        { "id": "d", "label": "$y = (x - 2)^2 - 3$" }
+      ],
+      "correctId": "a",
+      "hint": "Inside the parentheses moves the opposite way you expect.",
+      "explain": "Clean hit! $x - 3$ slides it right 3, and the $-2$ outside drops it 2.",
+      "missExplain": "Trap sprung! $x + 3$ shifts LEFT. Right 3 needs $x - 3$ inside, down 2 needs $-2$ outside."
+    },
+    {
+      "kind": "true-false",
+      "prompt": "Every graph that passes the vertical line test also has an inverse function.",
+      "answer": false,
+      "explain": "Boom — false. The vertical line test only proves it is a function; you need the HORIZONTAL line test for an inverse.",
+      "missExplain": "Careful — vertical line test means it IS a function. One-to-one (horizontal line test) is what buys you an inverse."
+    },
+    {
+      "kind": "input",
+      "prompt": "Let $f(x) = 2x^2 - 5$. Fire off the value of $f(-3)$.",
+      "answer": "13",
+      "accept": ["13", "+13"],
+      "hint": "Square before you multiply — the negative disappears.",
+      "explain": "Clean hit! $(-3)^2 = 9$, then $2(9) - 5 = 13$.",
+      "missExplain": "Trap sprung! Square first: $(-3)^2 = 9$. Then $2(9) - 5 = 13$, not $-23$."
+    },
+    {
+      "kind": "match",
+      "prompt": "Connect each parent function to the feature that gives it away.",
+      "pairs": [
+        { "id": "p1", "left": "$y = \\sqrt{x}$", "right": "Domain $x \\ge 0$" },
+        { "id": "p2", "left": "$y = \\frac{1}{x}$", "right": "Asymptotes at $x = 0$ and $y = 0$" },
+        { "id": "p3", "left": "$y = |x|$", "right": "V-shape with range $y \\ge 0$" },
+        { "id": "p4", "left": "$y = x^3$", "right": "Odd, no turning points" }
+      ],
+      "explain": "Locked in! Each parent has one signature feature — that is your fastest identification tool.",
+      "missExplain": "Almost — remember $\\frac{1}{x}$ owns the asymptote pair, while $\\sqrt{x}$ is the one with a restricted domain."
+    },
+    {
+      "kind": "multi",
+      "prompt": "Select EVERY function whose domain is all real numbers.",
+      "choices": [
+        { "id": "a", "label": "$f(x) = x^3 - 4x$" },
+        { "id": "b", "label": "$f(x) = \\sqrt{x - 1}$" },
+        { "id": "c", "label": "$f(x) = \\frac{2}{x + 5}$" },
+        { "id": "d", "label": "$f(x) = |x| + 7$" }
+      ],
+      "correctIds": ["a", "d"],
+      "hint": "Only radicals and denominators can block inputs here.",
+      "explain": "Clean sweep! Polynomials and absolute value accept every input; the radical needs $x \\ge 1$ and the fraction dies at $x = -5$.",
+      "missExplain": "Trap sprung! $\\sqrt{x - 1}$ needs $x \\ge 1$ and $\\frac{2}{x + 5}$ breaks at $x = -5$, so only the polynomial and the absolute value survive."
+    },
+    {
+      "kind": "sort",
+      "prompt": "Sort each function by its symmetry.",
+      "bins": [
+        { "id": "even", "label": "Even" },
+        { "id": "odd", "label": "Odd" },
+        { "id": "neither", "label": "Neither" }
+      ],
+      "items": [
+        { "id": "i1", "label": "$f(x) = x^4 - 2x^2$", "binId": "even" },
+        { "id": "i2", "label": "$f(x) = x^3 - x$", "binId": "odd" },
+        { "id": "i3", "label": "$f(x) = x^2 + x$", "binId": "neither" },
+        { "id": "i4", "label": "$f(x) = \\frac{1}{x}$", "binId": "odd" }
+      ],
+      "hint": "Test $f(-x)$: same means even, opposite means odd.",
+      "explain": "Checkpoint cleared! Even powers only means even; odd powers only means odd; mix them and you get neither.",
+      "missExplain": "Trap sprung! $x^2 + x$ mixes an even and an odd power, so $f(-x)$ is neither $f(x)$ nor $-f(x)$."
+    },
+    {
+      "kind": "order",
+      "prompt": "Line these values up from smallest to largest.",
+      "orderLabel": "Tap them smallest → largest",
+      "items": [
+        { "id": "a", "label": "$\\frac{12}{4}$" },
+        { "id": "b", "label": "$\\sqrt{16}$" },
+        { "id": "c", "label": "$|-5|$" },
+        { "id": "d", "label": "$2^3$" }
+      ],
+      "correctOrder": ["a", "b", "c", "d"],
+      "explain": "Spot on! They simplify to $3, 4, 5, 8$.",
+      "missExplain": "Almost — simplify first: $\\frac{12}{4} = 3$, $\\sqrt{16} = 4$, $|-5| = 5$, $2^3 = 8$."
+    },
+    {
+      "kind": "choice",
+      "prompt": "With $f(x) = x^2 + 1$ and $g(x) = x - 3$, what is $(f \\circ g)(x)$?",
+      "choices": [
+        { "id": "a", "label": "$(x - 3)^2 + 1$" },
+        { "id": "b", "label": "$x^2 + 1 - 3$" },
+        { "id": "c", "label": "$x^2 - 3$" },
+        { "id": "d", "label": "$(x^2 + 1)(x - 3)$" }
+      ],
+      "correctId": "a",
+      "hint": "$(f \\circ g)(x)$ means $f$ eats $g$.",
+      "explain": "Clean hit! $(f \\circ g)(x) = f(g(x))$, so every $x$ in $f$ becomes $x - 3$.",
+      "missExplain": "Trap sprung! That is $g(f(x))$. Composition order matters: $f \\circ g$ drops $g$ INTO $f$."
+    }
+  ]
+}

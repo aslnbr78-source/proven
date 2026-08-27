@@ -1,0 +1,789 @@
+{
+  "title": "Conditional Probability",
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Block 1: Emphasize the table method for conditional probabilities. The formula P(B|A) = (number in A and B)/(number in A) is intuitive when using a two‑way table.",
+    "Block 2: Independence vs. dependence is a crucial distinction. Use the coin/die vs. cards without replacement examples. The formal definition via conditional probability is important.",
+    "Block 3: The Multiplication Rule ties conditional probability and independence together. Work through both dependent and independent examples, stressing when to use which.",
+    "Block 4: The 'at least one' shortcut with the complement is a powerful technique. Drill it with several examples; it appears frequently in later chapters.",
+    "Block 5: The blueprint summarizes all problem types. Encourage students to first identify what they're asked to find, then pick the right formula. The decision flowchart is a good reference."
+  ],
+  "blocks": [
+    {
+      "examples": [
+        {
+          "prompt": "Two cards are drawn from a standard deck without replacement. Find the probability the second card is a queen, given the first is a king.",
+          "role": "guided",
+          "title": "Example A – Cards Without Replacement",
+          "steps": [
+            "Given the first card was a king, the deck now has 51 cards, with all 4 queens still present.",
+            "So the conditional probability is: $ P(\\text{Queen second} \\mid \\text{King first}) = \\frac{4}{51} \\approx 0.078 $.",
+            "Note that without the condition, $ P(\\text{Queen}) = 4/52 \\approx 0.077 $. They differ because the events are dependent."
+          ]
+        },
+        {
+          "title": "Example B – Gene and IQ",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why is the denominator 72, not 102?",
+          "prompt": "Using the table, find $ P(\\text{High IQ} \\mid \\text{Gene present}) $ and explain what it means.",
+          "steps": [
+            "The condition 'gene present' restricts the sample space to the 72 children with the gene.",
+            "Among those 72, 33 have a high IQ.",
+            "So $ P(\\text{High IQ} \\mid \\text{Gene present}) = \\frac{33}{72} \\approx 0.458 $.",
+            "This means about 45.8% of children with the gene have a high IQ."
+          ]
+        },
+        {
+          "steps": [
+            "Condition: no gene → sample space size = 30.",
+            "Among those, 11 have normal IQ.",
+            "Probability = $ \\frac{11}{30} \\approx 0.367 $.",
+            "So about 36.7% of children without the gene have a normal IQ."
+          ],
+          "role": "independent",
+          "prompt": "From the same table, find the probability that a child has a normal IQ, given that the child does NOT have the gene.",
+          "title": "Example C – Your Turn"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "",
+              "Gene Present ($A$)",
+              "Gene Not Present ($A'$)",
+              "Total"
+            ],
+            "title": "Gene and IQ Study (n = 102 children)",
+            "rows": [
+              {
+                "0": "High IQ ($B$)",
+                "1": "33",
+                "2": "19",
+                "3": "52"
+              },
+              {
+                "0": "Normal IQ ($B'$)",
+                "1": "39",
+                "2": "11",
+                "3": "50"
+              },
+              {
+                "0": "Total",
+                "1": "72",
+                "2": "30",
+                "3": "102"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$P(B \\mid A) = \\frac{P(A \\text{ and } B)}{P(A)}$$ $$P(B \\mid A) = \\frac{\\text{outcomes in } A \\cap B}{\\text{outcomes in } A}$$",
+          "title": "Conditional Probability",
+          "legend": [
+            {
+              "symbol": "$ A \\cap B $",
+              "meaning": "intersection: outcomes that belong to both $A$ and $B$",
+              "tone": "core"
+            }
+          ]
+        },
+        "explanation": [
+          "A [[kw:conditional probability]] is the probability of an event occurring, given that another event has already occurred.",
+          "The notation $ P(B \\mid A) $ reads 'the probability of $ B $, given $ A $'.",
+          "To compute $ P(B \\mid A) $, restrict the sample space to only those outcomes in event $ A $, then find the fraction of those that are in $ B $.",
+          "Formula: $ P(B \\mid A) = \\frac{P(A \\text{ and } B)}{P(A)} $, or when outcomes are equally likely, $ P(B \\mid A) = \\frac{\\text{Number of outcomes in both } A \\text{ and } B}{\\text{Number of outcomes in } A} $."
+        ]
+      },
+      "title": "Conditional Probability",
+      "teacherCues": [
+        "Ask: 'If I draw a card and tell you it's a king, what's the chance the next card is a queen?'",
+        "Show the gene-IQ table and ask students to find the probability of high IQ given the gene is present."
+      ],
+      "id": "conditional-probability",
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "The notation $P(B \\mid A)$ is read as 'the probability of B, ___ A'.",
+          "hints": [
+            "It's a conditional probability.",
+            "Think of the vertical bar as 'given that'."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "given",
+                "Given"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "$P(B \\mid A)$ is the probability of B given A."
+        },
+        {
+          "answer": "33/72",
+          "prompt": "From the gene-IQ table, what is the probability a child has high IQ, given the gene is present? (Answer as a fraction, e.g., 33/72)",
+          "id": "q1-2",
+          "feedbackIfWrong": "P(High IQ | Gene) = 33/72 ≈ 0.458.",
+          "answers": [
+            "33/72",
+            "11/24"
+          ],
+          "hints": [
+            "Look at the 'Gene Present' column.",
+            "High IQ count among those is 33, total gene present is 72."
+          ],
+          "type": "short-answer"
+        },
+        {
+          "type": "short-answer",
+          "answer": "4/52",
+          "hints": [
+            "With replacement, the deck is restored.",
+            "The probability reverts to the unconditional probability."
+          ],
+          "feedbackIfWrong": "With replacement, P(Queen) = 4/52 = 1/13, regardless of the first card.",
+          "id": "q1-3",
+          "answers": [
+            "4/52",
+            "1/13",
+            "0.0769"
+          ],
+          "prompt": "If two cards are drawn without replacement, the probability of a second queen given first king is 4/51. What would it be if the first card were replaced?"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A genetic test shows a child has a certain gene. How likely is it that the child has a high IQ? This isn't just the overall probability of high IQ — it's conditional on knowing the gene result. Conditional probability lets us update probabilities when we gain new information."
+      },
+      "confusionCorner": {
+        "title": "$P(B \\mid A)$ Is Not $P(A \\mid B)$",
+        "body": "These two conditional probabilities are usually different. For example, $ P(\\text{High IQ} \\mid \\text{Gene}) $ is not the same as $ P(\\text{Gene} \\mid \\text{High IQ}) $. [[imp:Read the 'given' part carefully — it defines the reduced sample space.]]"
+      }
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Independent",
+              "meaning": "knowledge of one event does not change the probability of the other"
+            }
+          ],
+          "title": "Independence Test",
+          "formula": "$$\\text{If } P(B \\mid A) = P(B) \\;\\Longrightarrow\\; A \\text{ and } B \\text{ are independent}$$ $$\\text{If } P(B \\mid A) \\neq P(B) \\;\\Longrightarrow\\; A \\text{ and } B \\text{ are dependent}$$"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Situation",
+              "Events",
+              "Independent? Why?"
+            ],
+            "title": "Independence vs. Dependence",
+            "rows": [
+              {
+                "0": "Coin and die",
+                "1": "Toss head, roll 6",
+                "2": "Yes. $P(6 \\mid H) = 1/6 = P(6)$."
+              },
+              {
+                "0": "Cards without replacement",
+                "1": "King first, Queen second",
+                "2": "No. $P(Q \\mid K) = 4/51 \\neq 4/52 = P(Q)$."
+              },
+              {
+                "0": "Knee surgeries",
+                "1": "Success of each",
+                "2": "Yes. Each surgery's outcome is independent of others."
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "Two events $A$ and $B$ are [[kw:independent]] if the occurrence of one does [[imp:not affect]] the probability of the other.",
+          "Formally, $A$ and $B$ are independent if $ P(B \\mid A) = P(B) $ or equivalently $ P(A \\mid B) = P(A) $.",
+          "If $ P(B \\mid A) \\neq P(B) $, the events are [[kw:dependent]].",
+          "Examples: Coin toss and die roll are independent. Drawing cards without replacement is dependent.",
+          "Real-world examples: Smoking and lung disease are dependent; eye color and favorite food are likely independent."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Independence ≠ Mutual Exclusivity",
+        "body": "Do not confuse independent with mutually exclusive. Independent events can occur together; mutually exclusive events cannot. In fact, mutually exclusive events with non‑zero probabilities are always [[imp:dependent]] because if one occurs, the other cannot."
+      },
+      "title": "Independent and Dependent Events",
+      "discoveryHook": {
+        "scenario": "Some events have no influence on each other — like tossing a coin and rolling a die. Others do — like drawing two cards without replacement. Identifying independence is crucial because it simplifies probability calculations dramatically."
+      },
+      "id": "independent-dependent",
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Identifying Independence",
+          "prompt": "Decide if the events are independent: (1) Selecting a king, not replacing it, then selecting a queen. (2) Tossing a head, then rolling a 6.",
+          "steps": [
+            "For cards without replacement: $ P(\\text{Queen}) = 4/52 $, but $ P(\\text{Queen} \\mid \\text{King}) = 4/51 $. They are not equal → [[kw:dependent]].",
+            "For coin and die: $ P(6) = 1/6 $, $ P(6 \\mid H) = 1/6 $. Equal → [[kw:independent]].",
+            "The key is whether the first event changes the probability of the second."
+          ]
+        },
+        {
+          "title": "Example B – Real-World Dependence",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does 'increased risk' imply dependence?",
+          "minLength": 2,
+          "steps": [
+            "If they were independent, having sleep apnea would not change the probability of high blood pressure.",
+            "'Increased risk' means $ P(\\text{High BP} \\mid \\text{Apnea}) > P(\\text{High BP}) $.",
+            "Because the probability changes, the events are [[kw:dependent]].",
+            "Many medical conditions are dependent events."
+          ],
+          "prompt": "A study shows people with sleep apnea are at increased risk of high blood pressure. Are these events independent?"
+        },
+        {
+          "steps": [
+            "From the table: $ P(\\text{High IQ}) = 52/102 \\approx 0.510 $.",
+            "$ P(\\text{High IQ} \\mid \\text{Gene}) = 33/72 \\approx 0.458 $.",
+            "Since $ 0.458 \\neq 0.510 $, the events are [[kw:dependent]].",
+            "The gene appears to lower the chance of high IQ slightly in this sample."
+          ],
+          "prompt": "Does the gene‑IQ table suggest that having the gene and having high IQ are independent events? Check using probabilities.",
+          "title": "Example C – Genetics",
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "Two events are ___ if the occurrence of one does not affect the probability of the other.",
+          "type": "fill-blank",
+          "id": "q2-1",
+          "hints": [
+            "It starts with 'i'.",
+            "Coin toss and die roll are examples."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "independent",
+                "Independent"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Independent events have no influence on each other."
+        },
+        {
+          "feedbackIfWrong": "Since $P(B \\mid A) = P(B)$, the events are independent.",
+          "hints": [
+            "Compare $P(B \\mid A)$ with $P(B)$.",
+            "If they are equal, the events are independent."
+          ],
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "prompt": "If $P(B) = 0.5$ and $P(B \\mid A) = 0.5$, are $A$ and $B$ independent? (Yes or No)",
+          "type": "short-answer",
+          "answer": "Yes",
+          "id": "q2-2"
+        },
+        {
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "feedbackIfWrong": "The probabilities are not equal, so the events are dependent.",
+          "id": "q2-3",
+          "hints": [
+            "The probabilities are different.",
+            "The first draw changes the second."
+          ],
+          "prompt": "Drawing two cards without replacement: the probability of second Queen given first King is 4/51, while P(Queen) = 4/52. Are these events dependent?",
+          "answer": "Yes",
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Toss a coin and roll a die. Ask: 'Does the coin's outcome change the die's probabilities?' Then draw without replacement to contrast.",
+        "Write: Independent if $P(B \\mid A) = P(B)$."
+      ]
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "$ P(\\text{King}) = \\frac{4}{52} $.",
+            "Given the king was drawn and not replaced, $ P(\\text{Queen} \\mid \\text{King}) = \\frac{4}{51} $.",
+            "$ P(\\text{King and Queen}) = \\frac{4}{52} \\cdot \\frac{4}{51} = \\frac{16}{2652} \\approx 0.006 $.",
+            "Very unlikely — about 6 times in 1000."
+          ],
+          "prompt": "Two cards are drawn from a standard deck without replacement. Find the probability of selecting a king and then a queen.",
+          "title": "Example A – Dependent Sequence",
+          "role": "guided"
+        },
+        {
+          "prompt": "A coin is tossed and a die is rolled. Find the probability of getting a head and then a 6.",
+          "steps": [
+            "The coin toss and die roll are independent.",
+            "$ P(\\text{Head}) = \\frac{1}{2} $, $ P(6) = \\frac{1}{6} $.",
+            "$ P(\\text{Head and 6}) = \\frac{1}{2} \\cdot \\frac{1}{6} = \\frac{1}{12} \\approx 0.083 $.",
+            "No conditional probability needed because the events don't influence each other."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why can we simply multiply $P(\\text{head})$ and $P(6)$ without any conditional adjustment?",
+          "role": "peer-explain",
+          "title": "Example B – Independent Sequence",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Medical Residencies",
+          "role": "independent",
+          "steps": [
+            "Let $A$ = matched, $B$ = top‑three choice. $ P(A) = 0.93 $, $ P(B \\mid A) = 0.82 $.",
+            "The events are dependent; we need the general rule.",
+            "$ P(\\text{matched and top‑three}) = P(A) \\cdot P(B \\mid A) = 0.93 \\times 0.82 \\approx 0.763 $.",
+            "About 76.3% of seniors matched with a top‑three choice."
+          ],
+          "prompt": "93% of medical school seniors matched with a residency. Of those, 82% matched with a top‑three choice. Find the probability a randomly selected senior matched with a top‑three choice."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Want to know the chance of a king followed by a queen? Or of three successful surgeries in a row? The Multiplication Rule combines individual event probabilities — adjusting for dependence when needed — to give you the probability of a sequence of events."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Multiplication Rule]] finds the probability that two events $A$ and $B$ occur in sequence.",
+          "General formula: $ P(A \\text{ and } B) = P(A) \\cdot P(B \\mid A) $.",
+          "If $A$ and $B$ are [[imp:independent]], then $ P(B \\mid A) = P(B) $, so the rule simplifies to: $ P(A \\text{ and } B) = P(A) \\cdot P(B) $.",
+          "The rule can be extended to more than two events: for independent events, multiply their probabilities; for dependent events, adjust each conditional probability accordingly."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Situation",
+              "Formula",
+              "Example"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Dependent events",
+                "1": "$ P(A \\text{ and } B) = P(A) \\cdot P(B \\mid A) $",
+                "2": "King then Queen (no replacement): $ \\frac{4}{52} \\cdot \\frac{4}{51} $"
+              },
+              {
+                "0": "Independent events",
+                "1": "$ P(A \\text{ and } B) = P(A) \\cdot P(B) $",
+                "2": "Head then 6: $ \\frac{1}{2} \\cdot \\frac{1}{6} $"
+              }
+            ],
+            "title": "Multiplication Rule Summary"
+          }
+        ],
+        "formulaCard": {
+          "title": "Multiplication Rule Formulas",
+          "formula": "$$P(A \\text{ and } B) = P(A) \\cdot P(B \\mid A)$$ $$\\text{If independent: } P(A \\text{ and } B) = P(A) \\cdot P(B)$$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "conditional probability of $B$ given $A$",
+              "symbol": "$ P(B \\mid A) $"
+            }
+          ]
+        }
+      },
+      "confusionCorner": {
+        "title": "Don't Multiply Unconditionally!",
+        "body": "If events are dependent, you must use $ P(B \\mid A) $, not $ P(B) $. Forgetting to check independence can lead to wrong probabilities. [[imp:Always ask: Does the first event change the probability of the second?]]"
+      },
+      "id": "multiplication-rule",
+      "title": "The Multiplication Rule",
+      "teacherCues": [
+        "Write the general rule: $P(A \\text{ and } B) = P(A) \\cdot P(B \\mid A)$. Then ask: 'What if they're independent?' Simplify to $P(A) \\cdot P(B)$.",
+        "Work through the two-card problem and the coin-and-die problem side by side."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "The formula is $P(A \\text{ and } B) = P(A) \\cdot P(B \\mid A)$.",
+          "id": "q3-1",
+          "blanks": [
+            {
+              "accept": [
+                "$P(B \\mid A)$",
+                "P(B|A)",
+                "P(B given A)"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the conditional probability of B given A.",
+            "Not just P(B) unless independent."
+          ],
+          "prompt": "The general Multiplication Rule is $ P(A \\text{ and } B) = P(A) \\cdot $ ___."
+        },
+        {
+          "hints": [
+            "No conditional probability needed.",
+            "Just multiply the individual probabilities."
+          ],
+          "answers": [
+            "P(A) * P(B)",
+            "P(A) times P(B)",
+            "$P(A) \\cdot P(B)$",
+            "P(A)P(B)"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "For independent events, $P(A \\text{ and } B) = P(A) \\cdot P(B)$.",
+          "prompt": "If events A and B are independent, what does the Multiplication Rule simplify to? (Write the formula in words: P(A) times P(B))",
+          "answer": "P(A) * P(B)",
+          "id": "q3-2"
+        },
+        {
+          "hints": [
+            "Each toss is independent.",
+            "$P(H) = 1/2$, so multiply: $1/2 \\times 1/2$."
+          ],
+          "feedbackIfWrong": "$P(\\text{HH}) = (1/2) \\times (1/2) = 1/4$.",
+          "answers": [
+            "1/4",
+            "0.25"
+          ],
+          "type": "short-answer",
+          "prompt": "A coin is tossed twice. Find the probability of getting two heads. (Give a fraction.)",
+          "id": "q3-3",
+          "answer": "1/4"
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "'At least one' includes one, two, three, ... up to n. 'Exactly one' is a different, more complex calculation. Always clarify which is being asked. [[imp:When you see 'at least', think complement.]]",
+        "title": "At Least One ≠ Exactly One"
+      },
+      "title": "'At Least One' Probability and Applications",
+      "id": "at-least-one",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "The complement of 'at least one' is 'none' (no successes).",
+          "blanks": [
+            {
+              "accept": [
+                "no",
+                "zero",
+                "none"
+              ]
+            }
+          ],
+          "id": "q4-1",
+          "hints": [
+            "It's the opposite extreme.",
+            "Zero occurrences."
+          ],
+          "prompt": "The complement of 'at least one success' is '___ successes'."
+        },
+        {
+          "prompt": "If the probability of a defective item is 0.01 and you select three items independently, what is the probability that all three are NOT defective? (Give as a decimal to four places, e.g., 0.9703)",
+          "type": "short-answer",
+          "hints": [
+            "$P(\\text{not defective}) = 1 - 0.01 = 0.99$.",
+            "Raise 0.99 to the power of 3."
+          ],
+          "answer": "0.9703",
+          "answers": [
+            "0.9703",
+            "0.97",
+            ".9703"
+          ],
+          "feedbackIfWrong": "$0.99^3 = 0.970299 \\approx 0.9703$.",
+          "id": "q4-2"
+        },
+        {
+          "type": "short-answer",
+          "answer": "0.030",
+          "answers": [
+            "0.030",
+            "0.03",
+            ".030"
+          ],
+          "prompt": "Using the same defect probability (0.01) for three items, what is the probability that at least one is defective? (Answer to three decimal places, e.g., 0.030)",
+          "hints": [
+            "$P(\\text{at least one defective}) = 1 - P(\\text{none defective})$.",
+            "Use the result from the previous question."
+          ],
+          "id": "q4-3",
+          "feedbackIfWrong": "$1 - 0.9703 = 0.0297 \\approx 0.030$."
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'If a surgery has 85% success, what's the chance at least one of three succeeds?' Show complement method.",
+        "Write: $P(\\text{at least one}) = 1 - P(\\text{none})$."
+      ],
+      "concept": {
+        "explanation": [
+          "The phrase '[[imp:at least one]]' means one or more occurrences.",
+          "The complement of 'at least one' is '[[imp:none]]' (zero occurrences).",
+          "Thus, $ P(\\text{at least one}) = 1 - P(\\text{none}) $.",
+          "This method is especially useful when the events are independent, because $ P(\\text{none}) $ can be computed by multiplying the probabilities of each individual failure."
+        ],
+        "formulaCard": {
+          "formula": "$$P(\\text{at least one success}) = 1 - P(\\text{all failures})$$ $$\\text{For independent events: } P(\\text{all failures}) = (P(\\text{failure}))^n$$",
+          "legend": [
+            {
+              "meaning": "number of trials",
+              "symbol": "$n$",
+              "tone": "core"
+            }
+          ],
+          "title": "The 'At Least One' Shortcut"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Event",
+              "Formula",
+              "Probability"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "All three successful",
+                "1": "$ 0.85^3 $",
+                "2": "$ \\approx 0.614 $"
+              },
+              {
+                "0": "None successful",
+                "1": "$ (1-0.85)^3 = 0.15^3 $",
+                "2": "$ \\approx 0.003 $"
+              },
+              {
+                "0": "At least one successful",
+                "1": "$ 1 - 0.15^3 $",
+                "2": "$ \\approx 0.997 $"
+              }
+            ],
+            "title": "Knee Surgery: Success Probability = 0.85 per Surgery"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example A – At Least One Surgery Succeeds",
+          "prompt": "Knee surgery has a success probability of 0.85. Three surgeries are performed. Find the probability that at least one is successful.",
+          "role": "guided",
+          "steps": [
+            "Success probability = 0.85, so failure probability = $ 1 - 0.85 = 0.15 $.",
+            "The complement of 'at least one success' is 'all fail'.",
+            "$ P(\\text{all fail}) = 0.15^3 = 0.003375 \\approx 0.003 $.",
+            "$ P(\\text{at least one success}) = 1 - 0.003375 = 0.996625 \\approx 0.997 $.",
+            "It's almost certain that at least one surgery succeeds."
+          ]
+        },
+        {
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: How does the complement method reduce work when $n$ is large?",
+          "steps": [
+            "With 3 surgeries, there are 7 success‑containing patterns; with 10 surgeries, there would be $2^{10} - 1 = 1023$ patterns.",
+            "The complement method replaces many calculations with one: $ 1 - P(\\text{all fail}) $.",
+            "This scales easily: $ P(\\text{at least one}) = 1 - (P(\\text{failure}))^n $.",
+            "It's a powerful shortcut for independent repeated trials."
+          ],
+          "prompt": "For three surgeries, the outcomes with at least one success are SSS, SSF, SFS, FSS, SFF, FSF, FFS — 7 patterns. Explain why the complement method is preferable.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "title": "Example B – Why Not List All?"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Blood Type",
+          "prompt": "The probability a person in the U.S. has type B+ blood is 9%. Five people are selected at random. Find the probability at least one has B+ blood.",
+          "steps": [
+            "$ P(\\text{B+}) = 0.09 $, so $ P(\\text{not B+}) = 0.91 $.",
+            "$ P(\\text{none B+}) = 0.91^5 \\approx 0.624 $.",
+            "$ P(\\text{at least one B+}) = 1 - 0.624 = 0.376 $.",
+            "There's about a 37.6% chance that at least one of the five has B+ blood."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Three surgeries, each with an 85% success rate. You want the probability that at least one succeeds. Listing all 7 success-failure patterns is tedious. The complement method — finding the chance that all fail and subtracting from 1 — is a brilliant shortcut."
+      }
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Conditional: $P(B \\mid A)$",
+                "1": "Reduce sample space to $A$",
+                "2": "$ P(B \\mid A) = \\frac{|A \\cap B|}{|A|} $"
+              },
+              {
+                "0": "Sequence (dependent)",
+                "1": "Adjust for first outcome",
+                "2": "$ P(A) \\cdot P(B \\mid A) $"
+              },
+              {
+                "0": "Sequence (independent)",
+                "1": "Multiply probabilities",
+                "2": "$ P(A) \\cdot P(B) $"
+              },
+              {
+                "0": "At least one",
+                "1": "Complement: none",
+                "2": "$ 1 - P(\\text{none}) $"
+              }
+            ],
+            "title": "Blueprint Decision Guide",
+            "headers": [
+              "Question Type",
+              "Key Idea",
+              "Formula"
+            ]
+          }
+        ],
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Read the problem. Define events $A$ and $B$. Determine if they are independent or dependent. Identify if you need $P(A \\text{ and } B)$, $P(B \\mid A)$, or $P(\\text{at least one})$.",
+          "2. [[kw:Solve]]: Select the appropriate rule. For conditional probability: $ P(B \\mid A) = \\frac{P(A \\text{ and } B)}{P(A)} $. For sequence: $ P(A \\text{ and } B) = P(A) \\cdot P(B \\mid A) $ (or $P(A) \\cdot P(B)$ if independent). For 'at least one': $ 1 - P(\\text{none}) $.",
+          "3. [[kw:Conclude]]: Compute the probability and interpret in context. Round appropriately. Check if the event is unusual ($P \\leq 0.05$)."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Problem} \\;\\begin{cases} \\text{Given } A, \\text{ find } B & \\;\\rightarrow\\; P(B \\mid A) \\\\ \\text{Sequence of events} & \\;\\begin{cases} \\text{Independent} & \\;\\rightarrow\\; P(A) \\cdot P(B) \\\\ \\text{Dependent} & \\;\\rightarrow\\; P(A) \\cdot P(B \\mid A) \\end{cases} \\\\ \\text{At least one} & \\;\\rightarrow\\; 1 - P(\\text{none}) \\end{cases}$$",
+          "legend": [
+            {
+              "symbol": "Key",
+              "tone": "core",
+              "meaning": "Identify independence first; it determines which multiplication rule to use."
+            }
+          ],
+          "title": "Blueprint Decision Flow"
+        }
+      },
+      "title": "Blueprint Aid: Solving Conditional Probability and Multiplication Rule Problems",
+      "teacherCues": [
+        "Project a word problem about medical testing or product assembly. Walk through the blueprint: Identify the sequence, check independence, choose the correct rule, compute.",
+        "Emphasize: 'Draw a tree diagram if the problem has multiple stages.'"
+      ],
+      "confusionCorner": {
+        "title": "Double‑Check the Denominator",
+        "body": "In conditional probability from tables, the denominator is the total of the given condition's row or column, not the grand total. A common mistake is using the overall total instead. [[imp:Always circle the 'given' group and use its size.]]"
+      },
+      "discoveryHook": {
+        "scenario": "From jury selection to medical screening, many real‑world probabilities involve sequences of events. The blueprint helps you systematically determine what's given, what's conditional, and which rule to apply — so you can confidently tackle any problem."
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "solve",
+                "Solve"
+              ]
+            }
+          ],
+          "id": "q5-1",
+          "hints": [
+            "It's the 'S' in Understand‑Solve‑Conclude.",
+            "You choose the appropriate rule."
+          ],
+          "prompt": "In the blueprint, after understanding the problem, the next step is to ___ by selecting the correct formula.",
+          "feedbackIfWrong": "The second step is Solve — apply the correct formula.",
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "Use the general multiplication rule.",
+            "$0.6 \\times 0.5 = ?$"
+          ],
+          "feedbackIfWrong": "$P(A \\text{ and } B) = P(A) \\cdot P(B \\mid A) = 0.6 \\times 0.5 = 0.3$.",
+          "type": "short-answer",
+          "prompt": "You are told $P(A)=0.6$, $P(B \\mid A)=0.5$, and $A$ and $B$ are dependent. What is $P(A \\text{ and } B)$?",
+          "id": "q5-2",
+          "answer": "0.3",
+          "answers": [
+            "0.3",
+            ".3",
+            "30%"
+          ]
+        },
+        {
+          "hints": [
+            "A positive test can also occur in healthy people.",
+            "We must account for the probability of a positive test when disease is absent."
+          ],
+          "id": "q5-3",
+          "feedbackIfWrong": "We need to consider false positives; Bayes' Theorem combines all these probabilities.",
+          "prompt": "A medical test is 99% accurate (P(positive | disease) = 0.99). If the disease is rare (P(disease) = 0.001), why isn't the probability of having the disease given a positive test simply 0.99? (Answer: Because we need to also consider ___)",
+          "type": "short-answer",
+          "answers": [
+            "false positives",
+            "base rate",
+            "the complement",
+            "P(disease')"
+          ],
+          "answer": "false positives"
+        }
+      ],
+      "id": "blueprint-conditional-multiplication",
+      "examples": [
+        {
+          "title": "Example A – Jury Selection",
+          "steps": [
+            "Understand: $A$ = female ($P=0.65$), $B \\mid A$ = works in health given female ($P=0.25$). They are dependent because the health‑field probability is conditioned on gender.",
+            "Solve: Use dependent multiplication rule: $ P(\\text{Female and Health}) = P(\\text{Female}) \\cdot P(\\text{Health} \\mid \\text{Female}) $.",
+            "$ = 0.65 \\times 0.25 = 0.1625 $.",
+            "Conclude: About 16.25% of the jury pool are female and work in a health field."
+          ],
+          "prompt": "In a jury pool, 65% are female. Of females, 25% work in a health field. Find the probability a randomly selected person is female and works in a health field.",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Understand: Pass = 0.95, fail = 0.05. 'At least one fails' complement is 'all four pass'.",
+            "Solve: $ P(\\text{all pass}) = 0.95^4 \\approx 0.8145 $.",
+            "$ P(\\text{at least one fail}) = 1 - 0.8145 = 0.1855 $.",
+            "Conclude: There's about an 18.6% chance that at least one of the four will fail."
+          ],
+          "prompt": "A test has a 95% pass rate. If 4 randomly selected people take the test, what is the probability at least one fails?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why is it easier to find 'at least one fails' by computing the complement of 'all pass'?",
+          "title": "Example B – At Least One Pass"
+        },
+        {
+          "prompt": "A survey of 287 workers asked if they had one month's income saved for emergencies. 62 males out of 142 had less than one month's income; 83 females out of 145 had less. Find $P(\\text{less than one month} \\mid \\text{male})$.",
+          "role": "independent",
+          "title": "Example C – Conditional from a Table",
+          "steps": [
+            "Understand: Given the worker is male, find probability of having less than one month's income.",
+            "Solve: Restrict to the 142 males. Of those, 62 had less than one month.",
+            "$ P = 62/142 \\approx 0.437 $.",
+            "Conclude: About 43.7% of males have less than one month's income saved."
+          ]
+        }
+      ]
+    }
+  ],
+  "id": "chapter-3-2-conditional-probability",
+  "schemaVersion": 2,
+  "standards": [
+    "HSS.CP.A.3",
+    "HSS.CP.A.4",
+    "HSS.CP.B.6",
+    "HSS.CP.B.8"
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,588 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-4-2-unit-circle-trig",
+  "title": "Trigonometric Functions: The Unit Circle",
+  "standards": [
+    "HSF.TF.A.1",
+    "HSF.TF.A.2",
+    "HSF.TF.A.3"
+  ],
+  "blocks": [
+    {
+      "id": "unit-circle-real-numbers",
+      "title": "The Unit Circle and Real Numbers",
+      "teacherCues": [
+        "Draw a circle of radius 1 centered at (0,0). Ask: If we 'unwrap' the real number line around this circle, where does t=0 land? Where does t=π land?",
+        "Show a dynamic visual of the wrapping function: as t increases, the point moves counterclockwise. Ask: Why does t=2π land back at (1,0)?"
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine a glowing bead on a circular track of radius 1. As time t passes, the bead's position is described by coordinates (x,y). If the bead moves at a constant speed of 1 radian per second, after t seconds its position is exactly the point on the unit circle corresponding to t. Trigonometry captures this elegant dance!"
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:unit circle]] is a circle with radius 1 centered at the origin. Its equation is $$ x^2 + y^2 = 1 $$.",
+          "By 'wrapping' the real number line around the circle, each real number $ t $ corresponds to a unique point $ (x, y) $ on the unit circle.",
+          "$ t > 0 $ wraps counterclockwise; $ t < 0 $ wraps clockwise.",
+          "The point for $ t = 0 $ is $ (1, 0) $. Because the circumference is $ 2\\pi $, $ t = 2\\pi $ also maps to $ (1, 0) $.",
+          "This wrapping produces a periodic pattern: every $ 2\\pi $ units, the point repeats."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Key Quarter‑Circle Points ($ t $ in radians)",
+            "headers": [
+              "$ t $",
+              "Point $ (x, y) $",
+              "Location"
+            ],
+            "rows": [
+              {
+                "0": "$ 0 $",
+                "1": "$ (1, 0) $",
+                "2": "Rightmost"
+              },
+              {
+                "0": "$ \\frac{\\pi}{2} $",
+                "1": "$ (0, 1) $",
+                "2": "Top"
+              },
+              {
+                "0": "$ \\pi $",
+                "1": "$ (-1, 0) $",
+                "2": "Leftmost"
+              },
+              {
+                "0": "$ \\frac{3\\pi}{2} $",
+                "1": "$ (0, -1) $",
+                "2": "Bottom"
+              },
+              {
+                "0": "$ 2\\pi $",
+                "1": "$ (1, 0) $",
+                "2": "Rightmost (same as $ 0 $)"
+              }
+            ],
+            "caption": "Quarter‑circle points show how $ t $ maps to coordinates."
+          }
+        ],
+        "formulaCard": {
+          "title": "Unit Circle Wrapping",
+          "formula": "$$ t \\mapsto (x, y) \\quad \\text{on the unit circle} $$",
+          "notes": [
+            "Unit circle: $ x^2 + y^2 = 1 $, radius = 1",
+            "Circumference = $ 2\\pi $",
+            "$ t $ is the (signed) length of arc traced from $ (1,0) $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Locating $ t = \\pi $",
+          "prompt": "Find the point on the unit circle corresponding to $ t = \\pi $.",
+          "steps": [
+            "Start at $ (1,0) $ and wrap counterclockwise because $ t > 0 $.",
+            "The half‑circle distance is $ \\pi $ (since circumference = $ 2\\pi $).",
+            "After half a circle, the point is directly opposite at $ (-1, 0) $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Negative Wrap",
+          "prompt": "Find the point for $ t = -\\frac{\\pi}{2} $.",
+          "peerPrompt": "Explain to a partner: Why does a negative $ t $ mean moving clockwise? Where do you end up?",
+          "minLength": 2,
+          "steps": [
+            "Negative $ t $ means wrap clockwise from $ (1,0) $.",
+            "Distance $ \\frac{\\pi}{2} $ (quarter circle) clockwise lands at bottom.",
+            "The point is $ (0, -1) $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Beyond $ 2\\pi $",
+          "prompt": "Determine the point for $ t = \\frac{9\\pi}{2} $.",
+          "steps": [
+            "Subtract multiples of $ 2\\pi $: $ \\frac{9\\pi}{2} - 2\\pi = \\frac{9\\pi}{2} - \\frac{4\\pi}{2} = \\frac{5\\pi}{2} $.",
+            "Subtract another $ 2\\pi $: $ \\frac{5\\pi}{2} - 2\\pi = \\frac{\\pi}{2} $.",
+            "So $ t = \\frac{9\\pi}{2} $ corresponds to same point as $ \\frac{\\pi}{2} $: $ (0, 1) $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Is $ t $ an Angle or a Number?",
+        "body": "On the unit circle, $ t $ is both! The radian measure of the central angle equals the length of the arc from $ (1,0) $ to the point. So we can think of $ t $ as an angle (in radians) or as a distance along the circle."
+      },
+      "questions": [
+        {
+          "id": "q4-2-1-1",
+          "type": "fill-blank",
+          "prompt": "The unit circle has radius ___ and center at the origin.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "Its equation is $ x^2 + y^2 = 1 $.",
+            "Radius is the square root of 1."
+          ],
+          "feedbackIfWrong": "The unit circle has radius 1."
+        },
+        {
+          "id": "q4-2-1-2",
+          "type": "short-answer",
+          "prompt": "For $ t = 2\\pi $, which point on the unit circle is reached? (Answer like '(1,0)'.)",
+          "answer": "(1,0)",
+          "hints": [
+            "$ 2\\pi $ is a full revolution.",
+            "Start and end at $ (1,0) $."
+          ],
+          "feedbackIfWrong": "A full revolution returns to $ (1,0) $."
+        },
+        {
+          "id": "q4-2-1-3",
+          "type": "short-answer",
+          "prompt": "If $ t = -\\pi $, what point do you reach? (Answer like '(-1,0)'.)",
+          "answer": "(-1,0)",
+          "hints": [
+            "Negative means clockwise.",
+            "Half circle clockwise from $ (1,0) $ is the leftmost point."
+          ],
+          "feedbackIfWrong": "$ t = -\\pi $ corresponds to $ (-1, 0) $."
+        }
+      ]
+    },
+    {
+      "id": "trig-function-definitions",
+      "title": "Defining the Six Trigonometric Functions",
+      "teacherCues": [
+        "Draw a unit circle and pick a point (x,y) for a given t. Ask: What is sin t? (y). What is cos t? (x).",
+        "Write tan t = y/x. Ask: When is tan t undefined? (when x=0)"
+      ],
+      "discoveryHook": {
+        "scenario": "Picture a radar screen tracking an airplane. The screen is a unit circle, and the plane's coordinates (x,y) change over time t. The sine and cosine functions give the plane's height and horizontal position directly, while tangent gives the slope of the line from the center."
+      },
+      "concept": {
+        "explanation": [
+          "For any real number $ t $, let $ (x, y) $ be the point on the unit circle. Then the [[kw:trigonometric functions]] are:",
+          "$$ \\sin t = y, \\quad \\cos t = x, \\quad \\tan t = \\frac{y}{x} \\ (x \\neq 0) $$",
+          "$$ \\csc t = \\frac{1}{y} \\ (y \\neq 0), \\quad \\sec t = \\frac{1}{x} \\ (x \\neq 0), \\quad \\cot t = \\frac{x}{y} \\ (y \\neq 0) $$",
+          "Tangent and secant are undefined when $ x = 0 $ (e.g., $ t = \\frac{\\pi}{2} $).",
+          "Cotangent and cosecant are undefined when $ y = 0 $ (e.g., $ t = 0 $)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Trig Functions at a Glance",
+            "headers": [
+              "Function",
+              "Definition",
+              "Reciprocal"
+            ],
+            "rows": [
+              {
+                "0": "Sine (sin)",
+                "1": "$ y $",
+                "2": "Cosecant (csc)"
+              },
+              {
+                "0": "Cosine (cos)",
+                "1": "$ x $",
+                "2": "Secant (sec)"
+              },
+              {
+                "0": "Tangent (tan)",
+                "1": "$ \\frac{y}{x} $",
+                "2": "Cotangent (cot)"
+              }
+            ],
+            "caption": "Three pairs of reciprocal functions."
+          }
+        ],
+        "formulaCard": {
+          "title": "Unit Circle Definitions",
+          "formula": "$$ \\sin t = y, \\quad \\cos t = x, \\quad \\tan t = \\frac{y}{x} $$",
+          "notes": [
+            "csc t = 1/sin t, sec t = 1/cos t, cot t = 1/tan t",
+            "Domain restrictions: tan, sec undefined at $ x=0 $; cot, csc undefined at $ y=0 $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Evaluating at $ t = 0 $",
+          "prompt": "Find sin 0, cos 0, and tan 0.",
+          "steps": [
+            "At $ t=0 $, the point is $ (1,0) $, so $ x=1, y=0 $.",
+            "sin 0 = $ y = 0 $.",
+            "cos 0 = $ x = 1 $.",
+            "tan 0 = $ y/x = 0/1 = 0 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Undefined Tangent",
+          "prompt": "Why is tan(π/2) undefined?",
+          "peerPrompt": "Look at the unit circle point for $ \\pi/2 $. Why can't we divide by x?",
+          "minLength": 2,
+          "steps": [
+            "At $ t = \\pi/2 $, the point is $ (0,1) $, so $ x=0 $.",
+            "tan t = $ y/x $ would require division by zero.",
+            "Therefore, tan(π/2) is undefined."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Reciprocal Functions",
+          "prompt": "Evaluate sec(π) and csc(π).",
+          "steps": [
+            "At $ t = \\pi $, point is $ (-1, 0) $, so $ x=-1, y=0 $.",
+            "sec(π) = $ 1/x = 1/(-1) = -1 $.",
+            "csc(π) = $ 1/y = 1/0 $, which is undefined."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sine = y, Cosine = x",
+        "body": "Many students mix these up. An easy memory aid: **S**ine is the **S**econd coordinate (y). **C**osine is the **C**losest to 1 at $ t=0 $ (x). Or simply remember: 'Sine slides up, Cosine crawls right.'"
+      },
+      "questions": [
+        {
+          "id": "q4-2-2-1",
+          "type": "fill-blank",
+          "prompt": "On the unit circle, $ \\cos t $ equals the ___ -coordinate of the point.",
+          "blanks": [
+            {
+              "accept": [
+                "x"
+              ]
+            }
+          ],
+          "hints": [
+            "Cosine is the horizontal position.",
+            "At $ t=0 $, the coordinate is $ (1,0) $."
+          ],
+          "feedbackIfWrong": "Cosine is the x-coordinate."
+        },
+        {
+          "id": "q4-2-2-2",
+          "type": "short-answer",
+          "prompt": "What is the value of $ \\sin(\\pi/2) $? (Just the number.)",
+          "answer": "1",
+          "hints": [
+            "At $ \\pi/2 $, the point is $ (0,1) $.",
+            "Sine = y."
+          ],
+          "feedbackIfWrong": "$ \\sin(\\pi/2) = y = 1 $."
+        },
+        {
+          "id": "q4-2-2-3",
+          "type": "short-answer",
+          "prompt": "For which $ t $ values is $ \\tan t $ undefined? (Answer like 'pi/2'.)",
+          "answer": "pi/2",
+          "hints": [
+            "tan = y/x, undefined when x=0.",
+            "Where does the unit circle cross the y-axis?"
+          ],
+          "feedbackIfWrong": "Tangent is undefined at $ \\pi/2, 3\\pi/2 $, etc. Example: $ \\pi/2 $."
+        }
+      ]
+    },
+    {
+      "id": "evaluating-common-angles",
+      "title": "Evaluating Common Angles from the Unit Circle",
+      "teacherCues": [
+        "Draw the unit circle with the 16 special points (multiples of π/6 and π/4). Ask: How do we get the coordinates for π/6?",
+        "Using the 45‑45‑90 and 30‑60‑90 triangles, have students derive coordinates on the board."
+      ],
+      "discoveryHook": {
+        "scenario": "A surveyor uses a theodolite at the center of a circular plot. The theodolite's angle readings correspond to points on a unit circle. To calculate distances, they need the exact sine and cosine of angles like 30°, 45°, and 60°. Mastering these few special points unlocks a world of precise calculation."
+      },
+      "concept": {
+        "explanation": [
+          "By dividing the unit circle into 8 equal arcs (multiples of $ \\pi/4 $) or 12 equal arcs (multiples of $ \\pi/6 $), we get exact coordinates for key angles.",
+          "At $ \\pi/4 $, the point is $ (\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}) $ because it lies on $ y=x $.",
+          "At $ \\pi/6 $ and $ \\pi/3 $, the coordinates come from 30°‑60°‑90° triangles: $ (\\frac{\\sqrt{3}}{2}, \\frac{1}{2}) $ and $ (\\frac{1}{2}, \\frac{\\sqrt{3}}{2}) $.",
+          "From these first‑quadrant points, symmetry gives points in the other quadrants.",
+          "You can then evaluate all six trig functions exactly for these common angles."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Exact Coordinates for Common First‑Quadrant Angles",
+            "headers": [
+              "$ t $ (rad)",
+              "Degrees",
+              "Point $ (x,y) $"
+            ],
+            "rows": [
+              {
+                "0": "$ 0 $",
+                "1": "0°",
+                "2": "$ (1, 0) $"
+              },
+              {
+                "0": "$ \\frac{\\pi}{6} $",
+                "1": "30°",
+                "2": "$ (\\frac{\\sqrt{3}}{2}, \\frac{1}{2}) $"
+              },
+              {
+                "0": "$ \\frac{\\pi}{4} $",
+                "1": "45°",
+                "2": "$ (\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}) $"
+              },
+              {
+                "0": "$ \\frac{\\pi}{3} $",
+                "1": "60°",
+                "2": "$ (\\frac{1}{2}, \\frac{\\sqrt{3}}{2}) $"
+              },
+              {
+                "0": "$ \\frac{\\pi}{2} $",
+                "1": "90°",
+                "2": "$ (0, 1) $"
+              }
+            ],
+            "caption": "Memorize these coordinates — they are the foundation."
+          }
+        ],
+        "formulaCard": {
+          "title": "Common Angle Trig Values",
+          "formula": "$$ \\sin t = y, \\quad \\cos t = x $$",
+          "notes": [
+            "$ \\sin(\\pi/6)=1/2 $, $ \\cos(\\pi/6)=\\sqrt{3}/2 $",
+            "$ \\sin(\\pi/4)=\\sqrt{2}/2 $, $ \\cos(\\pi/4)=\\sqrt{2}/2 $",
+            "$ \\sin(\\pi/3)=\\sqrt{3}/2 $, $ \\cos(\\pi/3)=1/2 $",
+            "Use symmetry for other quadrants."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Evaluate $ \\sin(\\pi/6) $ and $ \\tan(\\pi/6) $",
+          "prompt": "Find $ \\sin(\\pi/6) $ and $ \\tan(\\pi/6) $ exactly.",
+          "steps": [
+            "At $ \\pi/6 $, the point is $ (\\sqrt{3}/2, 1/2) $.",
+            "$ \\sin(\\pi/6) = y = 1/2 $.",
+            "$ \\tan(\\pi/6) = y/x = (1/2) / (\\sqrt{3}/2) = 1/\\sqrt{3} = \\sqrt{3}/3 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Evaluate $ \\cos(5\\pi/4) $",
+          "prompt": "Find $ \\cos(5\\pi/4) $ using symmetry.",
+          "peerPrompt": "Start with the first‑quadrant angle $ \\pi/4 $. How does the sign of x change in Quadrant III?",
+          "minLength": 2,
+          "steps": [
+            "$ 5\\pi/4 = \\pi + \\pi/4 $, so it's in Quadrant III.",
+            "In Quadrant III, x is negative, and the magnitude is $ \\sqrt{2}/2 $.",
+            "Thus $ \\cos(5\\pi/4) = -\\sqrt{2}/2 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Evaluate All Six at $ t = -\\pi/3 $",
+          "prompt": "Find the six trig functions for $ t = -\\pi/3 $.",
+          "steps": [
+            "$ -\\pi/3 $ corresponds to clockwise 60°, point $ (1/2, -\\sqrt{3}/2) $.",
+            "$ \\sin = -\\sqrt{3}/2, \\cos = 1/2, \\tan = -\\sqrt{3} $.",
+            "$ \\csc = -2/\\sqrt{3} = -2\\sqrt{3}/3, \\sec = 2, \\cot = -1/\\sqrt{3} = -\\sqrt{3}/3 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Signs in Quadrants",
+        "body": "Remember the phrase 'All Students Take Calculus':\n[[imp:Q I: All positive (sin, cos, tan)]]\n[[imp:Q II: Sin positive; cos, tan negative]]\n[[imp:Q III: Tan positive; sin, cos negative]]\n[[imp:Q IV: Cos positive; sin, tan negative]]"
+      },
+      "questions": [
+        {
+          "id": "q4-2-3-1",
+          "type": "short-answer",
+          "prompt": "What is $ \\cos(\\pi/4) $? (Use 'sqrt(2)/2' format.)",
+          "answer": "sqrt(2)/2",
+          "hints": [
+            "$ \\pi/4 $ is 45°, point is $ (\\sqrt{2}/2, \\sqrt{2}/2) $.",
+            "Cosine = x."
+          ],
+          "feedbackIfWrong": "$ \\cos(\\pi/4) = \\sqrt{2}/2 $."
+        },
+        {
+          "id": "q4-2-3-2",
+          "type": "fill-blank",
+          "prompt": "The point on the unit circle at $ \\pi/3 $ is $ (1/2, \\sqrt{3}/2) $. So $ \\sin(\\pi/3) = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "sqrt(3)/2"
+              ]
+            }
+          ],
+          "hints": [
+            "Sine is the y-coordinate.",
+            "Look at the second coordinate."
+          ],
+          "feedbackIfWrong": "$ \\sin(\\pi/3) = y = \\sqrt{3}/2 $."
+        },
+        {
+          "id": "q4-2-3-3",
+          "type": "short-answer",
+          "prompt": "In which quadrant is $ \\tan t $ positive? (Answer I, II, III, or IV. Give only one where it's positive.)",
+          "answer": "III",
+          "hints": [
+            "All functions: All positive in I. Tan positive in III.",
+            "Recall 'All Students Take Calculus'."
+          ],
+          "feedbackIfWrong": "Tangent is positive in Quadrant III (and I)."
+        }
+      ]
+    },
+    {
+      "id": "domain-period-evenodd",
+      "title": "Domain, Period, and Even/Odd Properties",
+      "teacherCues": [
+        "Graph y = sin t on a number line. Ask: What is the smallest distance after which the graph repeats? (2π).",
+        "Show that cos(-t) = cos(t) on the circle: mirror symmetry across x‑axis."
+      ],
+      "discoveryHook": {
+        "scenario": "Sine and cosine functions model ocean tides, the swing of a pendulum, or the vibration of a guitar string. Their repeating nature is captured by the mathematical concept of period - the time for one complete cycle. Understanding periodicity lets us predict future behavior from past patterns."
+      },
+      "concept": {
+        "explanation": [
+          "The domain of $ \\sin t $ and $ \\cos t $ is all real numbers. Their values range between $ -1 $ and $ 1 $.",
+          "Sine and cosine are [[kw:periodic]] with period $ 2\\pi $: $$ \\sin(t + 2\\pi n) = \\sin t, \\quad \\cos(t + 2\\pi n) = \\cos t $$ for any integer $ n $.",
+          "Cosine and secant are [[kw:even functions]]: $$ \\cos(-t) = \\cos t, \\quad \\sec(-t) = \\sec t $$",
+          "Sine, cosecant, tangent, and cotangent are [[kw:odd functions]]: $$ \\sin(-t) = -\\sin t, \\quad \\tan(-t) = -\\tan t $$ etc.",
+          "These symmetries help evaluate functions for negative inputs or angles beyond $ 2\\pi $."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Even/Odd Trigonometric Functions",
+            "headers": [
+              "Even Functions",
+              "Odd Functions"
+            ],
+            "rows": [
+              {
+                "0": "$ \\cos(-t) = \\cos t $",
+                "1": "$ \\sin(-t) = -\\sin t $"
+              },
+              {
+                "0": "$ \\sec(-t) = \\sec t $",
+                "1": "$ \\csc(-t) = -\\csc t $"
+              },
+              {
+                "0": "",
+                "1": "$ \\tan(-t) = -\\tan t $"
+              },
+              {
+                "0": "",
+                "1": "$ \\cot(-t) = -\\cot t $"
+              }
+            ],
+            "caption": "Only cosine and secant are even (symmetric about y‑axis)."
+          }
+        ],
+        "formulaCard": {
+          "title": "Period and Parity",
+          "formula": "$$ \\sin(t+2\\pi) = \\sin t, \\quad \\cos(t+2\\pi) = \\cos t $$",
+          "notes": [
+            "Period of sin and cos = $ 2\\pi $",
+            "Even: $ f(-t) = f(t) $; Odd: $ f(-t) = -f(t) $",
+            "Use period to reduce large angles: subtract $ 2\\pi $ repeatedly."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Using Periodicity",
+          "prompt": "Evaluate $ \\sin\\left(\\frac{13\\pi}{6}\\right) $.",
+          "steps": [
+            "Write $ \\frac{13\\pi}{6} = 2\\pi + \\frac{\\pi}{6} $.",
+            "Since $ \\sin(t+2\\pi) = \\sin t $, we have $ \\sin(\\frac{13\\pi}{6}) = \\sin(\\frac{\\pi}{6}) $.",
+            "From common angles, $ \\sin(\\pi/6) = 1/2 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Even/Odd Property",
+          "prompt": "Given $ \\cos(t) = 0.3 $, find $ \\cos(-t) $.",
+          "peerPrompt": "Since cosine is even, what can you conclude about $ \\cos(-t) $?",
+          "minLength": 2,
+          "steps": [
+            "Cosine is even: $ \\cos(-t) = \\cos(t) $.",
+            "So $ \\cos(-t) = 0.3 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Negative Angle",
+          "prompt": "Given $ \\sin t = 4/5 $, evaluate $ \\sin(-t) $.",
+          "steps": [
+            "Sine is odd: $ \\sin(-t) = -\\sin t $.",
+            "So $ \\sin(-t) = -4/5 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Confuse Even with Cos",
+        "body": "It's easy to remember: [[imp:COsine is COsine]] and 'CO' sounds like 'CO'‑even. But all other functions that start with 'S' or 'T' are odd. The 'C' functions are split: Cosine (even), Cosecant (odd), Cotangent (odd). Only Cosine and Secant are even."
+      },
+      "questions": [
+        {
+          "id": "q4-2-4-1",
+          "type": "short-answer",
+          "prompt": "What is the period of the sine function? (Answer in terms of pi, like '2pi'.)",
+          "answer": "2pi",
+          "hints": [
+            "After how many radians does the unit circle repeat?",
+            "Full circle."
+          ],
+          "feedbackIfWrong": "The period of sine is $ 2\\pi $."
+        },
+        {
+          "id": "q4-2-4-2",
+          "type": "fill-blank",
+          "prompt": "Because sine is odd, $ \\sin(-t) = $ ___ $ \\sin t $.",
+          "blanks": [
+            {
+              "accept": [
+                "-"
+              ]
+            }
+          ],
+          "hints": [
+            "Odd means you can pull out a negative sign.",
+            "$ \\sin(-t) = -\\sin t $."
+          ],
+          "feedbackIfWrong": "Sine is odd, so $ \\sin(-t) = -\\sin t $."
+        },
+        {
+          "id": "q4-2-4-3",
+          "type": "short-answer",
+          "prompt": "If $ \\cos t = -0.5 $, what is $ \\cos(-t) $? (Number only.)",
+          "answer": "-0.5",
+          "hints": [
+            "Cosine is even.",
+            "$ \\cos(-t) = \\cos t $."
+          ],
+          "feedbackIfWrong": "By even property, $ \\cos(-t) = \\cos t = -0.5 $."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

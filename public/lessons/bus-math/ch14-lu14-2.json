@@ -1,0 +1,816 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "standards": [
+    "BUSMATH.14.2"
+  ],
+  "id": "ch14-lu14-2",
+  "blocks": [
+    {
+      "questions": [
+        {
+          "id": "b1q1",
+          "feedbackIfWrong": "average.",
+          "type": "fill-blank",
+          "hints": [
+            "Not the ending balance.",
+            "It's an average over the billing cycle."
+          ],
+          "prompt": "Interest on a credit card is calculated using the ___ daily balance method.",
+          "blanks": [
+            {
+              "accept": [
+                "average"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "APR 18%, average daily balance $500. Monthly finance charge? (number only, no $)",
+          "feedbackIfWrong": "7.50.",
+          "hints": [
+            "Monthly rate = 18% ÷ 12 = 1.5% = 0.015.",
+            "500 × 0.015 = ?"
+          ],
+          "id": "b1q2",
+          "type": "short-answer",
+          "answers": [
+            "7.50",
+            "7.5"
+          ]
+        },
+        {
+          "answers": [
+            "700"
+          ],
+          "prompt": "Sum of daily balances $21,000 for a 30-day month. Average daily balance? (number only, no $)",
+          "type": "short-answer",
+          "id": "b1q3",
+          "feedbackIfWrong": "700.",
+          "hints": [
+            "$21,000 ÷ 30.",
+            "= 700."
+          ]
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Days",
+              "Balance",
+              "Daily Balance Sum"
+            ],
+            "title": "Calculating Average Daily Balance (30-day cycle, APR 18%)",
+            "rows": [
+              {
+                "0": "1-10 (10 days)",
+                "1": "$500",
+                "2": "$5,000"
+              },
+              {
+                "0": "11-20 (10 days)",
+                "1": "$700 (purchase)",
+                "2": "$7,000"
+              },
+              {
+                "0": "21-30 (10 days)",
+                "1": "$600 (payment)",
+                "2": "$6,000"
+              },
+              {
+                "0": "Total",
+                "1": "",
+                "2": "$18,000"
+              }
+            ],
+            "type": "table",
+            "caption": "Average daily balance = $18,000 ÷ 30 = $600. Monthly rate = 18% ÷ 12 = 1.5%. Finance charge = $600 × 0.015 = $9.00."
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "New purchases and payments change the daily balance.",
+            "Some cards use the previous balance method (not covered here)."
+          ],
+          "title": "Average Daily Balance and Finance Charge",
+          "formula": "$$\\text{Avg Daily Balance} = \\frac{\\text{Sum of Daily Balances}}{\\text{Days in Billing Cycle}}$$ $$\\text{Finance Charge} = \\text{Avg Daily Balance} \\times \\frac{\\text{APR}}{12}$$"
+        },
+        "explanation": [
+          "[[kw:Open-end credit]] (revolving credit) allows you to borrow repeatedly up to a credit limit, with no fixed number of payments.",
+          "Interest is calculated monthly using the [[kw:average daily balance method]]: 1. Sum the daily balances for the billing cycle. 2. Divide by the number of days in the cycle.",
+          "The [[kw:finance charge]] = Average daily balance × Monthly periodic rate.",
+          "Monthly periodic rate = Annual APR ÷ 12.",
+          "[[imp:Interest compounds on credit cards if not paid in full; always try to pay more than the minimum.]]"
+        ]
+      },
+      "teacherCues": [
+        "Ask: 'How does a credit card differ from an installment loan?'",
+        "Explain that credit cards are open-end credit, not closed-end."
+      ],
+      "id": "revolving-credit-concept",
+      "discoveryHook": {
+        "scenario": "You have a credit card with a $1,000 balance and 18% APR. Unlike an installment loan, you can pay any amount above the minimum each month, and interest is calculated on the [[kw:average daily balance]]. The more you pay, the less interest you'll owe next month."
+      },
+      "examples": [
+        {
+          "prompt": "A card has APR 24%. The average daily balance for the month is $800. Find the monthly finance charge.",
+          "title": "A – Find finance charge",
+          "steps": [
+            "Monthly rate = 24% ÷ 12 = 2% = 0.02.",
+            "Finance charge = $800 × 0.02 = $16.",
+            "This will be added to the balance if not paid in full."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why pay more than minimum?",
+          "steps": [
+            "The finance charge is applied to the unpaid balance each month.",
+            "If you only pay the minimum, the remaining balance continues to accrue interest.",
+            "This can turn a small purchase into a much larger total cost over time."
+          ],
+          "peerPrompt": "Think about how finance charges are computed on the carried balance.",
+          "prompt": "Explain why paying only the minimum payment keeps you in debt longer.",
+          "minLength": 2
+        },
+        {
+          "prompt": "For a 30-day month: balance $400 for 15 days, $600 for 10 days, $300 for 5 days. Find average daily balance.",
+          "title": "C – Calculate average daily balance",
+          "role": "independent",
+          "steps": [
+            "Sum = (15×$400) + (10×$600) + (5×$300) = $6,000 + $6,000 + $1,500 = $13,500.",
+            "Average = $13,500 ÷ 30 = $450."
+          ]
+        }
+      ],
+      "challengeCorner": {
+        "hints": [
+          "Sum = (10×1,200)+(15×900)+(6×600) = 29,100. Avg = 29,100 ÷ 31 ≈ 938.71.",
+          "Monthly rate = 21%/12 = 1.75% = 0.0175. FC = 938.71 × 0.0175 ≈ 16.43."
+        ],
+        "optional": true,
+        "prompt": "A 31-day month: balance $1,200 for 10 days, $900 for 15 days, $600 for 6 days. Find average daily balance and finance charge at 21% APR.",
+        "answers": [
+          "938.71",
+          "16.43"
+        ],
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "body": "The average daily balance method includes new purchases immediately (unless a grace period applies). [[imp:Interest is usually charged from the day of purchase if you carry a balance.]]",
+        "title": "Watch out!"
+      },
+      "title": "1. Open-End Credit and Average Daily Balance"
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "title": "Comparison of Finance Charge Methods (Balance $1,000, $200 payment mid-month, APR 18%)",
+            "headers": [
+              "Method",
+              "Base Balance",
+              "Calculation",
+              "Monthly Charge"
+            ],
+            "caption": "Previous balance method ignores your payment during the month.",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Average Daily Balance",
+                "1": "varies",
+                "2": "average of daily balances × monthly rate",
+                "3": "depends on timing"
+              },
+              {
+                "0": "Previous Balance",
+                "1": "$1,000",
+                "2": "$1,000 × 1.5%",
+                "3": "$15.00"
+              },
+              {
+                "0": "Adjusted Balance",
+                "1": "$800",
+                "2": "$800 × 1.5%",
+                "3": "$12.00"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "Three common methods to calculate finance charges on credit cards:",
+          "- [[kw:Average Daily Balance]]: most common; includes new purchases and payments throughout the cycle.",
+          "- [[kw:Previous Balance]]: interest calculated on the balance at the beginning of the billing cycle (does not credit payments made during the cycle).",
+          "- [[kw:Adjusted Balance]]: interest calculated on the beginning balance minus any payments made (most favorable to consumers).",
+          "The method used appears in the cardholder agreement.",
+          "[[imp:For the same balance and APR, the previous balance method yields the highest finance charge, adjusted balance the lowest.]]"
+        ],
+        "formulaCard": {
+          "notes": [
+            "Average daily balance is the most common.",
+            "Always check your card agreement for the method used."
+          ],
+          "title": "Finance Charge by Method",
+          "formula": "$$\\text{Monthly Rate} = \\frac{\\text{APR}}{12}$$ $$\\text{Previous Balance FC} = \\text{Previous Balance} \\times \\text{Monthly Rate}$$ $$\\text{Adjusted Balance FC} = (\\text{Previous Balance} - \\text{Payments}) \\times \\text{Monthly Rate}$$"
+        }
+      },
+      "teacherCues": [
+        "Contrast the three methods: average daily balance, previous balance, adjusted balance.",
+        "Explain that the Truth in Lending Act requires disclosure of the method used."
+      ],
+      "examples": [
+        {
+          "prompt": "Previous balance $1,500, payment $500 during month, APR 12%. Compare previous balance and adjusted balance charges.",
+          "title": "A – Compare methods",
+          "role": "guided",
+          "steps": [
+            "Monthly rate = 12% ÷ 12 = 1% = 0.01.",
+            "Previous balance FC = $1,500 × 0.01 = $15.00.",
+            "Adjusted balance FC = ($1,500 – $500) × 0.01 = $1,000 × 0.01 = $10.00."
+          ]
+        },
+        {
+          "peerPrompt": "Think about when your payment is credited.",
+          "title": "B – Why adjusted balance is best",
+          "steps": [
+            "In the adjusted balance method, payments made during the billing cycle reduce the balance used to compute interest.",
+            "This means you're not charged interest on money you've already repaid.",
+            "It lowers the finance charge compared to previous balance or even average daily balance."
+          ],
+          "minLength": 2,
+          "prompt": "Explain why the adjusted balance method is the most favorable to consumers.",
+          "role": "peer-explain"
+        },
+        {
+          "title": "C – Find both charges",
+          "role": "independent",
+          "prompt": "Beginning balance $2,000, no purchases, payment $800, APR 18%. Find previous balance and adjusted balance finance charges.",
+          "steps": [
+            "Monthly rate = 1.5% = 0.015.",
+            "Previous balance FC = $2,000 × 0.015 = $30.00.",
+            "Adjusted balance FC = ($2,000 – $800) × 0.015 = $1,200 × 0.015 = $18.00."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "previous.",
+          "type": "fill-blank",
+          "hints": [
+            "It uses the balance at the start of the cycle.",
+            "Not adjusted or average."
+          ],
+          "id": "b2q1",
+          "blanks": [
+            {
+              "accept": [
+                "previous"
+              ]
+            }
+          ],
+          "prompt": "The method that ignores payments made during the month is the ___ balance method."
+        },
+        {
+          "feedbackIfWrong": "8.00.",
+          "type": "short-answer",
+          "answers": [
+            "8.00",
+            "8"
+          ],
+          "prompt": "Previous balance $800, payment $300, APR 12%. Previous balance FC? (number only, no $)",
+          "hints": [
+            "Monthly rate = 1% = 0.01.",
+            "800 × 0.01 = ?"
+          ],
+          "id": "b2q2"
+        },
+        {
+          "id": "b2q3",
+          "type": "short-answer",
+          "prompt": "Same data: adjusted balance FC? (number only, no $)",
+          "feedbackIfWrong": "5.00.",
+          "hints": [
+            "($800 – $300) × 0.01 = $500 × 0.01.",
+            "= 5.00."
+          ],
+          "answers": [
+            "5.00",
+            "5"
+          ]
+        }
+      ],
+      "challengeCorner": {
+        "type": "short-answer",
+        "prompt": "A card uses the previous balance method. Beginning balance $2,500, APR 15%, no purchases, but $1,000 payment made on day 5. Finance charge?",
+        "optional": true,
+        "hints": [
+          "Previous balance method ignores payments, so base = $2,500.",
+          "Monthly rate = 15%/12 = 1.25% = 0.0125; FC = 2,500 × 0.0125 = 31.25."
+        ],
+        "answers": [
+          "31.25"
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Some cards use a two-cycle average daily balance method, which can increase costs. [[imp:Always read the fine print to know which method is used.]]"
+      },
+      "id": "finance-charge-methods",
+      "discoveryHook": {
+        "scenario": "Not all cards use the average daily balance method. Some use the [[kw:previous balance method]] (interest on the balance at the start of the cycle, ignoring payments). Others use the [[kw:adjusted balance method]] (interest on the balance after payments). The method greatly affects your finance charge."
+      },
+      "title": "2. Previous Balance and Adjusted Balance Methods"
+    },
+    {
+      "title": "3. Minimum Payments and Compound Interest on Cards",
+      "id": "minimum-payments",
+      "questions": [
+        {
+          "id": "b3q1",
+          "feedbackIfWrong": "minimum.",
+          "type": "fill-blank",
+          "hints": [
+            "Not the full balance.",
+            "The least you can pay."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "minimum"
+              ]
+            }
+          ],
+          "prompt": "The smallest amount you must pay each month is called the ___ payment."
+        },
+        {
+          "hints": [
+            "600 + 9 – 30.",
+            "= 579."
+          ],
+          "id": "b3q2",
+          "answers": [
+            "579"
+          ],
+          "prompt": "Balance $600, finance charge $9, payment $30. New balance? (number only, no $)",
+          "feedbackIfWrong": "579.",
+          "type": "short-answer"
+        },
+        {
+          "prompt": "If a payment is less than the finance charge, the debt will ___ (increase or decrease).",
+          "hints": [
+            "You owe more after payment.",
+            "Balance goes up."
+          ],
+          "id": "b3q3",
+          "answers": [
+            "increase"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "increase."
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "Balance $800, finance charge $12, new purchases $100, payment $50. New balance?",
+          "role": "guided",
+          "steps": [
+            "New balance = $800 + $12 + $100 – $50 = $862.",
+            "Debt increased despite making a payment."
+          ],
+          "title": "A – Track one month"
+        },
+        {
+          "prompt": "Explain why making only the minimum payment can trap you in a cycle of debt.",
+          "steps": [
+            "The minimum payment is often designed to barely cover interest.",
+            "Very little goes toward the actual debt.",
+            "With new purchases, the balance can actually grow, not shrink."
+          ],
+          "title": "B – Why minimum is dangerous",
+          "peerPrompt": "Think about how much of the payment reduces principal.",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "title": "C – Calculate new balance",
+          "steps": [
+            "Monthly rate = 24% ÷ 12 = 2% = 0.02. Finance charge = $1,200 × 0.02 = $24.",
+            "New balance = $1,200 + $24 – $80 = $1,144.",
+            "Payment of $80 only reduced debt by $56."
+          ],
+          "prompt": "Balance $1,200, APR 24%, no new purchases, payment $80. Find finance charge and new balance.",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "If you owe $1,000 on a credit card at 18% APR and make only the minimum payment of $30 per month, it could take years to pay off and cost hundreds in interest. Credit card interest compounds if not paid in full each month."
+      },
+      "teacherCues": [
+        "Show that paying only the minimum extends the debt for years.",
+        "Use an example: $1,000 balance, 18% APR, minimum payment 3% of balance."
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Missing a payment can trigger penalty APRs (often 29.99% or higher) and late fees. [[imp:Always pay at least the minimum on time.]]"
+      },
+      "challengeCorner": {
+        "hints": [
+          "Finance charge = 2,000 × (18%/12) = 2,000 × 0.015 = $30.",
+          "New balance = 2,000 + 30 + 150 – 100 = 2,080."
+        ],
+        "prompt": "You have a $2,000 balance at 18% APR, make $100 payment, and charge $150 new purchases. What is the new balance?",
+        "type": "short-answer",
+        "optional": true,
+        "answers": [
+          "2080",
+          "2,080"
+        ]
+      },
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Small increases in monthly payment yield big savings.",
+            "headers": [
+              "Payment",
+              "Monthly Payment",
+              "Time to Pay Off",
+              "Total Interest"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Minimum (3%)",
+                "1": "~$30",
+                "2": "Over 3 years",
+                "3": "~$300"
+              },
+              {
+                "0": "Fixed $50",
+                "1": "$50",
+                "2": "~2 years",
+                "3": "~$200"
+              },
+              {
+                "0": "Fixed $100",
+                "1": "$100",
+                "2": "~11 months",
+                "3": "~$90"
+              }
+            ],
+            "title": "Minimum Payment Impact ($1,000, 18% APR, min 3% or $25)",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{New Balance} = \\text{Old Balance} + \\text{Finance Charge} - \\text{Payment}$$",
+          "title": "Card Interest Compounding",
+          "notes": [
+            "If payment < finance charge + new purchases, balance grows.",
+            "Compounding monthly makes debt grow quickly."
+          ]
+        },
+        "explanation": [
+          "[[kw:Minimum payment]] is the smallest amount you must pay to keep the account in good standing, usually a percentage of the balance (e.g., 3%) or a fixed dollar amount, whichever is greater.",
+          "When you pay only the minimum, most of your payment goes to interest, and principal reduction is small.",
+          "Unpaid balances compound: interest is added to the balance, then next month's interest is calculated on the new, higher balance.",
+          "[[imp:Paying more than the minimum dramatically reduces total interest and payoff time.]]"
+        ]
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Many credit cards offer a 21-day [[kw:grace period]]. If you pay your balance in full by the due date, you pay zero interest. But if you carry even $1 into the next month, interest is charged on new purchases from the date of purchase."
+      },
+      "confusionCorner": {
+        "body": "Cash advances typically have no grace period, and interest starts immediately, often at a higher rate. [[imp:Avoid cash advances unless absolutely necessary.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "answers": [
+          "200"
+        ],
+        "optional": true,
+        "type": "short-answer",
+        "hints": [
+          "Cash advances usually have no grace period, so interest starts immediately.",
+          "The purchase was paid in full, so no interest on that."
+        ],
+        "prompt": "You have a $0 balance, charge $1,200, and pay $1,200 by the due date. Also take a $200 cash advance. On which amount will you pay interest?"
+      },
+      "teacherCues": [
+        "Define grace period: the time you have to pay your balance in full with no interest.",
+        "Explain that if you carry a balance, the grace period usually disappears."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Since you paid in full, no interest is charged.",
+            "You also likely have a grace period on new purchases next month."
+          ],
+          "title": "A – Grace period works",
+          "prompt": "You had a $0 balance last month. This month you charge $300 and pay $300 by the due date. Do you pay interest?"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Explain what happens to the grace period if you carry a balance from month to month.",
+          "peerPrompt": "Think about new purchases.",
+          "title": "B – Losing grace period",
+          "steps": [
+            "When you carry a balance, most cards charge interest on new purchases from the day you make them.",
+            "The grace period is lost until you pay the balance in full for two consecutive months.",
+            "This can cause interest to accrue even on small purchases."
+          ],
+          "minLength": 2
+        },
+        {
+          "title": "C – When interest starts",
+          "steps": [
+            "Because you have a carried balance, interest on the $50 starts from the 5th (date of purchase).",
+            "It will appear on the next statement."
+          ],
+          "prompt": "You have a $100 carried balance. You buy a $50 item on the 5th. Statement closes on the 30th, due date 25 days later. When does interest on the $50 start?",
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "grace.",
+          "hints": [
+            "Usually 21–25 days.",
+            "Not billing period."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "grace"
+              ]
+            }
+          ],
+          "prompt": "The period during which you can pay in full without interest is called the ___ period.",
+          "id": "b4q1"
+        },
+        {
+          "feedbackIfWrong": "purchase.",
+          "id": "b4q2",
+          "type": "short-answer",
+          "answers": [
+            "purchase"
+          ],
+          "hints": [
+            "When you buy it.",
+            "Not statement date."
+          ],
+          "prompt": "If you carry a balance from last month, interest on new purchases starts from the day of ___ (word)."
+        },
+        {
+          "feedbackIfWrong": "full.",
+          "prompt": "To avoid all interest, you must pay the ___ balance by the due date. (full, minimum, or average)",
+          "hints": [
+            "The entire amount owed.",
+            "Not just the minimum."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "full"
+          ],
+          "id": "b4q3"
+        }
+      ],
+      "title": "4. Grace Periods and Avoiding Interest",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Grace Period in Action",
+            "rows": [
+              {
+                "0": "Pay full balance",
+                "1": "$500",
+                "2": "$500 by due date",
+                "3": "No"
+              },
+              {
+                "0": "Carry balance",
+                "1": "$500",
+                "2": "$200 (not full)",
+                "3": "Yes, on carried balance + new purchases"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Scenario",
+              "Purchases",
+              "Payment",
+              "Interest Charged?"
+            ],
+            "caption": "Grace period only applies if previous balance was paid in full."
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Interest} = 0 \\text{ if previous balance was paid in full by the due date}$$",
+          "title": "Interest-Free Condition",
+          "notes": [
+            "Applies to most standard cards; read your agreement for specifics.",
+            "Cash advances often have no grace period."
+          ]
+        },
+        "explanation": [
+          "A [[kw:grace period]] is the time between the end of a billing cycle and the payment due date during which you can pay in full without incurring interest.",
+          "Typical grace period: 21–25 days.",
+          "If you pay in full each month, you effectively use the credit card as an interest-free short-term loan.",
+          "If you carry a balance, new purchases usually start accruing interest immediately.",
+          "[[imp:To avoid all interest, pay the statement balance in full by the due date.]]"
+        ]
+      },
+      "id": "grace-period"
+    },
+    {
+      "examples": [
+        {
+          "title": "A – Full blueprint (previous balance method)",
+          "role": "guided",
+          "prompt": "Previous balance $1,000, payment $400, new purchases $150, APR 24%, previous balance method. Find FC and new balance.",
+          "steps": [
+            "Understand: method = previous balance, so base = previous balance $1,000.",
+            "Solve: monthly rate = 24%/12 = 2% = 0.02. FC = $1,000 × 0.02 = $20.00.",
+            "New balance = $1,000 + $20 + $150 – $400 = $770.",
+            "Conclude: FC $20, new balance $770."
+          ]
+        },
+        {
+          "prompt": "Explain how using the adjusted balance method instead of previous balance would change the finance charge.",
+          "peerPrompt": "Consider how payments are treated.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "title": "B – Why method matters",
+          "steps": [
+            "Adjusted balance uses previous balance minus payments as the base.",
+            "In the example, base would be $1,000 – $400 = $600.",
+            "FC would be $600 × 0.02 = $12, saving $8 compared to previous balance method."
+          ]
+        },
+        {
+          "prompt": "A 30-day cycle: previous balance $900, payment $300 on day 10, no new purchases. APR 12%. Use average daily balance to find FC.",
+          "title": "C – Average daily balance",
+          "role": "independent",
+          "steps": [
+            "Days 1-10: $900; days 11-30: $600.",
+            "Sum = (10×900)+(20×600)=9,000+12,000=21,000; Avg = 21,000/30 = $700.",
+            "Monthly rate = 12%/12 = 1% = 0.01. FC = $700 × 0.01 = $7.00."
+          ]
+        }
+      ],
+      "title": "5. Blueprint Aid for Credit Card Finance Charges",
+      "questions": [
+        {
+          "prompt": "The first blueprint step is to ___ the problem.",
+          "id": "b5q1",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "hints": [
+            "Identify method, balances, dates.",
+            "U in U-S-C."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "understand."
+        },
+        {
+          "prompt": "Previous balance $500, payment $300, purchases $0, APR 12%, previous balance method. Finance charge? (number only, no $)",
+          "answers": [
+            "5.00",
+            "5"
+          ],
+          "hints": [
+            "Monthly rate = 1% = 0.01; base = $500.",
+            "500 × 0.01 = ?"
+          ],
+          "type": "short-answer",
+          "id": "b5q2",
+          "feedbackIfWrong": "5.00."
+        },
+        {
+          "feedbackIfWrong": "2.00.",
+          "type": "short-answer",
+          "answers": [
+            "2.00",
+            "2"
+          ],
+          "id": "b5q3",
+          "prompt": "Same data, adjusted balance method. Finance charge? (number only, no $)",
+          "hints": [
+            "Adjusted base = $500 – $300 = $200.",
+            "200 × 0.01 = ?"
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Use the blueprint to determine finance charge and new balance.",
+        "Work through a typical monthly statement problem."
+      ],
+      "id": "blueprint-card",
+      "discoveryHook": {
+        "scenario": "You receive your credit card statement: previous balance $800, payments $300, new purchases $250, APR 18%, and the card uses the average daily balance method. Use the blueprint to calculate the finance charge and new balance."
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "When using average daily balance, be careful with the number of days at each balance. [[imp:Count days, including start and end days, accurately.]]"
+      },
+      "challengeCorner": {
+        "prompt": "A 31-day month: previous balance $1,500, payment $1,000 on day 8, purchase $500 on day 20. APR 15%, average daily balance method. Find finance charge and new balance.",
+        "type": "short-answer",
+        "hints": [
+          "Days 1-8: $1,500 (8d); 9-20: $500 (12d); 21-31: $1,000 (11d). Sum = 8×1500 + 12×500 + 11×1000 = 12,000+6,000+11,000 = 29,000. Avg = 29,000/31 ≈ 935.48.",
+          "Monthly rate = 15%/12 = 1.25% = 0.0125. FC = 935.48 × 0.0125 ≈ 11.69. New balance = 1,500 - 1,000 + 500 + 11.69 = 1,011.69."
+        ],
+        "optional": true,
+        "answers": [
+          "11.69",
+          "1011.69"
+        ]
+      },
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Follow the blueprint to avoid missing any transaction.",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "title": "Blueprint: Monthly Credit Card Statement",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Prev bal $800, payment $300 on day 5, purchase $250 on day 20, APR 18%, avg daily balance method, 30-day month.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Daily Balances",
+                "1": "Days 1-5: $800; days 6-20: $500; days 21-30: $750.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Sum",
+                "1": "(5×800)+(15×500)+(10×750)=4,000+7,500+7,500=19,000.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Avg Daily Bal",
+                "1": "$19,000/30=$633.33.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – FC",
+                "1": "$633.33×0.015=$9.50.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – New Bal",
+                "1": "$800 – $300 + $250 + $9.50=$759.50.",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Finance charge $9.50, new balance $759.50.",
+                "2": ""
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "title": "Credit Card Finance Charge Blueprint",
+          "notes": [
+            "If method is previous balance, use that instead of average.",
+            "If method is adjusted balance, use Previous Balance – Payments."
+          ],
+          "formula": "$$\\text{Avg Daily Balance} = \\frac{\\sum (\\text{Daily Balance} \\times \\text{Days})}{\\text{Days in Cycle}}$$ $$\\text{Finance Charge} = \\text{Avg Daily Balance} \\times \\frac{\\text{APR}}{12}$$ $$\\text{New Balance} = \\text{Previous Balance} + \\text{FC} + \\text{Purchases} - \\text{Payments}$$"
+        },
+        "explanation": [
+          "Apply the blueprint to credit card finance charge problems:",
+          "1. Understand: identify previous balance, payments, purchases, APR, method (average daily, previous, or adjusted), and billing cycle days.",
+          "2. Solve: compute average daily balance (or appropriate base), monthly periodic rate, finance charge, and new balance.",
+          "3. Conclude: state the finance charge and new balance; compare to previous balance to see debt trend.",
+          "This structured approach ensures you account for all transactions."
+        ]
+      }
+    }
+  ],
+  "title": "Revolving Charge Credit Cards",
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

@@ -1,0 +1,721 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "standards": [
+    "HSA.REI.C.6",
+    "HSA.CED.A.2"
+  ],
+  "id": "section-1-4-solving-linear-systems",
+  "presenterNotes": [
+    "The leap from two variables to three is mostly conceptual; the algebraic methods are the same. Emphasize pairing equations strategically.",
+    "Students often forget to back‑substitute into an original equation. Remind them that checking all three is the best way to catch errors.",
+    "The visual of planes intersecting helps ground the algebra. A physical model or 3D graphing tool can be very effective.",
+    "Real‑life problems motivate the topic. Have students create their own word problems and exchange with partners to solve."
+  ],
+  "title": "Solving Linear Systems in Three Variables",
+  "blocks": [
+    {
+      "title": "Linear Equations in Three Variables",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "$ a, b, c $ cannot all be zero.",
+            "Graph is a plane in 3D space.",
+            "A solution is an ordered triple $ (x, y, z) $."
+          ],
+          "title": "Linear Equation in Three Variables",
+          "formula": "$$ a x + b y + c z = d $$"
+        },
+        "explanation": [
+          "A [[kw:linear equation in three variables]] is an equation of the form $ ax + by + cz = d $, where $ a $, $ b $, and $ c $ are not all zero. Its graph is a [[imp:plane]] in three‑dimensional space.",
+          "A [[kw:system of three linear equations]] consists of three such equations. A [[kw:solution]] is an [[imp:ordered triple]] $ (x, y, z) $ that makes all three equations true.",
+          "A system can have [[imp:exactly one solution]] (three planes intersect at a single point), [[imp:infinitely many solutions]] (planes intersect in a line or are the same plane), or [[imp:no solution]] (no common point).",
+          "A system with at least one solution is called [[kw:consistent]]. A system with no solution is [[kw:inconsistent]]."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Number of Solutions",
+              "Geometric Meaning",
+              "Classification"
+            ],
+            "type": "table",
+            "title": "Possible Outcomes of a Three‑Variable System",
+            "rows": [
+              {
+                "0": "Exactly one",
+                "1": "Planes intersect at a single point",
+                "2": "Consistent"
+              },
+              {
+                "0": "Infinitely many",
+                "1": "Planes intersect in a line or are identical",
+                "2": "Consistent"
+              },
+              {
+                "0": "None",
+                "1": "No point lies on all three planes",
+                "2": "Inconsistent"
+              }
+            ]
+          }
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "It is a plane.",
+          "id": "q1-4-1",
+          "answer": "plane",
+          "prompt": "The graph of a linear equation in three variables is a ___.",
+          "hints": [
+            "It is a flat surface in 3D space.",
+            "A single word starting with 'p'."
+          ],
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "It is called an ordered triple.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "triple"
+              ]
+            }
+          ],
+          "id": "q1-4-2",
+          "prompt": "A solution of a system in three variables is an ordered ___ (x, y, z).",
+          "hints": [
+            "It has three coordinates.",
+            "The word starts with 't'."
+          ]
+        },
+        {
+          "answer": "consistent",
+          "hints": [
+            "It means the equations can be satisfied together.",
+            "The opposite of inconsistent."
+          ],
+          "prompt": "If a system has at least one solution, it is called ___ (consistent or inconsistent).",
+          "feedbackIfWrong": "A system with at least one solution is consistent.",
+          "type": "short-answer",
+          "id": "q1-4-3"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A linear equation in three variables, like $ x + y + z = 1 $, describes a flat surface — a plane — in 3D space. When we combine three such equations, we are looking for points that lie on all three planes at once. That point is the [[imp:ordered triple]] $ (x, y, z) $ that satisfies all three equations."
+      },
+      "confusionCorner": {
+        "title": "Consistent Does Not Mean Exactly One Solution",
+        "body": "A consistent system has at least one solution — that could be one solution or infinitely many. [[imp:Consistent just means 'not impossible'.]]"
+      },
+      "teacherCues": [
+        "Hold up a sheet of paper and a ruler. Ask: If the paper is a plane, how can three planes intersect?",
+        "Draw three possible configurations on the board: intersecting at a single point, intersecting in a line, or no common intersection."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Verify that $ (1, -2, 3) $ is a solution of the system $ x + y + z = 2 $, $ 2x - y + z = 7 $, $ x - 2y + z = 8 $.",
+          "steps": [
+            "Plug into Equation 1: $ 1 + (-2) + 3 = 2 $ ✓",
+            "Plug into Equation 2: $ 2(1) - (-2) + 3 = 7 $ ✓",
+            "Plug into Equation 3: $ 1 - 2(-2) + 3 = 8 $ ✓",
+            "Since all three equations are satisfied, the ordered triple is a solution."
+          ],
+          "title": "Example A – Checking a Solution"
+        },
+        {
+          "prompt": "Why can three planes intersect in pairs but still have no common solution? Discuss with a partner.",
+          "peerPrompt": "Without looking back...\n\nThink of a tripod: three planes meeting at a single point. Now imagine a triangular prism: three planes that meet in pairs but never all three together. Explain why the prism system has no solution.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "In a triangular prism, each pair of planes intersects along a line, but the three lines are parallel.",
+            "No single point lies on all three planes simultaneously.",
+            "Thus, the system has no solution."
+          ],
+          "title": "Example B – One Solution vs. No Solution"
+        },
+        {
+          "steps": [
+            "If all three equations describe the same plane, every point on that plane satisfies all three equations.",
+            "The system is [[imp:consistent]].",
+            "It has [[imp:infinitely many]] solutions."
+          ],
+          "prompt": "A system's three planes are all the same plane. Is the system consistent or inconsistent? How many solutions?",
+          "title": "Example C – Identifying Consistency",
+          "role": "independent"
+        }
+      ],
+      "id": "visualizing-systems-three-variables"
+    },
+    {
+      "id": "solving-one-solution-elimination",
+      "concept": {
+        "explanation": [
+          "To solve a system of three equations in three variables algebraically, use the [[kw:elimination method]] (or substitution).",
+          "Step 1: [[imp:Pick a variable to eliminate]]. Pair the equations and eliminate that variable from two different pairs, creating two new equations in two variables.",
+          "Step 2: Solve the resulting two‑variable system for the two remaining unknowns.",
+          "Step 3: [[imp:Back‑substitute]] the values found into an original equation to find the third variable.",
+          "If you find a single ordered triple, the system has exactly one solution."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Look for a variable with a coefficient of 1 or -1 if possible.",
+            "You can eliminate any variable; the answer will be the same.",
+            "Always check your solution in all three original equations."
+          ],
+          "title": "Elimination Strategy",
+          "formula": "$$ \\text{1. Choose a variable to eliminate.} $$ $$ \\text{2. Combine two pairs of equations to get two equations in two variables.} $$ $$ \\text{3. Solve the two‑variable system.} $$ $$ \\text{4. Back‑substitute to find the third variable.} $$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$ 4x + 2y + 3z = 12 $ (Eq 1)",
+                "1": "Add $ 2 \\times $ Eq 3",
+                "2": "$ 16x + 11z = 6 $"
+              },
+              {
+                "0": "$ 6x - y + 4z = -3 $ (Eq 3)",
+                "1": "",
+                "2": ""
+              },
+              {
+                "0": "$ 2x - 3y + 5z = -7 $ (Eq 2)",
+                "1": "Add $ -3 \\times $ Eq 3",
+                "2": "$ -16x - 7z = 2 $"
+              }
+            ],
+            "headers": [
+              "Equation",
+              "Operation",
+              "Result"
+            ],
+            "title": "Eliminating y from Equations 1 and 3"
+          }
+        ]
+      },
+      "title": "Solving a Three‑Variable System (One Solution)",
+      "discoveryHook": {
+        "scenario": "You've solved systems in two variables by elimination. The same strategy works for three variables! Just pick a variable to eliminate, combine pairs of equations, and reduce the problem to a two‑variable system you already know how to solve."
+      },
+      "teacherCues": [
+        "Write the three equations on the board. Circle one variable to eliminate (pick the easiest one).",
+        "Demonstrate pairing equations to eliminate that variable, producing two new equations in two variables."
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Eliminate $ y $: Combine Eq1 and Eq3 (add $ 2 \\times $ Eq3 to Eq1) → $ 16x + 11z = 6 $. Combine Eq2 and Eq3 (add $ -3 \\times $ Eq3 to Eq2) → $ -16x - 7z = 2 $.",
+            "Add the two new equations: $ (16x+11z) + (-16x-7z) = 6+2 $ → $ 4z = 8 $ → $ z = 2 $.",
+            "Substitute $ z=2 $ into $ 16x+11z=6 $ → $ 16x+22=6 $ → $ x = -1 $.",
+            "Substitute $ x=-1 $, $ z=2 $ into Eq3: $ 6(-1) - y + 4(2) = -3 $ → $ -6 - y + 8 = -3 $ → $ y = 5 $.",
+            "Solution: $ (-1, 5, 2) $."
+          ],
+          "prompt": "Solve: $ 4x + 2y + 3z = 12 $, $ 2x - 3y + 5z = -7 $, $ 6x - y + 4z = -3 $.",
+          "title": "Example A – Solving for x, y, and z",
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Why Pick y?",
+          "steps": [
+            "The coefficient -1 means you only need to multiply the equation by 2 or -3 to match and cancel the y terms in the other equations.",
+            "This avoids working with fractions and keeps the numbers manageable.",
+            "It's a strategic choice, not a rule — any variable will work."
+          ],
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nIf a variable has a coefficient of -1, you can multiply that equation by a number and add to another to easily cancel it. Discuss with your partner how this simplifies the arithmetic.",
+          "prompt": "In the system above, Equation 3 has coefficient -1 for y. Explain to a partner why that makes y a good choice to eliminate."
+        },
+        {
+          "title": "Example C – Checking Your Work",
+          "steps": [
+            "Substitute: $ 4(-1) + 2(5) + 3(2) = -4 + 10 + 6 = 12 $.",
+            "Since the result equals 12, the solution satisfies the equation.",
+            "Always check all three original equations to catch arithmetic errors."
+          ],
+          "prompt": "For the solution $ (-1, 5, 2) $, verify that it satisfies the first equation $ 4x + 2y + 3z = 12 $.",
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "When you eliminate, be sure you eliminate the [[imp:same variable]] from both pairs of equations. If you eliminate $ y $ from one pair and $ z $ from another, you won't get two equations in the same two variables. [[imp:Be consistent!]]",
+        "title": "Don't Lose a Variable!"
+      },
+      "questions": [
+        {
+          "hints": [
+            "Look at the third coordinate.",
+            "The ordered triple is $ (x, y, z) $."
+          ],
+          "answer": "2",
+          "id": "q1-4-4",
+          "type": "short-answer",
+          "prompt": "In the solution $ (-1, 5, 2) $, what is the value of $ z $?",
+          "feedbackIfWrong": "The z‑value is 2."
+        },
+        {
+          "feedbackIfWrong": "You have two equations in two variables.",
+          "blanks": [
+            {
+              "accept": [
+                "two"
+              ]
+            }
+          ],
+          "prompt": "After eliminating one variable from two pairs of equations, you have a system of ___ equations in two variables.",
+          "type": "fill-blank",
+          "hints": [
+            "You started with three equations.",
+            "You create a smaller system to solve."
+          ],
+          "id": "q1-4-5"
+        },
+        {
+          "id": "q1-4-6",
+          "hints": [
+            "You plug the known values into an original equation.",
+            "The word has a hyphen."
+          ],
+          "type": "short-answer",
+          "prompt": "What is the last step after finding $ x $ and $ z $? (one word: back‑substitute or substitute)",
+          "feedbackIfWrong": "Back‑substitute to find the remaining variable.",
+          "answer": "back-substitute"
+        }
+      ]
+    },
+    {
+      "id": "no-solution-infinitely-many",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Multiply Eq1 by -5: $ -5x - 5y - 5z = -10 $. Add to Eq2: $ 0 = -7 $.",
+            "This is a false statement — the system has [[imp:no solution]].",
+            "No need to continue; the equations contradict each other."
+          ],
+          "prompt": "Solve: $ x + y + z = 2 $, $ 5x + 5y + 5z = 3 $, $ 4x + y - 3z = -6 $.",
+          "title": "Example A – Recognizing No Solution"
+        },
+        {
+          "prompt": "A system reduces to $ 0 = 0 $ after elimination. Does this mean every ordered triple is a solution? Explain.",
+          "peerPrompt": "Without looking back...\n\nGetting $ 0 = 0 $ tells you the equations are dependent, but not that all triples work. Discuss: What extra step must you do to describe the solutions?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "steps": [
+            "No, $ 0 = 0 $ means the equations are not independent; there are infinitely many solutions, but they satisfy a specific relationship.",
+            "You must express two variables in terms of a parameter, like letting $ x $ be any number and then finding $ y $ and $ z $ from the remaining equations.",
+            "The set of solutions is infinite but not all‑inclusive."
+          ],
+          "title": "Example B – Infinitely Many Solutions"
+        },
+        {
+          "prompt": "For the system $ x - y + z = -3 $, $ x - y - z = -3 $, $ 5x - 5y + z = -15 $, the solution is $ (x, x+3, 0) $. Write three specific solutions by choosing $ x = 0, 1, -2 $.",
+          "title": "Example C – Writing a Parameterized Solution",
+          "role": "independent",
+          "steps": [
+            "For $ x=0 $: $ (0, 3, 0) $.",
+            "For $ x=1 $: $ (1, 4, 0) $.",
+            "For $ x=-2 $: $ (-2, 1, 0) $.",
+            "Each triple satisfies all three original equations."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Write two systems on the board: one that leads to $ 0 = -7 $, and one that leads to $ 0 = 0 $. Ask: What does each false/true statement mean?",
+        "Show how to express infinitely many solutions using a parameter."
+      ],
+      "confusionCorner": {
+        "title": "$ 0 = 0 $ Is Not a Solution",
+        "body": "When you get $ 0 = 0 $, the system has infinitely many solutions, but [[imp:the solution is not just any numbers]]. You must still find the relationship between the variables. [[imp:Don't stop at $ 0 = 0 $; write the parametric form.]]"
+      },
+      "title": "No Solution and Infinitely Many Solutions",
+      "discoveryHook": {
+        "scenario": "Sometimes when you solve, all the variables disappear and you get a statement like $ 0 = -7 $ (impossible) or $ 0 = 0 $ (always true). These are clues that the system has either no solution or infinitely many solutions."
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "The system has no solution.",
+          "type": "short-answer",
+          "hints": [
+            "A false statement means the equations contradict each other.",
+            "It is impossible to satisfy all equations."
+          ],
+          "prompt": "If elimination leads to $ 0 = -7 $, the system has ___ solution(s). (no, one, or infinitely many)",
+          "id": "q1-4-7",
+          "answer": "no"
+        },
+        {
+          "type": "fill-blank",
+          "hints": [
+            "The equations are dependent.",
+            "There is not just one answer."
+          ],
+          "feedbackIfWrong": "It has infinitely many solutions.",
+          "prompt": "A system that reduces to $ 0 = 0 $ has ___ many solutions.",
+          "id": "q1-4-8",
+          "blanks": [
+            {
+              "accept": [
+                "infinitely"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q1-4-9",
+          "feedbackIfWrong": "$ y = 5 $.",
+          "hints": [
+            "Substitute $ x = 2 $ into $ y = x + 3 $.",
+            "$ 2 + 3 = ? $"
+          ],
+          "answer": "5",
+          "prompt": "If the solution is $ (x, x+3, 0) $ and $ x = 2 $, what is $ y $?",
+          "type": "short-answer"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "You Get...",
+              "Meaning",
+              "Graphical Meaning"
+            ],
+            "title": "Algebraic Clues in Elimination",
+            "type": "table",
+            "rows": [
+              {
+                "0": "A false equation (e.g., $ 0 = 5 $)",
+                "1": "No solution",
+                "2": "Planes don't share a common point"
+              },
+              {
+                "0": "An identity (e.g., $ 0 = 0 $)",
+                "1": "Infinitely many solutions",
+                "2": "Planes intersect in a line or are identical"
+              },
+              {
+                "0": "A single value for each variable",
+                "1": "Exactly one solution",
+                "2": "Planes intersect at a single point"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Choose one variable as the free parameter.",
+            "Express the other two variables in terms of it.",
+            "Each real number choice gives a different solution."
+          ],
+          "formula": "$$ (x, x + 3, 0) \\text{ where } x \\text{ is any real number} $$",
+          "title": "Writing Solutions with a Parameter"
+        },
+        "explanation": [
+          "During elimination, if you obtain a [[imp:false equation]] such as $ 0 = -7 $, the system has [[imp:no solution]]. It is inconsistent.",
+          "If you obtain an [[imp:identity]] such as $ 0 = 0 $, the system has [[imp:infinitely many solutions]]. It is consistent.",
+          "For infinitely many solutions, you can describe them using an ordered triple with a [[kw:parameter]]. For example, solve for two variables in terms of the third, and write the solution as $ (x, x+3, 0) $, where $ x $ can be any real number.",
+          "Graphically, no solution means the planes do not all intersect. Infinitely many means they intersect in a line or are identical."
+        ]
+      }
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "Let $ x $ = seats in A, $ y $ = seats in B, $ z $ = lawn seats.",
+            "Equation 1 (relation): $ y = 3x $.",
+            "Equation 2 (total seats): $ x + y + z = 23,000 $.",
+            "Equation 3 (revenue): $ 75x + 55y + 30z = 870,000 $."
+          ],
+          "prompt": "An amphitheater: Section B has 3 times as many seats as A, total seats = 23,000, total revenue = $870,000. Prices: A $75, B $55, Lawn $30. Write the system.",
+          "role": "guided",
+          "title": "Example A – Setting Up the System"
+        },
+        {
+          "prompt": "Substitute $ y = 3x $ into Equations 2 and 3 and solve for $ x $ and $ z $. Discuss the steps with a partner.",
+          "steps": [
+            "Eq2: $ x + 3x + z = 23,000 $ → $ 4x + z = 23,000 $.",
+            "Eq3: $ 75x + 55(3x) + 30z = 870,000 $ → $ 240x + 30z = 870,000 $.",
+            "Solve: Multiply first by -30: $ -120x - 30z = -690,000 $. Add to Eq3: $ 120x = 180,000 $ → $ x = 1500 $.",
+            "Then $ y = 4500 $, $ z = 17,000 $."
+          ],
+          "title": "Example B – Solving the Amphitheater System",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nAfter substitution, you'll have two equations in $ x $ and $ z $. Combine them to find $ x $, then back‑substitute. Check your answer."
+        },
+        {
+          "title": "Example C – Interpreting the Solution",
+          "prompt": "The solution is $ (1500, 4500, 17,000) $. How many lawn seats are there? How many more lawn seats than Section B?",
+          "role": "independent",
+          "steps": [
+            "Lawn seats $ z = 17,000 $.",
+            "Section B has $ 4500 $ seats.",
+            "$ 17,000 - 4500 = 12,500 $ more lawn seats than Section B."
+          ]
+        }
+      ],
+      "title": "Modeling Real‑Life Problems with Three‑Variable Systems",
+      "confusionCorner": {
+        "title": "Units Matter!",
+        "body": "Revenue equations must use consistent units. If prices are in dollars, revenue is in dollars. [[imp:Don't mix dollars and cents unless you convert all to the same unit.]]"
+      },
+      "id": "real-life-applications",
+      "questions": [
+        {
+          "type": "short-answer",
+          "prompt": "In the amphitheater problem, $ y = 3x $ means Section B has ___ times as many seats as Section A.",
+          "answer": "3",
+          "feedbackIfWrong": "Section B has 3 times as many seats.",
+          "id": "q1-4-10",
+          "hints": [
+            "Look at the coefficient of $ x $.",
+            "The equation is $ y = 3x $."
+          ]
+        },
+        {
+          "id": "q1-4-11",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "lawn"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "30 is the price of a lawn seat.",
+          "prompt": "The total revenue equation is $ 75x + 55y + 30z = 870,000 $. The number 30 is the price of a ___ seat.",
+          "hints": [
+            "It is the cheapest seat.",
+            "The variable $ z $ represents lawn seats."
+          ]
+        },
+        {
+          "hints": [
+            "The solution is $ x = 1500 $.",
+            "$ x $ represents Section A."
+          ],
+          "id": "q1-4-12",
+          "answer": "1500",
+          "prompt": "How many Section A seats are there? (Answer from the solution: 1500)",
+          "feedbackIfWrong": "There are 1500 seats in Section A.",
+          "type": "short-answer"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Unknown",
+              "Variable",
+              "Relationship"
+            ],
+            "title": "Amphitheater Model",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Seats in Section A",
+                "1": "$ x $",
+                "2": ""
+              },
+              {
+                "0": "Seats in Section B",
+                "1": "$ y $",
+                "2": "$ y = 3x $"
+              },
+              {
+                "0": "Lawn seats",
+                "1": "$ z $",
+                "2": ""
+              },
+              {
+                "0": "Total seats",
+                "1": "",
+                "2": "$ x + y + z = 23,000 $"
+              },
+              {
+                "0": "Total revenue",
+                "1": "",
+                "2": "$ 75x + 55y + 30z = 870,000 $"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "Real‑world problems often involve three unknowns that satisfy three [[kw:constraints]].",
+          "Steps to model:",
+          "1. Identify the unknowns and assign variables.",
+          "2. Write a verbal model for each relationship (e.g., 'Section B = 3 × Section A').",
+          "3. Translate each verbal model into an equation.",
+          "4. Solve the resulting system using elimination or substitution.",
+          "5. Interpret the solution in the context of the problem."
+        ],
+        "formulaCard": {
+          "title": "Modeling Steps",
+          "notes": [
+            "Look for key phrases: 'three times as many', 'total', 'revenue'.",
+            "Revenue = (price per seat) × (number of seats).",
+            "Substitution is often useful when one equation is simple."
+          ],
+          "formula": "$$ \\text{1. Define variables.} $$ $$ \\text{2. Write equations from verbal models.} $$ $$ \\text{3. Solve the system.} $$ $$ \\text{4. Check and interpret.} $$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "An amphitheater has three seating sections with different prices. Knowing the total seats, total revenue, and a relationship between sections, we can build a system of three equations and solve to find how many seats are in each section."
+      },
+      "teacherCues": [
+        "Read the amphitheater problem aloud. Ask: What do we know about the number of seats in Section B compared to A?",
+        "Show how to translate words into equations: 'three times as many' → $ y = 3x $, then use the total seats and revenue."
+      ]
+    },
+    {
+      "examples": [
+        {
+          "prompt": "For the system $ x + 2y - z = 3 $, $ 2x - y + z = 1 $, $ x + y + z = 4 $, which variable would you eliminate and why?",
+          "title": "Example A – Understand the Problem",
+          "role": "guided",
+          "steps": [
+            "Look at $ z $: Eq1 has $ -z $, Eq2 has $ +z $, Eq3 has $ +z $.",
+            "Adding Eq1 and Eq2 will cancel $ z $ easily.",
+            "Adding Eq1 and Eq3 will also cancel $ z $.",
+            "So [[imp:eliminate $ z $]] for the simplest arithmetic."
+          ]
+        },
+        {
+          "prompt": "Using elimination of $ z $ on the system above, find the solution. Work with a partner.",
+          "peerPrompt": "Without looking back...\n\nAdd Eq1 and Eq2 to eliminate $ z $. Add Eq1 and Eq3 to eliminate $ z $. Then solve the two equations in $ x $ and $ y $. Back‑substitute to find $ z $.",
+          "title": "Example B – Solve: Eliminate and Finish",
+          "steps": [
+            "Eq1+Eq2: $ (x+2y-z)+(2x-y+z)=3+1 $ → $ 3x + y = 4 $.",
+            "Eq1+Eq3: $ (x+2y-z)+(x+y+z)=3+4 $ → $ 2x + 3y = 7 $.",
+            "Solve: From $ 3x+y=4 $, $ y=4-3x $. Substitute into $ 2x+3(4-3x)=7 $ → $ 2x+12-9x=7 $ → $ -7x=-5 $ → $ x=5/7 $.",
+            "Then $ y=4-15/7 = 13/7 $. From Eq3: $ 5/7 + 13/7 + z = 4 $ → $ 18/7 + z = 4 $ → $ z = 10/7 $.",
+            "Solution: $ (5/7, 13/7, 10/7) $."
+          ],
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Conclude and Verify",
+          "steps": [
+            "Left side: $ 5/7 + 2(13/7) - 10/7 = 5/7 + 26/7 - 10/7 = 21/7 = 3 $.",
+            "Matches the right side.",
+            "The solution is correct."
+          ],
+          "prompt": "Verify that $ (5/7, 13/7, 10/7) $ satisfies the first equation $ x + 2y - z = 3 $.",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Let's practice the full process: Understand the system, Solve by choosing a strategy, and Conclude by stating the solution or describing the solution set. This blueprint works for any three‑variable system you encounter."
+      },
+      "questions": [
+        {
+          "answer": "z",
+          "prompt": "In the system $ x+2y-z=3 $, $ 2x-y+z=1 $, $ x+y+z=4 $, what variable is easiest to eliminate? (Answer: z)",
+          "id": "q1-4-13",
+          "hints": [
+            "Look for variables with opposite coefficients.",
+            "Eq1 has $ -z $, Eq2 has $ +z $."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "Eliminating $ z $ is easiest because of opposite signs."
+        },
+        {
+          "hints": [
+            "You reduced from three to this number.",
+            "It's a smaller system."
+          ],
+          "feedbackIfWrong": "You solve two equations in two variables.",
+          "type": "fill-blank",
+          "prompt": "After eliminating, you solve a system of ___ equations in two variables.",
+          "id": "q1-4-14",
+          "blanks": [
+            {
+              "accept": [
+                "two"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "short-answer",
+          "id": "q1-4-15",
+          "hints": [
+            "Fractions are exact.",
+            "Decimals may lose precision."
+          ],
+          "feedbackIfWrong": "No, keep fractions as exact answers.",
+          "prompt": "If a solution has fractions, should you round them to decimals? (yes or no)",
+          "answer": "no"
+        }
+      ],
+      "teacherCues": [
+        "Present a system not yet solved: $ 3x - 2y + z = 1 $, $ x + y - z = 4 $, $ 2x + 3y + 2z = 5 $. Walk through the Understand–Solve–Conclude framework.",
+        "Encourage students to decide which variable to eliminate and explain why."
+      ],
+      "title": "Blueprint Aid: Solving Any Three‑Variable System",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "If you get a false equation → no solution.",
+            "If you get an identity → infinitely many; use a parameter.",
+            "Always check your work."
+          ],
+          "title": "Checklist for Three‑Variable Systems",
+          "formula": "$$ \\text{1. Pair equations and eliminate one variable.} $$ $$ \\text{2. Solve the resulting 2×2 system.} $$ $$ \\text{3. Substitute back to find the third variable.} $$ $$ \\text{4. Verify in all three original equations.} $$"
+        },
+        "explanation": [
+          "**Understand**: We have three equations. We want to know if there is one solution, no solution, or infinitely many. Choose a variable to eliminate.",
+          "**Solve**: Pair equations, eliminate the chosen variable, solve the resulting two‑variable system, back‑substitute. Watch for false equations or identities.",
+          "**Conclude**: Write the solution as an ordered triple, or state 'no solution', or describe the infinite set using a parameter.",
+          "Example: $ 3x - 2y + z = 1 $, $ x + y - z = 4 $, $ 2x + 3y + 2z = 5 $. Eliminate $ z $ by adding Eq1 and Eq2 → $ 4x - y = 5 $. Add $ 2 \\times $ Eq2 to Eq3 → $ 4x + 5y = 13 $. Solve the two: subtract to get $ -6y = -8 $ → $ y = 4/3 $, then $ x = 19/12 $, then $ z $ from Eq2. Solution: $ (19/12, 4/3, ...) $ — will be messy but exists."
+        ],
+        "visuals": [
+          {
+            "title": "Blueprint Flow",
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify the three equations; choose a variable to eliminate."
+              },
+              {
+                "0": "Solve",
+                "1": "Eliminate that variable from two pairs; solve the two‑variable system; back‑substitute."
+              },
+              {
+                "0": "Conclude",
+                "1": "State the ordered triple or describe the solution set."
+              }
+            ],
+            "headers": [
+              "Stage",
+              "Action"
+            ]
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Fractions Are Okay!",
+        "body": "Solutions do not have to be integers. If you get fractions, keep them as fractions. They are exact; decimals may be approximations. [[imp:Don't round unless the problem asks you to.]]"
+      },
+      "id": "blueprint-solving-systems"
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

@@ -1,0 +1,808 @@
+{
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "Hope Slater borrows $40,000 for 6 months at 4% annual interest to buy office furniture. Her interest cost is $40,000 × 0.04 × (6/12) = $800. The total amount she must repay ([[kw:maturity value]]) is $40,000 + $800 = $40,800. Simple interest is calculated only on the original [[kw:principal]]."
+      },
+      "id": "simple-interest-basics",
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Always express time in years.",
+            "headers": [
+              "Time Given",
+              "T in Formula",
+              "Example (P=$40,000, R=4%)"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "6 months",
+                "1": "6/12 = 0.5",
+                "2": "I = 40,000×0.04×0.5 = $800"
+              },
+              {
+                "0": "1 year",
+                "1": "1",
+                "2": "I = 40,000×0.04×1 = $1,600"
+              },
+              {
+                "0": "18 months",
+                "1": "18/12 = 1.5",
+                "2": "I = 40,000×0.04×1.5 = $2,400"
+              }
+            ],
+            "title": "Simple Interest – Time Conversion",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "title": "Simple Interest & Maturity Value",
+          "formula": "$$I = P \\times R \\times T$$ $$MV = P + I$$",
+          "notes": [
+            "R is the annual interest rate (decimal).",
+            "T is in years; months ÷ 12."
+          ]
+        },
+        "explanation": [
+          "[[kw:Simple interest]] is the cost of borrowing money, paid only on the original principal, usually for loans of one year or less.",
+          "Formula: $$I = P \\times R \\times T$$ where $I$ = interest, $P$ = principal, $R$ = annual interest rate (decimal), $T$ = time in years or fraction of a year.",
+          "[[kw:Maturity value]] (MV) = Principal + Interest: $$MV = P + I$$.",
+          "For time expressed in months, convert to years: $T = \\frac{\\text{months}}{12}$.",
+          "[[imp:Do not round intermediate answers; round only the final result to the nearest cent.]]"
+        ]
+      },
+      "questions": [
+        {
+          "hints": [
+            "Measured in years or fraction thereof.",
+            "The third factor."
+          ],
+          "feedbackIfWrong": "time (T).",
+          "prompt": "Simple interest = Principal × Rate × ___.",
+          "id": "b1q1",
+          "blanks": [
+            {
+              "accept": [
+                "time",
+                "T"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "Principal $5,000, rate 4%, time 6 months. Find interest. (number only, no $)",
+          "answers": [
+            "100",
+            "100.00"
+          ],
+          "hints": [
+            "T = 6/12 = 0.5.",
+            "5,000 × 0.04 × 0.5 = ?"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "100.",
+          "id": "b1q2"
+        },
+        {
+          "type": "short-answer",
+          "id": "b1q3",
+          "feedbackIfWrong": "2,150.",
+          "prompt": "Principal $2,000, rate 5%, interest $150. Find maturity value. (number only, no $)",
+          "hints": [
+            "MV = P + I.",
+            "2,000 + 150 = ?"
+          ],
+          "answers": [
+            "2150",
+            "2,150"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "A – Calculate interest and MV for 9 months",
+          "steps": [
+            "T = 9/12 = 0.75.",
+            "I = 10,000 × 0.06 × 0.75 = $450.",
+            "MV = 10,000 + 450 = $10,450."
+          ],
+          "prompt": "A loan of $10,000 is taken for 9 months at 6% annual interest. Find interest and maturity value.",
+          "role": "guided"
+        },
+        {
+          "prompt": "Explain why simple interest is called 'simple' and when it's typically used.",
+          "title": "B – Why simple interest?",
+          "peerPrompt": "Compare it to compound interest (not yet covered).",
+          "steps": [
+            "It is calculated only on the original principal, not on accumulated interest.",
+            "Typically used for short‑term loans (less than a year).",
+            "Simple interest is straightforward: just principal × rate × time."
+          ],
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "title": "C – Find principal given interest",
+          "role": "independent",
+          "steps": [
+            "T = 4/12 = 1/3.",
+            "Rearrange: P = I ÷ (R × T) = 50 ÷ (0.03 × 1/3) = 50 ÷ 0.01 = $5,000.",
+            "The principal was $5,000."
+          ],
+          "prompt": "A 4‑month loan at 3% annual interest costs $50 in interest. What was the principal?"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Always convert the interest rate to a decimal (4% = 0.04) and time to years. [[imp:For months, divide by 12; for days, see the next sections.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "12360",
+          "12,360"
+        ],
+        "optional": true,
+        "prompt": "A loan of $12,000 for 8 months at 4.5% annual interest. Find maturity value.",
+        "hints": [
+          "T=8/12=2/3; I=12,000×0.045×(2/3)=360.",
+          "MV=12,000+360=12,360."
+        ]
+      },
+      "teacherCues": [
+        "Write the formula I = P × R × T on the board.",
+        "Ask: 'What is the difference between principal, interest, and maturity value?'"
+      ],
+      "title": "1. Simple Interest Formula & Maturity Value"
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Exact Interest Calculation Steps",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Find exact days between dates",
+                "2": "124 days"
+              },
+              {
+                "0": "2",
+                "1": "Compute time fraction T = days/365",
+                "2": "124/365"
+              },
+              {
+                "0": "3",
+                "1": "Calculate I = P × R × T",
+                "2": "50,000 × 0.05 × 124/365 = $849.32"
+              },
+              {
+                "0": "4",
+                "1": "Add to principal for MV",
+                "2": "MV = $50,849.32"
+              }
+            ],
+            "type": "table",
+            "caption": "Always round final interest to nearest cent.",
+            "headers": [
+              "Step",
+              "Action",
+              "Example (March 4 – July 6)"
+            ]
+          }
+        ],
+        "explanation": [
+          "[[kw:Exact interest]] calculates time using a 365‑day year and the exact number of days between two dates.",
+          "Formula: $$I = P \\times R \\times \\frac{\\text{Exact Days}}{365}$$.",
+          "Count days: the day the loan is made is not counted; the day the money is repaid is counted.",
+          "Use a day‑of‑year table or count days per month to find exact days.",
+          "[[imp:Exact interest gives a slightly lower interest charge than ordinary interest because the denominator is larger.]]"
+        ],
+        "formulaCard": {
+          "notes": [
+            "Exact days are counted between the loan date and the due date.",
+            "Do not count the start day; count the end day."
+          ],
+          "title": "Exact Interest (365‑Day Year)",
+          "formula": "$$I = P \\times R \\times \\frac{\\text{Exact Days}}{365}$$ $$MV = P + I$$"
+        }
+      },
+      "teacherCues": [
+        "Explain that exact interest uses a 365‑day year.",
+        "Show how to count exact days using a calendar or day‑of‑year table."
+      ],
+      "challengeCorner": {
+        "hints": [
+          "I = 100,000 × 0.03 × 189/365 ≈ 1,553.42.",
+          "MV = 101,553.42."
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "prompt": "Loan $100,000 at 3% from March 15 to September 20. Exact days = 189. Find exact interest.",
+        "answers": [
+          "1553.42"
+        ]
+      },
+      "confusionCorner": {
+        "body": "Don't forget to exclude the start date when counting days. [[imp:Example: March 4 to July 6 → March 4 is not counted, July 6 is counted.]]",
+        "title": "Watch out!"
+      },
+      "examples": [
+        {
+          "prompt": "Loan $20,000 at 6% from January 10 to March 20 (not a leap year). Find exact interest.",
+          "role": "guided",
+          "steps": [
+            "Days: Jan 10–31 = 21, Feb = 28, Mar 1–20 = 20, total = 69.",
+            "I = 20,000 × 0.06 × 69/365 ≈ $226.85.",
+            "Exact interest ≈ $226.85."
+          ],
+          "title": "A – Count days and compute interest"
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain why the exact method is considered fairer to borrowers.",
+          "title": "B – Why 365 days?",
+          "peerPrompt": "Think about the number of days in a year.",
+          "steps": [
+            "It uses the actual number of days in a year (365), which is the true calendar year.",
+            "The ordinary method uses 360 days, which inflates the daily rate slightly.",
+            "Exact interest results in a lower total interest for the same loan."
+          ]
+        },
+        {
+          "title": "C – Exact interest for a different period",
+          "steps": [
+            "Days: Apr 5–30 = 25, May=31, June=30, July=31, Aug 1–12=12 → total=129.",
+            "I = 15,000 × 0.045 × 129/365 ≈ $238.81.",
+            "Interest ≈ $238.81."
+          ],
+          "prompt": "Loan $15,000 at 4.5% from April 5 to August 12. Find interest (exact method).",
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "Exact interest uses a ___‑day year.",
+          "blanks": [
+            {
+              "accept": [
+                "365"
+              ]
+            }
+          ],
+          "hints": [
+            "Not 360.",
+            "The actual calendar year."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "365.",
+          "id": "b2q1"
+        },
+        {
+          "hints": [
+            "I = 8,000 × 0.05 × 73/365.",
+            "73/365 = 0.2, ×400 = 80."
+          ],
+          "answers": [
+            "80.00",
+            "80"
+          ],
+          "feedbackIfWrong": "80.00.",
+          "id": "b2q2",
+          "type": "short-answer",
+          "prompt": "Loan $8,000 at 5% for 73 days. Exact interest? (two decimals, no $)"
+        },
+        {
+          "id": "b2q3",
+          "type": "short-answer",
+          "answers": [
+            "36"
+          ],
+          "hints": [
+            "Jan 5‑31 = 26, Feb 1‑10 = 10.",
+            "26+10=36."
+          ],
+          "prompt": "From Jan 5 to Feb 10 (non‑leap). How many exact days? (number only)",
+          "feedbackIfWrong": "36."
+        }
+      ],
+      "id": "exact-interest",
+      "title": "2. Exact Interest Method (365 Days)",
+      "discoveryHook": {
+        "scenario": "On March 4, Joe Bench borrows $50,000 at 5% interest, due July 6. The exact number of days from March 4 to July 6 is 124 days. Under the [[kw:exact interest]] method, time = 124/365, so interest = $50,000 × 0.05 × (124/365) = $849.32. This method is used by the Federal Reserve and federal government."
+      }
+    },
+    {
+      "title": "3. Ordinary Interest Method (360 Days)",
+      "confusionCorner": {
+        "body": "Do not use 360 for exact interest or 365 for ordinary. [[imp:Check the problem's instructions: ‘ordinary’ → 360, ‘exact’ → 365.]]",
+        "title": "Watch out!"
+      },
+      "id": "ordinary-interest",
+      "challengeCorner": {
+        "type": "short-answer",
+        "hints": [
+          "I = 75,000 × 0.04 × 200/360 = 1,666.67.",
+          "MV = 75,000 + 1,666.67 = 76,666.67."
+        ],
+        "answers": [
+          "1666.67"
+        ],
+        "prompt": "A bank loans $75,000 at 4% for 200 days using ordinary interest. Compute interest and total repayment.",
+        "optional": true
+      },
+      "teacherCues": [
+        "Contrast with exact interest: denominator is 360.",
+        "Mention that banks commonly use this method (Banker's Rule)."
+      ],
+      "questions": [
+        {
+          "hints": [
+            "Not 365.",
+            "Banker's rule."
+          ],
+          "feedbackIfWrong": "360.",
+          "type": "fill-blank",
+          "prompt": "Ordinary interest uses a ___‑day year.",
+          "blanks": [
+            {
+              "accept": [
+                "360"
+              ]
+            }
+          ],
+          "id": "b3q1"
+        },
+        {
+          "feedbackIfWrong": "58.33.",
+          "type": "short-answer",
+          "id": "b3q2",
+          "prompt": "Loan $5,000 at 7% for 60 days. Ordinary interest? (two decimals, no $)",
+          "answers": [
+            "58.33"
+          ],
+          "hints": [
+            "I = 5,000 × 0.07 × 60/360.",
+            "5,000×0.07=350, 350×1/6≈58.33."
+          ]
+        },
+        {
+          "prompt": "Which method gives a higher interest amount for the same loan? (word: exact or ordinary)",
+          "hints": [
+            "Smaller denominator → larger result.",
+            "360 < 365."
+          ],
+          "answers": [
+            "ordinary"
+          ],
+          "id": "b3q3",
+          "type": "short-answer",
+          "feedbackIfWrong": "ordinary."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Using the same Joe Bench loan ($50,000, 5%, March 4 to July 6, 124 days), ordinary interest = $50,000 × 0.05 × 124/360 = $861.11. Notice it's slightly higher than the $849.32 exact interest. Banks use [[kw:ordinary interest]] (360‑day year) because it simplifies calculations and yields more interest."
+      },
+      "examples": [
+        {
+          "title": "A – Compare methods",
+          "steps": [
+            "Exact: I = 10,000 × 0.06 × 90/365 ≈ $147.95.",
+            "Ordinary: I = 10,000 × 0.06 × 90/360 = $150.00.",
+            "Ordinary interest is $2.05 higher."
+          ],
+          "prompt": "Loan $10,000 at 6% for 90 days. Calculate interest by both exact and ordinary method.",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Think about simplicity and profit.",
+          "minLength": 2,
+          "steps": [
+            "Historically, 360‑day year simplified manual calculations (divisible by 12, 4, etc.).",
+            "It yields more interest income for the bank for the same nominal rate.",
+            "Though computers make simplification unnecessary, the practice continues."
+          ],
+          "role": "peer-explain",
+          "title": "B – Why 360 days?",
+          "prompt": "Explain why banks prefer the ordinary interest method."
+        },
+        {
+          "prompt": "Loan $25,000 at 8% for 45 days. Find interest (ordinary) and maturity value.",
+          "steps": [
+            "I = 25,000 × 0.08 × 45/360 = $250.",
+            "MV = 25,000 + 250 = $25,250."
+          ],
+          "role": "independent",
+          "title": "C – Ordinary interest calculation"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Exact",
+                "1": "365",
+                "2": "124/365",
+                "3": "$849.32"
+              },
+              {
+                "0": "Ordinary",
+                "1": "360",
+                "2": "124/360",
+                "3": "$861.11"
+              }
+            ],
+            "headers": [
+              "Method",
+              "Days Basis",
+              "Time Fraction",
+              "Interest on $50,000, 5%, 124 days"
+            ],
+            "title": "Exact vs. Ordinary Interest",
+            "caption": "Ordinary interest is ‘Banker's Rule’ – slightly higher cost to borrower.",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Time = Exact days ÷ 360.",
+            "Commonly used by banks."
+          ],
+          "title": "Ordinary Interest (360‑Day Year)",
+          "formula": "$$I = P \\times R \\times \\frac{\\text{Exact Days}}{360}$$ $$MV = P + I$$"
+        },
+        "explanation": [
+          "[[kw:Ordinary interest]] (Banker's Rule) uses a 360‑day year in the time fraction.",
+          "Formula: $$I = P \\times R \\times \\frac{\\text{Exact Days}}{360}$$.",
+          "This gives a higher interest amount than exact interest for the same number of days.",
+          "Banks often use ordinary interest for loans; consumer groups have criticized it as favoring the bank.",
+          "[[imp:Ordinary interest > exact interest for the same P, R, and exact days.]]"
+        ]
+      }
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Alternative: July 6 = 187th day; March 4 = 63rd day; 187−63 = 124.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "March (31 days total, 4‑31)",
+                "1": "27"
+              },
+              {
+                "0": "April",
+                "1": "30"
+              },
+              {
+                "0": "May",
+                "1": "31"
+              },
+              {
+                "0": "June",
+                "1": "30"
+              },
+              {
+                "0": "July (1‑6)",
+                "1": "6"
+              },
+              {
+                "0": "Total",
+                "1": "124"
+              }
+            ],
+            "headers": [
+              "Month",
+              "Days"
+            ],
+            "title": "Day Counting Example: March 4 to July 6",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Do not count the start day.",
+            "If using a day‑of‑year table, remember that day numbers start from 1 (Jan 1)."
+          ],
+          "title": "Exact Days Calculation",
+          "formula": "$$\\text{Exact Days} = \\text{Day Number (End Date)} - \\text{Day Number (Start Date)}$$"
+        },
+        "explanation": [
+          "Two ways to count exact days:",
+          "1. Use the [[kw:day‑of‑year table]]: each date has a day number (Jan 1 = 1, Dec 31 = 365). Subtract the earlier day number from the later.",
+          "2. Manual count: days left in start month, plus full months in between, plus days in end month.",
+          "Always exclude the start date and include the end date.",
+          "[[imp:For leap years, add 1 day after February 29; use 366 days for the year.]]",
+          "Exact days are used in both exact interest (÷365) and ordinary interest (÷360)."
+        ]
+      },
+      "id": "counting-days",
+      "teacherCues": [
+        "Use the ‘day‑of‑year’ table from the Business Math Handbook.",
+        "Practice manual counting: subtract the start day from the end day using month lengths."
+      ],
+      "title": "4. Counting Exact Days Between Dates",
+      "questions": [
+        {
+          "feedbackIfWrong": "due (end/repayment).",
+          "type": "fill-blank",
+          "hints": [
+            "It's the day the money is paid back.",
+            "Not the start."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "due",
+                "end",
+                "repayment"
+              ]
+            }
+          ],
+          "id": "b4q1",
+          "prompt": "The loan date is not counted in the exact day count; only the ___ date is counted."
+        },
+        {
+          "hints": [
+            "Jan 5‑31 = 26, Feb 1‑5 = 5, total 31.",
+            "Or: Feb 5 day 36, Jan 5 day 5, 36‑5=31."
+          ],
+          "id": "b4q2",
+          "type": "short-answer",
+          "feedbackIfWrong": "31.",
+          "prompt": "From Jan 5 to Feb 5, non‑leap year. Exact days? (number only)",
+          "answers": [
+            "31"
+          ]
+        },
+        {
+          "feedbackIfWrong": "30.",
+          "type": "short-answer",
+          "id": "b4q3",
+          "hints": [
+            "Start date not counted, so days from Mar 2 to 31 = 30.",
+            "Or day 90‑day 60 = 30."
+          ],
+          "answers": [
+            "30"
+          ],
+          "prompt": "From March 1 to March 31. Exact days? (number only)"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "To compute interest when a loan spans specific dates, you need the exact number of days. For example, from March 4 to July 6: March 4 is the 63rd day of the year; July 6 is the 187th day. 187 − 63 = 124 days. Alternatively, count remaining days in March plus days in full months plus days in July."
+      },
+      "examples": [
+        {
+          "prompt": "Count exact days from April 10 to August 5 (non‑leap year).",
+          "role": "guided",
+          "steps": [
+            "Apr: 30−10 = 20 days remaining.",
+            "May=31, June=30, July=31, Aug 1‑5 = 5 days.",
+            "Total = 20+31+30+31+5 = 117 days."
+          ],
+          "title": "A – Manual counting"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Explain why the day the loan is made is not counted.",
+          "steps": [
+            "Interest is charged for the time the money is in use.",
+            "The convention is that interest accrues from the day after the loan is made.",
+            "This avoids charging interest for a partial day on the start date."
+          ],
+          "title": "B – Why exclude start date?",
+          "minLength": 2,
+          "peerPrompt": "Think about when interest starts accruing."
+        },
+        {
+          "role": "independent",
+          "title": "C – Using day‑of‑year table",
+          "steps": [
+            "Days = 110 – 10 = 100.",
+            "So the loan period is 100 days."
+          ],
+          "prompt": "From Jan 10 to Apr 20. Jan 10 = day 10, Apr 20 = day 110 (non‑leap). Find exact days."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "In a leap year, February has 29 days, and day‑of‑year numbers after Feb 29 are shifted by 1. [[imp:Adjust for leap year when counting dates after February.]]"
+      },
+      "challengeCorner": {
+        "hints": [
+          "Dec 20‑31 = 11, Jan = 31, Feb 1‑10 = 10.",
+          "Total = 11+31+10 = 52."
+        ],
+        "type": "short-answer",
+        "answers": [
+          "52"
+        ],
+        "optional": true,
+        "prompt": "A loan from December 20, 2024 to February 10, 2025 (non‑leap). Find exact days."
+      }
+    },
+    {
+      "concept": {
+        "explanation": [
+          "Apply the blueprint to dissect simple interest word problems:",
+          "1. Understand: identify principal, annual rate, start and end dates, and whether exact or ordinary interest is required.",
+          "2. Solve: compute exact days between dates, choose the correct denominator (365 or 360), calculate interest, then maturity value.",
+          "3. Conclude: state the interest and maturity value clearly; verify calculations.",
+          "This structured approach prevents mix‑ups between exact and ordinary methods."
+        ],
+        "formulaCard": {
+          "formula": "$$I = P \\times R \\times \\frac{\\text{Exact Days}}{365 \\text{ or } 360}$$ $$MV = P + I$$",
+          "notes": [
+            "If method not specified, use ordinary (common business practice).",
+            "Always check for leap year if dates span February."
+          ],
+          "title": "Simple Interest Blueprint"
+        },
+        "visuals": [
+          {
+            "caption": "Follow the blueprint to avoid missing any step.",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "title": "Blueprint Example: $15,000, 5.5%, Apr 1 – Jul 31 (Ordinary)",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "P=15,000, R=0.055, Start Apr 1, End Jul 31, Method=Ordinary",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Days",
+                "1": "Apr 1‑30=29, May=31, June=30, July=31 → total 121 days",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Interest",
+                "1": "I = 15,000 × 0.055 × 121/360 = $277.29",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – MV",
+                "1": "MV = 15,000 + 277.29 = $15,277.29",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Check: 15,277.29 – 277.29 = 15,000 ✓",
+                "2": ""
+              }
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Use the blueprint Understand → Solve → Conclude.",
+        "Work through a problem that requires choosing between exact and ordinary interest."
+      ],
+      "id": "blueprint-comparison",
+      "challengeCorner": {
+        "answers": [
+          "591.46"
+        ],
+        "type": "short-answer",
+        "hints": [
+          "Days: Jun 1-30=29, Jul=31, Aug=31, Sep=30, Oct=31, Nov 1-15=15 → 167 days.",
+          "I = 30,000×0.0425×167/360 ≈ 591.46; MV = 30,591.46."
+        ],
+        "prompt": "A business loan of $30,000 at 4.25% from June 1 to November 15. Use ordinary interest. Find interest and MV.",
+        "optional": true
+      },
+      "confusionCorner": {
+        "body": "In some problems, the time is given in months, not days. [[imp:If months are given, use T = months/12; do not count days.]]",
+        "title": "Watch out!"
+      },
+      "questions": [
+        {
+          "prompt": "The first step of the blueprint is to ___ the problem.",
+          "feedbackIfWrong": "understand.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "hints": [
+            "Identify knowns and unknowns.",
+            "U in U‑S‑C."
+          ],
+          "id": "b5q1",
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "50.00.",
+          "hints": [
+            "I = 4,000 × 0.05 × 90/360.",
+            "4,000×0.05=200, 200×0.25=50."
+          ],
+          "prompt": "Loan $4,000 at 5% for 90 days, ordinary interest. Find interest. (number only, two decimals, no $)",
+          "answers": [
+            "50.00",
+            "50"
+          ],
+          "id": "b5q2",
+          "type": "short-answer"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Not 360.",
+            "Actual days in a year."
+          ],
+          "id": "b5q3",
+          "answers": [
+            "365"
+          ],
+          "feedbackIfWrong": "365.",
+          "prompt": "If a loan uses exact interest, the denominator is ___ (number)."
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Days: May 10‑31=21, June=30, July=31, Aug=31, Sep 1‑5=5 → total 118 days.",
+            "I = 20,000 × 0.06 × 118/360 = $393.33.",
+            "MV = 20,000 + 393.33 = $20,393.33."
+          ],
+          "title": "A – Full blueprint (Ordinary)",
+          "prompt": "A loan for $20,000 at 6% from May 10 to September 5. Use ordinary interest."
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Explain how the blueprint can prevent mistakes when using exact vs. ordinary interest.",
+          "minLength": 2,
+          "title": "B – Why blueprint?",
+          "peerPrompt": "Think about the denominator choice.",
+          "steps": [
+            "The ‘Understand’ step forces you to note which method (exact or ordinary) is required.",
+            "The ‘Solve’ step prompts you to first count days correctly.",
+            "It ensures you use the correct denominator (365 or 360) in the formula."
+          ]
+        },
+        {
+          "prompt": "Same loan as A, but use exact interest. Recalculate interest and MV.",
+          "title": "C – Exact method blueprint",
+          "role": "independent",
+          "steps": [
+            "Days still 118.",
+            "I = 20,000 × 0.06 × 118/365 ≈ $387.95.",
+            "MV = 20,387.95."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A small business owner borrows $15,000 at 5.5% from April 1 to July 31. The bank uses ordinary interest. Follow the blueprint to determine the interest cost and the total amount to be repaid."
+      },
+      "title": "5. Blueprint Aid: Simple Interest Problems"
+    }
+  ],
+  "type": "interactive-lesson",
+  "id": "ch10-lu10-1",
+  "standards": [
+    "BUSMATH.10.1"
+  ],
+  "schemaVersion": 2,
+  "title": "Calculation of Simple Interest and Maturity Value",
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

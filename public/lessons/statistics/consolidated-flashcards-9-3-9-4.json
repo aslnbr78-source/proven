@@ -1,0 +1,131 @@
+{
+  "title": "Sections 9.3 & 9.4: Review",
+  "id": "consolidated-flashcards-9-3-9-4",
+  "cards": [
+    {
+      "back": "1. Total variation: $\\Sigma (y_i - \\bar{y})^2$\n2. Explained variation: $\\Sigma (\\hat{y}_i - \\bar{y})^2$\n3. Unexplained variation: $\\Sigma (y_i - \\hat{y}_i)^2$\nTotal = Explained + Unexplained.",
+      "front": "Name the three types of [[kw:variation]] about a regression line."
+    },
+    {
+      "back": "The proportion of the total variation in $y$ that is explained by the linear relationship with $x$. It equals $(r)^2$ or Explained variation / Total variation. $r^2$ ranges from 0 to 1.",
+      "front": "What is the [[kw:coefficient of determination]] $r^2$?"
+    },
+    {
+      "back": "$$r^2 = (0.979)^2 \\approx 0.958$$\nAbout 95.8% of the variation in time until the next eruption is explained by the eruption duration. Only 4.2% is due to other factors.",
+      "front": "For the Old Faithful data, $r = 0.979$. Find and interpret $r^2$."
+    },
+    {
+      "back": "The typical size of the residuals (prediction errors). It is the standard deviation of the observed $y$ values around the regression line:\n$$s_e = \\sqrt{\\frac{\\Sigma (y_i - \\hat{y}_i)^2}{n-2}}$$\nSmaller $s_e$ means more precise predictions.",
+      "front": "What does the [[imp:standard error of estimate]] $s_e$ measure?"
+    },
+    {
+      "front": "Give the Google Sheets function for the standard error of estimate.",
+      "back": "`=STEYX(known_y, known_x)`\nIt returns $s_e$ directly from the data without computing residuals manually."
+    },
+    {
+      "back": "$s_e$ is the square root of the unexplained variation divided by the degrees of freedom:\n$$s_e = \\sqrt{\\frac{\\text{Unexplained variation}}{n-2}}$$",
+      "front": "How is $s_e$ related to the unexplained variation?"
+    },
+    {
+      "front": "If $r^2 = 0.81$, what percent of variation is [[imp:unexplained]]?",
+      "back": "Unexplained = $1 - r^2 = 1 - 0.81 = 0.19$, so 19% is unexplained. This is called the coefficient of non‑determination."
+    },
+    {
+      "front": "What is a [[kw:prediction interval]]?",
+      "back": "An interval estimate for an individual $y$ value at a given $x_0$. It has a specified confidence level $c$ of containing the true $y$:\n$$\\hat{y} - E < y < \\hat{y} + E$$\nIt is wider than a confidence interval for the mean."
+    },
+    {
+      "front": "Write the formula for the margin of error $E$ in a prediction interval.",
+      "back": "$$E = t_c \\, s_e \\sqrt{1 + \\frac{1}{n} + \\frac{n(x_0 - \\bar{x})^2}{n\\Sigma x^2 - (\\Sigma x)^2}}$$\n$t_c$ comes from the $t$-distribution with $df = n-2$."
+    },
+    {
+      "front": "Why does the prediction interval become wider as $x_0$ moves away from $\\bar{x}$?",
+      "back": "The term $(x_0 - \\bar{x})^2$ increases, which inflates the margin of error. The regression line is most precisely estimated at the center of the data, so predictions far from $\\bar{x}$ have greater uncertainty."
+    },
+    {
+      "front": "What distribution provides the critical value $t_c$ for prediction intervals?",
+      "back": "The $t$-distribution with $n-2$ degrees of freedom. Use the same table as for testing the correlation coefficient."
+    },
+    {
+      "back": "We are 95% confident that the actual CO2 emissions for a country with a GDP of $3.5 trillion will be between 439 and 1138 million metric tons.",
+      "front": "Interpret a 95% prediction interval of (439, 1138) for CO2 emissions when GDP = 3.5."
+    },
+    {
+      "front": "A regression line has $r^2 = 0.49$. What is the absolute value of $r$?",
+      "back": "$$|r| = \\sqrt{0.49} = 0.7$$\nThe correlation could be positive or negative, so $r = 0.7$ or $r = -0.7$."
+    },
+    {
+      "front": "How can you compute $s_e$ using Google Sheets without finding residuals?",
+      "back": "Use `=STEYX(y_range, x_range)`. This function calculates the standard error of estimate directly from the data arrays."
+    },
+    {
+      "front": "True or False: A high $r^2$ guarantees that the regression line will give accurate predictions for $x$ values far outside the data range.",
+      "back": "False. A high $r^2$ indicates a good fit within the observed range, but extrapolation is still dangerous. The linear relationship may not hold beyond the data."
+    },
+    {
+      "back": "An equation that predicts a response variable $y$ using two or more independent variables: $$\\hat{y} = b + m_1x_1 + m_2x_2 + \\dots + m_kx_k$$",
+      "front": "What is a [[kw:multiple regression equation]]?"
+    },
+    {
+      "front": "Interpret the [[kw:coefficient]] $m_i$ in a multiple regression equation.",
+      "back": "For each one-unit increase in $x_i$, the predicted value $\\hat{y}$ changes by $m_i$, [[imp:holding all other variables constant]]."
+    },
+    {
+      "back": "The predicted value of $y$ when all independent variables equal 0. It may not be meaningful if $x_i = 0$ is outside the data range.",
+      "front": "What does the [[kw:y-intercept]] $b$ represent in multiple regression?"
+    },
+    {
+      "back": "The [[kw:coefficient of multiple determination]]. It is the proportion of the variation in $y$ explained by all the independent variables together.",
+      "front": "What is $R^2$ (R‑Sq) in multiple regression?"
+    },
+    {
+      "back": "A measure of the typical size of the residuals. It is the square root of the unexplained variation divided by $n - k - 1$, where $k$ is the number of predictors.",
+      "front": "What is the [[kw:standard error of estimate]] $S$ in multiple regression?"
+    },
+    {
+      "back": "A small p‑value (typically $< 0.05$) suggests that the variable is a [[imp:significant predictor]] in the presence of the other variables. If large, it may not be needed.",
+      "front": "How do you interpret a p‑value for a coefficient in multiple regression output?"
+    },
+    {
+      "front": "How do you predict $y$ given a multiple regression equation?",
+      "back": "Substitute the values of $x_1, x_2, \\dots, x_k$ into the equation and compute $\\hat{y}$. Only predict within the range of the original data for all variables."
+    },
+    {
+      "back": "Even if each $x$ is individually within its range, the combination of values might be unusual. The linear model may not hold outside the observed data cloud.",
+      "front": "Why is extrapolation riskier in multiple regression than in simple regression?"
+    },
+    {
+      "back": "For each additional unit of $x_1$, predicted $y$ increases by 400, holding $x_2$ constant. For each unit of $x_2$, $y$ increases by 200, holding $x_1$ constant.",
+      "front": "Give an example of interpreting a coefficient: $\\hat{y} = 50000 + 400x_1 + 200x_2$."
+    },
+    {
+      "front": "What Google Sheets function performs multiple linear regression?",
+      "back": "`=LINEST(known_y, known_x, TRUE, TRUE)`. It returns an array with coefficients (reverse order), standard errors, $R^2$, and $S$."
+    },
+    {
+      "front": "In LINEST output, where is the intercept $b$ located?",
+      "back": "In the first row, last column. Coefficients appear in reverse order of the independent variables, so the very last entry is $b$."
+    },
+    {
+      "back": "Select a range of cells (e.g., 5 rows × (k+2) columns), type the formula, and press [[imp:Ctrl+Shift+Enter]].",
+      "front": "How do you enter an array formula like LINEST in Google Sheets?"
+    },
+    {
+      "front": "What is the difference between $R^2$ and adjusted $R^2$?",
+      "back": "$R^2$ always increases when adding predictors, even useless ones. Adjusted $R^2$ penalizes the number of predictors and can decrease, giving a more honest measure of model quality."
+    },
+    {
+      "back": "88% of the variation in the response variable is explained by the predictors collectively. The remaining 12% is due to other factors or random error.",
+      "front": "If a multiple regression model has $R^2 = 0.88$, what does this mean?"
+    },
+    {
+      "front": "What does 'holding other variables constant' mean when interpreting a coefficient?",
+      "back": "It means we are isolating the effect of one predictor by assuming the values of all other predictors do not change. This allows us to see the unique contribution of that variable."
+    }
+  ],
+  "type": "flashcard",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

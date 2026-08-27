@@ -1,0 +1,803 @@
+{
+  "id": "ch12-lu12-2",
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "title": "1. Present Value Concept",
+      "teacherCues": [
+        "Ask: 'If you need $10,000 in 3 years, how much should you invest today?'",
+        "Contrast with compound interest (future value): we went from PV to FV; now we go backward from FV to PV."
+      ],
+      "concept": {
+        "explanation": [
+          "[[kw:Present value (PV)]] is the amount that must be invested now to grow to a specified future value, given a certain interest rate and compounding frequency.",
+          "PV is the opposite of future value. While FV compounds money forward, PV discounts money backward.",
+          "The basic relationship: $$FV = PV \\times (1 + i)^n$$.",
+          "Solving for PV: $$PV = \\frac{FV}{(1 + i)^n}$$.",
+          "[[imp:Present value is always less than future value when interest rate is positive.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$PV = \\frac{FV}{(1 + i)^n}$$",
+          "title": "Present Value Formula",
+          "notes": [
+            "i = periodic rate (decimal).",
+            "n = total number of compounding periods.",
+            "PV is the principal needed to achieve a target FV."
+          ]
+        },
+        "visuals": [
+          {
+            "title": "FV vs. PV",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Direction",
+                "1": "Forward (compounding)",
+                "2": "Backward (discounting)"
+              },
+              {
+                "0": "Formula",
+                "1": "$$FV = PV \\times (1 + i)^n$$",
+                "2": "$$PV = \\frac{FV}{(1 + i)^n}$$"
+              },
+              {
+                "0": "What it answers",
+                "1": "How much will I have later?",
+                "2": "How much do I need now?"
+              }
+            ],
+            "type": "table",
+            "caption": "PV and FV are inverse operations using the same i and n.",
+            "headers": [
+              "",
+              "Future Value (FV)",
+              "Present Value (PV)"
+            ]
+          }
+        ]
+      },
+      "challengeCorner": {
+        "hints": [
+          "i = 5%/2 = 2.5% = 0.025; n = 7×2 = 14.",
+          "PV = 15,000 ÷ (1.025)^14 ≈ 15,000 ÷ 1.41297 = 10,615.64."
+        ],
+        "answers": [
+          "10615.64",
+          "10,615.64"
+        ],
+        "prompt": "You want $15,000 in 7 years. The account pays 5% compounded semiannually. Find PV.",
+        "optional": true,
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "body": "Present value is not the same as the face value of a note. [[imp:PV uses compound interest and discounting; don't confuse with simple discount notes from Chapter 11.]]",
+        "title": "Watch out!"
+      },
+      "id": "pv-concept",
+      "discoveryHook": {
+        "scenario": "Bill Smith wants to have $1,000 in 4 years for a trip. How much must he invest today at 8% compounded annually to reach his goal? The answer is the [[kw:present value (PV)]]. Present value tells us what a future sum is worth in today's dollars, considering compound interest."
+      },
+      "questions": [
+        {
+          "id": "b1q1",
+          "type": "fill-blank",
+          "hints": [
+            "The number of periods.",
+            "Same exponent as in FV formula."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "n"
+              ]
+            }
+          ],
+          "prompt": "Present value = Future value ÷ (1 + i)^___.",
+          "feedbackIfWrong": "n."
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "1814.06"
+          ],
+          "prompt": "FV $2,000, i = 5%, n = 2. Find PV. (number only, no $)",
+          "feedbackIfWrong": "1,814.06.",
+          "hints": [
+            "PV = 2,000 ÷ (1.05)^2 = 2,000 ÷ 1.1025 = ?",
+            "1,814.06 (rounded)."
+          ],
+          "id": "b1q2"
+        },
+        {
+          "hints": [
+            "No interest means no growth.",
+            "FV = PV when rate = 0."
+          ],
+          "id": "b1q3",
+          "feedbackIfWrong": "equal.",
+          "type": "short-answer",
+          "prompt": "If the interest rate is 0%, what happens to PV compared to FV? (word: equal, less, or greater)",
+          "answers": [
+            "equal"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "i = 6% = 0.06, n = 3.",
+            "PV = 5,000 ÷ (1.06)^3 = 5,000 ÷ 1.191016 ≈ $4,198.10.",
+            "Invest $4,198.10 today to have $5,000 in 3 years."
+          ],
+          "title": "A – Find PV",
+          "prompt": "You want $5,000 in 3 years. The account pays 6% compounded annually. How much to invest today?"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Think about what happens to the value when you move backward in time.",
+          "prompt": "Explain why present value is sometimes called 'discounting' a future sum.",
+          "steps": [
+            "Discounting removes the interest that would be earned over time.",
+            "So the present value is the future value reduced by the compound interest that would accumulate.",
+            "It's the reverse of compounding."
+          ],
+          "title": "B – Why discount?",
+          "minLength": 2
+        },
+        {
+          "prompt": "You need $8,000 in 5 years. Interest is 4% compounded annually. What is the present value?",
+          "title": "C – Find PV for a different period",
+          "role": "independent",
+          "steps": [
+            "i = 0.04, n = 5.",
+            "PV = 8,000 ÷ (1.04)^5 = 8,000 ÷ 1.2166529 ≈ $6,575.42."
+          ]
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "Don't forget to adjust i and n for non‑annual compounding before calculating PV. [[imp:Use periodic rate and total periods, not years.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "answers": [
+          "16544.94",
+          "16,544.94"
+        ],
+        "hints": [
+          "i = 7%/2 = 3.5% = 0.035; n = 6×2 = 12.",
+          "PV = 25,000 ÷ (1.035)^12 ≈ 25,000 ÷ 1.51107 = 16,544.94."
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "prompt": "How much must you invest today to have $25,000 in 6 years at 7% compounded semiannually?"
+      },
+      "id": "pv-formula",
+      "discoveryHook": {
+        "scenario": "Using the formula, we can find out exactly how much to invest. For example, if you want $10,000 in 5 years and can earn 6% compounded annually, PV = 10,000 ÷ (1.06)^5 ≈ $7,472.58. That's the price of waiting – it costs less today because interest will grow your money."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Use a calculator or table for step 2.",
+            "title": "PV Calculation Steps",
+            "headers": [
+              "Step",
+              "Action",
+              "Example (FV $5,000, 8% semiannual, 2 years)"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Find i and n",
+                "2": "i = 8%/2 = 4% = 0.04; n = 2×2 = 4"
+              },
+              {
+                "0": "2",
+                "1": "Compute (1+i)^n",
+                "2": "(1.04)^4 = 1.16986"
+              },
+              {
+                "0": "3",
+                "1": "Divide FV by factor",
+                "2": "PV = 5,000 ÷ 1.16986 ≈ $4,274.02"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "title": "Present Value Calculation",
+          "notes": [
+            "i = periodic rate (decimal).",
+            "n = total periods.",
+            "PV is also called the discounted value."
+          ],
+          "formula": "$$PV = \\frac{FV}{(1 + i)^n}$$"
+        },
+        "explanation": [
+          "To compute PV manually: 1. Determine i (periodic rate) and n (total periods). 2. Compute (1 + i)^n. 3. Divide FV by that factor.",
+          "Alternatively, multiply FV by the reciprocal: $$PV = FV \\times \\frac{1}{(1 + i)^n}$$.",
+          "Most problems provide a future value target and ask for the required investment today.",
+          "For non‑annual compounding, adjust i and n just as in compound interest.",
+          "[[imp:Always use the same i and n as you would for FV; only the formula is rearranged.]]"
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "n.",
+          "type": "fill-blank",
+          "hints": [
+            "The exponent in the denominator.",
+            "Number of periods."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "n"
+              ]
+            }
+          ],
+          "id": "b2q1",
+          "prompt": "PV = FV ÷ (1 + i)^___."
+        },
+        {
+          "answers": [
+            "7472.58"
+          ],
+          "hints": [
+            "Factor = (1.06)^5 = 1.33822558.",
+            "10,000 ÷ 1.33822558 ≈ ?"
+          ],
+          "feedbackIfWrong": "7,472.58.",
+          "prompt": "FV $10,000, i = 6% per year, n = 5. Compute PV. (number only, no $, round to nearest cent)",
+          "type": "short-answer",
+          "id": "b2q2"
+        },
+        {
+          "hints": [
+            "Higher rate means money grows faster.",
+            "Need less today."
+          ],
+          "id": "b2q3",
+          "type": "short-answer",
+          "feedbackIfWrong": "decrease.",
+          "prompt": "If i increases, PV of a fixed future sum will ___ (increase or decrease)?",
+          "answers": [
+            "decrease"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Find PV of $12,000 due in 4 years at 5% compounded annually.",
+          "steps": [
+            "i = 0.05, n = 4.",
+            "(1.05)^4 = 1.21550625.",
+            "PV = 12,000 ÷ 1.21550625 ≈ $9,872.41."
+          ],
+          "title": "A – Annual compounding"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Think about how much growth occurs.",
+          "minLength": 2,
+          "prompt": "Explain why a higher interest rate results in a lower present value for the same future sum.",
+          "steps": [
+            "A higher rate means money grows faster.",
+            "So you need less money today to reach the same future target.",
+            "Thus, PV is inversely related to the interest rate."
+          ],
+          "title": "B – Effect of higher rate"
+        },
+        {
+          "title": "C – Quarterly compounding",
+          "steps": [
+            "i = 8%/4 = 2% = 0.02; n = 3×4 = 12.",
+            "(1.02)^12 ≈ 1.26824.",
+            "PV = 20,000 ÷ 1.26824 ≈ $15,769.35."
+          ],
+          "role": "independent",
+          "prompt": "You want $20,000 in 3 years. Account pays 8% compounded quarterly. How much to invest now?"
+        }
+      ],
+      "title": "2. Computing Present Value",
+      "teacherCues": [
+        "Write the PV formula on the board: PV = FV / (1 + i)^n.",
+        "Show how to calculate the denominator using calculator or table."
+      ]
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "n\\i",
+              "0.5%",
+              "1%",
+              "2%"
+            ],
+            "title": "Present Value of $1 Table (Excerpt)",
+            "type": "table",
+            "caption": "PV Factor = 1 / (1 + i)^n. Multiply FV by factor to get PV.",
+            "rows": [
+              {
+                "0": "4",
+                "1": "0.98025",
+                "2": "0.96098",
+                "3": "0.92385"
+              },
+              {
+                "0": "8",
+                "1": "0.96089",
+                "2": "0.92348",
+                "3": "0.85349"
+              },
+              {
+                "0": "12",
+                "1": "0.94191",
+                "2": "0.88745",
+                "3": "0.78849"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:present value of $1 table]] lists factors equal to $\\frac{1}{(1 + i)^n}$ for various i and n.",
+          "Steps: 1. Determine n and i. 2. Locate the PV factor at intersection of i (row) and n (column). 3. Multiply the future value (FV) by the factor: $$PV = FV \\times \\text{PV Table Factor}$$.",
+          "The PV factor is always less than 1 (for positive i).",
+          "This method is easier than manual division, especially for large n.",
+          "[[imp:The PV factor is the reciprocal of the FV factor for the same i and n.]]"
+        ],
+        "formulaCard": {
+          "title": "PV Using Table",
+          "notes": [
+            "Find i (periodic rate) and n (total periods) before using the table.",
+            "Check that the factor is less than 1."
+          ],
+          "formula": "$$PV = FV \\times \\text{PV Table Factor}$$ $$\\text{PV Table Factor} = \\frac{1}{(1 + i)^n}$$"
+        }
+      },
+      "examples": [
+        {
+          "steps": [
+            "Locate i=2%, n=8: factor = 0.85349.",
+            "PV = 10,000 × 0.85349 = $8,534.90."
+          ],
+          "role": "guided",
+          "title": "A – Use PV table",
+          "prompt": "Using the table above, find PV of $10,000 at i=2%, n=8."
+        },
+        {
+          "peerPrompt": "Recall the reciprocal relationship.",
+          "minLength": 2,
+          "title": "B – Verify with formula",
+          "steps": [
+            "The FV factor for the same i and n is (1 + i)^n.",
+            "The PV factor is 1 / (1 + i)^n, exactly the reciprocal.",
+            "So if the FV factor is 1.17166 for i=2%, n=8, then PV factor = 1 / 1.17166 ≈ 0.85349 (matches table)."
+          ],
+          "prompt": "Explain how to check the PV table factor using the FV table factor.",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Factor for i=1%, n=12 is 0.88745.",
+            "PV = 3,000 × 0.88745 = $2,662.35."
+          ],
+          "prompt": "You need $3,000 in 12 periods at 1% per period. Use the table to find PV.",
+          "role": "independent",
+          "title": "C – Find PV from table"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Like future value tables, [[kw:present value tables]] provide pre‑computed factors for $(1 + i)^{-n}$. For example, at i=2%, n=12, the PV factor is 0.78849. So to have $5,000 in 12 quarters, you need 5,000 × 0.78849 = $3,942.45 today."
+      },
+      "id": "pv-table",
+      "teacherCues": [
+        "Show a present value of $1 table; explain that the PV factor is the reciprocal of the FV factor.",
+        "PV = Future Value × PV Table Factor."
+      ],
+      "title": "3. Using Present Value Tables",
+      "challengeCorner": {
+        "prompt": "A company wants $100,000 in 5 years. Interest is 6% compounded quarterly. Use PV factor (0.74247) to find required PV.",
+        "optional": true,
+        "answers": [
+          "74247",
+          "74,247"
+        ],
+        "hints": [
+          "Check n=5×4=20, i=6%/4=1.5%, factor given.",
+          "PV = 100,000 × 0.74247 = 74,247."
+        ],
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "body": "Make sure you use the PV table, not the FV table. [[imp:PV factors are decimals less than 1; FV factors are greater than 1.]]",
+        "title": "Watch out!"
+      },
+      "questions": [
+        {
+          "hints": [
+            "The table factor for discounting.",
+            "Not future value factor."
+          ],
+          "prompt": "PV = FV × ___ factor.",
+          "feedbackIfWrong": "present value (PV).",
+          "blanks": [
+            {
+              "accept": [
+                "present value",
+                "PV"
+              ]
+            }
+          ],
+          "id": "b3q1",
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "0.92385"
+          ],
+          "prompt": "Using the example table, what is the PV factor for i=2%, n=4? (5 decimals)",
+          "id": "b3q2",
+          "feedbackIfWrong": "0.92385.",
+          "hints": [
+            "Look at row n=4, column i=2%.",
+            "0.92385."
+          ]
+        },
+        {
+          "hints": [
+            "PV = FV × factor.",
+            "5,000 × 0.78849 = ?"
+          ],
+          "prompt": "If PV factor is 0.78849 and FV is $5,000, find PV. (number only, no $)",
+          "answers": [
+            "3942.45"
+          ],
+          "feedbackIfWrong": "3,942.45.",
+          "id": "b3q3",
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "The target amount.",
+            "What you wanted in the future."
+          ],
+          "id": "b4q1",
+          "blanks": [
+            {
+              "accept": [
+                "future value",
+                "FV"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "future value (FV).",
+          "prompt": "To verify PV, multiply it by (1 + i)^n to see if you get the original ___."
+        },
+        {
+          "type": "short-answer",
+          "id": "b4q2",
+          "feedbackIfWrong": "2,800.00.",
+          "prompt": "PV = $2,492.20, i=6%, n=2 (annual). Compute FV check. (number only, no $, two decimals)",
+          "hints": [
+            "1.06^2 = 1.1236.",
+            "2,492.20 × 1.1236 = ?"
+          ],
+          "answers": [
+            "2800.00",
+            "2800"
+          ]
+        },
+        {
+          "feedbackIfWrong": "recheck (or review).",
+          "type": "short-answer",
+          "hints": [
+            "Look for errors.",
+            "Do again."
+          ],
+          "prompt": "If PV check does not match the target FV, you should ___ your calculations. (one word)",
+          "id": "b4q3",
+          "answers": [
+            "recheck",
+            "review",
+            "redo"
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "To verify a present value calculation, compute the future value of that PV using the same i and n.",
+          "If $$PV \\times (1 + i)^n = FV$$, the calculation is correct.",
+          "This check ensures you didn't make an arithmetic mistake or use an incorrect factor.",
+          "It also reinforces the relationship between PV and FV.",
+          "[[imp:Checking PV by compounding is a good habit for exams and real‑world applications.]]"
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1. Target FV",
+                "1": "Given",
+                "2": "$5,000"
+              },
+              {
+                "0": "2. Computed PV",
+                "1": "5,000 ÷ 1.06^3",
+                "2": "$4,198.10"
+              },
+              {
+                "0": "3. Recompound PV",
+                "1": "4,198.10 × 1.06^3",
+                "2": "$5,000.02 (off by rounding)"
+              },
+              {
+                "0": "Verification",
+                "1": "Matches",
+                "2": "OK"
+              }
+            ],
+            "title": "Verification Example",
+            "headers": [
+              "Step",
+              "Calculation",
+              "Result"
+            ],
+            "caption": "Always check: PV × (1+i)^n should closely equal the original FV."
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$FV_{\\text{check}} = PV \\times (1 + i)^n$$ $$\\text{Compare to original FV}$$",
+          "title": "Verification Formula",
+          "notes": [
+            "Slight rounding differences (a few cents) are acceptable.",
+            "If the difference is large, recalculate PV more precisely."
+          ]
+        }
+      },
+      "challengeCorner": {
+        "answers": [
+          "10720.77",
+          "10,720.77"
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "hints": [
+          "FV = 8,000 × (1.05)^6 = 8,000 × 1.34009564 = 10,720.77.",
+          "Compare to target 10,720; slightly off, but close."
+        ],
+        "prompt": "A PV of $8,000 at 5% compounded annually for 6 years gives what FV? Use this to check if PV was correct for a target of $10,720."
+      },
+      "confusionCorner": {
+        "body": "Small rounding differences are normal. [[imp:If the check differs by more than a few cents, go back and use unrounded intermediate values.]]",
+        "title": "Watch out!"
+      },
+      "teacherCues": [
+        "After finding PV, verify by computing FV from that PV.",
+        "FV = PV × (1 + i)^n should equal the original future target."
+      ],
+      "title": "4. Checking Present Value by Compounding",
+      "discoveryHook": {
+        "scenario": "Once we calculate present value, we can check our work by plugging it back into the future value formula. For example, if PV = $4,198.10 at 6% annual for 3 years, then FV = 4,198.10 × (1.06)^3 ≈ $5,000. The numbers should match."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Compute FV_check = 9,872.41 × (1.05)^4 = 9,872.41 × 1.21550625 ≈ $12,000.00.",
+            "Matches target, correct."
+          ],
+          "title": "A – Verify PV",
+          "prompt": "You computed PV = $9,872.41 for FV $12,000, i=5%, n=4 (annual). Verify by compounding."
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Think about possible errors in division or table lookup.",
+          "title": "B – Why check?",
+          "prompt": "Explain why verifying PV by compounding gives you confidence in your answer.",
+          "steps": [
+            "PV involves division that can introduce rounding.",
+            "Re‑multiplying ensures the PV is consistent with the given future value.",
+            "If the check fails, you know to re‑examine your calculation."
+          ]
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "FV_check = 4,619.00 × (1.02)^4 = 4,619.00 × 1.082432 = $4,999.96.",
+            "Rounds to $5,000, so verified."
+          ],
+          "title": "C – Verify with semiannual compounding",
+          "prompt": "You found PV = $4,619.00 for a target of $5,000 at 4% compounded semiannually for 4 periods. Check."
+        }
+      ],
+      "id": "check-pv"
+    },
+    {
+      "title": "5. Blueprint Aid for Present Value Problems",
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "FV=50,000, r=6%, monthly, 10 years.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – n, i",
+                "1": "n=10×12=120; i=6%/12=0.5%=0.005",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – PV",
+                "1": "PV=50,000÷(1.005)^120≈50,000÷1.8194≈27,481.60",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Check: 27,481.60×(1.005)^120≈50,000; invest $27,481.60.",
+                "2": ""
+              }
+            ],
+            "caption": "Follow the blueprint in order.",
+            "variant": "colorful",
+            "title": "Blueprint: College Fund PV"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Always compute n and i first.",
+            "Use table or calculator; then verify."
+          ],
+          "formula": "$$PV = \\frac{FV}{(1 + i)^n}$$ $$FV_{\\text{check}} = PV \\times (1 + i)^n$$",
+          "title": "PV Blueprint"
+        },
+        "explanation": [
+          "Apply the blueprint to present value problems:",
+          "1. Understand: identify FV, annual nominal rate, compounding frequency, and time.",
+          "2. Solve: calculate n and i, then compute PV using formula or table.",
+          "3. Conclude: verify PV by compounding back to FV; state the required investment.",
+          "This method organizes the information and ensures you don't skip steps."
+        ]
+      },
+      "challengeCorner": {
+        "optional": true,
+        "hints": [
+          "n = 8 × 4 = 32 periods; i = 8% ÷ 4 = 2% = 0.02.",
+          "PV = 500,000 ÷ (1.02)^32 ≈ 500,000 ÷ 1.88454 = 265,329.90."
+        ],
+        "prompt": "A company must have $500,000 in 8 years. The fund earns 8% compounded quarterly. How much must be deposited today?",
+        "answers": [
+          "265329.90",
+          "265,329.90"
+        ],
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The blueprint's verification step is crucial. [[imp:Don't skip it—small errors in n or i can lead to large PV mistakes.]]"
+      },
+      "questions": [
+        {
+          "hints": [
+            "Identify knowns.",
+            "U in U-S-C."
+          ],
+          "feedbackIfWrong": "understand.",
+          "id": "b5q1",
+          "type": "fill-blank",
+          "prompt": "The first step of the PV blueprint is to ___ the problem.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "You want $8,000 in 2 years at 6% compounded annually. Find PV. (number only, no $)",
+          "feedbackIfWrong": "7,119.96.",
+          "type": "short-answer",
+          "id": "b5q2",
+          "answers": [
+            "7119.96"
+          ],
+          "hints": [
+            "n=2, i=0.06, (1.06)^2=1.1236.",
+            "8,000÷1.1236≈7,119.96."
+          ]
+        },
+        {
+          "answers": [
+            "check",
+            "verify",
+            "confirm"
+          ],
+          "hints": [
+            "Make sure it's correct.",
+            "Not solve or understand."
+          ],
+          "id": "b5q3",
+          "prompt": "After finding PV, the last step of the blueprint is to ___ the answer. (one word)",
+          "feedbackIfWrong": "check (or verify).",
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that asks for the required investment today."
+      ],
+      "id": "pv-blueprint",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Understand: FV=20,000, annual rate=0.05, quarterly.",
+            "Solve: n=4×4=16, i=0.05/4=0.0125. PV=20,000÷(1.0125)^16. (1.0125)^16≈1.2190, PV≈20,000÷1.2190≈$16,406.82.",
+            "Conclude: Invest $16,406.82 today; check: 16,406.82×1.2190≈20,000."
+          ],
+          "title": "A – Full blueprint",
+          "prompt": "You want $20,000 in 4 years at 5% compounded quarterly. Find PV."
+        },
+        {
+          "peerPrompt": "Think about forgetting to adjust n or i.",
+          "title": "B – Why blueprint?",
+          "steps": [
+            "The 'Understand' step reminds you to note compounding frequency.",
+            "The 'Solve' step requires explicit calculation of n and i before plugging into formula.",
+            "The 'Conclude' step includes verification, which catches errors."
+          ],
+          "minLength": 2,
+          "prompt": "Explain how the blueprint prevents common mistakes in PV problems.",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Understand: FV=30,000, r=0.07, semiannual.",
+            "Solve: n=7×2=14, i=0.07/2=0.035. (1.035)^14≈1.61869, PV=30,000÷1.61869≈$18,533.09.",
+            "Conclude: Invest $18,533.09 today; check: 18,533.09×1.61869≈30,000."
+          ],
+          "prompt": "A $30,000 goal in 7 years, 7% compounded semiannually. Find PV.",
+          "title": "C – Practice",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A parent wants to have $50,000 in 10 years for their child's college. The account pays 6% compounded monthly. How much must they invest now? The blueprint will guide us through."
+      }
+    }
+  ],
+  "type": "interactive-lesson",
+  "title": "Present Value—The Big Picture",
+  "standards": [
+    "BUSMATH.12.2"
+  ],
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

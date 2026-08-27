@@ -1,0 +1,659 @@
+{
+  "type": "interactive-lesson",
+  "id": "10-6-parametric",
+  "title": "Parametric Equations",
+  "blocks": [
+    {
+      "id": "intro-parametric",
+      "title": "What Are Parametric Equations?",
+      "teacherCues": [
+        "Draw a darting fly’s path. Ask: 'Can a single $ y = f(x) $ show when it was at each point?'",
+        "Write $ x = 24\\sqrt{2} t $, $ y = -16t^2 + 24\\sqrt{2} t $. Point out that both $ x $ and $ y $ depend on $ t $."
+      ],
+      "discoveryHook": {
+        "scenario": "A projectile launched at 45° follows a parabolic path, but the equation $ y = -\\frac{x^2}{72} + x $ only tells where, not when. Adding a time parameter $ t $ gives both position and timing."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:plane curve]] $ C $ is the set of ordered pairs $ ( f(t), g(t) ) $ where $ f $ and $ g $ are continuous functions on an interval $ I $.",
+          "[[kw:Parametric equations]]: $ x = f(t) $, $ y = g(t) $. The variable $ t $ is the [[kw:parameter]] (often time).",
+          "Parametric equations can describe curves that are not functions (e.g., loops).",
+          "They also show the [[kw:orientation]]: direction of movement as $ t $ increases."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Projectile at 45° (initial speed 48 ft/s)",
+            "headers": [
+              "$ t $ (s)",
+              "$ x $ (ft)",
+              "$ y $ (ft)"
+            ],
+            "rows": [
+              {
+                "0": "$ 0 $",
+                "1": "$ 0 $",
+                "2": "$ 0 $"
+              },
+              {
+                "0": "$ 1 $",
+                "1": "$ 24\\sqrt{2} \\approx 33.9 $",
+                "2": "$ 24\\sqrt{2} - 16 \\approx 17.9 $"
+              },
+              {
+                "0": "$ \\frac{3\\sqrt{2}}{2} \\approx 2.12 $",
+                "1": "$ 72 $",
+                "2": "$ 0 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "General Parametric Form",
+          "formula": "$$ x = f(t), \\quad y = g(t), \\quad t \\in I $$",
+          "notes": [
+            "$ f $ and $ g $ continuous on $ I $.",
+            "Each $ t $ gives exactly one point $ (x,y) $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Reading a point",
+          "prompt": "Given $ x = t^2 - 4 $, $ y = \\frac{t}{2} $, find the point when $ t = 2 $.",
+          "steps": [
+            "$ x = 2^2 - 4 = 0 $.",
+            "$ y = \\frac{2}{2} = 1 $.",
+            "Point: $ (0,1) $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Same curve, different parametrization",
+          "prompt": "The equations $ x = 4t^2 - 4 $, $ y = t $ give the same curve as $ x = t^2 - 4 $, $ y = \\frac{t}{2} $. Explain why.",
+          "peerPrompt": "Discuss with a partner: 'If we replace $ t $ by $ 2u $ in the first set, do we get the second set?'",
+          "minLength": 2,
+          "steps": [
+            "Let $ t = 2u $ in $ x = t^2 - 4 $, $ y = \\frac{t}{2} $ → $ x = 4u^2 - 4 $, $ y = u $.",
+            "Thus the two sets describe the same set of points; only the 'speed' differs."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Parameter not time",
+          "prompt": "If $ x = 3 \\cos \\theta $, $ y = 4 \\sin \\theta $, $ 0 \\le \\theta < 2\\pi $, what point corresponds to $ \\theta = \\pi $?",
+          "steps": [
+            "$ x = 3 \\cos \\pi = -3 $.",
+            "$ y = 4 \\sin \\pi = 0 $.",
+            "Point: $ (-3, 0) $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Orientation vs. shape",
+        "body": "The same shape can be traced in opposite directions or at different speeds by different parametrizations."
+      },
+      "questions": [
+        {
+          "id": "q-intro-1",
+          "type": "fill-blank",
+          "prompt": "The variable $ t $ in parametric equations is called the ___.",
+          "blanks": [
+            {
+              "accept": [
+                "parameter"
+              ]
+            }
+          ],
+          "hints": [
+            "It's often time, but can be an angle.",
+            "It connects $ x $ and $ y $."
+          ],
+          "feedbackIfWrong": "parameter."
+        },
+        {
+          "id": "q-intro-2",
+          "type": "short-answer",
+          "prompt": "If $ x = t + 1 $ and $ y = 2t $, what is the point when $ t = 0 $? (Write as (x,y))",
+          "answer": "(1,0)",
+          "hints": [
+            "Plug $ t = 0 $ into both equations.",
+            "$ x = 0+1 $, $ y = 0 $."
+          ],
+          "feedbackIfWrong": "(1,0)."
+        },
+        {
+          "id": "q-intro-3",
+          "type": "short-answer",
+          "prompt": "A plane curve is the set of ordered pairs $ (f(t), g(t)) $. Must $ f $ and $ g $ be continuous? (yes or no)",
+          "answer": "yes",
+          "hints": [
+            "Definition says 'continuous functions'.",
+            "No breaks, holes, or jumps."
+          ],
+          "feedbackIfWrong": "Yes, $ f $ and $ g $ must be continuous."
+        }
+      ]
+    },
+    {
+      "id": "sketching-parametric",
+      "title": "Sketching a Plane Curve",
+      "teacherCues": [
+        "Draw a blank graph. Ask: 'How do we get points?'",
+        "Show a number line for $ t $, and draw arrows on the curve indicating increasing $ t $."
+      ],
+      "discoveryHook": {
+        "scenario": "Plotting points from a table of $ t $, $ x $, $ y $ reveals not only the shape but also the direction of travel—like a flipbook animation."
+      },
+      "concept": {
+        "explanation": [
+          "To sketch: choose $ t $-values in the given interval, compute $ (x,y) $, plot points, and connect them in increasing $ t $ order.",
+          "Indicate [[kw:orientation]] with arrows.",
+          "The curve may go from left to right, or trace back over itself."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Example: $ x = t^2 - 4 $, $ y = \\frac{t}{2} $, $ -2 \\le t \\le 3 $",
+            "headers": [
+              "$ t $",
+              "$ x $",
+              "$ y $"
+            ],
+            "rows": [
+              {
+                "0": "$ -2 $",
+                "1": "$ 0 $",
+                "2": "$ -1 $"
+              },
+              {
+                "0": "$ -1 $",
+                "1": "$ -3 $",
+                "2": "$ -0.5 $"
+              },
+              {
+                "0": "$ 0 $",
+                "1": "$ -4 $",
+                "2": "$ 0 $"
+              },
+              {
+                "0": "$ 1 $",
+                "1": "$ -3 $",
+                "2": "$ 0.5 $"
+              },
+              {
+                "0": "$ 2 $",
+                "1": "$ 0 $",
+                "2": "$ 1 $"
+              },
+              {
+                "0": "$ 3 $",
+                "1": "$ 5 $",
+                "2": "$ 1.5 $"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Table and plot",
+          "prompt": "Sketch $ x = 2t $, $ y = 4t^2 + 2 $ for $ -2 \\le t \\le 2 $.",
+          "steps": [
+            "$ t = -2 : (-4, 18) $; $ t = -1 : (-2, 6) $; $ t = 0 : (0,2) $; $ t = 1 : (2,6) $; $ t = 2 : (4,18) $.",
+            "Plot points; connect smoothly.",
+            "Arrows rightward as $ t $ increases."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Orientation discussion",
+          "prompt": "For $ x = t $, $ y = 1 - t^2 $, $ -2 \\le t \\le 2 $, describe the orientation.",
+          "peerPrompt": "With a partner: 'At $ t = -2 $, where does the particle start? Where at $ t = 2 $?'",
+          "minLength": 2,
+          "steps": [
+            "$ t = -2 : (-2, -3) $; $ t = 2 : (2, -3) $.",
+            "The particle moves from left to right, going up then down."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Tracing a loop",
+          "prompt": "$ x = \\cos t $, $ y = \\sin t $, $ 0 \\le t \\le 2\\pi $. Sketch and orient.",
+          "steps": [
+            "Points: $ (1,0) $ → $ (0,1) $ → $ (-1,0) $ → $ (0,-1) $ → $ (1,0) $.",
+            "Orientation: counterclockwise."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Connecting dots in order",
+        "body": "[[imp:Always connect points in increasing $ t $ order]]. Otherwise, you might draw the wrong orientation."
+      },
+      "questions": [
+        {
+          "id": "q-sketch-1",
+          "type": "fill-blank",
+          "prompt": "The arrows on a parametric graph show the ___ of the curve.",
+          "blanks": [
+            {
+              "accept": [
+                "orientation"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the direction of increasing parameter.",
+            "Often shown by arrowheads."
+          ],
+          "feedbackIfWrong": "orientation."
+        },
+        {
+          "id": "q-sketch-2",
+          "type": "short-answer",
+          "prompt": "For $ x = t $, $ y = t^2 $, as $ t $ increases, does $ x $ increase or decrease?",
+          "answer": "increase",
+          "hints": [
+            "$ x = t $, so $ x $ moves with $ t $.",
+            "$ t $ getting larger → $ x $ larger."
+          ],
+          "feedbackIfWrong": "increase."
+        },
+        {
+          "id": "q-sketch-3",
+          "type": "short-answer",
+          "prompt": "If a parametric curve touches the same point at two different $ t $-values, we say it ___ on itself.",
+          "answer": "crosses",
+          "hints": [
+            "It means the path overlaps.",
+            "Think of a figure eight."
+          ],
+          "feedbackIfWrong": "crosses."
+        }
+      ]
+    },
+    {
+      "id": "eliminating-parameter",
+      "title": "Eliminating the Parameter",
+      "teacherCues": [
+        "Write $ x = t + 1 $, $ y = 2t $. Ask: 'How can we get an equation with only $ x $ and $ y $?'",
+        "Show solving for $ t $ from one equation and substituting into the other."
+      ],
+      "discoveryHook": {
+        "scenario": "To recognize a curve quickly, we often eliminate the parameter. This turns parametric equations into a familiar rectangular equation like $ y = x^2 - 4 $ or a conic section."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Eliminating the parameter]]: solve one equation for $ t $ (if possible), then substitute into the other equation.",
+          "Often we obtain a rectangular equation $ y = f(x) $ or an implicit relation.",
+          "Important: adjust the domain of the rectangular equation to match the original parametric domain.",
+          "Method works for algebraic and trigonometric parameters."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Elimination Steps",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Solve for $ t $ in one equation (or express $ t $ in terms of $ x $ or $ y $)."
+              },
+              {
+                "0": "2",
+                "1": "Substitute into the other equation."
+              },
+              {
+                "0": "3",
+                "1": "Simplify to rectangular form."
+              },
+              {
+                "0": "4",
+                "1": "Restrict domain if necessary."
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Simple substitution",
+          "prompt": "Eliminate $ t $: $ x = 4t^2 - 4 $, $ y = t $.",
+          "steps": [
+            "From $ y = t $, substitute into $ x $: $ x = 4y^2 - 4 $.",
+            "Rectangular equation: $ x = 4y^2 - 4 $ (parabola opening right).",
+            "Domain for original: $ t \\in [ -1, 1.5 ] $ gives $ x \\in [ -4, 5 ] $, $ y \\in [ -1, 1.5 ] $ (adjust as needed)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Domain restriction",
+          "prompt": "$ x = \\frac{1}{\\sqrt{t+1}} $, $ y = \\frac{t}{t+1} $. Eliminate $ t $ and adjust domain.",
+          "peerPrompt": "Work with a partner: 'After eliminating, what's the rectangular equation? Why do we need $ x > 0 $?'",
+          "minLength": 2,
+          "steps": [
+            "Solve $ x^2 = \\frac{1}{t+1} \\rightarrow t+1 = \\frac{1}{x^2} \\rightarrow t = \\frac{1}{x^2} - 1 = \\frac{1-x^2}{x^2} $.",
+            "Substitute into $ y $: $ y = \\frac{t}{t+1} = \\frac{1-x^2}{1} = 1 - x^2 $.",
+            "Original $ x $ defined when $ \\sqrt{t+1} > 0 \\Rightarrow t > -1 \\Rightarrow x > 0 $, so restrict $ x > 0 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Solving for $ t $ isn't always needed",
+          "prompt": "$ x = t $, $ y = 1 - t^2 $. Eliminate $ t $ directly.",
+          "steps": [
+            "From $ x = t $, substitute: $ y = 1 - x^2 $.",
+            "Parabola opening down; domain all real $ t $ gives $ x $ all real, $ y \\le 1 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Domain mismatch",
+        "body": "The rectangular equation might be defined for more $ x $-values than the original curve. Always check the parameter range to restrict the domain appropriately."
+      },
+      "questions": [
+        {
+          "id": "q-elim-1",
+          "type": "fill-blank",
+          "prompt": "The process of converting parametric equations to a single equation in $ x $ and $ y $ is called ___ the parameter.",
+          "blanks": [
+            {
+              "accept": [
+                "eliminating"
+              ]
+            }
+          ],
+          "hints": [
+            "It means 'getting rid of' the parameter.",
+            "Results in a rectangular equation."
+          ],
+          "feedbackIfWrong": "eliminating."
+        },
+        {
+          "id": "q-elim-2",
+          "type": "short-answer",
+          "prompt": "If $ x = 2t $, $ y = t + 1 $, what is the rectangular equation after eliminating $ t $? (write as $ y = $ ... )",
+          "answer": "y = x/2 + 1",
+          "hints": [
+            "Solve for $ t = \\frac{x}{2} $.",
+            "Substitute into $ y $."
+          ],
+          "feedbackIfWrong": "$ y = \\frac{1}{2}x + 1 $."
+        },
+        {
+          "id": "q-elim-3",
+          "type": "short-answer",
+          "prompt": "After eliminating the parameter, what must you often do to the domain of the rectangular equation?",
+          "answer": "restrict",
+          "hints": [
+            "It may be larger than the original.",
+            "Adjust it to match the parametric $ t $-interval."
+          ],
+          "feedbackIfWrong": "restrict (or adjust)."
+        }
+      ]
+    },
+    {
+      "id": "trig-parametric",
+      "title": "Parametric Equations with Trig Functions",
+      "teacherCues": [
+        "Write $ x = 3\\cos \\theta $, $ y = 4\\sin \\theta $. Ask: 'Which identity relates $ \\cos^2\\theta $ and $ \\sin^2\\theta $?'",
+        "Show how to solve for $ \\cos \\theta $ and $ \\sin \\theta $, then use Pythagorean identity."
+      ],
+      "discoveryHook": {
+        "scenario": "An ellipse or hyperbola can be elegantly described by trigonometric parameters. Using identities, we can eliminate $ \\theta $ and reveal the conic."
+      },
+      "concept": {
+        "explanation": [
+          "When equations involve $ \\sin \\theta $, $ \\cos \\theta $, $ \\sec \\theta $, $ \\tan \\theta $, isolate the trig function and use an appropriate identity.",
+          "Common identities: $ \\sin^2\\theta + \\cos^2\\theta = 1 $, $ 1 + \\tan^2\\theta = \\sec^2\\theta $.",
+          "Example: $ x = 3\\cos \\theta $, $ y = 4\\sin \\theta $ → $ \\left( \\frac{x}{3} \\right)^2 + \\left( \\frac{y}{4} \\right)^2 = 1 $, an ellipse.",
+          "Orientation and domain restrictions come from the given $ \\theta $ interval."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Trig Identities for Elimination",
+            "headers": [
+              "If you have",
+              "Use identity"
+            ],
+            "rows": [
+              {
+                "0": "$ \\cos \\theta $ and $ \\sin \\theta $",
+                "1": "$ \\cos^2\\theta + \\sin^2\\theta = 1 $"
+              },
+              {
+                "0": "$ \\sec \\theta $ and $ \\tan \\theta $",
+                "1": "$ \\sec^2\\theta - \\tan^2\\theta = 1 $"
+              },
+              {
+                "0": "$ \\csc \\theta $ and $ \\cot \\theta $",
+                "1": "$ 1 + \\cot^2\\theta = \\csc^2\\theta $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Ellipse from cosine/sine",
+          "formula": "$$ x = h + a \\cos \\theta,\\quad y = k + b \\sin \\theta $$ $$ \\Rightarrow \\frac{(x-h)^2}{a^2} + \\frac{(y-k)^2}{b^2} = 1 $$",
+          "notes": [
+            "Works for $ 0 \\le \\theta < 2\\pi $.",
+            "Orientation counterclockwise if $ a,b > 0 $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Ellipse from sin and cos",
+          "prompt": "Sketch $ x = 3\\cos \\theta $, $ y = 4\\sin \\theta $, $ 0 \\le \\theta < 2\\pi $.",
+          "steps": [
+            "$ \\cos \\theta = \\frac{x}{3} $, $ \\sin \\theta = \\frac{y}{4} $ → $ \\left( \\frac{x}{3} \\right)^2 + \\left( \\frac{y}{4} \\right)^2 = 1 $, ellipse.",
+            "Center $ (0,0) $, $ a = 3 $, $ b = 4 $ (vertical major axis).",
+            "Orientation: counterclockwise, start at $ (3,0) $ when $ \\theta = 0 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Hyperbola from sec and tan",
+          "prompt": "$ x = 1 + 3\\sec \\theta $, $ y = -3 + \\tan \\theta $, $ \\frac{\\pi}{2} < \\theta < \\frac{3\\pi}{2} $. Eliminate $ \\theta $.",
+          "peerPrompt": "Discuss: 'How do we get $ \\sec \\theta $ and $ \\tan \\theta $ alone? Which identity links them?'",
+          "minLength": 2,
+          "steps": [
+            "$ \\sec \\theta = \\frac{x-1}{3} $, $ \\tan \\theta = y + 3 $.",
+            "Identity: $ \\sec^2\\theta - \\tan^2\\theta = 1 $ → $ \\frac{(x-1)^2}{9} - (y+3)^2 = 1 $.",
+            "This is a hyperbola; given $ \\theta $ interval restricts to left branch ($ x \\le -2 $)."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Circle exploration",
+          "prompt": "$ x = 5\\cos \\theta $, $ y = 5\\sin \\theta $, $ 0 \\le \\theta \\le \\pi $. What shape and what part is traced?",
+          "steps": [
+            "Eliminate: $ x^2 + y^2 = 25 $ (circle radius 5).",
+            "$ \\theta $ from $ 0 $ to $ \\pi $ traces the upper semicircle from $ (5,0) $ through $ (0,5) $ to $ (-5,0) $.",
+            "Orientation: counterclockwise."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Choosing the right identity",
+        "body": "If you have $ \\cos $ and $ \\sin $, use the squared sum. If $ \\sec $ and $ \\tan $, use $ \\sec^2 - \\tan^2 = 1 $. Mistaking identities leads to wrong conic."
+      },
+      "questions": [
+        {
+          "id": "q-trig-1",
+          "type": "fill-blank",
+          "prompt": "To eliminate $ \\theta $ from $ x = a \\cos \\theta $, $ y = b \\sin \\theta $, use the identity $ \\cos^2\\theta + \\sin^2\\theta = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the fundamental Pythagorean identity.",
+            "The right side is 1."
+          ],
+          "feedbackIfWrong": "1."
+        },
+        {
+          "id": "q-trig-2",
+          "type": "short-answer",
+          "prompt": "The parametric equations $ x = \\cos \\theta $, $ y = \\sin \\theta $, $ 0 \\le \\theta \\le 2\\pi $ represent what conic?",
+          "answer": "circle",
+          "hints": [
+            "Eliminating yields $ x^2 + y^2 = 1 $.",
+            "Unit circle."
+          ],
+          "feedbackIfWrong": "circle."
+        },
+        {
+          "id": "q-trig-3",
+          "type": "short-answer",
+          "prompt": "If $ x = \\sec \\theta $, $ y = \\tan \\theta $, what identity eliminates $ \\theta $?",
+          "answer": "sec^2θ - tan^2θ = 1",
+          "hints": [
+            "It's a variation of the Pythagorean identity.",
+            "The difference of squares equals 1."
+          ],
+          "feedbackIfWrong": "$ \\sec^2\\theta - \\tan^2\\theta = 1 $."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-parametric",
+      "title": "Blueprint Aid: Parametric Problem Solving",
+      "teacherCues": [
+        "Write Understand → Solve → Conclude. Ask: 'What's given? A graph to parametrize or parametric equations to interpret?'",
+        "Emphasize that there are many correct parametrizations for the same curve."
+      ],
+      "discoveryHook": {
+        "scenario": "Whether you're reversing from a rectangular equation to parametric form or analyzing motion, the blueprint organizes the process."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Understand]]: Identify what's given — parametric equations, a rectangular equation, or a description (e.g., motion). Determine the goal: sketch, eliminate parameter, or find parametric equations.",
+          "[[kw:Solve]]: If sketching, make a table; if eliminating, use algebraic manipulation or trig identities; if finding parametric, let $ x = t $ (or a function of $ t $) and solve for $ y $, or introduce a parameter like $ t $ or $ \\theta $.",
+          "[[kw:Conclude]]: Present the final rectangular equation with domain restrictions, or the parametric set with orientation and interval."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Problem type vs. method",
+            "headers": [
+              "Given",
+              "Method"
+            ],
+            "rows": [
+              {
+                "0": "Parametric eqs.",
+                "1": "Make table, plot, indicate orientation"
+              },
+              {
+                "0": "Parametric eqs. + eliminate",
+                "1": "Solve for $ t $, substitute (or use trig identities)"
+              },
+              {
+                "0": "Rectangular eq. → parametric",
+                "1": "Set $ x = f(t) $ (often $ t $), solve for $ y $; many choices"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example 1: Find param. equations for $ y = 1 - x^2 $",
+          "prompt": "Find a set of parametric equations for the parabola $ y = 1 - x^2 $.",
+          "steps": [
+            "Understand: We need $ x $ and $ y $ in terms of a parameter, say $ t $.",
+            "Solve: Let $ x = t $. Then $ y = 1 - t^2 $. So one set: $ x = t $, $ y = 1 - t^2 $, $ t \\in \\mathbb{R} $.",
+            "Conclude: Another choice: $ x = t - 1 $, then $ y = 1 - (t-1)^2 = 2t - t^2 $. Infinitely many possibilities."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example 2: Given motion, write param. eqs.",
+          "prompt": "A particle moves along a line from $ (1,2) $ to $ (4,5) $ with constant speed in 3 seconds. Write parametric equations.",
+          "peerPrompt": "With a partner: 'How can we express $ x $ and $ y $ as linear functions of $ t $?'",
+          "minLength": 2,
+          "steps": [
+            "Understand: At $ t = 0 $, at $ (1,2) $; at $ t = 3 $, at $ (4,5) $.",
+            "Solve: Use linear interpolation: $ x = 1 + \\frac{3}{3} t = 1 + t $, $ y = 2 + \\frac{3}{3} t = 2 + t $.",
+            "Conclude: $ x = 1 + t $, $ y = 2 + t $, $ 0 \\le t \\le 3 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Your Turn",
+          "prompt": "Find parametric equations for the circle $ x^2 + y^2 = 9 $, traced clockwise, starting at $ (3,0) $.",
+          "steps": [
+            "Understand: Circle radius 3, clockwise orientation.",
+            "Solve: Standard counterclockwise: $ x = 3\\cos \\theta $, $ y = 3\\sin \\theta $. For clockwise, use $ x = 3\\cos \\theta $, $ y = -3\\sin \\theta $ (or start with negative angle).",
+            "Conclude: $ x = 3\\cos \\theta $, $ y = -3\\sin \\theta $, $ 0 \\le \\theta \\le 2\\pi $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Non-uniqueness of parametrization",
+        "body": "Any graph has infinitely many parametrizations. There's no single 'right' answer unless additional conditions (speed, start point, orientation) are given."
+      },
+      "questions": [
+        {
+          "id": "q-blue-1",
+          "type": "fill-blank",
+          "prompt": "The blueprint steps are Understand, ___, and Conclude.",
+          "blanks": [
+            {
+              "accept": [
+                "Solve"
+              ]
+            }
+          ],
+          "hints": [
+            "Middle step.",
+            "Apply the technique."
+          ],
+          "feedbackIfWrong": "Solve."
+        },
+        {
+          "id": "q-blue-2",
+          "type": "short-answer",
+          "prompt": "To parametrize a line segment from $ (a,b) $ to $ (c,d) $ over $ 0 \\le t \\le 1 $, one choice is $ x = a + t(c-a) $, $ y = $ ___.",
+          "answer": "b + t(d-b)",
+          "hints": [
+            "Similar linear interpolation.",
+            "$ y $ starts at $ b $, goes to $ d $."
+          ],
+          "feedbackIfWrong": "$ b + t(d-b) $."
+        },
+        {
+          "id": "q-blue-3",
+          "type": "short-answer",
+          "prompt": "If you want a parametrization of $ y = 3x + 2 $, the simplest choice is to let $ x $ equal what?",
+          "answer": "t",
+          "hints": [
+            "Let the independent variable be the parameter.",
+            "Then $ y = 3t + 2 $."
+          ],
+          "feedbackIfWrong": "$ t $."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

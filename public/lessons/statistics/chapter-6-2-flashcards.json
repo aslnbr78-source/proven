@@ -1,0 +1,141 @@
+{
+  "type": "flashcard",
+  "id": "chapter-6-2-flashcards",
+  "title": "Confidence Intervals for the Mean (Small Samples)",
+  "cards": [
+    {
+      "back": [
+        "When the population standard deviation $\\sigma$ is [[imp:unknown]].",
+        "The sample size is small ($n < 30$), and the population is approximately normally distributed.",
+        "The t‑distribution accounts for the extra variability of using $s$ as an estimate of $\\sigma$."
+      ],
+      "front": "When should you use a [[kw:t‑distribution]] instead of a normal distribution to construct a confidence interval for $\\mu$?"
+    },
+    {
+      "front": "How is the [[kw:t‑distribution]] different from the standard normal distribution?",
+      "back": [
+        "Both are bell‑shaped and symmetric about 0.",
+        "The t‑distribution has [[imp:thicker tails]] (more spread out).",
+        "The exact shape depends on the [[kw:degrees of freedom]] ($d.f. = n-1$).",
+        "As $d.f.$ increase, the t‑distribution approaches the standard normal."
+      ]
+    },
+    {
+      "front": "What are the [[kw:degrees of freedom]] for a t‑distribution based on a sample of size $n$?",
+      "back": [
+        "$$ d.f. = n - 1 $$",
+        "Example: for a sample of size 15, $d.f. = 14$.",
+        "The degrees of freedom determine which row of the t‑table to use."
+      ]
+    },
+    {
+      "front": "Find the critical value $t_c$ for a 95% confidence interval with a sample of size 15.",
+      "back": [
+        "$d.f. = 15 - 1 = 14$.",
+        "Look in the t‑table under $c = 0.95$ (two‑tailed) and row 14.",
+        "$t_c = 2.145$.",
+        "In Google Sheets: `=T.INV.2T(0.05, 14)`."
+      ]
+    },
+    {
+      "back": [
+        "$$ E = t_c \\cdot \\frac{s}{\\sqrt{n}} $$",
+        "The only difference from the z formula is that $t_c$ replaces $z_c$.",
+        "$s$ is the sample standard deviation, $n$ is the sample size."
+      ],
+      "front": "What is the formula for the margin of error when using a t‑distribution?"
+    },
+    {
+      "back": [
+        "$d.f. = 15$, $t_c = 2.131$.",
+        "Margin of error: $E = 2.131 \\times \\frac{10.0}{\\sqrt{16}} = 5.3$.",
+        "Interval: $162.0 \\pm 5.3 = (156.7,\\; 167.3)$.",
+        "We are 95% confident the true mean coffee temperature is between 156.7°F and 167.3°F."
+      ],
+      "front": "Construct a 95% confidence interval for the mean coffee temperature: $n=16$, $\\bar{x}=162.0$, $s=10.0$ (normal population)."
+    },
+    {
+      "back": [
+        "$d.f. = 19$, $t_c = 2.861$.",
+        "$E = 2.861 \\times \\frac{2.39}{\\sqrt{20}} \\approx 1.53$.",
+        "Interval: $9.75 \\pm 1.53 = (8.22,\\; 11.28)$.",
+        "We are 99% confident the true mean days on lot is between 8.22 and 11.28."
+      ],
+      "front": "Construct a 99% confidence interval for days on lot: $n=20$, $\\bar{x}=9.75$, $s=2.39$ (normal population)."
+    },
+    {
+      "back": [
+        "The t‑distribution has [[imp:thicker tails]] than the z‑distribution.",
+        "Thus the critical value $t_c$ is larger than $z_c$ for the same confidence level.",
+        "A larger critical value gives a larger margin of error, hence a wider interval.",
+        "This extra width correctly accounts for the uncertainty in estimating $\\sigma$ with $s$."
+      ],
+      "front": "Why is a t‑interval wider than a z‑interval for the same data?"
+    },
+    {
+      "back": [
+        "When the sample size is [[imp:at least 30]] ($n \\ge 30$).",
+        "The Central Limit Theorem ensures the sampling distribution is approximately normal.",
+        "You can use $s$ as an estimate of $\\sigma$ in the z‑interval formula."
+      ],
+      "front": "When can you use a z‑interval even if $\\sigma$ is unknown?"
+    },
+    {
+      "back": [
+        "$\\sigma$ is unknown, and $n=25 < 30$.",
+        "Since the population is normal, the [[kw:t‑distribution]] is appropriate.",
+        "Use $d.f. = 24$ and the t‑table.",
+        "If $\\sigma$ were known, you could use the normal distribution."
+      ],
+      "front": "A sample of size 25 has $\\bar{x}=50$, $s=8$. The population is normal. Should you use z or t for a confidence interval?"
+    },
+    {
+      "back": [
+        "The population must be [[imp:approximately normally distributed]].",
+        "If the population is heavily skewed, the t‑interval may not be valid.",
+        "Check using a histogram or normal probability plot of the sample data."
+      ],
+      "front": "What condition must be checked before using a t‑interval for a small sample?"
+    },
+    {
+      "back": [
+        "`=T.INV.2T(alpha, degrees_freedom)`",
+        "$alpha = 1 - c$ (e.g., 0.05 for 95% confidence).",
+        "Example: `=T.INV.2T(0.05, 14)` returns about 2.145."
+      ],
+      "front": "What Google Sheets function returns the critical value $t_c$ for a two‑tailed confidence interval?"
+    },
+    {
+      "back": [
+        "If $\\sigma$ is [[imp:known]] and the population is normal (or $n \\ge 30$) → use z.",
+        "If $\\sigma$ is [[imp:unknown]], $n < 30$, but the population is normal → use t.",
+        "If $\\sigma$ is unknown but $n \\ge 30$ → use z with $s$ (CLT).",
+        "If the population is not normal and $n < 30$ → neither method is appropriate."
+      ],
+      "front": "How do you decide whether to use a z‑interval or a t‑interval for estimating $\\mu$?"
+    },
+    {
+      "back": [
+        "The t‑distribution becomes closer to the [[imp:standard normal distribution]].",
+        "The tails become thinner, and the critical values decrease toward $z_c$.",
+        "For $d.f. \\ge 30$, the t and z critical values are nearly identical.",
+        "The last row of the t‑table (marked $\\infty$) gives the z‑values."
+      ],
+      "front": "What happens to the t‑distribution as the degrees of freedom increase?"
+    },
+    {
+      "back": [
+        "$n=10<30$, $\\sigma$ unknown, normal → use t. $d.f.=9$.",
+        "90% confidence: $t_c = 1.833$.",
+        "$E = 1.833 \\times \\frac{1.21}{\\sqrt{10}} \\approx 0.70$.",
+        "Interval: $4.50 \\pm 0.70 = (3.80,\\; 5.20)$.",
+        "We are 90% confident the true mean waste is between 3.80 and 5.20 pounds."
+      ],
+      "front": "A sample of 10 U.S. adults has $\\bar{x}=4.50$ lb, $s=1.21$ lb. Assume normal. Find the 90% confidence interval for the population mean waste per day."
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

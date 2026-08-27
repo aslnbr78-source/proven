@@ -1,0 +1,247 @@
+{
+  "type": "quiz",
+  "questions": [
+    {
+      "hints": [
+        "Three conditions are true; find the false one.",
+        "The probability p must stay the same for all trials."
+      ],
+      "feedbackIfWrong": "The probability of success must be constant, not changing.",
+      "options": [
+        "Fixed number of trials",
+        "Trials are independent",
+        "Probability of success changes each trial",
+        "Each trial has two possible outcomes"
+      ],
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a condition for a binomial experiment?",
+      "id": "q1",
+      "correctIndex": 2
+    },
+    {
+      "prompt": "A fair coin is flipped 4 times. What is the probability of getting exactly 2 heads?",
+      "options": [
+        "0.25",
+        "0.375",
+        "0.5",
+        "0.625"
+      ],
+      "type": "multiple-choice",
+      "correctIndex": 1,
+      "id": "q2",
+      "feedbackIfWrong": "P(2) = 6 * (0.5)^4 = 6 * 0.0625 = 0.375.",
+      "hints": [
+        "Use the binomial formula with n=4, p=0.5, k=2.",
+        "4C2 = 6, then multiply by (0.5)^4."
+      ]
+    },
+    {
+      "hints": [
+        "It's the outcome we're interested in.",
+        "It can be 0, 1, ..., n."
+      ],
+      "id": "q3",
+      "correctIndex": 2,
+      "feedbackIfWrong": "k counts the number of successes in n trials.",
+      "options": [
+        "Number of failures",
+        "Number of trials",
+        "Number of successes",
+        "Probability of success"
+      ],
+      "prompt": "What does the random variable k count in a binomial experiment?",
+      "type": "multiple-choice"
+    },
+    {
+      "prompt": "In the binomial formula, what does (1-p) represent?",
+      "feedbackIfWrong": "(1-p) is the probability of failure on each trial.",
+      "id": "q4",
+      "type": "multiple-choice",
+      "hints": [
+        "It's the opposite of p.",
+        "If p = 0.3, then 1-p = 0.7 is the chance of not succeeding."
+      ],
+      "options": [
+        "Number of combinations",
+        "Probability of success",
+        "Probability of failure",
+        "Number of trials"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "correctIndex": 1,
+      "type": "multiple-choice",
+      "prompt": "A multiple-choice quiz has 5 questions, each with 4 choices. You guess randomly on all. What is n?",
+      "feedbackIfWrong": "There are 5 questions, so n = 5.",
+      "options": [
+        "4",
+        "5",
+        "20",
+        "1"
+      ],
+      "id": "q5",
+      "hints": [
+        "Count the number of questions (trials).",
+        "n = number of trials."
+      ]
+    },
+    {
+      "id": "q6",
+      "hints": [
+        "Think of the fastest way to avoid many calculations.",
+        "P(no success) is a single term."
+      ],
+      "correctIndex": 2,
+      "options": [
+        "Add P(1) + P(2) + ... + P(n)",
+        "Multiply all probabilities",
+        "Use the complement: 1 - P(0)",
+        "Use combinations alone"
+      ],
+      "type": "multiple-choice",
+      "feedbackIfWrong": "1 - P(0) is the quickest method for 'at least one'.",
+      "prompt": "Which method is easiest to find P(at least one success) in a binomial experiment?"
+    },
+    {
+      "type": "multiple-choice",
+      "prompt": "A binomial distribution with n=6 and p=0.33 is most likely to have how many successes?",
+      "correctIndex": 1,
+      "hints": [
+        "The peak is near n*p = 6*0.33 ≈ 2.",
+        "Look for the highest bar in the distribution."
+      ],
+      "feedbackIfWrong": "The most likely outcome is k=2 successes.",
+      "id": "q7",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "6"
+      ]
+    },
+    {
+      "prompt": "What must the sum of all probabilities in a binomial distribution equal?",
+      "feedbackIfWrong": "The sum of all probabilities is always 1.",
+      "type": "multiple-choice",
+      "correctIndex": 3,
+      "options": [
+        "n",
+        "p",
+        "0",
+        "1"
+      ],
+      "hints": [
+        "It's a complete set of all possible outcomes.",
+        "Total probability is always 100%."
+      ],
+      "id": "q8"
+    },
+    {
+      "blanks": [
+        {
+          "accept": [
+            "independent",
+            "Independent"
+          ]
+        }
+      ],
+      "prompt": "A binomial experiment has a fixed number of trials, two outcomes, constant probability, and ___ trials.",
+      "type": "fill-blank",
+      "hints": [
+        "Starts with 'i'.",
+        "This means the outcome of one trial does not affect the next."
+      ],
+      "feedbackIfWrong": "The trials must be independent.",
+      "id": "q9"
+    },
+    {
+      "feedbackIfWrong": "The exponent is n - k, the number of failures.",
+      "hints": [
+        "It's the number of failures.",
+        "Total trials minus number of successes."
+      ],
+      "id": "q10",
+      "type": "short-answer",
+      "answer": "n-k",
+      "prompt": "In the binomial formula P(k) = nCk * p^k * (1-p)^{n-k}, what does the exponent of (1-p) equal?"
+    },
+    {
+      "feedbackIfWrong": "(0.5)^3 = 0.125.",
+      "hints": [
+        "(0.5)^3 = 0.5 * 0.5 * 0.5.",
+        "Half of a half of a half."
+      ],
+      "type": "short-answer",
+      "answer": "0.125",
+      "id": "q11",
+      "prompt": "A coin is flipped 3 times. What is P(0 heads)? Answer as a decimal."
+    },
+    {
+      "hints": [
+        "The exponent is the number of failures.",
+        "It's the difference between n and k."
+      ],
+      "feedbackIfWrong": "The exponent is n - k.",
+      "prompt": "The probability of exactly k successes in a binomial experiment is given by nCk times p^k times (1-p) raised to the power of ___.",
+      "id": "q12",
+      "type": "fill-blank",
+      "blanks": [
+        {
+          "accept": [
+            "n-k",
+            "n - k"
+          ]
+        }
+      ]
+    },
+    {
+      "feedbackIfWrong": "1/1024 ≈ 0.0009766, rounded to 0.0010.",
+      "id": "q13",
+      "hints": [
+        "P(10) = (0.5)^10 = 1/1024.",
+        "1 divided by 1024."
+      ],
+      "answer": "0.0010",
+      "prompt": "If n = 10 and p = 0.5, what is P(k=10)? Answer as a decimal rounded to 4 places.",
+      "type": "short-answer"
+    },
+    {
+      "type": "fill-blank",
+      "blanks": [
+        {
+          "accept": [
+            "probabilities",
+            "Probabilities",
+            "probability",
+            "Probability"
+          ]
+        }
+      ],
+      "prompt": "In a probability distribution, the values of the random variable are plotted on the horizontal axis, and the ___ are plotted on the vertical axis.",
+      "feedbackIfWrong": "The vertical axis shows the probabilities P(x) or P(k).",
+      "id": "q14",
+      "hints": [
+        "Starts with 'p'.",
+        "These sum to 1."
+      ]
+    },
+    {
+      "id": "q15",
+      "type": "short-answer",
+      "hints": [
+        "P(0) = (1-0.48)^5 = (0.52)^5.",
+        "Compute 0.52^5."
+      ],
+      "feedbackIfWrong": "(0.52)^5 ≈ 0.0380.",
+      "prompt": "You survey 5 randomly chosen adults where 48% believe in UFOs. What is the probability that none of the 5 believe? Use decimal rounded to 4 places.",
+      "answer": "0.0380"
+    }
+  ],
+  "title": "Binomial Distributions",
+  "id": "chapter-10-6-binomial-distributions-quiz",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

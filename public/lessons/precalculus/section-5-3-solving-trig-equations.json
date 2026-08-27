@@ -1,0 +1,727 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-5-3-solving-trig-equations",
+  "title": "Solving Trigonometric Equations",
+  "blocks": [
+    {
+      "id": "intro-solving-trig-equations",
+      "title": "Introduction to Solving Trigonometric Equations",
+      "teacherCues": [
+        "Write $2\\sin x = 1$ on the board. Ask: How do you isolate $\\sin x$? Then ask: What angles have sine $1/2$?",
+        "Display the graph of $y=\\sin x$ and the line $y=1/2$. Highlight $\\pi/6$, $5\\pi/6$, and show coterminal angles by adding $2\\pi n$."
+      ],
+      "discoveryHook": {
+        "scenario": "A Ferris wheel rider wants to know exactly when they are 30 feet above the ground. Their height repeats every full rotation, so the equation has infinitely many answers. Trigonometric equations help you find all possible moments, not just the first one."
+      },
+      "concept": {
+        "explanation": [
+          "To solve a trigonometric equation, start by [[imp:isolating]] the trigonometric function on one side.",
+          "Find the solutions in one period (usually $[0, 2\\pi)$ for sine/cosine, $[0, \\pi)$ for tangent/cotangent).",
+          "Because trig functions are [[kw:periodic]], there are infinitely many solutions.",
+          "Write the [[kw:general solution]] by adding integer multiples of the period to the initial solutions."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "General Solution Patterns",
+            "headers": [
+              "Function",
+              "Period",
+              "General Solution Form"
+            ],
+            "rows": [
+              {
+                "0": "$\\sin x$, $\\cos x$",
+                "1": "$2\\pi$",
+                "2": "Base angle $+ 2\\pi n$"
+              },
+              {
+                "0": "$\\tan x$, $\\cot x$",
+                "1": "$\\pi$",
+                "2": "Base angle $+ \\pi n$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Example: Solving $\\sin x = \\frac{1}{2}$",
+          "formula": "$$x = \\frac{\\pi}{6} + 2\\pi n \\quad \\text{or} \\quad x = \\frac{5\\pi}{6} + 2\\pi n$$",
+          "notes": [
+            "$n$ is any integer.",
+            "These two families cover all angles with sine $\\frac{1}{2}$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – From Equation to General Solution",
+          "prompt": "Solve $2\\sin x = 1$ and write the general solution.",
+          "steps": [
+            "Divide both sides by $2$: $\\sin x = \\frac{1}{2}$.",
+            "In $[0, 2\\pi)$, $\\sin x = \\frac{1}{2}$ at $x = \\frac{\\pi}{6}$ and $x = \\frac{5\\pi}{6}$.",
+            "Since sine has period $2\\pi$, add $2\\pi n$ to each: $x = \\frac{\\pi}{6} + 2\\pi n$ and $x = \\frac{5\\pi}{6} + 2\\pi n$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Understanding the Period",
+          "prompt": "Why does the general solution for $\\tan x = 1$ use $+\\pi n$ instead of $+2\\pi n$?",
+          "peerPrompt": "Explain to your partner: Look at the graph of tangent. Where does it repeat? How is that different from sine?",
+          "minLength": 2,
+          "steps": [
+            "The period of $\\tan x$ is $\\pi$, not $2\\pi$.",
+            "So after finding one solution ($x = \\frac{\\pi}{4}$), adding $\\pi n$ gives all coterminal solutions.",
+            "Example: $x = \\frac{\\pi}{4} + \\pi n$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Apply to Cosine",
+          "prompt": "Solve $2\\cos x - 1 = 0$ and write the general solution.",
+          "steps": [
+            "Isolate $\\cos x$: $\\cos x = \\frac{1}{2}$.",
+            "In $[0, 2\\pi)$, solutions are $x = \\frac{\\pi}{3}$ and $x = \\frac{5\\pi}{3}$.",
+            "General solution: $x = \\frac{\\pi}{3} + 2\\pi n$ and $x = \\frac{5\\pi}{3} + 2\\pi n$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Multiple Solutions in One Period",
+        "body": "For $\\sin x = c$ (where $|c|<1$), there are always [[imp:two solutions]] in $[0, 2\\pi)$. Make sure you find both before adding $2\\pi n$."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "The formula that gives all solutions of a trigonometric equation by adding multiples of the period is called the ___ solution.",
+          "blanks": [
+            {
+              "accept": [
+                "general"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the opposite of 'specific'.",
+            "It uses $+2\\pi n$ or $+\\pi n$."
+          ],
+          "feedbackIfWrong": "It is the general solution."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "What is the period of the sine and cosine functions? (Enter as '2pi')",
+          "answer": "2pi",
+          "hints": [
+            "One full circle in radians.",
+            "It's the number before π in the general solution."
+          ],
+          "feedbackIfWrong": "The period is $2\\pi$."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "The equation $\\sin x = \\frac{1}{2}$ has exactly ___ solutions in the interval $[0, 2\\pi)$.",
+          "blanks": [
+            {
+              "accept": [
+                "2"
+              ]
+            }
+          ],
+          "hints": [
+            "Look at a unit circle.",
+            "Sine hits $1/2$ twice in one full rotation."
+          ],
+          "feedbackIfWrong": "There are 2 solutions."
+        }
+      ]
+    },
+    {
+      "id": "collecting-terms-extracting-roots",
+      "title": "Collecting Like Terms and Extracting Square Roots",
+      "teacherCues": [
+        "Write $\\sin x + \\sqrt{2} = -\\sin x$ on the board. Ask: How do we get all $\\sin x$ terms together?",
+        "Show $3\\tan^2 x - 1 = 0$. Ask: After isolating $\\tan^2 x$, what algebraic operation comes next? (taking square root)"
+      ],
+      "discoveryHook": {
+        "scenario": "Sometimes solving a trig equation is just like solving a linear or quadratic equation in algebra. Move terms around, combine like terms, and then use your knowledge of special angles."
+      },
+      "concept": {
+        "explanation": [
+          "When a trig equation has the same function appearing multiple times, treat it like a variable and [[imp:collect like terms]].",
+          "Isolate the trig function, then determine the angle(s) in one period.",
+          "If the variable is squared, [[imp:extract square roots]] after isolating the square. Remember the $\\pm$ sign!",
+          "Always write exact values, not decimal approximations."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Common Exact Values",
+            "headers": [
+              "Trig Function",
+              "Value",
+              "Reference Angle"
+            ],
+            "rows": [
+              {
+                "0": "$\\sin x = \\frac{\\sqrt{2}}{2}$",
+                "1": "$\\frac{\\sqrt{2}}{2}$",
+                "2": "$\\frac{\\pi}{4}$"
+              },
+              {
+                "0": "$\\tan x = \\frac{\\sqrt{3}}{3}$",
+                "1": "$\\frac{\\sqrt{3}}{3}$",
+                "2": "$\\frac{\\pi}{6}$"
+              },
+              {
+                "0": "$\\sin x = -\\frac{1}{2}$",
+                "1": "$-\\frac{1}{2}$",
+                "2": "$\\frac{\\pi}{6}$ (but in QIII/QIV)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Extracting Square Roots",
+          "formula": "$$\\tan^2 x = \\frac{1}{3} \\implies \\tan x = \\pm \\frac{\\sqrt{3}}{3}$$",
+          "notes": [
+            "Never forget the $\\pm$ when taking square roots.",
+            "Then find angles where tangent equals those values."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Collect Terms",
+          "prompt": "Solve $\\sin x + \\sqrt{2} = -\\sin x$.",
+          "steps": [
+            "Add $\\sin x$ to both sides: $2\\sin x + \\sqrt{2} = 0$.",
+            "Isolate $\\sin x$: $2\\sin x = -\\sqrt{2} \\implies \\sin x = -\\frac{\\sqrt{2}}{2}$.",
+            "In $[0, 2\\pi)$, sine is $-\\frac{\\sqrt{2}}{2}$ at $x = \\frac{5\\pi}{4}$ and $x = \\frac{7\\pi}{4}$.",
+            "General: $x = \\frac{5\\pi}{4} + 2\\pi n$ and $x = \\frac{7\\pi}{4} + 2\\pi n$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Square Roots",
+          "prompt": "Solve $4\\sin^2 x - 3 = 0$.",
+          "peerPrompt": "Tell your partner: Why do we get four solutions in $[0, 2\\pi)$ instead of two? How does $\\pm$ affect the number of answers?",
+          "minLength": 2,
+          "steps": [
+            "Isolate $\\sin^2 x$: $\\sin^2 x = \\frac{3}{4}$, so $\\sin x = \\pm \\frac{\\sqrt{3}}{2}$.",
+            "When $\\sin x = \\frac{\\sqrt{3}}{2}$, solutions: $\\frac{\\pi}{3}$, $\\frac{2\\pi}{3}$.",
+            "When $\\sin x = -\\frac{\\sqrt{3}}{2}$, solutions: $\\frac{4\\pi}{3}$, $\\frac{5\\pi}{3}$.",
+            "General: $x = \\frac{\\pi}{3}+2\\pi n$, $\\frac{2\\pi}{3}+2\\pi n$, $\\frac{4\\pi}{3}+2\\pi n$, $\\frac{5\\pi}{3}+2\\pi n$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Tangent Square Root",
+          "prompt": "Solve $3\\tan^2 x - 1 = 0$.",
+          "steps": [
+            "$3\\tan^2 x = 1 \\implies \\tan^2 x = \\frac{1}{3}$.",
+            "$\\tan x = \\pm \\frac{1}{\\sqrt{3}} = \\pm \\frac{\\sqrt{3}}{3}$.",
+            "In $[0, \\pi)$, $\\tan x = \\frac{\\sqrt{3}}{3}$ at $\\frac{\\pi}{6}$, and $\\tan x = -\\frac{\\sqrt{3}}{3}$ at $\\frac{5\\pi}{6}$.",
+            "General: $x = \\frac{\\pi}{6} + \\pi n$ and $x = \\frac{5\\pi}{6} + \\pi n$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Lose the Negative",
+        "body": "When you take the square root of both sides, you must write $\\pm$. For example, $\\tan^2 x = 3$ gives $\\tan x = \\pm \\sqrt{3}$, not just $\\sqrt{3}$."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "To solve an equation like $3\\tan^2 x - 1 = 0$, after isolating $\\tan^2 x$, you take the ___ root of both sides.",
+          "blanks": [
+            {
+              "accept": [
+                "square"
+              ]
+            }
+          ],
+          "hints": [
+            "You are undoing a square.",
+            "The symbol is $\\sqrt{\\ }$."
+          ],
+          "feedbackIfWrong": "You take the square root."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "What is the reference angle for $\\sin x = -\\frac{\\sqrt{2}}{2}$? (Give the positive acute angle in degrees as a number.)",
+          "answer": "45",
+          "hints": [
+            "$\\sin 45^\\circ = \\frac{\\sqrt{2}}{2}$.",
+            "Ignore the negative sign for the reference angle."
+          ],
+          "feedbackIfWrong": "The reference angle is $45^\\circ$."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "When you rationalize $\\frac{1}{\\sqrt{3}}$, the denominator becomes ___.",
+          "blanks": [
+            {
+              "accept": [
+                "3"
+              ]
+            }
+          ],
+          "hints": [
+            "Multiply numerator and denominator by $\\sqrt{3}$.",
+            "$\\sqrt{3} \\cdot \\sqrt{3} = 3$."
+          ],
+          "feedbackIfWrong": "The denominator becomes 3."
+        }
+      ]
+    },
+    {
+      "id": "factoring-quadratic-type",
+      "title": "Factoring and Quadratic Type Equations",
+      "teacherCues": [
+        "Write $2\\sin^2 x - \\sin x - 1 = 0$ on the board. Ask: Does this look like a quadratic? What variable is being squared?",
+        "Show $2\\sin^2 x + 3\\cos x - 3 = 0$. Ask: How can we make this a quadratic in one function? (use $\\sin^2 x = 1 - \\cos^2 x$)"
+      ],
+      "discoveryHook": {
+        "scenario": "Many trig equations hide a quadratic pattern. By treating $\\sin x$ or $\\cos x$ as if it were $u$, you can factor or use the Quadratic Formula. Identities let you convert an equation with two functions into one with a single function."
+      },
+      "concept": {
+        "explanation": [
+          "Equations like $a\\sin^2 x + b\\sin x + c = 0$ are [[kw:quadratic in form]]. Factor them like $au^2 + bu + c = 0$.",
+          "If the equation contains two different functions (e.g., $\\sin x$ and $\\cos x$), use a [[imp:Pythagorean identity]] to rewrite in terms of one function.",
+          "After factoring, set each factor equal to zero and solve the simpler equations.",
+          "Check that solutions are in the range of the trig function (e.g., $\\cos x = \\pm \\sqrt{2}$ has no solution)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Factoring Patterns",
+            "headers": [
+              "Equation",
+              "Factor Form",
+              "Solutions"
+            ],
+            "rows": [
+              {
+                "0": "$2\\sin^2 x - \\sin x - 1 = 0$",
+                "1": "$(2\\sin x + 1)(\\sin x - 1) = 0$",
+                "2": "$\\sin x = -\\frac{1}{2}$ or $\\sin x = 1$"
+              },
+              {
+                "0": "$2\\cos^2 x - 3\\cos x + 1 = 0$",
+                "1": "$(2\\cos x - 1)(\\cos x - 1) = 0$",
+                "2": "$\\cos x = \\frac{1}{2}$ or $\\cos x = 1$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Quadratic Type Substitution",
+          "formula": "$$2u^2 - u - 1 = (2u+1)(u-1), \\quad u = \\sin x$$",
+          "notes": [
+            "Replace the trig function with $u$, factor, then substitute back.",
+            "Don't forget to find all angles from each factor."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Factor a Quadratic in Sine",
+          "prompt": "Solve $2\\sin^2 x - \\sin x - 1 = 0$ in $[0, 2\\pi)$.",
+          "steps": [
+            "Factor: $(2\\sin x + 1)(\\sin x - 1) = 0$.",
+            "Set each factor zero: $2\\sin x + 1 = 0 \\implies \\sin x = -\\frac{1}{2}$; $\\sin x - 1 = 0 \\implies \\sin x = 1$.",
+            "For $\\sin x = -\\frac{1}{2}$, solutions: $\\frac{7\\pi}{6}$, $\\frac{11\\pi}{6}$.",
+            "For $\\sin x = 1$, solution: $\\frac{\\pi}{2}$.",
+            "All in $[0, 2\\pi)$: $\\frac{\\pi}{2}$, $\\frac{7\\pi}{6}$, $\\frac{11\\pi}{6}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Use Pythagorean Identity",
+          "prompt": "Solve $2\\sin^2 x + 3\\cos x - 3 = 0$.",
+          "peerPrompt": "Work with a partner: First, replace $\\sin^2 x$ with $1 - \\cos^2 x$. Then you'll have a quadratic in $\\cos x$. Factor and discuss which solutions are possible.",
+          "minLength": 2,
+          "steps": [
+            "$2(1 - \\cos^2 x) + 3\\cos x - 3 = 0$",
+            "Expand: $2 - 2\\cos^2 x + 3\\cos x - 3 = 0$",
+            "Simplify: $-2\\cos^2 x + 3\\cos x - 1 = 0$, multiply by $-1$: $2\\cos^2 x - 3\\cos x + 1 = 0$.",
+            "Factor: $(2\\cos x - 1)(\\cos x - 1) = 0$.",
+            "$\\cos x = \\frac{1}{2}$ → $x = \\frac{\\pi}{3}$, $\\frac{5\\pi}{3}$; $\\cos x = 1$ → $x = 0$ in $[0, 2\\pi)$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Factor with No Solution",
+          "prompt": "Solve $\\cot x \\cos^2 x = 2\\cot x$.",
+          "steps": [
+            "Move terms: $\\cot x \\cos^2 x - 2\\cot x = 0$ → $\\cot x (\\cos^2 x - 2) = 0$.",
+            "$\\cot x = 0$ or $\\cos^2 x = 2$.",
+            "$\\cot x = 0$ at $x = \\frac{\\pi}{2}$ in $(0,\\pi)$.",
+            "$\\cos^2 x = 2$ → $\\cos x = \\pm \\sqrt{2}$, no solution (outside $[-1,1]$).",
+            "General: $x = \\frac{\\pi}{2} + \\pi n$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Discard Impossible Values",
+        "body": "After factoring, you might get something like $\\cos x = \\pm \\sqrt{2}$. Always [[imp:check the range]] of sine and cosine ($[-1,1]$). If outside, that factor gives no solution."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "The equation $2\\sin^2 x - \\sin x - 1 = 0$ is an example of a trigonometric equation of ___ type.",
+          "blanks": [
+            {
+              "accept": [
+                "quadratic"
+              ]
+            }
+          ],
+          "hints": [
+            "It looks like $2u^2 - u - 1 = 0$.",
+            "The highest exponent is 2."
+          ],
+          "feedbackIfWrong": "It is of quadratic type."
+        },
+        {
+          "id": "q8",
+          "type": "fill-blank",
+          "prompt": "In solving $2\\sin^2 x + 3\\cos x - 3 = 0$, we replaced $\\sin^2 x$ with $1 - $___$^2 x$.",
+          "blanks": [
+            {
+              "accept": [
+                "cos"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the Pythagorean identity.",
+            "The function that pairs with sine."
+          ],
+          "feedbackIfWrong": "We replaced with $1 - \\cos^2 x$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "Factoring $(2\\sin x + 1)(\\sin x - 1) = 0$ yields $\\sin x = 1$ or $\\sin x = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "-1/2"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the solution from $2\\sin x + 1 = 0$.",
+            "Solve $2\\sin x = -1$."
+          ],
+          "feedbackIfWrong": "It is $-1/2$."
+        }
+      ]
+    },
+    {
+      "id": "squaring-and-multiple-angles",
+      "title": "Squaring and Multiple-Angle Equations",
+      "teacherCues": [
+        "Project $\\cos x + 1 = \\sin x$. Ask: Why might squaring help? (creates $\\cos^2 x$ and $\\sin^2 x$ linked by Pythagorean identity)",
+        "Write $2\\cos 3t = 1$. Say: Solve for $3t$ first, then divide by 3 to get $t$."
+      ],
+      "discoveryHook": {
+        "scenario": "When an equation has sine and cosine in a tangled way, squaring both sides can reveal a quadratic connection—but be careful, new 'fake' solutions can sneak in! For equations with '3t' or 'x/2', think of the angle as a package: unwrap it first."
+      },
+      "concept": {
+        "explanation": [
+          "If an equation contains $\\sin x$ and $\\cos x$ (or $\\sec x$ and $\\tan x$) not easily separated, [[imp:square both sides]] to use a Pythagorean identity.",
+          "Squaring can introduce [[kw:extraneous solutions]]—always check answers in the original equation.",
+          "For [[kw:multiple-angle]] equations (e.g., $\\cos 3t$), isolate the trig function of the multiple angle, solve for the multiple angle first, then divide by the coefficient.",
+          "Write the general solution for the multiple angle before dividing."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Multiple-Angle Solution Steps",
+            "headers": [
+              "Step",
+              "Example: $2\\cos 3t = 1$"
+            ],
+            "rows": [
+              {
+                "0": "1. Isolate the trig function",
+                "1": "$\\cos 3t = \\frac{1}{2}$"
+              },
+              {
+                "0": "2. Solve for the angle $3t$",
+                "1": "$3t = \\frac{\\pi}{3} + 2\\pi n$, $\\frac{5\\pi}{3} + 2\\pi n$"
+              },
+              {
+                "0": "3. Divide by 3",
+                "1": "$t = \\frac{\\pi}{9} + \\frac{2\\pi n}{3}$, $\\frac{5\\pi}{9} + \\frac{2\\pi n}{3}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Watch for Extraneous Solutions",
+          "formula": "$$\\cos x + 1 = \\sin x \\implies (\\cos x + 1)^2 = \\sin^2 x$$",
+          "notes": [
+            "Squaring may produce solutions that don't satisfy the original equation.",
+            "Always plug back into the original equation to check."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Square and Check",
+          "prompt": "Solve $\\cos x + 1 = \\sin x$ in $[0, 2\\pi)$.",
+          "steps": [
+            "Square both sides: $(\\cos x + 1)^2 = \\sin^2 x$.",
+            "Expand: $\\cos^2 x + 2\\cos x + 1 = 1 - \\cos^2 x$.",
+            "Rearrange: $2\\cos^2 x + 2\\cos x = 0$ → $2\\cos x(\\cos x + 1) = 0$.",
+            "$\\cos x = 0$ → $x = \\frac{\\pi}{2}$, $\\frac{3\\pi}{2}$; $\\cos x = -1$ → $x = \\pi$.",
+            "Check: $x = \\frac{3\\pi}{2}$ fails (extraneous), so solutions are $\\frac{\\pi}{2}$ and $\\pi$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Multiple Angle",
+          "prompt": "Solve $2\\sin 2t - \\sqrt{3} = 0$.",
+          "peerPrompt": "Explain to your partner: Why do we first solve for $2t$, then divide by 2? What happens to the $2\\pi n$?",
+          "minLength": 2,
+          "steps": [
+            "Isolate $\\sin 2t$: $\\sin 2t = \\frac{\\sqrt{3}}{2}$.",
+            "Solve for $2t$: $2t = \\frac{\\pi}{3} + 2\\pi n$ and $\\frac{2\\pi}{3} + 2\\pi n$.",
+            "Divide by 2: $t = \\frac{\\pi}{6} + \\pi n$ and $t = \\frac{\\pi}{3} + \\pi n$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Half Angle Tangent",
+          "prompt": "Solve $\\tan\\left(\\frac{x}{2}\\right) = -1$.",
+          "steps": [
+            "In $[0, \\pi)$, $\\tan\\theta = -1$ at $\\theta = \\frac{3\\pi}{4}$.",
+            "So $\\frac{x}{2} = \\frac{3\\pi}{4} + \\pi n$.",
+            "Multiply by 2: $x = \\frac{3\\pi}{2} + 2\\pi n$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "When to Stop Dividing",
+        "body": "In multiple-angle equations, add the period multiple ($2\\pi n$ or $\\pi n$) [[imp:before]] dividing. For example, $2t = \\frac{\\pi}{3} + 2\\pi n$, then $t = \\frac{\\pi}{6} + \\pi n$."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "When squaring both sides of a trigonometric equation, you may introduce ___ solutions that must be checked and discarded.",
+          "blanks": [
+            {
+              "accept": [
+                "extraneous"
+              ]
+            }
+          ],
+          "hints": [
+            "They are false solutions.",
+            "They start with 'e'."
+          ],
+          "feedbackIfWrong": "They are extraneous solutions."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "In the equation $2\\cos 3t = 1$, what is the coefficient of $t$ inside the cosine? (Enter a number)",
+          "answer": "3",
+          "hints": [
+            "It's the number multiplied by $t$.",
+            "The equation is $\\cos (3t)$."
+          ],
+          "feedbackIfWrong": "The coefficient is 3."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "After solving $\\frac{x}{2} = \\frac{3\\pi}{4} + \\pi n$, you multiply both sides by ___ to isolate $x$.",
+          "blanks": [
+            {
+              "accept": [
+                "2"
+              ]
+            }
+          ],
+          "hints": [
+            "You're undoing division by 2.",
+            "The coefficient of $n$ becomes $2\\pi$."
+          ],
+          "feedbackIfWrong": "Multiply by 2."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-inverse-functions",
+      "title": "Blueprint Aid – Solving with Inverse Trigonometric Functions",
+      "teacherCues": [
+        "Write $\\cos x = -\\frac{\\sqrt{2}}{2}$. Ask: What angle has this cosine in $[0, \\pi]$? (use arccos)",
+        "Outline the blueprint: Understand (find reference angle), Solve (use inverse function), Conclude (write general solution)."
+      ],
+      "discoveryHook": {
+        "scenario": "Your calculator can give you one solution instantly using $\\sin^{-1}$, $\\cos^{-1}$, or $\\tan^{-1}$. Then you use symmetry and periodicity to generate all the others. It's like finding a master key and duplicating it for every lock."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Inverse trigonometric functions]] return an angle in a specific range: $\\arcsin$ in $[-\\pi/2, \\pi/2]$, $\\arccos$ in $[0, \\pi]$, $\\arctan$ in $(-\\pi/2, \\pi/2)$.",
+          "If the value is positive, the calculator gives a first-quadrant answer; if negative, it gives a negative (for sine/tangent) or obtuse (for cosine) angle.",
+          "Use that angle and the [[imp:reference angle]] to find all solutions in $[0, 2\\pi)$ or the appropriate period.",
+          "Then apply the general solution formula."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Inverse Function Ranges",
+            "headers": [
+              "Function",
+              "Range"
+            ],
+            "rows": [
+              {
+                "0": "$\\arcsin x$",
+                "1": "$[-\\pi/2, \\pi/2]$"
+              },
+              {
+                "0": "$\\arccos x$",
+                "1": "$[0, \\pi]$"
+              },
+              {
+                "0": "$\\arctan x$",
+                "1": "$(-\\pi/2, \\pi/2)$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Using arccos to Solve",
+          "formula": "$$\\cos x = -\\frac{\\sqrt{2}}{2} \\implies x = \\arccos\\left(-\\frac{\\sqrt{2}}{2}\\right) = \\frac{3\\pi}{4}$$",
+          "notes": [
+            "$\\arccos$ gives only the angle in $[0, \\pi]$ where cosine is $-\\frac{\\sqrt{2}}{2}$.",
+            "The other solution in $[0, 2\\pi)$ is $\\frac{5\\pi}{4}$ (since cosine is also negative in QIII)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand and Use Inverse",
+          "prompt": "Solve $\\cos x = -\\frac{\\sqrt{2}}{2}$ for $x$ in $[0, 2\\pi)$ using the blueprint.",
+          "steps": [
+            "Understand: Cosine is negative in QII and QIII. Reference angle: $\\cos(\\pi/4)=\\sqrt{2}/2$.",
+            "Solve: $\\arccos(-\\sqrt{2}/2) = 3\\pi/4$ (QII). The QIII solution: $\\pi + \\pi/4 = 5\\pi/4$.",
+            "Conclude: General solution $x = 3\\pi/4 + 2\\pi n$ and $x = 5\\pi/4 + 2\\pi n$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Find Reference with arctan",
+          "prompt": "Solve $\\tan x = -1$ and write the general solution.",
+          "peerPrompt": "Explain to your partner: Why does $\\arctan(-1)$ give $-\\pi/4$, and how do you adjust it to get the $[0, \\pi)$ solution $3\\pi/4$?",
+          "minLength": 2,
+          "steps": [
+            "$\\arctan(-1) = -\\pi/4$, which is not in $[0, \\pi)$. Add $\\pi$ to get $3\\pi/4$.",
+            "Since period of tangent is $\\pi$, general: $x = 3\\pi/4 + \\pi n$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Using arcsin",
+          "prompt": "Solve $\\sin x = -\\frac{1}{2}$ and write the general solution.",
+          "steps": [
+            "$\\arcsin(-1/2) = -\\pi/6$. Add $2\\pi$ to get $11\\pi/6$ (QIV).",
+            "The other solution in $[0, 2\\pi)$ is in QIII: $\\pi + \\pi/6 = 7\\pi/6$.",
+            "General: $x = 7\\pi/6 + 2\\pi n$ and $x = 11\\pi/6 + 2\\pi n$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Arcsin vs. Solutions",
+        "body": "$\\arcsin$ only returns angles in $[-\\pi/2, \\pi/2]$. If you need a solution in QII or QIII, you must [[imp:use symmetry]] to find the other angle."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "Before using an inverse function, identify the acute ___ angle to help find all solutions.",
+          "blanks": [
+            {
+              "accept": [
+                "reference"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the positive acute angle between the terminal side and the x-axis.",
+            "The first step in the 'Understand' phase."
+          ],
+          "feedbackIfWrong": "It is the reference angle."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is the reference angle in degrees for $\\arcsin(1/2)$? (Enter a number)",
+          "answer": "30",
+          "hints": [
+            "$\\sin 30^\\circ = 1/2$.",
+            "It's the acute angle in the first quadrant."
+          ],
+          "feedbackIfWrong": "The reference angle is $30^\\circ$."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The range of $\\arccos x$ is $[0, $___$]$.",
+          "blanks": [
+            {
+              "accept": [
+                "π",
+                "pi"
+              ]
+            }
+          ],
+          "hints": [
+            "Arccos gives angles from 0 to 180 degrees.",
+            "In radians, that's 0 to $\\pi$."
+          ],
+          "feedbackIfWrong": "The range is $[0, \\pi]$."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Solve $2\\sin^2 x - 3\\sin x + 1 = 0$ in $[0, 2\\pi)$ by treating it as a quadratic and then using inverse sine.",
+        "type": "short-answer",
+        "answers": [
+          "π/6, 5π/6, π/2"
+        ],
+        "hints": [
+          "Factor: $(2\\sin x - 1)(\\sin x - 1) = 0$.",
+          "So $\\sin x = 1/2$ or $\\sin x = 1$. Find all angles in the interval."
+        ],
+        "feedbackIfWrong": "Solutions are $\\pi/6$, $5\\pi/6$, $\\pi/2$."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

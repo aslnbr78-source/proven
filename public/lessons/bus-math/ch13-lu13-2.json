@@ -1,0 +1,824 @@
+{
+  "blocks": [
+    {
+      "id": "pv-annuity-concept",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "present value",
+                "PV"
+              ]
+            }
+          ],
+          "prompt": "Present value of an annuity = Payment × ___ factor.",
+          "id": "b1q1",
+          "type": "fill-blank",
+          "feedbackIfWrong": "present value (PV).",
+          "hints": [
+            "From the PV annuity table.",
+            "Not future value."
+          ]
+        },
+        {
+          "feedbackIfWrong": "less.",
+          "hints": [
+            "Time value of money reduces future dollars.",
+            "Discounting makes PV smaller."
+          ],
+          "type": "short-answer",
+          "prompt": "Total payments of $100 per year for 5 years = $500. Will the present value be less than, equal to, or greater than $500? (word)",
+          "answers": [
+            "less"
+          ],
+          "id": "b1q2"
+        },
+        {
+          "answers": [
+            "12637.20",
+            "12,637.20"
+          ],
+          "type": "short-answer",
+          "id": "b1q3",
+          "hints": [
+            "3,000 × 4.2124.",
+            "= 12,637.20."
+          ],
+          "prompt": "PV factor = 4.2124, payment $3,000. Find PV. (number only, no $)",
+          "feedbackIfWrong": "12,637.20."
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "You will receive $1,000 per year for 3 years at a discount rate of 5%. Compare the total payments to the present value.",
+          "steps": [
+            "Total payments = 3 × $1,000 = $3,000.",
+            "PV (using table) is less than $3,000 because future dollars are discounted.",
+            "With i=5%, n=3, PV factor ≈ 2.7232, so PV ≈ $2,723.20."
+          ],
+          "title": "A – Compare total payments vs. PV"
+        },
+        {
+          "title": "B – Why less than total?",
+          "peerPrompt": "Think about the time value of money.",
+          "role": "peer-explain",
+          "steps": [
+            "Money received in the future is worth less today because of interest.",
+            "Each future payment is discounted back to today, reducing its current value.",
+            "The sum of these discounted values is less than the simple sum of the payments."
+          ],
+          "prompt": "Explain why the present value of an annuity is always less than the sum of the payments.",
+          "minLength": 2
+        },
+        {
+          "prompt": "Using a PV of ordinary annuity table, factor for i=3%, n=4 is 3.7171. Payment = $2,000. Find PV.",
+          "role": "independent",
+          "title": "C – Find PV with table",
+          "steps": [
+            "PV = 2,000 × 3.7171 = $7,434.20."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A lottery advertises a $1 million prize, but it's paid as $50,000 per year for 20 years. The true value today is much less because money in the future is worth less than money now. The [[kw:present value of an annuity]] tells us the lump-sum amount today that is equivalent to the series of future payments, given an interest rate."
+      },
+      "title": "1. Present Value of an Annuity Concept",
+      "concept": {
+        "explanation": [
+          "The [[kw:present value of an ordinary annuity]] is the amount of money that, if invested today at a given interest rate, would provide a series of equal withdrawals (payments) over a specified number of periods.",
+          "It answers the question: 'How much do I need to invest now to receive a fixed payment each period for a certain time?'",
+          "It is the reverse of the future value of an annuity: FV goes forward, PV goes backward.",
+          "Formula: $$PV_{\\text{annuity}} = \\text{Payment} \\times \\frac{1 - (1 + i)^{-n}}{i}$$ but we'll primarily use tables.",
+          "[[imp:Present value is always less than the total of all future payments because of the time value of money.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$PV = \\text{Payment} \\times \\text{PV Annuity Factor}$$",
+          "notes": [
+            "The PV annuity factor is found in the present value of an ordinary annuity table.",
+            "n = number of payments, i = periodic rate."
+          ],
+          "title": "Present Value of Ordinary Annuity"
+        },
+        "visuals": [
+          {
+            "title": "Future Value vs. Present Value of Annuity",
+            "headers": [
+              "",
+              "Future Value of Annuity",
+              "Present Value of Annuity"
+            ],
+            "caption": "Both involve a series of payments, but FV is at the end, PV is at the beginning.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Question",
+                "1": "How much will my payments grow to?",
+                "2": "What lump sum is my payment stream worth today?"
+              },
+              {
+                "0": "Direction",
+                "1": "Compounding payments forward",
+                "2": "Discounting payments backward"
+              },
+              {
+                "0": "Key Formula",
+                "1": "FV = Payment × FV factor",
+                "2": "PV = Payment × PV factor"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "body": "Don't confuse the present value of a lump sum (single amount) with the present value of an annuity (series of payments). [[imp:PV of annuity uses a different table and factor.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "147202",
+          "147,202"
+        ],
+        "hints": [
+          "PV = 20,000 × 7.3601.",
+          "= 147,202."
+        ],
+        "optional": true,
+        "prompt": "An insurance company offers a settlement of $20,000 per year for 10 years. If the discount rate is 6%, the PV factor (n=10, i=6%) is 7.3601. What is the present value?"
+      },
+      "teacherCues": [
+        "Ask: 'If you won a lottery that pays $50,000 per year for 20 years, what lump sum today is equivalent?'",
+        "Contrast with future value of annuity: we went from payments to FV; now we go from payments to PV."
+      ]
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "From the PV annuity table.",
+            "Not FV factor."
+          ],
+          "prompt": "PV of an ordinary annuity = Payment × ___ factor.",
+          "blanks": [
+            {
+              "accept": [
+                "PV",
+                "present value"
+              ]
+            }
+          ],
+          "id": "b2q1",
+          "type": "fill-blank",
+          "feedbackIfWrong": "PV (present value)."
+        },
+        {
+          "feedbackIfWrong": "2.7232.",
+          "answers": [
+            "2.7232"
+          ],
+          "id": "b2q2",
+          "type": "short-answer",
+          "prompt": "Using the table above, what is the factor for n=3, i=5%? (4 decimals)",
+          "hints": [
+            "Row n=3, column 5%.",
+            "2.7232."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "5319",
+            "5,319"
+          ],
+          "prompt": "Factor is 3.5460, payment is $1,500. Find PV. (number only, no $)",
+          "feedbackIfWrong": "5,319.",
+          "id": "b2q3",
+          "hints": [
+            "1,500 × 3.5460.",
+            "= 5,319."
+          ]
+        }
+      ],
+      "title": "2. Using the Present Value of Ordinary Annuity Table",
+      "teacherCues": [
+        "Show a PV of ordinary annuity table; point out that the factor is less than n.",
+        "Explain how to read n and i."
+      ],
+      "examples": [
+        {
+          "title": "A – Use table",
+          "steps": [
+            "PV = 2,500 × 3.5460 = $8,865.00."
+          ],
+          "role": "guided",
+          "prompt": "Payments of $2,500 per year for 4 years at 5%. PV factor (n=4, i=5%) = 3.5460. Find PV."
+        },
+        {
+          "peerPrompt": "Think about how future payments are discounted.",
+          "minLength": 2,
+          "prompt": "Explain why increasing the interest rate decreases the present value of an annuity.",
+          "title": "B – Effect of higher rate",
+          "steps": [
+            "A higher rate means each future payment is discounted more heavily (divided by a larger factor).",
+            "So the present value of each payment becomes smaller.",
+            "Thus the total PV decreases."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Quarterly payments of $800 for 2 years at 2% per quarter. n=8, i=2%, factor=7.3255. Find PV.",
+          "title": "C – Find PV with given factors",
+          "role": "independent",
+          "steps": [
+            "PV = 800 × 7.3255 = $5,860.40."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A PV of $1 ordinary annuity table lists the factor that, when multiplied by the periodic payment, gives the present value. For example, to find the present value of $1,000 per year for 5 years at 4%, the factor is 4.4518, so PV = $4,451.80. This is the lump sum needed today."
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "prompt": "Monthly rent of $1,200 for 3 years, i=0.75% per month. n=36, factor=30.1075. Find PV.",
+        "optional": true,
+        "hints": [
+          "1,200 × 30.1075 = 36,129.",
+          "Check calculation."
+        ],
+        "answers": [
+          "36129",
+          "36,129"
+        ]
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:present value of ordinary annuity table]] provides factors for various i and n.",
+          "Steps: 1. Calculate i (periodic rate) and n (number of payments). 2. Locate the PV annuity factor at the intersection. 3. Multiply the payment by this factor.",
+          "The factor equals $\\frac{1 - (1+i)^{-n}}{i}$.",
+          "A higher i results in a lower PV factor because future payments are discounted more heavily.",
+          "[[imp:The factor is always less than n (except when i=0).]]"
+        ],
+        "formulaCard": {
+          "notes": [
+            "n = total number of payments, i = periodic rate.",
+            "The factor decreases as i increases, and increases as n increases."
+          ],
+          "title": "PV of Ordinary Annuity by Table",
+          "formula": "$$PV = \\text{Payment} \\times \\text{PV Annuity Factor}$$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "0.9901",
+                "2": "0.9804",
+                "3": "0.9709",
+                "4": "...",
+                "5": "0.9524"
+              },
+              {
+                "0": "2",
+                "1": "1.9704",
+                "2": "1.9416",
+                "3": "1.9135",
+                "4": "...",
+                "5": "1.8594"
+              },
+              {
+                "0": "3",
+                "1": "2.9410",
+                "2": "2.8839",
+                "3": "2.8286",
+                "4": "...",
+                "5": "2.7232"
+              },
+              {
+                "0": "4",
+                "1": "3.9020",
+                "2": "3.8077",
+                "3": "3.7171",
+                "4": "...",
+                "5": "3.5460"
+              }
+            ],
+            "variant": "colorful",
+            "title": "PV of Ordinary Annuity Table (Excerpt)",
+            "caption": "Factor = present value of $1 per period. Multiply payment by factor.",
+            "headers": [
+              "n\\i",
+              "1%",
+              "2%",
+              "3%",
+              "...",
+              "5%"
+            ]
+          }
+        ]
+      },
+      "confusionCorner": {
+        "body": "Make sure you use the PV of ordinary annuity table, not the FV or lump‑sum PV table. [[imp:Annuity PV factors are cumulations of discounted payments, not single sums.]]",
+        "title": "Watch out!"
+      },
+      "id": "pv-table-use"
+    },
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Beginning balance = $2,723.20.",
+            "Interest = $2,723.20 × 0.05 = $136.16.",
+            "Withdrawal = $1,000; Ending = $2,723.20 + 136.16 - 1,000 = $1,859.36."
+          ],
+          "prompt": "PV=$2,723.20, i=5%, payment=$1,000, n=3. Show first period.",
+          "title": "A – Verify PV"
+        },
+        {
+          "prompt": "Explain why the balance should be zero after the last payment if the PV is correct.",
+          "minLength": 2,
+          "title": "B – Why zero at end?",
+          "role": "peer-explain",
+          "steps": [
+            "PV is the exact lump sum that, together with interest earned, provides exactly the series of payments.",
+            "If calculated correctly, the last payment should exactly deplete the account.",
+            "Any remaining balance would mean the PV was too large."
+          ],
+          "peerPrompt": "Think about the definition of present value."
+        },
+        {
+          "title": "C – Complete verification",
+          "steps": [
+            "Year 2: Beg $1,859.36; Interest $92.97; Withdraw $1,000; End $952.33.",
+            "Year 3: Beg $952.33; Interest $47.62; Withdraw $1,000; End ≈ $0.05 (≈$0)."
+          ],
+          "role": "independent",
+          "prompt": "Continue the verification from A for years 2 and 3."
+        }
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "interest.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "interest"
+              ]
+            }
+          ],
+          "id": "b3q1",
+          "prompt": "To verify PV, each period you add ___ and subtract the payment.",
+          "hints": [
+            "The earnings on the balance.",
+            "Not the payment."
+          ]
+        },
+        {
+          "prompt": "Beginning balance $5,000, interest 4% ($200), payment $1,500. Ending balance? (number only, no $)",
+          "answers": [
+            "3700",
+            "3,700"
+          ],
+          "id": "b3q2",
+          "feedbackIfWrong": "3,700.",
+          "hints": [
+            "5,000 + 200 - 1,500.",
+            "= 3,700."
+          ],
+          "type": "short-answer"
+        },
+        {
+          "id": "b3q3",
+          "feedbackIfWrong": "0 (or zero).",
+          "type": "short-answer",
+          "prompt": "After the last payment of a correctly computed PV annuity, the balance should be ___ (number).",
+          "hints": [
+            "All funds are withdrawn.",
+            "Exactly exhausted."
+          ],
+          "answers": [
+            "0",
+            "zero"
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Explain that we can verify PV by simulating withdrawals: start with PV, add interest, subtract payment each period.",
+        "The balance should reach $0 at the end of the annuity term."
+      ],
+      "id": "check-pv-annuity",
+      "discoveryHook": {
+        "scenario": "If we invest $8,865 today at 5%, we should be able to withdraw $2,500 at the end of each year for 4 years and have $0 left. This check confirms the PV calculation."
+      },
+      "confusionCorner": {
+        "body": "Rounding differences may cause a small residual balance (a few cents). [[imp:If the final balance is significantly different from zero, recalculate PV with more precision.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "hints": [
+          "Interest on $7,270 is less than $300, so balance after withdrawal is under $5,000.",
+          "No calculation needed."
+        ],
+        "prompt": "PV=$9,000, i=3%, payment=$2,000. After one period, interest=$270, ending balance=$7,270. Is the second period ending balance more than, less than, or equal to $5,000?",
+        "answers": [
+          "less"
+        ],
+        "type": "short-answer",
+        "optional": true
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$8,865.00",
+                "2": "$443.25",
+                "3": "$2,500",
+                "4": "$6,808.25"
+              },
+              {
+                "0": "2",
+                "1": "$6,808.25",
+                "2": "$340.41",
+                "3": "$2,500",
+                "4": "$4,648.66"
+              },
+              {
+                "0": "3",
+                "1": "$4,648.66",
+                "2": "$232.43",
+                "3": "$2,500",
+                "4": "$2,381.09"
+              },
+              {
+                "0": "4",
+                "1": "$2,381.09",
+                "2": "$119.05",
+                "3": "$2,500",
+                "4": "$0.14 (≈$0)"
+              }
+            ],
+            "headers": [
+              "Year",
+              "Beginning Balance",
+              "Interest (5%)",
+              "Withdrawal",
+              "Ending Balance"
+            ],
+            "caption": "Due to rounding, the final balance may not be exactly zero.",
+            "title": "Verification of PV = $8,865, i=5%, Payment=$2,500, n=4"
+          }
+        ],
+        "explanation": [
+          "To verify a present value of annuity calculation, we can 'play out' the annuity:",
+          "Start with the computed PV as the initial balance.",
+          "For each period: 1. Add interest (balance × i). 2. Subtract the payment.",
+          "After the last payment, the balance should be $0 (or very close).",
+          "This demonstrates that the PV exactly funds the stream of payments.",
+          "[[imp:If the final balance is not $0, the PV or payment amount may be incorrect.]]"
+        ],
+        "formulaCard": {
+          "title": "Verification Steps",
+          "formula": "$$\\text{New Balance} = (\\text{Previous Balance} \\times (1 + i)) - \\text{Payment}$$",
+          "notes": [
+            "Repeat for each period.",
+            "After n periods, balance should equal $0 (or be very small due to rounding)."
+          ]
+        }
+      },
+      "title": "3. Checking Present Value by Computing Interest and Balance"
+    },
+    {
+      "title": "4. Comparing PV of a Lump Sum vs. PV of an Annuity",
+      "discoveryHook": {
+        "scenario": "You can receive $10,000 in 5 years (lump sum) or $2,000 per year for 5 years (annuity). At 6%, the PV of the lump sum is $10,000 × 0.7473 = $7,473. The PV of the annuity is $2,000 × 4.2124 = $8,424.80. The annuity is more valuable today."
+      },
+      "examples": [
+        {
+          "title": "A – Compare options",
+          "role": "guided",
+          "steps": [
+            "PV1 = 15,000 × 0.8548 = $12,822.",
+            "PV2 = 3,500 × 3.6299 = $12,704.65.",
+            "Option 1 has slightly higher PV."
+          ],
+          "prompt": "Option 1: $15,000 in 4 years. Option 2: $3,500 per year for 4 years. i=4%. Lump‑sum factor=0.8548, annuity factor=3.6299. Which has higher PV?"
+        },
+        {
+          "prompt": "Explain why the annuity factor (3.6299) is much larger than the lump‑sum factor (0.8548).",
+          "minLength": 2,
+          "title": "B – Why different factors?",
+          "steps": [
+            "The annuity factor adds up the present values of each individual payment.",
+            "The lump‑sum factor is for a single future amount.",
+            "So the annuity factor is essentially the sum of several lump‑sum factors for different time periods."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Think about multiple payments versus one."
+        },
+        {
+          "steps": [
+            "PV of annuity = 2,000 × 4.3295 = $8,659.",
+            "$8,659 > $8,000, so the annuity is better."
+          ],
+          "role": "independent",
+          "title": "C – Choose the best deal",
+          "prompt": "You are offered either $8,000 today (already PV) or $2,000 per year for 5 years at 5%. Annuity factor=4.3295. Which is better?"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't mix up the tables. [[imp:If the payments are a series, use the PV annuity table; if a single future amount, use the lump‑sum PV table.]]"
+      },
+      "id": "pv-lumpsum-vs-annuity",
+      "challengeCorner": {
+        "prompt": "A lottery offers $500,000 in 10 years or $45,000 per year for 10 years. Discount rate 6%. Lump‑sum factor=0.5584, annuity factor=7.3601. Which option has higher PV? (lump or annuity)",
+        "optional": true,
+        "hints": [
+          "Lump PV = 500,000×0.5584 = 279,200.",
+          "Annuity PV = 45,000×7.3601 = 331,204.50; annuity is better."
+        ],
+        "answers": [
+          "annuity"
+        ],
+        "type": "short-answer"
+      },
+      "teacherCues": [
+        "Show both formulas side by side.",
+        "Stress that the discount factor is different: (1+i)^-n vs. the annuity factor."
+      ],
+      "questions": [
+        {
+          "hints": [
+            "Not a series.",
+            "One amount in the future."
+          ],
+          "prompt": "PV of a single future sum uses the ___ table (lump‑sum or annuity).",
+          "blanks": [
+            {
+              "accept": [
+                "lump-sum",
+                "lump sum"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "id": "b4q1",
+          "feedbackIfWrong": "lump-sum."
+        },
+        {
+          "hints": [
+            "Compare 0.7835 vs 4.3295.",
+            "Annuity factor is much larger."
+          ],
+          "prompt": "Lump‑sum PV factor for i=5%, n=5 is 0.7835. Annuity PV factor (n=5, i=5%) is 4.3295. Which is larger? (word: lump or annuity)",
+          "id": "b4q2",
+          "feedbackIfWrong": "annuity.",
+          "answers": [
+            "annuity"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "id": "b4q3",
+          "type": "short-answer",
+          "answers": [
+            "stream"
+          ],
+          "feedbackIfWrong": "stream.",
+          "hints": [
+            "$12,000 > $10,000.",
+            "Higher PV is better."
+          ],
+          "prompt": "A stream of payments has a PV of $12,000. The same total payments in a single future sum has a PV of $10,000. Which is worth more today? (word: stream or single)"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Use the lump‑sum table for a single future amount.",
+            "Use the PV annuity table for a series of equal payments."
+          ],
+          "title": "PV Formulas Comparison",
+          "formula": "$$PV_{\\text{lump sum}} = FV \\times \\frac{1}{(1 + i)^n}$$ $$PV_{\\text{annuity}} = \\text{Payment} \\times \\text{PV Annuity Factor}$$"
+        },
+        "explanation": [
+          "[[kw:Present value of a single sum]]: $$PV = FV \\times (1 + i)^{-n}$$ (from Chapter 12).",
+          "[[kw:Present value of an ordinary annuity]]: $$PV = \\text{Payment} \\times \\text{PV annuity factor}$$.",
+          "The annuity factor is the sum of the lump‑sum PV factors for each period.",
+          "For the same total dollars, the annuity PV is higher than a single sum if it's received sooner on average.",
+          "[[imp:Choose the correct table based on whether the cash flow is a single amount or a series of equal payments.]]"
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "",
+              "Single Sum ($10,000 in year 5)",
+              "Annuity ($2,000/yr for 5 yrs)"
+            ],
+            "caption": "The annuity's PV is larger because some payments arrive sooner.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Factor",
+                "1": "0.7473",
+                "2": "4.2124"
+              },
+              {
+                "0": "Present Value",
+                "1": "$7,473",
+                "2": "$8,424.80"
+              },
+              {
+                "0": "Reason",
+                "1": "One amount far future",
+                "2": "Earlier payments increase PV"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Lump‑Sum PV vs. Annuity PV (i=6%, 5 years)"
+          }
+        ]
+      }
+    },
+    {
+      "title": "5. Blueprint Aid for Present Value of Annuity Problems",
+      "challengeCorner": {
+        "type": "short-answer",
+        "prompt": "A retiree wants to withdraw $5,000 at the end of each year for 20 years. The account earns 4%. PV factor (n=20, i=4%) is 13.5903. What lump sum must they have today?",
+        "optional": true,
+        "hints": [
+          "Multiply the annual withdrawal by the PV factor: 5,000 × 13.5903.",
+          "The required lump sum is $67,951.50."
+        ],
+        "answers": [
+          "67951.50",
+          "67,951.50"
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "A couple can afford monthly mortgage payments of $1,500 for 30 years at 6% compounded monthly. How much can they borrow? The present value of that annuity is the maximum loan amount. The blueprint organizes the calculation."
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "For a loan, the present value is the amount borrowed. [[imp:The payment amount is often found from the PV, but here we are given the payment and find PV.]]"
+      },
+      "id": "blueprint-pv-annuity",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "You can pay $600 per quarter for 5 years at 8% compounded quarterly. What is the present value? (n=20, i=2%, factor=16.3514)",
+          "steps": [
+            "Understand: payment=$600, end of quarter, i=2%, n=20.",
+            "Solve: PV = 600 × 16.3514 = $9,810.84.",
+            "Conclude: You need $9,810.84 today to fund those payments."
+          ],
+          "title": "A – Full blueprint"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Think about confusing factors.",
+          "steps": [
+            "The 'Understand' step makes you identify the type of cash flow (series vs. lump).",
+            "The 'Solve' step forces explicit calculation of i and n before looking up the table.",
+            "The 'Conclude' step encourages verification."
+          ],
+          "title": "B – Blueprint vs. guessing",
+          "prompt": "Explain why the blueprint prevents errors when using PV tables.",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "PV = 400 × 40.1848 = $16,073.92.",
+            "This is the maximum car loan amount."
+          ],
+          "title": "C – Car loan",
+          "prompt": "Monthly payments of $400 for 4 years at 9% compounded monthly. n=48, i=0.75%, factor=40.1848. Find PV."
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Payment=$1,500, end of month, r=6%, monthly, 30 years.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – n,i",
+                "1": "n=30×12=360, i=6%/12=0.5%=0.005, PV annuity factor (n=360,i=0.5%)≈166.7916",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – PV",
+                "1": "PV=1,500×166.7916≈$250,187.40",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Maximum loan amount = $250,187.40.",
+                "2": ""
+              }
+            ],
+            "caption": "This is the core calculation behind mortgages and car loans.",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "title": "Blueprint: Mortgage Loan Amount ($1,500/month, 6% monthly, 30 years)",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$PV = \\text{Payment} \\times \\text{PV Annuity Factor}$$",
+          "notes": [
+            "Always compute i and n first.",
+            "Check that the factor corresponds to ordinary annuity (end of period)."
+          ],
+          "title": "PV Annuity Blueprint"
+        },
+        "explanation": [
+          "Apply the blueprint to PV of annuity problems:",
+          "1. Understand: identify payment amount, annual rate, compounding frequency, and number of periods.",
+          "2. Solve: compute i and n; locate PV annuity factor; PV = Payment × Factor.",
+          "3. Conclude: state the present value; verify by checking that the balance would be zero after n withdrawals.",
+          "This method is essential for loans, mortgages, and valuing payment streams."
+        ]
+      },
+      "questions": [
+        {
+          "hints": [
+            "Identify what's given.",
+            "U in U-S-C."
+          ],
+          "prompt": "The first blueprint step is to ___ the problem.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "understand.",
+          "id": "b5q1",
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "16,351.40.",
+          "id": "b5q2",
+          "type": "short-answer",
+          "answers": [
+            "16351.40",
+            "16,351.40"
+          ],
+          "prompt": "PV annuity factor = 16.3514, payment = $1,000. Find PV. (number only, no $)",
+          "hints": [
+            "1,000 × 16.3514.",
+            "= 16,351.40."
+          ]
+        },
+        {
+          "answers": [
+            "0",
+            "zero"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "Fully depleted.",
+            "No money left."
+          ],
+          "prompt": "After computing PV of an annuity, you should verify that the final balance is ___ after all withdrawals. (number)",
+          "feedbackIfWrong": "0.",
+          "id": "b5q3"
+        }
+      ],
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a mortgage‑type problem where the PV is the loan amount."
+      ]
+    }
+  ],
+  "standards": [
+    "BUSMATH.13.2"
+  ],
+  "id": "ch13-lu13-2",
+  "type": "interactive-lesson",
+  "title": "Present Value of an Ordinary Annuity (Find Present Value)",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

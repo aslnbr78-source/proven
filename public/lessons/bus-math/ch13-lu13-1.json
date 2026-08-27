@@ -1,0 +1,808 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "title": "Ordinary Annuity and Annuity Due (Find Future Value)",
+  "standards": [
+    "BUSMATH.13.1"
+  ],
+  "id": "ch13-lu13-1",
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "A lottery winner receives $1 million, but not as a lump sum. Instead, the state makes annual payments of $50,000 for 20 years. That stream of equal payments is an [[kw:annuity]]. An annuity can be ordinary (payments at end of period) or annuity due (payments at beginning)."
+      },
+      "id": "annuity-concept",
+      "title": "1. Concept of an Annuity",
+      "challengeCorner": {
+        "answers": [
+          "greater"
+        ],
+        "hints": [
+          "Annuity due earns extra interest.",
+          "Each deposit earns one extra period of compounding."
+        ],
+        "optional": true,
+        "prompt": "If you deposit $1,000 at the beginning of each year for 4 years at 6%, will the future value be greater or less than if deposits were at year-end? (word: greater or less)",
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "body": "Don't confuse annuity with a lump sum. [[imp:An annuity involves multiple equal payments; a lump sum is a single deposit.]]",
+        "title": "Watch out!"
+      },
+      "concept": {
+        "explanation": [
+          "An [[kw:annuity]] is a series of equal payments made at regular intervals (monthly, quarterly, annually, etc.).",
+          "[[kw:Ordinary annuity]]: payments occur at the end of each period (e.g., mortgage payments, bond interest).",
+          "[[kw:Annuity due]]: payments occur at the beginning of each period (e.g., rent, insurance premiums).",
+          "[[kw:Future value of an annuity]] is the total amount accumulated at the end of the annuity term, including all payments plus compound interest.",
+          "[[imp:The last payment in an ordinary annuity earns no interest because it is deposited at the end of the final period.]]"
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Annuity Classifications",
+            "headers": [
+              "Type",
+              "When Payment Occurs",
+              "Example"
+            ],
+            "caption": "The payment timing affects the future value: annuity due earns one extra period of interest.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Ordinary Annuity",
+                "1": "End of period",
+                "2": "Auto loan payments, bond interest"
+              },
+              {
+                "0": "Annuity Due",
+                "1": "Beginning of period",
+                "2": "Rent, life insurance premiums"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$FV = \\text{Sum of payments} + \\text{Compound interest on payments}$$",
+          "notes": [
+            "Each payment earns interest from its deposit date to the end of the annuity term.",
+            "Payments later in the schedule earn less interest."
+          ],
+          "title": "Future Value of an Annuity Concept"
+        }
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "end.",
+          "hints": [
+            "Not the beginning.",
+            "Opposite of annuity due."
+          ],
+          "type": "fill-blank",
+          "id": "b1q1",
+          "blanks": [
+            {
+              "accept": [
+                "end"
+              ]
+            }
+          ],
+          "prompt": "An ordinary annuity makes payments at the ___ of each period."
+        },
+        {
+          "hints": [
+            "Payments at beginning.",
+            "Not ordinary."
+          ],
+          "feedbackIfWrong": "due.",
+          "answers": [
+            "due"
+          ],
+          "prompt": "Rent paid on the first day of the month is an example of an annuity ___ (one word).",
+          "id": "b1q2",
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "The last payment is at the end of year 5.",
+            "It earns no interest."
+          ],
+          "feedbackIfWrong": "4.",
+          "answers": [
+            "4"
+          ],
+          "id": "b1q3",
+          "type": "short-answer",
+          "prompt": "In an ordinary annuity of 5 annual payments, how many payments earn interest? (number)"
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'What is a stream of equal payments called?'",
+        "Draw a timeline showing payments at end of each period."
+      ],
+      "examples": [
+        {
+          "prompt": "You pay car insurance of $200 every month on the 1st. What type of annuity?",
+          "title": "A – Identify annuity type",
+          "steps": [
+            "Payments are made at the beginning of each month.",
+            "This is an annuity due."
+          ],
+          "role": "guided"
+        },
+        {
+          "prompt": "Explain why an annuity due will have a higher future value than an ordinary annuity with the same payment, rate, and number of periods.",
+          "minLength": 2,
+          "title": "B – Ordinary vs. due",
+          "steps": [
+            "In annuity due, each payment is made one period earlier than in an ordinary annuity.",
+            "Thus each payment earns interest for one extra period.",
+            "The total accumulated interest is therefore greater."
+          ],
+          "peerPrompt": "Think about when the first payment starts earning interest.",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "You deposit $500 at the end of each year for 3 years. How many payments are made?",
+          "role": "independent",
+          "steps": [
+            "Three deposits: one at end of year 1, one at end of year 2, one at end of year 3.",
+            "Total payments = 3.",
+            "The last deposit earns no interest because it's at the end of the term."
+          ],
+          "title": "C – Counting payments"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "prompt": "In manual ordinary annuity calculation, interest is calculated on the balance ___ adding the new payment.",
+          "id": "b2q1",
+          "blanks": [
+            {
+              "accept": [
+                "before"
+              ]
+            }
+          ],
+          "hints": [
+            "Then the payment is added.",
+            "Not after."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "before."
+        },
+        {
+          "answers": [
+            "1560.80",
+            "1560.8"
+          ],
+          "type": "short-answer",
+          "id": "b2q2",
+          "prompt": "Invest $500 at end of each year for 3 years at 4%. Find FV. (two decimals, no $)",
+          "hints": [
+            "Y1=500; Y2=500×1.04+500=1,020; Y3=1,020×1.04+500=1,560.80.",
+            "Check: 1,020×1.04=1,060.8, +500=1,560.80."
+          ],
+          "feedbackIfWrong": "1,560.80."
+        },
+        {
+          "prompt": "How many payments in a 5-year ordinary annuity? (number)",
+          "feedbackIfWrong": "5.",
+          "id": "b2q3",
+          "hints": [
+            "One per year.",
+            "Five end-of-year deposits."
+          ],
+          "answers": [
+            "5"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "title": "2. Ordinary Annuity: Manual Calculation",
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$0",
+                "2": "$0",
+                "3": "$3,000",
+                "4": "$3,000.00"
+              },
+              {
+                "0": "2",
+                "1": "$3,000.00",
+                "2": "$240.00",
+                "3": "$3,000",
+                "4": "$6,240.00"
+              },
+              {
+                "0": "3",
+                "1": "$6,240.00",
+                "2": "$499.20",
+                "3": "$3,000",
+                "4": "$9,739.20"
+              }
+            ],
+            "variant": "colorful",
+            "caption": "Last payment earns no interest. Total interest = $739.20.",
+            "title": "Manual Calculation: $3,000 at 8% for 3 years",
+            "headers": [
+              "Year End",
+              "Balance Before Payment",
+              "Interest (8%)",
+              "Payment",
+              "New Balance"
+            ]
+          }
+        ],
+        "explanation": [
+          "Manual calculation for ordinary annuity:",
+          "1. At the end of year 1, the first payment is deposited; no interest earned yet.",
+          "2. At the end of year 2, last year's balance earns interest, then the second payment is added.",
+          "3. Repeat for each period.",
+          "The process: new balance = (old balance × (1 + i)) + new payment.",
+          "[[imp:Interest is calculated before adding the new payment, because the payment is made at the end of the period.]]"
+        ],
+        "formulaCard": {
+          "notes": [
+            "i = periodic rate (decimal).",
+            "First payment earns interest for (n–1) periods; last earns 0."
+          ],
+          "title": "Ordinary Annuity – Manual Steps",
+          "formula": "$$\\text{New Balance} = (\\text{Previous Balance} \\times (1 + i)) + \\text{Payment}$$"
+        }
+      },
+      "teacherCues": [
+        "Walk through the steps: after each period, add new deposit, then calculate interest.",
+        "Use the example of $3,000 deposited at end of each year for 3 years at 8%."
+      ],
+      "id": "ordinary-manual",
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Invest $1,500 at end of each year for 3 years at 10%. Compute FV manually.",
+        "type": "short-answer",
+        "hints": [
+          "Each year, multiply previous balance by 1.10, then add $1,500.",
+          "After 3 years, FV = $4,965.00."
+        ],
+        "answers": [
+          "4965.00",
+          "4,965"
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't add the payment before calculating interest. [[imp:In an ordinary annuity, interest is computed on the balance before the payment is added.]]"
+      },
+      "discoveryHook": {
+        "scenario": "You invest $3,000 at the end of each year for 3 years at 8%. After year 1: $3,000 (no interest). After year 2: ($3,000 × 1.08) + $3,000 = $6,240. After year 3: ($6,240 × 1.08) + $3,000 = $9,739.20. The total invested was $9,000, but it grew to $9,739.20 — the extra $739.20 is compound interest."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Two-year annuity",
+          "steps": [
+            "Year 1: $1,000 (no interest).",
+            "Year 2: $1,000 × 1.05 = $1,050; add second $1,000 → $2,050.",
+            "Future value = $2,050."
+          ],
+          "prompt": "Invest $1,000 at end of each year for 2 years at 5%. Find FV."
+        },
+        {
+          "steps": [
+            "In an ordinary annuity, payments are at the end of the period.",
+            "The last payment is made at the very end of the term, so there is no remaining time for it to earn interest.",
+            "Thus it simply adds to the final balance without any growth."
+          ],
+          "minLength": 2,
+          "role": "peer-explain",
+          "title": "B – Interest timing",
+          "prompt": "Why doesn't the last payment earn interest?",
+          "peerPrompt": "Think about when the payment is made relative to the compounding period."
+        },
+        {
+          "prompt": "Invest $2,000 at end of each year for 4 years at 6%. Compute FV manually.",
+          "role": "independent",
+          "title": "C – Four-year annuity",
+          "steps": [
+            "Y1: $2,000.",
+            "Y2: (2,000×1.06)+2,000 = 2,120+2,000 = $4,120.",
+            "Y3: (4,120×1.06)+2,000 = 4,367.20+2,000 = $6,367.20.",
+            "Y4: (6,367.20×1.06)+2,000 = 6,749.23+2,000 ≈ $8,749.23."
+          ]
+        }
+      ]
+    },
+    {
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Monthly deposits of $200 for 5 years at 0.5% per month. n=60, factor=69.7700. Find FV.",
+        "hints": [
+          "Multiply payment by the factor: 200 × 69.7700.",
+          "FV = $13,954.00."
+        ],
+        "type": "short-answer",
+        "answers": [
+          "13954.00",
+          "13,954.00"
+        ]
+      },
+      "id": "ordinary-table",
+      "confusionCorner": {
+        "body": "Make sure to use the ordinary annuity table, not the lump‑sum future value table. [[imp:Ordinary annuity factors are ≥ 1; lump‑sum factors are (1+i)^n.]]",
+        "title": "Watch out!"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "caption": "Factor for $1 per period; multiply payment by factor to get FV.",
+            "title": "Ordinary Annuity FV Table (Excerpt)",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "1.0000",
+                "2": "1.0000",
+                "3": "1.0000",
+                "4": "...",
+                "5": "1.0000"
+              },
+              {
+                "0": "2",
+                "1": "2.0100",
+                "2": "2.0200",
+                "3": "2.0300",
+                "4": "...",
+                "5": "2.0800"
+              },
+              {
+                "0": "3",
+                "1": "3.0301",
+                "2": "3.0604",
+                "3": "3.0909",
+                "4": "...",
+                "5": "3.2464"
+              },
+              {
+                "0": "4",
+                "1": "4.0604",
+                "2": "4.1216",
+                "3": "4.1836",
+                "4": "...",
+                "5": "4.5061"
+              }
+            ],
+            "headers": [
+              "n\\i",
+              "1%",
+              "2%",
+              "3%",
+              "...",
+              "8%"
+            ]
+          }
+        ],
+        "explanation": [
+          "An [[kw:ordinary annuity future value table]] gives the future value of $1 per period for various i and n.",
+          "Steps: 1. Determine i and n. 2. Find the table factor. 3. Multiply the periodic payment by the factor.",
+          "$$FV = \\text{Payment} \\times \\text{Table Factor}$$",
+          "The factor accounts for compound interest on all but the last payment.",
+          "[[imp:The table factor increases with both n and i.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$FV = \\text{Payment} \\times \\text{Table Factor}$$",
+          "title": "FV of Ordinary Annuity by Table",
+          "notes": [
+            "n = number of payments, i = periodic rate.",
+            "If the exact n or i is not in the table, use the formula or interpolation."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "title": "A – Use table",
+          "role": "guided",
+          "prompt": "Deposits of $2,000 are made at the end of each year for 4 years at 8%. Table factor = 4.5061. Find FV.",
+          "steps": [
+            "FV = 2,000 × 4.5061 = $9,012.20."
+          ]
+        },
+        {
+          "prompt": "Explain why using a table is more efficient than manual calculation for longer annuities.",
+          "title": "B – Table vs. manual",
+          "minLength": 2,
+          "role": "peer-explain",
+          "steps": [
+            "Manual calculation requires one step per period.",
+            "For 30 periods, that's 30 iterations.",
+            "The table condenses all that into a single factor and one multiplication."
+          ],
+          "peerPrompt": "Consider the number of manual steps for 30 years."
+        },
+        {
+          "role": "independent",
+          "prompt": "Quarterly deposits of $500 are made for 2 years at 3% per quarter. Table factor for n=8, i=3% is 8.8923. Find FV.",
+          "steps": [
+            "FV = 500 × 8.8923 = $4,446.15."
+          ],
+          "title": "C – Find FV from table"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Instead of manual calculations, we can use an [[kw:ordinary annuity future value table]]. For $1 deposited at end of each period, the table shows total future value. For $3,000 annually for 3 years at 8%, the factor is 3.2464. FV = $3,000 × 3.2464 = $9,739.20. One multiplication replaces all the manual steps."
+      },
+      "teacherCues": [
+        "Show an ordinary annuity future value table.",
+        "Explain that the table factor = sum of compounded values of $1 per period."
+      ],
+      "title": "3. Ordinary Annuity Using Tables",
+      "questions": [
+        {
+          "hints": [
+            "From the future value annuity table.",
+            "Not present value."
+          ],
+          "prompt": "FV of ordinary annuity = Payment × ___ factor.",
+          "blanks": [
+            {
+              "accept": [
+                "table"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "table.",
+          "id": "b3q1",
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "Row n=3, column i=8%.",
+            "3.2464."
+          ],
+          "id": "b3q2",
+          "type": "short-answer",
+          "feedbackIfWrong": "3.2464.",
+          "answers": [
+            "3.2464"
+          ],
+          "prompt": "Using the table above, factor for n=3, i=8%? (4 decimals)"
+        },
+        {
+          "answers": [
+            "4506.10"
+          ],
+          "id": "b3q3",
+          "hints": [
+            "1,000 × 4.5061.",
+            "= 4,506.10."
+          ],
+          "prompt": "Payment $1,000, factor 4.5061. FV? (number only, no $)",
+          "feedbackIfWrong": "4,506.10.",
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "id": "b4q1",
+          "type": "fill-blank",
+          "feedbackIfWrong": "beginning.",
+          "blanks": [
+            {
+              "accept": [
+                "beginning"
+              ]
+            }
+          ],
+          "prompt": "Annuity due payments occur at the ___ of each period.",
+          "hints": [
+            "Not the end.",
+            "Like rent."
+          ]
+        },
+        {
+          "hints": [
+            "5,000 × 1.06.",
+            "= 5,300."
+          ],
+          "prompt": "Ordinary FV $5,000, i = 6%. Find annuity due FV. (number only, no $)",
+          "feedbackIfWrong": "5,300.",
+          "answers": [
+            "5300",
+            "5,300"
+          ],
+          "id": "b4q2",
+          "type": "short-answer"
+        },
+        {
+          "id": "b4q3",
+          "hints": [
+            "More interest earned.",
+            "Extra compounding period."
+          ],
+          "feedbackIfWrong": "higher.",
+          "type": "short-answer",
+          "answers": [
+            "higher"
+          ],
+          "prompt": "Annuity due FV is ___ than ordinary FV for same i and n. (word: higher or lower)"
+        }
+      ],
+      "challengeCorner": {
+        "hints": [
+          "First compute ordinary FV: 1,000 × 13.4121 = $13,412.10.",
+          "Then multiply by 1.02 to get annuity due FV: $13,680.34."
+        ],
+        "optional": true,
+        "type": "short-answer",
+        "prompt": "Quarterly deposits of $1,000 are made at the beginning of each quarter for 3 years at 2% per quarter. Ordinary FV factor for n=12, i=2% is 13.4121. Find annuity due FV.",
+        "answers": [
+          "13680.34",
+          "13,680.34"
+        ]
+      },
+      "title": "4. Annuity Due: Payments at Beginning",
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't use the annuity due formula if payments are at the end of the period. [[imp:Identify payment timing before choosing the method.]]"
+      },
+      "examples": [
+        {
+          "steps": [
+            "FV due = 9,739.20 × 1.08 = $10,518.34."
+          ],
+          "role": "guided",
+          "title": "A – Convert ordinary to due",
+          "prompt": "Ordinary annuity FV = $9,739.20, i = 8%. Find annuity due FV."
+        },
+        {
+          "peerPrompt": "Think about shifting each payment one period earlier.",
+          "title": "B – Why multiply by (1+i)?",
+          "role": "peer-explain",
+          "steps": [
+            "In annuity due, each payment is made one period earlier than in an ordinary annuity.",
+            "Thus each payment earns interest for one extra period.",
+            "Multiplying the entire ordinary FV by (1+i) adds that extra period of compounding to the total."
+          ],
+          "minLength": 2,
+          "prompt": "Explain why multiplying the ordinary FV by (1+i) gives the annuity due FV."
+        },
+        {
+          "prompt": "Ordinary FV = $2,050, i = 5%. Find annuity due FV.",
+          "role": "independent",
+          "steps": [
+            "FV due = 2,050 × 1.05 = $2,152.50.",
+            "This is $102.50 more."
+          ],
+          "title": "C – Find annuity due FV"
+        }
+      ],
+      "teacherCues": [
+        "Show that annuity due FV = Ordinary annuity FV × (1 + i).",
+        "Explain: each payment earns one extra period of interest."
+      ],
+      "discoveryHook": {
+        "scenario": "If the same $3,000 payments were made at the beginning of each year instead of the end, the future value would be higher. For annuity due, each deposit earns interest for one extra period. FV due = FV ordinary × (1 + i). At 8%, FV due = $9,739.20 × 1.08 = $10,518.34."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Payment timing",
+                "1": "End of year",
+                "2": "Beginning of year"
+              },
+              {
+                "0": "FV",
+                "1": "$9,739.20",
+                "2": "$10,518.34"
+              },
+              {
+                "0": "Difference",
+                "1": "",
+                "2": "+ $779.14 (one extra year interest)"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Ordinary vs. Annuity Due FV ($3,000, 8%, 3 years)",
+            "caption": "Annuity due FV = ordinary FV × 1.08.",
+            "headers": [
+              "",
+              "Ordinary Annuity",
+              "Annuity Due"
+            ]
+          }
+        ],
+        "explanation": [
+          "[[kw:Annuity due]]: payments are made at the beginning of each period.",
+          "The first payment earns interest for all n periods, the second for n–1, etc.",
+          "To compute FV of annuity due from ordinary FV: $$FV_{\\text{due}} = FV_{\\text{ordinary}} \\times (1 + i)$$.",
+          "Alternatively, use an annuity due table (factor = ordinary factor × (1+i)).",
+          "[[imp:For the same payment, rate, and n, annuity due always yields a higher FV than ordinary annuity.]]"
+        ],
+        "formulaCard": {
+          "title": "Annuity Due FV from Ordinary FV",
+          "formula": "$$FV_{\\text{due}} = FV_{\\text{ordinary}} \\times (1 + i)$$",
+          "notes": [
+            "This assumes you already have the ordinary FV from manual or table.",
+            "Alternatively, use an annuity due table factor."
+          ]
+        }
+      },
+      "id": "annuity-due"
+    },
+    {
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "hints": [
+            "Identify knowns.",
+            "U in U-S-C."
+          ],
+          "prompt": "The first step of the blueprint is to ___ the problem.",
+          "id": "b5q1",
+          "feedbackIfWrong": "understand."
+        },
+        {
+          "answers": [
+            "12985.60"
+          ],
+          "prompt": "Ordinary factor = 3.2464, payment = $4,000. Find FV (ordinary). (number only, no $)",
+          "feedbackIfWrong": "12,985.60.",
+          "type": "short-answer",
+          "id": "b5q2",
+          "hints": [
+            "4,000 × 3.2464.",
+            "= 12,985.60."
+          ]
+        },
+        {
+          "hints": [
+            "To add one extra period of interest.",
+            "Not just i."
+          ],
+          "id": "b5q3",
+          "type": "short-answer",
+          "feedbackIfWrong": "1 + i.",
+          "prompt": "If payments are at the beginning, multiply the ordinary FV by ___ (expression).",
+          "answers": [
+            "1 + i",
+            "1+i"
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A parent saves $200 at the end of each month for 18 years in a college fund earning 6% compounded monthly. Will they have enough? Use the blueprint to find the future value."
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "prompt": "A company deposits $10,000 at the end of each year for 10 years at 7%. Ordinary factor for n=10, i=7% is 13.8164. Find FV.",
+        "answers": [
+          "138164",
+          "138,164"
+        ],
+        "hints": [
+          "Multiply payment by the factor: 10,000 × 13.8164.",
+          "FV = $138,164."
+        ],
+        "optional": true
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Blueprint: College Fund ($200/month, 6% monthly, 18 years)",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "caption": "Follow the steps; adjust factor if payments are at beginning.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Payment=$200, end of month, r=6%, monthly, 18 years.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – n,i",
+                "1": "n=18×12=216, i=6%/12=0.5%=0.005, ordinary factor (n=216,i=0.5%)≈349.20",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – FV",
+                "1": "FV=200×349.20≈$69,840",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Total deposits=200×216=$43,200; interest=$26,640. Goal met if > needed.",
+                "2": ""
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Annuity Blueprint Formulas",
+          "notes": [
+            "Always compute n and i first.",
+            "Check payment timing (end or beginning) before choosing formula."
+          ],
+          "formula": "$$FV_{\\text{ordinary}} = \\text{Payment} \\times \\text{Ordinary Factor}$$ $$FV_{\\text{due}} = FV_{\\text{ordinary}} \\times (1 + i)$$"
+        },
+        "explanation": [
+          "Apply the blueprint to annuity problems:",
+          "1. Understand: identify payment amount, frequency, annual rate, payment timing (end or beginning), and number of years.",
+          "2. Solve: determine n and i; choose ordinary or annuity due table/factor; compute FV = Payment × Factor (and adjust for annuity due if needed).",
+          "3. Conclude: state the future value; verify that total payments plus interest meets the goal.",
+          "This organizes the information and prevents timing errors."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "If the problem does not state whether payments are at beginning or end, assume end of period (ordinary annuity). [[imp:Explicitly clarify timing before solving.]]"
+      },
+      "id": "blueprint-annuity",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Understand: payment=$500, end of quarter, i=2% per quarter, n=20.",
+            "Solve: FV = 500 × 24.2974 = $12,148.70.",
+            "Conclude: After 5 years, you'll have $12,148.70."
+          ],
+          "title": "A – Full blueprint for ordinary annuity",
+          "prompt": "You deposit $500 at the end of each quarter for 5 years at 8% compounded quarterly. Ordinary factor for n=20, i=2% is 24.2974. Find FV."
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "What additional step is needed?",
+          "steps": [
+            "First compute FV as if it were an ordinary annuity.",
+            "Then multiply by (1 + i) to adjust for the extra interest.",
+            "The blueprint's Solve step includes this adjustment."
+          ],
+          "title": "B – When to use annuity due",
+          "prompt": "Explain how the blueprint changes if the payments are made at the beginning of each period."
+        },
+        {
+          "steps": [
+            "Ordinary FV = 300 × 26.9735 = $8,092.05.",
+            "FV due = 8,092.05 × 1.01 = $8,172.97."
+          ],
+          "role": "independent",
+          "title": "C – Annuity due via blueprint",
+          "prompt": "Deposits of $300 at the beginning of each month for 2 years at 12% compounded monthly. Ordinary factor for n=24, i=1% is 26.9735. Find FV."
+        }
+      ],
+      "title": "5. Blueprint Aid for Annuity Problems",
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that asks for future value of either ordinary or annuity due."
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

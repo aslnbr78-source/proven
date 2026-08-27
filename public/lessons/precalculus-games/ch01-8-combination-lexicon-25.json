@@ -1,0 +1,615 @@
+{
+  "chapterHint": "Chapter 1.8 · Combinations of Functions",
+  "timer": 30,
+  "game": "choice-rounds",
+  "promptLabel": "Define exactly",
+  "title": "Ch 1.8 · Combination Lexicon",
+  "roundsPerRun": 8,
+  "lives": 3,
+  "subtitle": "Spot the wrong word, match the terms, and prove you speak the language of function operations.",
+  "rounds": [
+    {
+      "explain": "Exactly — you add the outputs of the two functions.",
+      "missExplain": "Trap sprung! The statement is true. $(f+g)(x)$ means addition.",
+      "kind": "true-false",
+      "prompt": "The sum of two functions $f$ and $g$ is defined by $(f+g)(x) = f(x) + g(x)$.",
+      "answer": true
+    },
+    {
+      "missExplain": "Trap sprung! The wrong word is \"adding\". The difference is $f(x) - g(x)$.",
+      "hint": "What operation does a minus sign indicate?",
+      "prompt": "One word breaks the definition. Tap it.",
+      "explain": "Yes — difference means subtraction, so you subtract $g(x)$ from $f(x)$.",
+      "fix": "subtracting",
+      "wrongWord": "adding",
+      "kind": "spot",
+      "sentence": "The difference of f and g, written (f-g)(x), is found by adding g(x) to f(x)."
+    },
+    {
+      "missExplain": "Almost — product is $(fg)(x)$, composition is $(f \\circ g)(x)$.",
+      "prompt": "What does the notation $(f+g)(x)$ represent?",
+      "kind": "choice",
+      "choices": [
+        {
+          "id": "a",
+          "label": "The sum of the two function outputs"
+        },
+        {
+          "id": "b",
+          "label": "The product of the two function outputs"
+        },
+        {
+          "label": "The composition of $f$ and $g$",
+          "id": "c"
+        },
+        {
+          "label": "The difference of the two function outputs",
+          "id": "d"
+        }
+      ],
+      "explain": "Clean — $(f+g)(x) = f(x) + g(x)$.",
+      "correctId": "a"
+    },
+    {
+      "prompt": "Connect each combined function notation to its operation.",
+      "explain": "All matched — each symbol corresponds to a specific arithmetic operation.",
+      "pairs": [
+        {
+          "left": "$(f+g)(x)$",
+          "right": "Sum",
+          "id": "p1"
+        },
+        {
+          "id": "p2",
+          "left": "$(f-g)(x)$",
+          "right": "Difference"
+        },
+        {
+          "id": "p3",
+          "left": "$(fg)(x)$",
+          "right": "Product"
+        },
+        {
+          "id": "p4",
+          "left": "$(\\frac{f}{g})(x)$",
+          "right": "Quotient"
+        },
+        {
+          "left": "$(f \\circ g)(x)$",
+          "id": "p5",
+          "right": "Composition"
+        }
+      ],
+      "kind": "match",
+      "missExplain": "One slipped. $(f \\circ g)(x)$ is composition, not multiplication."
+    },
+    {
+      "kind": "multi",
+      "explain": "Yes — addition and multiplication are commutative. Subtraction and composition are not.",
+      "missExplain": "Trap sprung! Subtraction and composition depend on order; addition and multiplication don't.",
+      "correctIds": [
+        "a",
+        "c"
+      ],
+      "prompt": "Select ALL operations that are commutative (order does not change the result).",
+      "choices": [
+        {
+          "label": "Addition of functions",
+          "id": "a"
+        },
+        {
+          "id": "b",
+          "label": "Subtraction of functions"
+        },
+        {
+          "label": "Multiplication of functions",
+          "id": "c"
+        },
+        {
+          "id": "d",
+          "label": "Composition of functions"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "$(f+g)(x)$",
+          "binId": "comm",
+          "id": "i1"
+        },
+        {
+          "label": "$(f-g)(x)$",
+          "id": "i2",
+          "binId": "noncomm"
+        },
+        {
+          "id": "i3",
+          "label": "$(fg)(x)$",
+          "binId": "comm"
+        },
+        {
+          "label": "$(f \\circ g)(x)$",
+          "id": "i4",
+          "binId": "noncomm"
+        }
+      ],
+      "missExplain": "Check again — $f-g$ is not the same as $g-f$, and $f \\circ g$ usually differs from $g \\circ f$.",
+      "bins": [
+        {
+          "id": "comm",
+          "label": "Commutative"
+        },
+        {
+          "id": "noncomm",
+          "label": "Not commutative"
+        }
+      ],
+      "explain": "Sorted! Addition and multiplication commute; subtraction and composition do not.",
+      "kind": "sort",
+      "prompt": "Sort each expression under 'Commutative' or 'Not commutative'."
+    },
+    {
+      "orderLabel": "Tap first step → last step",
+      "explain": "Perfect — formula, plug in, simplify.",
+      "kind": "order",
+      "missExplain": "Almost — start with the definition, then substitute, then simplify.",
+      "correctOrder": [
+        "a",
+        "b",
+        "c"
+      ],
+      "items": [
+        {
+          "id": "a",
+          "label": "Write $(f+g)(x) = f(x) + g(x)$"
+        },
+        {
+          "label": "Substitute the expressions for $f(x)$ and $g(x)$",
+          "id": "b"
+        },
+        {
+          "label": "Combine like terms",
+          "id": "c"
+        }
+      ],
+      "prompt": "Arrange the steps to find the sum of two functions algebraically."
+    },
+    {
+      "fix": "every",
+      "kind": "spot",
+      "missExplain": "Trap sprung! The wrong word is \"first\". Every term inside $g(x)$ must have its sign changed.",
+      "explain": "Yes — you must distribute the negative to every term of $g(x)$.",
+      "sentence": "When subtracting functions, you only change the sign of the first term of the second function.",
+      "hint": "How many terms must be negated when distributing the minus sign?",
+      "wrongWord": "first",
+      "prompt": "One word is wrong. Tap it."
+    },
+    {
+      "choices": [
+        {
+          "id": "a",
+          "label": "Multiply the outputs"
+        },
+        {
+          "id": "b",
+          "label": "Add the outputs"
+        },
+        {
+          "label": "Divide the outputs",
+          "id": "c"
+        },
+        {
+          "label": "Compose the functions",
+          "id": "d"
+        }
+      ],
+      "missExplain": "Almost — product means multiplication, not addition or division.",
+      "kind": "choice",
+      "explain": "Right — $(fg)(x) = f(x) \\cdot g(x)$.",
+      "prompt": "What does the word 'product' indicate when combining functions?",
+      "correctId": "a"
+    },
+    {
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "Sum of functions",
+          "right": "Intersection of the domains of $f$ and $g$"
+        },
+        {
+          "right": "Intersection of the domains of $f$ and $g$",
+          "left": "Product of functions",
+          "id": "p2"
+        },
+        {
+          "right": "Intersection plus exclude where denominator is zero",
+          "left": "Quotient of functions",
+          "id": "p3"
+        },
+        {
+          "id": "p4",
+          "left": "Composition $f \\circ g$",
+          "right": "Inputs in domain of $g$ that produce outputs in domain of $f$"
+        }
+      ],
+      "kind": "match",
+      "explain": "All matched — each operation has its own domain constraints.",
+      "prompt": "Connect each phrase to its domain rule.",
+      "missExplain": "One slipped. Quotient has an extra restriction: $g(x) \\neq 0$."
+    },
+    {
+      "prompt": "Select ALL statements that are true about the quotient $\\frac{f}{g}$.",
+      "kind": "multi",
+      "correctIds": [
+        "a",
+        "b"
+      ],
+      "choices": [
+        {
+          "label": "It is defined as $f(x)/g(x)$",
+          "id": "a"
+        },
+        {
+          "id": "b",
+          "label": "Its domain excludes zeros of $g$"
+        },
+        {
+          "id": "c",
+          "label": "It is commutative"
+        },
+        {
+          "id": "d",
+          "label": "It is the same as the product of $f$ and $g$"
+        }
+      ],
+      "explain": "Yes — quotient is division, and you can't divide by zero. It is not commutative or a product.",
+      "missExplain": "Trap sprung! Quotient is not commutative and not the same as product."
+    },
+    {
+      "prompt": "Sort each operation under 'Has a denominator restriction' or 'No denominator restriction'.",
+      "explain": "Sorted! Quotient and composition often require excluding inputs; sum and product usually don't (beyond the intersection).",
+      "bins": [
+        {
+          "id": "restr",
+          "label": "Has denominator restriction"
+        },
+        {
+          "label": "No denominator restriction",
+          "id": "norest"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "label": "Sum $(f+g)$",
+          "binId": "norest"
+        },
+        {
+          "binId": "restr",
+          "id": "i2",
+          "label": "Quotient $(f/g)$"
+        },
+        {
+          "id": "i3",
+          "label": "Product $(fg)$",
+          "binId": "norest"
+        },
+        {
+          "binId": "restr",
+          "label": "Composition (generally)",
+          "id": "i4"
+        }
+      ],
+      "missExplain": "Check again — quotients explicitly exclude zeros of the denominator; compositions can have restrictions from the outer function.",
+      "kind": "sort"
+    },
+    {
+      "sentence": "The composition symbol $\\circ$ means multiplication of two functions.",
+      "hint": "What does $f \\circ g$ actually mean?",
+      "fix": "function application",
+      "prompt": "One word breaks the definition. Tap it.",
+      "wrongWord": "multiplication",
+      "missExplain": "Trap sprung! The wrong word is \"multiplication\". The small circle means composition.",
+      "kind": "spot",
+      "explain": "Yes — $\\circ$ denotes composition, which is applying one function to the output of another, not multiplication."
+    },
+    {
+      "explain": "Correct — inner function $g$ is evaluated first, then $f$.",
+      "choices": [
+        {
+          "label": "$g$ (inner)",
+          "id": "a"
+        },
+        {
+          "id": "b",
+          "label": "$f$ (outer)"
+        },
+        {
+          "label": "Both simultaneously",
+          "id": "c"
+        },
+        {
+          "id": "d",
+          "label": "Neither"
+        }
+      ],
+      "prompt": "In the expression $(f \\circ g)(x)$, which function is evaluated first?",
+      "correctId": "a",
+      "missExplain": "Almost — you must evaluate $g(x)$ first, then plug into $f$.",
+      "kind": "choice"
+    },
+    {
+      "explain": "All matched — composition is about nesting.",
+      "kind": "match",
+      "missExplain": "One slipped. Inner function is $g$ when written $f(g(x))$.",
+      "prompt": "Connect each term about composition to its meaning.",
+      "pairs": [
+        {
+          "id": "p1",
+          "right": "$f$ composed with $g$",
+          "left": "$f \\circ g$"
+        },
+        {
+          "left": "$f(g(x))$",
+          "right": "Nested function notation",
+          "id": "p2"
+        },
+        {
+          "left": "Inner function",
+          "right": "The one applied first",
+          "id": "p3"
+        },
+        {
+          "id": "p4",
+          "left": "Outer function",
+          "right": "The one applied second"
+        }
+      ]
+    },
+    {
+      "correctIds": [
+        "a",
+        "c",
+        "d"
+      ],
+      "kind": "multi",
+      "explain": "Yes — composition is not generally commutative; the other three are true.",
+      "missExplain": "Trap sprung! $f \\circ g$ usually differs from $g \\circ f$; it is not commutative.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "It is read as 'f composed with g'"
+        },
+        {
+          "label": "It generally equals $g \\circ f$",
+          "id": "b"
+        },
+        {
+          "id": "c",
+          "label": "The output of $g$ becomes the input of $f$"
+        },
+        {
+          "label": "It is a type of function combination",
+          "id": "d"
+        }
+      ],
+      "prompt": "Select ALL statements that correctly describe the composition $f \\circ g$."
+    },
+    {
+      "orderLabel": "Tap first step → last step",
+      "explain": "Perfect — inner then outer.",
+      "correctOrder": [
+        "a",
+        "b",
+        "c"
+      ],
+      "kind": "order",
+      "missExplain": "Almost — always start with the inner function.",
+      "items": [
+        {
+          "label": "Calculate $g(3)$",
+          "id": "a"
+        },
+        {
+          "id": "b",
+          "label": "Plug the result into $f$"
+        },
+        {
+          "id": "c",
+          "label": "Simplify to get the final value"
+        }
+      ],
+      "prompt": "Arrange the steps to evaluate $(f \\circ g)(3)$."
+    },
+    {
+      "sentence": "In the composition $f \\circ g$, the function $f$ is the inner function.",
+      "prompt": "One word makes this false. Tap it.",
+      "kind": "spot",
+      "missExplain": "Trap sprung! The wrong word is \"inner\". $f$ is the outer function; $g$ is inner.",
+      "fix": "outer",
+      "explain": "Yes — $f$ is the outer function in $f \\circ g$.",
+      "wrongWord": "inner",
+      "hint": "What position does $f$ occupy in $f(g(x))$?"
+    },
+    {
+      "correctId": "a",
+      "missExplain": "Almost — factoring breaks an expression, but decomposition identifies the two functions.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "Decomposition"
+        },
+        {
+          "id": "b",
+          "label": "Distribution"
+        },
+        {
+          "id": "c",
+          "label": "Factoring"
+        },
+        {
+          "label": "Substitution",
+          "id": "d"
+        }
+      ],
+      "prompt": "Which term describes splitting a composite function back into its two parts?",
+      "explain": "Right — decomposing a composite function identifies the inner and outer functions.",
+      "kind": "choice"
+    },
+    {
+      "pairs": [
+        {
+          "right": "Inner function",
+          "left": "$g(x)$",
+          "id": "p1"
+        },
+        {
+          "left": "$f(x)$",
+          "right": "Outer function",
+          "id": "p2"
+        },
+        {
+          "right": "Input to $f$",
+          "left": "Output of $g$",
+          "id": "p3"
+        }
+      ],
+      "kind": "match",
+      "prompt": "Connect the composition $f(g(x))$ to its inner and outer parts.",
+      "missExplain": "Check again: $g$ is inner, its output goes into $f$.",
+      "explain": "All matched — the chain of composition."
+    },
+    {
+      "correctIds": [
+        "b",
+        "d"
+      ],
+      "kind": "multi",
+      "explain": "Yes — subtraction and composition depend on order; addition and multiplication are commutative.",
+      "prompt": "Select ALL operations that are NOT commutative when combining functions.",
+      "missExplain": "Trap sprung! Addition and multiplication are commutative; the other two are not.",
+      "choices": [
+        {
+          "label": "Addition",
+          "id": "a"
+        },
+        {
+          "label": "Subtraction",
+          "id": "b"
+        },
+        {
+          "id": "c",
+          "label": "Multiplication"
+        },
+        {
+          "label": "Composition",
+          "id": "d"
+        }
+      ]
+    },
+    {
+      "kind": "sort",
+      "prompt": "Sort each domain rule under 'True' or 'False'.",
+      "bins": [
+        {
+          "id": "true",
+          "label": "True"
+        },
+        {
+          "id": "false",
+          "label": "False"
+        }
+      ],
+      "missExplain": "Check again — quotient may exclude values; product and sum share the intersection domain.",
+      "explain": "Sorted! Quotient excludes zeros; the other statements are correct.",
+      "items": [
+        {
+          "binId": "true",
+          "id": "i1",
+          "label": "Domain of $(f+g)$ is intersection of domains of $f$ and $g$"
+        },
+        {
+          "binId": "false",
+          "id": "i2",
+          "label": "Domain of $(f/g)$ includes all real numbers if $f$ and $g$ have domain all reals"
+        },
+        {
+          "binId": "true",
+          "id": "i3",
+          "label": "Composition $f \\circ g$ may have a smaller domain than either $f$ or $g$"
+        },
+        {
+          "binId": "true",
+          "id": "i4",
+          "label": "Product $(fg)$ has the same domain as sum $(f+g)$"
+        }
+      ]
+    },
+    {
+      "sentence": "The domain of a product function is the union of the individual domains.",
+      "fix": "intersection",
+      "kind": "spot",
+      "prompt": "One word must be changed. Tap it.",
+      "hint": "What set operation gives common values?",
+      "missExplain": "Trap sprung! The wrong word is \"union\". The domain is the overlap (intersection).",
+      "wrongWord": "union",
+      "explain": "Yes — the domain of a product is the intersection, not the union."
+    },
+    {
+      "explain": "Right — division by zero is undefined.",
+      "correctId": "a",
+      "kind": "choice",
+      "choices": [
+        {
+          "id": "a",
+          "label": "Exclude $x$ where $g(x)=0$"
+        },
+        {
+          "id": "b",
+          "label": "Exclude $x$ where $f(x)=0$"
+        },
+        {
+          "id": "c",
+          "label": "Exclude negative $x$"
+        },
+        {
+          "id": "d",
+          "label": "Include all real numbers"
+        }
+      ],
+      "prompt": "What must always be true for the domain of a quotient $f/g$?",
+      "missExplain": "Almost — the denominator $g(x)$ must never be zero."
+    },
+    {
+      "correctOrder": [
+        "a",
+        "b",
+        "c"
+      ],
+      "items": [
+        {
+          "label": "Find the domain of the inner function $g$",
+          "id": "a"
+        },
+        {
+          "id": "b",
+          "label": "Determine the set of inputs that give outputs in the domain of $f$"
+        },
+        {
+          "id": "c",
+          "label": "Take the intersection of those restrictions"
+        }
+      ],
+      "orderLabel": "Tap first step → last step",
+      "prompt": "Arrange the steps to find the domain of $f(g(x))$.",
+      "explain": "Perfect — inner domain first, then outer restriction, then combine.",
+      "missExplain": "Almost — start by finding the domain of $g$, then apply the outer function's restriction.",
+      "kind": "order"
+    }
+  ],
+  "description": "A 25‑round vocabulary drill on sums, differences, products, quotients, and composition. Hunt the misused term, connect definitions, sort operation symbols — no solving, just definitions.",
+  "courseId": "precalculus",
+  "id": "ch01-8-combination-lexicon-25",
+  "type": "math-game"
+}

@@ -1,0 +1,695 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-6-3-vectors-in-the-plane",
+  "title": "Vectors in the Plane",
+  "blocks": [
+    {
+      "id": "intro-vectors-component-form",
+      "title": "Vectors and Component Form",
+      "teacherCues": [
+        "Draw a vector from (0,0) to (3,2) and another from (1,2) to (4,4). Ask: Are they equivalent? (Yes, same length and direction).",
+        "Write the formula for component form: v = ⟨x2−x1, y2−y1⟩."
+      ],
+      "discoveryHook": {
+        "scenario": "A vector represents both how far and in which direction to go—like an arrow showing a plane's velocity: speed (magnitude) and heading (direction)."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:vector]] is a quantity with both magnitude and direction. It is represented by a directed line segment.",
+          "The [[kw:component form]] of a vector from P(p1,p2) to Q(q1,q2) is v = ⟨q1−p1, q2−p2⟩.",
+          "The magnitude (length) is ||v|| = √(v1² + v2²).",
+          "Two vectors are equal if they have the same components."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Component Form Example",
+            "headers": [
+              "Point P",
+              "Point Q",
+              "Vector PQ"
+            ],
+            "rows": [
+              {
+                "0": "(4, -7)",
+                "1": "(-1, 5)",
+                "2": "⟨-1−4, 5−(-7)⟩ = ⟨-5, 12⟩"
+              },
+              {
+                "0": "(0, 0)",
+                "1": "(3, 2)",
+                "2": "⟨3, 2⟩"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Component Form & Magnitude",
+          "formula": "$$\\vec{v} = \\langle v_1, v_2 \\rangle, \\quad \\|\\vec{v}\\| = \\sqrt{v_1^2 + v_2^2}$$",
+          "notes": [
+            "Components = (terminal − initial) coordinates.",
+            "Magnitude ≥ 0."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find component form & magnitude",
+          "prompt": "Given P(4, -7) and Q(-1, 5), find the vector v = PQ and its magnitude.",
+          "steps": [
+            "v = ⟨−1−4, 5−(−7)⟩ = ⟨−5, 12⟩.",
+            "||v|| = √((−5)² + 12²) = √(25+144) = √169 = 13."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Equivalent vectors",
+          "prompt": "Show that vector u from (0,0) to (3,2) is equivalent to v from (1,2) to (4,4).",
+          "peerPrompt": "Tell your partner: Compute components and magnitudes. Why does the same slope matter?",
+          "minLength": 2,
+          "steps": [
+            "u = ⟨3−0, 2−0⟩ = ⟨3,2⟩, ||u|| = √13.",
+            "v = ⟨4−1, 4−2⟩ = ⟨3,2⟩, ||v|| = √13.",
+            "Both have same components, so equal."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find components",
+          "prompt": "Initial point (-2, 3), terminal point (-7, 9). Find vector components.",
+          "steps": [
+            "v = ⟨−7−(−2), 9−3⟩ = ⟨−5, 6⟩."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Direction of subtraction",
+        "body": "Always subtract the initial point coordinates from the terminal point coordinates: [[imp:terminal − initial]]."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "The component form of a vector from P(p1,p2) to Q(q1,q2) is ⟨q1−p1, q2−___⟩.",
+          "blanks": [
+            {
+              "accept": [
+                "p2"
+              ]
+            }
+          ],
+          "hints": [
+            "Subtract the y-coordinate of P from Q.",
+            "Second component is q2 – p2."
+          ],
+          "feedbackIfWrong": "It's p2."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "What is the magnitude of vector ⟨3, 4⟩? (Enter a number)",
+          "answer": "5",
+          "hints": [
+            "√(3² + 4²) = √(9+16) = √25.",
+            "It's a 3-4-5 triangle."
+          ],
+          "feedbackIfWrong": "Magnitude is 5."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "If initial point is (0,0) and terminal point is (v1,v2), the vector is ⟨v1, v2⟩ and its magnitude is √(v1² + v2²). This vector is in ___ position.",
+          "blanks": [
+            {
+              "accept": [
+                "standard"
+              ]
+            }
+          ],
+          "hints": [
+            "Initial point is the origin.",
+            "That's called standard position."
+          ],
+          "feedbackIfWrong": "It's standard position."
+        }
+      ]
+    },
+    {
+      "id": "vector-operations",
+      "title": "Vector Operations",
+      "teacherCues": [
+        "Write u=⟨1,3⟩, v=⟨-2,5⟩. Ask: What is u+v? Add components. What is 2u? Multiply each component.",
+        "Show geometric addition: parallelogram law."
+      ],
+      "discoveryHook": {
+        "scenario": "Combining velocities: a plane flying east with wind north. Add the vectors to get resultant velocity."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Vector addition]]: u + v = ⟨u1+v1, u2+v2⟩. Geometrically, place the tail of v at the tip of u; the sum is the diagonal.",
+          "[[kw:Scalar multiplication]]: kv = ⟨k v1, k v2⟩. The magnitude is |k| times ||v||; if k < 0, direction reverses.",
+          "Properties: commutative, associative, distributive."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Operation Examples",
+            "headers": [
+              "Vector",
+              "Operation",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "v = ⟨-2,5⟩",
+                "1": "2v",
+                "2": "⟨-4,10⟩"
+              },
+              {
+                "0": "w = ⟨3,4⟩",
+                "1": "w−v",
+                "2": "⟨5, -1⟩"
+              },
+              {
+                "0": "v+2w",
+                "1": "v+⟨6,8⟩",
+                "2": "⟨4,13⟩"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Operations",
+          "formula": "$$\\vec{u}+\\vec{v} = \\langle u_1+v_1, u_2+v_2 \\rangle$$ $$k\\vec{v} = \\langle k v_1, k v_2 \\rangle$$",
+          "notes": [
+            "Subtraction: u − v = u + (−v).",
+            "||kv|| = |k|·||v||."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Add vectors",
+          "prompt": "Let u = ⟨1,4⟩, v = ⟨3,2⟩. Find u+v.",
+          "steps": [
+            "u+v = ⟨1+3, 4+2⟩ = ⟨4,6⟩."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Scalar multiplication",
+          "prompt": "Find 2u − 3v given u = ⟨1,4⟩, v = ⟨3,2⟩.",
+          "peerPrompt": "Explain to your partner: Multiply each component by the scalar, then subtract.",
+          "minLength": 2,
+          "steps": [
+            "2u = ⟨2,8⟩, 3v = ⟨9,6⟩.",
+            "2u − 3v = ⟨2−9, 8−6⟩ = ⟨-7, 2⟩."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Magnitude of scalar multiple",
+          "prompt": "||2u|| for u = ⟨1,3⟩.",
+          "steps": [
+            "||2u|| = |2|·||u|| = 2·√(1²+3²) = 2√10."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Subtraction order",
+        "body": "u − v means add the negative of v. So components: u1−v1, u2−v2. Not the reverse."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "If v = ⟨3, -2⟩, then -v = ⟨___, 2⟩.",
+          "blanks": [
+            {
+              "accept": [
+                "-3"
+              ]
+            }
+          ],
+          "hints": [
+            "Multiply each component by -1.",
+            "The x-component becomes -3."
+          ],
+          "feedbackIfWrong": "It's -3."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "Let u = ⟨2,5⟩, v = ⟨-1,3⟩. Find u − v's x-component. (Enter a number)",
+          "answer": "3",
+          "hints": [
+            "u − v = ⟨2−(−1), 5−3⟩ = ⟨3, 2⟩.",
+            "First component is 2 - (-1) = 3."
+          ],
+          "feedbackIfWrong": "The x-component is 3."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "The magnitude of kv equals |k|·||v||. This means that multiplying a vector by a scalar changes its ___.",
+          "blanks": [
+            {
+              "accept": [
+                "length",
+                "magnitude"
+              ]
+            }
+          ],
+          "hints": [
+            "It makes it longer or shorter.",
+            "The size changes."
+          ],
+          "feedbackIfWrong": "It changes the length (or magnitude)."
+        }
+      ]
+    },
+    {
+      "id": "unit-vectors-linear-combinations",
+      "title": "Unit Vectors and i, j Form",
+      "teacherCues": [
+        "Write: To get a unit vector in the direction of v, divide v by ||v||.",
+        "Introduce i = ⟨1,0⟩, j = ⟨0,1⟩. Then any vector ⟨a,b⟩ = a i + b j."
+      ],
+      "discoveryHook": {
+        "scenario": "A unit vector is like a compass needle: it points a direction but has length 1. Combining multiples of east (i) and north (j) gives any vector."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:unit vector]] has magnitude 1. In direction of v, $$\\vec{u} = \\frac{\\vec{v}}{\\|\\vec{v}\\|}.$$",
+          "The [[kw:standard unit vectors]]: i = ⟨1,0⟩ (east), j = ⟨0,1⟩ (north).",
+          "Any vector can be written as a linear combination: $$\\vec{v} = v_1\\,\\mathbf{i} + v_2\\,\\mathbf{j}.$$"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Unit vector example",
+            "headers": [
+              "v",
+              "||v||",
+              "Unit vector u"
+            ],
+            "rows": [
+              {
+                "0": "⟨-2,5⟩",
+                "1": "√29",
+                "2": "⟨-2/√29, 5/√29⟩"
+              },
+              {
+                "0": "⟨6, -1⟩",
+                "1": "√37",
+                "2": "⟨6/√37, -1/√37⟩"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Unit Vector & i,j Form",
+          "formula": "$$\\mathbf{u} = \\frac{\\mathbf{v}}{\\|\\mathbf{v}\\|}, \\qquad \\mathbf{v} = v_1\\mathbf{i} + v_2\\mathbf{j}$$",
+          "notes": [
+            "i = ⟨1,0⟩, j = ⟨0,1⟩.",
+            "v1 = ||v|| cos θ, v2 = ||v|| sin θ (for direction angle θ)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find a unit vector",
+          "prompt": "For v = ⟨-2, 5⟩, find a unit vector u in the same direction.",
+          "steps": [
+            "||v|| = √(4+25) = √29.",
+            "u = ⟨-2/√29, 5/√29⟩."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Check magnitude",
+          "prompt": "Verify that the unit vector found has magnitude 1.",
+          "peerPrompt": "Plug the components into the magnitude formula and simplify. Explain why it works.",
+          "minLength": 2,
+          "steps": [
+            "||u|| = √((−2/√29)² + (5/√29)²) = √(4/29 + 25/29) = √(29/29) = 1."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Write in i,j form",
+          "prompt": "Write the vector ⟨3, -7⟩ using i and j.",
+          "steps": [
+            "⟨3, -7⟩ = 3i − 7j."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Unit vector formula",
+        "body": "Don't confuse the unit vector with the original vector. The unit vector is [[imp:1/||v||]] times the original v."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "A unit vector has magnitude ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "By definition, unit vector has length 1.",
+            "Magnitude = 1."
+          ],
+          "feedbackIfWrong": "It's 1."
+        },
+        {
+          "id": "q8",
+          "type": "fill-blank",
+          "prompt": "The standard unit vector i is ⟨1,0⟩ and j is ⟨___, 1⟩.",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "j points vertically.",
+            "It has 0 x-component, 1 y-component."
+          ],
+          "feedbackIfWrong": "It's 0."
+        },
+        {
+          "id": "q9",
+          "type": "short-answer",
+          "prompt": "Write the vector ⟨4, -3⟩ as a linear combination of i and j. (Enter '4i-3j')",
+          "answer": "4i-3j",
+          "hints": [
+            "First component times i, second times j.",
+            "Don't forget the minus sign."
+          ],
+          "feedbackIfWrong": "It's 4i − 3j."
+        }
+      ]
+    },
+    {
+      "id": "direction-angles",
+      "title": "Direction Angles",
+      "teacherCues": [
+        "Draw a vector v = ⟨v1, v2⟩. The direction angle θ is the angle it makes with the positive x-axis.",
+        "Recall: v1 = ||v|| cos θ, v2 = ||v|| sin θ."
+      ],
+      "discoveryHook": {
+        "scenario": "A plane's heading is its direction angle from north. The vector components tell you how fast east and north the plane is moving."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:direction angle]] θ of a vector v = ⟨v1, v2⟩ is the angle from the positive x-axis to v, where 0 ≤ θ < 2π.",
+          "Components are: $$v_1 = \\|\\vec{v}\\| \\cos \\theta, \\quad v_2 = \\|\\vec{v}\\| \\sin \\theta.$$",
+          "To find θ, use $$\\tan \\theta = \\frac{v_2}{v_1}$$ and adjust quadrant."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: v = ⟨-3, 4⟩",
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "Magnitude",
+                "1": "5"
+              },
+              {
+                "0": "tan θ",
+                "1": "−4/3"
+              },
+              {
+                "0": "Quadrant",
+                "1": "II → θ = π − arctan(4/3) ≈ 2.214 rad"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Direction Angle",
+          "formula": "$$\\tan\\theta = \\frac{v_2}{v_1}$$",
+          "notes": [
+            "Use arctan and adjust for correct quadrant.",
+            "θ in degrees or radians."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find direction angle",
+          "prompt": "Find the direction angle of v = ⟨-5, 12⟩.",
+          "steps": [
+            "tan θ = 12/(−5) = −2.4.",
+            "Since x negative, y positive, QII.",
+            "θ = 180° − arctan(12/5) ≈ 180° − 67.38° = 112.62°."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Components from angle",
+          "prompt": "A vector has magnitude 10 and direction angle 30°. Find its components.",
+          "peerPrompt": "Explain: Which function gives the x-component? The y-component?",
+          "minLength": 2,
+          "steps": [
+            "v1 = 10 cos 30° = 10·√3/2 = 5√3.",
+            "v2 = 10 sin 30° = 10·1/2 = 5."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quadrant check",
+          "prompt": "If v1 > 0, v2 < 0, which quadrant is the direction angle?",
+          "steps": [
+            "Positive x, negative y → Quadrant IV."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "arctan gives reference",
+        "body": "Use arctan to get a reference angle, then place it in the correct quadrant based on signs of v1 and v2."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "The direction angle is measured from the positive ___–axis.",
+          "blanks": [
+            {
+              "accept": [
+                "x"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the horizontal axis.",
+            "Standard position angle from positive x."
+          ],
+          "feedbackIfWrong": "It's the x-axis."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "If a vector has magnitude 5 and direction angle 60°, what is its x-component? (Enter 5cos60 = 2.5 as 2.5)",
+          "answer": "2.5",
+          "hints": [
+            "x = ||v|| cos θ.",
+            "5 × cos60° = 5 × 0.5 = 2.5."
+          ],
+          "feedbackIfWrong": "2.5"
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "If v = ⟨0, 5⟩, its direction angle is ___ degrees.",
+          "blanks": [
+            {
+              "accept": [
+                "90"
+              ]
+            }
+          ],
+          "hints": [
+            "It points straight up.",
+            "Angle with positive x-axis is 90°."
+          ],
+          "feedbackIfWrong": "90°."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-application",
+      "title": "Blueprint Aid – Application: Finding Resultant Velocity",
+      "teacherCues": [
+        "Problem: A plane heads east at 200 mph; wind blows north at 30 mph. What is the resultant velocity (magnitude and direction)?",
+        "Use vector addition: plane = 200i, wind = 30j, resultant = 200i + 30j."
+      ],
+      "discoveryHook": {
+        "scenario": "Pilots use vectors to compute their actual path when wind is involved. Adding the wind vector to the plane's velocity yields the true course."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Represent velocities as vectors. Plane: v_p = ⟨200, 0⟩. Wind: v_w = ⟨0, 30⟩.",
+          "[[imp:Solve]]: Resultant v_r = v_p + v_w = ⟨200, 30⟩. Magnitude = √(200²+30²) ≈ 202.24 mph. Direction: tan θ = 30/200 → θ ≈ 8.53° north of east.",
+          "[[imp:Conclude]]: The plane's actual speed is about 202 mph, heading slightly north of east."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Resultant Calculation",
+            "headers": [
+              "Vector",
+              "Components",
+              "Magnitude",
+              "Direction"
+            ],
+            "rows": [
+              {
+                "0": "v_p (plane)",
+                "1": "⟨200, 0⟩",
+                "2": "200",
+                "3": "0°"
+              },
+              {
+                "0": "v_w (wind)",
+                "1": "⟨0, 30⟩",
+                "2": "30",
+                "3": "90°"
+              },
+              {
+                "0": "v_r (resultant)",
+                "1": "⟨200, 30⟩",
+                "2": "√(40000+900) ≈ 202.24",
+                "3": "tan⁻¹(30/200) ≈ 8.53°"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Resultant Vector",
+          "formula": "$$\\vec{v}_r = \\vec{v}_p + \\vec{v}_w, \\quad \\|\\vec{v}_r\\| = \\sqrt{v_{r1}^2 + v_{r2}^2}, \\quad \\theta = \\tan^{-1}\\left(\\frac{v_{r2}}{v_{r1}}\\right)$$",
+          "notes": [
+            "Add components separately.",
+            "Check quadrant for direction."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand the setup",
+          "prompt": "A boat is rowed east at 4 mph across a river with a 3 mph current north. Write the vectors.",
+          "steps": [
+            "Boat vector = ⟨4, 0⟩, current = ⟨0, 3⟩."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve for resultant",
+          "prompt": "Find the boat's actual velocity (magnitude and direction relative to east).",
+          "peerPrompt": "Discuss: How to combine? How to find angle?",
+          "minLength": 2,
+          "steps": [
+            "Resultant = ⟨4, 3⟩. Magnitude = √(4²+3²) = 5 mph.",
+            "Angle = tan⁻¹(3/4) ≈ 36.87° north of east."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude",
+          "prompt": "If a plane flies at 300 mph east, wind 40 mph north, what is the resultant speed?",
+          "steps": [
+            "Resultant = ⟨300, 40⟩, speed = √(300²+40²) = √(90000+1600)=√91600≈302.65 mph."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Direction reference",
+        "body": "Always specify direction relative to a known axis, e.g., 'north of east' or 'east of north'."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "A plane flying east at 200 mph with a 30 mph wind from the south (so north wind) experiences a resultant with a northward component of ___ mph.",
+          "blanks": [
+            {
+              "accept": [
+                "30"
+              ]
+            }
+          ],
+          "hints": [
+            "Wind north adds to y-component.",
+            "Resultant = ⟨200, 30⟩."
+          ],
+          "feedbackIfWrong": "30 mph."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is the magnitude of the resultant vector ⟨200, 30⟩? (Round to nearest whole number)",
+          "answer": "202",
+          "hints": [
+            "√(200²+30²) = √(40000+900) = √40900 ≈ 202.24.",
+            "Round to 202."
+          ],
+          "feedbackIfWrong": "About 202 mph."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The direction of the resultant is the angle measured from east toward north. For v = ⟨200, 30⟩, tan θ = 30/200, so θ ≈ ___ degrees.",
+          "blanks": [
+            {
+              "accept": [
+                "8",
+                "8.5"
+              ]
+            }
+          ],
+          "hints": [
+            "tan⁻¹(0.15) ≈ 8.53°.",
+            "Approximately 8 or 8.5."
+          ],
+          "feedbackIfWrong": "About 8.5°."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A swimmer can swim at 2 mph in still water, heading directly east across a river with a 1 mph current south. Determine the swimmer's actual velocity (magnitude and direction).",
+        "type": "short-answer",
+        "answers": [
+          "2.24 mph at 26.6° south of east"
+        ],
+        "hints": [
+          "Swim vector = ⟨2,0⟩, current = ⟨0, -1⟩. Resultant = ⟨2, -1⟩.",
+          "Magnitude = √5 ≈ 2.24, angle = tan⁻¹(1/2) ≈ 26.6° south of east."
+        ],
+        "feedbackIfWrong": "Resultant velocity is approximately 2.24 mph at 26.6° south of east."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

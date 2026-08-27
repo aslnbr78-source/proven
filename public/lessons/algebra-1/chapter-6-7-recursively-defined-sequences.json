@@ -1,0 +1,699 @@
+{
+  "schemaVersion": 2,
+  "type": "interactive-lesson",
+  "title": "Chapter 6.7 — Recursively Defined Sequences",
+  "blocks": [
+    {
+      "concept": {
+        "formulaCard": {
+          "title": "Recursive Equations",
+          "notes": [
+            "Must also give the first term $a_1$ (and sometimes $a_2$).",
+            "The subscript $n-1$ means 'the previous term'."
+          ],
+          "formula": "$$ a_n = a_{n-1} + d \\quad \\text{or} \\quad a_n = r \\cdot a_{n-1} $$"
+        },
+        "explanation": [
+          "A [[kw:recursive rule]] defines a sequence by giving the first term(s) and an equation that tells how to find any term from the [[imp:previous term(s)]].",
+          "For an arithmetic sequence: $a_n = a_{n-1} + d$, where $d$ is the common difference.",
+          "For a geometric sequence: $a_n = r \\cdot a_{n-1}$, where $r$ is the common ratio.",
+          "To generate terms, start with the given first term and repeatedly apply the recursive equation.",
+          "An [[kw:explicit rule]] gives $a_n$ directly as a function of $n$, without needing previous terms."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Arithmetic",
+                "1": "$a_1 = a$, $a_n = a_{n-1} + d$",
+                "2": "$a_n = a_1 + (n-1)d$"
+              },
+              {
+                "0": "Geometric",
+                "1": "$a_1 = a$, $a_n = r \\cdot a_{n-1}$",
+                "2": "$a_n = a_1 \\cdot r^{n-1}$"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Recursive vs. Explicit Rules",
+            "headers": [
+              "Sequence Type",
+              "Recursive Rule",
+              "Explicit Rule Example"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "A – Arithmetic Recursive Sequence",
+          "steps": [
+            "Start with $a_1 = 2$.",
+            "$a_2 = 2 + 3 = 5$; $a_3 = 5 + 3 = 8$; $a_4 = 11$; $a_5 = 14$; $a_6 = 17$.",
+            "Graph the points $(1,2), (2,5), (3,8), \\dots$ — they form a straight line (arithmetic)."
+          ],
+          "prompt": "Write the first six terms of the sequence: $a_1 = 2$, $a_n = a_{n-1} + 3$. Graph the sequence.",
+          "role": "guided"
+        },
+        {
+          "title": "B – Geometric Recursive Sequence",
+          "steps": [
+            "$a_1 = 1$.",
+            "$a_2 = 3 \\times 1 = 3$; $a_3 = 3 \\times 3 = 9$; $a_4 = 27$; $a_5 = 81$; $a_6 = 243$.",
+            "The graph curves sharply upward (exponential growth)."
+          ],
+          "prompt": "Write the first six terms of $a_1 = 1$, $a_n = 3a_{n-1}$.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: How does multiplying by 3 each time change the shape of the graph compared to adding 3?"
+        },
+        {
+          "prompt": "Write the first six terms of $a_1 = 80$, $a_n = -\\frac{1}{2}a_{n-1}$.",
+          "title": "C – Recursive with Fraction",
+          "steps": [
+            "$a_1 = 80$.",
+            "$a_2 = -40$; $a_3 = 20$; $a_4 = -10$; $a_5 = 5$; $a_6 = -2.5$.",
+            "The terms alternate signs because $r$ is negative."
+          ],
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "A recursive rule without the first term is incomplete. You must specify $a_1$ (or the first few terms) to generate the sequence. Without it, you can't begin.",
+        "title": "Recursive Needs a Starting Point"
+      },
+      "id": "writing-terms-recursive",
+      "teacherCues": [
+        "Write $a_1 = 2$, $a_n = a_{n-1} + 3$ on the board. Ask: 'If we know the first term, how do we find the second? The third?'",
+        "Emphasize that a recursive rule has two parts: the initial term(s) and the recursion equation."
+      ],
+      "discoveryHook": {
+        "scenario": "A recursive rule is like following a treasure map where each clue tells you where to go next based on where you just were. You start at a known spot, and the rule gives you the next step. In sequences, the current term plus a rule gives you the next term—no need to know the position number!"
+      },
+      "title": "Writing Terms of Recursively Defined Sequences",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "equation",
+                "formula"
+              ]
+            }
+          ],
+          "id": "q1-1",
+          "hints": [
+            "It's the part that relates $a_n$ to $a_{n-1}$.",
+            "Starts with 'e'."
+          ],
+          "type": "fill-blank",
+          "prompt": "A recursive rule consists of the initial term(s) and a recursive ___ that tells how to find the next term.",
+          "feedbackIfWrong": "A recursive rule includes a recursive equation."
+        },
+        {
+          "feedbackIfWrong": "$a_2 = -8$, then $a_3 = -8 - 8 = -16$.",
+          "hints": [
+            "Find $a_2$ first: $0 - 8 = -8$.",
+            "Then $a_3 = -8 - 8$."
+          ],
+          "prompt": "For $a_1 = 0$, $a_n = a_{n-1} - 8$, find $a_3$.",
+          "type": "short-answer",
+          "id": "q1-2",
+          "answer": "-16"
+        },
+        {
+          "prompt": "Is the sequence $a_1 = 3$, $a_n = a_{n-1} + 2$ arithmetic or geometric?",
+          "type": "short-answer",
+          "feedbackIfWrong": "Arithmetic, because a constant is added each time.",
+          "id": "q1-3",
+          "hints": [
+            "Look at the operation: addition or multiplication?",
+            "Adding a constant means arithmetic."
+          ],
+          "answer": "arithmetic"
+        }
+      ]
+    },
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Find differences: $ -18 - (-30) = 12 $, $ -6 - (-18) = 12 $ → arithmetic, $ d = 12 $.",
+            "First term $ a_1 = -30 $.",
+            "Recursive rule: $ a_1 = -30 $, $ a_n = a_{n-1} + 12 $."
+          ],
+          "title": "A – Arithmetic Recursive Rule",
+          "prompt": "Write a recursive rule for $ -30, -18, -6, 6, 18, \\dots $."
+        },
+        {
+          "minLength": 2,
+          "steps": [
+            "Find ratios: $ 100/500 = 1/5 $, $ 20/100 = 1/5 $ → geometric, $ r = 1/5 $.",
+            "First term $ a_1 = 500 $.",
+            "Recursive rule: $ a_1 = 500 $, $ a_n = \\frac{1}{5} a_{n-1} $."
+          ],
+          "title": "B – Geometric Recursive Rule",
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: How did you determine this is geometric and not arithmetic?",
+          "prompt": "Write a recursive rule for $ 500, 100, 20, 4, 0.8, \\dots $."
+        },
+        {
+          "prompt": "A table shows $n: 1,2,3,4$ and $a_n: 7,16,25,34$. Write a recursive rule.",
+          "title": "C – From a Table",
+          "role": "independent",
+          "steps": [
+            "Differences: $ 16-7=9 $, $ 25-16=9 $ → arithmetic, $ d=9 $.",
+            "$ a_1 = 7 $. Rule: $ a_1 = 7 $, $ a_n = a_{n-1} + 9 $."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "To write a recursive rule, first determine if the sequence is arithmetic (constant difference) or geometric (constant ratio).",
+          "For arithmetic: find $d = a_n - a_{n-1}$. Rule: $a_1 = \\text{first term}$, $a_n = a_{n-1} + d$.",
+          "For geometric: find $r = \\frac{a_n}{a_{n-1}}$. Rule: $a_1 = \\text{first term}$, $a_n = r \\cdot a_{n-1}$.",
+          "The recursive rule must state the [[imp:first term]] and the [[imp:recursive equation]].",
+          "If the sequence is neither arithmetic nor geometric, look for other patterns (like Fibonacci)."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Always check if the sequence is arithmetic or geometric first.",
+            "If neither, look for a sum or product pattern."
+          ],
+          "title": "Recursive Rule Templates",
+          "formula": "$$ \\text{Arithmetic: } a_1 = a, \\; a_n = a_{n-1} + d $$ $$ \\text{Geometric: } a_1 = a, \\; a_n = r \\cdot a_{n-1} $$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Writing Recursive Rules from Sequences",
+            "rows": [
+              {
+                "0": "$ -30, -18, -6, 6, \\dots $",
+                "1": "Arithmetic",
+                "2": "$ -30 $",
+                "3": "$ d = 12 $",
+                "4": "$ a_1 = -30, a_n = a_{n-1} + 12 $"
+              },
+              {
+                "0": "$ 500, 100, 20, 4, \\dots $",
+                "1": "Geometric",
+                "2": "$ 500 $",
+                "3": "$ r = 1/5 $",
+                "4": "$ a_1 = 500, a_n = \\frac{1}{5} a_{n-1} $"
+              }
+            ],
+            "headers": [
+              "Sequence",
+              "Type",
+              "First Term $a_1$",
+              "$d$ or $r$",
+              "Recursive Rule"
+            ]
+          }
+        ]
+      },
+      "id": "writing-recursive-rules",
+      "discoveryHook": {
+        "scenario": "Given a pattern, you can work backward to write the rule that generated it. If the terms change by a constant amount, it's arithmetic—write a recursive addition rule. If they change by a constant factor, it's geometric—write a recursive multiplication rule. You're the detective decoding the sequence!"
+      },
+      "confusionCorner": {
+        "title": "Include Both Parts",
+        "body": "A complete recursive rule must include [[imp:both the first term and the equation]]. Writing only $a_n = a_{n-1} + 12$ is not enough—you must also state $a_1 = -30$."
+      },
+      "title": "Writing Recursive Rules for Sequences",
+      "questions": [
+        {
+          "feedbackIfWrong": "The common difference.",
+          "hints": [
+            "It's the number added each time.",
+            "Starts with 'd'."
+          ],
+          "prompt": "To write a recursive rule for an arithmetic sequence, you need the first term $a_1$ and the common ___ $d$.",
+          "id": "q2-1",
+          "blanks": [
+            {
+              "accept": [
+                "difference"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "answer": "a_1 = 8, a_n = 3 * a_{n-1}",
+          "feedbackIfWrong": "$ a_1 = 8 $, $ a_n = 3 a_{n-1} $.",
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "Write a recursive rule for the sequence $ 8, 24, 72, 216, \\dots $.",
+          "hints": [
+            "Find the ratio: $ 24/8 = 3 $.",
+            "This is geometric."
+          ]
+        },
+        {
+          "feedbackIfWrong": "Arithmetic.",
+          "answer": "arithmetic",
+          "id": "q2-3",
+          "prompt": "What type of sequence is $ 3, 11, 19, 27, 35, \\dots $? (arithmetic/geometric)",
+          "type": "short-answer",
+          "hints": [
+            "Check the difference: $ 11-3=8 $, $ 19-11=8 $.",
+            "Constant difference means arithmetic."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Display the sequence −30, −18, −6, 6, 18, ... and ask: 'What is the common difference? How do we write the recursive rule?'",
+        "Display 500, 100, 20, 4, 0.8, ... and ask: 'What is the common ratio?'"
+      ]
+    },
+    {
+      "teacherCues": [
+        "Write $a_1 = 25$, $a_n = a_{n-1} - 10$ and ask: 'Can we write a formula for $a_n$ that doesn't depend on the previous term?'",
+        "Show how the explicit rule $a_n = -10n + 35$ can be derived from the recursive rule."
+      ],
+      "questions": [
+        {
+          "prompt": "To convert a recursive rule to an explicit rule, first determine whether the sequence is arithmetic or ___.",
+          "feedbackIfWrong": "Geometric.",
+          "type": "fill-blank",
+          "id": "q3-1",
+          "blanks": [
+            {
+              "accept": [
+                "geometric"
+              ]
+            }
+          ],
+          "hints": [
+            "The two main types of sequences.",
+            "Arithmetic uses addition; this type uses multiplication."
+          ]
+        },
+        {
+          "hints": [
+            "Arithmetic: $a_1 = -3$, $d = 3$.",
+            "$a_n = -3 + (n-1)3 = 3n - 6$."
+          ],
+          "prompt": "Write an explicit rule for $a_1 = -3$, $a_n = a_{n-1} + 3$.",
+          "type": "short-answer",
+          "answer": "a_n = 3n - 6",
+          "id": "q3-2",
+          "feedbackIfWrong": "$ a_n = 3n - 6 $."
+        },
+        {
+          "id": "q3-3",
+          "prompt": "Write a recursive rule for the explicit rule $a_n = 1.5n + 3$.",
+          "type": "short-answer",
+          "feedbackIfWrong": "$ a_1 = 4.5 $, $ a_n = a_{n-1} + 1.5 $.",
+          "hints": [
+            "Find $a_1 = 1.5(1) + 3 = 4.5$. The coefficient 1.5 is $d$.",
+            "Arithmetic recursive: $a_n = a_{n-1} + 1.5$."
+          ],
+          "answer": "a_1 = 4.5, a_n = a_{n-1} + 1.5"
+        }
+      ],
+      "id": "translating-between-rules",
+      "confusionCorner": {
+        "title": "Don't Forget to Find $a_1$",
+        "body": "When converting from explicit to recursive, you must evaluate the explicit rule at $n=1$ to find $a_1$. The coefficient alone may not be the first term if the formula has additional constants."
+      },
+      "discoveryHook": {
+        "scenario": "Recursive rules are easy to use step-by-step, but explicit rules let you jump directly to any term. Converting between them is like translating languages—you can express the same sequence in two different but equivalent ways."
+      },
+      "title": "Translating Between Recursive and Explicit Rules",
+      "examples": [
+        {
+          "prompt": "Write an explicit rule for $a_1 = 25$, $a_n = a_{n-1} - 10$.",
+          "steps": [
+            "This is arithmetic with $a_1 = 25$, $d = -10$.",
+            "Explicit: $a_n = a_1 + (n-1)d = 25 + (n-1)(-10)$.",
+            "Simplify: $a_n = 25 - 10n + 10 = -10n + 35$."
+          ],
+          "role": "guided",
+          "title": "A – Recursive to Explicit (Arithmetic)"
+        },
+        {
+          "peerPrompt": "Explain to a partner: How do you know this is geometric, and how does the explicit rule use the common ratio?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "Write an explicit rule for $a_1 = 19.6$, $a_n = -0.5 a_{n-1}$.",
+          "title": "B – Recursive to Explicit (Geometric)",
+          "steps": [
+            "Geometric with $a_1 = 19.6$, $r = -0.5$.",
+            "Explicit: $a_n = 19.6 \\cdot (-0.5)^{n-1}$."
+          ]
+        },
+        {
+          "title": "C – Explicit to Recursive",
+          "prompt": "Write a recursive rule for the explicit rule $a_n = 7(3)^{n-1}$.",
+          "steps": [
+            "This is geometric with $a_1 = 7$ (plug $n=1$) and $r = 3$.",
+            "Recursive: $a_1 = 7$, $a_n = 3 a_{n-1}$."
+          ],
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Translation Examples",
+            "headers": [
+              "Recursive Rule",
+              "Explicit Rule",
+              "Type"
+            ],
+            "rows": [
+              {
+                "0": "$a_1 = 25$, $a_n = a_{n-1} - 10$",
+                "1": "$a_n = -10n + 35$",
+                "2": "Arithmetic"
+              },
+              {
+                "0": "$a_1 = 19.6$, $a_n = -0.5 a_{n-1}$",
+                "1": "$a_n = 19.6(-0.5)^{n-1}$",
+                "2": "Geometric"
+              },
+              {
+                "0": "$a_n = -2n + 3$",
+                "1": "$a_1 = 1$, $a_n = a_{n-1} - 2$",
+                "2": "Arithmetic"
+              },
+              {
+                "0": "$a_n = -3(2)^{n-1}$",
+                "1": "$a_1 = -3$, $a_n = 2 a_{n-1}$",
+                "2": "Geometric"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Arithmetic: } a_n = a_1 + (n-1)d $$ $$ \\text{Geometric: } a_n = a_1 \\cdot r^{n-1} $$",
+          "title": "Translation Formulas",
+          "notes": [
+            "For recursive → explicit, identify $a_1$, $d$ or $r$.",
+            "For explicit → recursive, find $a_1$ by plugging $n=1$, then identify $d$ or $r$."
+          ]
+        },
+        "explanation": [
+          "To translate a [[imp:recursive to explicit]]: identify the sequence type (arithmetic or geometric) and use the explicit formula $a_n = a_1 + (n-1)d$ or $a_n = a_1 \\cdot r^{n-1}$.",
+          "To translate an [[imp:explicit to recursive]]: identify $a_1$ (plug $n=1$ into the explicit rule), find $d$ or $r$, then write the recursive equation.",
+          "For arithmetic: $d$ is the coefficient of $n$ in the simplified explicit rule.",
+          "For geometric: $r$ is the base of the exponent in the explicit rule."
+        ]
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Not all sequences follow simple addition or multiplication. The famous Fibonacci sequence appears in nature—in flower petals, pinecones, and shells—where each number is the sum of the two before it. These special sequences require a recursive rule that references more than just the previous term."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Sequence",
+              "Pattern",
+              "Recursive Rule"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "$ 1, 1, 2, 3, 5, 8, \\dots $",
+                "1": "Sum of two previous terms",
+                "2": "$ a_1=1, a_2=1, a_n = a_{n-1} + a_{n-2} $"
+              },
+              {
+                "0": "$ 5, 6, 11, 17, 28, \\dots $",
+                "1": "Sum of two previous terms",
+                "2": "$ a_1=5, a_2=6, a_n = a_{n-1} + a_{n-2} $"
+              },
+              {
+                "0": "$ 1, 1, 0, -1, -1, 0, 1, 1, \\dots $",
+                "1": "Difference of previous terms",
+                "2": "$ a_1=1, a_2=1, a_n = a_{n-2} - a_{n-1} $"
+              }
+            ],
+            "title": "Special Recursive Sequences",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "Some sequences are neither arithmetic nor geometric. To write recursive rules for them, look for a pattern involving [[imp:sums, differences, or products]] of previous terms.",
+          "The [[kw:Fibonacci sequence]] is defined by $a_1 = 1, a_2 = 1, a_n = a_{n-1} + a_{n-2}$.",
+          "For these sequences, you may need to give [[imp:two (or more) initial terms]] because the recursive equation refers to multiple previous terms.",
+          "Check the pattern by testing the relationship on the given terms before writing the rule."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Requires two initial terms: $a_1$ and $a_2$.",
+            "Each term is the sum of the two preceding terms."
+          ],
+          "formula": "$$ a_n = a_{n-1} + a_{n-2} $$",
+          "title": "Fibonacci-Type Recursive Rule"
+        }
+      },
+      "confusionCorner": {
+        "body": "When the recursive equation refers to $a_{n-2}$ or earlier terms, you must provide [[imp:two (or more) initial terms]]. Otherwise, you cannot compute $a_3$ because you wouldn't have $a_1$ and $a_2$.",
+        "title": "Multiple Initial Terms"
+      },
+      "title": "Special Sequences – Neither Arithmetic nor Geometric",
+      "teacherCues": [
+        "Write the Fibonacci sequence: 1, 1, 2, 3, 5, 8, ... and ask: 'Is this arithmetic? Geometric? How can we describe the pattern?'",
+        "Guide students to notice that each term is the sum of the two preceding terms."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Check: $1+1=2$, $1+2=3$, $2+3=5$, $3+5=8$. Each term is the sum of the two before it.",
+            "Recursive rule: $a_1 = 1$, $a_2 = 1$, $a_n = a_{n-1} + a_{n-2}$.",
+            "Next three: $a_7 = 5+8 = 13$, $a_8 = 8+13 = 21$, $a_9 = 13+21 = 34$."
+          ],
+          "title": "A – Fibonacci Sequence",
+          "prompt": "Write a recursive rule for $ 1, 1, 2, 3, 5, 8, \\dots $. Then write the next three terms."
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Write a recursive rule for $ 5, 6, 11, 17, 28, \\dots $.",
+          "steps": [
+            "Check: $5+6=11$, $6+11=17$, $11+17=28$. Same pattern!",
+            "Recursive rule: $a_1 = 5$, $a_2 = 6$, $a_n = a_{n-1} + a_{n-2}$."
+          ],
+          "title": "B – Similar Pattern",
+          "peerPrompt": "Explain to a partner: How did you figure out that this follows the same sum pattern as Fibonacci?"
+        },
+        {
+          "title": "C – Alternating Pattern",
+          "role": "independent",
+          "steps": [
+            "Look at the pattern: $1, 1, 0, -1, -1, 0, 1, 1$. This appears to be $a_n = a_{n-2} - a_{n-1}$? Check: $1-1=0$, $1-0=1$? Not quite. Try $a_n = a_{n-2} - a_{n-1}$: $1-1=0$, $1-0=1 \\neq -1$. Actually, the pattern might be $a_n = a_{n-2} - a_{n-1}$? Let's test: $a_3 = a_1 - a_2 = 1-1=0$ ✓; $a_4 = a_2 - a_3 = 1-0=1$ but the sequence has $-1$. So maybe $a_n = a_{n-2} - a_{n-1}$ for the decreasing part? Actually the given sequence is periodic with period 6: 1,1,0,-1,-1,0. This could be $a_n = a_{n-1} - a_{n-2}$? Let's test: $a_3 = a_2 - a_1 = 1-1=0$ ✓; $a_4 = a_3 - a_2 = 0-1=-1$ ✓; $a_5 = a_4 - a_3 = -1-0=-1$ ✓; $a_6 = a_5 - a_4 = -1 - (-1)=0$ ✓; $a_7 = a_6 - a_5 = 0 - (-1)=1$ ✓. So recursive rule: $a_1=1, a_2=1, a_n = a_{n-1} - a_{n-2}$."
+          ],
+          "prompt": "Write a recursive rule for $ 1, 1, 0, -1, -1, 0, 1, 1, \\dots $."
+        }
+      ],
+      "id": "special-recursive-sequences",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "sum"
+              ]
+            }
+          ],
+          "hints": [
+            "It's an addition pattern.",
+            "The operation is $+$."
+          ],
+          "prompt": "The Fibonacci sequence is neither arithmetic nor geometric because each term is the ___ of the two previous terms.",
+          "feedbackIfWrong": "The sum of the two previous terms.",
+          "id": "q4-1",
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "$ a_1 = 2, a_2 = 2, a_n = a_{n-1} + a_{n-2} $.",
+          "answer": "a_1 = 2, a_2 = 2, a_n = a_{n-1} + a_{n-2}",
+          "hints": [
+            "Check: $2+2=4$, $2+4=6$, $4+6=10$.",
+            "Same pattern as Fibonacci."
+          ],
+          "type": "short-answer",
+          "id": "q4-2",
+          "prompt": "Write a recursive rule for $ 2, 2, 4, 6, 10, \\dots $."
+        },
+        {
+          "feedbackIfWrong": "Because the recursive equation refers to $a_{n-2}$, which requires knowing two preceding terms.",
+          "id": "q4-3",
+          "hints": [
+            "Look at the recursive equation: $a_n = a_{n-1} + a_{n-2}$.",
+            "To find $a_3$, you need both $a_1$ and $a_2$."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "because the rule uses a_{n-2}",
+            "needs two previous terms"
+          ],
+          "prompt": "Why does the Fibonacci recursive rule need two initial terms?"
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-recursive-sequences",
+      "title": "Blueprint Aid – Working with Recursive Sequences",
+      "questions": [
+        {
+          "hints": [
+            "You need to know which recursive template to use.",
+            "Check for constant difference or constant ratio."
+          ],
+          "feedbackIfWrong": "Determine whether the sequence is arithmetic or geometric.",
+          "answers": [
+            "if it's arithmetic or geometric",
+            "type of sequence"
+          ],
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "In the blueprint, what is the first thing you determine about a sequence?"
+        },
+        {
+          "id": "q5-2",
+          "hints": [
+            "It starts with 'c'.",
+            "Make sure the rule works."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "check",
+                "verify",
+                "test"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Check (or verify) the terms.",
+          "prompt": "After writing a recursive rule, you should ___ the first few terms to make sure they match the given sequence."
+        },
+        {
+          "prompt": "For $a_1 = -36$, $a_n = \\frac{1}{2} a_{n-1}$, write the explicit rule.",
+          "id": "q5-3",
+          "type": "short-answer",
+          "hints": [
+            "Geometric with $r = 1/2$.",
+            "Use $a_n = a_1 \\cdot r^{n-1}$."
+          ],
+          "answer": "a_n = -36 * (1/2)^{n-1}",
+          "feedbackIfWrong": "$ a_n = -36 \\cdot (\\frac{1}{2})^{n-1} $."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Checking Multiple Terms",
+        "body": "After writing a recursive rule, generate the first few terms and compare with the given sequence. If they don't match, recheck your identification of $d$ or $r$ (or the pattern)."
+      },
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude framework. Walk through a problem that asks to write a recursive rule from a sequence and then find a specific term.",
+        "Emphasize: 'Understand' identifies the type of sequence. 'Solve' writes the rule and generates terms. 'Conclude' checks the pattern."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Classify the sequence; find $a_1$, $d$ or $r$, or special pattern."
+              },
+              {
+                "0": "Solve",
+                "1": "Write recursive rule; generate terms; translate if needed."
+              },
+              {
+                "0": "Conclude",
+                "1": "Verify terms; state rule with initial conditions."
+              }
+            ],
+            "title": "Blueprint for Recursive Sequences",
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "title": "Recursive Rule Templates",
+          "notes": [
+            "Always specify $a_1$ (and $a_2$ if needed).",
+            "Use the appropriate template based on sequence type."
+          ],
+          "formula": "$$ a_n = a_{n-1} + d \\quad \\text{or} \\quad a_n = r \\cdot a_{n-1} $$"
+        },
+        "explanation": [
+          "The blueprint for recursive sequences: [[imp:Understand]] – Is the sequence arithmetic, geometric, or neither? Identify $a_1$, and $d$ or $r$ (or the special pattern).",
+          "[[imp:Solve]] – Write the recursive rule. If asked, generate the next few terms by repeatedly applying the rule. If translating, write the explicit form.",
+          "[[imp:Conclude]] – Check that the generated terms match the given pattern. State the recursive rule clearly with initial terms and the equation."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Whether you're generating terms, writing rules, or translating between forms, the Understand → Solve → Conclude blueprint keeps you organized. Understand the pattern, Solve by writing the rule, and Conclude with the terms or the explicit form. It's your recursive roadmap!"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Use the blueprint to write a recursive rule for $ 8, 3, -2, -7, -12, \\dots $ and find $a_6$.",
+          "steps": [
+            "Understand: Differences: $3-8=-5$, $-2-3=-5$ → arithmetic, $d = -5$, $a_1 = 8$.",
+            "Solve: Recursive rule: $a_1 = 8$, $a_n = a_{n-1} - 5$. Then $a_6 = -12 - 5 = -17$.",
+            "Conclude: The rule generates the sequence correctly. $a_6 = -17$."
+          ],
+          "title": "A – Full Blueprint: Arithmetic"
+        },
+        {
+          "steps": [
+            "Understand: Ratios: $20/4=5$, $100/20=5$ → geometric, $r = 5$, $a_1 = 4$.",
+            "Solve: Recursive rule: $a_1 = 4$, $a_n = 5 a_{n-1}$. $a_5$ is given as 2500.",
+            "Conclude: Rule is correct."
+          ],
+          "prompt": "Use the blueprint to write a recursive rule for $ 4, 20, 100, 500, \\dots $ and find $a_5$.",
+          "title": "B – Full Blueprint: Geometric",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: How did the blueprint help you decide between arithmetic and geometric?",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Understand: Geometric, $r=0.5$, $a_1=16$.",
+            "Solve: Explicit: $a_n = 16 \\cdot (0.5)^{n-1}$.",
+            "Conclude: Check: $n=1$ gives $16$, $n=2$ gives $8$, matches recursive generation."
+          ],
+          "prompt": "Use the blueprint to write an explicit rule for the recursive rule $a_1 = 16$, $a_n = 0.5 a_{n-1}$.",
+          "title": "C – Translating Blueprint"
+        }
+      ]
+    }
+  ],
+  "id": "chapter-6-7-recursively-defined-sequences",
+  "standards": [
+    "HSF.IF.A.3",
+    "HSF.BF.A.2",
+    "HSF.LE.A.2"
+  ],
+  "presenterNotes": [
+    "Recursive rules are a new concept. Start by connecting to arithmetic and geometric sequences they already know. Emphasize that recursive gives step-by-step instructions, while explicit gives a direct formula.",
+    "When writing recursive rules, students often forget to include the first term. Stress that a complete recursive rule needs both the starting value(s) and the equation.",
+    "Translating between forms is a higher-order skill. Show both directions: recursive → explicit (using the known formulas) and explicit → recursive (by identifying $a_1$ and $d$ or $r$).",
+    "The Fibonacci sequence is a fun 'special case' that shows not all sequences are arithmetic or geometric. It's a good hook for pattern recognition."
+  ],
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

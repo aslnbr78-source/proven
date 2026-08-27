@@ -1,0 +1,816 @@
+{
+  "id": "chapter-7-5-hypothesis-testing-variance-sd",
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.A.1"
+  ],
+  "presenterNotes": [
+    "Block 1: Emphasize the skewness of the chi‑square distribution. Show how to use both the table and Google Sheets for critical values. Note that two‑tailed critical values are not opposites.",
+    "Block 2: Walk through the test statistic carefully. The milk variance example is a good starting point. Remind students to square standard deviations.",
+    "Block 3: P‑values for chi‑square tests are easy with Google Sheets. The two‑tailed P‑value is not just double the right‑tail area.",
+    "Block 4: Real‑world examples from quality control motivate the test. Emphasize the normality assumption.",
+    "Block 5: The blueprint ties everything together. Encourage students to always check the direction of the test and use variances."
+  ],
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "concept": {
+        "formulaCard": {
+          "title": "Chi‑Square Critical Values",
+          "formula": "$$\\text{Right-tailed: } \\chi^2_0 = \\text{CHISQ.INV.RT}(\\alpha, d.f.)$$ $$\\text{Left-tailed: } \\chi^2_0 = \\text{CHISQ.INV}(\\alpha, d.f.)$$ $$\\text{Two-tailed: } \\chi^2_L = \\text{CHISQ.INV}(\\alpha/2, d.f.),\\; \\chi^2_R = \\text{CHISQ.INV.RT}(\\alpha/2, d.f.)$$",
+          "legend": [
+            {
+              "meaning": "degrees of freedom = $n - 1$",
+              "symbol": "$d.f.$",
+              "tone": "core"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Test Type",
+              "Area(s) for Critical Value(s)",
+              "Google Sheets Formula"
+            ],
+            "rows": [
+              {
+                "0": "Right‑tailed",
+                "1": "Area to the right = $\\alpha$",
+                "2": "`=CHISQ.INV.RT(α, d.f.)`"
+              },
+              {
+                "0": "Left‑tailed",
+                "1": "Area to the left = $\\alpha$",
+                "2": "`=CHISQ.INV(α, d.f.)`"
+              },
+              {
+                "0": "Two‑tailed",
+                "1": "Lower: area to left = $\\alpha/2$; Upper: area to right = $\\alpha/2$",
+                "2": "Lower: `=CHISQ.INV(α/2, d.f.)`; Upper: `=CHISQ.INV.RT(α/2, d.f.)`"
+              }
+            ],
+            "type": "table",
+            "title": "Finding Critical Values for a Chi‑Square Test"
+          }
+        ],
+        "explanation": [
+          "The [[kw:chi‑square test]] is used to test claims about a population variance $\\sigma^2$ or standard deviation $\\sigma$ when the population is [[imp:normally distributed]].",
+          "The critical value(s) depend on the test type and the significance level $\\alpha$, with degrees of freedom $d.f. = n - 1$.",
+          "For a [[kw:right‑tailed test]]: use the chi‑square value that has area $\\alpha$ to its right. In Google Sheets: `=CHISQ.INV.RT(α, d.f.)`.",
+          "For a [[kw:left‑tailed test]]: use the value that has area $\\alpha$ to its left, i.e., right‑tail area $1 - \\alpha$. In Google Sheets: `=CHISQ.INV(α, d.f.)` (cumulative from left).",
+          "For a [[kw:two‑tailed test]]: two critical values are needed. The lower value has area $\\alpha/2$ to its left; the upper value has area $\\alpha/2$ to its right. In Sheets: lower = `=CHISQ.INV(α/2, d.f.)`, upper = `=CHISQ.INV.RT(α/2, d.f.)`.",
+          "The chi‑square distribution is not symmetric, so the two critical values for a two‑tailed test are [[imp:not opposites]]."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "A dairy company claims the variance of fat in its milk is at most 0.25. To test this, we need to know how large a sample variance would be too large. The chi‑square distribution provides the critical values that separate unusual sample variances from typical ones."
+      },
+      "examples": [
+        {
+          "title": "Example A – Right‑Tailed Critical Value",
+          "steps": [
+            "Degrees of freedom: $d.f. = 26 - 1 = 25$.",
+            "In the chi‑square table, find the row for 25 and the column for area $0.10$ in the right tail. The value is 34.382.",
+            "So the critical value is $\\chi^2_0 = 34.382$. Rejection region: $\\chi^2 > 34.382$.",
+            "Google Sheets: `=CHISQ.INV.RT(0.10, 25)` returns about 34.382."
+          ],
+          "prompt": "Find the critical value for a right‑tailed test with $\\alpha = 0.10$ and $n = 26$.",
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "title": "Example B – Left‑Tailed Critical Value",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we look up $0.99$ in the table for a left‑tailed test at $\\alpha = 0.01$?",
+          "role": "peer-explain",
+          "prompt": "Find the critical value for a left‑tailed test with $\\alpha = 0.01$ and $n = 11$. Explain why the table uses the area to the right of the critical value.",
+          "steps": [
+            "$d.f. = 10$. For a left‑tailed test, the area to the left of the critical value is $0.01$, so the area to the right is $1 - 0.01 = 0.99$.",
+            "In the table, find the value with right‑tail area 0.99: 2.558.",
+            "Critical value $\\chi^2_0 = 2.558$. Rejection region: $\\chi^2 < 2.558$.",
+            "Google Sheets: `=CHISQ.INV(0.01, 10)` returns about 2.558."
+          ]
+        },
+        {
+          "steps": [
+            "$d.f. = 8$. Each tail has area $\\alpha/2 = 0.025$.",
+            "Lower critical value $\\chi^2_L$: area to the left is $0.025$. From table, right‑tail area $0.975$ gives 2.180. So $\\chi^2_L = 2.180$.",
+            "Upper critical value $\\chi^2_R$: area to the right is $0.025$. From table, 17.535.",
+            "Rejection regions: $\\chi^2 < 2.180$ or $\\chi^2 > 17.535$. Google Sheets: `=CHISQ.INV(0.025, 8)` and `=CHISQ.INV.RT(0.025, 8)`."
+          ],
+          "title": "Example C – Two‑Tailed Critical Values",
+          "role": "independent",
+          "prompt": "Find the critical values for a two‑tailed test with $\\alpha = 0.05$ and $n = 9$."
+        }
+      ],
+      "title": "Critical Values for a Chi‑Square Test",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "prompt": "For a chi‑square test, the degrees of freedom are $n$ ___ 1.",
+          "id": "q1-1",
+          "hints": [
+            "It's $n - 1$.",
+            "Same as for the t‑distribution."
+          ],
+          "feedbackIfWrong": "Degrees of freedom = $n - 1$.",
+          "blanks": [
+            {
+              "accept": [
+                "minus",
+                "–",
+                "-"
+              ]
+            }
+          ]
+        },
+        {
+          "answer": "=CHISQ.INV.RT(0.05, 20)",
+          "id": "q1-2",
+          "feedbackIfWrong": "=CHISQ.INV.RT(0.05, 20).",
+          "prompt": "In Google Sheets, what formula gives the critical value for a right‑tailed chi‑square test with $\\alpha = 0.05$ and $d.f. = 20$?",
+          "answers": [
+            "=CHISQ.INV.RT(0.05,20)",
+            "=CHISQ.INV.RT(0.05, 20)"
+          ],
+          "hints": [
+            "Use CHISQ.INV.RT with the right‑tail probability.",
+            "The arguments are alpha and degrees of freedom."
+          ],
+          "type": "short-answer"
+        },
+        {
+          "id": "q1-3",
+          "hints": [
+            "Area to the left is 0.01, so area to the right is 1 − 0.01.",
+            "1 − 0.01 = ?"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "The area to the right is 0.99.",
+          "prompt": "For a left‑tailed chi‑square test, if $\\alpha = 0.01$ and $n = 11$, what area is to the right of the critical value? (Give decimal, e.g., 0.99)",
+          "answers": [
+            "0.99",
+            ".99",
+            "99%"
+          ],
+          "answer": "0.99"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Chi‑Square Critical Values Are Not Symmetric",
+        "body": "Unlike z‑tests and t‑tests, the critical values for a two‑tailed chi‑square test are [[imp:not opposites]]. The distribution is skewed, so the left and right cutoffs are different positive numbers."
+      },
+      "teacherCues": [
+        "Draw a chi‑square curve and shade the right tail. Ask: 'If α=0.10 and n=26, what is the critical value?'",
+        "Show the chi‑square table and explain how to read it for different test types."
+      ],
+      "id": "critical-values-chi-square"
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\chi^2 = \\frac{(n-1)s^2}{\\sigma^2_0}$$",
+          "title": "Chi‑Square Test Statistic",
+          "legend": [
+            {
+              "meaning": "sample variance",
+              "tone": "core",
+              "symbol": "$s^2$"
+            },
+            {
+              "meaning": "hypothesized population variance from $H_0$",
+              "tone": "core",
+              "symbol": "$\\sigma^2_0$"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Component",
+              "Value"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Claim",
+                "1": "$\\sigma^2 \\le 0.25$"
+              },
+              {
+                "0": "$H_0, H_a$",
+                "1": "$H_0: \\sigma^2 \\le 0.25$ (claim), $H_a: \\sigma^2 > 0.25$ (right‑tailed)"
+              },
+              {
+                "0": "$n, s^2$",
+                "1": "$41, 0.27$"
+              },
+              {
+                "0": "$d.f., \\chi^2_0$",
+                "1": "$40, 55.758$"
+              },
+              {
+                "0": "$\\chi^2$ statistic",
+                "1": "$\\frac{40 \\times 0.27}{0.25} = 43.2$"
+              },
+              {
+                "0": "Decision",
+                "1": "$43.2 < 55.758$ → fail to reject $H_0$"
+              }
+            ],
+            "title": "Chi‑Square Test for Milk Variance ($\\alpha=0.05$)"
+          }
+        ],
+        "explanation": [
+          "The [[kw:chi‑square test statistic]] for a variance is: $$\\chi^2 = \\frac{(n-1)s^2}{\\sigma^2_0}$$ where $\\sigma^2_0$ is the hypothesized variance from $H_0$.",
+          "This statistic follows a chi‑square distribution with $d.f. = n-1$, provided the population is [[imp:normally distributed]].",
+          "If you are testing a standard deviation $\\sigma$, square both the sample standard deviation and the hypothesized value: $\\chi^2 = \\frac{(n-1)s^2}{\\sigma^2_0}$ (use variances).",
+          "The rejection region depends on $H_a$: right‑tailed if $H_a: \\sigma^2 > \\sigma^2_0$; left‑tailed if $H_a: \\sigma^2 < \\sigma^2_0$; two‑tailed if $H_a: \\sigma^2 \\neq \\sigma^2_0$.",
+          "A large test statistic indicates the sample variance is larger than hypothesized; a small statistic indicates it is smaller."
+        ]
+      },
+      "teacherCues": [
+        "Write the test statistic: $\\chi^2 = \\frac{(n-1)s^2}{\\sigma^2_0}$. Compare to the z and t formulas.",
+        "Walk through the milk variance example: n=41, s²=0.27, claim σ² ≤ 0.25."
+      ],
+      "discoveryHook": {
+        "scenario": "To test whether the variance of a process has increased, we compare the sample variance to the claimed variance using a ratio. If the sample variance is much larger than claimed, the test statistic will be large and may fall in the rejection region."
+      },
+      "confusionCorner": {
+        "title": "Always Use Variances, Not Standard Deviations!",
+        "body": "The test statistic $\\chi^2 = (n-1)s^2 / \\sigma^2_0$ requires [[imp:variances]]. If the problem gives standard deviations, square them first. A common mistake is to plug in $s$ and $\\sigma$ directly."
+      },
+      "id": "chi-square-test-statistic",
+      "questions": [
+        {
+          "feedbackIfWrong": "The population must be normally distributed.",
+          "blanks": [
+            {
+              "accept": [
+                "normally",
+                "normal",
+                "Normally",
+                "Normal"
+              ]
+            }
+          ],
+          "id": "q2-1",
+          "type": "fill-blank",
+          "hints": [
+            "It's a stricter assumption than for the z‑test.",
+            "Chi‑square tests are sensitive to departures from this shape."
+          ],
+          "prompt": "The chi‑square test for a variance requires that the population is ___ distributed."
+        },
+        {
+          "feedbackIfWrong": "$s^2 = 1.1^2 = 1.21$.",
+          "hints": [
+            "Square the sample standard deviation.",
+            "$1.1^2 = ?$"
+          ],
+          "type": "short-answer",
+          "id": "q2-2",
+          "prompt": "A sample of 25 calls has a standard deviation of 1.1 minutes. The hypothesized standard deviation is 1.4 minutes. What value should be used for $s^2$ in the test statistic?",
+          "answer": "1.21",
+          "answers": [
+            "1.21",
+            "1.21"
+          ]
+        },
+        {
+          "feedbackIfWrong": "Reject $H_0$ if $\\chi^2 > \\chi^2_0$.",
+          "answer": "greater",
+          "prompt": "For a right‑tailed chi‑square test, we reject $H_0$ if the test statistic is ___ than the critical value.",
+          "type": "short-answer",
+          "id": "q2-3",
+          "hints": [
+            "The rejection region is in the right tail.",
+            "Large values of $\\chi^2$ indicate the sample variance exceeds the claim."
+          ],
+          "answers": [
+            "greater",
+            "larger",
+            "more",
+            ">"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "A dairy company claims the variance of fat in whole milk is at most 0.25. A sample of 41 containers has a variance of 0.27. At $\\alpha=0.05$, is there enough evidence to reject the claim? Assume normal.",
+          "role": "guided",
+          "title": "Example A – Testing a Variance Claim",
+          "steps": [
+            "$H_0: \\sigma^2 \\le 0.25$ (claim), $H_a: \\sigma^2 > 0.25$. Right‑tailed. $\\alpha=0.05$.",
+            "$d.f. = 40$. Critical value $\\chi^2_0 = 55.758$ (from table or `=CHISQ.INV.RT(0.05,40)`). Rejection region: $\\chi^2 > 55.758$.",
+            "$\\chi^2 = \\frac{40 \\times 0.27}{0.25} = 43.2$.",
+            "$43.2 < 55.758$ → fail to reject $H_0$. Not enough evidence to reject the claim."
+          ]
+        },
+        {
+          "prompt": "A company claims the standard deviation of call transfer times is less than 1.4 minutes. A sample of 25 calls has $s=1.1$ minutes. At $\\alpha=0.10$, test the claim. Explain why we square the standard deviations.",
+          "steps": [
+            "The chi‑square test statistic is built for variances, so we use $s^2$ and $\\sigma^2_0$.",
+            "$H_0: \\sigma \\ge 1.4$, $H_a: \\sigma < 1.4$ (claim). Left‑tailed. $\\alpha=0.10$, $d.f.=24$.",
+            "Critical value (left‑tailed): `=CHISQ.INV(0.10,24)` ≈ 15.659. Rejection: $\\chi^2 < 15.659$.",
+            "$\\chi^2 = \\frac{24 \\times 1.1^2}{1.4^2} = \\frac{24 \\times 1.21}{1.96} \\approx 14.816$.",
+            "$14.816 < 15.659$ → reject $H_0$. Enough evidence to support the claim."
+          ],
+          "title": "Example B – Testing a Standard Deviation (Left‑Tailed)",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why must we convert the standard deviations to variances before plugging into the formula?",
+          "minLength": 2
+        },
+        {
+          "prompt": "A sporting goods manufacturer claims the variance of fishing line strength is 15.9. A sample of 15 spools has a variance of 21.8. At $\\alpha=0.05$, test the claim. Assume normal.",
+          "title": "Example C – Two‑Tailed Test for Variance",
+          "steps": [
+            "$H_0: \\sigma^2 = 15.9$ (claim), $H_a: \\sigma^2 \\neq 15.9$. Two‑tailed. $\\alpha=0.05$, $d.f.=14$.",
+            "Critical values: $\\chi^2_L = 5.629$, $\\chi^2_R = 26.119$ (from table or Sheets).",
+            "$\\chi^2 = \\frac{14 \\times 21.8}{15.9} \\approx 19.195$.",
+            "$19.195$ is between 5.629 and 26.119 → fail to reject $H_0$. Not enough evidence to reject the claim."
+          ],
+          "role": "independent"
+        }
+      ],
+      "title": "The Chi‑Square Test Statistic"
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Just like with t‑tests, we can find exact P‑values for chi‑square tests using Google Sheets. A P‑value tells us the probability of observing such an extreme test statistic if $H_0$ were true."
+      },
+      "examples": [
+        {
+          "title": "Example A – Right‑Tailed P‑Value",
+          "prompt": "For the milk variance test, $\\chi^2 = 43.2$ with $d.f. = 40$. Find the P‑value and decide at $\\alpha = 0.05$.",
+          "steps": [
+            "Right‑tailed P‑value = area to the right of 43.2.",
+            "In Google Sheets: `=CHISQ.DIST.RT(43.2, 40)` returns about 0.336.",
+            "P‑value = 0.336 > 0.05 → fail to reject $H_0$.",
+            "The sample variance of 0.27 is not significantly greater than the claimed 0.25."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "title": "Example B – Left‑Tailed P‑Value",
+          "prompt": "For the call transfer time test, $\\chi^2 = 14.816$ with $d.f. = 24$. Find the P‑value and decide at $\\alpha = 0.10$. Explain why we use the cumulative area.",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does CHISQ.DIST with TRUE give the left‑tailed P‑value?",
+          "steps": [
+            "Left‑tailed P‑value = area to the left of 14.816.",
+            "`=CHISQ.DIST(14.816, 24, TRUE)` returns about 0.063.",
+            "P‑value = 0.063 ≤ 0.10 → reject $H_0$.",
+            "CHISQ.DIST with TRUE returns the cumulative distribution function — the area to the left."
+          ]
+        },
+        {
+          "prompt": "For the fishing line test, $\\chi^2 = 19.195$ with $d.f. = 14$. Find the two‑tailed P‑value and decide at $\\alpha = 0.05$.",
+          "title": "Example C – Two‑Tailed P‑Value",
+          "role": "independent",
+          "steps": [
+            "Left area = `=CHISQ.DIST(19.195, 14, TRUE)` ≈ 0.854. Right area = 1 − 0.854 = 0.146.",
+            "The smaller tail area is 0.146. Two‑tailed P‑value = $2 \\times 0.146 = 0.292$.",
+            "$0.292 > 0.05$ → fail to reject $H_0$."
+          ]
+        }
+      ],
+      "title": "P‑Values for Chi‑Square Tests",
+      "confusionCorner": {
+        "title": "Two‑Tailed P‑Value for Chi‑Square",
+        "body": "Because the chi‑square distribution is skewed, you cannot simply double the right‑tail area. [[imp:You must find both tail areas and double the smaller one.]] Google Sheets makes this easy."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "CHISQ.DIST.RT",
+                "chisq.dist.rt",
+                "=CHISQ.DIST.RT"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Use `=CHISQ.DIST.RT(χ², d.f.)`.",
+          "hints": [
+            "It returns the area in the right tail directly.",
+            "Similar to T.DIST.RT."
+          ],
+          "prompt": "In Google Sheets, to find the P‑value for a right‑tailed chi‑square test, use the function ___."
+        },
+        {
+          "id": "q3-2",
+          "feedbackIfWrong": "The two‑tailed P‑value is twice the minimum (smaller) of the two tail areas.",
+          "answer": "minimum",
+          "answers": [
+            "minimum",
+            "smaller",
+            "min"
+          ],
+          "hints": [
+            "You take the smaller of the two tail areas and double it.",
+            "Not the average."
+          ],
+          "type": "short-answer",
+          "prompt": "For a two‑tailed chi‑square test, the P‑value is twice the ___ of the left‑tail and right‑tail areas."
+        },
+        {
+          "id": "q3-3",
+          "answer": "Yes",
+          "prompt": "A right‑tailed chi‑square test gives a P‑value of 0.015. At $\\alpha = 0.05$, should you reject $H_0$? (Yes or No)",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "0.015 ≤ 0.05.",
+            "Small P‑value indicates strong evidence against $H_0$."
+          ],
+          "feedbackIfWrong": "Yes, reject $H_0$ because 0.015 ≤ 0.05."
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:P‑value]] for a chi‑square test is the probability of obtaining a $\\chi^2$ statistic as extreme as, or more extreme than, the one computed, assuming $H_0$ is true.",
+          "Decision rule: If P‑value $\\le \\alpha$, reject $H_0$; otherwise, fail to reject.",
+          "In Google Sheets:",
+          "- Right‑tailed: `=CHISQ.DIST.RT(χ², d.f.)` — returns the area to the right.",
+          "- Left‑tailed: `=CHISQ.DIST(χ², d.f., TRUE)` — returns the cumulative area to the left.",
+          "- Two‑tailed: $2 \\times$ the smaller of the left‑tail and right‑tail areas. For observed $\\chi^2$, compute left area and right area; the P‑value = $2 \\times \\min(\\text{left area, right area})$.",
+          "The chi‑square table typically only provides ranges for P‑values, so technology is especially helpful."
+        ],
+        "formulaCard": {
+          "title": "Chi‑Square P‑Value Formulas",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "The two‑tailed P‑value is not simply twice the right‑tail area because the distribution is skewed.",
+              "symbol": "Key"
+            }
+          ],
+          "formula": "$$\\text{Right: } =\\text{CHISQ.DIST.RT}(\\chi^2, d.f.)$$ $$\\text{Left: } =\\text{CHISQ.DIST}(\\chi^2, d.f., \\text{TRUE})$$ $$\\text{Two-tailed: } =2 \\times \\min(\\text{left area, right area})$$"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Google Sheets P‑Values for Chi‑Square Test",
+            "rows": [
+              {
+                "0": "Right‑tailed",
+                "1": "`=CHISQ.DIST.RT(χ², d.f.)`",
+                "2": "≈ 0.336"
+              },
+              {
+                "0": "Left‑tailed",
+                "1": "`=CHISQ.DIST(χ², d.f., TRUE)`",
+                "2": "≈ 0.664"
+              },
+              {
+                "0": "Two‑tailed",
+                "1": "`=2 * MIN(CHISQ.DIST(χ², d.f., TRUE), CHISQ.DIST.RT(χ², d.f.))`",
+                "2": "Use the smaller of the two tail areas"
+              }
+            ],
+            "headers": [
+              "Test Type",
+              "Formula",
+              "Example (χ²=43.2, df=40)"
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "id": "pvalue-chi-square",
+      "teacherCues": [
+        "Demonstrate that the chi‑square table only gives ranges for P‑values. Show how to use CHISQ.DIST.RT and CHISQ.DIST in Google Sheets to get exact P‑values.",
+        "Walk through finding the P‑value for the milk example: right‑tailed, χ²=43.2, df=40."
+      ]
+    },
+    {
+      "confusionCorner": {
+        "title": "Normality Is Critical",
+        "body": "The chi‑square test for a variance is highly sensitive to the normality assumption. If the population is not normal, the actual Type I error rate can be very different from $\\alpha$. [[imp:Always check for approximate normality before using this test.]]"
+      },
+      "title": "Applications: Testing Variances and Standard Deviations",
+      "id": "applications-chi-square",
+      "teacherCues": [
+        "Pose a quality control scenario: 'A bottling company claims the variance of fill amounts is at most 0.40. A sample of 31 bottles has variance 0.75. Does the process need adjustment?'",
+        "Emphasize that the chi‑square test is sensitive to the normality assumption."
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Right-tailed: reject if } \\chi^2 > \\chi^2_R$$ $$\\text{Left-tailed: reject if } \\chi^2 < \\chi^2_L$$ $$\\text{Two-tailed: reject if } \\chi^2 < \\chi^2_L \\text{ or } \\chi^2 > \\chi^2_R$$",
+          "legend": [
+            {
+              "meaning": "Always compare the test statistic to the critical value(s) based on the direction of $H_a$.",
+              "tone": "core",
+              "symbol": "Key"
+            }
+          ],
+          "title": "Decision Rule Summary"
+        },
+        "visuals": [
+          {
+            "title": "Bottling Company Example ($\\alpha=0.01$)",
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Component",
+              "Value"
+            ],
+            "rows": [
+              {
+                "0": "Claim",
+                "1": "$\\sigma^2 \\le 0.40$"
+              },
+              {
+                "0": "$H_0, H_a$",
+                "1": "$H_0: \\sigma^2 \\le 0.40$ (claim), $H_a: \\sigma^2 > 0.40$"
+              },
+              {
+                "0": "Sample",
+                "1": "$n=31$, $s^2=0.75$"
+              },
+              {
+                "0": "$\\chi^2$",
+                "1": "$\\frac{30 \\times 0.75}{0.40} = 56.25$"
+              },
+              {
+                "0": "Critical value (right‑tailed, $\\alpha=0.01$, $d.f.=30$)",
+                "1": "$\\chi^2_0 = 50.892$"
+              },
+              {
+                "0": "Decision",
+                "1": "$56.25 > 50.892$ → reject $H_0$. The variance appears to exceed the claimed maximum."
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "Chi‑square tests for variances are commonly used in [[kw:quality control]] to monitor process consistency.",
+          "A right‑tailed test is often used to detect an [[imp:increase]] in variance (process deterioration).",
+          "A left‑tailed test can detect an [[imp:improvement]] (reduced variability).",
+          "A two‑tailed test checks whether the variance differs from a target value.",
+          "The test is [[imp:not robust]] to departures from normality. If the population is not normal, the results may be misleading.",
+          "When interpreting, remember that failing to reject $H_0$ does not prove the variance equals the claimed value; it only means the sample did not provide strong evidence against it."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "In manufacturing, consistency is key. A bottling company claims their fill volume variance is at most 0.40 oz². A sample shows 0.75. Is the process out of control? The chi‑square test provides the statistical evidence to decide."
+      },
+      "examples": [
+        {
+          "steps": [
+            "$H_0: \\sigma^2 \\le 0.40$ (claim), $H_a: \\sigma^2 > 0.40$. Right‑tailed. $\\alpha=0.01$, $d.f.=30$.",
+            "Critical value: `=CHISQ.INV.RT(0.01,30)` ≈ 50.892. Rejection: $\\chi^2 > 50.892$.",
+            "$\\chi^2 = \\frac{30 \\times 0.75}{0.40} = 56.25$.",
+            "$56.25 > 50.892$ → reject $H_0$. The sample provides strong evidence that the variance exceeds 0.40."
+          ],
+          "title": "Example A – Quality Control (Right‑Tailed)",
+          "role": "guided",
+          "prompt": "A bottling company claims the variance of sports drink in 12‑oz bottles is at most 0.40. A sample of 31 bottles has a variance of 0.75. At $\\alpha=0.01$, is there enough evidence to reject the claim? Assume normal."
+        },
+        {
+          "steps": [
+            "Claim $\\sigma \\le 30$ is $H_0$. We test if there is evidence the standard deviation is greater. So $H_a: \\sigma > 30$. Right‑tailed.",
+            "$n=21$, $d.f.=20$, $\\alpha=0.05$. $s=35.25$, $\\sigma_0=30$.",
+            "$\\chi^2 = \\frac{20 \\times 35.25^2}{30^2} = \\frac{20 \\times 1242.56}{900} \\approx 27.61$.",
+            "Critical value: `=CHISQ.INV.RT(0.05,20)` ≈ 31.410. $27.61 < 31.410$ → fail to reject $H_0$. Not enough evidence to reject the claim."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why is the alternative hypothesis $\\sigma > 30$ and not $\\sigma \\neq 30$?",
+          "prompt": "A travel agency claims the standard deviation of hotel room rates is at most $30. A sample of 21 hotels has $s = 35.25$. At $\\alpha=0.05$, test the claim. Explain why this is a right‑tailed test.",
+          "minLength": 2,
+          "title": "Example B – Hotel Room Rates (Right‑Tailed with Standard Deviation)"
+        },
+        {
+          "prompt": "A weather service claims the standard deviation of tornado fatalities per year is at most 25. A sample of 28 years has a standard deviation of 31 fatalities. At $\\alpha=0.10$, test the claim. Assume normal.",
+          "role": "independent",
+          "title": "Example C – Tornado Fatalities (Right‑Tailed with Standard Deviation)",
+          "steps": [
+            "$H_0: \\sigma \\le 25$ (claim), $H_a: \\sigma > 25$. Right‑tailed. $\\alpha=0.10$, $d.f.=27$.",
+            "Critical value: `=CHISQ.INV.RT(0.10,27)` ≈ 36.741.",
+            "$\\chi^2 = \\frac{27 \\times 31^2}{25^2} = \\frac{27 \\times 961}{625} \\approx 41.53$.",
+            "$41.53 > 36.741$ → reject $H_0$. There is enough evidence to reject the weather service's claim."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "prompt": "The chi‑square test for a variance is most commonly used in ___ control to monitor process consistency.",
+          "hints": [
+            "It's about monitoring variation in manufacturing.",
+            "Often used in Six Sigma."
+          ],
+          "feedbackIfWrong": "The chi‑square test is widely used in quality control.",
+          "id": "q4-1",
+          "blanks": [
+            {
+              "accept": [
+                "quality",
+                "Quality"
+              ]
+            }
+          ]
+        },
+        {
+          "hints": [
+            "The sample variance is in the numerator.",
+            "A larger numerator increases the fraction."
+          ],
+          "feedbackIfWrong": "A larger sample variance produces a larger $\\chi^2$ statistic.",
+          "answers": [
+            "large",
+            "big",
+            "greater"
+          ],
+          "id": "q4-2",
+          "prompt": "If a sample variance is much larger than the hypothesized variance, will the test statistic $\\chi^2$ be large or small?",
+          "type": "short-answer",
+          "answer": "large"
+        },
+        {
+          "feedbackIfWrong": "Yes, because 14.816 < 15.659, it falls in the rejection region.",
+          "id": "q4-3",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "answer": "Yes",
+          "prompt": "A left‑tailed chi‑square test gives $\\chi^2 = 14.816$ with a critical value of 15.659. Should you reject $H_0$? (Yes or No)",
+          "hints": [
+            "Left‑tailed: reject if $\\chi^2$ is less than the critical value.",
+            "14.816 < 15.659."
+          ],
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Chi‑square tests follow a clear blueprint: check normality, set up hypotheses, find critical values, compute the test statistic using variances, and draw a conclusion. The blueprint helps avoid the common error of using standard deviations instead of variances."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Understand: Claim $\\sigma < 3.7$ is $H_a$. $H_0: \\sigma \\ge 3.7$. Left‑tailed. $\\alpha=0.05$, $n=9$, $s=3.0$.",
+            "Solve: $d.f.=8$. Critical value: `=CHISQ.INV(0.05,8)` ≈ 2.733. Rejection: $\\chi^2 < 2.733$.",
+            "$\\chi^2 = \\frac{8 \\times 3.0^2}{3.7^2} \\approx 5.26$.",
+            "Conclude: $5.26 > 2.733$ → fail to reject $H_0$. Not enough evidence to support the claim."
+          ],
+          "title": "Example A – Blueprint for Left‑Tailed Test",
+          "prompt": "A police chief claims the standard deviation of response times is less than 3.7 minutes. A sample of 9 calls has a standard deviation of 3.0 minutes. At $\\alpha=0.05$, test the claim. Assume normal."
+        },
+        {
+          "title": "Example B – Blueprint for Right‑Tailed Test",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does 'at most 25' become the null hypothesis, and why is the test right‑tailed?",
+          "minLength": 2,
+          "prompt": "A weather service claims the standard deviation of tornado fatalities is at most 25. A sample of 28 years has $s=31$. At $\\alpha=0.10$, test the claim. Explain why this is right‑tailed.",
+          "steps": [
+            "Claim $\\sigma \\le 25$ is $H_0$ (contains equality). $H_a: \\sigma > 25$. Right‑tailed. $\\alpha=0.10$, $d.f.=27$.",
+            "Critical value: `=CHISQ.INV.RT(0.10,27)` ≈ 36.741.",
+            "$\\chi^2 = \\frac{27 \\times 31^2}{25^2} \\approx 41.53$.",
+            "$41.53 > 36.741$ → reject $H_0$. Enough evidence to reject the claim."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Blueprint for Two‑Tailed Test",
+          "prompt": "A manufacturer claims the variance of product weights is 15.9. A sample of 15 has a variance of 21.8. At $\\alpha=0.05$, test the claim. Assume normal.",
+          "steps": [
+            "Understand: Claim $\\sigma^2 = 15.9$ is $H_0$. $H_a: \\sigma^2 \\neq 15.9$. Two‑tailed. $\\alpha=0.05$, $d.f.=14$.",
+            "Solve: Critical values: $\\chi^2_L = 5.629$, $\\chi^2_R = 26.119$.",
+            "$\\chi^2 = \\frac{14 \\times 21.8}{15.9} \\approx 19.195$.",
+            "Conclude: $19.195$ is not in rejection region → fail to reject $H_0$. Not enough evidence to reject the claim."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Project a problem: 'A police chief claims the standard deviation of response times is less than 3.7 minutes. A sample of 9 calls has s=3.0 min. At α=0.05, test the claim.' Walk through Understand‑Solve‑Conclude.",
+        "Emphasize: 'Don't forget to square the standard deviations and check the normality assumption.'"
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "Start by understanding the claim and checking normality.",
+          "id": "q5-1",
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "Understand"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "hints": [
+            "It's the 'U' phase.",
+            "You check conditions and state hypotheses."
+          ],
+          "prompt": "The first step in the chi‑square test blueprint is to ___ the claim and verify that the population is normally distributed."
+        },
+        {
+          "answer": "P-value and rejection region",
+          "prompt": "In the blueprint, after computing the test statistic $\\chi^2$, what two methods can you use to make a decision? (Name both.)",
+          "answers": [
+            "P-value and rejection region",
+            "p-value and critical value"
+          ],
+          "id": "q5-2",
+          "type": "short-answer",
+          "feedbackIfWrong": "You can use the P‑value method or the rejection region (critical value) method.",
+          "hints": [
+            "One uses probability, the other uses a cutoff.",
+            "Both lead to the same conclusion."
+          ]
+        },
+        {
+          "feedbackIfWrong": "Yes, 56.25 > 50.892, so reject $H_0$.",
+          "id": "q5-3",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "type": "short-answer",
+          "answer": "Yes",
+          "hints": [
+            "Right‑tailed: reject if $\\chi^2$ is greater than the critical value.",
+            "56.25 > 50.892."
+          ],
+          "prompt": "A right‑tailed chi‑square test gives $\\chi^2 = 56.25$ with a critical value of 50.892. Should you reject $H_0$? (Yes or No)"
+        }
+      ],
+      "id": "blueprint-chi-square",
+      "title": "Blueprint Aid: Solving Chi‑Square Hypothesis Tests",
+      "confusionCorner": {
+        "body": "A right‑tailed test rejects $H_0$ for large $\\chi^2$ (sample variance much larger than claimed). A left‑tailed test rejects for small $\\chi^2$ (sample variance much smaller). [[imp:Make sure the direction of the inequality in $H_a$ matches the rejection region.]]",
+        "title": "Double‑Check the Tail Direction"
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Claim} \\;\\rightarrow\\; H_0, H_a \\;\\rightarrow\\; \\text{Check normality} \\;\\rightarrow\\; \\chi^2 = \\frac{(n-1)s^2}{\\sigma^2_0} \\;\\rightarrow\\; \\text{P‑value or Rejection Region} \\;\\rightarrow\\; \\text{Decision}$$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "Always use variances in the test statistic. Square standard deviations if necessary.",
+              "symbol": "Key"
+            }
+          ],
+          "title": "Chi‑Square Test Blueprint"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action",
+              "Details"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Claim: $\\sigma < 3.7$. $H_0: \\sigma \\ge 3.7$, $H_a: \\sigma < 3.7$ (claim). Left‑tailed. $\\alpha=0.05$, $n=9$, $s=3.0$.",
+                "2": "Check normality (assumed)."
+              },
+              {
+                "0": "Solve – Test Statistic",
+                "1": "$\\chi^2 = \\frac{8 \\times 3.0^2}{3.7^2} = \\frac{8 \\times 9}{13.69} \\approx 5.26$. $d.f.=8$.",
+                "2": ""
+              },
+              {
+                "0": "Solve – Critical Value",
+                "1": "Left‑tailed: `=CHISQ.INV(0.05,8)` ≈ 2.733. Rejection: $\\chi^2 < 2.733$.",
+                "2": "$5.26 > 2.733$ → not in rejection region."
+              },
+              {
+                "0": "Conclude",
+                "1": "Fail to reject $H_0$. Not enough evidence to support the claim that the standard deviation is less than 3.7 minutes.",
+                "2": ""
+              }
+            ],
+            "title": "Blueprint for Police Response Time Claim ($\\alpha=0.05$)",
+            "variant": "colorful",
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Verify the population is approximately normal. Identify the claim and write $H_0$ and $H_a$. Determine whether the test is right‑, left‑, or two‑tailed. Note $n$, $s$ (or $s^2$), and $\\alpha$.",
+          "2. [[kw:Solve]]: Compute the test statistic $\\chi^2 = \\frac{(n-1)s^2}{\\sigma^2_0}$ (square standard deviations if needed). Find the critical value(s) from the chi‑square table or Google Sheets. Compare the test statistic to the rejection region, or find the P‑value and compare to $\\alpha$.",
+          "3. [[kw:Conclude]]: Make a decision and interpret in context. Use 'There is (or is not) enough evidence to support/reject the claim that…'."
+        ]
+      }
+    }
+  ],
+  "type": "interactive-lesson",
+  "title": "Hypothesis Testing for Variance and Standard Deviation",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

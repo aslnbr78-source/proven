@@ -1,0 +1,735 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-3-4-exponential-and-logarithmic-equations",
+  "title": "Exponential and Logarithmic Equations",
+  "standards": [
+    "HSA.REI.A.1",
+    "HSF.LE.A.4"
+  ],
+  "blocks": [
+    {
+      "id": "solving-simple-equations",
+      "title": "Solving Simple Exponential and Logarithmic Equations",
+      "teacherCues": [
+        "Write $2^x=32$ and $\\ln x=3$ on the board. Ask: What property allows us to solve these quickly?",
+        "Emphasize the two strategies: One-to-One Properties (if bases/logs are the same) and Inverse Properties (exponentiate or take log)."
+      ],
+      "discoveryHook": {
+        "scenario": "Just like solving $2x=10$ requires division, solving $2^x=10$ requires logarithms. The inverse relationship between exponentials and logs unlocks equations where the variable is in the exponent or inside a logarithm."
+      },
+      "concept": {
+        "explanation": [
+          "There are two main strategies for solving exponential and logarithmic equations.",
+          "1. [[kw:One-to-One Properties]]: If $a^x = a^y$, then $x = y$. If $\\log_a x = \\log_a y$, then $x = y$.",
+          "2. [[kw:Inverse Properties]]: $a^{\\log_a x} = x$ and $\\log_a a^x = x$. These are used when you can't match bases or logs.",
+          "For simple equations, rewrite both sides with the same base, or exponentiate/log both sides."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Strategy Selection",
+            "headers": [
+              "Equation type",
+              "Approach",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "$a^x = a^y$",
+                "1": "One-to-One Property",
+                "2": "$2^x=32 \\Rightarrow 2^x=2^5 \\Rightarrow x=5$"
+              },
+              {
+                "0": "$\\log_a x = \\log_a y$",
+                "1": "One-to-One Property",
+                "2": "$\\ln x = \\ln 3 \\Rightarrow x=3$"
+              },
+              {
+                "0": "$a^x = b$ (different base)",
+                "1": "Take $\\log_a$ of both sides",
+                "2": "$e^x=7 \\Rightarrow \\ln e^x = \\ln 7 \\Rightarrow x=\\ln 7$"
+              },
+              {
+                "0": "$\\log_a x = b$",
+                "1": "Exponentiate both sides",
+                "2": "$\\log_3 x = 4 \\Rightarrow 3^{\\log_3 x}=3^4 \\Rightarrow x=81$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Inverse Properties",
+          "formula": "$$ a^{\\log_a x} = x \\quad\\text{and}\\quad \\log_a a^x = x $$",
+          "notes": [
+            "Use these to 'cancel' a base with its logarithm.",
+            "For natural: $e^{\\ln x}=x$, $\\ln e^x=x$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Using One-to-One for Exponentials",
+          "prompt": "Solve $3^{x} = 81$.",
+          "steps": [
+            "Recognize $81 = 3^4$.",
+            "Rewrite: $3^x = 3^4$.",
+            "By One-to-One Property, $x = 4$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Using Inverse for Logarithms",
+          "prompt": "Solve $\\log_2 x = 5$. Explain why exponentiating works.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What operation undoes a logarithm?",
+          "minLength": 8,
+          "steps": [
+            "The inverse of $\\log_2$ is base 2 exponentiation.",
+            "Raise both sides as powers of 2: $2^{\\log_2 x} = 2^5$.",
+            "Simplify: $x = 32$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Solving a Natural Log Equation",
+          "prompt": "Solve $\\ln x = -3$.",
+          "steps": [
+            "Exponentiate both sides with base $e$: $e^{\\ln x} = e^{-3}$.",
+            "Simplify: $x = e^{-3}$.",
+            "Approximate: $x \\approx 0.0498$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "One-to-One vs. Inverse",
+        "body": "Use One-to-One when both sides have the same base/log. Use Inverse when a log or exponential is isolated and the other side is a number."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "To solve $\\log_5 x = 3$, you ___ both sides with base 5.",
+          "blanks": [
+            {
+              "accept": [
+                "exponentiate"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the inverse of taking a log.",
+            "You raise 5 to both sides."
+          ],
+          "feedbackIfWrong": "Exponentiate both sides: $5^{\\log_5 x} = 5^3$."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "Solve $5^x = 125$.",
+          "answers": [
+            "3",
+            "three"
+          ],
+          "hints": [
+            "125 = 5^3.",
+            "Use One-to-One Property."
+          ],
+          "feedbackIfWrong": "$5^x = 5^3 \\Rightarrow x = 3$."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "Solve $e^x = 9$. Give the exact answer.",
+          "answers": [
+            "ln 9",
+            "ln9"
+          ],
+          "hints": [
+            "Take natural log of both sides.",
+            "$\\ln e^x = x$."
+          ],
+          "feedbackIfWrong": "$x = \\ln 9$."
+        }
+      ]
+    },
+    {
+      "id": "solving-exponential-equations",
+      "title": "Solving More Complicated Exponential Equations",
+      "teacherCues": [
+        "Demonstrate solving $3(2^x)=42$ by isolating $2^x$, then taking log base 2.",
+        "Show how $e^{2x}-3e^x+2=0$ is a quadratic in disguise: let $u=e^x$."
+      ],
+      "discoveryHook": {
+        "scenario": "When exponential equations get messy—like $2(3^{2t-5})-4=11$—isolating the exponential expression and taking logs is the key. For equations with multiple exponentials, like $e^{2x}-3e^x+2=0$, a clever substitution turns them into quadratics."
+      },
+      "concept": {
+        "explanation": [
+          "To solve exponential equations with constants and coefficients: 1. Isolate the exponential expression. 2. Take the logarithm of both sides (using the same base as the exponential). 3. Apply the Inverse Property to solve for the variable.",
+          "For equations of the form $a^{2x} + b a^x + c = 0$, substitute $u = a^x$ to get a quadratic $u^2 + bu + c = 0$. Solve for $u$, then substitute back to find $x$.",
+          "Always check solutions in the original equation, especially when taking logs of both sides."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Exponential Equation Solving Steps",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Isolate the exponential expression on one side."
+              },
+              {
+                "0": "2",
+                "1": "Take the logarithm (with the same base) of both sides."
+              },
+              {
+                "0": "3",
+                "1": "Apply $\\log_a a^x = x$ (Inverse Property)."
+              },
+              {
+                "0": "4",
+                "1": "Solve the resulting linear or quadratic equation."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Quadratic in Disguise",
+          "formula": "$$ a^{2x}+ba^x+c=0 \\quad\\Rightarrow\\quad u^2+bu+c=0 \\text{ where } u=a^x $$",
+          "notes": [
+            "Use substitution $u = a^x$.",
+            "Solve for $u$, then $x = \\log_a u$.",
+            "Check for extraneous solutions."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Isolate and Take Log",
+          "prompt": "Solve $3(2^x) = 42$. Approximate to three decimals.",
+          "steps": [
+            "Divide by 3: $2^x = 14$.",
+            "Take log base 2 of both sides: $\\log_2 2^x = \\log_2 14$.",
+            "Inverse Property: $x = \\log_2 14$.",
+            "Use change-of-base: $x = \\frac{\\ln 14}{\\ln 2} \\approx 3.807$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Quadratic Type",
+          "prompt": "Solve $e^{2x} - 3e^x + 2 = 0$. Explain the substitution.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does letting $u = e^x$ turn this into a quadratic?",
+          "minLength": 8,
+          "steps": [
+            "Let $u = e^x$. Then $e^{2x} = (e^x)^2 = u^2$.",
+            "The equation becomes $u^2 - 3u + 2 = 0$.",
+            "Factor: $(u-2)(u-1)=0$, so $u=2$ or $u=1$.",
+            "Back-substitute: $e^x = 2 \\Rightarrow x = \\ln 2 \\approx 0.693$; $e^x = 1 \\Rightarrow x = 0$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Multi-step Exponential",
+          "prompt": "Solve $2(3^{2t-5}) - 4 = 11$. Approximate to three decimals.",
+          "steps": [
+            "Add 4: $2(3^{2t-5}) = 15$. Divide by 2: $3^{2t-5} = 7.5$.",
+            "Take $\\log_3$ of both sides: $\\log_3 3^{2t-5} = \\log_3 7.5$.",
+            "Inverse: $2t-5 = \\log_3 7.5$.",
+            "Solve: $2t = 5 + \\log_3 7.5$, $t = \\frac{5}{2} + \\frac{1}{2}\\log_3 7.5 \\approx 3.417$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check the Domain",
+        "body": "When taking logs of both sides, ensure the exponential expression is positive. Also, verify answers in the original equation."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "To solve $4(5^x) = 20$, the first step is to ___ by 4.",
+          "blanks": [
+            {
+              "accept": [
+                "divide"
+              ]
+            }
+          ],
+          "hints": [
+            "Isolate $5^x$.",
+            "Perform the inverse of multiplication."
+          ],
+          "feedbackIfWrong": "Divide both sides by 4 to get $5^x = 5$."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "Solve $2^x = 17$. Approximate to two decimal places.",
+          "answers": [
+            "4.09"
+          ],
+          "hints": [
+            "Take $\\log_2$ or $\\ln$ of both sides.",
+            "$x = \\ln 17 / \\ln 2$."
+          ],
+          "feedbackIfWrong": "$x = \\frac{\\ln 17}{\\ln 2} \\approx 4.09$."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "In the equation $e^{2x} - 7e^x + 12 = 0$, what substitution should you make?",
+          "answers": [
+            "u=e^x",
+            "u = e^x",
+            "u=ex"
+          ],
+          "hints": [
+            "Let the new variable equal $e^x$.",
+            "Then $e^{2x}$ becomes $u^2$."
+          ],
+          "feedbackIfWrong": "Let $u = e^x$ to obtain $u^2 - 7u + 12 = 0$."
+        }
+      ]
+    },
+    {
+      "id": "solving-logarithmic-equations",
+      "title": "Solving Logarithmic Equations",
+      "teacherCues": [
+        "Write $\\log_3(5x-1) = \\log_3(x+7)$ and ask: What property lets us drop the logs?",
+        "Demonstrate solving $\\log 5x + \\log(x-1) = 2$ by condensing first, then exponentiating."
+      ],
+      "discoveryHook": {
+        "scenario": "Log equations often require condensing multiple logs into one, then exponentiating. But be careful—log domains mean you must check for extraneous solutions that sneak in when the original arguments aren't positive."
+      },
+      "concept": {
+        "explanation": [
+          "To solve logarithmic equations: 1. Use log properties to combine logs into a single $\\log_a (expression) = number$. 2. Rewrite in exponential form and solve. 3. Check solutions in the original equation; discard any that make an argument negative or zero.",
+          "If both sides are logs with the same base, use the One-to-One Property: $\\log_a M = \\log_a N \\Rightarrow M = N$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Logarithmic Equation Solving Steps",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "If there are multiple logs, condense using product/quotient rules."
+              },
+              {
+                "0": "2",
+                "1": "Isolate the logarithm on one side if necessary."
+              },
+              {
+                "0": "3",
+                "1": "Exponentiate both sides with the appropriate base."
+              },
+              {
+                "0": "4",
+                "1": "Solve the resulting algebraic equation."
+              },
+              {
+                "0": "5",
+                "1": "Check for extraneous solutions (arguments must be positive)."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Exponentiating Log Equations",
+          "formula": "$$ \\log_a (expression) = b \\quad\\Rightarrow\\quad a^b = expression $$",
+          "notes": [
+            "Rewrite the log equation as an exponential equation.",
+            "Always check the domain: the original log arguments must be >0."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — One-to-One with Logs",
+          "prompt": "Solve $\\log_3(5x-1) = \\log_3(x+7)$.",
+          "steps": [
+            "Both logs have the same base, apply One-to-One: $5x-1 = x+7$.",
+            "Solve: $4x = 8$, so $x = 2$.",
+            "Check: $5(2)-1 = 9 > 0$, $2+7 = 9 > 0$. Valid."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Condense and Exponentiate",
+          "prompt": "Solve $\\log 5x + \\log(x-1) = 2$. Explain why one solution is extraneous.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does $x=-4$ fail in the original equation?",
+          "minLength": 8,
+          "steps": [
+            "Condense: $\\log[5x(x-1)] = 2$.",
+            "Exponentiate base 10: $5x(x-1) = 10^2 = 100$.",
+            "Expand: $5x^2 - 5x - 100 = 0$, divide by 5: $x^2 - x - 20 = 0$.",
+            "Factor: $(x-5)(x+4) = 0$; $x=5$ or $x=-4$.",
+            "Check: for $x=-4$, $\\log(-20)$ is undefined, so it's extraneous. Solution is $x=5$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Solving with Natural Log",
+          "prompt": "Solve $2\\ln x = 4$ and approximate to three decimal places.",
+          "steps": [
+            "Divide by 2: $\\ln x = 2$.",
+            "Exponentiate: $e^{\\ln x} = e^2$.",
+            "$x = e^2 \\approx 7.389$.",
+            "Check: $\\ln 7.389 > 0$, valid."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Always Check for Extraneous Solutions!",
+        "body": "Logarithm arguments must be positive. After solving, plug each solution back into the original equation. If any log argument is non‑positive, reject that solution."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "When solving $\\log x + \\log(x-9) = 1$, first use the ___ property to combine the logs.",
+          "blanks": [
+            {
+              "accept": [
+                "product"
+              ]
+            }
+          ],
+          "hints": [
+            "Adding logs means multiply the arguments.",
+            "$\\log A + \\log B = \\log(AB)$."
+          ],
+          "feedbackIfWrong": "Combine using the product property."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "Solve $\\ln(2x-3) = \\ln(x+4)$.",
+          "answers": [
+            "7"
+          ],
+          "hints": [
+            "One-to-One Property: $2x-3 = x+4$.",
+            "Solve."
+          ],
+          "feedbackIfWrong": "$2x-3 = x+4 \\Rightarrow x = 7$."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "What is an extraneous solution?",
+          "answers": [
+            "a solution that does not satisfy the original equation",
+            "a false solution",
+            "an invalid solution"
+          ],
+          "hints": [
+            "It appears in the solving steps but fails the domain check.",
+            "Often from taking logs or squaring."
+          ],
+          "feedbackIfWrong": "An extraneous solution does not satisfy the original equation, often because of domain restrictions."
+        }
+      ]
+    },
+    {
+      "id": "applications",
+      "title": "Applications of Exponential and Logarithmic Equations",
+      "teacherCues": [
+        "Present the continuous compounding formula $A = Pe^{rt}$. Ask: How do we solve for $t$ when the amount doubles?",
+        "Demonstrate the doubling time example: $500e^{0.0675t} = 1000$."
+      ],
+      "discoveryHook": {
+        "scenario": "Investing \\$500 at 6.75% compounded continuously, how long to double? Solving $500e^{0.0675t}=1000$ uses logs to find the time. Exponential equations model growth, decay, cooling, and more—logs get the variable out of the exponent."
+      },
+      "concept": {
+        "explanation": [
+          "Many real‑life problems involve solving exponential equations. Common formulas: Compound interest $A=Pe^{rt}$, continuous growth/decay $A=A_0e^{kt}$.",
+          "To solve for time, isolate the exponential, take the natural log of both sides, and use the Inverse Property.",
+          "Always interpret the context: rounding may be needed, and check that answers make sense (e.g., positive time)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Doubling Time Formula",
+            "headers": [
+              "Formula",
+              "Meaning"
+            ],
+            "rows": [
+              {
+                "0": "$A = Pe^{rt}$",
+                "1": "Continuous compounding"
+              },
+              {
+                "0": "$t = \\frac{\\ln 2}{r}$",
+                "1": "Doubling time (when $A=2P$)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Solving for Time",
+          "formula": "$$ t = \\frac{\\ln (A/P)}{r} $$",
+          "notes": [
+            "Used when $A = Pe^{rt}$.",
+            "For doubling, $A/P = 2$, so $t = \\frac{\\ln 2}{r}$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Doubling an Investment",
+          "prompt": "You invest \\$500 at 6.75% compounded continuously. How long to double?",
+          "steps": [
+            "Set up: $500e^{0.0675t} = 1000$.",
+            "Divide by 500: $e^{0.0675t} = 2$.",
+            "Take $\\ln$ of both sides: $\\ln e^{0.0675t} = \\ln 2$.",
+            "Simplify: $0.0675t = \\ln 2$, so $t = \\frac{\\ln 2}{0.0675} \\approx 10.27$ years."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Population Growth",
+          "prompt": "A population grows according to $P(t) = 1000e^{0.02t}$. How long until the population reaches 2000?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do you use natural log here?",
+          "minLength": 8,
+          "steps": [
+            "Set $2000 = 1000e^{0.02t}$; divide by 1000: $2 = e^{0.02t}$.",
+            "Take $\\ln$: $\\ln 2 = 0.02t$, so $t = \\frac{\\ln 2}{0.02} \\approx 34.66$ years.",
+            "Natural log is used because the base is $e$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Finding Rate from Doubling Time",
+          "prompt": "A quantity doubles in 8 years under continuous growth. Find the annual growth rate $r$.",
+          "steps": [
+            "Doubling: $A = 2A_0$, so $2A_0 = A_0 e^{8r}$.",
+            "Cancel $A_0$: $2 = e^{8r}$; take $\\ln$: $\\ln 2 = 8r$.",
+            "$r = \\frac{\\ln 2}{8} \\approx 0.0866$, so about 8.66%."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Rate Must Be Decimal",
+        "body": "Always convert percent to decimal before using in formulas. 6.75% = 0.0675. The answer $t$ is in the same time unit as the rate (e.g., years)."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "The formula for doubling time under continuous compounding is $t = \\frac{\\ln 2}{r}$, where ___ is the annual interest rate in decimal form.",
+          "blanks": [
+            {
+              "accept": [
+                "r"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the variable in the denominator.",
+            "This letter also stands for 'rate'."
+          ],
+          "feedbackIfWrong": "$r$ is the annual interest rate."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "How long (in years) will it take \\$200 to double at 8% compounded continuously? Round to one decimal.",
+          "answers": [
+            "8.7"
+          ],
+          "hints": [
+            "$t = \\ln 2 / 0.08$.",
+            "$\\ln 2 \\approx 0.6931$."
+          ],
+          "feedbackIfWrong": "$t \\approx 8.7$ years."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "If a quantity triples in 10 years under continuous growth, what is the growth rate? (Exact answer with $\\ln$.)",
+          "answers": [
+            "(ln3)/10",
+            "ln3/10",
+            "\\frac{\\ln 3}{10}"
+          ],
+          "hints": [
+            "$3A_0 = A_0 e^{10r}$, so $3 = e^{10r}$.",
+            "Take $\\ln$, divide by 10."
+          ],
+          "feedbackIfWrong": "$r = \\frac{\\ln 3}{10}$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-solving-equations",
+      "title": "Blueprint Aid — Solving Exponential and Logarithmic Equations",
+      "teacherCues": [
+        "Write a general blueprint: 1. Identify equation type (exponential or logarithmic). 2. Isolate the exponential/log term. 3. Apply the appropriate inverse operation. 4. Solve and check.",
+        "Model with $3e^{2x} = 15$ and $\\log_2(x+1) = 3$."
+      ],
+      "discoveryHook": {
+        "scenario": "A consistent blueprint helps you avoid mistakes when switching between exponential and logarithmic forms. Think: isolate, inverse, solve, check."
+      },
+      "concept": {
+        "explanation": [
+          "**For exponential equations**: 1. Isolate the exponential expression. 2. Take the logarithm (same base) of both sides. 3. Use the Inverse Property. 4. Solve for the variable. 5. Check.",
+          "**For logarithmic equations**: 1. Condense to a single logarithm if needed. 2. Isolate the logarithm. 3. Exponentiate both sides. 4. Solve the resulting equation. 5. Check for extraneous solutions (domain of logs)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Universal Blueprint",
+            "headers": [
+              "Step",
+              "Exponential",
+              "Logarithmic"
+            ],
+            "rows": [
+              {
+                "0": "1. Isolate",
+                "1": "$a^x = b$",
+                "2": "$\\log_a (expr) = b$"
+              },
+              {
+                "0": "2. Inverse",
+                "1": "Take $\\log_a$",
+                "2": "Exponentiate base $a$"
+              },
+              {
+                "0": "3. Solve",
+                "1": "Use Inverse Property",
+                "2": "Use Inverse Property"
+              },
+              {
+                "0": "4. Check",
+                "1": "Plug in",
+                "2": "Check domain of logs"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Blueprint Summary",
+          "formula": "$$ \\text{Isolate} \\rightarrow \\text{Inverse} \\rightarrow \\text{Solve} \\rightarrow \\text{Check} $$",
+          "notes": [
+            "Isolate: get the exponential or log term alone.",
+            "Inverse: apply the appropriate inverse operation.",
+            "Check: ensure arguments of logs are positive, and the original equation holds."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Blueprint for Exponential",
+          "prompt": "Solve $5(2^x) - 3 = 37$ using the blueprint.",
+          "steps": [
+            "Isolate: $5(2^x) = 40$ → $2^x = 8$.",
+            "Recognize $8 = 2^3$, so $2^x = 2^3$.",
+            "One-to-One: $x = 3$. Check: $5(2^3)-3 = 5(8)-3 = 37$, true."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Blueprint for Logarithmic",
+          "prompt": "Explain how to solve $\\ln(3x-2) = 1$ using the blueprint.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What is the inverse operation of natural log?",
+          "minLength": 8,
+          "steps": [
+            "The log is already isolated.",
+            "Exponentiate with base $e$: $e^{\\ln(3x-2)} = e^1$.",
+            "Inverse Property: $3x-2 = e$, so $3x = e+2$, $x = \\frac{e+2}{3} \\approx 1.573$.",
+            "Check: $3(1.573)-2 > 0$, valid."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Blueprint Practice",
+          "prompt": "Solve $2\\log_4(x+5) = 6$ using the blueprint.",
+          "steps": [
+            "Isolate the log: divide by 2: $\\log_4(x+5) = 3$.",
+            "Exponentiate base 4: $4^{\\log_4(x+5)} = 4^3$.",
+            "Inverse: $x+5 = 64$, so $x = 59$.",
+            "Check: $\\log_4(64) = 3$, true."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Skip the Check",
+        "body": "Especially for log equations, always verify that arguments are positive. A negative or zero argument means the solution is extraneous."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "fill-blank",
+          "prompt": "In the blueprint for solving log equations, after isolating the log, the next step is to ___ both sides.",
+          "blanks": [
+            {
+              "accept": [
+                "exponentiate"
+              ]
+            }
+          ],
+          "hints": [
+            "Raise the base to both sides.",
+            "The inverse of log."
+          ],
+          "feedbackIfWrong": "Exponentiate both sides with the appropriate base."
+        },
+        {
+          "id": "q5-2",
+          "type": "short-answer",
+          "prompt": "Solve $4^{x} = 32$ by expressing both sides as powers of 2.",
+          "answers": [
+            "2.5",
+            "5/2",
+            "2.5",
+            "\\frac{5}{2}"
+          ],
+          "hints": [
+            "$4 = 2^2$, $32 = 2^5$.",
+            "Then $2x = 5$."
+          ],
+          "feedbackIfWrong": "$(2^2)^x = 2^5 \\Rightarrow 2x = 5 \\Rightarrow x = 2.5$."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "Why must we check for extraneous solutions when solving logarithmic equations?",
+          "answers": [
+            "log arguments must be positive",
+            "domain restrictions",
+            "arguments must be positive"
+          ],
+          "hints": [
+            "Logarithms are only defined for positive numbers.",
+            "If a solution makes an argument negative or zero, it's invalid."
+          ],
+          "feedbackIfWrong": "Because log arguments must be positive; solutions that violate this are extraneous."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

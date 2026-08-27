@@ -1,0 +1,797 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "ch1-lu1-1",
+  "title": "Rectangular Coordinates",
+  "standards": [
+    "HSG.GPE.B.6",
+    "HSG.GPE.B.7"
+  ],
+  "blocks": [
+    {
+      "id": "cartesian-plane",
+      "title": "1. The Cartesian Plane and Plotting Points",
+      "teacherCues": [
+        "Draw a large coordinate plane. Have students place sticky notes at given coordinates.",
+        "Ask: 'If I walk 3 blocks east and 4 blocks north, where am I? How is that like an ordered pair?'"
+      ],
+      "discoveryHook": {
+        "scenario": "A city map uses a grid: streets run east-west and avenues run north-south. Your location is given by the intersection of Street 2 and Avenue 5. The [[kw:Cartesian plane]] works the same way—every point is defined by two directed distances: the [[def:x-coordinate|horizontal distance from the y-axis]] and the [[def:y-coordinate|vertical distance from the x-axis]]."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Cartesian plane]] (rectangular coordinate system) is formed by two perpendicular real number lines: the $x$-axis (horizontal) and the $y$-axis (vertical).",
+          "The intersection is the [[def:origin|the point (0, 0) where the axes meet]].",
+          "The axes divide the plane into four [[kw:quadrants]]: I (both +), II ($x$ –, $y$ +), III (both –), IV ($x$ +, $y$ –).",
+          "Each point is an [[kw:ordered pair]] $(x, y)$, where $x$ is the directed distance from the $y$-axis, and $y$ is the directed distance from the $x$-axis.",
+          "[[imp: The order matters – $(3, 5)$ is very different from $(5, 3)$.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Signs of Coordinates in the Four Quadrants",
+            "variant": "colorful",
+            "headers": [
+              "Quadrant",
+              "$x$-coordinate",
+              "$y$-coordinate",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "I",
+                "1": "+",
+                "2": "+",
+                "3": "$(3, 5)$"
+              },
+              {
+                "0": "II",
+                "1": "–",
+                "2": "+",
+                "3": "$(-2, 4)$"
+              },
+              {
+                "0": "III",
+                "1": "–",
+                "2": "–",
+                "3": "$(-6, -1)$"
+              },
+              {
+                "0": "IV",
+                "1": "+",
+                "2": "–",
+                "3": "$(4, -8)$"
+              }
+            ],
+            "caption": "The sign of each coordinate determines the quadrant."
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Identify the quadrant",
+          "prompt": "In which quadrant is the point $(-4, 7)$?",
+          "steps": [
+            "$x$ is negative → move left from origin.",
+            "$y$ is positive → move up.",
+            "Left + up → Quadrant II."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why points on axes are not in a quadrant",
+          "prompt": "Explain why the point $(0, -5)$ does not belong to any quadrant.",
+          "peerPrompt": "Think about what it means to be on an axis.",
+          "minLength": 2,
+          "steps": [
+            "The $x$-coordinate is 0, so there is no horizontal movement.",
+            "The point lies directly on the $y$-axis.",
+            "A quadrant requires both coordinates to be nonzero."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Same numbers, different order",
+          "prompt": "Are the points $(3, -2)$ and $(-2, 3)$ in the same location?",
+          "steps": [
+            "$(3, -2)$: right 3, down 2 → Quadrant IV.",
+            "$(-2, 3)$: left 2, up 3 → Quadrant II.",
+            "No, they are in completely different locations."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "A common mistake is swapping the coordinates. [[imp: Always move horizontally first (the $x$-direction), then vertically (the $y$-direction).]]"
+      },
+      "questions": [
+        {
+          "id": "b1q1",
+          "type": "short-answer",
+          "prompt": "In which quadrant is the point $(-8, -2)$? (Roman numeral)",
+          "answers": [
+            "III",
+            "iii"
+          ],
+          "hints": [
+            "Both coordinates are negative.",
+            "Left and down → which quadrant?"
+          ],
+          "feedbackIfWrong": "III."
+        },
+        {
+          "id": "b1q2",
+          "type": "short-answer",
+          "prompt": "If a point is on the $x$-axis, its $y$-coordinate must be ___.",
+          "answers": [
+            "0",
+            "zero"
+          ],
+          "hints": [
+            "It hasn't moved vertically.",
+            "No distance above or below the axis."
+          ],
+          "feedbackIfWrong": "0."
+        },
+        {
+          "id": "b1q3",
+          "type": "short-answer",
+          "prompt": "Which quadrant has both $x$ and $y$ positive? (Roman numeral)",
+          "answers": [
+            "I",
+            "i"
+          ],
+          "hints": [
+            "Upper right.",
+            "Both coordinates positive."
+          ],
+          "feedbackIfWrong": "I."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A point lies on the positive $y$-axis. What must be true about its coordinates? Give an example.",
+        "type": "short-answer",
+        "answers": [
+          "x=0, y>0, e.g., (0,5)"
+        ],
+        "hints": [
+          "On $y$-axis means $x=0$.",
+          "Positive $y$-axis means $y>0$."
+        ]
+      }
+    },
+    {
+      "id": "distance-formula",
+      "title": "2. The Distance Formula",
+      "teacherCues": [
+        "Remind students: the Distance Formula is just the Pythagorean Theorem $a^2 + b^2 = c^2$ in disguise.",
+        "Use a 3-4-5 triangle to illustrate: from $(0,0)$ to $(3,4)$, the horizontal leg is 3, vertical leg is 4, so hypotenuse = 5."
+      ],
+      "discoveryHook": {
+        "scenario": "Two cities are 5 miles apart east-west and 12 miles apart north-south. The straight-line distance is NOT $5+12=17$ miles. Instead, you travel along the hypotenuse of a right triangle: $5^2 + 12^2 = c^2$, so $c = 13$ miles. The [[def:Distance Formula|formula for finding the length between two points in the coordinate plane]] generalizes this idea."
+      },
+      "concept": {
+        "explanation": [
+          "The Distance Formula gives the distance $d$ between $(x_1, y_1)$ and $(x_2, y_2)$:",
+          "$$d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$",
+          "It comes from the Pythagorean Theorem: the horizontal difference $|x_2 - x_1|$ and vertical difference $|y_2 - y_1|$ are the legs of a right triangle, and $d$ is the hypotenuse.",
+          "Because we square the differences, the order of subtraction doesn’t matter—the result is always non-negative.",
+          "[[imp: The formula gives the exact distance; leave it as a simplified radical unless asked to approximate.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Using the Distance Formula",
+            "variant": "colorful",
+            "headers": [
+              "Points",
+              "$x$-difference (squared)",
+              "$y$-difference (squared)",
+              "Distance"
+            ],
+            "rows": [
+              {
+                "0": "$(0,0)$ and $(3,4)$",
+                "1": "$(3-0)^2 = 9$",
+                "2": "$(4-0)^2 = 16$",
+                "3": "$\\sqrt{9+16}=5$"
+              },
+              {
+                "0": "$(1,2)$ and $(4,6)$",
+                "1": "$(4-1)^2 = 9$",
+                "2": "$(6-2)^2 = 16$",
+                "3": "$\\sqrt{9+16}=5$"
+              },
+              {
+                "0": "$(-2,1)$ and $(3,4)$",
+                "1": "$(3-(-2))^2=25$",
+                "2": "$(4-1)^2=9$",
+                "3": "$\\sqrt{25+9}=\\sqrt{34}$"
+              }
+            ],
+            "caption": "The distance is the square root of the sum of squared differences."
+          }
+        ],
+        "formulaCard": {
+          "title": "Distance Formula",
+          "formula": "$$d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$",
+          "notes": [
+            "Square each difference, add, then take the square root.",
+            "You can swap the points around and get the same distance."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Compute distance",
+          "prompt": "Find the distance between $(-2, 1)$ and $(3, 4)$.",
+          "steps": [
+            "Let $(x_1, y_1) = (-2, 1)$, $(x_2, y_2) = (3, 4)$.",
+            "$x$-difference: $3 - (-2) = 5$, square $= 25$.",
+            "$y$-difference: $4 - 1 = 3$, square $= 9$.",
+            "Sum $= 34$, so $d = \\sqrt{34} \\approx 5.83$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why order doesn’t matter",
+          "prompt": "Show that switching the labels $(1,5)$ and $(4,9)$ still gives the same distance.",
+          "peerPrompt": "What happens when you subtract the other way around?",
+          "minLength": 2,
+          "steps": [
+            "If $(x_1, y_1) = (4,9)$ and $(x_2, y_2) = (1,5)$: $x$-diff $= 1-4 = -3$, squared $= 9$.",
+            "$y$-diff $= 5-9 = -4$, squared $= 16$. Sum $= 25$, $d=5$.",
+            "If $(x_1, y_1) = (1,5)$ and $(x_2, y_2) = (4,9)$: $x$-diff $= 3$, squared $9$; $y$-diff $= 4$, squared $16$; same result.",
+            "The squaring removes any negative signs, so the distance is the same."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Horizontal/vertical segments",
+          "prompt": "Find the distance between $(−5, 2)$ and $(7, 2)$.",
+          "steps": [
+            "The $y$-coordinates are equal (2), so the segment is horizontal.",
+            "Distance $= |7 - (-5)| = 12$.",
+            "Using the formula: $\\sqrt{(7-(-5))^2 + (2-2)^2} = \\sqrt{12^2 + 0} = 12$.",
+            "Same logic applies to vertical segments when $x$-coordinates are equal."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don’t add the differences directly—the Pythagorean Theorem requires squaring first. [[imp: Always square, then add, then take the square root.]]"
+      },
+      "questions": [
+        {
+          "id": "b2q1",
+          "type": "fill-blank",
+          "prompt": "The Distance Formula comes from the ___ Theorem.",
+          "blanks": [
+            {
+              "accept": [
+                "Pythagorean"
+              ]
+            }
+          ],
+          "hints": [
+            "Right triangle relationship.",
+            "Named after a Greek mathematician."
+          ],
+          "feedbackIfWrong": "Pythagorean."
+        },
+        {
+          "id": "b2q2",
+          "type": "short-answer",
+          "prompt": "Find the distance between $(0, 0)$ and $(6, 8)$. (whole number only)",
+          "answers": [
+            "10"
+          ],
+          "hints": [
+            "$6^2 + 8^2 = 36+64 = 100$.",
+            "$\\sqrt{100} = ?$"
+          ],
+          "feedbackIfWrong": "10."
+        },
+        {
+          "id": "b2q3",
+          "type": "short-answer",
+          "prompt": "The distance between two points is 5. The horizontal difference is 3. What is the vertical difference? (number only, use Pythagorean triple: 3-4-5)",
+          "answers": [
+            "4"
+          ],
+          "hints": [
+            "$3^2 + b^2 = 5^2$",
+            "$9 + b^2 = 25$, $b^2 = 16$."
+          ],
+          "feedbackIfWrong": "4."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Show that the points $(2, 1)$, $(4, 0)$, and $(5, 7)$ form a right triangle by computing the three side lengths and checking the Pythagorean Theorem.",
+        "type": "short-answer",
+        "answers": [
+          "√45, √5, √50; 45+5=50"
+        ],
+        "hints": [
+          "$d_1 = \\sqrt{(5-2)^2+(7-1)^2} = \\sqrt{45}$; $d_2 = \\sqrt{(4-2)^2+(0-1)^2} = \\sqrt{5}$; $d_3 = \\sqrt{(5-4)^2+(7-0)^2} = \\sqrt{50}$.",
+          "Check: $(\\sqrt{45})^2 + (\\sqrt{5})^2 = 45+5 = 50 = (\\sqrt{50})^2$."
+        ]
+      }
+    },
+    {
+      "id": "midpoint-formula",
+      "title": "3. The Midpoint Formula",
+      "teacherCues": [
+        "Ask: 'If two friends want to meet exactly halfway between their houses, how do you find that spot?'",
+        "Show that you average the coordinates."
+      ],
+      "discoveryHook": {
+        "scenario": "Two hikers are at different trail markers. To meet halfway, they each need to travel to the midpoint. The [[def:Midpoint Formula|formula that finds the point exactly halfway between two given points]] is simply the average of the $x$-coordinates and the average of the $y$-coordinates."
+      },
+      "concept": {
+        "explanation": [
+          "The midpoint of the segment joining $(x_1, y_1)$ and $(x_2, y_2)$ is:",
+          "$$\\text{Midpoint} = \\left( \\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2} \\right)$$",
+          "The $x$-coordinate of the midpoint is the average (mean) of the $x$-coordinates.",
+          "The $y$-coordinate is the average of the $y$-coordinates.",
+          "[[imp: The midpoint is always an ordered pair, not a single number.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Finding the Midpoint of $(-5, -3)$ and $(9, 3)$",
+            "variant": "colorful",
+            "headers": [
+              "Coordinate",
+              "Point 1",
+              "Point 2",
+              "Sum",
+              "Average (Midpoint)"
+            ],
+            "rows": [
+              {
+                "0": "$x$",
+                "1": "$-5$",
+                "2": "$9$",
+                "3": "$4$",
+                "4": "$2$"
+              },
+              {
+                "0": "$y$",
+                "1": "$-3$",
+                "2": "$3$",
+                "3": "$0$",
+                "4": "$0$"
+              }
+            ],
+            "caption": "Midpoint = $(2, 0)$ lies exactly halfway between the two endpoints."
+          }
+        ],
+        "formulaCard": {
+          "title": "Midpoint Formula",
+          "formula": "$$\\text{Midpoint} = \\left( \\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2} \\right)$$",
+          "notes": [
+            "Think of it as the 'average point'.",
+            "Works for any two points in the plane."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find the midpoint",
+          "prompt": "Find the midpoint of the segment joining $(-5, -3)$ and $(9, 3)$.",
+          "steps": [
+            "$x$-coordinate: $(-5 + 9)/2 = 4/2 = 2$.",
+            "$y$-coordinate: $(-3 + 3)/2 = 0/2 = 0$.",
+            "Midpoint = $(2, 0)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why average?",
+          "prompt": "Explain why averaging the coordinates gives the point exactly halfway.",
+          "peerPrompt": "Draw a number line and place two numbers. Where is the midpoint?",
+          "minLength": 2,
+          "steps": [
+            "On a number line, the midpoint between $a$ and $b$ is $(a+b)/2$.",
+            "In the plane, we do the same for each coordinate separately.",
+            "Averaging the $x$'s gives the horizontal halfway point; averaging the $y$'s gives the vertical halfway point."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Midpoint practice",
+          "prompt": "Find the midpoint of $(1, 5)$ and $(7, -1)$.",
+          "steps": [
+            "$x$: $(1+7)/2 = 4$.",
+            "$y$: $(5 + (-1))/2 = 4/2 = 2$.",
+            "Midpoint = $(4, 2)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The midpoint is an ordered pair; don’t forget to report both coordinates. [[imp: You must average both $x$ and $y$ separately.]]"
+      },
+      "questions": [
+        {
+          "id": "b3q1",
+          "type": "fill-blank",
+          "prompt": "The $x$-coordinate of the midpoint is the ___ of the $x$-coordinates of the endpoints.",
+          "blanks": [
+            {
+              "accept": [
+                "average",
+                "mean"
+              ]
+            }
+          ],
+          "hints": [
+            "What operation splits the difference?",
+            "Add and divide by 2."
+          ],
+          "feedbackIfWrong": "average."
+        },
+        {
+          "id": "b3q2",
+          "type": "short-answer",
+          "prompt": "Find the midpoint of $(0, 0)$ and $(8, 6)$. Format: (x,y) without spaces.",
+          "answers": [
+            "(4,3)",
+            "(4, 3)"
+          ],
+          "hints": [
+            "(0+8)/2 = 4.",
+            "(0+6)/2 = 3."
+          ],
+          "feedbackIfWrong": "(4,3)."
+        },
+        {
+          "id": "b3q3",
+          "type": "short-answer",
+          "prompt": "One endpoint is $(3, 2)$ and the midpoint is $(5, 4)$. Find the other endpoint. Format: (x,y)",
+          "answers": [
+            "(7,6)",
+            "(7, 6)"
+          ],
+          "hints": [
+            "Set up (3+x)/2=5 → x=7.",
+            "(2+y)/2=4 → y=6."
+          ],
+          "feedbackIfWrong": "(7,6)."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A segment has one endpoint at $(a, b)$ and midpoint at $(m, n)$. Find the coordinates of the other endpoint in terms of $a, b, m, n$.",
+        "type": "short-answer",
+        "answers": [
+          "(2m-a, 2n-b)"
+        ],
+        "hints": [
+          "Let unknown endpoint be $(x, y)$.",
+          "Set $(a+x)/2 = m$ → $x=2m-a$; $(b+y)/2 = n$ → $y=2n-b$."
+        ]
+      }
+    },
+    {
+      "id": "applications",
+      "title": "4. Applications of Coordinate Geometry",
+      "teacherCues": [
+        "Ask: 'How can we use the Distance and Midpoint Formulas in real scenarios?'",
+        "Show football pass example: a pass from one spot to another on the field."
+      ],
+      "discoveryHook": {
+        "scenario": "A quarterback throws a pass from the 28-yard line, 40 yards from the sideline. The receiver catches it on the 5-yard line, 20 yards from the sideline. The pass traveled about 30 yards. By modeling the field with coordinates, we use the Distance Formula to find the exact length."
+      },
+      "concept": {
+        "explanation": [
+          "Coordinate geometry models real-world situations. Place a convenient coordinate system, assign coordinates to objects, and then apply formulas.",
+          "In the football example, let the $x$-axis be the sideline and the $y$-axis be the goal line.",
+          "Throw point: $(40, 28)$; catch point: $(20, 5)$. Pass length = $\\sqrt{(40-20)^2 + (28-5)^2} = \\sqrt{400+529} = \\sqrt{929} \\approx 30$ yards.",
+          "Similarly, midpoints can represent meeting places or centers.",
+          "[[imp: The key is to choose a coordinate system that makes sense for the problem.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Football Pass Coordinates",
+            "variant": "colorful",
+            "headers": [
+              "Event",
+              "Distance from Sideline ($x$)",
+              "Yard Line ($y$)"
+            ],
+            "rows": [
+              {
+                "0": "Quarterback throws",
+                "1": "40 yards",
+                "2": "28-yard line"
+              },
+              {
+                "0": "Receiver catches",
+                "1": "20 yards",
+                "2": "5-yard line"
+              },
+              {
+                "0": "",
+                "1": "Distance = $\\sqrt{(40-20)^2 + (28-5)^2}$",
+                "2": "$= \\sqrt{400+529} = \\sqrt{929} \\approx 30$ yards"
+              }
+            ],
+            "caption": "Coordinates turn a physical play into a geometry problem."
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – How long is the pass?",
+          "prompt": "Quarterback throws from the 28-yard line, 40 yards from the sideline. Receiver catches on the 5-yard line, 20 yards from the sideline. How long is the pass?",
+          "steps": [
+            "Assign coordinates: throw $(40, 28)$, catch $(20, 5)$.",
+            "Distance = $\\sqrt{(40-20)^2 + (28-5)^2} = \\sqrt{20^2+23^2} = \\sqrt{400+529} = \\sqrt{929}$.",
+            "$\\sqrt{929} \\approx 30$ yards."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why the origin doesn’t affect distances",
+          "prompt": "If we placed the origin at a different corner, would the pass distance change?",
+          "peerPrompt": "Think about how coordinates shift.",
+          "minLength": 2,
+          "steps": [
+            "If we shift the origin, both points' coordinates change by the same amount.",
+            "The differences $(x_2-x_1)$ and $(y_2-y_1)$ stay the same.",
+            "Therefore, the distance is independent of where we place the origin."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Meeting point",
+          "prompt": "Two delivery drones are at $(2, 5)$ and $(8, 1)$ (in km). They need to meet at the midpoint to transfer a package. Find the meeting point.",
+          "steps": [
+            "Midpoint $x = (2+8)/2 = 5$ km.",
+            "Midpoint $y = (5+1)/2 = 3$ km.",
+            "Meeting point: $(5, 3)$ km."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "When modeling real-world problems, clearly label your axes. [[imp: For a football field, the $x$-axis might be the sideline, and the $y$-axis the goal line.]]"
+      },
+      "questions": [
+        {
+          "id": "b4q1",
+          "type": "fill-blank",
+          "prompt": "To use coordinate geometry on a football field, you can place the origin at a ___ and define the axes along the field lines.",
+          "blanks": [
+            {
+              "accept": [
+                "corner"
+              ]
+            }
+          ],
+          "hints": [
+            "Start of both yardage and sideline measurements.",
+            "Convenient reference point."
+          ],
+          "feedbackIfWrong": "corner."
+        },
+        {
+          "id": "b4q2",
+          "type": "short-answer",
+          "prompt": "A pass from $(30, 25)$ to $(10, 5)$ has length $\\sqrt{a}$. What is $a$? (number only)",
+          "answers": [
+            "800"
+          ],
+          "hints": [
+            "Differences: $(30-10)^2=400$, $(25-5)^2=400$.",
+            "Sum = 800."
+          ],
+          "feedbackIfWrong": "800."
+        },
+        {
+          "id": "b4q3",
+          "type": "short-answer",
+          "prompt": "Two cars are at $(1, 1)$ and $(9, 5)$ on a map (miles). Their meeting point is the midpoint. Find the coordinates. Format: (x,y)",
+          "answers": [
+            "(5,3)",
+            "(5, 3)"
+          ],
+          "hints": [
+            "Average $x$: $(1+9)/2 = 5$.",
+            "Average $y$: $(1+5)/2 = 3$."
+          ],
+          "feedbackIfWrong": "(5,3)."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A ship is located at $(3, 4)$ and a lighthouse at $(15, 8)$ (miles). How far apart are they? If a rescue boat starts at the midpoint and travels directly to the ship, how far does it go?",
+        "type": "short-answer",
+        "answers": [
+          "√160 ≈ 12.65 miles; midpoint to ship = about 6.32 miles"
+        ],
+        "hints": [
+          "Distance between ship and lighthouse: $\\sqrt{(15-3)^2+(8-4)^2} = \\sqrt{144+16} = \\sqrt{160} \\approx 12.65$.",
+          "Midpoint is half that distance from each, so rescue boat travels about $6.32$ miles."
+        ]
+      }
+    },
+    {
+      "id": "blueprint-precalc",
+      "title": "5. Blueprint Aid for Coordinate Geometry Problems",
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that combines distance, midpoint, and verifying a right triangle."
+      ],
+      "discoveryHook": {
+        "scenario": "Given three points: $A(2, 1)$, $B(4, 0)$, $C(5, 7)$. Use the blueprint to determine if they form a right triangle, and find the midpoint of the hypotenuse."
+      },
+      "concept": {
+        "explanation": [
+          "Apply the blueprint to coordinate geometry problems:",
+          "1. **Understand**: Identify the given points and what is asked (distance, midpoint, right triangle check).",
+          "2. **Solve**: Use the Distance Formula for side lengths; use the Midpoint Formula for centers; apply the Pythagorean Theorem to check for right angles.",
+          "3. **Conclude**: State the findings clearly (e.g., 'right triangle with right angle at B', 'midpoint of hypotenuse is ...').",
+          "This structured approach prevents skipping steps and ensures all calculations are correct."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Blueprint: Right Triangle Verification",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Points: (2,1), (4,0), (5,7). Check for right triangle.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Distances",
+                "1": "$d_1=\\sqrt{45}$, $d_2=\\sqrt{5}$, $d_3=\\sqrt{50}$",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Check",
+                "1": "$(\\sqrt{45})^2+(\\sqrt{5})^2 = 50 = (\\sqrt{50})^2$ → right triangle.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Hypotenuse midpoint",
+                "1": "Longest side endpoints (2,1) and (5,7). Midpoint = $(\\frac{2+5}{2}, \\frac{1+7}{2}) = (3.5, 4)$.",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Right triangle, right angle at (4,0). Midpoint of hypotenuse is (3.5, 4).",
+                "2": ""
+              }
+            ],
+            "caption": "The blueprint keeps multi-step problems organized."
+          }
+        ],
+        "formulaCard": {
+          "title": "Coordinate Geometry Blueprint",
+          "formula": "$$d = \\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$$ $$\\text{Midpoint} = \\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}\\right)$$ $$\\text{Right triangle: } a^2 + b^2 = c^2$$",
+          "notes": [
+            "The longest side is always the hypotenuse.",
+            "Use exact radicals unless decimal approximation is requested."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full blueprint",
+          "prompt": "Points: $P(0, 0)$, $Q(6, 0)$, $R(3, 4)$. Is triangle PQR a right triangle? Find its area.",
+          "steps": [
+            "Distances: $PQ = 6$, $PR = \\sqrt{3^2+4^2}=5$, $QR = \\sqrt{3^2+4^2}=5$.",
+            "Check: $5^2+5^2=50$, $6^2=36$ → not right.",
+            "Area = $\\frac12 \\times$ base $\\times$ height. Base $PQ=6$, height $=4$ → area $=12$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Blueprint prevents errors",
+          "prompt": "Explain how the blueprint helps avoid common mistakes like mixing up the coordinates when plugging into the distance formula.",
+          "peerPrompt": "Think about the order of operations listed.",
+          "minLength": 2,
+          "steps": [
+            "The 'Solve' step explicitly uses the Distance Formula with substitutions shown.",
+            "It reminds you to square the differences, add, then take the square root.",
+            "The visual table format ensures you compute all three sides and compare them systematically."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Practice blueprint",
+          "prompt": "Points: $A(1, 2)$, $B(4, 6)$, $C(7, 2)$. Verify if triangle ABC is isosceles (two equal sides). Then find the midpoint of the base.",
+          "steps": [
+            "$AB = \\sqrt{3^2+4^2}=5$; $BC = \\sqrt{3^2+(-4)^2}=5$; $AC = \\sqrt{6^2+0}=6$.",
+            "$AB = BC = 5$ → isosceles.",
+            "Base $AC$ midpoint: $((1+7)/2, (2+2)/2) = (4, 2)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "When verifying a right triangle, compare the square of the longest side to the sum of squares of the other two. [[imp: The right angle is opposite the longest side.]]"
+      },
+      "questions": [
+        {
+          "id": "b5q1",
+          "type": "fill-blank",
+          "prompt": "The first step of the blueprint is to ___ the problem.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "hints": [
+            "Identify given and unknown.",
+            "U in U‑S‑C."
+          ],
+          "feedbackIfWrong": "understand."
+        },
+        {
+          "id": "b5q2",
+          "type": "short-answer",
+          "prompt": "For points $(0,0)$ and $(6,8)$, the distance is 10. What is the midpoint? Format: (x,y)",
+          "answers": [
+            "(3,4)",
+            "(3, 4)"
+          ],
+          "hints": [
+            "Average $x$: (0+6)/2=3.",
+            "Average $y$: (0+8)/2=4."
+          ],
+          "feedbackIfWrong": "(3,4)."
+        },
+        {
+          "id": "b5q3",
+          "type": "short-answer",
+          "prompt": "If three side lengths satisfy $a^2 + b^2 = c^2$, what type of triangle is it? (one word)",
+          "answers": [
+            "right"
+          ],
+          "hints": [
+            "Contains a 90° angle.",
+            "Satisfies the Pythagorean Theorem."
+          ],
+          "feedbackIfWrong": "right."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "The vertices of a triangle are $(-2, 1)$, $(4, 5)$, $(4, -3)$. Find the perimeter and classify the triangle (right, isosceles, both, or neither).",
+        "type": "short-answer",
+        "answers": [
+          "Perimeter = 6+2√13+2√13 = 6+4√13 ≈ 20.42; isosceles (two sides √52 each) but not right"
+        ],
+        "hints": [
+          "Side lengths: $\\sqrt{(6)^2+(4)^2}=√52$, $\\sqrt{(0)^2+(8)^2}=8$, $\\sqrt{(8)^2+(0)^2}=8$? Wait recalc: (4,5) to (4,-3) vertical distance = 8; (-2,1) to (4,5) = √52; (-2,1) to (4,-3) = √(6^2+(-4)^2)=√52.",
+          "Two sides are √52, so isosceles. Check Pythagorean: $(√52)^2+(√52)^2=104$, $8^2=64$ → not right."
+        ]
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

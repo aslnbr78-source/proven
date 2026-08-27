@@ -1,0 +1,800 @@
+{
+  "title": "Analyzing Geometric Sequences and Series",
+  "blocks": [
+    {
+      "id": "identifying-geometric-sequences",
+      "examples": [
+        {
+          "prompt": "Tell whether $ 6, 12, 20, 30, 42, \\dots $ is geometric.",
+          "role": "guided",
+          "steps": [
+            "Compute ratios: $ \\frac{12}{6} = 2 $, $ \\frac{20}{12} = \\frac{5}{3} \\approx 1.67 $, $ \\frac{30}{20} = \\frac{3}{2} = 1.5 $, $ \\frac{42}{30} = \\frac{7}{5} = 1.4 $.",
+            "The ratios are not constant.",
+            "So the sequence is not geometric."
+          ],
+          "title": "Example A — Checking Ratios"
+        },
+        {
+          "title": "Example B — Geometric with Fractional Ratio",
+          "steps": [
+            "Divide each term by the previous: $ \\frac{64}{256} = \\frac{1}{4} $, $ \\frac{16}{64} = \\frac{1}{4} $, $ \\frac{4}{16} = \\frac{1}{4} $, $ \\frac{1}{4} = \\frac{1}{4} $.",
+            "All ratios equal $ \\frac{1}{4} $.",
+            "The sequence is geometric with common ratio $ r = \\frac{1}{4} $."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you find the common ratio? What does a ratio of $ \\frac{1}{4} $ mean for the terms?",
+          "minLength": 8,
+          "prompt": "Is $ 256, 64, 16, 4, 1, \\dots $ geometric? Explain."
+        },
+        {
+          "steps": [
+            "Compute: $ \\frac{2}{-1} = -2 $, $ \\frac{-4}{2} = -2 $, $ \\frac{8}{-4} = -2 $, $ \\frac{-16}{8} = -2 $.",
+            "All ratios equal $ -2 $.",
+            "Yes, geometric with $ r = -2 $."
+          ],
+          "title": "Example C — Alternating Signs",
+          "role": "independent",
+          "prompt": "Determine if $ -1, 2, -4, 8, -16, \\dots $ is geometric. If so, find $ r $."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Ratio vs. Difference",
+        "body": "For geometric sequences, check the [[imp:ratio]] (division). Don't confuse with arithmetic sequences, where you check the difference (subtraction). Multiplying by a constant versus adding a constant."
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "ratio"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The constant is the common ratio.",
+          "prompt": "In a geometric sequence, the constant multiplier between consecutive terms is called the common ___.",
+          "id": "q8-3-1",
+          "hints": [
+            "It is denoted by $ r $.",
+            "You find it by dividing a term by the previous term."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "no"
+          ],
+          "feedbackIfWrong": "No, because the ratios are not constant (it's arithmetic).",
+          "prompt": "Is the sequence $ 2, 4, 6, 8, 10, \\dots $ geometric? (yes/no)",
+          "hints": [
+            "Check the ratios: $ \\frac{4}{2}=2 $, $ \\frac{6}{4}=1.5 $.",
+            "Are the ratios the same?"
+          ],
+          "id": "q8-3-2"
+        },
+        {
+          "prompt": "What is the common ratio of the geometric sequence $ 3, 15, 75, 375, \\dots $?",
+          "type": "short-answer",
+          "id": "q8-3-3",
+          "answers": [
+            "5",
+            "five"
+          ],
+          "feedbackIfWrong": "The common ratio is $ r = 5 $.",
+          "hints": [
+            "Divide the second term by the first: $ 15 \\div 3 $.",
+            "Also $ 75 \\div 15 $."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Write the sequence 6, 12, 20, 30, 42, … and ask: Are we adding a constant or multiplying by a constant?",
+        "Write 256, 64, 16, 4, 1, … and ask: What do we multiply each term by to get the next? Is that ratio constant?"
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine a chain letter where each person sends it to 5 others. The number of letters grows by a factor of 5 each round. Sequences that grow by a constant multiplier—not a constant addition—are geometric, and they appear everywhere from population explosions to compound interest."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:geometric sequence]] is a sequence where the ratio of any term to the previous term is constant. This constant is called the [[kw:common ratio]], denoted by $ r $.",
+          "You find $ r $ by dividing a term by the previous term: $ r = \\frac{a_{n+1}}{a_n} $.",
+          "If the ratios are not all equal, the sequence is not geometric.",
+          "Examples: $ 5, 15, 45, 135, \\dots $ is geometric with $ r = 3 $. $ 256, 64, 16, 4, 1, \\dots $ is geometric with $ r = \\frac{1}{4} $.",
+          "A geometric sequence can have terms that alternate signs if $ r $ is negative."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ 6, 12, 20, 30, 42, \\dots $",
+                "1": "$ 2,\\ \\frac{5}{3},\\ \\frac{3}{2},\\ \\frac{7}{5} $",
+                "2": "No, ratios vary"
+              },
+              {
+                "0": "$ 256, 64, 16, 4, 1, \\dots $",
+                "1": "$ \\frac{1}{4},\\ \\frac{1}{4},\\ \\frac{1}{4},\\ \\frac{1}{4} $",
+                "2": "Yes, $ r = \\frac{1}{4} $"
+              },
+              {
+                "0": "$ 27, 9, 3, 1, \\frac{1}{3}, \\dots $",
+                "1": "$ \\frac{1}{3},\\ \\frac{1}{3},\\ \\frac{1}{3},\\ \\frac{1}{3} $",
+                "2": "Yes, $ r = \\frac{1}{3} $"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Sequence",
+              "Ratios $ \\frac{a_{n+1}}{a_n} $",
+              "Geometric?"
+            ],
+            "title": "Checking for a Common Ratio",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$ r $",
+              "meaning": "common ratio (can be positive, negative, or fractional)"
+            },
+            {
+              "symbol": "$ a_n $",
+              "meaning": "the $ n $th term",
+              "tone": "subtle"
+            }
+          ],
+          "formula": "$$ r = \\frac{a_{n+1}}{a_n} $$"
+        }
+      },
+      "title": "Identifying Geometric Sequences"
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Term",
+              "Pattern",
+              "Formula"
+            ],
+            "title": "Building the Rule $ a_n = a_1 \\cdot r^{n-1} $",
+            "type": "table",
+            "rows": [
+              {
+                "0": "$ a_1 $",
+                "1": "Start",
+                "2": "$ a_1 $"
+              },
+              {
+                "0": "$ a_2 $",
+                "1": "$ a_1 \\cdot r $",
+                "2": "$ a_1 \\cdot r $"
+              },
+              {
+                "0": "$ a_3 $",
+                "1": "$ a_1 \\cdot r^2 $",
+                "2": "$ a_1 \\cdot r^2 $"
+              },
+              {
+                "0": "$ a_n $",
+                "1": "$ a_1 \\cdot r^{n-1} $",
+                "2": "$ a_1 \\cdot r^{n-1} $"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "The [[kw:rule for the nth term]] of a geometric sequence is: $$ a_n = a_1 \\cdot r^{n-1} $$",
+          "$ a_1 $ is the first term, $ r $ is the common ratio, and $ n $ is the term number.",
+          "If you know any term and $ r $, you can work backward to find $ a_1 $, then write the full rule.",
+          "If you know two terms, set up equations and solve for $ a_1 $ and $ r $.",
+          "The graph of a geometric sequence (with $ r > 0 $ and $ r \\neq 1 $) is an exponential curve."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "first term",
+              "symbol": "$ a_1 $"
+            },
+            {
+              "symbol": "$ r $",
+              "meaning": "common ratio",
+              "tone": "core"
+            },
+            {
+              "meaning": "term position (1st, 2nd, …)",
+              "tone": "subtle",
+              "symbol": "$ n $"
+            }
+          ],
+          "formula": "$$ a_n = a_1 \\cdot r^{n-1} $$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "Knowing the first term and the common ratio of a geometric sequence is like having a seed and a growth rule. You can jump directly to the 20th term without calculating all the ones in between, using the formula $ a_n = a_1 \\cdot r^{n-1} $."
+      },
+      "examples": [
+        {
+          "prompt": "Write a rule for the nth term of $ 5, 15, 45, 135, \\dots $ and find $ a_8 $.",
+          "title": "Example A — Write a Rule and Find a Term",
+          "steps": [
+            "Identify $ a_1 = 5 $ and $ r = \\frac{15}{5} = 3 $.",
+            "Plug into formula: $ a_n = 5 \\cdot 3^{n-1} $.",
+            "Find $ a_8 $: $ a_8 = 5 \\cdot 3^{7} = 5 \\cdot 2187 = 10,935 $."
+          ],
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you use the formula to find $ a_1 $? Why is $ n=4 $ used?",
+          "prompt": "One term is $ a_4 = 12 $ and $ r = 2 $. Write a rule for $ a_n $.",
+          "role": "peer-explain",
+          "title": "Example B — Given a Term and Common Ratio",
+          "steps": [
+            "Use $ a_4 = a_1 \\cdot r^{3} $: $ 12 = a_1 \\cdot 2^3 = 8a_1 $.",
+            "Solve: $ a_1 = \\frac{12}{8} = 1.5 $.",
+            "Rule: $ a_n = 1.5 \\cdot 2^{n-1} $."
+          ],
+          "minLength": 8
+        },
+        {
+          "prompt": "Two terms of a geometric sequence are $ a_2 = 12 $ and $ a_5 = -768 $. Write a rule for $ a_n $.",
+          "title": "Example C — Given Two Terms",
+          "role": "independent",
+          "steps": [
+            "Set up equations: $ a_1 r = 12 $; $ a_1 r^4 = -768 $.",
+            "Divide the second by the first: $ \\frac{a_1 r^4}{a_1 r} = \\frac{-768}{12} \\rightarrow r^3 = -64 $.",
+            "So $ r = \\sqrt[3]{-64} = -4 $.",
+            "Substitute back: $ a_1 (-4) = 12 \\rightarrow a_1 = -3 $.",
+            "Rule: $ a_n = -3 \\cdot (-4)^{n-1} $."
+          ]
+        }
+      ],
+      "id": "writing-rules-geometric",
+      "title": "Writing Rules for Geometric Sequences",
+      "confusionCorner": {
+        "body": "The first term has exponent $ 0 $, so the formula uses $ n-1 $. For $ n=1 $, $ r^{0}=1 $, giving $ a_1 $. [[imp:Don't use $ r^n $ unless the sequence is defined starting at $ n=0 $.]]",
+        "title": "Exponent is $ n-1 $, Not $ n $"
+      },
+      "teacherCues": [
+        "Write the formula $ a_n = a_1 \\cdot r^{n-1} $ on the board. Ask: What does $ n-1 $ in the exponent represent?",
+        "Pose: If $ a_1 = 5 $ and $ r = 3 $, what is $ a_4 $? Then find $ a_n $."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "q8-3-4",
+          "blanks": [
+            {
+              "accept": [
+                "1",
+                "one"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The exponent is $ n-1 $.",
+          "prompt": "The rule for the $ n $th term of a geometric sequence is $ a_n = a_1 \\cdot r^{n-1} $. The exponent on $ r $ is $ n - $ ___.",
+          "hints": [
+            "For the first term, $ n=1 $ gives exponent 0.",
+            "It is one less than the term number."
+          ]
+        },
+        {
+          "hints": [
+            "Use $ a_6 = 4 \\cdot 2^{5} $.",
+            "$ 2^5 = 32 $, times 4."
+          ],
+          "answers": [
+            "128",
+            "one hundred twenty eight"
+          ],
+          "id": "q8-3-5",
+          "prompt": "A geometric sequence has $ a_1 = 4 $ and $ r = 2 $. What is $ a_6 $? (Enter a number)",
+          "feedbackIfWrong": "$ a_6 = 4 \\cdot 32 = 128 $.",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "$ 4 = a_1 \\cdot 4 \\rightarrow a_1 = 1 $.",
+          "answers": [
+            "1",
+            "one"
+          ],
+          "prompt": "If $ a_3 = 4 $ and $ r = 2 $, what is $ a_1 $?",
+          "hints": [
+            "Use $ a_3 = a_1 \\cdot r^2 $.",
+            "$ 4 = a_1 \\cdot 4 $."
+          ],
+          "type": "short-answer",
+          "id": "q8-3-6"
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "A king promised to pay 1 grain of rice on the first square of a chessboard, 2 on the second, 4 on the third, doubling each time. The total rice needed is a geometric series—and the sum formula reveals an astronomical amount from a simple pattern."
+      },
+      "confusionCorner": {
+        "title": "Watch the Signs in the Formula",
+        "body": "The sum formula is $ S_n = a_1 \\frac{1 - r^n}{1 - r} $. Both numerator and denominator can be negative if $ r > 1 $. This is normal and yields a positive sum. [[imp:Don't drop the negative signs.]]"
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ S_n = a_1 \\frac{1 - r^n}{1 - r}, \\quad r \\neq 1 $$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "sum of the first $ n $ terms",
+              "symbol": "$ S_n $"
+            },
+            {
+              "meaning": "first term",
+              "tone": "core",
+              "symbol": "$ a_1 $"
+            },
+            {
+              "meaning": "common ratio ($ r \\neq 1 $)",
+              "tone": "core",
+              "symbol": "$ r $"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Expression"
+            ],
+            "variant": "colorful",
+            "title": "Deriving the Sum Formula",
+            "rows": [
+              {
+                "0": "Write $ S_n $",
+                "1": "$ a_1 + a_1 r + a_1 r^2 + \\dots + a_1 r^{n-1} $"
+              },
+              {
+                "0": "Multiply by $ r $",
+                "1": "$ rS_n = a_1 r + a_1 r^2 + \\dots + a_1 r^{n-1} + a_1 r^n $"
+              },
+              {
+                "0": "Subtract",
+                "1": "$ S_n - rS_n = a_1 - a_1 r^n $"
+              },
+              {
+                "0": "Factor",
+                "1": "$ S_n(1-r) = a_1(1-r^n) $"
+              },
+              {
+                "0": "Solve for $ S_n $",
+                "1": "$ S_n = a_1 \\frac{1 - r^n}{1 - r} $"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "The sum of the first $ n $ terms of a geometric sequence is called a [[kw:geometric series]], denoted $ S_n $.",
+          "The formula for the sum (when $ r \\neq 1 $) is: $$ S_n = a_1 \\frac{1 - r^n}{1 - r} $$",
+          "You need the first term $ a_1 $, the common ratio $ r $, and the number of terms $ n $.",
+          "If $ |r| < 1 $, the terms get smaller, and the sum approaches a finite value as $ n $ increases.",
+          "This formula is essential for calculating loan payments, investment growth, and many real‑life applications."
+        ]
+      },
+      "title": "Sums of Finite Geometric Series",
+      "teacherCues": [
+        "Write the series $ 1 + 2 + 4 + 8 + 16 $ and ask: How could we find this sum without adding?",
+        "Introduce the formula $ S_n = a_1 \\frac{1 - r^n}{1 - r} $ and show how it's derived by subtracting $ rS_n $ from $ S_n $."
+      ],
+      "id": "sums-of-geometric-series",
+      "questions": [
+        {
+          "feedbackIfWrong": "The denominator is $ 1 - r $.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the common ratio.",
+            "The denominator is $ 1 - r $."
+          ],
+          "id": "q8-3-7",
+          "prompt": "The sum of the first $ n $ terms of a geometric series is $ S_n = a_1 \\frac{1 - r^n}{1 - r} $. The denominator is $ 1 - $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "r"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q8-3-8",
+          "feedbackIfWrong": "$ S_6 = 5 \\cdot \\frac{1 - 64}{-1} = 5 \\cdot 63 = 315 $.",
+          "answers": [
+            "315",
+            "three hundred fifteen"
+          ],
+          "hints": [
+            "$ a_1 = 5 $, $ r = 2 $, $ n = 6 $.",
+            "Use $ S_6 = 5 \\cdot \\frac{1 - 2^6}{1 - 2} $."
+          ],
+          "type": "short-answer",
+          "prompt": "Find the sum $ \\sum_{i=1}^{6} 5 \\cdot 2^{i-1} $. (Enter a number)"
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The monthly rate is $ 0.06 / 12 = 0.005 $.",
+          "answers": [
+            "0.005",
+            ".005"
+          ],
+          "hints": [
+            "Divide the annual rate by 12.",
+            "$ 0.06 / 12 $."
+          ],
+          "prompt": "In the monthly payment example, what is the approximate monthly interest rate as a decimal for a 6% annual rate? (Enter a decimal like 0.005)",
+          "id": "q8-3-9"
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Identify $ a_1 = 4 $ (first term when $ k=1 $), $ r = 3 $, $ n = 10 $.",
+            "Plug into formula: $ S_{10} = 4 \\cdot \\frac{1 - 3^{10}}{1 - 3} $.",
+            "Simplify: $ 3^{10} = 59049 $, so $ 1 - 59049 = -59048 $; denominator $ 1-3 = -2 $.",
+            "$ S_{10} = 4 \\cdot \\frac{-59048}{-2} = 4 \\cdot 29524 = 118096 $."
+          ],
+          "role": "guided",
+          "prompt": "Find the sum $ \\sum_{k=1}^{10} 4 \\cdot 3^{k-1} $.",
+          "title": "Example A — Finding a Sum Using the Formula"
+        },
+        {
+          "prompt": "A $\\$20{,}000$ loan at 6% annual interest for 5 years (60 months) has monthly payment given by $ M = \\frac{L}{\\sum_{k=1}^{t} \\left( \\frac{1}{1+i} \\right)^k } $ with $ i = 0.005 $. Explain why the denominator is a geometric series.",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What is the first term and common ratio of the series in the denominator? How does that help calculate the payment?",
+          "minLength": 8,
+          "steps": [
+            "The denominator is $ \\frac{1}{1.005} + \\frac{1}{(1.005)^2} + \\dots + \\frac{1}{(1.005)^{60}} $.",
+            "This is a geometric series with $ a_1 = \\frac{1}{1.005} $ and $ r = \\frac{1}{1.005} $.",
+            "Using the sum formula, the denominator computes to about $ 51.726 $.",
+            "Then $ M = \\frac{20000}{51.726} \\approx 386.66 $."
+          ],
+          "title": "Example B — Monthly Payment Formula"
+        },
+        {
+          "prompt": "Find the sum of the first 8 terms of $ 16 + 8 + 4 + 2 + \\dots $",
+          "title": "Example C — Sum of a Series with Fractional Ratio",
+          "role": "independent",
+          "steps": [
+            "$ a_1 = 16 $, $ r = \\frac{1}{2} $, $ n = 8 $.",
+            "Formula: $ S_8 = 16 \\cdot \\frac{1 - (1/2)^8}{1 - 1/2} = 16 \\cdot \\frac{1 - 1/256}{1/2} = 16 \\cdot \\frac{255/256}{1/2} $.",
+            "Simplify: $ 16 \\cdot \\frac{255}{256} \\cdot 2 = \\frac{32 \\cdot 255}{256} = \\frac{8160}{256} = 31.875 $."
+          ]
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "From tournament brackets to loan repayments, geometric sequences model situations where things grow or shrink by a constant factor. Understanding the sum formula helps you calculate total costs, total games, or total interest."
+      },
+      "title": "Real‑Life Applications of Geometric Sequences and Series",
+      "examples": [
+        {
+          "steps": [
+            "Games per round: 32, 16, 8, 4, 2, 1. This is geometric with $ a_1 = 32 $, $ r = \\frac{1}{2} $, $ n = 6 $.",
+            "Total games: $ S_6 = 32 \\cdot \\frac{1 - (1/2)^6}{1 - 1/2} = 32 \\cdot \\frac{1 - 1/64}{1/2} = 32 \\cdot \\frac{63/64}{1/2} $.",
+            "Simplify: $ 32 \\cdot \\frac{63}{64} \\cdot 2 = 63 $.",
+            "So 63 total games are played."
+          ],
+          "prompt": "A 64‑team tournament halves the number of games each round. Find the total games played.",
+          "title": "Example A — Tournament Games",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Sequence: 1, 2, 4, 8. $ a_1 = 1 $, $ r = 2 $, $ n = 4 $.",
+            "Total: $ S_4 = 1 \\cdot \\frac{1 - 2^4}{1 - 2} = \\frac{1 - 16}{-1} = 15 $.",
+            "So 15 skydivers total."
+          ],
+          "title": "Example B — Skydiving Formation",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What is $ a_1 $ and $ r $? How do you find the total?",
+          "prompt": "In a skydiving formation, the first ring has 1 person, and each ring has twice as many as the previous ring. Find the total number of skydivers with 4 rings.",
+          "minLength": 8
+        },
+        {
+          "steps": [
+            "The denominator series: $ \\sum_{k=1}^{60} \\left( \\frac{1}{1.003333} \\right)^k $. First term $ a_1 = \\frac{1}{1.003333} \\approx 0.996677 $, $ r = 0.996677 $.",
+            "Use sum formula: $ S_{60} = 0.996677 \\cdot \\frac{1 - (0.996677)^{60}}{1 - 0.996677} \\approx 0.996677 \\cdot \\frac{1 - 0.8187}{0.003323} \\approx 0.996677 \\cdot 54.55 \\approx 54.38 $.",
+            "Monthly payment: $ M = \\frac{15000}{54.38} \\approx 275.80 $."
+          ],
+          "role": "independent",
+          "prompt": "A $\\$15{,}000$ car loan at 4% annual interest for 5 years. Calculate the monthly payment. ($ i = 0.04/12 \\approx 0.003333 $, $ t = 60 $).",
+          "title": "Example C — Car Loan Payment"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Loan Payment Formula Numerator",
+        "body": "The denominator is the sum of the geometric series. The numerator is just the loan amount $ L $. The formula $ M = L / \\sum_{k=1}^{t} (1/(1+i))^k $ gives the monthly payment. [[imp:Don't forget to convert annual interest to monthly by dividing by 12.]]"
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "32",
+                "thirty two"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "id": "q8-3-10",
+          "prompt": "In a tournament with 64 teams, the number of games per round follows a geometric sequence with common ratio $ \\frac{1}{2} $. The first term $ a_1 $ is the number of games in the first round, which is ___.",
+          "hints": [
+            "64 teams, each game eliminates one team.",
+            "Half of 64."
+          ],
+          "feedbackIfWrong": "The first round has 32 games."
+        },
+        {
+          "hints": [
+            "Use $ S_5 = 2 \\cdot \\frac{1 - 3^5}{1 - 3} $.",
+            "$ 3^5 = 243 $."
+          ],
+          "id": "q8-3-11",
+          "prompt": "A geometric sequence has $ a_1 = 2 $ and $ r = 3 $. What is the total of the first 5 terms? (Enter a number)",
+          "answers": [
+            "242",
+            "two hundred forty two"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "$ S_5 = 2 \\cdot \\frac{1 - 243}{-2} = 2 \\cdot 121 = 242 $."
+        },
+        {
+          "id": "q8-3-12",
+          "prompt": "For the loan payment formula, if the annual interest rate is 9%, what is the monthly interest rate $ i $ as a decimal? (Enter like 0.0075)",
+          "answers": [
+            "0.0075",
+            ".0075"
+          ],
+          "feedbackIfWrong": "Monthly rate $ i = 0.09 / 12 = 0.0075 $.",
+          "hints": [
+            "Divide 9% by 12.",
+            "$ 0.09 / 12 $."
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Pose: A soccer tournament starts with 64 teams; each round halves the number of games. How many total games?",
+        "Ask: What is the sequence of games per round? Is it arithmetic or geometric?"
+      ],
+      "id": "real-life-geometric-applications",
+      "concept": {
+        "explanation": [
+          "Many real‑life situations involve a constant multiplier, forming a geometric pattern.",
+          "Examples: tournament games, skydiving formations, population growth, loan interest.",
+          "Step 1: Identify $ a_1 $ and $ r $ from the description.",
+          "Step 2: Write the rule $ a_n = a_1 \\cdot r^{n-1} $ to find any term.",
+          "Step 3: Use the sum formula $ S_n = a_1 \\frac{1 - r^n}{1 - r} $ to find totals.",
+          "The monthly payment formula for loans is derived from the sum of a geometric series."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Situation",
+              "$ a_1 $",
+              "$ r $",
+              "What $ S_n $ Represents"
+            ],
+            "title": "Real‑Life Geometric Patterns",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Tournament games per round",
+                "1": "32 games",
+                "2": "$ \\frac{1}{2} $",
+                "3": "Total games played"
+              },
+              {
+                "0": "Skydiving rings",
+                "1": "1 person (first ring)",
+                "2": "2 (doubles each ring)",
+                "3": "Total skydivers"
+              },
+              {
+                "0": "Loan monthly interest factor",
+                "1": "$ \\frac{1}{1+i} $",
+                "2": "$ \\frac{1}{1+i} $",
+                "3": "Denominator for monthly payment"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ M = \\frac{L}{\\sum_{k=1}^{t} \\left( \\frac{1}{1+i} \\right)^k } $$",
+          "legend": [
+            {
+              "symbol": "$ M $",
+              "tone": "core",
+              "meaning": "monthly payment"
+            },
+            {
+              "meaning": "loan amount",
+              "symbol": "$ L $",
+              "tone": "core"
+            },
+            {
+              "tone": "subtle",
+              "meaning": "monthly interest rate",
+              "symbol": "$ i $"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "questions": [
+        {
+          "type": "short-answer",
+          "answers": [
+            "4",
+            "four"
+          ],
+          "prompt": "In Example A, what is the common ratio $ r $? (Enter a number)",
+          "id": "q8-3-13",
+          "hints": [
+            "From $ r^3 = 64 $.",
+            "Take the cube root of 64."
+          ],
+          "feedbackIfWrong": "$ r = 4 $."
+        },
+        {
+          "hints": [
+            "If you have $ a_1 r^m $ and $ a_1 r^n $, what operation cancels $ a_1 $?",
+            "Subtraction doesn't cancel $ a_1 $ here."
+          ],
+          "prompt": "When given two terms of a geometric sequence, to find $ r $, you should ___ the two equations to eliminate $ a_1 $.",
+          "blanks": [
+            {
+              "accept": [
+                "divide"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "Divide the equations to cancel $ a_1 $.",
+          "id": "q8-3-14"
+        },
+        {
+          "feedbackIfWrong": "Possible values are $ r = 2 $ or $ r = -3 $.",
+          "type": "short-answer",
+          "answers": [
+            "2",
+            "two",
+            "-3",
+            "negative 3"
+          ],
+          "id": "q8-3-15",
+          "prompt": "A geometric sequence has $ S_3 = 14 $ and $ a_1 = 2 $. What is $ r $? (Enter a number)",
+          "hints": [
+            "Use $ S_3 = 2 \\cdot \\frac{1 - r^3}{1 - r} $.",
+            "Try $ r = 2 $: $ 2 \\cdot \\frac{1-8}{-1} = 14 $. Works. Also $ r = -3 $? $ 2 \\cdot \\frac{1 - (-27)}{1 - (-3)} = 2 \\cdot \\frac{28}{4} = 14 $, also works."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When given scattered clues about a geometric sequence, the Blueprint keeps you on track: find $ a_1 $ and $ r $ first, then write the rule, then compute any term or sum. It's your systematic approach to geometric puzzles."
+      },
+      "examples": [
+        {
+          "steps": [
+            "Understand: Need $ a_1 $ and $ r $. Equations: $ a_1 r = 28 $, $ a_1 r^4 = 1792 $.",
+            "Solve: Divide second by first: $ r^3 = \\frac{1792}{28} = 64 \\rightarrow r = 4 $. Then $ a_1 = \\frac{28}{4} = 7 $.",
+            "Rule: $ a_n = 7 \\cdot 4^{n-1} $.",
+            "Sum of first 8 terms: $ S_8 = 7 \\cdot \\frac{1 - 4^8}{1 - 4} = 7 \\cdot \\frac{1 - 65536}{-3} = 7 \\cdot 21845 = 152915 $.",
+            "Conclude: Rule is $ a_n = 7 \\cdot 4^{n-1} $; $ S_8 = 152,915 $."
+          ],
+          "prompt": "Given $ a_2 = 28 $ and $ a_5 = 1792 $, write the rule and find the sum of the first 8 terms.",
+          "role": "guided",
+          "title": "Example A — Full Blueprint from Two Terms to Sum"
+        },
+        {
+          "steps": [
+            "Understand: $ a_1 = 1 $ (first person), $ r = 5 $, $ n = 6 $. Total seen = sum of first 6 terms.",
+            "Solve: $ S_6 = 1 \\cdot \\frac{1 - 5^6}{1 - 5} = \\frac{1 - 15625}{-4} = \\frac{-15624}{-4} = 3906 $.",
+            "Conclude: 3906 people have seen the letter after 6 rounds."
+          ],
+          "minLength": 8,
+          "title": "Example B — Interpreting a Real‑Life Sum",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What is $ a_1 $ and $ r $? Why is the total the sum of a geometric series?",
+          "prompt": "A chain letter starts with 1 person sending to 5 others, and each person who receives it sends to 5 new people. How many people have seen the letter after 6 rounds? Use the Blueprint."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Understand: $ S_4 = 30 $, $ a_1 = 2 $, $ n = 4 $.",
+            "Solve: $ 30 = 2 \\cdot \\frac{1 - r^4}{1 - r} $ → $ 15 = \\frac{1 - r^4}{1 - r} $.",
+            "Note $ 1 - r^4 = (1 - r)(1 + r + r^2 + r^3) $. So $ 15 = 1 + r + r^2 + r^3 $.",
+            "Try $ r = 2 $: $ 1+2+4+8 = 15 $. Works. So $ r = 2 $.",
+            "Conclude: The common ratio is $ 2 $."
+          ],
+          "prompt": "The sum of the first 4 terms of a geometric sequence is 30, and $ a_1 = 2 $. Find $ r $.",
+          "title": "Example C — Find the Rule from a Sum"
+        }
+      ],
+      "confusionCorner": {
+        "body": "The sum formula works for any $ r \\neq 1 $, even if $ r $ is negative or a fraction. When $ r $ is negative, the terms alternate signs, but the formula still holds. [[imp:Be careful with parentheses when raising negative numbers to powers.]]",
+        "title": "Negative or Fractional Ratios"
+      },
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude steps. Model: 'A geometric sequence has $ a_2 = 28 $ and $ a_5 = 1792 $. Find the rule and the sum of the first 8 terms.'",
+        "Ask: What do we need to find first? How do we use the two known terms?"
+      ],
+      "id": "blueprint-aid-geometric",
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Identify what is given (two terms? one term and $ r $? a series sum?). Determine the goal: a specific term, a rule, or a sum.",
+          "[[imp:Solve]]: 1) If needed, find $ a_1 $ and $ r $ using the general term formula or a system. For two terms, divide equations to eliminate $ a_1 $. 2) Write the rule $ a_n = a_1 \\cdot r^{n-1} $. 3) If a sum is needed, find the required $ n $ and apply $ S_n = a_1 \\frac{1 - r^n}{1 - r} $.",
+          "[[imp:Conclude]]: State the requested term, rule, or sum. Check that the common ratio is consistent with given information."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify known values; decide goal (rule, term, sum)."
+              },
+              {
+                "0": "Solve",
+                "1": "Find $ a_1 $ and $ r $; write $ a_n $; compute sum if needed."
+              },
+              {
+                "0": "Conclude",
+                "1": "State the answer; verify with given data."
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "title": "Blueprint for Geometric Sequences/Series"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ a_n = a_1 \\cdot r^{n-1} $$ $$ S_n = a_1 \\frac{1 - r^n}{1 - r} $$",
+          "legend": [
+            {
+              "meaning": "key parameters to find first",
+              "tone": "core",
+              "symbol": "$ a_1, r $"
+            }
+          ]
+        }
+      },
+      "title": "Blueprint Aid — Solving Geometric Sequence and Series Problems"
+    }
+  ],
+  "id": "chapter-8-3-analyzing-geometric-sequences-and-series",
+  "standards": [
+    "HSF.IF.A.3",
+    "HSF.BF.A.1a",
+    "HSF.BF.A.2",
+    "HSA.SSE.B.4"
+  ],
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "presenterNotes": [
+    "Emphasize the difference between arithmetic (constant difference) and geometric (constant ratio) sequences. A quick ratio check prevents misclassification.",
+    "When writing the rule, the exponent $ n-1 $ is a common stumbling block. Show why $ a_1 $ has exponent 0.",
+    "The sum formula derivation is elegant; walk through it step by step. The trick of subtracting $ rS_n $ from $ S_n $ is worth highlighting.",
+    "For real‑life applications, the loan payment formula is a powerful example of geometric series in finance. Use a calculator to show the steps.",
+    "The Blueprint block ties everything together. Use it to model the systematic approach: find $ a_1 $ and $ r $ first, then answer the question."
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

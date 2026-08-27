@@ -1,0 +1,809 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-11-4-two-way-tables",
+  "title": "Chapter 11.4 — Two-Way Tables",
+  "blocks": [
+    {
+      "id": "marginal-frequencies",
+      "title": "Finding and Interpreting Marginal Frequencies",
+      "teacherCues": [
+        "Display the mobile access table. Ask: 'What do the numbers in the Total row and Total column represent?'",
+        "Point to the bottom‑right corner. 'This number (152) is the total surveyed. Every other total comes from adding across or down.'"
+      ],
+      "discoveryHook": {
+        "scenario": "A two‑way table organizes data into rows and columns, showing how two categories relate. The sums at the edges — the marginal frequencies — give you the big‑picture totals. They're like the summary of a story told by the numbers inside."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:two‑way table]] displays data collected from one source that belong to two different categories. One category forms the rows; the other forms the columns.",
+          "Each entry inside the table is a [[kw:joint frequency]]. It counts how many individuals fall into both a specific row and a specific column.",
+          "The sums of the rows and columns are called [[kw:marginal frequencies]]. They appear in the 'Total' row and 'Total' column.",
+          "The grand total (bottom‑right corner) equals the total number surveyed. All marginal totals must be consistent.",
+          "Example: A survey asks freshmen and sophomores about mobile access. The marginal frequencies show 77 freshmen, 75 sophomores, 118 with access, 34 without, total 152."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Mobile Access Survey",
+            "headers": [
+              "",
+              "Yes",
+              "No",
+              "Total"
+            ],
+            "rows": [
+              {
+                "0": "Freshman",
+                "1": "55",
+                "2": "22",
+                "3": "77"
+              },
+              {
+                "0": "Sophomore",
+                "1": "63",
+                "2": "12",
+                "3": "75"
+              },
+              {
+                "0": "Total",
+                "1": "118",
+                "2": "34",
+                "3": "152"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Two‑Way Table Structure",
+          "formula": "$$ \\text{Joint Frequencies} + \\text{Marginal Frequencies} = \\text{Grand Total} $$",
+          "notes": [
+            "Row totals = sum of joint frequencies in that row.",
+            "Column totals = sum of joint frequencies in that column.",
+            "Grand total = sum of row totals = sum of column totals."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Read the Marginal Frequencies",
+          "prompt": "Use the mobile access table to find how many students do not access the Internet using a mobile device.",
+          "steps": [
+            "Look at the 'No' column in the 'Total' row.",
+            "The marginal frequency for 'No' is 34.",
+            "Interpret: 34 students do not use a mobile device to access the Internet."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Interpreting Row Totals",
+          "prompt": "What does the row total for sophomores tell you?",
+          "peerPrompt": "Explain to a partner: How is a row total different from a cell count? Why are marginal frequencies useful?",
+          "minLength": 2,
+          "steps": [
+            "The row total for sophomores is 75.",
+            "This means 75 sophomores were surveyed in total.",
+            "It summarizes all sophomores, regardless of mobile access."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Practice",
+          "prompt": "A tech survey shows 34 students have a cell phone and tablet, 124 have a cell phone but no tablet, 18 have no cell phone but a tablet, and 67 have neither. Find the grand total.",
+          "steps": [
+            "Add all joint frequencies: 34 + 124 + 18 + 67 = 243.",
+            "The grand total is 243 students surveyed."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Marginal vs. Joint",
+        "body": "Joint frequencies are the 'inside' numbers (belong to two categories). Marginal frequencies are the 'edge' numbers (belong to one category only). Think 'joint = intersection, marginal = edge.'"
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "In a two‑way table, the numbers inside the table are called joint frequencies. The sums at the edges are called ___ frequencies.",
+          "blanks": [
+            {
+              "accept": [
+                "marginal",
+                "Marginal"
+              ]
+            }
+          ],
+          "hints": [
+            "They are in the margins.",
+            "They summarize rows or columns."
+          ],
+          "feedbackIfWrong": "They are marginal frequencies."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "In the mobile access table, how many freshmen were surveyed?",
+          "answers": [
+            "77",
+            "seventy seven"
+          ],
+          "hints": [
+            "Look at the row total for freshmen.",
+            "It's in the 'Total' column."
+          ],
+          "feedbackIfWrong": "77 freshmen were surveyed."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "If a table has row totals 50 and 70, and column totals 40 and 80, what must the grand total be?",
+          "answers": [
+            "120",
+            "one hundred twenty"
+          ],
+          "hints": [
+            "Sum of row totals = grand total.",
+            "50 + 70 = 120."
+          ],
+          "feedbackIfWrong": "The grand total is 120."
+        }
+      ]
+    },
+    {
+      "id": "making-two-way-tables",
+      "title": "Making Two‑Way Tables",
+      "teacherCues": [
+        "Present the sport/instrument survey: 286 students, 118 play a sport, 64 of those play an instrument, 93 play neither. Ask: 'How can we fill in the rest?'",
+        "Draw a blank table. Fill in the given numbers, then use subtraction to complete it."
+      ],
+      "discoveryHook": {
+        "scenario": "Given just a few facts about a group, you can build a complete two‑way table like a puzzle. Each missing piece is found by adding or subtracting the known pieces. The finished table reveals all the relationships."
+      },
+      "concept": {
+        "explanation": [
+          "To make a two‑way table from a description, first identify the two categories and their options.",
+          "Draw the grid with rows and columns, including 'Total' row and column.",
+          "Place the given joint and marginal frequencies into the correct cells.",
+          "Use addition and subtraction to find the missing values. Remember: row totals = sum of that row; column totals = sum of that column; grand total = sum of row totals.",
+          "Example: Sport vs. Instrument survey. Start with the totals you know, then fill inward."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Building the Sport/Instrument Table",
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "1. Outline",
+                "1": "Rows: Sport (Yes/No), Columns: Instrument (Yes/No). Add Totals.",
+                "2": ""
+              },
+              {
+                "0": "2. Given",
+                "1": "Total=286; Sport Yes=118; Sport Yes & Inst Yes=64; Neither=93.",
+                "2": "Enter these numbers."
+              },
+              {
+                "0": "3. Find Sport No",
+                "1": "286 − 118 = 168",
+                "2": "Row total for Sport No = 168."
+              },
+              {
+                "0": "4. Find Sport Yes & Inst No",
+                "1": "118 − 64 = 54",
+                "2": "Cell: Sport Yes, Inst No = 54."
+              },
+              {
+                "0": "5. Find remaining",
+                "1": "Use column totals.",
+                "2": "Instrument Yes total = 139; Instrument No total = 147."
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Completed Sport/Instrument Table",
+            "headers": [
+              "",
+              "Instrument Yes",
+              "Instrument No",
+              "Total"
+            ],
+            "rows": [
+              {
+                "0": "Sport Yes",
+                "1": "64",
+                "2": "54",
+                "3": "118"
+              },
+              {
+                "0": "Sport No",
+                "1": "75",
+                "2": "93",
+                "3": "168"
+              },
+              {
+                "0": "Total",
+                "1": "139",
+                "2": "147",
+                "3": "286"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Filling a Two‑Way Table",
+          "formula": "$$ \\text{Row Total} = \\text{sum of that row} \\quad \\text{Column Total} = \\text{sum of that column} $$",
+          "notes": [
+            "Work from the outside in: use given totals to find missing cells.",
+            "Always check that row totals sum to grand total and column totals sum to grand total."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Build from Given Facts",
+          "prompt": "286 students: 118 play a sport, 64 of those play an instrument, 93 play neither. Make the two‑way table.",
+          "steps": [
+            "Set up rows: Sport Yes / No. Columns: Instrument Yes / No.",
+            "Fill given: Total 286. Sport Yes Total = 118. Sport Yes & Instrument Yes = 64. Sport No & Instrument No = 93.",
+            "Sport No Total = 286 − 118 = 168. Sport Yes & Instrument No = 118 − 64 = 54. Sport No & Instrument Yes = 168 − 93 = 75.",
+            "Column totals: Instrument Yes = 64+75=139. Instrument No = 54+93=147. Grand total 139+147=286."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Summer Job Survey",
+          "prompt": "75 males, 18 say no to a summer job. 57 females, 45 say yes. Make the table.",
+          "peerPrompt": "Explain to a partner: After filling the given numbers, what operation do you use to find the missing cells?",
+          "minLength": 2,
+          "steps": [
+            "Rows: Male/Female. Columns: Summer Job Yes/No.",
+            "Male Total = 75; Male No = 18 → Male Yes = 75−18 = 57.",
+            "Female Total = 57; Female Yes = 45 → Female No = 57−45 = 12.",
+            "Column totals: Yes = 57+45=102; No = 18+12=30. Grand total = 132."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Practice",
+          "prompt": "A car lot has 98 cars: 55 new, 36 of those domestic. 15 used foreign. Make the table.",
+          "steps": [
+            "Rows: New/Used. Columns: Domestic/Foreign.",
+            "New Total = 55. New Domestic = 36 → New Foreign = 55−36=19.",
+            "Used Total = 98−55=43. Used Foreign = 15 → Used Domestic = 43−15=28.",
+            "Column totals: Domestic = 36+28=64; Foreign = 19+15=34."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Work from the Outside In",
+        "body": "Start with the grand total and the totals that are given. Then use subtraction to find the missing interior cells. Check that all row and column sums match the totals."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "To complete a two‑way table, use the fact that the sum of each row equals its ___ total.",
+          "blanks": [
+            {
+              "accept": [
+                "row",
+                "Row"
+              ]
+            }
+          ],
+          "hints": [
+            "It's at the end of the row.",
+            "The marginal frequency for that row."
+          ],
+          "feedbackIfWrong": "The sum of each row equals its row total."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "In the sport/instrument survey, how many students play a sport but do not play an instrument?",
+          "answers": [
+            "54",
+            "fifty four"
+          ],
+          "hints": [
+            "Sport Yes & Instrument No.",
+            "118 − 64 = ?"
+          ],
+          "feedbackIfWrong": "54 students play a sport but no instrument."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "If a table has a grand total of 200, and the row totals are 120 and 80, what must the column totals sum to?",
+          "answers": [
+            "200",
+            "two hundred"
+          ],
+          "hints": [
+            "Column totals sum must equal grand total.",
+            "120 + 80 = 200."
+          ],
+          "feedbackIfWrong": "The column totals must sum to 200."
+        }
+      ]
+    },
+    {
+      "id": "relative-frequencies",
+      "title": "Joint, Marginal, and Conditional Relative Frequencies",
+      "teacherCues": [
+        "Take the medical field survey table. Ask: 'What fraction of all students are juniors planning to major in a medical field?'",
+        "Then ask: 'Given that a student is a junior, what's the chance they plan to major in medicine? How is this different from the overall percentage?'"
+      ],
+      "discoveryHook": {
+        "scenario": "Raw counts tell you 'how many,' but relative frequencies tell you 'what proportion' or 'what percent.' Conditional relative frequencies dig even deeper — they let you compare groups fairly, like the percentage of juniors vs. seniors planning to major in medicine."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:joint relative frequency]] is the ratio of a joint frequency to the grand total. It tells what fraction of the whole group falls into a specific cell.",
+          "A [[kw:marginal relative frequency]] is the ratio of a marginal frequency to the grand total. It tells what fraction of the whole falls into a row or column.",
+          "A [[kw:conditional relative frequency]] is the ratio of a joint frequency to a marginal frequency (row or column total). It tells what fraction of a subgroup falls into a specific cell.",
+          "Conditional frequencies allow you to compare groups: 'Of those who exercise, what percent eat fruits/vegetables?' vs. 'Of those who don't exercise, what percent?'"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Medical Field Survey – Joint and Marginal Relative Frequencies",
+            "headers": [
+              "",
+              "Medical Yes",
+              "Medical No",
+              "Total"
+            ],
+            "rows": [
+              {
+                "0": "Junior",
+                "1": "124/680 ≈ 0.18",
+                "2": "219/680 ≈ 0.32",
+                "3": "0.50"
+              },
+              {
+                "0": "Senior",
+                "1": "101/680 ≈ 0.15",
+                "2": "236/680 ≈ 0.35",
+                "3": "0.50"
+              },
+              {
+                "0": "Total",
+                "1": "0.33",
+                "2": "0.67",
+                "3": "1.00"
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Conditional Relative Frequencies (Based on Column Totals)",
+            "headers": [
+              "",
+              "Medical Yes",
+              "Medical No"
+            ],
+            "rows": [
+              {
+                "0": "Junior",
+                "1": "124/225 ≈ 0.55",
+                "2": "219/455 ≈ 0.48"
+              },
+              {
+                "0": "Senior",
+                "1": "101/225 ≈ 0.45",
+                "2": "236/455 ≈ 0.52"
+              },
+              {
+                "0": "Total",
+                "1": "1.00",
+                "2": "1.00"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Relative Frequencies",
+          "formula": "$$ \\text{Joint Relative Frequency} = \\frac{\\text{Joint Frequency}}{\\text{Grand Total}} $$ $$ \\text{Marginal Relative Frequency} = \\frac{\\text{Marginal Frequency}}{\\text{Grand Total}} $$ $$ \\text{Conditional Relative Frequency} = \\frac{\\text{Joint Frequency}}{\\text{Marginal Frequency (row or column)}} $$",
+          "notes": [
+            "All joint relative frequencies sum to 1.",
+            "Conditional frequencies can be based on row totals or column totals."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Joint Relative Frequency",
+          "prompt": "In the medical field survey, 124 juniors plan to major in medicine out of 680 students. What is the joint relative frequency?",
+          "steps": [
+            "Divide 124 by the grand total 680.",
+            "124/680 ≈ 0.182, or about 18.2%.",
+            "About 18% of all surveyed students are juniors planning to major in medicine."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Conditional Relative Frequency",
+          "prompt": "Given that a student is a junior, what is the conditional relative frequency that they plan to major in medicine?",
+          "peerPrompt": "Explain to a partner: How is this different from the joint relative frequency? Why do we divide by the row total instead of the grand total?",
+          "minLength": 2,
+          "steps": [
+            "We use the row total for juniors: 124 + 219 = 343.",
+            "The conditional relative frequency = 124 / 343 ≈ 0.362.",
+            "About 36.2% of juniors plan to major in medicine. This is different from the 18% joint frequency because it focuses only on juniors."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Practice",
+          "prompt": "Refer to the summer job survey: 102 yes, 30 no. What is the marginal relative frequency of students getting a summer job?",
+          "steps": [
+            "Marginal frequency of Yes = 102. Grand total = 132.",
+            "102/132 ≈ 0.773, or about 77.3%.",
+            "About 77% of surveyed students are getting a summer job."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Row vs. Column Conditional",
+        "body": "A conditional relative frequency can use either a row total or a column total. The choice depends on the question: 'Given a row category, what's the column distribution?' uses row totals. 'Given a column category, what's the row distribution?' uses column totals."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "A joint relative frequency is found by dividing a joint frequency by the ___ total.",
+          "blanks": [
+            {
+              "accept": [
+                "grand",
+                "Grand"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the total of all observations.",
+            "The bottom‑right corner."
+          ],
+          "feedbackIfWrong": "Divide by the grand total."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "In the medical field survey, what is the marginal relative frequency of seniors? (Type as a decimal, e.g., 0.50)",
+          "answer": "0.50",
+          "hints": [
+            "Seniors total = 101 + 236 = 337? Wait, the table shows 0.50. Actually in the example, Junior total is 343, Senior total is 337? The joint relative frequency table shows 0.50 for both. Let's use 0.50.",
+            "Divide senior total by 680."
+          ],
+          "feedbackIfWrong": "About 0.50 (50%) of students are seniors."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "To find the conditional relative frequency of medical Yes given Junior, divide the joint frequency (124) by what number?",
+          "answers": [
+            "343",
+            "three hundred forty three"
+          ],
+          "hints": [
+            "It's the row total for Junior.",
+            "124 + 219."
+          ],
+          "feedbackIfWrong": "Divide by 343, the total number of juniors."
+        }
+      ]
+    },
+    {
+      "id": "recognizing-associations",
+      "title": "Recognizing Associations in Data",
+      "teacherCues": [
+        "Show the exercise/eating table: 40% exercise, 35% eat fruits/vegetables, 52% do neither. Ask: 'Is there a link between exercise and diet?'",
+        "Compute conditional frequencies: among exercisers, 67.5% eat well; among non‑exercisers, only about 13%. That's an association!"
+      ],
+      "discoveryHook": {
+        "scenario": "When two variables are linked — like exercising and eating healthy — we say there's an association. Conditional relative frequencies make the link visible: if the percentages differ noticeably across groups, an association exists."
+      },
+      "concept": {
+        "explanation": [
+          "An [[kw:association]] exists between two variables if the conditional relative frequencies differ noticeably across the categories of one variable.",
+          "To check for association, compute conditional relative frequencies (based on row or column totals) and compare them.",
+          "If the conditional frequencies are similar, there is little or no association. If they are very different, an association is present.",
+          "Example: Among students who exercise regularly, 67.5% eat fruits/vegetables daily. Among those who don't exercise, only 13% eat fruits/vegetables daily. This big difference indicates an association between exercise and diet."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Exercise and Eating Habits (Conditional on Column Totals)",
+            "headers": [
+              "",
+              "Exercise Yes",
+              "Exercise No"
+            ],
+            "rows": [
+              {
+                "0": "Eats Fruits/Vegetables Yes",
+                "1": "0.27/0.40 = 0.675",
+                "2": "0.08/0.60 ≈ 0.133"
+              },
+              {
+                "0": "Eats Fruits/Vegetables No",
+                "1": "0.13/0.40 = 0.325",
+                "2": "0.52/0.60 ≈ 0.867"
+              },
+              {
+                "0": "Total",
+                "1": "1.00",
+                "2": "1.00"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Checking for Association",
+          "formula": "$$ \\text{Compare conditional relative frequencies across groups.} $$ $$ \\text{If they differ significantly, there is an association.} $$",
+          "notes": [
+            "Use conditional frequencies based on the explanatory variable (the one you think influences the other).",
+            "No association → conditional frequencies are similar across categories."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Exercise and Diet",
+          "prompt": "40% exercise, 35% eat well, 52% do neither. Is there an association?",
+          "steps": [
+            "Construct the table. Fill in 27% (exercise & eat well), 13% (exercise & don't eat well), 8% (no exercise & eat well), 52% (no exercise & don't eat well).",
+            "Conditional on exercise: Among exercisers, 27/(27+13) = 0.675 eat well. Among non‑exercisers, 8/(8+52) ≈ 0.133 eat well.",
+            "The percentages are very different (67.5% vs. 13%). So, there is an association: exercisers are more likely to eat healthy."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Age and Sharing a Computer",
+          "prompt": "A table shows the number of students who share a computer by age. Ages 12‑13: 40 share, 10 don't. Ages 18‑19: 22 share, 34 don't. Is there an association?",
+          "peerPrompt": "Explain to a partner: How would you compute the conditional frequencies to check for association? What do the results tell you?",
+          "minLength": 2,
+          "steps": [
+            "For ages 12‑13: share rate = 40/50 = 0.80 (80%). For ages 18‑19: 22/56 ≈ 0.39 (39%).",
+            "The share rate drops dramatically as age increases.",
+            "Yes, there is an association: older students are less likely to share a computer."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Practice",
+          "prompt": "A survey of 200 people: 90 own a cat, 70 own a dog, 50 own both. Is there an association between cat and dog ownership?",
+          "steps": [
+            "Make a table: Cat Yes/No vs Dog Yes/No.",
+            "Cat Yes & Dog Yes = 50; Cat Yes & Dog No = 40; Cat No & Dog Yes = 20; Cat No & Dog No = 90.",
+            "Conditional: Among cat owners, 50/90 ≈ 0.56 also own a dog. Among non‑cat owners, 20/110 ≈ 0.18 own a dog. The difference suggests an association."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Association ≠ Causation",
+        "body": "An association means two variables are related, but it does not prove that one causes the other. There could be other factors involved."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "If conditional relative frequencies are very different across groups, this suggests there is an ___ between the variables.",
+          "blanks": [
+            {
+              "accept": [
+                "association",
+                "Association"
+              ]
+            }
+          ],
+          "hints": [
+            "A relationship.",
+            "Not necessarily causation."
+          ],
+          "feedbackIfWrong": "There is an association."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "Among 100 exercisers, 70 eat healthy. Among 100 non‑exercisers, 20 eat healthy. Is there an association? (yes/no)",
+          "answers": [
+            "yes",
+            "Yes"
+          ],
+          "hints": [
+            "Compare 70% to 20%.",
+            "Are the percentages different?"
+          ],
+          "feedbackIfWrong": "Yes, there is an association because the percentages differ greatly."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "If conditional relative frequencies are nearly identical across groups, there is ___ association.",
+          "answers": [
+            "no",
+            "little",
+            "no significant"
+          ],
+          "hints": [
+            "The variables are independent.",
+            "No relationship."
+          ],
+          "feedbackIfWrong": "There is no (or little) association."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-two-way-tables",
+      "title": "Blueprint Aid: Analyze a Two‑Way Table",
+      "teacherCues": [
+        "Summarize the process: 1) Build the table from given data. 2) Compute marginal frequencies. 3) Optionally, compute relative and conditional frequencies. 4) Check for associations.",
+        "Walk through a complete example from the text: the mobile access survey."
+      ],
+      "discoveryHook": {
+        "scenario": "The two‑way table blueprint gives you a step‑by‑step method to organize, summarize, and interpret categorical data. Whether you're analyzing survey results or sales data, this systematic approach reveals the relationships hiding in the numbers."
+      },
+      "concept": {
+        "explanation": [
+          "1. Understand: Identify the two categorical variables and their possible values. Determine what data are given.",
+          "2. Solve – Build the Table: Draw the grid with rows, columns, and Totals. Fill in the given joint and marginal frequencies. Use addition/subtraction to complete missing cells.",
+          "3. Solve – Summarize: Find marginal frequencies to describe the overall distribution. If needed, compute joint, marginal, and conditional relative frequencies to express proportions.",
+          "4. Conclude – Interpret: Compare conditional relative frequencies to check for associations. Report your findings in context.",
+          "This blueprint helps you move from raw data to meaningful conclusions."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint Summary for Mobile Access Survey",
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Two categories: Class and Mobile Access",
+                "2": "Joint frequencies given"
+              },
+              {
+                "0": "Solve – Build",
+                "1": "Add row/column totals",
+                "2": "Marginal frequencies found"
+              },
+              {
+                "0": "Solve – Summarize",
+                "1": "Compute relative frequencies if needed",
+                "2": "118/152 ≈ 77.6% have mobile access"
+              },
+              {
+                "0": "Conclude",
+                "1": "Interpret findings",
+                "2": "Most students access the Internet via mobile devices"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Two‑Way Table Blueprint",
+          "formula": "$$ \\text{Understand} \\rightarrow \\text{Build} \\rightarrow \\text{Summarize} \\rightarrow \\text{Conclude} $$",
+          "notes": [
+            "Always check that row and column totals match.",
+            "Use conditional frequencies to detect associations."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Full Blueprint",
+          "prompt": "Apply the blueprint to the mobile access survey data.",
+          "steps": [
+            "Understand: 152 students; rows = Class, columns = Mobile Access.",
+            "Solve – Build: Add totals: Freshman=77, Sophomore=75; Yes=118, No=34; grand=152.",
+            "Solve – Summarize: 77.6% use mobile access; 22.4% do not.",
+            "Conclude: A large majority of surveyed students use mobile devices for Internet access."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Checking for Association",
+          "prompt": "Use the blueprint to determine if there is an association between class and mobile access in the survey.",
+          "peerPrompt": "Explain to a partner: What conditional frequencies would you compare? What would a difference indicate?",
+          "minLength": 2,
+          "steps": [
+            "Compute conditional: Freshman Yes = 55/77 ≈ 0.714; Sophomore Yes = 63/75 = 0.84.",
+            "Compare: 71.4% vs. 84%. Sophomores are somewhat more likely to use mobile access.",
+            "There may be a slight association, but further data would be needed to confirm."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Your Turn",
+          "prompt": "A survey of 200 adults: 120 are married, 90 have children. 70 married have children. Use the blueprint to complete the table and determine if there's an association.",
+          "steps": [
+            "Build: Married Total=120, Children Total=90, Married&Children=70.",
+            "Married&No Children = 120−70=50. Not Married Total = 200−120=80. Not Married&Children = 90−70=20. Not Married&No Children = 80−20=60.",
+            "Conditional: Married with children = 70/120 ≈ 0.583. Not married with children = 20/80 = 0.25. Large difference → association."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Small Differences May Not Be Meaningful",
+        "body": "A small difference in conditional frequencies might be due to random chance, especially with small sample sizes. Look for substantial differences before concluding an association."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "fill-blank",
+          "prompt": "The first step in the two‑way table blueprint is to identify the two ___ variables and their categories.",
+          "blanks": [
+            {
+              "accept": [
+                "categorical",
+                "Categorical"
+              ]
+            }
+          ],
+          "hints": [
+            "They are not numerical.",
+            "Examples: gender, class, yes/no."
+          ],
+          "feedbackIfWrong": "Identify the two categorical variables."
+        },
+        {
+          "id": "q5-2",
+          "type": "short-answer",
+          "prompt": "After building the table, to check for association you compare ___ relative frequencies across groups.",
+          "answers": [
+            "conditional",
+            "Conditional"
+          ],
+          "hints": [
+            "They are based on row or column totals.",
+            "Not joint or marginal."
+          ],
+          "feedbackIfWrong": "Compare conditional relative frequencies."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "If the conditional frequencies are very similar across groups, there is ___ association.",
+          "answers": [
+            "no",
+            "little",
+            "no significant"
+          ],
+          "hints": [
+            "The variables are independent.",
+            "No relationship detected."
+          ],
+          "feedbackIfWrong": "There is no (or little) association."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

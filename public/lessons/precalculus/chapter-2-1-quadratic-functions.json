@@ -1,0 +1,472 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-2-1-quadratic-functions",
+  "title": "Quadratic Functions and Models",
+  "standards": [
+    "HSF.IF.C.7a",
+    "HSA.CED.A.2",
+    "HSF.IF.B.4"
+  ],
+  "blocks": [
+    {
+      "id": "polynomial-and-quadratic",
+      "title": "Polynomial and Quadratic Functions",
+      "teacherCues": [
+        "Draw a straight line, a parabola, and a cubic curve on the board. Ask students to identify which one represents a quadratic function based on Chapter 1.6."
+      ],
+      "discoveryHook": {
+        "scenario": "From the path of a bouncing basketball to the sweeping cables on a suspension bridge, the real world is full of U-shaped curves. Linear equations are great for constant rates, but to model gravity and acceleration, we need the power of quadratic functions!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:polynomial function]] is a mathematical expression involving a sum of powers in one or more variables multiplied by coefficients. The exponents must be non-negative integers.",
+          "A [[kw:quadratic function]] is simply a polynomial function of degree 2 (meaning the highest exponent is $2$).",
+          "The basic polynomial form of a quadratic function is $$f(x) = ax^2 + bx + c$$ where $a \\ne 0$.",
+          "Connecting back to Chapter 1.6, the graph of any quadratic function is a U-shaped curve called a [[kw:parabola]].",
+          "If the leading coefficient $a$ is positive ($a > 0$), the parabola opens [[imp:upward]]. If $a$ is negative ($a < 0$), the parabola opens [[imp:downward]]."
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Identifying the Function Type",
+          "prompt": "Determine if $f(x) = -3x^2 + 5x - 1$ is a quadratic function, and state which direction its parabola opens.",
+          "steps": [
+            "Look at the highest exponent in the polynomial. The highest power of $x$ is $2$.",
+            "Because the degree is $2$, it [[kw:is a quadratic function]].",
+            "Look at the leading coefficient $a$. Here, $a = -3$.",
+            "Because $a$ is negative, the parabola opens [[kw:downward]]."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Missing Terms",
+          "prompt": "Is $g(x) = 4x^2 - 9$ considered a quadratic function even though it doesn't have an $x$ term?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why are the 'bx' and 'c' terms optional, while the 'ax^2' term is absolutely required?",
+          "minLength": 8,
+          "steps": [
+            "The definition of a quadratic function requires the highest degree to be exactly $2$.",
+            "If the $ax^2$ term was missing, the highest degree would be $1$, making it a straight linear line!",
+            "As long as the squared term exists ($a \\ne 0$), the function is quadratic. Here, $a=4, b=0, c=-9$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Up or Down?",
+          "prompt": "Without graphing, determine if the parabola for $h(x) = \\frac{1}{2}x^2 + 7x$ opens upward or downward.",
+          "steps": [
+            "Identify the leading coefficient (the number attached to the $x^2$ term).",
+            "Here, $a = \\frac{1}{2}$.",
+            "Since $\\frac{1}{2}$ is a positive number ($a > 0$), the parabola opens [[kw:upward]]."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Hidden Leading Coefficients",
+        "body": "Sometimes equations are written out of order! If you see $f(x) = 5 - 2x^2$, the leading coefficient $a$ is the number attached to the $x^2$, which is [[imp:-2, not 5!]] Always find the squared term to determine if it opens up or down."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "The U-shaped graph of any quadratic function is mathematically called a ___.",
+          "blanks": [
+            {
+              "accept": [
+                "parabola",
+                "Parabola"
+              ]
+            }
+          ],
+          "hints": [
+            "This vocabulary word starts with the letter 'p'.",
+            "It was introduced in Chapter 1.6 as the shape of $f(x) = x^2$."
+          ],
+          "feedbackIfWrong": "The graph of a quadratic function is a U-shaped curve known as a parabola."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "If the leading coefficient $a$ in a quadratic function is negative, does the parabola open 'up' or 'down'?",
+          "answers": [
+            "down",
+            "Down",
+            "downward",
+            "Downward"
+          ],
+          "hints": [
+            "A negative $a$ value reflects the graph across the $x$-axis (recalling Chapter 1.7 transformations).",
+            "This makes the U-shape look like an upside-down bowl."
+          ],
+          "feedbackIfWrong": "If $a < 0$, the parabola is reflected and opens downward."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "What must the highest exponent (or degree) be for a polynomial to be officially classified as a quadratic function?",
+          "answers": [
+            "2",
+            "two"
+          ],
+          "hints": [
+            "Linear functions have a highest degree of $1$.",
+            "Quadratics deal with 'squared' variables."
+          ],
+          "feedbackIfWrong": "A quadratic function must have a degree of exactly 2, meaning its highest exponent is $x^2$."
+        }
+      ]
+    },
+    {
+      "id": "standard-form",
+      "title": "Standard Form of a Quadratic",
+      "teacherCues": [
+        "Explicitly connect standard form to the transformation rules from Chapter 1.7. Show them that $h$ is just an inside horizontal shift, and $k$ is an outside vertical shift!"
+      ],
+      "discoveryHook": {
+        "scenario": "Graphing $f(x) = x^2 - 6x + 5$ by making a giant table of points is exhausting. But if we rearrange the equation into a special format, we can instantly spot the exact center of the parabola and graph it in seconds!"
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:standard form]] of a quadratic function is: $$f(x) = a(x - h)^2 + k$$",
+          "This format is incredibly powerful because the coordinates $(h, k)$ represent the exact [[kw:vertex]] of the parabola (the absolute lowest or highest point).",
+          "[[imp:Notice the subtraction sign inside the parentheses!]] Just like in circle equations and point-slope form, the $x$-coordinate of the vertex ($h$) will look like it has the opposite sign in the equation.",
+          "The vertical line that perfectly splits the parabola into two mirror-image halves is called the [[def:axis of symmetry|the vertical line x = h passing through the vertex]]."
+        ],
+        "formulaCard": {
+          "formula": "$$f(x) = a(x - h)^2 + k$$",
+          "legend": [
+            {
+              "symbol": "(h, k)",
+              "meaning": "the vertex of the parabola",
+              "tone": "core"
+            },
+            {
+              "symbol": "a",
+              "meaning": "determines if it opens up/down and stretches/shrinks",
+              "tone": "subtle"
+            },
+            {
+              "symbol": "x = h",
+              "meaning": "the equation for the axis of symmetry",
+              "tone": "subtle"
+            }
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Extracting the Vertex",
+          "prompt": "Find the vertex and axis of symmetry for the function $f(x) = 2(x - 5)^2 + 3$.",
+          "steps": [
+            "Compare the function to the standard form template: $f(x) = a(x - h)^2 + k$.",
+            "The inside of the parentheses is $(x - 5)$, which means $h = 5$ (opposite sign!).",
+            "The outside number is $+3$, which means $k = 3$ (same sign).",
+            "The vertex is $(5, 3)$ and the axis of symmetry is the vertical line $x = 5$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — The Plus Sign Trap",
+          "prompt": "Find the vertex for the function $g(x) = -(x + 4)^2 - 8$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does a plus sign inside the parentheses mean the vertex has a negative x-coordinate?",
+          "minLength": 8,
+          "steps": [
+            "The template uses subtraction: $(x - h)^2$.",
+            "To get a plus sign like $(x + 4)^2$, you must be subtracting a negative number: $(x - (-4))^2$.",
+            "Therefore, $h = -4$. The $k$ value is $-8$.",
+            "The vertex is $(-4, -8)$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Writing the Equation",
+          "prompt": "Write the standard form equation of a parabola that has a vertex at $(-2, 7)$ and an $a$-value of $3$.",
+          "steps": [
+            "Identify the pieces: $h = -2$, $k = 7$, and $a = 3$.",
+            "Start with the template: $f(x) = a(x - h)^2 + k$.",
+            "Substitute the values: $f(x) = 3(x - (-2))^2 + 7$.",
+            "Simplify the double negative: $f(x) = 3(x + 2)^2 + 7$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Only Flip the Inside!",
+        "body": "When pulling the vertex $(h, k)$ out of standard form, remember the Chapter 1.7 transformation rules. Inside changes ($h$) do the [[imp:opposite]] of what they say, but outside changes ($k$) do [[imp:exactly]] what they say! For $(x - 1)^2 + 9$, the vertex is $(1, 9)$, not $(1, -9)$."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "short-answer",
+          "prompt": "What is the $x$-coordinate of the vertex for the function $f(x) = (x - 8)^2 + 4$?",
+          "answers": [
+            "8",
+            "eight"
+          ],
+          "hints": [
+            "Look inside the parentheses.",
+            "Remember that the formula has a built-in minus sign, so extract the opposite sign."
+          ],
+          "feedbackIfWrong": "Because the formula is $(x - h)^2$, the $x$-coordinate of the vertex is exactly $8$."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "What is the $y$-coordinate of the vertex for the function $f(x) = -3(x + 2)^2 - 9$?",
+          "answers": [
+            "-9",
+            "negative 9",
+            "negative nine"
+          ],
+          "hints": [
+            "Look at the number added or subtracted at the very end of the equation.",
+            "Outside vertical shifts keep their exact sign."
+          ],
+          "feedbackIfWrong": "The $k$ value at the end of the equation is $-9$, representing the $y$-coordinate of the vertex."
+        },
+        {
+          "id": "q2-3",
+          "type": "fill-blank",
+          "prompt": "The vertical line that perfectly splits a parabola into two mirror-image halves is called the axis of ___.",
+          "blanks": [
+            {
+              "accept": [
+                "symmetry",
+                "Symmetry"
+              ]
+            }
+          ],
+          "hints": [
+            "It shares a name with the concept you studied heavily in Chapter 1.2 and 1.5.",
+            "It means perfectly balanced on both sides."
+          ],
+          "feedbackIfWrong": "The line $x = h$ is known as the axis of symmetry."
+        }
+      ]
+    },
+    {
+      "id": "finding-vertex-algebraically",
+      "title": "Finding the Vertex Algebraically",
+      "teacherCues": [
+        "Remind students that while completing the square is one way to find the vertex, the $x = -b/(2a)$ shortcut is often much faster and less error-prone."
+      ],
+      "discoveryHook": {
+        "scenario": "What if your function isn't neatly packaged in standard form? If you are staring at a messy polynomial like $y = 3x^2 + 12x - 5$, you can use a clever algebraic shortcut to instantly locate the exact center of the curve!"
+      },
+      "concept": {
+        "explanation": [
+          "If a quadratic function is written in polynomial form $f(x) = ax^2 + bx + c$, you can find the vertex without graphing it.",
+          "[[imp:The x-coordinate of the vertex can be found using the formula:]] $$x = \\frac{-b}{2a}$$",
+          "Once you calculate the $x$-coordinate, simply [[imp:plug that number back into the original equation]] to calculate the $y$-coordinate ($f(x)$)!",
+          "This $x$-value is also the exact location of the axis of symmetry."
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Using the Formula",
+          "prompt": "Find the vertex of the parabola given by $f(x) = x^2 - 6x + 4$.",
+          "steps": [
+            "Identify $a$ and $b$ from the polynomial. Here, $a = 1$ and $b = -6$.",
+            "Use the formula for the $x$-coordinate: $x = \\frac{-b}{2a} = \\frac{-(-6)}{2(1)} = \\frac{6}{2} = 3$.",
+            "Substitute $x = 3$ back into the original function to find $y$: $f(3) = (3)^2 - 6(3) + 4$.",
+            "Calculate: $9 - 18 + 4 = -9 + 4 = -5$.",
+            "The vertex is $(3, -5)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Dealing with Fractions",
+          "prompt": "Find the axis of symmetry for $g(x) = -2x^2 + 5x - 1$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is it perfectly okay if the axis of symmetry ends up being a fraction or decimal?",
+          "minLength": 8,
+          "steps": [
+            "Identify $a = -2$ and $b = 5$.",
+            "Use the formula: $x = \\frac{-5}{2(-2)} = \\frac{-5}{-4} = \\frac{5}{4}$.",
+            "The axis of symmetry is the vertical line $x = \\frac{5}{4}$ (or $1.25$).",
+            "Parabolas don't have to land perfectly on integer grid lines!"
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — A Missing Term",
+          "prompt": "Find the $x$-coordinate of the vertex for $h(x) = 4x^2 - 11$.",
+          "steps": [
+            "Identify $a$ and $b$. Here, $a = 4$. But there is no middle $x$ term!",
+            "If a term is missing, its coefficient is zero. So, $b = 0$.",
+            "Use the formula: $x = \\frac{-0}{2(4)} = \\frac{0}{8} = 0$.",
+            "The $x$-coordinate of the vertex is exactly $0$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "The Double Negative in the Formula",
+        "body": "The formula requires you to use $-b$. If your $b$ value is already negative (like $x^2 - 8x$), you must apply the negative to the negative! $-(-8)$ becomes a positive $8$. [[imp:Watch your signs carefully.]]"
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "short-answer",
+          "prompt": "For the function $f(x) = 3x^2 + 12x - 5$, what is the $x$-coordinate of the vertex?",
+          "answers": [
+            "-2",
+            "negative 2"
+          ],
+          "hints": [
+            "Identify $a = 3$ and $b = 12$.",
+            "Plug them into the formula $x = -b / (2a)$."
+          ],
+          "feedbackIfWrong": "Using the formula: $x = -12 / (2 \\times 3) = -12 / 6 = -2$."
+        },
+        {
+          "id": "q3-2",
+          "type": "fill-blank",
+          "prompt": "After calculating $x = \\frac{-b}{2a}$, you must plug that result back into the original ___ to find the $y$-coordinate of the vertex.",
+          "blanks": [
+            {
+              "accept": [
+                "equation",
+                "function",
+                "formula"
+              ]
+            }
+          ],
+          "hints": [
+            "The vertex is a coordinate point $(x, y)$. You only have the first half.",
+            "How do you always find an output $y$ if you have an input $x$?"
+          ],
+          "feedbackIfWrong": "You must substitute the $x$-value back into the original function/equation to calculate its matching $y$-value."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "If the vertex of a parabola is $(5, -1)$, what is the mathematical equation for its axis of symmetry? (Type your answer without spaces, like 'x=3')",
+          "answers": [
+            "x=5"
+          ],
+          "hints": [
+            "The axis of symmetry is a vertical line that passes perfectly through the $x$-coordinate of the vertex.",
+            "Vertical lines are always written as $x = \\text{number}$."
+          ],
+          "feedbackIfWrong": "The axis of symmetry passes straight through the vertex's horizontal position, so the equation is $x=5$."
+        }
+      ]
+    },
+    {
+      "id": "minimum-maximum-applications",
+      "title": "Minimum and Maximum Values",
+      "teacherCues": [
+        "Emphasize that 'minimum' and 'maximum' are just fancy words for the vertex! In real-world word problems, finding the max/min just means finding the vertex."
+      ],
+      "discoveryHook": {
+        "scenario": "A business owner wants to know what price to sell their product to maximize profit. An engineer wants to know the lowest point of a hanging cable to make sure trucks can pass under it safely. Both of these professionals are just looking for the vertex of a parabola!"
+      },
+      "concept": {
+        "explanation": [
+          "Because a parabola is a smooth curve that changes direction exactly once, the vertex represents an absolute extreme value.",
+          "If the parabola opens upward ($a > 0$), the vertex is the absolute lowest point on the graph. The $y$-coordinate is the [[kw:minimum]] value of the function.",
+          "If the parabola opens downward ($a < 0$), the vertex is the absolute highest point on the graph. The $y$-coordinate is the [[kw:maximum]] value of the function.",
+          "[[imp:When a word problem asks for a maximum or minimum, it is secretly just asking you to calculate the vertex!]]"
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Max or Min?",
+          "prompt": "State whether the function $f(x) = 4x^2 - 16x + 100$ has a maximum or a minimum, and find that extreme value.",
+          "steps": [
+            "Look at the $a$ value. Since $a = 4$ (positive), the parabola opens upward like a bowl. Therefore, the vertex is a [[kw:minimum]].",
+            "Calculate the $x$-coordinate: $x = \\frac{-(-16)}{2(4)} = \\frac{16}{8} = 2$.",
+            "Plug $x = 2$ back in to find the minimum value: $f(2) = 4(2)^2 - 16(2) + 100$.",
+            "Calculate: $16 - 32 + 100 = 84$. The minimum value is $84$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Real World Application",
+          "prompt": "The height of a baseball thrown in the air is given by $h(t) = -16t^2 + 32t + 4$, where $t$ is time in seconds. What is the maximum height the ball reaches?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the formula for a thrown object always have a negative 'a' value?",
+          "minLength": 8,
+          "steps": [
+            "Gravity pulls objects back down, causing the parabola to open downward ($a = -16$). This means the vertex is the maximum height.",
+            "Find the time $t$ it takes to reach the peak: $t = \\frac{-32}{2(-16)} = \\frac{-32}{-32} = 1$ second.",
+            "Plug $t = 1$ back into the equation to find the height: $h(1) = -16(1)^2 + 32(1) + 4$.",
+            "Calculate: $-16 + 32 + 4 = 20$. The maximum height is $20$ feet."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Profit Maximization",
+          "prompt": "A company's daily profit is modeled by $P(x) = -x^2 + 100x - 500$, where $x$ is the number of units sold. How many units should they sell to maximize profit?",
+          "steps": [
+            "The question is asking for the $x$-value that produces the maximum profit.",
+            "This is just the $x$-coordinate of the vertex!",
+            "Calculate: $x = \\frac{-100}{2(-1)} = \\frac{-100}{-2} = 50$.",
+            "They should sell exactly $50$ units."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Which Number is the Answer?",
+        "body": "Word problems are tricky! If it asks 'WHEN does it reach the maximum?', it wants the [[imp:x-value]] (time or units). If it asks 'WHAT is the maximum?', it wants the [[imp:y-value]] (height or total profit). Read the question carefully!"
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "short-answer",
+          "prompt": "If the leading coefficient $a$ of a quadratic function is a positive number, does the vertex represent a 'maximum' or a 'minimum'?",
+          "answers": [
+            "minimum",
+            "Minimum"
+          ],
+          "hints": [
+            "A positive $a$ means the parabola opens upward, shaped like a smile or a bowl.",
+            "Where is the vertex located on an upward-opening bowl?"
+          ],
+          "feedbackIfWrong": "Because the parabola opens upward indefinitely, the vertex represents the lowest possible point, or the minimum."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "If a toy rocket's height in feet is modeled by $h(t) = -16t^2 + 64t$, at what time $t$ in seconds does it reach its absolute maximum height?",
+          "answers": [
+            "2",
+            "two"
+          ],
+          "hints": [
+            "The question asks for the time $t$, which is the input variable ($x$-coordinate).",
+            "Use the formula $t = -b / (2a)$."
+          ],
+          "feedbackIfWrong": "Using the vertex formula: $t = -64 / (2 \\times -16) = -64 / -32 = 2$ seconds."
+        },
+        {
+          "id": "q4-3",
+          "type": "fill-blank",
+          "prompt": "In any real-world quadratic model, whether you are looking for the absolute highest or lowest possible point, you are always searching for the exact mathematical ___.",
+          "blanks": [
+            {
+              "accept": [
+                "vertex",
+                "Vertex"
+              ]
+            }
+          ],
+          "hints": [
+            "Look at the main vocabulary word for Chapter 2.1.",
+            "It is the point where the parabola changes direction."
+          ],
+          "feedbackIfWrong": "The absolute maximum or minimum of a quadratic function always occurs perfectly at the vertex."
+        }
+      ]
+    }
+  ],
+  "presenterNotes": [
+    "Students usually love the $x = -b/(2a)$ formula because it gives them a straightforward plug-and-chug method compared to completing the square. Drive home that this formula is their best friend for word problems.",
+    "Make sure to physically point out the difference between 'What is the maximum height?' (y) and 'When does it reach the maximum height?' (x)."
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

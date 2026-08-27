@@ -1,0 +1,329 @@
+{
+  "id": "consolidated-chapter-6-flashcards",
+  "type": "flashcard",
+  "title": "Chapter 6 Review",
+  "cards": [
+    {
+      "back": [
+        "A single value used to estimate a population parameter.",
+        "For $\\mu$: $\\bar{x}$; for $p$: $\\hat{p} = x/n$; for $\\sigma^2$: $s^2$.",
+        "Point estimates are unbiased but give no indication of precision."
+      ],
+      "front": "What is a [[kw:point estimate]]?"
+    },
+    {
+      "front": "Why is an [[kw:interval estimate]] preferred over a point estimate?",
+      "back": [
+        "An interval provides a range of plausible values for the parameter.",
+        "It accounts for [[imp:sampling variability]] and gives a measure of precision (margin of error)."
+      ]
+    },
+    {
+      "back": [
+        "The maximum likely difference between the point estimate and the true parameter value.",
+        "For a mean (large sample): $E = z_c \\cdot \\frac{\\sigma}{\\sqrt{n}}$ (or $s$ if $n \\ge 30$).",
+        "For a proportion: $E = z_c \\sqrt{\\frac{\\hat{p} \\hat{q}}{n}}$."
+      ],
+      "front": "Define the [[kw:margin of error]] $E$."
+    },
+    {
+      "back": [
+        "If we take many random samples and construct a 95% CI from each, about [[imp:95% of these intervals]] will contain the true population parameter.",
+        "We do NOT say “there is a 95% chance the parameter lies in this specific interval.”",
+        "Confidence refers to the long‑run success rate of the method."
+      ],
+      "front": "What is the correct interpretation of a 95% [[kw:confidence interval]]?"
+    },
+    {
+      "back": [
+        "90% → $z_c = 1.645$",
+        "95% → $z_c = 1.96$",
+        "99% → $z_c = 2.575$",
+        "These values come from the standard normal distribution."
+      ],
+      "front": "Give the critical values $z_c$ for 90%, 95%, and 99% confidence."
+    },
+    {
+      "front": "Write the formula for a large‑sample [[kw:confidence interval for $\\mu$]] (z‑interval).",
+      "back": [
+        "$$\\bar{x} \\pm z_c \\frac{\\sigma}{\\sqrt{n}}$$",
+        "If $\\sigma$ is unknown and $n \\ge 30$, use $s$ in place of $\\sigma$.",
+        "The interval is centered at the sample mean."
+      ]
+    },
+    {
+      "back": [
+        "Either: (1) the population is normal and $\\sigma$ is known, or (2) $n \\ge 30$ (CLT applies, can use $s$).",
+        "If $\\sigma$ is unknown and $n < 30$, use a t‑interval instead (assuming normality)."
+      ],
+      "front": "What conditions must be met to use a z‑interval for $\\mu$?"
+    },
+    {
+      "front": "Construct a 95% CI for $\\mu$: $n=40$, $\\bar{x}=130.8$, $s=53.0$.",
+      "back": [
+        "$z_c = 1.96$. $E = 1.96 \\times \\frac{53.0}{\\sqrt{40}} \\approx 16.4$.",
+        "Interval: $130.8 \\pm 16.4 = (114.4, 147.2)$.",
+        "We are 95% confident the true mean is between 114.4 and 147.2."
+      ]
+    },
+    {
+      "front": "How do you determine the minimum sample size to estimate $\\mu$ with margin of error $E$?",
+      "back": [
+        "$$n = \\left( \\frac{z_c \\cdot \\sigma}{E} \\right)^2$$",
+        "Use $s$ as an estimate of $\\sigma$. [[imp:Always round up]] to the next whole number."
+      ]
+    },
+    {
+      "front": "Find the minimum sample size for $\\mu$: 95% confidence, $E=7$, $s \\approx 53$.",
+      "back": [
+        "$n = \\left( \\frac{1.96 \\times 53}{7} \\right)^2 = (14.84)^2 = 220.2$.",
+        "Round up → $n = 221$."
+      ]
+    },
+    {
+      "back": [
+        "1. Confidence level: higher $c$ → wider interval.",
+        "2. Sample size: larger $n$ → narrower interval.",
+        "3. Standard deviation: larger $s$ → wider interval.",
+        "The width is $2E$."
+      ],
+      "front": "What factors affect the width of a confidence interval for the mean?"
+    },
+    {
+      "back": [
+        "When $\\sigma$ is [[imp:unknown]] and the sample size is small ($n < 30$).",
+        "The population must be approximately normally distributed.",
+        "The t‑distribution accounts for the extra uncertainty of estimating $\\sigma$ with $s$."
+      ],
+      "front": "When should you use a [[kw:t‑distribution]] instead of z for a CI for $\\mu$?"
+    },
+    {
+      "front": "List three key properties of the [[kw:t‑distribution]].",
+      "back": [
+        "1. Bell‑shaped and symmetric about 0.",
+        "2. [[imp:Thicker tails]] than the standard normal distribution.",
+        "3. Shape depends on degrees of freedom: $d.f. = n-1$.",
+        "As $d.f.$ increase, it approaches the standard normal."
+      ]
+    },
+    {
+      "back": [
+        "$$d.f. = n - 1 = 15$$"
+      ],
+      "front": "How many degrees of freedom for a t‑distribution with $n=16$?"
+    },
+    {
+      "front": "Find the critical value $t_c$ for a 95% CI with $n=16$ (d.f.=15).",
+      "back": [
+        "From the t‑table: $t_c = 2.131$.",
+        "In Google Sheets: `=T.INV.2T(0.05, 15)` returns about 2.131."
+      ]
+    },
+    {
+      "back": [
+        "$$\\bar{x} \\pm t_c \\frac{s}{\\sqrt{n}}$$",
+        "Conditions: $\\sigma$ unknown, population approximately normal, $n < 30$."
+      ],
+      "front": "Write the formula for a [[kw:confidence interval for $\\mu$]] using the t‑distribution."
+    },
+    {
+      "back": [
+        "$d.f.=15$, $t_c=2.131$. $E = 2.131 \\times \\frac{10.0}{\\sqrt{16}} = 5.3$.",
+        "Interval: $162.0 \\pm 5.3 = (156.7, 167.3)$.",
+        "We are 95% confident the true mean is between 156.7 and 167.3."
+      ],
+      "front": "Construct a 95% t‑CI: $n=16$, $\\bar{x}=162.0$, $s=10.0$ (normal population)."
+    },
+    {
+      "front": "Why is a t‑interval wider than a z‑interval for the same data?",
+      "back": [
+        "The t‑distribution has thicker tails, so $t_c > z_c$ for the same confidence level.",
+        "Larger critical value → larger margin of error → wider interval.",
+        "This extra width accounts for the uncertainty in estimating $\\sigma$ with $s$."
+      ]
+    },
+    {
+      "front": "What condition must be checked before using a t‑interval for a small sample?",
+      "back": [
+        "The population must be [[imp:approximately normally distributed]].",
+        "If the population is heavily skewed and $n$ is small, the t‑interval is not valid."
+      ]
+    },
+    {
+      "front": "How do you decide between a z‑interval and a t‑interval for $\\mu$?",
+      "back": [
+        "If $\\sigma$ is known and the population is normal (or $n \\ge 30$) → z‑interval.",
+        "If $\\sigma$ is unknown, $n < 30$, but population is normal → t‑interval.",
+        "If $\\sigma$ is unknown but $n \\ge 30$ → z‑interval with $s$ (CLT).",
+        "If population is not normal and $n < 30$ → neither is appropriate."
+      ]
+    },
+    {
+      "front": "What is the point estimate for a population proportion $p$?",
+      "back": [
+        "The [[kw:sample proportion]] $\\hat{p} = \\frac{x}{n}$, where $x$ is the number of successes.",
+        "The complement is $\\hat{q} = 1 - \\hat{p}$."
+      ]
+    },
+    {
+      "back": [
+        "$n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$.",
+        "This ensures the sampling distribution of $\\hat{p}$ is approximately normal."
+      ],
+      "front": "What conditions must be met to construct a z‑interval for a population proportion?"
+    },
+    {
+      "front": "Give the formula for the margin of error for a population proportion.",
+      "back": [
+        "$$E = z_c \\sqrt{\\frac{\\hat{p} \\hat{q}}{n}}$$",
+        "$z_c$ is the critical value (e.g., 1.96 for 95% confidence)."
+      ]
+    },
+    {
+      "front": "Construct a 95% CI for $p$: $n=1000$, $x=662$.",
+      "back": [
+        "$\\hat{p}=0.662$, $\\hat{q}=0.338$. Check $n\\hat{p}=662 \\ge 5$, $n\\hat{q}=338 \\ge 5$.",
+        "$z_c=1.96$, $E = 1.96 \\sqrt{\\frac{0.662 \\cdot 0.338}{1000}} \\approx 0.029$.",
+        "95% CI: $0.662 \\pm 0.029 = (0.633, 0.691)$.",
+        "We are 95% confident the true proportion is between 63.3% and 69.1%."
+      ]
+    },
+    {
+      "front": "What is the formula for the minimum sample size to estimate a population proportion?",
+      "back": [
+        "$$n = \\hat{p} \\hat{q} \\left( \\frac{z_c}{E} \\right)^2$$",
+        "If no preliminary estimate of $\\hat{p}$ is available, use [[imp:$\\hat{p}=0.5$]] and $\\hat{q}=0.5$ (most conservative).",
+        "Always round [[imp:up]]."
+      ]
+    },
+    {
+      "back": [
+        "The product $\\hat{p}\\hat{q}$ is maximized at $\\hat{p}=0.5$ ($0.25$).",
+        "This gives the [[imp:largest possible sample size]], ensuring the margin of error is not exceeded."
+      ],
+      "front": "Why is $\\hat{p}=0.5$ used when no prior estimate is available for sample size?"
+    },
+    {
+      "front": "Find the minimum sample size for a proportion: 95% confidence, $E=0.03$, no prior estimate.",
+      "back": [
+        "$n = 0.25 \\left( \\frac{1.96}{0.03} \\right)^2 = 0.25 \\times 4268.4 \\approx 1067.1$.",
+        "Round up → $n = 1068$."
+      ]
+    },
+    {
+      "front": "What does it mean if two confidence intervals for proportions do not overlap?",
+      "back": [
+        "It strongly suggests the true population proportions are [[imp:different]].",
+        "Overlapping intervals suggest the proportions might be equal, but a formal test is needed."
+      ]
+    },
+    {
+      "back": [
+        "The [[kw:chi‑square distribution]] ($\\chi^2$).",
+        "It requires that the population is [[imp:normally distributed]].",
+        "The point estimate for $\\sigma^2$ is $s^2$, and for $\\sigma$ is $s$."
+      ],
+      "front": "What distribution is used for a confidence interval for a population variance or standard deviation?"
+    },
+    {
+      "front": "List four key properties of the chi‑square distribution.",
+      "back": [
+        "1. All values are $\\ge 0$.",
+        "2. The distribution is [[imp:positively skewed]].",
+        "3. Shape depends on $d.f. = n-1$.",
+        "4. As $d.f.$ increase, it becomes more symmetric and approaches a normal shape."
+      ]
+    },
+    {
+      "back": [
+        "Two: $\\chi^2_R$ (right‑tail) and $\\chi^2_L$ (left‑tail).",
+        "Area to right of $\\chi^2_R$: $\\frac{1-c}{2}$.",
+        "Area to right of $\\chi^2_L$: $\\frac{1+c}{2}$.",
+        "Because the distribution is skewed, the two values differ."
+      ],
+      "front": "How many critical values are needed for a chi‑square confidence interval, and what are they?"
+    },
+    {
+      "front": "Find $\\chi^2_R$ and $\\chi^2_L$ for a 95% CI with $n=18$ (d.f.=17).",
+      "back": [
+        "Right‑tail areas: $0.025$ and $0.975$.",
+        "From table: $\\chi^2_R = 30.191$, $\\chi^2_L = 7.564$.",
+        "95% of the area lies between 7.564 and 30.191."
+      ]
+    },
+    {
+      "front": "Give the formula for a confidence interval for the population variance $\\sigma^2$.",
+      "back": [
+        "$$\\frac{(n-1)s^2}{\\chi^2_R} < \\sigma^2 < \\frac{(n-1)s^2}{\\chi^2_L}$$",
+        "Larger critical value $\\chi^2_R$ in the denominator of the [[imp:lower]] bound.",
+        "Smaller critical value $\\chi^2_L$ in the denominator of the [[imp:upper]] bound."
+      ]
+    },
+    {
+      "back": [
+        "Take the [[imp:square root]] of each endpoint.",
+        "$$\\sqrt{\\frac{(n-1)s^2}{\\chi^2_R}} < \\sigma < \\sqrt{\\frac{(n-1)s^2}{\\chi^2_L}}$$"
+      ],
+      "front": "How do you obtain the confidence interval for $\\sigma$ from the interval for $\\sigma^2$?"
+    },
+    {
+      "front": "Construct a 99% CI for $\\sigma$: $n=30$, $s=1.20$ mg (normal population).",
+      "back": [
+        "$d.f.=29$, $c=0.99$. $\\chi^2_R = 52.336$, $\\chi^2_L = 13.121$.",
+        "For $\\sigma^2$: $\\frac{29 \\times 1.44}{52.336} \\approx 0.80$, $\\frac{29 \\times 1.44}{13.121} \\approx 3.18$.",
+        "For $\\sigma$: $\\sqrt{0.80} \\approx 0.89$, $\\sqrt{3.18} \\approx 1.78$.",
+        "We are 99% confident $0.89 < \\sigma < 1.78$ mg."
+      ]
+    },
+    {
+      "back": [
+        "Because the chi‑square distribution is [[imp:positively skewed]].",
+        "The interval stretches further to the right than to the left."
+      ],
+      "front": "Why is the confidence interval for $\\sigma^2$ not symmetric around $s^2$?"
+    },
+    {
+      "back": [
+        "The population must be [[imp:approximately normally distributed]].",
+        "If the population is heavily skewed, the chi‑square method is not valid."
+      ],
+      "front": "What is the required condition for using the chi‑square method?"
+    },
+    {
+      "back": [
+        "The upper bound 0.348 [[imp:exceeds]] 0.30.",
+        "We cannot be 95% confident that $\\sigma \\le 0.30$.",
+        "The process may need improvement."
+      ],
+      "front": "If a 95% CI for $\\sigma$ is (0.195, 0.348) and the specification requires $\\sigma \\le 0.30$, is the process acceptable?"
+    },
+    {
+      "front": "What happens to the shape of the chi‑square distribution as the sample size increases?",
+      "back": [
+        "It becomes [[imp:less skewed]] and more [[imp:symmetric]].",
+        "For large $d.f.$, it approximates a normal distribution."
+      ]
+    },
+    {
+      "back": [
+        "If the lower bound becomes [[imp:larger]] than the upper bound, you have swapped them.",
+        "Always check that $\\chi^2_R > \\chi^2_L$.",
+        "The larger value goes in the denominator of the lower bound."
+      ],
+      "front": "How can you tell if you accidentally swapped $\\chi^2_R$ and $\\chi^2_L$?"
+    },
+    {
+      "back": [
+        "For z‑interval margin of error: `=CONFIDENCE.NORM(alpha, s, n)`.",
+        "For t critical value: `=T.INV.2T(alpha, d.f.)`.",
+        "For chi‑square critical value: `=CHISQ.INV.RT(probability, d.f.)`.",
+        "For proportion margin of error, compute directly: `=z_c * SQRT(p_hat * q_hat / n)`."
+      ],
+      "front": "What Google Sheets functions are commonly used for confidence intervals in Chapter 6?"
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

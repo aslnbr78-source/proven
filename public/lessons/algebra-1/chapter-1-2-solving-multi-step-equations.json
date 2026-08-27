@@ -1,0 +1,711 @@
+{
+  "blocks": [
+    {
+      "questions": [
+        {
+          "type": "short-answer",
+          "answers": [
+            "addition",
+            "add 7",
+            "subtract 7"
+          ],
+          "prompt": "What is the first operation to undo when solving $ 3w + 7 = 19 $?",
+          "feedbackIfWrong": "Subtract 7 from both sides first to undo the addition.",
+          "hints": [
+            "Look at the constant term, not the coefficient.",
+            "You need to isolate the term with the variable."
+          ],
+          "id": "q1-1"
+        },
+        {
+          "prompt": "Solve $ 5 = \\frac{z}{-4} - 3 $. What is z?",
+          "answers": [
+            "-32"
+          ],
+          "id": "q1-2",
+          "feedbackIfWrong": "Add 3: 8 = z/(-4), then multiply by -4: z = -32.",
+          "hints": [
+            "First add 3 to both sides.",
+            "Then multiply by -4."
+          ],
+          "type": "short-answer"
+        },
+        {
+          "type": "fill-blank",
+          "id": "q1-3",
+          "hints": [
+            "Think reverse PEMDAS.",
+            "The constant term is outside the multiplication."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "before"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Undo addition/subtraction first.",
+          "prompt": "To solve a two-step equation, undo addition or subtraction ___ (before/after) undoing multiplication or division."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Subtraction = Adding a Negative",
+        "body": "In $ 2.5x - 13 = 2 $, the 'minus 13' is a subtraction. To undo it, [[imp:add 13 to both sides]]. Never subtract 13 — that would make it worse."
+      },
+      "id": "solving-two-step-equations",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "$ a $ and $ b $ are constants, $ a \\ne 0 $.",
+            "Solve: subtract $ b $, then divide by $ a $."
+          ],
+          "formula": "$$ ax + b = c $$",
+          "title": "Two-Step Equation Structure"
+        },
+        "explanation": [
+          "A [[kw:two-step equation]] has two operations applied to the variable.",
+          "To solve, use [[imp:inverse operations]] in the [[imp:reverse order]] of the usual order of operations (PEMDAS).",
+          "[[imp:First, undo addition or subtraction.]]",
+          "[[imp:Second, undo multiplication or division.]]",
+          "Always check your solution by substituting it back into the original equation."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "title": "Reverse Order of Operations",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Undo addition/subtraction (the constant term)."
+              },
+              {
+                "0": "2",
+                "1": "Undo multiplication/division (the coefficient)."
+              }
+            ],
+            "headers": [
+              "Step",
+              "Action"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "Solve $ 2.5x - 13 = 2 $ and check.",
+          "steps": [
+            "Write the equation: $ 2.5x - 13 = 2 $.",
+            "Add 13 to both sides: $ 2.5x = 15 $.",
+            "Divide both sides by 2.5: $ x = 6 $.",
+            "Check: $ 2.5(6) - 13 = 15 - 13 = 2 $ ✓"
+          ],
+          "role": "guided",
+          "title": "A – Solving a Two-Step Equation"
+        },
+        {
+          "steps": [
+            "Subtract 4: $ \\frac{x}{3} = 2 $.",
+            "Multiply by 3: $ x = 6 $.",
+            "Check: $ 6/3 + 4 = 2 + 4 = 6 $ ✓"
+          ],
+          "title": "B – A Different Order",
+          "peerPrompt": "Explain to a partner: Why do we subtract 4 before multiplying by 3?",
+          "prompt": "Solve $ \\frac{x}{3} + 4 = 6 $.",
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "prompt": "Solve $ -2n + 3 = 9 $.",
+          "steps": [
+            "Subtract 3: $ -2n = 6 $.",
+            "Divide by -2: $ n = -3 $.",
+            "Check: $ -2(-3) + 3 = 6 + 3 = 9 $ ✓"
+          ],
+          "role": "independent",
+          "title": "C – Negative Coefficient"
+        }
+      ],
+      "title": "Solving Two-Step Equations",
+      "discoveryHook": {
+        "scenario": "Imagine you're following a recipe but mixed up the order of steps. In a two-step equation, the variable has been multiplied and then added to. To unlock the value of x, you must reverse the order — undo addition first, then multiplication. It's like peeling back layers of an onion!"
+      },
+      "teacherCues": [
+        "Write '2x + 3 = 9' on the board. Ask: 'What two operations are being applied to x? Which one do we undo first?'",
+        "Use a 'reverse PEMDAS' approach: when solving, undo addition/subtraction before multiplication/division."
+      ]
+    },
+    {
+      "concept": {
+        "explanation": [
+          "Sometimes an equation has [[kw:like terms]] on the same side.",
+          "Like terms have the same variable raised to the same power.",
+          "[[imp:Simplify each side by combining like terms]] before isolating the variable.",
+          "This turns a messy equation into a simpler two-step or one-step equation."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ 9x $ and $ -6x $",
+                "1": "$ 9x $ and 15"
+              },
+              {
+                "0": "$ 5y $ and $ 2y $",
+                "1": "$ 3x^2 $ and $ 3x $"
+              },
+              {
+                "0": "Constants (numbers)",
+                "1": "Variables and constants"
+              }
+            ],
+            "headers": [
+              "Like Terms",
+              "Unlike Terms"
+            ],
+            "title": "Like Terms vs. Unlike Terms",
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Combine like terms on each side, then solve.} $$",
+          "title": "Simplifying Before Solving",
+          "notes": [
+            "Look for terms with the same variable and exponent.",
+            "Only combine terms on the same side of the equals sign."
+          ]
+        }
+      },
+      "confusionCorner": {
+        "body": "You can only combine terms that are on the same side of the equals sign. For example, in $ 9x = 6x + 15 $, you cannot combine $ 9x $ and $ 6x $ directly. You must move $ 6x $ to the left first.",
+        "title": "Same Side Only!"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Combine like terms: $ 9x - 6x = 3x $. Equation becomes $ -12 = 3x + 15 $.",
+            "Subtract 15: $ -27 = 3x $.",
+            "Divide by 3: $ -9 = x $.",
+            "Check: $ 9(-9) - 6(-9) + 15 = -81 + 54 + 15 = -12 $ ✓"
+          ],
+          "title": "A – Combining Like Terms",
+          "role": "guided",
+          "prompt": "Solve $ -12 = 9x - 6x + 15 $."
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: Why can we combine 8y and 3y, but not 8y and 44?",
+          "steps": [
+            "Combine like terms: $ 11y = 44 $.",
+            "Divide by 11: $ y = 4 $."
+          ],
+          "prompt": "Solve $ 8y + 3y = 44 $.",
+          "title": "B – Multiple Variable Terms"
+        },
+        {
+          "steps": [
+            "Combine like terms: $ -12x + 12 = 18 $.",
+            "Subtract 12: $ -12x = 6 $.",
+            "Divide by -12: $ x = -0.5 $ (or $ -1/2 $)."
+          ],
+          "role": "independent",
+          "title": "C – Constants and Variables",
+          "prompt": "Solve $ -2x - 10x + 12 = 18 $."
+        }
+      ],
+      "teacherCues": [
+        "Write '9x - 6x + 15 = -12' on the board. Circle the like terms 9x and -6x. Ask: 'What can we simplify before we start solving?'",
+        "Remind students: simplify each side as much as possible before using inverse operations."
+      ],
+      "discoveryHook": {
+        "scenario": "Before you can untangle a knot, you need to tidy up loose ends. Similarly, if an equation has multiple x-terms or constant terms on the same side, combine them first. A cleaner equation is easier to solve!"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Combine 12v and 10v to get 22v.",
+          "type": "fill-blank",
+          "prompt": "Before solving $ 12v + 10v + 14 = 80 $, the first step is to ___ the like terms $ 12v $ and $ 10v $.",
+          "hints": [
+            "They are on the same side and have the same variable.",
+            "What does 'simplify' mean for like terms?"
+          ],
+          "id": "q2-1",
+          "blanks": [
+            {
+              "accept": [
+                "combine",
+                "Combine",
+                "add",
+                "Add"
+              ]
+            }
+          ]
+        },
+        {
+          "hints": [
+            "Combine 13n and -4n first.",
+            "Then divide both sides by the result."
+          ],
+          "feedbackIfWrong": "Combine: 9n = 36, so n = 4.",
+          "type": "short-answer",
+          "id": "q2-2",
+          "answers": [
+            "4"
+          ],
+          "prompt": "Solve $ 36 = 13n - 4n $. What is n?"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "4"
+          ],
+          "hints": [
+            "6c and -2c are like terms.",
+            "6 - 2 = ?"
+          ],
+          "id": "q2-3",
+          "prompt": "In $ 6c - 8 - 2c = -16 $, what is the combined coefficient of c after simplifying the left side?",
+          "feedbackIfWrong": "6c - 2c = 4c, so the coefficient is 4."
+        }
+      ],
+      "id": "combining-like-terms",
+      "title": "Combining Like Terms First"
+    },
+    {
+      "teacherCues": [
+        "Write '2(1 - x) + 3 = -8' on the board. Circle the parentheses and ask: 'What must we do before we can combine terms?'",
+        "Demonstrate both methods: distribute first, or treat (1-x) as a single quantity."
+      ],
+      "discoveryHook": {
+        "scenario": "Parentheses in an equation are like wrapped packages. Before you can see what's inside, you need to unwrap them using the Distributive Property. Multiply what's outside by everything inside, and the equation opens up!"
+      },
+      "title": "Using the Distributive Property",
+      "questions": [
+        {
+          "prompt": "In $ 4(z + 5) = 32 $, what number should you distribute?",
+          "feedbackIfWrong": "Distribute 4: 4z + 20 = 32.",
+          "type": "short-answer",
+          "id": "q3-1",
+          "answers": [
+            "4"
+          ],
+          "hints": [
+            "It's the number outside the parentheses.",
+            "Multiply it by both z and 5."
+          ]
+        },
+        {
+          "id": "q3-2",
+          "feedbackIfWrong": "Distribute: -8g + 6 = 30. Subtract 6: -8g = 24. Divide by -8: g = -3.",
+          "answers": [
+            "-3"
+          ],
+          "hints": [
+            "Distribute -2 to both 4g and -3.",
+            "Then combine like terms and solve."
+          ],
+          "type": "short-answer",
+          "prompt": "Solve $ -2(4g - 3) = 30 $. What is g?"
+        },
+        {
+          "prompt": "The alternative to distributing first is to treat the expression inside the parentheses as a single ___.",
+          "blanks": [
+            {
+              "accept": [
+                "quantity",
+                "unit",
+                "chunk"
+              ]
+            }
+          ],
+          "hints": [
+            "It's like wrapping up (1 - x) in a box.",
+            "You undo operations outside first."
+          ],
+          "id": "q3-3",
+          "type": "fill-blank",
+          "feedbackIfWrong": "Treat the parentheses as a single quantity or unit."
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "When parentheses appear, use the [[kw:Distributive Property]]: multiply the term outside by each term inside.",
+          "After distributing, [[imp:combine like terms]] before solving.",
+          "Alternative method: treat the expression inside parentheses as a single quantity and undo operations outside first.",
+          "Both methods give the same answer — choose the one that feels easier."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Multiply the outside number through.",
+                "1": "Undo addition/subtraction outside parentheses first."
+              },
+              {
+                "0": "Then combine like terms.",
+                "1": "Then divide to remove the outside coefficient."
+              },
+              {
+                "0": "Then solve the two-step equation.",
+                "1": "Finally, solve the remaining one-step equation."
+              }
+            ],
+            "variant": "colorful",
+            "title": "Two Methods for Parentheses",
+            "type": "table",
+            "headers": [
+              "Method 1: Distribute First",
+              "Method 2: Treat as Single Quantity"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ a(b + c) = ab + ac $$",
+          "title": "Distributive Property",
+          "notes": [
+            "Multiply $ a $ by each term inside the parentheses.",
+            "Watch the signs! $ a(b - c) = ab - ac $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "steps": [
+            "Distribute 2: $ 2(1) - 2(x) + 3 = -8 $ → $ 2 - 2x + 3 = -8 $.",
+            "Combine like terms: $ -2x + 5 = -8 $.",
+            "Subtract 5: $ -2x = -13 $. Divide by -2: $ x = 6.5 $."
+          ],
+          "prompt": "Solve $ 2(1 - x) + 3 = -8 $ by distributing.",
+          "title": "A – Distributing First",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Explain to a partner: Why can you subtract 3 first, then divide by 2, even though there are parentheses?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "title": "B – Treating as a Single Quantity",
+          "prompt": "Solve $ 2(1 - x) + 3 = -8 $ by treating $ (1-x) $ as one chunk.",
+          "steps": [
+            "Subtract 3: $ 2(1 - x) = -11 $.",
+            "Divide by 2: $ 1 - x = -5.5 $.",
+            "Subtract 1: $ -x = -6.5 $. Multiply by -1: $ x = 6.5 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Multiple Parentheses",
+          "prompt": "Solve $ 5(3 - x) + 2(3 - x) = 14 $.",
+          "steps": [
+            "Notice $ (3 - x) $ is a common factor. Combine: $ 7(3 - x) = 14 $.",
+            "Divide by 7: $ 3 - x = 2 $. Subtract 3: $ -x = -1 $.",
+            "Multiply by -1: $ x = 1 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "When distributing a negative number, the sign applies to every term inside. For $ -2(7 - y) $, it's $ -2 \\cdot 7 + (-2) \\cdot (-y) = -14 + 2y $, not $ -14 - 2y $. [[imp:Double-check your signs!]]",
+        "title": "Sign Errors with Distribution"
+      },
+      "id": "distributive-property"
+    },
+    {
+      "confusionCorner": {
+        "body": "When finding a missing value to achieve a target mean, don't forget to divide by the total number of items, including the unknown one. For 5 days, divide by 5, not 4.",
+        "title": "Setting Up the Mean Equation"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "553 - 265 = 288, then 288/48 = 6 hours.",
+          "id": "q4-1",
+          "type": "short-answer",
+          "prompt": "A repair bill is $553. Parts cost $265, labor is $48 per hour. Write and solve an equation to find the number of hours h.",
+          "hints": [
+            "Total = parts + labor * hours.",
+            "553 = 265 + 48h."
+          ],
+          "answers": [
+            "6"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "5 days",
+            "there are 5 days",
+            "five days"
+          ],
+          "id": "q4-2",
+          "hints": [
+            "Count the total number of days, including Friday.",
+            "Mean = total sum / number of values."
+          ],
+          "prompt": "In the mean biking example, why do we divide by 5, not 4?",
+          "feedbackIfWrong": "Because the mean is over all 5 days of the week."
+        },
+        {
+          "prompt": "When writing an equation from a word problem, you should check that the ___ on both sides balance.",
+          "type": "fill-blank",
+          "hints": [
+            "It starts with 'u'.",
+            "Like miles per day = miles per day."
+          ],
+          "id": "q4-3",
+          "blanks": [
+            {
+              "accept": [
+                "units",
+                "Units"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Check that the units balance on both sides."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Whether you're calculating the average number of miles biked per week or figuring out how many tickets to sell to make a profit, multi-step equations turn messy real-life situations into clear math problems. You're the detective who sets up the clues (the equation) and cracks the case!"
+      },
+      "teacherCues": [
+        "Pose the mean biking problem: 'You biked 3.5, 5.5, 0, and 5 miles. How much on Friday to average 5 miles per day?' Guide them to write the mean equation.",
+        "Point out unit analysis: 'Miles per day' = total miles / days."
+      ],
+      "concept": {
+        "explanation": [
+          "Many real-life scenarios require setting up a multi-step equation.",
+          "Define the unknown as a variable, then build the equation from the words.",
+          "Use [[imp:unit analysis]] to ensure the equation makes sense — units on both sides must balance.",
+          "Solve the equation using the steps you've practiced, then check for reasonableness."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "title": "Common Real-Life Equations",
+            "headers": [
+              "Situation",
+              "Equation Structure"
+            ],
+            "rows": [
+              {
+                "0": "Mean (average)",
+                "1": "$ \\frac{\\text{sum of values}}{\\text{number of values}} = \\text{mean} $"
+              },
+              {
+                "0": "Profit",
+                "1": "$ \\text{price} \\cdot \\text{quantity} - \\text{cost} = \\text{profit} $"
+              },
+              {
+                "0": "Perimeter",
+                "1": "$ 2(\\text{length} + \\text{width}) = \\text{perimeter} $"
+              },
+              {
+                "0": "Angle sum of polygon",
+                "1": "$ 180(n-2) $ for $ n $ sides"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Both sides must have the same units.",
+            "If units don't match, your equation setup is likely wrong."
+          ],
+          "title": "Unit Analysis Check",
+          "formula": "$$ \\frac{\\text{miles}}{\\text{day}} = \\frac{\\text{miles}}{\\text{day}} $$"
+        }
+      },
+      "id": "real-life-multi-step",
+      "examples": [
+        {
+          "prompt": "You bike 3.5, 5.5, 0, and 5 miles Mon–Thu. How many miles x on Friday to average 5 miles/day?",
+          "title": "A – Finding the Mean",
+          "steps": [
+            "Understand: Total miles / 5 days = 5.",
+            "Set up: $ \\frac{3.5 + 5.5 + 0 + 5 + x}{5} = 5 $.",
+            "Combine: $ \\frac{14 + x}{5} = 5 $. Multiply by 5: $ 14 + x = 25 $.",
+            "Solve: $ x = 11 $. Bike 11 miles on Friday."
+          ],
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Explain to a partner: Why does the equation $4x - 400 = 100$ make sense in terms of units?",
+          "role": "peer-explain",
+          "steps": [
+            "Let x be tickets sold. Revenue = $4x$.",
+            "Profit = Revenue - Loan: $4x - 400 = 100$.",
+            "Add 400: $4x = 500$. Divide: $x = 125$. 125 tickets sold."
+          ],
+          "title": "B – Ticket Profit",
+          "minLength": 2,
+          "prompt": "Drama club charges $4 per ticket, borrowed $400, made $100 profit. How many tickets sold?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Set $ d = 50 $: $ 50 = \\frac{1}{2}n + 26 $.",
+            "Subtract 26: $ 24 = \\frac{1}{2}n $. Multiply by 2: $ n = 48 $ psi."
+          ],
+          "prompt": "The formula $ d = \\frac{1}{2}n + 26 $ relates pressure n (psi) to water distance d (ft). What pressure is needed for d = 50 ft?",
+          "title": "C – Fire Hose Pressure"
+        }
+      ],
+      "title": "Real-Life Multi-Step Problems"
+    },
+    {
+      "confusionCorner": {
+        "body": "Many errors happen when students try to move terms before simplifying. Always distribute and combine like terms first. A cleaner equation means fewer mistakes.",
+        "title": "Don't Skip Simplify!"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "The first phase is Simplify.",
+          "hints": [
+            "It starts with 'S'.",
+            "This phase includes distributing and combining like terms."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "Simplify",
+            "simplify"
+          ],
+          "prompt": "What is the first phase of the multi-step blueprint?",
+          "id": "q5-1"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "constant",
+                "Constants"
+              ]
+            }
+          ],
+          "hints": [
+            "They are numbers without variables.",
+            "They're the 'b' in ax + b."
+          ],
+          "prompt": "In the Isolate phase, you move variable terms to one side and ___ terms to the other.",
+          "feedbackIfWrong": "Move constant terms to the other side.",
+          "id": "q5-2",
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "id": "q5-3",
+          "feedbackIfWrong": "3x = -3, so x = -1.",
+          "prompt": "After solving $ 2(x - 3) + x = -9 $, what is x?",
+          "hints": [
+            "Distribute first: 2x - 6 + x = -9.",
+            "Combine: 3x - 6 = -9. Add 6, divide by 3."
+          ],
+          "answers": [
+            "-1"
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Multi-step equations can look intimidating, but with the Blueprint — Simplify, Isolate, Solve — you have a foolproof plan. No matter how long the equation, just tackle it one step at a time."
+      },
+      "examples": [
+        {
+          "title": "A – Blueprint in Action",
+          "prompt": "Use the blueprint to solve $ 3(x + 1) + 6 = -9 $.",
+          "steps": [
+            "Simplify: Distribute 3: $ 3x + 3 + 6 = -9 $. Combine: $ 3x + 9 = -9 $.",
+            "Isolate: Subtract 9: $ 3x = -18 $.",
+            "Solve: Divide by 3: $ x = -6 $. Check: $ 3(-5) + 9 = -15 + 9 = -6? $ Wait, check: 3(-6+1)+6 = 3(-5)+6 = -15+6 = -9 ✓"
+          ],
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Explain to a partner: When variables appear on both sides, how does the Isolate phase change?",
+          "minLength": 2,
+          "prompt": "Solve $ 5x - 3 = 3x + 5 $ using the blueprint.",
+          "title": "B – Variables on Both Sides (Preview)",
+          "steps": [
+            "Simplify: Already simplified.",
+            "Isolate: Subtract 3x from both sides: $ 2x - 3 = 5 $. Add 3: $ 2x = 8 $.",
+            "Solve: Divide by 2: $ x = 4 $."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Solve $ -4(2m + 5) - 3m = 35 $.",
+          "title": "C – Distribute and Combine",
+          "role": "independent",
+          "steps": [
+            "Simplify: Distribute: $ -8m - 20 - 3m = 35 $. Combine: $ -11m - 20 = 35 $.",
+            "Isolate: Add 20: $ -11m = 55 $.",
+            "Solve: Divide by -11: $ m = -5 $."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Display the flowchart: Simplify → Isolate → Solve. Walk through an example with multiple steps.",
+        "Remind them: 'Always simplify each side first — distribute, combine like terms — then move variables to one side.'"
+      ],
+      "title": "Blueprint Aid – Mastering Multi-Step Equations",
+      "id": "blueprint-aid-multi-step",
+      "concept": {
+        "formulaCard": {
+          "title": "Simplify, Isolate, Solve",
+          "notes": [
+            "Follow this order for every multi-step equation.",
+            "Check your solution in the original equation."
+          ],
+          "formula": "$$ \\text{Simplify each side} \\quad\\rightarrow\\quad \\text{Isolate variable terms} \\quad\\rightarrow\\quad \\text{Solve} $$"
+        },
+        "explanation": [
+          "The [[imp:Simplify → Isolate → Solve]] blueprint works for any multi-step equation.",
+          "[[imp:Simplify]]: Use the distributive property and combine like terms on each side.",
+          "[[imp:Isolate]]: Move variable terms to one side and constants to the other using inverse operations.",
+          "[[imp:Solve]]: Perform the final division or multiplication to find the variable's value.",
+          "Always check your answer by substituting back into the original equation."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Phase",
+              "Actions"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Simplify",
+                "1": "Distribute, combine like terms on each side."
+              },
+              {
+                "0": "Isolate",
+                "1": "Add/subtract to get variable terms on one side, constants on the other."
+              },
+              {
+                "0": "Solve",
+                "1": "Multiply/divide to get the variable alone."
+              }
+            ],
+            "title": "The Multi-Step Blueprint",
+            "variant": "colorful"
+          }
+        ]
+      }
+    }
+  ],
+  "schemaVersion": 2,
+  "presenterNotes": [
+    "Emphasize 'reverse PEMDAS' for solving: undo addition/subtraction, then multiplication/division. This order is critical.",
+    "When introducing the Distributive Property, show both methods but let students pick their favorite. The 'single quantity' method often reduces distributing errors.",
+    "For real-life problems, always do unit analysis out loud so students see how it validates their equation setup."
+  ],
+  "id": "chapter-1-2-solving-multi-step-equations",
+  "title": "Chapter 1.2 — Solving Multi-Step Equations",
+  "type": "interactive-lesson",
+  "standards": [
+    "HSA.REI.B.3",
+    "HSA.CED.A.1"
+  ],
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

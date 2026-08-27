@@ -1,0 +1,171 @@
+{
+  "title": "Chapter 11 Review",
+  "cards": [
+    {
+      "front": "What is a [[kw:nonparametric test]]?",
+      "back": "A hypothesis test that does not require the population to have a specific distribution (like normal). Nonparametric tests are distribution‑free and often use signs or ranks instead of raw data."
+    },
+    {
+      "front": "What population parameter does the [[kw:sign test]] test?",
+      "back": "The sign test tests a population [[imp:median]] against a hypothesized value $k$."
+    },
+    {
+      "front": "How do you assign signs in a one‑sample sign test?",
+      "back": "Compare each data value to $k$: if value $< k$, assign −; if $> k$, assign +; if $= k$, assign 0 (ignored). The test statistic $x$ is the smaller count of + or −."
+    },
+    {
+      "front": "What is the test statistic for the sign test when $n > 25$?",
+      "back": "$$z = \\frac{(x + 0.5) - 0.5n}{\\sqrt{n}/2}$$ where $x$ is the smaller number of signs. The +0.5 is a [[imp:continuity correction]]."
+    },
+    {
+      "front": "How are ties (values equal to the median) handled in the sign test?",
+      "back": "They are assigned 0 and [[imp:ignored]] — not counted in the sample size $n$."
+    },
+    {
+      "back": "For [[imp:dependent (paired) samples]]. It tests the median of the differences between paired values. It is the nonparametric alternative to the paired t‑test.",
+      "front": "The paired‑sample sign test is used for what type of data?"
+    },
+    {
+      "back": "Compute differences $d = x_1 - x_2$, assign +, −, or 0. Ignore zeros. $x$ = smaller count of + or −. Use Table 8 ($n \\le 25$) or normal approximation ($n > 25$).",
+      "front": "How is the test statistic for the paired‑sample sign test determined?"
+    },
+    {
+      "back": "A nonparametric test for two dependent (paired) samples. It uses the [[imp:magnitude]] of differences, not just signs. Differences are ranked by absolute value, signs attached, and the test statistic $w_s$ is the smaller absolute sum of signed ranks.",
+      "front": "What is the [[kw:Wilcoxon signed‑rank test]]?"
+    },
+    {
+      "front": "How do you compute the test statistic $w_s$ for the signed‑rank test?",
+      "back": "1. Compute differences $d = x_1 - x_2$ (ignore zeros).\n2. Rank absolute differences (1 = smallest).\n3. Attach sign of $d$ to each rank.\n4. Sum positive and negative signed ranks separately.\n5. $w_s = \\min(|\\text{sum of positive ranks}|, |\\text{sum of negative ranks}|)$."
+    },
+    {
+      "front": "How are ties handled in the signed‑rank test?",
+      "back": "Tied absolute differences receive the [[imp:average]] rank. For example, two values tied for 3rd and 4th both get rank 3.5. The next rank is 5."
+    },
+    {
+      "back": "[[imp:Table 9]] in Appendix B. Reject $H_0$ if $w_s$ (smaller absolute sum of signed ranks) is less than or equal to the critical value.",
+      "front": "What table provides critical values for the Wilcoxon signed‑rank test?"
+    },
+    {
+      "front": "In the golf example, $n=9$, $w_s=6.5$, critical value (one‑tailed, $\\alpha=0.05$) is 8. Decision?",
+      "back": "Reject $H_0$ because $6.5 \\le 8$. There is evidence that the new clubs lower scores."
+    },
+    {
+      "front": "What is the [[kw:Wilcoxon rank sum test]]?",
+      "back": "A nonparametric test for two [[imp:independent]] samples. It ranks all data together and tests whether the two populations have the same distribution. It is the alternative to the two‑sample t‑test."
+    },
+    {
+      "back": "Both sample sizes must be at least 10 to use the normal approximation. Let $n_1$ be the smaller sample size and $n_2$ the larger.",
+      "front": "What is the sample size requirement for the Wilcoxon rank sum test?"
+    },
+    {
+      "front": "How is the test statistic $z$ computed for the rank sum test?",
+      "back": "Combine and rank all data. Let $R$ = sum of ranks for the smaller sample.\n$$z = \\frac{R - \\mu_R}{\\sigma_R}$$\n$$\\mu_R = \\frac{n_1(n_1+n_2+1)}{2}, \\quad \\sigma_R = \\sqrt{\\frac{n_1 n_2 (n_1+n_2+1)}{12}}$$"
+    },
+    {
+      "back": "Use the [[imp:signed‑rank test for paired (dependent) samples]] and the [[imp:rank sum test for independent samples]]. The study design determines the correct test.",
+      "front": "How do you decide between the signed‑rank test and the rank sum test?"
+    },
+    {
+      "front": "Why is the Wilcoxon signed‑rank test more powerful than the sign test?",
+      "back": "The sign test only uses the direction of differences. The signed‑rank test also uses the [[imp:magnitude]] of differences, giving larger differences more weight. This makes it more likely to detect a real effect."
+    },
+    {
+      "back": "It indicates that the ranks in the smaller sample are much larger than expected under $H_0$. This suggests that the population for that sample tends to have [[imp:larger values]] than the other population.",
+      "front": "In a rank sum test, what does a very large positive $z$ indicate?"
+    },
+    {
+      "front": "What is the [[kw:Kruskal-Wallis test]]?",
+      "back": "A nonparametric test for three or more independent samples. It ranks all data together and tests whether the populations have the same distribution. It is the alternative to one‑way ANOVA."
+    },
+    {
+      "back": "1. Each sample is randomly selected.\n2. Each sample size is at least 5.\nNo normality or equal variance required.",
+      "front": "What are the two conditions for the Kruskal-Wallis test?"
+    },
+    {
+      "back": "Combine and rank all data. Let $R_i$ = sum of ranks for sample $i$, $n_i$ = size, $N$ = total observations, $k$ = number of groups. Then:\n$$H = \\frac{12}{N(N+1)} \\sum_{i=1}^{k} \\frac{R_i^2}{n_i} - 3(N+1)$$",
+      "front": "How is the test statistic $H$ calculated in the Kruskal-Wallis test?"
+    },
+    {
+      "back": "Under $H_0$, $H$ approximately follows a [[imp:chi‑square distribution]] with $df = k - 1$.",
+      "front": "What distribution does the Kruskal-Wallis $H$ statistic follow?"
+    },
+    {
+      "front": "What does a significant Kruskal-Wallis test tell you?",
+      "back": "At least one population distribution differs from the others. It does [[imp:not]] identify which groups differ; post‑hoc tests (e.g., Dunn's) are needed."
+    },
+    {
+      "back": "$$df = k - 1 = 4 - 1 = 3$$",
+      "front": "What is the degrees of freedom for a Kruskal-Wallis test with 4 groups?"
+    },
+    {
+      "back": "A nonparametric measure of the strength and direction of a [[imp:monotonic]] relationship between two variables. It is the Pearson correlation computed on the ranks of the data. Range: −1 to +1.",
+      "front": "What is the [[kw:Spearman rank correlation coefficient]] $r_s$?"
+    },
+    {
+      "front": "Give the formula for Spearman's $r_s$ when there are no ties.",
+      "back": "$$r_s = 1 - \\frac{6\\Sigma d^2}{n(n^2-1)}$$ where $d$ is the difference between the ranks of each $(x, y)$ pair."
+    },
+    {
+      "front": "How do you test the significance of Spearman's $r_s$?",
+      "back": "Use [[imp:Table 10]] for critical values. If $|r_s|$ exceeds the critical value for sample size $n$ and $\\alpha$, reject $H_0$ ($\\rho_s = 0$). For $n > 30$, use $z = r_s \\sqrt{n-1}$ with standard normal table."
+    },
+    {
+      "front": "What advantage does Spearman have over Pearson correlation?",
+      "back": "Spearman detects any [[imp:monotonic]] relationship (not just linear). It is resistant to outliers because it uses ranks, and it does not assume normality."
+    },
+    {
+      "front": "If a scatter plot shows a U‑shaped curve, what will $r_s$ be approximately?",
+      "back": "Near [[imp:0]]. Spearman measures monotonic relationships. A U‑shape changes direction, so the rank correlation will be weak."
+    },
+    {
+      "back": "First, rank each variable using `=RANK.AVG(value, range, 1)`. Then apply `=CORREL(ranked_y_range, ranked_x_range)` to the two rank columns. This gives $r_s$.",
+      "front": "How can Google Sheets compute Spearman's $r_s$?"
+    },
+    {
+      "front": "What is a [[kw:run]] in a data sequence?",
+      "back": "A sequence of identical symbols that is preceded and followed by a different symbol or by no data at all. The number of data in a run is its length."
+    },
+    {
+      "back": "It determines whether a sequence of two categories (e.g., P/F, M/F) is random. It uses the number of runs $G$ as the test statistic.",
+      "front": "What does the [[kw:runs test for randomness]] check?"
+    },
+    {
+      "front": "State the null and alternative hypotheses for the runs test.",
+      "back": "$H_0$: The sequence of data is random. $H_a$: The sequence of data is not random. The test is always two‑tailed."
+    },
+    {
+      "front": "When $n_1 \\le 20$ and $n_2 \\le 20$, what is the test statistic and which table is used?",
+      "back": "The test statistic is $G$, the number of runs. Use [[imp:Table 12]] to find the lower and upper critical values for $\\alpha = 0.05$. Reject $H_0$ if $G \\le$ lower CV or $G \\ge$ upper CV."
+    },
+    {
+      "front": "When $n_1 > 20$ or $n_2 > 20$, what test statistic is used in the runs test?",
+      "back": "Use the z‑statistic: $$z = \\frac{G - \\mu_G}{\\sigma_G}$$ where $$\\mu_G = \\frac{2n_1n_2}{n_1+n_2} + 1$$ and $$\\sigma_G = \\sqrt{\\frac{2n_1n_2(2n_1n_2 - n_1 - n_2)}{(n_1+n_2)^2(n_1+n_2-1)}}$$"
+    },
+    {
+      "back": "The data are clumped together—all of one type then all of the other. This suggests non‑randomness.",
+      "front": "What does it mean if a sequence has [[imp:too few runs]]?"
+    },
+    {
+      "front": "What does it mean if a sequence has [[imp:too many runs]]?",
+      "back": "The data alternate too regularly (e.g., P F P F P F). This also suggests non‑randomness."
+    },
+    {
+      "back": "The [[imp:Wilcoxon rank sum test]] (also called the Mann‑Whitney U test).",
+      "front": "Which nonparametric test is the counterpart of the independent samples t‑test?"
+    },
+    {
+      "back": "The [[imp:Kruskal-Wallis test]].",
+      "front": "Which nonparametric test is the counterpart of one‑way ANOVA?"
+    },
+    {
+      "back": "The [[imp:Spearman rank correlation coefficient]].",
+      "front": "Which nonparametric test is the counterpart of the Pearson correlation?"
+    }
+  ],
+  "id": "consolidated-flashcards-chapter-11",
+  "type": "flashcard",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

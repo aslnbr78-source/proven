@@ -1,0 +1,741 @@
+{
+  "id": "chapter-10-4-disjoint-overlapping-events",
+  "standards": [
+    "HSS.CP.B.7",
+    "HSS.CP.B.8"
+  ],
+  "presenterNotes": [
+    "Use physical Venn diagram manipulatives or draw overlapping circles to visually show addition and subtraction.",
+    "For the tree diagram, have students build their own for a similar scenario (e.g., weather and game outcome).",
+    "Reinforce that the general addition rule works for all events, but identifying disjoint events allows a simpler calculation."
+  ],
+  "schemaVersion": 2,
+  "title": "Probability of Disjoint Events",
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "title": "Disjoint and Overlapping Events",
+      "questions": [
+        {
+          "hints": [
+            "Another word is mutually exclusive.",
+            "Starts with 'd'."
+          ],
+          "answer": "disjoint",
+          "id": "q1-1",
+          "feedbackIfWrong": "Events with no common outcomes are disjoint.",
+          "prompt": "Events that have no outcomes in common are called ___. (Answer: disjoint or overlapping?)",
+          "type": "short-answer"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "union",
+                "Union"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "The ___ of two events A and B consists of all outcomes that are in A, in B, or in both.",
+          "id": "q1-2",
+          "feedbackIfWrong": "The union is the set of outcomes in A or B (or both).",
+          "hints": [
+            "Starts with 'u'.",
+            "This word is used for 'or' in compound events."
+          ]
+        },
+        {
+          "answer": "0",
+          "hints": [
+            "Count the numbers that appear in both sets.",
+            "Do odd and even numbers overlap?"
+          ],
+          "prompt": "If A = {1,3,5} and B = {2,4,6} are events from rolling a die, what is the size of their intersection?",
+          "type": "short-answer",
+          "id": "q1-3",
+          "feedbackIfWrong": "There are no common outcomes, so the intersection is empty (size 0)."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine you're rolling a die. If you want to know the chance of getting an even number OR a prime number, you can't just add probabilities — some numbers like 2 are both! Events that share outcomes are overlapping. Events that don't are disjoint."
+      },
+      "teacherCues": [
+        "Draw two Venn diagrams on the board: one with circles separate (disjoint) and one with circles intersecting (overlapping). Ask: 'What's the difference?'",
+        "Roll a die. Ask: 'Are the events even number and prime number disjoint or overlapping?'"
+      ],
+      "confusionCorner": {
+        "body": "If you hear 'mutually exclusive', it means the same thing as disjoint. The events cannot happen at the same time.",
+        "title": "Mutually Exclusive = Disjoint"
+      },
+      "examples": [
+        {
+          "steps": [
+            "List outcomes: A = {2,4,6}, B = {2,3,5}.",
+            "Find intersection: The number 2 is in both.",
+            "Since they share an outcome, the events are overlapping."
+          ],
+          "title": "Example A – Identify Type from Dice",
+          "role": "guided",
+          "prompt": "A die is rolled. Event A: result is an even number. Event B: result is a prime number. Determine if the events are disjoint or overlapping."
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "A card is drawn from a standard deck. Event A: the card is a 10. Event B: the card is a face card (J, Q, K). Are these disjoint?",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why can't a single card be both a 10 and a face card? What would the Venn diagram look like?",
+          "steps": [
+            "A = {10♠, 10♣, 10♥, 10♦}, 4 outcomes.",
+            "B = 12 face cards (J, Q, K of each suit).",
+            "No 10 is a face card, so intersection is empty.",
+            "Events are disjoint."
+          ],
+          "title": "Example B – Disjoint from Cards"
+        },
+        {
+          "prompt": "A spinner has numbers 1–8. Event A: number is a multiple of 3. Event B: number is even. Are A and B disjoint or overlapping?",
+          "title": "Example C – Overlapping on a Spinner",
+          "steps": [
+            "A: multiples of 3 = {3,6}. B: even = {2,4,6,8}.",
+            "Intersection: {6} is in both.",
+            "They share 6, so overlapping."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "disjoint-vs-overlapping",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ A \\cup B = \\text{outcomes in A or B} $$ $$ A \\cap B = \\text{outcomes in A and B} $$",
+          "title": "Union and Intersection",
+          "notes": [
+            "Disjoint: $A \\cap B = \\emptyset$ (empty set).",
+            "Overlapping: $A \\cap B \\neq \\emptyset$."
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Disjoint vs. Overlapping — Examples with a Die",
+            "type": "table",
+            "rows": [
+              {
+                "0": "A = even number, B = prime number",
+                "1": "{2,4,6}",
+                "2": "{2,3,5}",
+                "3": "2 (yes)",
+                "4": "Overlapping"
+              },
+              {
+                "0": "A = 2 or 4, B = odd number",
+                "1": "{2,4}",
+                "2": "{1,3,5}",
+                "3": "none",
+                "4": "Disjoint"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Events A and B",
+              "A Outcomes",
+              "B Outcomes",
+              "Outcome(s) in Both?",
+              "Type"
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:compound event]] is the union (or) or intersection (and) of two events.",
+          "The union of A and B, written $A \\text{ or } B$, includes all outcomes in A, in B, or in both.",
+          "The intersection of A and B, written $A \\text{ and } B$, includes only outcomes that are in both A and B.",
+          "Two events are [[kw:disjoint]] (or [[kw:mutually exclusive]]) if they have no outcomes in common. Their Venn diagram circles do not overlap.",
+          "Two events are [[kw:overlapping]] if they share at least one outcome. Their Venn diagram circles intersect."
+        ]
+      }
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ P(A \\text{ or } B) = P(A) + P(B) $$",
+          "notes": [
+            "Only for disjoint (mutually exclusive) events.",
+            "If A and B overlap, this formula counts the intersection twice."
+          ],
+          "title": "Addition Rule for Disjoint Events"
+        },
+        "explanation": [
+          "If events A and B are [[imp:disjoint]] (no overlap), the probability that either occurs is the sum of their probabilities.",
+          "Formula: $$ P(A \\text{ or } B) = P(A) + P(B) $$",
+          "This works because the events share no outcomes, so there's no double-counting.",
+          "Example: Drawing a 10 or a face card from a deck — disjoint, so P(10 or face) = 4/52 + 12/52 = 16/52 = 4/13."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Draw a 10",
+                "1": "4/52",
+                "2": "Draw a face card",
+                "3": "12/52",
+                "4": "16/52 = 4/13"
+              },
+              {
+                "0": "Roll a 6",
+                "1": "1/6",
+                "2": "Roll an odd number",
+                "3": "3/6",
+                "4": "4/6 = 2/3"
+              },
+              {
+                "0": "Spin red (4 equal parts)",
+                "1": "1/4",
+                "2": "Spin blue",
+                "3": "1/4",
+                "4": "2/4 = 1/2"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Disjoint Events: Just Add",
+            "headers": [
+              "Event A",
+              "P(A)",
+              "Event B",
+              "P(B)",
+              "P(A or B) = P(A) + P(B)"
+            ]
+          }
+        ]
+      },
+      "id": "probability-disjoint-events",
+      "discoveryHook": {
+        "scenario": "If you want to find the chance of drawing a 10 or a face card from a deck, you can just add the individual probabilities because no card is both a 10 and a face card. For disjoint events, 'or' means simple addition!"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A card is randomly drawn from a standard 52-card deck. Find P(10 or face card).",
+          "title": "Example A – 10 or Face Card",
+          "steps": [
+            "Event A: 10 (4 tens). P(A) = 4/52.",
+            "Event B: face card (12 J, Q, K). P(B) = 12/52.",
+            "These are disjoint (a card can't be both a 10 and a face card).",
+            "P(A or B) = 4/52 + 12/52 = 16/52 = 4/13 ≈ 0.308."
+          ]
+        },
+        {
+          "prompt": "A dartboard has balloons: 5 red, 3 blue, 2 green. You pop a random balloon. Find P(red or blue).",
+          "minLength": 2,
+          "role": "peer-explain",
+          "steps": [
+            "Total balloons = 10. P(red) = 5/10, P(blue) = 3/10.",
+            "Red and blue are disjoint (a balloon can't be both colors).",
+            "P(red or blue) = 5/10 + 3/10 = 8/10 = 4/5 = 0.8.",
+            "So an 80% chance."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why can we simply add the probabilities of red and blue? What does the word 'or' mean here?",
+          "title": "Example B – Balloon Dart Game"
+        },
+        {
+          "title": "Example C – Election Probability",
+          "steps": [
+            "P(you) = 0.45, P(friend) = 0.25.",
+            "The events are disjoint (only one person wins).",
+            "P(you or friend) = 0.45 + 0.25 = 0.70.",
+            "So a 70% chance."
+          ],
+          "role": "independent",
+          "prompt": "You estimate a 45% chance you win class president, and a 25% chance your friend wins. Assuming you can't both win, find P(you or your friend win)."
+        }
+      ],
+      "teacherCues": [
+        "Write the formula: P(A or B) = P(A) + P(B) for disjoint events.",
+        "Shade the two separate circles on a Venn diagram to show adding areas."
+      ],
+      "questions": [
+        {
+          "type": "short-answer",
+          "prompt": "If P(A) = 0.3, P(B) = 0.1, and A and B are disjoint, what is P(A or B)?",
+          "answer": "0.4",
+          "id": "q2-1",
+          "feedbackIfWrong": "For disjoint events, just add: 0.3 + 0.1 = 0.4.",
+          "hints": [
+            "Disjoint means simply add the probabilities.",
+            "0.3 + 0.1 = ?"
+          ]
+        },
+        {
+          "feedbackIfWrong": "You add the individual probabilities for disjoint events.",
+          "id": "q2-2",
+          "hints": [
+            "Starts with 'a'.",
+            "Opposite of subtracting."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "adding",
+                "Adding"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "For disjoint events, the probability of A or B is found by ___ the probabilities of A and B."
+        },
+        {
+          "id": "q2-3",
+          "hints": [
+            "1 and 2 are disjoint outcomes.",
+            "Each has probability 1/6, add them, then simplify."
+          ],
+          "type": "short-answer",
+          "prompt": "A die is rolled. What is P(1 or 2)? Answer as a simplified fraction a/b.",
+          "feedbackIfWrong": "1/6 + 1/6 = 2/6 = 1/3.",
+          "answer": "1/3"
+        }
+      ],
+      "confusionCorner": {
+        "body": "In many real-life situations, events are naturally disjoint — like winning an election, rolling a specific number on a die, or drawing a single card. [[imp:Check if both can happen at the same time before adding.]]",
+        "title": "Only One Winner"
+      },
+      "title": "Probability of Disjoint Events"
+    },
+    {
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "short-answer",
+          "hints": [
+            "Use the general addition rule.",
+            "0.5 + 0.4 − 0.1 = ?"
+          ],
+          "feedbackIfWrong": "0.5 + 0.4 − 0.1 = 0.8.",
+          "prompt": "If P(A)=0.5, P(B)=0.4, and P(A and B)=0.1, what is P(A or B)?",
+          "answer": "0.8"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "and",
+                "And"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "In the general addition rule, P(A or B) = P(A) + P(B) − P(A ___ B).",
+          "feedbackIfWrong": "You subtract the probability of A and B (the overlap).",
+          "id": "q3-2",
+          "hints": [
+            "This is the intersection probability.",
+            "Three-letter word."
+          ]
+        },
+        {
+          "feedbackIfWrong": "The only even prime is 2, so 1 outcome out of 6 gives P=1/6.",
+          "type": "short-answer",
+          "id": "q3-3",
+          "prompt": "A die is rolled. Event A: even number. Event B: prime number. What is P(A and B)? Answer as a simplified fraction a/b.",
+          "answer": "1/6",
+          "hints": [
+            "Only 2 is both even and prime.",
+            "There are 6 possible outcomes."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A – Face Card or Spade",
+          "prompt": "A card is drawn from a 52-card deck. Find P(face card or spade).",
+          "role": "guided",
+          "steps": [
+            "P(face) = 12/52, P(spade) = 13/52.",
+            "Overlap: face cards that are spades = 3 (K♠, Q♠, J♠). P(face and spade) = 3/52.",
+            "Apply rule: P(face or spade) = 12/52 + 13/52 − 3/52 = 22/52.",
+            "Simplify: 22/52 = 11/26 ≈ 0.423."
+          ]
+        },
+        {
+          "title": "Example B – Plants under Light",
+          "steps": [
+            "P(visible) = 12/30, P(UV) = 15/30, P(both) = 6/30.",
+            "If we add directly, we'd count the 6 plants twice.",
+            "P(visible or UV) = 12/30 + 15/30 − 6/30 = 21/30.",
+            "Simplify: 21/30 = 7/10 = 0.7."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does simply adding 12+15 give a wrong answer? How does subtracting the 6 fix it?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "30 plants: 12 receive visible light, 15 receive UV light, 6 receive both. Find P(visible or UV)."
+        },
+        {
+          "title": "Example C – Honor Roll and Athletics",
+          "steps": [
+            "Given: P(A) = 74/200, P(B) = 51/200, P(A or B) = 113/200.",
+            "Use P(A or B) = P(A) + P(B) − P(A and B).",
+            "113/200 = 74/200 + 51/200 − P(A and B).",
+            "Solve: P(A and B) = 74/200 + 51/200 − 113/200 = 12/200 = 3/50 = 0.06."
+          ],
+          "prompt": "200 seniors: 74 varsity athletes, 51 honor roll, 113 are either an athlete or on honor roll. Find P(athlete and honor roll).",
+          "role": "independent"
+        }
+      ],
+      "id": "probability-overlapping-events",
+      "confusionCorner": {
+        "body": "The most common mistake is adding P(A) + P(B) and stopping. If the events overlap, you've counted the intersection twice. [[imp:Always check if there's overlap before using the addition rule.]]",
+        "title": "Don't Forget to Subtract!"
+      },
+      "concept": {
+        "explanation": [
+          "For overlapping events, you must avoid double-counting the intersection.",
+          "The General Addition Rule: $$ P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B) $$",
+          "This formula works for all events, disjoint or overlapping. If disjoint, $ P(A \\text{ and } B) = 0 $, and it becomes the simple addition rule.",
+          "To use it, identify the intersection outcomes and find their probability.",
+          "Example: Face card or spade — P(face) = 12/52, P(spade) = 13/52, P(face and spade) = 3/52, so P = 12/52 + 13/52 − 3/52 = 22/52 = 11/26."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Face card",
+                "1": "12/52",
+                "2": "Spade",
+                "3": "13/52",
+                "4": "K♠, Q♠, J♠",
+                "5": "3/52",
+                "6": "22/52 = 11/26"
+              },
+              {
+                "0": "Even number (die)",
+                "1": "3/6",
+                "2": "Prime number (die)",
+                "3": "3/6",
+                "4": "{2}",
+                "5": "1/6",
+                "6": "5/6"
+              },
+              {
+                "0": "Visible light (plants)",
+                "1": "12/30",
+                "2": "Ultraviolet light",
+                "3": "15/30",
+                "4": "6 plants",
+                "5": "6/30",
+                "6": "21/30 = 7/10"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Event A",
+              "P(A)",
+              "Event B",
+              "P(B)",
+              "A and B",
+              "P(A and B)",
+              "P(A or B) = P(A)+P(B)−P(A∩B)"
+            ],
+            "title": "Overlapping Events: General Addition Rule"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Works for ALL events.",
+            "If disjoint, $P(A \\text{ and } B)=0$, so it reduces to simple addition.",
+            "Always identify the overlap first."
+          ],
+          "title": "General Addition Rule",
+          "formula": "$$ P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B) $$"
+        }
+      },
+      "teacherCues": [
+        "Draw a Venn diagram with overlap. Shade A, then shade B. Ask: 'What part got shaded twice?'",
+        "Introduce the formula P(A or B) = P(A) + P(B) − P(A and B)."
+      ],
+      "title": "Probability of Overlapping Events",
+      "discoveryHook": {
+        "scenario": "You draw a card. What is the chance it's a face card or a spade? The king of spades is both! If we add 12/52 + 13/52, we count that one card twice. The fix: subtract the overlap once."
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Sometimes a problem isn't just 'or' or 'and' – it's both! Like finding the chance a medical test gives the correct diagnosis, whether the patient has the disease or not. You'll need to multiply conditional probabilities and then add the results."
+      },
+      "examples": [
+        {
+          "title": "Example A – Medical Test Accuracy",
+          "prompt": "8.3% of people have diabetes. A test is 98% accurate for those who have it, and 95% accurate for those who don't. Find the probability a random person gets a correct diagnosis.",
+          "role": "guided",
+          "steps": [
+            "Let A = has diabetes, B = correct diagnosis. P(A)=0.083, P(not A)=0.917.",
+            "Branch 1: A and B → P(A)·P(B|A) = 0.083×0.98 = 0.08134.",
+            "Branch 2: not A and B → P(not A)·P(B|not A) = 0.917×0.95 = 0.87115.",
+            "Add: P(B) = 0.08134 + 0.87115 = 0.95249 ≈ 95.2%."
+          ]
+        },
+        {
+          "steps": [
+            "A = lead at halftime (0.6), not A = trail (0.4).",
+            "Path 1: lead & win = 0.6×0.8 = 0.48. Path 2: trail & win = 0.4×0.1 = 0.04.",
+            "Total P(win) = 0.48 + 0.04 = 0.52.",
+            "So a 52% chance of winning."
+          ],
+          "role": "peer-explain",
+          "title": "Example B – Basketball Game",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the tree diagram have two paths to 'win'? What does each path represent?",
+          "prompt": "A team leads at halftime 60% of games. They win 80% when leading at halftime, but only 10% when not leading. Find the overall probability of winning.",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Fruit Drink Survey",
+          "prompt": "Focus group: 47% male, 53% female. 40% of males and 54% of females would buy a new drink. Find P(random person would buy).",
+          "steps": [
+            "P(male) = 0.47, P(female) = 0.53.",
+            "Buy | male = 0.40, Buy | female = 0.54.",
+            "P(buy) = (0.47×0.40) + (0.53×0.54) = 0.188 + 0.2862 = 0.4742.",
+            "So about 47.4% would buy."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "multi-step-probability",
+      "teacherCues": [
+        "Write a tree diagram for the diabetes example. Show how to multiply along branches, then add for 'or'.",
+        "Emphasize: some problems combine addition and multiplication rules."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Scenario",
+              "Probability Calculation",
+              "Result"
+            ],
+            "title": "Diabetes Test Tree Diagram Summary",
+            "rows": [
+              {
+                "0": "Has disease (8.3%) & correct (98%)",
+                "1": "$ 0.083 \\times 0.98 $",
+                "2": "0.08134"
+              },
+              {
+                "0": "No disease (91.7%) & correct (95%)",
+                "1": "$ 0.917 \\times 0.95 $",
+                "2": "0.87115"
+              },
+              {
+                "0": "Total probability of correct diagnosis",
+                "1": "$ 0.08134 + 0.87115 $",
+                "2": "0.95249"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Used when B can happen either with A or without A.",
+            "Multiply for 'and', add for 'or'."
+          ],
+          "title": "Law of Total Probability (Two Cases)",
+          "formula": "$$ P(B) = P(A) \\cdot P(B \\mid A) + P(\\overline{A}) \\cdot P(B \\mid \\overline{A}) $$"
+        },
+        "explanation": [
+          "Real-life problems often combine [[imp:multiple probability rules]].",
+          "A [[kw:probability tree diagram]] helps organize sequences of dependent or independent events.",
+          "To find the total probability of an event that can occur in several ways, use: $$ P(B) = P(A \\text{ and } B) + P(\\overline{A} \\text{ and } B) $$ This is the [[kw:Law of Total Probability]].",
+          "Multiply along branches for 'and', then add the branch probabilities for 'or'.",
+          "Example: A test for a disease: P(correct) = P(has disease and correct) + P(no disease and correct)."
+        ]
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "feedbackIfWrong": "You multiply probabilities along a branch to get the path probability.",
+          "hints": [
+            "For 'and' events in sequence.",
+            "The branches show conditional probabilities."
+          ],
+          "answer": "multiply",
+          "prompt": "In a tree diagram, you ___ along a branch to find the probability of that path. (Answer: add or multiply?)",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "You add (find the sum of) the probabilities of the paths that lead to the event.",
+          "hints": [
+            "Starts with 's'.",
+            "You're combining probabilities from different branches."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "sum",
+                "Sum"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "id": "q4-2",
+          "prompt": "When an event can occur in two different ways, the total probability is the ___ of the probabilities of those two paths."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "feedbackIfWrong": "0.4 × 0.1 = 0.04.",
+          "hints": [
+            "P(trail) = 0.4, P(win | trail) = 0.1.",
+            "Multiply: 0.4 × 0.1."
+          ],
+          "prompt": "In the basketball example, what is the probability the team trails at halftime and wins? Answer as a decimal.",
+          "answer": "0.04"
+        }
+      ],
+      "title": "Multi‑Step Probability Problems",
+      "confusionCorner": {
+        "body": "When using a tree diagram, don't add probabilities mid-branch. Multiply along a branch to get the probability of that path, then add the paths that lead to the desired event.",
+        "title": "Add Only the Full Paths"
+      }
+    },
+    {
+      "title": "Blueprint Aid – Solving 'Or' Probability Problems",
+      "examples": [
+        {
+          "prompt": "A card is drawn. Find P(red card or face card).",
+          "role": "guided",
+          "steps": [
+            "Understand: A = red (26/52), B = face (12/52). Overlap: red face cards (6 cards: J,Q,K of hearts & diamonds).",
+            "Solve: P(A and B)=6/52. So P(red or face) = 26/52 + 12/52 − 6/52 = 32/52 = 8/13.",
+            "Conclude: The probability is 8/13 ≈ 0.615."
+          ],
+          "title": "Example A – Red Card or Face Card"
+        },
+        {
+          "title": "Example B – Finding Missing Intersection",
+          "prompt": "In a school, P(athlete)=0.3, P(honor roll)=0.2, P(athlete or honor roll)=0.4. Find P(athlete and honor roll).",
+          "steps": [
+            "Understand: Given P(A or B) = 0.4, P(A)=0.3, P(B)=0.2. Need intersection.",
+            "Solve: 0.4 = 0.3 + 0.2 − P(A and B) → P(A and B) = 0.3 + 0.2 − 0.4 = 0.1.",
+            "Conclude: 10% of students are both athletes and on the honor roll."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How can the formula P(A or B) = P(A)+P(B)−P(A and B) be rearranged to find P(A and B)?",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Understand: 36 total outcomes. A: sum 7 = {(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)} = 6 outcomes. B: at least one 4 = 11 outcomes (6 with first die 4, 6 with second die 4, minus (4,4) counted twice). Overlap: (3,4) and (4,3) are in both → 2 outcomes.",
+            "Solve: P(A)=6/36, P(B)=11/36, P(A and B)=2/36. P(A or B)=6/36+11/36−2/36=15/36=5/12.",
+            "Conclude: The probability is 5/12 ≈ 0.417."
+          ],
+          "title": "Example C – Dice 'Or'",
+          "role": "independent",
+          "prompt": "Two dice are rolled. Find P(sum is 7 or at least one die shows a 4)."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Whenever you see 'or' in a probability question, pause! Are the events disjoint or overlapping? Using the Probability Blueprint will guide you to the right formula every time."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{Disjoint: } P(A \\text{ or } B) = P(A) + P(B) $$ $$ \\text{Overlapping: } P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B) $$",
+          "notes": [
+            "Always identify A and B first.",
+            "If given P(A or B) and other probabilities, rearrange to find missing piece."
+          ],
+          "title": "Blueprint Formulas"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Blueprint Decision: Disjoint or Overlapping?",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "List outcomes of A and B. Find if any outcome belongs to both."
+              },
+              {
+                "0": "2. Solve (Disjoint)",
+                "1": "P(A or B) = P(A) + P(B)."
+              },
+              {
+                "0": "2. Solve (Overlapping)",
+                "1": "P(A or B) = P(A) + P(B) − P(A and B)."
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Write probability and interpret in context."
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action"
+            ]
+          }
+        ],
+        "explanation": [
+          "Blueprint for compound 'or' probability:",
+          "1. [[imp:Understand]]: Define events A and B. Are they disjoint (no overlap) or overlapping? Use a Venn diagram or list outcomes.",
+          "2. [[imp:Solve]]: If disjoint, use $ P(A \\text{ or } B) = P(A) + P(B) $. If overlapping, use $ P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B) $.",
+          "3. [[imp:Conclude]]: Calculate and interpret the probability. Check if it makes sense (should be between 0 and 1).",
+          "For multi-step problems, draw a tree diagram, multiply for paths, then add the paths for 'or'."
+        ]
+      },
+      "questions": [
+        {
+          "hints": [
+            "Their Venn diagram circles intersect.",
+            "Starts with 'o'."
+          ],
+          "id": "q5-1",
+          "type": "short-answer",
+          "answer": "overlapping",
+          "feedbackIfWrong": "Events with common outcomes are overlapping.",
+          "prompt": "If events A and B share at least one outcome, they are called ___. (Answer: disjoint or overlapping?)"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "subtract",
+                "Subtract"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "To avoid counting the intersection twice when finding P(A or B) for overlapping events, you must ___ P(A and B).",
+          "id": "q5-2",
+          "feedbackIfWrong": "You subtract P(A and B) to correct for double-counting.",
+          "hints": [
+            "Starts with 's'.",
+            "Opposite of add."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Rearrange: P(A and B) = P(A) + P(B) − P(A or B).",
+            "0.5 + 0.3 − 0.7 = ?"
+          ],
+          "feedbackIfWrong": "0.5 + 0.3 − 0.7 = 0.1.",
+          "prompt": "If P(A)=0.5, P(B)=0.3, and P(A or B)=0.7, what is P(A and B)?",
+          "answer": "0.1",
+          "id": "q5-3"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Assume Disjoint",
+        "body": "Always check for overlap before deciding which formula to use. If you aren't sure, the general addition rule (with subtraction) is always safe – if there's no overlap, P(A and B)=0 and it still works."
+      },
+      "id": "blueprint-or-probability",
+      "teacherCues": [
+        "Write the blueprint steps: 1) Identify events and check overlap, 2) Choose the right formula, 3) Plug in and simplify.",
+        "Do a think-aloud with a new problem, like 'P(red card or face card)'."
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

@@ -1,0 +1,704 @@
+{
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "A human cannonball's path is a parabola. You know the cannon's launch point and the net's location, and the maximum height. With just a vertex and one point, you can write the equation that traces the entire flight!"
+      },
+      "id": "vertex-intercept-form",
+      "teacherCues": [
+        "Ask: If you know the vertex of a parabola and one other point, can you find its equation? What if you know the x-intercepts instead?",
+        "Write the vertex form $ y = a(x-h)^2 + k $ and intercept form $ y = a(x-p)(x-q) $ on the board. Emphasize that $ a $ is the unknown we solve for."
+      ],
+      "confusionCorner": {
+        "title": "Don't Forget the Signs in Intercept Form",
+        "body": "The form is $ y = a(x-p)(x-q) $. If an intercept is at $ x = -2 $, then $ p = -2 $, and the factor is $ (x - (-2)) = (x+2) $. [[imp:Always write the factors as $ (x - \\text{intercept}) $.]]"
+      },
+      "title": "Writing Quadratic Equations Using Vertex and Intercept Forms",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{Vertex form: } y = a(x-h)^2 + k $$ $$ \\text{Intercept form: } y = a(x-p)(x-q) $$",
+          "title": "Vertex and Intercept Forms",
+          "notes": [
+            "The unknown is always $ a $.",
+            "Plug in the known point and solve for $ a $.",
+            "Use the resulting equation for further calculations."
+          ]
+        },
+        "explanation": [
+          "To write the equation of a parabola, you need to know the value of $ a $ and some key features. The [[kw:vertex form]] $ y = a(x-h)^2 + k $ is best when you know the [[imp:vertex]] $ (h,k) $ and another point.",
+          "To find $ a $, plug the known point's $ (x,y) $ into the vertex form and solve for $ a $.",
+          "The [[kw:intercept form]] $ y = a(x-p)(x-q) $ is best when you know the [[imp:x-intercepts]] $ p $ and $ q $ and another point. Plug in the point to find $ a $.",
+          "Once you have $ a $, you can write the full equation, which can then be used for prediction."
+        ],
+        "visuals": [
+          {
+            "title": "Choosing the Right Form",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Vertex $ (h,k) $ and a point",
+                "1": "Vertex form $ y = a(x-h)^2 + k $",
+                "2": "Vertex (3,2), passes through (13,8)"
+              },
+              {
+                "0": "$ x $-intercepts $ p,q $ and a point",
+                "1": "Intercept form $ y = a(x-p)(x-q) $",
+                "2": "Intercepts 4 and -2, passes through (2,5)"
+              },
+              {
+                "0": "Three random points",
+                "1": "Standard form with system of equations",
+                "2": "Points (-1,4), (0,1), (2,7)"
+              }
+            ],
+            "headers": [
+              "Information Given",
+              "Form to Use",
+              "Example"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example A – Human Cannonball (Vertex Form)",
+          "prompt": "A performer is shot from a cannon. The vertex of the path is $ (50, 35) $ and the cannon is at $ (0, 15) $. Write the equation and find the height of the net at $ x = 90 $.",
+          "steps": [
+            "Use vertex form: $ y = a(x-50)^2 + 35 $.",
+            "Plug in $ (0, 15) $: $ 15 = a(0-50)^2 + 35 \\Rightarrow 15 = 2500a + 35 \\Rightarrow -20 = 2500a \\Rightarrow a = -0.008 $.",
+            "Equation: $ y = -0.008(x-50)^2 + 35 $.",
+            "Height at $ x=90 $: $ y = -0.008(90-50)^2 + 35 = -0.008(1600) + 35 = 22.2 $ feet."
+          ],
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Set up: $ y = a(x-4)(x-24) $.",
+            "Substitute $ (0, 9.6) $: $ 9.6 = a(-4)(-24) = 96a \\Rightarrow a = 0.1 $.",
+            "Equation: $ y = 0.1(x-4)(x-24) $.",
+            "The coldest temperature is at the vertex, $ x = 14 $: $ y = 0.1(10)(-10) = -10^\\circ C $."
+          ],
+          "role": "peer-explain",
+          "title": "Example B – Temperature Model (Intercept Form)",
+          "prompt": "A meteorologist's parabola has x-intercepts at $ x = 4 $ and $ x = 24 $, and passes through $ (0, 9.6) $. Explain to a partner how to write the equation.",
+          "peerPrompt": "Without looking back...\n\nUse intercept form $ y = a(x-4)(x-24) $. Plug in the point (0, 9.6). What is $ a $?",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Write Equation from Vertex and Point",
+          "steps": [
+            "Vertex form: $ y = a(x+1)^2 + 3 $.",
+            "Plug in $ (1, -5) $: $ -5 = a(1+1)^2 + 3 = 4a + 3 \\Rightarrow 4a = -8 \\Rightarrow a = -2 $.",
+            "Equation: $ y = -2(x+1)^2 + 3 $."
+          ],
+          "role": "independent",
+          "prompt": "Write the equation of the parabola with vertex $ (-1, 3) $ that passes through $ (1, -5) $."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q2-4-1",
+          "feedbackIfWrong": "The vertex is $ (h, k) $.",
+          "blanks": [
+            {
+              "accept": [
+                "k"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the constant added outside the square.",
+            "The $ y $-coordinate of the vertex."
+          ],
+          "type": "fill-blank",
+          "prompt": "In vertex form $ y = a(x-h)^2 + k $, the vertex is at $ (h, $ ___$ ) $."
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Intercepts are $ p=3 $ and $ q=-1 $.",
+            "Form is $ a(x-p)(x-q) $."
+          ],
+          "id": "q2-4-2",
+          "feedbackIfWrong": "The factors are $ (x-3)(x+1) $.",
+          "prompt": "If a parabola has $ x $-intercepts at $ 3 $ and $ -1 $, what are the factors in intercept form? (Answer like (x-3)(x+1))",
+          "answer": "(x-3)(x+1)"
+        },
+        {
+          "feedbackIfWrong": "$ a = 1 $, so the equation is $ y = (x-2)^2 - 4 $.",
+          "answer": "1",
+          "prompt": "Given vertex $ (2, -4) $ and point $ (0, 0) $, what is the value of $ a $ in vertex form? (Write as a decimal or fraction, e.g., 1 or -0.5)",
+          "id": "q2-4-3",
+          "hints": [
+            "Plug into $ y = a(x-2)^2 - 4 $ with $ (0,0) $.",
+            "$ 0 = a(-2)^2 - 4 $ → $ 4a = 4 $."
+          ],
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Write three points on the board: (-1, 4), (0, 1), (2, 7). Ask: How can we find a quadratic that passes through all three?",
+        "Show how to plug each point into $ y = ax^2 + bx + c $ to form a system of three equations, then solve by elimination."
+      ],
+      "id": "three-points-system",
+      "examples": [
+        {
+          "title": "Example A – NASA Weightless Flight",
+          "steps": [
+            "Set up equations: $ 100a + 10b + c = 26900 $, $ 400a + 20b + c = 30600 $, $ 900a + 30b + c = 32100 $.",
+            "Subtract Eq1 from Eq2: $ 300a + 10b = 3700 $. Subtract Eq1 from Eq3: $ 800a + 20b = 5200 $.",
+            "Solve the 2×2 system: Multiply first by 2: $ 600a + 20b = 7400 $. Subtract from second: $ 200a = -2200 \\Rightarrow a = -11 $.",
+            "Then $ b = 700 $, $ c = 21000 $. Model: $ h(t) = -11t^2 + 700t + 21000 $."
+          ],
+          "prompt": "A plane's height data: (10, 26900), (20, 30600), (30, 32100). Find the quadratic model $ h(t) = at^2 + bt + c $.",
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "prompt": "In the previous example, we subtracted equations to eliminate $ c $. Why is $ c $ often the easiest variable to eliminate?",
+          "title": "Example B – Why Eliminate c First?",
+          "peerPrompt": "Without looking back...\n\nDiscuss: The coefficient of $ c $ in each equation is 1. How does that help when subtracting?",
+          "steps": [
+            "Since $ c $ has the same coefficient (1) in every equation, subtracting any two equations immediately eliminates $ c $.",
+            "This reduces the system from three variables to two in one step.",
+            "It's a strategy that works any time you have standard form equations from points."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C – Solve for a, b, c",
+          "prompt": "Find the quadratic through $ (-1, 4) $, $ (0, 1) $, $ (2, 7) $.",
+          "steps": [
+            "From $ (0, 1) $, $ c = 1 $ directly.",
+            "From $ (-1, 4) $: $ a - b + 1 = 4 \\Rightarrow a - b = 3 $. From $ (2, 7) $: $ 4a + 2b + 1 = 7 \\Rightarrow 4a + 2b = 6 $.",
+            "Solve: $ a = b + 3 $. Plug into second: $ 4(b+3) + 2b = 6 \\Rightarrow 6b + 12 = 6 \\Rightarrow b = -1 $, then $ a = 2 $.",
+            "Equation: $ y = 2x^2 - x + 1 $."
+          ],
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q2-4-4",
+          "type": "short-answer",
+          "hints": [
+            "A quadratic has three parameters: $ a, b, c $.",
+            "Each point gives one equation."
+          ],
+          "prompt": "How many points are needed to determine a unique quadratic function?",
+          "answer": "3",
+          "feedbackIfWrong": "You need exactly 3 points to determine a quadratic function."
+        },
+        {
+          "id": "q2-4-5",
+          "blanks": [
+            {
+              "accept": [
+                "c"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the constant term.",
+            "It's the $ y $-intercept."
+          ],
+          "feedbackIfWrong": "The $ y $-intercept gives $ c $ directly.",
+          "type": "fill-blank",
+          "prompt": "When a point has $ x = 0 $, substituting it into $ y = ax^2 + bx + c $ directly gives the value of ___."
+        },
+        {
+          "id": "q2-4-6",
+          "type": "short-answer",
+          "feedbackIfWrong": "$ a = -11 $.",
+          "prompt": "In the NASA example, what was the value of $ a $?",
+          "hints": [
+            "Look back at the guided example.",
+            "The model was $ h(t) = -11t^2 + 700t + 21000 $."
+          ],
+          "answer": "-11"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check Your Solution!",
+        "body": "After solving for $ a $, $ b $, $ c $, plug all three original points back into the equation to make sure they work. [[imp:One mistake in arithmetic can throw off the entire model.]]"
+      },
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Three equations, three unknowns ($ a, b, c $).",
+            "Eliminate $ c $ first if possible, then solve for $ a $ and $ b $.",
+            "Often one point gives $ c $ directly if it's the $ y $-intercept."
+          ],
+          "formula": "$$ \\begin{aligned} a x_1^2 + b x_1 + c &= y_1 \\\\ a x_2^2 + b x_2 + c &= y_2 \\\\ a x_3^2 + b x_3 + c &= y_3 \\end{aligned} $$",
+          "title": "System of Equations from Three Points"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ (-1, 4) $",
+                "1": "$ a - b + c = 4 $",
+                "2": "Equation 1"
+              },
+              {
+                "0": "$ (0, 1) $",
+                "1": "$ c = 1 $",
+                "2": "Equation 2 (gives c directly)"
+              },
+              {
+                "0": "$ (2, 7) $",
+                "1": "$ 4a + 2b + c = 7 $",
+                "2": "Equation 3"
+              }
+            ],
+            "headers": [
+              "Point",
+              "Equation",
+              "Step"
+            ],
+            "type": "table",
+            "title": "Solving for a, b, c from Points (-1,4), (0,1), (2,7)",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "If you know three points that lie on a parabola, you can find its equation in standard form $ y = ax^2 + bx + c $.",
+          "Substitute each point's $ (x, y) $ into the equation to get a [[imp:system of three linear equations]] in $ a $, $ b $, and $ c $.",
+          "Solve the system using elimination or substitution, just like in Section 1.4.",
+          "Once you find $ a $, $ b $, and $ c $, write the final quadratic function."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "You have three snapshots of a rocket's height at different times. Without knowing the vertex or intercepts, you can still reconstruct the entire quadratic path by solving a system of equations. It's like a puzzle with three clues!"
+      },
+      "title": "Writing Quadratic Equations from Three Points"
+    },
+    {
+      "title": "Modeling Data: Differences and Regression",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A rope's safe working load S (lbs) for circumference C (in): C=0,1,2,3 → S=0,180,720,1620. Show that this is quadratic and write the equation.",
+          "steps": [
+            "First differences: $ 180-0=180 $, $ 720-180=540 $, $ 1620-720=900 $.",
+            "Second differences: $ 540-180=360 $, $ 900-540=360 $ — constant!",
+            "The data are quadratic with $ S = a C^2 + b C + c $. Since $ C=0 \\Rightarrow S=0 $, $ c=0 $.",
+            "Using (1,180): $ a+b=180 $. Using (2,720): $ 4a+2b=720 $. Solve: $ a=180, b=0 $. Equation: $ S = 180 C^2 $."
+          ],
+          "title": "Example A – Identifying a Quadratic from a Table"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nFor $ y = ax^2 + bx + c $ with equally spaced $ x $-values spaced by 1, the second difference equals $ 2a $. Discuss with a partner: if second differences are 4, what is $ a $?",
+          "prompt": "If the second differences of a table are all 4, what does that tell you about the leading coefficient $ a $ of the quadratic model?",
+          "role": "peer-explain",
+          "steps": [
+            "For equally spaced $ x $ (step 1), the second difference equals $ 2a $.",
+            "So $ 2a = 4 \\Rightarrow a = 2 $.",
+            "This shortcut works for any quadratic with inputs spaced by 1."
+          ],
+          "minLength": 2,
+          "title": "Example B – Constant Second Differences"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "First differences are constant (all 2), so the data are [[imp:linear]], not quadratic.",
+            "There's no need to check second differences.",
+            "Equation: $ y = 2x + 40 $."
+          ],
+          "title": "Example C – Determining Linear vs. Quadratic",
+          "prompt": "A table shows height over time: (0,40), (1,42), (2,44), (3,46). First differences are 2, 2, 2. Is the data linear or quadratic?"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Second Differences of $ h(t) = -16t^2 + 400 $",
+            "variant": "colorful",
+            "headers": [
+              "$ t $",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "rows": [
+              {
+                "0": "$ h(t) $",
+                "1": "400",
+                "2": "384",
+                "3": "336",
+                "4": "256",
+                "5": "144"
+              },
+              {
+                "0": "First diff",
+                "1": "",
+                "2": "$ -16 $",
+                "3": "$ -48 $",
+                "4": "$ -80 $",
+                "5": "$ -112 $"
+              },
+              {
+                "0": "Second diff",
+                "1": "",
+                "2": "",
+                "3": "$ -32 $",
+                "4": "$ -32 $",
+                "5": "$ -32 $"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "title": "Using Differences to Identify a Quadratic",
+          "notes": [
+            "Inputs must be equally spaced.",
+            "Second differences = differences of the first differences.",
+            "If constant, data is perfectly quadratic. If approximately constant, use regression."
+          ],
+          "formula": "$$ \\text{Constant second differences } \\Rightarrow \\text{ quadratic model} $$"
+        },
+        "explanation": [
+          "For equally spaced $ x $-values, you can analyze [[kw:differences]] in the $ y $-values to identify the type of function.",
+          "If the [[imp:first differences]] are constant, the data are linear.",
+          "If the [[imp:second differences]] (differences of the first differences) are constant, the data are exactly quadratic.",
+          "For real-world data that is approximately quadratic, second differences will be [[imp:close]] but not exactly constant. In that case, a quadratic [[kw:regression]] model can be found using technology."
+        ]
+      },
+      "id": "data-differences-regression",
+      "teacherCues": [
+        "Write a table of values with equally spaced x's. Show how to compute first and second differences. Ask: What does it mean if second differences are constant?",
+        "Explain that when second differences are constant, the data can be modeled by a quadratic function."
+      ],
+      "confusionCorner": {
+        "body": "Real data often have slight variations. If second differences are roughly equal, a quadratic model is still appropriate. Use technology (graphing calculator or regression tool) to find the best‑fit quadratic equation. [[imp:Don't expect perfection from real‑world measurements!]]",
+        "title": "Second Differences Not Exactly Constant? Use Regression"
+      },
+      "discoveryHook": {
+        "scenario": "You have a table of heights of a falling wrench at each second. How can you tell if the pattern is quadratic? Check the second differences! If they are constant, a quadratic function will fit the data perfectly."
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "prompt": "If the first differences of a table are constant, the data is ___ (linear or quadratic).",
+          "id": "q2-4-7",
+          "answer": "linear",
+          "feedbackIfWrong": "Constant first differences indicate a linear relationship.",
+          "hints": [
+            "Constant rate of change means a straight line.",
+            "First differences = slope."
+          ]
+        },
+        {
+          "id": "q2-4-8",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "quadratic"
+              ]
+            }
+          ],
+          "prompt": "Constant second differences indicate that the data can be modeled by a ___ function.",
+          "hints": [
+            "It's a parabola.",
+            "The highest exponent is 2."
+          ],
+          "feedbackIfWrong": "Constant second differences indicate a quadratic function."
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Set $ 2a = 6 $.",
+            "Divide by 2."
+          ],
+          "id": "q2-4-9",
+          "feedbackIfWrong": "$ a = 3 $.",
+          "prompt": "For a quadratic with equally spaced x-values (step 1), the second difference equals $ 2a $. If second differences are 6, what is $ a $?",
+          "answer": "3"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "answer": "points",
+          "hints": [
+            "It's the secant line.",
+            "Two locations on the graph."
+          ],
+          "id": "q2-4-10",
+          "prompt": "The average rate of change of a function over an interval is the slope of the line connecting the two ___.",
+          "feedbackIfWrong": "It is the slope of the line connecting the two points on the graph.",
+          "type": "short-answer"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "vertex"
+              ]
+            }
+          ],
+          "id": "q2-4-11",
+          "feedbackIfWrong": "The optimal value is at the vertex.",
+          "prompt": "For a quadratic model, the optimal (maximum or minimum) value occurs at the ___.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the turning point of the parabola.",
+            "The highest or lowest point."
+          ]
+        },
+        {
+          "hints": [
+            "Vertex $ x = -\\frac{b}{2a} = 10 $.",
+            "Plug in $ x = 10 $: $ -100 + 200 - 30 $."
+          ],
+          "feedbackIfWrong": "$ P(10) = 70 $ is the maximum profit.",
+          "id": "q2-4-12",
+          "answer": "70",
+          "prompt": "A profit model is $ P(x) = -x^2 + 20x - 30 $. What is the maximum profit? (Calculate $ P(10) $)",
+          "type": "short-answer"
+        }
+      ],
+      "id": "applications-average-rate",
+      "teacherCues": [
+        "Draw a parabola and pick two points. Ask: How fast did the function change on average between them? Connect the points with a line — its slope is the average rate of change.",
+        "Explain that for quadratic models, the vertex gives the maximum or minimum value, which answers 'optimal' questions."
+      ],
+      "confusionCorner": {
+        "body": "Using a model within the range of the data (interpolation) is safe. Using it far outside that range (extrapolation) may be unreliable. [[imp:Always check if your prediction is within the original data's domain.]]",
+        "title": "Interpolation vs. Extrapolation"
+      },
+      "discoveryHook": {
+        "scenario": "A concert's profit depends on ticket price. As the price goes up, fewer people attend. The profit curve is a parabola, and its vertex tells us the exact price that maximizes profit. Meanwhile, the average rate of change tells us how quickly profit rises or falls between different price points."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:average rate of change]] of a function $ f $ over an interval $ [x_1, x_2] $ is the slope of the line connecting the two points: $$ \\frac{f(x_2) - f(x_1)}{x_2 - x_1} $$",
+          "For a quadratic model, the average rate of change can be positive, negative, or zero, depending on the interval and the direction of the parabola.",
+          "The [[imp:vertex]] of a quadratic model gives the optimal value — maximum for a downward-opening parabola (e.g., profit, height) or minimum for an upward-opening parabola (e.g., cost, temperature).",
+          "In real‑life modeling, after writing the equation, you can evaluate it at any $ x $ to make predictions and calculate average rates to describe trends."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ 0 < x < 14 $ (cooling)",
+                "1": "$ \\frac{-10 - 9.6}{14 - 0} $",
+                "2": "$ -1.4^\\circ C $ per hour"
+              },
+              {
+                "0": "$ 14 < x < 24 $ (warming)",
+                "1": "$ \\frac{0 - (-10)}{24 - 14} $",
+                "2": "$ 1^\\circ C $ per hour"
+              }
+            ],
+            "headers": [
+              "Interval",
+              "Calculation",
+              "Average Rate"
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Average Rate of Change for Temperature Model"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Average rate} = \\frac{f(b) - f(a)}{b - a} $$",
+          "notes": [
+            "It is the slope of the secant line.",
+            "Can be positive (increasing), negative (decreasing), or zero.",
+            "For quadratics, it changes from interval to interval."
+          ],
+          "title": "Average Rate of Change"
+        }
+      },
+      "examples": [
+        {
+          "title": "Example A – Average Rate of Temperature Drop",
+          "steps": [
+            "$ f(0) = 0.1(-4)(-24) = 9.6 $. $ f(14) = 0.1(10)(-10) = -10 $.",
+            "Average rate $ = \\frac{-10 - 9.6}{14 - 0} = \\frac{-19.6}{14} = -1.4^\\circ C $ per hour.",
+            "The temperature drops by $ 1.4^\\circ C $ per hour on average from midnight to 2 p.m."
+          ],
+          "prompt": "Temperature model: $ f(x) = 0.1(x-4)(x-24) $. Find the average rate of change from $ x = 0 $ to $ x = 14 $.",
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "steps": [
+            "Here $ a = -50, b = 600 $. Vertex $ x = -\\frac{600}{2(-50)} = \\frac{-600}{-100} = 6 $.",
+            "Optimal price increase: $6. Maximum profit: $ P(6) = -50(36) + 3600 + 2000 = 3800 $.",
+            "So raising the ticket price by $6 yields the maximum profit of $3800."
+          ],
+          "prompt": "A concert profit model is $ P(x) = -50x^2 + 600x + 2000 $, where $ x $ is ticket price increase. Explain how to find the optimal price increase.",
+          "peerPrompt": "Without looking back...\n\nThe vertex of a downward-opening parabola gives the maximum. Use $ x = -\\frac{b}{2a} $. What is the optimal $ x $? What is the maximum profit?",
+          "title": "Example B – Maximizing Profit",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "A quadratic model for ice thickness $ x $ (in) and maximum weight $ y $ (tons) is $ y = 0.06x^2 + 0.5x $. Predict the weight for $ x = 22 $ inches.",
+          "title": "Example C – Predicting with a Model",
+          "role": "independent",
+          "steps": [
+            "Plug $ x = 22 $: $ y = 0.06(484) + 0.5(22) = 29.04 + 11 = 40.04 $ tons.",
+            "Ice 22 inches thick can support about 40 tons.",
+            "This is within the range of the original data (12–27 inches)."
+          ]
+        }
+      ],
+      "title": "Applications: Average Rate of Change and Optimization"
+    },
+    {
+      "teacherCues": [
+        "Walk through a complete Understand–Solve–Conclude example: modeling the height of a dropped sponge (from the exercise).",
+        "Use differences to confirm quadratic, set up a system or use regression, make predictions, and interpret."
+      ],
+      "title": "Blueprint Aid: Full Quadratic Modeling Process",
+      "confusionCorner": {
+        "title": "Choose Points Wisely",
+        "body": "When using three points to find a quadratic, pick points that are spread out and, if possible, include the $ y $-intercept to get $ c $ easily. [[imp:Well‑chosen points reduce arithmetic errors.]]"
+      },
+      "examples": [
+        {
+          "prompt": "Identify the independent and dependent variables. What type of function is suggested by the increasing rate of fall?",
+          "role": "guided",
+          "steps": [
+            "Independent: time $ t $ (seconds). Dependent: height $ h $ (feet).",
+            "The height drops faster as time goes on, suggesting a [[imp:quadratic]] relationship.",
+            "We want to find $ h(t) = at^2 + bt + c $."
+          ],
+          "title": "Example A – Understand the Problem"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nFrom (0,280), $ c = 280 $. Plug in (1,264) and (3,136) into $ at^2 + bt + 280 $. Solve the system for $ a $ and $ b $.",
+          "steps": [
+            "$ c = 280 $.",
+            "$ t=1 $: $ a + b + 280 = 264 \\Rightarrow a + b = -16 $.",
+            "$ t=3 $: $ 9a + 3b + 280 = 136 \\Rightarrow 9a + 3b = -144 \\Rightarrow 3a + b = -48 $.",
+            "Subtract: $ (3a+b) - (a+b) = -48 - (-16) \\Rightarrow 2a = -32 \\Rightarrow a = -16 $, then $ b = 0 $.",
+            "Model: $ h(t) = -16t^2 + 280 $."
+          ],
+          "title": "Example B – Solve: Find the Model",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Using points (0, 280), (1, 264), (2, 216?) — wait, we don't have t=2. Let's use (0,280), (1,264), (3,136). Set up and solve for a, b, c."
+        },
+        {
+          "steps": [
+            "Set $ h(t) = 0 $: $ -16t^2 + 280 = 0 \\Rightarrow t^2 = 17.5 \\Rightarrow t \\approx 4.18 $ seconds.",
+            "The sponge hits the ground after about 4.2 seconds.",
+            "Domain in context: $ 0 \\le t \\le 4.18 $. Range: $ 0 \\le h \\le 280 $."
+          ],
+          "role": "independent",
+          "title": "Example C – Conclude: Predict Impact",
+          "prompt": "Using $ h(t) = -16t^2 + 280 $, when does the sponge hit the ground?"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A window cleaner drops a sponge from a skyscraper. The table shows its height at different times. We'll use the Understand–Solve–Conclude framework to build a quadratic model and predict when it hits the ground."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Height, h (ft)",
+                "1": "280",
+                "2": "264",
+                "3": "244",
+                "4": "180",
+                "5": "136"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Time, t (sec)",
+              "0",
+              "1",
+              "1.5",
+              "2.5",
+              "3"
+            ],
+            "title": "Sponge Height Data"
+          }
+        ],
+        "explanation": [
+          "**Understand**: We have height data at various times. The heights decrease and then drop faster, suggesting a quadratic model. We want to find the equation and predict the ground impact time.",
+          "**Solve**: Compute second differences (they are approximately constant, confirming a quadratic). Use technology or three points to find the model: $ h(t) \\approx -16t^2 + 0t + 280 $ (simplified from real data).",
+          "**Conclude**: To find when the sponge hits the ground, set $ h(t) = 0 $ and solve: $ -16t^2 + 280 = 0 \\Rightarrow t^2 = 17.5 \\Rightarrow t \\approx 4.18 $ seconds. The domain is $ 0 \\le t \\le 4.18 $, range $ 0 \\le h \\le 280 $."
+        ]
+      },
+      "id": "blueprint-modeling-quadratic",
+      "questions": [
+        {
+          "id": "q2-4-13",
+          "feedbackIfWrong": "$ c = 280 $ is the initial height in feet.",
+          "hints": [
+            "It's the height at time $ t = 0 $.",
+            "The sponge's starting position."
+          ],
+          "answer": "initial height",
+          "type": "short-answer",
+          "prompt": "In the sponge model, what does the $ y $-intercept $ c = 280 $ represent? (Answer: initial height)"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "zero",
+                "0"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "Setting the quadratic model equal to 0 solves for when the height is ___ (i.e., when the object hits the ground).",
+          "id": "q2-4-14",
+          "hints": [
+            "Ground level is height 0.",
+            "We solve $ h(t) = 0 $."
+          ],
+          "feedbackIfWrong": "Setting height equal to 0 gives the time it hits the ground."
+        },
+        {
+          "prompt": "For the sponge model, what is the approximate time when it hits the ground? (Answer: 4.2 seconds)",
+          "type": "short-answer",
+          "answer": "4.2",
+          "id": "q2-4-15",
+          "hints": [
+            "Solve $ 16t^2 = 280 $.",
+            "$ t = \\sqrt{17.5} \\approx 4.18 $, round to 4.2."
+          ],
+          "feedbackIfWrong": "About 4.2 seconds."
+        }
+      ]
+    }
+  ],
+  "type": "interactive-lesson",
+  "standards": [
+    "HSA.CED.A.2",
+    "HSS.ID.B.6a",
+    "HSF.BF.A.1"
+  ],
+  "title": "Modeling with Quadratic Functions",
+  "presenterNotes": [
+    "The key to this section is flexibility: students should be able to choose the right method (vertex form, intercept form, or system of equations) based on the information given.",
+    "The concept of second differences is a powerful way to identify quadratic relationships in tables. Emphasize that it works for equally spaced inputs.",
+    "Regression is mentioned but not tool‑specific. Focus on interpreting the model rather than the button‑pushing.",
+    "The blueprint example pulls together writing equations, making predictions, and interpreting domain/range in context."
+  ],
+  "schemaVersion": 2,
+  "id": "section-2-4-modeling-quadratic-functions",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

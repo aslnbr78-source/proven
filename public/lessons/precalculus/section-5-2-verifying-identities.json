@@ -1,0 +1,718 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-5-2-verifying-identities",
+  "title": "Verifying Trigonometric Identities",
+  "blocks": [
+    {
+      "id": "what-is-verification",
+      "title": "What Is Verifying an Identity?",
+      "teacherCues": [
+        "Write on the board: $\\sin^2 x = 1 - \\cos^2 x$. Ask: Is this true for all $x$? (Yes, it's an identity.)",
+        "Contrast with $\\sin x = 0$: true only for certain $x$. This is a conditional equation."
+      ],
+      "discoveryHook": {
+        "scenario": "A passport officer verifies your identity by checking your photo, not by assuming you are who you claim. In trig, verifying an identity means proving the left side transforms into the right side using only known facts — no shortcuts, no assumptions."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:conditional equation]] is true only for some values (e.g., $\\sin x = 0$). [[kw:Solving]] finds those values.",
+          "An [[kw:identity]] is true for all real values in the domain. We [[kw:verify]] an identity by showing one side equals the other.",
+          "Verifying is different from solving: you cannot assume equality, so no adding to both sides or cross-multiplying.",
+          "You work with [[imp:one side at a time]], usually the more complicated one, and rewrite it to match the other side."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Conditional Equation vs. Identity",
+            "headers": [
+              "Equation",
+              "Type",
+              "True when"
+            ],
+            "rows": [
+              {
+                "0": "$\\sin x = 0$",
+                "1": "Conditional",
+                "2": "$x = n\\pi$"
+              },
+              {
+                "0": "$\\sin^2 x = 1 - \\cos^2 x$",
+                "1": "Identity",
+                "2": "All real $x$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Verification Mindset",
+          "formula": "$$\\text{Start with LHS} \\quad \\rightarrow \\quad \\cdots \\quad \\rightarrow \\quad \\text{RHS}$$",
+          "notes": [
+            "Only manipulate [[imp:one side]].",
+            "Use fundamental identities and algebra.",
+            "Never treat it as an equation to solve."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Spot the Identity",
+          "prompt": "Is $\\cos x = 1$ an identity or a conditional equation?",
+          "steps": [
+            "Check if it's true for all real numbers $x$.",
+            "It's false for $x=\\frac{\\pi}{2}$ (cosine is 0).",
+            "Therefore, it is a conditional equation."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Identity Test",
+          "prompt": "Is $\\tan x \\csc x = \\sec x$ true for all $x$ where both sides are defined? Verify orally.",
+          "peerPrompt": "Tell your partner: How would you check if this is an identity? What identities would you use?",
+          "minLength": 2,
+          "steps": [
+            "Convert left side to sines and cosines: $\\frac{\\sin x}{\\cos x} \\cdot \\frac{1}{\\sin x}$.",
+            "Simplify to $\\frac{1}{\\cos x} = \\sec x$.",
+            "The equation holds wherever both sides are defined, so it is an identity."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – True or False",
+          "prompt": "True or False: When verifying an identity, it's okay to add the same expression to both sides.",
+          "steps": [
+            "Recall the rule: you cannot assume equality.",
+            "Adding to both sides would use the assumption that the sides are equal, which is what you are trying to prove.",
+            "Answer: False."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Verifying ≠ Solving",
+        "body": "Don't treat an identity like an equation you're solving. If you start with $\\sin^2 x = 1 - \\cos^2 x$, you [[imp:cannot]] move terms across the equals sign. Instead, rewrite one side."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "An equation that is true for only some values of the variable is called a ___ equation.",
+          "blanks": [
+            {
+              "accept": [
+                "conditional"
+              ]
+            }
+          ],
+          "hints": [
+            "It's not an identity.",
+            "The opposite of 'identity'."
+          ],
+          "feedbackIfWrong": "It's a conditional equation."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "When verifying an identity, should you start with the simpler side or the more complicated side?",
+          "answer": "more complicated",
+          "hints": [
+            "It's easier to simplify the more complicated side.",
+            "Guideline 1 says to work with the more complicated side first."
+          ],
+          "feedbackIfWrong": "Start with the more complicated side."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "Verifying an identity means showing that both sides are ___ for all values in the domain.",
+          "blanks": [
+            {
+              "accept": [
+                "equal"
+              ]
+            }
+          ],
+          "hints": [
+            "What's another word for 'the same'?",
+            "Think of an equal sign."
+          ],
+          "feedbackIfWrong": "They must be equal."
+        }
+      ]
+    },
+    {
+      "id": "basic-verification-moves",
+      "title": "Basic Verification Moves",
+      "teacherCues": [
+        "Show $\\frac{\\sec^2\\theta - 1}{\\sec^2\\theta}$ and ask: What identity simplifies the numerator? ($\\tan^2\\theta$)",
+        "On the board, rewrite $\\sec^2\\theta$ as $\\frac{1}{\\cos^2\\theta}$ and see if students get $\\sin^2\\theta$."
+      ],
+      "discoveryHook": {
+        "scenario": "Think of verification like solving a puzzle: you can substitute pieces (identities) and rearrange (algebra) to transform one picture into another. The key is knowing which piece fits where."
+      },
+      "concept": {
+        "explanation": [
+          "The simplest verifications use one or two fundamental identities directly.",
+          "Common moves:",
+          "1. Replace $\\sec^2\\theta - 1$ with $\\tan^2\\theta$ (Pythagorean).",
+          "2. Convert $\\sec^2\\theta$ to $\\frac{1}{\\cos^2\\theta}$ (Reciprocal).",
+          "3. Simplify fractions and combine like terms.",
+          "Always keep an eye on the target side to guide substitutions."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Quick Substitutions",
+            "headers": [
+              "If you see",
+              "Replace with"
+            ],
+            "rows": [
+              {
+                "0": "$\\sec^2 u - 1$",
+                "1": "$\\tan^2 u$"
+              },
+              {
+                "0": "$1 - \\cos^2 u$",
+                "1": "$\\sin^2 u$"
+              },
+              {
+                "0": "$\\csc^2 u - 1$",
+                "1": "$\\cot^2 u$"
+              },
+              {
+                "0": "$\\tan^2 u + 1$",
+                "1": "$\\sec^2 u$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Pythagorean Shortcuts",
+          "formula": "$$\\sec^2 u - 1 = \\tan^2 u$$",
+          "notes": [
+            "Rearrange $1 + \\tan^2 u = \\sec^2 u$.",
+            "Also $\\csc^2 u - 1 = \\cot^2 u$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Simplify Numerator",
+          "prompt": "Verify $\\frac{\\sec^2\\theta - 1}{\\sec^2\\theta} = \\sin^2\\theta$.",
+          "steps": [
+            "Left side: Replace numerator $\\sec^2\\theta - 1$ with $\\tan^2\\theta$.",
+            "Now $\\frac{\\tan^2\\theta}{\\sec^2\\theta} = \\tan^2\\theta \\cdot \\cos^2\\theta$.",
+            "Write $\\tan^2\\theta \\cdot \\cos^2\\theta = \\frac{\\sin^2\\theta}{\\cos^2\\theta} \\cdot \\cos^2\\theta = \\sin^2\\theta$.",
+            "Matches right side."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Alternate Path",
+          "prompt": "Verify the same identity by writing $\\sec^2\\theta$ as $\\frac{1}{\\cos^2\\theta}$ first.",
+          "peerPrompt": "Work with a partner: start with $\\frac{\\frac{1}{\\cos^2\\theta} - 1}{\\frac{1}{\\cos^2\\theta}}$ and simplify. Discuss why this also works.",
+          "minLength": 2,
+          "steps": [
+            "Rewrite: $\\frac{\\frac{1}{\\cos^2\\theta} - 1}{\\frac{1}{\\cos^2\\theta}} = \\left(\\frac{1 - \\cos^2\\theta}{\\cos^2\\theta}\\right) \\cdot \\cos^2\\theta$.",
+            "Simplify to $\\frac{1 - \\cos^2\\theta}{1} = \\sin^2\\theta$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Try It",
+          "prompt": "Verify $\\frac{\\csc^2 x - 1}{\\csc^2 x} = \\cos^2 x$.",
+          "steps": [
+            "Left side: numerator $\\csc^2 x - 1 = \\cot^2 x$.",
+            "So $\\frac{\\cot^2 x}{\\csc^2 x} = \\cot^2 x \\cdot \\sin^2 x$.",
+            "$\\cot^2 x \\cdot \\sin^2 x = \\frac{\\cos^2 x}{\\sin^2 x} \\cdot \\sin^2 x = \\cos^2 x$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch Domain Issues",
+        "body": "Identities are true only where both sides are defined. In Example A, $\\theta \\neq \\frac{\\pi}{2}$ because $\\sec\\theta$ is undefined there."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "The identity $\\sec^2 u - 1 = $ ___ $^2 u$ is used frequently in verification.",
+          "blanks": [
+            {
+              "accept": [
+                "tan"
+              ]
+            }
+          ],
+          "hints": [
+            "It comes from $1 + \\tan^2 u = \\sec^2 u$.",
+            "Answer is a three-letter function."
+          ],
+          "feedbackIfWrong": "It's $\\tan^2 u$."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "In verifying $\\frac{\\sec^2\\theta - 1}{\\sec^2\\theta} = \\sin^2\\theta$, after replacing the numerator, which function appears? (tan, cot, sec, csc)",
+          "answer": "tan",
+          "hints": [
+            "Look at step 1: $\\sec^2\\theta - 1 = \\,?$",
+            "It's the square of a function."
+          ],
+          "feedbackIfWrong": "It becomes $\\tan^2\\theta$."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "After simplifying $\\frac{\\tan^2\\theta}{\\sec^2\\theta}$, we multiply by ___ $^2\\theta$ (reciprocal of secant).",
+          "blanks": [
+            {
+              "accept": [
+                "cos"
+              ]
+            }
+          ],
+          "hints": [
+            "$\\sec\\theta = 1/\\cos\\theta$, so $1/\\sec^2\\theta = \\cos^2\\theta$.",
+            "The function starts with 'c'."
+          ],
+          "feedbackIfWrong": "Multiply by $\\cos^2\\theta$."
+        }
+      ]
+    },
+    {
+      "id": "adding-fractions-sines-cosines",
+      "title": "Adding Fractions and Converting to Sines/Cosines",
+      "teacherCues": [
+        "Write $\\frac{1}{1-\\sin\\alpha} + \\frac{1}{1+\\sin\\alpha}$ on the board. Ask: How would you combine these? (common denominator)",
+        "Remind students: When stuck, convert everything to $\\sin$ and $\\cos$."
+      ],
+      "discoveryHook": {
+        "scenario": "Sometimes the identity looks like two rooms connected by a hallway. Adding fractions or converting to sines and cosines is like opening a door — it lets you see the same space from a new angle, and the path to the other side becomes clear."
+      },
+      "concept": {
+        "explanation": [
+          "When you see sums of fractions, combine them over a common denominator.",
+          "The denominator often simplifies using a Pythagorean identity.",
+          "If nothing else works, rewrite all functions in terms of $\\sin$ and $\\cos$.",
+          "This often reveals hidden cancellations or Pythagorean relationships."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Converting to Sines and Cosines",
+            "headers": [
+              "Function",
+              "Rewrite"
+            ],
+            "rows": [
+              {
+                "0": "$\\tan x$",
+                "1": "$\\frac{\\sin x}{\\cos x}$"
+              },
+              {
+                "0": "$\\cot x$",
+                "1": "$\\frac{\\cos x}{\\sin x}$"
+              },
+              {
+                "0": "$\\sec x$",
+                "1": "$\\frac{1}{\\cos x}$"
+              },
+              {
+                "0": "$\\csc x$",
+                "1": "$\\frac{1}{\\sin x}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Common Denominator Pattern",
+          "formula": "$$\\frac{1}{1-\\sin\\alpha} + \\frac{1}{1+\\sin\\alpha} = \\frac{2}{\\cos^2\\alpha}$$",
+          "notes": [
+            "The middle step: numerator becomes $2$, denominator $1-\\sin^2\\alpha$.",
+            "Then use $1-\\sin^2\\alpha = \\cos^2\\alpha$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Add Fractions",
+          "prompt": "Verify $2\\sec^2\\alpha = \\frac{1}{1-\\sin\\alpha} + \\frac{1}{1+\\sin\\alpha}$.",
+          "steps": [
+            "Right side: combine fractions over common denominator $(1-\\sin\\alpha)(1+\\sin\\alpha) = 1-\\sin^2\\alpha$.",
+            "Numerator: $(1+\\sin\\alpha)+(1-\\sin\\alpha) = 2$.",
+            "So RHS $= \\frac{2}{1-\\sin^2\\alpha} = \\frac{2}{\\cos^2\\alpha}$.",
+            "$\\frac{2}{\\cos^2\\alpha} = 2\\sec^2\\alpha$, which is the left side."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Sine/Cosine Conversion",
+          "prompt": "Verify $\\tan x \\csc x = \\sec x$.",
+          "peerPrompt": "Explain to your partner: Why does converting to sines and cosines make this verification trivial?",
+          "minLength": 2,
+          "steps": [
+            "Left side: $\\frac{\\sin x}{\\cos x} \\cdot \\frac{1}{\\sin x}$.",
+            "Cancel $\\sin x$ to get $\\frac{1}{\\cos x} = \\sec x$, which is RHS."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – More Converting",
+          "prompt": "Verify $\\cot x \\sec x = \\csc x$.",
+          "steps": [
+            "Left side: $\\frac{\\cos x}{\\sin x} \\cdot \\frac{1}{\\cos x} = \\frac{1}{\\sin x} = \\csc x$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Cancel Across Addition",
+        "body": "If you rewrite $\\frac{\\sin x + \\cos x}{\\sin x}$, you can split it into $1 + \\cot x$, but you [[imp:cannot cancel]] the $\\sin x$ only with one term unless it factors the whole numerator."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "When adding $\\frac{1}{1-\\sin\\alpha} + \\frac{1}{1+\\sin\\alpha}$, the common denominator is $1 - $ ___ $^2\\alpha$.",
+          "blanks": [
+            {
+              "accept": [
+                "sin"
+              ]
+            }
+          ],
+          "hints": [
+            "Multiply $(1-\\sin\\alpha)(1+\\sin\\alpha)$.",
+            "Result is $1 - \\sin^2\\alpha$."
+          ],
+          "feedbackIfWrong": "The denominator is $1 - \\sin^2\\alpha$."
+        },
+        {
+          "id": "q8",
+          "type": "fill-blank",
+          "prompt": "To convert all trig functions, rewrite them in terms of sine and ___ .",
+          "blanks": [
+            {
+              "accept": [
+                "cosine"
+              ]
+            }
+          ],
+          "hints": [
+            "Every trig function can be written with these two.",
+            "It pairs with sine."
+          ],
+          "feedbackIfWrong": "The answer is cosine."
+        },
+        {
+          "id": "q9",
+          "type": "short-answer",
+          "prompt": "In verifying $\\tan x \\csc x = \\sec x$, after rewriting, which function cancels?",
+          "answer": "sin",
+          "hints": [
+            "$\\tan x = \\sin x/\\cos x$, $\\csc x = 1/\\sin x$.",
+            "Multiply them, what cancels?"
+          ],
+          "feedbackIfWrong": "$\\sin x$ cancels."
+        }
+      ]
+    },
+    {
+      "id": "using-conjugates",
+      "title": "Using Conjugates and Clever Algebra",
+      "teacherCues": [
+        "Write $\\frac{\\cos x}{1-\\sin x}$ and ask: How can we make the denominator a single term? (multiply by conjugate $1+\\sin x$)",
+        "Show that $\\frac{1}{1-\\cos x}$ can become $\\csc^2 x(1+\\cos x)$."
+      ],
+      "discoveryHook": {
+        "scenario": "When a denominator has two terms, multiplying by its conjugate is like putting on 3D glasses — suddenly a flat expression becomes multi-dimensional, revealing a Pythagorean identity that collapses it into a sleek form."
+      },
+      "concept": {
+        "explanation": [
+          "Multiplying numerator and denominator by the conjugate of the denominator creates a monomial denominator.",
+          "This often yields a difference of squares that matches a Pythagorean identity.",
+          "Example: $\\frac{1}{1-\\cos x}$ multiply by $\\frac{1+\\cos x}{1+\\cos x}$ gives $\\frac{1+\\cos x}{\\sin^2 x}$.",
+          "Then you can split into separate fractions if needed."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Conjugate Multipliers",
+            "headers": [
+              "Denominator",
+              "Conjugate"
+            ],
+            "rows": [
+              {
+                "0": "$1 - \\sin x$",
+                "1": "$1 + \\sin x$"
+              },
+              {
+                "0": "$1 + \\cos x$",
+                "1": "$1 - \\cos x$"
+              },
+              {
+                "0": "$\\sec x - 1$",
+                "1": "$\\sec x + 1$"
+              },
+              {
+                "0": "$\\csc x + \\cot x$",
+                "1": "$\\csc x - \\cot x$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Key Pattern",
+          "formula": "$$\\frac{1}{1-\\cos x} = \\csc^2 x (1+\\cos x)$$",
+          "notes": [
+            "Multiply top and bottom by $1+\\cos x$.",
+            "Denominator becomes $\\sin^2 x$, then rewrite as $\\csc^2 x$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Conjugate Example",
+          "prompt": "Verify $\\sec x + \\tan x = \\frac{\\cos x}{1-\\sin x}$.",
+          "steps": [
+            "Start with right side: multiply $\\frac{\\cos x}{1-\\sin x}$ by $\\frac{1+\\sin x}{1+\\sin x}$.",
+            "Numerator: $\\cos x (1+\\sin x)$. Denominator: $1-\\sin^2 x = \\cos^2 x$.",
+            "Now $\\frac{\\cos x + \\cos x \\sin x}{\\cos^2 x} = \\frac{1}{\\cos x} + \\frac{\\sin x}{\\cos x} = \\sec x + \\tan x$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Rationalizing",
+          "prompt": "Simplify $\\frac{1}{1-\\cos x}$ to an expression without fractions.",
+          "peerPrompt": "Tell your partner: Why does multiplying by the conjugate give a denominator of $\\sin^2 x$? Then work together to write the final form.",
+          "minLength": 2,
+          "steps": [
+            "Multiply: $\\frac{1}{1-\\cos x} \\cdot \\frac{1+\\cos x}{1+\\cos x} = \\frac{1+\\cos x}{1-\\cos^2 x} = \\frac{1+\\cos x}{\\sin^2 x}$.",
+            "Split: $\\frac{1}{\\sin^2 x} + \\frac{\\cos x}{\\sin^2 x} = \\csc^2 x + \\csc^2 x \\cos x = \\csc^2 x (1+\\cos x)$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Try a Conjugate",
+          "prompt": "Verify $\\csc x + \\cot x = \\frac{\\sin x}{1-\\cos x}$.",
+          "steps": [
+            "Right side: multiply by $\\frac{1+\\cos x}{1+\\cos x}$.",
+            "Numerator: $\\sin x (1+\\cos x)$, denominator $\\sin^2 x$.",
+            "Simplify to $\\frac{1}{\\sin x} + \\frac{\\cos x}{\\sin x} = \\csc x + \\cot x$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Keep the Target in Mind",
+        "body": "When you multiply by the conjugate, you might get something like $\\frac{\\cos x + \\cos x \\sin x}{\\cos^2 x}$. Don't stop there—[[imp:split into separate fractions]] to match $\\sec x + \\tan x$."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "To simplify $\\frac{1}{1-\\cos x}$, multiply numerator and denominator by the conjugate ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1 + cos x"
+              ]
+            }
+          ],
+          "hints": [
+            "Change the sign between the terms.",
+            "It starts with '1 + '."
+          ],
+          "feedbackIfWrong": "The conjugate is $1+\\cos x$."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "After multiplying $\\frac{\\cos x}{1-\\sin x}$ by its conjugate, what identity simplifies the denominator?",
+          "answer": "Pythagorean",
+          "hints": [
+            "The denominator becomes $1 - \\sin^2 x$.",
+            "That equals $\\cos^2 x$, by which identity?"
+          ],
+          "feedbackIfWrong": "It's the Pythagorean identity."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "In the verification of $\\sec x + \\tan x = \\frac{\\cos x}{1-\\sin x}$, after splitting fractions we get $\\frac{1}{\\cos x} + \\frac{\\sin x}{\\cos x}$, which equals $\\sec x + $ ___ $x$.",
+          "blanks": [
+            {
+              "accept": [
+                "tan"
+              ]
+            }
+          ],
+          "hints": [
+            "$\\frac{\\sin x}{\\cos x}$ is which function?",
+            "It's a three-letter function."
+          ],
+          "feedbackIfWrong": "That's $\\tan x$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid",
+      "title": "Blueprint Aid – Working with Both Sides",
+      "teacherCues": [
+        "Display $\\frac{\\cot^2\\theta}{1+\\csc\\theta} = \\frac{1-\\sin\\theta}{\\sin\\theta}$. Show that both sides can simplify to the same expression.",
+        "Ask: What identity replaces $\\cot^2\\theta$ on the left? What algebraic move simplifies the right?"
+      ],
+      "discoveryHook": {
+        "scenario": "When a direct path from left to right isn't clear, try transforming both sides separately until they meet at a common form. It's like two tunnel diggers starting from opposite ends and shaking hands in the middle."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Blueprint Aid]] method works when neither side is obviously simpler.",
+          "[[imp:Understand]]: Choose identities that match the functions involved. On the left, you have $\\cot^2\\theta$ and $\\csc\\theta$ — related by $1+\\cot^2\\theta = \\csc^2\\theta$.",
+          "[[imp:Solve]]: Transform the left side using the Pythagorean identity, factor the numerator, then cancel. Simplify the right side by splitting the fraction.",
+          "[[imp:Conclude]]: Both sides reduce to $\\csc\\theta - 1$, proving the identity."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Dual Path Verification",
+            "headers": [
+              "Left Side",
+              "Right Side"
+            ],
+            "rows": [
+              {
+                "0": "$\\frac{\\cot^2\\theta}{1+\\csc\\theta}$",
+                "1": "$\\frac{1-\\sin\\theta}{\\sin\\theta}$"
+              },
+              {
+                "0": "$= \\frac{\\csc^2\\theta - 1}{1+\\csc\\theta}$",
+                "1": "$= \\frac{1}{\\sin\\theta} - 1$"
+              },
+              {
+                "0": "$= \\frac{(\\csc\\theta -1)(\\csc\\theta +1)}{\\csc\\theta +1}$",
+                "1": "$= \\csc\\theta - 1$"
+              },
+              {
+                "0": "$= \\csc\\theta - 1$",
+                "1": ""
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Smart Factorization",
+          "formula": "$$\\csc^2\\theta - 1 = (\\csc\\theta - 1)(\\csc\\theta + 1)$$",
+          "notes": [
+            "Difference of squares.",
+            "Enables cancellation with denominator $1+\\csc\\theta$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand the Landscape",
+          "prompt": "Look at $\\frac{\\cot^2\\theta}{1+\\csc\\theta} = \\frac{1-\\sin\\theta}{\\sin\\theta}$. Which side uses $\\cot$ and $\\csc$? Which uses $\\sin$?",
+          "steps": [
+            "Left side has $\\cot$ and $\\csc$, suggesting we use the identity $\\cot^2\\theta = \\csc^2\\theta - 1$ to get rid of $\\cot$.",
+            "Right side has only $\\sin$, which can be written as $\\csc\\theta$ via reciprocal.",
+            "The target common form is $\\csc\\theta - 1$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve: Transform Both Sides",
+          "prompt": "Now carry out the algebraic steps for both sides to reach the common form.",
+          "peerPrompt": "Work with a partner: one person do the left side, the other the right side. Compare your answers and confirm they match.",
+          "minLength": 2,
+          "steps": [
+            "Left: $\\frac{\\csc^2\\theta -1}{1+\\csc\\theta} = \\frac{(\\csc\\theta -1)(\\csc\\theta +1)}{\\csc\\theta +1} = \\csc\\theta -1$.",
+            "Right: $\\frac{1-\\sin\\theta}{\\sin\\theta} = \\frac{1}{\\sin\\theta} - 1 = \\csc\\theta -1$.",
+            "Both equal $\\csc\\theta -1$, identity verified."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude with a Similar Identity",
+          "prompt": "Verify $\\frac{\\tan^2\\theta}{1+\\sec\\theta} = \\frac{1-\\cos\\theta}{\\cos\\theta}$ using the blueprint.",
+          "steps": [
+            "Left: Replace $\\tan^2\\theta$ with $\\sec^2\\theta - 1$, then factor as $(\\sec\\theta -1)(\\sec\\theta +1)$.",
+            "Cancel $1+\\sec\\theta$ (note $1+\\sec\\theta = \\sec\\theta +1$) to get $\\sec\\theta -1$.",
+            "Right: $\\frac{1-\\cos\\theta}{\\cos\\theta} = \\frac{1}{\\cos\\theta} - 1 = \\sec\\theta -1$.",
+            "Both sides equal $\\sec\\theta -1$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Be Careful with Signs",
+        "body": "When factoring $\\csc^2\\theta - 1$, it's $(\\csc\\theta - 1)(\\csc\\theta + 1)$. The denominator is $1+\\csc\\theta$, which is the same as $\\csc\\theta + 1$. Order doesn't matter for addition, but [[imp:don't flip signs]]."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "short-answer",
+          "prompt": "In the blueprint example, after simplification, the common expression is cscθ minus what number?",
+          "answer": "1",
+          "hints": [
+            "Look at the final common form.",
+            "It is cscθ - ?"
+          ],
+          "feedbackIfWrong": "It is cscθ - 1."
+        },
+        {
+          "id": "q14",
+          "type": "fill-blank",
+          "prompt": "To simplify the left side, we replaced $\\cot^2\\theta$ with ___ $^2\\theta - 1$.",
+          "blanks": [
+            {
+              "accept": [
+                "csc"
+              ]
+            }
+          ],
+          "hints": [
+            "Look at the Pythagorean identity involving cot.",
+            "It's $\\csc^2\\theta - 1$."
+          ],
+          "feedbackIfWrong": "It's $\\csc^2\\theta - 1$."
+        },
+        {
+          "id": "q15",
+          "type": "short-answer",
+          "prompt": "What factoring pattern is used on $\\csc^2\\theta - 1$?",
+          "answer": "difference of squares",
+          "hints": [
+            "$a^2 - b^2$",
+            "It factors as $(a-b)(a+b)$."
+          ],
+          "feedbackIfWrong": "It's the difference of squares."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Verify $\\frac{\\sin^2 x - \\cos^2 x}{\\sin x + \\cos x} = \\sin x - \\cos x$ using a similar factorization technique, but work with one side only.",
+        "type": "short-answer",
+        "answers": [
+          "see steps"
+        ],
+        "hints": [
+          "Factor the numerator as a difference of squares: $(\\sin x - \\cos x)(\\sin x + \\cos x)$.",
+          "Cancel the common factor."
+        ],
+        "feedbackIfWrong": "It becomes $\\sin x - \\cos x$ after cancellation."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

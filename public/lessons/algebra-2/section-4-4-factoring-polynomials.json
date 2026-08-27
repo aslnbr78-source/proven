@@ -1,0 +1,738 @@
+{
+  "standards": [
+    "HSA.SSE.A.2",
+    "HSA.APR.B.2",
+    "HSA.APR.B.3"
+  ],
+  "id": "section-4-4-factoring-polynomials",
+  "blocks": [
+    {
+      "concept": {
+        "formulaCard": {
+          "title": "Sum and Difference of Cubes",
+          "notes": [
+            "The trinomial factor cannot be factored further over the integers.",
+            "The signs in the trinomial are opposite of the binomial's middle sign for sum, and same for difference? Actually: sum: (a+b)(a^2 - ab + b^2); difference: (a-b)(a^2 + ab + b^2).",
+            "Always check for a common factor first."
+          ],
+          "formula": "$$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$$ $$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$$"
+        },
+        "visuals": [
+          {
+            "title": "Special Factoring Patterns",
+            "rows": [
+              {
+                "0": "Difference of Squares",
+                "1": "$a^2 - b^2 = (a-b)(a+b)$",
+                "2": "$x^2 - 9 = (x-3)(x+3)$"
+              },
+              {
+                "0": "Perfect Square Trinomial",
+                "1": "$a^2 + 2ab + b^2 = (a+b)^2$",
+                "2": "$x^2 + 6x + 9 = (x+3)^2$"
+              },
+              {
+                "0": "Sum of Cubes",
+                "1": "$a^3 + b^3 = (a+b)(a^2-ab+b^2)$",
+                "2": "$x^3 + 8 = (x+2)(x^2-2x+4)$"
+              },
+              {
+                "0": "Difference of Cubes",
+                "1": "$a^3 - b^3 = (a-b)(a^2+ab+b^2)$",
+                "2": "$x^3 - 27 = (x-3)(x^2+3x+9)$"
+              }
+            ],
+            "headers": [
+              "Pattern Name",
+              "Formula",
+              "Example"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "Always start by factoring out the [[imp:greatest common monomial factor]] (GCF) from all terms. This simplifies the remaining polynomial.",
+          "After removing the GCF, look for [[kw:special factoring patterns]]:",
+          "• [[imp:Difference of Two Squares]]: $a^2 - b^2 = (a - b)(a + b)$",
+          "• [[imp:Perfect Square Trinomial]]: $a^2 \\pm 2ab + b^2 = (a \\pm b)^2$",
+          "• [[imp:Sum of Two Cubes]]: $a^3 + b^3 = (a + b)(a^2 - ab + b^2)$",
+          "• [[imp:Difference of Two Cubes]]: $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$",
+          "A polynomial is [[kw:factored completely]] when it is written as a product of unfactorable polynomials with integer coefficients."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Factoring a polynomial is like unpacking a nested box. First, look for a common factor in all terms—the 'outer box'. Then check if what's left fits a special pattern, like difference of squares or sum of cubes. Each pattern you recognize lets you break the polynomial down further."
+      },
+      "confusionCorner": {
+        "body": "The sum of squares $a^2 + b^2$ does not factor over the real numbers. But the sum of cubes $a^3 + b^3$ does factor. [[imp:Don't confuse them!]]",
+        "title": "Sum of Cubes ≠ Sum of Squares"
+      },
+      "title": "Factoring Out the GCF and Special Patterns",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Factor out the GCF: $x(x^2 - 4x - 5)$.",
+            "Factor the quadratic trinomial: $x^2 - 4x - 5 = (x - 5)(x + 1)$.",
+            "The complete factorization is $x(x - 5)(x + 1)$."
+          ],
+          "prompt": "Factor $x^3 - 4x^2 - 5x$ completely.",
+          "title": "Example A – GCF and Trinomial Factoring"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nIdentify $a$ and $b$ such that $a^3 = x^3$ and $b^3 = 125$. Then use the formula $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$.",
+          "prompt": "Explain to a partner how to factor $x^3 - 125$ using the difference of cubes pattern.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "Here $a = x$, $b = 5$ because $5^3 = 125$.",
+            "Plug into the pattern: $(x - 5)(x^2 + x \\cdot 5 + 5^2)$.",
+            "Simplify: $x^3 - 125 = (x - 5)(x^2 + 5x + 25)$."
+          ],
+          "title": "Example B – Difference of Cubes"
+        },
+        {
+          "steps": [
+            "Factor out the GCF $2s^2$: $2s^2(8s^3 + 27)$.",
+            "$8s^3 + 27 = (2s)^3 + 3^3$, so use sum of cubes with $a = 2s$, $b = 3$.",
+            "Sum of cubes formula: $(2s + 3)((2s)^2 - (2s)(3) + 3^2) = (2s + 3)(4s^2 - 6s + 9)$.",
+            "Final answer: $2s^2(2s + 3)(4s^2 - 6s + 9)$."
+          ],
+          "title": "Example C – Sum of Cubes with GCF",
+          "role": "independent",
+          "prompt": "Factor $16s^5 + 54s^2$ completely."
+        }
+      ],
+      "teacherCues": [
+        "Write $x^3 - 4x^2 - 5x$ on the board. Ask: What do all three terms have in common? Factor it out.",
+        "Display the sum/difference of cubes formulas and ask: How are these similar to the difference of squares pattern?"
+      ],
+      "id": "gcf-and-special-patterns",
+      "questions": [
+        {
+          "feedbackIfWrong": "Always look for the greatest common factor (GCF) first.",
+          "hints": [
+            "It's the largest monomial dividing all terms.",
+            "Abbreviated as GCF."
+          ],
+          "id": "q4-4-1",
+          "type": "fill-blank",
+          "prompt": "The first step in factoring any polynomial is to factor out the ___ common factor.",
+          "blanks": [
+            {
+              "accept": [
+                "greatest",
+                "GCF"
+              ]
+            }
+          ]
+        },
+        {
+          "answer": "(x+4)(x^2-4x+16)",
+          "hints": [
+            "Identify $a = x$, $b = 4$ since $4^3 = 64$.",
+            "Use $a^3 + b^3 = (a+b)(a^2 - ab + b^2)$."
+          ],
+          "prompt": "What is the factorization of $x^3 + 64$ using the sum of cubes pattern? (Answer as (x+4)(x^2-4x+16) without spaces)",
+          "type": "short-answer",
+          "feedbackIfWrong": "$x^3 + 64 = (x + 4)(x^2 - 4x + 16)$.",
+          "id": "q4-4-2"
+        },
+        {
+          "id": "q4-4-3",
+          "type": "short-answer",
+          "hints": [
+            "Find the greatest common factor of $3y^5$ and $48y^3$.",
+            "The coefficient GCF is 3; the variable GCF is $y^3$."
+          ],
+          "prompt": "Factor out the GCF from $3y^5 - 48y^3$. What is the GCF? (Answer as $3y^3$)",
+          "answer": "3y^3",
+          "feedbackIfWrong": "The GCF is $3y^3$."
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "When the third term is negative, you must factor out a negative from the second group so the binomials match. For example, $... - 4z - 20$ becomes $-4(z + 5)$, not $+4(z - 5)$. [[imp:Double‑check signs inside parentheses.]]",
+        "title": "Watch the Signs When Grouping"
+      },
+      "id": "grouping-and-quadratic-form",
+      "questions": [
+        {
+          "feedbackIfWrong": "The common binomial factor is $(x + 4)$.",
+          "hints": [
+            "Look at the binomial that appears in both groups.",
+            "It is $x + 4$."
+          ],
+          "prompt": "The polynomial $x^3 + 4x^2 - x - 4$ can be factored by grouping. The first group $x^3 + 4x^2$ factors as $x^2(x + 4)$. The second group $-x - 4$ factors as $-(x + 4)$. The common binomial factor is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "(x+4)",
+                "x+4"
+              ]
+            }
+          ],
+          "id": "q4-4-4",
+          "type": "fill-blank"
+        },
+        {
+          "answer": "u = x^2",
+          "hints": [
+            "Let $u$ be the square of the variable, because $x^4 = (x^2)^2$.",
+            "Then the polynomial becomes $u^2 - 5u + 4$."
+          ],
+          "feedbackIfWrong": "Let $u = x^2$, then the polynomial becomes $u^2 - 5u + 4$.",
+          "prompt": "What substitution transforms $x^4 - 5x^2 + 4$ into a quadratic in $u$? (Answer: $u = x^2$)",
+          "type": "short-answer",
+          "id": "q4-4-5"
+        },
+        {
+          "id": "q4-4-6",
+          "type": "short-answer",
+          "feedbackIfWrong": "$x^4 - 5x^2 + 4 = (x^2 - 4)(x^2 - 1) = (x-2)(x+2)(x-1)(x+1)$.",
+          "prompt": "Factor $x^4 - 5x^2 + 4$ completely. (Answer as (x-2)(x+2)(x-1)(x+1) without spaces)",
+          "answer": "(x-2)(x+2)(x-1)(x+1)",
+          "hints": [
+            "Substitute $u = x^2$ to get $u^2 - 5u + 4 = (u-4)(u-1)$.",
+            "Replace $u$ with $x^2$ and factor each difference of squares."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Write $z^3 + 5z^2 - 4z - 20$ on the board. Ask: Can we group terms to factor?",
+        "Write $16x^4 - 81$ and ask: Is this really a quadratic in disguise?"
+      ],
+      "concept": {
+        "explanation": [
+          "[[kw:Factoring by grouping]]: For a polynomial with four terms, group the first two terms and the last two terms. Factor out the common factor from each group. If the remaining binomials match, factor them out.",
+          "[[kw:Quadratic form]]: An expression like $au^2 + bu + c$, where $u$ is an algebraic expression (e.g., $x^2$), can be factored using quadratic techniques. Substitute $u$, factor, then substitute back.",
+          "Example: $16x^4 - 81$ is $(4x^2)^2 - 9^2$, a difference of squares. Factor as $(4x^2 - 9)(4x^2 + 9)$, then factor $4x^2 - 9$ further as $(2x-3)(2x+3)$.",
+          "These methods extend your factoring toolkit to higher-degree polynomials."
+        ],
+        "formulaCard": {
+          "formula": "$$ra + rb + sa + sb = r(a + b) + s(a + b) = (r + s)(a + b)$$",
+          "notes": [
+            "Group terms so each group has a common factor.",
+            "The binomial factors from each group must match.",
+            "Rearrange terms if necessary to make grouping work."
+          ],
+          "title": "Factoring by Grouping Pattern"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Expression"
+            ],
+            "rows": [
+              {
+                "0": "Group terms",
+                "1": "$(z^3 + 5z^2) + (-4z - 20)$"
+              },
+              {
+                "0": "Factor each group",
+                "1": "$z^2(z + 5) - 4(z + 5)$"
+              },
+              {
+                "0": "Factor out $(z+5)$",
+                "1": "$(z^2 - 4)(z + 5)$"
+              },
+              {
+                "0": "Factor difference of squares",
+                "1": "$(z - 2)(z + 2)(z + 5)$"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Factoring by Grouping: $z^3 + 5z^2 - 4z - 20$"
+          }
+        ]
+      },
+      "title": "Factoring by Grouping and Quadratic Form",
+      "examples": [
+        {
+          "steps": [
+            "Group: $(z^3 + 5z^2) - (4z + 20)$. (Note the sign change when factoring out negative.)",
+            "Factor each group: $z^2(z + 5) - 4(z + 5)$.",
+            "Factor out $(z + 5)$: $(z^2 - 4)(z + 5)$.",
+            "$z^2 - 4$ is a difference of squares: $(z - 2)(z + 2)(z + 5)$."
+          ],
+          "role": "guided",
+          "title": "Example A – Factoring by Grouping",
+          "prompt": "Factor $z^3 + 5z^2 - 4z - 20$ completely."
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain to a partner how $16x^4 - 81$ can be viewed as a quadratic form and factored completely.",
+          "steps": [
+            "$16x^4 - 81 = (4x^2)^2 - 9^2 = (4x^2 - 9)(4x^2 + 9)$.",
+            "$4x^2 - 9$ is itself a difference of squares: $(2x - 3)(2x + 3)$.",
+            "$4x^2 + 9$ is a sum of squares and cannot be factored further over the reals.",
+            "Final: $(4x^2 + 9)(2x - 3)(2x + 3)$."
+          ],
+          "title": "Example B – Recognizing Quadratic Form",
+          "peerPrompt": "Without looking back...\n\nWrite $16x^4$ as $(4x^2)^2$ and $81$ as $9^2$. Then it's a difference of squares. After factoring, one factor is still a difference of squares."
+        },
+        {
+          "role": "independent",
+          "prompt": "Factor $x^3 - 3x^2 - 4x + 12$ by grouping.",
+          "steps": [
+            "Group: $(x^3 - 3x^2) + (-4x + 12)$.",
+            "Factor each group: $x^2(x - 3) - 4(x - 3)$. (Note: $-4x+12 = -4(x-3)$.)",
+            "Factor out $(x - 3)$: $(x^2 - 4)(x - 3)$.",
+            "$x^2 - 4 = (x - 2)(x + 2)$. Final: $(x - 3)(x - 2)(x + 2)$."
+          ],
+          "title": "Example C – Grouping with Negative Sign"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Some polynomials have four terms and no common factor overall, but you can group them into pairs that share a factor. Others look like quartics but can be treated as quadratics by substituting $u = x^2$. These tricks unlock factoring for more complex expressions."
+      }
+    },
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Evaluate $f(2)$: $2^2 + 2(2) - 4 = 4 + 4 - 4 = 4$.",
+            "Since $f(2) = 4 \\neq 0$, $x - 2$ is [[imp:not a factor]].",
+            "No need for synthetic division here; direct substitution is quick."
+          ],
+          "prompt": "Determine whether $x - 2$ is a factor of $f(x) = x^2 + 2x - 4$.",
+          "title": "Example A – Testing a Binomial (Not a Factor)"
+        },
+        {
+          "title": "Example B – Testing with Synthetic Division",
+          "steps": [
+            "Coefficients: $3, 15, -1, 0, 25$. $k = -5$.",
+            "Bring down 3. Multiply-add: $3(-5)=-15$, $15+(-15)=0$; $0(-5)=0$, $-1+0=-1$; $-1(-5)=5$, $0+5=5$; $5(-5)=-25$, $25+(-25)=0$.",
+            "Remainder is 0, so $f(-5) = 0$. Thus $x + 5$ is a factor."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nUse $k = -5$ because the factor is $x + 5 = x - (-5)$. Perform synthetic division and check the remainder.",
+          "minLength": 2,
+          "prompt": "Determine whether $x + 5$ is a factor of $f(x) = 3x^4 + 15x^3 - x^2 + 25$. Use synthetic division."
+        },
+        {
+          "steps": [
+            "Compute $f(3)$: $27 - 36 + 3 + 6 = 0$.",
+            "Yes, $x = 3$ is a zero. Therefore, $x - 3$ is a factor.",
+            "You can now use division to find the remaining quadratic factor."
+          ],
+          "title": "Example C – Quick Test for a Zero",
+          "role": "independent",
+          "prompt": "Is $x = 3$ a zero of $f(x) = x^3 - 4x^2 + x + 6$? If so, what factor does that correspond to?"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "The Remainder Theorem gave us a powerful shortcut: the remainder when dividing by $x - k$ is just $f(k)$. The Factor Theorem takes this one step further: if $f(k) = 0$, then $x - k$ is a factor. This means we can test potential factors instantly with synthetic division."
+      },
+      "teacherCues": [
+        "Write $f(x) = x^2 + 2x - 4$. Ask: Is $x - 2$ a factor? How can we check?",
+        "State the Factor Theorem: $x - k$ is a factor if and only if $f(k) = 0$."
+      ],
+      "title": "The Factor Theorem: Testing for Factors",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "If $f(k) = 0$, $k$ is a zero and $x-k$ is a factor.",
+            "Synthetic division with $k$ gives both the remainder ($f(k)$) and the quotient.",
+            "Use this to break polynomials into smaller factors."
+          ],
+          "title": "Factor Theorem",
+          "formula": "$$x - k \\text{ is a factor of } f(x) \\quad \\Longleftrightarrow \\quad f(k) = 0$$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Synthetic division ($k=-5$)",
+                "1": "Coefficients: $3, 15, -1, 0, 25$",
+                "2": "Remainder $0$"
+              },
+              {
+                "0": "Conclusion",
+                "1": "$f(-5) = 0$, so $x + 5$ is a factor.",
+                "2": ""
+              }
+            ],
+            "variant": "colorful",
+            "title": "Testing if $x+5$ is a factor of $f(x) = 3x^4 + 15x^3 - x^2 + 25$",
+            "headers": [
+              "Method",
+              "Process",
+              "Result"
+            ]
+          }
+        ],
+        "explanation": [
+          "The [[kw:Factor Theorem]]: A polynomial $f(x)$ has a factor $x - k$ if and only if $f(k) = 0$.",
+          "In other words, $k$ is a [[imp:zero]] of the function exactly when $x - k$ is a factor.",
+          "To check if a binomial is a factor: evaluate $f(k)$ by direct substitution or synthetic division. If the result is 0, it is a factor; otherwise, it is not.",
+          "This theorem lets us test possible factors quickly and, once one factor is found, use division to find the remaining factors."
+        ]
+      },
+      "confusionCorner": {
+        "body": "If the binomial is $x + a$, rewrite as $x - (-a)$, so $k = -a$. To test $x + 5$, use $k = -5$. [[imp:Don't forget to flip the sign!]]",
+        "title": "Sign of k in $x + a$"
+      },
+      "questions": [
+        {
+          "hints": [
+            "The Factor Theorem says $x - k$ is a factor if $f(k)=0$.",
+            "Here $k = 4$."
+          ],
+          "answer": "x-4",
+          "feedbackIfWrong": "Since $f(4)=0$, $x-4$ is a factor.",
+          "prompt": "If $f(4) = 0$, what is a factor of $f(x)$? (Answer like $x-4$)",
+          "type": "short-answer",
+          "id": "q4-4-7"
+        },
+        {
+          "id": "q4-4-8",
+          "hints": [
+            "Rewrite $x + 3$ as $x - (-3)$.",
+            "The value of $k$ is the opposite of the constant in the binomial."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "-3"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "You should evaluate $f(-3)$ because $x+3 = x - (-3)$.",
+          "prompt": "To test if $x + 3$ is a factor of $f(x)$, you should evaluate $f($___$)$."
+        },
+        {
+          "id": "q4-4-9",
+          "hints": [
+            "A factor requires remainder 0.",
+            "12 is not 0."
+          ],
+          "answer": "no",
+          "prompt": "If synthetic division of $f(x)$ by $x - 5$ yields a remainder of 12, is $x - 5$ a factor? (yes or no)",
+          "feedbackIfWrong": "No, because the remainder is 12, not 0.",
+          "type": "short-answer"
+        }
+      ],
+      "id": "factor-theorem-intro"
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Operation",
+              "Result"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Coefficients",
+                "1": "$1, 3, 0, -1, -3$",
+                "2": ""
+              },
+              {
+                "0": "Bring down",
+                "1": "",
+                "2": "1"
+              },
+              {
+                "0": "Multiply‑add",
+                "1": "$1(-3)=-3$, $3+(-3)=0$",
+                "2": "0"
+              },
+              {
+                "0": "Multiply‑add",
+                "1": "$0(-3)=0$, $0+0=0$",
+                "2": "0"
+              },
+              {
+                "0": "Multiply‑add",
+                "1": "$0(-3)=0$, $-1+0=-1$",
+                "2": "-1"
+              },
+              {
+                "0": "Multiply‑add",
+                "1": "$-1(-3)=3$, $-3+3=0$",
+                "2": "0 (remainder)"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Synthetic Division of $x^4 + 3x^3 - x - 3$ by $x + 3$ ($k = -3$)"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$f(x) = (x - k) \\cdot q(x)$$ $$ \\text{where } q(x) \\text{ is the quotient from synthetic division} $$",
+          "title": "Using the Factor Theorem to Factor",
+          "notes": [
+            "Synthetic division gives both the confirmation (remainder 0) and the quotient.",
+            "Factor the quotient further using any method.",
+            "Repeat until all factors are linear or irreducible quadratics."
+          ]
+        },
+        "explanation": [
+          "If $x - k$ is a factor of $f(x)$, divide $f(x)$ by $x - k$ (using synthetic division) to obtain a quotient $q(x)$. Then $f(x) = (x - k) \\cdot q(x)$.",
+          "Continue factoring $q(x)$ using previous techniques (GCF, special patterns, grouping, quadratic form) or by finding more factors with the Factor Theorem.",
+          "The goal is to write the polynomial as a product of [[imp:linear factors]] (like $x - r$) and irreducible quadratic factors.",
+          "Example: $f(x) = x^4 + 3x^3 - x - 3$, given $x+3$ is a factor. Divide by $x+3$ to get $x^3 - 1$. Then $x^3 - 1 = (x-1)(x^2 + x + 1)$."
+        ]
+      },
+      "id": "factoring-with-factor-theorem",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Use synthetic division with $k = -3$ on coefficients $1, 3, 0, -1, -3$.",
+            "Remainder is 0, confirming $x+3$ is a factor. Quotient: $x^3 + 0x^2 + 0x - 1 = x^3 - 1$.",
+            "Factor $x^3 - 1$ as a difference of cubes: $(x - 1)(x^2 + x + 1)$.",
+            "Thus $f(x) = (x + 3)(x - 1)(x^2 + x + 1)$."
+          ],
+          "title": "Example A – Using Given Factor",
+          "prompt": "Show that $x + 3$ is a factor of $f(x) = x^4 + 3x^3 - x - 3$, then factor $f(x)$ completely."
+        },
+        {
+          "prompt": "Explain to a partner how you could also factor $f(x) = x^4 + 3x^3 - x - 3$ by grouping.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "steps": [
+            "Group: $(x^4 + 3x^3) + (-x - 3) = x^3(x+3) - 1(x+3)$.",
+            "Factor out $(x+3)$: $(x^3 - 1)(x+3)$.",
+            "Then factor $x^3 - 1$ as above. Same result."
+          ],
+          "peerPrompt": "Without looking back...\n\nGroup the first two terms and the last two terms. Factor out common factors. What binomial appears?",
+          "title": "Example B – Factoring by Grouping vs. Factor Theorem"
+        },
+        {
+          "steps": [
+            "Set each factor equal to zero: $x+3=0 \\Rightarrow x=-3$; $x-1=0 \\Rightarrow x=1$; $x^2+x+1=0$ has no real solutions (discriminant $1-4 = -3$).",
+            "The real zeros are $-3$ and $1$.",
+            "The quadratic factor gives complex zeros, but they are not real."
+          ],
+          "title": "Example C – Find All Zeros from Factored Form",
+          "role": "independent",
+          "prompt": "From the factorization $(x + 3)(x - 1)(x^2 + x + 1)$, list all real zeros of $f$."
+        }
+      ],
+      "confusionCorner": {
+        "body": "After division, always check if the quotient can be factored further. A polynomial is [[imp:completely factored]] only when all factors are linear or irreducible quadratics.",
+        "title": "Don't Stop Too Soon"
+      },
+      "discoveryHook": {
+        "scenario": "Once you know one factor, you can divide it out using synthetic division. The quotient is a lower-degree polynomial. If you keep finding factors, you can break a high-degree polynomial all the way down to linear and irreducible quadratic factors."
+      },
+      "questions": [
+        {
+          "hints": [
+            "Find two numbers that multiply to $-4$ and add to $3$.",
+            "The numbers are $4$ and $-1$."
+          ],
+          "feedbackIfWrong": "$x^2 + 3x - 4 = (x+4)(x-1)$.",
+          "answer": "(x+4)(x-1)",
+          "type": "short-answer",
+          "prompt": "After dividing $f(x)$ by $x - 2$ using synthetic division, the bottom row is $1, 3, -4, 0$. The quotient is $x^2 + 3x - 4$. Factor this quotient completely. (Answer as (x+4)(x-1) without spaces)",
+          "id": "q4-4-10"
+        },
+        {
+          "feedbackIfWrong": "$x^2 - 4 = (x - 2)(x + 2)$.",
+          "id": "q4-4-11",
+          "hints": [
+            "It is a difference of squares.",
+            "$a^2 - b^2$ with $a=x$, $b=2$."
+          ],
+          "prompt": "If synthetic division of $f(x)$ by $x + 2$ yields quotient $x^2 - 4$ and remainder 0, then $f(x) = (x + 2)(x^2 - 4)$. The factor $x^2 - 4$ can be factored further as ___.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "(x-2)(x+2)"
+              ]
+            }
+          ]
+        },
+        {
+          "answer": "(x-1)(x-3)(x+2)",
+          "hints": [
+            "Divide by $x-1$ to get $x^2 - x - 6$.",
+            "Factor the quadratic: $(x-3)(x+2)$."
+          ],
+          "prompt": "What is the complete factorization of $x^3 - 2x^2 - 5x + 6$ if $x - 1$ is a factor? (Use synthetic division to get quotient $x^2 - x - 6$, then factor; answer as (x-1)(x-3)(x+2))",
+          "type": "short-answer",
+          "id": "q4-4-12",
+          "feedbackIfWrong": "$x^3 - 2x^2 - 5x + 6 = (x-1)(x-3)(x+2)$."
+        }
+      ],
+      "teacherCues": [
+        "Write $f(x) = x^4 + 3x^3 - x - 3$ and ask: Given that $x + 3$ is a factor, how do we find the other factors?",
+        "Demonstrate synthetic division with $k = -3$, then factor the resulting cubic using sum/difference of cubes or other methods."
+      ],
+      "title": "Factoring Completely Using the Factor Theorem"
+    },
+    {
+      "confusionCorner": {
+        "title": "Negative Zeros in Context",
+        "body": "Zeros like $t = -1$ satisfy the equation mathematically but may not make sense in the real‑world context (time before the ride). [[imp:Always check whether a zero is valid in the problem's domain.]]"
+      },
+      "title": "Blueprint Aid: Modeling with Polynomial Factoring (Roller Coaster)",
+      "examples": [
+        {
+          "steps": [
+            "The zero $-1$ is before the ride starts (negative time) and can be ignored.",
+            "The zeros $2$ and the one near $4.25$ are within $0 \\le t \\le 5$.",
+            "The coaster is below ground between these two zeros."
+          ],
+          "role": "guided",
+          "title": "Example A – Understand the Problem",
+          "prompt": "From the graph, the zeros appear to be $-1$, $2$, and a number between $4$ and $5$. Which zeros are relevant for the first 5 seconds?"
+        },
+        {
+          "prompt": "Show that $t = -1$ is a zero using synthetic division, then factor the quotient.",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nUse $k = -1$ with coefficients $4, -21, 9, 34$. After division, test $t=2$ on the quotient.",
+          "role": "peer-explain",
+          "title": "Example B – Solve: Test and Factor",
+          "steps": [
+            "$k=-1$: bring down 4; $4(-1)=-4$, $-21-4=-25$; $-25(-1)=25$, $9+25=34$; $34(-1)=-34$, $34-34=0$. Remainder 0. Quotient: $4t^2 - 25t + 34$.",
+            "Test $t=2$: $4(4) - 25(2) + 34 = 16 - 50 + 34 = 0$. So $t-2$ is a factor.",
+            "Divide $4t^2 - 25t + 34$ by $t-2$ to get $4t - 17$. Zero at $t = 17/4 = 4.25$."
+          ]
+        },
+        {
+          "steps": [
+            "The coaster is at or below ground between the two positive zeros.",
+            "Time below ground = $4.25 - 2 = 2.25$ seconds.",
+            "This interpretation comes directly from the factored form."
+          ],
+          "role": "independent",
+          "title": "Example C – Conclude: Find Time Below Ground",
+          "prompt": "Using the zeros $2$ and $4.25$, how long is the coaster at or below ground level?"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$h(t) = (t - r_1)(t - r_2)(t - r_3)$$ $$ \\text{Zeros: } r_1, r_2, r_3 $$",
+          "title": "Finding Zeros by Factoring",
+          "notes": [
+            "Use graph to estimate zeros.",
+            "Confirm with Factor Theorem (synthetic division).",
+            "Factor completely to find exact zeros.",
+            "Interpret in context: time below ground is distance between positive zeros."
+          ]
+        },
+        "explanation": [
+          "**Understand**: $h(t)$ is the height; ground level is $h = 0$. Zeros of $h$ are when the coaster is at ground level. The coaster is below ground between two zeros. From the graph, zeros appear near $t = -1, 2, 4.25$. Only $t = 2$ and $t = 4.25$ are in the first 5 seconds.",
+          "**Solve**: Test $t = -1$: $h(-1) = 0$, so $t+1$ is a factor. Divide by $t+1$ to get $4t^2 - 25t + 34$. Test $t = 2$ on the quotient: $4(4) - 50 + 34 = 0$, so $t-2$ is a factor. Divide to get $4t - 17$. Thus $h(t) = (t+1)(t-2)(4t-17)$. Zeros are $-1, 2, 4.25$.",
+          "**Conclude**: The coaster is at or below ground between $t = 2$ and $t = 4.25$, a total of $2.25$ seconds."
+        ],
+        "visuals": [
+          {
+            "title": "Roller Coaster Height Factoring",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Test $t=-1$",
+                "2": "$h(-1)=0$ → factor $(t+1)$"
+              },
+              {
+                "0": "2",
+                "1": "Divide by $(t+1)$",
+                "2": "Quotient $4t^2 - 25t + 34$"
+              },
+              {
+                "0": "3",
+                "1": "Test $t=2$ on quotient",
+                "2": "$4(4)-50+34=0$ → factor $(t-2)$"
+              },
+              {
+                "0": "4",
+                "1": "Divide by $(t-2)$",
+                "2": "Quotient $4t - 17$ → zero at $t=4.25$"
+              },
+              {
+                "0": "5",
+                "1": "Factor completely",
+                "2": "$h(t) = (t+1)(t-2)(4t-17)$"
+              }
+            ]
+          }
+        ]
+      },
+      "teacherCues": [
+        "Present the roller coaster height function $h(t) = 4t^3 - 21t^2 + 9t + 34$. Ask: How can we find when the coaster is at or below ground level?",
+        "Use Understand–Solve–Conclude: Estimate zeros from the graph, test with Factor Theorem, factor completely, find time interval below ground."
+      ],
+      "discoveryHook": {
+        "scenario": "A roller coaster's height above ground (in feet) during the first 5 seconds is modeled by $h(t) = 4t^3 - 21t^2 + 9t + 34$. The coaster dips below ground level! By finding the zeros of this polynomial, we can calculate exactly how long the ride spends underground."
+      },
+      "id": "blueprint-roller-coaster",
+      "questions": [
+        {
+          "answer": "-1, 2, 4.25",
+          "id": "q4-4-13",
+          "prompt": "In the roller coaster model, $h(t) = (t+1)(t-2)(4t-17)$. What are the three zeros? (Answer like -1, 2, 4.25)",
+          "hints": [
+            "Set each factor equal to zero.",
+            "$4t - 17 = 0 \\Rightarrow t = 17/4 = 4.25$."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "The zeros are $t = -1$, $t = 2$, and $t = 4.25$."
+        },
+        {
+          "feedbackIfWrong": "The duration is $2.25$ seconds.",
+          "type": "fill-blank",
+          "hints": [
+            "Subtract the smaller zero from the larger zero.",
+            "$4.25 - 2$."
+          ],
+          "id": "q4-4-14",
+          "blanks": [
+            {
+              "accept": [
+                "2.25"
+              ]
+            }
+          ],
+          "prompt": "The roller coaster is at or below ground level between $t = 2$ and $t = 4.25$. The duration is $4.25 - 2 =$ ___ seconds."
+        },
+        {
+          "answer": "negative time",
+          "hints": [
+            "The ride starts at $t = 0$.",
+            "Times before $t=0$ don't make sense in this context."
+          ],
+          "prompt": "Why is $t = -1$ not considered when finding the time below ground? (Answer: negative time is not in the domain)",
+          "feedbackIfWrong": "$t = -1$ is negative and outside the time interval of the ride ($0 \\le t \\le 5$).",
+          "id": "q4-4-15",
+          "type": "short-answer"
+        }
+      ]
+    }
+  ],
+  "title": "Factoring Polynomials",
+  "presenterNotes": [
+    "Emphasize the order of factoring: always GCF first, then look for special patterns, then grouping or quadratic form.",
+    "The Factor Theorem is the bridge between zeros and factors. It is essential for factoring higher-degree polynomials.",
+    "When factoring completely, keep going until all factors are linear or irreducible quadratics.",
+    "The blueprint shows a practical application: using factored form to interpret real‑world behavior (time above/below ground)."
+  ],
+  "schemaVersion": 2,
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

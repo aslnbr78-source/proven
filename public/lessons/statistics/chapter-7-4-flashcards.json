@@ -1,0 +1,128 @@
+{
+  "id": "chapter-7-4-flashcards",
+  "title": "Hypothesis Testing for Proportions",
+  "cards": [
+    {
+      "back": [
+        "The sample must satisfy $np \\ge 5$ and $nq \\ge 5$, where $p$ is the hypothesized proportion from $H_0$ and $q = 1 - p$.",
+        "This ensures the sampling distribution of $\\hat{p}$ is approximately normal."
+      ],
+      "front": "What conditions must be met to use a [[kw:z‑test for a proportion]]?"
+    },
+    {
+      "front": "Give the formula for the [[kw:z‑test statistic for a proportion]].",
+      "back": [
+        "$$z = \\frac{\\hat{p} - p}{\\sqrt{\\frac{pq}{n}}}$$",
+        "$\\hat{p}$ is the sample proportion ($x/n$).",
+        "[[imp:Use $p$ and $q$ from the null hypothesis $H_0$, not from the sample.]]"
+      ]
+    },
+    {
+      "back": [
+        "$H_0: p \\ge 0.50$, so $p = 0.50$, $q = 0.50$.",
+        "$\\hat{p} = 0.39$, $n = 100$.",
+        "$$z = \\frac{0.39 - 0.50}{\\sqrt{(0.50)(0.50)/100}} = \\frac{-0.11}{0.05} = -2.20$$"
+      ],
+      "front": "A researcher claims less than 50% of adults have wireless Internet on a laptop. A sample of 100 shows 39%. Compute the z statistic."
+    },
+    {
+      "front": "In a proportion test, why do we use $p$ from $H_0$ in the standard error, not $\\hat{p}$?",
+      "back": [
+        "The test is performed under the assumption that $H_0$ is true.",
+        "Therefore, the standard error $\\sqrt{pq/n}$ must reflect the [[imp:hypothesized $p$]], not the observed $\\hat{p}$."
+      ]
+    },
+    {
+      "front": "For a left‑tailed proportion test at $\\alpha = 0.01$, what is the critical value and rejection region?",
+      "back": [
+        "The critical value $z_0$ has area $0.01$ to its left → $z_0 \\approx -2.33$.",
+        "Rejection region: $z < -2.33$.",
+        "Google Sheets: `=NORM.S.INV(0.01)` returns about -2.326."
+      ]
+    },
+    {
+      "back": [
+        "No, because the P‑value = 0.0139 > 0.01.",
+        "Also, $z = -2.20 > -2.33$, so it's not in the rejection region.",
+        "We [[imp:fail to reject $H_0$]]."
+      ],
+      "front": "A left‑tailed test gives $z = -2.20$. The area to the left is 0.0139. Should you reject $H_0$ at $\\alpha = 0.01$?"
+    },
+    {
+      "front": "A claim states exactly 25% of graduates think college isn't worth it. A sample of 200 shows 21%. Write $H_0$ and $H_a$ and identify the type of test.",
+      "back": [
+        "Claim $p = 0.25$ is $H_0$. $H_a: p \\neq 0.25$.",
+        "This is a [[kw:two‑tailed test]].",
+        "The rejection regions are in both tails."
+      ]
+    },
+    {
+      "back": [
+        "Each tail has area $\\alpha/2 = 0.05$.",
+        "Critical values are $\\pm z_0 = \\pm 1.645$.",
+        "Rejection region: $z < -1.645$ or $z > 1.645$."
+      ],
+      "front": "For a two‑tailed proportion test at $\\alpha = 0.10$, what are the critical values?"
+    },
+    {
+      "back": [
+        "Two‑tailed P‑value = $2 \\times 0.0951 = 0.1902$.",
+        "$0.1902 > 0.10$ → [[imp:fail to reject $H_0$]].",
+        "The difference between 21% and 25% is not statistically significant at the 10% level."
+      ],
+      "front": "A two‑tailed test gives $z = -1.31$. The area to the left of -1.31 is 0.0951. Find the P‑value and decide at $\\alpha = 0.10$."
+    },
+    {
+      "front": "How do you find the P‑value for a [[kw:right‑tailed]] proportion test?",
+      "back": [
+        "P‑value = area to the [[imp:right]] of the test statistic.",
+        "Google Sheets: `=1 - NORM.S.DIST(z, TRUE)`.",
+        "Example: If $z = 1.85$, P‑value ≈ 0.0322."
+      ]
+    },
+    {
+      "back": [
+        "`=2 * (1 - NORM.S.DIST(ABS(z), TRUE))`",
+        "This doubles the area in the tail beyond the observed $|z|$."
+      ],
+      "front": "How do you find the P‑value for a [[kw:two‑tailed]] proportion test in Google Sheets?"
+    },
+    {
+      "front": "A humane society claims less than 35% of households own a dog. A sample of 400 finds 39% own a dog. At $\\alpha=0.05$, what is the conclusion?",
+      "back": [
+        "Claim $p < 0.35$ is $H_a$. $H_0: p \\ge 0.35$.",
+        "The sample proportion $0.39 > 0.35$, so it contradicts the claim immediately.",
+        "The test statistic is positive ($z \\approx 1.68$). P‑value is large → [[imp:fail to reject $H_0$]]. No evidence to support the claim."
+      ]
+    },
+    {
+      "front": "A researcher claims less than 25% of adults smoke. A sample of 200 has 18.5% smokers. $z = -2.40$. Find the P‑value and decide at $\\alpha = 0.05$.",
+      "back": [
+        "Left‑tailed P‑value = area left of $z = -2.40$ ≈ 0.0082.",
+        "$0.0082 \\le 0.05$ → [[imp:reject $H_0$]].",
+        "There is enough evidence to support the claim that less than 25% smoke."
+      ]
+    },
+    {
+      "front": "What is the decision rule for a hypothesis test using a [[kw:P‑value]]?",
+      "back": [
+        "If P‑value $\\le \\alpha$ → reject $H_0$.",
+        "If P‑value $> \\alpha$ → fail to reject $H_0$.",
+        "The smaller the P‑value, the stronger the evidence against $H_0$."
+      ]
+    },
+    {
+      "front": "A manufacturer claims at most 5% of products are defective. A sample of 500 finds 6% defective. Is this a left‑, right‑, or two‑tailed test?",
+      "back": [
+        "Claim $p \\le 0.05$ is $H_0$ (contains equality).",
+        "$H_a: p > 0.05$.",
+        "This is a [[kw:right‑tailed test]]. We are testing if the defect rate exceeds the claim."
+      ]
+    }
+  ],
+  "type": "flashcard",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

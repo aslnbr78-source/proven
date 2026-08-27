@@ -1,0 +1,765 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-9-5-binomial-theorem",
+  "title": "The Binomial Theorem",
+  "blocks": [
+    {
+      "id": "intro-binomial-coefficients",
+      "title": "Binomial Coefficients and the Binomial Theorem",
+      "teacherCues": [
+        "Write the expansion of $(x+y)^2$, $(x+y)^3$, and $(x+y)^4$ on the board. Ask: Do you see a pattern in the coefficients?",
+        "Introduce the notation $\\binom{n}{r}$ or $_nC_r$ for the coefficient of $x^{n-r}y^r$."
+      ],
+      "discoveryHook": {
+        "scenario": "Raising a binomial to a high power like $(x+y)^{10}$ would be tedious to multiply out by hand. The Binomial Theorem gives a formula that reveals the coefficients instantly, just like a recipe."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Binomial Theorem]] states that $(x+y)^n = \\sum_{r=0}^{n} \\binom{n}{r} x^{n-r} y^r$, where $\\binom{n}{r} = \\frac{n!}{(n-r)!\\,r!}$.",
+          "The numbers $\\binom{n}{r}$ are called [[kw:binomial coefficients]].",
+          "Properties: There are $n+1$ terms, powers of $x$ decrease from $n$ to $0$, powers of $y$ increase from $0$ to $n$, and coefficients are symmetric ($\\binom{n}{r} = \\binom{n}{n-r}$).",
+          "For $(x-y)^n$, the signs alternate: plus, minus, plus, minus, ..."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Small Binomial Expansions",
+            "headers": [
+              "$(x+y)^n$",
+              "Expansion"
+            ],
+            "rows": [
+              {
+                "0": "$(x+y)^0$",
+                "1": "$1$"
+              },
+              {
+                "0": "$(x+y)^1$",
+                "1": "$x + y$"
+              },
+              {
+                "0": "$(x+y)^2$",
+                "1": "$x^2 + 2xy + y^2$"
+              },
+              {
+                "0": "$(x+y)^3$",
+                "1": "$x^3 + 3x^2y + 3xy^2 + y^3$"
+              },
+              {
+                "0": "$(x+y)^4$",
+                "1": "$x^4 + 4x^3y + 6x^2y^2 + 4xy^3 + y^4$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Binomial Theorem",
+          "formula": "$$(x+y)^n = \\sum_{r=0}^{n} \\binom{n}{r} x^{n-r} y^r$$",
+          "notes": [
+            "$\\binom{n}{r} = \\frac{n!}{(n-r)!\\,r!}$.",
+            "The $(r+1)$th term is $\\binom{n}{r} x^{n-r} y^r$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Compute $_8C_2$",
+          "prompt": "Find the binomial coefficient $\\binom{8}{2}$.",
+          "steps": [
+            "$\\binom{8}{2} = \\frac{8!}{6!\\,2!}$.",
+            "Simplify: $\\frac{8\\cdot7\\cdot6!}{6!\\cdot2\\cdot1} = \\frac{8\\cdot7}{2} = 28$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Compute $\\binom{10}{3}$",
+          "prompt": "Find $\\binom{10}{3}$ using the shortcut pattern.",
+          "peerPrompt": "Explain to your partner: Write $10\\cdot9\\cdot8$ in the numerator, and $3\\cdot2\\cdot1$ in the denominator. Simplify.",
+          "minLength": 2,
+          "steps": [
+            "$\\binom{10}{3} = \\frac{10\\cdot9\\cdot8}{3\\cdot2\\cdot1} = \\frac{720}{6} = 120$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Special cases",
+          "prompt": "Compute $\\binom{7}{0}$ and $\\binom{8}{8}$.",
+          "steps": [
+            "$\\binom{7}{0} = \\frac{7!}{7!\\,0!} = 1$.",
+            "$\\binom{8}{8} = \\frac{8!}{0!\\,8!} = 1$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Shortcut pattern",
+        "body": "For $\\binom{n}{r}$ with $0<r<n$, you can write $n$ descending factors in numerator, $r$ descending factors in denominator. For example, $\\binom{10}{3} = \\frac{10\\cdot9\\cdot8}{3\\cdot2\\cdot1}$."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "The binomial coefficient $\\binom{n}{r}$ is equal to $\\frac{n!}{(n-r)!\\,r!}$. It is read as '$n$ choose ___'.",
+          "blanks": [
+            {
+              "accept": [
+                "r"
+              ]
+            }
+          ],
+          "hints": [
+            "The bottom number.",
+            "The second index."
+          ],
+          "feedbackIfWrong": "It's '$n$ choose $r$'."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "Find the binomial coefficient $\\binom{5}{3}$. (Enter a number)",
+          "answer": "10",
+          "hints": [
+            "Use the shortcut: $5\\cdot4\\cdot3$ over $3\\cdot2\\cdot1$.",
+            "That gives $60/6$."
+          ],
+          "feedbackIfWrong": "$\\binom{5}{3} = 10$."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "In the expansion of $(x+y)^n$, the powers of $x$ ___ (increase/decrease) as the terms progress.",
+          "blanks": [
+            {
+              "accept": [
+                "decrease"
+              ]
+            }
+          ],
+          "hints": [
+            "From $n$ down to $0$.",
+            "Opposite of increase."
+          ],
+          "feedbackIfWrong": "Powers of $x$ decrease."
+        }
+      ]
+    },
+    {
+      "id": "pascals-triangle",
+      "title": "Pascal's Triangle",
+      "teacherCues": [
+        "Write Pascal's Triangle up to the 5th row. Ask: How is each number obtained from the row above?",
+        "Show that the numbers in the $n$th row are exactly the binomial coefficients $\\binom{n}{0}, \\binom{n}{1}, \\dots, \\binom{n}{n}$."
+      ],
+      "discoveryHook": {
+        "scenario": "Pascal's Triangle is a neat triangular array where each number is the sum of the two above it. It gives you all binomial coefficients without any factorial calculations."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Pascal's Triangle]] is constructed by starting with a $1$ at the top, then each row is formed by adding the two numbers above to get the next number.",
+          "The $n$th row (starting with row $0$) gives the coefficients for $(x+y)^n$.",
+          "For example, the third row $1,3,3,1$ are the coefficients for $(x+y)^3$.",
+          "The triangle is symmetric, illustrating that $\\binom{n}{r} = \\binom{n}{n-r}$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Pascal's Triangle (Rows 0–6)",
+            "headers": [
+              "Row $n$",
+              "Binomial Coefficients"
+            ],
+            "rows": [
+              {
+                "0": "0",
+                "1": "$1$"
+              },
+              {
+                "0": "1",
+                "1": "$1\\quad 1$"
+              },
+              {
+                "0": "2",
+                "1": "$1\\quad 2\\quad 1$"
+              },
+              {
+                "0": "3",
+                "1": "$1\\quad 3\\quad 3\\quad 1$"
+              },
+              {
+                "0": "4",
+                "1": "$1\\quad 4\\quad 6\\quad 4\\quad 1$"
+              },
+              {
+                "0": "5",
+                "1": "$1\\quad 5\\quad 10\\quad 10\\quad 5\\quad 1$"
+              },
+              {
+                "0": "6",
+                "1": "$1\\quad 6\\quad 15\\quad 20\\quad 15\\quad 6\\quad 1$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Using Pascal's Triangle",
+          "formula": "To expand $(x+y)^n$, read the $n$th row of Pascal's Triangle for the coefficients.",
+          "notes": [
+            "Row numbering starts at $0$.",
+            "The $k$th entry (starting from $0$) in row $n$ is $\\binom{n}{k}$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Read coefficients for $(x+y)^4$",
+          "prompt": "Use Pascal's Triangle to write the binomial coefficients for $(x+y)^4$.",
+          "steps": [
+            "Row 4 of Pascal's Triangle: $1, 4, 6, 4, 1$.",
+            "These are $\\binom{4}{0}, \\binom{4}{1}, \\binom{4}{2}, \\binom{4}{3}, \\binom{4}{4}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Find $\\binom{6}{4}$ from Pascal's Triangle",
+          "prompt": "Using the triangle, what is $\\binom{6}{4}$?",
+          "peerPrompt": "Locate row 6, then the 4th entry (remember 0-index). Explain how it's the same as $\\binom{6}{2}$.",
+          "minLength": 2,
+          "steps": [
+            "Row 6: $1, 6, 15, 20, 15, 6, 1$.",
+            "The coefficient at index 4 is $15$.",
+            "Also $\\binom{6}{2} = 15$, illustrating symmetry."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Build the next row",
+          "prompt": "Given row 5 of Pascal's Triangle: $1,5,10,10,5,1$, find row 6.",
+          "steps": [
+            "Start and end with $1$.",
+            "Inner entries: $1+5=6$, $5+10=15$, $10+10=20$, $10+5=15$, $5+1=6$.",
+            "Row 6: $1,6,15,20,15,6,1$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Row numbering starts at 0",
+        "body": "The top $1$ is row $0$, not row $1$. So $(x+y)^3$ uses row $3$: $1,3,3,1$."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "In Pascal's Triangle, each entry (except the 1's on the edges) is the sum of the two entries ___ it.",
+          "blanks": [
+            {
+              "accept": [
+                "above"
+              ]
+            }
+          ],
+          "hints": [
+            "You add the two numbers directly overhead.",
+            "From the previous row."
+          ],
+          "feedbackIfWrong": "It is the sum of the two numbers directly above."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "What is the binomial coefficient $\\binom{5}{2}$ according to Pascal's Triangle? (Enter a number)",
+          "answer": "10",
+          "hints": [
+            "Row 5: $1,5,10,10,5,1$.",
+            "The third entry is 10."
+          ],
+          "feedbackIfWrong": "$\\binom{5}{2} = 10$."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "The binomial coefficients for $(x+y)^6$ are found in row ___ of Pascal's Triangle.",
+          "blanks": [
+            {
+              "accept": [
+                "6"
+              ]
+            }
+          ],
+          "hints": [
+            "The row number equals the exponent.",
+            "Matches the power."
+          ],
+          "feedbackIfWrong": "Row 6."
+        }
+      ]
+    },
+    {
+      "id": "binomial-expansions",
+      "title": "Writing Binomial Expansions",
+      "teacherCues": [
+        "Use the binomial coefficients from Pascal's Triangle or the formula to write the expansion of $(x+1)^3$.",
+        "Show how to expand $(2x-3)^4$ by applying the coefficients and paying attention to signs."
+      ],
+      "discoveryHook": {
+        "scenario": "Expanding $(x+2)^5$ by hand would involve multiplying five times. The Binomial Theorem makes it a systematic process: write the powers of each term and multiply by the coefficients."
+      },
+      "concept": {
+        "explanation": [
+          "To expand $(x+y)^n$, start with $x^n$, then successive terms decrease the power of $x$ by 1 and increase the power of $y$ by 1, multiplying each term by the corresponding binomial coefficient.",
+          "For $(x-y)^n$, the signs alternate starting with positive.",
+          "If the binomial has a coefficient other than 1, say $(ax+by)^n$, raise the entire monomial to the power: $(ax)^r = a^r x^r$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $(2x-3)^4$",
+            "headers": [
+              "Term ($r$)",
+              "Coefficient $\\binom{4}{r}$",
+              "Term Expression"
+            ],
+            "rows": [
+              {
+                "0": "0",
+                "1": "$1$",
+                "2": "$(2x)^4 = 16x^4$"
+              },
+              {
+                "0": "1",
+                "1": "$4$",
+                "2": "$4(2x)^3(-3) = -96x^3$"
+              },
+              {
+                "0": "2",
+                "1": "$6$",
+                "2": "$6(2x)^2(-3)^2 = 216x^2$"
+              },
+              {
+                "0": "3",
+                "1": "$4$",
+                "2": "$4(2x)(-3)^3 = -216x$"
+              },
+              {
+                "0": "4",
+                "1": "$1$",
+                "2": "$(-3)^4 = 81$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Expansion Steps",
+          "formula": "1. Write $\\binom{n}{r}$ coefficients (from Pascal's Triangle or formula).\n2. For each term, the power of the first term is $n-r$, second term is $r$.\n3. If the second term is negative, the sign alternates starting with $+$.",
+          "notes": [
+            "Be careful with exponents of coefficients: $(2x)^3 = 2^3 x^3 = 8x^3$.",
+            "Don't forget the sign when substituting $y = -\\text{something}$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Expand $(x+1)^3$",
+          "prompt": "Write the expansion of $(x+1)^3$.",
+          "steps": [
+            "Coefficients from row 3: $1, 3, 3, 1$.",
+            "Terms: $1\\cdot x^3\\cdot1^0 + 3\\cdot x^2\\cdot1^1 + 3\\cdot x^1\\cdot1^2 + 1\\cdot x^0\\cdot1^3$.",
+            "Simplified: $x^3 + 3x^2 + 3x + 1$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Expand $(2x-3)^4$",
+          "prompt": "Write the expansion of $(2x-3)^4$.",
+          "peerPrompt": "Work with your partner: Use the coefficients $1,4,6,4,1$. For each term, compute $(2x)^r$ and $(-3)^{4-r}$ carefully. Add them with proper signs.",
+          "minLength": 2,
+          "steps": [
+            "Term 0: $\\binom{4}{0}(2x)^4(-3)^0 = 1\\cdot16x^4 = 16x^4$.",
+            "Term 1: $\\binom{4}{1}(2x)^3(-3)^1 = 4\\cdot8x^3\\cdot(-3) = -96x^3$.",
+            "Term 2: $\\binom{4}{2}(2x)^2(-3)^2 = 6\\cdot4x^2\\cdot9 = 216x^2$.",
+            "Term 3: $\\binom{4}{3}(2x)^1(-3)^3 = 4\\cdot2x\\cdot(-27) = -216x$.",
+            "Term 4: $\\binom{4}{4}(2x)^0(-3)^4 = 1\\cdot81 = 81$.",
+            "Sum: $16x^4 - 96x^3 + 216x^2 - 216x + 81$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Expand $(x-2y)^4$",
+          "prompt": "Write the expansion of $(x-2y)^4$.",
+          "steps": [
+            "Coefficients: $1,4,6,4,1$.",
+            "Term 0: $x^4$.",
+            "Term 1: $4x^3(-2y) = -8x^3y$.",
+            "Term 2: $6x^2(-2y)^2 = 6x^2\\cdot4y^2 = 24x^2y^2$.",
+            "Term 3: $4x(-2y)^3 = 4x\\cdot(-8y^3) = -32xy^3$.",
+            "Term 4: $(-2y)^4 = 16y^4$.",
+            "Sum: $x^4 - 8x^3y + 24x^2y^2 - 32xy^3 + 16y^4$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sign errors are common",
+        "body": "In $(x-y)^n$, the sign alternates with each term because $(-y)^r$ gives $+$ when $r$ is even and $-$ when $r$ is odd."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "In the expansion of $(x+y)^n$, there are ___ terms.",
+          "blanks": [
+            {
+              "accept": [
+                "n+1"
+              ]
+            }
+          ],
+          "hints": [
+            "One more than the exponent.",
+            "If $n=3$, there are 4 terms."
+          ],
+          "feedbackIfWrong": "There are $n+1$ terms."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "What is the coefficient of $x^3$ in the expansion of $(x+2)^4$? (Enter a number)",
+          "answer": "8",
+          "hints": [
+            "The term with $x^3$ uses $r=1$.",
+            "Compute $\\binom{4}{1} \\cdot 2^1 = 4 \\cdot 2$."
+          ],
+          "feedbackIfWrong": "The coefficient is $\\binom{4}{1} \\cdot 2 = 8$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "For $(x-y)^n$, the signs alternate, starting with ___.",
+          "blanks": [
+            {
+              "accept": [
+                "positive",
+                "plus",
+                "+"
+              ]
+            }
+          ],
+          "hints": [
+            "First term is $x^n$, positive.",
+            "Like $(x-y)^2 = x^2 - 2xy + y^2$."
+          ],
+          "feedbackIfWrong": "The signs start with positive."
+        }
+      ]
+    },
+    {
+      "id": "finding-specific-term",
+      "title": "Finding a Specific Term in a Binomial Expansion",
+      "teacherCues": [
+        "Ask: What is the 6th term of $(a+2b)^8$? Use the formula for the $(r+1)$th term, so $r=5$.",
+        "Then find the coefficient of $a^6b^5$ in $(3a-2b)^{11}$ by setting $r=5$."
+      ],
+      "discoveryHook": {
+        "scenario": "You don't need to expand the entire binomial to get one term. The Binomial Theorem lets you jump directly to any term you need, saving time."
+      },
+      "concept": {
+        "explanation": [
+          "The $(r+1)$th term of $(x+y)^n$ is $$\\binom{n}{r} x^{n-r} y^r.$$",
+          "So the $k$th term corresponds to $r = k-1$.",
+          "This formula is useful for finding a specific coefficient or a specific term without writing the whole expansion."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Examples",
+            "headers": [
+              "Problem",
+              "$n$",
+              "$r$",
+              "Term"
+            ],
+            "rows": [
+              {
+                "0": "6th term of $(a+2b)^8$",
+                "1": "$8$",
+                "2": "$5$",
+                "3": "$\\binom{8}{5} a^3 (2b)^5 = 56 a^3 \\cdot 32 b^5 = 1792 a^3 b^5$"
+              },
+              {
+                "0": "Coefficient of $a^6b^5$ in $(3a-2b)^{11}$",
+                "1": "$11$",
+                "2": "$5$",
+                "3": "$\\binom{11}{5} (3a)^6 (-2b)^5 = 462 \\cdot 729 a^6 \\cdot (-32 b^5) = -10,777,536 a^6b^5$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "General Term",
+          "formula": "$$\\text{The }(r+1)\\text{th term} = \\binom{n}{r} x^{n-r} y^r$$",
+          "notes": [
+            "To find the $k$th term, set $r = k-1$.",
+            "For a coefficient of a specific power, match the exponents."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find the 6th term of $(a+2b)^8$",
+          "prompt": "Identify $n$, $r$, $x$, $y$ and compute the term.",
+          "steps": [
+            "For the 6th term, $r = 6-1 = 5$.",
+            "$n=8$, $x=a$, $y=2b$.",
+            "Term $= \\binom{8}{5} a^{8-5} (2b)^5 = 56 \\cdot a^3 \\cdot 32b^5 = 1792 a^3 b^5$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Coefficient of a specific term",
+          "prompt": "Find the coefficient of $a^6b^5$ in the expansion of $(3a-2b)^{11}$.",
+          "peerPrompt": "Explain to your partner: You need the term where the power of $a$ is $6$, so $n-r=6$ → $11-r=6$ → $r=5$. Then plug into the formula.",
+          "minLength": 2,
+          "steps": [
+            "$r=5$, $n=11$, $x=3a$, $y=-2b$.",
+            "Term $= \\binom{11}{5} (3a)^6 (-2b)^5 = 462 \\cdot 729 a^6 \\cdot (-32 b^5) = -10,777,536 a^6b^5$.",
+            "So the coefficient is $-10,777,536$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find the middle term",
+          "prompt": "Find the middle term (5th term) of $(a+2b)^8$? Actually $n=8$, so there are 9 terms; the 5th term is the middle. Find it.",
+          "steps": [
+            "$r=4$ (since 5th term → $r=4$).",
+            "Term $= \\binom{8}{4} a^{4} (2b)^4 = 70 \\cdot a^4 \\cdot 16b^4 = 1120 a^4 b^4$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget the exponent on the coefficient",
+        "body": "In $(3a)^6$, both $3$ and $a$ are raised to the 6th power: $3^6 = 729$, so term is $729 a^6$."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "To find the $k$th term of a binomial expansion, use $r = k -$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "The term number minus one.",
+            "Because the first term uses $r=0$."
+          ],
+          "feedbackIfWrong": "It's $k-1$."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "What is the coefficient of $x^4$ in $(x+3)^5$? (Enter a number)",
+          "answer": "15",
+          "hints": [
+            "The term with $x^4$ uses $r=1$.",
+            "Compute $\\binom{5}{1} \\cdot 3^1 = 5 \\cdot 3$."
+          ],
+          "feedbackIfWrong": "The coefficient is $\\binom{5}{1} \\cdot 3 = 15$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "In the term $\\binom{n}{r} x^{n-r} y^r$, the power of $y$ is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "r"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the exponent on $y$.",
+            "Given by the second index."
+          ],
+          "feedbackIfWrong": "The power of $y$ is $r$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-binomial-expansion",
+      "title": "Blueprint Aid – Expanding $(3x-2)^4$ Step by Step",
+      "teacherCues": [
+        "Pose: Expand $(3x-2)^4$ using the Binomial Theorem.",
+        "Outline the blueprint: Understand (identify $n$, $a$, $b$), Solve (compute binomial coefficients, write terms), Conclude (simplify and combine)."
+      ],
+      "discoveryHook": {
+        "scenario": "Expanding a binomial with a coefficient like $3$ and a negative sign can be tricky. The blueprint breaks it into manageable pieces: coefficients, powers, signs, and final simplification."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Here $n=4$, $x$ in the formula is $3x$, and $y$ is $-2$.",
+          "[[imp:Solve]]: Binomial coefficients from Pascal's Triangle (row 4): $1,4,6,4,1$.",
+          "Write each term: $(3x)^4$, $4(3x)^3(-2)$, $6(3x)^2(-2)^2$, $4(3x)(-2)^3$, $(-2)^4$.",
+          "[[imp:Conclude]]: Compute powers: $81x^4$, $4\\cdot27x^3\\cdot(-2) = -216x^3$, $6\\cdot9x^2\\cdot4 = 216x^2$, $4\\cdot3x\\cdot(-8) = -96x$, $16$. The expansion is $81x^4 - 216x^3 + 216x^2 - 96x + 16$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Expanding $(3x-2)^4$",
+            "headers": [
+              "$r$",
+              "Coefficient",
+              "Term before simplification",
+              "After simplification"
+            ],
+            "rows": [
+              {
+                "0": "0",
+                "1": "$1$",
+                "2": "$(3x)^4$",
+                "3": "$81x^4$"
+              },
+              {
+                "0": "1",
+                "1": "$4$",
+                "2": "$4(3x)^3(-2)$",
+                "3": "$-216x^3$"
+              },
+              {
+                "0": "2",
+                "1": "$6$",
+                "2": "$6(3x)^2(-2)^2$",
+                "3": "$216x^2$"
+              },
+              {
+                "0": "3",
+                "1": "$4$",
+                "2": "$4(3x)(-2)^3$",
+                "3": "$-96x$"
+              },
+              {
+                "0": "4",
+                "1": "$1$",
+                "2": "$(-2)^4$",
+                "3": "$16$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Expansion Blueprint",
+          "formula": "$$(3x-2)^4 = 81x^4 - 216x^3 + 216x^2 - 96x + 16$$",
+          "notes": [
+            "Check signs: odd powers of $(-2)$ are negative, even powers positive.",
+            "Always raise the entire monomial $3x$ to the power, not just $x$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand coefficients",
+          "prompt": "List the binomial coefficients for $(3x-2)^4$.",
+          "steps": [
+            "From Pascal's Triangle row 4: $1,4,6,4,1$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Write the terms",
+          "prompt": "With a partner, write out the five terms symbolically before simplifying.",
+          "peerPrompt": "Check each other's work: are the powers of $(3x)$ decreasing? Are the signs correct?",
+          "minLength": 2,
+          "steps": [
+            "$1\\cdot(3x)^4\\cdot(-2)^0 = (3x)^4$.",
+            "$4\\cdot(3x)^3\\cdot(-2)^1 = 4(27x^3)(-2) = -216x^3$.",
+            "$6\\cdot(3x)^2\\cdot(-2)^2 = 6(9x^2)(4) = 216x^2$.",
+            "$4\\cdot(3x)^1\\cdot(-2)^3 = 4(3x)(-8) = -96x$.",
+            "$1\\cdot(-2)^4 = 16$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude and simplify",
+          "prompt": "Combine the terms to write the final expansion.",
+          "steps": [
+            "$81x^4 - 216x^3 + 216x^2 - 96x + 16$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Exponent on negative number",
+        "body": "$(-2)^3 = -8$, not $+8$. The negative sign stays because the exponent is odd."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the expansion of $(3x-2)^4$, the term with $x^2$ has coefficient ___.",
+          "blanks": [
+            {
+              "accept": [
+                "216"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the third term ($r=2$).",
+            "$6 \\cdot 9 \\cdot 4 = 216$."
+          ],
+          "feedbackIfWrong": "The coefficient is $216$."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is the last term (constant term) in the expansion of $(3x-2)^4$? (Enter a number)",
+          "answer": "16",
+          "hints": [
+            "It's $(-2)^4$.",
+            "Even power makes it positive."
+          ],
+          "feedbackIfWrong": "The constant term is $16$."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The expansion of $(3x-2)^4$ has ___ terms.",
+          "blanks": [
+            {
+              "accept": [
+                "5"
+              ]
+            }
+          ],
+          "hints": [
+            "Number of terms is $n+1$.",
+            "$4+1 = 5$."
+          ],
+          "feedbackIfWrong": "There are $5$ terms."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Find the coefficient of $x^5$ in the expansion of $(2x-1)^7$.",
+        "type": "short-answer",
+        "answer": "672",
+        "hints": [
+          "The $x^5$ term occurs when $r=2$ (since $7-r=5$).",
+          "Compute $\\binom{7}{2} (2x)^5 (-1)^2 = 21 \\cdot 32 x^5 \\cdot 1$."
+        ],
+        "feedbackIfWrong": "The coefficient is $21 \\cdot 32 = 672$."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

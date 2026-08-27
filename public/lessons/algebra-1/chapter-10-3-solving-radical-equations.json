@@ -1,0 +1,730 @@
+{
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "teacherCues": [
+        "Write $\\sqrt{x+5}=13$ on the board. Ask: How can we undo the square root?",
+        "Then write $3-\\sqrt{x}=0$. Ask: What must we isolate first before squaring?"
+      ],
+      "id": "solving-simple-radical-equations",
+      "discoveryHook": {
+        "scenario": "A radical equation has the variable trapped inside a root. To free it, isolate the radical, then square both sides — squaring undoes the square root. But be careful: squaring can sometimes introduce fake solutions!"
+      },
+      "questions": [
+        {
+          "hints": [
+            "Square the right side: $6^2$.",
+            "The square root is undone by squaring."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "36",
+                "thirty six"
+              ]
+            }
+          ],
+          "prompt": "To solve $\\sqrt{x} = 6$, square both sides to get $x =$ ___.",
+          "feedbackIfWrong": "$x = 36$.",
+          "id": "q1-1",
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "id": "q1-2",
+          "answers": [
+            "100",
+            "one hundred"
+          ],
+          "feedbackIfWrong": "The solution is $x = 100$.",
+          "hints": [
+            "Add 7 to isolate the radical.",
+            "Then square both sides."
+          ],
+          "prompt": "Solve $\\sqrt{x} - 7 = 3$. What is the solution?"
+        },
+        {
+          "id": "q1-3",
+          "prompt": "What is the first step in solving $2\\sqrt{x+4} = 16$?",
+          "hints": [
+            "The radical is multiplied by 2.",
+            "Undo the multiplication before squaring."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "divide by 2",
+            "Divide by 2"
+          ],
+          "feedbackIfWrong": "Divide both sides by 2 to isolate the radical."
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Solving $\\sqrt{x}+5=13$",
+            "headers": [
+              "Step",
+              "Action",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "1. Isolate radical",
+                "1": "Subtract 5",
+                "2": "$\\sqrt{x} = 8$"
+              },
+              {
+                "0": "2. Square both sides",
+                "1": "$(\\sqrt{x})^2 = 8^2$",
+                "2": "$x = 64$"
+              },
+              {
+                "0": "3. Check",
+                "1": "$\\sqrt{64}+5=8+5=13$",
+                "2": "✓"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "A [[kw:radical equation]] contains a variable inside a radical, like $\\sqrt{x+5}=13$.",
+          "To solve, first **isolate** the radical on one side of the equation.",
+          "Then **square both sides** to eliminate the radical: $(\\sqrt{x})^2 = x$.",
+          "Solve the resulting equation and **check** your solution in the original equation.",
+          "Example: $\\sqrt{x}+5=13$ → $\\sqrt{x}=8$ → $x=64$."
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{If } a = b, \\text{ then } a^2 = b^2 $$",
+          "title": "Squaring Property",
+          "notes": [
+            "Always isolate the radical first.",
+            "Squaring can introduce extraneous solutions — always check."
+          ]
+        }
+      },
+      "confusionCorner": {
+        "body": "If you square both sides of $\\sqrt{x}+5=13$ without isolating, you get $(\\sqrt{x}+5)^2 = 169$, which expands to $x + 10\\sqrt{x} + 25 = 169$ — still a radical! Always isolate the radical before squaring.",
+        "title": "Isolate the Radical First!"
+      },
+      "examples": [
+        {
+          "title": "Example A — Basic Radical Equation",
+          "steps": [
+            "Subtract 5: $\\sqrt{x} = 8$.",
+            "Square both sides: $x = 64$.",
+            "Check: $\\sqrt{64}+5 = 8+5 = 13$ ✓."
+          ],
+          "role": "guided",
+          "prompt": "Solve $\\sqrt{x} + 5 = 13$."
+        },
+        {
+          "steps": [
+            "Add $\\sqrt{x}$ to both sides: $3 = \\sqrt{x}$.",
+            "Square: $9 = x$.",
+            "Check: $3 - \\sqrt{9} = 3 - 3 = 0$ ✓."
+          ],
+          "title": "Example B — Isolate First",
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why do we move the radical to the other side before squaring? What happens if you square both sides immediately?",
+          "prompt": "Solve $3 - \\sqrt{x} = 0$.",
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "Add 7: $\\sqrt{y} = 10$.",
+            "Square: $y = 100$.",
+            "Check: $\\sqrt{100} - 7 = 10 - 7 = 3$ ✓."
+          ],
+          "title": "Example C — Practice",
+          "role": "independent",
+          "prompt": "Solve $\\sqrt{y} - 7 = 3$."
+        }
+      ],
+      "title": "Solving Simple Radical Equations"
+    },
+    {
+      "title": "Equations with Radicals on Both Sides",
+      "examples": [
+        {
+          "prompt": "Solve $\\sqrt{2x-1} = \\sqrt{x+4}$.",
+          "title": "Example A — Basic",
+          "steps": [
+            "Square both sides: $2x-1 = x+4$.",
+            "Subtract $x$: $x-1 = 4$. Add 1: $x = 5$.",
+            "Check: $\\sqrt{9} = \\sqrt{9}$ ✓."
+          ],
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Square: $3x+1 = 4x-7$ → $-x = -8$ → $x = 8$.",
+            "Check radicands: $3(8)+1=25 \\ge 0$, $4(8)-7=25 \\ge 0$. Both nonnegative. $\\sqrt{25}=\\sqrt{25}$ ✓."
+          ],
+          "title": "Example B — Check Domain",
+          "prompt": "Solve $\\sqrt{3x+1} = \\sqrt{4x-7}$.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: After solving, why must we check that the radicands are nonnegative? What happens if they aren't?"
+        },
+        {
+          "title": "Example C — Practice",
+          "steps": [
+            "Square: $n = 5n-1$ → $-4n = -1$ → $n = 0.25$.",
+            "Check: $\\sqrt{0.25} = 0.5$, $\\sqrt{5(0.25)-1} = \\sqrt{0.25} = 0.5$ ✓."
+          ],
+          "prompt": "Solve $\\sqrt{n} = \\sqrt{5n-1}$.",
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "When both sides of an equation are square roots, you can square both sides directly.",
+          "If $\\sqrt{A} = \\sqrt{B}$, then squaring gives $A = B$, provided $A, B \\ge 0$.",
+          "Solve the resulting equation and check for extraneous solutions.",
+          "Example: $\\sqrt{2x-1} = \\sqrt{x+4}$ → $2x-1 = x+4$ → $x = 5$.",
+          "Check: $\\sqrt{10-1} = \\sqrt{5+4}$ → $\\sqrt{9} = \\sqrt{9}$ ✓."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Solving $\\sqrt{2x-1} = \\sqrt{x+4}$",
+            "headers": [
+              "Step",
+              "Action",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "1. Square both sides",
+                "1": "$(\\sqrt{2x-1})^2 = (\\sqrt{x+4})^2$",
+                "2": "$2x-1 = x+4$"
+              },
+              {
+                "0": "2. Solve for x",
+                "1": "Subtract $x$, add 1",
+                "2": "$x = 5$"
+              },
+              {
+                "0": "3. Check",
+                "1": "$\\sqrt{9} = \\sqrt{9}$",
+                "2": "✓"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\sqrt{A} = \\sqrt{B} \\quad\\Rightarrow\\quad A = B \\quad (\\text{if } A,B \\ge 0) $$",
+          "title": "Radicals on Both Sides",
+          "notes": [
+            "Square both sides immediately.",
+            "Always check that radicands are nonnegative."
+          ]
+        }
+      },
+      "confusionCorner": {
+        "body": "Even if squaring gives a solution, it's only valid if both radicands are nonnegative. If a solution makes a radicand negative, it's extraneous.",
+        "title": "Radicands Must Be Nonnegative"
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "feedbackIfWrong": "The equation becomes $2x-1 = x+4$.",
+          "prompt": "If $\\sqrt{A} = \\sqrt{B}$, then squaring both sides gives $A = B$, provided $A$ and $B$ are nonnegative. For $\\sqrt{2x-1} = \\sqrt{x+4}$, squaring gives $2x-1 =$ ___.",
+          "hints": [
+            "The radicand on the right side.",
+            "It's the expression inside the second square root."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "x+4",
+                "x + 4"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "Solve $\\sqrt{2x-1} = \\sqrt{x+4}$. What is the solution?",
+          "feedbackIfWrong": "The solution is $x = 5$.",
+          "answers": [
+            "5",
+            "five"
+          ],
+          "hints": [
+            "Square both sides, solve for $x$.",
+            "Check: $\\sqrt{9} = \\sqrt{9}$."
+          ]
+        },
+        {
+          "feedbackIfWrong": "The solution is $g = 5$.",
+          "answers": [
+            "5",
+            "five"
+          ],
+          "prompt": "Solve $\\sqrt{3g+1} = \\sqrt{7g-19}$. What is the solution?",
+          "hints": [
+            "Square: $3g+1 = 7g-19$.",
+            "Solve: $20 = 4g$, so $g=5$."
+          ],
+          "id": "q2-3",
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "If two square roots are equal, then the expressions inside must be equal. You can square both sides immediately — both radicals vanish at once, leaving a simple equation to solve."
+      },
+      "teacherCues": [
+        "Write $\\sqrt{2x-1} = \\sqrt{x+4}$. Ask: If two square roots are equal, what must be true about their radicands?",
+        "Square both sides: $2x-1 = x+4$, solve: $x=5$."
+      ],
+      "id": "radicals-on-both-sides"
+    },
+    {
+      "teacherCues": [
+        "Write $\\sqrt[3]{5x-2} = 12$. Ask: How do we undo a cube root?",
+        "Cube both sides: $5x-2 = 1728$. Solve: $x = 346$."
+      ],
+      "id": "cube-root-equations",
+      "examples": [
+        {
+          "title": "Example A — Basic Cube Root",
+          "prompt": "Solve $\\sqrt[3]{5x-2} = 12$.",
+          "role": "guided",
+          "steps": [
+            "Cube both sides: $5x-2 = 1728$.",
+            "Add 2: $5x = 1730$. Divide by 5: $x = 346$.",
+            "Check: $\\sqrt[3]{1728} = 12$ ✓."
+          ]
+        },
+        {
+          "steps": [
+            "Cube both sides: $y-4 = 1$.",
+            "Add 4: $y = 5$.",
+            "Check: $\\sqrt[3]{1} = 1$ ✓."
+          ],
+          "title": "Example B — Isolate First",
+          "prompt": "Solve $\\sqrt[3]{y-4} = 1$.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why is no isolation needed here? How does cubing both sides directly work?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Cube: $3c+7 = 1000$.",
+            "Subtract 7: $3c = 993$. Divide by 3: $c = 331$.",
+            "Check: $\\sqrt[3]{3(331)+7} = \\sqrt[3]{1000} = 10$ ✓."
+          ],
+          "title": "Example C — Practice",
+          "prompt": "Solve $\\sqrt[3]{3c+7} = 10$."
+        }
+      ],
+      "title": "Solving Cube Root Equations",
+      "questions": [
+        {
+          "prompt": "To solve $\\sqrt[3]{x} = 4$, cube both sides to get $x =$ ___.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "64",
+                "sixty four"
+              ]
+            }
+          ],
+          "id": "q3-1",
+          "feedbackIfWrong": "$x = 64$.",
+          "hints": [
+            "$4^3 = 64$.",
+            "Cubing undoes the cube root."
+          ]
+        },
+        {
+          "prompt": "Solve $\\sqrt[3]{5x-2} = 12$. What is the solution?",
+          "answers": [
+            "346"
+          ],
+          "feedbackIfWrong": "The solution is $x = 346$.",
+          "id": "q3-2",
+          "type": "short-answer",
+          "hints": [
+            "Cube both sides: $5x-2 = 1728$.",
+            "Then solve for $x$."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "id": "q3-3",
+          "hints": [
+            "Cube both sides: $y-4 = 1$.",
+            "Then add 4."
+          ],
+          "answers": [
+            "5",
+            "five"
+          ],
+          "feedbackIfWrong": "The solution is $y = 5$.",
+          "prompt": "Solve $\\sqrt[3]{y-4} = 1$. What is the solution?"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "For cube root equations, cube both sides to eliminate the radical.",
+          "Unlike squaring, cubing does NOT introduce extraneous solutions (cubing is a one-to-one operation).",
+          "Example: $\\sqrt[3]{5x-2} = 12$ → $(\\sqrt[3]{5x-2})^3 = 12^3$ → $5x-2 = 1728$ → $x = 346$.",
+          "Still, check your solution by plugging back into the original equation."
+        ],
+        "formulaCard": {
+          "title": "Solving Cube Root Equations",
+          "formula": "$$ \\sqrt[3]{A} = B \\quad\\Rightarrow\\quad A = B^3 $$",
+          "notes": [
+            "Cube both sides to eliminate the radical.",
+            "Cubing does not introduce extraneous solutions."
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Solving $\\sqrt[3]{5x-2} = 12$",
+            "rows": [
+              {
+                "0": "1. Cube both sides",
+                "1": "$(\\sqrt[3]{5x-2})^3 = 12^3$",
+                "2": "$5x-2 = 1728$"
+              },
+              {
+                "0": "2. Solve for x",
+                "1": "Add 2, divide by 5",
+                "2": "$5x = 1730$ → $x = 346$"
+              },
+              {
+                "0": "3. Check",
+                "1": "$\\sqrt[3]{5(346)-2} = \\sqrt[3]{1728} = 12$",
+                "2": "✓"
+              }
+            ],
+            "headers": [
+              "Step",
+              "Action",
+              "Equation"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Cubing Doesn't Create Extraneous Solutions",
+        "body": "Unlike squaring, cubing is a one-to-one operation: if $a^3 = b^3$, then $a = b$. So you don't need to worry about extraneous solutions for cube root equations."
+      },
+      "discoveryHook": {
+        "scenario": "Cube roots are even easier — cubing both sides eliminates the radical and doesn't introduce extraneous solutions (because cubing preserves sign). One step, and the variable is free!"
+      }
+    },
+    {
+      "concept": {
+        "explanation": [
+          "An [[kw:extraneous solution]] is a solution that arises from the solving process but does NOT satisfy the original equation.",
+          "Squaring both sides of an equation can introduce extraneous solutions. Cubing does not.",
+          "Always check each potential solution by substituting it back into the original radical equation.",
+          "Example: $x = \\sqrt{x+6}$ → square → $x^2 = x+6$ → $x=3$ or $x=-2$. Check: $x=3$ works; $x=-2$ gives $-2 = \\sqrt{4} = 2$, false. So $x=-2$ is extraneous.",
+          "Only $x=3$ is valid."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Potential Solution",
+              "Substitute into Original",
+              "Valid?"
+            ],
+            "rows": [
+              {
+                "0": "$x = 3$",
+                "1": "$3 = \\sqrt{3+6} = \\sqrt{9} = 3$ ✓",
+                "2": "Yes"
+              },
+              {
+                "0": "$x = -2$",
+                "1": "$-2 = \\sqrt{-2+6} = \\sqrt{4} = 2$ ✗",
+                "2": "No (extraneous)"
+              }
+            ],
+            "title": "Checking for Extraneous Solutions",
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Plug every solution back into the original equation.",
+            "If the left and right sides are not equal, discard that solution."
+          ],
+          "formula": "$$ \\text{Squaring can introduce extraneous solutions. Always check!} $$",
+          "title": "Extraneous Solutions"
+        }
+      },
+      "teacherCues": [
+        "Write $x = \\sqrt{x+6}$. Square: $x^2 = x+6$ → $x^2 - x - 6 = 0$ → $(x-3)(x+2)=0$. Solutions $x=3, -2$.",
+        "Check both: $x=3$ works, $x=-2$ does NOT. Why? Squaring introduced a fake solution."
+      ],
+      "title": "Identifying Extraneous Solutions",
+      "questions": [
+        {
+          "hints": [
+            "It's 'extra' and not valid.",
+            "Starts with 'e'."
+          ],
+          "type": "fill-blank",
+          "id": "q4-1",
+          "blanks": [
+            {
+              "accept": [
+                "extraneous",
+                "Extraneous"
+              ]
+            }
+          ],
+          "prompt": "A solution that results from the solving process but does NOT satisfy the original equation is called an ___ solution.",
+          "feedbackIfWrong": "It's an extraneous solution."
+        },
+        {
+          "type": "short-answer",
+          "id": "q4-2",
+          "feedbackIfWrong": "$x = -2$ is extraneous.",
+          "answers": [
+            "-2",
+            "negative 2"
+          ],
+          "hints": [
+            "Solve $x^2 = x+6$.",
+            "Check both solutions; one doesn't work."
+          ],
+          "prompt": "Solve $x = \\sqrt{x+6}$. What is the extraneous solution?"
+        },
+        {
+          "hints": [
+            "Isolate the radical: $\\sqrt{5n} = -10$.",
+            "A square root can't be negative."
+          ],
+          "answers": [
+            "0",
+            "zero",
+            "none"
+          ],
+          "prompt": "How many real solutions does $13 + \\sqrt{5n} = 3$ have?",
+          "type": "short-answer",
+          "feedbackIfWrong": "0 real solutions.",
+          "id": "q4-3"
+        }
+      ],
+      "confusionCorner": {
+        "body": "If isolating the radical gives a negative number on the other side (like $\\sqrt{5n} = -10$), stop. The equation has no real solution. Squaring will just create an extraneous answer.",
+        "title": "Check Before You Square!"
+      },
+      "id": "extraneous-solutions",
+      "examples": [
+        {
+          "title": "Example A — Quadratic After Squaring",
+          "role": "guided",
+          "steps": [
+            "Square both sides: $x^2 = x+6$.",
+            "Rewrite: $x^2 - x - 6 = 0$. Factor: $(x-3)(x+2) = 0$.",
+            "Potential solutions: $x=3$, $x=-2$.",
+            "Check: $x=3$ works; $x=-2$ does not. So, $x=3$ is the only solution."
+          ],
+          "prompt": "Solve $x = \\sqrt{x+6}$. Check for extraneous solutions."
+        },
+        {
+          "prompt": "Solve $13 + \\sqrt{5n} = 3$.",
+          "title": "Example B — No Solution",
+          "minLength": 2,
+          "steps": [
+            "Subtract 13: $\\sqrt{5n} = -10$.",
+            "A square root cannot equal a negative number. Stop — no real solution.",
+            "Even if you square and get $n=20$, checking shows it's extraneous. So, no solution."
+          ],
+          "peerPrompt": "Explain to a partner: Before even squaring, what do you notice about the radical term? Why does this mean the equation has no solution?",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Solve $\\sqrt{4-3x} = x$. Check for extraneous solutions.",
+          "title": "Example C — Practice",
+          "role": "independent",
+          "steps": [
+            "Square: $4-3x = x^2$ → $x^2 + 3x - 4 = 0$ → $(x+4)(x-1) = 0$.",
+            "Potential: $x = -4$, $x = 1$.",
+            "Check $x=-4$: $\\sqrt{4-3(-4)} = \\sqrt{16} = 4$, but $x=-4$ → $4 \\neq -4$ ✗. Check $x=1$: $\\sqrt{1} = 1$ ✓.",
+            "Solution: $x = 1$."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Squaring both sides can sneak in extra answers that don't actually work. These imposters are called extraneous solutions. Always plug your answers back into the original equation — if it doesn't check out, throw it out!"
+      }
+    },
+    {
+      "confusionCorner": {
+        "body": "In the pendulum formula, $P$ is not inside the radical, but $L$ is. You must isolate $\\sqrt{L}$ before squaring. Don't square the $2\\pi$ without dividing first.",
+        "title": "Don't Forget to Isolate"
+      },
+      "concept": {
+        "explanation": [
+          "**Understand:** Identify the radical and its index. Isolate it on one side.",
+          "**Solve – Eliminate Radical:** For square roots, square both sides. For cube roots, cube both sides. For higher indices, raise to that power.",
+          "**Solve – Resulting Equation:** Solve the polynomial equation. For quadratics, factor or use the Quadratic Formula.",
+          "**Conclude – Check:** Substitute each solution into the original radical equation. Discard any extraneous solutions.",
+          "In real‑life problems, the solution often represents a physical quantity (length, time, etc.), so only positive solutions are typically meaningful."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Pendulum Problem: Find $L$ when $P=4$",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Given $P = 2\\pi\\sqrt{\\frac{L}{32}}$, $P=4$",
+                "2": "$4 = 2\\pi\\sqrt{\\frac{L}{32}}$"
+              },
+              {
+                "0": "Isolate radical",
+                "1": "Divide by $2\\pi$",
+                "2": "$\\frac{2}{\\pi} = \\sqrt{\\frac{L}{32}}$"
+              },
+              {
+                "0": "Eliminate radical",
+                "1": "Square both sides",
+                "2": "$\\frac{4}{\\pi^2} = \\frac{L}{32}$"
+              },
+              {
+                "0": "Solve",
+                "1": "Multiply by 32",
+                "2": "$L = \\frac{128}{\\pi^2} \\approx 12.97$ ft"
+              },
+              {
+                "0": "Conclude",
+                "1": "Check",
+                "2": "Plug $L$ back, gives $P \\approx 4$ ✓"
+              }
+            ],
+            "headers": [
+              "Step",
+              "Action",
+              "Equation"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{1. Isolate} \\quad\\rightarrow\\quad \\text{2. Raise to power} \\quad\\rightarrow\\quad \\text{3. Solve} \\quad\\rightarrow\\quad \\text{4. Check} $$",
+          "title": "Blueprint for Radical Equations",
+          "notes": [
+            "Square both sides for square roots; cube for cube roots.",
+            "Always check for extraneous solutions after squaring.",
+            "In word problems, interpret the solution in context."
+          ]
+        }
+      },
+      "discoveryHook": {
+        "scenario": "The period of a pendulum depends on the square root of its length. To find the length for a given period, we solve a radical equation. The blueprint works for any radical equation — isolate, raise to a power, solve, and check."
+      },
+      "title": "Blueprint Aid: Solve Radical Equations & Pendulum Model",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "extraneous",
+                "Extraneous"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Check for extraneous solutions.",
+          "hints": [
+            "They are fake solutions introduced by squaring.",
+            "Always plug answers back in."
+          ],
+          "prompt": "The final step in solving any radical equation is to check for ___ solutions.",
+          "type": "fill-blank",
+          "id": "q5-1"
+        },
+        {
+          "answers": [
+            "144",
+            "one hundred forty four"
+          ],
+          "hints": [
+            "Set $3 = \\frac{1}{4}\\sqrt{d}$, solve for $d$.",
+            "$12 = \\sqrt{d}$, square: $d = 144$."
+          ],
+          "prompt": "Using $t = \\frac{1}{4}\\sqrt{d}$, how far does a BASE jumper fall in 3 seconds?",
+          "feedbackIfWrong": "The jumper falls 144 feet.",
+          "type": "short-answer",
+          "id": "q5-2"
+        },
+        {
+          "type": "short-answer",
+          "id": "q5-3",
+          "answers": [
+            "96",
+            "ninety six"
+          ],
+          "hints": [
+            "Set $4 = \\sqrt{A/6}$, square both sides.",
+            "$16 = A/6$, multiply by 6."
+          ],
+          "feedbackIfWrong": "The surface area is 96 square inches.",
+          "prompt": "A cube's edge length is $s = \\sqrt{\\frac{A}{6}}$. What is the surface area $A$ when $s=4$?"
+        }
+      ],
+      "teacherCues": [
+        "Post the blueprint: 1) Isolate the radical. 2) Raise to the power of the index. 3) Solve. 4) Check for extraneous solutions.",
+        "Show pendulum formula: $P = 2\\pi\\sqrt{\\frac{L}{32}}$. Solve for $L$ when $P=4$."
+      ],
+      "id": "blueprint-real-life-pendulum",
+      "examples": [
+        {
+          "title": "Example A — Pendulum Length",
+          "steps": [
+            "Set $4 = 2\\pi\\sqrt{\\frac{L}{32}}$. Divide by $2\\pi$: $\\frac{2}{\\pi} = \\sqrt{\\frac{L}{32}}$.",
+            "Square: $\\frac{4}{\\pi^2} = \\frac{L}{32}$. Multiply by 32: $L = \\frac{128}{\\pi^2} \\approx 12.97$ feet.",
+            "Check: Plug back into original gives $P \\approx 4$ ✓."
+          ],
+          "role": "guided",
+          "prompt": "A pendulum has a period $P = 4$ seconds. Use $P = 2\\pi\\sqrt{\\frac{L}{32}}$ to find its length."
+        },
+        {
+          "prompt": "The time to fall $d$ feet is $t = \\frac{1}{4}\\sqrt{d}$. Find $d$ when $t = 3$ seconds.",
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why is squaring necessary? How does the $\\frac{1}{4}$ factor get handled?",
+          "title": "Example B — Free‑Fall Time",
+          "steps": [
+            "Set $3 = \\frac{1}{4}\\sqrt{d}$. Multiply by 4: $12 = \\sqrt{d}$.",
+            "Square: $d = 144$ feet.",
+            "The BASE jumper falls 144 feet in 3 seconds."
+          ],
+          "minLength": 2
+        },
+        {
+          "prompt": "The edge length $s$ of a cube with surface area $A$ is $s = \\sqrt{\\frac{A}{6}}$. Find $A$ when $s = 4$ inches.",
+          "title": "Example C — Sphere Surface Area",
+          "steps": [
+            "$4 = \\sqrt{\\frac{A}{6}}$ → Square: $16 = \\frac{A}{6}$ → $A = 96$ square inches."
+          ],
+          "role": "independent"
+        }
+      ]
+    }
+  ],
+  "id": "chapter-10-3-solving-radical-equations",
+  "title": "Chapter 10.3 — Solving Radical Equations",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

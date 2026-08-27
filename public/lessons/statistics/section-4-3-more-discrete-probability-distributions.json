@@ -1,0 +1,735 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "section-4-3-more-discrete-probability-distributions",
+  "title": "More Discrete Probability Distributions",
+  "standards": [
+    "HSS.MD.A.3",
+    "HSS.MD.B.5"
+  ],
+  "blocks": [
+    {
+      "id": "geometric-distribution",
+      "title": "Geometric Distribution",
+      "teacherCues": [
+        "Ask: 'If LeBron makes 75% of free throws, what is the probability that his first made free throw occurs on his third attempt?'",
+        "Write $P(x)=p q^{x-1}$. Emphasize: $q=1-p$."
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine flipping a coin until you get heads for the first time. You might get it on the first try, the second, the third... The geometric distribution describes exactly this—the waiting time for the first success in a sequence of independent trials!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:geometric distribution]] is a discrete probability distribution of a random variable $x$ representing the trial number where the first success occurs.",
+          "Conditions: repeated independent trials; constant probability of success $p$; $x$ counts the number of the trial with the first success.",
+          "The probability that the first success occurs on trial $x$ is $$P(x) = p q^{x-1}$$ where $q = 1-p$.",
+          "As $x$ increases, $P(x)$ gets closer and closer to 0, but never reaches 0.",
+          "Use $q^{x-1}$ because there are $x-1$ failures before the success on trial $x$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Geometric Probabilities for p = 0.45",
+            "headers": [
+              "Trial x",
+              "Probability P(x)"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "$0.45(0.55)^0 = 0.4500$"
+              },
+              {
+                "0": "2",
+                "1": "$0.45(0.55)^1 = 0.2475$"
+              },
+              {
+                "0": "3",
+                "1": "$0.45(0.55)^2 = 0.1361$"
+              },
+              {
+                "0": "4",
+                "1": "$0.45(0.55)^3 = 0.0749$"
+              },
+              {
+                "0": "5",
+                "1": "$0.45(0.55)^4 = 0.0412$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Geometric Distribution",
+          "formula": "$$P(x) = p q^{x-1}, \\qquad q = 1-p$$",
+          "notes": [
+            "$x$ = trial number of the first success.",
+            "$p$ = probability of success in a single trial."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – First Success on a Specific Trial",
+          "prompt": "A basketball player makes 65% of free throws. Find the probability that the first made free throw is on the 3rd attempt.",
+          "steps": [
+            "Identify $p = 0.65$, $q = 1 - 0.65 = 0.35$, $x = 3$.",
+            "Use the geometric formula: $P(3) = 0.65 \\cdot (0.35)^{3-1} = 0.65 \\cdot (0.35)^2$.",
+            "Calculate: $0.65 \\cdot 0.1225 = 0.0796$.",
+            "The probability is about 0.0796."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – First Success Before a Certain Trial",
+          "prompt": "Using the same player, find the probability that the first made free throw occurs before the 3rd attempt.",
+          "peerPrompt": "Explain to a partner: Why do we add $P(1)$ and $P(2)$ instead of using the formula directly?",
+          "minLength": 2,
+          "steps": [
+            "Before the 3rd attempt means x = 1 or x = 2.",
+            "$P(1) = 0.65(0.35)^0 = 0.65$; $P(2) = 0.65(0.35)^1 = 0.2275$.",
+            "Sum: $0.65 + 0.2275 = 0.8775$.",
+            "The probability is about 0.8775."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – No Success in First n Trials",
+          "prompt": "A salesperson has a 19% chance of making a sale on any call. Find the probability of no sale in the first 3 calls.",
+          "steps": [
+            "No sale in 3 calls means 3 failures in a row.",
+            "Probability of failure = $q = 1 - 0.19 = 0.81$.",
+            "Probability = $(0.81)^3 = 0.5314$.",
+            "The probability of no sale in 3 calls is about 0.5314."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Before vs. On a Specific Trial",
+        "body": "For 'first success before trial 3,' add $P(1)+P(2)$. For 'first success on trial 3,' use the formula directly. Don't confuse cumulative probabilities with single-trial probabilities."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "In the geometric distribution, the probability of first success on trial $x$ is $P(x) = p q^{x-1}$, where $q$ is the probability of ___.",
+          "blanks": [
+            {
+              "accept": [
+                "failure"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the complement of $p$.",
+            "$q = 1 - p$."
+          ],
+          "feedbackIfWrong": "$q$ is the probability of failure."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "Find $P(5)$ for a geometric distribution with $p = 0.09$. Round to four decimal places.",
+          "answer": "0.0617",
+          "hints": [
+            "$q = 1 - 0.09 = 0.91$.",
+            "$P(5) = 0.09(0.91)^4$."
+          ],
+          "feedbackIfWrong": "$0.09(0.91)^4 \\approx 0.0617$."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "In a geometric distribution, what does the random variable $x$ represent?",
+          "answers": [
+            "the trial number of the first success",
+            "trial where first success occurs"
+          ],
+          "hints": [
+            "It's a waiting time.",
+            "It counts until the first success."
+          ],
+          "feedbackIfWrong": "$x$ represents the trial number where the first success occurs."
+        }
+      ]
+    },
+    {
+      "id": "poisson-distribution",
+      "title": "Poisson Distribution",
+      "teacherCues": [
+        "Pose: 'The mean number of accidents at an intersection is 3 per month. What is the probability of exactly 4 accidents in a month?'",
+        "Write the Poisson formula: $P(x)=\\frac{\\mu^x e^{-\\mu}}{x!}$."
+      ],
+      "discoveryHook": {
+        "scenario": "How many customers arrive at a bank in an hour? How many typos appear on a page? The Poisson distribution models the number of times an event occurs in a fixed interval of time or space—like counting rare, random events."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Poisson distribution]] is a discrete probability distribution for counting the number of times an event occurs in a fixed interval (time, area, volume).",
+          "Conditions: events are independent; the mean number of occurrences per interval is constant.",
+          "The probability of exactly $x$ occurrences is $$P(x) = \\frac{\\mu^x e^{-\\mu}}{x!}$$ where $\\mu$ is the mean and $e \\approx 2.71828$.",
+          "$x$ can be any non-negative integer: 0, 1, 2, ...",
+          "The Poisson distribution is often used for rare events or counts over time."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Poisson Probabilities for μ = 3",
+            "headers": [
+              "x",
+              "P(x)"
+            ],
+            "rows": [
+              {
+                "0": "0",
+                "1": "$\\frac{3^0 e^{-3}}{0!} = 0.0498$"
+              },
+              {
+                "0": "1",
+                "1": "$\\frac{3^1 e^{-3}}{1!} = 0.1494$"
+              },
+              {
+                "0": "2",
+                "1": "$\\frac{3^2 e^{-3}}{2!} = 0.2240$"
+              },
+              {
+                "0": "3",
+                "1": "$\\frac{3^3 e^{-3}}{3!} = 0.2240$"
+              },
+              {
+                "0": "4",
+                "1": "$\\frac{3^4 e^{-3}}{4!} = 0.1680$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Poisson Distribution",
+          "formula": "$$P(x) = \\frac{\\mu^x e^{-\\mu}}{x!}$$",
+          "notes": [
+            "$\\mu$ = mean number of occurrences per interval.",
+            "$e \\approx 2.71828$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Exactly x Occurrences",
+          "prompt": "The mean number of accidents at an intersection is 3 per month. Find the probability of exactly 4 accidents in a month.",
+          "steps": [
+            "Use $\\mu = 3$, $x = 4$.",
+            "$P(4) = \\frac{3^4 e^{-3}}{4!} = \\frac{81 \\cdot e^{-3}}{24}$.",
+            "Calculate: $P(4) \\approx \\frac{81 \\cdot 0.0498}{24} \\approx 0.168$.",
+            "The probability is about 0.168."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – More Than a Value",
+          "prompt": "For the same intersection, find the probability of more than 4 accidents in a month.",
+          "peerPrompt": "Explain to a partner: Why do we subtract the cumulative probability for 0–4 from 1?",
+          "minLength": 2,
+          "steps": [
+            "Compute $P(0)$ through $P(4)$, then add them.",
+            "$P(x > 4) = 1 - [P(0) + P(1) + P(2) + P(3) + P(4)]$.",
+            "Sum $P(0)$–$P(4) \\approx 0.8153$, so $P(x>4) \\approx 1 - 0.8153 = 0.1847$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Using a Poisson Table",
+          "prompt": "A field has a mean of 3.6 rabbits per acre. Use the Poisson table to find the probability of exactly 7 rabbits on an acre.",
+          "steps": [
+            "Locate $\\mu = 3.6$ in the table, and $x = 7$.",
+            "The table gives $P(7) = 0.0425$.",
+            "The probability is 0.0425, which is unusual (less than 0.05)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Poisson vs. Binomial",
+        "body": "Binomial counts successes in a fixed number of trials. Poisson counts occurrences in a fixed interval of time or space without a set number of trials. The interval is the key difference."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "In the Poisson distribution, the parameter $\\mu$ represents the ___ number of occurrences per interval.",
+          "blanks": [
+            {
+              "accept": [
+                "mean",
+                "average"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the expected count per time or space unit.",
+            "It's the average rate."
+          ],
+          "feedbackIfWrong": "$\\mu$ is the mean number of occurrences per interval."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "Find $P(3)$ for a Poisson distribution with $\\mu = 6$. Round to four decimal places.",
+          "answer": "0.0892",
+          "hints": [
+            "Use $P(3) = \\frac{6^3 e^{-6}}{3!}$.",
+            "$\\frac{216 e^{-6}}{6} = 36 e^{-6}$."
+          ],
+          "feedbackIfWrong": "$P(3) \\approx 0.0892$."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "What does the random variable $x$ count in a Poisson distribution?",
+          "answers": [
+            "number of occurrences in an interval",
+            "number of times an event occurs"
+          ],
+          "hints": [
+            "It's a count, not a waiting time.",
+            "It could be 0, 1, 2, ..."
+          ],
+          "feedbackIfWrong": "$x$ counts the number of occurrences in a given interval."
+        }
+      ]
+    },
+    {
+      "id": "comparing-distributions",
+      "title": "Comparing Discrete Distributions",
+      "teacherCues": [
+        "Display three scenarios on the board: (1) 20 coin flips, count heads; (2) flip until heads, count flips; (3) count emails in an hour. Ask: 'Which distribution applies to each?'",
+        "Emphasize key phrases: 'fixed number of trials' (binomial), 'until first success' (geometric), 'per interval' (Poisson)."
+      ],
+      "discoveryHook": {
+        "scenario": "Choosing the right distribution is like choosing the right tool. Binomial for a fixed number of attempts with a set success count; geometric for waiting until the first success; Poisson for counting events over time or space. Recognizing the keywords unlocks the correct formula!"
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Binomial distribution]]: fixed number of independent trials; counts the number of successes in those trials.",
+          "[[kw:Geometric distribution]]: trials continue until the first success; counts the trial number of that success.",
+          "[[kw:Poisson distribution]]: counts the number of occurrences in a fixed interval of time, area, or volume; no fixed number of trials.",
+          "Binomial and geometric require a known probability $p$ of success per trial. Poisson requires a known mean $\\mu$ per interval.",
+          "Use the wording of the problem to decide: 'in n trials' → binomial; 'first success occurs' → geometric; 'per interval' → Poisson."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Choosing the Right Distribution",
+            "headers": [
+              "Keyword/Phrase",
+              "Distribution"
+            ],
+            "rows": [
+              {
+                "0": "'fixed number of trials'",
+                "1": "Binomial"
+              },
+              {
+                "0": "'until the first success'",
+                "1": "Geometric"
+              },
+              {
+                "0": "'per day', 'per hour', 'per acre'",
+                "1": "Poisson"
+              },
+              {
+                "0": "'number of successes in n trials'",
+                "1": "Binomial"
+              },
+              {
+                "0": "'first occurrence on the nth trial'",
+                "1": "Geometric"
+              },
+              {
+                "0": "'mean number per interval'",
+                "1": "Poisson"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Distribution Formulas",
+          "formula": "$$\\text{Binomial: } P(x) = {}_nC_x p^x q^{n-x}$$ $$\\text{Geometric: } P(x) = p q^{x-1}$$ $$\\text{Poisson: } P(x) = \\frac{\\mu^x e^{-\\mu}}{x!}$$",
+          "notes": [
+            "Binomial: n = number of trials, x = number of successes.",
+            "Geometric: x = trial of first success.",
+            "Poisson: x = number of occurrences, μ = mean."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Classify the Distribution",
+          "prompt": "Fifty-four percent of adults think Congress should limit carry-on bag sizes. In a survey of 110 adults, what is the probability that exactly 60 say yes?",
+          "steps": [
+            "The number of trials is fixed (110 adults). Each has two outcomes (yes/no).",
+            "The probability $p = 0.54$ is constant. We count successes.",
+            "This is a [[imp:binomial distribution]]."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Geometric vs. Binomial",
+          "prompt": "Twenty-nine percent of people would break up for $10,000. You select people one at a time. What is the probability that the fifth person is the first who says yes?",
+          "peerPrompt": "Explain to a partner: Why is this geometric and not binomial?",
+          "minLength": 2,
+          "steps": [
+            "We don't have a fixed number of trials—we stop after the first success.",
+            "$x$ is the trial number of the first success.",
+            "This is a [[imp:geometric distribution]]."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Poisson vs. Binomial",
+          "prompt": "The mean number of days with rain in July is 16. What is the probability of 20 rainy days next July?",
+          "steps": [
+            "We are counting occurrences (rainy days) in a time interval (July).",
+            "There is no fixed number of trials, just a mean rate.",
+            "This is a [[imp:Poisson distribution]]."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Geometric vs. Binomial",
+        "body": "Binomial requires a [[imp:fixed number of trials]]. Geometric stops when the first success occurs—there is no fixed $n$. The random variable is the trial number, not the count of successes."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "A binomial distribution requires a fixed number of independent ___.",
+          "blanks": [
+            {
+              "accept": [
+                "trials"
+              ]
+            }
+          ],
+          "hints": [
+            "It starts with 't'.",
+            "The number of attempts is predetermined."
+          ],
+          "feedbackIfWrong": "Fixed number of independent trials."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "Which distribution would you use for 'the mean number of emails per hour is 12; find the probability of 15 emails in an hour'?",
+          "answer": "Poisson",
+          "hints": [
+            "Look for 'per hour'.",
+            "It counts occurrences in an interval."
+          ],
+          "feedbackIfWrong": "The Poisson distribution."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "Which distribution has the random variable x representing the trial number of the first success?",
+          "answer": "geometric",
+          "hints": [
+            "It's about waiting time.",
+            "Not binomial or Poisson."
+          ],
+          "feedbackIfWrong": "The geometric distribution."
+        }
+      ]
+    },
+    {
+      "id": "real-life-applications-discrete-distributions",
+      "title": "Real-Life Applications of Geometric and Poisson Distributions",
+      "teacherCues": [
+        "Pose the cereal prize problem: 'Probability of winning a prize is 1/4. What is the probability of winning your first prize on the 4th purchase?'",
+        "Pose the hurricane problem: 'Mean number of major hurricanes per year is 0.6. Find the probability of exactly 1 in a year.'"
+      ],
+      "discoveryHook": {
+        "scenario": "From winning a cereal prize to predicting hurricanes, geometric and Poisson distributions help us model real-world waiting times and rare events. They turn everyday uncertainty into calculable probabilities!"
+      },
+      "concept": {
+        "explanation": [
+          "The geometric distribution models situations where you repeat trials until the first success (e.g., first sale, first win).",
+          "The Poisson distribution models counts of events over time or space (e.g., hurricanes per year, typos per page).",
+          "Use the appropriate formula based on the context.",
+          "For 'at most' or 'more than' probabilities, sum individual probabilities or use the complement rule.",
+          "Use technology (tables or calculators) for efficiency."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Real-Life Models",
+            "headers": [
+              "Situation",
+              "Distribution",
+              "Parameter"
+            ],
+            "rows": [
+              {
+                "0": "First sale on the 5th call",
+                "1": "Geometric",
+                "2": "$p = 0.19$"
+              },
+              {
+                "0": "Major hurricanes per year",
+                "1": "Poisson",
+                "2": "$\\mu = 0.6$"
+              },
+              {
+                "0": "Typos per page",
+                "1": "Poisson",
+                "2": "$\\mu = 4$"
+              },
+              {
+                "0": "First completed pass on 2nd attempt",
+                "1": "Geometric",
+                "2": "$p = 0.648$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Complement Rule",
+          "formula": "$$P(x > a) = 1 - P(x \\le a)$$",
+          "notes": [
+            "For 'more than' or 'at least', sometimes using the complement is easier.",
+            "For 'at most', sum probabilities from 0 up to $a$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Cereal Prize (Geometric)",
+          "prompt": "The probability of winning a prize in a cereal box is 0.25. Find the probability of winning the first prize with the fourth purchase.",
+          "steps": [
+            "Use geometric: $p = 0.25$, $q = 0.75$, $x = 4$.",
+            "$P(4) = 0.25(0.75)^3 = 0.25 \\times 0.421875 = 0.1055$.",
+            "The probability is about 0.1055."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Major Hurricanes (Poisson)",
+          "prompt": "The mean number of major hurricanes per year is 0.6. Find the probability of at most one in a year.",
+          "peerPrompt": "Explain to a partner: How do you find 'at most one' using the Poisson formula?",
+          "minLength": 2,
+          "steps": [
+            "At most one means $x = 0$ or $x = 1$.",
+            "$P(0) = \\frac{0.6^0 e^{-0.6}}{0!} = e^{-0.6} \\approx 0.5488$.",
+            "$P(1) = \\frac{0.6^1 e^{-0.6}}{1!} = 0.6 e^{-0.6} \\approx 0.3293$.",
+            "Sum: $0.5488 + 0.3293 = 0.8781$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Pass Completion (Geometric)",
+          "prompt": "A quarterback completes 64.8% of passes. Find the probability that the first completed pass is the second pass.",
+          "steps": [
+            "Geometric: $p = 0.648$, $q = 0.352$, $x = 2$.",
+            "$P(2) = 0.648(0.352)^1 = 0.648 \\times 0.352 = 0.2281$.",
+            "The probability is about 0.2281."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "At Most vs. More Than",
+        "body": "For 'at most 3', sum $P(0)+P(1)+P(2)+P(3)$. For 'more than 3', compute $1 - [P(0)+P(1)+P(2)+P(3)]$ or sum from 4 upward. Be clear on the inequality direction."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "The geometric distribution is used when trials continue until the ___ success occurs.",
+          "blanks": [
+            {
+              "accept": [
+                "first"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the initial one.",
+            "The distribution is about waiting for the very first success."
+          ],
+          "feedbackIfWrong": "Until the first success occurs."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "A newspaper has a mean of 4 typos per page. Find the probability of exactly 3 typos on a page. Round to four decimal places.",
+          "answer": "0.1954",
+          "hints": [
+            "Use Poisson with $\\mu = 4$, $x = 3$.",
+            "$P(3) = \\frac{4^3 e^{-4}}{3!} = \\frac{64 e^{-4}}{6}$."
+          ],
+          "feedbackIfWrong": "$P(3) \\approx 0.1954$."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "A salesperson has a 19% chance of making a sale on a call. Find the probability that the first sale is on the 5th call. Round to four decimal places.",
+          "answer": "0.0818",
+          "hints": [
+            "Geometric: $p = 0.19$, $x = 5$.",
+            "$P(5) = 0.19(0.81)^4$."
+          ],
+          "feedbackIfWrong": "$P(5) \\approx 0.0818$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-discrete-distributions",
+      "title": "Blueprint Aid – Solving Discrete Distribution Problems",
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude framework. Walk through a geometric problem using the blueprint.",
+        "Emphasize: 'Understand' identifies the distribution type and parameters. 'Solve' applies the correct formula. 'Conclude' interprets the probability."
+      ],
+      "discoveryHook": {
+        "scenario": "With geometric, Poisson, and binomial distributions all vying for your attention, the blueprint helps you choose correctly. Understand the context, Solve with the right formula, and Conclude with the probability—plus whether the event is unusual."
+      },
+      "concept": {
+        "explanation": [
+          "The blueprint for discrete distributions: [[imp:Understand]] – Read the problem. Is there a fixed number of trials (binomial)? A waiting time to first success (geometric)? A count per interval (Poisson)? Identify $p$ or $\\mu$.",
+          "[[imp:Solve]] – Apply the appropriate formula: geometric $P(x)=p q^{x-1}$, Poisson $P(x)=\\frac{\\mu^x e^{-\\mu}}{x!}$. Use tables or technology when helpful.",
+          "[[imp:Conclude]] – State the probability. Determine if the event is unusual (probability < 0.05). Interpret in context."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Distribution Problems",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify distribution type; find $p$ or $\\mu$."
+              },
+              {
+                "0": "Solve",
+                "1": "Use the correct formula; compute probability."
+              },
+              {
+                "0": "Conclude",
+                "1": "State probability; check if unusual; interpret."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Distribution Blueprint",
+          "formula": "$$\\text{Geometric: } P(x) = p q^{x-1}, \\qquad \\text{Poisson: } P(x) = \\frac{\\mu^x e^{-\\mu}}{x!}$$",
+          "notes": [
+            "Use the wording to choose the distribution.",
+            "For cumulative probabilities, sum or use the complement rule."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full Blueprint: Geometric",
+          "prompt": "Use the blueprint: A free throw shooter makes 75%. Find the probability the first made free throw is on the 2nd attempt.",
+          "steps": [
+            "Understand: Waiting for first success → geometric. $p = 0.75$, $q = 0.25$, $x = 2$.",
+            "Solve: $P(2) = 0.75(0.25)^1 = 0.1875$.",
+            "Conclude: The probability is 0.1875. Not unusual."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Full Blueprint: Poisson",
+          "prompt": "Use the blueprint: The mean number of kidney transplants per day is 45. Find the probability of exactly 50 in a day.",
+          "peerPrompt": "Explain to a partner: How did you know to use Poisson, and what does $\\mu=45$ mean?",
+          "minLength": 2,
+          "steps": [
+            "Understand: Counting events per day → Poisson. $\\mu = 45$, $x = 50$.",
+            "Solve: Use a Poisson calculator or table. $P(50) \\approx 0.0430$.",
+            "Conclude: The probability is about 0.0430, which is unusual (less than 0.05)."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Decide and Compute",
+          "prompt": "A factory has a 1 in 500 defect rate. Use the blueprint to find the probability that the first defective item is the 10th item.",
+          "steps": [
+            "Understand: Waiting for first defect → geometric. $p = 1/500 = 0.002$, $q = 0.998$, $x = 10$.",
+            "Solve: $P(10) = 0.002(0.998)^9 \\approx 0.002 \\times 0.9821 = 0.00196$.",
+            "Conclude: The probability is about 0.00196."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Unusual Events",
+        "body": "A probability less than 0.05 is often considered unusual. In the kidney transplant example, 0.0430 is unusual, while a probability of 0.1875 is not. Always state whether the event is unusual in your conclusion."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "In the blueprint, what is the first thing you determine in the Understand phase?",
+          "answers": [
+            "which distribution",
+            "distribution type"
+          ],
+          "hints": [
+            "Look for keywords: fixed trials, until first success, per interval.",
+            "Decide among binomial, geometric, Poisson."
+          ],
+          "feedbackIfWrong": "Determine which distribution (binomial, geometric, Poisson) applies."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "For the Poisson distribution, the parameter needed in the formula is the ___ number of occurrences per interval, denoted $\\mu$.",
+          "blanks": [
+            {
+              "accept": [
+                "mean",
+                "average"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the expected count.",
+            "Starts with 'm'."
+          ],
+          "feedbackIfWrong": "The mean number of occurrences per interval."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "A probability of 0.03 is considered unusual. (yes/no)",
+          "answer": "yes",
+          "hints": [
+            "Compare to 0.05.",
+            "Unusual means less than 0.05."
+          ],
+          "feedbackIfWrong": "Yes, 0.03 is less than 0.05, so it is unusual."
+        }
+      ]
+    }
+  ],
+  "presenterNotes": [
+    "Start with the geometric distribution because it is intuitive—waiting for the first success. Use coin flipping or free throws as examples.",
+    "The Poisson distribution is often new and challenging. Emphasize the 'per interval' idea: it counts occurrences, not successes in trials.",
+    "A summary table comparing binomial, geometric, and Poisson is essential. Drill the keyword differences: fixed trials, until first success, per interval.",
+    "Use technology (tables or calculators) for Poisson probabilities. The formula can be tedious, and tables make the work manageable.",
+    "The blueprint is a great tool for deciding which distribution to use. Have students justify their choice aloud."
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

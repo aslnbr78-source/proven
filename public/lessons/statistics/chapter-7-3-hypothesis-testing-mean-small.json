@@ -1,0 +1,820 @@
+{
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.A.1"
+  ],
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Block 1: Walk students through the t‑table. Emphasize the difference between 'One Tail' and 'Two Tails' columns. Google Sheets functions provide a helpful check.",
+    "Block 2: The t‑test statistic formula is identical to the z‑test, but the critical value comes from a different distribution. The car dealer example is a good first problem.",
+    "Block 3: The P‑value method using Google Sheets is precise. Teach the three T.DIST functions and when to use each.",
+    "Block 4: The flowchart for choosing z vs. t is critical. Give several scenarios for quick classification.",
+    "Block 5: The blueprint ties everything together. Emphasize that both P‑value and rejection region methods yield the same conclusion."
+  ],
+  "title": "Hypothesis Testing for the Mean (Small Samples)",
+  "id": "chapter-7-3-hypothesis-testing-mean-small",
+  "blocks": [
+    {
+      "examples": [
+        {
+          "title": "Example A – Left‑Tailed Critical Value",
+          "role": "guided",
+          "prompt": "Find the critical value $ t_0 $ for a left‑tailed test with $ \\alpha = 0.05 $ and $ n = 21 $.",
+          "steps": [
+            "Degrees of freedom: $ d.f. = 21 - 1 = 20 $.",
+            "In the t‑table, find the row for d.f. = 20 and the 'One Tail, $ \\alpha = 0.05 $' column. The value is 1.725.",
+            "Since it's a left‑tailed test, the critical value is negative: $ t_0 = -1.725 $.",
+            "Rejection region: $ t < -1.725 $.",
+            "Google Sheets: `=T.INV(0.05, 20)` returns about -1.7247."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Two‑Tailed Critical Values",
+          "prompt": "Find the critical values for a two‑tailed test with $ \\alpha = 0.10 $ and $ n = 26 $.",
+          "steps": [
+            "$ d.f. = 26 - 1 = 25 $.",
+            "In the t‑table, find d.f. = 25 and the 'Two Tails, $ \\alpha = 0.10 $' column. The value is 1.708.",
+            "The two critical values are $ -t_0 = -1.708 $ and $ t_0 = 1.708 $.",
+            "Rejection regions: $ t < -1.708 $ or $ t > 1.708 $.",
+            "Google Sheets: `=T.INV.2T(0.10, 25)` returns about 1.708."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why are there two critical values for a two‑tailed test, and why is the column in the table labeled 'Two Tails, $ \\alpha $'?",
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "$ d.f. = 16 $. In the 'One Tail, 0.01' column, the value is 2.583.",
+            "Right‑tailed → positive: $ t_0 = 2.583 $. Rejection region: $ t > 2.583 $.",
+            "Google Sheets: `=T.INV(0.99, 16)` returns about 2.583."
+          ],
+          "role": "independent",
+          "prompt": "Find the critical value for a right‑tailed test with $ \\alpha = 0.01 $ and $ n = 17 $.",
+          "title": "Example C – Right‑Tailed Critical Value"
+        }
+      ],
+      "title": "Critical Values in a t‑Distribution",
+      "confusionCorner": {
+        "body": "Left‑tailed tests have negative critical values; right‑tailed have positive. The t‑table only gives positive numbers, so you must apply the sign yourself. [[imp:Sketch the curve and check which side is shaded.]]",
+        "title": "Don't Forget the Sign!"
+      },
+      "discoveryHook": {
+        "scenario": "When you have a small sample and don't know the population standard deviation, the t‑distribution provides the critical values for your hypothesis test. Finding the right cutoff is the first step to deciding whether your sample result is unusual."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "prompt": "For a t‑distribution with $ n = 10 $, the degrees of freedom are ___.",
+          "feedbackIfWrong": "$ d.f. = n - 1 = 9 $.",
+          "hints": [
+            "$ d.f. = n - 1 $.",
+            "$ 10 - 1 = ? $"
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "9",
+                "nine"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "id": "q1-2",
+          "hints": [
+            "$ d.f. = 14 $. Look in the 'One Tail, 0.05' column.",
+            "The table gives 1.761; make it negative."
+          ],
+          "answers": [
+            "-1.761",
+            "-1.761"
+          ],
+          "prompt": "A left‑tailed t‑test has $ \\alpha = 0.05 $ and $ n = 15 $. What is the critical value? (e.g., -1.761)",
+          "feedbackIfWrong": "From the t‑table, $ t_0 = -1.761 $.",
+          "type": "short-answer",
+          "answer": "-1.761"
+        },
+        {
+          "hints": [
+            "Use T.INV.2T with the total alpha and degrees of freedom.",
+            "The function returns the positive cutoff."
+          ],
+          "answers": [
+            "=T.INV.2T(0.05, 20)",
+            "=T.INV.2T(0.05,20)"
+          ],
+          "type": "short-answer",
+          "prompt": "In Google Sheets, what formula gives the positive critical value for a two‑tailed t‑test with $ \\alpha = 0.05 $ and $ d.f. = 20 $?",
+          "id": "q1-3",
+          "feedbackIfWrong": "=T.INV.2T(0.05, 20) returns about 2.086.",
+          "answer": "=T.INV.2T(0.05, 20)"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "When the sample size is small ($ n < 30 $) and $ \\sigma $ is unknown, you use the [[kw:t‑distribution]] with $ d.f. = n - 1 $ degrees of freedom.",
+          "Critical values $ t_0 $ are found using the [[kw:t‑table]] (Table 5).",
+          "For a [[kw:left‑tailed test]]: use the 'One Tail, $ \\alpha $' column, and make the critical value [[imp:negative]].",
+          "For a [[kw:right‑tailed test]]: use the 'One Tail, $ \\alpha $' column, and keep the critical value [[imp:positive]].",
+          "For a [[kw:two‑tailed test]]: use the 'Two Tails, $ \\alpha $' column. You get two critical values: $ -t_0 $ and $ +t_0 $.",
+          "In Google Sheets, you can find critical values with `=T.INV(\\alpha, d.f.)` (left‑tailed) and `=T.INV.2T(\\alpha, d.f.)` (two‑tailed, returns the positive critical value)."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$ d.f. $",
+              "meaning": "$ n - 1 $, degrees of freedom",
+              "tone": "core"
+            }
+          ],
+          "title": "Critical Value Formulas (Google Sheets)",
+          "formula": "$$ \\text{Left: } =\\text{T.INV}(\\alpha,\\; d.f.) $$ $$ \\text{Right: } =\\text{T.INV}(1-\\alpha,\\; d.f.) $$ $$ \\text{Two-tailed: } \\pm =\\text{T.INV.2T}(\\alpha,\\; d.f.) $$"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Left‑tailed",
+                "1": "One Tail, $ \\alpha $",
+                "2": "Negative",
+                "3": "`=T.INV(α, d.f.)`"
+              },
+              {
+                "0": "Right‑tailed",
+                "1": "One Tail, $ \\alpha $",
+                "2": "Positive",
+                "3": "`=T.INV(1-α, d.f.)` or `=ABS(T.INV(α, d.f.))`"
+              },
+              {
+                "0": "Two‑tailed",
+                "1": "Two Tails, $ \\alpha $",
+                "2": "$ \\pm t_0 $",
+                "3": "`=T.INV.2T(α, d.f.)` (returns positive)"
+              }
+            ],
+            "title": "Finding Critical Values $ t_0 $ with the t‑Table",
+            "headers": [
+              "Test Type",
+              "Table Column",
+              "Sign of $ t_0 $",
+              "Google Sheets Formula"
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "id": "critical-values-t",
+      "teacherCues": [
+        "Ask: 'For a left-tailed test with n=21 and α=0.05, how many degrees of freedom?' (n-1=20).",
+        "Show the t‑table and explain how to locate t0 using the 'One Tail, α' column for one‑tailed tests and the 'Two Tails, α' column for two‑tailed tests."
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "The t‑test assumes the population is approximately [[imp:normally distributed]]. If the population is heavily skewed and the sample is small, the t‑test may not be valid. Always check for approximate normality before using the t‑test.",
+        "title": "Small Sample Requires Normality"
+      },
+      "id": "t-test-mean-small",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "$ H_0: \\mu \\ge 20500 $, $ H_a: \\mu < 20500 $. Left‑tailed.",
+            "$ d.f. = 13 $, $ t_0 = -1.771 $. Rejection region: $ t < -1.771 $.",
+            "$ t = \\frac{19850-20500}{1084/\\sqrt{14}} \\approx -2.244 $.",
+            "$ -2.244 < -1.771 $ → reject $ H_0 $. Enough evidence to reject the dealer's claim."
+          ],
+          "prompt": "Dealer claims $ \\mu \\ge 20,500 $. Sample: $ n=14 $, $ \\bar{x}=19,850 $, $ s=1084 $, $ \\alpha=0.05 $. Assume normal. Test the claim.",
+          "title": "Example A – Rejecting the Dealer’s Claim"
+        },
+        {
+          "prompt": "Company claims $ \\mu = 6.8 $. Sample: $ n=19 $, $ \\bar{x}=6.7 $, $ s=0.24 $, $ \\alpha=0.05 $. Assume normal. Explain why this is two‑tailed.",
+          "steps": [
+            "Claim $ \\mu = 6.8 $ is $ H_0 $. $ H_a: \\mu \\neq 6.8 $. Two‑tailed.",
+            "$ d.f. = 18 $. Critical values: $ \\pm t_0 = \\pm 2.101 $ (from 'Two Tails, 0.05' column).",
+            "$ t = \\frac{6.7-6.8}{0.24/\\sqrt{19}} \\approx -1.816 $.",
+            "$ -1.816 $ is not less than $ -2.101 $ and not greater than $ 2.101 $ → fail to reject $ H_0 $. Not enough evidence to reject the claim."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does 'the mean is 6.8' lead to a two‑tailed test?",
+          "title": "Example B – pH Level (Two‑Tailed)",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "$ H_0: \\mu \\le 60 $, $ H_a: \\mu > 60 $. Right‑tailed.",
+            "$ d.f. = 6 $. $ t_0 = 3.143 $ (One Tail, 0.01). Rejection region: $ t > 3.143 $.",
+            "$ t = \\frac{70-60}{12.5/\\sqrt{7}} \\approx 2.116 $.",
+            "$ 2.116 $ is not greater than $ 3.143 $ → fail to reject $ H_0 $. Not enough evidence to support the board's claim."
+          ],
+          "prompt": "A medical board claims $ \\mu > 60 $ hours worked per week. Sample: $ n=7 $, $ \\bar{x}=70 $, $ s=12.5 $, $ \\alpha=0.01 $. Assume normal. Test the claim.",
+          "title": "Example C – Right‑Tailed Test"
+        }
+      ],
+      "teacherCues": [
+        "Write the t‑test statistic: $ t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} $. Compare it to the z‑test: the formula is identical, but the critical value comes from t.",
+        "Walk through Example 4: car dealer claim."
+      ],
+      "questions": [
+        {
+          "id": "q2-1",
+          "prompt": "The t‑test for a mean is used when the population is normal, $ \\sigma $ is unknown, and the sample size is less than ___.",
+          "feedbackIfWrong": "The t‑test is for samples with $ n < 30 $.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the boundary between large and small samples.",
+            "If $ n \\ge 30 $, you can use the z‑test."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "30",
+                "thirty"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "A sample of 10 has $ \\bar{x}=50 $, $ s=8 $. Test $ H_0: \\mu = 45 $ vs. $ H_a: \\mu \\neq 45 $. Compute the t statistic. (Round to two decimals.)",
+          "hints": [
+            "$ t = (50 - 45) / (8 / \\sqrt{10}) $.",
+            "$ 5 / 2.5298 \\approx ? $"
+          ],
+          "answers": [
+            "1.98",
+            "1.98"
+          ],
+          "answer": "1.98",
+          "feedbackIfWrong": "$ t = 5 / 2.5298 \\approx 1.98 $.",
+          "id": "q2-2",
+          "type": "short-answer"
+        },
+        {
+          "id": "q2-3",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "type": "short-answer",
+          "answer": "Yes",
+          "hints": [
+            "Is $ -2.5 < -1.771 $?",
+            "More negative means further into the tail."
+          ],
+          "feedbackIfWrong": "Yes, because $ -2.5 $ is in the rejection region.",
+          "prompt": "In a left‑tailed t‑test, if $ t = -2.5 $ and $ t_0 = -1.771 $, should you reject $ H_0 $? (Yes or No)"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A used car dealer claims a 2008 Honda CR‑V costs at least $20,500. You sample 14 cars and find a mean of $19,850 with $ s = 1084 $. With a small sample and unknown $ \\sigma $, the t‑test lets you determine whether the dealer's claim holds up."
+      },
+      "title": "The t‑Test for a Mean (Small Samples)",
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "the value of $ \\mu $ stated in $ H_0 $",
+              "symbol": "$ \\mu_0 $",
+              "tone": "core"
+            }
+          ],
+          "title": "t‑Test Statistic",
+          "formula": "$$ t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} $$ $$ d.f. = n - 1 $$"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Claim",
+                "1": "$ \\mu \\ge \\$20,500 $"
+              },
+              {
+                "0": "$ H_0, H_a $",
+                "1": "$ H_0: \\mu \\ge 20500 $, $ H_a: \\mu < 20500 $ (left‑tailed)"
+              },
+              {
+                "0": "$ \\bar{x}, s, n $",
+                "1": "$ 19,850 $, $ 1084 $, $ 14 $"
+              },
+              {
+                "0": "$ d.f. $, $ t_0 $",
+                "1": "$ 13 $, $ -1.771 $"
+              },
+              {
+                "0": "$ t $ statistic",
+                "1": "$ \\frac{19850 - 20500}{1084/\\sqrt{14}} \\approx -2.244 $"
+              },
+              {
+                "0": "Decision",
+                "1": "$ -2.244 < -1.771 $ → reject $ H_0 $"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "t‑Test for Car Dealer Claim ($ \\alpha = 0.05 $)",
+            "headers": [
+              "Component",
+              "Value"
+            ]
+          }
+        ],
+        "explanation": [
+          "The [[kw:t‑test for a mean]] is used when the population is normally distributed, $ \\sigma $ is [[imp:unknown]], and the sample size is small ($ n < 30 $).",
+          "Test statistic: $ t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} $, where $ \\mu_0 $ is the hypothesized mean from $ H_0 $.",
+          "Degrees of freedom: $ d.f. = n - 1 $.",
+          "Steps: (1) State $ H_0 $ and $ H_a $. (2) Set $ \\alpha $. (3) Find the critical value(s) $ t_0 $ and rejection region. (4) Compute $ t $. (5) If $ t $ falls in the rejection region, reject $ H_0 $; otherwise, fail to reject.",
+          "The rejection region depends on $ H_a $: left‑tailed → $ t < t_0 $; right‑tailed → $ t > t_0 $; two‑tailed → $ t < -t_0 $ or $ t > t_0 $."
+        ]
+      }
+    },
+    {
+      "id": "pvalues-t-test",
+      "confusionCorner": {
+        "body": "Use `T.DIST` for left‑tailed (gives area to the left). Use `T.DIST.RT` for right‑tailed (gives area to the right, no need to subtract from 1). Use `T.DIST.2T` for two‑tailed (automatically doubles the tail area). [[imp:Match the function to your alternative hypothesis.]]",
+        "title": "T.DIST vs T.DIST.RT vs T.DIST.2T"
+      },
+      "discoveryHook": {
+        "scenario": "Instead of comparing your t statistic to a critical value, you can find the exact P‑value using technology. A P‑value of 0.025 means: if $ H_0 $ were true, you'd see a result this extreme only 2.5% of the time. Small P‑values provide strong evidence against $ H_0 $."
+      },
+      "title": "Using P‑Values with t‑Tests",
+      "examples": [
+        {
+          "steps": [
+            "$ H_0: \\mu \\ge 14 $, $ H_a: \\mu < 14 $. Left‑tailed.",
+            "$ t = \\frac{13-14}{3.5/\\sqrt{10}} \\approx -0.904 $, $ d.f. = 9 $.",
+            "P‑value: `=T.DIST(-0.904, 9, TRUE)` ≈ 0.195.",
+            "$ 0.195 > 0.10 $ → fail to reject $ H_0 $. Not enough evidence to support the claim."
+          ],
+          "title": "Example A – DMV Wait Time (Left‑Tailed P‑Value)",
+          "role": "guided",
+          "prompt": "DMV claims $ \\mu < 14 $ min. Sample: $ n=10 $, $ \\bar{x}=13 $, $ s=3.5 $, $ \\alpha=0.10 $. Use P‑value method."
+        },
+        {
+          "title": "Example B – Right‑Tailed P‑Value",
+          "minLength": 2,
+          "prompt": "A repair shop claims people travel more than 3500 miles between oil changes. Sample: $ n=8 $, $ \\bar{x}=3375 $, $ s=225 $, $ \\alpha=0.10 $. Explain why the P‑value is from the right tail.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we use T.DIST.RT instead of T.DIST for this test?",
+          "steps": [
+            "$ H_0: \\mu \\le 3500 $, $ H_a: \\mu > 3500 $. Right‑tailed.",
+            "$ t = \\frac{3375-3500}{225/\\sqrt{8}} \\approx -1.57 $, $ d.f. = 7 $.",
+            "Right‑tailed P‑value: `=T.DIST.RT(-1.57, 7)` ≈ 0.920 (since t is negative, the right-tail area is large).",
+            "Huge P‑value → fail to reject $ H_0 $. Not enough evidence to support the shop's claim."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C – Two‑Tailed P‑Value",
+          "steps": [
+            "$ H_0: \\mu = 105 $, $ H_a: \\mu \\neq 105 $. Two‑tailed.",
+            "$ t = \\frac{110-105}{8.5/\\sqrt{20}} \\approx 2.63 $, $ d.f. = 19 $.",
+            "P‑value: `=T.DIST.2T(2.63, 19)` ≈ 0.017.",
+            "$ 0.017 \\le 0.10 $ → reject $ H_0 $. Evidence suggests the true mean differs from $105."
+          ],
+          "role": "independent",
+          "prompt": "Mean daily meal cost claimed as $105. Sample: $ n=20 $, $ \\bar{x}=110 $, $ s=8.50 $, $ \\alpha=0.10 $. Test if different."
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "test statistic from the sample",
+              "symbol": "$ t $",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ \\text{Left: } =\\text{T.DIST}(t,\\; d.f.,\\; \\text{TRUE}) $$ $$ \\text{Right: } =\\text{T.DIST.RT}(t,\\; d.f.) $$ $$ \\text{Two-tailed: } =\\text{T.DIST.2T}(\\text{ABS}(t),\\; d.f.) $$",
+          "title": "Google Sheets P‑value for t‑Test"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Claim",
+                "1": "$ \\mu < 14 $ minutes"
+              },
+              {
+                "0": "$ H_0, H_a $",
+                "1": "$ H_0: \\mu \\ge 14 $, $ H_a: \\mu < 14 $ (left‑tailed)"
+              },
+              {
+                "0": "Sample",
+                "1": "$ n=10 $, $ \\bar{x}=13 $, $ s=3.5 $"
+              },
+              {
+                "0": "$ t $ statistic",
+                "1": "$ \\frac{13-14}{3.5/\\sqrt{10}} \\approx -0.904 $"
+              },
+              {
+                "0": "P‑value (left‑tailed)",
+                "1": "`=T.DIST(-0.904, 9, TRUE)` ≈ 0.195"
+              },
+              {
+                "0": "Decision",
+                "1": "0.195 > 0.10 → fail to reject $ H_0 $"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Component",
+              "Value"
+            ],
+            "title": "DMV Wait Time Example ($ \\alpha = 0.10 $)",
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "The [[kw:P‑value]] for a t‑test is the probability of observing a t statistic as extreme as, or more extreme than, the one computed from the sample, assuming $ H_0 $ is true.",
+          "Decision rule: If P‑value $ \\le \\alpha $, reject $ H_0 $; otherwise, fail to reject.",
+          "Google Sheets formulas:",
+          "- Left‑tailed: `=T.DIST(t, d.f., TRUE)`",
+          "- Right‑tailed: `=T.DIST.RT(t, d.f.)`",
+          "- Two‑tailed: `=T.DIST.2T(ABS(t), d.f.)`",
+          "These give exact P‑values without needing the t‑table for ranges."
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Use `=T.DIST(t, d.f., TRUE)` for left‑tailed P‑values.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "T.DIST",
+                "t.dist",
+                "=T.DIST"
+              ]
+            }
+          ],
+          "hints": [
+            "It returns the cumulative area to the left of t.",
+            "The last argument must be TRUE."
+          ],
+          "prompt": "In Google Sheets, to find the left‑tailed P‑value for a t‑test, use the function ___.",
+          "id": "q3-1"
+        },
+        {
+          "answers": [
+            "=T.DIST.2T(2.5,12)",
+            "=T.DIST.2T(2.5, 12)"
+          ],
+          "prompt": "A two‑tailed t‑test gives $ t = 2.5 $ with $ d.f. = 12 $. What Google Sheets formula gives the P‑value?",
+          "hints": [
+            "Use T.DIST.2T with the absolute value of t.",
+            "It doubles the tail area automatically."
+          ],
+          "answer": "=T.DIST.2T(2.5, 12)",
+          "type": "short-answer",
+          "feedbackIfWrong": "=T.DIST.2T(2.5, 12).",
+          "id": "q3-2"
+        },
+        {
+          "id": "q3-3",
+          "answer": "Yes",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "feedbackIfWrong": "Yes, 0.017 ≤ 0.10, so reject $ H_0 $.",
+          "hints": [
+            "Compare 0.017 to 0.10.",
+            "0.017 ≤ 0.10."
+          ],
+          "type": "short-answer",
+          "prompt": "If the P‑value is 0.017 and $ \\alpha = 0.10 $, should you reject $ H_0 $? (Yes or No)"
+        }
+      ],
+      "teacherCues": [
+        "Explain that the t‑table only gives ranges for P‑values, but Google Sheets can give exact P‑values.",
+        "Show how to use `T.DIST`, `T.DIST.RT`, and `T.DIST.2T`."
+      ]
+    },
+    {
+      "teacherCues": [
+        "Display a flowchart: Is σ known? → yes: use z. If no: is n ≥ 30? → yes: use z with s. If no: is population normal? → yes: use t. If no: neither.",
+        "Give several scenarios and ask students to decide quickly."
+      ],
+      "examples": [
+        {
+          "title": "Example A – Large Sample → z‑test",
+          "prompt": "A sample of 50 gas prices has $ \\bar{x}=2.34 $, $ s=0.32 $. Should you use a z‑test or t‑test to test a claim about $ \\mu $?",
+          "role": "guided",
+          "steps": [
+            "$ \\sigma $ is unknown, but $ n = 50 \\ge 30 $.",
+            "Therefore, the sampling distribution is approximately normal (CLT).",
+            "Use the [[kw:z‑test]] with $ s $ in place of $ \\sigma $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "title": "Example B – Small Sample, Known $ \\sigma $ → z‑test",
+          "prompt": "A random sample of 20 college students has $ \\bar{x}=22.9 $ years. The population standard deviation is known to be $ \\sigma = 1.5 $ years, and ages are normal. Which test?",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why don't we need the t‑test here even though $ n < 30 $?",
+          "steps": [
+            "Although $ n < 30 $, the population standard deviation $ \\sigma $ is known.",
+            "The population is normal, so the sampling distribution of $ \\bar{x} $ is exactly normal.",
+            "Use the [[kw:z‑test]] because $ \\sigma $ is known."
+          ]
+        },
+        {
+          "steps": [
+            "$ \\sigma $ is unknown, $ n = 12 < 30 $, but the population is normal.",
+            "This is exactly the case for the [[kw:t‑test]].",
+            "Use the t‑distribution with $ d.f. = 11 $."
+          ],
+          "prompt": "A sample of 12 batteries has $ \\bar{x}=28.5 $, $ s=1.7 $. The life spans are normally distributed. Should you use z or t?",
+          "title": "Example C – Small Sample, Unknown $ \\sigma $, Normal → t‑test",
+          "role": "independent"
+        }
+      ],
+      "id": "choosing-z-or-t",
+      "discoveryHook": {
+        "scenario": "Now that you have both z‑test and t‑test in your toolkit, the challenge is picking the right one for each situation. A simple decision rule prevents you from using the wrong distribution."
+      },
+      "title": "Choosing Between z‑Test and t‑Test",
+      "confusionCorner": {
+        "title": "$ n \\ge 30 $ Does Not Guarantee Normality for t",
+        "body": "When $ n \\ge 30 $, the Central Limit Theorem allows the z‑test with $ s $. However, the t‑test is designed for small samples from normal populations. [[imp:If you have a large sample, the z‑test and t‑test give very similar results; the z‑test is traditional.]]"
+      },
+      "questions": [
+        {
+          "prompt": "If $ \\sigma $ is unknown and $ n = 25 $, and the population is normal, you should use the ___ test.",
+          "hints": [
+            "Small sample, no population standard deviation.",
+            "Requires normal population."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "t",
+                "T"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Use the t‑test.",
+          "type": "fill-blank",
+          "id": "q4-1"
+        },
+        {
+          "answers": [
+            "z",
+            "Z"
+          ],
+          "answer": "z",
+          "type": "short-answer",
+          "prompt": "A sample of 40 students has $ \\bar{x}=3.2 $, $ s=0.5 $. Should you use a z‑test or t‑test? (z or t)",
+          "feedbackIfWrong": "Use the z‑test because $ n \\ge 30 $.",
+          "hints": [
+            "$ n = 40 \\ge 30 $, so CLT applies.",
+            "Even though $ \\sigma $ is unknown, the large sample allows the z‑test."
+          ],
+          "id": "q4-2"
+        },
+        {
+          "hints": [
+            "t‑test requires normality for small samples.",
+            "If the population is skewed, the t‑test is not valid."
+          ],
+          "answers": [
+            "neither",
+            "Neither",
+            "none"
+          ],
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "If the population is not normal, $ \\sigma $ is unknown, and $ n = 15 $, which test should you use? (z, t, or neither)",
+          "answer": "neither",
+          "feedbackIfWrong": "Neither test is appropriate; non‑parametric methods are needed."
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "Use the following guidelines to choose between a [[kw:z‑test]] and a [[kw:t‑test]] for a population mean:",
+          "1. If the population standard deviation $ \\sigma $ is [[imp:known]] and the population is normal → use z‑test (any sample size).",
+          "2. If $ \\sigma $ is known and $ n \\ge 30 $ → use z‑test (CLT applies).",
+          "3. If $ \\sigma $ is [[imp:unknown]] but $ n \\ge 30 $ → use z‑test with $ s $ in place of $ \\sigma $.",
+          "4. If $ \\sigma $ is unknown, $ n < 30 $, and the population is approximately normal → use [[kw:t‑test]].",
+          "5. If $ \\sigma $ is unknown, $ n < 30 $, and the population is not normal → neither test is appropriate (non‑parametric methods needed)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Decision Table for Hypothesis Tests of $ \\mu $",
+            "headers": [
+              "$ \\sigma $",
+              "Sample Size",
+              "Population Shape",
+              "Test to Use"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Known",
+                "1": "Any",
+                "2": "Normal",
+                "3": "z‑test"
+              },
+              {
+                "0": "Known",
+                "1": "$ n \\ge 30 $",
+                "2": "Any",
+                "3": "z‑test"
+              },
+              {
+                "0": "Unknown",
+                "1": "$ n \\ge 30 $",
+                "2": "Any",
+                "3": "z‑test (use $ s $)"
+              },
+              {
+                "0": "Unknown",
+                "1": "$ n < 30 $",
+                "2": "Approx. normal",
+                "3": "t‑test"
+              },
+              {
+                "0": "Unknown",
+                "1": "$ n < 30 $",
+                "2": "Not normal",
+                "3": "Neither"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Key",
+              "meaning": "The t‑test is only needed when both $ \\sigma $ is unknown and the sample is small."
+            }
+          ],
+          "title": "Quick Decision Rule",
+          "formula": "$$ \\text{If } \\sigma \\text{ known or } n \\ge 30 \\;\\rightarrow\\; z\\text{-test} $$ $$ \\text{If } \\sigma \\text{ unknown, } n < 30 \\text{, normal} \\;\\rightarrow\\; t\\text{-test} $$"
+        }
+      }
+    },
+    {
+      "teacherCues": [
+        "Project a problem: 'A company claims the mean battery life is at least 30 hours. A sample of 18 batteries has mean 28.5 hours and s=1.7 hours. Test at α=0.01.' Walk through Understand‑Solve‑Conclude.",
+        "Emphasize checking the normality assumption and deciding on the correct test."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action",
+              "Details"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Claim: $ \\mu \\ge 30 $. $ H_0: \\mu \\ge 30 $, $ H_a: \\mu < 30 $. Normal. $ \\alpha=0.01 $, $ n=18 $.",
+                "2": ""
+              },
+              {
+                "0": "Solve – $ t $",
+                "1": "$ t = \\frac{28.5-30}{1.7/\\sqrt{18}} \\approx -3.74 $, $ d.f. = 17 $.",
+                "2": ""
+              },
+              {
+                "0": "Solve – P‑value",
+                "1": "`=T.DIST(-3.74, 17, TRUE)` ≈ 0.0008.",
+                "2": ""
+              },
+              {
+                "0": "Conclude",
+                "1": "0.0008 ≤ 0.01 → reject $ H_0 $. Enough evidence to reject the claim that mean battery life is at least 30 hours.",
+                "2": ""
+              }
+            ],
+            "type": "table",
+            "title": "Blueprint for Battery Life Example"
+          }
+        ],
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Read the problem. Write the claim, $ H_0 $, and $ H_a $. Check that the population is approximately normal (given or assumed). Identify $ \\bar{x}, s, n $. Determine whether a z‑test or t‑test is appropriate (here, $ \\sigma $ unknown, $ n < 30 $ → t‑test).",
+          "2. [[kw:Solve]]: Compute the test statistic $ t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} $ with $ d.f. = n-1 $. Choose your method: (a) Find the critical value(s) from the t‑table or Google Sheets, and compare $ t $ to the rejection region. (b) Find the P‑value using `T.DIST`, `T.DIST.RT`, or `T.DIST.2T`, and compare to $ \\alpha $.",
+          "3. [[kw:Conclude]]: Make a decision (reject or fail to reject $ H_0 $) and interpret in context. Use 'There is (or is not) enough evidence to support/reject the claim that...'."
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Claim} \\;\\rightarrow\\; H_0, H_a \\;\\rightarrow\\; \\text{Check normal, } n < 30 \\;\\rightarrow\\; t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} \\;\\rightarrow\\; \\text{P‑value or Rejection Region} \\;\\rightarrow\\; \\text{Decision} $$",
+          "legend": [
+            {
+              "meaning": "Both P‑value and rejection region methods give the same conclusion.",
+              "symbol": "Key",
+              "tone": "core"
+            }
+          ],
+          "title": "Blueprint Summary"
+        }
+      },
+      "questions": [
+        {
+          "prompt": "The first step in the blueprint for a small‑sample hypothesis test is to ___ the claim and check that the population is approximately normal.",
+          "feedbackIfWrong": "Start by understanding the claim and checking the normality condition.",
+          "id": "q5-1",
+          "hints": [
+            "It's the 'U' phase.",
+            "You identify the claim, $ H_0 $, $ H_a $, and verify conditions."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "Understand"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "You can use the P‑value method or the rejection region (critical value) method.",
+          "id": "q5-2",
+          "answer": "P-value and rejection region",
+          "answers": [
+            "P-value and rejection region",
+            "p-value and critical value"
+          ],
+          "hints": [
+            "One uses probability, the other uses a cutoff.",
+            "Both lead to the same conclusion."
+          ],
+          "type": "short-answer",
+          "prompt": "In the blueprint, after computing the t statistic, what two methods can you use to make a decision? (Name both.)"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "0.003 ≤ 0.05.",
+            "Very small P‑value."
+          ],
+          "feedbackIfWrong": "Yes, 0.003 ≤ 0.05, so reject $ H_0 $.",
+          "id": "q5-3",
+          "prompt": "A t‑test gives a P‑value of 0.003 with $ \\alpha = 0.05 $. Should you reject $ H_0 $? (Yes or No)",
+          "answer": "Yes",
+          "answers": [
+            "Yes",
+            "yes"
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "A very small P‑value provides strong evidence against $ H_0 $, but it does not prove $ H_a $ is true. There is always a chance (the P‑value) that the observed result occurred by random sampling variability. [[imp:Use P‑values as a measure of strength of evidence, not as absolute proof.]]",
+        "title": "Small P‑Value ≠ Proof"
+      },
+      "examples": [
+        {
+          "prompt": "A company claims $ \\mu \\ge 30 $ hours. Sample: $ n=18 $, $ \\bar{x}=28.5 $, $ s=1.7 $, $ \\alpha=0.01 $. Assume normal. Use the blueprint with P‑value.",
+          "steps": [
+            "Understand: Claim $ \\mu \\ge 30 $ is $ H_0 $. $ H_a: \\mu < 30 $. Left‑tailed. $ \\alpha=0.01 $.",
+            "Solve: $ t = \\frac{28.5-30}{1.7/\\sqrt{18}} \\approx -3.74 $, $ d.f.=17 $. P‑value: `=T.DIST(-3.74, 17, TRUE)` ≈ 0.0008.",
+            "Conclude: 0.0008 ≤ 0.01 → reject $ H_0 $. Enough evidence to reject the company's claim."
+          ],
+          "title": "Example A – Battery Life (P‑Value Method)",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Claim $ \\mu > 1 $ is $ H_a $. $ H_0: \\mu \\le 1 $. Right‑tailed. $ \\alpha=0.10 $, $ d.f.=12 $, $ t_0 = 1.356 $.",
+            "$ t = \\frac{1.50-1}{0.28/\\sqrt{13}} \\approx 6.44 $.",
+            "$ 6.44 > 1.356 $ → reject $ H_0 $. Strong evidence supports the claim."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: How do the critical value and test statistic compare, and what does that mean?",
+          "prompt": "Claim: $ \\mu > 1 $ pound recycled per day. Sample: $ n=13 $, $ \\bar{x}=1.50 $, $ s=0.28 $, $ \\alpha=0.10 $. Assume normal. Explain why you reject $ H_0 $.",
+          "role": "peer-explain",
+          "title": "Example B – Waste Recycled (Critical Value Method)",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Faculty Hours (P‑Value Method)",
+          "prompt": "Claim: $ \\mu = 11.0 $ classroom hours. Sample: $ n=8 $, $ \\bar{x}=10.05 $, $ s=2.47 $, $ \\alpha=0.01 $. Assume normal. Test the claim.",
+          "role": "independent",
+          "steps": [
+            "Claim $ \\mu = 11.0 $ is $ H_0 $. $ H_a: \\mu \\neq 11.0 $. Two‑tailed.",
+            "$ t = \\frac{10.05-11.0}{2.47/\\sqrt{8}} \\approx -1.09 $, $ d.f.=7 $.",
+            "P‑value: `=T.DIST.2T(ABS(-1.09), 7)` ≈ 0.312.",
+            "0.312 > 0.01 → fail to reject $ H_0 $. Not enough evidence to reject the dean's claim."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Small‑sample hypothesis tests follow a clear blueprint: check the conditions, set up the hypotheses, compute the t statistic, find the P‑value or compare to the critical value, and draw a conclusion. A structured approach prevents mistakes."
+      },
+      "title": "Blueprint Aid: Solving Small‑Sample Hypothesis Tests",
+      "id": "blueprint-small-sample-t"
+    }
+  ],
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "type": "flashcard",
+  "id": "section-11-4-flashcards",
+  "title": "Rank Correlation (Spearman)",
+  "cards": [
+    {
+      "back": "A nonparametric measure of the strength and direction of a [[imp:monotonic]] relationship between two variables. It is computed using the ranks of the data, not the raw values.",
+      "front": "What is the [[kw:Spearman rank correlation coefficient]] $r_s$?"
+    },
+    {
+      "back": "$$r_s = 1 - \\frac{6\\Sigma d^2}{n(n^2 - 1)}$$ where $d$ is the difference between the ranks of each pair and $n$ is the number of pairs.",
+      "front": "Give the formula for $r_s$ when there are no ties."
+    },
+    {
+      "front": "What is the range of possible values for $r_s$?",
+      "back": "Just like Pearson's $r$, Spearman's $r_s$ ranges from [[imp:−1 to 1]] inclusive. $r_s = 1$ indicates perfect positive rank correlation, $r_s = -1$ perfect negative rank correlation, and $r_s = 0$ no rank correlation."
+    },
+    {
+      "front": "How do you interpret $r_s = 0.85$?",
+      "back": "There is a strong positive monotonic association between the two variables. As one variable increases, the other tends to increase as well, and the relationship is consistently one‑directional."
+    },
+    {
+      "back": "Hypotheses: $H_0: \\rho_s = 0$, $H_a: \\rho_s \\ne 0$ (two‑tailed). Find the critical value in [[imp:Table 10]] for your sample size $n$ and $\\alpha$. If $|r_s|$ exceeds the critical value, reject $H_0$.",
+      "front": "How is the Spearman test for significance performed?"
+    },
+    {
+      "back": "Reject $H_0$ because $|0.935| > 0.738$. There is a significant rank correlation between the variables.",
+      "front": "For $n = 8$ and $\\alpha = 0.05$, the critical value from Table 10 is $0.738$. If $r_s = 0.935$, what is the decision?"
+    },
+    {
+      "back": "We fail to reject $H_0$. There is not enough evidence to conclude a significant rank correlation. The observed association could be due to chance.",
+      "front": "What does it mean if $|r_s|$ is less than the critical value?"
+    },
+    {
+      "back": "Spearman can detect any [[imp:monotonic]] relationship (not just linear). It is resistant to outliers because it uses ranks, and it does not require normality.",
+      "front": "What advantage does Spearman have over Pearson?"
+    },
+    {
+      "back": "A curved relationship that is always increasing (or always decreasing). Pearson would miss this if it's not linear, but Spearman will capture it as long as the ranks are consistently ordered.",
+      "front": "What type of relationship can Spearman detect that Pearson cannot?"
+    },
+    {
+      "front": "How are ties handled when computing $r_s$?",
+      "back": "Tied values receive the [[imp:average]] of the ranks they would occupy. For example, two values tied for 3rd and 4th both get rank 3.5. The simple formula still gives a good approximation if ties are few."
+    },
+    {
+      "front": "What Google Sheets functions can compute Spearman's $r_s$?",
+      "back": "First rank each variable using `=RANK.AVG(value, range, 1)` in ascending order. Then apply `=CORREL(ranked_y, ranked_x)` to the two rank columns. This gives Spearman's $r_s$."
+    },
+    {
+      "front": "Why does `=CORREL` on ranks give $r_s$?",
+      "back": "Spearman's $r_s$ is defined as the Pearson correlation coefficient computed on the ranks of the data. So applying `=CORREL` to the ranks directly yields the Spearman rank correlation."
+    },
+    {
+      "front": "A scatter plot shows a U‑shaped curve. Will Spearman's $r_s$ be near 1, -1, or 0?",
+      "back": "Near [[imp:0]]. Spearman measures monotonic relationships (always increasing or always decreasing). A U‑shape changes direction, so the rank correlation will be weak."
+    },
+    {
+      "back": "Reject $H_0$. There is enough evidence to conclude a significant correlation between the number of males and females enrolled in school.",
+      "front": "In the enrollment example ($n=8$, $r_s \\approx 0.935$, critical $0.738$ at $\\alpha=0.05$), what is the conclusion?"
+    },
+    {
+      "back": "$H_0: \\rho_s = 0$ (there is no rank correlation in the population). The alternative is $H_a: \\rho_s \\ne 0$ (there is a significant rank correlation).",
+      "front": "What is the null hypothesis $H_0$ for the Spearman rank correlation test?"
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

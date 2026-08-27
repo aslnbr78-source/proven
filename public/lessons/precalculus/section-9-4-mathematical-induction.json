@@ -1,0 +1,723 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-9-4-mathematical-induction",
+  "title": "Mathematical Induction",
+  "blocks": [
+    {
+      "id": "intro-induction",
+      "title": "Introduction to Mathematical Induction",
+      "teacherCues": [
+        "Write the pattern $1=1^2$, $1+3=2^2$, $1+3+5=3^2$. Ask: Does this prove the sum of the first $n$ odd numbers is $n^2$? Why not?",
+        "Introduce the domino analogy: if you can knock down the first domino and every domino knocks the next, then all fall. Induction works the same way."
+      ],
+      "discoveryHook": {
+        "scenario": "If you line up an infinite row of dominoes, you can't knock them all down one by one. But if you push the first and each domino topples the next, the whole row falls. Mathematical induction is that chain reaction for mathematical statements."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Mathematical induction]] is a proof method that shows a statement $P_n$ is true for all positive integers $n$.",
+          "Step 1: Prove $P_1$ is true (base case).",
+          "Step 2: Assume $P_k$ is true for some $k \\ge 1$ (induction hypothesis), then prove $P_{k+1}$ is true.",
+          "If both steps hold, $P_n$ is true for all $n \\ge 1$ by the chain reaction."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Induction Steps",
+            "headers": [
+              "Step",
+              "Description"
+            ],
+            "rows": [
+              {
+                "0": "1. Base Case",
+                "1": "Verify the statement for $n=1$."
+              },
+              {
+                "0": "2. Inductive Step",
+                "1": "Assume true for $n=k$, then prove true for $n=k+1$."
+              },
+              {
+                "0": "Conclusion",
+                "1": "Statement holds for all positive integers $n$."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Principle of Mathematical Induction",
+          "formula": "If $P_1$ is true and $P_k \\implies P_{k+1}$ for all $k \\ge 1$, then $P_n$ is true for all $n \\ge 1$.",
+          "notes": [
+            "The assumption '$P_k$ is true' is the induction hypothesis.",
+            "Think of it as proving a chain reaction."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Writing $P_{k+1}$ from $P_k$",
+          "prompt": "Given $P_k$: $S_k = k^2$, write the statement $P_{k+1}$.",
+          "steps": [
+            "Replace every $k$ in $P_k$ with $k+1$.",
+            "$P_{k+1}$: $S_{k+1} = (k+1)^2$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Finding $P_{k+1}$ for an inequality",
+          "prompt": "Given $P_k$: $k+3 < 5k^2$, write $P_{k+1}$.",
+          "peerPrompt": "Explain to your partner: You substitute $k+1$ for $k$ everywhere. What do you get? Simplify.",
+          "minLength": 2,
+          "steps": [
+            "Replace $k$ with $k+1$: $(k+1)+3 < 5(k+1)^2$.",
+            "Simplify: $k+4 < 5(k^2+2k+1)$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – $P_{k+1}$ for $3k \\ge 2k+1$",
+          "prompt": "Write $P_{k+1}$ for $P_k$: $3k \\ge 2k+1$.",
+          "steps": [
+            "Replace $k$ with $k+1$: $3(k+1) \\ge 2(k+1)+1$.",
+            "Simplify: $3k+3 \\ge 2k+3$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget to replace all $k$",
+        "body": "When writing $P_{k+1}$, replace every occurrence of $k$ in the original statement with $k+1$. For summations, the index and the last term both change."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "In induction, the first step is to verify the statement for $n=$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the base case.",
+            "The smallest positive integer."
+          ],
+          "feedbackIfWrong": "You verify for $n=1$."
+        },
+        {
+          "id": "q2",
+          "type": "fill-blank",
+          "prompt": "The assumption that $P_k$ is true is called the induction ___.",
+          "blanks": [
+            {
+              "accept": [
+                "hypothesis"
+              ]
+            }
+          ],
+          "hints": [
+            "It's a temporary assumption.",
+            "The word starts with 'h'."
+          ],
+          "feedbackIfWrong": "It's the induction hypothesis."
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "prompt": "If $P_k$ is $S_k = k(k+1)$, what is the right side of $P_{k+1}$? (Write as (k+1)(k+2))",
+          "answer": "(k+1)(k+2)",
+          "hints": [
+            "Replace $k$ with $k+1$.",
+            "$(k+1)((k+1)+1)$ simplifies."
+          ],
+          "feedbackIfWrong": "$P_{k+1}$ is $S_{k+1} = (k+1)(k+2)$."
+        }
+      ]
+    },
+    {
+      "id": "proving-sum-odd-numbers",
+      "title": "Proving a Summation Formula",
+      "teacherCues": [
+        "Write $S_n = 1+3+5+\\dots+(2n-1)$. Prove $S_n = n^2$ by induction.",
+        "Show base case $n=1$. Then assume $S_k = k^2$, and prove $S_{k+1} = (k+1)^2$ using $S_{k+1} = S_k + a_{k+1}$."
+      ],
+      "discoveryHook": {
+        "scenario": "The sum of the first $n$ odd numbers always gives a perfect square. Induction proves this pattern holds forever, not just for the few cases you checked."
+      },
+      "concept": {
+        "explanation": [
+          "To prove a summation formula by induction:",
+          "1. Show it's true for $n=1$.",
+          "2. Assume true for $n=k$: $S_k = \\text{formula}$.",
+          "3. Show $S_{k+1} = S_k + a_{k+1}$ equals the formula with $k+1$ in place of $k$.",
+          "Here, $a_{k+1}$ is the $(k+1)$th term of the sequence being summed."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Proving $1+3+5+\\dots+(2n-1) = n^2$",
+            "headers": [
+              "Step",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "Base: $n=1$",
+                "1": "$1 = 1^2$ ✓"
+              },
+              {
+                "0": "Hypothesis",
+                "1": "$S_k = k^2$"
+              },
+              {
+                "0": "Inductive Step",
+                "1": "$S_{k+1} = S_k + (2k+1) = k^2 + 2k + 1 = (k+1)^2$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Induction for Summations",
+          "formula": "$$S_{k+1} = S_k + a_{k+1}$$",
+          "notes": [
+            "$a_{k+1}$ is the next term in the original sequence.",
+            "Then substitute the induction hypothesis for $S_k$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Sum of Odd Numbers",
+          "prompt": "Prove $1+3+5+\\dots+(2n-1) = n^2$ for all $n \\ge 1$.",
+          "steps": [
+            "Base: $n=1$: $1 = 1^2$ ✓.",
+            "Assume $S_k = 1+3+\\dots+(2k-1) = k^2$.",
+            "Then $S_{k+1} = S_k + [2(k+1)-1] = S_k + (2k+1)$.",
+            "By hypothesis, $S_k = k^2$, so $S_{k+1} = k^2 + 2k + 1 = (k+1)^2$.",
+            "Thus the formula holds for $k+1$. By induction, it holds for all $n \\ge 1$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Sum of Even Numbers",
+          "prompt": "Use induction to prove $2+4+6+\\dots+2n = n(n+1)$.",
+          "peerPrompt": "Explain to your partner: What is the base case? What is the $(k+1)$th term? Then write the inductive step.",
+          "minLength": 2,
+          "steps": [
+            "Base: $n=1$: $2 = 1(1+1)=2$ ✓.",
+            "Assume $2+4+\\dots+2k = k(k+1)$.",
+            "Then $S_{k+1} = S_k + 2(k+1) = k(k+1) + 2(k+1) = (k+1)(k+2) = (k+1)((k+1)+1)$.",
+            "Thus holds for $k+1$. By induction, true for all $n$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Sum of First $n$ Integers",
+          "prompt": "Prove $1+2+3+\\dots+n = \\frac{n(n+1)}{2}$ by induction.",
+          "steps": [
+            "Base: $n=1$: $1 = \\frac{1(2)}{2}=1$ ✓.",
+            "Assume $1+2+\\dots+k = \\frac{k(k+1)}{2}$.",
+            "Then $S_{k+1} = \\frac{k(k+1)}{2} + (k+1) = \\frac{k(k+1)+2(k+1)}{2} = \\frac{(k+1)(k+2)}{2}$.",
+            "Thus holds for $k+1$. By induction, true for all $n$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget the next term",
+        "body": "When adding $a_{k+1}$, it's the original sequence's $(k+1)$th term, not the sum formula's. For $2+4+\\dots$, the next term is $2(k+1)$, not $(k+1)(k+2)$."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "In the sum of odd numbers, the $(k+1)$th term is $2k+$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "It's $2(k+1)-1$.",
+            "The constant part after $2k$."
+          ],
+          "feedbackIfWrong": "It's $2k+1$."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "For the sum $2+4+\\dots+2n = n(n+1)$, what is the right side of the formula when $n=1$? (Enter a number)",
+          "answer": "2",
+          "hints": [
+            "Plug $n=1$ into $n(n+1)$.",
+            "$1\\times2 = 2$."
+          ],
+          "feedbackIfWrong": "The right side is $2$."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "In the inductive step, we assume true for $n=k$ and then prove true for $n=$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "k+1"
+              ]
+            }
+          ],
+          "hints": [
+            "The next integer after $k$.",
+            "One more than $k$."
+          ],
+          "feedbackIfWrong": "We prove for $n=k+1$."
+        }
+      ]
+    },
+    {
+      "id": "proving-inequality",
+      "title": "Proving an Inequality by Induction",
+      "teacherCues": [
+        "Write $n < 2^n$ for $n \\ge 1$. Ask: How would we prove this for all positive integers?",
+        "Use induction: base case $n=1$, then assume $k < 2^k$ and show $k+1 < 2^{k+1}$."
+      ],
+      "discoveryHook": {
+        "scenario": "Exponential growth outpaces linear growth very quickly. Induction can prove that $n$ is always less than $2^n$ without checking every number."
+      },
+      "concept": {
+        "explanation": [
+          "Induction works for inequalities, too. Base case check. Then assume $P_k$ and prove $P_{k+1}$.",
+          "For $n < 2^n$: if $k < 2^k$, then $k+1 \\le k + 2^k$ (since $1 \\le 2^k$ for $k \\ge 1$), and $k + 2^k < 2^k + 2^k = 2 \\cdot 2^k = 2^{k+1}$.",
+          "Thus $k+1 < 2^{k+1}$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Proving $n < 2^n$",
+            "headers": [
+              "Step",
+              "Inequality"
+            ],
+            "rows": [
+              {
+                "0": "Base: $n=1$",
+                "1": "$1 < 2^1$ ✓"
+              },
+              {
+                "0": "Hypothesis",
+                "1": "$k < 2^k$"
+              },
+              {
+                "0": "Show $k+1 < 2^{k+1}$",
+                "1": "$k+1 \\le k + 2^k < 2^k + 2^k = 2^{k+1}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Inequality Induction",
+          "formula": "Assume $P_k$: $k < 2^k$. Then add 1 to left side, add $2^k$ to right side to chain the inequality.",
+          "notes": [
+            "Use the induction hypothesis to replace terms.",
+            "Often add or multiply to both sides."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Prove $n < 2^n$",
+          "prompt": "Prove $n < 2^n$ for all $n \\ge 1$.",
+          "steps": [
+            "Base: $n=1$: $1 < 2$ ✓.",
+            "Assume $k < 2^k$.",
+            "Then $k+1 < 2^k + 1 \\le 2^k + 2^k$ (since $2^k \\ge 1$ for $k \\ge 1$).",
+            "So $k+1 < 2 \\cdot 2^k = 2^{k+1}$.",
+            "Thus $k+1 < 2^{k+1}$. By induction, true for all $n$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Prove $n! \\ge 2^n$ for $n \\ge 4$",
+          "prompt": "Prove $n! \\ge 2^n$ for all integers $n \\ge 4$.",
+          "peerPrompt": "Explain: What is the base case? How can you use the hypothesis $k! \\ge 2^k$ to show $(k+1)! \\ge 2^{k+1}$?",
+          "minLength": 2,
+          "steps": [
+            "Base: $n=4$: $4! = 24$, $2^4 = 16$, $24 \\ge 16$ ✓.",
+            "Assume $k! \\ge 2^k$ for $k \\ge 4$.",
+            "Then $(k+1)! = (k+1)k! \\ge (k+1) \\cdot 2^k \\ge 2 \\cdot 2^k$ (since $k+1 \\ge 5$ for $k \\ge 4$, but we only need $k+1 \\ge 2$). Thus $(k+1)! \\ge 2^{k+1}$.",
+            "By induction, true for all $n \\ge 4$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Prove $n! \\ge n$",
+          "prompt": "Prove $n! \\ge n$ for all $n \\ge 1$.",
+          "steps": [
+            "Base: $n=1$: $1! = 1 \\ge 1$ ✓.",
+            "Assume $k! \\ge k$.",
+            "Then $(k+1)! = (k+1)k! \\ge (k+1)k \\ge (k+1)(1) = k+1$ (since $k \\ge 1$).",
+            "Thus $(k+1)! \\ge k+1$. By induction, true for all $n$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check the base case carefully",
+        "body": "Sometimes statements are only true for $n \\ge k$, not $n \\ge 1$. The base case must be the smallest value for which the statement is claimed."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "To prove $n < 2^n$ by induction, the base case is $n=$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "Smallest positive integer.",
+            "It's $n=1$."
+          ],
+          "feedbackIfWrong": "The base case is $n=1$."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "In the inductive step for $n < 2^n$, what is $2^{k+1}$ equal to in terms of $2^k$? (Write as '2 * 2^k')",
+          "answer": "2 * 2^k",
+          "hints": [
+            "Exponents add.",
+            "$2^{k+1} = 2 \\cdot 2^k$."
+          ],
+          "feedbackIfWrong": "It's $2 \\cdot 2^k$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "When proving $n! \\ge 2^n$ for $n \\ge 4$, the base case uses $n=$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "4"
+              ]
+            }
+          ],
+          "hints": [
+            "The statement starts at $n=4$.",
+            "It's the first value."
+          ],
+          "feedbackIfWrong": "The base case is $n=4$."
+        }
+      ]
+    },
+    {
+      "id": "proving-divisibility",
+      "title": "Proving Divisibility by Induction",
+      "teacherCues": [
+        "Write the statement: $3$ is a factor of $4^n - 1$ for all $n \\ge 1$. Check $n=1$: $4^1-1=3$, yes.",
+        "Assume $3$ divides $4^k-1$. Show $3$ divides $4^{k+1}-1$ by writing $4^{k+1}-1 = 4 \\cdot 4^k - 1 = 4(4^k - 1) + 3$."
+      ],
+      "discoveryHook": {
+        "scenario": "Some expressions always have a certain factor. Induction can prove divisibility without factoring huge numbers."
+      },
+      "concept": {
+        "explanation": [
+          "To prove a divisibility statement of the form '$d$ divides $f(n)$', show base case, then assume $d$ divides $f(k)$ and prove $d$ divides $f(k+1)$.",
+          "Often rewrite $f(k+1)$ as $f(k+1) = a \\cdot f(k) + (\\text{multiple of } d)$.",
+          "Example: $4^{k+1} - 1 = 4(4^k - 1) + 3$. If $3$ divides $4^k-1$, it also divides the sum."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Proving $3$ divides $4^n - 1$",
+            "headers": [
+              "Step",
+              "Expression"
+            ],
+            "rows": [
+              {
+                "0": "Base: $n=1$",
+                "1": "$4^1-1=3$, divisible by 3 ✓"
+              },
+              {
+                "0": "Hypothesis",
+                "1": "$3 \\mid (4^k - 1)$"
+              },
+              {
+                "0": "Show for $k+1$",
+                "1": "$4^{k+1} - 1 = 4(4^k - 1) + 3$, both terms divisible by 3"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Divisibility Induction Trick",
+          "formula": "$$4^{k+1} - 1 = 4 \\cdot 4^k - 1 = 4(4^k - 1) + 3$$",
+          "notes": [
+            "The goal is to express $f(k+1)$ as a combination of $f(k)$ and a multiple of the divisor.",
+            "Then use the induction hypothesis."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Factor of 3",
+          "prompt": "Prove that $3$ is a factor of $4^n - 1$ for all $n \\ge 1$.",
+          "steps": [
+            "Base: $n=1$: $4^1 - 1 = 3$, divisible by 3 ✓.",
+            "Assume $3 \\mid (4^k - 1)$.",
+            "Write $4^{k+1} - 1 = 4 \\cdot 4^k - 1 = 4(4^k - 1) + 3$.",
+            "By hypothesis, $3$ divides $4^k - 1$, so $3$ divides $4(4^k - 1)$. Also $3$ divides $3$. Hence $3$ divides the sum $4(4^k - 1) + 3 = 4^{k+1} - 1$.",
+            "By induction, true for all $n \\ge 1$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Factor of 2",
+          "prompt": "Prove that $2$ is a factor of $3^n + 1$ for all $n \\ge 1$.",
+          "peerPrompt": "Explain to your partner: How can you rewrite $3^{k+1}+1$ in terms of $3^k+1$? Use $3^{k+1}+1 = 3(3^k+1) - 2$.",
+          "minLength": 2,
+          "steps": [
+            "Base: $n=1$: $3^1 + 1 = 4$, divisible by 2 ✓.",
+            "Assume $2 \\mid (3^k + 1)$.",
+            "Write $3^{k+1} + 1 = 3 \\cdot 3^k + 1 = 3(3^k + 1) - 2$.",
+            "By hypothesis, $3^k+1$ is even, so $3(3^k+1)$ is even. Subtracting 2 (even) keeps it even. Thus $3^{k+1}+1$ is even.",
+            "By induction, true for all $n \\ge 1$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Factor of 6",
+          "prompt": "Prove that $6$ divides $7^n - 1$ for all $n \\ge 1$.",
+          "steps": [
+            "Base: $n=1$: $7^1 - 1 = 6$, divisible by 6 ✓.",
+            "Assume $6 \\mid (7^k - 1)$.",
+            "Write $7^{k+1} - 1 = 7 \\cdot 7^k - 1 = 7(7^k - 1) + 6$.",
+            "By hypothesis, $6$ divides $7^k-1$, so $6$ divides $7(7^k-1)$. Also $6$ divides $6$. Thus $6$ divides the sum, so $6 \\mid 7^{k+1} - 1$.",
+            "By induction, true for all $n \\ge 1$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget to add the right multiple",
+        "body": "When rewriting $a^{k+1} - 1$, try to express it as $a(a^k - 1) + (a-1)$. The added term $(a-1)$ must be divisible by the divisor you're proving."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "In proving $3 \\mid 4^n - 1$, the base case uses $n=$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "The smallest positive integer.",
+            "Check $n=1$."
+          ],
+          "feedbackIfWrong": "The base case is $n=1$."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "In the induction step, $4^{k+1} - 1$ is rewritten as $4(4^k - 1) +$ what number? (Enter a digit)",
+          "answer": "3",
+          "hints": [
+            "It's $4-1$.",
+            "The constant added."
+          ],
+          "feedbackIfWrong": "It's $+3$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "The method that proves statements for all positive integers using base case and inductive step is called mathematical ___.",
+          "blanks": [
+            {
+              "accept": [
+                "induction"
+              ]
+            }
+          ],
+          "hints": [
+            "Starts with 'i'.",
+            "It's the topic of this section."
+          ],
+          "feedbackIfWrong": "It's mathematical induction."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-sum-squares",
+      "title": "Blueprint Aid – Proving the Sum of Squares Formula",
+      "teacherCues": [
+        "Pose: Prove $1^2 + 2^2 + \\dots + n^2 = \\frac{n(n+1)(2n+1)}{6}$ by induction.",
+        "Outline the blueprint: Understand (identify the formula and base case), Solve (induction hypothesis and algebra), Conclude (statement holds for all $n$)."
+      ],
+      "discoveryHook": {
+        "scenario": "The sum of squares formula is a classic result that can be confirmed for small $n$, but induction proves it for all $n$—a powerful demonstration of the method."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: The statement is $P_n: 1^2 + 2^2 + \\cdots + n^2 = \\frac{n(n+1)(2n+1)}{6}$. Base case: $P_1$ checks out.",
+          "[[imp:Solve]]: Assume $P_k$ true. Then $1^2+\\dots+k^2 = \\frac{k(k+1)(2k+1)}{6}$. Add $(k+1)^2$ to both sides and simplify to get $\\frac{(k+1)(k+2)(2k+3)}{6}$, which is $P_{k+1}$.",
+          "[[imp:Conclude]]: Since $P_1$ true and $P_k \\implies P_{k+1}$, by induction $P_n$ holds for all $n \\ge 1$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint Steps",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "State $P_n$, check $P_1$."
+              },
+              {
+                "0": "Solve: Hypothesis",
+                "1": "Assume $P_k$: $\\sum_{i=1}^k i^2 = \\frac{k(k+1)(2k+1)}{6}$."
+              },
+              {
+                "0": "Solve: Add $(k+1)^2$",
+                "1": "$\\frac{k(k+1)(2k+1)}{6} + (k+1)^2$."
+              },
+              {
+                "0": "Simplify",
+                "1": "Factor $(k+1)$: $\\frac{k(2k+1)+6(k+1)}{6}(k+1) = \\frac{(k+1)(2k^2+7k+6)}{6} = \\frac{(k+1)(k+2)(2k+3)}{6}$."
+              },
+              {
+                "0": "Conclude",
+                "1": "This is $P_{k+1}$. Induction complete."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Sum of Squares Formula",
+          "formula": "$$\\sum_{i=1}^{n} i^2 = \\frac{n(n+1)(2n+1)}{6}$$",
+          "notes": [
+            "To prove by induction, add $(k+1)^2$ to the hypothesis and factor."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand base case",
+          "prompt": "Verify $P_1$ for the sum of squares formula.",
+          "steps": [
+            "Left side: $1^2 = 1$.",
+            "Right side: $\\frac{1(1+1)(2\\cdot1+1)}{6} = \\frac{1\\cdot2\\cdot3}{6} = 1$.",
+            "$P_1$ is true."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve: inductive step algebra",
+          "prompt": "Work with a partner to simplify $\\frac{k(k+1)(2k+1)}{6} + (k+1)^2$ to $\\frac{(k+1)(k+2)(2k+3)}{6}$.",
+          "peerPrompt": "Factor out $(k+1)$ from both terms. Combine over common denominator 6.",
+          "minLength": 2,
+          "steps": [
+            "Write $(k+1)^2 = \\frac{6(k+1)^2}{6}$.",
+            "Sum $= \\frac{(k+1)[k(2k+1) + 6(k+1)]}{6}$.",
+            "Simplify inside: $2k^2 + k + 6k + 6 = 2k^2 + 7k + 6$.",
+            "Factor $2k^2+7k+6 = (k+2)(2k+3)$.",
+            "Thus $\\frac{(k+1)(k+2)(2k+3)}{6}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude",
+          "prompt": "State the final conclusion of the induction proof.",
+          "steps": [
+            "Since $P_1$ is true and $P_k \\implies P_{k+1}$, by mathematical induction, $P_n$ is true for all integers $n \\ge 1$.",
+            "That is, $1^2+2^2+\\dots+n^2 = \\frac{n(n+1)(2n+1)}{6}$ for all $n \\ge 1$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Factoring correctly",
+        "body": "When simplifying, don't expand everything; factor out the common $(k+1)$ early to save work."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the sum of squares formula, the denominator is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "6"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the number under the fraction.",
+            "The constant denominator."
+          ],
+          "feedbackIfWrong": "The denominator is $6$."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "After adding $(k+1)^2$ and simplifying, the numerator becomes $(k+1)(k+2)(2k+3)$. What is the last factor? (Write '2k+3')",
+          "answer": "2k+3",
+          "hints": [
+            "It's the factor with $k$.",
+            "The odd-looking term."
+          ],
+          "feedbackIfWrong": "It's $2k+3$."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The proof uses mathematical ___ to conclude the formula holds for all $n \\ge 1$.",
+          "blanks": [
+            {
+              "accept": [
+                "induction"
+              ]
+            }
+          ],
+          "hints": [
+            "The method of this section.",
+            "Starts with 'i'."
+          ],
+          "feedbackIfWrong": "It's mathematical induction."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Use induction to prove $1^3 + 2^3 + \\dots + n^3 = \\left(\\frac{n(n+1)}{2}\\right)^2$.",
+        "type": "short-answer",
+        "answer": "The formula holds by induction.",
+        "hints": [
+          "Base case $n=1$: $1=1^2$.",
+          "Assume true for $k$, add $(k+1)^3$, simplify to $\\left(\\frac{(k+1)(k+2)}{2}\\right)^2$."
+        ],
+        "feedbackIfWrong": "The proof follows the same pattern as the sum of squares."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

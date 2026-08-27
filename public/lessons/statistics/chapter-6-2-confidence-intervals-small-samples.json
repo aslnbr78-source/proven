@@ -1,0 +1,828 @@
+{
+  "presenterNotes": [
+    "Block 1: Emphasize the difference in tail thickness. A visual overlay of t and z curves is very helpful. The degrees of freedom concept is best illustrated with the chair example from the text.",
+    "Block 2: Practice using the t‑table is essential. Show both the table lookup and the Google Sheets function. Highlight that the table gives two‑tailed critical values directly.",
+    "Block 3: The construction mirrors the z‑interval, so students can transfer their knowledge. Stress that the interpretation is identical; only the critical value changes.",
+    "Block 4: The flowchart helps students decide when to use each method. Provide several quick scenarios for them to classify.",
+    "Block 5: The blueprint reinforces the entire process. The comparison of a t‑interval with a would‑be z‑interval illustrates why the t is necessary."
+  ],
+  "title": "Confidence Intervals for the Mean (Small Samples)",
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "When you only have a small sample—like testing 16 coffee shop temperatures—you don't know the population standard deviation $\\sigma$. The t‑distribution accounts for the extra uncertainty of using $s$ instead of $\\sigma$, giving wider intervals that still achieve the promised confidence level."
+      },
+      "title": "The t‑Distribution",
+      "id": "t-distribution",
+      "questions": [
+        {
+          "feedbackIfWrong": "The t‑distribution is used when $\\sigma$ is unknown.",
+          "blanks": [
+            {
+              "accept": [
+                "unknown",
+                "Unknown"
+              ]
+            }
+          ],
+          "id": "q1-1",
+          "type": "fill-blank",
+          "hints": [
+            "We must use the sample standard deviation $s$ instead.",
+            "Not known."
+          ],
+          "prompt": "The t‑distribution is used instead of the z‑distribution when the population standard deviation $\\sigma$ is ___."
+        },
+        {
+          "prompt": "For a sample of size $n = 10$, how many degrees of freedom does the t‑distribution have?",
+          "hints": [
+            "$d.f. = n - 1$.",
+            "$10 - 1 = ?$"
+          ],
+          "type": "short-answer",
+          "answer": "9",
+          "feedbackIfWrong": "$d.f. = 10 - 1 = 9$.",
+          "id": "q1-2",
+          "answers": [
+            "9",
+            "nine"
+          ]
+        },
+        {
+          "feedbackIfWrong": "True. With large d.f., the t‑distribution is nearly identical to z.",
+          "id": "q1-3",
+          "hints": [
+            "Think about the shape of the t‑distribution with very large d.f.",
+            "It gets closer to the bell‑shaped normal curve."
+          ],
+          "type": "short-answer",
+          "prompt": "True or False: As the degrees of freedom increase, the t‑distribution approaches the standard normal distribution.",
+          "answer": "True",
+          "answers": [
+            "True",
+            "true"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A – Degrees of Freedom",
+          "prompt": "A random sample of 15 coffee temperatures gives a sample mean and standard deviation. How many degrees of freedom will the t‑distribution have?",
+          "role": "guided",
+          "steps": [
+            "The degrees of freedom are $d.f. = n - 1$.",
+            "Here $n = 15$, so $d.f. = 15 - 1 = 14$.",
+            "A t‑distribution with 14 degrees of freedom will be used for any confidence interval from this sample."
+          ]
+        },
+        {
+          "steps": [
+            "The z‑distribution assumes we know the population standard deviation $\\sigma$ exactly.",
+            "The t‑distribution uses the sample standard deviation $s$, which varies from sample to sample.",
+            "This extra variability in $s$ means the sample means can be farther from $\\mu$ more often.",
+            "To maintain the same confidence level, the t‑distribution must be wider in the tails."
+          ],
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain to a partner why the t‑distribution has thicker tails than the z‑distribution.",
+          "title": "Example B – Why Thicker Tails?",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: What extra uncertainty does the t‑distribution account for that the z‑distribution does not?"
+        },
+        {
+          "role": "independent",
+          "prompt": "For a 95% confidence level, the critical values are $z_c = 1.96$ and $t_c$ (with 5 d.f.) $= 2.571$. Which distribution gives a wider confidence interval?",
+          "title": "Example C – Comparing t and z",
+          "steps": [
+            "Since $t_c = 2.571 > z_c = 1.96$, the margin of error will be larger using the t‑distribution.",
+            "Therefore, the t‑based confidence interval will be wider.",
+            "This wider interval reflects the extra uncertainty of not knowing $\\sigma$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Small Sample ≠ Always t",
+        "body": "The t‑distribution requires that the population is approximately [[imp:normally distributed]]. If the population is heavily skewed and the sample is small, neither the t nor z methods are appropriate. [[imp:Always check for approximate normality before using t.]]"
+      },
+      "teacherCues": [
+        "Draw a normal curve and a t‑curve with 2 d.f. on the same axes. Ask: 'Why is the t‑curve more spread out?'",
+        "Ask: 'If I have a sample of 10, what are the degrees of freedom?'"
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "t‑Statistic Formula",
+          "formula": "$$ t = \\frac{\\bar{x} - \\mu}{s / \\sqrt{n}} $$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "sample mean",
+              "symbol": "$\\bar{x}$"
+            },
+            {
+              "meaning": "sample standard deviation (replaces unknown $\\sigma$)",
+              "tone": "core",
+              "symbol": "$s$"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Properties of the t‑Distribution",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Shape",
+                "1": "Bell‑shaped and symmetric about 0"
+              },
+              {
+                "0": "Tails",
+                "1": "Thicker than the normal distribution (more area in tails)"
+              },
+              {
+                "0": "Degrees of freedom",
+                "1": "$d.f. = n - 1$ determines the exact shape"
+              },
+              {
+                "0": "Limit as $d.f. \\to \\infty$",
+                "1": "Becomes the standard normal $z$‑distribution"
+              },
+              {
+                "0": "Total area",
+                "1": "1 (or 100%)"
+              }
+            ],
+            "headers": [
+              "Property",
+              "Description"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "The [[kw:t‑distribution]] is used when the population standard deviation $\\sigma$ is [[imp:unknown]] and the sample size is small ($n < 30$), provided the population is approximately normal.",
+          "The t‑distribution is bell‑shaped and symmetric about 0, but has [[imp:thicker tails]] than the standard normal distribution. This reflects the extra uncertainty from estimating $\\sigma$ with $s$.",
+          "The shape of the t‑distribution is determined by the [[kw:degrees of freedom]] (d.f.), where $d.f. = n - 1$. As d.f. increase, the t‑distribution approaches the standard normal $z$‑distribution.",
+          "The total area under any t‑curve is 1.",
+          "Because the tails are thicker, critical values $t_c$ are larger than the corresponding $z_c$, making confidence intervals wider for small samples."
+        ]
+      }
+    },
+    {
+      "teacherCues": [
+        "Show a t‑table and highlight a row. Ask: 'If d.f. = 14 and we want 95% confidence, what is $t_c$?'",
+        "Note that the t‑table gives $t_c$ directly; we don't need to look up areas in the body."
+      ],
+      "title": "Critical Values of t",
+      "discoveryHook": {
+        "scenario": "Finding the critical value for a t‑distribution is even simpler than for z: just locate the intersection of your confidence level and degrees of freedom in the t‑table. No need to subtract from 1 or split tails—the table does it for you."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "feedbackIfWrong": "You need the confidence level $c$.",
+          "prompt": "To find the critical value $t_c$, you need the degrees of freedom and the desired level of ___.",
+          "blanks": [
+            {
+              "accept": [
+                "confidence",
+                "Confidence"
+              ]
+            }
+          ],
+          "hints": [
+            "It is often 90%, 95%, or 99%.",
+            "It is denoted by $c$."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "$d.f. = 24$.",
+          "id": "q2-2",
+          "answers": [
+            "24",
+            "twenty-four"
+          ],
+          "hints": [
+            "$d.f. = n - 1$.",
+            "$25 - 1 = ?$"
+          ],
+          "prompt": "For $n=25$ and 95% confidence, what is the degrees of freedom?",
+          "answer": "24",
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "Use T.INV.2T with the total tail area (1 - 0.95 = 0.05).",
+            "First argument is alpha, second is degrees of freedom."
+          ],
+          "feedbackIfWrong": "=T.INV.2T(0.05, 14).",
+          "type": "short-answer",
+          "answers": [
+            "=T.INV.2T(0.05, 14)",
+            "=T.INV.2T(0.05,14)"
+          ],
+          "id": "q2-3",
+          "prompt": "In Google Sheets, what function returns the two‑tailed critical value $t_c$ for a 95% CI with d.f. = 14? (Write the full formula.)",
+          "answer": "=T.INV.2T(0.05, 14)"
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Finding $t_c$ from Table",
+          "prompt": "Find the critical value $t_c$ for a 95% confidence level with a sample size of 15.",
+          "steps": [
+            "Degrees of freedom: $d.f. = 15 - 1 = 14$.",
+            "In the t‑table, find the row for d.f. = 14 and the column for $c = 0.95$.",
+            "The intersection gives $t_c = 2.145$.",
+            "This means 95% of the area under the t‑curve with 14 d.f. lies between $ -2.145$ and $2.145$."
+          ]
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "title": "Example B – Comparing with z",
+          "prompt": "For 95% confidence, $z_c = 1.96$ and $t_c$ (14 d.f.) = 2.145. Explain why $t_c$ is larger.",
+          "steps": [
+            "The t‑distribution has thicker tails because we are estimating $\\sigma$ with $s$.",
+            "To capture the middle 95% of a wider‑tailed distribution, we must go further from 0.",
+            "Thus $t_c$ must be larger than $z_c$ to compensate for the extra variability.",
+            "As d.f. increase, $t_c$ decreases and approaches 1.96."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does the t‑distribution require a larger critical value to achieve the same confidence?"
+        },
+        {
+          "title": "Example C – Google Sheets",
+          "prompt": "Use Google Sheets to find the critical value $t_c$ for a 99% confidence interval with $n = 20$.",
+          "role": "independent",
+          "steps": [
+            "Degrees of freedom: $d.f. = 19$.",
+            "Confidence 99% → tail area $1 - 0.99 = 0.01$.",
+            "Formula: `=T.INV.2T(0.01, 19)` returns about 2.861.",
+            "This matches the t‑table value."
+          ]
+        }
+      ],
+      "id": "critical-values-t",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1",
+                "1": "12.706"
+              },
+              {
+                "0": "5",
+                "1": "2.571"
+              },
+              {
+                "0": "14",
+                "1": "2.145"
+              },
+              {
+                "0": "29",
+                "1": "2.045"
+              },
+              {
+                "0": "$\\infty$ (z)",
+                "1": "1.96"
+              }
+            ],
+            "headers": [
+              "d.f.",
+              "$t_c$ for 95%"
+            ],
+            "type": "table",
+            "title": "Extract from t‑Table (c = 0.95)"
+          }
+        ],
+        "formulaCard": {
+          "title": "Finding $t_c$",
+          "legend": [
+            {
+              "meaning": "total tail area (e.g., 0.05 for 95% confidence)",
+              "tone": "core",
+              "symbol": "$1-c$"
+            }
+          ],
+          "formula": "$$ t_c = \\text{value from t‑table with } d.f. = n-1 \\text{ and confidence } c $$ $$ \\text{Google Sheets: } =\\text{T.INV.2T}(1-c,\\; d.f.) $$"
+        },
+        "explanation": [
+          "The critical value $t_c$ for a given confidence level $c$ and degrees of freedom $d.f. = n-1$ can be found in the [[kw:t‑distribution table]] (Table 5).",
+          "The table is read by finding the row for the degrees of freedom and the column for the desired confidence level $c$. The intersection gives $t_c$.",
+          "If the exact d.f. is not in the table, use the [[imp:next smaller]] d.f. to be conservative (giving a slightly wider interval).",
+          "In Google Sheets, use `=T.INV.2T(1-c, d.f.)` to find the two‑tailed critical value directly. For example, 95% confidence: `=T.INV.2T(0.05, 14)` returns about 2.145."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Don't Confuse One‑Tail and Two‑Tail",
+        "body": "The t‑table often provides critical values for two‑tailed confidence intervals directly. Make sure you use the column labeled with the confidence level $c$, not the one‑tail $\\alpha$ columns. In Google Sheets, T.INV.2T always returns the two‑tailed critical value."
+      }
+    },
+    {
+      "title": "Confidence Intervals Using the t‑Distribution",
+      "teacherCues": [
+        "Write the formula $\\bar{x} \\pm t_c \\cdot \\frac{s}{\\sqrt{n}}$. Compare it to the z formula: the only difference is $t_c$ replacing $z_c$.",
+        "Work through the coffee temperature example: n=16, x̄=162.0, s=10.0, 95% CI."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "prompt": "In a t‑confidence interval, the margin of error is $t_c$ multiplied by the standard ___ of the mean.",
+          "hints": [
+            "It's $s / \\sqrt{n}$.",
+            "Two words, second is 'error'."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "error",
+                "Error"
+              ]
+            }
+          ],
+          "id": "q3-1",
+          "feedbackIfWrong": "The margin of error is $t_c \\times (s / \\sqrt{n})$, where $s / \\sqrt{n}$ is the standard error."
+        },
+        {
+          "answers": [
+            "5.7",
+            "5.7"
+          ],
+          "id": "q3-2",
+          "answer": "5.7",
+          "prompt": "For $n=10$, $\\bar{x}=50$, $s=8$, $c=95\\%$ ($t_c=2.262$), find the margin of error. (Round to one decimal.)",
+          "feedbackIfWrong": "$E \\approx 2.262 \\times 2.53 = 5.7$.",
+          "type": "short-answer",
+          "hints": [
+            "$E = 2.262 \\times 8 / \\sqrt{10}$.",
+            "$8/3.162 \\approx 2.53$, times 2.262 ≈ ?"
+          ]
+        },
+        {
+          "prompt": "Compared to a z‑interval using the same data, a t‑interval will be ___ (wider or narrower).",
+          "feedbackIfWrong": "The t‑interval is wider because $t_c > z_c$.",
+          "hints": [
+            "The t‑critical value is larger than the z‑critical value.",
+            "Larger $E$ means a larger interval."
+          ],
+          "answer": "wider",
+          "id": "q3-3",
+          "type": "short-answer",
+          "answers": [
+            "wider",
+            "Wider"
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Now we can build a confidence interval for a small sample. The process mirrors the large‑sample case, but the critical value comes from the t‑table. The resulting interval will be wider than if we incorrectly used z, reflecting the honest extra uncertainty."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "16 coffee shops: $\\bar{x}=162.0$, $s=10.0$. Assume temperatures are normal. Construct a 95% CI.",
+          "steps": [
+            "Check: $n < 30$, $\\sigma$ unknown, but population is normal → use t. $d.f. = 15$.",
+            "95% confidence → $t_c = 2.131$ (from table).",
+            "$E = 2.131 \\times 10.0 / \\sqrt{16} = 2.131 \\times 2.5 = 5.3$.",
+            "Interval: $162.0 - 5.3 = 156.7$ to $162.0 + 5.3 = 167.3$. We are 95% confident the true mean coffee temperature is between $156.7^{\\circ}\\text{F}$ and $167.3^{\\circ}\\text{F}$."
+          ],
+          "title": "Example A – Coffee Temperatures"
+        },
+        {
+          "minLength": 2,
+          "title": "Example B – Cars on Lot",
+          "prompt": "20 cars: $\\bar{x}=9.75$ days, $s=2.39$ days. 99% CI. Explain why the interval is wider than the 95% CI from Example A.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Two factors make this interval wider than the coffee example—what are they?",
+          "role": "peer-explain",
+          "steps": [
+            "First, 99% confidence requires a larger $t_c$ (2.861 vs 2.131).",
+            "Second, the sample size of 20 gives d.f. = 19, which still has a $t_c$ larger than z.",
+            "$E = 2.861 \\times 2.39 / \\sqrt{20} \\approx 1.53$. Interval: $9.75 \\pm 1.53 = (8.22, 11.28)$.",
+            "This interval is wider than the 95% coffee interval mainly due to the higher confidence level."
+          ]
+        },
+        {
+          "role": "independent",
+          "prompt": "Use Google Sheets to construct a 99% CI for the car lot data: $\\bar{x}=9.75$, $s=2.39$, $n=20$.",
+          "steps": [
+            "Find $E$: `=T.INV.2T(0.01, 19) * 2.39 / SQRT(20)` returns about 1.53.",
+            "Lower: $9.75 - 1.53 = 8.22$. Upper: $9.75 + 1.53 = 11.28$.",
+            "The 99% CI is (8.22, 11.28)."
+          ],
+          "title": "Example C – Google Sheets"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Use t When $\\sigma$ Is Known!",
+        "body": "If the population standard deviation $\\sigma$ is known and the population is normal, you should use the [[imp:z‑distribution]] even for small samples. The t‑distribution is specifically for when $\\sigma$ is unknown."
+      },
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "critical value from t‑distribution with $d.f. = n-1$",
+              "tone": "core",
+              "symbol": "$t_c$"
+            }
+          ],
+          "title": "t‑Confidence Interval for $\\mu$",
+          "formula": "$$\\bar{x} \\pm t_c \\frac{s}{\\sqrt{n}}$$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Component",
+              "Value"
+            ],
+            "title": "95% Confidence Interval for Coffee Temperature",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Sample mean $\\bar{x}$",
+                "1": "$162.0^{\\circ}\\text{F}$"
+              },
+              {
+                "0": "Sample std dev $s$",
+                "1": "$10.0^{\\circ}\\text{F}$"
+              },
+              {
+                "0": "Sample size $n$",
+                "1": "16"
+              },
+              {
+                "0": "d.f.",
+                "1": "15"
+              },
+              {
+                "0": "$t_c$ (95%)",
+                "1": "2.131"
+              },
+              {
+                "0": "Margin of error $E$",
+                "1": "$2.131 \\times 10 / \\sqrt{16} = 5.3^{\\circ}\\text{F}$"
+              },
+              {
+                "0": "Confidence interval",
+                "1": "$162.0 \\pm 5.3 = (156.7, 167.3)$"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:c-confidence interval for $\\mu$ using the t‑distribution]] is: $\\bar{x} \\pm E$, where $E = t_c \\cdot \\frac{s}{\\sqrt{n}}$.",
+          "Steps: (1) Check that the population is approximately normal. (2) Find sample statistics $\\bar{x}$, $s$, $n$. (3) Determine $d.f. = n-1$ and find $t_c$ from the table for confidence level $c$. (4) Compute margin of error $E$. (5) Form the interval $\\bar{x} - E < \\mu < \\bar{x} + E$.",
+          "[[imp:Interpretation]] is the same as for z‑intervals: 'We are $c$% confident that $\\mu$ lies between …'",
+          "The t‑interval is wider than a z‑interval using the same data because $t_c > z_c$."
+        ]
+      },
+      "id": "confidence-intervals-t"
+    },
+    {
+      "questions": [
+        {
+          "id": "q4-1",
+          "prompt": "If the population standard deviation $\\sigma$ is known and the population is normal, you should use the ___ distribution to construct a confidence interval.",
+          "hints": [
+            "It's the distribution of z‑scores.",
+            "Not the t‑distribution."
+          ],
+          "feedbackIfWrong": "Use the normal (z) distribution when $\\sigma$ is known.",
+          "blanks": [
+            {
+              "accept": [
+                "normal",
+                "z",
+                "Normal",
+                "Z"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "A sample of size 8 from a normal population has unknown $\\sigma$. Should you use z or t?",
+          "hints": [
+            "Small sample, $\\sigma$ unknown, population normal.",
+            "This is exactly the t‑distribution case."
+          ],
+          "answer": "t",
+          "type": "short-answer",
+          "id": "q4-2",
+          "feedbackIfWrong": "Use the t‑distribution.",
+          "answers": [
+            "t",
+            "T"
+          ]
+        },
+        {
+          "feedbackIfWrong": "Yes, because $n \\ge 30$, you can use a z‑interval with $s$.",
+          "prompt": "If $n=35$ and $\\sigma$ is unknown, can you use a z‑interval? (Yes or No)",
+          "id": "q4-3",
+          "hints": [
+            "$n \\ge 30$ allows the normal approximation.",
+            "The Central Limit Theorem applies."
+          ],
+          "answer": "Yes",
+          "type": "short-answer",
+          "answers": [
+            "Yes",
+            "yes"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Here $\\sigma = 28,000$ is [[imp:known]].",
+            "The population is normal, so we can use the normal distribution (z‑interval) regardless of sample size.",
+            "We would not use t because $\\sigma$ is known."
+          ],
+          "prompt": "A random sample of 25 newly constructed houses has a mean cost of $181,000 and a population standard deviation of $28,000. Construction costs are normal. Should you use z or t?",
+          "title": "Example A – Known $\\sigma$",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does the unknown $\\sigma$ and small $n$ force us to use t?",
+          "steps": [
+            "$\\sigma$ is unknown (we only have $s$), and $n = 18 < 30$.",
+            "The population is normal, so the t‑distribution is appropriate.",
+            "We use $d.f. = 17$ and find $t_c$ for the desired confidence level.",
+            "If we incorrectly used z, the interval would be too narrow, underestimating the true margin of error."
+          ],
+          "prompt": "A sample of 18 athletes has a mean resting heart rate of 64 bpm with $s=2.5$ bpm. Heart rates are normal. Should you use z or t?",
+          "minLength": 2,
+          "title": "Example B – Small Sample, Unknown $\\sigma$",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Even though $\\sigma$ is unknown, $n = 50 \\ge 30$.",
+            "The Central Limit Theorem applies; the sampling distribution is approximately normal.",
+            "We can use the z‑interval with $s$ in place of $\\sigma$.",
+            "A t‑interval would give very similar results because d.f. = 49 is close to z."
+          ],
+          "prompt": "A sample of 50 people has BMI mean 27.7 and $s=6.12$. Should you use z or t?",
+          "title": "Example C – Large Sample",
+          "role": "independent"
+        }
+      ],
+      "title": "Choosing Between Normal and t‑Distributions",
+      "teacherCues": [
+        "Display the flowchart. Ask: 'If $n=25$, $\\sigma$ is unknown, and the population is normal, do we use z or t?' Walk through the decision.",
+        "Ask: 'What if $n=25$, $\\sigma$ is known? What if the population is not normal?'"
+      ],
+      "confusionCorner": {
+        "title": "$n \\ge 30$ Trumps Unknown $\\sigma$",
+        "body": "When the sample size is at least 30, the z‑interval with $s$ is acceptable even if $\\sigma$ is unknown. [[imp:The t‑distribution is most important when both $n < 30$ and $\\sigma$ is unknown.]]"
+      },
+      "discoveryHook": {
+        "scenario": "Having both z and t in your toolbox means you must choose the right tool for each situation. A simple flowchart helps you decide: Is $\\sigma$ known? Is the population normal? Is $n$ large? Answer these, and the correct distribution is clear."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Decision Table for Confidence Intervals for $\\mu$",
+            "headers": [
+              "$\\sigma$",
+              "$n$",
+              "Population Distribution",
+              "Method"
+            ],
+            "rows": [
+              {
+                "0": "Known",
+                "1": "Any",
+                "2": "Normal",
+                "3": "z‑interval"
+              },
+              {
+                "0": "Known",
+                "1": "$n \\ge 30$",
+                "2": "Any",
+                "3": "z‑interval"
+              },
+              {
+                "0": "Unknown",
+                "1": "$n \\ge 30$",
+                "2": "Any",
+                "3": "z‑interval (use $s$)"
+              },
+              {
+                "0": "Unknown",
+                "1": "$n < 30$",
+                "2": "Approx. normal",
+                "3": "t‑interval"
+              },
+              {
+                "0": "Unknown",
+                "1": "$n < 30$",
+                "2": "Not normal",
+                "3": "Neither (non‑parametric)"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Key",
+              "meaning": "The t‑distribution is only needed when both $\\sigma$ is unknown and the sample is small."
+            }
+          ],
+          "formula": "$$ \\text{If } \\sigma \\text{ known or } n \\ge 30 \\;\\rightarrow\\; z\\text{-interval} $$ $$ \\text{If } \\sigma \\text{ unknown, } n < 30 \\text{, and normal } \\;\\rightarrow\\; t\\text{-interval} $$",
+          "title": "Quick Decision Rule"
+        },
+        "explanation": [
+          "Use the following rules to decide whether to use a z‑interval or a t‑interval for the population mean $\\mu$:",
+          "- If $\\sigma$ is [[imp:known]] and the population is normal (or $n \\ge 30$): use the [[kw:normal distribution]] with $E = z_c \\frac{\\sigma}{\\sqrt{n}}$.",
+          "- If $\\sigma$ is [[imp:unknown]], the population is normal, and $n < 30$: use the [[kw:t‑distribution]] with $d.f. = n-1$ and $E = t_c \\frac{s}{\\sqrt{n}}$.",
+          "- If $\\sigma$ is unknown but $n \\ge 30$: you may use the normal distribution with $s$ in place of $\\sigma$ (by the Central Limit Theorem).",
+          "- If the population is [[imp:not normal]] and $n < 30$, neither method is valid; non‑parametric methods are needed."
+        ]
+      },
+      "id": "choosing-z-or-t"
+    },
+    {
+      "confusionCorner": {
+        "body": "The t‑interval relies on the population being approximately normally distributed. With very small samples, you should check this assumption with a normal probability plot or by examining the sample histogram. [[imp:If the data are heavily skewed, the t‑interval may not be valid.]]",
+        "title": "Normality Assumption is Key"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Understand: normal, $\\sigma$ unknown, $n=8<30$ → use t. d.f.=7.",
+            "Solve: $t_c$ (95%, 7 d.f.) = 2.365. $E = 2.365 \\times 7.2 / \\sqrt{8} \\approx 6.02$.",
+            "Interval: $35.5 \\pm 6.02 = (29.48, 41.52)$.",
+            "Conclude: We are 95% confident the true mean commute time is between 29.5 and 41.5 minutes."
+          ],
+          "role": "guided",
+          "title": "Example A – Commute Times",
+          "prompt": "8 commute times: $\\bar{x}=35.5$ min, $s=7.2$ min. Assume normal. Construct 95% CI."
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: How would using a smaller critical value affect the confidence level we actually achieve?",
+          "title": "Example B – What If We Used z?",
+          "steps": [
+            "With $z_c=1.96$, $E = 1.96 \\times 7.2 / \\sqrt{8} \\approx 4.99$.",
+            "The interval would be $35.5 \\pm 4.99 = (30.51, 40.49)$ — narrower than the t‑interval.",
+            "Because we used a smaller critical value, the interval would actually capture $\\mu$ less than 95% of the time.",
+            "The t‑interval correctly widens the interval to maintain the promised 95% confidence."
+          ],
+          "prompt": "If we incorrectly used z for the commute data ($z_c=1.96$), what would the interval be, and why is that a problem?"
+        },
+        {
+          "prompt": "15 college GPAs: $\\bar{x}=2.4$, $s=1.0$. Assume normal. Construct a 99% CI.",
+          "role": "independent",
+          "steps": [
+            "Understand: normal, $\\sigma$ unknown, $n=15<30$ → use t. d.f.=14.",
+            "Solve: $t_c$ (99%, 14 d.f.) = 2.977. $E = 2.977 \\times 1.0 / \\sqrt{15} \\approx 0.769$.",
+            "Interval: $2.4 \\pm 0.77 = (1.63, 3.17)$.",
+            "Conclude: We are 99% confident the true mean GPA is between 1.63 and 3.17."
+          ],
+          "title": "Example C – GPA Data"
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "Before using a t‑interval for a small sample, you should check that the population is approximately ___ distributed.",
+          "hints": [
+            "The bell‑shaped distribution.",
+            "This assumption is required for the t‑distribution to be valid."
+          ],
+          "feedbackIfWrong": "The population should be approximately normally distributed.",
+          "id": "q5-1",
+          "blanks": [
+            {
+              "accept": [
+                "normally",
+                "normal",
+                "Normally",
+                "Normal"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "Find the critical value ($t_c$ or $z_c$) based on confidence level and degrees of freedom.",
+          "answers": [
+            "find critical value",
+            "find t_c",
+            "find z_c",
+            "critical value"
+          ],
+          "type": "short-answer",
+          "answer": "find the critical value",
+          "hints": [
+            "It's the multiplier for the standard error.",
+            "It comes from the table or a spreadsheet function."
+          ],
+          "prompt": "In the blueprint, after checking conditions, what is the first calculation you perform? (Answer: find the critical value $t_c$ or $z_c$)",
+          "id": "q5-2"
+        },
+        {
+          "type": "short-answer",
+          "answer": "narrower",
+          "prompt": "A t‑interval with $n=9$ gave (12.3, 18.7). If you had used z instead, would the interval be wider or narrower?",
+          "answers": [
+            "narrower",
+            "Narrower"
+          ],
+          "hints": [
+            "The t‑critical value is larger than the z‑critical value.",
+            "A smaller critical value gives a smaller margin of error."
+          ],
+          "feedbackIfWrong": "Using z would give a narrower interval because $z_c < t_c$.",
+          "id": "q5-3"
+        }
+      ],
+      "id": "blueprint-small-sample-ci",
+      "discoveryHook": {
+        "scenario": "Confidence interval problems for small samples follow a clear blueprint: verify the normality condition and that $\\sigma$ is unknown, identify the correct distribution, find the critical value, compute the margin of error, and interpret the result."
+      },
+      "teacherCues": [
+        "Project a problem: 'A random sample of 8 commute times has mean 35.5 min and s=7.2 min. Construct a 95% CI. Assume normal.' Walk through Understand‑Solve‑Conclude.",
+        "Emphasize checking conditions: normal? $\\sigma$ known? $n$?"
+      ],
+      "title": "Blueprint Aid: Solving Small‑Sample Confidence Interval Problems",
+      "concept": {
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Check conditions. Is the population approximately normal? Is $\\sigma$ known? What is $n$? Determine whether to use z or t.",
+          "2. [[kw:Solve]]: If t, find $d.f. = n-1$, locate $t_c$ for the given confidence level (table or Sheets). Compute $E = t_c \\cdot s/\\sqrt{n}$. Form the interval $\\bar{x} \\pm E$.",
+          "3. [[kw:Conclude]]: State 'We are $c$% confident that $\\mu$ lies between …'. Note that the interval is wider than a z‑interval would be because we used t."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Check: normal, $\\sigma$ unknown, $n=8$",
+                "2": "Use t, d.f.=7"
+              },
+              {
+                "0": "Solve – $t_c$",
+                "1": "95% confidence, d.f.=7",
+                "2": "$t_c = 2.365$"
+              },
+              {
+                "0": "Solve – $E$",
+                "1": "$E = 2.365 \\times 7.2 / \\sqrt{8}$",
+                "2": "$E \\approx 6.02$"
+              },
+              {
+                "0": "Solve – Interval",
+                "1": "$35.5 \\pm 6.02$",
+                "2": "(29.48, 41.52)"
+              },
+              {
+                "0": "Conclude",
+                "1": "We are 95% confident the true mean commute time is between 29.5 and 41.5 minutes.",
+                "2": ""
+              }
+            ],
+            "headers": [
+              "Step",
+              "Action",
+              "Details"
+            ],
+            "title": "Blueprint for Commute Time Example",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Critical value",
+              "meaning": "$z_c$ for normal, $t_c$ for t"
+            }
+          ],
+          "title": "Blueprint Summary",
+          "formula": "$$ \\text{Conditions} \\;\\begin{cases} \\sigma \\text{ known or } n \\ge 30 & \\rightarrow z\\text{-interval} \\\\ \\sigma \\text{ unknown, } n < 30, \\text{ normal} & \\rightarrow t\\text{-interval} \\end{cases} $$ $$ \\text{Then } \\bar{x} \\pm \\text{critical value} \\cdot \\frac{s}{\\sqrt{n}} $$"
+        }
+      }
+    }
+  ],
+  "type": "interactive-lesson",
+  "id": "chapter-6-2-confidence-intervals-small-samples",
+  "schemaVersion": 2,
+  "standards": [
+    "HSS.IC.B.4",
+    "HSS.IC.B.5"
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

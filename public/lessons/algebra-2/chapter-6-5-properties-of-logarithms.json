@@ -1,0 +1,764 @@
+{
+  "type": "interactive-lesson",
+  "standards": [
+    "HSF.LE.A.4",
+    "HSA.SSE.B.3",
+    "HSF.IF.C.8"
+  ],
+  "schemaVersion": 2,
+  "title": "Properties of Logarithms",
+  "id": "chapter-6-5-properties-of-logarithms",
+  "presenterNotes": [
+    "Emphasize the connection between exponent rules and log properties. Students often memorize the log rules but forget they come from exponents.",
+    "When expanding and condensing, stress the order: for expanding, quotient first, then product, then power. For condensing, reverse: power, product, quotient.",
+    "The Change-of-Base formula is a practical tool. Have students practice with both common and natural logs to see they get the same result.",
+    "The decibel example is a great real-world application. Walk through the cancellation carefully so students see why the increase is constant.",
+    "In the Blueprint block, encourage students to factor the argument into numbers whose logs they know. This is a key strategy for log evaluation problems."
+  ],
+  "blocks": [
+    {
+      "questions": [
+        {
+          "feedbackIfWrong": "The exponent rule is $b^x \\cdot b^y = b^{x+y}$.",
+          "type": "fill-blank",
+          "id": "q6-5-1",
+          "blanks": [
+            {
+              "accept": [
+                "y"
+              ]
+            }
+          ],
+          "hints": [
+            "Adding exponents corresponds to multiplying powers.",
+            "The exponents add."
+          ],
+          "prompt": "The Product Property states that $\\log_b (mn) = \\log_b m + \\log_b n$. This corresponds to the exponent rule $b^x \\cdot b^y = b^{x+___}$."
+        },
+        {
+          "id": "q6-5-2",
+          "prompt": "Simplify $\\log_3 9 + \\log_3 3$ using properties. What is the sum?",
+          "type": "short-answer",
+          "answers": [
+            "3",
+            "three"
+          ],
+          "feedbackIfWrong": "Sum is $2+1=3$, or $\\log_3 27 = 3$.",
+          "hints": [
+            "$\\log_3 9 = 2$, $\\log_3 3 = 1$.",
+            "Product Property gives $\\log_3(9 \\cdot 3) = \\log_3 27 = 3$."
+          ]
+        },
+        {
+          "prompt": "Rewrite $2\\log_5 x$ as the log of a single power. (Use format \\log_5(x^2))",
+          "id": "q6-5-3",
+          "hints": [
+            "Use the Power Property in reverse.",
+            "The coefficient becomes the exponent."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "\\log_5(x^2)",
+            "log_5(x^2)"
+          ],
+          "feedbackIfWrong": "$2\\log_5 x = \\log_5(x^2)$."
+        }
+      ],
+      "teacherCues": [
+        "Write $\\log_2 (8 \\cdot 4) = \\log_2 8 + \\log_2 4$. Ask: Why does this work?",
+        "Show that $\\log_b m + \\log_b n = \\log_b (mn)$ using exponent rules: $b^x b^y = b^{x+y}$."
+      ],
+      "discoveryHook": {
+        "scenario": "Logarithms turn multiplication into addition, division into subtraction, and powers into multiplication—massively simplifying complex calculations. This was the secret behind slide rules and early science!"
+      },
+      "confusionCorner": {
+        "title": "Log of Sum Is Not Sum of Logs",
+        "body": "The Product Property works for multiplication inside the log. For addition, $\\log_b(m+n)$ cannot be simplified. [[imp:$\\log_b(m+n) \\neq \\log_b m + \\log_b n$]]"
+      },
+      "concept": {
+        "explanation": [
+          "Logarithms have three fundamental properties that mirror exponent rules.",
+          "[[kw:Product Property]]: $\\log_b (mn) = \\log_b m + \\log_b n$. The log of a product is the sum of the logs.",
+          "[[kw:Quotient Property]]: $\\log_b \\left( \\frac{m}{n} \\right) = \\log_b m - \\log_b n$. The log of a quotient is the difference of the logs.",
+          "[[kw:Power Property]]: $\\log_b (m^n) = n \\log_b m$. The log of a power is the exponent times the log of the base.",
+          "These properties are valid for any positive base $b \\neq 1$ and positive arguments $m, n$."
+        ],
+        "formulaCard": {
+          "formula": "$$ \\log_b(mn) = \\log_b m + \\log_b n $$ $$ \\log_b\\left(\\frac{m}{n}\\right) = \\log_b m - \\log_b n $$ $$ \\log_b(m^n) = n \\log_b m $$",
+          "legend": [
+            {
+              "meaning": "base ($b>0, b \\neq 1$)",
+              "symbol": "$b$",
+              "tone": "core"
+            },
+            {
+              "symbol": "$m, n$",
+              "tone": "subtle",
+              "meaning": "positive real numbers"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Property",
+              "Formula",
+              "Example ($b=2$)"
+            ],
+            "title": "Three Properties of Logarithms",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Product",
+                "1": "$\\log_b (mn) = \\log_b m + \\log_b n$",
+                "2": "$\\log_2 (8 \\cdot 4) = \\log_2 8 + \\log_2 4 = 3+2=5$"
+              },
+              {
+                "0": "Quotient",
+                "1": "$\\log_b \\frac{m}{n} = \\log_b m - \\log_b n$",
+                "2": "$\\log_2 \\frac{8}{4} = \\log_2 8 - \\log_2 4 = 3-2=1$"
+              },
+              {
+                "0": "Power",
+                "1": "$\\log_b (m^n) = n \\log_b m$",
+                "2": "$\\log_2 (8^2) = 2 \\log_2 8 = 2 \\cdot 3 = 6$"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Write 21 as $3 \\cdot 7$.",
+            "Apply Product Property: $\\log_2 21 = \\log_2 (3 \\cdot 7) = \\log_2 3 + \\log_2 7$.",
+            "Substitute: $\\approx 1.585 + 2.807 = 4.392$."
+          ],
+          "prompt": "Given $\\log_2 3 \\approx 1.585$ and $\\log_2 7 \\approx 2.807$, evaluate $\\log_2 21$.",
+          "title": "Example A — Using the Product Property"
+        },
+        {
+          "minLength": 8,
+          "prompt": "Evaluate $\\log_2 49$ using $\\log_2 7 \\approx 2.807$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How can you rewrite 49 as a power of 7? Which property then allows you to bring the exponent down?",
+          "title": "Example B — Quotient and Power Properties",
+          "role": "peer-explain",
+          "steps": [
+            "$49 = 7^2$, so $\\log_2 49 = \\log_2 (7^2)$.",
+            "Power Property: $\\log_2 (7^2) = 2 \\log_2 7$.",
+            "Substitute: $\\approx 2(2.807) = 5.614$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Using Quotient Property",
+          "prompt": "Given $\\log_6 5 \\approx 0.898$ and $\\log_6 8 \\approx 1.161$, evaluate $\\log_6 \\frac{5}{8}$.",
+          "steps": [
+            "Apply Quotient Property: $\\log_6 \\frac{5}{8} = \\log_6 5 - \\log_6 8$.",
+            "Substitute: $\\approx 0.898 - 1.161 = -0.263$."
+          ]
+        }
+      ],
+      "title": "Product, Quotient, and Power Properties",
+      "id": "log-properties-intro"
+    },
+    {
+      "title": "Expanding and Condensing Logarithmic Expressions",
+      "discoveryHook": {
+        "scenario": "Expanding and condensing logs is like taking apart and reassembling a puzzle. Expanding reveals the components, while condensing packs everything into a compact form—both are essential for solving logarithmic equations."
+      },
+      "questions": [
+        {
+          "id": "q6-5-4",
+          "blanks": [
+            {
+              "accept": [
+                "Quotient",
+                "quotient"
+              ]
+            }
+          ],
+          "prompt": "To expand $\\log_b \\frac{m}{n}$, use the ___ Property to write it as $\\log_b m - \\log_b n$.",
+          "type": "fill-blank",
+          "feedbackIfWrong": "Use the Quotient Property to split a fraction.",
+          "hints": [
+            "It deals with division inside the log.",
+            "The property for fractions."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "$2\\log_3 x + \\log_3 y = \\log_3(x^2) + \\log_3 y = \\log_3(x^2 y)$.",
+          "prompt": "Condense $2\\log_3 x + \\log_3 y$ into a single logarithm. (Use format \\log_3(x^2 y))",
+          "id": "q6-5-5",
+          "hints": [
+            "First use Power Property on $2\\log_3 x$.",
+            "Then use Product Property to combine."
+          ],
+          "answers": [
+            "\\log_3(x^2 y)",
+            "log_3(x^2 y)"
+          ]
+        },
+        {
+          "hints": [
+            "Product Property.",
+            "Separate the constant and the variable."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "$\\log 100x = \\log 100 + \\log x = 2 + \\log x$.",
+          "prompt": "Expand $\\log 100x$. (Use format \\log 100 + \\log x)",
+          "answers": [
+            "\\log 100 + \\log x",
+            "log 100 + log x"
+          ],
+          "id": "q6-5-6"
+        }
+      ],
+      "teacherCues": [
+        "Write $\\log_6 3x^4$ and ask: How can we 'expand' this into separate logs?",
+        "Write $\\log 9 + 3\\log 2 - \\log 3$ and ask: How can we 'condense' this into a single log?"
+      ],
+      "examples": [
+        {
+          "prompt": "Expand $\\ln \\frac{5x^7}{y}$.",
+          "role": "guided",
+          "steps": [
+            "Apply Quotient Property: $\\ln(5x^7) - \\ln y$.",
+            "Apply Product Property to $\\ln(5x^7)$: $\\ln 5 + \\ln(x^7)$.",
+            "Apply Power Property: $\\ln 5 + 7\\ln x$.",
+            "Full expansion: $\\ln 5 + 7\\ln x - \\ln y$."
+          ],
+          "title": "Example A — Expanding a Logarithmic Expression"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we apply the Power Property first when condensing? What would happen if we combined the addition first?",
+          "prompt": "Condense $\\log 9 + 3\\log 2 - \\log 3$.",
+          "minLength": 8,
+          "steps": [
+            "Apply Power Property: $3\\log 2 = \\log(2^3) = \\log 8$.",
+            "Now expression is $\\log 9 + \\log 8 - \\log 3$.",
+            "Product Property on first two: $\\log(9 \\cdot 8) = \\log 72$.",
+            "Quotient Property: $\\log 72 - \\log 3 = \\log(72/3) = \\log 24$."
+          ],
+          "title": "Example B — Condensing a Logarithmic Expression",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Rewrite $\\sqrt{x} = x^{1/2}$: $\\log_7(5x^{1/2})$.",
+            "Product Property: $\\log_7 5 + \\log_7(x^{1/2})$.",
+            "Power Property: $\\log_7 5 + \\frac{1}{2}\\log_7 x$."
+          ],
+          "title": "Example C — Expanding with a Root",
+          "role": "independent",
+          "prompt": "Expand $\\log_7 (5\\sqrt{x})$."
+        }
+      ],
+      "confusionCorner": {
+        "body": "Always apply the Power Property first to move coefficients inside as exponents. Then combine sums into products and differences into quotients. [[imp:Applying Product/Quotient before Power can lead to incorrect results.]]",
+        "title": "Order Matters When Condensing"
+      },
+      "id": "expanding-condensing",
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Expand",
+                "1": "1. Split fractions with Quotient Property. 2. Split products with Product Property. 3. Move exponents with Power Property."
+              },
+              {
+                "0": "Condense",
+                "1": "1. Move coefficients as exponents (Power). 2. Combine sums into products (Product). 3. Combine differences into quotients (Quotient)."
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Direction",
+              "Steps"
+            ],
+            "title": "Expanding vs. Condensing",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "write as sum/difference of simpler logs",
+              "symbol": "Expand"
+            },
+            {
+              "symbol": "Condense",
+              "meaning": "combine multiple logs into one",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ \\ln \\frac{5x^7}{y} = \\ln 5 + 7\\ln x - \\ln y $$"
+        },
+        "explanation": [
+          "[[kw:Expanding]] a logarithmic expression means writing it as a sum, difference, or product of simpler logarithms.",
+          "Use the properties in order: Quotient Property first (if a fraction), then Product Property, then Power Property.",
+          "[[kw:Condensing]] means combining multiple logarithmic terms into a single logarithm.",
+          "Condense in reverse order: Power Property first (move coefficients to exponents), then Product Property, then Quotient Property."
+        ]
+      }
+    },
+    {
+      "title": "Change-of-Base Formula",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Evaluate $\\log_3 8$ using common logarithms. Round to three decimal places.",
+          "steps": [
+            "Apply Change-of-Base with base 10: $\\log_3 8 = \\frac{\\log 8}{\\log 3}$.",
+            "Use calculator: $\\log 8 \\approx 0.9031$, $\\log 3 \\approx 0.4771$.",
+            "Divide: $0.9031 / 0.4771 \\approx 1.893$."
+          ],
+          "title": "Example A — Using Common Logs"
+        },
+        {
+          "prompt": "Evaluate $\\log_6 24$ using natural logarithms.",
+          "role": "peer-explain",
+          "minLength": 8,
+          "title": "Example B — Using Natural Logs",
+          "steps": [
+            "Apply Change-of-Base with base $e$: $\\log_6 24 = \\frac{\\ln 24}{\\ln 6}$.",
+            "Use calculator: $\\ln 24 \\approx 3.1781$, $\\ln 6 \\approx 1.7918$.",
+            "Divide: $3.1781 / 1.7918 \\approx 1.774$."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the Change-of-Base Formula work? How does it convert a log base 6 into natural logs?"
+        },
+        {
+          "steps": [
+            "$\\log_2 10 = \\frac{\\log 10}{\\log 2} = \\frac{1}{\\log 2} \\approx \\frac{1}{0.3010} \\approx 3.32$."
+          ],
+          "role": "independent",
+          "title": "Example C — Evaluate $\\log_2 10$",
+          "prompt": "Use Change-of-Base to find $\\log_2 10$. Round to two decimal places."
+        }
+      ],
+      "id": "change-of-base",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\log_c a = \\frac{\\log a}{\\log c} = \\frac{\\ln a}{\\ln c} $$",
+          "legend": [
+            {
+              "symbol": "$c$",
+              "tone": "core",
+              "meaning": "original base"
+            },
+            {
+              "meaning": "argument (positive)",
+              "tone": "core",
+              "symbol": "$a$"
+            }
+          ]
+        },
+        "explanation": [
+          "The [[kw:Change-of-Base Formula]] allows you to rewrite a logarithm in terms of logs with a different base: $$ \\log_c a = \\frac{\\log_b a}{\\log_b c} $$",
+          "Common choices for the new base $b$ are 10 (common log) and $e$ (natural log).",
+          "Using common logs: $\\log_c a = \\frac{\\log a}{\\log c}$.",
+          "Using natural logs: $\\log_c a = \\frac{\\ln a}{\\ln c}$.",
+          "This is especially useful for evaluating logs with bases other than 10 or $e$ on a calculator."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$\\log_3 8$",
+                "1": "$\\frac{\\log 8}{\\log 3} \\approx \\frac{0.9031}{0.4771} \\approx 1.893$",
+                "2": "$\\frac{\\ln 8}{\\ln 3} \\approx 1.893$"
+              },
+              {
+                "0": "$\\log_5 13$",
+                "1": "$\\frac{\\log 13}{\\log 5}$",
+                "2": "$\\frac{\\ln 13}{\\ln 5}$"
+              },
+              {
+                "0": "$\\log_2 10$",
+                "1": "$\\frac{\\log 10}{\\log 2} = \\frac{1}{\\log 2} \\approx 3.322$",
+                "2": "$\\frac{\\ln 10}{\\ln 2}$"
+              }
+            ],
+            "type": "table",
+            "title": "Using Change-of-Base",
+            "variant": "colorful",
+            "headers": [
+              "Target",
+              "Using Common Log",
+              "Using Natural Log"
+            ]
+          }
+        ]
+      },
+      "teacherCues": [
+        "Ask: How can we evaluate $\\log_3 8$ on a calculator that only has LOG and LN keys?",
+        "Introduce the formula: $\\log_c a = \\frac{\\log a}{\\log c}$ or $\\frac{\\ln a}{\\ln c}$."
+      ],
+      "confusionCorner": {
+        "body": "The original argument goes on top, the original base goes on the bottom. [[imp:$\\log_c a = \\frac{\\log a}{\\log c}$, not $\\frac{\\log c}{\\log a}$.]] A common mistake is flipping the fraction.",
+        "title": "Order in the Fraction"
+      },
+      "discoveryHook": {
+        "scenario": "Most calculators only compute base 10 and base $e$ logarithms. The Change-of-Base Formula is the bridge that lets you evaluate any logarithm, like $\\log_3 8$, using just the LOG or LN buttons."
+      },
+      "questions": [
+        {
+          "id": "q6-5-7",
+          "blanks": [
+            {
+              "accept": [
+                "c"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The denominator is $\\log c$.",
+          "prompt": "The Change-of-Base Formula states that $\\log_c a = \\frac{\\log a}{\\log ___}$.",
+          "hints": [
+            "The original base goes in the denominator.",
+            "It's the base of the original logarithm."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "id": "q6-5-8",
+          "prompt": "Evaluate $\\log_4 7$ using common logs. Round to two decimal places. (Enter a number, e.g., 1.40)",
+          "type": "short-answer",
+          "feedbackIfWrong": "$0.8451 / 0.6021 \\approx 1.40$.",
+          "hints": [
+            "$\\frac{\\log 7}{\\log 4}$.",
+            "$\\log 7 \\approx 0.8451$, $\\log 4 \\approx 0.6021$."
+          ],
+          "answers": [
+            "1.40",
+            "1.4"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "10 and e",
+            "e and 10"
+          ],
+          "prompt": "Which two bases are most commonly used in the Change-of-Base Formula? (Enter two numbers separated by 'and', e.g., 10 and e)",
+          "feedbackIfWrong": "The common bases are 10 (common log) and $e$ (natural log).",
+          "hints": [
+            "The LOG key uses one, the LN key uses the other.",
+            "Base 10 and base e."
+          ],
+          "id": "q6-5-9"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "Threshold of hearing.",
+            "The quietest sound a human can hear."
+          ],
+          "id": "q6-5-10",
+          "prompt": "The formula for loudness in decibels is $L(I) = 10\\log\\frac{I}{I_0}$. The reference intensity $I_0$ is the intensity of a barely ___ sound.",
+          "feedbackIfWrong": "$I_0$ is the intensity of a barely audible sound.",
+          "blanks": [
+            {
+              "accept": [
+                "audible"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "short-answer",
+          "id": "q6-5-11",
+          "prompt": "If intensity quadruples (×4), by how many decibels does loudness increase? (Use $10\\log 4$, round to nearest whole number)",
+          "feedbackIfWrong": "$10\\log 4 \\approx 10(0.6021) = 6$ dB.",
+          "answers": [
+            "6"
+          ],
+          "hints": [
+            "Increase = $10\\log 4$.",
+            "$\\log 4 \\approx 0.6021$."
+          ]
+        },
+        {
+          "id": "q6-5-12",
+          "prompt": "What property of logs allows you to write $\\log 2I - \\log I = \\log 2$?",
+          "hints": [
+            "Subtraction of logs becomes division inside.",
+            "$\\log A - \\log B = \\log(A/B)$."
+          ],
+          "feedbackIfWrong": "The Quotient Property gives $\\log\\frac{2I}{I} = \\log 2$.",
+          "answers": [
+            "Quotient Property"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "Many real‑life formulas use logarithms, such as sound loudness $L(I) = 10\\log\\frac{I}{I_0}$ (decibels).",
+          "Log properties allow us to simplify changes. If intensity doubles, the increase is $L(2I) - L(I) = 10(\\log 2 + \\log\\frac{I}{I_0} - \\log\\frac{I}{I_0}) = 10\\log 2$.",
+          "Notice that the $\\log\\frac{I}{I_0}$ terms cancel, leaving a constant increase that does not depend on the original intensity.",
+          "This shows the power of log properties: they turn multiplicative changes (doubling) into additive changes ($+10\\log 2$ dB)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Doubles ($\\times 2$)",
+                "1": "$10\\log 2 \\approx 3$ dB"
+              },
+              {
+                "0": "Triples ($\\times 3$)",
+                "1": "$10\\log 3 \\approx 4.77$ dB"
+              },
+              {
+                "0": "Increases 10 times",
+                "1": "$10\\log 10 = 10$ dB"
+              },
+              {
+                "0": "Increases 100 times",
+                "1": "$10\\log 100 = 20$ dB"
+              }
+            ],
+            "headers": [
+              "Intensity Change",
+              "Decibel Increase"
+            ],
+            "title": "Sound Intensity and Decibels"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ L(I) = 10 \\log \\frac{I}{I_0} $$",
+          "legend": [
+            {
+              "symbol": "$L(I)$",
+              "tone": "core",
+              "meaning": "loudness in decibels (dB)"
+            },
+            {
+              "tone": "core",
+              "symbol": "$I$",
+              "meaning": "sound intensity (W/m²)"
+            },
+            {
+              "symbol": "$I_0$",
+              "tone": "subtle",
+              "meaning": "reference intensity ($10^{-12}$ W/m²)"
+            }
+          ]
+        }
+      },
+      "examples": [
+        {
+          "prompt": "If the intensity of a sound doubles, by how many decibels does the loudness increase?",
+          "role": "guided",
+          "steps": [
+            "Loudness function: $L(I) = 10\\log\\frac{I}{I_0}$.",
+            "Increase = $L(2I) - L(I) = 10\\log\\frac{2I}{I_0} - 10\\log\\frac{I}{I_0}$.",
+            "Factor 10: $10(\\log\\frac{2I}{I_0} - \\log\\frac{I}{I_0})$.",
+            "Quotient Property inside: $10(\\log 2 + \\log\\frac{I}{I_0} - \\log\\frac{I}{I_0}) = 10\\log 2 \\approx 3$ dB."
+          ],
+          "title": "Example A — Doubling Intensity"
+        },
+        {
+          "steps": [
+            "Increase = $L(3I) - L(I) = 10\\log 3$ (using the same simplification).",
+            "$10\\log 3 \\approx 10(0.4771) = 4.77$ dB.",
+            "The original intensity $I$ cancels out because of the Quotient/Product properties, leaving only the factor of increase."
+          ],
+          "prompt": "If the intensity triples, what is the decibel increase?",
+          "title": "Example B — Tripling Intensity",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Why does the decibel increase not depend on the original intensity? What property causes the $\\log\\frac{I}{I_0}$ terms to cancel?",
+          "minLength": 8
+        },
+        {
+          "prompt": "What is the decibel increase if intensity becomes 10 times greater?",
+          "title": "Example C — Ten Times Intensity",
+          "role": "independent",
+          "steps": [
+            "Increase = $10\\log 10 = 10(1) = 10$ dB.",
+            "A tenfold intensity increase gives a 10 dB increase."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Read Example 6 about sound intensity and decibels. Ask: How does the logarithm simplify the change in loudness?",
+        "Show that $L(2I) - L(I) = 10\\log 2$ regardless of the original intensity."
+      ],
+      "confusionCorner": {
+        "title": "Decibel Scale Is Logarithmic",
+        "body": "An increase of 10 dB means 10 times the intensity. An increase of 20 dB means 100 times the intensity. The scale is not linear; each 10 dB multiplies the intensity by 10. [[imp:Decibels measure ratios on a log scale.]]"
+      },
+      "id": "applications-properties",
+      "discoveryHook": {
+        "scenario": "When a sound's intensity doubles, the decibel increase is $10\\log 2 \\approx 3$ dB—a barely noticeable change. This uses the Quotient and Product Properties to simplify a real-world logarithmic expression."
+      },
+      "title": "Real-Life Applications of Log Properties"
+    },
+    {
+      "questions": [
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "$\\log_7 48 = \\log_7(4 \\cdot 12) = \\log_7 4 + \\log_7 12 \\approx 0.712 + 1.277 = 1.989$.",
+          "answers": [
+            "1.989",
+            "1.989"
+          ],
+          "id": "q6-5-13",
+          "prompt": "Given $\\log_7 4 \\approx 0.712$ and $\\log_7 12 \\approx 1.277$, evaluate $\\log_7 48$. (Hint: $48 = 4 \\cdot 12$)",
+          "hints": [
+            "Use Product Property.",
+            "$0.712 + 1.277$."
+          ]
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "9",
+                "nine"
+              ]
+            }
+          ],
+          "prompt": "To evaluate $\\log_9 15$ on a calculator, use the Change-of-Base Formula: $\\log_9 15 = \\frac{\\log 15}{\\log ___}$.",
+          "id": "q6-5-14",
+          "type": "fill-blank",
+          "feedbackIfWrong": "Denominator is $\\log 9$.",
+          "hints": [
+            "The original base goes in the denominator.",
+            "The base of $\\log_9$ is 9."
+          ]
+        },
+        {
+          "hints": [
+            "Power first: $2\\ln z = \\ln(z^2)$.",
+            "Then Product/Quotient."
+          ],
+          "id": "q6-5-15",
+          "answers": [
+            "\\ln(xz^2/y)",
+            "ln(xz^2/y)"
+          ],
+          "prompt": "Condense $\\ln x - \\ln y + 2\\ln z$ into a single logarithm. (Use format \\ln(xz^2/y))",
+          "feedbackIfWrong": "$\\ln x - \\ln y + \\ln(z^2) = \\ln\\frac{x z^2}{y}$.",
+          "type": "short-answer"
+        }
+      ],
+      "title": "Blueprint Aid — Using Log Properties to Solve Problems",
+      "id": "blueprint-aid-log-properties",
+      "discoveryHook": {
+        "scenario": "With log properties and the Blueprint, you can evaluate unfamiliar logarithms using known values—just like detectives piecing together clues. Break the argument into factors, use properties, and solve step by step."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\log_b (\\text{expression}) = \\text{combination of known logs} $$",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Product",
+              "meaning": "$\\log_b(mn) = \\log_b m + \\log_b n$"
+            },
+            {
+              "meaning": "$\\log_b(m/n) = \\log_b m - \\log_b n$",
+              "tone": "core",
+              "symbol": "Quotient"
+            },
+            {
+              "tone": "core",
+              "meaning": "$\\log_b(m^n) = n \\log_b m$",
+              "symbol": "Power"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify target; factor argument using known values."
+              },
+              {
+                "0": "Solve",
+                "1": "Apply Product/Quotient/Power Properties; substitute known values."
+              },
+              {
+                "0": "Conclude",
+                "1": "Simplify; give final value."
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "title": "Blueprint for Evaluating Logs with Properties"
+          }
+        ],
+        "explanation": [
+          "[[imp:Understand]]: Identify the target logarithm and the given logarithmic values. Look for ways to rewrite the argument as a product, quotient, or power of numbers whose logs are known.",
+          "[[imp:Solve]]: Apply the appropriate properties (Product, Quotient, Power) to break the target into known pieces. If needed, use Change-of-Base to evaluate with a calculator.",
+          "[[imp:Conclude]]: Substitute the known values and simplify. State the final approximate or exact value."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Don't Mix Up Bases",
+        "body": "The Product, Quotient, and Power Properties only work when all logarithms have the [[imp:same base]]. You cannot combine $\\log_2 x + \\log_3 y$ using these properties without first converting to a common base."
+      },
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude steps. Model evaluating $\\log_6 40$ given $\\log_6 5$ and $\\log_6 8$.",
+        "Ask: What do we know? How can we rewrite 40?"
+      ],
+      "examples": [
+        {
+          "title": "Example A — Evaluate $\\log_6 40$ Using $\\log_6 5$ and $\\log_6 8$",
+          "role": "guided",
+          "prompt": "Given $\\log_6 5 \\approx 0.898$ and $\\log_6 8 \\approx 1.161$, evaluate $\\log_6 40$.",
+          "steps": [
+            "Understand: 40 can be written as $5 \\cdot 8$.",
+            "Solve: $\\log_6 40 = \\log_6(5 \\cdot 8) = \\log_6 5 + \\log_6 8$ (Product Property).",
+            "Substitute: $\\approx 0.898 + 1.161 = 2.059$.",
+            "Conclude: $\\log_6 40 \\approx 2.059$."
+          ]
+        },
+        {
+          "prompt": "Evaluate $\\log_2 50$ using a calculator and the Change-of-Base Formula. Explain each step.",
+          "title": "Example B — Using Power and Change-of-Base",
+          "steps": [
+            "Understand: No simple factors of 50 that are powers of 2, so use Change-of-Base.",
+            "Solve: $\\log_2 50 = \\frac{\\log 50}{\\log 2}$ or $\\frac{\\ln 50}{\\ln 2}$.",
+            "Calculator: $\\log 50 \\approx 1.6990$, $\\log 2 \\approx 0.3010$; divide to get $\\approx 5.644$.",
+            "Conclude: $\\log_2 50 \\approx 5.644$."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How would you compute $\\log_2 50$ on a calculator? Which formula do you use, and what keys do you press?",
+          "role": "peer-explain",
+          "minLength": 8
+        },
+        {
+          "title": "Example C — Condense and Evaluate",
+          "steps": [
+            "Power Property: $2\\log_2 5 = \\log_2(5^2) = \\log_2 25$.",
+            "Product Property: $\\log_2 25 + \\log_2 3 = \\log_2(25 \\cdot 3) = \\log_2 75$.",
+            "Change-of-Base: $\\log_2 75 = \\frac{\\log 75}{\\log 2} \\approx \\frac{1.8751}{0.3010} \\approx 6.23$."
+          ],
+          "prompt": "Condense and evaluate $2\\log_2 5 + \\log_2 3$.",
+          "role": "independent"
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

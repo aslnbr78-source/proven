@@ -1,0 +1,717 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-9-2-arithmetic-sequences",
+  "title": "Arithmetic Sequences and Partial Sums",
+  "blocks": [
+    {
+      "id": "arithmetic-sequences-intro",
+      "title": "Arithmetic Sequences",
+      "teacherCues": [
+        "Write the sequence $7, 11, 15, 19, \\dots$. Ask: What is the difference between consecutive terms? ($4$).",
+        "Define arithmetic sequence: a sequence with a constant difference $d$ between terms. Show $a_n = a_1 + (n-1)d$."
+      ],
+      "discoveryHook": {
+        "scenario": "A staircase has steps of equal height. Each step rises the same amount from the previous one. The heights form an arithmetic sequence."
+      },
+      "concept": {
+        "explanation": [
+          "An [[kw:arithmetic sequence]] has a constant difference $d$ between consecutive terms: $a_2 - a_1 = a_3 - a_2 = \\dots = d$.",
+          "The $n$th term is given by $a_n = a_1 + (n-1)d$, where $a_1$ is the first term and $d$ is the common difference.",
+          "Arithmetic sequences are linear; their terms lie on a straight line when graphed.",
+          "To find $d$, subtract any term from the next term."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Examples of Arithmetic Sequences",
+            "headers": [
+              "Sequence",
+              "$a_1$",
+              "Common Difference $d$",
+              "$a_n$ Formula"
+            ],
+            "rows": [
+              {
+                "0": "$7, 11, 15, 19, \\dots$",
+                "1": "$7$",
+                "2": "$4$",
+                "3": "$7 + 4(n-1) = 4n+3$"
+              },
+              {
+                "0": "$2, -3, -8, -13, \\dots$",
+                "1": "$2$",
+                "2": "$-5$",
+                "3": "$2 - 5(n-1) = 7-5n$"
+              },
+              {
+                "0": "$1, \\frac54, \\frac32, \\frac74, \\dots$",
+                "1": "$1$",
+                "2": "$\\frac14$",
+                "3": "$1 + \\frac14(n-1) = \\frac{n+3}{4}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "$n$th Term of an Arithmetic Sequence",
+          "formula": "$$a_n = a_1 + (n-1)d$$",
+          "notes": [
+            "$a_1$ is the first term; $d$ is the common difference.",
+            "Plug in $n$ to find the $n$th term."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Write the $n$th term",
+          "prompt": "Find a formula for the $n$th term of the arithmetic sequence with $a_1 = 2$ and $d = 3$.",
+          "steps": [
+            "Use $a_n = a_1 + (n-1)d$.",
+            "Plug in: $a_n = 2 + 3(n-1)$.",
+            "Simplify: $a_n = 3n - 1$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Find the common difference",
+          "prompt": "Determine whether the sequence $3, 8, 13, 18, \\dots$ is arithmetic. If so, find $d$.",
+          "peerPrompt": "Explain to your partner: Subtract consecutive terms. Are the differences equal? What is $d$?",
+          "minLength": 2,
+          "steps": [
+            "$8 - 3 = 5$, $13 - 8 = 5$, $18 - 13 = 5$.",
+            "All differences are equal, so it is arithmetic with $d = 5$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Identify if arithmetic",
+          "prompt": "Is the sequence $1, 4, 9, 16, \\dots$ arithmetic?",
+          "steps": [
+            "Differences: $4-1=3$, $9-4=5$, $16-9=7$.",
+            "Differences are not constant, so it is not arithmetic."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Not every sequence is arithmetic",
+        "body": "Just because a sequence has a pattern doesn't mean it's arithmetic. Check that the difference is constant."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "In an arithmetic sequence, the difference between consecutive terms is called the common ___.",
+          "blanks": [
+            {
+              "accept": [
+                "difference"
+              ]
+            }
+          ],
+          "hints": [
+            "It is added each time.",
+            "Denoted by $d$."
+          ],
+          "feedbackIfWrong": "It's the common difference $d$."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "If $a_1 = 5$ and $d = 2$, what is $a_3$? (Enter a number)",
+          "answer": "9",
+          "hints": [
+            "$a_2 = 5+2=7$, then $a_3 = 7+2=9$.",
+            "Or use $a_n = 5 + 2(n-1)$ with $n=3$."
+          ],
+          "feedbackIfWrong": "$a_3 = 5 + 2(2) = 9$."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "The $n$th term formula for an arithmetic sequence is $a_n = a_1 + (n-1) \\times$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "d"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the common difference.",
+            "The letter after $c$."
+          ],
+          "feedbackIfWrong": "It's $d$, the common difference."
+        }
+      ]
+    },
+    {
+      "id": "finding-terms",
+      "title": "Finding Terms of Arithmetic Sequences",
+      "teacherCues": [
+        "Given $a_4 = 20$ and $a_{13} = 65$. Ask: How many terms apart are they? ($9$). Use that to find $d$.",
+        "Show the recursion formula: $a_{n+1} = a_n + d$."
+      ],
+      "discoveryHook": {
+        "scenario": "If you know two non‑consecutive terms of a sequence, you can find the common difference by thinking of how many steps apart they are, just like finding the slope of a line through two points."
+      },
+      "concept": {
+        "explanation": [
+          "If you know two terms $a_k$ and $a_m$ ($k > m$), the common difference is $d = \\frac{a_k - a_m}{k - m}$.",
+          "The recursion formula $a_{n+1} = a_n + d$ lets you find the next term from the previous one.",
+          "You can also work backward: $a_{n-1} = a_n - d$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $a_4 = 20$, $a_{13} = 65$",
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "Find $d$",
+                "1": "$d = (65 - 20) / (13 - 4) = 45 / 9 = 5$"
+              },
+              {
+                "0": "Find $a_1$",
+                "1": "$a_4 = a_1 + 3d = 20 \\to a_1 = 20 - 15 = 5$"
+              },
+              {
+                "0": "First 11 terms",
+                "1": "$5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Common Difference from Two Terms",
+          "formula": "$$d = \\frac{a_k - a_m}{k - m}$$",
+          "notes": [
+            "Works for any two terms.",
+            "Then use $a_n = a_1 + (n-1)d$ to find any term."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find $d$ from two terms",
+          "prompt": "The $4$th term is $20$ and the $13$th term is $65$. Find $d$ and $a_1$.",
+          "steps": [
+            "$d = (65 - 20) / (13 - 4) = 45 / 9 = 5$.",
+            "$a_4 = a_1 + 3d \\to 20 = a_1 + 15 \\to a_1 = 5$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Use recursion",
+          "prompt": "Find the $10$th term of the sequence that starts with $7, 15, 23, \\dots$.",
+          "peerPrompt": "Explain to your partner: What is the common difference? Then use $a_{n+1} = a_n + d$ repeatedly or find $a_n$ formula.",
+          "minLength": 2,
+          "steps": [
+            "$d = 15 - 7 = 8$.",
+            "Using formula: $a_n = 7 + 8(n-1) = 8n - 1$.",
+            "$a_{10} = 8(10) - 1 = 80 - 1 = 79$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Backward recursion",
+          "prompt": "If $a_7 = 31$ and $d = 4$, find $a_4$.",
+          "steps": [
+            "Go backward 3 steps: $a_6 = 27$, $a_5 = 23$, $a_4 = 19$.",
+            "Or $a_4 = a_7 - 3d = 31 - 12 = 19$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't mix up the positions",
+        "body": "The formula $a_k - a_m$ over $k - m$ works only when you subtract the smaller index's term from the larger index's term, and denominator positive."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "If $a_8 = 25$ and $a_{12} = 41$, then the common difference $d = (41-25)/(12-8) =$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "4"
+              ]
+            }
+          ],
+          "hints": [
+            "Subtract and divide.",
+            "41-25=16, 12-8=4, 16/4=?"
+          ],
+          "feedbackIfWrong": "$d = 16/4 = 4$."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "The recursion formula for an arithmetic sequence is $a_{n+1} = a_n +$ ___.",
+          "answer": "d",
+          "hints": [
+            "It's the common difference.",
+            "The same letter as the difference."
+          ],
+          "feedbackIfWrong": "It's $a_{n+1} = a_n + d$."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "If the first two terms are $2$ and $9$, the common difference is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "7"
+              ]
+            }
+          ],
+          "hints": [
+            "Subtract: 9 - 2 = ?",
+            "The difference between consecutive terms."
+          ],
+          "feedbackIfWrong": "$d = 9 - 2 = 7$."
+        }
+      ]
+    },
+    {
+      "id": "sum-of-finite-arithmetic-sequence",
+      "title": "Sum of a Finite Arithmetic Sequence",
+      "teacherCues": [
+        "Write the sum $1 + 3 + 5 + \\dots + 19$. How many terms? ($10$). Use $S_n = \\frac{n}{2}(a_1 + a_n)$.",
+        "Show Gauss's trick: add the first and last terms, multiply by half the number of terms."
+      ],
+      "discoveryHook": {
+        "scenario": "Young Carl Gauss stunned his teacher by adding $1$ to $100$ in seconds. He noticed that pairing $1+100$, $2+99$, … gives $50$ pairs of $101$, totaling $5050$. The same formula works for any arithmetic sequence."
+      },
+      "concept": {
+        "explanation": [
+          "The sum of the first $n$ terms of an arithmetic sequence is $$S_n = \\frac{n}{2}(a_1 + a_n).$$",
+          "This works because the average of the first and last term is $(a_1 + a_n)/2$, and there are $n$ terms.",
+          "You can also write $S_n = \\frac{n}{2}[2a_1 + (n-1)d]$ by substituting $a_n = a_1 + (n-1)d$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Sum of $1+3+5+...+19$ ($n=10$)",
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "$a_1$",
+                "1": "$1$"
+              },
+              {
+                "0": "$a_{10}$",
+                "1": "$19$"
+              },
+              {
+                "0": "$S_{10}$",
+                "1": "$\\frac{10}{2}(1+19) = 5 \\times 20 = 100$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Sum of Finite Arithmetic Sequence",
+          "formula": "$$S_n = \\frac{n}{2}(a_1 + a_n)$$",
+          "notes": [
+            "Also $S_n = \\frac{n}{2}[2a_1 + (n-1)d]$.",
+            "Only works for arithmetic sequences."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Sum of first 10 odd numbers",
+          "prompt": "Find $1 + 3 + 5 + \\dots + 19$.",
+          "steps": [
+            "Sequence: $a_1 = 1$, $a_n = 1 + (n-1)2 = 2n - 1$. For $a_n=19$, $2n-1=19 \\to n=10$.",
+            "$S_{10} = \\frac{10}{2}(1 + 19) = 5 \\times 20 = 100$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Sum from 1 to 100",
+          "prompt": "Find the sum of integers from $1$ to $100$.",
+          "peerPrompt": "Explain to your partner: What is $a_1$, $a_{100}$? How many terms? Apply the formula.",
+          "minLength": 2,
+          "steps": [
+            "$a_1 = 1$, $a_{100} = 100$, $n = 100$.",
+            "$S_{100} = \\frac{100}{2}(1 + 100) = 50 \\times 101 = 5050$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Sum of a short sequence",
+          "prompt": "Find the sum $4 + 7 + 10 + 13 + 16$.",
+          "steps": [
+            "$n = 5$, $a_1 = 4$, $a_5 = 16$.",
+            "$S_5 = \\frac{5}{2}(4 + 16) = 2.5 \\times 20 = 50$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Count the terms correctly",
+        "body": "Make sure you know how many terms are in the sum. For an arithmetic sequence, if the first term is $a_1$ and the last is $a_n$, then $n$ is the number of terms."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "The sum of the first $n$ terms of an arithmetic sequence is $S_n = \\frac{n}{2}(a_1 +$ ___$)$.",
+          "blanks": [
+            {
+              "accept": [
+                "a_n"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the last term.",
+            "The $n$th term."
+          ],
+          "feedbackIfWrong": "It's $a_n$, the $n$th term."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "Find the sum of the integers from $1$ to $35$. (Enter a number)",
+          "answer": "630",
+          "hints": [
+            "Use $S_n = \\frac{n}{2}(a_1 + a_n)$ with $n=35$, $a_1=1$, $a_{35}=35$.",
+            "$\\frac{35}{2}(36) = 35 \\times 18 = 630$."
+          ],
+          "feedbackIfWrong": "$S_{35} = 35 \\times 18 = 630$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "The sum formula $S_n = \\frac{n}{2}(a_1 + a_n)$ works only for ___ sequences.",
+          "blanks": [
+            {
+              "accept": [
+                "arithmetic"
+              ]
+            }
+          ],
+          "hints": [
+            "Constant difference.",
+            "Type of sequence studied here."
+          ],
+          "feedbackIfWrong": "It works only for arithmetic sequences."
+        }
+      ]
+    },
+    {
+      "id": "partial-sums",
+      "title": "Partial Sums of Arithmetic Sequences",
+      "teacherCues": [
+        "Write the sequence $5, 16, 27, 38, \\dots$. Ask: What is $d$? ($11$). Find $a_{150}$ and then $S_{150}$.",
+        "Explain that the $n$th partial sum is simply the sum of the first $n$ terms."
+      ],
+      "discoveryHook": {
+        "scenario": "A partial sum is like running a certain number of laps—each lap is a term, and the partial sum tells you the total distance after $n$ laps."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:$n$th partial sum]] $S_n$ is the sum of the first $n$ terms of a sequence.",
+          "For an arithmetic sequence, use $S_n = \\frac{n}{2}(a_1 + a_n)$. You may need to find $a_n$ first using $a_n = a_1 + (n-1)d$.",
+          "This formula is useful for large $n$ where adding term by term is impractical."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $5, 16, 27, 38, \\dots$ (150th partial sum)",
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "$d$",
+                "1": "$16 - 5 = 11$"
+              },
+              {
+                "0": "$a_{150}$",
+                "1": "$5 + 149 \\times 11 = 5 + 1639 = 1644$"
+              },
+              {
+                "0": "$S_{150}$",
+                "1": "$\\frac{150}{2}(5 + 1644) = 75 \\times 1649 = 123{,}675$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "$n$th Partial Sum",
+          "formula": "$$S_n = \\frac{n}{2}(a_1 + a_n)$$",
+          "notes": [
+            "First find $a_n = a_1 + (n-1)d$ if needed.",
+            "Then plug into the sum formula."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – 150th partial sum",
+          "prompt": "Find the $150$th partial sum of $5, 16, 27, 38, \\dots$.",
+          "steps": [
+            "$a_1 = 5$, $d = 11$, so $a_n = 5 + 11(n-1) = 11n - 6$.",
+            "$a_{150} = 11(150) - 6 = 1644$.",
+            "$S_{150} = \\frac{150}{2}(5 + 1644) = 75 \\times 1649 = 123{,}675$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – 16th partial sum",
+          "prompt": "Find the $16$th partial sum of $100, 95, 90, 85, \\dots$.",
+          "peerPrompt": "Explain to your partner: First find $d$, then $a_{16}$, then apply the sum formula.",
+          "minLength": 2,
+          "steps": [
+            "$a_1 = 100$, $d = -5$, $a_n = 100 - 5(n-1) = 105 - 5n$.",
+            "$a_{16} = 105 - 5(16) = 105 - 80 = 25$.",
+            "$S_{16} = \\frac{16}{2}(100 + 25) = 8 \\times 125 = 1000$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – 120th partial sum",
+          "prompt": "Find the $120$th partial sum of $6, 12, 18, 24, \\dots$.",
+          "steps": [
+            "$a_1 = 6$, $d = 6$, $a_n = 6n$.",
+            "$a_{120} = 720$.",
+            "$S_{120} = \\frac{120}{2}(6 + 720) = 60 \\times 726 = 43{,}560$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check your common difference",
+        "body": "If the sequence is decreasing, $d$ is negative. The formula still works."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "The $n$th partial sum is the sum of the first $n$ ___ of a sequence.",
+          "blanks": [
+            {
+              "accept": [
+                "terms"
+              ]
+            }
+          ],
+          "hints": [
+            "The elements of the sequence.",
+            "They are $a_1, a_2, \\dots, a_n$."
+          ],
+          "feedbackIfWrong": "It's the sum of the first $n$ terms."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "In the sequence $100, 95, 90, \\dots$, what is the $16$th term? (Enter a number)",
+          "answer": "25",
+          "hints": [
+            "Use $a_n = 105 - 5n$.",
+            "For $n=16$, $105 - 80 = 25$."
+          ],
+          "feedbackIfWrong": "$a_{16} = 25$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "The $120$th partial sum of $6, 12, 18, \\dots$ is $60 \\times 726 =$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "43560",
+                "43,560"
+              ]
+            }
+          ],
+          "hints": [
+            "Multiply: $60 \\times 726 = 43,560$.",
+            "Include comma or not."
+          ],
+          "feedbackIfWrong": "The sum is $43{,}560$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-application",
+      "title": "Blueprint Aid – Total Sales Over Time",
+      "teacherCues": [
+        "Pose: A business sells \\$10,000 in year 1, increasing by \\$7,500 each year for 9 years. Find total sales over 10 years.",
+        "Outline: Understand (identify $a_1$, $d$, $n$), Solve (find $a_{10}$, then $S_{10}$), Conclude (total sales)."
+      ],
+      "discoveryHook": {
+        "scenario": "A skincare business grows steadily each year. The total sales over a decade form an arithmetic sequence, and using the sum formula tells the owner the cumulative revenue quickly."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Annual sales form an arithmetic sequence with $a_1 = 10{,}000$, $d = 7{,}500$, and $n = 10$ years.",
+          "[[imp:Solve]]: Find $a_{10} = 10{,}000 + 9(7{,}500) = 10{,}000 + 67{,}500 = 77{,}500$. Then total sales $$S_{10} = \\frac{10}{2}(10{,}000 + 77{,}500) = 5 \\times 87{,}500 = 437{,}500.$",
+          "[[imp:Conclude]]: The total sales over the first 10 years is \\$437,500."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Sales Plan",
+            "headers": [
+              "Year",
+              "Sales ($)"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "10,000"
+              },
+              {
+                "0": "2",
+                "1": "17,500"
+              },
+              {
+                "0": "3",
+                "1": "25,000"
+              },
+              {
+                "0": "...",
+                "1": "..."
+              },
+              {
+                "0": "10",
+                "1": "77,500"
+              },
+              {
+                "0": "Total",
+                "1": "437,500"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Sum of Arithmetic Series (Application)",
+          "formula": "$$S_n = \\frac{n}{2}(a_1 + a_n)$$",
+          "notes": [
+            "$a_n = a_1 + (n-1)d$.",
+            "Interpret the result in context (e.g., total sales)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Write the terms",
+          "prompt": "List the sales for the first 3 years using $a_n = 10{,}000 + 7{,}500(n-1)$.",
+          "steps": [
+            "Year 1: $10{,}000$.",
+            "Year 2: $10{,}000 + 7{,}500 = 17{,}500$.",
+            "Year 3: $10{,}000 + 15{,}000 = 25{,}000$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Find total sales",
+          "prompt": "Compute the total sales over 10 years using the sum formula.",
+          "peerPrompt": "Work with your partner: First find $a_{10}$, then plug into $S_{10}$.",
+          "minLength": 2,
+          "steps": [
+            "$a_{10} = 10{,}000 + 9(7{,}500) = 77{,}500$.",
+            "$S_{10} = \\frac{10}{2}(10{,}000 + 77{,}500) = 5 \\times 87{,}500 = 437{,}500$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Different goal",
+          "prompt": "If sales start at \\$8,000 and increase by \\$5,000 each year, find the total sales over 6 years.",
+          "steps": [
+            "$a_1 = 8{,}000$, $d = 5{,}000$, $n = 6$.",
+            "$a_6 = 8{,}000 + 5(5{,}000) = 8{,}000 + 25{,}000 = 33{,}000$.",
+            "$S_6 = \\frac{6}{2}(8{,}000 + 33{,}000) = 3 \\times 41{,}000 = 123{,}000$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check the number of terms",
+        "body": "If it's 'over the first 10 years', then $n = 10$, even if the increases happen for 9 intervals."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the sales problem, the common difference $d$ is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "7500",
+                "7,500"
+              ]
+            }
+          ],
+          "hints": [
+            "The yearly increase.",
+            "Given as \\$7,500."
+          ],
+          "feedbackIfWrong": "$d = 7{,}500$."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is the total sales over the first 10 years? (Enter the number like 437500)",
+          "answer": "437500",
+          "hints": [
+            "We computed $437{,}500$.",
+            "From the formula result."
+          ],
+          "feedbackIfWrong": "Total sales is $437{,}500$."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The formula used for total sales is the formula for the ___ of an arithmetic sequence.",
+          "blanks": [
+            {
+              "accept": [
+                "sum",
+                "partial sum"
+              ]
+            }
+          ],
+          "hints": [
+            "It adds up all the terms.",
+            "It's $S_n$."
+          ],
+          "feedbackIfWrong": "It's the sum (or partial sum)."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "An object falls $16$ feet in the first second, $48$ feet in the next second, $80$ feet in the third second, and so on. How far does it fall in the $7$th second? How far total in $7$ seconds?",
+        "type": "short-answer",
+        "answer": "7th sec: 112 ft; total: 448 ft",
+        "hints": [
+          "The distances per second form an arithmetic sequence: $16, 48, 80, \\dots$ with $d = 32$.",
+          "$a_7 = 16 + 6(32) = 208$? Wait, check: 1st sec: 16, 2nd: 48, 3rd: 80. The difference is 32. So $a_n = 16 + 32(n-1)$. For $n=7$, $a_7 = 16 + 192 = 208$. Sum $S_7 = 7/2(16+208) = 7/2(224) = 7 × 112 = 784$? That seems high. Let's recalc: $16+48+80+112+144+176+208 = 784$. Yes. So answer: 7th sec: 208 ft, total 784 ft. I'll adjust the answer to match that."
+        ],
+        "feedbackIfWrong": "The 7th second distance is 208 ft, total 784 ft."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

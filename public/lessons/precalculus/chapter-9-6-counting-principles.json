@@ -1,0 +1,690 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-9-6-counting-principles",
+  "title": "Counting Principles",
+  "blocks": [
+    {
+      "id": "simple-counting",
+      "title": "Simple Counting Problems",
+      "teacherCues": [
+        "Pose: Draw two numbers from 1–8 with replacement to sum 12. Ask pairs to list all ways.",
+        "After Example 2: What changed when we did not replace? Why did the count drop?"
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine drawing numbered tickets from a hat for a raffle. If you put the ticket back, you could draw the same number again. Counting how many ways a certain sum can happen is a real‑world puzzle that starts with careful listing."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:simple counting problem]] asks you to list all possible outcomes of a small experiment.",
+          "When an item is put back before the next draw, the selection is [[kw:with replacement]].",
+          "When the item is not returned, the selection is [[kw:without replacement]].",
+          "If you list every possibility, you can just count them to find the answer."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Ways to sum to 12 from numbers 1–8",
+            "headers": [
+              "With Replacement",
+              "Without Replacement"
+            ],
+            "rows": [
+              {
+                "0": "$ (4,8) $, $ (5,7) $, $ (6,6) $, $ (7,5) $, $ (8,4) $",
+                "1": "$ (4,8) $, $ (5,7) $, $ (7,5) $, $ (8,4) $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Counting by Listing",
+          "formula": "$$ \\text{Count} = \\text{number of listed pairs} $$",
+          "notes": [
+            "Best when the total number of outcomes is small.",
+            "With replacement may produce duplicate pairs; without replacement forbids equal numbers."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – With Replacement",
+          "prompt": "How many ways can you draw two numbers from 1 to 8, with replacement, to obtain a sum of 12?",
+          "steps": [
+            "List all pairs whose sum is $ 12 $: start with first number $ 4 $, then second $ 8 $, etc.",
+            "Check both orders: $ (4,8) $ works, and $ (8,4) $ works.",
+            "The pair $ (6,6) $ is possible because we replace the paper.",
+            "Count the pairs: $ 5 $ ways."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Without Replacement",
+          "prompt": "How many ways can you draw two different numbers from 1 to 8 to get a sum of 12?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is the pair (6,6) not allowed this time? How does that change the total?",
+          "minLength": 2,
+          "steps": [
+            "List pairs with first number $ 4 $: $ (4,8) $, $ (8,4) $; first number $ 5 $: $ (5,7) $, $ (7,5) $.",
+            "Because we do not replace, the two numbers must be different, so $ (6,6) $ is impossible.",
+            "Count only the $ 4 $ distinct ordered pairs."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick Check",
+          "prompt": "If you want a sum of 14 with the same setup, how many ways exist with replacement? (Numbers from 1 to 8.)",
+          "steps": [
+            "List possibilities: $ (6,8) $, $ (7,7) $, $ (8,6) $.",
+            "That gives $ 3 $ ways."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "With vs. Without Replacement",
+        "body": "In [[imp:without replacement]], you cannot pick the same number twice. The pair (6,6) is only possible [[imp:with replacement]]. Always check the selection method before counting!"
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "When the drawn item is put back before the next draw, the selection is called ___.",
+          "blanks": [
+            {
+              "accept": [
+                "with replacement"
+              ]
+            }
+          ],
+          "hints": [
+            "The key phrase describes returning the item.",
+            "It starts with 'with'."
+          ],
+          "feedbackIfWrong": "That selection method is 'with replacement'."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "In Example 1 (with replacement), how many ways are there to get a sum of 12?",
+          "answers": [
+            "5"
+          ],
+          "hints": [
+            "Check the table of ordered pairs.",
+            "Include both (4,8) and (8,4)."
+          ],
+          "feedbackIfWrong": "With replacement, there are 5 ways."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "Does 'without replacement' allow the pair (7,7)? Answer yes or no.",
+          "answers": [
+            "no"
+          ],
+          "hints": [
+            "Without replacement means the numbers must be different.",
+            "Think: can you draw the same paper twice?"
+          ],
+          "feedbackIfWrong": "No, without replacement you cannot draw the same number twice."
+        }
+      ]
+    },
+    {
+      "id": "fundamental-counting-principle",
+      "title": "The Fundamental Counting Principle",
+      "teacherCues": [
+        "Explain: If you have 3 shirts and 4 pants, how many outfits? Multiply 3 × 4 = 12.",
+        "Show the extended principle with three events (lock combination)."
+      ],
+      "discoveryHook": {
+        "scenario": "You're customizing a new car: 5 colors, 3 engine choices, and 2 interior styles. Instead of listing every combination, the Fundamental Counting Principle lets you multiply and instantly know: $5 \\times 3 \\times 2 = 30$ possibilities!"
+      },
+      "concept": {
+        "explanation": [
+          "If an event $ E_1 $ can happen in $ m_1 $ ways, and after that $ E_2 $ can happen in $ m_2 $ ways, then the two events together can happen in $ m_1 \\times m_2 $ ways.",
+          "For three or more events, multiply the number of ways for each: $ m_1 \\times m_2 \\times m_3 $.",
+          "This is the [[kw:Fundamental Counting Principle]].",
+          "It saves you from listing all possibilities when the count is large."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Applying the Principle",
+            "headers": [
+              "Example",
+              "Events",
+              "Calculation",
+              "Total Ways"
+            ],
+            "rows": [
+              {
+                "0": "Two-letter pairs",
+                "1": "Pick first letter, pick second",
+                "2": "$ 26 \\times 26 $",
+                "3": "$ 676 $"
+              },
+              {
+                "0": "Lock combination (3 numbers, 1–30)",
+                "1": "Pick 1st, 2nd, 3rd number",
+                "2": "$ 30 \\times 30 \\times 30 $",
+                "3": "$ 27{,}000 $"
+              },
+              {
+                "0": "Phone number (not starting with 0 or 1)",
+                "1": "8 choices for 1st digit, 10 each for other 6",
+                "2": "$ 8 \\times 10^6 $",
+                "3": "$ 8{,}000{,}000 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Fundamental Counting Principle",
+          "formula": "$$ \\text{Total ways} = m_1 \\times m_2 \\times \\cdots \\times m_k $$",
+          "notes": [
+            "$ m_i $ is the number of ways the $ i $th event can occur after previous events.",
+            "Applies when events occur one after another."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Two-letter Pairs",
+          "prompt": "How many different pairs of letters from the English alphabet can be formed?",
+          "steps": [
+            "First event: choose first letter – $ 26 $ ways.",
+            "Second event: choose second letter – $ 26 $ ways.",
+            "Multiply: $ 26 \\times 26 = 676 $ possible pairs."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Catalog Number",
+          "prompt": "A catalog number has one letter followed by a five-digit number (00000–99999). How many different numbers are possible?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we multiply, not add, the number of letter choices and digit choices?",
+          "minLength": 2,
+          "steps": [
+            "Letter choice: $ 26 $ ways.",
+            "Five-digit number: each digit $ 10 $ choices, so $ 10^5 = 100000 $ ways.",
+            "Total: $ 26 \\times 100000 = 2{,}600{,}000 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple Outfits",
+          "prompt": "You have 4 shirts and 5 pairs of pants. How many different outfits can you make?",
+          "steps": [
+            "Shirt choice: $ 4 $ ways.",
+            "Pant choice: $ 5 $ ways.",
+            "Outfits: $ 4 \\times 5 = 20 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Multiply When Sequential",
+        "body": "The principle uses multiplication because each choice of the first event can be paired with every choice of the second. Adding $ m_1 + m_2 $ would count separate, unpaired options."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "The rule that says if event $ A $ has $ m $ ways and event $ B $ has $ n $ ways, then both events together can occur in $ m \\times n $ ways is called the ___.",
+          "blanks": [
+            {
+              "accept": [
+                "Fundamental Counting Principle"
+              ]
+            }
+          ],
+          "hints": [
+            "The name has three words.",
+            "It starts with 'Fundamental Counting'."
+          ],
+          "feedbackIfWrong": "It's the Fundamental Counting Principle."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "In a phone number within an area code, how many choices are there for the first digit? (Hint: cannot be 0 or 1.)",
+          "answers": [
+            "8"
+          ],
+          "hints": [
+            "Digits 2 through 9 are allowed.",
+            "Count from 2 to 9 inclusive: 2,3,4,5,6,7,8,9."
+          ],
+          "feedbackIfWrong": "8 choices (digits 2–9)."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "If a menu offers 3 appetizers and 7 main courses, how many ordered pairs of one appetizer and one main course are possible?",
+          "answers": [
+            "21"
+          ],
+          "hints": [
+            "Multiply the number of choices.",
+            "$ 3 \\times 7 $."
+          ],
+          "feedbackIfWrong": "$ 3 \\times 7 = 21 $ possible pairs."
+        }
+      ]
+    },
+    {
+      "id": "permutations-n",
+      "title": "Permutations of n Elements",
+      "teacherCues": [
+        "Write A, B, C on the board and ask students to list all orders. Then generalize to n elements.",
+        "Emphasize the factorial notation and connect to the idea of arranging all distinct objects."
+      ],
+      "discoveryHook": {
+        "scenario": "A musician has 6 different songs to play in a set. Deciding the order can change the whole vibe of the performance. Counting all possible setlists is really a permutation problem!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:permutation]] is an ordering of a set of distinct elements.",
+          "The number of ways to arrange all $ n $ elements is $ n! $ (n factorial).",
+          "$ n! = n \\cdot (n-1) \\cdot (n-2) \\cdots 2 \\cdot 1 $.",
+          "For 6 letters A–F, there are $ 6! = 720 $ different orders."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Positions and Choices for 6 Letters",
+            "headers": [
+              "Position",
+              "1st",
+              "2nd",
+              "3rd",
+              "4th",
+              "5th",
+              "6th"
+            ],
+            "rows": [
+              {
+                "0": "Choices",
+                "1": "$ 6 $",
+                "2": "$ 5 $",
+                "3": "$ 4 $",
+                "4": "$ 3 $",
+                "5": "$ 2 $",
+                "6": "$ 1 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Permutations of n Elements",
+          "formula": "$$ n! = n \\times (n-1) \\times (n-2) \\times \\cdots \\times 2 \\times 1 $$",
+          "notes": [
+            "$ 0! $ is defined as $ 1 $.",
+            "Used when order matters and all elements are distinct."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Arrange 6 Letters",
+          "prompt": "How many different ways can the letters A, B, C, D, E, F be arranged?",
+          "steps": [
+            "First position: any of the $ 6 $ letters.",
+            "Second position: any of the remaining $ 5 $ letters.",
+            "Continue: $ 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 6! = 720 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Arranging 4 Letters",
+          "prompt": "How many permutations of the letters W, X, Y, Z are possible?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is factorial the shortcut for counting all orders without having to draw a tree?",
+          "minLength": 2,
+          "steps": [
+            "Position 1: $ 4 $ choices.",
+            "Position 2: $ 3 $ choices.",
+            "Position 3: $ 2 $ choices, Position 4: $ 1 $ choice.",
+            "$ 4! = 4 \\times 3 \\times 2 \\times 1 = 24 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Book Arrangement",
+          "prompt": "You have 5 different books to place on a shelf. How many different orders are possible?",
+          "steps": [
+            "$ 5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Zero Factorial",
+        "body": "Don't be surprised: $ 0! = 1 $ by definition. This makes formulas for permutations and combinations work smoothly even when $ n = r $."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "short-answer",
+          "prompt": "Compute $ 4! $.",
+          "answers": [
+            "24"
+          ],
+          "hints": [
+            "Multiply 4, 3, 2, and 1.",
+            "$ 4 \\times 3 = 12 $, then $ 12 \\times 2 = 24 $, then $ 24 \\times 1 $."
+          ],
+          "feedbackIfWrong": "$ 4! = 4 \\times 3 \\times 2 \\times 1 = 24 $."
+        },
+        {
+          "id": "q3-2",
+          "type": "fill-blank",
+          "prompt": "An ordering of a set of distinct elements is called a ___.",
+          "blanks": [
+            {
+              "accept": [
+                "permutation"
+              ]
+            }
+          ],
+          "hints": [
+            "Starts with 'p'.",
+            "The formula uses factorial."
+          ],
+          "feedbackIfWrong": "It's called a permutation."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "If you have 3 colored balls (red, blue, green), how many distinct sequences can you form by arranging all three?",
+          "answers": [
+            "6"
+          ],
+          "hints": [
+            "Use $ 3! $.",
+            "$ 3 \\times 2 \\times 1 $."
+          ],
+          "feedbackIfWrong": "$ 3! = 6 $ sequences."
+        }
+      ]
+    },
+    {
+      "id": "permutations-npr-distinguishable",
+      "title": "Permutations of n Taken r and Distinguishable Permutations",
+      "teacherCues": [
+        "Show the horse race example: 8 horses, pick 1st, 2nd, 3rd. Lead to nPr formula.",
+        "Write BANANA and ask: How many orders? Then introduce distinguishable permutations formula."
+      ],
+      "discoveryHook": {
+        "scenario": "In a race with 8 horses, only the top 3 places matter for medals. You're not arranging all 8—just picking and ordering 3. And when some horses are identical twins (letters repeating), some arrangements look the same, so you need a clever correction."
+      },
+      "concept": {
+        "explanation": [
+          "Choosing an ordered subset of $ r $ from $ n $ distinct elements gives a [[kw:permutation of n taken r at a time]]: $ {}_nP_r = \\frac{n!}{(n-r)!} $.",
+          "When some elements are identical, the total $ n! $ overcounts arrangements that look the same. Use [[kw:distinguishable permutations]]: $ \\frac{n!}{n_1! n_2! \\cdots n_k!} $ where $ n_i $ are counts of identical items."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "nPr vs. Distinguishable Permutations",
+            "headers": [
+              "Type",
+              "Formula",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "List r ordered from n distinct",
+                "1": "$ \\dfrac{n!}{(n-r)!} $",
+                "2": "$ {}_8P_3 = 336 $ (horse 1st,2nd,3rd)"
+              },
+              {
+                "0": "Arrange all with repeats",
+                "1": "$ \\dfrac{n!}{n_1! n_2! \\dots n_k!} $",
+                "2": "BANANA: $ 6!/(3!2!1!) = 60 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Two Permutation Formulas",
+          "formula": "$$ {}_nP_r = \\frac{n!}{(n-r)!} \\qquad \\text{Distinguishable} = \\frac{n!}{n_1! n_2! \\cdots n_k!} $$",
+          "notes": [
+            "In nPr, order matters and no repetition of elements.",
+            "Distinguishable: use when items repeat; calculate as if all distinct then divide by factorials of duplicates."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Horse Race (nPr)",
+          "prompt": "Eight horses run; how many ways can they finish 1st, 2nd, and 3rd?",
+          "steps": [
+            "n = 8, r = 3.",
+            "$ {}_8P_3 = 8 \\times 7 \\times 6 = 336 $.",
+            "Or using formula: $ \\frac{8!}{5!} = 8 \\times 7 \\times 6 = 336 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – BANANA letters",
+          "prompt": "How many distinguishable arrangements of the word BANANA are possible?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we divide by 3! and 2!? What would happen if we didn't?",
+          "minLength": 2,
+          "steps": [
+            "Total letters: 6 (A,A,A,N,N,B).",
+            "If all were distinct: $ 6! = 720 $.",
+            "Divide by $ 3! $ for the 3 identical A's and $ 2! $ for the 2 identical N's: $ \\frac{720}{6 \\cdot 2} = 60 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Club Officers",
+          "prompt": "A club has 5 members. How many ways to choose a president and vice-president (order matters)?",
+          "steps": [
+            "$ {}_5P_2 = 5 \\times 4 = 20 $.",
+            "President: 5 choices, vice-president: 4 choices."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Order Matters!",
+        "body": "Permutations always consider order. Choosing a president and vice‑president is a permutation (President A, VP B is different from President B, VP A). We'll soon contrast this with combinations where order doesn't matter."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "short-answer",
+          "prompt": "Compute $ {}_8P_3 $.",
+          "answers": [
+            "336"
+          ],
+          "hints": [
+            "$ 8 \\times 7 \\times 6 $.",
+            "Start from 8 and multiply downward 3 terms."
+          ],
+          "feedbackIfWrong": "$ {}_8P_3 = 336 $."
+        },
+        {
+          "id": "q4-2",
+          "type": "fill-blank",
+          "prompt": "The word MISSISSIPPI has 1 M, 4 I's, 4 S's, and 2 P's. The number of distinguishable arrangements is $ \\frac{11!}{4!4!2!1} $, which equals ___.",
+          "blanks": [
+            {
+              "accept": [
+                "34650"
+              ]
+            }
+          ],
+          "hints": [
+            "The formula divides by factorials of repeated counts.",
+            "$ 11!/(4!4!2!) = 34650 $."
+          ],
+          "feedbackIfWrong": "The answer is 34650."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "How many permutations of 2 letters taken from the set {A, B, C} are possible? (Order matters.)",
+          "answers": [
+            "6"
+          ],
+          "hints": [
+            "Use $ {}_3P_2 $.",
+            "$ 3 \\times 2 = 6 $."
+          ],
+          "feedbackIfWrong": "$ {}_3P_2 = 6 $ (AB, AC, BA, BC, CA, CB)."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-combinations",
+      "title": "Blueprint Aid — Combinations (Order Doesn't Matter)",
+      "teacherCues": [
+        "Contrast with permutations: a committee of 3 people (order irrelevant) vs. a 1st, 2nd, 3rd place.",
+        "Show the nCr formula and explain the extra r! in the denominator to remove order."
+      ],
+      "discoveryHook": {
+        "scenario": "You're choosing 3 desserts from a menu of 10 to bring to a party. You don't care who brings what—just which three you have. That's a combination, and it cuts the number of possibilities dramatically."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:combination]] is a selection of $ r $ items from $ n $ distinct items where order does not matter.",
+          "Formula: $ {}_nC_r = \\frac{n!}{r!(n-r)!} $, also written $ \\binom{n}{r} $.",
+          "Understand: first count permutations ($ nPr $), then divide by $ r! $ because each unordered group appears in $ r! $ different orders.",
+          "Combinations are used when only the group matters, not the arrangement."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Compare Permutation vs. Combination",
+            "headers": [
+              "Choice",
+              "Permutation (order matters)",
+              "Combination (order doesn't)"
+            ],
+            "rows": [
+              {
+                "0": "3 desserts from 10",
+                "1": "$ {}_10P_3 = 720 $",
+                "2": "$ {}_10C_3 = 120 $"
+              },
+              {
+                "0": "3-member committee from 8",
+                "1": "$ {}_8P_3 = 336 $",
+                "2": "$ {}_8C_3 = 56 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Combination (nCr)",
+          "formula": "$$ {}_nC_r = \\binom{n}{r} = \\frac{n!}{r!(n-r)!} $$",
+          "notes": [
+            "$ 0! = 1 $, so $ \\binom{n}{0} = 1 $ and $ \\binom{n}{n} = 1 $.",
+            "Key check: order not important → combination."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Choosing a Committee",
+          "prompt": "How many ways can a 3‑person committee be selected from 8 people?",
+          "steps": [
+            "We only care who is on the committee, not the order they are chosen.",
+            "Use combination: $ {}_8C_3 = \\frac{8!}{3!5!} = \\frac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} = 56 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Pizza Toppings",
+          "prompt": "A pizza place offers 12 toppings. You want 4 different toppings. How many possible pizzas?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: If you instead cared about the order the toppings are placed, would it still be a combination? Why?",
+          "minLength": 2,
+          "steps": [
+            "Order of toppings doesn't matter for the final pizza.",
+            "$ {}_12C_4 = \\frac{12!}{4!8!} = \\frac{12 \\times 11 \\times 10 \\times 9}{4 \\times 3 \\times 2 \\times 1} = 495 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Handshakes",
+          "prompt": "There are 6 people at a meeting. If everyone shakes hands with everyone else exactly once, how many handshakes occur?",
+          "steps": [
+            "A handshake involves 2 people, order irrelevant.",
+            "$ {}_6C_2 = \\frac{6 \\times 5}{2 \\times 1} = 15 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "The Extra r!",
+        "body": "To go from permutation ($ {}_8P_3 = 336 $) to combination ($ {}_8C_3 = 56 $) you divide by $ 3! = 6 $ because each group of 3 people can be arranged in 6 ways. This removes the ordering that permutations count."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "Compute $ {}_10C_3 $.",
+          "answers": [
+            "120"
+          ],
+          "hints": [
+            "Use $ \\frac{10!}{3!7!} = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} $.",
+            "First multiply 10,9,8 = 720, then divide by 6."
+          ],
+          "feedbackIfWrong": "$ {}_10C_3 = 120 $."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "A selection of items where order does not matter is called a ___.",
+          "blanks": [
+            {
+              "accept": [
+                "combination"
+              ]
+            }
+          ],
+          "hints": [
+            "It starts with 'c'.",
+            "The formula has an extra r! in the denominator compared to permutation."
+          ],
+          "feedbackIfWrong": "That's a combination."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "From a group of 5 friends, you want to invite 2 to a movie. How many different pairs can you invite?",
+          "answers": [
+            "10"
+          ],
+          "hints": [
+            "Order doesn't matter; use $ {}_5C_2 $.",
+            "$ 5 \\times 4 / 2 = 10 $."
+          ],
+          "feedbackIfWrong": "$ {}_5C_2 = 10 $."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A bag contains 3 red, 4 blue, and 2 green marbles. How many ways can you choose 2 marbles of the same color?",
+        "type": "short-answer",
+        "answer": "10",
+        "hints": [
+          "Break into cases: both red, both blue, both green.",
+          "Add: $ {}_3C_2 + {}_4C_2 + {}_2C_2 $."
+        ],
+        "feedbackIfWrong": "Compute each case: red ${}_3C_2 = 3$, blue ${}_4C_2 = 6$, green ${}_2C_2 = 1$. Sum = 10."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

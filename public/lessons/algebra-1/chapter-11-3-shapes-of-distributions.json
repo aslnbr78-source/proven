@@ -1,0 +1,725 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-11-3-shapes-of-distributions",
+  "title": "Chapter 11.3 — Shapes of Distributions",
+  "blocks": [
+    {
+      "id": "describing-shape-from-histogram",
+      "title": "Describing the Shape of a Distribution",
+      "teacherCues": [
+        "Display a histogram of raffle ticket sales. Ask: 'Does this graph look roughly the same on both sides of the center?'",
+        "Draw a vertical line through the middle. Ask: 'Is the left side a mirror image of the right? If so, it's symmetric.'"
+      ],
+      "discoveryHook": {
+        "scenario": "A histogram is like a snapshot of a data set. Its shape tells you whether the data are balanced around the middle, stretched to one side, or piled up at one end. Recognizing these shapes helps you choose the right statistics to summarize the data."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:histogram]] is a bar graph that shows the frequency of data values in intervals. Its shape reveals the distribution of the data.",
+          "A distribution is [[kw:symmetric]] if the right side is approximately a mirror image of the left side. A symmetric histogram often has a single peak in the middle.",
+          "A distribution is [[kw:skewed left]] if the tail extends to the left and most data are on the right. It is [[kw:skewed right]] if the tail extends to the right and most data are on the left.",
+          "If all bars are about the same height, the distribution is uniform (also symmetric).",
+          "The shape tells you which measures best summarize the data: mean and standard deviation for symmetric; median and five‑number summary for skewed."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Three Common Distribution Shapes",
+            "headers": [
+              "Shape",
+              "What It Looks Like",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "Symmetric",
+                "1": "Mirror‑image left and right",
+                "2": "Heights of adult males"
+              },
+              {
+                "0": "Skewed left",
+                "1": "Tail on the left; most data on the right",
+                "2": "Test scores where most students score high"
+              },
+              {
+                "0": "Skewed right",
+                "1": "Tail on the right; most data on the left",
+                "2": "Household income (few very high incomes)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Identifying Shape from a Histogram",
+          "formula": "$$ \\text{Look at the tail. If the tail is on the left} \\rightarrow \\text{skewed left.} $$ $$ \\text{If the tail is on the right} \\rightarrow \\text{skewed right.} $$ $$ \\text{If neither side has a longer tail} \\rightarrow \\text{symmetric.} $$",
+          "notes": [
+            "The 'tail' is the side that stretches out further.",
+            "Symmetric distributions can be bell‑shaped, uniform, or U‑shaped."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Raffle Ticket Sales",
+          "prompt": "Use the frequency table to display the data in a histogram and describe the shape. Tickets: 1‑8(5), 9‑16(9), 17‑24(16), 25‑32(25), 33‑40(20), 41‑48(8), 49‑56(7).",
+          "steps": [
+            "Draw axes: x‑axis = ticket intervals, y‑axis = frequency.",
+            "Draw bars: heights 5, 9, 16, 25, 20, 8, 7.",
+            "The bars rise to a peak in the middle (25‑32) and fall on both sides.",
+            "The right side mirrors the left side. The distribution is symmetric."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Is It Skewed?",
+          "prompt": "A histogram of test scores has most scores between 80‑100 and a long tail stretching down to the 40s. Describe the shape.",
+          "peerPrompt": "Explain to a partner: Where is the tail? What does that tell you about the shape?",
+          "minLength": 2,
+          "steps": [
+            "Most data are on the right (high scores).",
+            "The tail extends to the left (low scores).",
+            "This is skewed left."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Your Turn",
+          "prompt": "Aluminum can collection: 1‑10(7), 11‑20(8), 21‑30(10), 31‑40(16), 41‑50(34), 51‑60(15). Describe the shape.",
+          "steps": [
+            "Bars rise to a peak at 41‑50 (frequency 34), then drop to 15 at 51‑60.",
+            "The right side drops off more steeply? Actually left side is lower, peak is right‑of‑center. There's a tail on the left? No, the frequencies increase from left to peak and then drop. That's skewed left? Actually if tail is on left, it's skewed left. Here the left side has lower frequencies and stretches out (1‑10 to 41‑50), so the tail is on the left. Skewed left."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Tail Tells the Skew",
+        "body": "Skewed left = tail on the left (think: the left side is stretched out). Skewed right = tail on the right. Don't be fooled by where the peak is — look at which side has the longer, thinner end."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "If the tail of a histogram extends to the right and most of the data are on the left, the distribution is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "skewed right",
+                "Skewed right"
+              ]
+            }
+          ],
+          "hints": [
+            "The tail is on the right.",
+            "Think of the direction the tail points."
+          ],
+          "feedbackIfWrong": "The distribution is skewed right."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "A histogram has bars of roughly equal height across all intervals. This shape is called ___.",
+          "answers": [
+            "uniform",
+            "Uniform"
+          ],
+          "hints": [
+            "It's flat.",
+            "No single peak stands out."
+          ],
+          "feedbackIfWrong": "A flat histogram is a uniform distribution."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "For a symmetric distribution, the mean and median are approximately ___.",
+          "answers": [
+            "equal",
+            "the same",
+            "close"
+          ],
+          "hints": [
+            "They are both near the center.",
+            "Symmetric means balanced."
+          ],
+          "feedbackIfWrong": "In a symmetric distribution, the mean and median are about equal."
+        }
+      ]
+    },
+    {
+      "id": "choosing-measures-by-shape",
+      "title": "Choosing Measures Based on Shape",
+      "teacherCues": [
+        "Display a histogram of motorist speeds that is skewed left. Ask: 'Should we use the mean or median to describe the center? Why?'",
+        "Then show a symmetric histogram of heights. 'Now which measures are appropriate?'"
+      ],
+      "discoveryHook": {
+        "scenario": "The shape of a distribution tells you which statistics to trust. If the data are symmetric, the mean and standard deviation give the best summary. If the data are skewed, the median and five‑number summary are more reliable because they resist the pull of extreme values."
+      },
+      "concept": {
+        "explanation": [
+          "The shape of a distribution guides the choice of measures.",
+          "For a [[kw:symmetric]] distribution: use the **mean** for center and the **standard deviation** for spread. The mean and median are close together.",
+          "For a [[kw:skewed]] distribution: use the **median** for center and the **five‑number summary** (min, Q1, median, Q3, max) for spread. The median is not pulled by the tail.",
+          "Example: Motorist speeds skewed left → median best. Heights symmetric → mean best."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Choosing Measures by Shape",
+            "headers": [
+              "Shape",
+              "Best Center",
+              "Best Spread"
+            ],
+            "rows": [
+              {
+                "0": "Symmetric",
+                "1": "Mean",
+                "2": "Standard deviation"
+              },
+              {
+                "0": "Skewed",
+                "1": "Median",
+                "2": "Five‑number summary"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Shape Guides Statistics",
+          "formula": "$$ \\text{Symmetric} \\rightarrow \\bar{x} \\text{ and } \\sigma \\qquad \\text{Skewed} \\rightarrow \\text{Median and five‑number summary} $$",
+          "notes": [
+            "The mean is pulled toward the tail in a skewed distribution.",
+            "The median remains near the center regardless of skew."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Motorist Speeds",
+          "prompt": "Speeds of 30 motorists are mostly between 51‑60 mph, with a tail stretching to 31‑35 mph. Which measures best represent the data?",
+          "steps": [
+            "The histogram is skewed left (tail on the left).",
+            "Use the median for center and the five‑number summary for spread.",
+            "The mean would be pulled lower than the median due to the few slow drivers."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Symmetric Data",
+          "prompt": "Heights of adult males are approximately symmetric. Which measures should be used?",
+          "peerPrompt": "Explain to a partner: Why is standard deviation preferred over IQR for symmetric data?",
+          "minLength": 2,
+          "steps": [
+            "Use the mean for center and standard deviation for spread.",
+            "Standard deviation uses all values and works well when data are symmetric.",
+            "The five‑number summary would also work, but mean and SD give a more complete picture."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Practice",
+          "prompt": "A histogram of donations is skewed right. Which measures should be used?",
+          "steps": [
+            "Skewed right → median for center, five‑number summary for spread.",
+            "The few large donations would inflate the mean."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Mix Measures and Shapes!",
+        "body": "Using the mean with skewed data gives a misleading center. Always check the histogram shape before choosing your statistics."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "For a symmetric distribution, the best measure of center is the ___.",
+          "blanks": [
+            {
+              "accept": [
+                "mean",
+                "Mean"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the arithmetic average.",
+            "It works well when data are balanced."
+          ],
+          "feedbackIfWrong": "Use the mean for symmetric data."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "For a skewed distribution, which measure of center is preferred? (mean or median)",
+          "answers": [
+            "median",
+            "Median"
+          ],
+          "hints": [
+            "It's resistant to outliers.",
+            "It's the middle number."
+          ],
+          "feedbackIfWrong": "Use the median for skewed data."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "What measure of spread is best for skewed data? (Type 'standard deviation' or 'five-number summary')",
+          "answers": [
+            "five-number summary",
+            "five number summary"
+          ],
+          "hints": [
+            "It includes min, Q1, median, Q3, max.",
+            "It's not affected by extreme values."
+          ],
+          "feedbackIfWrong": "Use the five‑number summary for skewed data."
+        }
+      ]
+    },
+    {
+      "id": "comparing-distributions",
+      "title": "Comparing Data Distributions",
+      "teacherCues": [
+        "Display a double histogram of emoticon messages for male and female students. Ask: 'Which distribution is symmetric? Which is skewed?'",
+        "Then ask: 'Based on shape, which measures should we use for each group?'"
+      ],
+      "discoveryHook": {
+        "scenario": "Comparing two groups side‑by‑side in a double histogram reveals not just who uses more emoticons, but also how consistent the behavior is. Shape guides the choice of measures, and those measures tell the full story."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:double histogram]] places two histograms back‑to‑back or side‑by‑side for easy comparison.",
+          "Step 1: Determine the shape of each distribution separately.",
+          "Step 2: Choose appropriate measures for each based on shape.",
+          "Step 3: Compare centers and spreads. The group with the higher center has a higher typical value. The group with greater spread has more variability.",
+          "Example: Female emoticon use is symmetric → mean and SD. Male is skewed right → median and five‑number summary. Females have a higher center and more variability."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Comparing Emoticon Messages",
+            "headers": [
+              "Feature",
+              "Female Students",
+              "Male Students"
+            ],
+            "rows": [
+              {
+                "0": "Shape",
+                "1": "Symmetric",
+                "2": "Skewed right"
+              },
+              {
+                "0": "Center",
+                "1": "Mean ~35 messages",
+                "2": "Median ~15 messages"
+              },
+              {
+                "0": "Spread",
+                "1": "SD ~12 messages",
+                "2": "IQR ~15 messages"
+              },
+              {
+                "0": "Interpretation",
+                "1": "Higher typical use, more variable",
+                "2": "Lower typical use, less variable"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Comparing Two Distributions",
+          "formula": "$$ \\text{1. Identify shapes} \\quad \\text{2. Choose measures} \\quad \\text{3. Compare centers and spreads} $$",
+          "notes": [
+            "Higher center = larger typical value.",
+            "Larger spread = more variability within that group."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Emoticons",
+          "prompt": "Female emoticon use is symmetric with mean 35, SD 12. Male is skewed right with median 15, IQR 15. Compare.",
+          "steps": [
+            "Females: symmetric → mean 35 and SD 12.",
+            "Males: skewed right → median 15 and five‑number summary.",
+            "Females send more emoticons on average and vary more. Males send fewer and are more consistent."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Football vs. Company Experience",
+          "prompt": "A double histogram shows years of experience for pro football players (skewed right) and company employees (symmetric). Compare.",
+          "peerPrompt": "Explain to a partner: Why do pro football players have a skewed distribution while employees are symmetric? What does that say about each group?",
+          "minLength": 2,
+          "steps": [
+            "Football: skewed right → most players have few years of experience, a few have many. Use median.",
+            "Employees: symmetric → experience is evenly spread. Use mean.",
+            "The median for football is likely lower; employees have a higher typical experience."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Practice",
+          "prompt": "Two restaurants: Restaurant A's entrée prices are symmetric; Restaurant B's are skewed right. Compare.",
+          "steps": [
+            "A: use mean and SD. B: use median and five‑number summary.",
+            "A's prices are balanced around the mean; B has mostly lower prices with a few expensive dishes pulling the tail."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Same Measures, Different Groups",
+        "body": "You can only directly compare means if both distributions are symmetric. If one is skewed, compare medians. Always note which measure you're using for each group."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "To compare two distributions, first determine the ___ of each distribution.",
+          "blanks": [
+            {
+              "accept": [
+                "shape",
+                "Shape"
+              ]
+            }
+          ],
+          "hints": [
+            "Symmetric, skewed left, or skewed right.",
+            "It determines which measures to use."
+          ],
+          "feedbackIfWrong": "Determine the shape of each distribution first."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "If Group A has a larger mean than Group B, and both distributions are symmetric, which group has a higher typical value? (A or B)",
+          "answers": [
+            "A",
+            "a"
+          ],
+          "hints": [
+            "The mean is the appropriate center for symmetric data.",
+            "Larger mean = higher center."
+          ],
+          "feedbackIfWrong": "Group A has the higher typical value."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "If one group has a much larger standard deviation than another, that group has more ___.",
+          "answers": [
+            "variability",
+            "spread",
+            "variation"
+          ],
+          "hints": [
+            "Standard deviation measures spread.",
+            "Larger SD means the data are more spread out."
+          ],
+          "feedbackIfWrong": "More variability (or spread)."
+        }
+      ]
+    },
+    {
+      "id": "bell-shaped-rule",
+      "title": "Bell‑Shaped Distributions and the Empirical Rule",
+      "teacherCues": [
+        "Draw a bell‑shaped curve on the board. Mark the mean and intervals of 1, 2, and 3 standard deviations. Ask: 'What percent of data do you think falls within 1 SD of the mean?'",
+        "Explain: About 68% within 1 SD, 95% within 2 SDs, and 99.7% within 3 SDs. This is the Empirical Rule for bell‑shaped data."
+      ],
+      "discoveryHook": {
+        "scenario": "Many natural data sets — heights, IQ scores, chest sizes — follow a bell‑shaped pattern. The Empirical Rule tells you exactly what percentage of data lies within 1, 2, or 3 standard deviations of the mean. It's a powerful shortcut for making predictions."
+      },
+      "concept": {
+        "explanation": [
+          "For data that are approximately bell‑shaped and symmetric, the [[kw:Empirical Rule]] (or 68‑95‑99.7 rule) applies.",
+          "About 68% of the data lie within 1 standard deviation of the mean.",
+          "About 95% of the data lie within 2 standard deviations of the mean.",
+          "Values more than 2 standard deviations from the mean are considered unusual.",
+          "Example: Male heights: mean 70 in, SD 3 in. 68% of men are between 67 and 73 inches tall."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Empirical Rule for Bell‑Shaped Data",
+            "headers": [
+              "Interval",
+              "Percent of Data"
+            ],
+            "rows": [
+              {
+                "0": "$\\bar{x} \\pm 1\\sigma$",
+                "1": "About 68%"
+              },
+              {
+                "0": "$\\bar{x} \\pm 2\\sigma$",
+                "1": "About 95%"
+              },
+              {
+                "0": "$\\bar{x} \\pm 3\\sigma$",
+                "1": "About 99.7%"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Empirical Rule (68‑95‑99.7)",
+          "formula": "$$ \\bar{x} \\pm 1\\sigma \\rightarrow 68\\% $$ $$ \\bar{x} \\pm 2\\sigma \\rightarrow 95\\% $$ $$ \\bar{x} \\pm 3\\sigma \\rightarrow 99.7\\% $$",
+          "notes": [
+            "Only applies to bell‑shaped, symmetric distributions.",
+            "Because of symmetry, 34% lie within 1 SD on each side of the mean."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Shoe Ownership",
+          "prompt": "Women's shoe ownership: mean 14 pairs, SD 4 pairs, bell‑shaped. How many of 40 women own between 10 and 18 pairs?",
+          "steps": [
+            "10 to 18 is mean ± 1 SD (14 ± 4).",
+            "By the Empirical Rule, about 68% of data lie in this range.",
+            "68% of 40 = 0.68 × 40 ≈ 27 women."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Chest Sizes",
+          "prompt": "Scottish militiamen chest sizes: mean 40 in, SD 2 in, bell‑shaped. What percent have chest sizes between 36 and 44 inches?",
+          "peerPrompt": "Explain to a partner: How many standard deviations is 36 from the mean? 44? Which rule applies?",
+          "minLength": 2,
+          "steps": [
+            "36 = 40 − 2(2) → 2 SD below mean. 44 = 40 + 2(2) → 2 SD above mean.",
+            "The Empirical Rule says about 95% of data lie within 2 SDs.",
+            "So about 95% of militiamen have chest sizes between 36 and 44 inches."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Practice",
+          "prompt": "IQ scores are bell‑shaped with mean 100, SD 15. What percent of people have IQs between 85 and 115?",
+          "steps": [
+            "85 = 100 − 15 (1 SD below); 115 = 100 + 15 (1 SD above).",
+            "About 68% of people have IQs in this range."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Empirical Rule Only for Bell‑Shaped Data",
+        "body": "Do not apply the 68‑95‑99.7 rule to skewed distributions. It only works when the histogram is roughly bell‑shaped and symmetric."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "For bell‑shaped data, about ___% of the data lie within 1 standard deviation of the mean.",
+          "blanks": [
+            {
+              "accept": [
+                "68",
+                "sixty eight"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the first number in the 68‑95‑99.7 rule.",
+            "A little more than two‑thirds."
+          ],
+          "feedbackIfWrong": "About 68% lie within 1 SD."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "Male heights: mean 70 in, SD 3 in, bell‑shaped. Between what two heights do about 95% of men fall? (Type like 64 and 76)",
+          "answer": "64 and 76",
+          "hints": [
+            "95% corresponds to 2 SD.",
+            "70 ± 2(3)."
+          ],
+          "feedbackIfWrong": "70 − 6 = 64 and 70 + 6 = 76 inches."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "If a data value is more than 2 standard deviations from the mean, it is considered ___.",
+          "answers": [
+            "unusual",
+            "Unusual"
+          ],
+          "hints": [
+            "It's outside the 95% range.",
+            "Not typical."
+          ],
+          "feedbackIfWrong": "It is considered unusual."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-shape-analysis",
+      "title": "Blueprint Aid: Analyze Shape, Choose Measures, Compare",
+      "teacherCues": [
+        "Summarize the blueprint: 1) Graph the data (histogram or box plot). 2) Identify the shape. 3) Choose appropriate measures. 4) If comparing, repeat for the second group and compare centers and spreads.",
+        "Walk through the motorist speeds: graph → skewed left → median & five‑number summary."
+      ],
+      "discoveryHook": {
+        "scenario": "The blueprint for shape analysis is simple: Graph, Identify, Choose, Compare. A quick histogram tells you the shape, which tells you which statistics to trust. Use it to make sense of any data set — from test scores to shoe collections."
+      },
+      "concept": {
+        "explanation": [
+          "1. Understand: Create a histogram or examine the given display. Note the overall pattern.",
+          "2. Solve – Identify Shape: Is the histogram symmetric, skewed left, or skewed right?",
+          "3. Solve – Choose Measures: If symmetric, use mean and standard deviation. If skewed, use median and five‑number summary.",
+          "4. Conclude – Compare: For two groups, compare centers (higher center = larger typical value) and spreads (larger spread = more variability).",
+          "For bell‑shaped data, apply the Empirical Rule to estimate percentages within 1, 2, or 3 standard deviations of the mean."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint Summary for Motorist Speeds",
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "30 motorist speeds; create histogram",
+                "2": "Skewed left shape"
+              },
+              {
+                "0": "Identify Shape",
+                "1": "Tail on the left",
+                "2": "Skewed left"
+              },
+              {
+                "0": "Choose Measures",
+                "1": "Median and five‑number summary",
+                "2": "Median ≈ 52 mph"
+              },
+              {
+                "0": "Conclude",
+                "1": "Interpret",
+                "2": "Most motorists were speeding"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Shape Analysis Blueprint",
+          "formula": "$$ \\text{Graph} \\rightarrow \\text{Identify Shape} \\rightarrow \\text{Choose Measures} \\rightarrow \\text{Conclude} $$",
+          "notes": [
+            "Symmetric → mean & SD; Skewed → median & five‑number summary.",
+            "Bell‑shaped → apply Empirical Rule for predictions."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Full Blueprint",
+          "prompt": "Use the blueprint to analyze the motorist speeds.",
+          "steps": [
+            "Understand: 30 speeds. Histogram shows tail on left.",
+            "Identify: Skewed left.",
+            "Choose: Median and five‑number summary.",
+            "Conclude: Median speed is above the 45 mph limit; most were speeding."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Compare Shoe Ownership",
+          "prompt": "Men's shoe data is skewed right; women's is symmetric. Use the blueprint to compare.",
+          "peerPrompt": "Explain to a partner: Why can you use the mean for women but the median for men? How would you compare typical shoe ownership?",
+          "minLength": 2,
+          "steps": [
+            "Men: skewed right → median 7 pairs, five‑number summary.",
+            "Women: symmetric → mean 14 pairs, SD 4.",
+            "Women own about twice as many shoes typically, with more variability."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – IQ Scores",
+          "prompt": "IQ scores are bell‑shaped with mean 100, SD 15. Use the blueprint to estimate the percent of people with IQs between 85 and 115.",
+          "steps": [
+            "Identify: Bell‑shaped, symmetric.",
+            "Choose: Mean = 100, SD = 15.",
+            "Apply Empirical Rule: 85 to 115 is ±1 SD → about 68%."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check the Shape First!",
+        "body": "Never apply the Empirical Rule or choose the mean without first checking the shape of the distribution. A quick histogram can save you from misleading conclusions."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "fill-blank",
+          "prompt": "The first step in analyzing a data distribution is to create a ___ to see its shape.",
+          "blanks": [
+            {
+              "accept": [
+                "histogram",
+                "Histogram"
+              ]
+            }
+          ],
+          "hints": [
+            "It's a bar graph of frequencies.",
+            "It shows the shape of the data."
+          ],
+          "feedbackIfWrong": "Create a histogram."
+        },
+        {
+          "id": "q5-2",
+          "type": "short-answer",
+          "prompt": "If a distribution is skewed, should you use the mean or median?",
+          "answers": [
+            "median",
+            "Median"
+          ],
+          "hints": [
+            "It resists the pull of the tail.",
+            "It's the middle value."
+          ],
+          "feedbackIfWrong": "Use the median for skewed data."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "For bell‑shaped data, what percent lies within 2 standard deviations of the mean?",
+          "answers": [
+            "95%",
+            "95",
+            "ninety five"
+          ],
+          "hints": [
+            "It's the second number in the rule.",
+            "68‑95‑99.7."
+          ],
+          "feedbackIfWrong": "About 95% lie within 2 SDs."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

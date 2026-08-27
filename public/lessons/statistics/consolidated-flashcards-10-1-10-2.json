@@ -1,0 +1,131 @@
+{
+  "cards": [
+    {
+      "back": "A probability experiment with a fixed number of independent trials, each having more than two possible outcomes with fixed probabilities. The chi‑square goodness‑of‑fit test applies to such experiments.",
+      "front": "What is a [[kw:multinomial experiment]]?"
+    },
+    {
+      "back": "A chi‑square test that checks whether a sample frequency distribution fits a claimed or expected distribution. H₀: the distribution fits; Hₐ: it does not.",
+      "front": "Define the [[kw:goodness‑of‑fit test]]."
+    },
+    {
+      "back": "$$E_i = n \\times p_i$$ where $n$ is the total sample size and $p_i$ is the claimed proportion for category $i$.",
+      "front": "How do you compute [[imp:expected frequencies]] in a goodness‑of‑fit test?"
+    },
+    {
+      "front": "What is the test statistic for the chi‑square goodness‑of‑fit test?",
+      "back": "$$\\chi^2 = \\sum \\frac{(O - E)^2}{E}$$ summed over all categories. $O$ = observed frequency, $E$ = expected frequency."
+    },
+    {
+      "front": "How many degrees of freedom does the goodness‑of‑fit test have?",
+      "back": "$$df = k - 1$$ where $k$ is the number of categories."
+    },
+    {
+      "front": "What condition must expected frequencies satisfy?",
+      "back": "Each expected frequency must be at least 5. If any $E < 5$, combine categories until all expected counts are $\\ge 5$."
+    },
+    {
+      "front": "Is the goodness‑of‑fit test left‑tailed, right‑tailed, or two‑tailed?",
+      "back": "Always [[imp:right‑tailed]]. Large $\\chi^2$ values indicate a poor fit; small values mean close agreement, so we reject only for large $\\chi^2$."
+    },
+    {
+      "back": "$$E = \\frac{n}{k}$$ where $n$ is the total sample size and $k$ is the number of categories. All expected frequencies are equal.",
+      "front": "When testing a [[kw:uniform distribution]], what is the expected frequency for each category?"
+    },
+    {
+      "back": "Fail to reject $H_0$ because $4.5 < 11.071$. The observed distribution is consistent with the expected one.",
+      "front": "In a goodness‑of‑fit test with 6 categories and $\\alpha = 0.05$, the critical value is 11.071. If $\\chi^2 = 4.5$, what is the decision?"
+    },
+    {
+      "front": "What is a [[kw:contingency table]]?",
+      "back": "A table that displays the observed frequencies for two categorical variables. Rows represent one variable, columns the other. The intersection of a row and column is called a cell."
+    },
+    {
+      "front": "Define [[kw:marginal frequencies]] and [[kw:joint frequencies]].",
+      "back": "Marginal frequencies are the row and column totals. Joint frequencies are the observed counts inside the cells."
+    },
+    {
+      "front": "How is the expected frequency for a cell in a contingency table calculated?",
+      "back": "$$E = \\frac{(\\text{row total}) \\times (\\text{column total})}{n}$$ where $n$ is the grand total. This assumes the two variables are independent."
+    },
+    {
+      "front": "What are the hypotheses for the chi‑square [[kw:independence test]]?",
+      "back": "$H_0$: The two variables are independent. $H_a$: The two variables are dependent (associated). The test is always right‑tailed."
+    },
+    {
+      "front": "What is the degrees of freedom for the chi‑square independence test?",
+      "back": "$$df = (r - 1)(c - 1)$$ where $r$ is the number of rows and $c$ is the number of columns."
+    },
+    {
+      "front": "What condition must expected frequencies satisfy in the independence test?",
+      "back": "Each expected cell frequency must be at least 5. If any $E < 5$, combine rows or columns if possible."
+    },
+    {
+      "front": "A 2×3 contingency table has how many degrees of freedom?",
+      "back": "$$df = (2-1)(3-1) = 1 \\times 2 = 2$$"
+    },
+    {
+      "front": "In the ice cream and gender example, $\\chi^2 \\approx 32.63$, $df=4$, critical value 13.277 at $\\alpha=0.01$. Decision?",
+      "back": "Reject $H_0$ because $32.63 > 13.277$. There is evidence that ice cream preference and gender are dependent (associated)."
+    },
+    {
+      "front": "What does a small chi‑square value (close to 0) indicate in an independence test?",
+      "back": "The observed frequencies are close to the expected frequencies, providing no evidence against independence. You would fail to reject $H_0$."
+    },
+    {
+      "back": "Goodness‑of‑fit (10.1) compares one sample distribution to a claimed distribution. Independence (10.2) tests whether two categorical variables from one sample are associated.",
+      "front": "What is the difference between the goodness‑of‑fit test and the independence test?"
+    },
+    {
+      "front": "True or False: A significant chi‑square independence test proves that one variable causes the other.",
+      "back": "False. It shows an association, not causation. Additional studies are needed to establish cause and effect."
+    },
+    {
+      "back": "Compute expected frequencies, then use `=CHISQ.TEST(observed_range, expected_range)`. If p‑value < $\\alpha$, reject $H_0$.",
+      "front": "How do you use Google Sheets to find the p‑value for a goodness‑of‑fit test?"
+    },
+    {
+      "back": "For each cell, use a formula like `= (row_total * column_total) / grand_total`. Use absolute references (e.g., `$E$2`) to copy the formula across the table.",
+      "front": "How do you compute expected frequencies for an independence test in Google Sheets?"
+    },
+    {
+      "back": "`=CHISQ.TEST(observed_range, expected_range)`. You must first compute the expected frequencies in a separate range.",
+      "front": "What Google Sheets function returns the p‑value for an independence test?"
+    },
+    {
+      "front": "What is the critical value for a goodness‑of‑fit test with 5 categories at $\\alpha = 0.01$?",
+      "back": "$$df = 5-1 = 4$$ From Table 6, the critical value is $13.277$."
+    },
+    {
+      "back": "$$E = \\frac{120}{6} = 20$$ for each face, assuming a uniform distribution under $H_0$.",
+      "front": "If a die is rolled 120 times and you test if it's fair, what is the expected frequency for each face?"
+    },
+    {
+      "front": "In a goodness‑of‑fit test, the sum of all expected frequencies must equal ___.",
+      "back": "The total sample size $n$, which is also the sum of all observed frequencies."
+    },
+    {
+      "front": "For a 3×4 contingency table, how many degrees of freedom does the independence test have?",
+      "back": "$$df = (3-1)(4-1) = 2 \\times 3 = 6$$"
+    },
+    {
+      "front": "If the p‑value for a chi‑square independence test is 0.001 and $\\alpha = 0.05$, what is the conclusion?",
+      "back": "Reject $H_0$. There is strong evidence that the two variables are dependent (associated)."
+    },
+    {
+      "back": "Combine that category with another meaningful category so that all expected frequencies become $\\ge 5$.",
+      "front": "What must you do if an expected frequency in a goodness‑of‑fit test is less than 5?"
+    },
+    {
+      "back": "Independent. The expected counts reflect what we would see if there were no association between the row and column variables.",
+      "front": "In an independence test, the expected frequencies are calculated assuming the variables are ___."
+    }
+  ],
+  "id": "consolidated-flashcards-10-1-10-2",
+  "title": "Sections 10.1 & 10.2: Review",
+  "type": "flashcard",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

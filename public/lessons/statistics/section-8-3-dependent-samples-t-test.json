@@ -1,0 +1,791 @@
+{
+  "title": "Testing the Difference Between Means (Dependent Samples)",
+  "schemaVersion": 2,
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.A.1",
+    "HSS.IC.B.4"
+  ],
+  "type": "interactive-lesson",
+  "id": "section-8-3-dependent-samples-t-test",
+  "blocks": [
+    {
+      "concept": {
+        "explanation": [
+          "Two samples are [[kw:dependent]] (or [[kw:paired]]) if each observation in one sample can be matched with a unique observation in the other sample. Common examples are before‑and‑after studies, twin studies, and matched‑pairs designs.",
+          "For each pair, we compute the difference $d = x_1 - x_2$, where $x_1$ and $x_2$ are the two measurements. The order of subtraction depends on the question; a consistent order is crucial.",
+          "The sample mean of the differences, $\\bar{d}$, is the average of all $d$ values: $$\\bar{d} = \\frac{\\Sigma d}{n}$$ where $n$ is the number of pairs.",
+          "Just like in a one‑sample problem, we can test a hypothesis about the population mean difference, $\\mu_d$, using the $t$‑distribution if the differences are approximately normal."
+        ],
+        "visuals": [
+          {
+            "caption": "Negative d values indicate a decrease (weight loss) after the program.",
+            "rows": [
+              {
+                "0": "1",
+                "1": "185",
+                "2": "168",
+                "3": "$-17$"
+              },
+              {
+                "0": "2",
+                "1": "194",
+                "2": "177",
+                "3": "$-17$"
+              },
+              {
+                "0": "3",
+                "1": "213",
+                "2": "196",
+                "3": "$-17$"
+              },
+              {
+                "0": "4",
+                "1": "198",
+                "2": "180",
+                "3": "$-18$"
+              }
+            ],
+            "headers": [
+              "Person",
+              "Before (x₁)",
+              "After (x₂)",
+              "d = x₁ − x₂"
+            ],
+            "title": "Computing Differences (Before – After)",
+            "variant": "colorful",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "title": "Mean of the Differences",
+          "notes": [
+            "$n$ is the number of pairs.",
+            "Use $d = x_1 - x_2$ consistently.",
+            "The standard deviation $s_d$ is computed using the differences, not the original data."
+          ],
+          "formula": "$$ \\bar{d} = \\frac{\\Sigma d}{n} $$"
+        }
+      },
+      "id": "paired-samples-and-differences",
+      "teacherCues": [
+        "Draw two columns on the board: 'Before' and 'After'. Ask: How are these data different from two independent groups?",
+        "Write d = x1 − x2. Explain that each pair gives one difference, and we analyze the differences, not the original measurements."
+      ],
+      "examples": [
+        {
+          "title": "Example A – Computing $\\bar{d}$",
+          "prompt": "Four dieters weighed 185, 194, 213, 198 lb before a program and 168, 177, 196, 180 lb after. Using $d =$ before $-$ after, find the mean difference $\\bar{d}$.",
+          "steps": [
+            "Calculate each $d$: $185-168 = 17$, $194-177 = 17$, $213-196 = 17$, $198-180 = 18$.",
+            "Sum the $d$'s: $17+17+17+18 = 69$.",
+            "Divide by $n=4$: $\\bar{d} = 69/4 = 17.25$.",
+            "Interpretation: On average, the dieters lost 17.25 lb."
+          ],
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "A two‑sample t‑test assumes the two groups are independent. Here the same people are measured twice, so the observations are linked.",
+            "Paired data allow us to eliminate person‑to‑person variability: we focus on the change within each subject.",
+            "This usually gives a smaller standard error and more power to detect an effect."
+          ],
+          "prompt": "Why can't we just use a two‑sample t‑test for independent samples on the before and after measurements?",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does pairing data reduce variability and make it easier to detect a real change?",
+          "title": "Example B – Why Not a Two‑Sample t‑Test?",
+          "minLength": 8
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Order of Subtraction Matters",
+          "prompt": "Suppose we measure reaction time before and after drinking coffee. If we want to see if coffee slows reaction (i.e., reaction time increases), should we use $d =$ before $-$ after or after $-$ before? Explain.",
+          "steps": [
+            "If coffee slows reaction, 'after' times will be larger than 'before'.",
+            "We want the alternative to state that the mean difference is negative (if before − after) or positive (if after − before).",
+            "Using $d =$ before $-$ after, a slowing effect would produce negative $d$'s. So a left‑tailed test with $H_a: \\mu_d < 0$ would be appropriate."
+          ]
+        }
+      ],
+      "title": "Paired Samples and the Difference d",
+      "discoveryHook": {
+        "scenario": "A nutritionist measures the weight of 10 people before and after a diet. Each person appears in both columns—their weights are linked. To see if the diet works, we can't just compare the two averages directly; we must look at the individual changes, or differences. That's the key idea behind paired samples."
+      },
+      "questions": [
+        {
+          "answer": "differences",
+          "type": "short-answer",
+          "id": "q8-3-1",
+          "prompt": "In a paired t‑test, we analyze the ___ between the paired observations instead of the original measurements.",
+          "feedbackIfWrong": "We focus on the differences $d = x_1 - x_2$ for each pair.",
+          "hints": [
+            "It starts with 'd' and is what we subtract to get one number per pair.",
+            "We compute the mean of these values, denoted $\\bar{d}$."
+          ]
+        },
+        {
+          "id": "q8-3-2",
+          "answer": "15",
+          "prompt": "If there are 15 pairs of data, what is $n$ in the paired t‑test?",
+          "type": "short-answer",
+          "hints": [
+            "$n$ is the number of pairs, not the total number of measurements.",
+            "It equals the number of differences you compute."
+          ],
+          "feedbackIfWrong": "$n$ is the number of pairs, so $n=15$."
+        },
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "$\\bar{d}$ equals the sum of all the differences ($\\Sigma d$) divided by the number of pairs $n$.",
+          "prompt": "The mean of the differences, $\\bar{d}$, is calculated as ___ divided by $n$.",
+          "hints": [
+            "It is the total of all the $d$ values.",
+            "The formula is $\\bar{d} = \\frac{\\Sigma d}{n}$."
+          ],
+          "id": "q8-3-3",
+          "blanks": [
+            {
+              "accept": [
+                "Σd",
+                "sum of d",
+                "the sum of the differences",
+                "sum of differences"
+              ]
+            }
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "The sign of $d$ is determined by the order you subtract. If you compute $d =$ before $-$ after and expect a decrease, your alternative hypothesis will likely be $\\mu_d < 0$. If you compute $d =$ after $-$ before, the expected decrease becomes an increase, and the alternative becomes $\\mu_d > 0$. [[imp:Always define d clearly before stating hypotheses.]]",
+        "title": "Subtraction Direction Controls the Hypothesis Sign"
+      }
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "title": "Paired t‑Test Statistic",
+          "formula": "$$ t = \\frac{\\bar{d} - \\mu_d}{s_d / \\sqrt{n}} $$",
+          "notes": [
+            "Degrees of freedom: $df = n - 1$",
+            "$s_d$ is the standard deviation of the differences, not the original data.",
+            "Use technology to compute $\\bar{d}$ and $s_d$ quickly."
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Scenario",
+              "Null Hypothesis $H_0$",
+              "Alternative $H_a$",
+              "Type of Test"
+            ],
+            "title": "Common Hypothesis Pairs for Paired t‑Tests",
+            "rows": [
+              {
+                "0": "Claim: the program reduces weight",
+                "1": "$\\mu_d = 0$",
+                "2": "$\\mu_d < 0$",
+                "3": "Left‑tailed"
+              },
+              {
+                "0": "Claim: the drug increases reaction time",
+                "1": "$\\mu_d = 0$",
+                "2": "$\\mu_d > 0$",
+                "3": "Right‑tailed"
+              },
+              {
+                "0": "Claim: the rating changed",
+                "1": "$\\mu_d = 0$",
+                "2": "$\\mu_d \\ne 0$",
+                "3": "Two‑tailed"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "The [[kw:null hypothesis]] for a paired t‑test is typically $H_0: \\mu_d = 0$, meaning no average difference between the paired populations.",
+          "The [[kw:alternative hypothesis]] can be left‑tailed ($\\mu_d < 0$), right‑tailed ($\\mu_d > 0$), or two‑tailed ($\\mu_d \\ne 0$), depending on the claim.",
+          "The [[imp:standardized test statistic]] is $$t = \\frac{\\bar{d} - \\mu_d}{s_d/\\sqrt{n}}$$ where $\\bar{d}$ is the sample mean difference, $s_d$ is the sample standard deviation of the differences, and $n$ is the number of pairs.",
+          "Under the null hypothesis, this statistic follows a [[kw:t‑distribution]] with $df = n-1$ degrees of freedom, provided the differences are approximately normally distributed."
+        ]
+      },
+      "teacherCues": [
+        "Write on the board: $H_0: \\mu_d = 0$, $H_a: \\mu_d < 0$ (left‑tailed), $\\mu_d > 0$ (right‑tailed), $\\mu_d \\ne 0$ (two‑tailed). Emphasize that $\\mu_d$ is the population mean of the differences.",
+        "Show the test statistic formula: $t = \\frac{\\bar{d} - \\mu_d}{s_d/\\sqrt{n}}$ and note that degrees of freedom = $n-1$."
+      ],
+      "discoveryHook": {
+        "scenario": "Think of a paired t‑test as a one‑sample t‑test on the column of differences. Once you've computed $d$ for each pair, you forget the original two measurements and treat the $d$'s as a single sample. The test is just like those you learned in Chapter 7!"
+      },
+      "id": "paired-t-test-hypotheses-statistic",
+      "title": "The Paired t‑Test: Hypotheses and Test Statistic",
+      "examples": [
+        {
+          "prompt": "A coach claims that a training program increases vertical jump height. Write $H_0$ and $H_a$ using $d =$ before $-$ after.",
+          "title": "Example A – Setting Up Hypotheses",
+          "steps": [
+            "If the program increases jump height, after > before, so $d =$ before $-$ after will be negative.",
+            "We want to test whether the mean difference is less than 0.",
+            "$H_0: \\mu_d = 0$ (no change)",
+            "$H_a: \\mu_d < 0$ (claim: increase in jump height)"
+          ],
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: How is the column of differences similar to a single sample? Why does the sample size for the t‑test equal the number of pairs?",
+          "steps": [
+            "Once the differences are computed, we have exactly $n$ values – a single sample of size $n$.",
+            "We estimate one parameter (the mean) from the data, so we lose one degree of freedom.",
+            "Thus, the t‑statistic follows a t‑distribution with $n-1$ degrees of freedom."
+          ],
+          "minLength": 8,
+          "prompt": "Explain why the paired t‑test uses $n-1$ degrees of freedom, just like a one‑sample t‑test.",
+          "role": "peer-explain",
+          "title": "Example B – Why $n-1$ Degrees of Freedom?"
+        },
+        {
+          "role": "independent",
+          "prompt": "A researcher wants to see if a drug changes body temperature. Write the null and alternative hypotheses using $\\mu_d$.",
+          "steps": [
+            "The word 'changes' indicates any difference, positive or negative.",
+            "$H_0: \\mu_d = 0$ (no change)",
+            "$H_a: \\mu_d \\ne 0$ (there is a change)"
+          ],
+          "title": "Example C – Hypotheses for a Two‑Tailed Test"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q8-3-4",
+          "feedbackIfWrong": "Because $d$ will be negative if after > before, the alternative is $\\mu_d < 0$.",
+          "type": "short-answer",
+          "answer": "<",
+          "hints": [
+            "If 'after' is larger, then $d =$ before $-$ after will be negative.",
+            "We want to test if the mean difference is less than zero."
+          ],
+          "prompt": "If we compute $d =$ before $-$ after and expect the 'after' measurement to be larger, then $H_a: \\mu_d$ ___ 0. (Use <, >, or ≠)"
+        },
+        {
+          "answer": "19",
+          "prompt": "How many degrees of freedom does a paired t‑test have if there are 20 pairs?",
+          "type": "short-answer",
+          "feedbackIfWrong": "$df = n - 1 = 19$.",
+          "hints": [
+            "It's one less than the number of pairs.",
+            "The formula is $df = n-1$."
+          ],
+          "id": "q8-3-5"
+        },
+        {
+          "id": "q8-3-6",
+          "feedbackIfWrong": "The denominator is $s_d/\\sqrt{n}$, the standard error of $\\bar{d}$.",
+          "blanks": [
+            {
+              "accept": [
+                "s_d / √n",
+                "s_d/√n",
+                "sd/√n",
+                "sd / sqrt(n)",
+                "standard error"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "hints": [
+            "It's the standard deviation of the differences divided by the square root of n.",
+            "This is the standard error of the mean difference."
+          ],
+          "prompt": "The test statistic for a paired t‑test is $t = \\frac{\\bar{d} - \\mu_d}{___}$."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Confuse $\\mu_d$ with $\\mu_1 - \\mu_2$",
+        "body": "In independent samples, we test $\\mu_1 - \\mu_2$ directly. In paired samples, we first take the differences and then test their mean $\\mu_d$. Although both are about a difference of means, [[imp:the calculations and standard errors are different.]] Make sure you know which design you have before choosing the test."
+      }
+    },
+    {
+      "examples": [
+        {
+          "title": "Example A – Compute the Test Statistic",
+          "steps": [
+            "Plug into the formula: $t = \\frac{-1.75 - 0}{2.1213/\\sqrt{8}} = \\frac{-1.75}{0.75} \\approx -2.333$.",
+            "The rejection region is $t < -1.415$.",
+            "Since $-2.333$ is less than $-1.415$, the test statistic falls in the rejection region."
+          ],
+          "prompt": "From the table, $\\bar{d} = -1.75$, $s_d = 2.1213$, $n=8$. Compute $t$ and compare to the critical value $-1.415$.",
+          "role": "guided"
+        },
+        {
+          "title": "Example B – The Meaning of Rejecting $H_0$",
+          "role": "peer-explain",
+          "prompt": "What does it mean to reject $H_0$ in this context?",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If we reject $H_0$, can we claim the shoes definitely cause the increase? What about other factors?",
+          "steps": [
+            "Rejecting $H_0$ means the data provide sufficient evidence to support the claim of an increase.",
+            "Statistically, the observed mean difference is unlikely to occur by random chance alone.",
+            "However, correlation is not causation; other factors (training, nutrition) might have contributed. The test only addresses the paired difference."
+          ],
+          "minLength": 8
+        },
+        {
+          "steps": [
+            "Compare p‑value to $\\alpha$: $0.026 < 0.10$.",
+            "Since p‑value < $\\alpha$, we reject $H_0$.",
+            "This matches the critical value decision: there is evidence of an increase."
+          ],
+          "role": "independent",
+          "title": "Example C – p‑Value Approach",
+          "prompt": "A technology tool gives a p‑value of 0.026 for this test. Using $\\alpha=0.10$, what decision should we make?"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A shoe manufacturer claims its Strength Shoes® increase vertical jump. Eight athletes were measured before and after using the shoes for 8 months. Let's test the claim at $\\alpha = 0.10$ using a paired t‑test. The data are given in the table."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Vertical Jump Data (in inches) and Differences",
+            "rows": [
+              {
+                "0": "1",
+                "1": "24",
+                "2": "26",
+                "3": "-2",
+                "4": "4"
+              },
+              {
+                "0": "2",
+                "1": "22",
+                "2": "25",
+                "3": "-3",
+                "4": "9"
+              },
+              {
+                "0": "3",
+                "1": "25",
+                "2": "25",
+                "3": "0",
+                "4": "0"
+              },
+              {
+                "0": "4",
+                "1": "28",
+                "2": "29",
+                "3": "-1",
+                "4": "1"
+              },
+              {
+                "0": "5",
+                "1": "35",
+                "2": "33",
+                "3": "2",
+                "4": "4"
+              },
+              {
+                "0": "6",
+                "1": "32",
+                "2": "34",
+                "3": "-2",
+                "4": "4"
+              },
+              {
+                "0": "7",
+                "1": "30",
+                "2": "35",
+                "3": "-5",
+                "4": "25"
+              },
+              {
+                "0": "8",
+                "1": "27",
+                "2": "30",
+                "3": "-3",
+                "4": "9"
+              },
+              {
+                "0": "Sum",
+                "1": "",
+                "2": "",
+                "3": "Σd = -14",
+                "4": "Σd² = 56"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Athlete",
+              "Before (x₁)",
+              "After (x₂)",
+              "d = x₁ − x₂",
+              "d²"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "The null hypothesis is $H_0: \\mu_d = 0$ (no increase), and the claim is that jump heights increase, so using $d =$ before $-$ after, we expect $d$ to be negative: $H_a: \\mu_d < 0$.",
+          "We compute the differences and their squares:",
+          "$$\\Sigma d = -14,\\quad \\Sigma d^2 = 56,\\quad n = 8$$",
+          "Sample mean $\\bar{d} = \\frac{-14}{8} = -1.75$ in.",
+          "Sample standard deviation: $$s_d = \\sqrt{\\frac{56 - \\frac{(-14)^2}{8}}{8-1}} = \\sqrt{\\frac{56 - 24.5}{7}} = \\sqrt{4.5} \\approx 2.1213$$",
+          "The test statistic is $$t = \\frac{-1.75 - 0}{2.1213/\\sqrt{8}} \\approx -2.333$$",
+          "With $df = 7$ and a left‑tailed test at $\\alpha=0.10$, the critical value is $t_{0.10,7} = -1.415$. Since $t = -2.333 < -1.415$, we reject $H_0$."
+        ]
+      },
+      "teacherCues": [
+        "Walk students through the table of before and after jump heights. Show how to compute d, d², Σd, Σd².",
+        "Write the test statistic calculation step by step on the board: $s_d = \\sqrt{(\\Sigma d^2 - (\\Sigma d)^2/n)/(n-1)}$, then $t$."
+      ],
+      "id": "paired-t-test-example-strength-shoes",
+      "questions": [
+        {
+          "answer": "-1.75",
+          "prompt": "In the vertical jump example, what is the sample mean difference $\\bar{d}$? (Enter a number, e.g., -1.75)",
+          "type": "short-answer",
+          "hints": [
+            "Look at the table sum: Σd = -14, n=8.",
+            "Divide total difference by number of athletes."
+          ],
+          "feedbackIfWrong": "$\\bar{d} = \\frac{-14}{8} = -1.75$.",
+          "id": "q8-3-7"
+        },
+        {
+          "answer": "-1.415",
+          "feedbackIfWrong": "From the t‑table, $t_{0.10,7} = 1.415$, so the left‑tailed critical value is $-1.415$.",
+          "prompt": "What is the critical t value for a left‑tailed test with $\\alpha=0.10$ and $df=7$? (Answer to three decimals, e.g., -1.415)",
+          "type": "short-answer",
+          "id": "q8-3-8",
+          "hints": [
+            "Use the t‑table with 7 degrees of freedom and one‑tail $\\alpha=0.10$.",
+            "The value should be negative for a left‑tailed test."
+          ]
+        },
+        {
+          "hints": [
+            "Is -2.333 less than -1.415?",
+            "If the test statistic is more extreme than the critical value, we reject."
+          ],
+          "id": "q8-3-9",
+          "type": "short-answer",
+          "prompt": "Based on the test statistic $t = -2.333$ and critical value $-1.415$, do we reject or fail to reject $H_0$? (Type 'reject' or 'fail to reject')",
+          "answer": "reject",
+          "feedbackIfWrong": "Since $-2.333 < -1.415$, the test statistic falls in the rejection region, so we reject $H_0$."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check the Tail Direction!",
+        "body": "In this example, we expected an increase and used $d =$ before $-$ after. That gave negative $d$'s and a left‑tailed test. If we had subtracted the other way ($d =$ after $-$ before), the mean would be $+1.75$, and the test would be right‑tailed with the same absolute $t$ value. [[imp:Always confirm that the sign of $\\bar{d}$ matches the direction of your alternative.]]"
+      },
+      "title": "Performing a Paired t‑Test (Vertical Jump)"
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "title": "Legislator Ratings and Differences (this year − last year)",
+            "rows": [
+              {
+                "0": "1",
+                "1": "60",
+                "2": "56",
+                "3": "-4",
+                "4": "16"
+              },
+              {
+                "0": "2",
+                "1": "54",
+                "2": "48",
+                "3": "-6",
+                "4": "36"
+              },
+              {
+                "0": "...",
+                "1": "...",
+                "2": "...",
+                "3": "...",
+                "4": "..."
+              },
+              {
+                "0": "16",
+                "1": "63",
+                "2": "60",
+                "3": "3",
+                "4": "9"
+              },
+              {
+                "0": "Sum",
+                "1": "",
+                "2": "",
+                "3": "53",
+                "4": "1581"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Voter",
+              "Last Year",
+              "This Year",
+              "d",
+              "d²"
+            ]
+          }
+        ],
+        "explanation": [
+          "The hypotheses are two‑tailed: $H_0: \\mu_d = 0$, $H_a: \\mu_d \\ne 0$.",
+          "We compute differences $d =$ this year $-$ last year (or vice versa; the sign will just flip the test statistic's sign).",
+          "Using the data: $\\Sigma d = 53$, $\\Sigma d^2 = 1581$, $n=16$.",
+          "$\\bar{d} = \\frac{53}{16} = 3.3125$, and $s_d = \\sqrt{\\frac{1581 - 53^2/16}{15}} \\approx 9.6797$.",
+          "The test statistic is $t = \\frac{3.3125 - 0}{9.6797/\\sqrt{16}} \\approx 1.369$.",
+          "With $df=15$ and $\\alpha=0.01$ two‑tailed, the critical values are $\\pm 2.947$. Since $1.369$ does not fall in either tail, we fail to reject $H_0$."
+        ]
+      },
+      "title": "Two‑Tailed Test: Detecting Any Change",
+      "confusionCorner": {
+        "title": "Two‑Tailed Test: Splitting the Alpha",
+        "body": "In a two‑tailed test, the total $\\alpha$ is divided equally between the two tails. For $\\alpha=0.01$, each tail has area $0.005$. That's why the critical values are farther out—it's harder to reject. [[imp:Always use the correct column in the t‑table for one‑tail vs. two‑tail.]]"
+      },
+      "id": "paired-t-test-two-tailed-rating-change",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "The rejection regions are $t < -2.947$ and $t > 2.947$.",
+            "Our test statistic $1.369$ is between $-2.947$ and $2.947$.",
+            "Therefore, we fail to reject $H_0$."
+          ],
+          "prompt": "With $t = 1.369$, $df=15$, and critical values $\\pm 2.947$, make a decision.",
+          "title": "Example A – Decision Using Critical Values"
+        },
+        {
+          "steps": [
+            "Failing to reject $H_0$ means the sample data do not provide strong enough evidence to conclude a change.",
+            "It does not prove that the true mean difference is exactly zero.",
+            "With a small sample or high variability, a real effect might go undetected."
+          ],
+          "role": "peer-explain",
+          "prompt": "Does failing to reject $H_0$ mean the rating hasn't changed?",
+          "minLength": 8,
+          "title": "Example B – Interpreting 'Fail to Reject'",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What does a non‑significant result tell us about the true mean difference? Could the rating still have changed?"
+        },
+        {
+          "prompt": "If the two‑tailed p‑value is 0.21, what is your decision at $\\alpha=0.01$?",
+          "role": "independent",
+          "title": "Example C – Using a p‑Value",
+          "steps": [
+            "Compare p‑value to $\\alpha$: $0.21 > 0.01$.",
+            "Since p‑value > $\\alpha$, we fail to reject $H_0$.",
+            "The result is not statistically significant at the 1% level."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "There are $n=16$ voters, so 16 pairs.",
+          "answer": "16",
+          "id": "q8-3-10",
+          "prompt": "In the legislator rating example, what is the sample size (number of pairs)?",
+          "type": "short-answer",
+          "hints": [
+            "Count the number of voters; each gave two ratings.",
+            "There are 16 differences calculated."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "id": "q8-3-11",
+          "answer": "2.947",
+          "hints": [
+            "Look up $t_{0.005,15}$ because each tail has area 0.005.",
+            "The two‑tailed critical values are symmetric, $\\pm$ the same number."
+          ],
+          "feedbackIfWrong": "For $\\alpha=0.01$ two‑tailed with $df=15$, the critical values are $\\pm 2.947$.",
+          "prompt": "What is the critical t value for a two‑tailed test with $\\alpha=0.01$ and $df=15$? (Enter the positive number only)"
+        },
+        {
+          "feedbackIfWrong": "Since $1.369$ does not fall beyond $\\pm 2.947$, we fail to reject $H_0$.",
+          "answer": "fail to reject",
+          "prompt": "If the test statistic $t = 1.369$ and critical values are $\\pm 2.947$, do we reject or fail to reject $H_0$?",
+          "type": "short-answer",
+          "id": "q8-3-12",
+          "hints": [
+            "Is 1.369 greater than 2.947? Is it less than -2.947?",
+            "If not in either rejection region, we fail to reject."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A state legislator wants to know if her performance rating (0–100) changed from last year to this year. Sixteen voters rated her both times. We'll test at $\\alpha = 0.01$ whether there is any difference, without specifying a direction."
+      },
+      "teacherCues": [
+        "Emphasize that a two‑tailed test splits the significance level equally into two tails.",
+        "Show the critical values $\\pm 2.947$ for $df=15$ and $\\alpha=0.01$."
+      ]
+    },
+    {
+      "id": "blueprint-paired-t-test-weight-loss",
+      "questions": [
+        {
+          "answer": "4",
+          "type": "short-answer",
+          "feedbackIfWrong": "$df = n - 1 = 5 - 1 = 4$.",
+          "prompt": "In the weight‑loss blueprint, what is the degrees of freedom for the t‑test?",
+          "id": "q8-3-13",
+          "hints": [
+            "It's one less than the number of pairs.",
+            "$n=5$."
+          ]
+        },
+        {
+          "answer": "2.132",
+          "feedbackIfWrong": "From the t‑table, $t_{0.05,4} = 2.132$.",
+          "prompt": "What is the critical value for this right‑tailed test ($\\alpha=0.05$, $df=4$)? (Enter 2.132)",
+          "type": "short-answer",
+          "hints": [
+            "Look in the t‑table under one‑tail 0.05 and 4 df.",
+            "The value should be positive."
+          ],
+          "id": "q8-3-14"
+        },
+        {
+          "id": "q8-3-15",
+          "hints": [
+            "Compare the test statistic to the critical value.",
+            "If $t >$ critical value in a right‑tailed test, reject."
+          ],
+          "feedbackIfWrong": "Since $7.25 > 2.132$, we reject $H_0$ and support the claim.",
+          "type": "short-answer",
+          "prompt": "Given $t = 7.25$ and critical value $2.132$, do we reject or fail to reject $H_0$?",
+          "answer": "reject"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A – Understand the Problem",
+          "prompt": "State the hypotheses and determine the type of test for the gym's weight‑loss claim.",
+          "role": "guided",
+          "steps": [
+            "Claim: The program leads to weight loss. So After < Before.",
+            "Define $d =$ Before $-$ After. A positive $d$ indicates loss.",
+            "$H_0: \\mu_d = 0$ (no loss)",
+            "$H_a: \\mu_d > 0$ (weight loss, right‑tailed test)"
+          ]
+        },
+        {
+          "minLength": 8,
+          "steps": [
+            "$\\bar{d} = 29/5 = 5.8$.",
+            "$s_d = \\sqrt{\\frac{181 - 29^2/5}{4}} = \\sqrt{\\frac{181 - 168.2}{4}} = \\sqrt{3.2} \\approx 1.7889$.",
+            "$t = \\frac{5.8 - 0}{1.7889/\\sqrt{5}} = \\frac{5.8}{0.8} = 7.25$.",
+            "Critical value $t_{0.05,4} = 2.132$."
+          ],
+          "prompt": "From the table, $\\Sigma d = 29$, $\\Sigma d^2 = 181$, $n=5$. Compute $\\bar{d}$, $s_d$, and the test statistic $t$. Then find the critical value for $\\alpha=0.05$, right‑tailed, $df=4$.",
+          "title": "Example B – Solve the Test",
+          "peerPrompt": "Without looking back...\n\nWork with a partner: Compute the standard deviation using the shortcut formula. Explain each step and compare your answers.",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Since $7.25 > 2.132$, $t$ is in the rejection region.",
+            "Reject $H_0$.",
+            "Conclusion: There is sufficient evidence at the 5% level to support the claim that the program leads to weight loss."
+          ],
+          "title": "Example C – Conclude",
+          "role": "independent",
+          "prompt": "Using $t = 7.25$ and critical value $2.132$, make a decision and write a conclusion about the weight‑loss program."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Small Sample Caution",
+        "body": "With only 5 pairs, the normality assumption is crucial. A single outlier can heavily influence the mean and standard deviation. [[imp:Always check for outliers in the differences.]] If the differences are not approximately normal, consider a non‑parametric alternative."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Participant",
+              "Before",
+              "After",
+              "d = Before - After",
+              "d²"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "190",
+                "2": "183",
+                "3": "7",
+                "4": "49"
+              },
+              {
+                "0": "2",
+                "1": "205",
+                "2": "198",
+                "3": "7",
+                "4": "49"
+              },
+              {
+                "0": "3",
+                "1": "178",
+                "2": "175",
+                "3": "3",
+                "4": "9"
+              },
+              {
+                "0": "4",
+                "1": "220",
+                "2": "215",
+                "3": "5",
+                "4": "25"
+              },
+              {
+                "0": "5",
+                "1": "195",
+                "2": "188",
+                "3": "7",
+                "4": "49"
+              }
+            ],
+            "title": "Weight Loss Program Data",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "We'll apply the [[imp:Understand → Solve → Conclude]] pattern:",
+          "**Understand**: The claim is weight loss, so 'After' < 'Before'. We'll define $d =$ Before $-$ After, expecting $d$ positive, so a right‑tailed test: $H_0: \\mu_d = 0$, $H_a: \\mu_d > 0$.",
+          "**Solve**: Compute differences, mean, standard deviation, test statistic, and compare to critical value.",
+          "**Conclude**: Make a decision and interpret in context."
+        ],
+        "formulaCard": {
+          "formula": "$$ t = \\frac{\\bar{d} - 0}{s_d/\\sqrt{n}} $$",
+          "title": "Paired t‑Test Summary",
+          "notes": [
+            "$df = n-1$",
+            "Use t‑table for critical value based on $\\alpha$ and tail(s).",
+            "If p‑value < $\\alpha$, reject $H_0$."
+          ]
+        }
+      },
+      "discoveryHook": {
+        "scenario": "A gym claims its 4‑week program leads to weight loss. Five participants were weighed before and after. Use a paired t‑test at $\\alpha=0.05$ to evaluate the claim. Data: Before (lb): 190, 205, 178, 220, 195; After: 183, 198, 175, 215, 188."
+      },
+      "title": "Blueprint Aid: Paired t‑Test for Weight‑Loss Program",
+      "teacherCues": [
+        "Walk students through the Understand–Solve–Conclude framework with a new dataset.",
+        "Have them practice identifying the claim, setting hypotheses, computing by hand or with technology, and writing a conclusion."
+      ]
+    }
+  ],
+  "presenterNotes": [
+    "Stress the importance of identifying whether samples are independent or paired before selecting the test. Use real examples like before‑and‑after studies.",
+    "When computing by hand, double‑check the subtraction order and make sure the sign of $\\bar{d}$ aligns with the alternative hypothesis.",
+    "Encourage students to use technology (TI‑84, Excel, Google Sheets) for the calculations, but ensure they understand the underlying formulas."
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

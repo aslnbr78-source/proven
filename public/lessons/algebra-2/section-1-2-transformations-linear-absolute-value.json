@@ -1,0 +1,712 @@
+{
+  "blocks": [
+    {
+      "examples": [
+        {
+          "title": "Example A – Vertical Translation of a Linear Function",
+          "prompt": "Let $ f(x) = 2x + 1 $. Write a function $ g $ whose graph is a translation 3 units down.",
+          "steps": [
+            "A translation down subtracts from the output: $ g(x) = f(x) + (-3) = f(x) - 3 $.",
+            "Substitute $ f(x) $: $ g(x) = (2x + 1) - 3 $.",
+            "Simplify: $ g(x) = 2x - 2 $.",
+            "The new line has the same slope but a lower y‑intercept."
+          ],
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Horizontal Translation Confusion",
+          "steps": [
+            "$ h(x) = f(x + 2) = 2(x + 2) + 1 = 2x + 5 $.",
+            "To get the same output as $ f(0) $, we need $ x + 2 = 0 $ → $ x = -2 $. The original point at $ x=0 $ moved to $ x=-2 $.",
+            "That's a shift left. The sign inside is opposite the direction."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nPlug $ x = -2 $ into $ f(x+2) $. What input goes into the original $ f $? Where was that point on the original graph?",
+          "prompt": "Why does $ f(x + 2) $ shift the graph left, not right? Explain to a partner using $ f(x) = 2x + 1 $.",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Write a function $ g $ that translates $ f(x) = |x| $ four units right and one unit up.",
+          "title": "Example C – Write a Translation Rule",
+          "steps": [
+            "Right 4: $ h = 4 $ → $ f(x - 4) = |x - 4| $.",
+            "Up 1: $ k = 1 $ → add outside: $ g(x) = |x - 4| + 1 $.",
+            "The vertex of the V moves from $ (0,0) $ to $ (4,1) $."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "translations",
+      "concept": {
+        "visuals": [
+          {
+            "title": "Translation Quick Reference",
+            "rows": [
+              {
+                "0": "$ f(x) + k $, $ k > 0 $",
+                "1": "Up $ k $ units",
+                "2": "$ f(x) = x $, $ g(x) = x + 3 $"
+              },
+              {
+                "0": "$ f(x) + k $, $ k < 0 $",
+                "1": "Down $ |k| $ units",
+                "2": "$ f(x) = |x| $, $ g(x) = |x| - 2 $"
+              },
+              {
+                "0": "$ f(x - h) $, $ h > 0 $",
+                "1": "Right $ h $ units",
+                "2": "$ f(x) = 2x $, $ g(x) = 2(x - 4) $"
+              },
+              {
+                "0": "$ f(x - h) $, $ h < 0 $",
+                "1": "Left $ |h| $ units",
+                "2": "$ f(x) = |x| $, $ g(x) = |x + 1| $"
+              }
+            ],
+            "headers": [
+              "Form",
+              "Direction",
+              "Example"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "title": "Translation Formula",
+          "notes": [
+            "Horizontal shift: inside, opposite sign ($ x - h $ → right $ h $; $ x + h $ → left $ h $).",
+            "Vertical shift: outside, same sign ($ +k $ → up; $ -k $ → down).",
+            "Apply to any parent function $ f(x) $."
+          ],
+          "formula": "$$ g(x) = f(x - h) + k $$"
+        },
+        "explanation": [
+          "A [[kw:translation]] shifts a graph without changing its size, shape, or orientation.",
+          "[[imp:Vertical translation]]: $ g(x) = f(x) + k $. If $ k > 0 $, shift [[imp:up]]; if $ k < 0 $, shift [[imp:down]]. This adds $ k $ to each output value.",
+          "[[imp:Horizontal translation]]: $ g(x) = f(x - h) $. If $ h > 0 $, shift [[imp:right]]; if $ h < 0 $, shift [[imp:left]]. The sign inside is opposite the direction!",
+          "To write the new function, replace $ x $ with $ (x - h) $ and add $ k $ outside: $$ g(x) = f(x - h) + k $$"
+        ]
+      },
+      "questions": [
+        {
+          "id": "q1-2-1",
+          "hints": [
+            "Adding a positive number outside the function moves it in a positive direction.",
+            "Think of raising the whole graph."
+          ],
+          "feedbackIfWrong": "$ f(x) + 5 $ shifts the graph 5 units up.",
+          "answer": "up",
+          "prompt": "A translation that adds 5 to each output of $ f(x) $ shifts the graph ___ units. (up or down)",
+          "type": "short-answer"
+        },
+        {
+          "id": "q1-2-2",
+          "feedbackIfWrong": "It shifts 3 units to the right.",
+          "hints": [
+            "Inside, the sign is opposite.",
+            "$ x - 3 $ means move in the positive x-direction."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "right"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "The graph of $ g(x) = f(x - 3) $ is the graph of $ f(x) $ shifted 3 units to the ___."
+        },
+        {
+          "hints": [
+            "Left means inside with a plus sign.",
+            "Replace $ x $ with $ x + 2 $."
+          ],
+          "feedbackIfWrong": "$ g(x) = f(x + 2) $.",
+          "id": "q1-2-3",
+          "answer": "f(x+2)",
+          "prompt": "Write a function $ g $ that translates $ f(x) = x $ two units left. (Use function notation, e.g., $ f(x+2) $)",
+          "type": "short-answer"
+        }
+      ],
+      "title": "Translations: Shifting Graphs Up, Down, Left, Right",
+      "teacherCues": [
+        "Draw the graph of $ f(x) = 2x + 1 $ on the board. Then draw $ f(x) + 3 $ and $ f(x) - 2 $. Ask: What changed?",
+        "Write the rule: $ g(x) = f(x - h) + k $. Emphasize that $ h $ moves left/right (opposite sign) and $ k $ moves up/down (same sign)."
+      ],
+      "discoveryHook": {
+        "scenario": "Think of a function as a stencil. You can slide it around the coordinate plane without changing its shape. Sliding it up, down, left, or right is called a translation. In function notation, we just add or subtract numbers in the right places."
+      },
+      "confusionCorner": {
+        "title": "Inside = Opposite, Outside = Same",
+        "body": "$ f(x - h) $: The minus sign means move right. $ f(x + h) $: The plus sign means move left. Outside, $ f(x) + k $: plus means up, minus means down. [[imp:Inside opposite, outside same!]]"
+      }
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{x‑axis: } g(x) = -f(x) \\qquad \\text{y‑axis: } g(x) = f(-x) $$",
+          "title": "Reflection Formulas",
+          "notes": [
+            "Negative outside → flip vertically.",
+            "Negative inside with x → flip horizontally.",
+            "Even functions ($ |x| $, $ x^2 $) look the same after a y‑axis reflection."
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Transformation",
+              "Notation",
+              "Effect on Point (x, y)"
+            ],
+            "rows": [
+              {
+                "0": "x‑axis reflection",
+                "1": "$ g(x) = -f(x) $",
+                "2": "$ (x, y) \\rightarrow (x, -y) $"
+              },
+              {
+                "0": "y‑axis reflection",
+                "1": "$ g(x) = f(-x) $",
+                "2": "$ (x, y) \\rightarrow (-x, y) $"
+              }
+            ],
+            "title": "Reflection Rules",
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "A [[kw:reflection]] flips a graph over a line.",
+          "[[imp:Reflection in the x‑axis]]: $ g(x) = -f(x) $. Multiply the entire output by -1. Each y‑coordinate becomes its opposite. The graph flips vertically.",
+          "[[imp:Reflection in the y‑axis]]: $ g(x) = f(-x) $. Replace $ x $ with $ -x $ inside the function. Each x‑coordinate becomes its opposite. The graph flips horizontally.",
+          "If the original function is even (like $ x^2 $ or $ |x| $), a y‑axis reflection may look the same as the original."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Where Is the Negative?",
+        "body": "If the negative is [[imp:outside]] ($ -f(x) $), it's an x‑axis reflection (vertical flip). If it's [[imp:inside]] with the x ($ f(-x) $), it's a y‑axis reflection (horizontal flip). [[imp:Don't mix them up!]]"
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "hints": [
+            "The negative is outside the function.",
+            "It flips the graph upside down."
+          ],
+          "answer": "x-axis reflection",
+          "feedbackIfWrong": "It is a reflection in the x‑axis.",
+          "id": "q1-2-4",
+          "prompt": "What transformation does $ g(x) = -f(x) $ represent? (x‑axis reflection or y‑axis reflection)"
+        },
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "-x"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Replace $ x $ with $ -x $.",
+          "prompt": "To reflect $ f(x) $ in the y‑axis, you replace $ x $ with ___.",
+          "id": "q1-2-5",
+          "hints": [
+            "You negate the input.",
+            "It's the opposite of x."
+          ]
+        },
+        {
+          "feedbackIfWrong": "$ g(3) = -5 $.",
+          "type": "short-answer",
+          "hints": [
+            "Multiply the output by -1.",
+            "The sign changes."
+          ],
+          "prompt": "If $ f(3) = 5 $, what is $ g(3) $ for $ g(x) = -f(x) $?",
+          "answer": "-5",
+          "id": "q1-2-6"
+        }
+      ],
+      "teacherCues": [
+        "Graph $ y = |x| $ and $ y = -|x| $ side by side. Ask: What happened to the V?",
+        "Write: $ g(x) = -f(x) $ → x‑axis reflection; $ g(x) = f(-x) $ → y‑axis reflection."
+      ],
+      "id": "reflections",
+      "discoveryHook": {
+        "scenario": "A negative sign can flip a graph like a mirror. Put it in front of the whole function, and it flips over the x‑axis (upside down). Put it inside with the x, and it flips over the y‑axis (left‑right)."
+      },
+      "examples": [
+        {
+          "steps": [
+            "$ g(x) = -f(x) = -(|x + 3| + 1) $.",
+            "Distribute the negative: $ g(x) = -|x + 3| - 1 $.",
+            "The V‑shape opens downward instead of upward."
+          ],
+          "role": "guided",
+          "title": "Example A – Reflecting in the x‑Axis",
+          "prompt": "Let $ f(x) = |x + 3| + 1 $. Write a function $ g $ that reflects $ f $ in the x‑axis."
+        },
+        {
+          "steps": [
+            "$ f(-x) = |-x| = |x| = f(x) $.",
+            "The absolute value makes the output the same for $ x $ and $ -x $.",
+            "So the graph is symmetric about the y‑axis; reflecting it doesn't change it."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nCompute $ f(-x) $ for $ f(x) = |x| $. What do you get?",
+          "title": "Example B – Reflecting in the y‑Axis",
+          "minLength": 2,
+          "prompt": "Why does $ f(x) = |x| $ look the same after a y‑axis reflection?"
+        },
+        {
+          "steps": [
+            "Replace $ x $ with $ -x $: $ h(x) = f(-x) = -(-x) + 1 $.",
+            "Simplify: $ h(x) = x + 1 $.",
+            "The slope changes sign, and the line now goes upward."
+          ],
+          "role": "independent",
+          "title": "Example C – Write a Reflected Function",
+          "prompt": "Write a function $ h $ that reflects $ f(x) = -x + 1 $ in the y‑axis."
+        }
+      ],
+      "title": "Reflections: Flipping Over the x‑Axis and y‑Axis"
+    },
+    {
+      "id": "stretches-shrinks",
+      "teacherCues": [
+        "Graph $ y = x $ and $ y = 3x $. Ask: How does the slope change?",
+        "Show $ f(2x) $: it makes the graph narrower horizontally. $ 2f(x) $ makes it taller vertically."
+      ],
+      "questions": [
+        {
+          "type": "short-answer",
+          "id": "q1-2-7",
+          "feedbackIfWrong": "It's a vertical stretch by a factor of 5.",
+          "prompt": "If $ f(x) = x $, what transformation does $ g(x) = 5f(x) $ represent? (vertical stretch or horizontal shrink)",
+          "hints": [
+            "The 5 multiplies the output.",
+            "It makes the line steeper."
+          ],
+          "answer": "vertical stretch"
+        },
+        {
+          "id": "q1-2-8",
+          "hints": [
+            "Multiplying the input by 2 compresses the graph toward the y‑axis.",
+            "It becomes narrower."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "It is a horizontal shrink.",
+          "blanks": [
+            {
+              "accept": [
+                "shrink"
+              ]
+            }
+          ],
+          "prompt": "The graph of $ g(x) = f(2x) $ is a horizontal ___ by a factor of $ 1/2 $."
+        },
+        {
+          "answer": "(1/3)|x|",
+          "prompt": "Write a function $ g $ that vertically shrinks $ f(x) = |x| $ by a factor of $ 1/3 $. (Use function notation, e.g., $ (1/3)|x| $)",
+          "hints": [
+            "Multiply the output by $ 1/3 $.",
+            "$ g(x) = \\frac{1}{3}f(x) $."
+          ],
+          "feedbackIfWrong": "$ g(x) = \\frac{1}{3}|x| $.",
+          "id": "q1-2-9",
+          "type": "short-answer"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{Vertical: } g(x) = a \\cdot f(x) \\qquad \\text{Horizontal: } g(x) = f(bx) $$",
+          "title": "Stretch/Shrink Formulas",
+          "notes": [
+            "Vertical: multiply output by $ a $. Stretch if $ |a|>1 $, shrink if $ 0<|a|<1 $.",
+            "Horizontal: multiply input by $ b $. Shrink if $ |b|>1 $, stretch if $ 0<|b|<1 $ (opposite!).",
+            "If $ a $ or $ b $ is negative, include a reflection."
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Transformation",
+              "Effect",
+              "Example from $ f(x) = |x| $"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "$ g(x) = a f(x) $, $ a > 1 $",
+                "1": "Vertical stretch (narrower)",
+                "2": "$ g(x) = 2|x| $: steeper V"
+              },
+              {
+                "0": "$ g(x) = a f(x) $, $ 0 < a < 1 $",
+                "1": "Vertical shrink (wider)",
+                "2": "$ g(x) = 0.5|x| $: flatter V"
+              },
+              {
+                "0": "$ g(x) = f(bx) $, $ b > 1 $",
+                "1": "Horizontal shrink (narrower)",
+                "2": "$ g(x) = |3x| $: V compressed inward"
+              },
+              {
+                "0": "$ g(x) = f(bx) $, $ 0 < b < 1 $",
+                "1": "Horizontal stretch (wider)",
+                "2": "$ g(x) = |0.5x| $: V stretched outward"
+              }
+            ],
+            "title": "Stretch and Shrink Summary",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "[[kw:Vertical stretch/shrink]]: $ g(x) = a \\cdot f(x) $. If $ |a| > 1 $, it's a [[imp:stretch]] (narrower/taller). If $ 0 < |a| < 1 $, it's a [[imp:shrink]] (wider/shorter). If $ a < 0 $, there's also a reflection.",
+          "[[kw:Horizontal stretch/shrink]]: $ g(x) = f(bx) $. If $ |b| > 1 $, it's a [[imp:shrink]] toward the y‑axis by factor $ 1/|b| $. If $ 0 < |b| < 1 $, it's a [[imp:stretch]] away from the y‑axis by factor $ 1/|b| $.",
+          "Note: horizontal stretches/shrinks behave opposite to what you might expect: multiplying by a large number (e.g., $ f(3x) $) makes the graph narrower (shrink).",
+          "Linear example: $ f(x) = x $ → $ g(x) = 3x $ is a vertical stretch; slope increases. $ g(x) = x/3 $ is a vertical shrink."
+        ]
+      },
+      "title": "Vertical and Horizontal Stretches and Shrinks",
+      "examples": [
+        {
+          "prompt": "Write a function $ g $ that is a vertical stretch of $ f(x) = |x - 3| - 5 $ by a factor of 2.",
+          "role": "guided",
+          "steps": [
+            "$ g(x) = 2 \\cdot f(x) = 2(|x - 3| - 5) $.",
+            "Distribute: $ g(x) = 2|x - 3| - 10 $.",
+            "The V is twice as steep and shifted down more."
+          ],
+          "title": "Example A – Vertical Stretch of an Absolute Value Function"
+        },
+        {
+          "prompt": "Explain to a partner why $ f(3x) $ is a horizontal shrink, not a stretch.",
+          "role": "peer-explain",
+          "title": "Example B – Horizontal Shrink vs. Stretch",
+          "steps": [
+            "For $ f(x) = x $, $ f(3x) = 3x $, which is steeper — a vertical stretch.",
+            "But for a general function, $ f(3x) $ reaches the same output with an input $ x/3 $ as large.",
+            "So the graph is compressed toward the y‑axis — a horizontal shrink by factor $ 1/3 $."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nTry $ f(x) = x $. Graph $ y = x $ and $ y = 3x $ on the same axes. Which is steeper? What does that mean horizontally?"
+        },
+        {
+          "title": "Example C – Write a Shrink Rule",
+          "steps": [
+            "Horizontal stretch by 4 means $ b = 1/4 $ (since factor = $ 1/b $).",
+            "$ g(x) = f(\\frac{1}{4}x) = |\\frac{1}{4}x| + 2 $.",
+            "Or $ g(x) = \\frac{1}{4}|x| + 2 $ (since $ |\\frac{1}{4}x| = \\frac{1}{4}|x| $)."
+          ],
+          "prompt": "Write a function $ g $ that is a horizontal stretch of $ f(x) = |x| + 2 $ by a factor of 4.",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Multiplying a function by a number greater than 1 stretches it vertically, making it steeper. Multiplying the input by a number greater than 1 shrinks it horizontally, compressing it toward the y‑axis. Fractions do the opposite."
+      },
+      "confusionCorner": {
+        "body": "$ f(2x) $ looks like a stretch but it's actually a [[imp:horizontal shrink]] by $ 1/2 $. The graph gets narrower. $ f(0.5x) $ looks like a shrink but it's a [[imp:horizontal stretch]] by 2. [[imp:It's the opposite of what the number suggests!]]",
+        "title": "Horizontal Stretch/Shrink Is Backwards!"
+      }
+    },
+    {
+      "examples": [
+        {
+          "prompt": "Revenue is $ f(x) = 2x $. Profit is 90% of revenue minus $50. Write the profit function.",
+          "role": "guided",
+          "steps": [
+            "90% of revenue: vertical shrink by 0.9 → $ h(x) = 0.9 \\cdot f(x) = 0.9 \\cdot 2x = 1.8x $.",
+            "Subtract 50: translation down 50 → $ g(x) = h(x) - 50 = 1.8x - 50 $.",
+            "Profit for 100 downloads: $ g(100) = 1.8(100) - 50 = 130 $."
+          ],
+          "title": "Example A – Profit Function"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nTry $ f(x) = x $. Shift right 2 then stretch horizontally by 3. Then try stretching first then shifting. Compare the results.",
+          "role": "peer-explain",
+          "title": "Example B – Order Matters",
+          "prompt": "Explain to a partner why the order of transformations can matter when combining a horizontal stretch and a horizontal shift.",
+          "steps": [
+            "Shift right 2: $ f(x-2) = x-2 $. Then horizontal stretch by 3: $ g(x) = (x/3) - 2 $.",
+            "Stretch first: $ h(x) = f(x/3) = x/3 $. Then shift right 2: $ g(x) = (x-2)/3 $.",
+            "These are different functions. Order matters when horizontal transformations are combined."
+          ]
+        },
+        {
+          "steps": [
+            "Vertical stretch by 2: $ 2|x| $.",
+            "Reflect over x‑axis: $ -2|x| $.",
+            "Shift left 3: $ -2|x + 3| $.",
+            "Shift up 1: $ g(x) = -2|x + 3| + 1 $."
+          ],
+          "role": "independent",
+          "title": "Example C – Write a Combined Rule",
+          "prompt": "Start with $ f(x) = |x| $. Apply a vertical stretch by 2, reflect over x‑axis, shift left 3, shift up 1. Write $ g(x) $."
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ g(x) = a \\cdot f(b(x - h)) + k $$",
+          "title": "Combined Transformation Form",
+          "notes": [
+            "$ a $: vertical stretch/shrink and x‑axis reflection.",
+            "$ b $: horizontal stretch/shrink and y‑axis reflection.",
+            "$ h $: horizontal translation.",
+            "$ k $: vertical translation."
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Step‑by‑Step Example",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Start with $ f(x) = x $",
+                "2": "$ f(x) = x $"
+              },
+              {
+                "0": "2",
+                "1": "Vertical shrink by 0.25",
+                "2": "$ h(x) = 0.25x $"
+              },
+              {
+                "0": "3",
+                "1": "Translation 3 units up",
+                "2": "$ g(x) = 0.25x + 3 $"
+              }
+            ],
+            "headers": [
+              "Step",
+              "Transformation",
+              "Result"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "You can apply multiple transformations to a function by performing them [[imp:one at a time in the stated order]].",
+          "Start with the parent or original function. Apply the first transformation to get a new function $ h(x) $.",
+          "Then apply the second transformation to $ h(x) $ to get the final function $ g(x) $.",
+          "The general combined form for vertical stretch/shrink, reflection, and translations is: $$ g(x) = a \\cdot f(x - h) + k $$",
+          "If horizontal stretch/shrink is also involved, the form is $ g(x) = a \\cdot f(b(x - h)) + k $."
+        ]
+      },
+      "title": "Combining Transformations in Sequence",
+      "confusionCorner": {
+        "title": "Follow the Given Order",
+        "body": "When a problem specifies a sequence of transformations, apply them exactly in that order. If you just use the form $ a \\cdot f(x - h) + k $, you're assuming the order: horizontal shift, then vertical stretch/reflect, then vertical shift. [[imp:That's the standard order, but check the problem statement.]]"
+      },
+      "teacherCues": [
+        "Write a sequence on the board: start with $ f(x) = |x| $, shrink vertically by 0.5, then shift up 3. Ask: What is the final equation?",
+        "Emphasize the order: apply one transformation at a time, writing the intermediate function."
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "$ g(x) = 0.5x + 4 $.",
+          "type": "short-answer",
+          "prompt": "If $ f(x) = x $, what function represents a vertical shrink by 0.5 followed by a translation up 4? (Write as an expression, e.g., $ 0.5x + 4 $)",
+          "answer": "0.5x + 4",
+          "id": "q1-2-10",
+          "hints": [
+            "First shrink: $ 0.5x $.",
+            "Then add 4."
+          ]
+        },
+        {
+          "id": "q1-2-11",
+          "feedbackIfWrong": "$ k $ controls vertical translation.",
+          "type": "fill-blank",
+          "hints": [
+            "It is the constant added outside.",
+            "It shifts up or down."
+          ],
+          "prompt": "In the combined form $ g(x) = a \\cdot f(x - h) + k $, the letter that controls vertical translation is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "k"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q1-2-12",
+          "hints": [
+            "$ 0.9 \\times 3 \\times 100 = 270 $.",
+            "Subtract 50."
+          ],
+          "answer": "220",
+          "type": "short-answer",
+          "feedbackIfWrong": "$ 0.9(3 \\cdot 100) - 50 = 270 - 50 = 220 $.",
+          "prompt": "What is the profit for 100 downloads if revenue is $ f(x) = 3x $ and profit is 90% of revenue minus $50? (Compute: 0.9*3*100 - 50 = 220)"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Real‑world functions often require multiple transformations. A game developer might take a revenue function $ f(x) = 2x $, take 90% of it (vertical shrink), then subtract $50 (vertical shift). The final profit function is $ p(x) = 1.8x - 50 $."
+      },
+      "id": "combining-transformations"
+    },
+    {
+      "teacherCues": [
+        "Walk students through identifying a, h, k from an equation like $ g(x) = -2|x + 3| + 1 $.",
+        "Use Understand–Solve–Conclude: Understand the parent, Solve by identifying parameters, Conclude by describing the graph."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "For $ g(x) = 3|x + 1| - 2 $, identify the parent and the values of $ a, h, k $.",
+          "steps": [
+            "Parent: $ f(x) = |x| $.",
+            "Rewrite as $ g(x) = 3|x - (-1)| + (-2) $.",
+            "$ a = 3 $, $ h = -1 $, $ k = -2 $.",
+            "Stretch by 3, shift left 1, shift down 2."
+          ],
+          "title": "Example A – Understand the Parameters"
+        },
+        {
+          "prompt": "Explain to a partner how to sketch $ g(x) = -|x - 2| + 4 $.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "title": "Example B – Solve: Sketching the Graph",
+          "steps": [
+            "Vertex: $ (h, k) = (2, 4) $.",
+            "$ a = -1 $: reflect over x‑axis (opens downward), same width as parent.",
+            "Plot vertex at $ (2,4) $, then go left 1, down 1 and right 1, down 1 to get points on the V.",
+            "Draw the V shape."
+          ],
+          "peerPrompt": "Without looking back...\n\nStart with the vertex. What direction does the V open? Is it steeper or flatter than the parent?"
+        },
+        {
+          "role": "independent",
+          "prompt": "Write the equation of an absolute value function with vertex at $ (-3, 1) $, that opens upward and is vertically stretched by 2.",
+          "steps": [
+            "Vertex $ (h, k) = (-3, 1) $: $ h = -3 $, $ k = 1 $.",
+            "Opens upward: $ a $ positive. Stretch by 2: $ a = 2 $.",
+            "Equation: $ g(x) = 2|x - (-3)| + 1 = 2|x + 3| + 1 $."
+          ],
+          "title": "Example C – Conclude: Write an Equation from Description"
+        }
+      ],
+      "title": "Blueprint Aid: Full Transformation of Absolute Value Functions",
+      "concept": {
+        "explanation": [
+          "**Understand**: The function $ g(x) = -\\frac{1}{2}|x - 4| + 3 $ is a transformation of the parent $ f(x) = |x| $. We want to describe all transformations and sketch the graph.",
+          "**Solve**: Match to $ g(x) = a \\cdot f(x - h) + k $: $ a = -\\frac{1}{2} $, $ h = 4 $, $ k = 3 $. So: reflect over x‑axis (since $ a < 0 $), vertical shrink by $ \\frac{1}{2} $, shift right 4, shift up 3. Vertex at $ (4, 3) $.",
+          "**Conclude**: The V opens downward, is wider than the parent, and its vertex is at $ (4, 3) $."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Vertex: $ (h, k) $.",
+            "Opens upward if $ a > 0 $, downward if $ a < 0 $.",
+            "Width compared to parent: narrower if $ |a| > 1 $, wider if $ 0 < |a| < 1 $."
+          ],
+          "title": "Absolute Value Transformation Template",
+          "formula": "$$ g(x) = a|x - h| + k $$"
+        },
+        "visuals": [
+          {
+            "title": "Breaking Down $ g(x) = -\\frac{1}{2}|x - 4| + 3 $",
+            "headers": [
+              "Parameter",
+              "Value",
+              "Transformation"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "$ a $",
+                "1": "$ -\\frac{1}{2} $",
+                "2": "Reflect over x‑axis; vertical shrink by $ \\frac{1}{2} $"
+              },
+              {
+                "0": "$ h $",
+                "1": "$ 4 $",
+                "2": "Shift right 4"
+              },
+              {
+                "0": "$ k $",
+                "1": "$ 3 $",
+                "2": "Shift up 3"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "You encounter the function $ g(x) = -\\frac{1}{2}|x - 4| + 3 $. It looks complicated, but if you break it down using $ a \\cdot f(x - h) + k $, you can quickly sketch its graph and describe how it relates to $ |x| $."
+      },
+      "confusionCorner": {
+        "body": "In $ |x - h| $, the vertex is at $ (h, k) $. If you see $ |x + 3| $, that is $ |x - (-3)| $, so $ h = -3 $ and the vertex is at $ (-3, k) $. [[imp:The x‑coordinate of the vertex has the opposite sign of what appears inside.]]",
+        "title": "Watch the Sign of h!"
+      },
+      "id": "blueprint-absolute-value-transformations",
+      "questions": [
+        {
+          "type": "short-answer",
+          "id": "q1-2-13",
+          "feedbackIfWrong": "The vertex is at $ (5, 2) $.",
+          "prompt": "What is the vertex of $ g(x) = |x - 5| + 2 $? (Answer like (5,2))",
+          "hints": [
+            "The form is $ |x - h| + k $.",
+            "$ h = 5 $, $ k = 2 $."
+          ],
+          "answer": "(5,2)"
+        },
+        {
+          "prompt": "If $ a = -3 $ in $ g(x) = a|x - h| + k $, the V opens ___ (upward or downward).",
+          "feedbackIfWrong": "The V opens downward.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "downward"
+              ]
+            }
+          ],
+          "hints": [
+            "Negative $ a $ reflects the graph over the x‑axis.",
+            "The V flips upside down."
+          ],
+          "id": "q1-2-14"
+        },
+        {
+          "answer": "-|x+2|+3",
+          "prompt": "Write the equation of an absolute value function with vertex $ (-2, 3) $, opening downward, with vertical stretch by 1. (Use form a|x-h|+k)",
+          "feedbackIfWrong": "$ g(x) = -|x + 2| + 3 $.",
+          "hints": [
+            "Vertex (-2,3) gives h=-2, k=3; opening downward gives a=-1.",
+            "The equation has form a|x-h|+k."
+          ],
+          "type": "short-answer",
+          "id": "q1-2-15"
+        }
+      ]
+    }
+  ],
+  "id": "section-1-2-transformations-linear-absolute-value",
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Reinforce the 'inside opposite, outside same' rule for translations. Students often mix up horizontal shifts.",
+    "For stretches and shrinks, emphasize the distinction between vertical (multiply output) and horizontal (multiply input). The horizontal behavior is counter‑intuitive.",
+    "When combining transformations, encourage writing intermediate functions step by step rather than trying to do it all at once.",
+    "The absolute value function is a great context for combining transformations because the vertex makes the shifts visually obvious."
+  ],
+  "standards": [
+    "HSF.BF.B.3",
+    "HSF.IF.C.7b"
+  ],
+  "title": "Transformations of Lin. and Abs. Functions",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

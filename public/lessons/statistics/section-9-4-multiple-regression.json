@@ -1,0 +1,748 @@
+{
+  "type": "interactive-lesson",
+  "title": "Multiple Regression",
+  "presenterNotes": [
+    "Multiple regression is best taught with technology. Show a live Google Sheets demo with LINEST.",
+    "Emphasize that R² interpretation is the same as simple regression, but adjusted R² is often more appropriate.",
+    "Caution students about extrapolation in multiple dimensions — it's even easier to go outside the data cloud.",
+    "Point out that p‑values for individual coefficients test significance given all other predictors."
+  ],
+  "id": "section-9-4-multiple-regression",
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "Predicting a house's price using only square footage is okay, but adding number of bedrooms, location, and age of the house makes predictions much more accurate. Multiple regression lets us combine several factors into one equation."
+      },
+      "questions": [
+        {
+          "prompt": "A multiple regression equation has the form $\\hat{y} = b + m_1x_1 + m_2x_2$. The $m_1$ and $m_2$ are called ___.",
+          "hints": [
+            "They multiply the independent variables.",
+            "They represent the change in $\\hat{y}$ per unit change in $x$, holding other variables constant."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "coefficients",
+                "slopes"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "They are the coefficients (or slopes) of the independent variables.",
+          "id": "q9-4-1"
+        },
+        {
+          "type": "short-answer",
+          "id": "q9-4-2",
+          "answer": "3",
+          "feedbackIfWrong": "The increase is the coefficient of $x_1$, which is 3.",
+          "hints": [
+            "Look at the coefficient of $x_1$.",
+            "Multiply the coefficient by the change in $x_1$."
+          ],
+          "prompt": "In the equation $\\hat{y} = 10 + 3x_1 + 5x_2$, if $x_1$ increases by 1 and $x_2$ stays the same, by how much does $\\hat{y}$ increase?"
+        },
+        {
+          "answer": "intercept",
+          "feedbackIfWrong": "$b$ is the y‑intercept.",
+          "type": "short-answer",
+          "id": "q9-4-3",
+          "prompt": "The constant term $b$ in a multiple regression equation is called the ___.",
+          "hints": [
+            "It's where the line would hit the y‑axis if all x's were zero.",
+            "It's the same term as in simple linear regression."
+          ]
+        }
+      ],
+      "id": "multiple-regression-intro",
+      "teacherCues": [
+        "Write a simple regression equation on the board: ŷ = b + m₁x₁. Then ask: What if we add another variable, like x₂?",
+        "Display a table with multiple columns: y, x₁, x₂. Explain that each row is an observation with several predictors."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Example: Salary Prediction",
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "57,310",
+                "1": "10",
+                "2": "2",
+                "3": "16"
+              },
+              {
+                "0": "57,380",
+                "1": "5",
+                "2": "6",
+                "3": "16"
+              },
+              {
+                "0": "54,135",
+                "1": "3",
+                "2": "1",
+                "3": "12"
+              },
+              {
+                "0": "56,985",
+                "1": "6",
+                "2": "5",
+                "3": "14"
+              }
+            ],
+            "headers": [
+              "Salary, y",
+              "Years Employed, x₁",
+              "Experience, x₂",
+              "Education, x₃"
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:multiple regression equation]] extends simple linear regression by including two or more independent (explanatory) variables: $$\\hat{y} = b + m_1x_1 + m_2x_2 + \\dots + m_kx_k$$",
+          "$b$ is the y‑intercept — the predicted $y$ when all $x_i = 0$.",
+          "Each [[kw:coefficient]] $m_i$ tells how much $\\hat{y}$ changes when $x_i$ increases by one unit, [[imp:holding all other variables constant]].",
+          "Multiple regression models are almost always built with technology because the calculations are complex."
+        ],
+        "formulaCard": {
+          "title": "Multiple Regression Equation",
+          "notes": [
+            "Also called a multiple linear model.",
+            "Each $x$ is an independent variable.",
+            "Technology is essential for finding $b$ and the $m_i$'s."
+          ],
+          "formula": "$$ \\hat{y} = b + m_1x_1 + m_2x_2 + \\dots + m_kx_k $$"
+        }
+      },
+      "examples": [
+        {
+          "title": "Example A – Identifying Components",
+          "role": "guided",
+          "steps": [
+            "The intercept $b = 49,764$ (predicted salary when all x's are 0).",
+            "The coefficient of $x_2$ (experience) is $m_2 = 228$.",
+            "This means for each additional year of experience, salary increases by $228, holding employment and education constant."
+          ],
+          "prompt": "The equation $\\hat{y} = 49,764 + 364x_1 + 228x_2 + 267x_3$ predicts salary. Identify the intercept and the coefficient of $x_2$."
+        },
+        {
+          "steps": [
+            "The coefficient 228 is the isolated effect of experience, assuming employment and education don't change.",
+            "If multiple variables change, the total change in predicted salary is the sum of each coefficient times its change.",
+            "This 'all else equal' interpretation is key in multiple regression."
+          ],
+          "prompt": "Explain to a partner what it means to interpret a coefficient while holding other variables constant.",
+          "role": "peer-explain",
+          "title": "Example B – Why 'Holding Other Variables Constant'?",
+          "peerPrompt": "Without looking back...\n\nDiscuss: If we change both experience and education at the same time, can we isolate the effect of experience alone? What does the coefficient 228 represent?",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – When Intercept Isn't Meaningful",
+          "prompt": "For the salary equation, $b = 49,764$. Is it meaningful that an employee with 0 years employed, 0 experience, and 0 education earns $49,764?",
+          "steps": [
+            "Probably not. Few employees have 0 for all variables.",
+            "The intercept is simply the value that makes the predictions best fit the data within the observed range.",
+            "It may not have a sensible real‑world interpretation if $x=0$ is outside the data."
+          ],
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Ignore Other Variables When Interpreting a Coefficient",
+        "body": "The coefficient of $x_1$ tells the effect of $x_1$ only when $x_2, x_3, \\dots$ are fixed. [[imp:Always add 'holding other variables constant' when interpreting coefficients.]]"
+      },
+      "title": "What is Multiple Regression?"
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "It is the same concept as r² in simple regression.",
+            "It is the proportion of variation in y explained by the model."
+          ],
+          "id": "q9-4-4",
+          "feedbackIfWrong": "R‑Sq is the coefficient of determination.",
+          "prompt": "In multiple regression, what does R‑Sq stand for? (Three words: coefficient of determination)",
+          "type": "short-answer",
+          "answer": "coefficient of determination"
+        },
+        {
+          "id": "q9-4-5",
+          "type": "short-answer",
+          "answer": "659.49",
+          "hints": [
+            "S is the standard error of estimate.",
+            "Look at the bottom of the output table."
+          ],
+          "prompt": "In the salary output, what is the value of S? (Enter a number: 659.49)",
+          "feedbackIfWrong": "S = 659.49, the standard error of estimate."
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "significant",
+                "useful",
+                "important"
+              ]
+            }
+          ],
+          "id": "q9-4-6",
+          "type": "fill-blank",
+          "feedbackIfWrong": "Small p‑values indicate the variable is a significant predictor.",
+          "hints": [
+            "If p < 0.05, we typically say the variable is statistically significant.",
+            "It means the coefficient is likely not zero."
+          ],
+          "prompt": "A small p‑value for a coefficient suggests that the variable is a ___ predictor in the model."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Technology provides a lot more than just the equation. It also gives the standard error of estimate (S) and the coefficient of determination (R‑Sq), which tell us how well the model fits."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "94.4% of the variation in salaries is explained by the three variables together.",
+            "Only 5.6% of the variation is due to other factors or chance.",
+            "This indicates a very strong model."
+          ],
+          "prompt": "The salary output shows R‑Sq = 94.4%. Interpret this value.",
+          "title": "Example A – Reading R‑Sq"
+        },
+        {
+          "prompt": "The p‑value for Experience is 0.140. What does this suggest about Experience in the model?",
+          "steps": [
+            "A p‑value of 0.140 > 0.05, so Experience is not a statistically significant predictor at the 5% level.",
+            "This suggests that, after accounting for Employment and Education, Experience does not add much explanatory power.",
+            "However, it could still be retained; the decision depends on context and other diagnostics."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If a p‑value is greater than 0.05, do we have strong evidence that the variable helps predict salary?",
+          "role": "peer-explain",
+          "title": "Example B – Interpreting p‑Values",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Using S (Standard Error of Estimate)",
+          "role": "independent",
+          "steps": [
+            "$S$ is the standard error of estimate — the typical prediction error in dollars.",
+            "About 68% of actual salaries fall within $\\pm$ 659.49 of the predicted salary, if errors are roughly normal.",
+            "It is a measure of how precise the model's predictions are."
+          ],
+          "prompt": "The output gives S = 659.49. What does this number represent?"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Multiple R‑Sq vs. Adjusted R‑Sq",
+        "body": "The regular $R^2$ always increases when you add more variables, even useless ones. The [[imp:adjusted $R^2$]] penalizes extra variables and can decrease if a variable doesn't help. It's a better measure for comparing models with different numbers of predictors."
+      },
+      "teacherCues": [
+        "Show a sample output table with columns: Predictor, Coef, SE Coef, T, P.",
+        "Highlight R‑Sq and S (standard error of estimate). Explain that R‑Sq is the coefficient of determination."
+      ],
+      "id": "interpreting-output",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Constant",
+                "1": "49764",
+                "2": "0.000"
+              },
+              {
+                "0": "x₁ (Employment)",
+                "1": "364.41",
+                "2": "0.002"
+              },
+              {
+                "0": "x₂ (Experience)",
+                "1": "227.6",
+                "2": "0.140"
+              },
+              {
+                "0": "x₃ (Education)",
+                "1": "266.9",
+                "2": "0.144"
+              },
+              {
+                "0": "S = 659.490",
+                "1": "R‑Sq = 94.4%",
+                "2": ""
+              }
+            ],
+            "headers": [
+              "Predictor",
+              "Coef",
+              "P"
+            ],
+            "type": "table",
+            "title": "Sample Software Output (Salary Example)"
+          }
+        ],
+        "explanation": [
+          "Most software reports the [[kw:coefficient of determination]] as $R^2$ (or R‑Sq). It is the proportion of variation in $y$ explained by all the independent variables together.",
+          "The [[kw:standard error of estimate]] is often labeled $S$. It is the typical size of the residuals, just like $s_e$ in simple regression.",
+          "Each coefficient also has a standard error, a $t$‑statistic, and a [[kw:p‑value]] that tests whether that particular variable is a significant predictor (i.e., whether its true coefficient could be zero).",
+          "A small p‑value (typically $< 0.05$) indicates that the variable is a useful predictor in the presence of the others."
+        ],
+        "formulaCard": {
+          "notes": [
+            "$k$ = number of independent variables.",
+            "Degrees of freedom for $S$ is $n - k - 1$.",
+            "R‑Sq adjusted penalizes adding unhelpful variables."
+          ],
+          "title": "Key Outputs",
+          "formula": "$$ R^2 = \\frac{\\text{Explained variation}}{\\text{Total variation}} $$ $$ S = \\sqrt{\\frac{\\Sigma (y - \\hat{y})^2}{n - k - 1}} $$"
+        }
+      },
+      "title": "Interpreting Technology Output for Multiple Regression"
+    },
+    {
+      "examples": [
+        {
+          "prompt": "Use the equation $\\hat{y} = 49,764 + 364x_1 + 228x_2 + 267x_3$ to predict salary for $x_1=10, x_2=3, x_3=14$.",
+          "role": "guided",
+          "title": "Example A – Calculating a Prediction",
+          "steps": [
+            "$\\hat{y} = 49,764 + 364(10) + 228(3) + 267(14)$.",
+            "Calculate: $49,764 + 3,640 + 684 + 3,738$.",
+            "Sum: $49,764 + 3,640 = 53,404$; $53,404 + 684 = 54,088$; $54,088 + 3,738 = 57,826$.",
+            "The predicted salary is $57,826."
+          ]
+        },
+        {
+          "steps": [
+            "The maximum employment in the data is 20 years.",
+            "Predicting at 25 years is extrapolation — the linear relationship may not hold beyond the observed range.",
+            "Also, a combination of 25 years employment with only 10 years education might be unusual in the dataset.",
+            "Thus, the prediction is not reliable."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: 25 is above the maximum observed employment. Why might this prediction be unreliable?",
+          "role": "peer-explain",
+          "prompt": "Is it valid to predict salary for $x_1=25, x_2=0, x_3=10$ if the original data had employment ranging from 3 to 20 years?",
+          "title": "Example B – Checking Validity of Prediction"
+        },
+        {
+          "steps": [
+            "The increase from employment: $364 \\times 1 = 364$.",
+            "The increase from education: $267 \\times 1 = 267$.",
+            "Total increase: $364 + 267 = 631$.",
+            "Predicted salary goes up by $631."
+          ],
+          "prompt": "If an employee gains 1 year of employment and 1 year of education, by how much does predicted salary increase?",
+          "role": "independent",
+          "title": "Example C – Effect of Multiple Variables Changing"
+        }
+      ],
+      "id": "predicting-with-multiple-regression",
+      "teacherCues": [
+        "Demonstrate plugging multiple x-values into the equation. Show the order doesn't matter, but each x must correspond to the correct coefficient.",
+        "Remind students that predictions are only valid within the ranges of all x-variables."
+      ],
+      "questions": [
+        {
+          "answer": "52800",
+          "type": "short-answer",
+          "prompt": "Using $\\hat{y} = 50,000 + 400x_1 + 200x_2$, predict y for $x_1=5, x_2=4$. (Enter the number)",
+          "hints": [
+            "Compute: 50,000 + 400×5 + 200×4.",
+            "First 400×5=2000, 200×4=800."
+          ],
+          "id": "q9-4-7",
+          "feedbackIfWrong": "$50,000 + 2,000 + 800 = 52,800$."
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "extrapolation"
+              ]
+            }
+          ],
+          "id": "q9-4-8",
+          "feedbackIfWrong": "Extrapolation is predicting outside the data range.",
+          "hints": [
+            "Same term as in simple regression.",
+            "It is dangerous and unreliable."
+          ],
+          "prompt": "Predicting y for a combination of x-values far outside the original data range is called ___.",
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "In the equation $\\hat{y} = 10 + 3x_1 + 5x_2$, if $x_1$ increases by 2 and $x_2$ decreases by 1, what is the net change in $\\hat{y}$?",
+          "hints": [
+            "Effect of $x_1$: multiply 3 by the change in $x_1$ (2). Effect of $x_2$: multiply 5 by the change in $x_2$ (-1).",
+            "Add the two effects together."
+          ],
+          "answer": "1",
+          "type": "short-answer",
+          "feedbackIfWrong": "The net change is $3(2) + 5(-1) = 6 - 5 = 1$.",
+          "id": "q9-4-9"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "To [[kw:predict]] $\\hat{y}$ using a multiple regression equation, substitute the given values of $x_1, x_2, \\dots, x_k$ into the equation: $$\\hat{y} = b + m_1x_1 + m_2x_2 + \\dots + m_kx_k$$",
+          "The result is a point estimate, the best single guess for $y$ given those x-values.",
+          "As with simple regression, [[imp:prediction is only appropriate when the new x-values are within (or close to) the ranges of the original data]] for all variables.",
+          "Extrapolation is even riskier in multiple dimensions because combinations of x-values might be unusual even if each individually is within range."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Substitute each $x$ carefully with its matching coefficient.",
+            "Always check that all $x$ values are within the data range.",
+            "Predictions are point estimates; prediction intervals are wider."
+          ],
+          "title": "Prediction with Multiple Regression",
+          "formula": "$$ \\hat{y} = b + m_1x_1 + m_2x_2 + \\dots + m_kx_k $$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "x₁ (Emp)",
+              "x₂ (Exp)",
+              "x₃ (Edu)",
+              "Predicted Salary"
+            ],
+            "title": "Predictions for Different Employees",
+            "rows": [
+              {
+                "0": "12",
+                "1": "5",
+                "2": "16",
+                "3": "$59,544"
+              },
+              {
+                "0": "4",
+                "1": "2",
+                "2": "12",
+                "3": "$54,880"
+              },
+              {
+                "0": "8",
+                "1": "7",
+                "2": "17",
+                "3": "$58,811"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table"
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Once we have the equation, making a prediction is straightforward: just plug in the numbers for each independent variable. For example, an employee with 12 years employment, 5 years experience, and 16 years education would have a predicted salary of $59,544."
+      },
+      "title": "Predicting y-Values with a Multiple Regression Equation",
+      "confusionCorner": {
+        "title": "Don't Misalign the Variables!",
+        "body": "When substituting, make sure each x is matched with its own coefficient. [[imp:A common mistake is to mix up the order of variables.]] Always double‑check which coefficient belongs to which variable."
+      }
+    },
+    {
+      "title": "Multiple Regression with Google Sheets",
+      "confusionCorner": {
+        "title": "Reverse Order Alert!",
+        "body": "LINEST returns coefficients in reverse order of the independent variables as they appear in the spreadsheet. If your columns are ordered $x_1, x_2, x_3$, the first row will show $m_3, m_2, m_1, b$. [[imp:Always check the order before writing the equation.]]"
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ =\\text{LINEST}(y\\_range, x\\_range, \\text{TRUE}, \\text{TRUE}) $$",
+          "notes": [
+            "x_range includes all independent variable columns.",
+            "Output is an array; select enough cells before entering.",
+            "Ctrl+Shift+Enter to confirm array formula.",
+            "First row: coefficients, last column = intercept."
+          ],
+          "title": "LINEST for Multiple Regression"
+        },
+        "visuals": [
+          {
+            "title": "Interpreting LINEST Output for k=2",
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Column 1",
+              "Column 2",
+              "Column 3"
+            ],
+            "rows": [
+              {
+                "0": "$m_2$",
+                "1": "$m_1$",
+                "2": "$b$"
+              },
+              {
+                "0": "SE of $m_2$",
+                "1": "SE of $m_1$",
+                "2": "SE of $b$"
+              },
+              {
+                "0": "$R^2$",
+                "1": "$S$",
+                "2": ""
+              },
+              {
+                "0": "F‑stat",
+                "1": "df",
+                "2": ""
+              },
+              {
+                "0": "SS reg",
+                "1": "SS resid",
+                "2": ""
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "Use the function `=LINEST(known_y, known_x, TRUE, TRUE)` to perform multiple regression in Google Sheets.",
+          "`known_y` is the range of the response variable. `known_x` is a range covering all independent variable columns (must be contiguous).",
+          "The function returns an array: the first row contains the coefficients ($m_k, m_{k-1}, \\dots, m_1$), the second row their standard errors, and additional rows include $R^2$ and $S$.",
+          "Because the coefficients are in reverse order, the last column of the first row is the intercept $b$.",
+          "[[imp:Always select a 5-row by (k+2)-column range before entering the formula, and press Ctrl+Shift+Enter.]]"
+        ]
+      },
+      "teacherCues": [
+        "Open Google Sheets and demonstrate the LINEST function. Show how to select a 3-row output range.",
+        "Explain that LINEST returns coefficients in reverse order, so be careful."
+      ],
+      "questions": [
+        {
+          "id": "q9-4-10",
+          "type": "short-answer",
+          "hints": [
+            "It's an array function.",
+            "Stands for 'linear estimation'."
+          ],
+          "answer": "LINEST",
+          "feedbackIfWrong": "The function is LINEST.",
+          "prompt": "What Google Sheets function performs multiple linear regression? (Function name, no equals sign: LINEST)"
+        },
+        {
+          "prompt": "In the LINEST output array, the very last column of the first row always contains the ___ coefficient.",
+          "hints": [
+            "It's the term that is not multiplied by any x.",
+            "It is the predicted y when all x's are zero."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "intercept",
+                "b",
+                "constant"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The last column of the first row is the intercept $b$.",
+          "id": "q9-4-11"
+        },
+        {
+          "id": "q9-4-12",
+          "answer": "Enter",
+          "feedbackIfWrong": "Press Ctrl+Shift+Enter to enter an array formula.",
+          "prompt": "To enter an array formula in Google Sheets, you press Ctrl+Shift+___.",
+          "type": "short-answer",
+          "hints": [
+            "It's the key you press to finalize a formula.",
+            "Not just Enter; it's a combination."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "You have Salary in B2:B9, Employment in C2:C9, Experience in D2:D9, Education in E2:E9. Write the LINEST formula.",
+          "title": "Example A – Setting Up LINEST",
+          "steps": [
+            "The y_range is B2:B9.",
+            "The x_range is C2:E9 (all three predictor columns).",
+            "Formula: `=LINEST(B2:B9, C2:E9, TRUE, TRUE)`.",
+            "Select a 5-row × 4-column area, type the formula, then Ctrl+Shift+Enter."
+          ]
+        },
+        {
+          "steps": [
+            "R² is the proportion of variation in the response explained by all predictors together.",
+            "In multiple regression, it's called the coefficient of multiple determination.",
+            "It ranges from 0 to 1; higher values indicate a better fit."
+          ],
+          "minLength": 2,
+          "prompt": "The third row, first column of the LINEST output gives R². What does R² tell you?",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: How is R² interpreted in multiple regression? Does it still mean the same as in simple regression?",
+          "role": "peer-explain",
+          "title": "Example B – Finding R² from LINEST Output"
+        },
+        {
+          "prompt": "From a LINEST output, the first row shows: 267, 228, 364, 49764. Write the regression equation.",
+          "title": "Example C – Extracting Coefficients",
+          "steps": [
+            "The order is $m_3, m_2, m_1, b$.",
+            "So $b = 49764$, $m_1 = 364$ (Employment), $m_2 = 228$ (Experience), $m_3 = 267$ (Education).",
+            "Equation: $\\hat{y} = 49764 + 364x_1 + 228x_2 + 267x_3$."
+          ],
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "You can perform multiple regression in Google Sheets using the LINEST function. It's a bit trickier than SLOPE and INTERCEPT, but once you know how, you can build models with many variables."
+      },
+      "id": "google-sheets-multiple-regression"
+    },
+    {
+      "discoveryHook": {
+        "scenario": "A professor wants to predict a student's final grade based on midterm exam score and number of missed classes. We'll use multiple regression to build the model, check its fit, and make a prediction."
+      },
+      "title": "Blueprint Aid: Building and Using a Multiple Regression Model",
+      "teacherCues": [
+        "Walk through a complete example: predicting final grades from midterm score and missed classes.",
+        "Demonstrate Understand–Solve–Conclude with multiple predictors."
+      ],
+      "examples": [
+        {
+          "prompt": "Identify the response and predictors. Write the generic form of the equation.",
+          "role": "guided",
+          "steps": [
+            "Response y = final grade.",
+            "Predictors: $x_1$ = midterm score, $x_2$ = missed classes.",
+            "Model: $\\hat{y} = b + m_1x_1 + m_2x_2$."
+          ],
+          "title": "Example A – Understand the Problem"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nDiscuss: If a student misses one more class but has the same midterm score, how much do we expect their final grade to change?",
+          "steps": [
+            "The coefficient -3 means that for each additional missed class, the predicted final grade drops by 3 points, holding midterm score constant.",
+            "This makes sense: missing more classes tends to lower grades.",
+            "The magnitude seems plausible, depending on the scale."
+          ],
+          "prompt": "Suppose the coefficient of $x_2$ is -3. What does this mean?",
+          "title": "Example B – Solve: Interpret a Coefficient",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Conclude: Make a Prediction",
+          "prompt": "Using $\\hat{y} = 65 + 0.4x_1 - 3x_2$, predict final grade for midterm=80 and missed=2.",
+          "steps": [
+            "Plug in: $\\hat{y} = 65 + 0.4(80) - 3(2) = 65 + 32 - 6 = 91$.",
+            "The predicted final grade is 91.",
+            "Check that 80 is within the range of midterm scores and 2 within the range of missed classes in the data."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "In the regression $\\hat{y} = 70 + 0.5x_1 - 4x_2$, what is the predicted y for $x_1=60, x_2=3$?",
+          "hints": [
+            "Calculate: 70 + 0.5×60 − 4×3.",
+            "0.5×60=30, 4×3=12, so 70+30−12=88."
+          ],
+          "answer": "88",
+          "type": "short-answer",
+          "id": "q9-4-13",
+          "feedbackIfWrong": "$70 + 30 - 12 = 88$."
+        },
+        {
+          "id": "q9-4-14",
+          "type": "fill-blank",
+          "prompt": "A multiple regression model with two predictors has $R^2 = 0.75$. This means that ___% of the variation in y is explained by the model.",
+          "feedbackIfWrong": "75% of the variation is explained.",
+          "hints": [
+            "Convert the decimal to a percentage.",
+            "Multiply by 100."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "75"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Look at the visual of the output: row 1 = coefficients, row 2 = standard errors.",
+            "S is in row 2, second column for a two‑predictor model."
+          ],
+          "answer": "2",
+          "id": "q9-4-15",
+          "prompt": "In LINEST output, which row contains the standard error of estimate S? (Enter the row number: 2)",
+          "feedbackIfWrong": "The standard error of estimate S is in the second row, typically in the column before last."
+        }
+      ],
+      "id": "blueprint-multiple-regression",
+      "confusionCorner": {
+        "body": "If two predictors are highly correlated (e.g., number of study hours and number of completed assignments), it can be hard to separate their effects. [[imp:Check correlations among predictors]]; if they are too high, the coefficients may be unreliable.",
+        "title": "Multicollinearity Warning"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Student Data (Partial)",
+            "type": "table",
+            "headers": [
+              "Final, y",
+              "Midterm, x₁",
+              "Missed, x₂"
+            ],
+            "rows": [
+              {
+                "0": "81",
+                "1": "75",
+                "2": "1"
+              },
+              {
+                "0": "90",
+                "1": "80",
+                "2": "0"
+              },
+              {
+                "0": "86",
+                "1": "91",
+                "2": "2"
+              },
+              {
+                "0": "76",
+                "1": "80",
+                "2": "3"
+              },
+              {
+                "0": "51",
+                "1": "62",
+                "2": "6"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "**Understand**: Response = final grade ($y$), predictors = midterm ($x_1$) and missed classes ($x_2$). We have 10 observations.",
+          "**Solve**: Using technology, we get the equation $\\hat{y} = 65 + 0.4x_1 - 3x_2$, with $R^2 = 0.78$ and $S = 5.2$.",
+          "**Conclude**: For a student with midterm 80 and 2 missed classes, predicted final grade is $\\hat{y} = 65 + 0.4(80) - 3(2) = 65 + 32 - 6 = 91$."
+        ]
+      }
+    }
+  ],
+  "schemaVersion": 2,
+  "standards": [
+    "HSS.ID.B.6a",
+    "HSS.ID.C.7",
+    "HSS.ID.C.8"
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

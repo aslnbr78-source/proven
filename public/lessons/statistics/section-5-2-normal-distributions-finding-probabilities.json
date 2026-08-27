@@ -1,0 +1,692 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "section-5-2-normal-distributions-finding-probabilities",
+  "title": "Finding Probabilities",
+  "standards": [
+    "HSS.ID.A.4",
+    "HSS.MD.B.7"
+  ],
+  "blocks": [
+    {
+      "id": "probability-and-normal-distributions",
+      "title": "Probability and Normal Distributions",
+      "teacherCues": [
+        "Ask: 'If heights are normally distributed, how do we find the probability a person is shorter than a given value?'",
+        "Write on board: convert x to z, then use table. Emphasize area = probability."
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine you know the average time people keep a cell phone before upgrading, and the standard deviation. You can find the probability that a randomly chosen person keeps it less than one year. That's the power of normal distributions—turning real-world questions into exact probabilities!"
+      },
+      "concept": {
+        "explanation": [
+          "If a random variable $x$ is normally distributed, the probability that $x$ falls in an interval equals the area under the normal curve over that interval.",
+          "To find the area under any normal curve, first convert the interval bounds to z-scores using $$ z = \\frac{x - \\mu}{\\sigma} $$",
+          "Then use the standard normal table to find the corresponding area.",
+          "The total area under the curve is 1, so probabilities are between 0 and 1.",
+          "Areas do not change under the transformation from $x$ to $z$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Steps to Find Probability",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Sketch the normal curve and shade the desired area."
+              },
+              {
+                "0": "2",
+                "1": "Convert each boundary x-value to a z-score."
+              },
+              {
+                "0": "3",
+                "1": "Use the standard normal table to find areas."
+              },
+              {
+                "0": "4",
+                "1": "Subtract areas or use complement as needed."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Z-Score Transformation",
+          "formula": "$$ z = \\frac{x - \\mu}{\\sigma} $$",
+          "notes": [
+            "$x$ = raw score, $\\mu$ = mean, $\\sigma$ = standard deviation.",
+            "Round z to the nearest hundredth."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Probability Less Than a Value",
+          "prompt": "A survey indicates people use their cell phones an average of 1.5 years before buying a new one, with $\\sigma = 0.25$ year. Find the probability a user keeps the phone less than 1 year.",
+          "steps": [
+            "Identify $\\mu = 1.5$, $\\sigma = 0.25$, $x = 1$.",
+            "Convert to z: $z = \\frac{1 - 1.5}{0.25} = -2$.",
+            "Look up $z = -2$ in table: area left = 0.0228.",
+            "So $P(x < 1) = 0.0228$, about 2.28%."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Probability Greater Than a Value",
+          "prompt": "Using the same cell phone data, find the probability a user keeps the phone more than 2 years.",
+          "peerPrompt": "Explain to a partner: After finding the z-score for 2 years, why do you subtract the table area from 1?",
+          "minLength": 2,
+          "steps": [
+            "$x = 2$, so $z = \\frac{2 - 1.5}{0.25} = 2$.",
+            "Table area left of $z = 2$ is 0.9772.",
+            "Area right = $1 - 0.9772 = 0.0228$.",
+            "So $P(x > 2) = 0.0228$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Probability Between Two Values",
+          "prompt": "The average speed on a highway is 67 mph with $\\sigma = 3.5$ mph. Find the probability a vehicle is traveling between 65 and 70 mph.",
+          "steps": [
+            "Convert both: $z_1 = \\frac{65-67}{3.5} \\approx -0.57$, $z_2 = \\frac{70-67}{3.5} \\approx 0.86$.",
+            "Area left of $z_2 = 0.8051$, area left of $z_1 = 0.2843$.",
+            "Area between = $0.8051 - 0.2843 = 0.5208$.",
+            "So probability ≈ 0.5208."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Less Than vs. Greater Than",
+        "body": "For 'less than' use the table area directly. For 'greater than', subtract the table area from 1. Never use the raw x-value in the table."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "To find probabilities for a normal distribution, you first convert the x-value to a ___.",
+          "blanks": [
+            {
+              "accept": [
+                "z-score"
+              ]
+            }
+          ],
+          "hints": [
+            "It standardizes the value.",
+            "The formula is $z = \\frac{x-\\mu}{\\sigma}$."
+          ],
+          "feedbackIfWrong": "You convert to a z-score."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "If $P(z < 1.5) = 0.9332$, what is $P(z > 1.5)$?",
+          "answer": "0.0668",
+          "hints": [
+            "Total area is 1.",
+            "Subtract 0.9332 from 1."
+          ],
+          "feedbackIfWrong": "$P(z > 1.5) = 1 - 0.9332 = 0.0668$."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "For $\\mu = 100$, $\\sigma = 15$, find the z-score for $x = 85$.",
+          "answer": "-1",
+          "hints": [
+            "$z = \\frac{85-100}{15}$.",
+            "Negative because x is below mean."
+          ],
+          "feedbackIfWrong": "$z = \\frac{85-100}{15} = -1$."
+        }
+      ]
+    },
+    {
+      "id": "probabilities-for-intervals",
+      "title": "Probabilities for Intervals",
+      "teacherCues": [
+        "Show how to compute probability between two x-values: two z-scores, subtract areas.",
+        "Use supermarket example: mean 45 min, sd 12 min, between 24 and 54 min."
+      ],
+      "discoveryHook": {
+        "scenario": "What proportion of supermarket shoppers spend between 24 and 54 minutes? By converting both bounds to z-scores and subtracting areas, you can answer exactly—and even predict how many shoppers out of 200 fall in that range!"
+      },
+      "concept": {
+        "explanation": [
+          "To find the probability that $x$ is between two values $a$ and $b$, convert both to z-scores: $z_a$ and $z_b$.",
+          "Find the cumulative area for each z-score using the standard normal table.",
+          "The probability is the difference: $$ P(a < x < b) = P(z < z_b) - P(z < z_a) $$",
+          "If needed, multiply the probability by a sample size to estimate expected counts.",
+          "Sketching the curve and shading the region helps avoid mistakes."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Between Two Values",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Convert $a$ to $z_a$, $b$ to $z_b$."
+              },
+              {
+                "0": "2",
+                "1": "Find area left of $z_a$ and $z_b$."
+              },
+              {
+                "0": "3",
+                "1": "Subtract smaller area from larger area."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Probability Between Two Values",
+          "formula": "$$ P(a < x < b) = P(z < z_b) - P(z < z_a) $$",
+          "notes": [
+            "$z_a = \\frac{a - \\mu}{\\sigma}$, $z_b = \\frac{b - \\mu}{\\sigma}$.",
+            "Use table for cumulative areas."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Between 24 and 54 Minutes",
+          "prompt": "Shoppers spend an average of 45 minutes in a store, $\\sigma = 12$ min. Find the probability a shopper is in the store between 24 and 54 minutes.",
+          "steps": [
+            "Convert: $z_1 = \\frac{24-45}{12} = -1.75$, $z_2 = \\frac{54-45}{12} = 0.75$.",
+            "Areas: left of -1.75 = 0.0401, left of 0.75 = 0.7734.",
+            "Probability = $0.7734 - 0.0401 = 0.7333$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Expected Count",
+          "prompt": "If 200 shoppers enter the store, how many would you expect to be in the store between 24 and 54 minutes?",
+          "peerPrompt": "Explain to a partner: Why do you multiply the probability by 200?",
+          "minLength": 2,
+          "steps": [
+            "Probability from part A is 0.7333.",
+            "Expected number = $200 \\times 0.7333 = 146.66$.",
+            "So about 147 shoppers."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Between 33 and 60 Minutes",
+          "prompt": "Using same mean and standard deviation, find the probability a shopper is in the store between 33 and 60 minutes.",
+          "steps": [
+            "Convert: $z_1 = \\frac{33-45}{12} = -1$, $z_2 = \\frac{60-45}{12} = 1.25$.",
+            "Areas: left of -1 = 0.1587, left of 1.25 = 0.8944.",
+            "Probability = $0.8944 - 0.1587 = 0.7357$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Order of Subtraction",
+        "body": "Always subtract the smaller area from the larger area. For intervals, the area for the larger z-score minus the area for the smaller z-score."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "To find the probability between two values, subtract the smaller ___ from the larger area.",
+          "blanks": [
+            {
+              "accept": [
+                "area"
+              ]
+            }
+          ],
+          "hints": [
+            "It is what the table gives.",
+            "Cumulative probability."
+          ],
+          "feedbackIfWrong": "Subtract the smaller area from the larger area."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "If the probability of an event is 0.7333 and 200 trials occur, what is the expected number of occurrences? Round to nearest whole number.",
+          "answer": "147",
+          "hints": [
+            "Multiply probability by number of trials.",
+            "$200 \\times 0.7333$."
+          ],
+          "feedbackIfWrong": "$200 \\times 0.7333 = 146.66$, so about 147."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "For $\\mu=45$, $\\sigma=12$, what is the z-score for $x=60$?",
+          "answer": "1.25",
+          "hints": [
+            "$z = \\frac{60-45}{12}$.",
+            "Divide 15 by 12."
+          ],
+          "feedbackIfWrong": "$z = \\frac{60-45}{12} = 1.25$."
+        }
+      ]
+    },
+    {
+      "id": "using-technology",
+      "title": "Using Technology to Find Normal Probabilities",
+      "teacherCues": [
+        "Demonstrate normalcdf on TI-83/84 for a left-tail, right-tail, and interval.",
+        "Show Excel NORMDIST and MINITAB output."
+      ],
+      "discoveryHook": {
+        "scenario": "You don't always need to convert to z-scores manually. Technology like graphing calculators and statistical software can compute normal probabilities directly—saving time and reducing errors, especially for complex intervals."
+      },
+      "concept": {
+        "explanation": [
+          "Graphing calculators, Excel, and MINITAB can compute normal probabilities without manually converting to z-scores.",
+          "For a TI-83/84, use normalcdf(lower, upper, $\\mu$, $\\sigma$) for intervals.",
+          "For left-tail use a very negative lower bound like -10000; for right-tail use a very positive upper bound like 10000.",
+          "Excel: NORM.DIST(x, mean, standard_dev, TRUE) gives cumulative probability to the left of x.",
+          "These tools produce results similar to table values but may differ slightly due to rounding."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Technology Commands",
+            "headers": [
+              "Tool",
+              "Command"
+            ],
+            "rows": [
+              {
+                "0": "TI-83/84",
+                "1": "normalcdf(lower, upper, $\\mu$, $\\sigma$)"
+              },
+              {
+                "0": "Excel",
+                "1": "NORM.DIST(x, mean, standard_dev, TRUE)"
+              },
+              {
+                "0": "MINITAB",
+                "1": "Cumulative Distribution Function"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "TI-83/84 normalcdf",
+          "formula": "$$ \\text{normalcdf}(\\text{lower}, \\text{upper}, \\mu, \\sigma) $$",
+          "notes": [
+            "Use -10000 for left tail, 10000 for right tail.",
+            "Returns area between lower and upper."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Left Tail with Technology",
+          "prompt": "Triglyceride levels have mean 134 mg/dL and $\\sigma = 35$. Find the probability a person's level is less than 80.",
+          "steps": [
+            "Use normalcdf(-10000, 80, 134, 35).",
+            "Result: 0.0614.",
+            "So probability ≈ 6.14%."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Right Tail with Technology",
+          "prompt": "Using same data, find the probability a triglyceride level is greater than 200.",
+          "peerPrompt": "Explain to a partner: Why do we use 10000 as the upper bound?",
+          "minLength": 2,
+          "steps": [
+            "Right tail: normalcdf(200, 10000, 134, 35).",
+            "Result ≈ 0.0297.",
+            "This is unusual (less than 0.05)."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Interval with Technology",
+          "prompt": "Find the probability a triglyceride level is between 100 and 150 using technology.",
+          "steps": [
+            "Use normalcdf(100, 150, 134, 35).",
+            "Result ≈ 0.5120.",
+            "Probability ≈ 0.5120."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Lower/Upper Bounds",
+        "body": "For a left-tail, use -10000; for right-tail, use 10000. Make sure the order is lower then upper."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "On a TI-83/84, the function to find normal probabilities is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "normalcdf"
+              ]
+            }
+          ],
+          "hints": [
+            "It is under DISTR.",
+            "Starts with 'normal' and ends with 'cdf'."
+          ],
+          "feedbackIfWrong": "The function is normalcdf."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "What lower bound would you use for a left-tail probability on the TI-83/84?",
+          "answer": "-10000",
+          "hints": [
+            "A very negative number.",
+            "It approximates negative infinity."
+          ],
+          "feedbackIfWrong": "Use -10000."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "If normalcdf(200, 10000, 134, 35) gives 0.0297, is the event unusual? (yes/no)",
+          "answer": "yes",
+          "hints": [
+            "Compare to 0.05.",
+            "0.0297 < 0.05."
+          ],
+          "feedbackIfWrong": "Yes, 0.0297 is less than 0.05, so unusual."
+        }
+      ]
+    },
+    {
+      "id": "real-life-applications",
+      "title": "Real-Life Applications and Expected Counts",
+      "teacherCues": [
+        "Ask: 'If 35 adults are selected, how many do you expect to spend less than 5 hours on a computer?'",
+        "Show that expected count = probability × sample size."
+      ],
+      "discoveryHook": {
+        "scenario": "From heights to utility bills to battery life, normal probabilities help us make predictions. If you know the probability, you can estimate how many individuals in a sample will fall in a given range—useful in business, medicine, and quality control."
+      },
+      "concept": {
+        "explanation": [
+          "Once a probability is found for a normal distribution, it can be used to make predictions.",
+          "For a sample of size $n$, the expected number of individuals satisfying the condition is $$ \\text{Expected count} = n \\times P $$",
+          "Probabilities less than 0.05 indicate unusual events.",
+          "Real-life examples: heights, cholesterol, test scores, utility bills, battery life.",
+          "Always interpret the result in context."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Applying Normal Probabilities",
+            "headers": [
+              "Context",
+              "Mean $\\mu$",
+              "Standard deviation $\\sigma$"
+            ],
+            "rows": [
+              {
+                "0": "Heights of men (inches)",
+                "1": "69.9",
+                "2": "3.0"
+              },
+              {
+                "0": "Computer usage (hours)",
+                "1": "7",
+                "2": "1"
+              },
+              {
+                "0": "Utility bills (dollars)",
+                "1": "100",
+                "2": "12"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Expected Count",
+          "formula": "$$ \\text{Expected count} = n \\times P $$",
+          "notes": [
+            "$n$ = sample size.",
+            "$P$ = probability of event."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Expected Number of Short Computer Users",
+          "prompt": "Computer usage is normally distributed with $\\mu = 7$ hours, $\\sigma = 1$ hour. If 35 adults are selected, how many would you expect to use a computer less than 5 hours?",
+          "steps": [
+            "Find $P(x < 5)$: $z = \\frac{5-7}{1} = -2$, area = 0.0228.",
+            "Expected count = $35 \\times 0.0228 = 0.798$.",
+            "About 1 adult."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Unusual Event",
+          "prompt": "Utility bills have $\\mu = \\$100$, $\\sigma = \\$12$. Is a bill of $140 unusual?",
+          "peerPrompt": "Explain to a partner: How do you determine unusualness using probability?",
+          "minLength": 2,
+          "steps": [
+            "Find $P(x > 140)$: $z = \\frac{140-100}{12} = 3.33$.",
+            "Area right = $1 - 0.9996 = 0.0004$.",
+            "Probability 0.0004 < 0.05, so very unusual."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Battery Life",
+          "prompt": "Battery life has $\\mu = 2000$ hours, $\\sigma = 30$ hours. What percent last more than 2065 hours? Is it unusual?",
+          "steps": [
+            "Find $P(x > 2065)$: $z = \\frac{2065-2000}{30} = 2.17$.",
+            "Area right = $1 - 0.9850 = 0.0150$.",
+            "Percent = 1.5%, unusual since < 5%."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Expected Count vs. Probability",
+        "body": "Probability is between 0 and 1; expected count can be any non-negative number. Multiply the probability by the sample size, not the other way."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "To find the expected number of occurrences, multiply the probability by the ___ size.",
+          "blanks": [
+            {
+              "accept": [
+                "sample"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the total number of trials or individuals.",
+            "Denoted $n$."
+          ],
+          "feedbackIfWrong": "Multiply by the sample size."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "If $P(x < 5) = 0.0228$ and $n = 35$, what is the expected count? Round to nearest whole number.",
+          "answer": "1",
+          "hints": [
+            "$35 \\times 0.0228 = 0.798$.",
+            "Round to nearest whole number."
+          ],
+          "feedbackIfWrong": "$35 \\times 0.0228 = 0.798$, about 1."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "Is a probability of 0.0150 unusual? (yes/no)",
+          "answer": "yes",
+          "hints": [
+            "Compare to 0.05.",
+            "0.0150 < 0.05."
+          ],
+          "feedbackIfWrong": "Yes, 0.0150 is less than 0.05, so unusual."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-normal-probabilities",
+      "title": "Blueprint Aid – Solving Normal Probability Problems",
+      "teacherCues": [
+        "Display Understand → Solve → Conclude. Walk through a full problem: given mean, sd, x, find probability and interpret.",
+        "Emphasize: Understand identifies parameters and region; Solve converts to z and uses table; Conclude interprets probability and expected count."
+      ],
+      "discoveryHook": {
+        "scenario": "With the blueprint, you can tackle any normal probability problem confidently. Understand the question, Solve by standardizing and using the table, and Conclude with the probability and its meaning—plus whether it's unusual."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]] – Read the problem. Identify the mean $\\mu$, standard deviation $\\sigma$, the raw score(s), and the region (left, right, between).",
+          "[[imp:Solve]] – Convert raw score(s) to z-score(s): $z = \\frac{x-\\mu}{\\sigma}$. Use the standard normal table or technology to find the area.",
+          "[[imp:Conclude]] – State the probability. If a sample size is given, compute expected count. Determine if unusual ($|z| > 2$ or $P < 0.05$). Interpret in context."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Normal Probability",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Find $\\mu$, $\\sigma$, $x$, and region."
+              },
+              {
+                "0": "Solve",
+                "1": "Compute z-score(s); find area using table/technology."
+              },
+              {
+                "0": "Conclude",
+                "1": "State probability; check unusual; interpret; expected count if needed."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Z-Score and Probability",
+          "formula": "$$ z = \\frac{x - \\mu}{\\sigma} \\qquad P = \\text{area} $$",
+          "notes": [
+            "Use table or normalcdf.",
+            "For intervals, subtract areas."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full Blueprint: Less Than",
+          "prompt": "Use blueprint: Heights of men have $\\mu = 69.9$ inches, $\\sigma = 3.0$ inches. Find probability height is less than 66 inches.",
+          "steps": [
+            "Understand: $\\mu = 69.9$, $\\sigma = 3.0$, $x = 66$, region left.",
+            "Solve: $z = \\frac{66-69.9}{3.0} = -1.3$. Table area = 0.0968.",
+            "Conclude: $P(x < 66) = 0.0968$. Not unusual (0.0968 > 0.05)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Full Blueprint: Between",
+          "prompt": "Use blueprint: Heights of women have $\\mu = 64.3$ inches, $\\sigma = 2.6$ inches. Find probability height is between 61 and 67 inches.",
+          "peerPrompt": "Explain to a partner: Why do you convert both bounds to z-scores and subtract?",
+          "minLength": 2,
+          "steps": [
+            "Understand: $x_1 = 61$, $x_2 = 67$.",
+            "Solve: $z_1 = \\frac{61-64.3}{2.6} = -1.27$, $z_2 = \\frac{67-64.3}{2.6} = 1.04$. Areas: 0.1020 and 0.8508.",
+            "Probability = $0.8508 - 0.1020 = 0.7488$. Conclude: About 74.9% of women are between 61 and 67 inches."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Decide and Compute",
+          "prompt": "Use blueprint: ACT English scores have $\\mu = 20.6$, $\\sigma = 6.3$. Find probability a student scores more than 34.",
+          "steps": [
+            "Understand: $x = 34$, right tail.",
+            "Solve: $z = \\frac{34-20.6}{6.3} = 2.13$. Area left = 0.9834, right = $1 - 0.9834 = 0.0166$.",
+            "Conclude: Probability = 0.0166, unusual since < 0.05."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Skip the Sketch",
+        "body": "Always sketch the curve and shade the region. It prevents mistakes in choosing left, right, or between areas."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "In the Understand phase, what two parameters must you identify?",
+          "answer": "mean and standard deviation",
+          "hints": [
+            "They define the normal distribution.",
+            "$\\mu$ and $\\sigma$."
+          ],
+          "feedbackIfWrong": "Identify the mean $\\mu$ and standard deviation $\\sigma$."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "In the Solve phase, convert the raw score to a ___ using $z = \\frac{x-\\mu}{\\sigma}$.",
+          "blanks": [
+            {
+              "accept": [
+                "z-score"
+              ]
+            }
+          ],
+          "hints": [
+            "It standardizes the value.",
+            "Starts with 'z'."
+          ],
+          "feedbackIfWrong": "Convert to a z-score."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "If the probability is 0.0166, is the event unusual? (yes/no)",
+          "answer": "yes",
+          "hints": [
+            "Compare to 0.05.",
+            "0.0166 < 0.05."
+          ],
+          "feedbackIfWrong": "Yes, 0.0166 is less than 0.05, so unusual."
+        }
+      ]
+    }
+  ],
+  "presenterNotes": [
+    "Start with the idea that probability is area under the curve. Emphasize the need to standardize to use the table.",
+    "Practice converting x-values to z-scores before using the table. Use the supermarket example to show intervals and expected counts.",
+    "Introduce technology (normalcdf) as a faster alternative but ensure students understand the underlying concept.",
+    "Use real-life examples to keep students engaged. The blueprint helps structure multi-step problems.",
+    "Reinforce the unusualness criterion: probability < 0.05 or |z| > 2."
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

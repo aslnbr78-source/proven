@@ -1,0 +1,123 @@
+{
+  "title": "Testing the Difference Between Means (Large Independent Samples)",
+  "cards": [
+    {
+      "back": [
+        "[[kw:Independent]]: no relationship between the samples; observations in one cannot be paired with the other.",
+        "[[kw:Dependent]] (paired): each observation in one sample is matched with a specific observation in the other (e.g., before‑after, twins).",
+        "Example: Weights of 30 men vs. 30 women → independent. Weights of same 30 men before and after a diet → dependent."
+      ],
+      "front": "Distinguish between [[kw:independent]] and [[kw:dependent]] samples."
+    },
+    {
+      "back": [
+        "1. The samples must be [[imp:randomly selected]].",
+        "2. The samples must be [[imp:independent]].",
+        "3. Each sample size must be at least 30, OR each population must be normally distributed with known standard deviations."
+      ],
+      "front": "What are the conditions for a [[kw:two‑sample z‑test]] for the difference between means?"
+    },
+    {
+      "front": "Give the standard error for the difference of two sample means.",
+      "back": [
+        "$$\\sigma_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$$",
+        "If $n_1, n_2 \\ge 30$ and $\\sigma$ unknown, use sample standard deviations: $$\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$$"
+      ]
+    },
+    {
+      "back": [
+        "$$z = \\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1 - \\mu_2)}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$$",
+        "Under $H_0: \\mu_1 = \\mu_2$, the term $(\\mu_1 - \\mu_2)$ is 0, simplifying to: $$z = \\frac{\\bar{x}_1 - \\bar{x}_2}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$$"
+      ],
+      "front": "Write the standardized test statistic for a two‑sample z‑test."
+    },
+    {
+      "front": "State the null and alternative hypotheses for a claim that there is a difference in means.",
+      "back": [
+        "$H_0: \\mu_1 = \\mu_2$ (or $\\mu_1 - \\mu_2 = 0$).",
+        "$H_a: \\mu_1 \\neq \\mu_2$ (claim).",
+        "This is a [[kw:two‑tailed test]]."
+      ]
+    },
+    {
+      "front": "A travel agency claims the mean daily cost in Texas is less than in Virginia. Write the hypotheses.",
+      "back": [
+        "Let $\\mu_1$ = Texas, $\\mu_2$ = Virginia.",
+        "Claim: $\\mu_1 < \\mu_2$ → $H_a$.",
+        "$H_0: \\mu_1 \\ge \\mu_2$, $H_a: \\mu_1 < \\mu_2$ (claim).",
+        "[[kw:Left‑tailed test]]."
+      ]
+    },
+    {
+      "front": "Credit card debt: NY $\\bar{x}_1=4446.25$, $s_1=1045.70$, $n_1=250$; TX $\\bar{x}_2=4567.24$, $s_2=1361.95$, $n_2=250$. Compute the standard error (rounded to two decimals).",
+      "back": [
+        "$$\\sqrt{\\frac{1045.70^2}{250} + \\frac{1361.95^2}{250}} = \\sqrt{4374.9 + 7420.6} = \\sqrt{11795.5} \\approx 108.60$$"
+      ]
+    },
+    {
+      "front": "Using the credit card data, compute the z statistic for testing $H_0: \\mu_1 = \\mu_2$.",
+      "back": [
+        "$$z = \\frac{4446.25 - 4567.24}{108.60} = \\frac{-120.99}{108.60} \\approx -1.11$$"
+      ]
+    },
+    {
+      "front": "A two‑sample z‑test gives $z = -1.11$. The critical values for a two‑tailed test at $\\alpha=0.05$ are $\\pm 1.96$. What is the decision?",
+      "back": [
+        "$-1.11$ is between $-1.96$ and $1.96$, so it is [[imp:not in the rejection region]].",
+        "Fail to reject $H_0$.",
+        "There is not enough evidence to support a difference in means."
+      ]
+    },
+    {
+      "back": [
+        "$2.5 > 1.645$ → $z$ is in the rejection region.",
+        "[[imp:Reject $H_0$]].",
+        "There is enough evidence to support the claim that $\\mu_1 > \\mu_2$."
+      ],
+      "front": "In a right‑tailed two‑sample z‑test, if $z = 2.5$ and the critical value is $1.645$, what is the decision?"
+    },
+    {
+      "front": "When is it appropriate to use sample standard deviations $s_1$ and $s_2$ in place of $\\sigma_1$ and $\\sigma_2$?",
+      "back": [
+        "When both sample sizes are at least 30 ($n_1 \\ge 30$ and $n_2 \\ge 30$).",
+        "The Central Limit Theorem ensures the sampling distribution is approximately normal, and $s$ is a good estimate of $\\sigma$."
+      ]
+    },
+    {
+      "front": "What are the rejection regions for a left‑tailed two‑sample z‑test at $\\alpha = 0.05$?",
+      "back": [
+        "Critical value $z_0 = -1.645$.",
+        "Rejection region: $z < -1.645$.",
+        "Reject $H_0$ if the test statistic is [[imp:less than -1.645]]."
+      ]
+    },
+    {
+      "front": "How do you find the P‑value for a two‑tailed two‑sample z‑test?",
+      "back": [
+        "P‑value = $2 \\times$ (area in the tail beyond the test statistic).",
+        "Google Sheets: `=2 * (1 - NORM.S.DIST(ABS(z), TRUE))`.",
+        "If P‑value $\\le \\alpha$, reject $H_0$."
+      ]
+    },
+    {
+      "front": "An energy company tests if Region A has higher wind speed than Region B. Region A: $\\bar{x}_1=13.2$, $s_1=2.3$, $n_1=60$; Region B: $\\bar{x}_2=12.5$, $s_2=2.7$, $n_2=60$. Compute the standard error.",
+      "back": [
+        "$$\\sqrt{\\frac{2.3^2}{60} + \\frac{2.7^2}{60}} = \\sqrt{\\frac{5.29}{60} + \\frac{7.29}{60}} = \\sqrt{0.0882 + 0.1215} = \\sqrt{0.2097} \\approx 0.458$$"
+      ]
+    },
+    {
+      "front": "Using the wind energy data, compute the z statistic and state the conclusion at $\\alpha=0.05$ (critical value 1.645).",
+      "back": [
+        "$z = \\frac{13.2 - 12.5}{0.458} \\approx 1.53$.",
+        "$1.53 < 1.645$ → fail to reject $H_0$.",
+        "Not enough evidence to conclude Region A is windier."
+      ]
+    }
+  ],
+  "type": "flashcard",
+  "id": "chapter-8-1-flashcards",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

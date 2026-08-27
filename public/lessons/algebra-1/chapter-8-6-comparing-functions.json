@@ -1,0 +1,729 @@
+{
+  "id": "chapter-8-6-comparing-functions",
+  "type": "interactive-lesson",
+  "title": "Chapter 8.6 — Comparing Linear, Exponential, and Quadratic Functions",
+  "blocks": [
+    {
+      "questions": [
+        {
+          "prompt": "A table represents a linear function if the first differences of the y-values are ___.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "constant",
+                "the same",
+                "equal"
+              ]
+            }
+          ],
+          "id": "q1-1",
+          "hints": [
+            "They don't change.",
+            "Think of a straight line."
+          ],
+          "feedbackIfWrong": "First differences must be constant."
+        },
+        {
+          "feedbackIfWrong": "Exponential functions have a constant ratio.",
+          "type": "short-answer",
+          "prompt": "What type of function has a constant ratio between consecutive y-values? (Type 'linear', 'exponential', or 'quadratic')",
+          "id": "q1-2",
+          "hints": [
+            "Ratio means multiplication by the same number.",
+            "Example: y = 2^x."
+          ],
+          "answer": "exponential"
+        },
+        {
+          "hints": [
+            "It's a U-shaped graph.",
+            "Degree 2 polynomial."
+          ],
+          "id": "q1-3",
+          "prompt": "If second differences are constant, the function is ___.",
+          "feedbackIfWrong": "Constant second differences mean a quadratic function.",
+          "answers": [
+            "quadratic"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Data is everywhere! But how do you know if it grows steadily, shoots up exponentially, or follows a curved path? By looking at differences and ratios, you can crack the code and reveal which type of function is hiding in the numbers."
+      },
+      "confusionCorner": {
+        "body": "These patterns only work if the x-values increase by a constant amount. If the x-values skip around (e.g., 0, 1, 4, 9), you can't use first/second differences directly.",
+        "title": "X-values Must Be Evenly Spaced!"
+      },
+      "title": "Identifying Functions from Tables Using Differences and Ratios",
+      "id": "identifying-functions-by-differences",
+      "concept": {
+        "explanation": [
+          "For evenly spaced x-values, you can identify the function type by examining the y-values.",
+          "A [[kw:linear function]] has constant **first differences** (the differences between consecutive y-values are the same).",
+          "An [[kw:exponential function]] has a constant **ratio** between consecutive y-values (each y is multiplied by the same factor).",
+          "A [[kw:quadratic function]] has constant **second differences** (the differences of the first differences are constant).",
+          "[[imp:Always check that the x-values increase by a constant amount first.]] If not, you cannot use these patterns."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Function Type",
+              "Pattern in y-values",
+              "Example Table",
+              "First / Second Diff or Ratio"
+            ],
+            "title": "Identifying Functions from Tables",
+            "rows": [
+              {
+                "0": "Linear",
+                "1": "Constant 1st differences",
+                "2": "x: -2,-1,0,1; y: 3,5,7,9",
+                "3": "1st diff: +2, +2, +2"
+              },
+              {
+                "0": "Exponential",
+                "1": "Constant ratio",
+                "2": "x: 0,1,2,3; y: 1,3,9,27",
+                "3": "Ratio: ×3, ×3, ×3"
+              },
+              {
+                "0": "Quadratic",
+                "1": "Constant 2nd differences",
+                "2": "x: -2,-1,0,1,2; y: 4,1,0,1,4",
+                "3": "1st diff: -3,-1,+1,+3; 2nd diff: +2,+2,+2"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Linear: } \\Delta y = \\text{constant} \\quad \\text{Exponential: } \\frac{y_{n+1}}{y_n} = \\text{constant} \\quad \\text{Quadratic: } \\Delta^2 y = \\text{constant} $$",
+          "title": "Differences and Ratios",
+          "notes": [
+            "First difference: subtract consecutive y-values.",
+            "Second difference: subtract consecutive first differences.",
+            "Common ratio: divide each y by the previous y."
+          ]
+        }
+      },
+      "teacherCues": [
+        "Write a table with constant first differences (e.g., y = 2x+1) and ask: 'What pattern do you see in the y-values?'",
+        "Then show a table with constant ratios (e.g., y = 3^x) and another with constant second differences (e.g., y = x^2). Ask: 'How can we tell them apart?'"
+      ],
+      "examples": [
+        {
+          "title": "Example A — Linear Table",
+          "steps": [
+            "Find first differences: 8-11=-3, 5-8=-3, 2-5=-3, -1-2=-3.",
+            "First differences are constant (-3).",
+            "So, the table represents a linear function."
+          ],
+          "prompt": "Tell whether the table represents a linear, exponential, or quadratic function. x: -3,-2,-1,0,1; y: 11,8,5,2,-1.",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Explain to a partner: Why do we check the ratio instead of differences? How does the constant ratio prove it's exponential?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Tell whether the table represents a linear, exponential, or quadratic function. x: -2,-1,0,1,2; y: 1,2,4,8,16.",
+          "steps": [
+            "Find ratios: 2/1=2, 4/2=2, 8/4=2, 16/8=2.",
+            "Consecutive y-values have a common ratio of 2.",
+            "So, the table represents an exponential function."
+          ],
+          "title": "Example B — Exponential Table"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "First differences: -2-(-1)=-1; -1-(-2)=1; 2-(-1)=3; 7-2=5. Not constant.",
+            "Second differences: 1-(-1)=2; 3-1=2; 5-3=2. Constant (2).",
+            "So, quadratic."
+          ],
+          "prompt": "x: -2,-1,0,1,2; y: -1,-2,-1,2,7. Identify the function type.",
+          "title": "Example C — Quadratic Table"
+        }
+      ]
+    },
+    {
+      "concept": {
+        "explanation": [
+          "After identifying the function type, you can write its equation.",
+          "For **linear**: use slope-intercept form $y = mx + b$. Find slope $m$ from two points, then $b$.",
+          "For **exponential**: use $y = ab^x$. Use the y-intercept for $a$ (when $x=0$), and another point to find $b$.",
+          "For **quadratic**: use intercept form $y = a(x-p)(x-q)$ if you can spot the x-intercepts. Otherwise, use standard form and solve a system.",
+          "Example: x=2,4,6,8,10; y=12,0,-4,0,12 → quadratic with intercepts 4 and 8. $y = a(x-4)(x-8)$. Plug (2,12): $12 = a(-2)(-6) = 12a$ → $a=1$. So $y = (x-4)(x-8) = x^2 - 12x + 32$."
+        ],
+        "visuals": [
+          {
+            "title": "Writing Equations from Data",
+            "rows": [
+              {
+                "0": "Linear",
+                "1": "$y = mx + b$",
+                "2": "Slope $m = \\frac{\\Delta y}{\\Delta x}$, then $b$ from a point"
+              },
+              {
+                "0": "Exponential",
+                "1": "$y = ab^x$",
+                "2": "$a = y(0)$, then $b$ from any other point"
+              },
+              {
+                "0": "Quadratic",
+                "1": "$y = a(x-p)(x-q)$",
+                "2": "Find $p,q$ from x-intercepts, then $a$ from another point"
+              }
+            ],
+            "headers": [
+              "Function Type",
+              "Form to Use",
+              "Key to Find Parameters"
+            ],
+            "variant": "colorful",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Look for x-values where y=0 to find p and q.",
+            "If no zeros, use vertex form or standard form with a system of equations."
+          ],
+          "title": "Writing Quadratic Function from Table",
+          "formula": "$$ y = a(x - p)(x - q) $$"
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Quadratic from Table",
+          "prompt": "Write a function for the table: x: 2,4,6,8,10; y: 12,0,-4,0,12.",
+          "steps": [
+            "Check second differences: constant → quadratic.",
+            "Zeros at x=4 and x=8, so $y = a(x-4)(x-8)$.",
+            "Use (2,12): $12 = a(-2)(-6)$ → $12a = 12$ → $a=1$.",
+            "Function: $y = (x-4)(x-8) = x^2 - 12x + 32$."
+          ]
+        },
+        {
+          "title": "Example B — Exponential from Table",
+          "steps": [
+            "Ratios constant: ×1/2 → exponential.",
+            "y-intercept (x=0): $a=8$.",
+            "Use (1,4): $4 = 8b^1$ → $b = 1/2$.",
+            "Function: $y = 8(1/2)^x$."
+          ],
+          "peerPrompt": "Explain to a partner: How do you find $a$ and $b$ from this table? Why is the y-intercept helpful?",
+          "prompt": "Write a function for: x: -1,0,1,2,3; y: 16,8,4,2,1.",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C — Linear from Table",
+          "steps": [
+            "First differences constant (-3) → linear. Slope $m = -3$.",
+            "y-intercept (x=0): $b = -2$.",
+            "Function: $y = -3x - 2$."
+          ],
+          "role": "independent",
+          "prompt": "Write a linear function for: x: -2,-1,0,1,2; y: 4,1,-2,-5,-8."
+        }
+      ],
+      "title": "Writing Functions to Model Data",
+      "discoveryHook": {
+        "scenario": "Once you know the function type, you can write its equation. For quadratics, spotting the x-intercepts in the table gives you the intercept form instantly. It's like finding the key to unlock the entire formula!"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "$a$ is the y-value when $x = 0$.",
+          "prompt": "To write an exponential function $y = ab^x$ from a table, the value of $a$ is the y-value when $x =$ ___.",
+          "hints": [
+            "It's the y-intercept.",
+            "Plug $x=0$ into $y = ab^x$."
+          ],
+          "id": "q2-1",
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "zero"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "(x-3)(x-7)"
+          ],
+          "id": "q2-2",
+          "hints": [
+            "Use $y = a(x-p)(x-q)$.",
+            "$p=3, q=7$."
+          ],
+          "feedbackIfWrong": "The intercept form is $(x-3)(x-7)$.",
+          "prompt": "A quadratic table has y=0 at x=3 and x=7. Write the intercept form using $a=1$. (Type without spaces, e.g., (x-3)(x-7))"
+        },
+        {
+          "prompt": "What is the slope of the line passing through (0,-1) and (2,-5)?",
+          "answers": [
+            "-2",
+            "negative 2"
+          ],
+          "hints": [
+            "Slope $= \\frac{-5 - (-1)}{2 - 0}$.",
+            "Change in y over change in x."
+          ],
+          "feedbackIfWrong": "The slope is $-4/2 = -2$.",
+          "id": "q2-3",
+          "type": "short-answer"
+        }
+      ],
+      "confusionCorner": {
+        "body": "If the table doesn't contain a zero, you can't use intercept form directly. Instead, use vertex form if you can spot the symmetry, or set up a system of equations with standard form.",
+        "title": "Not All Quadratics Have Visible X-intercepts"
+      },
+      "teacherCues": [
+        "Show a table with x=2,4,6,8,10 and y=12,0,-4,0,12. Ask: 'What type is it? (Quadratic, second diff constant) Now, how do we write the equation?'",
+        "Point out the x-intercepts (4 and 8) so we can use intercept form: y = a(x-4)(x-8). Use (2,12) to find a."
+      ],
+      "id": "writing-functions-from-data"
+    },
+    {
+      "confusionCorner": {
+        "title": "Average vs. Instantaneous Rate",
+        "body": "The average rate of change is over an interval. It doesn't tell you the speed at a specific moment — just the overall trend between two points."
+      },
+      "examples": [
+        {
+          "title": "Example A — Compute Average Rate",
+          "prompt": "Find the average rate of change of $f(x)=x^2$ from $x=1$ to $x=3$.",
+          "steps": [
+            "$f(1)=1, f(3)=9$.",
+            "Average rate $= \\frac{9 - 1}{3 - 1} = \\frac{8}{2} = 4$.",
+            "So, on average, the function increases by 4 units in y for each 1 unit in x over that interval."
+          ],
+          "role": "guided"
+        },
+        {
+          "title": "Example B — Compare Growth",
+          "steps": [
+            "Website A: $\\frac{2150-1400}{20-10} = 75$ people/day.",
+            "Website B: $\\frac{1800-850}{20-10} = 95$ people/day.",
+            "Website B is growing faster on that interval."
+          ],
+          "peerPrompt": "Explain to a partner: Why does the exponential function have a larger average rate even though it starts lower? What does this suggest about the future?",
+          "minLength": 2,
+          "prompt": "Website A (linear): f(10)=1400, f(20)=2150. Website B (exponential): g(10)=850, g(20)=1800. Which grows faster from day 10 to 20?",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "$f(0)=3, f(1) = -16+48+3=35$.",
+            "Average rate $= \\frac{35-3}{1-0} = 32$ ft/sec."
+          ],
+          "title": "Example C — Your Turn",
+          "prompt": "The height of a volleyball is $f(t) = -16t^2 + 48t + 3$. Find the average rate of change from $t=0$ to $t=1$."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "How fast is something growing? For linear functions, the rate is constant. But for curves, the speed changes. The average rate of change tells you the overall speed between two points — like your average speed on a road trip!"
+      },
+      "teacherCues": [
+        "Draw a curve and a secant line. 'The average rate of change between two points is the slope of the line connecting them.'",
+        "Show how to compute it: (f(b)-f(a))/(b-a). Then compare for two different functions over the same interval."
+      ],
+      "questions": [
+        {
+          "hints": [
+            "It's a line that cuts through the curve.",
+            "Not the tangent line."
+          ],
+          "id": "q3-1",
+          "blanks": [
+            {
+              "accept": [
+                "secant",
+                "secant"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "It's the secant line.",
+          "prompt": "The average rate of change of a function between $x=a$ and $x=b$ is the slope of the ___ line through $(a, f(a))$ and $(b, f(b))$."
+        },
+        {
+          "answers": [
+            "3"
+          ],
+          "feedbackIfWrong": "$f(5)=17, f(1)=5$, so $\\frac{12}{4}=3$.",
+          "type": "short-answer",
+          "id": "q3-2",
+          "prompt": "Find the average rate of change of $f(x) = 3x + 2$ from $x=1$ to $x=5$.",
+          "hints": [
+            "For linear functions, it's constant and equals the slope.",
+            "Compute $\\frac{f(5)-f(1)}{5-1}$."
+          ]
+        },
+        {
+          "id": "q3-3",
+          "prompt": "Which type of function eventually has the greatest average rate of change as x increases? (linear, quadratic, or exponential)",
+          "type": "short-answer",
+          "hints": [
+            "Think about long-term growth.",
+            "It multiplies by a constant factor."
+          ],
+          "answers": [
+            "exponential"
+          ],
+          "feedbackIfWrong": "Exponential functions eventually grow fastest."
+        }
+      ],
+      "id": "average-rate-of-change",
+      "title": "Average Rate of Change",
+      "concept": {
+        "explanation": [
+          "The [[kw:average rate of change]] of a function $y = f(x)$ between $x=a$ and $x=b$ is the slope of the line through $(a, f(a))$ and $(b, f(b))$.",
+          "$$ \\text{Average rate of change} = \\frac{f(b) - f(a)}{b - a} $$",
+          "It measures how fast the function is increasing or decreasing over that interval.",
+          "Comparing average rates of change helps determine which function grows faster.",
+          "[[imp:For increasing functions, exponential eventually beats quadratic, which eventually beats linear.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Function Type",
+              "Growth over Time",
+              "Long-Term Behavior"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Linear",
+                "1": "Constant average rate",
+                "2": "Slowest growing"
+              },
+              {
+                "0": "Quadratic",
+                "1": "Increasing average rate",
+                "2": "Faster than linear"
+              },
+              {
+                "0": "Exponential",
+                "1": "Rapidly increasing average rate",
+                "2": "Eventual fastest growth"
+              }
+            ],
+            "title": "Comparing Average Rates of Change"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "It is the slope of the secant line.",
+            "For linear functions, it is constant (the slope).",
+            "For nonlinear functions, it changes depending on the interval."
+          ],
+          "title": "Average Rate of Change",
+          "formula": "$$ \\frac{f(b) - f(a)}{b - a} $$"
+        }
+      }
+    },
+    {
+      "id": "real-life-population-comparison",
+      "teacherCues": [
+        "Present Littleton: starts 1000, +50/yr (linear). Tinyville: starts 500, +5%/yr (exponential). Write L(x)=50x+1000, T(x)=500(1.05)^x.",
+        "Graph both on calculator. Find intersection around x≈34.9 (year 1934). Ask: 'Even though Littleton started with more, Tinyville's exponential growth caught up!'"
+      ],
+      "discoveryHook": {
+        "scenario": "Two towns: one grows steadily, the other explodes with a 5% yearly increase. At first, the steady town is larger. But exponential growth is like a snowball rolling downhill — eventually, it overtakes linear growth. The intersection point tells us exactly when!"
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "multiplies",
+                "increases",
+                "grows"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "In the population models, Littleton's linear growth adds 50 people per year, while Tinyville's exponential growth ___ by 5% each year.",
+          "hints": [
+            "It doesn't add a constant amount.",
+            "It scales by a factor."
+          ],
+          "feedbackIfWrong": "Exponential growth multiplies by a constant factor.",
+          "id": "q4-1"
+        },
+        {
+          "prompt": "In what year did Littleton and Tinyville have about the same population? (Use the 5% model)",
+          "type": "short-answer",
+          "answers": [
+            "1934"
+          ],
+          "id": "q4-2",
+          "feedbackIfWrong": "About 1934.",
+          "hints": [
+            "Intersection at x ≈ 34.9.",
+            "Add to 1900."
+          ]
+        },
+        {
+          "id": "q4-3",
+          "answers": [
+            "1943"
+          ],
+          "hints": [
+            "x ≈ 43.5 years after 1900.",
+            "1900 + 43.5 = 1943.5, so 1943."
+          ],
+          "feedbackIfWrong": "About 1943.",
+          "type": "short-answer",
+          "prompt": "If Littleton started at 2000 and grew by 50/year, about what year did Tinyville catch up? (x ≈ 43.5)"
+        }
+      ],
+      "title": "Real-Life: Comparing Population Growth Models",
+      "confusionCorner": {
+        "title": "Exponential Always Wins?",
+        "body": "In the long run, yes, for increasing functions. But in the short term, linear can be ahead. Always check the intersection to see when (or if) the exponential overtakes within a realistic timeframe."
+      },
+      "examples": [
+        {
+          "title": "Example A — Find Intersection Year",
+          "prompt": "Littleton: 1000, +50/yr. Tinyville: 500, +5%/yr. When are populations equal?",
+          "steps": [
+            "Write functions: $L(x)=50x+1000$, $T(x)=500(1.05)^x$.",
+            "Use graphing calculator: graph both, find intersection.",
+            "Intersection at $x \\approx 34.9$ years after 1900 → about 1934.",
+            "Populations equal at about 2745 people."
+          ],
+          "role": "guided"
+        },
+        {
+          "prompt": "If Littleton started with 2000 and grew by 100/year, would Tinyville still catch up?",
+          "title": "Example B — Increased Linear Rate",
+          "peerPrompt": "Explain to a partner: Why does exponential growth eventually win even if the linear function has a huge head start? Use the concept of 'doubling time' to explain.",
+          "steps": [
+            "New function: $L(x) = 100x + 2000$. Tinyville same $T(x) = 500(1.05)^x$.",
+            "Graph and find intersection: $x \\approx 55.7$ → year 1955.",
+            "Yes, still catches up, just later."
+          ],
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C — Higher Exponential Rate",
+          "role": "independent",
+          "prompt": "What if Tinyville grew at 8% instead of 5%? Find approximate equal year.",
+          "steps": [
+            "$T(x) = 500(1.08)^x$. Littleton $L(x)=50x+1000$.",
+            "Graph; intersection around $x \\approx 20$ → year 1920.",
+            "Higher exponential rate catches up much sooner."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{Linear: } P(t) = P_0 + rt \\quad\\quad \\text{Exponential: } P(t) = P_0(1 + r)^t $$",
+          "title": "Modeling Population Growth",
+          "notes": [
+            "$P_0$ = initial population, $r$ = rate of change.",
+            "Linear adds constant amount; exponential multiplies by constant factor."
+          ]
+        },
+        "explanation": [
+          "Real-world quantities can be modeled by different function types. Linear for constant change, exponential for constant percent change.",
+          "To compare, write functions: Littleton $L(x) = 50x + 1000$ (linear); Tinyville $T(x) = 500(1.05)^x$ (exponential).",
+          "Graph both or use technology to find the intersection — the year when populations are equal.",
+          "Even if you increase the linear starting value or rate, exponential growth will eventually surpass it, though it may take longer.",
+          "[[imp:Exponential growth outpaces linear growth in the long run, no matter the initial values.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Population Models Comparison",
+            "headers": [
+              "Town",
+              "Initial (1900)",
+              "Growth Pattern",
+              "Function"
+            ],
+            "rows": [
+              {
+                "0": "Littleton",
+                "1": "1000",
+                "2": "Linear: +50/year",
+                "3": "$L(x) = 50x + 1000$"
+              },
+              {
+                "0": "Tinyville",
+                "1": "500",
+                "2": "Exponential: +5%/year",
+                "3": "$T(x) = 500(1.05)^x$"
+              },
+              {
+                "0": "Equal pop.",
+                "1": "~1934 (x≈34.9)",
+                "2": "",
+                "3": "$L(x) \\approx T(x)$"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Real Data is Messy",
+        "body": "In real life, data may not follow exact patterns. Use technology to find a 'best fit' line or curve. The differences/ratios give clues, but may not be perfectly constant."
+      },
+      "title": "Blueprint Aid: Choosing and Comparing Function Models",
+      "discoveryHook": {
+        "scenario": "Facing a new data set, you can now run through a checklist: Are the first differences constant? Linear. Is there a common ratio? Exponential. Are the second differences constant? Quadratic. Choose the right model, write the equation, and predict the future!"
+      },
+      "questions": [
+        {
+          "hints": [
+            "If yes, the function is linear.",
+            "They don't change."
+          ],
+          "id": "q5-1",
+          "feedbackIfWrong": "Check if first differences are constant.",
+          "blanks": [
+            {
+              "accept": [
+                "constant",
+                "the same",
+                "equal"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "The first step in modeling data is to check whether the first differences are ___."
+        },
+        {
+          "feedbackIfWrong": "It is a quadratic function.",
+          "hints": [
+            "Constant second differences indicate this.",
+            "Degree 2 polynomial."
+          ],
+          "prompt": "A data set has constant second differences of 4 and passes through (0,1). What type of function is it?",
+          "id": "q5-2",
+          "answers": [
+            "quadratic"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "answers": [
+            "exponential"
+          ],
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "Between x=0 and x=10, which function has a larger average rate of change: $f(x)=2x$ or $g(x)=1.5^x$? (Type 'linear' or 'exponential')",
+          "hints": [
+            "Compute both averages: $f$ slope=2, $g$: $(1.5^{10}-1)/10 \\approx (57.67-1)/10=5.67$.",
+            "Exponential wins."
+          ],
+          "feedbackIfWrong": "Exponential has the larger average rate of change."
+        }
+      ],
+      "teacherCues": [
+        "Summarize the three function types on the board: linear (y=mx+b), exponential (y=ab^x), quadratic (y=ax^2+bx+c).",
+        "For each, list: key feature (constant 1st diff, constant ratio, constant 2nd diff), graph shape, real-world example."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Decision Flow for Modeling Data",
+            "rows": [
+              {
+                "0": "Constant 1st differences?",
+                "1": "Linear",
+                "2": "Check ratio"
+              },
+              {
+                "0": "Common ratio?",
+                "1": "Exponential",
+                "2": "Check 2nd differences"
+              },
+              {
+                "0": "Constant 2nd differences?",
+                "1": "Quadratic",
+                "2": "None of these — other model"
+              }
+            ],
+            "headers": [
+              "Check",
+              "If Yes",
+              "If No"
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Data} \\rightarrow \\text{Differences/Ratios} \\rightarrow \\text{Type} \\rightarrow \\text{Equation} $$",
+          "notes": [
+            "Technology can help find best-fit lines/curves.",
+            "Always consider the context: does the model make sense for all x?"
+          ],
+          "title": "Blueprint: From Data to Function"
+        },
+        "explanation": [
+          "Understand: Examine the data. Plot points if possible. Check x-spacing. Then compute differences or ratios.",
+          "Solve – Identify: If 1st differences constant → linear. If ratios constant → exponential. If 2nd differences constant → quadratic.",
+          "Solve – Write: Use appropriate form to find equation parameters. For quadratics, look for zeros or vertex.",
+          "Conclude – Compare: Use average rates of change or intersection points to compare growth. Remember long-term behavior: exponential > quadratic > linear.",
+          "This blueprint helps you move from raw data to prediction."
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "Given data: (0,650), (5,1025), (10,1400), (15,1775), (20,2150). Model and predict for x=30.",
+          "title": "Example A — Complete Data Analysis",
+          "steps": [
+            "Understand: x spacing constant (5). 1st diff: 375, 375, 375, 375 → constant.",
+            "Solve: Linear model. Slope = 375/5 = 75. y-intercept = 650. Equation: y = 75x + 650.",
+            "Conclude: At x=30, y = 75(30) + 650 = 2900."
+          ],
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "A(10)=100, B(10)=1024. Exponential is much larger.",
+            "Exponential growth dominates quadratic for large x."
+          ],
+          "minLength": 2,
+          "title": "Example B — Comparing Growth",
+          "peerPrompt": "Explain to a partner: How do you know without graphing? What pattern in the rates of change tells you the answer?",
+          "prompt": "Function A (quadratic): $A(x)=x^2$. Function B (exponential): $B(x)=2^x$. Which is larger at x=10?",
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C — Predict with Quadratic",
+          "steps": [
+            "Second differences constant (4) → quadratic. Notice pattern: y = x^2? Check: 2^2=4, 4^2=16, 6^2=36. Yes, $y = x^2$.",
+            "At x=8, y = 64."
+          ],
+          "prompt": "Quadratic data: (0,0), (2,4), (4,16), (6,36). Predict y at x=8.",
+          "role": "independent"
+        }
+      ],
+      "id": "blueprint-choosing-models"
+    }
+  ],
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

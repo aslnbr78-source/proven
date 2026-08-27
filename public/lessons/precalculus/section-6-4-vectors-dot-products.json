@@ -1,0 +1,706 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-6-4-vectors-dot-products",
+  "title": "Vectors and Dot Products",
+  "blocks": [
+    {
+      "id": "dot-product-basics",
+      "title": "Dot Product Basics",
+      "teacherCues": [
+        "Write ⟨a,b⟩·⟨c,d⟩ = ac + bd on the board. Emphasize the result is a number, not a vector.",
+        "Ask: If u = ⟨3,4⟩, what is u·u? (9+16=25) Then ∥u∥ = √25 = 5."
+      ],
+      "discoveryHook": {
+        "scenario": "The dot product combines two vectors to produce a single number, like multiplying the amount of force and the distance moved to get work done."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:dot product]] of u = ⟨u1,u2⟩ and v = ⟨v1,v2⟩ is u·v = u1v1 + u2v2.",
+          "Properties: u·v = v·u; u·(v+w) = u·v+u·w; v·v = ∥v∥²; c(u·v) = (cu)·v = u·(cv); 0·v = 0.",
+          "The dot product is a scalar, not a vector."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Examples",
+            "headers": [
+              "u",
+              "v",
+              "u·v"
+            ],
+            "rows": [
+              {
+                "0": "⟨4,5⟩",
+                "1": "⟨2,3⟩",
+                "2": "4·2 + 5·3 = 23"
+              },
+              {
+                "0": "⟨2,-1⟩",
+                "1": "⟨1,2⟩",
+                "2": "2·1 + (-1)·2 = 0"
+              },
+              {
+                "0": "⟨0,3⟩",
+                "1": "⟨4,-2⟩",
+                "2": "0·4 + 3·(-2) = -6"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Dot Product",
+          "formula": "$$\\mathbf{u}\\cdot\\mathbf{v} = u_1v_1 + u_2v_2$$",
+          "notes": [
+            "Multiply corresponding components and add.",
+            "Result is a scalar (a number)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Compute dot product",
+          "prompt": "Find ⟨3,4⟩·⟨2,-3⟩.",
+          "steps": [
+            "Multiply first components: 3·2 = 6.",
+            "Multiply second components: 4·(-3) = -12.",
+            "Add: 6 + (-12) = -6."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Magnitude from dot product",
+          "prompt": "Use the property v·v = ∥v∥² to find the magnitude of v = ⟨-3,4⟩.",
+          "peerPrompt": "Explain: How can v·v give you the squared magnitude? Then take the square root.",
+          "minLength": 2,
+          "steps": [
+            "v·v = (-3)² + 4² = 9+16=25.",
+            "∥v∥ = √25 = 5."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Dot product is commutative",
+          "prompt": "Show that ⟨1,2⟩·⟨3,4⟩ = ⟨3,4⟩·⟨1,2⟩.",
+          "steps": [
+            "Left: 1·3+2·4 = 3+8=11. Right: 3·1+4·2 = 3+8=11. Same."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Dot product is a number",
+        "body": "Don't mistake the dot product for a vector. It is a scalar. So write 23, not ⟨23⟩."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "The dot product of ⟨5,2⟩ and ⟨3,-4⟩ is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "7"
+              ]
+            }
+          ],
+          "hints": [
+            "Multiply the first components, then multiply the second components, then add.",
+            "5·3 = 15, and 2·(-4) = -8. What is 15 + (-8)?"
+          ],
+          "feedbackIfWrong": "It is 5·3 + 2·(-4) = 15 - 8 = 7."
+        },
+        {
+          "id": "q2",
+          "type": "fill-blank",
+          "prompt": "For any vector v, v·v equals ∥v∥². If v = ⟨6,8⟩, then v·v = ___.",
+          "blanks": [
+            {
+              "accept": [
+                "100"
+              ]
+            }
+          ],
+          "hints": [
+            "Compute 6² and 8², then add them.",
+            "6² = 36, 8² = 64. What do you get when you sum them?"
+          ],
+          "feedbackIfWrong": "v·v = 6² + 8² = 36 + 64 = 100."
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "prompt": "If u·v = 0, what is the term for u and v? (orthogonal or parallel)",
+          "answer": "orthogonal",
+          "hints": [
+            "Dot product zero indicates a right angle.",
+            "This word is another way to say perpendicular."
+          ],
+          "feedbackIfWrong": "They are orthogonal."
+        }
+      ]
+    },
+    {
+      "id": "angle-between-vectors",
+      "title": "Angle Between Vectors and Orthogonality",
+      "teacherCues": [
+        "Write cos θ = (u·v)/(∥u∥∥v∥). Ask: If u·v = 0, what is θ? (90° or π/2).",
+        "Show that ⟨2,-3⟩ and ⟨6,4⟩ are orthogonal because their dot product is 0."
+      ],
+      "discoveryHook": {
+        "scenario": "You can find the angle between two forces without a protractor—just use the dot product and some algebra."
+      },
+      "concept": {
+        "explanation": [
+          "The angle θ between two nonzero vectors u and v is given by $$\\cos\\theta = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|}.$$",
+          "If u·v = 0, then θ = 90°; the vectors are [[kw:orthogonal]] (perpendicular).",
+          "If u·v > 0, angle < 90°; if u·v < 0, angle > 90°."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Orientation from dot product sign",
+            "headers": [
+              "u·v",
+              "θ"
+            ],
+            "rows": [
+              {
+                "0": "Positive",
+                "1": "Acute (0° < θ < 90°)"
+              },
+              {
+                "0": "Zero",
+                "1": "Right (90°)"
+              },
+              {
+                "0": "Negative",
+                "1": "Obtuse (90° < θ < 180°)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Angle Formula",
+          "formula": "$$\\cos\\theta = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|}$$",
+          "notes": [
+            "0 ≤ θ ≤ π.",
+            "Use arccos to find the angle."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find angle",
+          "prompt": "Find the angle between u = ⟨4,3⟩ and v = ⟨3,5⟩.",
+          "steps": [
+            "u·v = 4·3+3·5 = 12+15=27.",
+            "∥u∥ = √(16+9)=5, ∥v∥ = √(9+25)=√34.",
+            "cos θ = 27/(5√34) ≈ 0.926 → θ ≈ 22.2°."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Check Orthogonality",
+          "prompt": "Are u = ⟨6,10⟩ and v = ⟨-1/3, 1/5⟩ orthogonal?",
+          "peerPrompt": "Explain: Compute the dot product. What value indicates orthogonality?",
+          "minLength": 2,
+          "steps": [
+            "u·v = 6·(-1/3) + 10·(1/5) = -2 + 2 = 0.",
+            "Since dot product is 0, the vectors are orthogonal."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Use dot product sign",
+          "prompt": "Without computing the angle, is the angle between ⟨2,4⟩ and ⟨-3,1⟩ acute or obtuse?",
+          "steps": [
+            "Dot product = 2·(-3) + 4·1 = -6+4 = -2 (negative).",
+            "Negative dot product → obtuse angle."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Orthogonal vs Perpendicular",
+        "body": "They mean the same, but 'orthogonal' includes the zero vector, which is orthogonal to everything."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "If the dot product of two nonzero vectors is 0, the angle between them is ___ degrees.",
+          "blanks": [
+            {
+              "accept": [
+                "90"
+              ]
+            }
+          ],
+          "hints": [
+            "When the dot product is zero, the cosine of the angle is zero.",
+            "You know that cos( )° = 0 for one special angle between 0 and 180."
+          ],
+          "feedbackIfWrong": "It's 90°."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "Given u = ⟨1,2⟩ and v = ⟨-2,1⟩, compute u·v. (Enter number)",
+          "answer": "0",
+          "hints": [
+            "Multiply the first components, then multiply the second components, then add the results.",
+            "1×(-2) = ? and 2×1 = ?. Their sum is the dot product."
+          ],
+          "feedbackIfWrong": "The dot product is 1·(-2) + 2·1 = -2+2 = 0."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "If u·v is positive, the angle between u and v is ___ (acute or obtuse).",
+          "blanks": [
+            {
+              "accept": [
+                "acute"
+              ]
+            }
+          ],
+          "hints": [
+            "Recall: positive cosine corresponds to an angle less than 90°.",
+            "Angles less than 90° are called ... (opposite of obtuse)."
+          ],
+          "feedbackIfWrong": "Acute."
+        }
+      ]
+    },
+    {
+      "id": "vector-components-projection",
+      "title": "Vector Components and Projection",
+      "teacherCues": [
+        "Draw vector u and v; show w1 along v, w2 perpendicular to v. w1 is the projection.",
+        "Write formula: proj_v u = ((u·v)/(∥v∥²)) v."
+      ],
+      "discoveryHook": {
+        "scenario": "When a boat is on a ramp, gravity pulls it both down the ramp and into the ramp. The projection of the gravity vector onto the ramp direction gives the force pulling it down."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:projection of u onto v]] (a non‑zero vector) is $$\\text{proj}_\\mathbf{v}\\mathbf{u} = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\,\\mathbf{v}.$$",
+          "w1 is parallel to v; w2 = u − w1 is orthogonal to v. Together, u = w1 + w2.",
+          "This decomposes a vector into [[imp:parallel]] and [[imp:perpendicular]] components."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Projection example: u=⟨3,-5⟩, v=⟨6,2⟩",
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "u·v",
+                "1": "3·6 + (-5)·2 = 8"
+              },
+              {
+                "0": "∥v∥²",
+                "1": "6² + 2² = 40"
+              },
+              {
+                "0": "proj_v u",
+                "1": "(8/40)⟨6,2⟩ = ⟨6/5, 2/5⟩"
+              },
+              {
+                "0": "w2 = u - w1",
+                "1": "⟨3 - 6/5, -5 - 2/5⟩ = ⟨9/5, -27/5⟩"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Projection Formula",
+          "formula": "$$\\text{proj}_\\mathbf{v}\\mathbf{u} = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\,\\mathbf{v}$$",
+          "notes": [
+            "The result is a vector parallel to v.",
+            "The scalar (u·v)/(∥v∥²) is the signed length of the projection."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Compute projection",
+          "prompt": "Find the projection of u = ⟨3,4⟩ onto v = ⟨8,2⟩.",
+          "steps": [
+            "u·v = 3·8 + 4·2 = 24+8=32.",
+            "∥v∥² = 64+4=68.",
+            "proj_v u = (32/68)⟨8,2⟩ = (8/17)⟨8,2⟩ = ⟨64/17, 16/17⟩."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Decompose u",
+          "prompt": "With u=⟨3,-5⟩ and v=⟨6,2⟩, write u as w1 + w2 where w1 is parallel to v and w2 is orthogonal.",
+          "peerPrompt": "Explain: First find w1 (the projection), then w2 = u - w1. Verify that w1·w2 = 0.",
+          "minLength": 2,
+          "steps": [
+            "w1 = proj_v u = ⟨6/5, 2/5⟩.",
+            "w2 = u - w1 = ⟨9/5, -27/5⟩.",
+            "Check: w1·w2 = (6/5)(9/5)+(2/5)(-27/5) = 54/25 - 54/25 = 0."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple projection",
+          "prompt": "Find the projection of ⟨5,0⟩ onto ⟨1,0⟩.",
+          "steps": [
+            "u·v = 5·1+0·0=5; ∥v∥²=1.",
+            "proj = (5/1)⟨1,0⟩ = ⟨5,0⟩. (The whole vector, because they are parallel.)"
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Order matters?",
+        "body": "proj_v u is different from proj_u v. The vector you project onto is in the denominator squared."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "The projection of u onto v is a vector parallel to ___.",
+          "blanks": [
+            {
+              "accept": [
+                "v"
+              ]
+            }
+          ],
+          "hints": [
+            "It lies along the vector that appears in the denominator of the projection formula.",
+            "You are projecting 'onto' which vector?"
+          ],
+          "feedbackIfWrong": "It's parallel to v."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "Find the scalar part (u·v)/(∥v∥²) for u=⟨3,4⟩ and v=⟨8,2⟩. (Enter a simplified fraction like 8/17)",
+          "answer": "8/17",
+          "hints": [
+            "First compute the dot product u·v. Then compute ∥v∥² = 8²+2².",
+            "Divide the two numbers and reduce the fraction."
+          ],
+          "feedbackIfWrong": "The scalar is (3·8 + 4·2)/(8²+2²) = 32/68 = 8/17."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "After decomposition, the two components w1 and w2 are ___ (orthogonal/parallel) to each other.",
+          "blanks": [
+            {
+              "accept": [
+                "orthogonal"
+              ]
+            }
+          ],
+          "hints": [
+            "They meet at a right angle.",
+            "This word starts with 'o' and means perpendicular."
+          ],
+          "feedbackIfWrong": "They are orthogonal."
+        }
+      ]
+    },
+    {
+      "id": "work",
+      "title": "Work",
+      "teacherCues": [
+        "Define work: W = F·d, where d is the displacement vector. If force is at an angle, use cos θ.",
+        "Work = ∥F∥∥d∥ cos θ."
+      ],
+      "discoveryHook": {
+        "scenario": "Pulling a wagon at an angle: only the horizontal part of the force does the work. The dot product accounts for this automatically."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:work]] W done by a constant force F moving an object along displacement vector d is $$W = \\mathbf{F}\\cdot\\mathbf{d} = \\|\\mathbf{F}\\|\\|\\mathbf{d}\\|\\cos\\theta.$$",
+          "θ is the angle between the force and the direction of motion.",
+          "Unit: foot-pounds (ft-lb) or Newton-meters (joules)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Work Examples",
+            "headers": [
+              "Force",
+              "Distance",
+              "Angle",
+              "Work"
+            ],
+            "rows": [
+              {
+                "0": "50 lb",
+                "1": "12 ft",
+                "2": "60°",
+                "3": "50·12·cos60° = 300 ft-lb"
+              },
+              {
+                "0": "35 lb",
+                "1": "40 ft",
+                "2": "30°",
+                "3": "35·40·cos30° ≈ 1212.4 ft-lb"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Work Formula",
+          "formula": "$$W = \\mathbf{F}\\cdot\\mathbf{d} = \\|\\mathbf{F}\\|\\|\\mathbf{d}\\|\\cos\\theta$$",
+          "notes": [
+            "If F and d are in the same direction, θ=0, W = ∥F∥∥d∥.",
+            "If perpendicular, W = 0."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Pulling a door",
+          "prompt": "A force of 50 lb pulls a door 12 ft at an angle of 60°. Find the work done.",
+          "steps": [
+            "W = 50·12·cos60° = 600·0.5 = 300 ft-lb."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Force and displacement vectors",
+          "prompt": "If F = ⟨30,0⟩ (horizontal) and displacement d = ⟨0,5⟩ (vertical), compute the work.",
+          "peerPrompt": "Explain why doing zero work makes sense when force is perpendicular to motion.",
+          "minLength": 2,
+          "steps": [
+            "W = F·d = 30·0 + 0·5 = 0.",
+            "No work is done because the force is not in the direction of motion."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Wagon pull",
+          "prompt": "A 35 lb force at a 30° angle pulls a wagon 40 ft. Find work (approx).",
+          "steps": [
+            "W = 35·40·cos30° = 1400·0.8660 ≈ 1212.4 ft-lb."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Only the parallel component does work",
+        "body": "Work uses the component of force along the displacement. That's why the formula includes cos θ."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "If a force of 20 lb moves an object 5 ft in the same direction, the work done is ___ ft-lb.",
+          "blanks": [
+            {
+              "accept": [
+                "100"
+              ]
+            }
+          ],
+          "hints": [
+            "Work equals magnitude of force times distance when they point in the same direction.",
+            "Multiply the two numbers given."
+          ],
+          "feedbackIfWrong": "It's 20 × 5 = 100 ft-lb."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "A force of 30 N moves an object 4 m at a 60° angle. What is the work? (30·4·cos60° = ?)",
+          "answer": "60",
+          "hints": [
+            "Use the formula W = (force)(distance)(cos θ).",
+            "cos60° = 1/2, so halve the product of 30 and 4."
+          ],
+          "feedbackIfWrong": "Work = 30·4·cos60° = 120·0.5 = 60 J."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "If the force is perpendicular to the displacement, the work done is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "The angle between them is 90°. What is cos90°?",
+            "Work involves that cosine factor."
+          ],
+          "feedbackIfWrong": "Work is 0."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-force-ramp",
+      "title": "Blueprint Aid – Force on a Ramp",
+      "teacherCues": [
+        "Draw a ramp inclined at 30°, a cart weighing 200 lb. The force of gravity is straight down (−200j).",
+        "Find unit vector along ramp: v = cos30° i + sin30° j. Then compute proj_v F."
+      ],
+      "discoveryHook": {
+        "scenario": "How much force is needed to keep a heavy cart from rolling down a ramp? Project the weight vector onto the ramp direction to find the downhill pull."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: The gravitational force is F = −mg j. For a 200‑lb cart, F = −200j. The ramp direction is given by a unit vector v = ⟨cos θ, sin θ⟩, where θ is the incline angle.",
+          "[[imp:Solve]]: Find the projection of F onto v using proj_v F = (F·v) v (since ∥v∥² = 1). The magnitude of this projection is the force pulling down the ramp.",
+          "[[imp:Conclude]]: The required holding force is equal in magnitude but opposite in direction to this projection."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Ramp problem (θ=30°, weight=200 lb)",
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "Unit vector v",
+                "1": "⟨cos30°, sin30°⟩ = ⟨√3/2, 1/2⟩"
+              },
+              {
+                "0": "F·v",
+                "1": "(0)(√3/2) + (-200)(1/2) = -100"
+              },
+              {
+                "0": "Projection w1",
+                "1": "(-100)⟨√3/2, 1/2⟩ = ⟨-50√3, -50⟩"
+              },
+              {
+                "0": "Magnitude of w1",
+                "1": "100 lb"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Projection for ramp",
+          "formula": "$$\\text{proj}_\\mathbf{v}\\mathbf{F} = (\\mathbf{F}\\cdot\\mathbf{v})\\mathbf{v}, \\quad \\mathbf{v}=\\langle \\cos\\theta, \\sin\\theta \\rangle$$",
+          "notes": [
+            "v is a unit vector, so ∥v∥²=1.",
+            "The magnitude of this projection tells the force needed."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand ramp model",
+          "prompt": "For a ramp at 30° and a 200‑lb cart, identify F and v.",
+          "steps": [
+            "F = −200j (straight down).",
+            "v = ⟨cos30°, sin30°⟩ = ⟨√3/2, 1/2⟩."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve for holding force",
+          "prompt": "Find the force needed to hold the cart.",
+          "peerPrompt": "Explain: Compute F·v, then multiply by v. The magnitude is the answer.",
+          "minLength": 2,
+          "steps": [
+            "F·v = 0·(√3/2) + (-200)·(1/2) = -100.",
+            "proj_v F = (-100) v.",
+            "Magnitude = 100 lb. So a 100‑lb force is needed."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude for different angle",
+          "prompt": "A 150‑lb cart on a 15° ramp. Find the holding force.",
+          "steps": [
+            "v = ⟨cos15°, sin15°⟩.",
+            "F·v = -150·sin15° ≈ -150·0.2588 = -38.82.",
+            "Magnitude ≈ 38.8 lb."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Unit vector simplification",
+        "body": "Because v is a unit vector, ∥v∥² = 1, so the projection formula simplifies to (u·v) v."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "For a ramp at 30°, the unit vector along the ramp has y‑component sin30° = ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1/2",
+                "0.5"
+              ]
+            }
+          ],
+          "hints": [
+            "Recall the exact value of sin30° from the unit circle.",
+            "It is a very familiar fraction."
+          ],
+          "feedbackIfWrong": "sin30° = 1/2 or 0.5."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "In the ramp problem, F·v = −200·sin30° = ___.",
+          "answer": "-100",
+          "hints": [
+            "Multiply the vertical component of F (−200) by the y‑component of v (sin30°).",
+            "The result is negative because F points downward."
+          ],
+          "feedbackIfWrong": "−200 × (1/2) = −100."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The force required to hold the 200‑lb cart on the 30° ramp is ___ lb.",
+          "blanks": [
+            {
+              "accept": [
+                "100"
+              ]
+            }
+          ],
+          "hints": [
+            "The holding force equals the magnitude of the projection vector.",
+            "Take the absolute value of the number you computed for F·v."
+          ],
+          "feedbackIfWrong": "It is 100 lb."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "If the ramp angle is increased to 45°, is the required holding force greater or less? Explain briefly.",
+        "type": "short-answer",
+        "answers": [
+          "greater"
+        ],
+        "hints": [
+          "Compare sin45° to sin30°.",
+          "A larger sine means a larger downhill component."
+        ],
+        "feedbackIfWrong": "Greater, because sin45° > sin30°."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

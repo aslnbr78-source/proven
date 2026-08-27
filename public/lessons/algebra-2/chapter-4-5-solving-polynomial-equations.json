@@ -1,0 +1,792 @@
+{
+  "blocks": [
+    {
+      "teacherCues": [
+        "Write a cubic equation on the board, such as $2x^3 - 12x^2 + 18x = 0$, and ask: How is solving this similar to solving quadratic equations?",
+        "Remind students of the Zero-Product Property from earlier chapters. Ask: What must be true if a product of factors equals zero?"
+      ],
+      "id": "factoring-polynomial-equations",
+      "examples": [
+        {
+          "prompt": "Solve $2x^3 - 12x^2 + 18x = 0$ and describe the behavior of the graph at each zero.",
+          "role": "guided",
+          "title": "Example A — Solving a Cubic by Factoring",
+          "steps": [
+            "Factor out the common monomial $2x$: $2x(x^2 - 6x + 9) = 0$.",
+            "Factor the perfect square trinomial: $2x(x - 3)^2 = 0$.",
+            "Set each factor equal to zero: $2x = 0 \\Rightarrow x = 0$; $(x - 3)^2 = 0 \\Rightarrow x = 3$.",
+            "Multiplicity of $x = 0$ is 1 (odd), so the graph crosses the $x$-axis. Multiplicity of $x = 3$ is 2 (even), so the graph touches but does not cross."
+          ]
+        },
+        {
+          "minLength": 8,
+          "role": "peer-explain",
+          "title": "Example B — Repeated Solutions and Graph",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the graph only touch the $x$-axis at a repeated solution with even multiplicity, but cross it at an odd multiplicity?",
+          "steps": [
+            "Recognize the polynomial as a perfect cube: $(x + 1)^3 = 0$.",
+            "Set $x + 1 = 0$ to get $x = -1$ with multiplicity 3 (odd).",
+            "Because the multiplicity is odd, the graph crosses the $x$-axis at $x = -1$, even though the factor appears three times.",
+            "The graph flattens out near the zero but still crosses."
+          ],
+          "prompt": "Solve $x^3 + 3x^2 + 3x + 1 = 0$ and explain the graph's behavior at the solution."
+        },
+        {
+          "prompt": "Find the zeros of $f(x) = x^3 + x^2 - 2x$ and state their multiplicities.",
+          "title": "Example C — Identifying Multiplicity",
+          "role": "independent",
+          "steps": [
+            "Factor out the GCF $x$: $x(x^2 + x - 2) = 0$.",
+            "Factor the quadratic: $x(x + 2)(x - 1) = 0$.",
+            "Zeros: $x = 0$ (multiplicity 1), $x = -2$ (multiplicity 1), $x = 1$ (multiplicity 1).",
+            "All multiplicities are odd, so the graph crosses the $x$-axis at each zero."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$m$",
+              "meaning": "multiplicity of the zero $x = k$",
+              "tone": "core"
+            },
+            {
+              "symbol": "$k$",
+              "tone": "subtle",
+              "meaning": "the value of the zero"
+            }
+          ],
+          "formula": "$$(x - k)^m = 0 \\Rightarrow x = k \\text{ (multiplicity } m)$$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Factor",
+              "Multiplicity",
+              "Behavior at $x = k$"
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$(x - k)^{odd}$",
+                "1": "odd",
+                "2": "Graph crosses the $x$-axis"
+              },
+              {
+                "0": "$(x - k)^{even}$",
+                "1": "even",
+                "2": "Graph touches the $x$-axis"
+              }
+            ],
+            "title": "Multiplicity and Graph Behavior"
+          }
+        ],
+        "explanation": [
+          "A [[kw:polynomial equation]] is an equation where a polynomial is set equal to zero.",
+          "To solve, factor the polynomial completely and use the [[kw:Zero-Product Property]]: if $A \\cdot B = 0$, then $A = 0$ or $B = 0$.",
+          "Sometimes a factor appears more than once. The number of times it appears is called the [[kw:multiplicity]] of that root.",
+          "If a factor $(x - k)$ has an odd multiplicity, the graph crosses the $x$-axis at $x = k$. If it has an even multiplicity, the graph touches the $x$-axis but does not cross.",
+          "The sum of the multiplicities of all real zeros equals the degree of the polynomial."
+        ]
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "It is named after multiplication.",
+            "If $A \\cdot B = 0$, then $A = 0$ or $B = 0$."
+          ],
+          "prompt": "When a polynomial equation is written in factored form equal to zero, we use the Zero-___ Property to find the solutions.",
+          "id": "q1-1",
+          "feedbackIfWrong": "The Zero-Product Property states that if a product equals zero, then at least one factor must be zero.",
+          "blanks": [
+            {
+              "accept": [
+                "product",
+                "Product"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "In the equation $(x - 2)^2 = 0$, what is the multiplicity of the solution $x = 2$?",
+          "type": "short-answer",
+          "hints": [
+            "Look at the exponent outside the parentheses.",
+            "The factor appears squared."
+          ],
+          "answers": [
+            "2",
+            "two"
+          ],
+          "feedbackIfWrong": "The exponent 2 tells us the multiplicity is exactly 2.",
+          "id": "q1-2"
+        },
+        {
+          "id": "q1-3",
+          "feedbackIfWrong": "An even multiplicity of 4 means the graph touches but does not cross the axis.",
+          "answers": [
+            "touch",
+            "touches"
+          ],
+          "hints": [
+            "The multiplicity is 4, which is even.",
+            "Even multiplicity makes the graph bounce off the axis."
+          ],
+          "prompt": "Does the graph of $f(x) = (x + 1)^4$ cross or touch the $x$-axis at $x = -1$?",
+          "type": "short-answer"
+        }
+      ],
+      "title": "Solving Polynomial Equations by Factoring",
+      "discoveryHook": {
+        "scenario": "You've mastered solving quadratic equations. Now imagine tackling a cubic equation like $x^3 - 6x^2 + 12x - 8 = 0$. The good news? The Zero-Product Property still works! With one new twist—repeated solutions—we can unlock even higher-degree polynomials."
+      },
+      "confusionCorner": {
+        "body": "A cubic equation can have 1, 2, or 3 distinct real solutions, but the multiplicities always add up to the degree (3). For example, $x^3 = 0$ has one distinct solution $x = 0$ with multiplicity 3.",
+        "title": "Multiplicity vs. Number of Solutions"
+      }
+    },
+    {
+      "confusionCorner": {
+        "body": "A flat spot near an intercept often signals multiplicity greater than 1, but you must factor to know the exact multiplicity. [[imp:Never assume the multiplicity just because the graph looks flat.]]",
+        "title": "Don't Guess Multiplicity from the Graph Alone"
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "zero",
+                "0"
+              ]
+            }
+          ],
+          "prompt": "To find the zeros of a function $f(x)$, you must set $f(x)$ equal to ___ and solve.",
+          "hints": [
+            "Zeros are the inputs that make the output nothing.",
+            "Think of the $x$-intercepts: $y = 0$."
+          ],
+          "id": "q2-1",
+          "type": "fill-blank",
+          "feedbackIfWrong": "Setting $f(x) = 0$ gives the $x$-values where the graph crosses or touches the $x$-axis."
+        },
+        {
+          "feedbackIfWrong": "The sum of multiplicities is $2+1+1 = 4$, which equals the degree.",
+          "prompt": "If a polynomial of degree 4 has a double zero at $x = -1$, a single zero at $x = 2$, and a single zero at $x = 0$, how many total zeros counting multiplicities does it have?",
+          "answers": [
+            "4",
+            "four"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "Add the multiplicities: $2 + 1 + 1$.",
+            "The degree tells you the total number, including repeats."
+          ],
+          "id": "q2-2"
+        },
+        {
+          "hints": [
+            "Look at the exponent on the factor containing $x + 3$.",
+            "It is raised to the second power."
+          ],
+          "prompt": "For the function $f(x) = (x+3)^2(x-1)$, what is the multiplicity of the zero at $x = -3$?",
+          "answers": [
+            "2",
+            "two"
+          ],
+          "feedbackIfWrong": "The factor $(x+3)^2$ has exponent 2, so the zero $x = -3$ has multiplicity 2.",
+          "type": "short-answer",
+          "id": "q2-3"
+        }
+      ],
+      "id": "finding-zeros-higher-degree",
+      "title": "Finding Zeros of Polynomial Functions",
+      "discoveryHook": {
+        "scenario": "You've factored quadratics and cubics. Now let's level up to quartics—polynomials of degree 4. With up to four real zeros, the graph can wiggle multiple times. By factoring and analyzing multiplicity, we can sketch the graph without plotting dozens of points."
+      },
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$f(x)$",
+              "tone": "core",
+              "meaning": "polynomial function"
+            },
+            {
+              "tone": "subtle",
+              "symbol": "degree $n$",
+              "meaning": "maximum number of real zeros (counting multiplicities)"
+            }
+          ],
+          "formula": "$$f(x) = 0 \\Rightarrow \\text{find all } x \\text{ such that } f(x)=0$$"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Factoring Strategies for Higher Degrees",
+            "headers": [
+              "Technique",
+              "When to Use",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "Common monomial",
+                "1": "Every term shares a factor",
+                "2": "$2x^3 - 12x^2 + 18x = 2x(...)$"
+              },
+              {
+                "0": "Factor by grouping",
+                "1": "Four terms, group into pairs",
+                "2": "$x^3 + x^2 - 4x - 4 = (x+1)(x^2-4)$"
+              },
+              {
+                "0": "Quadratic form",
+                "1": "Trinomial with $x^{2m}, x^m$, constant",
+                "2": "$x^4 - 8x^2 + 16 = (x^2-4)^2$"
+              },
+              {
+                "0": "Sum/difference of cubes",
+                "1": "Two terms, both perfect cubes",
+                "2": "$x^3 - 8 = (x-2)(x^2+2x+4)$"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "To find the [[kw:zeros]] of a polynomial function $f(x)$, set $f(x) = 0$ and solve the resulting polynomial equation.",
+          "Factor by pulling out a common monomial, by grouping, or by recognizing patterns like difference of squares or perfect cubes.",
+          "The zeros are the $x$-intercepts of the graph. Use multiplicity to decide whether the graph crosses or touches.",
+          "A polynomial of degree $n$ has exactly $n$ complex roots, counting multiplicities. Real zeros correspond to visible $x$-intercepts."
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Factor out the GCF $x$: $x(x^3 - 4x^2 + 5x - 2) = 0$.",
+            "Test small integers to factor the cubic. $x=1$ works, so divide: $(x-1)(x^2 - 3x + 2) = (x-1)(x-1)(x-2) = (x-1)^2(x-2)$.",
+            "Full factorization: $x(x-1)^2(x-2) = 0$.",
+            "Zeros: $0$ (mult. 1, cross), $1$ (mult. 2, touch), $2$ (mult. 1, cross)."
+          ],
+          "title": "Example A — Factoring a Quartic",
+          "prompt": "Find all real zeros of $f(x) = x^4 - 4x^3 + 5x^2 - 2x$ and describe the graph at each zero."
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the graph only touch the $x$-axis at $x = 0$ and $x = 2$? What does that tell you about their multiplicities?",
+          "role": "peer-explain",
+          "prompt": "Given $g(x) = x^4 - 4x^3 + 4x^2$, describe the behavior at each zero.",
+          "steps": [
+            "Factor: $x^2(x^2 - 4x + 4) = x^2(x-2)^2 = 0$.",
+            "Zeros: $0$ (mult. 2), $2$ (mult. 2).",
+            "Both multiplicities are even, so the graph touches but does not cross at either intercept.",
+            "The graph bounces off the axis at both points."
+          ],
+          "title": "Example B — Interpreting Multiplicity",
+          "minLength": 8
+        },
+        {
+          "steps": [
+            "Factor out $-2$: $-2(x^4 - 8x^2 + 16) = -2(x^2 - 4)^2 = -2(x+2)^2(x-2)^2$.",
+            "Set factors with zeros: $x+2=0 \\Rightarrow x=-2$ (mult. 2), $x-2=0 \\Rightarrow x=2$ (mult. 2).",
+            "Both have even multiplicities, so the graph touches at both $x = -2$ and $x = 2$.",
+            "The leading coefficient is negative, so the graph opens downward overall."
+          ],
+          "role": "independent",
+          "prompt": "Write the zeros of $h(x) = -2x^4 + 16x^2 - 32$ and determine if the graph crosses or touches at each.",
+          "title": "Example C — Zeros from Factored Form"
+        }
+      ],
+      "teacherCues": [
+        "Show a quartic function like $f(x) = x^4 - 4x^3 + 5x^2 - 2x$. Ask: What strategies can we use to factor this completely?",
+        "Point out that some factors may be repeated, and the graph will touch or cross accordingly."
+      ]
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "title": "How to Apply the Rational Root Theorem",
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1",
+                "1": "List all integer factors of $a_0$ (constant term)."
+              },
+              {
+                "0": "2",
+                "1": "List all integer factors of $a_n$ (leading coefficient)."
+              },
+              {
+                "0": "3",
+                "1": "Form all possible fractions $p/q$ with each factor of $a_0$ as numerator and each factor of $a_n$ as denominator."
+              },
+              {
+                "0": "4",
+                "1": "Test values using synthetic division; a remainder of 0 means it's a root."
+              },
+              {
+                "0": "5",
+                "1": "Use the reduced polynomial to find remaining roots."
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "The [[kw:Rational Root Theorem]]: For a polynomial $f(x) = a_n x^n + \\dots + a_0$ with integer coefficients, any rational zero in lowest terms is of the form $p/q$, where $p$ is a factor of the constant term $a_0$, and $q$ is a factor of the leading coefficient $a_n$.",
+          "List every possible combination $p/q$. The list may include duplicates and negative/positive values.",
+          "Test candidates using [[kw:synthetic division]] or direct substitution until one makes the polynomial zero.",
+          "Once a rational root is found, use the quotient from synthetic division to factor the polynomial into a smaller degree. Repeat if necessary."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Possible rational roots} = \\frac{p}{q}, \\quad p \\mid a_0, \\; q \\mid a_n$$",
+          "legend": [
+            {
+              "symbol": "$p$",
+              "meaning": "integer factor of the constant term $a_0$",
+              "tone": "core"
+            },
+            {
+              "meaning": "integer factor of the leading coefficient $a_n$",
+              "symbol": "$q$",
+              "tone": "core"
+            }
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Constant $a_0 = 20$, leading coefficient $a_n = 1$. Possible rational roots: $\\pm 1, \\pm 2, \\pm 4, \\pm 5, \\pm 10, \\pm 20$.",
+            "Test $x = -1$ using synthetic division: coefficients 1, -8, 11, 20. Bring down 1, multiply -1, add to -8 gives -9, multiply -1, add to 11 gives 20, multiply -1, add to 20 gives 0. Remainder 0, so $x = -1$ is a root.",
+            "The quotient is $x^2 - 9x + 20$. Factor: $(x-4)(x-5) = 0$.",
+            "Solutions: $x = -1, 4, 5$."
+          ],
+          "title": "Example A — Leading Coefficient 1",
+          "prompt": "Find all real solutions of $x^3 - 8x^2 + 11x + 20 = 0$ using the Rational Root Theorem."
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If none of the possible rational numbers work, what kind of zeros might the polynomial have? How could you still find them?",
+          "role": "peer-explain",
+          "steps": [
+            "The possible rational roots are factors of 5 over factors of 1: $\\pm 1, \\pm 5$.",
+            "Test: $f(1) = -6$, $f(-1) = -4$, $f(5) = 110$, $f(-5) = -120$. None give 0.",
+            "Conclusion: the polynomial has no rational zeros. The real zero is irrational (it must exist by the Intermediate Value Theorem).",
+            "Irrational zeros can be approximated with graphs or found with formulas beyond factoring."
+          ],
+          "prompt": "Explain why the Rational Root Theorem might not give all the zeros of a polynomial like $x^3 - 2x - 5 = 0$.",
+          "title": "Example B — What If No Rational Root Works?",
+          "minLength": 8
+        },
+        {
+          "prompt": "Use the Rational Root Theorem to find all real solutions of $x^3 - 5x^2 - 2x + 24 = 0$.",
+          "title": "Example C — Testing Your Own",
+          "role": "independent",
+          "steps": [
+            "$a_0 = 24$, $a_n = 1$. Possible rational roots: $\\pm 1, \\pm 2, \\pm 3, \\pm 4, \\pm 6, \\pm 8, \\pm 12, \\pm 24$.",
+            "Test $x = 3$: coefficients 1, -5, -2, 24. Synthetic division gives remainder 0.",
+            "Quotient: $x^2 - 2x - 8 = (x-4)(x+2) = 0$.",
+            "Solutions: $x = -2, 3, 4$."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Ask: What if a polynomial doesn't factor easily? How can we guess a rational root?",
+        "Demonstrate listing the factors of the constant term and the leading coefficient on the board."
+      ],
+      "confusionCorner": {
+        "title": "The 'Possible' Trap",
+        "body": "The Rational Root Theorem gives a list of [[imp:possible]] rational roots, not guaranteed ones. If none work, the polynomial's real roots are irrational or complex. Always double-check your synthetic division!"
+      },
+      "title": "The Rational Root Theorem",
+      "id": "rational-root-theorem",
+      "discoveryHook": {
+        "scenario": "When factoring fails, we need a smarter way to guess zeros. The Rational Root Theorem gives us a list of all possible rational solutions—like a treasure map. Test the most promising spots, and you'll uncover the real gems hiding in the polynomial."
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "constant"
+              ]
+            }
+          ],
+          "id": "q3-1",
+          "prompt": "In the Rational Root Theorem, the numerator $p$ of a possible rational root is a factor of the ___ term.",
+          "hints": [
+            "It's the term without any $x$.",
+            "In $ax^3+bx^2+cx+d$, it is $d$."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "The constant term $a_0$ is the number with no variable attached."
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "Yes, because 3 is a factor of 6 and 2 is a factor of the leading coefficient 2.",
+          "hints": [
+            "3 is a factor of 6, and 2 is a factor of 2.",
+            "Check if the fraction can be formed using factors."
+          ],
+          "prompt": "If a polynomial has leading coefficient 2 and constant term $-6$, is $\\frac{3}{2}$ a possible rational root? (yes/no)",
+          "answers": [
+            "yes"
+          ],
+          "id": "q3-2"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "division",
+            "synthetic"
+          ],
+          "hints": [
+            "It is a shortcut for polynomial long division.",
+            "You bring down, multiply, and add."
+          ],
+          "id": "q3-3",
+          "prompt": "What synthetic process is used to test if a candidate is a root? (one word)",
+          "feedbackIfWrong": "Synthetic division quickly tests candidates and factors the polynomial if the root works."
+        }
+      ]
+    },
+    {
+      "title": "Graph-Assisted Root Finding & Irrational Conjugates",
+      "examples": [
+        {
+          "title": "Example A — Graph Narrows the Search",
+          "steps": [
+            "Constant $a_0 = 12$, leading coefficient $a_n = 10$. The full list of possible rational roots is long!",
+            "Graph shows zeros near $-1.5, -0.5, 0.6, 2.4$. Test candidates close to these: $-\\frac{3}{2}, -\\frac{1}{2}, \\frac{3}{5}, \\frac{12}{5}$.",
+            "$-\\frac{1}{2}$ works. Synthetic division yields $(2x+1)(5x^3 - 8x^2 - 17x + 12)$.",
+            "Test $\\frac{3}{5}$ on the cubic; it works. Reduction leaves quadratic $x^2 - x - 4 = 0$.",
+            "Solve quadratic: $x = \\frac{1 \\pm \\sqrt{17}}{2}$. Real zeros: $-\\frac{1}{2}, \\frac{3}{5}, \\frac{1+\\sqrt{17}}{2}, \\frac{1-\\sqrt{17}}{2}$."
+          ],
+          "prompt": "Find all real zeros of $f(x) = 10x^4 - 11x^3 - 42x^2 + 7x + 12$ using a graph to shorten the list.",
+          "role": "guided"
+        },
+        {
+          "minLength": 8,
+          "role": "peer-explain",
+          "steps": [
+            "The quadratic formula $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$ naturally produces solutions in pairs $u \\pm v\\sqrt{d}$.",
+            "Even for higher-degree polynomials, if coefficients are integers, any factor with an irrational root must occur with its conjugate to ensure rational coefficients.",
+            "Thus, $3-\\sqrt{2}$ is automatically a zero as well."
+          ],
+          "prompt": "Given that $3+\\sqrt{2}$ is a zero of a polynomial with integer coefficients, explain why $3-\\sqrt{2}$ must also be a zero.",
+          "title": "Example B — Why Irrational Conjugates Appear",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Look at the quadratic formula. Why do irrational roots always come in pairs with a plus and a minus sign?"
+        },
+        {
+          "prompt": "Write a polynomial function $f$ of least degree with rational coefficients, leading coefficient 1, and zeros $3$ and $2+\\sqrt{5}$.",
+          "title": "Example C — Writing a Polynomial from Zeros",
+          "role": "independent",
+          "steps": [
+            "By the Irrational Conjugates Theorem, $2-\\sqrt{5}$ is also a zero.",
+            "Factors: $(x-3)$, $(x - (2+\\sqrt{5}))$, $(x - (2-\\sqrt{5}))$.",
+            "Multiply the conjugate pair: $(x-2 - \\sqrt{5})(x-2 + \\sqrt{5}) = (x-2)^2 - 5 = x^2 - 4x - 1$.",
+            "Multiply by $(x-3)$: $(x-3)(x^2 - 4x - 1) = x^3 - 7x^2 + 11x + 3$."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "Use a graph to estimate where the zeros are. Then test only the rational candidates that lie close to those $x$-intercepts.",
+          "Even when the leading coefficient is not 1, the graph still guides you to the most likely numbers.",
+          "[[kw:Irrational Conjugates Theorem]]: If a polynomial has rational coefficients and $a + \\sqrt{b}$ is a zero (with $b$ not a perfect square), then $a - \\sqrt{b}$ is also a zero.",
+          "This theorem is powerful for writing polynomial functions from given zeros and for factoring completely."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1",
+                "1": "Graph the polynomial using technology."
+              },
+              {
+                "0": "2",
+                "1": "Identify approximate $x$-intercept locations."
+              },
+              {
+                "0": "3",
+                "1": "List rational candidates near those $x$-values."
+              },
+              {
+                "0": "4",
+                "1": "Test only the nearby candidates with synthetic division."
+              },
+              {
+                "0": "5",
+                "1": "Reduce and find remaining (possibly irrational) roots."
+              }
+            ],
+            "type": "table",
+            "title": "Using a Graph to Shorten the List",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "rational part",
+              "symbol": "$a$"
+            },
+            {
+              "symbol": "$\\sqrt{b}$",
+              "tone": "core",
+              "meaning": "irrational square root part ($b$ not a perfect square)"
+            }
+          ],
+          "formula": "$$\\text{If } a+\\sqrt{b} \\text{ is a zero, then } a-\\sqrt{b} \\text{ is also a zero.}$$"
+        }
+      },
+      "teacherCues": [
+        "Display a graph of a quartic with messy roots. Ask: How can the graph help us avoid testing every single possible rational root?",
+        "Write $a + \\sqrt{b}$ on the board. Ask: If this is a zero, what must also be a zero according to the Irrational Conjugates Theorem?"
+      ],
+      "discoveryHook": {
+        "scenario": "Testing dozens of possible rational roots by hand is exhausting. By glancing at a graph, we can zoom in on the most promising candidates. And when irrational roots appear, they always come in conjugate pairs—like twins you can count on!"
+      },
+      "confusionCorner": {
+        "title": "Don't Forget the Conjugate",
+        "body": "If you are given an irrational zero and asked to write a polynomial, [[imp:always include its conjugate]] as a zero. Otherwise, the polynomial will not have rational coefficients!"
+      },
+      "id": "graph-assisted-and-irrational-conjugates",
+      "questions": [
+        {
+          "feedbackIfWrong": "The conjugate of $a+\\sqrt{b}$ is $a-\\sqrt{b}$, so the answer is $1-\\sqrt{3}$.",
+          "hints": [
+            "Change the sign in front of the square root.",
+            "Keep the rational part the same."
+          ],
+          "id": "q4-1",
+          "prompt": "According to the Irrational Conjugates Theorem, if $1+\\sqrt{3}$ is a zero of a polynomial with rational coefficients, then its conjugate ___ must also be a zero.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "1-\\sqrt{3}",
+                "1 - \\sqrt{3}"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "When using a graph to find zeros, which axis do the zeros lie on? (type 'x' or 'y')",
+          "hints": [
+            "Zeros are $x$-intercepts.",
+            "Where does $y=0$ on a graph?"
+          ],
+          "feedbackIfWrong": "Zeros are the $x$-coordinates where the graph touches or crosses the $x$-axis.",
+          "type": "short-answer",
+          "id": "q4-2",
+          "answers": [
+            "x"
+          ]
+        },
+        {
+          "hints": [
+            "Think of a matching set.",
+            "Two items together."
+          ],
+          "feedbackIfWrong": "They appear in conjugate pairs like $a+\\sqrt{b}$ and $a-\\sqrt{b}$.",
+          "type": "fill-blank",
+          "id": "q4-3",
+          "prompt": "A polynomial's irrational zeros always come in conjugate ___.",
+          "blanks": [
+            {
+              "accept": [
+                "pairs"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "In real-world problems, variables often represent lengths, times, or quantities that must be positive. Always filter your mathematical solutions through the [[imp:context of the problem]] to keep only the meaningful ones.",
+        "title": "Domain Matters!"
+      },
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude poster. Model the volume problem step-by-step.",
+        "Ask: What constraint limits the possible solutions to only positive numbers?"
+      ],
+      "discoveryHook": {
+        "scenario": "You're designing a mold for a paperweight: a rectangular prism with a square base, where the height is 3 cm more than the side length. The volume must be 112 cm³. Using the Blueprint, we'll set up a polynomial equation, test rational roots, and find the exact dimensions."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A rectangular prism has a square base. Its height is 3 cm more than the side length of the base. The volume is 112 cm³. Find the dimensions.",
+          "steps": [
+            "Understand: Let $x$ = side length of base (cm). Then height = $x+3$. Volume $V = x^2(x+3) = 112$.",
+            "Solve: $x^3 + 3x^2 - 112 = 0$. Possible rational roots: factors of 112: $\\pm 1,2,4,7,8,14,16,28,56,112$.",
+            "Test $x=4$: $64 + 48 - 112 = 0$. Works. Synthetic division gives $(x-4)(x^2+7x+28)=0$. Quadratic has no real roots.",
+            "Only positive solution: $x = 4$. Height = $7$ cm.",
+            "Conclude: The base is 4 cm by 4 cm, and the height is 7 cm."
+          ],
+          "title": "Example A — Volume of a Mold"
+        },
+        {
+          "title": "Example B — Why Reject Negative Roots?",
+          "minLength": 8,
+          "steps": [
+            "Length, width, and height are physical measurements; they must be positive.",
+            "A negative value would have no real-world meaning (you can't have a side of -4 cm).",
+            "Zero would mean the object doesn't exist.",
+            "Always check the domain of the variable in applied problems."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What do negative length or zero length mean in the real world? Why are they impossible?",
+          "prompt": "Why must we reject negative and zero solutions in the mold problem?"
+        },
+        {
+          "title": "Example C — Cube Edge Puzzle",
+          "prompt": "The volume of a cube is 8 cubic centimeters. Each edge is $(x-3)$ cm. Find $x$ and the actual side length of the cube.",
+          "steps": [
+            "Understand: Side length $s = x-3$. Volume $s^3 = 8$.",
+            "Solve: $(x-3)^3 = 8 \\Rightarrow x-3 = \\sqrt[3]{8} = 2$.",
+            "Thus $x = 5$. Actual side length $= 2$ cm.",
+            "Conclude: $x = 5$, the cube is 2 cm on each side."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "blueprint-aid-polynomial-word-problems",
+      "title": "Blueprint Aid — Solving Polynomial Word Problems",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Blueprint for Polynomial Applications",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Define variable, write volume/area equation, set equal to given quantity."
+              },
+              {
+                "0": "Solve",
+                "1": "Set equation to zero, list possible rational roots, test using synthetic division, find all real solutions, keep only those fitting the context."
+              },
+              {
+                "0": "Conclude",
+                "1": "State dimensions/lengths with units. Check that they satisfy the original conditions."
+              }
+            ],
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "[[imp:Understand]]: Identify the variable, known values, and what the problem asks. Write an equation. For geometry, use volume formulas.",
+          "[[imp:Solve]]: Write the equation as $polynomial = 0$. List possible rational roots. Use synthetic division to test candidates. Reject negative or extraneous solutions.",
+          "[[imp:Conclude]]: State the answer with correct units. Verify by plugging back into the original problem."
+        ],
+        "formulaCard": {
+          "formula": "$$V = x^2 \\cdot h$$",
+          "legend": [
+            {
+              "symbol": "$V$",
+              "tone": "core",
+              "meaning": "volume"
+            },
+            {
+              "symbol": "$x$",
+              "tone": "core",
+              "meaning": "side length of square base"
+            },
+            {
+              "symbol": "$h$",
+              "meaning": "height",
+              "tone": "subtle"
+            }
+          ]
+        }
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Expanding $x^2(x+3)$ yields $x^3 + 3x^2$, so the degree is 3.",
+          "id": "q5-1",
+          "prompt": "In the volume problem $x^2(x+3) = 112$, what is the degree of the polynomial equation?",
+          "hints": [
+            "Multiply $x^2$ by $x$ gives $x^3$.",
+            "The highest power of the variable."
+          ],
+          "answers": [
+            "3",
+            "three"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "positive"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Only positive solutions are valid for physical dimensions.",
+          "id": "q5-2",
+          "prompt": "When solving a word problem, any solution that gives a negative length must be rejected because measurements must be ___.",
+          "hints": [
+            "Lengths cannot be less than zero.",
+            "The word is the opposite of negative."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "It's a shortcut for polynomial long division.",
+            "You use coefficients and a test root."
+          ],
+          "prompt": "After finding one rational root, what algebraic method reduces the polynomial's degree so you can find the others? (one word)",
+          "feedbackIfWrong": "Synthetic division (or polynomial division) breaks the polynomial into a linear factor times a lower-degree polynomial.",
+          "id": "q5-3",
+          "answers": [
+            "division",
+            "synthetic",
+            "factoring"
+          ]
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 2,
+  "id": "chapter-4-5-solving-polynomial-equations",
+  "title": "Solving Polynomial Equations",
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Students often find the Rational Root Theorem empowering—it gives them a starting list even when factoring isn't obvious. Emphasize that the list is just possible roots, not guaranteed ones.",
+    "When covering repeated solutions, physically gesture with your hand: a quick 'bounce' for touch, a 'slice' for cross. Kinesthetic reinforcement helps the concept stick.",
+    "In the Blueprint block, stress the importance of checking the domain. Students often forget to discard negative solutions in geometry problems."
+  ],
+  "standards": [
+    "HSA.APR.B.3",
+    "HSA.APR.B.2",
+    "HSN.CN.C.9"
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

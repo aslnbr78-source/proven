@@ -1,0 +1,720 @@
+{
+  "title": "Completing the Square",
+  "schemaVersion": 2,
+  "id": "section-3-3-completing-the-square",
+  "presenterNotes": [
+    "Emphasize the pattern: half the coefficient of x, square it, add to both sides. This is the core algorithm.",
+    "When a ≠ 1, always divide first. Many students forget this step.",
+    "The connection between completing the square and vertex form is powerful — it gives geometric meaning to the algebra.",
+    "Real‑life modeling (baseball) shows why completing the square matters beyond solving equations: it reveals maxima and minima."
+  ],
+  "blocks": [
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{If } (x + p)^2 = d, \\text{ then } x + p = \\pm \\sqrt{d} $$",
+          "title": "Solving $ (x + p)^2 = d $",
+          "notes": [
+            "Don't forget the $ \\pm $ sign.",
+            "If $ d < 0 $, the solutions are complex (using $ i $).",
+            "Always simplify the radical."
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Recognizing Perfect Square Trinomials",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$ x^2 - 16x + 64 $",
+                "1": "$ (x - 8)^2 $",
+                "2": "$ (\\frac{-16}{2})^2 = 64 $ ✓"
+              },
+              {
+                "0": "$ x^2 + 4x + 4 $",
+                "1": "$ (x + 2)^2 $",
+                "2": "$ (\\frac{4}{2})^2 = 4 $ ✓"
+              },
+              {
+                "0": "$ x^2 - 22x + 121 $",
+                "1": "$ (x - 11)^2 $",
+                "2": "$ (\\frac{-22}{2})^2 = 121 $ ✓"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Trinomial",
+              "Factored Form",
+              "How to Check"
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:perfect square trinomial]] is a trinomial that can be written as the square of a binomial. Examples: $ x^2 + 6x + 9 = (x + 3)^2 $, $ x^2 - 10x + 25 = (x - 5)^2 $.",
+          "When an equation has a perfect square trinomial on one side and a constant on the other, you can solve it by [[imp:taking square roots]] of both sides.",
+          "Step 1: Write the perfect square trinomial as $ (x + p)^2 $ or $ (x - p)^2 $. Step 2: Take the square root of both sides, remembering the $ \\pm $ sign. Step 3: Solve the resulting linear equations.",
+          "This method works because it transforms a quadratic equation into two simple linear equations."
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "The perfect square trinomial is $ (x - 3)^2 $.",
+          "type": "short-answer",
+          "prompt": "What is $ x^2 - 6x + 9 $ written as a binomial squared? (Answer like (x-3)^2)",
+          "answer": "(x-3)^2",
+          "id": "q3-3-1",
+          "hints": [
+            "Half of -6 is -3; square gives 9.",
+            "The binomial is $ (x - 3) $."
+          ]
+        },
+        {
+          "hints": [
+            "Take the square root of 16.",
+            "Remember the $ \\pm $, but the blank is just the number."
+          ],
+          "id": "q3-3-2",
+          "feedbackIfWrong": "$ \\sqrt{16} = 4 $.",
+          "type": "fill-blank",
+          "prompt": "After writing the left side as a binomial squared, the equation $ (x + 2)^2 = 16 $ yields $ x + 2 = \\pm $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "4"
+              ]
+            }
+          ]
+        },
+        {
+          "hints": [
+            "Take square root: $ x - 5 = \\pm 3 $.",
+            "Add 5 to both sides for each case."
+          ],
+          "id": "q3-3-3",
+          "feedbackIfWrong": "$ x - 5 = 3 \\Rightarrow x = 8 $; $ x - 5 = -3 \\Rightarrow x = 2 $.",
+          "answer": "8,2",
+          "prompt": "Solve $ (x - 5)^2 = 9 $. What are the two solutions? (Answer like 8,2)",
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Write $ x^2 - 16x + 64 = 100 $ on the board. Ask: Can we write the left side as a binomial squared?",
+        "Show that $ x^2 - 16x + 64 = (x - 8)^2 $, then take the square root of both sides."
+      ],
+      "discoveryHook": {
+        "scenario": "Some quadratic equations are hiding a secret: one side is a perfect square trinomial. If you recognize it, you can unlock the solution instantly by taking square roots, just like unwrapping a squared gift."
+      },
+      "title": "Solving by Square Roots Using Perfect Square Trinomials",
+      "confusionCorner": {
+        "title": "Don't Expand — Recognize the Square!",
+        "body": "When you see a trinomial like $ x^2 - 18x + 81 $, resist the urge to factor it into two binomials. [[imp:Recognize it as $ (x - 9)^2 $ immediately.]] This is faster and sets you up to take square roots."
+      },
+      "id": "perfect-square-trinomials-square-roots",
+      "examples": [
+        {
+          "steps": [
+            "The left side is a perfect square trinomial: $ x^2 - 16x + 64 = (x - 8)^2 $.",
+            "Rewrite: $ (x - 8)^2 = 100 $.",
+            "Take square root: $ x - 8 = \\pm 10 $.",
+            "Solve: $ x = 8 + 10 = 18 $ or $ x = 8 - 10 = -2 $."
+          ],
+          "role": "guided",
+          "title": "Example A – Solving a Perfect Square Trinomial Equation",
+          "prompt": "Solve $ x^2 - 16x + 64 = 100 $ using square roots."
+        },
+        {
+          "prompt": "Explain to a partner how to verify that $ x^2 + 4x + 4 $ is a perfect square trinomial.",
+          "steps": [
+            "For $ x^2 + bx + c $, compute $ (b/2)^2 $.",
+            "If $ c = (b/2)^2 $, the trinomial is a perfect square: $ (x + b/2)^2 $.",
+            "Here $ b = 4 $, $ (4/2)^2 = 4 = c $, so $ x^2 + 4x + 4 = (x + 2)^2 $."
+          ],
+          "title": "Example B – How Do You Know It's a Perfect Square?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nTake half of the coefficient of $ x $ (which is 4), square it: $ (4/2)^2 = 4 $. Since the constant term matches, it's a perfect square."
+        },
+        {
+          "title": "Example C – Solve with Complex Solutions",
+          "prompt": "Solve $ y^2 - 24y + 144 = -100 $.",
+          "role": "independent",
+          "steps": [
+            "Left side: $ (y - 12)^2 = -100 $.",
+            "Take square root: $ y - 12 = \\pm \\sqrt{-100} = \\pm 10i $.",
+            "So $ y = 12 \\pm 10i $. The solutions are $ 12 + 10i $ and $ 12 - 10i $."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "completing-the-square-process",
+      "confusionCorner": {
+        "body": "When solving an equation, you must add $ (b/2)^2 $ to [[imp:both sides]]. If you only add it to the left, you've changed the equation. [[imp:Balance is key.]]",
+        "title": "Don't Forget to Add to Both Sides!"
+      },
+      "discoveryHook": {
+        "scenario": "What if the quadratic isn't already a perfect square? You can make it one! By adding the right amount to both sides, you 'complete the square,' turning any quadratic into a binomial squared. This is the key to solving equations that don't factor easily."
+      },
+      "teacherCues": [
+        "Write $ x^2 + 10x $ on the board. Ask: What number must we add to make this a perfect square trinomial?",
+        "Show the formula: add $ (b/2)^2 $. For $ b=10 $, add 25. Then $ x^2 + 10x + 25 = (x+5)^2 $."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Completing the Square Steps for $ x^2 - 10x + 7 = 0 $",
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Move constant",
+                "2": "$ x^2 - 10x = -7 $"
+              },
+              {
+                "0": "2",
+                "1": "Add $ (b/2)^2 = 25 $",
+                "2": "$ x^2 - 10x + 25 = 18 $"
+              },
+              {
+                "0": "3",
+                "1": "Write as binomial squared",
+                "2": "$ (x - 5)^2 = 18 $"
+              },
+              {
+                "0": "4",
+                "1": "Take square roots",
+                "2": "$ x = 5 \\pm 3\\sqrt{2} $"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "[[kw:Completing the square]] is the process of adding a constant term to an expression of the form $ x^2 + bx $ to make it a perfect square trinomial.",
+          "The constant to add is $ (\\frac{b}{2})^2 $. Then $$ x^2 + bx + \\left(\\frac{b}{2}\\right)^2 = \\left(x + \\frac{b}{2}\\right)^2 $$",
+          "To solve an equation $ x^2 + bx + c = 0 $ by completing the square: 1) Move $ c $ to the right side. 2) Add $ (b/2)^2 $ to both sides. 3) Write the left side as a binomial squared. 4) Take square roots and solve.",
+          "This method always works, even when factoring doesn't."
+        ],
+        "formulaCard": {
+          "title": "Completing the Square Formula",
+          "formula": "$$ x^2 + bx + \\left(\\frac{b}{2}\\right)^2 = \\left(x + \\frac{b}{2}\\right)^2 $$",
+          "notes": [
+            "Half the coefficient of $ x $, then square it.",
+            "Add the same amount to both sides of an equation.",
+            "Works for any $ x^2 + bx $, even when $ b $ is odd or fractional."
+          ]
+        }
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Half of 8 is 4; $ 4^2 = 16 $.",
+          "type": "short-answer",
+          "id": "q3-3-4",
+          "prompt": "What number must be added to $ x^2 + 8x $ to complete the square?",
+          "hints": [
+            "Take half of 8, then square.",
+            "$ (8/2)^2 = 4^2 $."
+          ],
+          "answer": "16"
+        },
+        {
+          "hints": [
+            "The number inside is half the original coefficient of $ x $.",
+            "Half of 12."
+          ],
+          "feedbackIfWrong": "Half of 12 is 6, so the binomial is $ (x + 6)^2 $.",
+          "type": "fill-blank",
+          "prompt": "After completing the square, $ x^2 + 12x + 36 $ is written as $ (x + $ ___$)^2 $.",
+          "id": "q3-3-5",
+          "blanks": [
+            {
+              "accept": [
+                "6"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "First, subtract 2 from both sides to get $ x^2 + 6x = -2 $.",
+          "hints": [
+            "Get the $ x^2 $ and $ x $ terms alone on one side.",
+            "The constant 2 should be moved to the other side."
+          ],
+          "type": "short-answer",
+          "id": "q3-3-6",
+          "prompt": "What is the first step in solving $ x^2 + 6x + 2 = 0 $ by completing the square? (Answer like 'move the constant' or 'subtract 2')",
+          "answer": "subtract 2"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A – Making a Perfect Square Trinomial",
+          "prompt": "Find the value of $ c $ that makes $ x^2 + 14x + c $ a perfect square trinomial. Then write the expression as the square of a binomial.",
+          "role": "guided",
+          "steps": [
+            "Take half of the coefficient of $ x $: $ 14/2 = 7 $.",
+            "Square it: $ 7^2 = 49 $. So $ c = 49 $.",
+            "The trinomial is $ x^2 + 14x + 49 $, which equals $ (x + 7)^2 $."
+          ]
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nMove the constant to the right: $ x^2 - 10x = -7 $. Take half of -10 (-5), square (25), add to both sides. Then factor and solve.",
+          "steps": [
+            "$ x^2 - 10x = -7 $.",
+            "Add $ (\\frac{-10}{2})^2 = 25 $ to both sides: $ x^2 - 10x + 25 = 18 $.",
+            "Left side is $ (x - 5)^2 $. So $ (x - 5)^2 = 18 $.",
+            "$ x - 5 = \\pm \\sqrt{18} = \\pm 3\\sqrt{2} $. $ x = 5 \\pm 3\\sqrt{2} $."
+          ],
+          "title": "Example B – Solving by Completing the Square",
+          "role": "peer-explain",
+          "prompt": "Solve $ x^2 - 10x + 7 = 0 $ by completing the square. Explain each step to a partner.",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Half of $ -5 $ is $ -\\frac{5}{2} $.",
+            "Square it: $ \\left(-\\frac{5}{2}\\right)^2 = \\frac{25}{4} $.",
+            "So $ c = \\frac{25}{4} $, and the trinomial is $ (z - \\frac{5}{2})^2 $."
+          ],
+          "title": "Example C – Completing the Square with Odd b",
+          "prompt": "Find $ c $ such that $ z^2 - 5z + c $ is a perfect square trinomial."
+        }
+      ],
+      "title": "Completing the Square (a = 1)"
+    },
+    {
+      "title": "Completing the Square When a ≠ 1",
+      "confusionCorner": {
+        "body": "When dividing by $ a $, make sure to divide [[imp:every term]], including the constant. If you skip the constant, the equation won't be balanced.",
+        "title": "Don't Forget to Divide All Terms!"
+      },
+      "teacherCues": [
+        "Write $ 3x^2 + 12x + 15 = 0 $ on the board. Ask: Can we complete the square directly? No — first divide by 3.",
+        "Emphasize: always make the leading coefficient 1 before completing the square."
+      ],
+      "id": "completing-square-a-not-1",
+      "questions": [
+        {
+          "prompt": "What is the first step when solving $ 2x^2 + 8x - 10 = 0 $ by completing the square? (Answer like 'divide by 2')",
+          "feedbackIfWrong": "First, divide each term by 2 to get $ x^2 + 4x - 5 = 0 $.",
+          "type": "short-answer",
+          "answer": "divide by 2",
+          "hints": [
+            "The coefficient of $ x^2 $ must be 1.",
+            "Divide every term by that coefficient."
+          ],
+          "id": "q3-3-7"
+        },
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "-3 ± 2i",
+                "-3±2i"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The solutions are $ x = -3 \\pm 2i $.",
+          "prompt": "If completing the square yields $ (x + 3)^2 = -4 $, the solutions are $ x = $ ___.",
+          "id": "q3-3-8",
+          "hints": [
+            "Take the square root of -4.",
+            "$ \\sqrt{-4} = 2i $."
+          ]
+        },
+        {
+          "prompt": "After dividing $ 5x^2 + 20x + 15 = 0 $ by 5, what is the coefficient $ b $ in the resulting equation $ x^2 + bx + c = 0 $?",
+          "type": "short-answer",
+          "feedbackIfWrong": "$ 20/5 = 4 $, so $ b = 4 $.",
+          "answer": "4",
+          "hints": [
+            "Divide each term by 5.",
+            "The $ x $ term becomes $ 20x/5 $."
+          ],
+          "id": "q3-3-9"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "If the coefficient $ a \\ne 1 $ in $ ax^2 + bx + c = 0 $, the first step is to [[imp:divide every term by $ a $]] to make the leading coefficient 1.",
+          "Then proceed with completing the square: move the constant, add $ (b/2)^2 $, factor, take square roots.",
+          "If the right side after completing the square is negative, the solutions are [[imp:complex numbers]]. You'll get answers like $ x = p \\pm qi $.",
+          "This method works for any quadratic equation and is the basis for the quadratic formula."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1",
+                "1": "Divide by $ a = 3 $",
+                "2": "$ x^2 + 4x + 5 = 0 $"
+              },
+              {
+                "0": "2",
+                "1": "Move constant",
+                "2": "$ x^2 + 4x = -5 $"
+              },
+              {
+                "0": "3",
+                "1": "Add $ (4/2)^2 = 4 $",
+                "2": "$ x^2 + 4x + 4 = -1 $"
+              },
+              {
+                "0": "4",
+                "1": "Write as square",
+                "2": "$ (x + 2)^2 = -1 $"
+              },
+              {
+                "0": "5",
+                "1": "Take square roots",
+                "2": "$ x = -2 \\pm i $"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action",
+              "Equation"
+            ],
+            "title": "Solving $ 3x^2 + 12x + 15 = 0 $ by Completing the Square"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ ax^2 + bx + c = 0 \\quad \\xrightarrow{\\text{divide by } a} \\quad x^2 + \\frac{b}{a}x + \\frac{c}{a} = 0 $$",
+          "title": "Completing the Square When $ a \\ne 1 $",
+          "notes": [
+            "Always make the coefficient of $ x^2 $ equal to 1 first.",
+            "Then complete the square as usual.",
+            "Complex solutions arise when the constant on the right is negative."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Solve $ 3x^2 + 12x + 15 = 0 $ by completing the square.",
+          "role": "guided",
+          "steps": [
+            "Divide by 3: $ x^2 + 4x + 5 = 0 $.",
+            "Move 5: $ x^2 + 4x = -5 $. Add $ (4/2)^2 = 4 $: $ x^2 + 4x + 4 = -1 $.",
+            "Write as $ (x + 2)^2 = -1 $. Take square root: $ x + 2 = \\pm i $.",
+            "So $ x = -2 \\pm i $. The solutions are $ -2 + i $ and $ -2 - i $."
+          ],
+          "title": "Example A – Solve with a ≠ 1"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nTry to factor $ 3x^2 + 12x $ as a perfect square. What goes wrong? The completing-the-square formula requires the coefficient of $ x^2 $ to be 1.",
+          "steps": [
+            "The formula $ x^2 + bx + (b/2)^2 = (x + b/2)^2 $ only works when the $ x^2 $ coefficient is 1.",
+            "If it's not 1, you must divide every term by that coefficient to rewrite the equation in the correct form.",
+            "Skipping this step would give an incorrect perfect square."
+          ],
+          "title": "Example B – Why Divide by a First?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain to a partner why you cannot complete the square directly on $ 3x^2 + 12x $ without dividing by 3."
+        },
+        {
+          "steps": [
+            "First, bring all terms to one side: $ 4x^2 - 40x - 12 = 0 $. Divide by 4: $ x^2 - 10x - 3 = 0 $.",
+            "Move constant: $ x^2 - 10x = 3 $. Add $ (10/2)^2 = 25 $: $ x^2 - 10x + 25 = 28 $.",
+            "$ (x - 5)^2 = 28 $. $ x - 5 = \\pm \\sqrt{28} = \\pm 2\\sqrt{7} $.",
+            "$ x = 5 \\pm 2\\sqrt{7} $."
+          ],
+          "prompt": "Solve $ 4x^2 - 30x = 12 + 10x $ by completing the square.",
+          "title": "Example C – Solve a More Complex Equation",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When the $ x^2 $ term has a coefficient other than 1, we must divide everything by that number first. Then the completing-the-square steps are exactly the same. This method even reveals complex solutions when the right side becomes negative."
+      }
+    },
+    {
+      "id": "vertex-form-by-completing-square",
+      "teacherCues": [
+        "Write $ y = x^2 - 12x + 18 $ on the board. Ask: How can we rewrite this to see the vertex?",
+        "Show the process: prepare to complete the square, add and subtract the same number, then factor and simplify."
+      ],
+      "confusionCorner": {
+        "title": "Adjusting for the Coefficient a",
+        "body": "When you complete the square inside parentheses multiplied by $ a $ (like $ a(x^2 + bx) $), adding $ (b/2)^2 $ inside actually adds $ a \\cdot (b/2)^2 $ to the overall expression. [[imp:Subtract $ a \\cdot (b/2)^2 $ outside to balance.]]"
+      },
+      "title": "Writing Quadratic Functions in Vertex Form",
+      "examples": [
+        {
+          "title": "Example A – Convert to Vertex Form",
+          "steps": [
+            "Group $ x $ terms: $ y = (x^2 - 12x) + 18 $.",
+            "Complete the square: add $ (-12/2)^2 = 36 $ inside, subtract 36 outside: $ y = (x^2 - 12x + 36) + 18 - 36 $.",
+            "Factor: $ y = (x - 6)^2 - 18 $. Vertex: $ (6, -18) $."
+          ],
+          "role": "guided",
+          "prompt": "Write $ y = x^2 - 12x + 18 $ in vertex form and identify the vertex."
+        },
+        {
+          "minLength": 2,
+          "steps": [
+            "Adding 36 inside the parentheses increases the value by 36 (since there's no coefficient outside).",
+            "To keep the equality, you must subtract 36 outside the parentheses.",
+            "If the $ x^2 $ term had a coefficient, you'd need to adjust by the factored amount."
+          ],
+          "title": "Example B – Why Subtract the Same Amount Outside?",
+          "peerPrompt": "Without looking back...\n\nAdding 36 inside a set of parentheses changes the overall value. To keep the equation balanced, what must you do to compensate?",
+          "role": "peer-explain",
+          "prompt": "Explain to a partner why we subtract 36 outside the parentheses after adding it inside."
+        },
+        {
+          "prompt": "A baseball height function is $ y = -16t^2 + 96t + 3 $. Write it in vertex form and find the maximum height.",
+          "title": "Example C – Vertex Form with a Negative a",
+          "role": "independent",
+          "steps": [
+            "Factor -16 from the first two terms: $ y = -16(t^2 - 6t) + 3 $.",
+            "Complete the square inside: $ (6/2)^2 = 9 $. Add inside, subtract $ -16 \\times 9 = -144 $ outside: $ y = -16(t^2 - 6t + 9) + 3 + 144 $.",
+            "Simplify: $ y = -16(t - 3)^2 + 147 $. Vertex: $ (3, 147) $.",
+            "Maximum height is 147 feet at $ t = 3 $ seconds."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Completing the square isn't just for solving equations — it's also how you convert standard form to vertex form. Once in vertex form $ y = a(x - h)^2 + k $, you can instantly see the vertex and know whether the parabola opens up or down."
+      },
+      "concept": {
+        "explanation": [
+          "You can rewrite a quadratic function $ y = ax^2 + bx + c $ in [[kw:vertex form]] $ y = a(x - h)^2 + k $ by completing the square.",
+          "Steps: 1) Group the $ x^2 $ and $ x $ terms. If $ a \\ne 1 $, factor $ a $ out of those terms. 2) Complete the square inside the parentheses by adding $ (b/(2a))^2 $. 3) Balance the equation by subtracting the corresponding amount outside. 4) Factor the perfect square and simplify.",
+          "The vertex is $ (h, k) $. This form makes it easy to graph the parabola and find its maximum or minimum."
+        ],
+        "formulaCard": {
+          "title": "Vertex Form via Completing the Square",
+          "notes": [
+            "If $ a > 0 $, parabola opens upward; vertex is minimum.",
+            "If $ a < 0 $, parabola opens downward; vertex is maximum.",
+            "Completing the square works even when $ a \\ne 1 $."
+          ],
+          "formula": "$$ y = a(x - h)^2 + k \\quad \\text{where } h = -\\frac{b}{2a}, \\; k = f(h) $$"
+        },
+        "visuals": [
+          {
+            "title": "Converting $ y = x^2 - 12x + 18 $ to Vertex Form",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Prepare to complete square",
+                "2": "$ y = (x^2 - 12x) + 18 $"
+              },
+              {
+                "0": "2",
+                "1": "Add and subtract $ (-12/2)^2 = 36 $",
+                "2": "$ y = (x^2 - 12x + 36) + 18 - 36 $"
+              },
+              {
+                "0": "3",
+                "1": "Factor the perfect square",
+                "2": "$ y = (x - 6)^2 - 18 $"
+              },
+              {
+                "0": "4",
+                "1": "Identify vertex",
+                "2": "Vertex: $ (6, -18) $"
+              }
+            ],
+            "headers": [
+              "Step",
+              "Action",
+              "Equation"
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "id": "q3-3-10",
+          "type": "short-answer",
+          "prompt": "What is the vertex of the function $ y = (x - 4)^2 + 2 $? (Answer like (4,2))",
+          "hints": [
+            "Vertex form is $ y = a(x - h)^2 + k $.",
+            "The vertex is $ (h, k) $."
+          ],
+          "answer": "(4,2)",
+          "feedbackIfWrong": "The vertex is $ (4, 2) $."
+        },
+        {
+          "feedbackIfWrong": "Add $ 25 $ to complete the square: $ (10/2)^2 = 25 $.",
+          "id": "q3-3-11",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "25"
+              ]
+            }
+          ],
+          "prompt": "To convert $ y = x^2 + 10x + 3 $ to vertex form, you must add ___ inside the parentheses to complete the square.",
+          "hints": [
+            "Take half of the coefficient of $ x $ and square it.",
+            "$ (10/2)^2 = 5^2 $."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "prompt": "In the vertex form $ y = a(x - h)^2 + k $, what letter represents the x-coordinate of the vertex?",
+          "answer": "h",
+          "hints": [
+            "Look at the general formula.",
+            "It is inside the parentheses with $ x $."
+          ],
+          "id": "q3-3-12",
+          "feedbackIfWrong": "The x-coordinate of the vertex is $ h $."
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Present the baseball height problem: $ y = -16t^2 + 96t + 3 $. Ask: How can completing the square help us find the maximum height and flight time?",
+        "Use the Understand–Solve–Conclude framework."
+      ],
+      "title": "Blueprint Aid: Modeling with Completing the Square",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "What does the vertex tell us in this context, and why do we set $ y = 0 $?",
+          "steps": [
+            "The vertex gives the maximum point because the parabola opens downward ($ a = -16 < 0 $).",
+            "Setting $ y = 0 $ finds when the height is zero — when the ball hits the ground.",
+            "These two pieces completely describe the ball's flight."
+          ],
+          "title": "Example A – Understand the Goal"
+        },
+        {
+          "title": "Example B – Solve: Complete the Square for the Baseball Function",
+          "minLength": 2,
+          "steps": [
+            "Factor: $ y = -16(t^2 - 6t) + 3 $.",
+            "Inside, add $ (6/2)^2 = 9 $: $ y = -16(t^2 - 6t + 9) + 3 + 144 $ (since $ -16 \\times 9 = -144 $, so we add +144 to compensate).",
+            "$ y = -16(t - 3)^2 + 147 $. Vertex: $ (3, 147) $."
+          ],
+          "role": "peer-explain",
+          "prompt": "Work with a partner to complete the square for $ y = -16t^2 + 96t + 3 $.",
+          "peerPrompt": "Without looking back...\n\nFactor out -16 from the $ t $ terms, then complete the square inside. Remember to adjust the constant outside by $ -16 \\times $ the added number."
+        },
+        {
+          "prompt": "Using vertex form $ y = -16(t - 3)^2 + 147 $, find when the ball hits the ground.",
+          "title": "Example C – Conclude: Find Landing Time",
+          "role": "independent",
+          "steps": [
+            "Set $ y = 0 $: $ -16(t - 3)^2 + 147 = 0 $.",
+            "$ -16(t - 3)^2 = -147 \\Rightarrow (t - 3)^2 = 9.1875 $.",
+            "$ t - 3 = \\pm \\sqrt{9.1875} \\approx \\pm 3.03 $. $ t = 3 \\pm 3.03 $.",
+            "Positive solution: $ t \\approx 6.03 $ seconds. Reject the negative."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "**Understand**: The function models height over time. The maximum height is the $ y $-coordinate of the vertex. The ball hits the ground when $ y = 0 $.",
+          "**Solve**: Write in vertex form: $ y = -16(t^2 - 6t) + 3 $. Complete the square: add $ 9 $ inside, compensate: $ y = -16(t^2 - 6t + 9) + 3 + 144 = -16(t - 3)^2 + 147 $. Vertex: $ (3, 147) $. To find when it hits the ground, set $ 0 = -16(t - 3)^2 + 147 $ and solve: $ (t - 3)^2 = 9.1875 $, $ t = 3 \\pm \\sqrt{9.1875} $. The positive solution is about $ 6 $ seconds.",
+          "**Conclude**: Maximum height is 147 feet at 3 seconds. The ball lands after about 6 seconds."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Vertex",
+                "1": "$ (3, 147) $",
+                "2": "Max height 147 ft at 3 sec"
+              },
+              {
+                "0": "Zeros",
+                "1": "$ t \\approx -0.03, 6.03 $",
+                "2": "Lands at $ t \\approx 6 $ sec (reject negative)"
+              },
+              {
+                "0": "Initial height",
+                "1": "$ y(0) = 3 $",
+                "2": "Ball starts at 3 feet"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Quantity",
+              "Value",
+              "Interpretation"
+            ],
+            "variant": "colorful",
+            "title": "Baseball Height Model Summary"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Adjusting for the Factored a Correctly",
+        "body": "When you add $ (b/2)^2 $ inside parentheses that have a factor $ a $ in front, you are actually adding $ a \\times (b/2)^2 $ to the expression. [[imp:To balance, subtract $ a \\times (b/2)^2 $ outside (or add the opposite).]] For negative $ a $, the sign can be tricky."
+      },
+      "discoveryHook": {
+        "scenario": "A baseball's height is modeled by $ y = -16t^2 + 96t + 3 $. Completing the square reveals the vertex form, which instantly tells us the maximum height and when it occurs. Setting the function equal to zero and solving tells us when it hits the ground."
+      },
+      "id": "blueprint-baseball-max-height",
+      "questions": [
+        {
+          "feedbackIfWrong": "The maximum height is 147 feet.",
+          "type": "short-answer",
+          "prompt": "In the baseball model, what is the maximum height reached? (Answer in feet: 147)",
+          "answer": "147",
+          "id": "q3-3-13",
+          "hints": [
+            "Look at the $ k $ value in the vertex form $ y = -16(t - 3)^2 + 147 $.",
+            "The maximum is the $ y $-coordinate of the vertex."
+          ]
+        },
+        {
+          "type": "fill-blank",
+          "id": "q3-3-14",
+          "feedbackIfWrong": "Set $ y = 0 $ to find when the ball hits the ground.",
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "zero"
+              ]
+            }
+          ],
+          "hints": [
+            "Ground level is height 0.",
+            "The equation is $ -16(t - 3)^2 + 147 = $ this number."
+          ],
+          "prompt": "To find when the ball hits the ground, set the height function equal to ___ and solve for $ t $."
+        },
+        {
+          "hints": [
+            "Look at the $ h $ value in vertex form.",
+            "The maximum occurs at the vertex's $ t $-coordinate."
+          ],
+          "id": "q3-3-15",
+          "answer": "3",
+          "prompt": "At what time does the ball reach its maximum height? (Answer in seconds: 3)",
+          "feedbackIfWrong": "The ball reaches maximum height at $ t = 3 $ seconds.",
+          "type": "short-answer"
+        }
+      ]
+    }
+  ],
+  "type": "interactive-lesson",
+  "standards": [
+    "HSA.REI.B.4a",
+    "HSA.REI.B.4b",
+    "HSF.IF.C.8a"
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

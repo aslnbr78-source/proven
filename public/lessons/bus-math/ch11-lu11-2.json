@@ -1,0 +1,817 @@
+{
+  "title": "Discounting an Interest-Bearing Note before Maturity",
+  "standards": [
+    "BUSMATH.11.2"
+  ],
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "confusionCorner": {
+        "body": "[[imp:Discounting a note does not eliminate your liability.]] If the maker defaults, you must pay the bank. This is why banks only discount notes from reliable makers.",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "prompt": "If a company discounts a $10,000 note and receives $9,800, but the maker defaults and the company must repay the bank $10,200 (maturity value), what is the company's net loss?",
+        "optional": true,
+        "hints": [
+          "The company received $9,800 but must pay $10,200.",
+          "Net loss = amount paid - amount received."
+        ],
+        "answers": [
+          "400",
+          "400.00"
+        ],
+        "type": "short-answer"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Key Parties in Discounting a Note",
+            "caption": "Three-party arrangement: maker, original payee, and bank.",
+            "headers": [
+              "Party",
+              "Role"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Maker (Home Depot)",
+                "1": "Issued the promissory note; will pay at maturity."
+              },
+              {
+                "0": "Payee (Roger Company)",
+                "1": "Received the note; discounts it to the bank for cash."
+              },
+              {
+                "0": "Bank",
+                "1": "Buys the note at a discount; collects maturity value from maker."
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "[[kw:Discounting a note]] means selling a promissory note to a bank before its maturity date to obtain cash earlier.",
+          "The bank charges a fee for this service - the [[kw:bank discount]] - and the company receives the [[kw:proceeds]].",
+          "The original note is an interest-bearing note from a customer. When the company discounts it, the bank takes over the right to collect the maturity value at the due date.",
+          "A [[kw:contingent liability]] is a potential obligation that may arise if the original maker of the note defaults. The company discounting the note remains responsible to pay the bank if the maker fails to pay.",
+          "[[imp:Discounting a note does not eliminate your liability.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Cash today} = \\text{Proceeds from discounting}$$",
+          "notes": [
+            "If the company holds the note to maturity, it receives the full maturity value.",
+            "By discounting, it receives less (proceeds) but gets cash immediately."
+          ],
+          "title": "Discounting vs. Holding a Note"
+        }
+      },
+      "teacherCues": [
+        "Ask: 'Why would a company that holds a promissory note need cash before the note matures?'",
+        "Introduce the concept of contingent liability."
+      ],
+      "id": "why-discount",
+      "discoveryHook": {
+        "scenario": "Roger Company delivers outdoor furniture to Home Depot in March but isn't paid until September. To get cash sooner, Roger sells Home Depot's signed promissory note to a bank. The bank buys the note at a discount, giving Roger immediate cash. This process is called [[imp:discounting a note]]. However, Roger remains liable if Home Depot fails to pay - that's a [[imp:contingent liability]]."
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "contingent.",
+          "type": "fill-blank",
+          "id": "b1q1",
+          "hints": [
+            "It depends on whether the maker pays or not.",
+            "It's a 'maybe' liability."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "contingent"
+              ]
+            }
+          ],
+          "prompt": "The potential liability that may result from discounting a note is called a ___ liability."
+        },
+        {
+          "feedbackIfWrong": "bank.",
+          "type": "short-answer",
+          "hints": [
+            "The financial institution that advances the cash.",
+            "It's the third party in the arrangement."
+          ],
+          "id": "b1q2",
+          "answers": [
+            "bank"
+          ],
+          "prompt": "Who buys the promissory note in a discounting arrangement? (One word)"
+        },
+        {
+          "hints": [
+            "It is the maturity value minus the bank discount.",
+            "It's not the face value or the interest."
+          ],
+          "prompt": "When a company discounts a note, the cash it receives is called the ___.",
+          "answers": [
+            "proceeds"
+          ],
+          "id": "b1q3",
+          "feedbackIfWrong": "proceeds.",
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "The bank will first demand payment from Home Depot (the maker).",
+            "If Home Depot cannot pay, Roger Company is still liable because of the contingent liability.",
+            "Roger must then pay the bank the maturity value."
+          ],
+          "prompt": "Roger Company discounts Home Depot's note to the bank. If Home Depot goes bankrupt and does not pay at maturity, who must pay the bank?",
+          "role": "guided",
+          "title": "A - Identify contingent liability"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Think about what the company can do with cash today that it cannot do if it waits.",
+          "steps": [
+            "Immediate cash can be used to pay suppliers, invest in new projects, or cover expenses.",
+            "Waiting until maturity means the company's cash is tied up in the note.",
+            "The bank discount is the cost of getting cash sooner."
+          ],
+          "role": "peer-explain",
+          "title": "B - Why discount?",
+          "prompt": "Explain to a classmate why a company might prefer to discount a note even though it receives less money than waiting until maturity."
+        },
+        {
+          "role": "independent",
+          "title": "C - Contingent liability scenario",
+          "prompt": "Suppose you discount a customer's $5,000 note to the bank for $4,900. The customer later pays the bank in full. Do you owe the bank anything? Explain.",
+          "steps": [
+            "No, because the maker (customer) paid the bank, so the contingent liability is removed.",
+            "The bank already made its profit from the discount, and you received your $4,900 with no further obligation."
+          ]
+        }
+      ],
+      "title": "1. Why Discount a Note?"
+    },
+    {
+      "title": "2. The Four Steps of Discounting a Note",
+      "examples": [
+        {
+          "prompt": "A note dated May 10 for 120 days is discounted on July 20. Find the discount period.",
+          "title": "A - Identify the discount period",
+          "steps": [
+            "Determine the maturity date: May 10 + 120 days = September 7 (using day-of-year table or counting).",
+            "Count days from July 20 to September 7: July 20-31 = 11, August = 31, September 1-7 = 7 -> 11+31+7 = 49 days.",
+            "Discount period = 49 days."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "title": "B - Why discount period matters",
+          "peerPrompt": "Think about how long the bank's money is actually tied up.",
+          "steps": [
+            "The bank only advances cash from the discount date to maturity.",
+            "So the bank charges interest only for the period it holds the note.",
+            "The full term is already partially covered by the original payee, who earned interest for that portion."
+          ],
+          "prompt": "Explain why the bank uses the discount period, not the full term of the note, when calculating the bank discount.",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "prompt": "A $3,000, 90-day note at 7% dated June 1 is discounted on July 15 at 6%. Find proceeds.",
+          "steps": [
+            "Step 1: Maturity date = June 1 + 90 = August 30. I = 3,000 x 0.07 x 90/360 = $52.50. MV = $3,052.50.",
+            "Step 2: Discount period = July 15 to August 30: July 15-31 = 16, August 1-30 = 30 -> 46 days.",
+            "Step 3: Bank discount = 3,052.50 x 0.06 x 46/360 = $23.40 (rounded).",
+            "Step 4: Proceeds = 3,052.50 - 23.40 = $3,029.10."
+          ],
+          "title": "C - Full four-step example"
+        }
+      ],
+      "id": "four-steps",
+      "teacherCues": [
+        "Write the four steps on the board and keep them visible.",
+        "Use the mnemonic: I (Interest/MV) -> D (Discount period) -> B (Bank discount) -> P (Proceeds)."
+      ],
+      "challengeCorner": {
+        "answers": [
+          "6045.78",
+          "6,045.78"
+        ],
+        "hints": [
+          "Maturity = June 29. I = 6,000x0.05x120/360 = 100; MV = 6,100. Disc. period = April 10 to June 29 = 80 days.",
+          "Bank discount = 6,100x0.04x80/360 = 54.22. Proceeds = 6,100 - 54.22 = 6,045.78."
+        ],
+        "prompt": "A $6,000, 120-day note at 5% dated March 1 is discounted on April 10 at 4%. Find proceeds.",
+        "optional": true,
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The bank discount is calculated on the maturity value, NOT on the face value. [[imp:Use the maturity value from Step 1 as the base in Step 3.]]"
+      },
+      "discoveryHook": {
+        "scenario": "Roger Company holds a $2,000, 185-day note from Home Depot at 6% interest, dated March 8. On August 9, Roger needs cash and discounts the note at a 5% bank discount rate. To find how much cash Roger receives, we follow four steps. Each step builds on the previous one."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Step 1]]: Find the interest and maturity value of the original note. Use the simple interest formula on the face value for the full term of the note.",
+          "$$I = \\text{Face Value} \\times R \\times T_{\\text{full}}$$ $$MV = \\text{Face Value} + I$$",
+          "[[kw:Step 2]]: Determine the discount period - the number of days the bank will hold the note until maturity. This is the time from the date of discount to the maturity date.",
+          "[[kw:Step 3]]: Calculate the bank discount. The bank charges interest on the maturity value for the discount period at the bank discount rate.",
+          "$$\\text{Bank Discount} = MV \\times \\text{Discount Rate} \\times \\frac{\\text{Discount Period}}{360}$$",
+          "[[kw:Step 4]]: Compute the proceeds - the amount Roger receives.",
+          "$$\\text{Proceeds} = MV - \\text{Bank Discount}$$"
+        ],
+        "formulaCard": {
+          "title": "Discounting Formulas",
+          "notes": [
+            "Use ordinary interest (360-day year) for all calculations.",
+            "The discount period is NOT the full term of the note."
+          ],
+          "formula": "$$MV = \\text{Face} + I$$ $$\\text{Discount Period} = \\text{Days bank holds note}$$ $$\\text{Bank Discount} = MV \\times d \\times \\frac{\\text{Days}}{360}$$ $$\\text{Proceeds} = MV - \\text{Bank Discount}$$"
+        },
+        "visuals": [
+          {
+            "caption": "Follow these steps in order. Never skip the discount period calculation.",
+            "headers": [
+              "Step",
+              "What to Calculate",
+              "Key Formula"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Interest & Maturity Value (MV)",
+                "2": "I = Face x R x T_full; MV = Face + I"
+              },
+              {
+                "0": "2",
+                "1": "Discount Period (days bank waits)",
+                "2": "Days from discount date to maturity"
+              },
+              {
+                "0": "3",
+                "1": "Bank Discount",
+                "2": "MV x Discount Rate x (Discount Period/360)"
+              },
+              {
+                "0": "4",
+                "1": "Proceeds",
+                "2": "MV - Bank Discount"
+              }
+            ],
+            "type": "table",
+            "title": "Four Steps of Discounting",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "hints": [
+            "The date the note is due.",
+            "Not the date the note was made."
+          ],
+          "prompt": "The discount period runs from the discount date to the ___ date.",
+          "id": "b2q1",
+          "blanks": [
+            {
+              "accept": [
+                "maturity"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "maturity."
+        },
+        {
+          "id": "b2q2",
+          "answers": [
+            "25"
+          ],
+          "feedbackIfWrong": "25.",
+          "prompt": "A note matures in 60 days. If it is discounted 25 days before maturity, what is the discount period? (number only)",
+          "hints": [
+            "The discount period is the remaining life of the note.",
+            "It's given directly."
+          ],
+          "type": "short-answer"
+        },
+        {
+          "id": "b2q3",
+          "hints": [
+            "5,000 x 0.08 x 45/360 = 5,000 x 0.08 x 0.125 = 50.",
+            "Check: 45/360 simplifies to 1/8."
+          ],
+          "feedbackIfWrong": "50.",
+          "answers": [
+            "50",
+            "50.00"
+          ],
+          "prompt": "Maturity value $5,000, discount rate 8%, discount period 45 days. Bank discount? (number only, no $)",
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Maturity = April 1 + 90 = June 30. I = 1,000 x 0.08 x 90/360 = $20. MV = $1,020.",
+            "Discount period = May 15 to June 30 = 46 days (May 15-31=16, Jun=30 -> 46).",
+            "Bank discount = 1,020 x 0.06 x 46/360 = $7.82.",
+            "Proceeds = 1,020 - 7.82 = $1,012.18."
+          ],
+          "prompt": "A $1,000, 90-day note at 8% dated April 1 is discounted on May 15 at 6%. Find proceeds.",
+          "title": "A - Follow the steps"
+        },
+        {
+          "peerPrompt": "Compare proceeds to the original face value and to the maturity value.",
+          "title": "B - Check your work",
+          "minLength": 2,
+          "steps": [
+            "Proceeds should be less than the maturity value (because of the bank discount).",
+            "Proceeds should be greater than the original face value if the note's interest rate is positive.",
+            "If the bank discount is small (short discount period, low rate), proceeds will be close to MV."
+          ],
+          "prompt": "Explain how you can check that your discounting calculation is reasonable.",
+          "role": "peer-explain"
+        },
+        {
+          "title": "C - Practice",
+          "prompt": "A $5,000, 120-day note at 7% dated February 10 is discounted on March 25 at 5%. Find proceeds.",
+          "steps": [
+            "Maturity = Feb 10 + 120 = June 10 (non-leap). I = 5,000 x 0.07 x 120/360 = $116.67. MV = $5,116.67.",
+            "Discount period = March 25 to June 10: Mar 25-31=6, Apr=30, May=31, Jun 1-10=10 -> 77 days.",
+            "Bank discount = 5,116.67 x 0.05 x 77/360 = $54.77.",
+            "Proceeds = 5,116.67 - 54.77 = $5,061.90."
+          ],
+          "role": "independent"
+        }
+      ],
+      "title": "3. Detailed Discounting Example",
+      "id": "discounting-example",
+      "challengeCorner": {
+        "optional": true,
+        "answers": [
+          "10105.71",
+          "10,105.71"
+        ],
+        "prompt": "A $10,000, 90-day note at 9% dated May 1 is discounted on May 31 at 7%. Find proceeds.",
+        "hints": [
+          "Maturity = July 30. I = 10,000x0.09x90/360 = 225; MV = 10,225. Disc. period = 60 days.",
+          "Bank discount = 10,225x0.07x60/360 = 119.29. Proceeds = 10,225 - 119.29 = 10,105.71."
+        ],
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "body": "Don't confuse the note's interest rate with the bank's discount rate. [[imp:The note's rate determines the interest added to face; the discount rate determines the bank's fee.]]",
+        "title": "Watch out!"
+      },
+      "discoveryHook": {
+        "scenario": "Roger Company holds a $2,000, 185-day note from Home Depot at 6% interest, dated March 8. On August 9, Roger needs cash and discounts the note at a 5% bank discount rate. We'll follow the four steps to determine how much cash Roger receives."
+      },
+      "teacherCues": [
+        "Walk through the Home Depot/Roger Company example: $2,000 note, 185 days, 6% interest, discounted on August 9 at 5%.",
+        "Show the calculation of maturity value, discount period, bank discount, and proceeds."
+      ],
+      "questions": [
+        {
+          "id": "b3q1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "maturity"
+              ]
+            }
+          ],
+          "prompt": "The bank discount is calculated on the ___ value, not the face value.",
+          "hints": [
+            "The amount including interest.",
+            "Not the original principal."
+          ],
+          "feedbackIfWrong": "maturity."
+        },
+        {
+          "id": "b3q2",
+          "answers": [
+            "2060",
+            "2,060"
+          ],
+          "feedbackIfWrong": "2,060.",
+          "prompt": "Note: face $2,000, rate 6%, 180 days. Find maturity value. (number only, no $)",
+          "hints": [
+            "I = 2,000 x 0.06 x 0.5 = 60.",
+            "MV = 2,000 + 60 = 2,060."
+          ],
+          "type": "short-answer"
+        },
+        {
+          "answers": [
+            "40.00",
+            "40"
+          ],
+          "prompt": "Discount period is 45 days, MV $4,000, discount rate 8%. Bank discount? (two decimals, no $)",
+          "feedbackIfWrong": "40.00.",
+          "type": "short-answer",
+          "id": "b3q3",
+          "hints": [
+            "4,000 x 0.08 x 45/360.",
+            "4,000 x 0.08 x 0.125 = 40."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{MV} = \\text{Face} + (\\text{Face} \\times R_{\\text{note}} \\times T_{\\text{full}})$$ $$\\text{Bank Discount} = MV \\times R_{\\text{discount}} \\times \\frac{\\text{Discount Period}}{360}$$ $$\\text{Proceeds} = MV - \\text{Bank Discount}$$",
+          "title": "Discounting Steps Summary",
+          "notes": [
+            "The note's interest rate and the bank's discount rate are independent.",
+            "Always calculate the discount period in days, then convert to a fraction of 360."
+          ]
+        },
+        "explanation": [
+          "Example: Face value $2,000, interest rate 6%, term 185 days, dated March 8. Discounted on August 9 at 5% discount rate.",
+          "Step 1: Maturity date = March 8 + 185 days = September 9. Interest = 2,000 x 0.06 x 185/360 = $61.67. MV = $2,061.67.",
+          "Step 2: Discount period = August 9 to September 9 = 31 days (Aug 9-31 = 22, Sep 1-9 = 9).",
+          "Step 3: Bank discount = 2,061.67 x 0.05 x 31/360 = $8.87 (rounded).",
+          "Step 4: Proceeds = 2,061.67 - 8.87 = $2,052.80. Roger receives $2,052.80.",
+          "[[imp:The bank's discount rate (5%) is different from the note's interest rate (6%).]]"
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1. Maturity Value",
+                "1": "I = 2,000 x 0.06 x 185/360 = 61.67; MV = 2,000+61.67",
+                "2": "2,061.67"
+              },
+              {
+                "0": "2. Discount Period",
+                "1": "Aug 9 to Sep 9 = 22 + 9 = 31 days",
+                "2": "31 days"
+              },
+              {
+                "0": "3. Bank Discount",
+                "1": "2,061.67 x 0.05 x 31/360",
+                "2": "8.87"
+              },
+              {
+                "0": "4. Proceeds",
+                "1": "2,061.67 - 8.87",
+                "2": "2,052.80"
+              }
+            ],
+            "type": "table",
+            "caption": "Always use 360 days; round final proceeds to nearest cent.",
+            "headers": [
+              "Step",
+              "Calculation",
+              "Result"
+            ],
+            "title": "Discounting Calculation Table",
+            "variant": "colorful"
+          }
+        ]
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Roger Company discounted Home Depot's note for $2,052.80. If Home Depot goes bankrupt and doesn't pay at maturity, the bank will demand the full maturity value ($2,061.67) from Roger. Roger's net loss would be $2,061.67 - $2,052.80 = $8.87, which equals the bank discount. However, Roger must repay the full maturity value, risking additional loss."
+      },
+      "id": "contingent-liability",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Maker pays at maturity",
+                "1": "No loss",
+                "2": "No loss; contingent liability removed"
+              },
+              {
+                "0": "Maker defaults",
+                "1": "Obliged to pay bank",
+                "2": "Bank demands MV from discounter; discounter loses MV minus proceeds originally received"
+              },
+              {
+                "0": "Discounter's net loss on default",
+                "1": "",
+                "2": "= MV - Proceeds (the bank discount) OR proceeds if discounter paid the bank out of its own funds"
+              }
+            ],
+            "caption": "Contingent liability is the maturity value.",
+            "title": "Maker Defaults - Who Loses What?",
+            "headers": [
+              "Scenario",
+              "Maker",
+              "Discounter (Roger)"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Potential Loss if Maker Defaults",
+          "notes": [
+            "The discounter may also incur additional costs (legal, administrative) if the maker defaults.",
+            "The bank discount represents the bank's profit; the discounter effectively pays that if the maker defaults."
+          ],
+          "formula": "$$\\text{Amount owed to bank} = MV$$ $$\\text{Cash already received} = \\text{Proceeds}$$ $$\\text{Net cash outflow} = MV - \\text{Proceeds} = \\text{Bank Discount}$$"
+        },
+        "explanation": [
+          "When a note is discounted, the original payee (discounter) guarantees payment. If the maker defaults, the discounter must repay the bank the maturity value.",
+          "The discounter's potential loss = Maturity Value - Proceeds received (which is the bank discount). However, in practice, the discounter also loses the proceeds themselves if they must repay out of pocket.",
+          "The contingent liability is the full maturity value until the bank is paid by the maker.",
+          "Banks assess the creditworthiness of the maker before discounting; the discounter is a secondary obligor.",
+          "[[imp:Discounting transfers the right to collect but not the ultimate liability if the maker defaults.]]"
+        ]
+      },
+      "confusionCorner": {
+        "body": "The contingent liability is the full maturity value, not just the bank discount. [[imp:If the maker defaults, the discounter must pay the entire maturity value to the bank.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "hints": [
+          "Cash outflow = 8,000 paid - 7,800 received = 200.",
+          "This amount equals the bank discount."
+        ],
+        "prompt": "A company discounts a $8,000 note, receiving $7,800. Maker defaults. Company pays bank $8,000. What is the total cash outflow for the company relative to the proceeds? (number only)",
+        "answers": [
+          "200"
+        ],
+        "optional": true,
+        "type": "short-answer"
+      },
+      "title": "4. Contingent Liability Revisited",
+      "teacherCues": [
+        "Reinforce that discounting does not eliminate liability.",
+        "Show how to calculate the potential loss if the maker defaults."
+      ],
+      "questions": [
+        {
+          "id": "b4q1",
+          "type": "fill-blank",
+          "feedbackIfWrong": "maturity.",
+          "blanks": [
+            {
+              "accept": [
+                "maturity"
+              ]
+            }
+          ],
+          "prompt": "If the maker of a discounted note defaults, the discounter must pay the bank the ___ value.",
+          "hints": [
+            "Not face value.",
+            "The amount due at the end of the note."
+          ]
+        },
+        {
+          "feedbackIfWrong": "100.",
+          "id": "b4q2",
+          "answers": [
+            "100",
+            "100.00"
+          ],
+          "hints": [
+            "Loss = MV - Proceeds.",
+            "4,000 - 3,900 = 100."
+          ],
+          "prompt": "Proceeds $3,900, maturity value $4,000. If maker defaults, discounter's net cash loss? (number only, no $)",
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "One word.",
+            "Opposite of defaults."
+          ],
+          "feedbackIfWrong": "pays.",
+          "id": "b4q3",
+          "answers": [
+            "pays"
+          ],
+          "prompt": "The contingent liability of the discounter is eliminated when the maker ___ the note at maturity.",
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "A company discounts a note and receives $4,900 proceeds. The maturity value is $5,000. If the maker defaults, what is the company's cash outflow to settle with the bank?",
+          "title": "A - Calculate potential loss",
+          "role": "guided",
+          "steps": [
+            "The company must pay the bank $5,000 (the maturity value).",
+            "It already received $4,900 from discounting.",
+            "Net out-of-pocket loss = $5,000 - $4,900 = $100."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "The bank relies on both the maker and the discounter for repayment.",
+            "If the maker is weak, the bank must rely solely on the discounter's creditworthiness.",
+            "If the discounter is also not strong, the bank assumes too much risk."
+          ],
+          "minLength": 2,
+          "title": "B - Risk assessment",
+          "peerPrompt": "Think about the bank's protection.",
+          "prompt": "Explain why a bank might refuse to discount a note from a weak maker."
+        },
+        {
+          "role": "independent",
+          "prompt": "Roger discounted Home Depot's note, receiving $2,052.80 proceeds. Home Depot defaults. Roger pays the bank $2,061.67. How much cash does Roger effectively lose?",
+          "steps": [
+            "Roger paid $2,061.67 to the bank.",
+            "Roger had already received $2,052.80 when discounting.",
+            "Net loss = 2,061.67 - 2,052.80 = $8.87."
+          ],
+          "title": "C - Default scenario"
+        }
+      ]
+    },
+    {
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A $15,000, 60-day note at 10% dated April 5 is discounted on April 20 at 9%. Find proceeds.",
+        "hints": [
+          "Maturity = June 4. I = 15,000x0.10x60/360 = 250; MV = 15,250. Disc. period = 45 days.",
+          "Bank discount = 15,250x0.09x45/360 = 171.56. Proceeds = 15,250 - 171.56 = 15,078.44."
+        ],
+        "type": "short-answer",
+        "answers": [
+          "15078.44",
+          "15,078.44"
+        ]
+      },
+      "confusionCorner": {
+        "body": "The discount period is exactly the remaining days from discount to maturity. [[imp:Discount period = days from discount date to maturity; never guess.]]",
+        "title": "Watch out!"
+      },
+      "id": "blueprint-discounting",
+      "title": "5. Blueprint Aid for Discounting Problems",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "prompt": "The first step of the blueprint is to ___ the problem.",
+          "type": "fill-blank",
+          "feedbackIfWrong": "understand.",
+          "id": "b5q1",
+          "hints": [
+            "Identify what is given.",
+            "U in U-S-C."
+          ]
+        },
+        {
+          "hints": [
+            "Proceeds = MV - Bank discount.",
+            "5,200 - 104 = 5,096."
+          ],
+          "id": "b5q2",
+          "feedbackIfWrong": "5,096.",
+          "answers": [
+            "5096",
+            "5,096"
+          ],
+          "prompt": "A note has face value $5,000, maturity value $5,200. Bank discount is $104. Find proceeds. (number only, no $)",
+          "type": "short-answer"
+        },
+        {
+          "answers": [
+            "maturity"
+          ],
+          "type": "short-answer",
+          "prompt": "In discounting, the discounter's contingent liability is the ___ value of the note.",
+          "feedbackIfWrong": "maturity.",
+          "id": "b5q3",
+          "hints": [
+            "Not face value.",
+            "One word."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "A - Full blueprint",
+          "prompt": "A $6,000, 120-day note at 7% dated March 1 is discounted on April 15 at 8%. Find proceeds.",
+          "role": "guided",
+          "steps": [
+            "Maturity = March 1 + 120 = June 29. I = 6,000 x 0.07 x 120/360 = 140; MV = 6,140.",
+            "Discount period = April 15 to June 29 = 75 days.",
+            "Bank discount = 6,140 x 0.08 x 75/360 = 102.33.",
+            "Proceeds = 6,140 - 102.33 = 6,037.67."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "The bank will collect the full maturity value at the note's due date.",
+            "So the bank's return is based on that future amount, not the original loan principal.",
+            "Discounting the maturity value reflects the true amount the bank is advancing."
+          ],
+          "title": "B - Why use MV?",
+          "prompt": "Explain why the bank discount is computed on the maturity value rather than the face value.",
+          "minLength": 2,
+          "peerPrompt": "Think about what the bank will ultimately collect."
+        },
+        {
+          "steps": [
+            "Maturity = Jan 10 + 180 = July 9. I = 4,000 x 0.05 x 180/360 = 100; MV = 4,100.",
+            "Discount period = Feb 20 to July 9: Feb 20-28=8, Mar=31, Apr=30, May=31, Jun=30, Jul 1-9=9 -> 139 days.",
+            "Bank discount = 4,100 x 0.06 x 139/360 = 94.98.",
+            "Proceeds = 4,100 - 94.98 = 4,005.02."
+          ],
+          "role": "independent",
+          "title": "C - Practice blueprint",
+          "prompt": "A $4,000, 180-day note at 5% dated January 10 is discounted on February 20 at 6%. Find proceeds."
+        }
+      ],
+      "teacherCues": [
+        "Use the blueprint: Understand -> Solve -> Conclude.",
+        "Work through a complete discounting problem with all four steps."
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$MV = \\text{Face} + I$$ $$I = \\text{Face} \\times R_{\\text{note}} \\times T_{\\text{full}}$$ $$\\text{Disc. Period} = \\text{Maturity Date} - \\text{Discount Date}$$ $$\\text{Bank Discount} = MV \\times R_{\\text{disc.}} \\times \\frac{\\text{Disc. Period}}{360}$$ $$\\text{Proceeds} = MV - \\text{Bank Discount}$$",
+          "notes": [
+            "Always count the discount period in exact days.",
+            "Use the maturity value, not face value, for bank discount."
+          ],
+          "title": "Discounting Blueprint"
+        },
+        "explanation": [
+          "Apply the blueprint to discounting problems:",
+          "1. Understand: identify face value, note interest rate, full term, discount date, discount rate, and maturity date.",
+          "2. Solve: follow the four steps - compute interest and MV, determine discount period (remaining days), compute bank discount, subtract from MV for proceeds.",
+          "3. Conclude: verify that proceeds are less than MV, check that discount period is correct, and state the proceeds and any contingent liability.",
+          "The blueprint ensures you don't skip the discount period calculation or confuse rates."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Note rate 6%, disc. rate 5%, full term 90 days, discount date after 30 days.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve - MV",
+                "1": "I = 3,000x0.06x90/360 = 45; MV = 3,045.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve - Disc. Period",
+                "1": "90 - 30 = 60 days.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve - Bank Disc.",
+                "1": "3,045 x 0.05 x 60/360 = 25.38.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve - Proceeds",
+                "1": "3,045 - 25.38 = 3,019.62.",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Proceeds $3,019.62; contingent liability $3,045.",
+                "2": ""
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint: Discounting a Note",
+            "caption": "A well-organized blueprint prevents arithmetic errors.",
+            "headers": [
+              "Step",
+              "Detail",
+              "Example (Face $3,000, 6% note, 90 days, discounted after 30 days at 5%)"
+            ]
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "A business receives a promissory note from a customer and later discounts it with the bank. The blueprint will guide the calculation of maturity value, discount period, bank discount, proceeds, and contingent liability."
+      }
+    }
+  ],
+  "id": "ch11-lu11-2",
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

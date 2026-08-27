@@ -1,0 +1,723 @@
+{
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "confusionCorner": {
+        "body": "If the binomials from each group don't match, try reordering the original terms. Sometimes moving a term creates pairs that share a GCF and a common binomial. Not all four‑term polynomials are factorable by grouping, though.",
+        "title": "No Common Binomial? Reorder!"
+      },
+      "concept": {
+        "formulaCard": {
+          "title": "Factoring by Grouping",
+          "notes": [
+            "Group terms so both pairs share a common binomial factor.",
+            "If no common binomial appears, reorder terms and try again."
+          ],
+          "formula": "$$ ax^3 + bx^2 + cx + d = (px^2 + q)(rx + s) $$"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Group terms",
+                "1": "$(x^3+3x^2) + (2x+6)$"
+              },
+              {
+                "0": "Factor each group",
+                "1": "$x^2(x+3) + 2(x+3)$"
+              },
+              {
+                "0": "Factor out $(x+3)$",
+                "1": "$(x+3)(x^2+2)$"
+              }
+            ],
+            "title": "Grouping Steps for $x^3+3x^2+2x+6$",
+            "type": "table",
+            "headers": [
+              "Step",
+              "Work"
+            ]
+          }
+        ],
+        "explanation": [
+          "[[kw:Factoring by grouping]] is used for polynomials with four terms.",
+          "Step 1: Group terms into two pairs that each have a common factor.",
+          "Step 2: Factor out the GCF from each pair. You should get the same binomial factor in both groups.",
+          "Step 3: Factor out the common binomial factor. The result is a product of that binomial and another polynomial.",
+          "Example: $x^3+3x^2+2x+6 = (x^3+3x^2)+(2x+6) = x^2(x+3)+2(x+3) = (x+3)(x^2+2)$."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Sometimes a polynomial has four terms and no single GCF. But by pairing terms, we can uncover a hidden common binomial factor. It's like finding matching puzzle pieces in a mixed‑up pile!"
+      },
+      "title": "Factoring by Grouping",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "four",
+                "4"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the number after three.",
+            "You pair terms into two groups."
+          ],
+          "prompt": "Factoring by grouping is used when a polynomial has ___ terms.",
+          "type": "fill-blank",
+          "feedbackIfWrong": "Factoring by grouping works for polynomials with four terms.",
+          "id": "q1-1"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "After factoring out $(x+3)$, what's left?",
+            "Look at the example: $(x+3)(x^2+2)$."
+          ],
+          "prompt": "In $(x^3+3x^2)+(2x+6)$, the common binomial factor is $(x+3)$. What is the other factor? (Type without spaces, like x^2+2)",
+          "feedbackIfWrong": "The other factor is $x^2+2$.",
+          "id": "q1-2",
+          "answer": "x^2+2"
+        },
+        {
+          "feedbackIfWrong": "The common binomial is $(x+y)$.",
+          "type": "short-answer",
+          "answer": "x+y",
+          "id": "q1-3",
+          "prompt": "In $x^2+xy+8x+8y$, factor by grouping. What is the common binomial? (Type without spaces, like x+y)",
+          "hints": [
+            "Group: $(x^2+xy)+(8x+8y)$.",
+            "Factor each: $x(x+y)+8(x+y)$."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A — Standard Grouping",
+          "steps": [
+            "Group: $(x^3+3x^2) + (2x+6)$.",
+            "Factor each: $x^2(x+3) + 2(x+3)$.",
+            "Factor out $(x+3)$: $(x+3)(x^2+2)$."
+          ],
+          "prompt": "Factor $x^3 + 3x^2 + 2x + 6$ by grouping.",
+          "role": "guided"
+        },
+        {
+          "title": "Example B — Reordering Terms",
+          "prompt": "Factor $x^2 + y + x + xy$ by grouping.",
+          "steps": [
+            "Reorder: $x^2 + x + xy + y$.",
+            "Group: $(x^2+x) + (xy+y)$.",
+            "Factor each: $x(x+1) + y(x+1) = (x+1)(x+y)$."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: Why did we reorder the terms? How do you decide which terms to group together?",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Group: $(a^3+3a^2) + (a+3)$.",
+            "Factor each: $a^2(a+3) + 1(a+3)$.",
+            "Factor out $(a+3)$: $(a+3)(a^2+1)$."
+          ],
+          "prompt": "Factor $a^3 + 3a^2 + a + 3$ by grouping.",
+          "role": "independent",
+          "title": "Example C — Practice"
+        }
+      ],
+      "teacherCues": [
+        "Write $x^3+3x^2+2x+6$ on the board. Circle the first two terms and the last two terms. Ask: What's the GCF of each pair?",
+        "After factoring each pair, underline the common binomial $(x+3)$. Say: 'Now factor that binomial out — just like factoring out a common monomial.'"
+      ],
+      "id": "factoring-by-grouping"
+    },
+    {
+      "teacherCues": [
+        "Write $3x^3+6x^2-18x$ on the board. Ask: 'What's the GCF? Factor it out. Is the inside factorable further?'",
+        "Then write $7x^4-28x^2$. Factor out $7x^2$, then recognize $x^2-4$ as a difference of squares. 'That's factoring completely — can't factor anymore!'"
+      ],
+      "discoveryHook": {
+        "scenario": "Factoring completely means breaking a polynomial down until every piece is unfactorable — like breaking a chocolate bar into the smallest possible squares. Always check for a GCF first, then use all the patterns you've learned!"
+      },
+      "confusionCorner": {
+        "body": "A trinomial like $x^2+2x-6$ has no integer factors that multiply to -6 and add to 2. It's unfactorable over the integers. If you can't find integer $p$ and $q$, the polynomial is [[imp:considered unfactorable]] in this context.",
+        "title": "Is It Really Unfactorable?"
+      },
+      "examples": [
+        {
+          "prompt": "Factor $3x^3 + 6x^2 - 18x$ completely.",
+          "title": "Example A — GCF + Unfactorable Inside",
+          "role": "guided",
+          "steps": [
+            "Factor out GCF: $3x(x^2 + 2x - 6)$.",
+            "Check inside: $x^2+2x-6$ — no integer factors of -6 sum to 2. Unfactorable.",
+            "So $3x(x^2+2x-6)$ is completely factored."
+          ]
+        },
+        {
+          "steps": [
+            "Factor out GCF $7x^2$: $7x^2(x^2-4)$.",
+            "Recognize $x^2-4$ as $x^2-2^2$, a difference of squares.",
+            "Factor: $7x^2(x+2)(x-2)$. Completely factored."
+          ],
+          "title": "Example B — GCF + Difference of Squares",
+          "role": "peer-explain",
+          "prompt": "Factor $7x^4 - 28x^2$ completely.",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: Why do we need to check $x^2-4$ after factoring out the GCF? How do you know it can be factored further?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Factor out GCF $2y$: $2y(y^2 - 6y + 9)$.",
+            "Inside is a perfect square trinomial: $(y-3)^2$.",
+            "So $2y(y-3)^2$."
+          ],
+          "title": "Example C — Practice",
+          "prompt": "Factor $2y^3 - 12y^2 + 18y$ completely."
+        }
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "unfactorable",
+                "prime"
+              ]
+            }
+          ],
+          "id": "q2-1",
+          "hints": [
+            "Cannot be factored further.",
+            "Starts with 'u'."
+          ],
+          "prompt": "A polynomial is factored completely when it is written as a product of ___ polynomials.",
+          "feedbackIfWrong": "The factors must be unfactorable (or prime) polynomials.",
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "$x^2-4$ factors as $(x+2)(x-2)$. The next factor could be $x+2$.",
+          "answer": "x+2",
+          "hints": [
+            "$x^2-4 = (x+2)(x-2)$.",
+            "Either factor is correct."
+          ],
+          "type": "short-answer",
+          "prompt": "Factor $3x^3 - 12x$ completely. After factoring out $3x$, you get $3x(x^2-4)$. What is the next factor? (Type x+2 or x-2)",
+          "id": "q2-2"
+        },
+        {
+          "type": "short-answer",
+          "id": "q2-3",
+          "answer": "3",
+          "prompt": "In $2y^3-12y^2+18y$, after factoring out $2y$, the trinomial inside is $y^2-6y+9$. This factors as $(y-?)^2$. What is the number?",
+          "feedbackIfWrong": "The trinomial is $(y-3)^2$, so the number is 3.",
+          "hints": [
+            "Square root of 9 is 3.",
+            "Middle term: $-6y = -2(y)(3)$."
+          ]
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1",
+                "1": "Factor out GCF",
+                "2": "$7x^2(x^2-4)$"
+              },
+              {
+                "0": "2",
+                "1": "Check inside for special patterns",
+                "2": "$x^2-4$ is difference of squares"
+              },
+              {
+                "0": "3",
+                "1": "Factor further",
+                "2": "$7x^2(x+2)(x-2)$"
+              },
+              {
+                "0": "4",
+                "1": "Stop when all factors are unfactorable",
+                "2": "Done!"
+              }
+            ],
+            "headers": [
+              "Step",
+              "Action",
+              "Example: $7x^4-28x^2$"
+            ],
+            "title": "Steps to Factor Completely",
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "A polynomial is [[kw:factored completely]] when it is written as a product of unfactorable polynomials with integer coefficients.",
+          "Steps: 1) Factor out the GCF. 2) Look for special patterns (difference of squares, perfect square trinomial). 3) Factor trinomials of the form $ax^2+bx+c$. 4) Use grouping for four terms.",
+          "After each step, check if any factor can be factored further.",
+          "Example: $7x^4-28x^2 = 7x^2(x^2-4) = 7x^2(x+2)(x-2)$ — now completely factored."
+        ],
+        "formulaCard": {
+          "title": "Guidelines for Factoring Completely",
+          "formula": "$$ \\text{1. GCF} \\quad\\rightarrow\\quad \\text{2. Special Products} \\quad\\rightarrow\\quad \\text{3. Trinomials} \\quad\\rightarrow\\quad \\text{4. Grouping} $$",
+          "notes": [
+            "Always check for a GCF first.",
+            "After each step, look at each factor and ask: Can this be factored further?"
+          ]
+        }
+      },
+      "title": "Factoring Polynomials Completely",
+      "id": "factoring-completely"
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Set = 0",
+                "1": "$2x^3+8x^2-10x=0$"
+              },
+              {
+                "0": "Factor GCF",
+                "1": "$2x(x^2+4x-5)=0$"
+              },
+              {
+                "0": "Factor trinomial",
+                "1": "$2x(x+5)(x-1)=0$"
+              },
+              {
+                "0": "Zero-Product",
+                "1": "$2x=0$, $x+5=0$, $x-1=0$"
+              },
+              {
+                "0": "Roots",
+                "1": "$x=0$, $x=-5$, $x=1$"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Solving $2x^3+8x^2=10x$",
+            "headers": [
+              "Step",
+              "Work"
+            ]
+          }
+        ],
+        "explanation": [
+          "To solve polynomial equations of degree higher than 2: 1) Move all terms to one side so the equation = 0. 2) Factor completely (GCF, then patterns/grouping). 3) Set each factor = 0 and solve.",
+          "A factored cubic like $2x(x+5)(x-1)=0$ gives three roots: $x=0$, $x=-5$, $x=1$.",
+          "Always check for a GCF first — it often contains a root (e.g., $2x=0$ gives $x=0$).",
+          "Some equations may require grouping after rearranging."
+        ],
+        "formulaCard": {
+          "title": "Solving Cubic Equations",
+          "notes": [
+            "One root is always $x=0$ if there's no constant term.",
+            "Factor the quadratic part further if possible."
+          ],
+          "formula": "$$ ax^3 + bx^2 + cx = 0 \\quad\\Rightarrow\\quad x(ax^2 + bx + c) = 0 $$"
+        }
+      },
+      "confusionCorner": {
+        "body": "In $x^3-25x=0$, some students divide both sides by $x$, getting $x^2=25$ → $x=\\pm 5$. This loses the root $x=0$. Always [[imp:factor, don't divide]] when a variable appears in every term.",
+        "title": "Don't Divide Away a Root!"
+      },
+      "title": "Solving Equations by Factoring Completely",
+      "teacherCues": [
+        "Write $2x^3+8x^2=10x$ on the board. Ask: 'What's the first step?' (Set =0). Then factor out the GCF $2x$, then factor the trinomial, then solve.",
+        "Emphasize: With cubic equations, you can get three roots!"
+      ],
+      "id": "solving-equations-by-factoring-completely",
+      "examples": [
+        {
+          "prompt": "Solve $2x^3 + 8x^2 = 10x$.",
+          "title": "Example A — GCF + Trinomial",
+          "role": "guided",
+          "steps": [
+            "Rewrite: $2x^3 + 8x^2 - 10x = 0$.",
+            "Factor GCF $2x$: $2x(x^2 + 4x - 5) = 0$.",
+            "Factor trinomial: $2x(x+5)(x-1) = 0$.",
+            "Set each factor = 0: $x=0$, $x=-5$, $x=1$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "Factor out $x$: $x(x^2 - 25) = 0$.",
+            "$x^2-25 = (x+5)(x-5)$.",
+            "So $x(x+5)(x-5)=0$ → roots: $0$, $-5$, $5$."
+          ],
+          "peerPrompt": "Explain to a partner: After factoring out $x$, how do you recognize that $x^2-25$ can be factored further? What pattern is it?",
+          "prompt": "Solve $x^3 - 25x = 0$.",
+          "title": "Example B — Difference of Squares in Cubic"
+        },
+        {
+          "role": "independent",
+          "prompt": "Solve $x^3 + x^2 = 4x + 4$.",
+          "steps": [
+            "Rewrite: $x^3 + x^2 - 4x - 4 = 0$.",
+            "Group: $(x^3+x^2) + (-4x-4) = x^2(x+1) -4(x+1) = (x+1)(x^2-4)$.",
+            "$x^2-4 = (x+2)(x-2)$. Roots: $x=-1$, $x=-2$, $x=2$."
+          ],
+          "title": "Example C — Grouping Required"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Cubic equations can have up to three solutions! By setting the equation to zero and factoring completely, we unlock all the roots using the Zero-Product Property. Each factor might give a different root."
+      },
+      "questions": [
+        {
+          "hints": [
+            "It says if $ab=0$, then $a=0$ or $b=0$.",
+            "Named after the number 0."
+          ],
+          "prompt": "When solving a polynomial equation, after factoring completely, use the ___ Property to find the roots.",
+          "blanks": [
+            {
+              "accept": [
+                "Zero-Product",
+                "zero product"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "Use the Zero-Product Property.",
+          "id": "q3-1"
+        },
+        {
+          "feedbackIfWrong": "The roots are -5, 0, 5; the middle root is 0.",
+          "type": "short-answer",
+          "prompt": "Solve $x^3 - 25x = 0$. What is the middle root when arranged from least to greatest?",
+          "id": "q3-2",
+          "hints": [
+            "Roots are $-5$, $0$, $5$.",
+            "The middle value is $0$."
+          ],
+          "answer": "0"
+        },
+        {
+          "answer": "4",
+          "type": "short-answer",
+          "hints": [
+            "$n^2-6n+8 = (n-2)(n-4)$.",
+            "Roots: 0, 2, 4."
+          ],
+          "feedbackIfWrong": "The largest root is 4.",
+          "id": "q3-3",
+          "prompt": "In $5n^3 - 30n^2 + 40n = 0$, after factoring out $5n$, you get $5n(n^2-6n+8)=0$. What is the largest root?"
+        }
+      ]
+    },
+    {
+      "concept": {
+        "explanation": [
+          "Volume of a rectangular prism: $V = l \\cdot w \\cdot h$. When dimensions are expressed in terms of a variable, substitute and multiply to get a polynomial equation.",
+          "Set the polynomial equal to the given volume, then set = 0. Factor by grouping and use special patterns to factor completely.",
+          "Solve for the variable, but reject solutions that give negative dimensions or don't satisfy extra conditions (like length > 10).",
+          "Example: $w(36-w)(w+4) = 4608$ → expand, set =0, factor: $(w-32)(-w^2+144)=0$ → $(w-32)(w-12)(w+12)=0$ → $w=32$ or $w=12$ (reject $w=-12$). $w=32$ gives length 4 (too short), so $w=12$, length=24, height=16."
+        ],
+        "formulaCard": {
+          "title": "Volume Equation Setup",
+          "notes": [
+            "Set = 0, factor completely, apply Zero-Product Property.",
+            "Reject solutions that make any dimension negative."
+          ],
+          "formula": "$$ V = l \\cdot w \\cdot h \\quad\\Rightarrow\\quad \\text{polynomial} = V $$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Step",
+              "Work"
+            ],
+            "title": "Terrarium Volume Problem",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Volume equation",
+                "1": "$w(36-w)(w+4)=4608$"
+              },
+              {
+                "0": "Expand",
+                "1": "$-w^3 + 32w^2 + 144w = 4608$"
+              },
+              {
+                "0": "Set = 0",
+                "1": "$-w^3 + 32w^2 + 144w - 4608 = 0$"
+              },
+              {
+                "0": "Factor by grouping",
+                "1": "$-w^2(w-32) + 144(w-32) = (w-32)(-w^2+144)$"
+              },
+              {
+                "0": "Difference of squares",
+                "1": "$-1(w-32)(w-12)(w+12)=0$"
+              },
+              {
+                "0": "Solutions",
+                "1": "$w=32$, $w=12$, $w=-12$ (reject)"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Volume = 4608 in³. Width $w$, length $36-w$, height $w+4$. Find dimensions.",
+          "steps": [
+            "Equation: $w(36-w)(w+4) = 4608$.",
+            "Expand and set =0: $-w^3+32w^2+144w-4608=0$.",
+            "Group: $(-w^3+32w^2)+(144w-4608) = -w^2(w-32)+144(w-32) = (w-32)(-w^2+144)$.",
+            "Factor $-w^2+144 = -(w^2-144) = -(w-12)(w+12)$. So $-(w-32)(w-12)(w+12)=0$.",
+            "Roots: $w=32$, $w=12$, $w=-12$ (reject). $w=32$ gives length 4 (reject). $w=12$ gives length 24, height 16."
+          ],
+          "title": "Example A — Terrarium Dimensions"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: How does the condition 'length is more than 10 inches' help us choose between the two positive roots?",
+          "steps": [
+            "Length $= 36 - w$.",
+            "If $w=32$, length $= 36-32 = 4$ inches — less than 10, so reject.",
+            "If $w=12$, length $= 24$ inches — satisfies the condition."
+          ],
+          "prompt": "Both $w=12$ and $w=32$ are positive. Why do we reject $w=32$?",
+          "title": "Example B — Why Reject $w=32$?"
+        },
+        {
+          "prompt": "A box has volume 72 ft³, dimensions $x$, $x-1$, $x+9$. Find the dimensions.",
+          "role": "independent",
+          "steps": [
+            "Equation: $x(x-1)(x+9) = 72$.",
+            "Expand: $x(x^2+8x-9) = x^3+8x^2-9x = 72$ → $x^3+8x^2-9x-72=0$.",
+            "Group: $(x^3+8x^2)+(-9x-72) = x^2(x+8)-9(x+8) = (x+8)(x^2-9) = (x+8)(x-3)(x+3)=0$.",
+            "Roots: $x=-8$, $x=3$, $x=-3$. Positive root: $x=3$. Dimensions: 3 ft, 2 ft, 12 ft."
+          ],
+          "title": "Example C — Box Dimensions"
+        }
+      ],
+      "title": "Real-Life: Volume of a Rectangular Prism",
+      "id": "real-life-volume-problem",
+      "teacherCues": [
+        "Draw a box labeled width $w$, length $36-w$, height $w+4$. Write $V = lwh$.",
+        "Set $w(36-w)(w+4) = 4608$. Expand, set =0, group, factor, and solve. Emphasize checking which root makes sense."
+      ],
+      "confusionCorner": {
+        "title": "Don't Skip the Context Check",
+        "body": "Always plug roots back into the dimension expressions. A positive root might still give a negative or zero dimension. Reject any root that makes a dimension [[imp:non‑positive]] or violates given conditions."
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Height = $12+4 = 16$ inches.",
+          "prompt": "In the terrarium problem, the correct width is 12 inches. What is the height? ($w+4$)",
+          "id": "q4-1",
+          "hints": [
+            "Height = $w+4$.",
+            "Add 4 to the width."
+          ],
+          "answer": "16",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "It's the difference of two squares.",
+          "id": "q4-2",
+          "type": "fill-blank",
+          "prompt": "In the volume equation $w(36-w)(w+4)=4608$, after setting =0 and factoring, the factor $-w^2+144$ is a difference of squares that factors into $-(w-12)(w+12)$. The pattern used is ___ of two squares.",
+          "hints": [
+            "The formula is $a^2-b^2=(a+b)(a-b)$.",
+            "It's the special product from Section 7.7."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "difference",
+                "Difference"
+              ]
+            }
+          ]
+        },
+        {
+          "answer": "3",
+          "prompt": "A box has dimensions $x$, $x-1$, $x+9$ and volume 72 ft³. What is the width $x$?",
+          "type": "short-answer",
+          "hints": [
+            "Solve $(x+8)(x-3)(x+3)=0$.",
+            "The positive root that makes all dimensions positive is $3$."
+          ],
+          "feedbackIfWrong": "The width is $x=3$ feet.",
+          "id": "q4-3"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A terrarium has a volume of 4608 cubic inches, and its dimensions are given in terms of width: length $36-w$, width $w$, height $w+4$. By setting up a cubic equation and factoring completely, we can find the exact dimensions!"
+      }
+    },
+    {
+      "questions": [
+        {
+          "feedbackIfWrong": "Always factor out the GCF first.",
+          "hints": [
+            "It stands for Greatest Common Factor.",
+            "Always do this before checking for patterns."
+          ],
+          "type": "fill-blank",
+          "id": "q5-1",
+          "blanks": [
+            {
+              "accept": [
+                "GCF",
+                "greatest common factor"
+              ]
+            }
+          ],
+          "prompt": "The very first step in factoring any polynomial completely is to factor out the ___."
+        },
+        {
+          "feedbackIfWrong": "The other factors are $(b+2)$ and $(b-2)$.",
+          "type": "short-answer",
+          "prompt": "In the complete factorization of $b^3-5b^2-4b+20$, one factor is $(b-5)$. What are the other two? (Type them in any order, like b+2)",
+          "answer": "b+2",
+          "id": "q5-2",
+          "hints": [
+            "The full factorization is $(b-5)(b+2)(b-2)$.",
+            "The other two are $(b+2)$ and $(b-2)$."
+          ]
+        },
+        {
+          "answer": "0",
+          "feedbackIfWrong": "The roots are 0 and 4; smallest is 0.",
+          "prompt": "Solve $w^3 - 8w^2 + 16w = 0$. What is the smallest root?",
+          "hints": [
+            "Factor out $w$: $w(w^2-8w+16)=w(w-4)^2=0$.",
+            "Roots: 0 and 4 (repeated). Smallest is 0."
+          ],
+          "type": "short-answer",
+          "id": "q5-3"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Factoring completely is like peeling an onion — remove the outermost layer (GCF), then check each inner layer for special patterns or grouping. This blueprint ensures you never stop too soon!"
+      },
+      "id": "blueprint-factoring-completely",
+      "teacherCues": [
+        "Post the four‑step strategy on the board. Walk through a fresh example: $x^3-6x^2+9x$, applying each step aloud.",
+        "Then pose the terrarium problem again as a capstone: Understand the volume model, Solve by factoring completely, Conclude with dimensions."
+      ],
+      "confusionCorner": {
+        "title": "Stopping Too Soon",
+        "body": "After factoring out a GCF or grouping, always look at each factor and ask: 'Can this be factored further?' Leaving a difference of squares inside a binomial means the polynomial is [[imp:NOT completely factored]]."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Understand: 3 terms, GCF is $x$.",
+            "Solve – Step 1: Factor out $x$ → $x(x^2 - 6x + 9)$.",
+            "Solve – Step 2: Inside is 3 terms, perfect square? $x^2-6x+9 = (x-3)^2$.",
+            "Conclude: $x(x-3)^2$. Both factors unfactorable."
+          ],
+          "title": "Example A — Strategy in Action",
+          "prompt": "Factor $x^3 - 6x^2 + 9x$ completely."
+        },
+        {
+          "minLength": 2,
+          "prompt": "Factor $b^3 - 5b^2 - 4b + 20$ completely.",
+          "role": "peer-explain",
+          "title": "Example B — Grouping + Special Product",
+          "steps": [
+            "Understand: 4 terms, no common GCF.",
+            "Group: $(b^3-5b^2) + (-4b+20) = b^2(b-5) -4(b-5) = (b-5)(b^2-4)$.",
+            "$b^2-4$ is difference of squares: $(b+2)(b-2)$.",
+            "Conclude: $(b-5)(b+2)(b-2)$."
+          ],
+          "peerPrompt": "Explain to a partner: After grouping, we get $(b-5)(b^2-4)$. Why isn't it completely factored yet? What step is needed?"
+        },
+        {
+          "prompt": "Solve $c^3 - 7c^2 + 12c = 0$ completely.",
+          "title": "Example C — Full Solve",
+          "steps": [
+            "Understand: equation = 0, GCF is $c$.",
+            "Factor out $c$: $c(c^2 - 7c + 12) = 0$.",
+            "Factor trinomial: $c(c-3)(c-4)=0$.",
+            "Conclude: roots $c=0$, $c=3$, $c=4$."
+          ],
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Priority",
+              "Check",
+              "Action"
+            ],
+            "type": "table",
+            "title": "Complete Factoring Strategy",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Is there a GCF?",
+                "2": "Factor it out first."
+              },
+              {
+                "0": "2",
+                "1": "Two terms? Difference of squares?",
+                "2": "Use $a^2-b^2=(a+b)(a-b)$."
+              },
+              {
+                "0": "3",
+                "1": "Three terms? Perfect square or $ax^2+bx+c$?",
+                "2": "Factor as $(px+q)(rx+s)$ or $(a\\pm b)^2$."
+              },
+              {
+                "0": "4",
+                "1": "Four terms?",
+                "2": "Try grouping."
+              },
+              {
+                "0": "5",
+                "1": "Any factor factorable further?",
+                "2": "Repeat steps 1-4 on each factor."
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "Understand: Look at the polynomial. Does it have a GCF? How many terms?",
+          "Solve – Step 1: Factor out the GCF. Step 2: Check for difference of squares or perfect square trinomial. Step 3: If a trinomial remains, factor as $ax^2+bx+c$. Step 4: For four terms, try grouping.",
+          "Solve – Continue: After each step, examine every factor to see if it can be factored further. Stop when all factors are unfactorable.",
+          "Conclude: Write the completely factored form. For equations, set each factor = 0 and list the roots. For word problems, check which roots are physically possible."
+        ],
+        "formulaCard": {
+          "notes": [
+            "The process stops only when every factor is unfactorable over the integers.",
+            "For equations: after factoring, use Zero-Product Property."
+          ],
+          "title": "Blueprint: Factor Completely",
+          "formula": "$$ \\text{GCF} \\rightarrow \\text{Special Products} \\rightarrow \\text{Trinomials} \\rightarrow \\text{Grouping} $$"
+        }
+      },
+      "title": "Blueprint Aid: Factoring Completely — Strategy & Application"
+    }
+  ],
+  "type": "interactive-lesson",
+  "id": "chapter-7-8-factoring-polynomials-completely",
+  "title": "Chapter 7.8 — Factoring Polynomials Completely",
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

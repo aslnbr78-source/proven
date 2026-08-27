@@ -1,0 +1,136 @@
+{
+  "type": "flashcard",
+  "id": "ch2-3-flashcards",
+  "title": "Polynomial and Synthetic Division",
+  "cards": [
+    {
+      "front": "What is the [[kw:Division Algorithm]] for polynomials?",
+      "back": [
+        "$$ f(x) = d(x) \\cdot q(x) + r(x) $$",
+        "$ f(x) $ = dividend, $ d(x) $ = divisor (≠0), $ q(x) $ = quotient, $ r(x) $ = remainder.",
+        "Degree of $ r(x) $ < degree of $ d(x) $, or $ r(x)=0 $.",
+        "If remainder is 0, then $ d(x) $ divides evenly and is a factor."
+      ]
+    },
+    {
+      "front": "How do you set up a polynomial long division?",
+      "back": [
+        "1. Write both dividend and divisor in [[imp:descending powers]] of the variable.",
+        "2. Insert placeholders with coefficient $ 0 $ for any missing powers.",
+        "3. Divide leading terms, multiply, subtract, bring down the next term, repeat."
+      ]
+    },
+    {
+      "front": "Divide $ 6x^3 - 19x^2 + 16x - 4 $ by $ x-2 $ using long division.",
+      "back": [
+        "1. $ 6x^3 / x = 6x^2 $; multiply and subtract → $ -7x^2 + 16x $.",
+        "2. $ -7x^2 / x = -7x $; multiply and subtract → $ 2x - 4 $.",
+        "3. $ 2x / x = 2 $; multiply and subtract → remainder 0.",
+        "Quotient: $ 6x^2 - 7x + 2 $. Full factorization: $ (x-2)(2x-1)(3x-2) $."
+      ]
+    },
+    {
+      "front": "Divide $ x^3 - 1 $ by $ x-1 $. What do you get?",
+      "back": [
+        "Rewrite as $ x^3 + 0x^2 + 0x - 1 $.",
+        "Long division yields $ x^2 + x + 1 $ with remainder 0.",
+        "Check: $ (x-1)(x^2 + x + 1) = x^3 - 1 $."
+      ]
+    },
+    {
+      "front": "What is [[kw:synthetic division]]?",
+      "back": [
+        "A shortcut for dividing a polynomial by a linear binomial of the form $ x - k $.",
+        "Only the coefficients are used; the variables are stripped away.",
+        "The divisor must have a leading coefficient of 1."
+      ]
+    },
+    {
+      "front": "How do you set up and perform synthetic division?",
+      "back": [
+        "1. Write the zero $ k $ (solve $ x - k = 0 $) on the left.",
+        "2. Write the coefficients of the dividend in a row; use 0 for missing terms.",
+        "3. Bring down the first coefficient. Multiply by $ k $, add to the next coefficient, repeat.",
+        "Last number = remainder; preceding numbers = coefficients of the quotient (degree reduced by 1)."
+      ]
+    },
+    {
+      "front": "Use synthetic division to divide $ x^4 - 10x^2 - 2x + 4 $ by $ x+3 $.",
+      "back": [
+        "$ x+3 = x - (-3) $, so $ k = -3 $.",
+        "Coefficients: 1, 0, -10, -2, 4.",
+        "Synthetic division yields quotient $ x^3 - 3x^2 - x + 1 $ and remainder $ 1 $.",
+        "Result: $ x^3 - 3x^2 - x + 1 + \\frac{1}{x+3} $."
+      ]
+    },
+    {
+      "front": "Why can't synthetic division be used directly for a divisor like $ 2x - 3 $?",
+      "back": [
+        "Synthetic division requires the divisor to be in the form $ x - k $ (leading coefficient 1).",
+        "$ 2x - 3 $ has leading coefficient 2; you would need to rewrite it as $ 2(x - 1.5) $, then adjust.",
+        "In such cases, long division is often simpler."
+      ]
+    },
+    {
+      "front": "State the [[kw:Remainder Theorem]].",
+      "back": [
+        "If a polynomial $ f(x) $ is divided by $ x - k $, the remainder is $ r = f(k) $.",
+        "The remainder from synthetic division equals the value of the function at $ k $.",
+        "This provides a quick way to evaluate polynomials."
+      ]
+    },
+    {
+      "front": "Use the Remainder Theorem to find $ f(-2) $ for $ f(x) = 3x^3 + 8x^2 + 5x - 7 $.",
+      "back": [
+        "Perform synthetic division with $ k = -2 $ on coefficients 3, 8, 5, -7.",
+        "The remainder is -9.",
+        "Therefore, $ f(-2) = -9 $."
+      ]
+    },
+    {
+      "front": "State the [[kw:Factor Theorem]].",
+      "back": [
+        "A polynomial $ f(x) $ has a factor $ (x - k) $ if and only if $ f(k) = 0 $.",
+        "In other words, $ x = k $ is a zero ↔ $ (x - k) $ is a factor.",
+        "This follows from the Remainder Theorem (remainder 0 means factor)."
+      ]
+    },
+    {
+      "front": "How can you test if $ x+3 $ is a factor of $ f(x) = x^3 - 19x - 30 $?",
+      "back": [
+        "Evaluate $ f(-3) $ (since $ x+3 = x - (-3) $).",
+        "Synthetic division with $ k = -3 $ gives remainder 0 → $ (x+3) $ is a factor.",
+        "Quotient: $ x^2 - 3x - 10 = (x-5)(x+2) $; full factorization: $ (x+3)(x-5)(x+2) $."
+      ]
+    },
+    {
+      "front": "How do you factor $ f(x) = 2x^4 + 7x^3 - 4x^2 - 27x - 18 $ given that $ x = 2 $ and $ x = -3 $ are zeros?",
+      "back": [
+        "Use synthetic division by 2 → quotient $ 2x^3 + 11x^2 + 18x + 9 $.",
+        "Divide that quotient by -3 → $ 2x^2 + 5x + 3 $.",
+        "Factor quadratic: $ (2x+3)(x+1) $.",
+        "Complete factorization: $ (x-2)(x+3)(2x+3)(x+1) $."
+      ]
+    },
+    {
+      "front": "What is the relationship between zeros, factors, and the Factor Theorem?",
+      "back": [
+        "Zero: $ x = k $ such that $ f(k) = 0 $.",
+        "Factor: $ (x - k) $ divides $ f(x) $ evenly (remainder 0).",
+        "The Factor Theorem states they are equivalent: zero ↔ factor."
+      ]
+    },
+    {
+      "front": "What blueprint should you follow to factor a polynomial using division?",
+      "back": [
+        "[[kw:Understand]]: Identify a known zero $ k $.",
+        "[[kw:Solve]]: Synthetically divide by $ (x - k) $; repeat with the quotient using other known zeros.",
+        "[[kw:Conclude]]: Factor the final quotient completely, write all factors, and list all zeros."
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

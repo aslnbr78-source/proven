@@ -1,0 +1,131 @@
+{
+  "cards": [
+    {
+      "front": "What is the [[kw:F‑distribution]] used for?",
+      "back": "It is used to compare two population variances and in analysis of variance (ANOVA). The ratio of two sample variances follows an F‑distribution under certain conditions."
+    },
+    {
+      "back": "1. Positively skewed (right‑skewed). 2. Values are always $\\ge 0$. 3. The curve depends on two degrees of freedom (numerator and denominator).",
+      "front": "List two key properties of the F‑distribution."
+    },
+    {
+      "back": "$$F = \\frac{s_1^2}{s_2^2}$$ where $s_1^2$ and $s_2^2$ are the sample variances, and we always put the [[imp:larger sample variance in the numerator]] so $F \\ge 1$.",
+      "front": "What is the test statistic for the [[kw:two‑sample F‑test]]?"
+    },
+    {
+      "back": "To make $F \\ge 1$. Since F‑tables only give critical values $>1$, this ensures the test is right‑tailed and we can look up the critical value directly.",
+      "front": "Why do we always put the larger sample variance in the numerator?"
+    },
+    {
+      "back": "Numerator: $d.f._N = n_1 - 1$ (for the sample with larger variance). Denominator: $d.f._D = n_2 - 1$ (for the other sample).",
+      "front": "What are the degrees of freedom for the F‑test statistic?"
+    },
+    {
+      "back": "1. Random samples. 2. Independent samples. 3. Both populations normally distributed. The F‑test is sensitive to non‑normality.",
+      "front": "List the three conditions required for the two‑sample F‑test."
+    },
+    {
+      "back": "$H_0: \\sigma_1^2 = \\sigma_2^2$ (or $\\le$, $\\ge$ depending on the claim). Often it is that the two population variances are equal.",
+      "front": "State a typical null hypothesis for an F‑test comparing two variances."
+    },
+    {
+      "back": "Use the F‑table (Table 7) with the given $\\alpha$, numerator df, and denominator df. The critical value is at the intersection of the column and row.",
+      "front": "How do you find the critical F‑value for a [[imp:right‑tailed test]]?"
+    },
+    {
+      "front": "How do you find the critical F‑value for a [[imp:two‑tailed test]]?",
+      "back": "Use the $\\frac{1}{2}\\alpha$ table (e.g., for $\\alpha = 0.05$, use 0.025). Only the right‑tailed critical value is needed because the larger variance is in the numerator."
+    },
+    {
+      "back": "Old variance is larger, so $F = 400/256 \\approx 1.56$. Numerator df = 9, denominator df = 20.",
+      "front": "A restaurant tests if a new system has lower variance ($n_1=10, s_1^2=400; n_2=21, s_2^2=256$). Compute F."
+    },
+    {
+      "front": "In the restaurant example, $\\alpha=0.10$, critical value $1.96$. Decision?",
+      "back": "Fail to reject $H_0$ because $1.56 < 1.96$. Not enough evidence to say the new system has smaller variance."
+    },
+    {
+      "back": "Stock B has larger variance: $s_B^2 = 32.49$, $s_A^2 = 12.25$. $F = 32.49/12.25 \\approx 2.65$. Numerator df=30, denominator df=29.",
+      "front": "Stock A: n=30, s=3.5; Stock B: n=31, s=5.7. Test if variances differ (two‑tailed, $\\alpha=0.05$). Find F."
+    },
+    {
+      "front": "In the stock example, critical value from 0.025 table $\\approx 2.09$. Decision?",
+      "back": "Reject $H_0$ because $2.65 > 2.09$. Variances are significantly different, so one stock is riskier."
+    },
+    {
+      "front": "What Google Sheets function gives the right‑tailed p‑value for an F‑statistic?",
+      "back": "`=F.DIST.RT(F, d.f.N, d.f.D)` returns the probability that F is greater than the computed value. For a two‑tailed test, double this p‑value."
+    },
+    {
+      "back": "`=F.INV.RT(α, d.f.N, d.f.D)`. For two‑tailed, use $\\alpha/2$ as the first argument.",
+      "front": "What Google Sheets function returns the critical F‑value for a right‑tailed test?"
+    },
+    {
+      "back": "It compares the means of three or more populations (groups) to determine if at least one mean is different from the others. It analyzes variances to make this comparison.",
+      "front": "What is [[kw:one‑way ANOVA]] used for?"
+    },
+    {
+      "back": "$H_0: \\mu_1 = \\mu_2 = \\dots = \\mu_k$ (all population means are equal). $H_a$: At least one mean is different from the others.",
+      "front": "State the null and alternative hypotheses for one‑way ANOVA."
+    },
+    {
+      "back": "1. Each sample is randomly selected from a normal (approximately normal) population. 2. Samples are independent. 3. Populations have equal variances (homogeneity of variance).",
+      "front": "What are the conditions for one‑way ANOVA?"
+    },
+    {
+      "front": "What does [[kw:MSB]] (Mean Square Between) measure?",
+      "back": "It measures the variation between the sample means. A large MSB indicates the group means are far apart. $MSB = SSB / (k-1)$."
+    },
+    {
+      "front": "What does [[kw:MSW]] (Mean Square Within) measure?",
+      "back": "It measures the variation within the samples. It pools the sample variances to estimate the common population variance. $MSW = SSW / (N-k)$."
+    },
+    {
+      "back": "$$F = \\frac{MSB}{MSW}$$ It follows an F‑distribution with $d.f._N = k-1$ and $d.f._D = N-k$.",
+      "front": "What is the test statistic for one‑way ANOVA?"
+    },
+    {
+      "back": "The F‑statistic is a ratio of variances ($\\ge 0$). If $H_0$ is true, $F \\approx 1$. If $H_0$ is false, $F > 1$. We reject only for large $F$.",
+      "front": "Why is ANOVA always a [[imp:right‑tailed test]]?"
+    },
+    {
+      "front": "How do you compute the degrees of freedom for ANOVA?",
+      "back": "Numerator df: $d.f._N = k - 1$ (k = number of groups). Denominator df: $d.f._D = N - k$ (N = total number of observations)."
+    },
+    {
+      "front": "What is the [[kw:grand mean]]?",
+      "back": "The mean of all observations from all samples combined. Used in calculating the between‑group sum of squares (SSB)."
+    },
+    {
+      "front": "In the pain reliever example, $F \\approx 1.50$, critical value $7.56$ at $\\alpha=0.01$. Decision?",
+      "back": "Fail to reject $H_0$. Not enough evidence to conclude that the mean relief times differ among the three medications."
+    },
+    {
+      "back": "At least one population mean is different from the others. You do NOT know which specific means differ without further [[imp:post‑hoc tests]] (e.g., Scheffé).",
+      "front": "If you reject $H_0$ in ANOVA, what do you conclude?"
+    },
+    {
+      "front": "What formula computes [[kw:SSB]] (Sum of Squares Between)?",
+      "back": "$$SSB = \\sum_{i=1}^{k} n_i (\\bar{x}_i - \\bar{x})^2$$ where $n_i$ is the sample size, $\\bar{x}_i$ the sample mean, and $\\bar{x}$ the grand mean."
+    },
+    {
+      "back": "$$SSW = \\sum_{i=1}^{k} (n_i - 1) s_i^2$$ It pools the within‑group variability. Use variances, not standard deviations.",
+      "front": "What formula computes [[kw:SSW]] (Sum of Squares Within) using sample variances?"
+    },
+    {
+      "front": "What Google Sheets function gives the p‑value from an F‑statistic?",
+      "back": "`=F.DIST.RT(F, d.f.N, d.f.D)` returns the right‑tailed probability. If p‑value $< \\alpha$, reject $H_0$."
+    },
+    {
+      "front": "What does the ANOVA summary table contain?",
+      "back": "Sources (Between, Within), Sum of Squares (SSB, SSW), degrees of freedom, Mean Squares (MSB, MSW), and the F‑statistic."
+    }
+  ],
+  "title": "Sections 10.3 & 10.4: Review",
+  "type": "flashcard",
+  "id": "consolidated-flashcards-10-3-10-4",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

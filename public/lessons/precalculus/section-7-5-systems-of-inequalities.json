@@ -1,0 +1,715 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-7-5-systems-of-inequalities",
+  "title": "Systems of Inequalities",
+  "blocks": [
+    {
+      "id": "graphing-inequalities",
+      "title": "Graphing a Single Inequality",
+      "teacherCues": [
+        "Write $y \\ge x^2 - 1$ on the board. Ask: How do we graph the related equation? What line style should we use?",
+        "Place two test points: $(0,0)$ and $(0,-2)$. Substitute into the inequality to decide which side to shade."
+      ],
+      "discoveryHook": {
+        "scenario": "You earn at least \\$10 an hour walking dogs. Graph your possible earnings for $0$ to $5$ hours. The region that satisfies $y \\ge 10x$ shows all combinations of hours and earnings that meet the requirement."
+      },
+      "concept": {
+        "explanation": [
+          "To sketch a two‑variable inequality, first replace the inequality sign with $=$ and draw the boundary.",
+          "Use a [[imp:dashed line]] for $<$ or $>$ (points on the line are not included). Use a [[imp:solid line]] for $\\le$ or $\\ge$ (points on the line are included).",
+          "Pick a test point not on the boundary. If it satisfies the inequality, shade that side of the boundary."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Testing points for $y \\ge x^2 - 1$",
+            "headers": [
+              "Point",
+              "Substitution",
+              "True/False"
+            ],
+            "rows": [
+              {
+                "0": "$(0,0)$",
+                "1": "$0 \\ge 0^2 - 1$ → $0 \\ge -1$",
+                "2": "True → shade above"
+              },
+              {
+                "0": "$(0,-2)$",
+                "1": "$-2 \\ge 0^2 - 1$ → $-2 \\ge -1$",
+                "2": "False"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Inequality Graphing Steps",
+          "formula": "1. Replace $<$/$>$/$\\le$/$\\ge$ with $=$.\n2. Draw the boundary (dashed for strict, solid for inclusive).\n3. Test a point not on the boundary.\n4. Shade the side that works.",
+          "notes": [
+            "The origin $(0,0)$ is an easy test point if it's not on the boundary.",
+            "If the test point fails, shade the opposite side."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Graph $y \\ge x^2 - 1$",
+          "prompt": "Sketch the graph of $y \\ge x^2 - 1$.",
+          "steps": [
+            "Graph the parabola $y = x^2 - 1$ with a solid line (because of $\\ge$).",
+            "Test $(0,0)$: $0 \\ge -1$ is true. Shade the region above the parabola.",
+            "Test $(0,-2)$: $-2 \\ge -1$ is false. That confirms we shade above."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Graph $x - y < 2$",
+          "prompt": "Explain to a partner: Why is the line dashed? Which side of the line should be shaded?",
+          "peerPrompt": "Rewrite the inequality in slope‑intercept form. Does the origin satisfy it? Draw the line and decide.",
+          "minLength": 2,
+          "steps": [
+            "Rewrite as $y > x - 2$. The line $y = x - 2$ is dashed (strict $<$).",
+            "Test $(0,0)$: $0 > -2$ is true. Shade the half‑plane above the line."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick check",
+          "prompt": "Should the boundary for $y \\le 3$ be solid or dashed?",
+          "steps": [
+            "The inequality is $\\le$ (less than or equal).",
+            "Therefore the boundary line is solid."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Solid vs. Dashed",
+        "body": "Remember: [[imp:solid]] means the boundary is part of the solution ($\\le$ or $\\ge$). [[imp:Dashed]] means the boundary is not included ($<$ or $>$)."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "When graphing $y < x + 1$, the boundary line should be ___.",
+          "blanks": [
+            {
+              "accept": [
+                "dashed"
+              ]
+            }
+          ],
+          "hints": [
+            "The inequality is strict.",
+            "Points on the line are not solutions."
+          ],
+          "feedbackIfWrong": "Strict inequalities use a dashed line."
+        },
+        {
+          "id": "q2",
+          "type": "fill-blank",
+          "prompt": "To decide which side of a boundary to shade, pick a test ___ not on the boundary.",
+          "blanks": [
+            {
+              "accept": [
+                "point"
+              ]
+            }
+          ],
+          "hints": [
+            "Often use $(0,0)$ if possible.",
+            "A single coordinate pair."
+          ],
+          "feedbackIfWrong": "You need a test point."
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "prompt": "Is $(0,0)$ a solution of $y \\ge x^2 - 1$? (Enter yes or no)",
+          "answer": "yes",
+          "hints": [
+            "Plug $x=0$, $y=0$ into the inequality.",
+            "$0 \\ge -1$ is true."
+          ],
+          "feedbackIfWrong": "$0 \\ge -1$, so yes, it is a solution."
+        }
+      ]
+    },
+    {
+      "id": "linear-inequalities",
+      "title": "Linear Inequalities and Half‑Planes",
+      "teacherCues": [
+        "Draw a vertical line $x = -2$. Ask: Which side satisfies $x > -2$?",
+        "Draw a horizontal line $y = 3$. Which side satisfies $y \\le 3$?"
+      ],
+      "discoveryHook": {
+        "scenario": "A parking garage has a height limit: all vehicles must be at most $3$ meters tall. The inequality $y \\le 3$ represents the allowed height. Graphically, everything below (and on) the $3$‑meter line is allowed."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:linear inequality]] in $x$ and $y$ (like $ax + by < c$) gives a half‑plane as its solution.",
+          "If the inequality is just $x > -2$, the boundary is the vertical line $x = -2$.",
+          "If it is just $y \\le 3$, the boundary is the horizontal line $y = 3$.",
+          "Test a point (e.g., $(0,0)$) to decide which side to shade."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Simple Linear Inequalities",
+            "headers": [
+              "Inequality",
+              "Boundary",
+              "Type",
+              "Shading"
+            ],
+            "rows": [
+              {
+                "0": "$x > -2$",
+                "1": "$x = -2$ (dashed)",
+                "2": "Vertical line",
+                "3": "Right side"
+              },
+              {
+                "0": "$y \\le 3$",
+                "1": "$y = 3$ (solid)",
+                "2": "Horizontal line",
+                "3": "Below or on"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Half‑Plane Determination",
+          "formula": "Write the inequality in slope‑intercept form: $y$ on the left, everything else on the right.",
+          "notes": [
+            "If $y > mx + b$, shade above the line.",
+            "If $y < mx + b$, shade below the line."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Graph $x > -2$",
+          "prompt": "Sketch the graph of $x > -2$.",
+          "steps": [
+            "Draw the vertical line $x = -2$ as a dashed line.",
+            "Test $(0,0)$: $0 > -2$ is true. Shade the right side."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Graph $y \\le 3$",
+          "prompt": "Sketch $y \\le 3$. Is the line solid or dashed? Why?",
+          "peerPrompt": "Explain to your partner: The inequality includes 'equal to', so the boundary is solid. Then test $(0,0)$.",
+          "minLength": 2,
+          "steps": [
+            "Draw $y = 3$ as a solid horizontal line.",
+            "Test $(0,0)$: $0 \\le 3$ is true. Shade below the line."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick check",
+          "prompt": "In which direction do you shade for $y < 2x + 1$?",
+          "steps": [
+            "The inequality is $y < mx + b$. For $<$, shade below the line."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Vertical boundary",
+        "body": "When you have $x > c$, the shaded region is to the right of the vertical line $x = c$. For $x < c$, shade left."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "The graph of $y < 4$ is a ___ horizontal line.",
+          "blanks": [
+            {
+              "accept": [
+                "dashed"
+              ]
+            }
+          ],
+          "hints": [
+            "Strict inequality, no equals.",
+            "Points on the line are not included."
+          ],
+          "feedbackIfWrong": "It is a dashed line because of the strict inequality."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "For $x \\ge 5$, is the boundary line solid or dashed?",
+          "answer": "solid",
+          "hints": [
+            "The inequality includes 'or equal to'.",
+            "$\\ge$ means greater than or equal."
+          ],
+          "feedbackIfWrong": "Solid, because $x$ can equal $5$."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "When an inequality is written as $y > mx + b$, you shade ___ the line.",
+          "blanks": [
+            {
+              "accept": [
+                "above"
+              ]
+            }
+          ],
+          "hints": [
+            "The $y$ is greater than.",
+            "Greater than means higher on the graph."
+          ],
+          "feedbackIfWrong": "Shade above the line."
+        }
+      ]
+    },
+    {
+      "id": "systems-of-linear-inequalities",
+      "title": "Systems of Linear Inequalities",
+      "teacherCues": [
+        "Write the system: $x - y < 2$, $x > -2$, $y \\le 3$. Ask: How do we find the region that satisfies all three?",
+        "Demonstrate shading each inequality on the same graph and looking for the overlapping region."
+      ],
+      "discoveryHook": {
+        "scenario": "A farmer's fence limits the area where sheep can graze: $x > -2$ (east of a road), $y \\le 3$ (south of a tree line), and the ground slopes so that $x - y < 2$. The region where all three conditions hold is the only place the sheep can be."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:system of inequalities]] is a set of two or more inequalities. The solution is the overlap (intersection) of all their graphs.",
+          "Graph each inequality on the same coordinate plane, using the correct line style (dashed/solid) and shading.",
+          "The final solution region is where all shading overlaps.",
+          "Vertices of the region are found by solving pairs of boundary equations."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example System",
+            "headers": [
+              "Inequality",
+              "Boundary",
+              "Line type",
+              "Test point $(0,0)$"
+            ],
+            "rows": [
+              {
+                "0": "$x - y < 2$",
+                "1": "$x - y = 2$",
+                "2": "Dashed",
+                "3": "True → shade above"
+              },
+              {
+                "0": "$x > -2$",
+                "1": "$x = -2$",
+                "2": "Dashed",
+                "3": "True → shade right"
+              },
+              {
+                "0": "$y \\le 3$",
+                "1": "$y = 3$",
+                "2": "Solid",
+                "3": "True → shade below"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Finding Vertices",
+          "formula": "Solve pairs of boundary equations: For vertices of the region, solve the systems formed by taking two boundary equations at a time.",
+          "notes": [
+            "Check that each vertex satisfies all original inequalities.",
+            "Vertices may be open (dashed boundaries) or closed (solid boundaries)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Graph and label vertices",
+          "prompt": "Graph the solution of $x - y < 2$, $x > -2$, $y \\le 3$. Label vertices.",
+          "steps": [
+            "Draw each boundary line: $x - y = 2$ (dashed), $x = -2$ (dashed), $y = 3$ (solid).",
+            "Shade each region: $x - y < 2$ (above), $x > -2$ (right), $y \\le 3$ (below).",
+            "The intersection is a triangular region. Solve boundary pairs for vertices:",
+            "A: $x - y = 2$ and $x = -2$ → $(-2, -4)$.",
+            "B: $x - y = 2$ and $y = 3$ → $(5, 3)$.",
+            "C: $x = -2$ and $y = 3$ → $(-2, 3)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Which vertices are open?",
+          "prompt": "Look at the vertices $(-2,-4)$, $(5,3)$, $(-2,3)$. Why are they open dots?",
+          "peerPrompt": "Discuss: Which boundaries are dashed? At which vertex do dashed lines meet?",
+          "minLength": 2,
+          "steps": [
+            "The vertex $(-2,-4)$ comes from two dashed lines ($x - y = 2$ and $x = -2$). That vertex is not included.",
+            "The vertex $(5,3)$ comes from a dashed and a solid — but check if it satisfies both original inequalities: $5-3<2$? $2<2$? No, it's not a solution. So it's open.",
+            "The vertex $(-2,3)$ comes from a dashed and a solid, and also fails $x > -2$? Actually $x=-2$ is not > -2. So all vertices are open."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple system",
+          "prompt": "Sketch the solution of $y > x - 2$, $x > -2$, $y \\le 3$. Is the vertex $(5,3)$ included?",
+          "steps": [
+            "Check $x - y < 2$ at $(5,3)$: $5-3 < 2$ is $2 < 2$, false. So not included.",
+            "Thus the vertex is open."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget to test vertices",
+        "body": "Even if two boundary lines intersect, that intersection point must satisfy all inequalities. If it fails any, it is not part of the solution and is drawn as an open dot."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "The solution of a system of inequalities is the ___ of all shaded regions.",
+          "blanks": [
+            {
+              "accept": [
+                "intersection",
+                "overlap"
+              ]
+            }
+          ],
+          "hints": [
+            "Where all shading coincides.",
+            "It's the common area."
+          ],
+          "feedbackIfWrong": "The overlap or intersection of the individual shaded regions."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "In the example system, what is the $y$-coordinate of the vertex where $x = -2$ and $y = 3$? (Enter a number)",
+          "answer": "3",
+          "hints": [
+            "It's the intersection of two boundaries.",
+            "Look at $(-2, 3)$."
+          ],
+          "feedbackIfWrong": "The $y$-coordinate is $3$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "If a vertex does not satisfy the original inequalities, it is drawn as an ___ dot.",
+          "blanks": [
+            {
+              "accept": [
+                "open"
+              ]
+            }
+          ],
+          "hints": [
+            "Opposite of solid/closed.",
+            "Indicates it's not included."
+          ],
+          "feedbackIfWrong": "An open dot."
+        }
+      ]
+    },
+    {
+      "id": "nonlinear-systems",
+      "title": "Systems with Nonlinear Inequalities",
+      "teacherCues": [
+        "Write the system: $x^2 - y \\le 1$, $-x + y \\le 1$. Ask: What shape is the first inequality? (parabola opening up)",
+        "Find intersection points by solving the boundary equations as a system of equalities."
+      ],
+      "discoveryHook": {
+        "scenario": "A playground has a curved slide ($y \\ge x^2 - 1$) and a straight climbing wall ($y \\le x + 1$). The region where both conditions are true is the area where children can play safely between the two structures."
+      },
+      "concept": {
+        "explanation": [
+          "When one or more inequalities are nonlinear, the same procedure applies: graph each boundary (dashed/solid as appropriate) and test points.",
+          "To find intersection points, solve the system of corresponding equations.",
+          "The solution region is the overlap, just as with linear systems.",
+          "Vertices are the points where boundaries intersect and satisfy all inequalities."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $x^2 - y \\le 1$, $-x + y \\le 1$",
+            "headers": [
+              "Inequality",
+              "Boundary",
+              "Line type"
+            ],
+            "rows": [
+              {
+                "0": "$x^2 - y \\le 1$",
+                "1": "$y = x^2 - 1$ (parabola)",
+                "2": "Solid"
+              },
+              {
+                "0": "$-x + y \\le 1$",
+                "1": "$y = x + 1$ (line)",
+                "2": "Solid"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Nonlinear Boundaries",
+          "formula": "Solve the system $f(x,y)=0$, $g(x,y)=0$ to find intersection points of boundaries.",
+          "notes": [
+            "The method is the same as solving a system of equations.",
+            "Check whether each intersection point satisfies all original inequalities."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Graph and find intersections",
+          "prompt": "Sketch the solution of $x^2 - y \\le 1$, $-x + y \\le 1$.",
+          "steps": [
+            "Rewrite: $y \\ge x^2 - 1$ and $y \\le x + 1$.",
+            "Graph $y = x^2 - 1$ (solid) and shade above. Graph $y = x + 1$ (solid) and shade below.",
+            "Find intersections: solve $x^2 - 1 = x + 1$ → $x^2 - x - 2 = 0$ → $x = -1, 2$.",
+            "Corresponding $y$: $y = 0$ and $y = 3$. Intersection points: $(-1,0)$ and $(2,3)$. Both are solid (on both boundaries)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Are the intersection points included?",
+          "prompt": "Check whether $(-1,0)$ and $(2,3)$ satisfy both inequalities.",
+          "peerPrompt": "Plug each point into both inequalities. Discuss why they are solid dots.",
+          "minLength": 2,
+          "steps": [
+            "$(-1,0)$: $1 - 0 \\le 1$ (true), $1 + 0 \\le 1$ (true). Included.",
+            "$(2,3)$: $4 - 3 \\le 1$ (true), $-2 + 3 \\le 1$ (true). Included.",
+            "Both are closed dots because they lie on solid boundaries and satisfy the inequalities."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick check",
+          "prompt": "Does the point $(0,0)$ satisfy $x^2 - y \\le 1$ and $-x + y \\le 1$?",
+          "steps": [
+            "First: $0 - 0 \\le 1$ → true.",
+            "Second: $0 + 0 \\le 1$ → true.",
+            "Yes, $(0,0)$ is in the solution region."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check boundary intersections carefully",
+        "body": "When boundaries have different styles (one dashed, one solid), an intersection point might be included in one but excluded in the other. Always test the point in each original inequality."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "To find intersection points of two boundary curves, you solve the system of corresponding ___.",
+          "blanks": [
+            {
+              "accept": [
+                "equations"
+              ]
+            }
+          ],
+          "hints": [
+            "Set the $y$ expressions equal.",
+            "It's the same as solving a system of equations."
+          ],
+          "feedbackIfWrong": "You solve the system of corresponding equations."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "In the example, what is the $x$-coordinate of the left intersection point? (Enter a number)",
+          "answer": "-1",
+          "hints": [
+            "It's $(-1,0)$.",
+            "The negative one."
+          ],
+          "feedbackIfWrong": "The $x$-coordinate is $-1$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "When both boundaries are solid, intersection points that satisfy the inequalities are drawn as ___ dots.",
+          "blanks": [
+            {
+              "accept": [
+                "solid",
+                "closed"
+              ]
+            }
+          ],
+          "hints": [
+            "Opposite of open.",
+            "Meaning they are included."
+          ],
+          "feedbackIfWrong": "Solid (or closed) dots."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-application",
+      "title": "Blueprint Aid – Real‑Life Feasible Region",
+      "teacherCues": [
+        "Pose: A student works at a library (\\$8/hr) and a café (\\$10/hr). They can work at most 20 hours a week and need to earn at least \\$160. Write inequalities.",
+        "Graph the system and identify the feasible region."
+      ],
+      "discoveryHook": {
+        "scenario": "You need to earn at least \\$160 a week but can work at most 20 hours between two jobs. The system $x + y \\le 20$, $8x + 10y \\ge 160$, $x \\ge 0$, $y \\ge 0$ defines all possible schedules. The blueprint helps you find the feasible region and its corner points."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Let $x$ = hours at library (\\$8/hr), $y$ = hours at café (\\$10/hr). Constraints: $x + y \\le 20$ (total hours), $8x + 10y \\ge 160$ (earnings), $x \\ge 0$, $y \\ge 0$ (non‑negative).",
+          "[[imp:Solve]]: Graph each boundary. The feasible region is the quadrilateral (or triangle) where all inequalities overlap. Find vertices by solving boundary pairs.",
+          "[[imp:Conclude]]: The vertices are $(0,16)$, $(0,20)$, and $(20,0)$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Work Schedule Constraints",
+            "headers": [
+              "Constraint",
+              "Inequality",
+              "Boundary"
+            ],
+            "rows": [
+              {
+                "0": "Total hours",
+                "1": "$x + y \\le 20$",
+                "2": "$x + y = 20$ (solid)"
+              },
+              {
+                "0": "Earnings",
+                "1": "$8x + 10y \\ge 160$",
+                "2": "$8x + 10y = 160$ (solid)"
+              },
+              {
+                "0": "Non‑negative",
+                "1": "$x \\ge 0$, $y \\ge 0$",
+                "2": "$x = 0$, $y = 0$ (solid)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Finding Vertices",
+          "formula": "Solve pairs of boundary equations to get corner points.",
+          "notes": [
+            "Check each corner against all inequalities.",
+            "The feasible region is the set of all possible $(x,y)$ satisfying constraints."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Set up the inequalities",
+          "prompt": "Write the system for the work schedule problem.",
+          "steps": [
+            "Let $x$ = hours at library, $y$ = hours at café.",
+            "Total hours: $x + y \\le 20$.",
+            "Earnings: $8x + 10y \\ge 160$.",
+            "Non‑negative: $x \\ge 0$, $y \\ge 0$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Graph and find vertices",
+          "prompt": "Work with a partner to graph the system and find the vertices of the feasible region.",
+          "peerPrompt": "Draw the lines, shade, and solve the pairs: $x=0$ with each, $y=0$ with each, and the two sloping lines together.",
+          "minLength": 2,
+          "steps": [
+            "Draw $x=0$ (vertical), $y=0$ (horizontal), $x+y=20$ (line from $(0,20)$ to $(20,0)$), $8x+10y=160$ (line from $(0,16)$ to $(20,0)$).",
+            "Shade: $x \\ge 0$ right, $y \\ge 0$ up, $x+y \\le 20$ below, $8x+10y \\ge 160$ above.",
+            "Vertices: $(0,16)$ (intersection $x=0$, $8x+10y=160$), $(0,20)$ (intersection $x=0$, $x+y=20$), $(20,0)$ (intersection $x+y=20$ and $8x+10y=160$). Check each satisfies all inequalities."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Interpret",
+          "prompt": "What does the point $(10,10)$ represent? Is it in the feasible region?",
+          "steps": [
+            "$(10,10)$: $10+10=20 \\le 20$, earnings $8(10)+10(10)=180 \\ge 160$. Yes, it's feasible.",
+            "It means 10 hours at each job."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check corners against all inequalities",
+        "body": "A point found from two boundaries might violate a third inequality. For example, $(0,20)$ satisfies $x \\ge 0$, $y \\ge 0$, $x+y=20$, and $8(0)+10(20)=200 \\ge 160$, so it's valid. Always test."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the work problem, the total hours constraint is $x + y \\le$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "20"
+              ]
+            }
+          ],
+          "hints": [
+            "The maximum hours per week.",
+            "Given as 20."
+          ],
+          "feedbackIfWrong": "20 hours."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is the $y$-intercept of the earnings line $8x + 10y = 160$? (Enter a number)",
+          "answer": "16",
+          "hints": [
+            "Set $x=0$.",
+            "$10y = 160$ → $y = 16$."
+          ],
+          "feedbackIfWrong": "The $y$-intercept is $16$."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "In the feasible region, the vertex where both $x$ and $y$ are positive and on the hours line and earnings line is $(20,___)$.",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "Solve $x+y=20$ and $8x+10y=160$.",
+            "Subtract $8x+8y=160$ from $8x+10y=160$ → $2y=0$ → $y=0$."
+          ],
+          "feedbackIfWrong": "The vertex is $(20,0)$."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A farmer has 100 acres. Corn costs \\$200/acre and wheat \\$150/acre. The budget is \\$18,000. Write the system for acres $x$ (corn) and $y$ (wheat) and find the vertices of the feasible region.",
+        "type": "short-answer",
+        "answer": "(0,100), (60,40), (90,0)",
+        "hints": [
+          "Constraints: $x \\ge 0$, $y \\ge 0$, $x + y \\le 100$, $200x + 150y \\le 18000$.",
+          "Solve boundaries: $x=0$ with $x+y=100$ → $(0,100)$; $y=0$ with $200x+150y=18000$ → $(90,0)$; $x+y=100$ and $200x+150y=18000$ → $x=60$, $y=40$."
+        ],
+        "feedbackIfWrong": "The feasible region vertices are $(0,100)$, $(60,40)$, and $(90,0)$."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

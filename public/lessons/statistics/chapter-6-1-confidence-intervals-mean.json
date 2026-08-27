@@ -1,0 +1,782 @@
+{
+  "schemaVersion": 2,
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "questions": [
+        {
+          "prompt": "A single value estimate for a population parameter is called a ___ estimate.",
+          "type": "fill-blank",
+          "id": "q1-1",
+          "hints": [
+            "It's a dot on the number line.",
+            "Not an interval."
+          ],
+          "feedbackIfWrong": "A single value is a point estimate.",
+          "blanks": [
+            {
+              "accept": [
+                "point",
+                "Point"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "The sample mean $\\bar{x}$ is the point estimate for $\\mu$.",
+          "answer": "sample mean",
+          "id": "q1-2",
+          "prompt": "What is the point estimate for the population mean $\\mu$?",
+          "type": "short-answer",
+          "answers": [
+            "sample mean",
+            "x-bar",
+            "$\\bar{x}$",
+            "x̄"
+          ],
+          "hints": [
+            "It's the statistic we compute from the sample.",
+            "Denoted by x with a bar."
+          ]
+        },
+        {
+          "prompt": "True or False: The sample mean $\\bar{x}$ is always exactly equal to the population mean $\\mu$.",
+          "hints": [
+            "Think about sampling variability.",
+            "If you take another sample, will the mean be the same?"
+          ],
+          "answer": "False",
+          "answers": [
+            "False",
+            "false"
+          ],
+          "id": "q1-3",
+          "type": "short-answer",
+          "feedbackIfWrong": "False. $\\bar{x}$ varies from sample to sample and almost never equals $\\mu$ exactly."
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'If I take a sample of 40 Facebook users and find the average number of friends is 130.8, what can I say about the average for ALL users?'",
+        "Write 'x̄ = 130.8' and explain this is a point estimate — a single best guess for μ."
+      ],
+      "discoveryHook": {
+        "scenario": "A social media company wants to know the average number of friends across all its users. It randomly surveys 40 users and gets a mean of 130.8. That's a point estimate — but how close is it to the truth? To answer that, we'll build an interval around it."
+      },
+      "id": "point-estimate",
+      "confusionCorner": {
+        "body": "An unbiased estimator like $\\bar{x}$ is correct 'on average' over many samples, but any single sample's mean can be off. [[imp:The point estimate is our best single guess, but we need a margin of error to know how far off it might be.]]",
+        "title": "Unbiased Does Not Mean Exact"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Point Estimate Example (n = 40 Facebook users)",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Sample mean $\\bar{x}$",
+                "1": "$130.8$ friends"
+              },
+              {
+                "0": "Population mean $\\mu$",
+                "1": "Unknown — estimated by $\\bar{x}$"
+              }
+            ],
+            "headers": [
+              "Statistic",
+              "Value"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$\\bar{x}$",
+              "meaning": "sample mean — the single best guess for $\\mu$",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$\\hat{\\mu} = \\bar{x} = \\frac{\\sum x}{n}$$",
+          "title": "Point Estimate of $\\mu$"
+        },
+        "explanation": [
+          "A [[kw:point estimate]] is a single value used to estimate a population parameter.",
+          "The best point estimate of the population mean $\\mu$ is the sample mean $\\bar{x}$.",
+          "The sample mean is an [[imp:unbiased estimator]]: the average of all possible sample means equals $\\mu$.",
+          "However, a point estimate alone gives no indication of how accurate it is. The probability that $\\bar{x}$ equals $\\mu$ exactly is essentially zero.",
+          "To reflect accuracy, we use an [[kw:interval estimate]]—a range of values that likely contains $\\mu$."
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "A random sample of 40 Facebook users shows a total of 5,232 friends. Find the point estimate for the population mean number of friends.",
+          "role": "guided",
+          "title": "Example A – Computing a Point Estimate",
+          "steps": [
+            "Compute the sample mean: $\\bar{x} = \\frac{5232}{40} = 130.8$.",
+            "The point estimate for $\\mu$ is $130.8$ friends.",
+            "We do not expect $\\mu$ to be exactly 130.8, but it is our best single guess."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "title": "Example B – Why Not Just a Point Estimate?",
+          "steps": [
+            "Different samples give different sample means due to sampling variability.",
+            "A single point estimate doesn't reveal how much the estimate might vary.",
+            "An interval estimate gives a range of plausible values, which is more informative."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If I take another sample of 40 users, will I get exactly 130.8 again? Why or why not?",
+          "prompt": "Explain to a partner why reporting only a point estimate can be misleading."
+        },
+        {
+          "steps": [
+            "$\\bar{x} = \\frac{3891}{30} = 129.7$.",
+            "The point estimate is $129.7$ friends.",
+            "Notice it's slightly different from 130.8 — that's sampling variation."
+          ],
+          "prompt": "A second random sample of 30 users has a total of 3,891 friends. Find the point estimate of $\\mu$.",
+          "title": "Example C – Your Turn",
+          "role": "independent"
+        }
+      ],
+      "title": "Point Estimates"
+    },
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "95% confidence → $z_c = 1.96$.",
+            "Since $n \\ge 30$, use $s$ in place of $\\sigma$: $E = 1.96 \\cdot \\frac{53.0}{\\sqrt{40}}$.",
+            "$\\frac{53.0}{6.3249} \\approx 8.38$. $E = 1.96 \\times 8.38 \\approx 16.4$.",
+            "The margin of error is about $16.4$ friends."
+          ],
+          "title": "Example A – Computing the Margin of Error",
+          "prompt": "Facebook friends: $n=40$, $\\bar{x}=130.8$, $s \\approx 53.0$. Find the margin of error for 95% confidence."
+        },
+        {
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If you want to be more confident, do you need a wider or narrower interval? Why?",
+          "title": "Example B – What Does $z_c$ Do?",
+          "role": "peer-explain",
+          "steps": [
+            "Higher confidence means we want to be more certain the interval contains $\\mu$.",
+            "To increase certainty, we must capture a larger area under the normal curve.",
+            "A larger area requires $z_c$ to be larger (e.g., 2.575 for 99% vs. 1.96 for 95%).",
+            "This makes the margin of error larger, widening the interval."
+          ],
+          "minLength": 2,
+          "prompt": "Explain to a partner: Why is $z_c$ larger for higher confidence levels?"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Google Sheets",
+          "steps": [
+            "Use `=CONFIDENCE.NORM(0.05, 53, 40)`. (0.05 = 1 - 0.95.)",
+            "The result is approximately 16.4, matching our manual calculation.",
+            "Alternatively, compute directly: `=1.96 * 53 / SQRT(40)`."
+          ],
+          "prompt": "In Google Sheets, how can you find the margin of error for 95% confidence, $s=53$, $n=40$?"
+        }
+      ],
+      "title": "Margin of Error and Critical Values",
+      "confusionCorner": {
+        "body": "In practice, $\\sigma$ is rarely known. When the sample size is at least 30, the sample standard deviation $s$ is a good substitute, and the Central Limit Theorem ensures normality. [[imp:If $n < 30$ and $\\sigma$ is unknown, a different method (t‑distribution) is needed.]]",
+        "title": "$s$ Replaces $\\sigma$ Only When $n \\ge 30$"
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:margin of error]] $E$ is the maximum likely difference between the sample mean and the population mean, given a specified level of confidence.",
+          "Formula: $E = z_c \\cdot \\frac{\\sigma}{\\sqrt{n}}$ (use $s$ in place of $\\sigma$ if $n \\ge 30$ and $\\sigma$ is unknown).",
+          "$z_c$ is the [[kw:critical value]] — the z‑score that captures the middle $c$ of the standard normal distribution. Common values:",
+          "- 90% confidence: $z_c = 1.645$",
+          "- 95% confidence: $z_c = 1.96$",
+          "- 99% confidence: $z_c = 2.575$",
+          "The margin of error decreases when: confidence level decreases, $\\sigma$ decreases, or $n$ increases."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Common Critical Values $z_c$",
+            "variant": "colorful",
+            "headers": [
+              "Confidence Level $c$",
+              "$\\alpha = 1-c$",
+              "Area in each tail",
+              "$z_c$"
+            ],
+            "rows": [
+              {
+                "0": "90%",
+                "1": "0.10",
+                "2": "0.05",
+                "3": "1.645"
+              },
+              {
+                "0": "95%",
+                "1": "0.05",
+                "2": "0.025",
+                "3": "1.96"
+              },
+              {
+                "0": "99%",
+                "1": "0.01",
+                "2": "0.005",
+                "3": "2.575"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$z_c$",
+              "meaning": "critical value from standard normal for confidence level $c$",
+              "tone": "core"
+            },
+            {
+              "tone": "subtle",
+              "meaning": "population standard deviation (or sample $s$ if $n \\ge 30$)",
+              "symbol": "$\\sigma$"
+            }
+          ],
+          "formula": "$$E = z_c \\cdot \\frac{\\sigma}{\\sqrt{n}} \\;\\;\\left(\\text{or } s \\text{ when } n \\ge 30\\right)$$",
+          "title": "Margin of Error"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "To build a confidence interval, we need to know how far from the point estimate the true mean might be. The margin of error combines three things: how confident we want to be, the variability in the population, and the sample size."
+      },
+      "id": "margin-of-error",
+      "questions": [
+        {
+          "feedbackIfWrong": "$z_c = 1.96$ for 95% confidence.",
+          "id": "q2-1",
+          "prompt": "For a 95% confidence level, the critical value $z_c$ is ___.",
+          "hints": [
+            "This is the z‑score that leaves 2.5% in each tail.",
+            "Often used in polls with a margin of error."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "1.96",
+                "1.96"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q2-2",
+          "hints": [
+            "$E = 1.645 \\times 10 / \\sqrt{50}$.",
+            "$10/\\sqrt{50} \\approx 1.414$, times 1.645 ≈ ?"
+          ],
+          "feedbackIfWrong": "$E \\approx 1.645 \\times 1.414 = 2.33$.",
+          "prompt": "If $n=50$, $s=10$, and $c=90\\%$ ($z_c=1.645$), what is the margin of error? (Round to two decimals.)",
+          "type": "short-answer",
+          "answer": "2.33",
+          "answers": [
+            "2.33",
+            "2.33"
+          ]
+        },
+        {
+          "prompt": "Which would produce a larger margin of error: 90% confidence or 99% confidence? (Answer: 99%)",
+          "answers": [
+            "99%",
+            "99 percent",
+            "ninety-nine"
+          ],
+          "feedbackIfWrong": "99% confidence gives a larger margin of error because $z_c$ is larger.",
+          "hints": [
+            "Higher confidence requires a wider interval.",
+            "Compare $z_c$ values: 1.645 vs. 2.575."
+          ],
+          "answer": "99%",
+          "type": "short-answer",
+          "id": "q2-3"
+        }
+      ],
+      "teacherCues": [
+        "Draw a bell curve. Shade the middle 95%. Label the boundaries -1.96 and 1.96. Ask: 'What do these numbers represent?'",
+        "Write the formula $E = z_c \\cdot \\frac{\\sigma}{\\sqrt{n}}$ and explain each part."
+      ]
+    },
+    {
+      "confusionCorner": {
+        "title": "Confidence Level vs. Probability",
+        "body": "The confidence level describes the long‑run success rate of the method, not the probability that a particular interval contains $\\mu$. [[imp:Once the interval is calculated, it either contains $\\mu$ or it doesn't. We say 'confident', not 'probable'.]]"
+      },
+      "title": "Constructing a Confidence Interval for $\\mu$",
+      "id": "constructing-confidence-intervals",
+      "teacherCues": [
+        "Write the confidence interval formula: $\\bar{x} - E < \\mu < \\bar{x} + E$. Walk through Example 3 with the Facebook data.",
+        "Emphasize: 'We are 95% confident the true mean lies in this interval.'"
+      ],
+      "discoveryHook": {
+        "scenario": "Now we combine the point estimate and margin of error to build a range that likely contains the true population mean. This confidence interval gives us a practical way to say 'we're 95% sure the average is between 114.4 and 147.2 friends.'"
+      },
+      "examples": [
+        {
+          "title": "Example A – Full Construction",
+          "prompt": "Facebook: $n=40$, $\\bar{x}=130.8$, $s=53.0$. Construct a 95% confidence interval.",
+          "role": "guided",
+          "steps": [
+            "Check: $n=40 \\ge 30$, so we can use $s$. $z_c = 1.96$.",
+            "$E = 1.96 \\times 53.0 / \\sqrt{40} \\approx 16.4$.",
+            "Lower limit = $130.8 - 16.4 = 114.4$. Upper = $130.8 + 16.4 = 147.2$.",
+            "We are 95% confident that the true mean number of friends is between 114.4 and 147.2."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Once the interval is computed, $\\mu$ is either in it or not — it's not random.",
+            "The 95% confidence refers to the method: if we repeated the process many times, 95% of the intervals would capture $\\mu$.",
+            "So we say 'We are 95% confident', not 'There is a 95% probability'."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why can't we attach a probability to a specific interval after it's computed?",
+          "prompt": "Is it correct to say 'There is a 95% chance that $\\mu$ lies between 114.4 and 147.2'? Explain.",
+          "title": "Example B – Interpreting Confidence"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "First find $E$: `=CONFIDENCE.NORM(0.01, 53, 40)` returns about 21.6.",
+            "Lower = `130.8 - 21.6 = 109.2`; upper = `130.8 + 21.6 = 152.4`.",
+            "The 99% confidence interval is (109.2, 152.4) — wider than the 95% interval."
+          ],
+          "prompt": "Use Google Sheets to find a 99% confidence interval for the same Facebook data.",
+          "title": "Example C – Google Sheets"
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "A confidence interval for $\\mu$ is centered at the ___ mean $\\bar{x}$.",
+          "feedbackIfWrong": "The interval is centered at the sample mean $\\bar{x}$.",
+          "hints": [
+            "It's the point estimate.",
+            "Denoted by x‑bar."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "sample",
+                "Sample"
+              ]
+            }
+          ],
+          "id": "q3-1"
+        },
+        {
+          "hints": [
+            "Subtract and add the margin of error.",
+            "50 – 3 and 50 + 3."
+          ],
+          "answers": [
+            "(47, 53)",
+            "47 to 53",
+            "47 < μ < 53"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "The interval is (47, 53) or 47 < μ < 53.",
+          "id": "q3-2",
+          "prompt": "If $\\bar{x}=50$, $E=3$, what is the 95% confidence interval? (Write as (lower, upper).)",
+          "answer": "(47, 53)"
+        },
+        {
+          "feedbackIfWrong": "The interval width increases because $z_c$ and thus $E$ get larger.",
+          "answers": [
+            "increase",
+            "increases"
+          ],
+          "type": "short-answer",
+          "answer": "increase",
+          "hints": [
+            "Higher confidence means wider interval.",
+            "Think about $z_c$ getting larger."
+          ],
+          "id": "q3-3",
+          "prompt": "If we increase the confidence level from 90% to 99%, does the width of the interval increase or decrease?"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\bar{x} - z_c \\frac{s}{\\sqrt{n}} < \\mu < \\bar{x} + z_c \\frac{s}{\\sqrt{n}}$$",
+          "title": "Confidence Interval for $\\mu$ (Large Sample)",
+          "legend": [
+            {
+              "symbol": "Conditions",
+              "tone": "core",
+              "meaning": "$n \\ge 30$ or population is normal with known $\\sigma$"
+            }
+          ]
+        },
+        "explanation": [
+          "A [[kw:confidence interval]] for the population mean $\\mu$ is of the form: $\\bar{x} - E < \\mu < \\bar{x} + E$.",
+          "Steps to construct: (1) Find the sample mean $\\bar{x}$ and sample size $n$. (2) If $n \\ge 30$, use sample standard deviation $s$ for $\\sigma$. (3) Determine the critical value $z_c$ for the desired confidence level. (4) Compute the margin of error $E = z_c \\cdot \\frac{s}{\\sqrt{n}}$. (5) Form the interval.",
+          "[[imp:Interpretation]]: If many samples are taken and a $c$% confidence interval is computed from each, about $c$% of them will contain $\\mu$. We do not say 'there is a $c$% probability that $\\mu$ is in this particular interval.'"
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Component",
+              "Value"
+            ],
+            "rows": [
+              {
+                "0": "Sample mean $\\bar{x}$",
+                "1": "$130.8$"
+              },
+              {
+                "0": "Margin of error $E$",
+                "1": "$16.4$"
+              },
+              {
+                "0": "Lower limit $\\bar{x} - E$",
+                "1": "$114.4$"
+              },
+              {
+                "0": "Upper limit $\\bar{x} + E$",
+                "1": "$147.2$"
+              },
+              {
+                "0": "Confidence interval",
+                "1": "$(114.4, 147.2)$ or $130.8 \\pm 16.4$"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "95% Confidence Interval for Facebook Friends"
+          }
+        ]
+      }
+    },
+    {
+      "confusionCorner": {
+        "body": "Even if the calculation yields $n = 55.1$, you must round up to 56. Rounding down would give a slightly smaller sample that may not achieve the desired precision. [[imp:Always round up to ensure the margin of error is not exceeded.]]",
+        "title": "Always Round Up!"
+      },
+      "teacherCues": [
+        "Ask: 'How many Facebook users do I need to survey to estimate the mean number of friends within 7 friends, with 95% confidence?'",
+        "Derive the formula $n = (z_c \\sigma / E)^2$ from the margin of error formula."
+      ],
+      "id": "sample-size",
+      "title": "Determining Minimum Sample Size",
+      "concept": {
+        "explanation": [
+          "Given a desired margin of error $E$ and confidence level $c$, the minimum sample size needed to estimate $\\mu$ is: $n = \\left( \\frac{z_c \\cdot \\sigma}{E} \\right)^2$.",
+          "If $\\sigma$ is unknown, use a preliminary estimate $s$ from a prior study or pilot sample of at least 30.",
+          "[[imp:Always round up]] to the nearest whole number, regardless of the decimal part.",
+          "The required sample size increases when: confidence level increases, $\\sigma$ increases, or desired margin of error decreases."
+        ],
+        "formulaCard": {
+          "formula": "$$n = \\left( \\frac{z_c \\cdot \\sigma}{E} \\right)^2$$",
+          "legend": [
+            {
+              "meaning": "maximum desired margin of error",
+              "symbol": "$E$",
+              "tone": "core"
+            },
+            {
+              "tone": "core",
+              "meaning": "always round $n$ up to the next integer",
+              "symbol": "Round up"
+            }
+          ],
+          "title": "Minimum Sample Size for Estimating $\\mu$"
+        },
+        "visuals": [
+          {
+            "title": "Sample Size Examples (95% confidence, $z_c=1.96$)",
+            "type": "table",
+            "headers": [
+              "$\\sigma$ (or $s$)",
+              "$E$ (desired error)",
+              "Calculation",
+              "Minimum $n$"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$53.0$",
+                "1": "$7$",
+                "2": "$(1.96 \\times 53 / 7)^2 = (14.84)^2 = 220.2$",
+                "3": "221"
+              },
+              {
+                "0": "$53.0$",
+                "1": "$10$",
+                "2": "$(1.96 \\times 53 / 10)^2 = (10.388)^2 = 107.9$",
+                "3": "108"
+              },
+              {
+                "0": "$2.8$",
+                "1": "$0.5$",
+                "2": "$(1.96 \\times 2.8 / 0.5)^2 = (10.976)^2 = 120.5$",
+                "3": "121"
+              }
+            ]
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Before collecting data, researchers often need to know how big a sample they'll need. If we specify the desired margin of error and confidence level, we can solve for the minimum sample size — saving time and money."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "margin",
+                "Margin"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the maximum likely difference between $\\bar{x}$ and $\\mu$.",
+            "Two words, first is 'margin'."
+          ],
+          "prompt": "The minimum sample size formula is $n = (z_c \\cdot \\sigma / E)^2$. The value $E$ is the desired ___ of error.",
+          "feedbackIfWrong": "$E$ is the desired margin of error."
+        },
+        {
+          "id": "q4-2",
+          "prompt": "If $z_c=1.96$, $\\sigma=10$, and $E=2$, find the minimum sample size.",
+          "hints": [
+            "$n = (1.96 \\times 10 / 2)^2 = (9.8)^2 = 96.04$.",
+            "Round up from 96.04."
+          ],
+          "answer": "97",
+          "answers": [
+            "97",
+            "ninety-seven"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "$(9.8)^2 = 96.04$, round up to 97."
+        },
+        {
+          "id": "q4-3",
+          "prompt": "If you want a smaller margin of error, should you increase or decrease the sample size?",
+          "hints": [
+            "Smaller error requires more precision.",
+            "More data gives more precision."
+          ],
+          "answer": "increase",
+          "feedbackIfWrong": "To reduce the margin of error, you must increase the sample size.",
+          "type": "short-answer",
+          "answers": [
+            "increase",
+            "increases"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A – Facebook Sample Size",
+          "steps": [
+            "$z_c = 1.96$, $\\sigma \\approx 53.0$, $E = 7$.",
+            "$n = (1.96 \\times 53 / 7)^2 = (14.84)^2 = 220.2$.",
+            "Round up: at least $221$ users are needed.",
+            "The initial 40 users are not enough; 181 more need to be sampled."
+          ],
+          "prompt": "How many users must be sampled to estimate the mean number of friends within 7 friends, with 95% confidence? Use $s \\approx 53.0$ as an estimate of $\\sigma$.",
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "prompt": "If the desired margin of error is reduced from 7 to 5 friends, does the required sample size increase or decrease? Why?",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Look at the formula — why does a smaller $E$ make $n$ larger?",
+          "steps": [
+            "The formula has $E$ in the denominator: $n = (z_c \\sigma / E)^2$.",
+            "A smaller $E$ makes the fraction $z_c \\sigma / E$ larger.",
+            "Squaring a larger number gives a much larger $n$.",
+            "Intuitively, to get a more precise estimate, you need more data."
+          ],
+          "title": "Example B – Tighter Error Requires Larger Sample",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "A cheese company wants to estimate mean cholesterol content within 0.5 mg, with 95% confidence. Assume $\\sigma = 2.8$ mg. Find the minimum sample size.",
+          "title": "Example C – Cholesterol Testing",
+          "steps": [
+            "$n = (1.96 \\times 2.8 / 0.5)^2 = (10.976)^2 = 120.47$.",
+            "Round up to $121$.",
+            "If 99% confidence were used instead, $z_c = 2.575$, and $n$ would be larger."
+          ],
+          "role": "independent"
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Display a flowchart: Given $\\bar{x}, s, n, c$ → find $z_c$ → compute $E$ → form interval. Or given $E, c, \\sigma$ → compute $n$.",
+        "Walk through a complete problem: 'A random sample of 50 gas prices has mean $2.34 and s=$0.32. Construct a 90% confidence interval.'"
+      ],
+      "discoveryHook": {
+        "scenario": "Whether you're constructing a confidence interval or planning a sample size, a blueprint helps you break down the problem: understand the given information, solve using the correct formulas, and conclude with a clear interpretation."
+      },
+      "questions": [
+        {
+          "prompt": "In the blueprint for a confidence interval, after computing the margin of error $E$, you form the interval by adding and subtracting $E$ from the ___.",
+          "id": "q5-1",
+          "hints": [
+            "It's the point estimate.",
+            "The center of the interval."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "sample mean",
+                "x-bar",
+                "$\\bar{x}$"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The interval is centered at the sample mean $\\bar{x}$.",
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "A 95% confidence interval is (12.0, 14.8). What is the margin of error?",
+          "feedbackIfWrong": "$(14.8 - 12.0)/2 = 1.4$.",
+          "hints": [
+            "The width of the interval is $2E$.",
+            "Half of the distance from 12.0 to 14.8."
+          ],
+          "type": "short-answer",
+          "answer": "1.4",
+          "id": "q5-2",
+          "answers": [
+            "1.4",
+            "1.4"
+          ]
+        },
+        {
+          "id": "q5-3",
+          "prompt": "If the required sample size formula yields $n = 72.2$, what minimum sample size should you use?",
+          "hints": [
+            "Always round up, even if the decimal is less than 0.5.",
+            "72.2 goes up to 73."
+          ],
+          "answers": [
+            "73",
+            "seventy-three"
+          ],
+          "answer": "73",
+          "feedbackIfWrong": "Round up to 73.",
+          "type": "short-answer"
+        }
+      ],
+      "title": "Blueprint Aid: Solving Confidence Interval and Sample Size Problems",
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "CEILING.MATH",
+              "meaning": "rounds up to the nearest integer",
+              "tone": "subtle"
+            }
+          ],
+          "formula": "$$E = \\text{CONFIDENCE.NORM}(1-c, s, n)$$ $$\\text{Interval: } \\bar{x} - E \\text{ to } \\bar{x} + E$$ $$n = \\text{CEILING.MATH}((z_c \\cdot s / E)^2)$$",
+          "title": "Google Sheets Functions"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Goal",
+              "Given",
+              "Key Formula"
+            ],
+            "rows": [
+              {
+                "0": "Construct interval",
+                "1": "$\\bar{x}, s, n, c$",
+                "2": "$\\bar{x} \\pm z_c \\frac{s}{\\sqrt{n}}$"
+              },
+              {
+                "0": "Find sample size",
+                "1": "$E, \\sigma, c$",
+                "2": "$n = \\left(\\frac{z_c \\sigma}{E}\\right)^2$"
+              }
+            ],
+            "type": "table",
+            "title": "Blueprint Decision Flow"
+          }
+        ],
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Identify whether you are constructing an interval or finding a sample size. Note the given values: $\\bar{x}$, $s$ (or $\\sigma$), $n$, $c$, and possibly $E$.",
+          "2. [[kw:Solve]]: For a confidence interval: find $z_c$ for the given $c$, compute $E = z_c \\cdot s/\\sqrt{n}$ (assuming $n \\ge 30$), and form $\\bar{x} \\pm E$. For sample size: use $n = (z_c \\sigma / E)^2$, rounding up.",
+          "3. [[kw:Conclude]]: For an interval, state 'We are $c$% confident that $\\mu$ lies between ___ and ___.' For sample size, state the minimum number required. Check if conditions are met ($n \\ge 30$ or normal population with known $\\sigma$)."
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "A random sample of 48 gas prices has mean $2.34 and $s=0.32$. Construct a 90% confidence interval for the population mean price.",
+          "title": "Example A – Blueprint for a Confidence Interval",
+          "role": "guided",
+          "steps": [
+            "Understand: $n=48 \\ge 30$, $\\bar{x}=2.34$, $s=0.32$, $c=0.90$, $z_c=1.645$.",
+            "Solve: $E = 1.645 \\times 0.32 / \\sqrt{48} \\approx 1.645 \\times 0.0462 = 0.076$.",
+            "Interval: $2.34 - 0.076 = 2.264$, $2.34 + 0.076 = 2.416$.",
+            "Conclude: We are 90% confident that the true mean gas price is between \\$2.26 and \\$2.42."
+          ]
+        },
+        {
+          "steps": [
+            "Understand: $E=5$, $c=0.95$ → $z_c=1.96$, $\\sigma \\approx s = 15.50$.",
+            "Solve: $n = (1.96 \\times 15.50 / 5)^2 = (6.076)^2 = 36.92$.",
+            "Round up: minimum $n = 37$.",
+            "Rounding down to 36 would give a slightly larger margin of error than desired."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we always round the sample size up, not to the nearest integer?",
+          "prompt": "We want to estimate the mean repair cost of a refrigerator within \\$5, with 95% confidence. A preliminary sample gives $s \\approx 15.50$. Find the minimum sample size.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "title": "Example B – Blueprint for Sample Size"
+        },
+        {
+          "steps": [
+            "$E$: `=CONFIDENCE.NORM(0.01, 15.50, 60)` → about 5.16.",
+            "Lower: $150 - 5.16 = 144.84$. Upper: $150 + 5.16 = 155.16$.",
+            "We are 99% confident the true mean repair cost is between \\$144.84 and \\$155.16."
+          ],
+          "role": "independent",
+          "prompt": "Use Google Sheets to construct a 99% confidence interval for mean repair cost: $\\bar{x}=150$, $s=15.50$, $n=60$.",
+          "title": "Example C – Google Sheets Confidence Interval"
+        }
+      ],
+      "id": "blueprint-confidence-intervals",
+      "confusionCorner": {
+        "title": "Check $n \\ge 30$ When Using $s$",
+        "body": "The methods in this section assume either the population is normal with known $\\sigma$, or the sample size is at least 30. If $n < 30$ and $\\sigma$ is unknown, use the $t$-distribution (Chapter 6.2). [[imp:Always check which case you're in before applying the formula.]]"
+      }
+    }
+  ],
+  "title": "Confidence Intervals for the Mean (Large Samples)",
+  "standards": [
+    "HSS.IC.B.4",
+    "HSS.IC.B.5"
+  ],
+  "id": "chapter-6-1-confidence-intervals-mean",
+  "presenterNotes": [
+    "Block 1: Emphasize that a point estimate is a single best guess but not perfect. The interval estimate concept is the bridge to confidence intervals.",
+    "Block 2: The critical value table should be memorized. Show how the margin of error combines confidence, variability, and sample size. The Google Sheets function CONFIDENCE.NORM is a helpful shortcut.",
+    "Block 3: Walk through the full construction carefully. Spend time on the correct interpretation of a confidence interval — it's a subtle but crucial point.",
+    "Block 4: The sample size formula is derived from the margin of error equation. Emphasize rounding up. Use real examples like cholesterol testing or paint can volumes.",
+    "Block 5: The blueprint provides a systematic approach for any problem. The flowchart helps students decide which formula to use. Remind them to check the condition $n \\ge 30$."
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

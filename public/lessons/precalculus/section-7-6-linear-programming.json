@@ -1,0 +1,730 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-7-6-linear-programming",
+  "title": "Linear Programming",
+  "blocks": [
+    {
+      "id": "intro-linear-programming",
+      "title": "Introduction to Linear Programming",
+      "teacherCues": [
+        "Write an objective function $z = 3x + 2y$ and a set of constraints. Ask: What do we mean by feasible region?",
+        "Explain that linear programming finds the maximum or minimum of $z$ subject to constraints. The optimal solution occurs at a vertex of the feasible region."
+      ],
+      "discoveryHook": {
+        "scenario": "A toy factory makes cars and trucks. Each car gives $3$ profit, each truck $2$. But you only have limited plastic and labor. Where do you set production to maximize profit? Linear programming finds that sweet spot."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Linear programming]] is a method to find the maximum or minimum value of a linear objective function $z = ax + by$ subject to linear inequality constraints.",
+          "The [[kw:feasible region]] is the set of all points that satisfy all constraints.",
+          "If an optimal solution exists, it occurs at a [[kw:vertex]] (corner point) of the feasible region.",
+          "Steps: 1. Graph the constraints; 2. Find vertices; 3. Evaluate $z$ at each vertex; 4. Choose the max/min."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Typical Constraints",
+            "headers": [
+              "Constraint",
+              "Meaning"
+            ],
+            "rows": [
+              {
+                "0": "$x \\ge 0$, $y \\ge 0$",
+                "1": "Non‑negative quantities"
+              },
+              {
+                "0": "$x + y \\le 100$",
+                "1": "Total limit"
+              },
+              {
+                "0": "$2x + y \\le 160$",
+                "1": "Resource limit"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Linear Programming Steps",
+          "formula": "1. Graph the constraint region.\n2. Find the vertices (intersection points of boundary lines).\n3. Evaluate the objective function $z = ax + by$ at each vertex.\n4. The largest/smallest $z$ value gives the optimum.",
+          "notes": [
+            "For a bounded region, both a maximum and minimum exist.",
+            "For an unbounded region, a max or min may not exist."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Maximize $z = 3x + 2y$",
+          "prompt": "Given constraints: $x \\ge 0$, $y \\ge 0$, $x + 2y \\le 4$, $x - y \\le 1$. Find the maximum of $z$.",
+          "steps": [
+            "Sketch the region. The vertices are: $(0,0)$, $(0,2)$ (from $x=0$, $x+2y=4$), $(2,1)$ (intersection $x+2y=4$ and $x-y=1$), $(1,0)$ (from $y=0$, $x-y=1$).",
+            "Evaluate $z$: $(0,0):0$; $(0,2):4$; $(2,1):8$; $(1,0):3$.",
+            "Maximum is $8$ at $(2,1)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why at a vertex?",
+          "prompt": "Explain to a partner: Why does the maximum of a linear objective function always occur at a corner point of the feasible region?",
+          "peerPrompt": "Imagine a line $z=3x+2y$ moving parallel. Where does it last touch the region?",
+          "minLength": 2,
+          "steps": [
+            "The objective function lines are parallel with slope $-3/2$.",
+            "As $z$ increases, the line shifts outward. The last point it touches before leaving the region is a vertex.",
+            "Thus the maximum (or minimum) is at a vertex."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick practice",
+          "prompt": "Find the minimum of $z = x + 3y$ subject to $x \\ge 0$, $y \\ge 0$, $x + y \\le 4$, $x \\le 3$.",
+          "steps": [
+            "Vertices: $(0,0)$, $(0,4)$, $(3,1)$ (intersection $x+y=4$ and $x=3$), $(3,0)$.",
+            "Evaluate: $0$, $12$, $6$, $3$. Minimum is $0$ at $(0,0)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Not all intersection points are vertices",
+        "body": "An intersection of two boundary lines may lie outside the feasible region. Check that it satisfies all constraints before including it."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "In linear programming, the function we want to maximize or minimize is called the ___ function.",
+          "blanks": [
+            {
+              "accept": [
+                "objective"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the goal.",
+            "Often named $z$ or $P$."
+          ],
+          "feedbackIfWrong": "It's the objective function."
+        },
+        {
+          "id": "q2",
+          "type": "fill-blank",
+          "prompt": "The optimal solution of a linear programming problem (if it exists) occurs at a ___ of the feasible region.",
+          "blanks": [
+            {
+              "accept": [
+                "vertex",
+                "corner",
+                "corner point"
+              ]
+            }
+          ],
+          "hints": [
+            "Intersection of boundaries.",
+            "A point where two lines meet."
+          ],
+          "feedbackIfWrong": "At a vertex (corner point)."
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "prompt": "In the example, what was the maximum value of $z = 3x + 2y$? (Enter a number)",
+          "answer": "8",
+          "hints": [
+            "Look at the vertex $(2,1)$.",
+            "$3(2)+2(1)=6+2$."
+          ],
+          "feedbackIfWrong": "The maximum value is $8$."
+        }
+      ]
+    },
+    {
+      "id": "solving-lp-examples",
+      "title": "Solving Linear Programming Problems",
+      "teacherCues": [
+        "Walk through a minimization problem: $z = 5x + 7y$ subject to constraints. Emphasize that you must find all vertices.",
+        "Show how to find vertices by solving boundary equations in pairs."
+      ],
+      "discoveryHook": {
+        "scenario": "A diet plan needs at least 6 units of vitamin A and 15 units of vitamin B. Two foods provide different amounts. Minimizing cost while meeting requirements is a linear programming problem."
+      },
+      "concept": {
+        "explanation": [
+          "For a [[kw:minimization]] problem, evaluate the objective function at all vertices and choose the smallest value.",
+          "Vertices are found by solving systems of two boundary equations at a time.",
+          "Sometimes a vertex may be at the intersection of two constraints like $x=0$ and $2x+3y=6$.",
+          "For an unbounded region, a maximum may not exist, but a minimum usually does (if the region is closed on one side)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Minimization Example",
+            "headers": [
+              "Vertex",
+              "$z = 5x + 7y$"
+            ],
+            "rows": [
+              {
+                "0": "$(0,2)$",
+                "1": "$5(0)+7(2)=14$ (min)"
+              },
+              {
+                "0": "$(0,4)$",
+                "1": "$28$"
+              },
+              {
+                "0": "$(1,5)$",
+                "1": "$40$"
+              },
+              {
+                "0": "$(6,3)$",
+                "1": "$51$"
+              },
+              {
+                "0": "$(5,0)$",
+                "1": "$25$"
+              },
+              {
+                "0": "$(3,0)$",
+                "1": "$15$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Finding Vertices",
+          "formula": "Solve pairs of boundary equations, e.g., $x=0$ and $2x+3y=6$ → $(0,2)$.",
+          "notes": [
+            "Use substitution or elimination.",
+            "Check that the point satisfies all constraints."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Minimize $z = 5x + 7y$",
+          "prompt": "Given constraints: $x \\ge 0$, $y \\ge 0$, $2x+3y \\ge 6$, $3x-y \\le 15$, $-x+y \\le 4$, $2x+5y \\le 27$. Find the minimum.",
+          "steps": [
+            "Find vertices by solving boundary pairs. The vertices are $(0,2)$, $(0,4)$, $(1,5)$, $(6,3)$, $(5,0)$, $(3,0)$.",
+            "Evaluate $z$: $(0,2):14$; $(0,4):28$; $(1,5):40$; $(6,3):51$; $(5,0):25$; $(3,0):15$.",
+            "Minimum is $14$ at $(0,2)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Same constraints, maximize",
+          "prompt": "Using the same vertices, find the maximum of $z = 5x + 7y$.",
+          "peerPrompt": "Just look at the values already computed. Which vertex gives the largest $z$?",
+          "minLength": 2,
+          "steps": [
+            "The largest $z$ is $51$ at $(6,3)$.",
+            "So maximum is $51$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick max",
+          "prompt": "Maximize $z = 12x + 8y$ subject to $5x+6y \\le 420$, $-x+6y \\le 240$, $-2x+y \\ge -100$, $x,y \\ge 0$.",
+          "steps": [
+            "Vertices (checking feasibility): $(0,40)$, $(60,20)$, $(0,0)$.",
+            "Evaluate: $(0,40):320$; $(60,20):880$; $(0,0):0$.",
+            "Maximum is $880$ at $(60,20)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Unbounded region — no max?",
+        "body": "If the feasible region is unbounded in the direction of increasing $z$, there may be no maximum value. However, a minimum may still exist."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "To find the vertices of a feasible region, you solve pairs of ___ equations.",
+          "blanks": [
+            {
+              "accept": [
+                "boundary"
+              ]
+            }
+          ],
+          "hints": [
+            "The lines that form the edges.",
+            "The equations where $\\le$ or $\\ge$ become $=$."
+          ],
+          "feedbackIfWrong": "Boundary equations."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "In the minimization example, the minimum value of $z = 5x + 7y$ was ___.",
+          "answer": "14",
+          "hints": [
+            "Look at the vertex $(0,2)$.",
+            "5(0)+7(2)=14."
+          ],
+          "feedbackIfWrong": "The minimum is 14."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "For a bounded feasible region, both a maximum and a ___ value of the objective function exist.",
+          "blanks": [
+            {
+              "accept": [
+                "minimum"
+              ]
+            }
+          ],
+          "hints": [
+            "The opposite of maximum.",
+            "The lowest value."
+          ],
+          "feedbackIfWrong": "Minimum."
+        }
+      ]
+    },
+    {
+      "id": "unbounded-regions",
+      "title": "Unbounded Regions",
+      "teacherCues": [
+        "Draw an unbounded region (e.g., a wedge). Ask: Can we maximize a linear function here? Not always.",
+        "Show that for $z=4x+2y$, the region allows $x$ to go to infinity, so no maximum exists, but a minimum does."
+      ],
+      "discoveryHook": {
+        "scenario": "A farmer can plant unlimited land, but costs must be covered. The feasible region is a wedge that goes on forever; maximizing something may be impossible because there is no upper bound."
+      },
+      "concept": {
+        "explanation": [
+          "An [[kw:unbounded region]] extends infinitely in some direction. A linear objective function may have no maximum (if it increases without bound) but may still have a minimum (if the region is closed on the other side).",
+          "Check whether the objective function can increase forever; if yes, no maximum exists.",
+          "Evaluate vertices for any existing optimum."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Unbounded Example",
+            "headers": [
+              "Vertex",
+              "$z = 4x + 2y$"
+            ],
+            "rows": [
+              {
+                "0": "$(1,4)$",
+                "1": "12"
+              },
+              {
+                "0": "$(2,1)$",
+                "1": "10 (minimum)"
+              },
+              {
+                "0": "$(4,0)$",
+                "1": "16"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Unbounded Region",
+          "formula": "If the region is unbounded and the objective function increases in that direction, the maximum does not exist.",
+          "notes": [
+            "Evaluate vertices to find minimum if region is closed in that direction.",
+            "Check larger and larger (x,0) to see if z grows without bound."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – No maximum",
+          "prompt": "Maximize $z = 4x + 2y$ subject to $x \\ge 0$, $y \\ge 0$, $x + 2y \\ge 4$, $3x + y \\ge 7$, $-x + 2y \\le 7$.",
+          "steps": [
+            "Sketch region: it's unbounded to the right and up. Vertices: $(1,4)$, $(2,1)$, $(4,0)$.",
+            "Evaluate: $(1,4):12$; $(2,1):10$; $(4,0):16$.",
+            "Can $z$ be larger? Take $(x,0)$ for $x>4$: $z=4x$, which goes to infinity. So no maximum.",
+            "Minimum is $10$ at $(2,1)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why no max?",
+          "prompt": "Explain why an unbounded region with a positive coefficient in the objective function might have no maximum.",
+          "peerPrompt": "Think about $z = 4x + 2y$. If you can increase $x$ without bound, what happens to $z$?",
+          "minLength": 2,
+          "steps": [
+            "If the region extends infinitely in the direction of increasing $x$ (or $y$), and the objective function's coefficient for that variable is positive, $z$ can grow without limit.",
+            "Thus no finite maximum exists."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Minimum exists?",
+          "prompt": "Does $z = 3x + 7y$ subject to $x+y \\ge 8$, $3x+5y \\ge 30$, $x \\ge 0$, $y \\ge 0$ have a minimum?",
+          "steps": [
+            "Region is unbounded upward. Vertices: $(0,6)$ (from $x=0$, $3x+5y=30$), $(5,3)$ (intersection $x+y=8$, $3x+5y=30$), $(8,0)$ (from $y=0$, $x+y=8$).",
+            "Evaluate: $(0,6):42$; $(5,3):36$; $(8,0):24$. Minimum is $24$ at $(8,0)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check direction of unboundedness",
+        "body": "If the region is unbounded, but the objective function would decrease in that direction, a maximum may still exist. Always test."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "If the feasible region extends infinitely upward and the objective function has a positive coefficient for $y$, the maximum value of $z$ ___ exist.",
+          "blanks": [
+            {
+              "accept": [
+                "does not",
+                "doesn't"
+              ]
+            }
+          ],
+          "hints": [
+            "$z$ grows without bound.",
+            "No finite maximum."
+          ],
+          "feedbackIfWrong": "Does not exist."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "In the unbounded example, what was the minimum value of $z = 4x + 2y$? (Enter a number)",
+          "answer": "10",
+          "hints": [
+            "Look at $(2,1)$.",
+            "4(2)+2(1)=8+2=10."
+          ],
+          "feedbackIfWrong": "The minimum is 10."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "Even if a region is unbounded, a ___ value of the objective function may still exist.",
+          "blanks": [
+            {
+              "accept": [
+                "minimum",
+                "maximum"
+              ]
+            }
+          ],
+          "hints": [
+            "Think of the wedge example.",
+            "If the region is closed in one direction, an optimum may exist."
+          ],
+          "feedbackIfWrong": "A minimum (or maximum) may still exist depending on the direction."
+        }
+      ]
+    },
+    {
+      "id": "application-candy",
+      "title": "Application – Profit Maximization",
+      "teacherCues": [
+        "Pose: A candy company makes creams ($1.50$ profit) and nuts ($2.00$ profit). Constraints: total ≤ 1200 boxes, nuts ≤ half of creams, creams ≤ 600 + 3×nuts.",
+        "Set up objective $P = 1.5x + 2y$ and constraints, then find vertices and maximize."
+      ],
+      "discoveryHook": {
+        "scenario": "A chocolatier wants to maximize profit from two types of boxes. Market limits and production capacity create a feasible region; linear programming shows the best mix."
+      },
+      "concept": {
+        "explanation": [
+          "Real-world problems: identify decision variables ($x$, $y$), write the objective (profit/cost), and translate constraints (limits, demands) into inequalities.",
+          "Solve the system of constraints to find feasible region and its vertices.",
+          "Evaluate the objective at each vertex, and choose the optimum.",
+          "Check that the solution makes sense (non‑negative, integer if needed)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Candy Problem Vertices",
+            "headers": [
+              "Vertex",
+              "Profit $P = 1.5x + 2y$"
+            ],
+            "rows": [
+              {
+                "0": "$(0,0)$",
+                "1": "0"
+              },
+              {
+                "0": "$(600,0)$",
+                "1": "900"
+              },
+              {
+                "0": "$(1050,150)$",
+                "1": "1875"
+              },
+              {
+                "0": "$(800,400)$",
+                "1": "2000 (max)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Translation to Inequalities",
+          "formula": "1. Total: $x + y \\le 1200$\n2. Nuts ≤ half creams: $y \\le \\frac{1}{2}x$ → $ -x + 2y \\le 0$\n3. Creams ≤ 600 + 3× nuts: $x \\le 600 + 3y$ → $x - 3y \\le 600$",
+          "notes": [
+            "Don't forget $x \\ge 0$, $y \\ge 0$.",
+            "Use vertices that are in the first quadrant and satisfy all constraints."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Set up and find vertices",
+          "prompt": "For the candy problem, find the vertices of the feasible region.",
+          "steps": [
+            "Constraints: $x+y \\le 1200$, $y \\le 0.5x$, $x \\le 600+3y$, $x,y \\ge 0$.",
+            "Find intersection of $x+y=1200$ and $y=0.5x$: $x+0.5x=1200$ → $1.5x=1200$ → $x=800$, $y=400$. Check $x \\le 600+3y$: $800 \\le 600+1200=1800$ OK.",
+            "Intersection of $x+y=1200$ and $x=600+3y$: $(1050,150)$.",
+            "Also vertices at intercepts: $(600,0)$ (from $x=600+3y$ with $y=0$), $(0,0)$.",
+            "So vertices: $(0,0)$, $(600,0)$, $(1050,150)$, $(800,400)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Maximize profit",
+          "prompt": "Compute $P = 1.5x + 2y$ at each vertex and find the maximum.",
+          "peerPrompt": "Work with a partner: calculate $P$ for the four vertices and decide which yields the highest profit.",
+          "minLength": 2,
+          "steps": [
+            "$(0,0):0$; $(600,0):900$; $(1050,150):1875$; $(800,400):2000$.",
+            "Maximum profit is $2000$ at $(800,400)$: 800 boxes of creams, 400 boxes of nuts."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Interpretation",
+          "prompt": "What does this solution tell the candy maker?",
+          "steps": [
+            "Produce 800 boxes of chocolate-covered creams and 400 boxes of chocolate-covered nuts per month.",
+            "The maximum monthly profit is $2000."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Boundary of $y \\le 0.5x$",
+        "body": "Be careful with the inequality direction: $y$ is less than or equal to half of $x$, so the region is below the line $y = 0.5x$."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "In the candy problem, the constraint 'nuts no more than half of creams' translates to $y \\le$ ___ $x$.",
+          "blanks": [
+            {
+              "accept": [
+                "0.5",
+                "1/2",
+                "half"
+              ]
+            }
+          ],
+          "hints": [
+            "Half of creams.",
+            "As a decimal: 0.5."
+          ],
+          "feedbackIfWrong": "$y \\le 0.5x$."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "How many boxes of creams yield the maximum profit? (Enter a number)",
+          "answer": "800",
+          "hints": [
+            "Look at the vertex with highest profit.",
+            "It's $(800,400)$."
+          ],
+          "feedbackIfWrong": "800 boxes of creams."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "The maximum monthly profit for the candy company is $___$ (enter the number without comma).",
+          "blanks": [
+            {
+              "accept": [
+                "2000"
+              ]
+            }
+          ],
+          "hints": [
+            "At $(800,400)$, $P=1200+800$.",
+            "Total is 2000."
+          ],
+          "feedbackIfWrong": "The maximum profit is $2000$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-lp",
+      "title": "Blueprint Aid – Full LP Problem",
+      "teacherCues": [
+        "Pose: Maximize $z = 5x + 4y$ subject to $x \\ge 0$, $y \\ge 0$, $x + y \\le 10$, $2x + y \\le 16$, $x + 3y \\le 24$.",
+        "Walk through Understand (identify constraints, graph region), Solve (find vertices, evaluate $z$), Conclude (state maximum)."
+      ],
+      "discoveryHook": {
+        "scenario": "A factory assembles two products with time constraints. Each unit of Product A takes 1 hour on machine 1 and 2 hours on machine 2; Product B takes 1 hour and 1 hour. Profit per unit is $5$ for A and $4$ for B. Find the production mix that maximizes profit within available hours."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: The constraints are $x + y \\le 10$ (machine 1 hours), $2x + y \\le 16$ (machine 2 hours), $x + 3y \\le 24$ (finishing time), and non‑negativity.",
+          "[[imp:Solve]]: Graph and find vertices: $(0,0)$, $(8,0)$ (from $y=0$, $2x+y=16$), $(6,4)$ (intersection $x+y=10$ and $2x+y=16$), $(3,7)$ (intersection $x+y=10$ and $x+3y=24$), $(0,8)$ (from $x=0$, $x+3y=24$). Evaluate $z = 5x + 4y$: $(0,0):0$; $(8,0):40$; $(6,4):46$; $(3,7):43$; $(0,8):32$.",
+          "[[imp:Conclude]]: Maximum $z = 46$ at $(6,4)$. So produce 6 units of A, 4 units of B."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Full LP Problem",
+            "headers": [
+              "Vertex",
+              "z = 5x + 4y"
+            ],
+            "rows": [
+              {
+                "0": "(0,0)",
+                "1": "0"
+              },
+              {
+                "0": "(8,0)",
+                "1": "40"
+              },
+              {
+                "0": "(6,4)",
+                "1": "46 (max)"
+              },
+              {
+                "0": "(3,7)",
+                "1": "43"
+              },
+              {
+                "0": "(0,8)",
+                "1": "32"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Blueprint Steps",
+          "formula": "1. List constraints.\n2. Graph and find region.\n3. Find all vertices.\n4. Compute objective at each vertex.\n5. Select the max/min.\n6. State the solution in context.",
+          "notes": [
+            "Check intercepts and intersections.",
+            "Ensure all constraints are satisfied."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand the constraints",
+          "prompt": "List the boundary lines for the constraints given above.",
+          "steps": [
+            "$x=0$, $y=0$, $x+y=10$, $2x+y=16$, $x+3y=24$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Find vertices",
+          "prompt": "Work with a partner to find the intersection points of the boundary lines that are in the feasible region.",
+          "peerPrompt": "Solve pairs of equations and check that the point satisfies all inequalities.",
+          "minLength": 2,
+          "steps": [
+            "Solve $x+y=10$ and $2x+y=16$: subtract → $x=6$, then $y=4$ → $(6,4)$.",
+            "Solve $x+y=10$ and $x+3y=24$: subtract → $2y=14$ → $y=7$, $x=3$ → $(3,7)$.",
+            "Intercepts: $y=0$ with $2x+y=16$ → $(8,0)$; $x=0$ with $x+3y=24$ → $(0,8)$; $(0,0)$.",
+            "All these satisfy all constraints."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude",
+          "prompt": "Find the maximum value of $z$.",
+          "steps": [
+            "Compute $z$ at each vertex as above. Max is $46$ at $(6,4)$.",
+            "So produce 6 units of product A, 4 units of product B."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't miss interior vertices",
+        "body": "Sometimes a vertex may be at the intersection of two constraints like $x=0$ and a slanted line. Always check the axes intersections."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the blueprint example, the constraint $x + y \\le 10$ represents the limit on machine ___ hours.",
+          "blanks": [
+            {
+              "accept": [
+                "1",
+                "one"
+              ]
+            }
+          ],
+          "hints": [
+            "The first machine time constraint.",
+            "It's from the first resource."
+          ],
+          "feedbackIfWrong": "Machine 1 hours."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is the maximum value of $z = 5x + 4y$ in the blueprint? (Enter a number)",
+          "answer": "46",
+          "hints": [
+            "Look at $(6,4)$.",
+            "$5(6)+4(4)=30+16=46$."
+          ],
+          "feedbackIfWrong": "The maximum is 46."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The optimal production mix is $x = 6$, $y =$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "4"
+              ]
+            }
+          ],
+          "hints": [
+            "From the vertex $(6,4)$.",
+            "The $y$-coordinate."
+          ],
+          "feedbackIfWrong": "$y = 4$."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A furniture company makes chairs ($x$) and tables ($y$). Profit per chair is $20, per table $30. Constraints: $x + y \\le 50$, $2x + 5y \\le 150$, $x \\le 40$. Maximize profit.",
+        "type": "short-answer",
+        "answer": "Max profit $1600 at (20,30)",
+        "hints": [
+          "Find vertices: (0,0), (40,0), (40,10) (from x=40 and 2x+5y=150), (20,30) (from x+y=50 and 2x+5y=150), (0,30).",
+          "Evaluate $20x+30y$ at each."
+        ],
+        "feedbackIfWrong": "Max profit is $1600 at 20 chairs, 30 tables."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

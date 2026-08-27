@@ -1,0 +1,256 @@
+{
+  "type": "flashcard",
+  "id": "consolidated-6-3-6-4-flashcards",
+  "cards": [
+    {
+      "front": "What is the point estimate for a population proportion $p$?",
+      "back": [
+        "The [[kw:sample proportion]] $\\hat{p} = \\frac{x}{n}$, where $x$ is the number of successes.",
+        "The complement is $\\hat{q} = 1 - \\hat{p}$.",
+        "$\\hat{p}$ is an [[imp:unbiased estimator]] of the true proportion $p$."
+      ]
+    },
+    {
+      "back": [
+        "The sample must be large enough: $n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$.",
+        "This ensures the sampling distribution of $\\hat{p}$ is [[imp:approximately normal]]."
+      ],
+      "front": "What conditions must be met to construct a z‑confidence interval for a population proportion?"
+    },
+    {
+      "front": "Give the formula for the margin of error for a population proportion.",
+      "back": [
+        "$$E = z_c \\sqrt{\\frac{\\hat{p} \\hat{q}}{n}}$$",
+        "$z_c$ is the critical value for confidence level $c$ (e.g., 1.96 for 95%).",
+        "$\\hat{p}$ is the sample proportion, $\\hat{q}=1-\\hat{p}$."
+      ]
+    },
+    {
+      "front": "Construct a 95% confidence interval for a proportion: $n=1000$, $x=662$.",
+      "back": [
+        "$\\hat{p}=0.662$, $\\hat{q}=0.338$.",
+        "Check $n\\hat{p}=662 \\ge 5$, $n\\hat{q}=338 \\ge 5$.",
+        "$z_c=1.96$, $E = 1.96 \\sqrt{\\frac{0.662 \\cdot 0.338}{1000}} \\approx 0.029$.",
+        "95% CI: $0.662 \\pm 0.029 = (0.633, 0.691)$.",
+        "We are 95% confident the true proportion is between 63.3% and 69.1%."
+      ]
+    },
+    {
+      "back": [
+        "$$n = \\hat{p} \\hat{q} \\left( \\frac{z_c}{E} \\right)^2$$",
+        "If no preliminary estimate of $\\hat{p}$ is available, use [[imp:$\\hat{p}=0.5$]] and $\\hat{q}=0.5$.",
+        "Always round [[imp:up]] to the next whole number."
+      ],
+      "front": "What is the formula for the minimum sample size to estimate a population proportion?"
+    },
+    {
+      "back": [
+        "Because the product $\\hat{p}\\hat{q}$ is maximized at $\\hat{p}=0.5$ ($0.5 \\times 0.5 = 0.25$).",
+        "This gives the [[imp:largest possible sample size]], ensuring the margin of error will not exceed $E$ even if the true proportion is different.",
+        "It is a conservative approach."
+      ],
+      "front": "Why is $\\hat{p}=0.5$ used when no prior estimate is available for sample size?"
+    },
+    {
+      "front": "Find the minimum sample size: 95% confidence, $E=0.03$, no prior estimate.",
+      "back": [
+        "Use $\\hat{p}=0.5$, $\\hat{q}=0.5$, $z_c=1.96$.",
+        "$n = 0.25 \\left( \\frac{1.96}{0.03} \\right)^2 = 0.25 \\times 4268.4 \\approx 1067.1$.",
+        "Round up → $n = 1068$."
+      ]
+    },
+    {
+      "front": "How do you interpret a confidence interval for a population proportion?",
+      "back": [
+        "If many random samples are taken and a $c$% confidence interval is computed from each, about [[imp:$c$% of those intervals]] will contain the true proportion $p$.",
+        "We do NOT say \"there is a $c$% chance that $p$ is in this specific interval.\"",
+        "Confidence refers to the method, not a single interval."
+      ]
+    },
+    {
+      "front": "Two 95% confidence intervals for proportions are (0.39, 0.47) and (0.61, 0.69). What does this suggest about the true proportions?",
+      "back": [
+        "The intervals do [[imp:not overlap]] (0.47 < 0.61).",
+        "This strongly suggests the true proportions are different.",
+        "Overlapping intervals would suggest the proportions might be equal (though a formal test is needed)."
+      ]
+    },
+    {
+      "back": [
+        "The [[kw:chi‑square distribution]] ($\\chi^2$).",
+        "It is used when the population is [[imp:normally distributed]].",
+        "The point estimate for $\\sigma^2$ is $s^2$, and for $\\sigma$ is $s$."
+      ],
+      "front": "What distribution is used to construct a confidence interval for a population variance or standard deviation?"
+    },
+    {
+      "front": "List four key properties of the chi‑square distribution.",
+      "back": [
+        "1. All values are $\\ge 0$.",
+        "2. The distribution is [[imp:positively skewed]] (right‑skewed).",
+        "3. It is a family of curves determined by $d.f. = n-1$.",
+        "4. As $d.f.$ increase, it becomes more symmetric and approaches a normal shape."
+      ]
+    },
+    {
+      "back": [
+        "$$d.f. = n - 1$$",
+        "Example: $n=20$ → $d.f. = 19$."
+      ],
+      "front": "How many degrees of freedom does a chi‑square distribution have for a sample of size $n$?"
+    },
+    {
+      "front": "For a confidence interval for $\\sigma^2$, how many critical values are needed and what are they called?",
+      "back": [
+        "Two critical values: $\\chi^2_R$ (right‑tail) and $\\chi^2_L$ (left‑tail).",
+        "Area to right of $\\chi^2_R$: $\\frac{1-c}{2}$.",
+        "Area to right of $\\chi^2_L$: $\\frac{1+c}{2}$.",
+        "Because the chi‑square distribution is not symmetric, the two values differ."
+      ]
+    },
+    {
+      "back": [
+        "Right‑tail area for $\\chi^2_R$: $(1-0.95)/2 = 0.025$.",
+        "Right‑tail area for $\\chi^2_L$: $(1+0.95)/2 = 0.975$.",
+        "From table: $\\chi^2_R = 30.191$, $\\chi^2_L = 7.564$.",
+        "95% of the area under the chi‑square curve with d.f.=17 lies between 7.564 and 30.191."
+      ],
+      "front": "Find $\\chi^2_R$ and $\\chi^2_L$ for a 95% CI with $n=18$ (d.f.=17)."
+    },
+    {
+      "back": [
+        "$$\\frac{(n-1)s^2}{\\chi^2_R} < \\sigma^2 < \\frac{(n-1)s^2}{\\chi^2_L}$$",
+        "The larger critical value $\\chi^2_R$ goes in the denominator of the [[imp:lower]] bound.",
+        "The smaller critical value $\\chi^2_L$ goes in the denominator of the [[imp:upper]] bound."
+      ],
+      "front": "Give the formula for a confidence interval for the population variance $\\sigma^2$."
+    },
+    {
+      "front": "How do you obtain a confidence interval for $\\sigma$ from the interval for $\\sigma^2$?",
+      "back": [
+        "Take the [[imp:square root]] of each endpoint.",
+        "$$\\sqrt{\\frac{(n-1)s^2}{\\chi^2_R}} < \\sigma < \\sqrt{\\frac{(n-1)s^2}{\\chi^2_L}}$$",
+        "The interval for $\\sigma$ is also not symmetric around $s$."
+      ]
+    },
+    {
+      "back": [
+        "$d.f.=29$. Right‑tail areas: $0.005$ and $0.995$.",
+        "$\\chi^2_R = 52.336$, $\\chi^2_L = 13.121$.",
+        "For $\\sigma^2$: $\\frac{29 \\times 1.44}{52.336} \\approx 0.80$, $\\frac{29 \\times 1.44}{13.121} \\approx 3.18$.",
+        "For $\\sigma$: $\\sqrt{0.80} \\approx 0.89$ mg, $\\sqrt{3.18} \\approx 1.78$ mg.",
+        "We are 99% confident $0.89 < \\sigma < 1.78$ mg."
+      ],
+      "front": "Construct a 99% CI for $\\sigma$: $n=30$, $s=1.20$ mg (normal population)."
+    },
+    {
+      "back": [
+        "Because the [[kw:chi‑square distribution]] is [[imp:positively skewed]].",
+        "This causes the interval to stretch further to the right than to the left of $s^2$."
+      ],
+      "front": "Why is the confidence interval for $\\sigma^2$ not symmetric around $s^2$?"
+    },
+    {
+      "back": [
+        "The population must be [[imp:approximately normally distributed]].",
+        "If the population is heavily skewed, the chi‑square method is not valid."
+      ],
+      "front": "What is the required condition for using the chi‑square method?"
+    },
+    {
+      "front": "A 95% CI for $\\sigma$ is (0.195, 0.348). A specification requires $\\sigma \\le 0.30$. Is the process acceptable?",
+      "back": [
+        "The upper bound is 0.348, which [[imp:exceeds]] 0.30.",
+        "We cannot be 95% confident that $\\sigma \\le 0.30$.",
+        "The process may need improvement."
+      ]
+    },
+    {
+      "front": "What does it mean to say 'We are 99% confident that $0.89 < \\sigma < 1.78$ mg'?",
+      "back": [
+        "If we repeatedly take samples and construct 99% CIs, about [[imp:99% of those intervals]] will contain the true $\\sigma$.",
+        "We do NOT say \"there is a 99% chance that $\\sigma$ is in this interval.\"",
+        "Confidence refers to the method, not a specific interval."
+      ]
+    },
+    {
+      "back": [
+        "Use `=CHISQ.INV.RT(probability, degrees_freedom)`.",
+        "For $\\chi^2_R$: `=CHISQ.INV.RT((1-c)/2, d.f.)`.",
+        "For $\\chi^2_L$: `=CHISQ.INV.RT((1+c)/2, d.f.)`.",
+        "Example: 95% CI, $n=18$ → `=CHISQ.INV.RT(0.025, 17)` returns about 30.191."
+      ],
+      "front": "In Google Sheets, how do you find a chi‑square critical value given a right‑tail probability?"
+    },
+    {
+      "front": "What happens to the shape of the chi‑square distribution as the sample size increases?",
+      "back": [
+        "It becomes [[imp:less skewed]] and more [[imp:symmetric]].",
+        "For large $d.f.$, it approximates a normal distribution.",
+        "This is why critical values for large $n$ are closer together."
+      ]
+    },
+    {
+      "back": [
+        "If the lower bound becomes [[imp:larger]] than the upper bound, you have swapped them.",
+        "Always check that $\\chi^2_R > \\chi^2_L$ (the right‑tail critical value is larger).",
+        "The larger value must go in the denominator of the lower bound."
+      ],
+      "front": "How can you tell if you accidentally swapped $\\chi^2_R$ and $\\chi^2_L$ when constructing a confidence interval?"
+    },
+    {
+      "front": "A sample of size 25 has $s=5.0$. How many degrees of freedom are used to find the critical chi‑square values?",
+      "back": [
+        "$$d.f. = n - 1 = 25 - 1 = 24$$"
+      ]
+    },
+    {
+      "front": "A sample of 200 voters has 110 who support a candidate. Find $\\hat{q}$, the proportion who do not support.",
+      "back": [
+        "$\\hat{p} = \\frac{110}{200} = 0.55$.",
+        "$\\hat{q} = 1 - \\hat{p} = 0.45$."
+      ]
+    },
+    {
+      "back": [
+        "$n = 0.25 (1.96 / 0.04)^2 = 0.25 \\times 2401 = 600.25$.",
+        "Round up → $n = 601$."
+      ],
+      "front": "For a sample size calculation for a proportion, if the desired margin of error is 4% and confidence is 95% with no prior estimate, what is the minimum sample size? (Round up.)"
+    },
+    {
+      "back": [
+        "These conditions ensure the sampling distribution of $\\hat{p}$ is approximately [[imp:normal]].",
+        "If either is less than 5, the normal approximation may be poor, and exact binomial methods should be used."
+      ],
+      "front": "Why is it important to check $n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$ before constructing a confidence interval for a proportion?"
+    },
+    {
+      "back": [
+        "The [[kw:sample standard deviation]] $s$.",
+        "It is an unbiased estimator of $\\sigma$ under normality.",
+        "The point estimate for $\\sigma^2$ is the sample variance $s^2$."
+      ],
+      "front": "What is the point estimate for the population standard deviation $\\sigma$?"
+    },
+    {
+      "front": "If a 99% confidence interval for $\\sigma^2$ is (0.80, 3.18), what is the confidence interval for $\\sigma$? (Round to two decimals.)",
+      "back": [
+        "Take square roots: $\\sqrt{0.80} \\approx 0.89$, $\\sqrt{3.18} \\approx 1.78$.",
+        "So the 99% CI for $\\sigma$ is (0.89, 1.78)."
+      ]
+    },
+    {
+      "front": "Two independent samples yield 95% CIs for $\\sigma$ of (1.2, 2.8) and (3.5, 6.1). Do these intervals suggest the populations have the same variability?",
+      "back": [
+        "No. The intervals do [[imp:not overlap]] (2.8 < 3.5).",
+        "This suggests the population standard deviations are likely different."
+      ]
+    }
+  ],
+  "title": "Chapters 6.3 & 6.4 Review",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

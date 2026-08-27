@@ -1,0 +1,809 @@
+{
+  "presenterNotes": [
+    "Block 1: Emphasize that the standard error uses the hypothesized p, not p̂. The conditions np ≥ 5, nq ≥ 5 are the same as for confidence intervals for proportions.",
+    "Block 2: The left‑tailed test example is straightforward. Show both the critical value and P‑value approaches. Highlight that the P‑value method gives a more nuanced answer.",
+    "Block 3: The two‑tailed test is slightly more complex. Walk through the critical values and P‑value carefully.",
+    "Block 4: The Google Sheets formulas are simple and powerful. Encourage students to use them to check their table‑based answers.",
+    "Block 5: The blueprint ties everything together. The dog/cat examples are memorable and show the importance of checking the direction of the sample before computing."
+  ],
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "title": "The z‑Test for a Population Proportion",
+      "teacherCues": [
+        "Ask: 'If a politician claims that less than 50% of voters support a bill, how can we test that with a sample?'",
+        "Write the formula for the z‑test for a proportion on the board: z = (p̂ − p) / √(pq/n). Compare it to the z‑test for a mean."
+      ],
+      "id": "z-test-for-proportion",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "5",
+                "five"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Both $np$ and $nq$ must be ≥ 5.",
+          "hints": [
+            "It's the same condition for normal approximation to a binomial.",
+            "The minimum expected number of successes and failures."
+          ],
+          "id": "q1-1",
+          "prompt": "Before using a z‑test for a proportion, you must check that both $np$ and $nq$ are at least ___.",
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "It's the value stated in $H_0$.",
+            "The test assumes the null hypothesis is true."
+          ],
+          "type": "short-answer",
+          "id": "q1-2",
+          "prompt": "If the null hypothesis is $H_0: p = 0.30$, what value of $p$ should you use in the denominator of the z‑test statistic?",
+          "feedbackIfWrong": "Use $p = 0.30$ from the null hypothesis.",
+          "answer": "0.30",
+          "answers": [
+            "0.30",
+            "0.3",
+            ".30",
+            ".3"
+          ]
+        },
+        {
+          "hints": [
+            "$z = (0.21 - 0.25) / \\sqrt{(0.25)(0.75)/200}$.",
+            "Denominator ≈ 0.0306; -0.04 / 0.0306 ≈ ?"
+          ],
+          "prompt": "A sample of 200 has $\\hat{p}=0.21$. The hypothesized proportion is $p=0.25$. Compute the z statistic. (Round to two decimals.)",
+          "type": "short-answer",
+          "answer": "-1.31",
+          "answers": [
+            "-1.31",
+            "-1.31"
+          ],
+          "id": "q1-3",
+          "feedbackIfWrong": "$z = -0.04 / 0.0306 \\approx -1.31$."
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A claim states that 50% of adults have wireless Internet access. You survey 100 adults to test a claim about this proportion. Verify that a z‑test can be used.",
+          "steps": [
+            "The hypothesized proportion is $p = 0.50$, so $q = 0.50$.",
+            "Compute $np = 100 \\times 0.50 = 50$ and $nq = 100 \\times 0.50 = 50$.",
+            "Both are $\\ge 5$, so the normal approximation is appropriate.",
+            "A z‑test for a proportion can be used."
+          ],
+          "title": "Example A – Checking Conditions"
+        },
+        {
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we use $p=0.50$ from $H_0$ in the denominator, not $\\hat{p}=0.39$?",
+          "steps": [
+            "$\\hat{p} = 0.39$, $p = 0.50$, $q = 0.50$, $n = 100$.",
+            "$z = \\frac{0.39 - 0.50}{\\sqrt{(0.50)(0.50)/100}} = \\frac{-0.11}{0.05} = -2.20$.",
+            "The test statistic is $z = -2.20$.",
+            "We use $p$ from $H_0$ because the test assumes $H_0$ is true when computing the standard error."
+          ],
+          "role": "peer-explain",
+          "prompt": "In the survey of 100 adults, 39% said they access the Internet wirelessly. The claim is $p = 0.50$. Compute the z statistic.",
+          "title": "Example B – Computing the Test Statistic",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Finding the Critical Value",
+          "prompt": "For a left‑tailed test at $\\alpha = 0.01$, find the critical value and rejection region.",
+          "steps": [
+            "Left‑tailed: the critical value has area $0.01$ to its left.",
+            "From the z‑table (or `=NORM.S.INV(0.01)` in Google Sheets), the critical value is $z_0 = -2.33$ (approx).",
+            "Rejection region: $z < -2.33$."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "z‑Test Statistic for a Proportion",
+          "formula": "$$z = \\frac{\\hat{p} - p}{\\sqrt{\\frac{pq}{n}}}$$",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$\\hat{p}$",
+              "meaning": "sample proportion ($x/n$)"
+            },
+            {
+              "tone": "core",
+              "meaning": "hypothesized population proportion (from $H_0$)",
+              "symbol": "$p$"
+            },
+            {
+              "tone": "subtle",
+              "meaning": "$1 - p$",
+              "symbol": "$q$"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Expected number of successes",
+                "1": "$np \\ge 5$",
+                "2": "Use $p$ from $H_0$"
+              },
+              {
+                "0": "Expected number of failures",
+                "1": "$nq \\ge 5$",
+                "2": "$q = 1 - p$"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Condition",
+              "Symbol",
+              "Check"
+            ],
+            "title": "Conditions for a z‑Test for a Proportion",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "A [[kw:z‑test for a population proportion]] is used when you want to test a claim about a population proportion $p$.",
+          "The sample proportion $\\hat{p} = \\frac{x}{n}$ is the point estimate of $p$.",
+          "The test can be used when the sampling distribution of $\\hat{p}$ is approximately normal. The conditions are: $np \\ge 5$ and $nq \\ge 5$, where $q = 1 - p$.",
+          "The standardized test statistic is: $$z = \\frac{\\hat{p} - p}{\\sqrt{\\frac{pq}{n}}}$$",
+          "Here, $p$ is the hypothesized proportion from the null hypothesis $H_0$. Note that we use $p$ and $q$ from $H_0$, not $\\hat{p}$, in the standard error.",
+          "The test follows the same structure as the z‑test for a mean: state $H_0$ and $H_a$, set $\\alpha$, find critical value(s) or P‑value, compute $z$, make a decision."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Use p from H₀, Not p̂, in the Standard Error",
+        "body": "The denominator of the test statistic uses the hypothesized proportion $p$ from the null hypothesis, not the sample proportion $\\hat{p}$. [[imp:This is because we calculate the test statistic under the assumption that $H_0$ is true.]]"
+      },
+      "discoveryHook": {
+        "scenario": "Surveys and polls are everywhere — a candidate claims more than half of voters support her, or a manufacturer claims that only 5% of products are defective. A hypothesis test for a proportion lets us use a sample to determine whether such claims hold up."
+      }
+    },
+    {
+      "title": "Left‑Tailed Test for a Proportion",
+      "confusionCorner": {
+        "title": "Don't Use p̂ in the Denominator!",
+        "body": "In the standard error $\\sqrt{pq/n}$, always use the [[imp:hypothesized proportion $p$ from $H_0$]], not the sample proportion $\\hat{p}$. This is a common mistake that changes the test statistic."
+      },
+      "examples": [
+        {
+          "steps": [
+            "Verify conditions: $np = 100(0.50) = 50 \\ge 5$, $nq = 50 \\ge 5$. OK.",
+            "$H_0: p \\ge 0.50$, $H_a: p < 0.50$ (claim). Left‑tailed. $\\alpha = 0.01$.",
+            "Critical value: $z_0 = -2.33$. Rejection region: $z < -2.33$.",
+            "$z = \\frac{0.39 - 0.50}{\\sqrt{(0.50)(0.50)/100}} = \\frac{-0.11}{0.05} = -2.20$.",
+            "$-2.20$ is not less than $-2.33$, so we fail to reject $H_0$. Not enough evidence to support the claim."
+          ],
+          "role": "guided",
+          "prompt": "A researcher claims less than 50% of U.S. adults have wireless Internet access on a laptop. In a random sample of 100, 39% say yes. At $\\alpha = 0.01$, is there enough evidence to support the claim?",
+          "title": "Example A – Testing the Claim"
+        },
+        {
+          "steps": [
+            "For a left‑tailed test, P‑value = area to the left of $z = 0.0139$.",
+            "Since $0.0139 > 0.01$, the P‑value is greater than $\\alpha$.",
+            "Therefore, we fail to reject $H_0$ — the result is not statistically significant at the 1% level.",
+            "If $\\alpha$ were 0.05, we would reject $H_0$."
+          ],
+          "title": "Example B – P‑Value Approach",
+          "prompt": "For the same test, the area to the left of $z = -2.20$ is 0.0139. What is the P‑value? Compare to $\\alpha = 0.01$ and explain the decision.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why is a P‑value of 0.0139 not small enough to reject $H_0$ at $\\alpha = 0.01$?",
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Google Sheets P‑Value",
+          "prompt": "Use Google Sheets to find the P‑value for this left‑tailed test with $z = -2.20$.",
+          "steps": [
+            "In a cell, type `=NORM.S.DIST(-2.20, TRUE)`.",
+            "The result is approximately 0.0139.",
+            "This matches the P‑value from the standard normal table."
+          ],
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Walk through Example 1 from the text: claim 'less than 50%' with n=100, p̂=0.39, α=0.01.",
+        "Draw the normal curve, shade the left tail, mark z₀ = -2.33, and show that z = -2.20 does not fall in the rejection region."
+      ],
+      "id": "left-tailed-proportion-test",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "less",
+                "smaller",
+                "lower"
+              ]
+            }
+          ],
+          "hints": [
+            "The rejection region is on the left side of the distribution.",
+            "Negative values further from zero are more extreme."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "Reject $H_0$ if $z < z_0$ (more negative than the critical value).",
+          "id": "q2-1",
+          "prompt": "In a left‑tailed test for a proportion, we reject $H_0$ if the test statistic $z$ is ___ than the critical value $z_0$."
+        },
+        {
+          "answer": "No",
+          "prompt": "A claim states $p < 0.30$. A sample of 150 has $\\hat{p}=0.24$. The test statistic is $z = -1.60$. Using $\\alpha=0.05$ (critical value $-1.645$), should you reject $H_0$? (Yes or No)",
+          "type": "short-answer",
+          "answers": [
+            "No",
+            "no"
+          ],
+          "feedbackIfWrong": "No, because $-1.60 > -1.645$, we fail to reject $H_0$.",
+          "id": "q2-2",
+          "hints": [
+            "Is $-1.60 < -1.645$?",
+            "It's not more extreme than the critical value."
+          ]
+        },
+        {
+          "answers": [
+            "=NORM.S.DIST(-1.60, TRUE)",
+            "=NORM.S.DIST(-1.60,TRUE)"
+          ],
+          "answer": "=NORM.S.DIST(-1.60, TRUE)",
+          "prompt": "In Google Sheets, what formula gives the P‑value for a left‑tailed proportion test with $z = -1.60$?",
+          "id": "q2-3",
+          "feedbackIfWrong": "=NORM.S.DIST(-1.60, TRUE) returns the left‑tail area.",
+          "type": "short-answer",
+          "hints": [
+            "Use the standard normal cumulative function.",
+            "The TRUE argument gives the cumulative area to the left."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A research center claims that less than half of U.S. adults have accessed the Internet wirelessly on a laptop. In a sample of 100, only 39% say yes. But at a 1% significance level, is 39% low enough to support the claim? Let's find out."
+      },
+      "concept": {
+        "formulaCard": {
+          "title": "Decision Rule for Left‑Tailed Test",
+          "legend": [
+            {
+              "symbol": "$z_0$",
+              "meaning": "critical value from standard normal, e.g., -2.33 for $\\alpha = 0.01$",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$\\text{Reject } H_0 \\text{ if } z < z_0 \\;\\; (z_0 \\text{ is negative})$$ $$\\text{P‑value} = \\text{area to the left of } z$$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Component",
+              "Value"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Claim",
+                "1": "$p < 0.50$"
+              },
+              {
+                "0": "$H_0, H_a$",
+                "1": "$H_0: p \\ge 0.50$, $H_a: p < 0.50$ (claim)"
+              },
+              {
+                "0": "$\\hat{p}, n$",
+                "1": "$0.39, 100$"
+              },
+              {
+                "0": "$z$ statistic",
+                "1": "$-2.20$"
+              },
+              {
+                "0": "Critical value $z_0$",
+                "1": "$-2.33$"
+              },
+              {
+                "0": "Decision",
+                "1": "$-2.20 > -2.33$ → fail to reject $H_0$"
+              }
+            ],
+            "type": "table",
+            "title": "Left‑Tailed Test: Internet Access Example ($\\alpha = 0.01$)"
+          }
+        ],
+        "explanation": [
+          "For a left‑tailed test, the alternative hypothesis is $H_a: p < p_0$.",
+          "The rejection region is in the left tail: reject $H_0$ if $z < z_0$ (where $z_0$ is negative).",
+          "The critical value $z_0$ is the z‑score that has area $\\alpha$ to its left.",
+          "If the computed $z$ is less than $z_0$, reject $H_0$; otherwise, fail to reject.",
+          "The P‑value is the area to the left of the test statistic $z$ (from the z‑table or `=NORM.S.DIST(z, TRUE)` in Google Sheets)."
+        ]
+      }
+    },
+    {
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "both",
+                "two",
+                "2"
+              ]
+            }
+          ],
+          "hints": [
+            "The alternative hypothesis has $\\neq$.",
+            "You split $\\alpha$ equally between two sides."
+          ],
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "In a two‑tailed test for a proportion, the rejection regions are in ___ tails of the distribution.",
+          "feedbackIfWrong": "Two‑tailed tests have rejection regions in both tails."
+        },
+        {
+          "answers": [
+            "0.0358",
+            ".0358"
+          ],
+          "id": "q3-2",
+          "prompt": "A two‑tailed proportion test gives $z = 2.10$. The area to the right of $2.10$ is 0.0179. What is the P‑value?",
+          "answer": "0.0358",
+          "hints": [
+            "P‑value = 2 × tail area.",
+            "2 × 0.0179 = ?"
+          ],
+          "feedbackIfWrong": "P‑value = 2 × 0.0179 = 0.0358.",
+          "type": "short-answer"
+        },
+        {
+          "answers": [
+            "No",
+            "no"
+          ],
+          "answer": "No",
+          "prompt": "For a claim $p = 0.25$, sample $n=200$, $\\hat{p}=0.21$, the $z$ statistic was -1.31. At $\\alpha=0.10$, should you reject the claim? (Yes or No)",
+          "id": "q3-3",
+          "type": "short-answer",
+          "hints": [
+            "The claim is $H_0$.",
+            "We failed to reject $H_0$ in the example."
+          ],
+          "feedbackIfWrong": "No, we fail to reject the claim that $p = 0.25$."
+        }
+      ],
+      "teacherCues": [
+        "Pose the question: 'A research center claims exactly 25% of college graduates think college isn't worth it. A sample of 200 finds 21% agree. Is this enough to reject the claim at α=0.10?'",
+        "Draw the two‑tailed rejection regions at ±1.645 and show that z = -1.31 does not fall in either."
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Check: $np = 200(0.25) = 50$, $nq = 200(0.75) = 150$, both $\\ge 5$. OK.",
+            "$H_0: p = 0.25$ (claim), $H_a: p \\neq 0.25$. Two‑tailed. $\\alpha = 0.10$.",
+            "Critical values: $\\pm z_0 = \\pm 1.645$. Rejection regions: $z < -1.645$ or $z > 1.645$.",
+            "$z = \\frac{0.21 - 0.25}{\\sqrt{(0.25)(0.75)/200}} = \\frac{-0.04}{0.0306} \\approx -1.31$.",
+            "$-1.31$ is not less than $-1.645$, so fail to reject $H_0$. Not enough evidence to reject the claim."
+          ],
+          "title": "Example A – Testing the Claim",
+          "role": "guided",
+          "prompt": "A research center claims 25% of college graduates think a degree is not worth the cost. A sample of 200 college graduates finds 21% agree. At $\\alpha = 0.10$, is there enough evidence to reject the claim?"
+        },
+        {
+          "title": "Example B – P‑Value for Two‑Tailed",
+          "prompt": "The area to the left of $z = -1.31$ is about 0.0951. What is the two‑tailed P‑value? Is it less than $\\alpha = 0.10$?",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we multiply by 2, and why is the P‑value greater than 0.10?",
+          "role": "peer-explain",
+          "steps": [
+            "The two‑tailed P‑value = $2 \\times 0.0951 = 0.1902$.",
+            "Since $0.1902 > 0.10$, the P‑value is greater than $\\alpha$.",
+            "We fail to reject $H_0$ — the difference between 21% and 25% is not statistically significant at the 10% level."
+          ],
+          "minLength": 2
+        },
+        {
+          "prompt": "Use Google Sheets to find the two‑tailed P‑value for $z = -1.31$.",
+          "title": "Example C – Google Sheets Two‑Tailed P‑value",
+          "steps": [
+            "In a cell, type `=2 * (1 - NORM.S.DIST(ABS(-1.31), TRUE))`.",
+            "The result is approximately 0.1902.",
+            "This is the exact two‑tailed P‑value."
+          ],
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "A two‑tailed test is used when the alternative hypothesis is $H_a: p \\neq p_0$.",
+          "The rejection regions are in both tails: reject $H_0$ if $z < -z_0$ or $z > z_0$.",
+          "The critical values are $\\pm z_0$, where each tail has area $\\alpha/2$.",
+          "The P‑value for a two‑tailed test is twice the area in the tail beyond the test statistic: $P = 2 \\times P(Z > |z|)$.",
+          "In Google Sheets: `=2 * (1 - NORM.S.DIST(ABS(z), TRUE))`."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Claim",
+                "1": "$p = 0.25$"
+              },
+              {
+                "0": "$H_0, H_a$",
+                "1": "$H_0: p = 0.25$ (claim), $H_a: p \\neq 0.25$"
+              },
+              {
+                "0": "$\\hat{p}, n$",
+                "1": "$0.21, 200$"
+              },
+              {
+                "0": "$z$ statistic",
+                "1": "$-1.31$"
+              },
+              {
+                "0": "Critical values",
+                "1": "$\\pm 1.645$"
+              },
+              {
+                "0": "Decision",
+                "1": "$-1.31 > -1.645$ → fail to reject $H_0$"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Component",
+              "Value"
+            ],
+            "title": "Two‑Tailed Test: College Degree Value ($\\alpha = 0.10$)",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$P\\text{-value} = 2 \\times P(Z < -|z|) \\;\\;\\text{or}\\;\\; 2 \\times P(Z > |z|)$$ $$\\text{Sheets: } =2 * (1 - \\text{NORM.S.DIST}(\\text{ABS}(z), \\text{TRUE}))$$",
+          "legend": [
+            {
+              "symbol": "$|z|$",
+              "tone": "core",
+              "meaning": "absolute value of the test statistic"
+            }
+          ],
+          "title": "Two‑Tailed Test P‑value"
+        }
+      },
+      "confusionCorner": {
+        "title": "Two‑Tailed Tests and the Claim",
+        "body": "When the claim is a specific value (like $p = 0.25$), it becomes the null hypothesis. The alternative is 'not equal to'. [[imp:If you reject $H_0$, you have evidence the true proportion is different, but the test doesn't tell you whether it's higher or lower.]]"
+      },
+      "discoveryHook": {
+        "scenario": "Sometimes a claim specifies an exact proportion — like 25% of graduates question the value of college. To test it, we use a two‑tailed test. A sample proportion of 21% might seem different, but we need to check if the difference is statistically significant."
+      },
+      "id": "two-tailed-proportion-test",
+      "title": "Two‑Tailed Test for a Proportion"
+    },
+    {
+      "id": "pvalues-proportion-tests",
+      "examples": [
+        {
+          "title": "Example A – Left‑Tailed P‑Value",
+          "role": "guided",
+          "steps": [
+            "Left‑tailed: P‑value = `=NORM.S.DIST(-2.20, TRUE)` ≈ 0.0139.",
+            "Since $0.0139 > 0.01$, we fail to reject $H_0$.",
+            "The P‑value is not small enough to reject the null at the 1% level."
+          ],
+          "prompt": "For the Internet access test, $z = -2.20$. Find the P‑value using Google Sheets and decide at $\\alpha = 0.01$."
+        },
+        {
+          "prompt": "A claim states $p > 0.70$. A sample gives $z = 1.85$. Find the P‑value and decide at $\\alpha = 0.05$. Explain why the P‑value is the right‑tail area.",
+          "minLength": 2,
+          "steps": [
+            "Right‑tailed: P‑value = `=1 - NORM.S.DIST(1.85, TRUE)` ≈ 0.0322.",
+            "Evidence against $H_0$ lies in large values of $\\hat{p}$, which produce positive $z$.",
+            "Since $0.0322 \\le 0.05$, reject $H_0$. There is enough evidence to support the claim."
+          ],
+          "title": "Example B – Right‑Tailed P‑Value",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we look at the right tail when the alternative is 'greater than'?",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "A test yields P‑value = 0.07. At $\\alpha = 0.05$, what is the decision? At $\\alpha = 0.10$?",
+          "role": "independent",
+          "title": "Example C – Comparing P‑Values to α",
+          "steps": [
+            "At $\\alpha = 0.05$: $0.07 > 0.05$ → fail to reject $H_0$.",
+            "At $\\alpha = 0.10$: $0.07 \\le 0.10$ → reject $H_0$.",
+            "The decision depends on the chosen significance level."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "Total area under the curve is 1.",
+            "Right‑tail = 1 – left‑tail."
+          ],
+          "prompt": "In Google Sheets, to find the P‑value for a right‑tailed proportion test, you subtract the cumulative left area from ___.",
+          "feedbackIfWrong": "Right‑tailed P‑value = 1 – NORM.S.DIST(z, TRUE).",
+          "blanks": [
+            {
+              "accept": [
+                "1",
+                "one"
+              ]
+            }
+          ],
+          "id": "q4-1"
+        },
+        {
+          "answers": [
+            "=2*(1-NORM.S.DIST(2.50,TRUE))",
+            "=2 * (1 - NORM.S.DIST(2.5, TRUE))"
+          ],
+          "feedbackIfWrong": "=2 * (1 - NORM.S.DIST(2.50, TRUE)).",
+          "hints": [
+            "Use ABS if you want to handle negative z too, but here it's positive.",
+            "Multiply the right‑tail area by 2."
+          ],
+          "type": "short-answer",
+          "id": "q4-2",
+          "prompt": "A two‑tailed proportion test has $z = 2.50$. Write the Google Sheets formula for the P‑value.",
+          "answer": "=2*(1-NORM.S.DIST(2.50,TRUE))"
+        },
+        {
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "id": "q4-3",
+          "type": "short-answer",
+          "answer": "Yes",
+          "hints": [
+            "0.03 ≤ 0.05.",
+            "The P‑value is smaller than the significance level."
+          ],
+          "prompt": "If P‑value = 0.03 and $\\alpha = 0.05$, should you reject $H_0$? (Yes or No)",
+          "feedbackIfWrong": "Yes, reject $H_0$ because 0.03 ≤ 0.05."
+        }
+      ],
+      "title": "Using P‑Values with Proportion Tests",
+      "teacherCues": [
+        "Review the P‑value decision rule: if P ≤ α, reject H₀.",
+        "Show how to find P‑values for proportion tests using the standard normal distribution in Google Sheets: NORM.S.DIST for left‑tailed, 1-NORM.S.DIST for right‑tailed, 2×(1-NORM.S.DIST(ABS(z))) for two‑tailed."
+      ],
+      "discoveryHook": {
+        "scenario": "While critical values give a yes/no decision, the P‑value tells you how strong the evidence is. A P‑value of 0.0139 means that if $H_0$ were true, you'd see a result this extreme only about 1.4% of the time. The smaller the P‑value, the more doubt it casts on $H_0$."
+      },
+      "confusionCorner": {
+        "title": "P‑Value ≠ Probability that H₀ is True",
+        "body": "A P‑value of 0.0139 does not mean there is a 1.39% chance that $H_0$ is true. It means: if $H_0$ were true, you'd see a result this extreme about 1.39% of the time. [[imp:Small P‑value casts doubt on $H_0$, but doesn't prove it false.]]"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Left‑tailed",
+                "1": "`=NORM.S.DIST(z, TRUE)`",
+                "2": "≈ 0.0139"
+              },
+              {
+                "0": "Right‑tailed",
+                "1": "`=1 - NORM.S.DIST(z, TRUE)`",
+                "2": "≈ 0.9861 (for z=-2.20)"
+              },
+              {
+                "0": "Two‑tailed",
+                "1": "`=2*(1-NORM.S.DIST(ABS(z), TRUE))`",
+                "2": "≈ 0.0278 (for z=-2.20)"
+              }
+            ],
+            "headers": [
+              "Test Type",
+              "Formula",
+              "Example (z = -2.20)"
+            ],
+            "variant": "colorful",
+            "title": "Google Sheets P‑Value for Proportion z‑Test",
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "The [[kw:P‑value]] for a proportion test is the probability, assuming $H_0$ is true, of obtaining a z statistic as extreme as or more extreme than the one computed.",
+          "Decision: If P‑value $\\le \\alpha$, reject $H_0$; otherwise, fail to reject.",
+          "In Google Sheets:",
+          "- Left‑tailed: `=NORM.S.DIST(z, TRUE)`",
+          "- Right‑tailed: `=1 - NORM.S.DIST(z, TRUE)`",
+          "- Two‑tailed: `=2 * (1 - NORM.S.DIST(ABS(z), TRUE))`",
+          "The P‑value method and the rejection region method always give the same conclusion."
+        ],
+        "formulaCard": {
+          "title": "Decision Rule Based on P‑Value",
+          "legend": [
+            {
+              "meaning": "significance level (commonly 0.05 or 0.01)",
+              "tone": "core",
+              "symbol": "$\\alpha$"
+            }
+          ],
+          "formula": "$$\\text{If P‑value } \\le \\alpha \\;\\rightarrow\\; \\text{Reject } H_0$$ $$\\text{If P‑value } > \\alpha \\;\\rightarrow\\; \\text{Fail to reject } H_0$$"
+        }
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "The blueprint for proportion tests is a step‑by‑step guide: set up the hypotheses, check the conditions, compute the test statistic, find the P‑value or compare to critical values, and draw a conclusion. This structured approach ensures you never miss a step."
+      },
+      "teacherCues": [
+        "Display a flowchart: Claim → Hypotheses → Check np ≥ 5, nq ≥ 5 → Compute z → Find P‑value or critical value → Decision → Conclusion.",
+        "Walk through a complete problem: 'A humane society claims less than 35% of households own a dog. In a sample of 400, 156 own a dog. Test at α=0.05.'"
+      ],
+      "confusionCorner": {
+        "body": "Before computing, check whether the sample proportion $\\hat{p}$ is in the direction of the alternative. If the claim is $p < 0.35$ but your sample $\\hat{p}$ is $0.39$, you know right away that the evidence will not support the claim. [[imp:A quick check can save you from unnecessary calculations.]]",
+        "title": "Check the Direction of the Sample"
+      },
+      "examples": [
+        {
+          "title": "Example A – Dog Ownership (Left‑Tailed)",
+          "steps": [
+            "Understand: Claim $p < 0.35$ is $H_a$. $H_0: p \\ge 0.35$. Left‑tailed. $\\alpha = 0.05$.",
+            "Check: $np = 400(0.35)=140 \\ge 5$, $nq = 260 \\ge 5$. OK.",
+            "Solve: $\\hat{p} = 156/400 = 0.39$. $z = \\frac{0.39-0.35}{\\sqrt{(0.35)(0.65)/400}} \\approx 1.68$.",
+            "Left‑tailed: critical value $-1.645$. $z = 1.68$ is not less than $-1.645$. P‑value = area left of 1.68 ≈ 0.954.",
+            "Conclude: Fail to reject $H_0$. Not enough evidence to support the claim. The sample proportion (39%) is actually higher than 35%."
+          ],
+          "role": "guided",
+          "prompt": "A humane society claims less than 35% of U.S. households own a dog. A random sample of 400 households finds 156 own a dog. At $\\alpha = 0.05$, is there enough evidence to support the society's claim?"
+        },
+        {
+          "prompt": "A humane society claims 30% of U.S. households own a cat. In a sample of 200 households, 72 own a cat. At $\\alpha = 0.05$, test the claim. Explain why this is two‑tailed.",
+          "minLength": 2,
+          "steps": [
+            "Claim $p = 0.30$ is $H_0$. $H_a: p \\neq 0.30$. Two‑tailed.",
+            "Check: $np = 200(0.30)=60$, $nq = 140$, both $\\ge 5$.",
+            "$\\hat{p} = 72/200 = 0.36$. $z = \\frac{0.36-0.30}{\\sqrt{(0.30)(0.70)/200}} \\approx 1.85$.",
+            "Two‑tailed P‑value = `=2*(1-NORM.S.DIST(1.85,TRUE))` ≈ 0.0644. Critical values $\\pm 1.96$, $z=1.85$ not in rejection region.",
+            "Conclude: Fail to reject $H_0$. Not enough evidence to reject the claim."
+          ],
+          "title": "Example B – Cat Ownership (Two‑Tailed)",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does the claim '$p = 0.30$' lead to a two‑tailed test?",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Smokers Claim (Left‑Tailed with P‑Value)",
+          "prompt": "A researcher claims less than 25% of U.S. adults smoke. A sample of 200 adults has 18.5% smokers. At $\\alpha = 0.05$, test the claim using P‑value.",
+          "steps": [
+            "Claim $p < 0.25$ is $H_a$. $H_0: p \\ge 0.25$. Left‑tailed. $\\alpha = 0.05$.",
+            "Check: $np = 200(0.25)=50$, $nq = 150$, both $\\ge 5$.",
+            "$\\hat{p} = 0.185$. $z = \\frac{0.185-0.25}{\\sqrt{(0.25)(0.75)/200}} \\approx -2.40$.",
+            "P‑value = `=NORM.S.DIST(-2.40, TRUE)` ≈ 0.0082. Since $0.0082 \\le 0.05$, reject $H_0$. There is enough evidence to support the claim."
+          ]
+        }
+      ],
+      "id": "blueprint-proportion-test",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "prompt": "The first step in the blueprint for a proportion hypothesis test is to ___ the claim and write $H_0$ and $H_a$.",
+          "hints": [
+            "It's the 'U' phase.",
+            "You identify the claim and set up the hypotheses."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "Understand"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Start by understanding the claim and stating the hypotheses.",
+          "id": "q5-1"
+        },
+        {
+          "id": "q5-2",
+          "prompt": "In the blueprint, after checking $np \\ge 5$ and $nq \\ge 5$, what statistic do you compute next?",
+          "hints": [
+            "It's the standardized test statistic.",
+            "The formula is $z = \\frac{\\hat{p} - p}{\\sqrt{pq/n}}$."
+          ],
+          "answer": "z",
+          "type": "short-answer",
+          "answers": [
+            "z",
+            "z statistic",
+            "z-score",
+            "test statistic"
+          ],
+          "feedbackIfWrong": "Compute the z test statistic."
+        },
+        {
+          "answer": "Yes",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "type": "short-answer",
+          "prompt": "A proportion test yields a P‑value of 0.001 with $\\alpha = 0.05$. Should you reject $H_0$? (Yes or No)",
+          "hints": [
+            "0.001 ≤ 0.05.",
+            "Very small P‑value."
+          ],
+          "feedbackIfWrong": "Yes, reject $H_0$ because 0.001 ≤ 0.05.",
+          "id": "q5-3"
+        }
+      ],
+      "title": "Blueprint Aid: Solving Proportion Hypothesis Tests",
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "Key",
+              "tone": "core",
+              "meaning": "Both P‑value and rejection region methods give the same conclusion."
+            }
+          ],
+          "title": "Hypothesis Testing Blueprint for Proportions",
+          "formula": "$$\\text{Claim} \\;\\rightarrow\\; H_0, H_a \\;\\rightarrow\\; \\text{Check } np, nq \\ge 5 \\;\\rightarrow\\; z = \\frac{\\hat{p} - p}{\\sqrt{pq/n}} \\;\\rightarrow\\; \\text{P‑value or Rejection Region} \\;\\rightarrow\\; \\text{Decision}$$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Claim: $p < 0.35$. $H_0: p \\ge 0.35$, $H_a: p < 0.35$ (claim). $\\alpha=0.05$.",
+                "2": "Check: $np = 400(0.35)=140$, $nq=260$, both $\\ge 5$."
+              },
+              {
+                "0": "Solve – $\\hat{p}, z$",
+                "1": "$\\hat{p} = 156/400 = 0.39$. $z = \\frac{0.39-0.35}{\\sqrt{(0.35)(0.65)/400}} \\approx 1.68$.",
+                "2": "Left‑tailed; $z$ is positive, so P‑value > 0.5."
+              },
+              {
+                "0": "Solve – Decision",
+                "1": "Critical value $z_0 = -1.645$. $z = 1.68$ not < -1.645. P‑value ≈ 0.954.",
+                "2": "Fail to reject $H_0$."
+              },
+              {
+                "0": "Conclude",
+                "1": "Not enough evidence to support the claim that less than 35% own a dog.",
+                "2": "In fact, the sample proportion is 39%, which contradicts the claim."
+              }
+            ],
+            "title": "Blueprint for Dog Ownership Claim ($\\alpha = 0.05$)",
+            "headers": [
+              "Step",
+              "Action",
+              "Details"
+            ]
+          }
+        ],
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Write the claim. State $H_0$ and $H_a$. Identify $\\alpha$. Verify $np \\ge 5$ and $nq \\ge 5$ using the hypothesized $p$.",
+          "2. [[kw:Solve]]: Compute $\\hat{p} = x/n$ if not given directly. Calculate the test statistic $z = \\frac{\\hat{p} - p}{\\sqrt{pq/n}}$. Choose method: (a) Find critical value(s) from the z‑table or `=NORM.S.INV` and check if $z$ falls in the rejection region. (b) Find the P‑value using `NORM.S.DIST` and compare to $\\alpha$.",
+          "3. [[kw:Conclude]]: Make a decision (reject or fail to reject $H_0$). Write a sentence interpreting the result in context. If the claim is $H_0$ and you reject, there is enough evidence to reject the claim. If the claim is $H_a$ and you reject $H_0$, there is enough evidence to support the claim."
+        ]
+      }
+    }
+  ],
+  "id": "chapter-7-4-hypothesis-testing-proportions",
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.A.1"
+  ],
+  "type": "interactive-lesson",
+  "title": "Hypothesis Testing for Proportions",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

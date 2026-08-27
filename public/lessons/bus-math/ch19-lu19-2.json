@@ -1,0 +1,824 @@
+{
+  "title": "Property Tax",
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "ch19-lu19-2",
+  "blocks": [
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Assessed Value} = \\text{Market Value} \\times \\text{Assessment Rate}$$",
+          "title": "Assessed Value",
+          "notes": [
+            "Assessment rate is a decimal (e.g., 60% = 0.60).",
+            "Market value may be determined by recent sales or appraisal."
+          ]
+        },
+        "visuals": [
+          {
+            "caption": "Tax is computed on assessed value, which is a fraction of market value.",
+            "title": "Assessed Value Calculation",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Market value",
+                "1": "Given",
+                "2": "$200,000"
+              },
+              {
+                "0": "Assessment rate",
+                "1": "60%",
+                "2": "0.60"
+              },
+              {
+                "0": "Assessed value",
+                "1": "$200,000 × 0.60",
+                "2": "$120,000"
+              }
+            ],
+            "headers": [
+              "Item",
+              "Calculation",
+              "Amount"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "[[kw:Property tax]] is a tax on real estate (land and buildings) based on the assessed value of the property.",
+          "[[kw:Assessed value]] is a percentage of the property's market value, set by the local tax assessor.",
+          "$$\\text{Assessed Value} = \\text{Market Value} \\times \\text{Assessment Rate}$$",
+          "The tax rate is applied to the assessed value to determine the tax due.",
+          "[[imp:The assessment rate varies by locality; it's not the full market value.]]"
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "assessment.",
+          "prompt": "Assessed value = Market value × ___ rate.",
+          "id": "b1q1",
+          "hints": [
+            "Not tax rate.",
+            "Set by the assessor."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "assessment"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "id": "b1q2",
+          "prompt": "Market value $250,000, assessment rate 70%. Assessed value? (number only, no $)",
+          "feedbackIfWrong": "175,000.",
+          "hints": [
+            "250,000 × 0.70.",
+            "= 175,000."
+          ],
+          "answers": [
+            "175000",
+            "175,000"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "market"
+          ],
+          "feedbackIfWrong": "market.",
+          "id": "b1q3",
+          "hints": [
+            "Assessed is a fraction.",
+            "The full value."
+          ],
+          "prompt": "Which is usually larger: market value or assessed value? (word: market or assessed)"
+        }
+      ],
+      "confusionCorner": {
+        "body": "The assessment rate is not the tax rate. [[imp:Assessed value is the base; tax rate is applied to it to get the tax due.]]",
+        "title": "Watch out!"
+      },
+      "teacherCues": [
+        "Ask: 'How is the value of your home determined for property tax purposes?'",
+        "Write the formula: Assessed value = Market value × Assessment rate."
+      ],
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "275000",
+          "275,000"
+        ],
+        "prompt": "A commercial property has a market value of $500,000 and is assessed at 55%. Find the assessed value.",
+        "optional": true,
+        "hints": [
+          "500,000 × 0.55 = 275,000.",
+          "Assessment rate reduces the taxable base."
+        ]
+      },
+      "examples": [
+        {
+          "steps": [
+            "Assessed value = $150,000 × 0.80 = $120,000.",
+            "The tax will be based on $120,000."
+          ],
+          "prompt": "A home has a market value of $150,000 and an assessment rate of 80%. Find the assessed value.",
+          "role": "guided",
+          "title": "A – Find assessed value"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Assessment rates allow local governments to adjust tax burdens without changing market values.",
+            "It can provide relief to homeowners by taxing only a portion of the market value.",
+            "Different classes of property (residential, commercial) may have different assessment rates."
+          ],
+          "title": "B – Why not market value?",
+          "minLength": 2,
+          "prompt": "Explain why property tax is based on assessed value rather than full market value.",
+          "peerPrompt": "Think about fairness and local government policy."
+        },
+        {
+          "role": "independent",
+          "prompt": "Market value $280,000, assessment rate 45%. Find assessed value.",
+          "steps": [
+            "Assessed value = $280,000 × 0.45 = $126,000."
+          ],
+          "title": "C – Calculate assessed value"
+        }
+      ],
+      "id": "assessed-value",
+      "discoveryHook": {
+        "scenario": "Bill Adams' home has a market value of $200,000. The town assesses property at 60% of market value. So the [[kw:assessed value]] is $200,000 × 0.60 = $120,000. Property tax is based on this assessed value, not the full market value."
+      },
+      "title": "1. Assessed Value and Property Tax Basics"
+    },
+    {
+      "concept": {
+        "explanation": [
+          "Property tax rates can be expressed in several equivalent ways:",
+          "- [[kw:Decimal]]: e.g., 0.025",
+          "- [[kw:Percent]]: 2.5% (decimal × 100)",
+          "- [[kw:Per $100]] of assessed value: $2.50 (percent × $1? Actually: per $100 = percent rate × $100? Wait: 2.5% means $2.50 per $100. So per $100 = percent rate (as number) = 2.5.)",
+          "- [[kw:Per $1,000]]: $25.00 (percent × 10, or per $100 × 10)",
+          "- [[kw:Mills]]: 25 mills (1 mill = $1 per $1,000; so mills = per $1,000 rate)",
+          "[[imp:Mills are often used by local governments; 1 mill = $0.001 or $1 per $1,000.]]"
+        ],
+        "formulaCard": {
+          "title": "Tax Rate Conversions",
+          "notes": [
+            "Mills = tax dollars per $1,000 of assessed value.",
+            "To convert mills to decimal, divide by 1,000."
+          ],
+          "formula": "$$\\text{Decimal} = \\frac{\\text{Percent}}{100}$$ $$\\text{Per } \\$100 = \\text{Percent}$$ $$\\text{Per } \\$1,000 = \\text{Per } \\$100 \\times 10$$ $$\\text{Mills} = \\text{Per } \\$1,000$$"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Decimal",
+                "1": "0.025",
+                "2": "2.5 ÷ 100"
+              },
+              {
+                "0": "Percent",
+                "1": "2.5%",
+                "2": "decimal × 100"
+              },
+              {
+                "0": "Per $100",
+                "1": "$2.50",
+                "2": "2.5% × $100"
+              },
+              {
+                "0": "Per $1,000",
+                "1": "$25.00",
+                "2": "per $100 × 10"
+              },
+              {
+                "0": "Mills",
+                "1": "25 mills",
+                "2": "per $1,000 rate"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "caption": "All represent the same tax rate; mills = per $1,000.",
+            "headers": [
+              "Form",
+              "Value",
+              "Calculation"
+            ],
+            "title": "Equivalent Tax Rate Expressions (2.5% rate)"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Show four ways to express a tax rate: decimal, percent, per $100, per $1,000, mills.",
+        "Explain conversions: mills = tax per $1,000 of assessed value; percent = decimal × 100."
+      ],
+      "discoveryHook": {
+        "scenario": "A town might quote a tax rate as 2.5% of assessed value, or $2.50 per $100, or $25 per $1,000, or 25 mills. All mean the same thing. Being able to convert between them is essential for comparing tax rates."
+      },
+      "id": "tax-rate-conversion",
+      "title": "2. Converting Property Tax Rates",
+      "examples": [
+        {
+          "prompt": "A tax rate is 3.2%. Express as per $100, per $1,000, and mills.",
+          "title": "A – Convert percent to per $100 and mills",
+          "steps": [
+            "Per $100 = $3.20.",
+            "Per $1,000 = $32.00.",
+            "Mills = 32 mills."
+          ],
+          "role": "guided"
+        },
+        {
+          "title": "B – Why mills?",
+          "minLength": 2,
+          "steps": [
+            "Mills allow rates to be expressed without decimals.",
+            "It's easier to say '25 mills' than '0.025' or '2.5%'.",
+            "A mill is a small unit ($1 per $1,000), which gives precision."
+          ],
+          "prompt": "Explain why taxing authorities use mills.",
+          "peerPrompt": "Think about smaller fractions of a dollar.",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "15 mills = $15 per $1,000.",
+            "Decimal = 15 ÷ 1,000 = 0.015.",
+            "Percent = 0.015 × 100 = 1.5%."
+          ],
+          "title": "C – Convert mills to decimal",
+          "prompt": "Express 15 mills as a decimal and as a percent."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Mills are often confused with 'percent'. [[imp:1 mill = $0.001, not 0.01.]]"
+      },
+      "challengeCorner": {
+        "optional": true,
+        "hints": [
+          "Per $100 = 3.75 → per $1,000 = 37.50 → 37.5 mills.",
+          "Decimal = 3.75/100 = 0.0375."
+        ],
+        "answers": [
+          "37.5",
+          "0.0375"
+        ],
+        "prompt": "A city quotes a tax rate of $3.75 per $100. What is the rate in mills and as a decimal?",
+        "type": "short-answer"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "1,000.",
+          "type": "fill-blank",
+          "hints": [
+            "Not 100.",
+            "A thousand."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "1,000",
+                "1000"
+              ]
+            }
+          ],
+          "prompt": "1 mill = $1 per $___ of assessed value.",
+          "id": "b2q1"
+        },
+        {
+          "type": "short-answer",
+          "prompt": "Express 2.8% as per $100. (number only, no $)",
+          "feedbackIfWrong": "2.80.",
+          "hints": [
+            "Percent rate is the same number as per $100.",
+            "2.80."
+          ],
+          "answers": [
+            "2.80",
+            "2.8"
+          ],
+          "id": "b2q2"
+        },
+        {
+          "feedbackIfWrong": "0.040.",
+          "type": "short-answer",
+          "hints": [
+            "40 ÷ 1,000.",
+            "= 0.040."
+          ],
+          "prompt": "Convert 40 mills to a decimal. (e.g., 0.040)",
+          "answers": [
+            "0.040",
+            ".040"
+          ],
+          "id": "b2q3"
+        }
+      ]
+    },
+    {
+      "challengeCorner": {
+        "answers": [
+          "5880",
+          "5,880"
+        ],
+        "hints": [
+          "Assessed = 350,000 × 0.60 = 210,000.",
+          "Tax = 210,000 × 28 / 1,000 = 5,880."
+        ],
+        "prompt": "A home has market value $350,000, assessment rate 60%, tax rate 28 mills. Find the property tax.",
+        "optional": true,
+        "type": "short-answer"
+      },
+      "title": "3. Computing Property Tax Due",
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "If the tax rate is given as a percent, convert to decimal (divide by 100) before multiplying. [[imp:Don't multiply assessed value by the percent number directly; that would overstate tax 100-fold.]]"
+      },
+      "id": "computing-property-tax",
+      "discoveryHook": {
+        "scenario": "Bill Adams' assessed value is $120,000. The tax rate is 2.5% (or 25 mills, or $2.50 per $100). Using the decimal rate: Tax = $120,000 × 0.025 = $3,000. His annual property tax bill is $3,000."
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "decimal.",
+          "prompt": "Property tax = Assessed value × Tax rate (as a ___).",
+          "blanks": [
+            {
+              "accept": [
+                "decimal"
+              ]
+            }
+          ],
+          "hints": [
+            "Not percent.",
+            "e.g., 0.025."
+          ],
+          "id": "b3q1",
+          "type": "fill-blank"
+        },
+        {
+          "id": "b3q2",
+          "type": "short-answer",
+          "answers": [
+            "2300",
+            "2,300"
+          ],
+          "hints": [
+            "100,000 × 0.023.",
+            "= 2,300."
+          ],
+          "feedbackIfWrong": "2,300.",
+          "prompt": "Assessed value $100,000, tax rate 2.3%. Property tax? (number only, no $)"
+        },
+        {
+          "type": "short-answer",
+          "id": "b3q3",
+          "answers": [
+            "900",
+            "900.00"
+          ],
+          "prompt": "Assessed value $60,000, tax rate 15 mills. Tax? (number only, no $)",
+          "hints": [
+            "Tax = (60,000 × 15) / 1,000.",
+            "= 900,000/1,000 = 900."
+          ],
+          "feedbackIfWrong": "900."
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Decimal rate = 1.8% = 0.018.",
+            "Tax = $80,000 × 0.018 = $1,440."
+          ],
+          "title": "A – Compute tax with decimal rate",
+          "prompt": "Assessed value $80,000, tax rate 1.8%. Find the property tax."
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain why using the mills method can be simpler than decimal multiplication.",
+          "steps": [
+            "With mills, you divide assessed value by 1,000 and multiply by the mill rate.",
+            "For example, $120,000 / 1,000 = 120, × 25 mills = $3,000.",
+            "It often results in smaller numbers, making mental math easier."
+          ],
+          "title": "B – Which method is easiest?",
+          "peerPrompt": "Think about dividing and multiplying by 1,000."
+        },
+        {
+          "title": "C – Tax using per $100 rate",
+          "prompt": "Assessed value $45,000, rate $3.20 per $100. Find tax.",
+          "steps": [
+            "Tax = ($45,000 / 100) × $3.20 = 450 × $3.20 = $1,440."
+          ],
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Write the formula: Property Tax = Assessed Value × Tax Rate (as decimal).",
+        "Alternatively, Tax = (Assessed Value / $100) × Rate per $100, etc."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Calculating Property Tax ($120,000 assessed, 25 mills)",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Decimal (0.025)",
+                "1": "$120,000 × 0.025",
+                "2": "$3,000"
+              },
+              {
+                "0": "Per $100 ($2.50)",
+                "1": "($120,000 / 100) × $2.50 = 1,200 × $2.50",
+                "2": "$3,000"
+              },
+              {
+                "0": "Per $1,000 ($25.00)",
+                "1": "($120,000 / 1,000) × $25 = 120 × $25",
+                "2": "$3,000"
+              },
+              {
+                "0": "Mills (25)",
+                "1": "$120,000 × (25 / 1,000)",
+                "2": "$3,000"
+              }
+            ],
+            "caption": "All methods yield the same tax amount.",
+            "headers": [
+              "Method",
+              "Calculation",
+              "Tax"
+            ]
+          }
+        ],
+        "explanation": [
+          "To compute the property tax, multiply the assessed value by the tax rate (in decimal form).",
+          "$$\\text{Property Tax} = \\text{Assessed Value} \\times \\text{Tax Rate (decimal)}$$",
+          "If the rate is given per $100: $$\\text{Tax} = \\frac{\\text{Assessed Value}}{100} \\times \\text{Rate per } \\$100$$",
+          "If given in mills: $$\\text{Tax} = \\text{Assessed Value} \\times \\frac{\\text{Mills}}{1{,}000}$$",
+          "[[imp:Always convert the rate to decimal form before multiplying, unless using the per $100 or per $1,000 shortcut.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Property Tax} = \\text{Assessed Value} \\times \\text{Tax Rate (decimal)}$$ $$\\text{or}$$ $$\\text{Tax} = \\frac{\\text{Assessed Value}}{100} \\times \\text{Rate per } \\$100$$ $$\\text{or}$$ $$\\text{Tax} = \\frac{\\text{Assessed Value}}{1{,}000} \\times \\text{Mills}$$",
+          "title": "Property Tax Due",
+          "notes": [
+            "Assessed value must be used, not market value.",
+            "Rates are often stated in mills; divide mills by 1,000 to get decimal."
+          ]
+        }
+      }
+    },
+    {
+      "challengeCorner": {
+        "prompt": "A town's tax rate is $4.80 per $100. Express this rate in mills, as a decimal, and as a percent.",
+        "answers": [
+          "48",
+          "0.048",
+          "4.8"
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "hints": [
+          "Per $100 = 4.80 → per $1,000 = 48 → 48 mills.",
+          "Decimal = 4.80/100 = 0.048; percent = 4.8%."
+        ]
+      },
+      "confusionCorner": {
+        "body": "Mills are not cents. [[imp:1 mill = $0.001, not $0.01.]]",
+        "title": "Watch out!"
+      },
+      "discoveryHook": {
+        "scenario": "A local newspaper reports the tax rate as 22 mills. A real estate listing states it as $2.20 per $100. Being able to convert ensures you compare apples to apples when shopping for a home."
+      },
+      "title": "4. Expressing Tax Rates in Different Forms",
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Decimal",
+                "1": "Percent",
+                "2": "× 100"
+              },
+              {
+                "0": "Percent",
+                "1": "Decimal",
+                "2": "÷ 100"
+              },
+              {
+                "0": "Percent",
+                "1": "Per $100",
+                "2": "Same number"
+              },
+              {
+                "0": "Per $100",
+                "1": "Per $1,000",
+                "2": "× 10"
+              },
+              {
+                "0": "Per $1,000",
+                "1": "Mills",
+                "2": "Same number"
+              },
+              {
+                "0": "Mills",
+                "1": "Decimal",
+                "2": "÷ 1,000"
+              }
+            ],
+            "variant": "colorful",
+            "caption": "Use these simple rules to convert any tax rate expression.",
+            "headers": [
+              "From",
+              "To",
+              "Operation"
+            ],
+            "title": "Conversion Quick Reference"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Always check: 1 mill = $0.001 = 0.1%.",
+            "When in doubt, convert everything to decimal first."
+          ],
+          "title": "Conversion Formulas",
+          "formula": "$$\\text{Percent} = \\text{Decimal} \\times 100$$ $$\\text{Per } \\$100 = \\text{Percent}$$ $$\\text{Mills} = \\text{Per } \\$1,000$$ $$\\text{Decimal} = \\frac{\\text{Mills}}{1{,}000}$$"
+        },
+        "explanation": [
+          "Conversions are straightforward:",
+          "- Decimal to percent: multiply by 100; add % symbol.",
+          "- Percent to decimal: divide by 100.",
+          "- Percent to per $100: same number (e.g., 2.5% = $2.50 per $100).",
+          "- Per $100 to per $1,000: multiply by 10.",
+          "- Per $1,000 to mills: same number.",
+          "- Mills to decimal: divide by 1,000.",
+          "[[imp:Memorize: mills = dollars per $1,000.]]"
+        ]
+      },
+      "examples": [
+        {
+          "title": "A – Decimal to mills",
+          "steps": [
+            "0.0125 × 1,000 = 12.5 mills.",
+            "That's $12.50 per $1,000."
+          ],
+          "prompt": "Convert a decimal rate of 0.0125 to mills.",
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain why it's important to be able to convert between these forms.",
+          "steps": [
+            "Different documents may report rates in different formats.",
+            "If you can't convert, you can't compare tax burdens accurately.",
+            "It's a basic financial literacy skill for homeowners and investors."
+          ],
+          "title": "B – Why learn conversions?",
+          "peerPrompt": "Think about comparing tax rates from different sources."
+        },
+        {
+          "prompt": "Express 18 mills as a percent.",
+          "title": "C – Mills to percent",
+          "role": "independent",
+          "steps": [
+            "18 mills = decimal 0.018.",
+            "Percent = 0.018 × 100 = 1.8%."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "To convert mills to a decimal, divide by ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1,000",
+                "1000"
+              ]
+            }
+          ],
+          "hints": [
+            "Mills per $1,000.",
+            "Three zeros."
+          ],
+          "feedbackIfWrong": "1,000.",
+          "id": "b4q1",
+          "type": "fill-blank"
+        },
+        {
+          "id": "b4q2",
+          "type": "short-answer",
+          "hints": [
+            "Per $100 = $3.50 → per $1,000 = $35 → 35 mills.",
+            "×10."
+          ],
+          "prompt": "Express $3.50 per $100 as mills. (number only)",
+          "feedbackIfWrong": "35.",
+          "answers": [
+            "35"
+          ]
+        },
+        {
+          "answers": [
+            "2.2"
+          ],
+          "type": "short-answer",
+          "id": "b4q3",
+          "hints": [
+            "0.022 × 100.",
+            "= 2.2."
+          ],
+          "prompt": "Convert 0.022 to percent. (number only, no % sign)",
+          "feedbackIfWrong": "2.2."
+        }
+      ],
+      "id": "expressing-rates",
+      "teacherCues": [
+        "Show how to convert between decimal, percent, per $100, per $1,000, and mills.",
+        "Practice conversions in both directions."
+      ]
+    },
+    {
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "If the tax rate is given as a percent, do not use the percent number directly as a decimal. [[imp:Convert percent to decimal by dividing by 100, then multiply.]]"
+      },
+      "challengeCorner": {
+        "answers": [
+          "10800",
+          "10,800"
+        ],
+        "prompt": "A commercial building has market value $750,000, assessment 45%, tax rate $3.20 per $100. Find annual property tax.",
+        "hints": [
+          "Assessed = 750,000 × 0.45 = 337,500.",
+          "Tax = (337,500/100) × 3.20 = 3,375 × 3.20 = 10,800."
+        ],
+        "type": "short-answer",
+        "optional": true
+      },
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that involves market value, assessment rate, and tax rate in mills."
+      ],
+      "discoveryHook": {
+        "scenario": "A homeowner's property has a market value of $400,000, an assessment rate of 50%, and a tax rate of 30 mills. Use the blueprint to calculate the annual property tax."
+      },
+      "concept": {
+        "explanation": [
+          "Apply the blueprint to property tax problems:",
+          "1. Understand: identify market value, assessment rate, and tax rate (in any form).",
+          "2. Solve: compute assessed value, convert tax rate to decimal if needed, then compute tax. Use the method that matches the given rate (decimal, per $100, mills).",
+          "3. Conclude: state the property tax amount; verify that the calculation used the correct base (assessed, not market).",
+          "This structured approach prevents errors like applying tax to market value or misinterpreting mills."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Assessed} = \\text{Market} \\times \\text{Assessment Rate}$$ $$\\text{Tax} = \\text{Assessed} \\times \\text{Decimal Rate}$$ $$\\text{or } \\text{Tax} = \\frac{\\text{Assessed}}{1{,}000} \\times \\text{Mills}$$",
+          "title": "Property Tax Blueprint",
+          "notes": [
+            "If tax rate is given as percent, convert to decimal.",
+            "If given in mills, use the mills formula."
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "title": "Blueprint: Home Property Tax",
+            "caption": "Always use assessed value, not market value.",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Market $400,000, assessment 50%, tax rate 30 mills.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Assessed",
+                "1": "$400,000 × 0.50 = $200,000.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Tax (mills)",
+                "1": "$200,000 × 30 / 1,000 = $6,000.",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Annual property tax = $6,000.",
+                "2": ""
+              }
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "title": "5. Blueprint Aid for Property Tax Problems",
+      "id": "blueprint-property-tax",
+      "examples": [
+        {
+          "steps": [
+            "Assessed = $300,000 × 0.40 = $120,000.",
+            "Tax = ($120,000 / 100) × $2.75 = 1,200 × $2.75 = $3,300."
+          ],
+          "role": "guided",
+          "title": "A – Full blueprint",
+          "prompt": "Market value $300,000, assessment 40%, tax rate $2.75 per $100. Find tax."
+        },
+        {
+          "prompt": "Explain how the blueprint prevents mistakenly using market value instead of assessed value.",
+          "peerPrompt": "Think about the Solve step.",
+          "title": "B – Blueprint prevents base errors",
+          "steps": [
+            "The 'Understand' step separates market value and assessment rate.",
+            "The 'Solve' step explicitly computes assessed value first.",
+            "Only then is the tax rate applied, ensuring it's on the correct base."
+          ],
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "prompt": "Market value $220,000, assessment 65%, tax rate 22 mills. Find tax.",
+          "role": "independent",
+          "steps": [
+            "Assessed = $220,000 × 0.65 = $143,000.",
+            "Tax = $143,000 × 22 / 1,000 = $3,146."
+          ],
+          "title": "C – Practice full blueprint"
+        }
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "understand.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "prompt": "The first blueprint step is to ___ the problem.",
+          "id": "b5q1",
+          "hints": [
+            "Identify what's given.",
+            "U in U‑S‑C."
+          ]
+        },
+        {
+          "feedbackIfWrong": "1,881.",
+          "prompt": "Market value $180,000, assessment 55%, tax rate 1.9%. Tax? (number only, no $)",
+          "type": "short-answer",
+          "id": "b5q2",
+          "hints": [
+            "Assessed = 180,000×0.55 = 99,000.",
+            "Tax = 99,000 × 0.019 = 1,881."
+          ],
+          "answers": [
+            "1881",
+            "1,881"
+          ]
+        },
+        {
+          "feedbackIfWrong": "assessed.",
+          "answers": [
+            "assessed"
+          ],
+          "id": "b5q3",
+          "prompt": "In the conclusion step, you should verify that you used ___ value, not market value. (word)",
+          "hints": [
+            "Not the full value.",
+            "The tax base."
+          ],
+          "type": "short-answer"
+        }
+      ]
+    }
+  ],
+  "standards": [
+    "BUSMATH.19.2"
+  ],
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

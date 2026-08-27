@@ -1,0 +1,874 @@
+{
+  "blocks": [
+    {
+      "concept": {
+        "explanation": [
+          "[[kw:Quartiles]] divide an ordered data set into four equal parts.",
+          "The [[kw:first quartile]] $ Q_1 $: about 25% of the data fall at or below this value.",
+          "The [[kw:second quartile]] $ Q_2 $: the median; about 50% fall at or below.",
+          "The [[kw:third quartile]] $ Q_3 $: about 75% fall at or below.",
+          "To find quartiles manually: order the data, find the median ($ Q_2 $), then find the median of the lower half ($ Q_1 $) and the median of the upper half ($ Q_3 $).",
+          "Technology may give slightly different quartile values due to different interpolation methods."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1",
+                "1": "6",
+                "2": ""
+              },
+              {
+                "0": "2",
+                "1": "7",
+                "2": ""
+              },
+              {
+                "0": "3",
+                "1": "8",
+                "2": ""
+              },
+              {
+                "0": "4",
+                "1": "10",
+                "2": "$ Q_1 = 10 $"
+              },
+              {
+                "0": "5",
+                "1": "11",
+                "2": ""
+              },
+              {
+                "0": "6",
+                "1": "15",
+                "2": ""
+              },
+              {
+                "0": "7",
+                "1": "17",
+                "2": ""
+              },
+              {
+                "0": "8",
+                "1": "18",
+                "2": "$ Q_2 = 18 $"
+              },
+              {
+                "0": "9",
+                "1": "18",
+                "2": ""
+              },
+              {
+                "0": "10",
+                "1": "19",
+                "2": ""
+              },
+              {
+                "0": "11",
+                "1": "20",
+                "2": ""
+              },
+              {
+                "0": "12",
+                "1": "31",
+                "2": "$ Q_3 = 31 $"
+              },
+              {
+                "0": "13",
+                "1": "54",
+                "2": ""
+              },
+              {
+                "0": "14",
+                "1": "59",
+                "2": ""
+              },
+              {
+                "0": "15",
+                "1": "104",
+                "2": ""
+              }
+            ],
+            "headers": [
+              "Position",
+              "Value",
+              "Quartile"
+            ],
+            "title": "Nuclear Power Plants (sorted data, n = 15)",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$ Q_1, Q_2, Q_3 $",
+              "meaning": "first, second (median), and third quartiles",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$Q_2 = \\text{median of all data}$$ $$Q_1 = \\text{median of lower half (values below } Q_2)$$ $$Q_3 = \\text{median of upper half (values above } Q_2)$$",
+          "title": "Finding Quartiles (Manual Method)"
+        }
+      },
+      "title": "Quartiles",
+      "discoveryHook": {
+        "scenario": "A data set can be split into quarters. The first quartile marks the value below which 25% of the data fall, the second quartile is the median (50%), and the third quartile marks 75%. Quartiles help you quickly see how data are spread and where a particular value stands."
+      },
+      "confusionCorner": {
+        "body": "Different software uses different formulas for quartiles, especially when $ n $ is not a multiple of 4. The values may differ slightly, but the interpretation is the same. [[imp:In this course, use the manual method unless told otherwise.]]",
+        "title": "Technology vs. Manual Quartiles"
+      },
+      "teacherCues": [
+        "Write the nuclear power plant data on the board. Ask: 'After ordering, where would you split the data into four equal groups?'",
+        "Demonstrate that the median is Q2, then find the medians of the lower and upper halves for Q1 and Q3."
+      ],
+      "id": "quartiles",
+      "examples": [
+        {
+          "prompt": "The number of nuclear power plants in the top 15 countries: 7, 18, 11, 6, 59, 17, 18, 54, 104, 20, 31, 8, 10, 15, 19. Find $ Q_1, Q_2, Q_3 $.",
+          "steps": [
+            "Order the data: 6, 7, 8, 10, 11, 15, 17, 18, 18, 19, 20, 31, 54, 59, 104.",
+            "The median $ Q_2 $ is the 8th value: 18.",
+            "Lower half (7 values): 6, 7, 8, 10, 11, 15, 17. Its median $ Q_1 = 10 $.",
+            "Upper half (7 values): 18, 19, 20, 31, 54, 59, 104. Its median $ Q_3 = 31 $."
+          ],
+          "role": "guided",
+          "title": "Example A – Finding Quartiles"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "$ Q_1=10 $ means about 25% of these 15 countries have 10 or fewer nuclear power plants.",
+            "$ Q_2=18 $ means about half have 18 or fewer.",
+            "$ Q_3=31 $ means about 75% have 31 or fewer.",
+            "Together, they show the spread of the data."
+          ],
+          "prompt": "The quartiles for nuclear plants are $ Q_1=10 $, $ Q_2=18 $, $ Q_3=31 $. Explain what each tells you.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: What does it mean that $ Q_1=10 $ in terms of the countries?",
+          "title": "Example B – Interpreting Quartiles"
+        },
+        {
+          "steps": [
+            "Ordered: 12, 18, 22, 25, 30, 34, 40. $ n=7 $.",
+            "Median $ Q_2 $ is the 4th value: 25.",
+            "Lower half: 12, 18, 22 → median $ Q_1 = 18 $.",
+            "Upper half: 30, 34, 40 → median $ Q_3 = 34 $."
+          ],
+          "role": "independent",
+          "prompt": "Data: 12, 18, 22, 25, 30, 34, 40. Find $ Q_1, Q_2, Q_3 $.",
+          "title": "Example C – Finding Quartiles from a Small Set"
+        }
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "median",
+                "Median"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the middle value.",
+            "50% of the data fall below it."
+          ],
+          "type": "fill-blank",
+          "prompt": "The second quartile $ Q_2 $ is the same as the ___ of the data set.",
+          "feedbackIfWrong": "$ Q_2 $ is the median.",
+          "id": "q1-1"
+        },
+        {
+          "hints": [
+            "25% of 15 is 3.75, roughly one quarter.",
+            "Think proportionally."
+          ],
+          "type": "short-answer",
+          "prompt": "In an ordered data set of 15 values, about how many values lie below $ Q_1 $?",
+          "answers": [
+            "3",
+            "three"
+          ],
+          "feedbackIfWrong": "About 25% of 15 ≈ 4 values, but practically 3 or 4. Answer: about 3 or 4. Accept 3.",
+          "id": "q1-2",
+          "answer": "3"
+        },
+        {
+          "answers": [
+            "15",
+            "fifteen"
+          ],
+          "prompt": "What is $ Q_3 $ for the data set: 2, 5, 7, 9, 12, 15, 18?",
+          "hints": [
+            "Order the data (already ordered), find median, then median of upper half.",
+            "Upper half of 7 values: after median 9, values 12, 15, 18; median of those is 15."
+          ],
+          "answer": "15",
+          "feedbackIfWrong": "$ Q_3 $ is the median of the upper half: 15.",
+          "id": "q1-3",
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "concept": {
+        "explanation": [
+          "The [[kw:interquartile range (IQR)]] is the difference between the third and first quartiles: $ \\text{IQR} = Q_3 - Q_1 $.",
+          "The IQR represents the range of the [[imp:middle 50%]] of the data and is resistant to outliers.",
+          "To identify [[kw:outliers]], compute [[imp:fences]]: Lower fence $ = Q_1 - 1.5 \\times \\text{IQR} $; Upper fence $ = Q_3 + 1.5 \\times \\text{IQR} $.",
+          "Any data value below the lower fence or above the upper fence is considered an outlier."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Outlier Check for Nuclear Power Plant Data",
+            "headers": [
+              "Measure",
+              "Value"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$ Q_1 $",
+                "1": "$ 10 $"
+              },
+              {
+                "0": "$ Q_3 $",
+                "1": "$ 31 $"
+              },
+              {
+                "0": "IQR",
+                "1": "$ 31 - 10 = 21 $"
+              },
+              {
+                "0": "$ 1.5 \\times \\text{IQR} $",
+                "1": "$ 31.5 $"
+              },
+              {
+                "0": "Lower fence",
+                "1": "$ 10 - 31.5 = -21.5 $"
+              },
+              {
+                "0": "Upper fence",
+                "1": "$ 31 + 31.5 = 62.5 $"
+              },
+              {
+                "0": "Outlier?",
+                "1": "$ 104 > 62.5 $, so $ 104 $ is an outlier"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$ 1.5 $",
+              "meaning": "a constant used to define outlier boundaries"
+            }
+          ],
+          "formula": "$$\\text{IQR} = Q_3 - Q_1$$ $$\\text{Lower fence} = Q_1 - 1.5 \\times \\text{IQR}$$ $$\\text{Upper fence} = Q_3 + 1.5 \\times \\text{IQR}$$",
+          "title": "IQR and Outlier Formulas"
+        }
+      },
+      "confusionCorner": {
+        "body": "An outlier is a data point that lies far from the others, but it may be a valid observation. [[imp:Investigate the cause before removing it.]] It could represent an important extreme case or a measurement mistake.",
+        "title": "Outlier Does Not Mean Error"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "For the nuclear plant data, $ Q_1=10 $, $ Q_3=31 $. Find the IQR and determine if 104 is an outlier.",
+          "steps": [
+            "IQR $ = 31 - 10 = 21 $.",
+            "$ 1.5 \\times \\text{IQR} = 1.5 \\times 21 = 31.5 $.",
+            "Upper fence $ = 31 + 31.5 = 62.5 $; Lower fence $ = 10 - 31.5 = -21.5 $.",
+            "104 is above the upper fence, so it is an [[kw:outlier]]."
+          ],
+          "title": "Example A – Finding IQR and Checking Outliers"
+        },
+        {
+          "prompt": "Explain to a partner why we multiply the IQR by 1.5 to set outlier boundaries, rather than just using the range.",
+          "steps": [
+            "The range only uses the two extreme values, so a single outlier can stretch it enormously.",
+            "The IQR uses the middle 50%, which is unaffected by extremes.",
+            "Multiplying by 1.5 creates a reasonable 'fence' that is based on the spread of the bulk of the data.",
+            "This rule is a commonly accepted convention in statistics."
+          ],
+          "title": "Example B – Why 1.5?",
+          "minLength": 2,
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: How does using IQR instead of range make outlier detection more robust?",
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C – Check for Outliers",
+          "prompt": "Data: 5, 8, 9, 10, 11, 12, 13, 35. $ Q_1=9 $, $ Q_3=13 $. Determine if 35 is an outlier.",
+          "steps": [
+            "IQR $ = 13 - 9 = 4 $.",
+            "$ 1.5 \\times 4 = 6 $.",
+            "Upper fence $ = 13 + 6 = 19 $.",
+            "35 > 19, so 35 is an outlier."
+          ],
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Calculate IQR = Q3 – Q1 for the nuclear plant data. Ask: 'What does this range represent?'",
+        "Write on the board: Lower fence = Q1 – 1.5(IQR), Upper fence = Q3 + 1.5(IQR). Check for outliers."
+      ],
+      "id": "interquartile-range",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "$ Q_3 $",
+                "Q3",
+                "third quartile"
+              ]
+            },
+            {
+              "accept": [
+                "$ Q_1 $",
+                "Q1",
+                "first quartile"
+              ]
+            }
+          ],
+          "id": "q2-1",
+          "hints": [
+            "It's the range of the middle 50%.",
+            "Subtract the lower quartile from the upper quartile."
+          ],
+          "feedbackIfWrong": "IQR = Q3 – Q1.",
+          "prompt": "The interquartile range (IQR) is the difference between ___ and ___."
+        },
+        {
+          "id": "q2-2",
+          "answers": [
+            "20",
+            "twenty"
+          ],
+          "answer": "20",
+          "type": "short-answer",
+          "feedbackIfWrong": "IQR = 35 – 15 = 20.",
+          "prompt": "If $ Q_1=15 $ and $ Q_3=35 $, what is the IQR?",
+          "hints": [
+            "Subtract: 35 – 15.",
+            "IQR = Q3 – Q1."
+          ]
+        },
+        {
+          "answer": "65",
+          "feedbackIfWrong": "Upper fence = 35 + 1.5×20 = 35+30 = 65.",
+          "answers": [
+            "65",
+            "sixty-five"
+          ],
+          "type": "short-answer",
+          "id": "q2-3",
+          "prompt": "Using the 1.5 × IQR rule, what is the upper fence if $ Q_3=35 $ and IQR = 20?",
+          "hints": [
+            "Upper fence = Q3 + 1.5 × IQR.",
+            "35 + 30 = ?"
+          ]
+        }
+      ],
+      "title": "Interquartile Range and Outlier Detection",
+      "discoveryHook": {
+        "scenario": "The range is sensitive to extreme values. The interquartile range (IQR) focuses on the middle 50% of data, giving a more resistant measure of spread. It also helps flag possible outliers using the 1.5 × IQR rule."
+      }
+    },
+    {
+      "questions": [
+        {
+          "id": "q3-1",
+          "prompt": "The five-number summary of a data set consists of the minimum, $ Q_1 $, the median, $ Q_3 $, and the ___.",
+          "feedbackIfWrong": "The five-number summary includes the minimum, Q1, median, Q3, and maximum.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the largest value in the data.",
+            "The five numbers cover the full range."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "maximum",
+                "max"
+              ]
+            }
+          ]
+        },
+        {
+          "answers": [
+            "IQR",
+            "interquartile range",
+            "Interquartile range"
+          ],
+          "type": "short-answer",
+          "answer": "IQR",
+          "hints": [
+            "It's the range of the middle 50%.",
+            "It's Q3 – Q1."
+          ],
+          "feedbackIfWrong": "The box spans Q1 to Q3, so its length is the IQR.",
+          "prompt": "In a boxplot, what does the length of the box represent?",
+          "id": "q3-2"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "The tail extends to the right.",
+            "The opposite of skewed left."
+          ],
+          "feedbackIfWrong": "A longer right whisker indicates a right‑skewed distribution.",
+          "prompt": "If the right whisker in a boxplot is much longer than the left whisker, the distribution is likely ___.",
+          "answer": "skewed right",
+          "id": "q3-3",
+          "answers": [
+            "skewed right",
+            "right skewed",
+            "positively skewed"
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A box-and-whisker plot (boxplot) is a compact graph that shows the five-number summary at a glance: minimum, Q1, median, Q3, maximum. It reveals the center, spread, and skewness of a distribution without plotting every data point."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Min},\\; Q_1,\\; Q_2,\\; Q_3,\\; \\text{Max}$$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "Box from Q1 to Q3, line at Q2, whiskers to Min and Max.",
+              "symbol": "Boxplot"
+            }
+          ],
+          "title": "Five-Number Summary"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ 6 $",
+                "1": "$ 10 $",
+                "2": "$ 18 $",
+                "3": "$ 31 $",
+                "4": "$ 104 $"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Five-Number Summary for Nuclear Plants",
+            "headers": [
+              "Min",
+              "$ Q_1 $",
+              "$ Q_2 $ (Median)",
+              "$ Q_3 $",
+              "Max"
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "A [[kw:box-and-whisker plot]] (boxplot) is a graphical summary of data based on the five-number summary.",
+          "The [[kw:five-number summary]] consists of: minimum, $ Q_1 $, median ($ Q_2 $), $ Q_3 $, maximum.",
+          "To draw: (1) Create a horizontal scale. (2) Plot the five numbers as points. (3) Draw a box from $ Q_1 $ to $ Q_3 $ with a vertical line at the median. (4) Draw whiskers from the box to the min and max.",
+          "The box shows the [[imp:middle 50%]] of the data; the whiskers show the lower and upper 25%.",
+          "The shape of the boxplot indicates skewness: a longer whisker on the right suggests right skew."
+        ]
+      },
+      "id": "box-and-whisker-plot",
+      "examples": [
+        {
+          "steps": [
+            "Draw a horizontal axis covering the range 0 to 110.",
+            "Plot points at 6, 10, 18, 31, and 104 above the axis.",
+            "Draw a box from 10 to 31 with a vertical line at 18.",
+            "Draw left whisker from 10 to 6; right whisker from 31 to 104.",
+            "The long right whisker indicates a right‑skewed distribution."
+          ],
+          "prompt": "Use the nuclear plant five-number summary: Min=6, Q1=10, Median=18, Q3=31, Max=104. Draw the boxplot.",
+          "title": "Example A – Drawing a Boxplot",
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Interpreting Boxplot",
+          "prompt": "Explain to a partner what the box length and whisker lengths tell you about the data.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "steps": [
+            "The box length (IQR) shows the spread of the middle 50%.",
+            "A longer right whisker suggests the data are skewed to the right.",
+            "A longer left whisker suggests left skew.",
+            "If whiskers are roughly equal, the distribution is more symmetric."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If one whisker is much longer than the other, what does that suggest about the distribution?"
+        },
+        {
+          "steps": [
+            "Ordered: 3,5,7,8,9,12,14. Min=3, Max=14.",
+            "Median (Q2)=8; lower half (3,5,7) → Q1=5; upper half (9,12,14) → Q3=12.",
+            "Five‑number: 3, 5, 8, 12, 14.",
+            "Draw: box from 5 to 12, line at 8, whiskers to 3 and 14. Symmetric appearance."
+          ],
+          "title": "Example C – Drawing a Boxplot from Data",
+          "role": "independent",
+          "prompt": "Data: 3, 5, 7, 8, 9, 12, 14. Compute the five-number summary and sketch the boxplot."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Whiskers Can End at Non-Outlier Extremes",
+        "body": "In a standard boxplot, whiskers extend to the minimum and maximum values that are not outliers. If outliers are present, they are plotted individually, and the whiskers stop at the smallest/largest non-outlier values. [[imp:Our examples here show the basic version; later you'll see modified boxplots.]]"
+      },
+      "teacherCues": [
+        "List the five-number summary for the nuclear plant data on the board. Draw a horizontal scale and construct the boxplot step by step.",
+        "Point out that the box spans Q1 to Q3, the line inside is the median, and the whiskers extend to the min and max (excluding outliers)."
+      ],
+      "title": "Box-and-Whisker Plot (Boxplot)"
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Percentiles are everywhere: test scores, baby growth charts, income comparisons. The 60th percentile means you scored better than 60% of the group. Other fractiles like deciles (tenths) further divide data for finer comparisons."
+      },
+      "title": "Percentiles and Other Fractiles",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "The 62nd percentile corresponds to a score of 1600.",
+            "This means approximately 62% of students scored 1600 or lower.",
+            "It does not mean the student got 62% of the questions correct."
+          ],
+          "prompt": "An ogive shows that the 62nd percentile of SAT scores is 1600. Interpret this.",
+          "title": "Example A – Interpreting Percentiles"
+        },
+        {
+          "minLength": 2,
+          "steps": [
+            "Scoring 80% means you answered 80% of questions correctly.",
+            "The 80th percentile means you scored higher than 80% of the test takers.",
+            "If the test was very hard, 60% correct might be the 80th percentile because most people scored lower.",
+            "Percentile describes relative standing, not absolute performance."
+          ],
+          "prompt": "Explain to a partner the difference between scoring in the 80th percentile and scoring 80% on a test.",
+          "title": "Example B – Percentile vs. Percent Correct",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If the test is very hard and you score 60%, could you still be in a high percentile? Why?",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Number of scores less than yours = 15 (since 4 are higher, yours is 5th highest).",
+            "Percentile rank $ \\approx (15/20) \\times 100 = 75 $.",
+            "You are approximately at the 75th percentile."
+          ],
+          "prompt": "In a class of 20 students, your score is the 5th highest. What is your approximate percentile?",
+          "title": "Example C – Finding a Percentile from Data"
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'If you scored in the 90th percentile on a test, what does that mean?' Then explain the difference between percentiles and percent correct.",
+        "Show the relationship: Q1 = 25th percentile, median = 50th percentile, Q3 = 75th percentile."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "The 50th percentile is the median (or Q2).",
+          "prompt": "The 50th percentile is equivalent to the ___ of a data set.",
+          "hints": [
+            "It's the middle value.",
+            "50% of the data fall below it."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "median",
+                "Median",
+                "Q2",
+                "$ Q_2 $"
+              ]
+            }
+          ],
+          "id": "q4-1"
+        },
+        {
+          "feedbackIfWrong": "If you are at the 90th percentile, 10% scored higher than you.",
+          "id": "q4-2",
+          "answer": "10",
+          "answers": [
+            "10",
+            "ten",
+            "10%",
+            "ten percent"
+          ],
+          "type": "short-answer",
+          "prompt": "If your score is at the 90th percentile, what percentage of the scores are higher than yours?",
+          "hints": [
+            "Percentile means percentage below.",
+            "100% – 90% = ?"
+          ]
+        },
+        {
+          "answers": [
+            "Q3",
+            "third quartile",
+            "Third quartile",
+            "$ Q_3 $"
+          ],
+          "answer": "Q3",
+          "prompt": "What quartile equals the 75th percentile?",
+          "feedbackIfWrong": "The 75th percentile is the third quartile (Q3).",
+          "type": "short-answer",
+          "id": "q4-3",
+          "hints": [
+            "75% of the data fall below this quartile.",
+            "It's the third quartile."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Percentile rank of } x = \\frac{\\text{Number of values less than } x}{n} \\times 100$$",
+          "legend": [
+            {
+              "symbol": "$ n $",
+              "tone": "core",
+              "meaning": "total number of data values"
+            }
+          ],
+          "title": "Percentile Rank Formula"
+        },
+        "explanation": [
+          "[[kw:Percentiles]] divide an ordered data set into 100 equal parts. The $ k $th percentile $ P_k $ is the value below which $ k\\% $ of the data fall.",
+          "[[kw:Deciles]] divide the data into 10 equal parts ($ D_1, D_2, \\dots, D_9 $).",
+          "Relationships: $ Q_1 = P_{25} $, $ Q_2 = P_{50} $ (median), $ Q_3 = P_{75} $; $ D_1 = P_{10} $, $ D_2 = P_{20} $, etc.",
+          "Percentiles can be read from a cumulative relative frequency graph (ogive).",
+          "A high percentile (e.g., 95th) indicates an unusually high value; a low percentile (e.g., 5th) indicates an unusually low value."
+        ],
+        "visuals": [
+          {
+            "title": "Common Fractiles Equivalents",
+            "type": "table",
+            "headers": [
+              "Fractile",
+              "Percentile",
+              "Equivalent Quartile"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$ D_1 $",
+                "1": "$ P_{10} $",
+                "2": ""
+              },
+              {
+                "0": "$ Q_1 $",
+                "1": "$ P_{25} $",
+                "2": "First quartile"
+              },
+              {
+                "0": "$ D_5 $",
+                "1": "$ P_{50} $",
+                "2": "Second quartile / Median"
+              },
+              {
+                "0": "$ Q_3 $",
+                "1": "$ P_{75} $",
+                "2": "Third quartile"
+              },
+              {
+                "0": "$ D_9 $",
+                "1": "$ P_{90} $",
+                "2": ""
+              }
+            ]
+          }
+        ]
+      },
+      "id": "percentiles",
+      "confusionCorner": {
+        "body": "A common mistake is confusing percentile with percentage score. A percentile tells how you compare to others; a percent tells how many items you got right. [[imp:Always check whether the number is a percentile rank or a raw percentage.]]",
+        "title": "Percentile ≠ Percent Correct"
+      }
+    },
+    {
+      "teacherCues": [
+        "Write the z-score formula on the board: z = (x – μ)/σ. Ask: 'Why would we want to convert to z‑scores?'",
+        "Demonstrate that z = 0 means the value equals the mean, positive z means above the mean, negative z means below."
+      ],
+      "questions": [
+        {
+          "id": "q5-1",
+          "prompt": "The formula for a z‑score is $ z = \\frac{x - \\mu}{\\sigma} $. Here, $ \\sigma $ represents the population ___.",
+          "hints": [
+            "It measures the spread.",
+            "It's the denominator in the z‑score."
+          ],
+          "feedbackIfWrong": "$ \\sigma $ is the population standard deviation.",
+          "blanks": [
+            {
+              "accept": [
+                "standard deviation",
+                "Standard deviation",
+                "SD"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "z = (130 – 100)/15 = 30/15 = 2.",
+          "hints": [
+            "z = (130 – 100)/15.",
+            "30/15 = ?"
+          ],
+          "answers": [
+            "2",
+            "two"
+          ],
+          "prompt": "If μ = 100, σ = 15, and x = 130, what is the z‑score?",
+          "answer": "2",
+          "id": "q5-2"
+        },
+        {
+          "hints": [
+            "Unusual if z < –2 or z > 2.",
+            "–1.8 is within –2 to 2."
+          ],
+          "id": "q5-3",
+          "answers": [
+            "usual",
+            "Usual"
+          ],
+          "prompt": "A z‑score of –1.8 is considered usual or unusual? (Assume bell‑shaped distribution.)",
+          "feedbackIfWrong": "A z‑score of –1.8 is within ±2, so it is not considered unusual.",
+          "answer": "usual",
+          "type": "short-answer"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Speed (mph)",
+              "z‑score",
+              "Interpretation"
+            ],
+            "rows": [
+              {
+                "0": "62",
+                "1": "$ +1.5 $",
+                "2": "1.5 standard deviations above mean"
+              },
+              {
+                "0": "47",
+                "1": "$ -2.25 $",
+                "2": "2.25 standard deviations below mean (unusual)"
+              },
+              {
+                "0": "56",
+                "1": "$ 0 $",
+                "2": "Exactly at the mean"
+              }
+            ],
+            "variant": "colorful",
+            "title": "z‑Score Examples for Vehicle Speeds (μ=56 mph, σ=4 mph)",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "title": "z‑Score Formula",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$ \\mu $",
+              "meaning": "population mean (use $ \\bar{x} $ for sample)"
+            },
+            {
+              "symbol": "$ \\sigma $",
+              "tone": "core",
+              "meaning": "population standard deviation (use $ s $ for sample)"
+            }
+          ],
+          "formula": "$$z = \\frac{x - \\mu}{\\sigma}$$"
+        },
+        "explanation": [
+          "The [[kw:standard score]] or [[kw:z‑score]] measures how many standard deviations a data value $ x $ is from the mean $ \\mu $.",
+          "Formula: $ z = \\frac{x - \\mu}{\\sigma} $ (population) or $ z = \\frac{x - \\bar{x}}{s} $ (sample).",
+          "A positive z‑score: $ x $ is above the mean. Negative: below. Zero: equal to the mean.",
+          "z‑scores allow comparison of values from different data sets with different units or scales.",
+          "For bell‑shaped distributions, about 95% of z‑scores lie between –2 and 2. A z‑score beyond ±2 is [[imp:unusual]]; beyond ±3 is [[imp:very unusual]]."
+        ]
+      },
+      "id": "blueprint-zscore",
+      "title": "Blueprint Aid: Standard Score (z‑Score) and Comparing Positions",
+      "discoveryHook": {
+        "scenario": "You scored 85 on a math test and 90 on a history test. Which is better? Without knowing the class means and standard deviations, you can't tell. The z‑score converts both to a common scale, revealing how far each is from its mean in standard deviation units."
+      },
+      "examples": [
+        {
+          "prompt": "Speeds: μ = 56 mph, σ = 4 mph. Find z‑scores for 62 mph, 47 mph, 56 mph. Identify any unusual speeds.",
+          "title": "Example A – Computing z‑Scores",
+          "steps": [
+            "62 mph: $ z = (62 - 56)/4 = 1.5 $. Not unusual (within ±2).",
+            "47 mph: $ z = (47 - 56)/4 = -2.25 $. This is less than –2, so unusually slow.",
+            "56 mph: $ z = 0 $. Exactly at the mean."
+          ],
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Comparing Oscar Winners",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does a more negative z‑score mean a younger relative age?",
+          "minLength": 2,
+          "steps": [
+            "Ledger: $ z = (29 - 49.5)/13.8 \\approx -1.49 $.",
+            "Cruz: $ z = (34 - 39.9)/14.0 \\approx -0.42 $.",
+            "Ledger's z‑score is further from zero (more negative), so he was more unusually young for his category.",
+            "Both are within –2, so neither is statistically unusual."
+          ],
+          "prompt": "Heath Ledger (age 29) for Best Supporting Actor (μ=49.5, σ=13.8); Penelope Cruz (age 34) for Best Supporting Actress (μ=39.9, σ=14.0). Who was more unusual relative to their category?",
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C – Are These Unusual?",
+          "prompt": "A test has μ = 70, σ = 10. Find z‑scores for scores of 95 and 45. Are they unusual?",
+          "steps": [
+            "95: $ z = (95 - 70)/10 = 2.5 $. This is >2, so unusual.",
+            "45: $ z = (45 - 70)/10 = -2.5 $. Also unusual.",
+            "Both lie beyond 2 standard deviations from the mean."
+          ],
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "A z‑score is a pure number, free of the original measurement units. This is why it can compare apples and oranges — or movie actor ages and vehicle speeds — on a common scale. [[imp:Think of z as the distance from the mean in 'standard deviation' steps.]]",
+        "title": "z‑Score Has No Units"
+      }
+    }
+  ],
+  "presenterNotes": [
+    "Block 1 (Quartiles): Emphasize the manual method for finding quartiles. Note that technology may give slightly different answers, but the concept is the same.",
+    "Block 2 (IQR and Outliers): The 1.5 IQR rule is a standard convention. Reinforce that outliers are not automatically errors—they may be important.",
+    "Block 3 (Boxplot): Draw the nuclear plant boxplot live. Highlight how skewness is visible from whisker lengths.",
+    "Block 4 (Percentiles): The difference between percentile and percent correct is a critical distinction. Use the ogive to read percentiles.",
+    "Block 5 (Blueprint/z‑Score): Tie everything together by showing how z‑scores, percentiles, and quartiles all describe position. The z‑score's unitless nature makes it a powerful comparison tool."
+  ],
+  "id": "chapter-2-5-measures-of-position",
+  "title": "Measures of Position",
+  "standards": [
+    "HSS.ID.A.2",
+    "HSS.ID.A.3",
+    "HSS.ID.A.4"
+  ],
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

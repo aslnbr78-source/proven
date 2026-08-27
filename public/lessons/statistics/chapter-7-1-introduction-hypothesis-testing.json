@@ -1,0 +1,782 @@
+{
+  "title": "Introduction to Hypothesis Testing",
+  "schemaVersion": 2,
+  "presenterNotes": [
+    "Block 1: Emphasize that the null hypothesis always contains equality. Use the table to show how verbal claims translate into mathematical hypotheses.",
+    "Block 2: The courtroom analogy is effective for explaining Type I and II errors. The relationship between α and β is important.",
+    "Block 3: Visuals of the three types of tests help. Show how to find P-values using Google Sheets functions.",
+    "Block 4: The interpretation depends on which hypothesis is the claim. The distinction between 'fail to reject' and 'accept' is crucial.",
+    "Block 5: The blueprint ties everything together. The strategy tip—put the claim in Ha if you want to support it, in H0 if you want to reject it—is key."
+  ],
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.A.1"
+  ],
+  "id": "chapter-7-1-introduction-hypothesis-testing",
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "examples": [
+        {
+          "steps": [
+            "The claim: $ p = 0.61 $. Its complement is $ p \\neq 0.61 $.",
+            "Since $ p = 0.61 $ contains equality, it becomes $ H_0 $.",
+            "So $ H_0: p = 0.61 $ (claim), $ H_a: p \\neq 0.61 $."
+          ],
+          "role": "guided",
+          "title": "Example A – Proportion Claim",
+          "prompt": "A school claims that the proportion of its students involved in at least one extracurricular activity is 61%. Write the null and alternative hypotheses. Which represents the claim?"
+        },
+        {
+          "steps": [
+            "The claim: $ \\mu < 15 $. Its complement is $ \\mu \\ge 15 $.",
+            "The complement contains equality ($ \\ge $), so it must be $ H_0 $.",
+            "Thus $ H_0: \\mu \\ge 15 $, $ H_a: \\mu < 15 $ (claim).",
+            "The claim is $ H_a $ because it does not contain equality."
+          ],
+          "role": "peer-explain",
+          "prompt": "A car dealership claims the mean oil change time is less than 15 minutes. Write the hypotheses. Explain to a partner why the claim is $ H_a $.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does the claim 'less than 15 minutes' become the alternative hypothesis and not the null?",
+          "minLength": 2,
+          "title": "Example B – Mean Less Than a Value"
+        },
+        {
+          "title": "Example C – Your Turn",
+          "steps": [
+            "Claim: $ \\mu > 18 $. Complement: $ \\mu \\le 18 $.",
+            "$ H_0: \\mu \\le 18 $, $ H_a: \\mu > 18 $ (claim)."
+          ],
+          "prompt": "A company claims the mean life of its furnaces is more than 18 years. Write the hypotheses.",
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "A [[kw:hypothesis test]] is a process that uses sample statistics to test a claim about a population parameter.",
+          "Every test has two hypotheses:",
+          "- The [[kw:null hypothesis]] $ H_0 $: a statement of equality ($ = $, $ \\le $, or $ \\ge $). It is assumed true until evidence suggests otherwise.",
+          "- The [[kw:alternative hypothesis]] $ H_a $: the complement of $ H_0 $ ($ \\neq $, $ > $, or $ < $). It represents the claim we are trying to find evidence for.",
+          "To write hypotheses: translate the verbal claim into a mathematical statement. Then write its complement. The statement with equality becomes $ H_0 $.",
+          "Examples: 'mean is less than 15 min' → $ H_0: \\mu \\ge 15 $, $ H_a: \\mu < 15 $. 'proportion is 61%' → $ H_0: p = 0.61 $, $ H_a: p \\neq 0.61 $."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Verbal Claim",
+              "$ H_0 $",
+              "$ H_a $"
+            ],
+            "rows": [
+              {
+                "0": "The mean is less than $ k $",
+                "1": "$ \\mu \\ge k $",
+                "2": "$ \\mu < k $ (claim)"
+              },
+              {
+                "0": "The mean is at least $ k $",
+                "1": "$ \\mu \\ge k $ (claim)",
+                "2": "$ \\mu < k $"
+              },
+              {
+                "0": "The proportion is $ k $",
+                "1": "$ p = k $ (claim)",
+                "2": "$ p \\neq k $"
+              },
+              {
+                "0": "The mean is more than $ k $",
+                "1": "$ \\mu \\le k $",
+                "2": "$ \\mu > k $ (claim)"
+              }
+            ],
+            "title": "Writing Hypotheses from a Verbal Claim",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "null hypothesis — assumed true at the start",
+              "tone": "core",
+              "symbol": "$ H_0 $"
+            },
+            {
+              "tone": "subtle",
+              "symbol": "$ H_a $",
+              "meaning": "alternative hypothesis — what we want to prove"
+            }
+          ],
+          "formula": "$$ H_0 \\text{ always contains } =, \\le, \\text{or } \\ge $$ $$ H_a \\text{ contains } \\neq, >, \\text{or } < $$",
+          "title": "Key Principle"
+        }
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "equality",
+                "equality (=, ≤, or ≥)",
+                "=, ≤, or ≥"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the hypothesis that is assumed true.",
+            "It uses =, ≤, or ≥."
+          ],
+          "feedbackIfWrong": "$ H_0 $ must contain equality ($ = $, $ \\le $, or $ \\ge $).",
+          "prompt": "The null hypothesis $ H_0 $ always contains a statement of ___.",
+          "type": "fill-blank",
+          "id": "q1-1"
+        },
+        {
+          "feedbackIfWrong": "$ H_0: \\mu = 85 $.",
+          "id": "q1-2",
+          "answer": "$ H_0: \\mu = 85 $",
+          "type": "short-answer",
+          "answers": [
+            "H0: μ = 85",
+            "μ = 85"
+          ],
+          "hints": [
+            "The claim says 'not 85', which is $ \\neq $.",
+            "The null is the complement, which contains equality."
+          ],
+          "prompt": "A claim states 'the mean height is not 85 feet.' Write the null hypothesis. (e.g., $ H_0: \\mu = 85 $)"
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The claim should be $ H_a $ because it is what the researcher wants to prove.",
+          "answer": "$ H_a $",
+          "hints": [
+            "To support a claim, make it the alternative hypothesis.",
+            "The claim does not contain equality."
+          ],
+          "answers": [
+            "Ha",
+            "alternative",
+            "H_a"
+          ],
+          "prompt": "A researcher wants to support that the mean recovery time is less than 96 hours. Should the claim be $ H_0 $ or $ H_a $?",
+          "id": "q1-3"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Which Is $ H_0 $?",
+        "body": "The null hypothesis always contains the equality condition ($ = $, $ \\le $, or $ \\ge $). The claim can be either $ H_0 $ or $ H_a $, depending on whether it contains equality. [[imp:Always find the statement with equality first — that's $ H_0 $.]]"
+      },
+      "title": "Stating the Null and Alternative Hypotheses",
+      "teacherCues": [
+        "Ask: 'A car ad claims 50 mpg. You suspect it's less. How would you state that as a pair of competing hypotheses?'",
+        "Write on the board: H0: μ = 50, Ha: μ < 50. Explain that H0 always contains equality."
+      ],
+      "id": "stating-hypotheses",
+      "discoveryHook": {
+        "scenario": "A manufacturer claims its hybrid car gets 50 mpg. You test 30 cars and get a sample mean of 47 mpg. Could this just be bad luck, or is the claim false? Hypothesis testing gives us a framework to decide — starting with two opposing statements about the population."
+      }
+    },
+    {
+      "examples": [
+        {
+          "prompt": "The USDA limit for salmonella contamination is 20%. A meat inspector claims the chicken exceeds the limit. Hypotheses: $ H_0: p \\le 0.20 $, $ H_a: p > 0.20 $. Describe the Type I and Type II errors. Which is more serious?",
+          "title": "Example A – Identifying Errors",
+          "role": "guided",
+          "steps": [
+            "Type I error: Conclude the chicken exceeds the limit when it actually does NOT. Consequence: health scare, hurt sales of compliant producers.",
+            "Type II error: Conclude the chicken does NOT exceed the limit when it actually DOES. Consequence: contaminated chicken sold to consumers, possible illness.",
+            "A Type II error is more serious because it risks public health."
+          ]
+        },
+        {
+          "prompt": "A parachute company claims its failure rate is not more than 1%. $ H_0: p \\le 0.01 $, $ H_a: p > 0.01 $. Explain Type I and Type II errors and which is worse.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why is a Type II error potentially more dangerous in this situation?",
+          "minLength": 2,
+          "steps": [
+            "Type I: Conclude failure rate > 1% when it's actually ≤ 1%. Consequence: recall good parachutes, waste money.",
+            "Type II: Conclude failure rate ≤ 1% when it's actually > 1%. Consequence: defective parachutes used, risk of death.",
+            "Type II error is more serious because lives are at stake."
+          ],
+          "title": "Example B – Parachute Failure Rate",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Lower $ \\alpha $ means a stricter criterion to reject $ H_0 $, so the probability of a Type I error decreases.",
+            "However, it becomes harder to reject $ H_0 $, so the probability of a Type II error increases.",
+            "Thus, decreasing $ \\alpha $ increases $ \\beta $, all else being equal."
+          ],
+          "prompt": "If a researcher sets $ \\alpha = 0.01 $ instead of $ 0.05 $, how does that affect the chance of a Type I and Type II error?",
+          "role": "independent",
+          "title": "Example C – Significance Level"
+        }
+      ],
+      "id": "errors-and-significance",
+      "teacherCues": [
+        "Ask: 'If I reject a true null hypothesis, what kind of error is that?' Introduce Type I and Type II errors.",
+        "Write $ \\alpha = 0.05 $ on the board: 'This is the maximum probability of making a Type I error.'"
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Error Probabilities",
+          "legend": [
+            {
+              "meaning": "level of significance; set by the researcher (commonly 0.05)",
+              "tone": "core",
+              "symbol": "$ \\alpha $"
+            }
+          ],
+          "formula": "$$ \\alpha = P(\\text{Type I error}) $$ $$ \\beta = P(\\text{Type II error}) $$ $$ \\text{Power} = 1 - \\beta $$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Decision",
+              "$ H_0 $ is true",
+              "$ H_0 $ is false"
+            ],
+            "title": "Possible Outcomes of a Hypothesis Test",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Do not reject $ H_0 $",
+                "1": "Correct decision",
+                "2": "Type II error"
+              },
+              {
+                "0": "Reject $ H_0 $",
+                "1": "Type I error",
+                "2": "Correct decision (Power)"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "A [[kw:Type I error]] occurs when $ H_0 $ is rejected but is actually true. The probability of a Type I error is denoted by $ \\alpha $, the [[kw:level of significance]].",
+          "A [[kw:Type II error]] occurs when $ H_0 $ is not rejected but is actually false. The probability of a Type II error is denoted by $ \\beta $.",
+          "The level of significance $ \\alpha $ is the maximum allowable probability of making a Type I error. Common values: $ 0.10 $, $ 0.05 $, $ 0.01 $.",
+          "Decreasing $ \\alpha $ reduces the chance of a Type I error but increases the chance of a Type II error (they are inversely related).",
+          "The [[kw:power]] of a test is $ 1 - \\beta $ — the probability of correctly rejecting a false null hypothesis."
+        ]
+      },
+      "questions": [
+        {
+          "hints": [
+            "It's the error of false alarm.",
+            "Denoted by $ \\alpha $."
+          ],
+          "prompt": "Rejecting $ H_0 $ when it is actually true is called a Type ___ error.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "I",
+                "one",
+                "1"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Rejecting a true $ H_0 $ is a Type I error.",
+          "id": "q2-1"
+        },
+        {
+          "prompt": "The probability of a Type I error is denoted by what Greek letter?",
+          "answers": [
+            "alpha",
+            "α",
+            "$ \\alpha $"
+          ],
+          "hints": [
+            "It's the level of significance.",
+            "The first letter of the Greek alphabet."
+          ],
+          "type": "short-answer",
+          "answer": "$ \\alpha $",
+          "id": "q2-2",
+          "feedbackIfWrong": "The probability of a Type I error is $ \\alpha $ (alpha)."
+        },
+        {
+          "answer": "increase",
+          "type": "short-answer",
+          "prompt": "If we decrease the significance level $ \\alpha $, what happens to the probability of a Type II error $ \\beta $? (Increase, decrease, or stay the same?)",
+          "answers": [
+            "increase",
+            "increases"
+          ],
+          "feedbackIfWrong": "Decreasing $ \\alpha $ increases $ \\beta $ (they are inversely related).",
+          "hints": [
+            "More stringent evidence is needed to reject.",
+            "Harder to reject means more chance of missing a false $ H_0 $."
+          ],
+          "id": "q2-3"
+        }
+      ],
+      "confusionCorner": {
+        "body": "It's easy to mix them up: Type I = Rejecting a True null (think 'RT' — I before II, Reject True). [[imp:Remember: Type I is a false positive; Type II is a false negative.]]",
+        "title": "Type I vs. Type II"
+      },
+      "title": "Types of Errors and Level of Significance",
+      "discoveryHook": {
+        "scenario": "In a courtroom, convicting an innocent person is a Type I error; letting a guilty person go free is a Type II error. Hypothesis testing has the same logic: we set a significance level $ \\alpha $ to control the risk of wrongly rejecting $ H_0 $."
+      }
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "standardized test statistic",
+              "tone": "core",
+              "symbol": "$ z $"
+            }
+          ],
+          "formula": "$$ \\text{Left: } =\\text{NORM.S.DIST}(z, \\text{TRUE}) $$ $$ \\text{Right: } =1 - \\text{NORM.S.DIST}(z, \\text{TRUE}) $$ $$ \\text{Two-tailed: } =2 * (1 - \\text{NORM.S.DIST}(\\text{ABS}(z), \\text{TRUE})) $$",
+          "title": "Google Sheets P‑value for z‑test"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "$ H_a $",
+              "Type of Test",
+              "P‑value (z‑test example)"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "$ \\mu < k $",
+                "1": "Left‑tailed",
+                "2": "Area to the left of $ z $"
+              },
+              {
+                "0": "$ \\mu > k $",
+                "1": "Right‑tailed",
+                "2": "Area to the right of $ z $"
+              },
+              {
+                "0": "$ \\mu \\neq k $",
+                "1": "Two‑tailed",
+                "2": "Twice the area in the tail beyond $ z $"
+              }
+            ],
+            "title": "Determining the Type of Test and P‑value"
+          }
+        ],
+        "explanation": [
+          "The [[kw:P‑value]] is the probability of obtaining a sample statistic as extreme as the one observed, assuming $ H_0 $ is true.",
+          "The type of test is determined by $ H_a $:",
+          "- $ H_a $ contains $ < $ → [[kw:left‑tailed test]]. P‑value = area to the [[imp:left]] of the test statistic.",
+          "- $ H_a $ contains $ > $ → [[kw:right‑tailed test]]. P‑value = area to the [[imp:right]] of the test statistic.",
+          "- $ H_a $ contains $ \\neq $ → [[kw:two‑tailed test]]. P‑value = [[imp:twice]] the area in the tail beyond the test statistic (or the sum of both tails if symmetric).",
+          "A smaller P‑value provides stronger evidence against $ H_0 $. If the P‑value $ \\le \\alpha $, we reject $ H_0 $.",
+          "In Google Sheets, P‑values for z‑tests can be found using `=NORM.S.DIST(z, TRUE)` for left‑tail, `=1 - NORM.S.DIST(z, TRUE)` for right‑tail, and `=2 * (1 - NORM.S.DIST(ABS(z), TRUE))` for two‑tailed."
+        ]
+      },
+      "id": "p-values-and-tails",
+      "discoveryHook": {
+        "scenario": "Once we have a test statistic, how unusual is it? The P‑value quantifies this: a small P‑value means the observed result would be very rare if $ H_0 $ were true, casting doubt on $ H_0 $."
+      },
+      "confusionCorner": {
+        "body": "The P‑value is the probability of the data (or more extreme) given that $ H_0 $ is true, not the probability that $ H_0 $ is true. [[imp:Don't confuse P(data | $ H_0 $) with P($ H_0 $ | data).]]",
+        "title": "P‑value is Not the Probability that $ H_0 $ is True"
+      },
+      "title": "P‑Values and the Nature of the Test",
+      "questions": [
+        {
+          "feedbackIfWrong": "A $ > $ in $ H_a $ indicates a right‑tailed test.",
+          "blanks": [
+            {
+              "accept": [
+                "right",
+                "Right"
+              ]
+            }
+          ],
+          "id": "q3-1",
+          "type": "fill-blank",
+          "hints": [
+            "The inequality points to the right.",
+            "Greater than → right tail."
+          ],
+          "prompt": "If the alternative hypothesis is $ H_a: \\mu > 100 $, the hypothesis test is a ___-tailed test."
+        },
+        {
+          "id": "q3-2",
+          "prompt": "A two‑tailed test has $ z = -2.3 $. Using Google Sheets, what formula gives the P‑value?",
+          "hints": [
+            "Two‑tailed: double the tail area.",
+            "Use ABS to get the positive magnitude."
+          ],
+          "answer": "=2 * (1 - NORM.S.DIST(ABS(-2.3), TRUE))",
+          "answers": [
+            "=2*(1-NORM.S.DIST(2.3,TRUE))",
+            "2 * NORM.S.DIST(-2.3, TRUE)"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "The formula is `=2 * (1 - NORM.S.DIST(ABS(z), TRUE))`."
+        },
+        {
+          "hints": [
+            "Small P‑value means the data are unlikely under $ H_0 $.",
+            "We conclude there is enough evidence against $ H_0 $."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "If P $ \\le \\alpha $, we reject $ H_0 $.",
+          "prompt": "If the P‑value is less than or equal to $ \\alpha $, what decision do we make about $ H_0 $?",
+          "id": "q3-3",
+          "answer": "reject",
+          "answers": [
+            "reject",
+            "Reject",
+            "reject H0"
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Draw three normal curves: shade left tail for $ H_a < $, right tail for $ H_a > $, both tails for $ H_a \\neq $. Label them left‑tailed, right‑tailed, two‑tailed.",
+        "Define P‑value as the probability of observing a test statistic as extreme as, or more extreme than, the one computed from the sample, assuming $ H_0 $ is true."
+      ],
+      "examples": [
+        {
+          "steps": [
+            "(1) $ H_a: p \\neq 0.61 $ → [[kw:two‑tailed test]].",
+            "(2) $ H_a: \\mu < 15 $ → [[kw:left‑tailed test]].",
+            "(3) $ H_a: \\mu > 18 $ → [[kw:right‑tailed test]].",
+            "The direction of the inequality in $ H_a $ tells you which tail(s) to use."
+          ],
+          "prompt": "For each claim, identify whether the hypothesis test is left‑tailed, right‑tailed, or two‑tailed: (1) $ p = 0.61 $, (2) $ \\mu < 15 $ min, (3) $ \\mu > 18 $ years.",
+          "title": "Example A – Identifying the Test Type",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "A car ad claims 50 mpg. You test 30 cars and get $ \\bar{x} = 47 $, $ s = 5.5 $. The test statistic is $ z = -3.0 $. Explain to a partner what the P‑value means in this context.",
+          "steps": [
+            "The null hypothesis is $ \\mu = 50 $ (ad is true).",
+            "The P‑value is $ P(\\bar{x} \\le 47 \\text{ or more extreme}) $ assuming $ \\mu = 50 $.",
+            "A P‑value of 0.0013 means: if the true mean really is 50, the chance of getting a sample mean of 47 or less is only 0.13%.",
+            "This is so unlikely that we doubt $ H_0 $ — the ad is probably false."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If the P‑value is very small (say 0.0013), what does that say about the null hypothesis?",
+          "title": "Example B – Understanding the P‑value",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Google Sheets P‑value",
+          "prompt": "A right‑tailed test gives $ z = 2.1 $. Use Google Sheets to find the P‑value.",
+          "steps": [
+            "Right‑tailed: `=1 - NORM.S.DIST(2.1, TRUE)` returns about 0.0179.",
+            "The P‑value is approximately 0.0179.",
+            "If $ \\alpha = 0.05 $, we reject $ H_0 $ because $ 0.0179 < 0.05 $."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "making-decisions",
+      "title": "Making a Decision and Interpreting Results",
+      "concept": {
+        "formulaCard": {
+          "title": "Decision Rule",
+          "legend": [
+            {
+              "meaning": "level of significance (often 0.05)",
+              "symbol": "$ \\alpha $",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ \\text{If P-value } \\le \\alpha \\;\\rightarrow\\; \\text{Reject } H_0 $$ $$ \\text{If P-value } > \\alpha \\;\\rightarrow\\; \\text{Fail to reject } H_0 $$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Decision",
+              "Claim is $ H_0 $",
+              "Claim is $ H_a $"
+            ],
+            "variant": "colorful",
+            "title": "Interpreting the Decision Based on the Claim",
+            "rows": [
+              {
+                "0": "Reject $ H_0 $",
+                "1": "Enough evidence to reject the claim.",
+                "2": "Enough evidence to support the claim."
+              },
+              {
+                "0": "Fail to reject $ H_0 $",
+                "1": "Not enough evidence to reject the claim.",
+                "2": "Not enough evidence to support the claim."
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "Decision rule: If P-value $ \\le \\alpha $, [[kw:reject $ H_0 $]]. If P-value $ > \\alpha $, [[kw:fail to reject $ H_0 $]].",
+          "Rejecting $ H_0 $ means there is enough evidence to support $ H_a $. Failing to reject $ H_0 $ means there is not enough evidence — it does NOT prove $ H_0 $ is true.",
+          "Interpreting depends on which hypothesis is the claim:",
+          "- If claim is $ H_0 $: reject $ H_0 $ → enough evidence to reject the claim. Fail to reject → not enough evidence to reject.",
+          "- If claim is $ H_a $: reject $ H_0 $ → enough evidence to support the claim. Fail to reject → not enough evidence to support.",
+          "Always state the conclusion in context: 'There is (or is not) enough evidence to support/reject the claim that...'"
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "After computing the P‑value, we compare it to $ \\alpha $. If the P‑value is low, we reject $ H_0 $ and conclude there is evidence for $ H_a $. But we must carefully interpret the result in the context of the original claim."
+      },
+      "confusionCorner": {
+        "title": "Fail to Reject ≠ Accept",
+        "body": "Never say 'accept $ H_0 $'. Failing to reject means the evidence was not strong enough; it doesn't prove $ H_0 $ true. [[imp:Always use 'fail to reject' to acknowledge uncertainty.]]"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "The claim is $ H_0 $. Rejecting $ H_0 $ means the data provide enough evidence to reject the school's claim.",
+            "Conclusion: There is enough evidence to reject the claim that the proportion is 61%.",
+            "The true proportion is likely different from 61%."
+          ],
+          "prompt": "A school claims 61% of students are involved in extracurriculars. $ H_0: p = 0.61 $ (claim). You reject $ H_0 $. Interpret this decision.",
+          "title": "Example A – Interpreting a Rejection"
+        },
+        {
+          "steps": [
+            "The claim is $ H_a $. Failing to reject $ H_0 $ means the sample did not provide enough evidence to support the claim.",
+            "Conclusion: There is not enough evidence to support the claim that the mean time is less than 15 minutes.",
+            "It does NOT prove the mean is ≥ 15; the sample simply wasn't convincing enough."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does failing to reject $ H_0 $ NOT mean the dealership's claim is false?",
+          "role": "peer-explain",
+          "prompt": "A dealership claims the mean oil change time is less than 15 min. $ H_0: \\mu \\ge 15 $, $ H_a: \\mu < 15 $ (claim). You fail to reject $ H_0 $. What do you conclude?",
+          "minLength": 2,
+          "title": "Example B – Failing to Reject When Claim is $ H_a $"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "$ H_0: \\mu \\le 18 $, $ H_a: \\mu > 18 $ (claim). P = 0.03 $ \\le \\alpha = 0.05 $ → reject $ H_0 $.",
+            "Conclusion: There is enough evidence to support the claim that the mean life is more than 18 years."
+          ],
+          "prompt": "A furnace company claims the mean life is more than 18 years. Test gives P‑value = 0.03 with $ \\alpha = 0.05 $. State the decision and interpret.",
+          "title": "Example C – Full Decision"
+        }
+      ],
+      "teacherCues": [
+        "Walk through the decision rule: P ≤ α → reject H0; P > α → fail to reject H0.",
+        "Discuss the wording: 'fail to reject' is not the same as 'accept'. Emphasize that we never prove H0 true."
+      ],
+      "questions": [
+        {
+          "id": "q4-1",
+          "feedbackIfWrong": "If P > α, we fail to reject $ H_0 $.",
+          "blanks": [
+            {
+              "accept": [
+                "fail",
+                "Fail"
+              ]
+            }
+          ],
+          "hints": [
+            "We do not say 'accept'.",
+            "The evidence is not strong enough."
+          ],
+          "prompt": "If the P‑value is greater than $ \\alpha $, we ___ to reject $ H_0 $.",
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "If claim is $ H_0 $, rejecting $ H_0 $ means rejecting the claim.",
+            "We have evidence against it."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "reject the claim",
+            "enough evidence to reject",
+            "reject"
+          ],
+          "prompt": "A claim is the null hypothesis. If we reject $ H_0 $, what is our conclusion about the claim?",
+          "feedbackIfWrong": "Rejecting $ H_0 $ means we reject the claim.",
+          "answer": "reject the claim",
+          "id": "q4-2"
+        },
+        {
+          "answers": [
+            "No",
+            "no"
+          ],
+          "answer": "No",
+          "type": "short-answer",
+          "prompt": "If we fail to reject $ H_0 $ when the claim is $ H_a $, do we have enough evidence to support the claim? (Yes or No)",
+          "id": "q4-3",
+          "hints": [
+            "Failing to reject $ H_0 $ means the evidence was not strong enough.",
+            "The burden of proof is on $ H_a $."
+          ],
+          "feedbackIfWrong": "No, we do not have enough evidence to support the claim."
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "A clear blueprint ensures you don't skip steps. Whether you're trying to support your own claim or knock down someone else's, the structure is the same. Just be strategic about which hypothesis you assign as the claim."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{Claim} \\;\\rightarrow\\; H_0, H_a \\;\\rightarrow\\; \\text{Test Statistic} \\;\\rightarrow\\; \\text{P-value} \\;\\rightarrow\\; \\text{Decision} $$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "If you want to prove something, make it $ H_a $. If you want to disprove, make it $ H_0 $.",
+              "symbol": "Key strategy"
+            }
+          ],
+          "title": "Hypothesis Testing Blueprint"
+        },
+        "visuals": [
+          {
+            "title": "Blueprint for Gas Mileage Example",
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Details"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Claim: $ \\mu = 50 $. We want to show it's false. Set claim as $ H_0 $.",
+                "2": "$ H_0: \\mu = 50 $, $ H_a: \\mu \\neq 50 $, $ \\alpha = 0.05 $."
+              },
+              {
+                "0": "Solve – Test Statistic",
+                "1": "$ n=30 $, $ \\bar{x}=47 $, $ s=5.5 $ → $ z = \\frac{47-50}{5.5/\\sqrt{30}} = -3.0 $.",
+                "2": "Two‑tailed test."
+              },
+              {
+                "0": "Solve – P‑value",
+                "1": "P = 2 * P(z < -3.0) ≈ 2 * 0.00135 = 0.0027.",
+                "2": "From table or `=2*(1-NORM.S.DIST(3,TRUE))`."
+              },
+              {
+                "0": "Conclude",
+                "1": "P = 0.0027 ≤ 0.05 → reject $ H_0 $.",
+                "2": "There is enough evidence to reject the claim of 50 mpg. The true mean appears lower."
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Write the claim. Identify $ H_0 $ and $ H_a $. Determine whether the claim is $ H_0 $ or $ H_a $ (to support a claim, make it $ H_a $; to reject, make it $ H_0 $). Specify $ \\alpha $.",
+          "2. [[kw:Solve]]: Determine the appropriate test statistic (z, t, chi‑square, etc.) and its sampling distribution. Compute the test statistic from the sample data. Find the P‑value using the standard normal table or Google Sheets. Compare P‑value to $ \\alpha $.",
+          "3. [[kw:Conclude]]: Make a decision (reject or fail to reject $ H_0 $). Write a sentence interpreting the decision in the context of the original claim."
+        ]
+      },
+      "teacherCues": [
+        "Present the seven‑step summary: State hypotheses, specify $ \\alpha $, choose test, compute test statistic, find P‑value, make decision, interpret.",
+        "Walk through a complete example: gas mileage claim, step by step."
+      ],
+      "examples": [
+        {
+          "title": "Example A – Supporting Your Own Claim",
+          "prompt": "A medical team claims mean recovery time is less than 96 hours. They want to support this. Write the hypotheses and describe the strategy.",
+          "steps": [
+            "They want to support the claim, so make it $ H_a $: $ H_0: \\mu \\ge 96 $, $ H_a: \\mu < 96 $ (claim).",
+            "A left‑tailed test will be used. They need to gather sample data, compute the test statistic, find the P‑value.",
+            "If the P‑value is small enough (≤ $ \\alpha $), they can reject $ H_0 $ and conclude there is evidence that the recovery time is less than 96 hours."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "steps": [
+            "The accepted claim is $ \\mu = 98.6 $. We want to challenge it, so we make it $ H_0 $.",
+            "$ H_0: \\mu = 98.6 $, $ H_a: \\mu \\neq 98.6 $.",
+            "If we can reject $ H_0 $, we have evidence that the accepted value is wrong.",
+            "Putting the burden of proof on the data to overturn the established belief."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why would you make the accepted value the null hypothesis if you want to challenge it?",
+          "prompt": "A commonly accepted mean body temperature is 98.6°F. You think it's different. How would you set up the hypotheses? Explain why the claim is $ H_0 $.",
+          "title": "Example B – Rejecting Someone Else's Claim"
+        },
+        {
+          "title": "Example C – Full Blueprint from Start to Finish",
+          "prompt": "A light bulb manufacturer claims the mean life is more than 750 hours. You test 36 bulbs: $ \\bar{x} = 735 $, $ s = 40 $. At $ \\alpha = 0.05 $, test the claim. Use the blueprint.",
+          "role": "independent",
+          "steps": [
+            "Understand: Claim $ \\mu > 750 $. To support, make it $ H_a $: $ H_0: \\mu \\le 750 $, $ H_a: \\mu > 750 $. $ \\alpha = 0.05 $, right‑tailed.",
+            "Solve: $ z = \\frac{735-750}{40/\\sqrt{36}} = \\frac{-15}{6.667} = -2.25 $. Right‑tailed test: P = area to right of -2.25 = 1 - 0.0122 = 0.9878.",
+            "Conclude: P = 0.9878 > 0.05 → fail to reject $ H_0 $. Not enough evidence to support the claim that the mean life exceeds 750 hours."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "Hypotheses must be stated before collecting or examining the data. Formulating hypotheses after seeing the data can lead to biased conclusions. [[imp:Always specify $ H_0 $ and $ H_a $ prior to the study.]]",
+        "title": "Don't Change Hypotheses After Seeing Data"
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "alternative",
+                "Alternative",
+                "H_a",
+                "Ha"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "To support a claim, make it the alternative hypothesis $ H_a $.",
+          "type": "fill-blank",
+          "prompt": "If you want to support a claim, you should make the claim the ___ hypothesis.",
+          "hints": [
+            "It's the hypothesis you hope to prove.",
+            "It does not contain equality."
+          ],
+          "id": "q5-1"
+        },
+        {
+          "hints": [
+            "It's the probability of the observed result or more extreme.",
+            "We compare it to $ \\alpha $."
+          ],
+          "type": "short-answer",
+          "prompt": "In the blueprint, after computing the test statistic, what is the next step?",
+          "answers": [
+            "find P-value",
+            "P-value",
+            "compute P-value"
+          ],
+          "answer": "find the P-value",
+          "feedbackIfWrong": "After the test statistic, find the P‑value.",
+          "id": "q5-2"
+        },
+        {
+          "prompt": "A P‑value of 0.002 is obtained with $ \\alpha = 0.01 $. Should we reject $ H_0 $? (Yes or No)",
+          "hints": [
+            "Compare P to $ \\alpha $.",
+            "0.002 ≤ 0.01."
+          ],
+          "id": "q5-3",
+          "feedbackIfWrong": "Yes, because 0.002 ≤ 0.01, we reject $ H_0 $.",
+          "answer": "Yes",
+          "type": "short-answer",
+          "answers": [
+            "Yes",
+            "yes"
+          ]
+        }
+      ],
+      "title": "Blueprint Aid: Strategies for Hypothesis Testing",
+      "id": "blueprint-hypothesis-testing"
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

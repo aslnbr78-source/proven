@@ -1,0 +1,754 @@
+{
+  "blocks": [
+    {
+      "concept": {
+        "explanation": [
+          "Multiplication combines equal groups. The result is the [[kw:product]].",
+          "[[imp:1. Write numbers vertically. 2. Multiply the top number (multiplicand) by each digit of the bottom number (multiplier), starting from the right. 3. Add the partial products.]]",
+          "The number being multiplied is the [[kw:multiplicand]]; the number doing the multiplying is the [[kw:multiplier]]."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Product} = \\text{Multiplicand} \\times \\text{Multiplier}$$",
+          "title": "Product",
+          "notes": [
+            "Multiplication is commutative: a × b = b × a."
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Multiply 24 by 5 (ones)",
+                "2": "120"
+              },
+              {
+                "0": "2",
+                "1": "Multiply 24 by 1 (tens) → shift left",
+                "2": "240"
+              },
+              {
+                "0": "3",
+                "1": "Add partial products",
+                "2": "360"
+              }
+            ],
+            "caption": "Partial products are added to get the final product.",
+            "title": "Multiplication: 24 × 15"
+          }
+        ]
+      },
+      "id": "multiplying-whole-numbers",
+      "title": "1. Multiplying Whole Numbers",
+      "examples": [
+        {
+          "title": "A – Multiply two-digit numbers",
+          "prompt": "Multiply 34 by 27.",
+          "steps": [
+            "Write: 34 × 27.",
+            "34 × 7 = 238 (partial product 1).",
+            "34 × 2 = 68, but since 2 is tens, write 680 (partial product 2).",
+            "Add: 238 + 680 = 918.",
+            "Product: 918."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Explain why you write a zero (or shift left) when multiplying by the tens digit.",
+          "peerPrompt": "What does the tens place represent?",
+          "steps": [
+            "When multiplying by the tens digit, you're actually multiplying by a multiple of 10.",
+            "For 34 × 20, it's 34 × 2 × 10 = 680. The zero placeholder accounts for the 10.",
+            "This ensures the digits line up correctly in the partial products."
+          ],
+          "title": "B – Why shift left?",
+          "minLength": 4
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "123 × 5 = 615.",
+            "123 × 4 (tens) = 492, shift left → 4,920.",
+            "Add: 615 + 4,920 = 5,535."
+          ],
+          "title": "C – Multiply three-digit by two-digit",
+          "prompt": "Multiply 123 by 45."
+        }
+      ],
+      "teacherCues": [
+        "Write a multiplication problem on the board, labeling multiplicand, multiplier, and product.",
+        "Emphasize: multiplication is repeated addition."
+      ],
+      "discoveryHook": {
+        "scenario": "You need to order 15 cases of cat food, each containing 24 cans. How many cans total? Instead of adding 24 fifteen times, you multiply: $15 \\times 24 = 360$. Multiplication is a shortcut for repeated addition."
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "product"
+              ]
+            }
+          ],
+          "prompt": "In multiplication, the result is called the ___.",
+          "type": "fill-blank",
+          "id": "b1q1",
+          "feedbackIfWrong": "The result is the product.",
+          "hints": [
+            "It's not the sum.",
+            "Starts with 'p'."
+          ]
+        },
+        {
+          "answers": [
+            "448"
+          ],
+          "hints": [
+            "50×8=400, 6×8=48.",
+            "Add them: 400+48=448."
+          ],
+          "id": "b1q2",
+          "prompt": "What is 56 × 8?",
+          "type": "short-answer",
+          "feedbackIfWrong": "56 × 8 = 448."
+        },
+        {
+          "id": "b1q3",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "left"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Shift left.",
+          "prompt": "When multiplying by the tens digit, you must shift the partial product one place to the ___.",
+          "hints": [
+            "To align with the tens place.",
+            "Not right."
+          ]
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Multiply 999 by 99. What pattern do you see in the product?",
+        "answers": [
+          "98,901"
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "hints": [
+          "999×99 = 999×100 - 999.",
+          "99 is one less than 100."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't forget to align partial products correctly. [[imp:Each new row starts one place to the left.]]"
+      }
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "Round: 67 ≈ 70, 43 ≈ 40. Estimate: 70 × 40 = 2,800.",
+            "Exact: 67 × 43 = 67×40=2,680 + 67×3=201 → 2,881.",
+            "Estimate 2,800 is close to 2,881."
+          ],
+          "title": "A – Estimate then multiply",
+          "prompt": "Estimate 67 × 43, then find the exact product.",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Explain to a friend why 12 × 5 equals 5 × 12.",
+          "steps": [
+            "Multiplication counts items in a rectangular array.",
+            "Rotating the array swaps rows and columns, but the total count stays the same.",
+            "So order doesn't change the product."
+          ],
+          "title": "B – Why swap works",
+          "minLength": 4,
+          "peerPrompt": "Draw an array: 12 rows of 5 vs 5 rows of 12."
+        },
+        {
+          "title": "C – Check by swapping",
+          "steps": [
+            "89 × 54 = 89×50=4,450; 89×4=356; sum 4,806.",
+            "Check: 54 × 89. 54×80=4,320; 54×9=486; sum 4,806. Same."
+          ],
+          "prompt": "Multiply 89 × 54 and check your answer by swapping.",
+          "role": "independent"
+        }
+      ],
+      "id": "checking-multiplication",
+      "questions": [
+        {
+          "prompt": "To check a multiplication answer, you can ___ the factors.",
+          "id": "b2q1",
+          "hints": [
+            "Change their order.",
+            "Reverse."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "swap",
+                "switch"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Swap the factors.",
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "1,000",
+            "1000"
+          ],
+          "type": "short-answer",
+          "id": "b2q2",
+          "hints": [
+            "198 ≈ 200.",
+            "200 × 5 = 1,000."
+          ],
+          "prompt": "Estimate 198 × 5 by rounding 198 to the nearest hundred.",
+          "feedbackIfWrong": "200 × 5 = 1,000."
+        },
+        {
+          "prompt": "If 25 × 36 = 900, what is 36 × 25?",
+          "type": "short-answer",
+          "answers": [
+            "900"
+          ],
+          "feedbackIfWrong": "Also 900.",
+          "id": "b2q3",
+          "hints": [
+            "Multiplication is commutative.",
+            "Same product."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A pet store audit: 24 cans per case × 15 cases. Did you get 360? Swap: 15 × 24 should also equal 360. If it does, the product is likely right. Quick estimate: 24 ≈ 25, so 25 × 15 = 375, close to 360."
+      },
+      "concept": {
+        "formulaCard": {
+          "title": "Check Multiplication",
+          "notes": [
+            "Commutative property ensures the same product."
+          ],
+          "formula": "$$a \\times b = b \\times a$$"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "123 × 45 = 5,535",
+                "1": "120 × 50 = 6,000",
+                "2": "Close to 5,535"
+              },
+              {
+                "0": "48 × 7 = 336",
+                "1": "50 × 7 = 350",
+                "2": "Reasonable check"
+              }
+            ],
+            "headers": [
+              "Exact",
+              "Rounded",
+              "Estimate"
+            ],
+            "type": "table",
+            "title": "Check by Estimation",
+            "caption": "Estimate helps catch gross errors."
+          }
+        ],
+        "explanation": [
+          "[[imp:Check multiplication by swapping the multiplicand and multiplier. The product should be the same.]]",
+          "[[imp:Estimate by rounding one or both factors, then multiply.]] This gives a ballpark figure to verify the exact answer.",
+          "Casting out nines is another check, but reordering is simpler."
+        ]
+      },
+      "challengeCorner": {
+        "answers": [
+          "yes"
+        ],
+        "optional": true,
+        "hints": [
+          "Round: 1,200 × 5,700 ≈ 6,840,000.",
+          "Close enough for an estimate."
+        ],
+        "prompt": "Check if 1,234 × 5,678 = 7,002,652 by estimation. Is it reasonable?",
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "body": "Rounding too much can make the estimate far from exact. [[imp:Round to the nearest ten or hundred for a useful estimate.]]",
+        "title": "Watch out!"
+      },
+      "title": "2. Checking & Estimating Multiplication",
+      "teacherCues": [
+        "Show how to check by swapping factors.",
+        "Estimate by rounding, then compare to exact product."
+      ]
+    },
+    {
+      "id": "dividing-whole-numbers",
+      "title": "3. Dividing Whole Numbers",
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Quotient = 15.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "How many times does 24 go into 36? 1. Write 1 above 6."
+              },
+              {
+                "0": "2",
+                "1": "Multiply 24×1=24, subtract from 36 → 12. Bring down 0."
+              },
+              {
+                "0": "3",
+                "1": "How many times does 24 go into 120? 5. Write 5 above 0."
+              },
+              {
+                "0": "4",
+                "1": "Multiply 24×5=120, subtract → 0. No remainder."
+              }
+            ],
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "title": "Long Division: 360 ÷ 24"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Dividend} \\div \\text{Divisor} = \\text{Quotient} + \\text{Remainder}$$",
+          "title": "Division Terms",
+          "notes": [
+            "If remainder = 0, divisor and quotient are factors of the dividend."
+          ]
+        },
+        "explanation": [
+          "Division breaks a number into equal parts. The result is the [[kw:quotient]].",
+          "The number being divided is the [[kw:dividend]], the number doing the dividing is the [[kw:divisor]].",
+          "[[imp:1. Divide the dividend by the divisor starting from the left. 2. Multiply, subtract, bring down the next digit, and repeat.]]",
+          "If there's a leftover amount, it's the [[kw:remainder]]."
+        ]
+      },
+      "teacherCues": [
+        "Write a long division problem and label dividend, divisor, quotient, and remainder.",
+        "Emphasize: division is the inverse of multiplication."
+      ],
+      "questions": [
+        {
+          "prompt": "In division, the number being divided is the ___.",
+          "blanks": [
+            {
+              "accept": [
+                "dividend"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the big number inside the bracket.",
+            "Not divisor."
+          ],
+          "feedbackIfWrong": "It is the dividend.",
+          "type": "fill-blank",
+          "id": "b3q1"
+        },
+        {
+          "feedbackIfWrong": "144 ÷ 12 = 12.",
+          "prompt": "Divide 144 by 12.",
+          "id": "b3q2",
+          "type": "short-answer",
+          "hints": [
+            "12 × 12 = 144.",
+            "Think multiplication."
+          ],
+          "answers": [
+            "12"
+          ]
+        },
+        {
+          "prompt": "In division, the leftover amount is called the ___.",
+          "feedbackIfWrong": "It is the remainder.",
+          "blanks": [
+            {
+              "accept": [
+                "remainder"
+              ]
+            }
+          ],
+          "hints": [
+            "It's less than the divisor.",
+            "Often written as 'R'."
+          ],
+          "type": "fill-blank",
+          "id": "b3q3"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "You have 360 cans of cat food to pack into cases of 24. How many cases?  $360 \\div 24 = 15$. Division splits a quantity into equal groups."
+      },
+      "challengeCorner": {
+        "hints": [
+          "Long division with many digits.",
+          "Check: 298×19 + 16 = 5,678."
+        ],
+        "optional": true,
+        "prompt": "Divide 5,678 by 19. How many steps did you use?",
+        "answers": [
+          "298 R16"
+        ],
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "When bringing down a digit, if the divisor is larger than the current number, write a 0 in the quotient and bring down the next digit. [[imp:Never skip a zero in the quotient.]]"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "3 into 6 goes 2 (write 2 above 6). 3×2=6, subtract to 0, bring down 7.",
+            "3 into 7 goes 2 (write 2 above 7). 3×2=6, subtract 1, bring down 2.",
+            "3 into 12 goes 4. 3×4=12, subtract 0.",
+            "Quotient: 224."
+          ],
+          "prompt": "Divide 672 by 3.",
+          "title": "A – Simple division"
+        },
+        {
+          "prompt": "In 25 ÷ 4, why is the answer 6 R1 and not 6.25?",
+          "title": "B – What is a remainder?",
+          "role": "peer-explain",
+          "steps": [
+            "4 × 6 = 24, 1 left over. So 6 with a remainder of 1.",
+            "In whole number division, we stop at a whole quotient and note the remainder.",
+            "Later we'll learn to extend to decimals to get exact answers."
+          ],
+          "minLength": 4,
+          "peerPrompt": "We are doing whole number division."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "12 into 14 goes 1 (write 1 above 4). 12×1=12, subtract 2, bring down 4.",
+            "12 into 24 goes 2 (write 2 above 4). 12×2=24, subtract 0, bring down 0.",
+            "12 into 0 goes 0 (write 0 above 0).",
+            "Quotient: 120."
+          ],
+          "title": "C – Division with larger divisor",
+          "prompt": "Divide 1,440 by 12."
+        }
+      ]
+    },
+    {
+      "title": "4. Checking & Estimating Division",
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "1,440 ÷ 12 = 120",
+                "1": "120 × 12 = 1,440",
+                "2": "✓ Correct"
+              },
+              {
+                "0": "25 ÷ 4 = 6 R1",
+                "1": "6 × 4 + 1 = 25",
+                "2": "✓ Correct"
+              }
+            ],
+            "caption": "Multiply back to verify.",
+            "title": "Division Check",
+            "headers": [
+              "Original",
+              "Check Calculation",
+              "Verification"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "If remainder is 0, just Quotient × Divisor = Dividend."
+          ],
+          "formula": "$$\\text{Quotient} \\times \\text{Divisor} + \\text{Remainder} = \\text{Dividend}$$",
+          "title": "Division Check Formula"
+        },
+        "explanation": [
+          "[[imp:Check division by multiplying the quotient by the divisor and adding the remainder. The result must equal the dividend.]]",
+          "Estimate by rounding the dividend and divisor to compatible numbers, then divide.",
+          "Estimation is especially useful when the quotient has many digits."
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Multiply by the divisor.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "divisor"
+              ]
+            }
+          ],
+          "prompt": "To check division, multiply the quotient by the ___.",
+          "id": "b4q1",
+          "hints": [
+            "Then add the remainder.",
+            "It's the number you divide by."
+          ]
+        },
+        {
+          "hints": [
+            "600 ÷ 8 = 75.",
+            "623 ÷ 8 exactly is 77 R7, so 75 is a fair estimate."
+          ],
+          "id": "b4q2",
+          "feedbackIfWrong": "600 ÷ 8 = 75.",
+          "prompt": "Estimate 623 ÷ 8 by rounding 623 to 600.",
+          "type": "short-answer",
+          "answers": [
+            "75"
+          ]
+        },
+        {
+          "hints": [
+            "144 ÷ 12 = 12.",
+            "Check: 12 × 12 = 144."
+          ],
+          "prompt": "If 144 ÷ x = 12, what is x?",
+          "answers": [
+            "12"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "x = 12.",
+          "id": "b4q3"
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "16 into 98 goes 6 (96), subtract 2, bring down 7 → 27.",
+            "16 into 27 goes 1 (16), subtract 11 → remainder 11.",
+            "Quotient = 61 R11.",
+            "Check: 61 × 16 = 976, + 11 = 987. Correct."
+          ],
+          "role": "guided",
+          "prompt": "Divide 987 by 16 and check the answer.",
+          "title": "A – Check a division"
+        },
+        {
+          "prompt": "Explain to someone why multiplying the quotient by the divisor checks division.",
+          "role": "peer-explain",
+          "minLength": 4,
+          "steps": [
+            "Division is finding a factor that, multiplied by the divisor, gives the dividend.",
+            "So if you multiply divisor by quotient and get the dividend, the division is correct.",
+            "Any remainder is added back to complete the dividend."
+          ],
+          "title": "B – Why multiply back?",
+          "peerPrompt": "Think of division as the inverse of multiplication."
+        },
+        {
+          "title": "C – Estimate and check",
+          "prompt": "Estimate 8,500 ÷ 42, then find exact quotient and remainder.",
+          "steps": [
+            "Estimate: 8,400 ÷ 40 = 210.",
+            "Exact: 42 × 202 = 8,484, remainder 16. Quotient = 202 R16.",
+            "Check: 202 × 42 = 8,484, +16 = 8,500."
+          ],
+          "role": "independent"
+        }
+      ],
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "303 R1"
+        ],
+        "hints": [
+          "33 × 303 = 9,999.",
+          "+1 = 10,000. Correct."
+        ],
+        "prompt": "Divide 10,000 by 33. Check your answer. Is your remainder < 33?",
+        "optional": true
+      },
+      "teacherCues": [
+        "Show how to check by multiplying quotient × divisor + remainder.",
+        "Estimate by rounding, then compare."
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Always add the remainder after multiplying. [[imp:Omitting the remainder will make your check fail.]]"
+      },
+      "discoveryHook": {
+        "scenario": "Quick check: 360 cans ÷ 24 cans/case = 15 cases. 15 × 24 = 360, so the division is correct. Estimate: 360 ÷ 25 ≈ 14.4, close to 15."
+      },
+      "id": "checking-division"
+    },
+    {
+      "title": "5. Word Problems with Multiplication & Division",
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "A store orders 6 cases of water (24 bottles/case) and 4 cases of juice (12 bottles/case). How many total bottles?",
+                "1": "1. Water: $6 \\times 24 = 144$. 2. Juice: $4 \\times 12 = 48$. 3. Total: $144 + 48 = 192$."
+              },
+              {
+                "0": "The 192 bottles are packed into 8 coolers equally. How many per cooler?",
+                "1": "$192 \\div 8 = 24$ bottles per cooler."
+              }
+            ],
+            "headers": [
+              "Problem",
+              "Steps"
+            ],
+            "title": "Multi-Step Example",
+            "caption": "Break down each part."
+          }
+        ],
+        "explanation": [
+          "Use the blueprint aid to identify knowns and unknowns.",
+          "Multiplication clue words: [[kw:total]], [[kw:each]] (cost per item), [[kw:times]], [[kw:product]].",
+          "Division clue words: [[kw:split]], [[kw:share]], [[kw:per]], [[kw:each]] (when distributing).",
+          "Multi-step problems may combine multiplication, division, addition, and subtraction."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The word 'each' can appear in both multiplication and division problems. [[imp:Read the entire problem to decide whether you need a total (multiply) or a per-item value (divide).]]"
+      },
+      "id": "word-problems-mult-div",
+      "questions": [
+        {
+          "hints": [
+            "It can mean multiply if finding total.",
+            "It can mean divide if finding per-item."
+          ],
+          "prompt": "The word 'each' often appears in both multiplication and ___ problems.",
+          "id": "b5q1",
+          "blanks": [
+            {
+              "accept": [
+                "division"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Division.",
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "120 ÷ 8 = 15.",
+            "Full boxes only."
+          ],
+          "prompt": "A baker makes 120 muffins and packs them in boxes of 8. How many full boxes?",
+          "answers": [
+            "15"
+          ],
+          "feedbackIfWrong": "120 ÷ 8 = 15.",
+          "id": "b5q2",
+          "type": "short-answer"
+        },
+        {
+          "type": "fill-blank",
+          "id": "b5q3",
+          "feedbackIfWrong": "Divide.",
+          "blanks": [
+            {
+              "accept": [
+                "divide"
+              ]
+            }
+          ],
+          "prompt": "To find a per-item amount, you should ___ the total by the number of items.",
+          "hints": [
+            "It's the opposite of multiply.",
+            "Split."
+          ]
+        }
+      ],
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "75,000 toys, 3,000 boxes"
+        ],
+        "prompt": "A factory can produce 2,500 toys per day. How many toys can it produce in a 30-day month, and if they are packed in boxes of 25, how many boxes?",
+        "hints": [
+          "Multiply 2,500 × 30 = 75,000.",
+          "Then 75,000 ÷ 25 = 3,000."
+        ],
+        "optional": true
+      },
+      "teacherCues": [
+        "Clue words: 'total', 'each', 'per', 'times' for multiplication; 'split', 'share', 'per', 'each' for division.",
+        "Use the blueprint aid."
+      ],
+      "discoveryHook": {
+        "scenario": "A shelter buys 15 bags of food, each bag costs \\$32. How much total? That's multiplication: $15 \\times 32 = 480$, which is \\$480. Then the food is split equally among 8 cats. That's division: $15 \\div 8 = 1$ bag each, remainder 7."
+      },
+      "examples": [
+        {
+          "prompt": "A farmer collects 450 eggs and packs them into cartons of a dozen. How many cartons can he fill?",
+          "role": "guided",
+          "title": "A – Two-step problem",
+          "steps": [
+            "Understand: Known = 450 eggs, 12 eggs per carton. Unknown = number of cartons.",
+            "Solve: $450 \\div 12 = 37$ remainder 6.",
+            "Conclude: He can fill 37 cartons, with 6 eggs left over."
+          ]
+        },
+        {
+          "steps": [
+            "If you know the per-item cost and need total for many items, multiply.",
+            "If you know total and need per-item amount, divide.",
+            "Look for whether the problem combines groups or splits them."
+          ],
+          "title": "B – Distinguishing operations",
+          "minLength": 5,
+          "prompt": "Explain to a partner when to use multiplication vs division in 'each' problems.",
+          "role": "peer-explain",
+          "peerPrompt": "Think: Does 'each' ask for a total or a share?"
+        },
+        {
+          "role": "independent",
+          "prompt": "A school orders 25 textbook packages. Each package contains 8 math books and 6 science books. How many books total?",
+          "steps": [
+            "Math books: $25 \\times 8 = 200$. Science books: $25 \\times 6 = 150$.",
+            "Total = $200 + 150 = 350$ books."
+          ],
+          "title": "C – Mixed operations"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 2,
+  "id": "ch1-lu1-3",
+  "standards": [
+    "BUSMATH.1.3"
+  ],
+  "title": "Multiplying and Dividing Whole Numbers",
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

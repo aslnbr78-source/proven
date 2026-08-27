@@ -1,0 +1,662 @@
+{
+  "type": "interactive-lesson",
+  "id": "10-7-polar-coordinates",
+  "title": "Polar Coordinates",
+  "blocks": [
+    {
+      "id": "polar-intro",
+      "title": "Polar Coordinate System & Plotting",
+      "teacherCues": [
+        "Draw a pole and polar axis. Ask: 'How does (r, θ) describe a point?'",
+        "Plot (2, π/3) and (−2, π/3). Emphasize that negative r reflects through the pole."
+      ],
+      "discoveryHook": {
+        "scenario": "A radar screen displays ships by distance from the center (r) and angle (θ) — this is the polar coordinate system. It is perfect for circular motion and navigation."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:polar coordinate system]] uses a fixed point $ O $ (the [[kw:pole]], like the origin) and a ray from $ O $ (the [[kw:polar axis]], usually the positive $ x $-axis).",
+          "A point $ P $ is given by $ (r,\\theta) $, where $ r $ is the directed distance from $ O $ to $ P $, and $ \\theta $ is the directed angle from the polar axis to $ OP $.",
+          "[[imp:Multiple representations]]: $ (r,\\theta) $ and $ (r,\\theta+2n\\pi) $ are the same point. Also $ (-r,\\theta) = (r,\\theta+\\pi) $.",
+          "The pole itself is $ (0,\\theta) $ for any $ \\theta $."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Common Polar Points",
+            "headers": [
+              "$ (r,\\theta) $",
+              "Alternative"
+            ],
+            "rows": [
+              {
+                "0": "$ (2,\\frac{\\pi}{3}) $",
+                "1": "$ (-2,\\frac{4\\pi}{3}) $"
+              },
+              {
+                "0": "$ (3,-\\frac{\\pi}{6}) $",
+                "1": "$ (3,\\frac{11\\pi}{6}) $"
+              },
+              {
+                "0": "$ (0,\\text{any}) $",
+                "1": "The pole"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Polar Coordinates",
+          "formula": "$$ P(r,\\theta) $$",
+          "notes": [
+            "$ r $: signed distance from pole",
+            "$ \\theta $: angle from polar axis (radians)"
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Plot (2, π/3)",
+          "prompt": "Plot the point with polar coordinates $ (2,\\frac{\\pi}{3}) $.",
+          "steps": [
+            "Start at the pole. Move along the polar axis, then rotate $ \\frac{\\pi}{3} $ counterclockwise.",
+            "Go out 2 units along that ray.",
+            "Mark the point."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Same point, different coordinates",
+          "prompt": "Show that $ (3,-\\frac{\\pi}{6}) $ and $ (3,\\frac{11\\pi}{6}) $ are the same.",
+          "peerPrompt": "With a partner: 'Why does adding $ 2\\pi $ to the angle not change the point? How about using negative $ r $?'",
+          "minLength": 2,
+          "steps": [
+            "$ -\\frac{\\pi}{6} + 2\\pi = \\frac{11\\pi}{6} $, so the angle is coterminal.",
+            "Radius is the same (3), so the point is identical."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Using negative r",
+          "prompt": "Plot $ (-2,\\frac{\\pi}{4}) $ and find an equivalent representation with $ r>0 $.",
+          "steps": [
+            "Interpret $ -2 $ as: go 2 units in the opposite direction of the ray at angle $ \\frac{\\pi}{4} $.",
+            "That is the same as $ (2,\\frac{\\pi}{4}+\\pi) = (2,\\frac{5\\pi}{4}) $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Negative radius",
+        "body": "A negative $ r $ means move in the opposite direction from the given angle. [[imp:Always add $ \\pi $ to the angle when changing the sign of $ r $.]"
+      },
+      "questions": [
+        {
+          "id": "q-pol-1",
+          "type": "fill-blank",
+          "prompt": "The fixed point $ O $ in the polar system is called the ___.",
+          "blanks": [
+            {
+              "accept": [
+                "pole"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the origin of the polar grid.",
+            "Like the origin in rectangular coordinates."
+          ],
+          "feedbackIfWrong": "pole."
+        },
+        {
+          "id": "q-pol-2",
+          "type": "short-answer",
+          "prompt": "Give one other polar representation of $ (4,\\frac{\\pi}{6}) $ with a positive $ r $ and $ 0 \\le \\theta < 2\\pi $.",
+          "answer": "(4,13π/6)",
+          "hints": [
+            "Add $ 2\\pi $ to the angle.",
+            "$ \\frac{\\pi}{6} + 2\\pi = ? $"
+          ],
+          "feedbackIfWrong": "(4,13π/6) or (4,π/6+2π)."
+        },
+        {
+          "id": "q-pol-3",
+          "type": "short-answer",
+          "prompt": "If $ r = 0 $, the point is the ___ regardless of $ \\theta $.",
+          "answer": "pole",
+          "hints": [
+            "It is the origin.",
+            "The distance is zero."
+          ],
+          "feedbackIfWrong": "pole."
+        }
+      ]
+    },
+    {
+      "id": "point-conversion",
+      "title": "Converting Points: Polar ↔ Rectangular",
+      "teacherCues": [
+        "Write x = r cos θ, y = r sin θ on the board. Ask: 'How do we get r from x and y?'",
+        "Show the conversion formulas and the quadrant check for arctan."
+      ],
+      "discoveryHook": {
+        "scenario": "GPS uses polar‑like data (distance and bearing) but maps are rectangular. Converting between these coordinates is essential for navigation."
+      },
+      "concept": {
+        "explanation": [
+          "The conversion formulas (with pole at origin, polar axis = positive $ x $-axis):",
+          "[[kw:Polar to Rectangular]]: $$ x = r \\cos \\theta $$ $$ y = r \\sin \\theta $$",
+          "[[kw:Rectangular to Polar]]: $$ r^2 = x^2 + y^2 $$ $$ \\tan \\theta = \\frac{y}{x} $$",
+          "Choose $ \\theta $ in the correct quadrant based on the signs of $ x $ and $ y $. Usually use $ r = \\sqrt{x^2+y^2} \\ge 0 $."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Conversion Quick Reference",
+            "headers": [
+              "From",
+              "To",
+              "Formulas"
+            ],
+            "rows": [
+              {
+                "0": "Polar $ (r,\\theta) $",
+                "1": "Rect. $ (x,y) $",
+                "2": "$ x = r\\cos\\theta $, $ y = r\\sin\\theta $"
+              },
+              {
+                "0": "Rect. $ (x,y) $",
+                "1": "Polar $ (r,\\theta) $",
+                "2": "$ r = \\sqrt{x^2+y^2} $, $ \\theta = \\arctan(y/x) $ (quadrant adjust)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Conversion Formulas",
+          "formula": "$$ x = r \\cos \\theta,\\quad y = r \\sin \\theta $$ $$ r^2 = x^2 + y^2,\\quad \\tan \\theta = \\frac{y}{x} $$",
+          "notes": [
+            "Use $ r \\ge 0 $; $ \\theta $ in the same quadrant as $ (x,y) $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Polar → Rectangular",
+          "prompt": "Convert $ (\\sqrt{3},\\frac{\\pi}{6}) $ to rectangular coordinates.",
+          "steps": [
+            "$ x = \\sqrt{3} \\cos(\\pi/6) = \\sqrt{3} \\cdot \\frac{\\sqrt{3}}{2} = \\frac{3}{2} $.",
+            "$ y = \\sqrt{3} \\sin(\\pi/6) = \\sqrt{3} \\cdot \\frac{1}{2} = \\frac{\\sqrt{3}}{2} $.",
+            "Result: $ (\\frac{3}{2}, \\frac{\\sqrt{3}}{2}) $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Rectangular → Polar",
+          "prompt": "Convert $ (-1,1) $ to polar coordinates.",
+          "peerPrompt": "Discuss: 'Why is $ \\theta = \\frac{3\\pi}{4} $ instead of $ -\\frac{\\pi}{4} $?'",
+          "minLength": 2,
+          "steps": [
+            "$ r = \\sqrt{(-1)^2+1^2} = \\sqrt{2} $.",
+            "$ \\tan \\theta = \\frac{1}{-1} = -1 $. The point is in Quadrant II, so $ \\theta = \\pi - \\frac{\\pi}{4} = \\frac{3\\pi}{4} $.",
+            "One representation: $ (\\sqrt{2}, \\frac{3\\pi}{4}) $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Polar with negative r",
+          "prompt": "Convert $ (-2,\\frac{7\\pi}{6}) $ to rectangular coordinates.",
+          "steps": [
+            "First, treat as $ (2,\\frac{7\\pi}{6}+\\pi) = (2,\\frac{13\\pi}{6}) $ for ease, or directly use $ x = -2 \\cos(7\\pi/6) $.",
+            "$ \\cos(7\\pi/6) = -\\frac{\\sqrt{3}}{2} $, $ \\sin(7\\pi/6) = -\\frac{1}{2} $.",
+            "$ x = -2 \\cdot (-\\frac{\\sqrt{3}}{2}) = \\sqrt{3} $; $ y = -2 \\cdot (-\\frac{1}{2}) = 1 $. Point: $ (\\sqrt{3}, 1) $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Quadrant matters",
+        "body": "The formula $ \\theta = \\arctan(y/x) $ gives an angle in Quadrants I or IV. For Quadrants II and III, add $ \\pi $ to the arctan result."
+      },
+      "questions": [
+        {
+          "id": "q-conv-1",
+          "type": "fill-blank",
+          "prompt": "The formula to find $ x $ from polar coordinates is $ x = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "r cos θ"
+              ]
+            }
+          ],
+          "hints": [
+            "It involves cosine.",
+            "x = r * cos(θ)."
+          ],
+          "feedbackIfWrong": "$ x = r \\cos \\theta $."
+        },
+        {
+          "id": "q-conv-2",
+          "type": "short-answer",
+          "prompt": "Convert $ (0,2) $ to polar coordinates (one representation).",
+          "answer": "(2, π/2)",
+          "hints": [
+            "$ r = \\sqrt{0^2+2^2} = 2 $.",
+            "The point is on the positive $ y $-axis."
+          ],
+          "feedbackIfWrong": "(2, π/2) or (2, 90°)."
+        },
+        {
+          "id": "q-conv-3",
+          "type": "short-answer",
+          "prompt": "If $ x = -3 $ and $ y = 0 $, what is one possible $ \\theta $? (in radians)",
+          "answer": "π",
+          "hints": [
+            "The point is on the negative $ x $-axis.",
+            "Angle from positive $ x $-axis is 180°."
+          ],
+          "feedbackIfWrong": "$ \\pi $."
+        }
+      ]
+    },
+    {
+      "id": "equation-conversion",
+      "title": "Converting Equations: Rectangular → Polar",
+      "teacherCues": [
+        "Write x² + y² = 4. Ask: 'How can we rewrite this in terms of r and θ?'",
+        "Show that replacing x with r cos θ and y with r sin θ often simplifies."
+      ],
+      "discoveryHook": {
+        "scenario": "A circular ripple on a pond is described by x² + y² = R² in rectangular form, but in polar it's simply r = R. Many curves become simpler in polar coordinates."
+      },
+      "concept": {
+        "explanation": [
+          "To convert a rectangular equation to polar, substitute: $$ x = r \\cos \\theta,\\quad y = r \\sin \\theta $$ then simplify.",
+          "For polar to rectangular, use: $$ r^2 = x^2 + y^2,\\quad r \\cos \\theta = x,\\quad r \\sin \\theta = y,\\quad \\tan \\theta = \\frac{y}{x} $$",
+          "Examples: $ y = x^2 $ becomes $ r \\sin\\theta = r^2 \\cos^2\\theta \\Rightarrow r = \\sec\\theta \\tan\\theta $."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Common Equation Conversions",
+            "headers": [
+              "Rectangular",
+              "Polar"
+            ],
+            "rows": [
+              {
+                "0": "$ x^2 + y^2 = a^2 $",
+                "1": "$ r = a $ (circle)"
+              },
+              {
+                "0": "$ y = mx $",
+                "1": "$ \\theta = \\arctan m $ (line through pole)"
+              },
+              {
+                "0": "$ x = a $ (vertical line)",
+                "1": "$ r = a \\sec \\theta $"
+              },
+              {
+                "0": "$ y = a $ (horizontal line)",
+                "1": "$ r = a \\csc \\theta $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Key Substitutions",
+          "formula": "$$ x = r \\cos \\theta,\\; y = r \\sin \\theta,\\; r^2 = x^2 + y^2 $$",
+          "notes": [
+            "Use $ r \\ge 0 $ often.",
+            "Check for lost solutions (e.g., $ r=0 $)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Circle to polar",
+          "prompt": "Convert $ x^2 + y^2 = 4 $ to polar form.",
+          "steps": [
+            "Replace $ x^2 + y^2 $ with $ r^2 $: $ r^2 = 4 $.",
+            "Since $ r \\ge 0 $, $ r = 2 $.",
+            "Thus a circle of radius 2 is $ r = 2 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Line to polar",
+          "prompt": "Convert $ y = \\sqrt{3} x $ to polar form.",
+          "peerPrompt": "Discuss: 'What does $ \\frac{y}{x} $ become in polar? Why does the pole remain?'",
+          "minLength": 2,
+          "steps": [
+            "$ \\frac{y}{x} = \\tan \\theta $, so $ \\tan \\theta = \\sqrt{3} $.",
+            "Thus $ \\theta = \\frac{\\pi}{3} $ (or $ \\frac{4\\pi}{3} $). The equation describes a line through the pole."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Parabola to polar",
+          "prompt": "Convert $ y = x^2 $ to polar form.",
+          "steps": [
+            "Substitute: $ r \\sin \\theta = (r \\cos \\theta)^2 = r^2 \\cos^2 \\theta $.",
+            "Assuming $ r \\ne 0 $, divide by $ r $: $ \\sin \\theta = r \\cos^2 \\theta $.",
+            "$ r = \\frac{\\sin \\theta}{\\cos^2 \\theta} = \\sec \\theta \\tan \\theta $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Losing the pole",
+        "body": "When dividing by $ r $, you might lose the solution $ r = 0 $ (the pole). Always check if $ r=0 $ satisfies the original equation."
+      },
+      "questions": [
+        {
+          "id": "q-eq-1",
+          "type": "fill-blank",
+          "prompt": "To convert $ x^2 + y^2 = 25 $ to polar, use the identity $ x^2 + y^2 = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "r^2"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the square of the distance from the origin.",
+            "Direct substitution."
+          ],
+          "feedbackIfWrong": "$ r^2 $."
+        },
+        {
+          "id": "q-eq-2",
+          "type": "short-answer",
+          "prompt": "What is the polar equation of the vertical line $ x = 3 $?",
+          "answer": "r = 3 sec θ",
+          "hints": [
+            "Use $ x = r \\cos \\theta = 3 $.",
+            "Solve for $ r $."
+          ],
+          "feedbackIfWrong": "$ r = 3 \\sec \\theta $."
+        },
+        {
+          "id": "q-eq-3",
+          "type": "short-answer",
+          "prompt": "The rectangular equation $ y = 1 $ becomes $ r \\sin \\theta = 1 $. Solve for $ r $.",
+          "answer": "r = csc θ",
+          "hints": [
+            "Divide by $ \\sin \\theta $.",
+            "$ \\frac{1}{\\sin\\theta} = \\csc\\theta $."
+          ],
+          "feedbackIfWrong": "$ r = \\csc \\theta $."
+        }
+      ]
+    },
+    {
+      "id": "identify-graphs",
+      "title": "Identifying Graphs from Polar Equations",
+      "teacherCues": [
+        "Write r = 2 on the board. Ask: 'What shape?'",
+        "Show r = sec θ → convert to rectangular: x=1, vertical line."
+      ],
+      "discoveryHook": {
+        "scenario": "Some curves that are complicated in rectangular coordinates become very simple in polar form. Recognizing r = constant, θ = constant, or r = a sec θ saves time."
+      },
+      "concept": {
+        "explanation": [
+          "Common polar graphs:",
+          "1. $ r = a $: circle radius $ a $ centered at pole.",
+          "2. $ \\theta = \\alpha $: line through pole at angle $ \\alpha $.",
+          "3. $ r = a \\sec \\theta $ ⇔ $ x = a $; $ r = a \\csc \\theta $ ⇔ $ y = a $.",
+          "4. $ r = 2a \\sin \\theta $: circle radius $ a $ centered at $ (0,a) $; $ r = 2a \\cos \\theta $: circle centered at $ (a,0) $.",
+          "Convert to rectangular to confirm."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Polar → Rectangular Graph",
+            "headers": [
+              "Polar equation",
+              "Rectangular equivalent",
+              "Graph"
+            ],
+            "rows": [
+              {
+                "0": "$ r = 2 $",
+                "1": "$ x^2 + y^2 = 4 $",
+                "2": "Circle radius 2"
+              },
+              {
+                "0": "$ \\theta = \\frac{\\pi}{4} $",
+                "1": "$ y = x $",
+                "2": "Line through pole"
+              },
+              {
+                "0": "$ r = \\sec \\theta $",
+                "1": "$ x = 1 $",
+                "2": "Vertical line"
+              },
+              {
+                "0": "$ r = 6 \\sin \\theta $",
+                "1": "$ x^2 + (y-3)^2 = 9 $",
+                "2": "Circle radius 3, center (0,3)"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – r = constant",
+          "prompt": "Describe the graph of $ r = 3 $.",
+          "steps": [
+            "All points with distance 3 from the pole.",
+            "Rectangular: $ x^2 + y^2 = 9 $, a circle of radius 3."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – θ = constant",
+          "prompt": "What is the graph of $ \\theta = \\frac{\\pi}{6} $?",
+          "peerPrompt": "With a partner: 'What points satisfy this? What about negative r?'",
+          "minLength": 2,
+          "steps": [
+            "All points where the ray makes an angle $ \\frac{\\pi}{6} $, i.e., a line through the pole.",
+            "Rectangular: $ y = \\tan(\\frac{\\pi}{6}) x = \\frac{1}{\\sqrt{3}} x $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – r = 6 sin θ",
+          "prompt": "Identify the graph of $ r = 6 \\sin \\theta $ by converting to rectangular.",
+          "steps": [
+            "Multiply by $ r $: $ r^2 = 6 r \\sin \\theta $.",
+            "Substitute: $ x^2 + y^2 = 6y $ → $ x^2 + y^2 - 6y = 0 $.",
+            "Complete square: $ x^2 + (y-3)^2 = 9 $. Circle center (0,3), radius 3."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Multiplying by r",
+        "body": "When converting $ r = 6 \\sin \\theta $, multiplying by $ r $ adds the solution $ r=0 $ (the pole), which is already on the circle. In other cases, it may introduce extra points."
+      },
+      "questions": [
+        {
+          "id": "q-gr-1",
+          "type": "fill-blank",
+          "prompt": "The polar equation $ r = a \\sec \\theta $ is equivalent to the rectangular equation $ x = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "a"
+              ]
+            }
+          ],
+          "hints": [
+            "$ r \\cos \\theta = x $.",
+            "$ \\sec\\theta = 1/\\cos\\theta $."
+          ],
+          "feedbackIfWrong": "$ x = a $."
+        },
+        {
+          "id": "q-gr-2",
+          "type": "short-answer",
+          "prompt": "What shape is $ r = 4 $?",
+          "answer": "circle",
+          "hints": [
+            "Constant distance from pole.",
+            "Radius 4."
+          ],
+          "feedbackIfWrong": "circle."
+        },
+        {
+          "id": "q-gr-3",
+          "type": "short-answer",
+          "prompt": "$ r = 2 \\cos \\theta $ is a circle of radius 1 centered at which point? (give (x,y))",
+          "answer": "(1,0)",
+          "hints": [
+            "Multiply by $ r $ and complete the square.",
+            "$ r = 2a\\cos\\theta $ has center $ (a,0) $."
+          ],
+          "feedbackIfWrong": "(1,0)."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-polar",
+      "title": "Blueprint Aid: Polar Coordinate Problems",
+      "teacherCues": [
+        "Write Understand → Solve → Conclude. Ask: 'Are we converting points or equations?'",
+        "Illustrate with a flowchart: given (r,θ) → (x,y) via formulas; given equation, substitute and simplify."
+      ],
+      "discoveryHook": {
+        "scenario": "Polar problems come in many flavors: plotting, converting coordinates, and transforming equations. This blueprint guides you to the right tool."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Understand]]: Identify what is given (point or equation, in polar or rectangular form). Determine the goal.",
+          "[[kw:Solve]]: For point conversion, use $ x = r\\cos\\theta $, $ y = r\\sin\\theta $ or $ r^2 = x^2+y^2 $, $ \\theta = \\arctan(y/x) $ with quadrant check. For equation conversion, substitute $ x,y $ in terms of $ r,\\theta $ or vice versa, and simplify.",
+          "[[kw:Conclude]]: Write the converted coordinate pair or simplified equation. Sketch if needed."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Problem Type → Method",
+            "headers": [
+              "Task",
+              "Key Step"
+            ],
+            "rows": [
+              {
+                "0": "Plot polar point",
+                "1": "Draw ray at $ \\theta $, measure $ |r| $; reverse if $ r<0 $"
+              },
+              {
+                "0": "Polar → Rect. point",
+                "1": "$ x = r\\cos\\theta,\\; y = r\\sin\\theta $"
+              },
+              {
+                "0": "Rect. → Polar point",
+                "1": "$ r = \\sqrt{x^2+y^2},\\; \\theta = \\text{quadrant-adjusted } \\arctan(y/x) $"
+              },
+              {
+                "0": "Rect. → Polar eq.",
+                "1": "Replace $ x,y $, simplify"
+              },
+              {
+                "0": "Polar → Rect. eq.",
+                "1": "Use $ r^2 = x^2+y^2 $, $ r\\cos\\theta = x $, etc."
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example 1: Convert point",
+          "prompt": "Convert $ (2,\\frac{\\pi}{2}) $ to rectangular.",
+          "steps": [
+            "Understand: polar point, need $(x,y)$.",
+            "Solve: $ x = 2 \\cos(\\pi/2)=0 $, $ y = 2 \\sin(\\pi/2)=2 $.",
+            "Conclude: (0,2)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example 2: Convert equation",
+          "prompt": "Convert $ r = 3 \\cos \\theta $ to rectangular.",
+          "peerPrompt": "Work with a partner: 'Why do we multiply by $ r $? What's the rectangular equation?'",
+          "minLength": 2,
+          "steps": [
+            "Understand: polar equation, want rectangular.",
+            "Solve: $ r^2 = 3r\\cos\\theta \\Rightarrow x^2+y^2 = 3x $ → $ x^2-3x+y^2=0 $ → $ (x-1.5)^2 + y^2 = 2.25 $.",
+            "Conclude: Circle center (1.5,0), radius 1.5."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Your Turn",
+          "prompt": "Convert the rectangular equation $ x = 2 $ to polar.",
+          "steps": [
+            "Understand: vertical line, need $ (r,\\theta) $ equation.",
+            "Solve: $ r \\cos \\theta = 2 $ → $ r = 2 \\sec \\theta $.",
+            "Conclude: $ r = 2 \\sec \\theta $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Quadrant errors",
+        "body": "When converting rectangular to polar, $ \\theta = \\arctan(y/x) $ alone may give the wrong quadrant. Always sketch the point."
+      },
+      "questions": [
+        {
+          "id": "q-blue-1",
+          "type": "fill-blank",
+          "prompt": "Always check the ___ of $ \\theta $ when converting $ (x,y) $ to polar.",
+          "blanks": [
+            {
+              "accept": [
+                "quadrant"
+              ]
+            }
+          ],
+          "hints": [
+            "The arctan function only gives angles in QI and QIV.",
+            "Look at the signs of x and y."
+          ],
+          "feedbackIfWrong": "quadrant."
+        },
+        {
+          "id": "q-blue-2",
+          "type": "short-answer",
+          "prompt": "What is one non‑zero polar equation that represents a circle of radius 5?",
+          "answer": "r = 5",
+          "hints": [
+            "Direct distance from pole.",
+            "No angle dependence."
+          ],
+          "feedbackIfWrong": "r = 5."
+        },
+        {
+          "id": "q-blue-3",
+          "type": "short-answer",
+          "prompt": "If $ r = a \\sec \\theta $, the graph is a vertical line. The $ x $-intercept is at $ x = $ ___.",
+          "answer": "a",
+          "hints": [
+            "$ \\sec\\theta $ is $ 1/\\cos\\theta $.",
+            "Multiply both sides by $ \\cos\\theta $."
+          ],
+          "feedbackIfWrong": "a."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

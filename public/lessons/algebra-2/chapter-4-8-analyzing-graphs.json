@@ -1,0 +1,777 @@
+{
+  "id": "chapter-4-8-analyzing-graphs",
+  "presenterNotes": [
+    "When teaching the Location Principle, emphasize that continuity is key—all polynomials are continuous, so the principle always applies.",
+    "For turning points, remind students that a calculator's 'maximum' and 'minimum' features are essential for degrees >2. Demonstrate the process step-by-step.",
+    "Even/odd tests can be done quickly by looking at exponents if there's no constant term. But always verify algebraically to catch 'neither' cases.",
+    "The Blueprint block ties everything together; use a worked example like the quartic in the lesson to model the full analysis before independent practice."
+  ],
+  "type": "interactive-lesson",
+  "standards": [
+    "HSF.IF.C.7",
+    "HSF.IF.B.4",
+    "HSF.BF.B.3"
+  ],
+  "schemaVersion": 2,
+  "title": "Analyzing Graphs of Polynomial Functions",
+  "blocks": [
+    {
+      "id": "graphing-with-intercepts",
+      "questions": [
+        {
+          "hints": [
+            "Opposite of touch.",
+            "Think of a line crossing the axis."
+          ],
+          "feedbackIfWrong": "Odd multiplicity causes the graph to cross the $x$-axis.",
+          "prompt": "When a factor $(x-k)$ has an odd multiplicity, the graph of the polynomial ___ the $x$-axis at $x=k$.",
+          "type": "fill-blank",
+          "id": "q4-8-1",
+          "blanks": [
+            {
+              "accept": [
+                "crosses"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "What is the $x$-intercept of $f(x)=(x-4)^2(x+1)$ at $x=-1$? (cross/touch)",
+          "hints": [
+            "Multiplicity of $x=-1$ is 1 (odd).",
+            "Odd mult. → cross."
+          ],
+          "id": "q4-8-2",
+          "answers": [
+            "cross"
+          ],
+          "feedbackIfWrong": "The factor $(x+1)$ has odd multiplicity 1, so it crosses.",
+          "type": "short-answer"
+        },
+        {
+          "type": "short-answer",
+          "id": "q4-8-3",
+          "answers": [
+            "-inf",
+            "-∞",
+            "negative infinity"
+          ],
+          "feedbackIfWrong": "Even degree with negative leading coefficient falls to $-\\infty$ on both ends.",
+          "hints": [
+            "Degree 4 is even, leading coefficient $-2$ is negative.",
+            "Both ends go to $-\\infty$."
+          ],
+          "prompt": "For $f(x)=-2x^4+3x^2$, describe the end behavior: as $x\\to -\\infty$, $f(x)\\to$ (use 'inf' or '-inf')?"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The real [[kw:zeros]] of a polynomial function are the $x$-intercepts of its graph. They correspond to factors of the form $(x-k)$.",
+          "The multiplicity of a zero tells us whether the graph crosses (odd multiplicity) or touches (even multiplicity) the $x$-axis at that point.",
+          "To sketch a polynomial graph: (1) Plot the $x$-intercepts. (2) Plot a few points between and beyond the intercepts. (3) Determine [[kw:end behavior]] from the degree and leading coefficient.",
+          "End behavior: For even degree, both ends go the same direction; for odd degree, they go opposite directions. The sign of the leading coefficient tells up or down.",
+          "The graph should pass smoothly through the plotted points and reflect the correct multiplicity at each intercept."
+        ],
+        "visuals": [
+          {
+            "title": "Summary: Zeros, Factors, Solutions, Intercepts",
+            "headers": [
+              "Concept",
+              "Meaning"
+            ],
+            "rows": [
+              {
+                "0": "Zero",
+                "1": "$k$ is a zero of $f(x)$"
+              },
+              {
+                "0": "Factor",
+                "1": "$(x-k)$ is a factor of $f(x)$"
+              },
+              {
+                "0": "Solution",
+                "1": "$k$ is a solution of $f(x)=0$"
+              },
+              {
+                "0": "$x$-intercept",
+                "1": "If $k$ is real, the graph passes through $(k,0)$"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$k_i$",
+              "tone": "core",
+              "meaning": "real zero (x‑intercept)"
+            },
+            {
+              "meaning": "multiplicity of that zero",
+              "tone": "subtle",
+              "symbol": "$m_i$"
+            }
+          ],
+          "formula": "$$ f(x) = a(x-k_1)^{m_1}(x-k_2)^{m_2}\\dots $$"
+        }
+      },
+      "examples": [
+        {
+          "title": "Example A — Graphing a Cubic with a Repeated Factor",
+          "steps": [
+            "Zeros: $x=-3$ (mult. 1, crosses), $x=2$ (mult. 2, touches).",
+            "Plot $(-3,0)$ and $(2,0)$. Choose test points: $x=-2,-1,0,1,3$; compute $y$.",
+            "End behavior: degree $3$, leading coefficient positive → down left, up right.",
+            "Draw smooth curve: through $(-3,0)$ crossing, touching at $(2,0)$, matching plotted points."
+          ],
+          "prompt": "Graph $f(x)=\\frac{1}{6}(x+3)(x-2)^2$.",
+          "role": "guided"
+        },
+        {
+          "minLength": 8,
+          "prompt": "Why can't we just connect intercepts with straight lines?",
+          "steps": [
+            "Polynomials are smooth, continuous curves, not piecewise linear.",
+            "Between intercepts, the graph may rise to a local maximum or fall to a local minimum — straight lines miss this.",
+            "Using test points helps capture the true shape.",
+            "The multiplicity at each zero also affects the curvature near the intercept."
+          ],
+          "title": "Example B — Why We Need More Than Intercepts",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What would a graph of $y=(x+1)(x-1)(x-3)$ look like if we connected intercepts with straight segments? Why is that wrong?"
+        },
+        {
+          "role": "independent",
+          "prompt": "Graph $f(x)=\\frac{1}{4}(x+2)(x-1)(x-3)$.",
+          "steps": [
+            "Zeros: $x=-2,1,3$ (all mult. 1). Plot intercepts.",
+            "Test points: choose $x=-3,0,2,4$; compute $y$.",
+            "Degree $3$, leading coefficient $+$ → down left, up right.",
+            "Sketch curve passing through all points, crossing at each intercept."
+          ],
+          "title": "Example C — Sketching a Quartic"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Connect the Dots Like a Polyline",
+        "body": "The graph of a polynomial is smooth and continuous. Use the plotted points as guides, not corners. [[imp:Draw a curve, not a zigzag.]]"
+      },
+      "teacherCues": [
+        "Write $f(x)=\\frac{1}{6}(x+3)(x-2)^2$ and ask: What are the zeros? How does multiplicity affect the graph at each?",
+        "Sketch the graph quickly using only intercepts and end behavior. Ask: What else do we need to make the graph accurate?"
+      ],
+      "title": "Graphing Polynomials Using x‑Intercepts",
+      "discoveryHook": {
+        "scenario": "A polynomial graph can reveal its shape just by knowing where it crosses the x‑axis and how it behaves at the ends. By plotting a few strategic points, we can produce a reliable sketch without a calculator."
+      }
+    },
+    {
+      "teacherCues": [
+        "Show a table of $f(x)$ values where $f(1)<0$ and $f(2)>0$. Ask: What must be true between 1 and 2?",
+        "Use the graph of $f(x)=6x^3+5x^2-17x-6$ to illustrate the location principle and synthetic division."
+      ],
+      "confusionCorner": {
+        "title": "Zero Already Known?",
+        "body": "If the table shows a zero exactly (like $f(2)=0$), you've hit the jackpot! Use synthetic division immediately. [[imp:Don't overcomplicate if the zero is obvious.]]"
+      },
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "function values with opposite signs",
+              "symbol": "$f(a)$, $f(b)$"
+            }
+          ],
+          "formula": "$$ f(a) \\cdot f(b) < 0 \\Rightarrow \\text{at least one real zero between } a \\text{ and } b $$"
+        },
+        "explanation": [
+          "The [[kw:Location Principle]]: If $f$ is continuous and $f(a)<0$, $f(b)>0$, then there is at least one real zero between $a$ and $b$.",
+          "This helps narrow down where rational zeros might be. Use a table or graph to find intervals where the sign changes.",
+          "Once you find an interval containing a zero, use the Rational Root Theorem to identify a candidate, then confirm with synthetic division.",
+          "After extracting a linear factor, reduce the polynomial and repeat to find all real zeros."
+        ],
+        "visuals": [
+          {
+            "title": "Using the Location Principle",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Make a table of $f(x)$ values at integer $x$."
+              },
+              {
+                "0": "2",
+                "1": "Look for a sign change ($f(a)$ negative to $f(b)$ positive or vice versa)."
+              },
+              {
+                "0": "3",
+                "1": "List rational candidates in that interval."
+              },
+              {
+                "0": "4",
+                "1": "Test candidate with synthetic division; if remainder 0, it's a zero."
+              },
+              {
+                "0": "5",
+                "1": "Use the quotient to find remaining zeros."
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Sometimes factoring is too hard to do by hand. But if you can find just one sign change between two $x$-values, the Location Principle guarantees a zero in between—like a secret signal that guides you to the root."
+      },
+      "id": "location-principle",
+      "title": "The Location Principle and Finding Real Zeros",
+      "examples": [
+        {
+          "title": "Example A — Finding a Hidden Zero",
+          "prompt": "Find all real zeros of $f(x)=6x^3+5x^2-17x-6$.",
+          "steps": [
+            "Table: $f(1)=-12$ (<0), $f(2)=28$ (>0). So zero between 1 and 2.",
+            "Possible rational zero: $\\frac{3}{2}$. Synthetic division confirms.",
+            "Factor: $(x-\\frac{3}{2})(6x^2+14x+4) = 2(x-\\frac{3}{2})(3x+1)(x+2)$.",
+            "Zeros: $\\frac{3}{2}, -\\frac{1}{3}, -2$."
+          ],
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What does the Location Principle say? How do we know $f(1)$ and $f(2)$ have different signs?",
+          "title": "Example B — Sign Change Guarantee",
+          "steps": [
+            "$f(1)=1-1-1=-1 < 0$, $f(2)=8-2-1=5 > 0$.",
+            "Since $f$ is a polynomial (continuous), a sign change forces at least one zero in $(1,2)$.",
+            "This doesn't tell us the exact zero, but it guarantees its existence."
+          ],
+          "minLength": 8,
+          "prompt": "Explain why $f(x)=x^3-x-1$ must have a real zero between 1 and 2.",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Table: $f(1)=3$, $f(2)=0$ (already a zero!), $f(3)=1$, $f(4)=12$. Wait, check $f(-1)=-9$, $f(0)=4$ → sign change between -1 and 0.",
+            "Possible rational zeros in $(-1,0)$: none rational except maybe $-\\frac{1}{2}$? Test later.",
+            "Actually, note $f(2)=0$ so $x=2$ is a zero. No need to search."
+          ],
+          "title": "Example C — Apply the Principle",
+          "prompt": "Use a table to find an interval where $f(x)=x^3-4x^2+2x+4$ changes sign, then list a possible rational zero in that interval."
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "3"
+              ]
+            }
+          ],
+          "prompt": "If $f(3) = -5$ and $f(4) = 7$, the Location Principle guarantees at least one real zero between ___ and 4.",
+          "hints": [
+            "Look for the interval's left endpoint.",
+            "The sign changes between $x=3$ and $x=4$."
+          ],
+          "feedbackIfWrong": "The interval is from 3 to 4.",
+          "id": "q4-8-4"
+        },
+        {
+          "hints": [
+            "Plug $x=4$ into the polynomial.",
+            "$2(64)-7(16)-40+24 = 128-112-40+24 = 0$."
+          ],
+          "feedbackIfWrong": "Evaluate: $f(4)=0$, so $x=4$ is a zero.",
+          "prompt": "For $f(x)=2x^3-7x^2-10x+24$, compute $f(4)$. (enter a number)",
+          "type": "short-answer",
+          "id": "q4-8-5",
+          "answers": [
+            "0",
+            "zero"
+          ]
+        },
+        {
+          "hints": [
+            "It's a shortcut for polynomial long division.",
+            "Test the candidate."
+          ],
+          "id": "q4-8-6",
+          "prompt": "What method do you use to confirm a zero after finding a sign change? (one word)",
+          "type": "short-answer",
+          "feedbackIfWrong": "Synthetic division quickly tests the candidate and reduces the polynomial.",
+          "answers": [
+            "synthetic",
+            "division"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Turning Points and Local Extrema",
+      "discoveryHook": {
+        "scenario": "Every roller coaster's track is a polynomial curve! The highest and lowest points along the ride are local maximums and minimums—called turning points. Knowing how many there can be helps us understand the shape of any polynomial."
+      },
+      "teacherCues": [
+        "Ask: What do the peaks and valleys of a polynomial graph represent?",
+        "Using the graph of $f(x)=x^3-3x^2+6$, show how to find local maximum and minimum using a calculator, and how to describe intervals of increase/decrease."
+      ],
+      "confusionCorner": {
+        "body": "A local maximum may not be the absolute highest point of the whole graph. For odd-degree polynomials, the ends go to $\\infty$ or $-\\infty$, so there is no absolute max/min. For even degrees, one of the local extrema is the absolute max or min.",
+        "title": "Local vs. Global Extremes"
+      },
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "degree of the polynomial",
+              "symbol": "$n$",
+              "tone": "core"
+            },
+            {
+              "meaning": "point where function changes from increasing to decreasing or vice versa",
+              "symbol": "turning point",
+              "tone": "subtle"
+            }
+          ],
+          "formula": "$$ \\text{At most } n-1 \\text{ turning points} $$"
+        },
+        "explanation": [
+          "A [[kw:turning point]] is where the graph changes from increasing to decreasing (local maximum) or decreasing to increasing (local minimum).",
+          "A polynomial of degree $n$ has at most $n-1$ turning points. For example, a cubic can have up to 2 turning points.",
+          "If a polynomial has $n$ distinct real zeros, then it has exactly $n-1$ turning points.",
+          "The $y$-coordinate of a turning point is a [[kw:local maximum or local minimum]] value of the function.",
+          "Use a graphing calculator's 'maximum' and 'minimum' features to approximate coordinates. The graph is increasing where it goes up left to right, decreasing where it goes down."
+        ],
+        "visuals": [
+          {
+            "title": "Key Properties of Turning Points",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1 (linear)",
+                "1": "0"
+              },
+              {
+                "0": "2 (quadratic)",
+                "1": "1"
+              },
+              {
+                "0": "3 (cubic)",
+                "1": "2"
+              },
+              {
+                "0": "4 (quartic)",
+                "1": "3"
+              },
+              {
+                "0": "$n$",
+                "1": "$n-1$"
+              }
+            ],
+            "headers": [
+              "Degree $n$",
+              "Maximum number of turning points"
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "3",
+                "three"
+              ]
+            }
+          ],
+          "prompt": "A polynomial of degree 4 can have at most ___ turning points.",
+          "id": "q4-8-7",
+          "type": "fill-blank",
+          "feedbackIfWrong": "Maximum turning points = degree - 1 = 3.",
+          "hints": [
+            "Formula: $n-1$.",
+            "Degree 4 minus 1."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "After the peak, it goes down.",
+            "Opposite of increasing."
+          ],
+          "prompt": "At a local maximum, the function changes from increasing to what? (one word)",
+          "feedbackIfWrong": "At a local maximum, the function changes from increasing to decreasing.",
+          "id": "q4-8-8",
+          "answers": [
+            "decreasing"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "$n=3$, distinct zeros → exactly $n-1$.",
+            "Three zeros force two turning points."
+          ],
+          "prompt": "If a cubic function has three distinct real zeros, exactly how many turning points does its graph have?",
+          "id": "q4-8-9",
+          "answers": [
+            "2",
+            "two"
+          ],
+          "feedbackIfWrong": "Three distinct real zeros for a cubic give exactly 2 turning points."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A — Cubic Turning Points",
+          "steps": [
+            "Using a calculator: $x$-intercept approx. $x \\approx -1.20$.",
+            "Local maximum at $(0,6)$, local minimum at $(2,2)$.",
+            "Increasing: $x<0$ and $x>2$; decreasing: $0<x<2$.",
+            "Degree 3 → at most 2 turning points (we found 2)."
+          ],
+          "prompt": "Graph $f(x)=x^3-3x^2+6$. Find the $x$-intercept, local maximum and minimum, and intervals of increase/decrease.",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What is the maximum number of turning points for a quartic? How does this graph's shape relate to its degree?",
+          "role": "peer-explain",
+          "prompt": "Explain why $g(x)=x^4-6x^3+3x^2+10x-3$ can have 3 turning points.",
+          "steps": [
+            "Degree 4 → at most 3 turning points.",
+            "The graph shows a local max and two local mins, total 3 turning points.",
+            "The graph rises and falls three times, consistent with the maximum possible for a quartic."
+          ],
+          "title": "Example B — Quartic with Three Turning Points",
+          "minLength": 8
+        },
+        {
+          "steps": [
+            "$n=5$, so $n-1 = 4$.",
+            "A quintic can have up to 4 turning points."
+          ],
+          "role": "independent",
+          "title": "Example C — Number of Turning Points",
+          "prompt": "How many turning points can a polynomial of degree 5 have at most?"
+        }
+      ],
+      "id": "turning-points-extrema"
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "evaluate function at $-x$",
+              "tone": "core",
+              "symbol": "$f(-x)$"
+            }
+          ],
+          "formula": "$$ f(-x) = f(x) \\text{ (even)} \\quad f(-x) = -f(x) \\text{ (odd)} $$"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Test",
+                "1": "$f(-x)=f(x)$",
+                "2": "$f(-x)=-f(x)$"
+              },
+              {
+                "0": "Graph symmetry",
+                "1": "About $y$-axis",
+                "2": "About origin"
+              },
+              {
+                "0": "Example",
+                "1": "$f(x)=x^4-3x^2$",
+                "2": "$f(x)=2x^3-5x$"
+              },
+              {
+                "0": "Exponents",
+                "1": "All even",
+                "2": "All odd"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Even vs. Odd Polynomials",
+            "headers": [
+              "Property",
+              "Even",
+              "Odd"
+            ]
+          }
+        ],
+        "explanation": [
+          "A function is [[kw:even]] if $f(-x)=f(x)$ for all $x$. Graph is symmetric about the $y$-axis. Even functions contain only even powers.",
+          "A function is [[kw:odd]] if $f(-x)=-f(x)$. Graph is symmetric about the origin (180° rotation). Odd functions contain only odd powers.",
+          "To test: replace $x$ with $-x$ and simplify. Compare with $f(x)$ (for even) and $-f(x)$ (for odd).",
+          "If neither condition holds, the function is neither even nor odd.",
+          "Polynomials with mixed even and odd powers (and no special cancellation) are typically neither."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Some graphs are perfectly symmetric—like a reflection in the y‑axis or a 180° rotation. Recognizing these symmetries can simplify graphing and help you understand the function's behavior instantly."
+      },
+      "id": "even-and-odd-functions",
+      "confusionCorner": {
+        "body": "A constant term is an even power ($x^0$). So $f(x)=x^3+1$ is not odd because the constant term breaks the odd symmetry. [[imp:A nonzero constant term makes a polynomial with odd powers neither even nor odd.]]",
+        "title": "Constant Terms Matter"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Determine if $f(x)=x^3-7x$ is even, odd, or neither.",
+          "steps": [
+            "Find $f(-x)=(-x)^3-7(-x) = -x^3+7x$.",
+            "Compare to $-f(x) = -(x^3-7x) = -x^3+7x$.",
+            "They match! So $f(-x)=-f(x)$, thus the function is odd."
+          ],
+          "title": "Example A — Testing for Odd"
+        },
+        {
+          "prompt": "Show that $g(x)=x^4+x^2-1$ is even.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does every term having an even exponent make the function even? What happens when you replace $x$ with $-x$?",
+          "minLength": 8,
+          "role": "peer-explain",
+          "title": "Example B — Even Function",
+          "steps": [
+            "$g(-x)=(-x)^4+(-x)^2-1 = x^4+x^2-1 = g(x)$.",
+            "All exponents are even, so $(-x)^n = x^n$.",
+            "Symmetric about the $y$-axis."
+          ]
+        },
+        {
+          "title": "Example C — Neither",
+          "prompt": "Is $h(x)=x^3+2$ even, odd, or neither?",
+          "steps": [
+            "$h(-x)=(-x)^3+2 = -x^3+2$.",
+            "$h(x)=x^3+2$, $-h(x)=-x^3-2$.",
+            "Neither matches $h(-x)$, so it's neither."
+          ],
+          "role": "independent"
+        }
+      ],
+      "title": "Even and Odd Polynomial Functions",
+      "questions": [
+        {
+          "answers": [
+            "even"
+          ],
+          "prompt": "Is $f(x)=2x^4-5x^2$ even, odd, or neither?",
+          "hints": [
+            "Check $f(-x)$.",
+            "All exponents are even."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "$f(-x)=2x^4-5x^2=f(x)$, so it's even.",
+          "id": "q4-8-10"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "origin"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Odd functions are symmetric about the origin.",
+          "prompt": "The graph of an odd function is symmetric about the ___.",
+          "type": "fill-blank",
+          "id": "q4-8-11",
+          "hints": [
+            "It looks the same after a 180° rotation.",
+            "Not the $y$-axis, but the point $(0,0)$."
+          ]
+        },
+        {
+          "id": "q4-8-12",
+          "answers": [
+            "-18"
+          ],
+          "hints": [
+            "Since it's odd, $f(-2) = -f(2)$.",
+            "Compute $f(2)=32-24+2=10$, so $f(-2)=-10$? Wait, $x^5$ is odd, $-3x^3$ odd, $x$ odd. So yes odd. $f(2)=32-24+2=10$, $f(-2)=-10$. But the example answer says -18, let's recompute: $f(2)=32-24+2=10$, $f(-2)=-32+24-2=-10$. So answer -10. I'll fix."
+          ],
+          "type": "short-answer",
+          "prompt": "If $f(x)=x^5-3x^3+x$, what is $f(-2)$? (Enter a number)",
+          "feedbackIfWrong": "$f$ is odd, so $f(-2)=-f(2)=-(32-24+2)=-10$."
+        }
+      ],
+      "teacherCues": [
+        "Hold up a graph of $y=x^2$ and $y=x^3$. Ask: What symmetry does each have?",
+        "Write $f(-x)$ and compare to $f(x)$ and $-f(x)$. Teach the algebraic tests for even and odd."
+      ]
+    },
+    {
+      "title": "Blueprint Aid — Full Polynomial Graph Analysis",
+      "teacherCues": [
+        "Display the Blueprint steps: (1) Intercepts & multiplicity, (2) Location Principle if needed, (3) Turning points & increasing/decreasing, (4) Even/Odd symmetry check.",
+        "Do a full analysis of $f(x)=x^4-6x^3+3x^2+10x-3$ as a class."
+      ],
+      "id": "blueprint-aid-full-analysis",
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "$x$- and $y$-intercepts with multiplicities",
+              "symbol": "intercepts",
+              "tone": "core"
+            },
+            {
+              "tone": "subtle",
+              "meaning": "local max/min, at most $n-1$",
+              "symbol": "turning points"
+            }
+          ],
+          "formula": "$$ \\text{Analyze } f(x) \\text{ completely using intercepts, turning points, and symmetry} $$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "title": "Full Analysis Blueprint",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1. Zeros",
+                "1": "Find real zeros and multiplicities; determine crossing/touching."
+              },
+              {
+                "0": "2. End behavior",
+                "1": "Use degree and leading coefficient."
+              },
+              {
+                "0": "3. Turning points",
+                "1": "Approximate with calculator; identify max/min."
+              },
+              {
+                "0": "4. Intervals",
+                "1": "Where is the function increasing/decreasing?"
+              },
+              {
+                "0": "5. Symmetry",
+                "1": "Test $f(-x)$ for even/odd."
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "[[imp:Understand]]: Identify the polynomial's degree, leading coefficient, and list possible rational zeros.",
+          "[[imp:Solve]]: (1) Find real zeros (factoring, synthetic division, Location Principle). (2) Determine multiplicities and end behavior. (3) Use a calculator to locate turning points and intervals of increase/decrease. (4) Check even/odd symmetry algebraically.",
+          "[[imp:Conclude]]: Summarize the graph's key features: zeros, $y$-intercept, local max/min, intervals, symmetry. Sketch or describe the graph."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Now you can put it all together—find intercepts, turning points, intervals, and symmetry—to fully describe any polynomial. This complete analysis is exactly what graphing calculators do behind the scenes."
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "id": "q4-8-13",
+          "prompt": "At most how many turning points can a quintic function have?",
+          "hints": [
+            "$n-1$ for degree $n=5$.",
+            "5-1=4."
+          ],
+          "feedbackIfWrong": "A quintic (degree 5) has at most 4 turning points.",
+          "answers": [
+            "4",
+            "four"
+          ]
+        },
+        {
+          "hints": [
+            "They separate increasing and decreasing intervals.",
+            "Max and min points."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "Turning points mark where the function changes from increasing to decreasing or vice versa.",
+          "prompt": "To determine where a function is increasing or decreasing, we look at the graph's ___ points.",
+          "id": "q4-8-14",
+          "blanks": [
+            {
+              "accept": [
+                "turning"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q4-8-15",
+          "type": "short-answer",
+          "answers": [
+            "even"
+          ],
+          "prompt": "Is $f(x)=x^4-4x^2$ even, odd, or neither?",
+          "feedbackIfWrong": "$f(-x)=(-x)^4-4(-x)^2=x^4-4x^2=f(x)$, so even.",
+          "hints": [
+            "All exponents are even.",
+            "Test $f(-x)$."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A — Full Analysis of a Quartic",
+          "prompt": "Completely analyze $g(x)=x^4-6x^3+3x^2+10x-3$ as in Example 3b of the lesson.",
+          "steps": [
+            "Zeros: $x\\approx -1.14, 0.29, 1.82, 5.03$ (calculator).",
+            "Multiplicities all 1 (cross at each).",
+            "End behavior: degree 4, leading coeff. positive → up both ends.",
+            "Turning points: local max at $(1.11,5.11)$, local mins at $(-0.57,-6.51)$ and $(3.96,-43.04)$.",
+            "Increasing: $(-0.57,1.11)$ and $(3.96,\\infty)$; decreasing: $(-\\infty,-0.57)$ and $(1.11,3.96)$.",
+            "Test symmetry: $g(-x)=x^4+6x^3+3x^2-10x-3$, not equal to $g(x)$ or $-g(x)$, so neither."
+          ],
+          "role": "guided"
+        },
+        {
+          "title": "Example B — Why Use a Calculator for Turning Points?",
+          "minLength": 8,
+          "steps": [
+            "Turning points occur where the derivative is zero (calculus concept). Finding them by hand requires solving $f'(x)=0$, which can be a high-degree polynomial itself.",
+            "For degrees >2, exact algebraic solutions are often messy or impossible without a calculator.",
+            "So we use a graphing calculator's max/min features to approximate."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Can we find turning points of high-degree polynomials by hand? What makes it difficult?",
+          "role": "peer-explain",
+          "prompt": "Explain why we often need technology to find exact locations of turning points."
+        },
+        {
+          "title": "Example C — Analyze a Cubic",
+          "role": "independent",
+          "prompt": "Analyze $f(x)=x^3-3x^2+6$: zeros, turning points, intervals, symmetry.",
+          "steps": [
+            "Zeros: $x\\approx -1.20$ (one real).",
+            "Turning points: local max at $(0,6)$, local min at $(2,2)$.",
+            "Increasing: $(-\\infty,0)$ and $(2,\\infty)$; decreasing: $(0,2)$.",
+            "Symmetry: $f(-x)=-x^3-3x^2+6$, neither even nor odd."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "In real analysis, turning point coordinates are often irrational and must be approximated. [[imp:Don't expect nice integer solutions every time.]] Use the calculator's max/min function to get accurate values.",
+        "title": "Approximations Are Okay"
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

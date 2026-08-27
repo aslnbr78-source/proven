@@ -1,0 +1,721 @@
+{
+  "presenterNotes": [
+    "The key distinction between linear and exponential is constant difference vs. constant ratio. Drill this with several quick table examples.",
+    "When graphing, emphasize the asymptote. The graph never touches the x-axis (or the shifted asymptote line). Students often draw it crossing.",
+    "Translations of exponentials follow the same rules as other functions but the asymptote shifts with k. Make this explicit.",
+    "For real-life problems, focus on extracting 'a' from the y-intercept and 'b' from the ratio of consecutive outputs. The concept of percent change to growth factor (1 + r) is crucial."
+  ],
+  "standards": [
+    "HSF.LE.A.1",
+    "HSF.LE.A.2",
+    "HSF.IF.C.7e"
+  ],
+  "blocks": [
+    {
+      "confusionCorner": {
+        "body": "For $ y = ab^x $ to be an exponential function, the base $ b $ must be [[imp:positive and not equal to 1]]. If $ b = 1 $, the function becomes constant $ y = a $. If $ b $ is negative, the values can flip signs in ways that don't model typical growth or decay.",
+        "title": "b Must Be Positive and Not 1"
+      },
+      "title": "Identifying and Evaluating Exponential Functions",
+      "discoveryHook": {
+        "scenario": "Imagine a single bacteria that doubles every hour. After 1 hour: 2, after 2: 4, after 3: 8. The numbers multiply, they don't just add. This explosive pattern is the heart of an exponential function—where the independent variable is the exponent, and the dependent variable grows by a constant factor."
+      },
+      "examples": [
+        {
+          "prompt": "Does the table represent a linear or exponential function? x: 0,1,2,3; y: 4,8,16,32.",
+          "title": "A – Identifying Linear vs. Exponential",
+          "steps": [
+            "Look at how $ y $ changes as $ x $ increases by 1.",
+            "From 4 to 8: multiply by 2. 8 to 16: multiply by 2. 16 to 32: multiply by 2.",
+            "The ratio is constant, so it's an [[imp:exponential]] function."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "x: 0,1,2,3; y: 2,4,6,8. Is this linear or exponential?",
+          "steps": [
+            "Find the differences: $ 4-2=2 $, $ 6-4=2 $, $ 8-6=2 $.",
+            "The difference is constant, not the ratio.",
+            "Therefore, it's a [[imp:linear]] function."
+          ],
+          "title": "B – Spotting a Linear Function",
+          "peerPrompt": "Explain to a partner: Why does adding 2 each time make it linear, not exponential?",
+          "minLength": 2
+        },
+        {
+          "prompt": "Evaluate $ y = -2(5)^x $ for $ x = 3 $.",
+          "title": "C – Evaluating an Exponential Function",
+          "role": "independent",
+          "steps": [
+            "Substitute 3 for $ x $: $ y = -2(5)^3 $.",
+            "Evaluate the power: $ 5^3 = 125 $.",
+            "Multiply: $ -2 \\times 125 = -250 $."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Write a table with x: 0,1,2,3 and y: 4,8,16,32. Ask: 'Does y increase by a constant amount or by a constant factor?'",
+        "Contrast with a linear table: x: 0,1,2,3; y: 2,4,6,8. Ask: 'How can you tell which is linear and which is exponential?'"
+      ],
+      "id": "identifying-evaluating-exponential-functions",
+      "questions": [
+        {
+          "prompt": "An exponential function has the form $ y = ab^x $, where the base $ b $ must be greater than ___ and not equal to 1.",
+          "feedbackIfWrong": "The base $ b $ must be greater than 0.",
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "zero"
+              ]
+            }
+          ],
+          "id": "q1-1",
+          "hints": [
+            "It's the lower bound for the base.",
+            "Negative bases don't give real exponential functions."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "answer": "exponential",
+          "hints": [
+            "Check the ratio of consecutive y-values.",
+            "Each y is multiplied by 3."
+          ],
+          "id": "q1-2",
+          "type": "short-answer",
+          "feedbackIfWrong": "The y-values are multiplied by 3 each time, so it's exponential.",
+          "prompt": "A table shows $ x: 0,1,2,3 $ with $ y: 3,9,27,81 $. Is this linear or exponential?"
+        },
+        {
+          "prompt": "Evaluate $ y = 3(2)^x $ when $ x = -2 $. What is the value?",
+          "hints": [
+            "Substitute $ x = -2 $: $ 3(2)^{-2} $.",
+            "$ 2^{-2} = \\frac{1}{4} $, then multiply by 3."
+          ],
+          "type": "short-answer",
+          "id": "q1-3",
+          "answer": "0.75",
+          "feedbackIfWrong": "$ 3 \\times \\frac{1}{4} = 0.75 $."
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Linear vs. Exponential",
+            "rows": [
+              {
+                "0": "Equation",
+                "1": "$ y = mx + b $",
+                "2": "$ y = ab^x $"
+              },
+              {
+                "0": "Change in $ y $ as $ x $ increases by 1",
+                "1": "Adds a constant difference",
+                "2": "Multiplies by a constant factor $ b $"
+              },
+              {
+                "0": "Example table",
+                "1": "$ 2, 4, 6, 8 $ (add 2)",
+                "2": "$ 4, 8, 16, 32 $ (multiply by 2)"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Feature",
+              "Linear Function",
+              "Exponential Function"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Exponential Function",
+          "formula": "$$ y = ab^x $$",
+          "notes": [
+            "$ a $ is the initial value (y-intercept).",
+            "$ b $ is the growth factor ($ b > 1 $) or decay factor ($ 0 < b < 1 $)."
+          ]
+        },
+        "explanation": [
+          "An [[kw:exponential function]] is a nonlinear function of the form $ y = ab^x $, where $ a \\ne 0 $, $ b > 0 $, and $ b \\ne 1 $.",
+          "In a linear function, as $ x $ changes by a constant amount, $ y $ changes by a constant [[imp:amount]] (adds/subtracts).",
+          "In an exponential function, as $ x $ changes by a constant amount, $ y $ is [[imp:multiplied by a constant factor]] $ b $.",
+          "To identify the type, check if consecutive $ y $-values have a constant difference (linear) or a constant ratio (exponential).",
+          "To evaluate, substitute the given $ x $-value and simplify the power, then multiply by $ a $."
+        ]
+      }
+    },
+    {
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "The y-intercept is $ a $.",
+          "prompt": "For $ y = ab^x $, the $ y $-intercept is the value of $ a $ because when $ x = 0 $, $ y = a \\cdot b^0 = a \\cdot 1 = $ ___.",
+          "id": "q2-1",
+          "blanks": [
+            {
+              "accept": [
+                "a"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the initial value.",
+            "It's the same letter as the coefficient."
+          ]
+        },
+        {
+          "answer": "increasing",
+          "hints": [
+            "Think of $ 2^x $: as $ x $ increases, $ y $ grows.",
+            "Growth factor > 1 means growth."
+          ],
+          "id": "q2-2",
+          "feedbackIfWrong": "Increasing.",
+          "prompt": "If $ b > 1 $, is the exponential function increasing or decreasing?",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "The range is $ y > 0 $.",
+          "prompt": "What is the range of $ f(x) = 3(0.5)^x $? (Use inequality, e.g., y > 0)",
+          "id": "q2-3",
+          "hints": [
+            "The coefficient $ a $ is positive.",
+            "Exponential functions never reach zero."
+          ],
+          "answer": "y > 0",
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Graph $ y = 2^x $ by plotting points: (-2,1/4), (-1,1/2), (0,1), (1,2), (2,4). Ask: 'What happens to y as x gets very large? Very small?'",
+        "Then graph $ y = 4(2)^x $ and ask: 'How does the 'a' value change the graph?'"
+      ],
+      "confusionCorner": {
+        "body": "The $ x $-axis is a horizontal asymptote for $ y = ab^x $ when $ a > 0 $. The graph gets arbitrarily close to the axis but [[imp:never touches or crosses]] it. Do not draw the graph intersecting the $ x $-axis.",
+        "title": "Asymptote, Not Intercept"
+      },
+      "title": "Graphing $ y = ab^x $",
+      "id": "graphing-exponential-functions",
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Condition",
+              "Behavior",
+              "y-intercept",
+              "Range"
+            ],
+            "rows": [
+              {
+                "0": "$ a > 0 $, $ b > 1 $",
+                "1": "Increasing, above x-axis",
+                "2": "$ a $",
+                "3": "$ y > 0 $"
+              },
+              {
+                "0": "$ a < 0 $, $ b > 1 $",
+                "1": "Decreasing, below x-axis",
+                "2": "$ a $",
+                "3": "$ y < 0 $"
+              },
+              {
+                "0": "$ a > 0 $, $ 0 < b < 1 $",
+                "1": "Decreasing, above x-axis",
+                "2": "$ a $",
+                "3": "$ y > 0 $"
+              },
+              {
+                "0": "$ a < 0 $, $ 0 < b < 1 $",
+                "1": "Increasing, below x-axis",
+                "2": "$ a $",
+                "3": "$ y < 0 $"
+              }
+            ],
+            "type": "table",
+            "title": "Effects of $ a $ and $ b $ on the Graph",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "The $ x $-axis is a horizontal asymptote (the graph approaches but never touches it).",
+            "$ a $ is the $ y $-intercept; $ b $ controls growth/decay."
+          ],
+          "title": "Graph of $ y = ab^x $",
+          "formula": "$$ y = ab^x $$"
+        },
+        "explanation": [
+          "The graph of $ y = ab^x $ is a transformation of the [[imp:parent function]] $ y = b^x $.",
+          "The $ y $-intercept is $ a $, because when $ x = 0 $, $ y = a $.",
+          "If $ b > 1 $, the function is [[imp:increasing]] (growth). If $ 0 < b < 1 $, it is [[imp:decreasing]] (decay).",
+          "If $ a > 0 $, the graph lies above the $ x $-axis; if $ a < 0 $, the graph is reflected and lies below the $ x $-axis.",
+          "The domain is all real numbers. The range is $ y > 0 $ if $ a > 0 $, or $ y < 0 $ if $ a < 0 $."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Picture a gentle upward curve that never touches the x-axis, starting near zero and soaring upward—or a downward curve that drops steeply. Exponential graphs have a distinctive J-shape or reflected J-shape, with the y-intercept controlled by 'a' and the steepness controlled by the base 'b'."
+      },
+      "examples": [
+        {
+          "prompt": "Graph $ f(x) = 4(2)^x $. Compare to the parent function $ g(x) = 2^x $.",
+          "title": "A – Graphing Growth ($ b > 1 $)",
+          "role": "guided",
+          "steps": [
+            "Make a table: $ x = -2, -1, 0, 1, 2 $ gives $ y = 1, 2, 4, 8, 16 $.",
+            "Plot points and draw a smooth curve.",
+            "The graph is a vertical stretch by a factor of 4 of the parent graph. y-intercept is 4 (vs. 1 for parent). Domain: all real numbers; Range: $ y > 0 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why does the negative $ a $ reflect the graph, and what happens to the range?",
+          "steps": [
+            "Table: $ x = -2, -1, 0, 1, 2 $ gives $ y = -4, -2, -1, -0.5, -0.25 $.",
+            "The graph is a reflection of the parent in the $ x $-axis.",
+            "y-intercept is -1. Domain: all real numbers; Range: $ y < 0 $."
+          ],
+          "minLength": 2,
+          "title": "B – Graphing Decay ($ 0 < b < 1 $)",
+          "prompt": "Graph $ f(x) = -(\\frac{1}{2})^x $. Compare to $ g(x) = (\\frac{1}{2})^x $."
+        },
+        {
+          "steps": [
+            "y-intercept $ a = 3 $.",
+            "As $ x $ increases by 1, $ y $ doubles: $ b = 2 $.",
+            "Function: $ y = 3(2)^x $."
+          ],
+          "role": "independent",
+          "title": "C – Identifying Parameters from a Graph",
+          "prompt": "A graph shows an exponential curve passing through (0,3) and increasing, with points (1,6), (2,12). Write the function."
+        }
+      ]
+    },
+    {
+      "examples": [
+        {
+          "title": "A – Graphing with Translations",
+          "steps": [
+            "Start with $ y = 4(2)^x $, which passes through (0,4) and (1,8).",
+            "Shift 3 units right: points become (3,4) and (4,8).",
+            "Shift 2 units up: points become (3,6) and (4,10). Asymptote is $ y = 2 $.",
+            "Domain: all real numbers. Range: $ y > 2 $."
+          ],
+          "prompt": "Graph $ y = 4(2)^{x-3} + 2 $. Describe the domain and range.",
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Graph $ y = -2(3)^{x+2} - 1 $. Identify the asymptote.",
+          "peerPrompt": "Explain to a partner: Why does $ x+2 $ shift the graph left? What is the new asymptote?",
+          "title": "B – Negative a with Translation",
+          "steps": [
+            "Rewrite as $ y = -2(3)^{x-(-2)} - 1 $. Horizontal shift: left 2 units; vertical shift: down 1 unit.",
+            "Basic graph $ y = -2(3)^x $ is reflected (opens downward). Asymptote originally $ y = 0 $, now $ y = -1 $.",
+            "Range: $ y < -1 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Domain: all real numbers (same for all exponential functions).",
+            "Asymptote is $ y = -5 $; $ a = 3 > 0 $, so graph is above the asymptote.",
+            "Range: $ y > -5 $."
+          ],
+          "prompt": "For $ f(x) = 3(6)^{x-1} - 5 $, state the domain and range without graphing.",
+          "title": "C – Domain and Range from Equation"
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "The asymptote is $ y = k $.",
+          "hints": [
+            "It's the vertical shift amount.",
+            "It's the constant added at the end."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "k"
+              ]
+            }
+          ],
+          "id": "q3-1",
+          "prompt": "The horizontal asymptote of $ y = ab^{x-h} + k $ is the line $ y = $ ___."
+        },
+        {
+          "id": "q3-2",
+          "feedbackIfWrong": "Right 2 units.",
+          "prompt": "For $ y = 5^{x-2} + 7 $, what is the horizontal translation? (left/right and how many units?)",
+          "hints": [
+            "The exponent is $ x-2 $.",
+            "$ x - h $ with $ h = 2 $ means right 2."
+          ],
+          "answer": "right 2",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "The range is $ y < -2 $.",
+          "answer": "y < -2",
+          "prompt": "What is the range of $ y = -8(0.75)^{x+2} - 2 $? (Use inequality, e.g., y < -2)",
+          "id": "q3-3",
+          "hints": [
+            "The coefficient $ a = -8 $ is negative, so graph is below asymptote.",
+            "Asymptote is $ y = -2 $."
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Just like linear functions, exponential graphs can slide around the coordinate plane. Adding or subtracting inside the exponent shifts the graph horizontally; adding outside shifts it vertically. The horizontal asymptote moves with the vertical shift, becoming the line $ y = k $."
+      },
+      "teacherCues": [
+        "Graph $ y = 4(2)^x $, then ask: 'How would the graph change if we wrote $ y = 4(2)^{x-3} + 2 $?'",
+        "Demonstrate shifting the entire graph 3 units right and 2 units up."
+      ],
+      "title": "Graphing Translations $ y = ab^{x-h} + k $",
+      "concept": {
+        "explanation": [
+          "To graph $ y = ab^{x-h} + k $, start with the basic graph $ y = ab^x $.",
+          "Translate it [[imp:horizontally]] by $ h $ units (right if $ h > 0 $, left if $ h < 0 $).",
+          "Translate it [[imp:vertically]] by $ k $ units (up if $ k > 0 $, down if $ k < 0 $).",
+          "The horizontal asymptote shifts to the line $ y = k $.",
+          "The domain remains all real numbers. The range becomes $ y > k $ (if $ a > 0 $) or $ y < k $ (if $ a < 0 $)."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Horizontal shift",
+                "1": "$ y = ab^{x-h} $",
+                "2": "Shifts right $ h $ units (left if $ h < 0 $)"
+              },
+              {
+                "0": "Vertical shift",
+                "1": "$ y = ab^x + k $",
+                "2": "Shifts up $ k $ units (down if $ k < 0 $)"
+              },
+              {
+                "0": "Both",
+                "1": "$ y = ab^{x-h} + k $",
+                "2": "Asymptote becomes $ y = k $"
+              }
+            ],
+            "headers": [
+              "Transformation",
+              "Equation",
+              "Effect on Graph"
+            ],
+            "title": "Transformations of $ y = ab^x $",
+            "variant": "colorful",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Asymptote: $ y = k $.",
+            "y-intercept is found by setting $ x = 0 $: $ y = ab^{-h} + k $."
+          ],
+          "title": "Translated Exponential Function",
+          "formula": "$$ y = ab^{x-h} + k $$"
+        }
+      },
+      "id": "graphing-translations",
+      "confusionCorner": {
+        "title": "Horizontal Shift Sign",
+        "body": "In $ y = ab^{x-h} + k $, the form is $ x - h $. If you see $ x + 3 $, that's $ x - (-3) $, so the graph shifts [[imp:left]] by 3 units, not right. The sign inside is opposite."
+      }
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ y = a \\cdot b^x $$",
+          "notes": [
+            "$ a $ = initial value (at $ x = 0 $).",
+            "$ b $ = growth factor per unit increase in $ x $."
+          ],
+          "title": "Exponential Model"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Day, x",
+              "Population, y",
+              "Ratio to Previous"
+            ],
+            "rows": [
+              {
+                "0": "0",
+                "1": "3",
+                "2": "—"
+              },
+              {
+                "0": "1",
+                "1": "12",
+                "2": "$ 12/3 = 4 $"
+              },
+              {
+                "0": "2",
+                "1": "48",
+                "2": "$ 48/12 = 4 $"
+              },
+              {
+                "0": "3",
+                "1": "192",
+                "2": "$ 192/48 = 4 $"
+              }
+            ],
+            "title": "Bacterial Population Data",
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "Real-world exponential functions are of the form $ y = ab^x $.",
+          "The y-intercept $ a $ is the [[imp:initial value]] (when $ x = 0 $).",
+          "The base $ b $ is the [[imp:growth factor]]: the number by which $ y $ is multiplied when $ x $ increases by 1.",
+          "To write the function, find $ a $ from the y-intercept, then divide consecutive $ y $-values to find $ b $.",
+          "Use the function to predict values by substituting $ x $ (make sure units match, e.g., hours converted to days)."
+        ]
+      },
+      "teacherCues": [
+        "Display a graph of bacterial population: points (0,3), (1,12), (2,48), (3,192). Ask: 'What is the y-intercept? What factor multiplies each step?'",
+        "Guide students to write the function: $ y = 3(4)^x $."
+      ],
+      "confusionCorner": {
+        "title": "Units Matter",
+        "body": "If the growth factor is given per day but you need the population after hours, convert the time to the correct unit. For example, 12 hours = $ \\frac{1}{2} $ day. Substitute $ x = 0.5 $, not 12."
+      },
+      "title": "Real-Life Applications of Exponential Functions",
+      "examples": [
+        {
+          "steps": [
+            "y-intercept $ a = 3 $. Ratio: $ 12/3 = 4 $, $ 48/12 = 4 $ → $ b = 4 $.",
+            "Function: $ y = 3(4)^x $.",
+            "Population after 5 days: $ y = 3(4)^5 = 3(1024) = 3072 $."
+          ],
+          "title": "A – Bacterial Growth",
+          "role": "guided",
+          "prompt": "A graph shows bacterial population: (0,3), (1,12), (2,48), (3,192). Write the function and find the population after 5 days."
+        },
+        {
+          "prompt": "A gallery had 40 visitors at month 0, and the number increases by a factor of 1.5 each month. Write the function and estimate visitors after 5 months.",
+          "title": "B – Art Gallery Visitors",
+          "steps": [
+            "Initial value $ a = 40 $. Growth factor $ b = 1.5 $.",
+            "Function: $ y = 40(1.5)^x $.",
+            "After 5 months: $ y = 40(1.5)^5 \\approx 40(7.59375) \\approx 304 $ visitors."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: How does the factor 1.5 mean a 50% increase each month?",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "An exponential function passes through (0, 100) and (1, 200). Write the function.",
+          "title": "C – Writing from Two Points",
+          "steps": [
+            "y-intercept $ a = 100 $.",
+            "$ b = \\frac{200}{100} = 2 $.",
+            "Function: $ y = 100(2)^x $."
+          ],
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q4-1",
+          "hints": [
+            "It's the y-intercept.",
+            "It's the letter before the base."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "The initial value is $ a $.",
+          "blanks": [
+            {
+              "accept": [
+                "a"
+              ]
+            }
+          ],
+          "prompt": "In an exponential model $ y = ab^x $, the initial value (when $ x = 0 $) is the coefficient ___."
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "$ y = 5(2)^x $.",
+          "prompt": "A bacteria population doubles every day. If there are 5 bacteria on day 0, write the function.",
+          "hints": [
+            "Initial value is 5.",
+            "Doubling means growth factor 2."
+          ],
+          "answer": "y = 5(2)^x",
+          "id": "q4-2"
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "answer": "6",
+          "feedbackIfWrong": "$ 3 \\times 2 = 6 $.",
+          "prompt": "For the function $ y = 3(4)^x $, what is the population after $ \\frac{1}{2} $ day? (Hint: $ 4^{1/2} = \\sqrt{4} $)",
+          "hints": [
+            "Substitute $ x = 0.5 $.",
+            "$ 4^{0.5} = 2 $, then $ 3 \\times 2 $."
+          ]
+        }
+      ],
+      "id": "real-life-applications-exponential",
+      "discoveryHook": {
+        "scenario": "Bacteria double and triple in number. Money grows with compound interest. Populations explode. These real-world situations follow exponential patterns. By identifying the starting value and the growth factor, you can model the future and make predictions!"
+      }
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Data: (0,3), (1,12), (2,48). Constant ratio 4 → exponential. $ a=3, b=4 $.",
+                "2": ""
+              },
+              {
+                "0": "Solve",
+                "1": "Function: $ y = 3(4)^x $. For $ x=5 $, $ y = 3(4)^5 = 3072 $.",
+                "2": ""
+              },
+              {
+                "0": "Conclude",
+                "1": "After 5 days, population is 3072 bacteria.",
+                "2": ""
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Blueprint Example: Bacterial Growth",
+            "headers": [
+              "Phase",
+              "Action",
+              "Result"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Identify $ a $ (initial value) and $ b $ (growth factor).",
+            "Use the function to evaluate or predict."
+          ],
+          "formula": "$$ y = ab^x $$",
+          "title": "Blueprint Formula"
+        },
+        "explanation": [
+          "The blueprint for exponential functions: [[imp:Understand]] – Is the data linear or exponential? Identify the initial value $ a $ and the growth/decay factor $ b $.",
+          "[[imp:Solve]] – Write the function $ y = ab^x $ (or $ y = ab^{x-h} + k $ for translations). Use it to evaluate at specific $ x $-values.",
+          "[[imp:Conclude]] – State the answer, check if it's reasonable, and interpret the meaning in context. For word problems, include units."
+        ]
+      },
+      "title": "Blueprint Aid – Mastering Exponential Functions",
+      "questions": [
+        {
+          "hints": [
+            "One is the y-intercept, the other is the base.",
+            "They are the letters in $ y = ab^x $."
+          ],
+          "answers": [
+            "a and b",
+            "initial value and growth factor"
+          ],
+          "feedbackIfWrong": "Identify $ a $ (initial value) and $ b $ (growth/decay factor).",
+          "id": "q5-1",
+          "prompt": "In the blueprint, what two parameters must you identify from the data to write an exponential function?",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "Substitute the given $ x $ value.",
+          "prompt": "In the Solve phase, after writing the function $ y = ab^x $, you substitute the given ___ value to make a prediction.",
+          "id": "q5-2",
+          "hints": [
+            "It's the input variable.",
+            "Often represents time."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "x"
+              ]
+            }
+          ]
+        },
+        {
+          "answer": "450",
+          "hints": [
+            "Function: $ y = 50(3)^x $.",
+            "For $ x=2 $: $ 50 \\times 9 $."
+          ],
+          "type": "short-answer",
+          "id": "q5-3",
+          "prompt": "A population of 50 triples each year. Write the function and find the population after 2 years.",
+          "feedbackIfWrong": "$ 50 \\times 9 = 450 $."
+        }
+      ],
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude framework. Walk through the bacterial population problem using the blueprint.",
+        "Emphasize: 'Understand' identifies the initial value and growth factor. 'Solve' writes the function and computes. 'Conclude' interprets the result."
+      ],
+      "confusionCorner": {
+        "body": "If a quantity increases by 6%, the growth factor is $ 1 + 0.06 = 1.06 $, [[imp:not]] 0.06. If it decreases by 15%, the factor is $ 1 - 0.15 = 0.85 $. Always convert percent change to a factor.",
+        "title": "Growth Factor vs. Growth Rate"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Understand: Initial $ a = 15 $. Triples → $ b = 3 $. $ x $ is number of 20-year periods.",
+            "Solve: Function: $ y = 15(3)^x $. For 40 years, $ x = 2 $. $ y = 15(3)^2 = 15(9) = 135 $.",
+            "Conclude: The population will be 135 coyotes after 40 years."
+          ],
+          "role": "guided",
+          "title": "A – Full Blueprint Walkthrough",
+          "prompt": "Use the blueprint: A coyote population starts at 15 and triples every 20 years. Write the function and find the population after 40 years."
+        },
+        {
+          "minLength": 2,
+          "steps": [
+            "Understand: $ a = -2 $, $ b = 3 $. $ x+2 = x - (-2) $ → left 2. $ k = -1 $ → down 1. Asymptote $ y = -1 $.",
+            "Solve: Basic graph reflected (opens downward), then shifted. Domain: all reals. Range: $ y < -1 $.",
+            "Conclude: Sketch with asymptote $ y = -1 $, graph below it."
+          ],
+          "title": "B – Blueprint for Translations",
+          "prompt": "Use the blueprint: Graph $ y = -2(3)^{x+2} - 1 $ and describe the domain and range.",
+          "peerPrompt": "Explain to a partner: How did the blueprint help you identify the shifts and asymptote?",
+          "role": "peer-explain"
+        },
+        {
+          "title": "C – Predicting with a Model",
+          "steps": [
+            "Understand: $ a = 20000 $. Decrease by 15% means it retains 85%, so $ b = 0.85 $.",
+            "Solve: Function: $ y = 20000(0.85)^x $. For $ x = 3 $: $ y = 20000(0.85)^3 \\approx 20000(0.614125) = 12282.5 $.",
+            "Conclude: The car's value is about $12,282.50 after 3 years."
+          ],
+          "prompt": "A car's value is $20,000 and decreases by 15% per year. Use the blueprint to find the value after 3 years.",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Facing an exponential problem—whether a table, graph, or word description—the Understand → Solve → Conclude blueprint keeps you on track. Identify the starting point and multiplier, write the function, and use it to predict. This blueprint turns messy data into a clear exponential model."
+      },
+      "id": "blueprint-aid-exponential-functions"
+    }
+  ],
+  "type": "interactive-lesson",
+  "id": "chapter-6-3-exponential-functions",
+  "title": "Chapter 6.3 — Exponential Functions",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

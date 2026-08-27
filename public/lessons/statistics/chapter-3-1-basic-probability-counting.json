@@ -1,0 +1,831 @@
+{
+  "presenterNotes": [
+    "Block 1: Emphasize tree diagrams for visualizing sample spaces. Use physical coin and die for demonstration.",
+    "Block 2: The Fundamental Counting Principle is a key takeaway. Drill the difference between repetition and no repetition.",
+    "Block 3: Distinguish the three types of probability clearly. The Law of Large Numbers is a fundamental concept linking empirical and classical probability.",
+    "Block 4: Complementary events often simplify calculations. Reinforce with examples like 'at least one'.",
+    "Block 5: The blueprint ties everything together. Encourage students to apply the Understand-Solve-Conclude framework to every problem."
+  ],
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "Weather forecasts say '90% chance of rain'; a doctor says '35% chance of success'. These are probabilities — the language of uncertainty. To understand them, we first need to define the experiment, its possible outcomes, and the events we care about."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Start with the coin: two branches, H and T.",
+            "From each coin outcome, draw six branches for the die: 1,2,3,4,5,6.",
+            "Total outcomes = $ 2 \\times 6 = 12 $.",
+            "Sample space: $ \\{H1, H2, H3, H4, H5, H6, T1, T2, T3, T4, T5, T6\\} $."
+          ],
+          "prompt": "A probability experiment consists of tossing a coin and then rolling a six‑sided die. Determine the number of outcomes and identify the sample space.",
+          "title": "Example A – Building a Tree Diagram"
+        },
+        {
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why is Event A simple but Event B not?",
+          "role": "peer-explain",
+          "prompt": "For the coin‑die experiment, Event A = 'tossing heads and rolling a 3'. Event B = 'tossing heads and rolling an even number'. Determine if each is a simple event.",
+          "steps": [
+            "Event A: only one outcome, $ \\{H3\\} $ → [[kw:simple event]].",
+            "Event B: three outcomes, $ \\{H2, H4, H6\\} $ → [[imp:not simple]].",
+            "A simple event consists of exactly one outcome."
+          ],
+          "minLength": 2,
+          "title": "Example B – Simple Event vs. Non‑Simple Event"
+        },
+        {
+          "title": "Example C – Identifying Sample Space",
+          "steps": [
+            "Responses: Yes, No, Not sure. Gender: Male, Female.",
+            "Total outcomes: $ 3 \\times 2 = 6 $.",
+            "Sample space: $ \\{YM, YF, NM, NF, NM, NF, NsM, NsF\\} $ but correct: $ \\{ \\text{Yes Male, Yes Female, No Male, No Female, Not sure Male, Not sure Female} \\} $."
+          ],
+          "prompt": "A survey asks 'Does your team’s win affect your mood?' (Yes/No/Not sure) and records the respondent’s gender (Male/Female). List the sample space.",
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Flip a coin and ask: 'What are the possible outcomes?' Then roll a die and combine them.",
+        "Draw a tree diagram for the coin-and-die experiment on the board."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "sample space",
+                "Sample space"
+              ]
+            }
+          ],
+          "hints": [
+            "It's a set, often denoted by $ S $.",
+            "It contains every possible result."
+          ],
+          "id": "q1-1",
+          "prompt": "The set of all possible outcomes of a probability experiment is called the ___.",
+          "feedbackIfWrong": "The sample space is the set of all possible outcomes."
+        },
+        {
+          "hints": [
+            "First toss has 2 outcomes, second has 2 outcomes.",
+            "$ 2 \\times 2 = ? $"
+          ],
+          "type": "short-answer",
+          "id": "q1-2",
+          "answers": [
+            "4",
+            "four"
+          ],
+          "prompt": "If a probability experiment consists of tossing a coin twice, how many outcomes are in the sample space?",
+          "feedbackIfWrong": "There are $ 2 \\times 2 = 4 $ outcomes: HH, HT, TH, TT.",
+          "answer": "4"
+        },
+        {
+          "answer": "simple",
+          "answers": [
+            "simple",
+            "Simple"
+          ],
+          "prompt": "An event that consists of only one outcome is called a ___ event.",
+          "type": "short-answer",
+          "hints": [
+            "It's the opposite of 'compound'.",
+            "Single outcome."
+          ],
+          "id": "q1-3",
+          "feedbackIfWrong": "A simple event has exactly one outcome."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Event vs. Outcome",
+        "body": "An outcome is a single result; an event is a collection of outcomes. You can think of an outcome as a member of the sample space, and an event as a set of those members. [[imp:All simple events are outcomes, but not all outcomes are simple events unless the sample space has only one outcome per event.]]"
+      },
+      "id": "experiments-sample-space-events",
+      "concept": {
+        "formulaCard": {
+          "title": "Key Definitions",
+          "legend": [
+            {
+              "symbol": "$|E|$",
+              "tone": "core",
+              "meaning": "number of outcomes in event $E$"
+            }
+          ],
+          "formula": "$$\\text{Sample Space } S = \\text{all possible outcomes}$$ $$\\text{Event } E \\subseteq S$$ $$\\text{Simple Event: } |E| = 1$$"
+        },
+        "explanation": [
+          "A [[kw:probability experiment]] is an action or trial through which specific results are obtained. Example: tossing a coin.",
+          "An [[kw:outcome]] is a single possible result of a probability experiment. Example: getting 'heads'.",
+          "The [[kw:sample space]] is the set of all possible outcomes. Example: for tossing a coin and rolling a die, $ S = \\{H1, H2, H3, H4, H5, H6, T1, T2, T3, T4, T5, T6\\} $.",
+          "An [[kw:event]] is any subset of the sample space. It can be a single outcome (a [[kw:simple event]]) or multiple outcomes.",
+          "A [[kw:tree diagram]] visually displays all outcomes by branching from a starting point through each successive choice."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Coin",
+              "Die",
+              "Outcome"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Example: Tossing a Coin and Rolling a Six‑Sided Die",
+            "rows": [
+              {
+                "0": "H",
+                "1": "1",
+                "2": "H1"
+              },
+              {
+                "0": "H",
+                "1": "2",
+                "2": "H2"
+              },
+              {
+                "0": "H",
+                "1": "3",
+                "2": "H3"
+              },
+              {
+                "0": "H",
+                "1": "4",
+                "2": "H4"
+              },
+              {
+                "0": "H",
+                "1": "5",
+                "2": "H5"
+              },
+              {
+                "0": "H",
+                "1": "6",
+                "2": "H6"
+              },
+              {
+                "0": "T",
+                "1": "1",
+                "2": "T1"
+              },
+              {
+                "0": "T",
+                "1": "2",
+                "2": "T2"
+              },
+              {
+                "0": "T",
+                "1": "3",
+                "2": "T3"
+              },
+              {
+                "0": "T",
+                "1": "4",
+                "2": "T4"
+              },
+              {
+                "0": "T",
+                "1": "5",
+                "2": "T5"
+              },
+              {
+                "0": "T",
+                "1": "6",
+                "2": "T6"
+              }
+            ]
+          }
+        ]
+      },
+      "title": "Probability Experiments, Sample Space, and Events"
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Total ways} = m_1 \\times m_2 \\times \\dots \\times m_k$$",
+          "title": "Fundamental Counting Principle",
+          "legend": [
+            {
+              "meaning": "number of ways the $i$‑th event can occur",
+              "symbol": "$ m_i $",
+              "tone": "core"
+            }
+          ]
+        },
+        "explanation": [
+          "The [[kw:Fundamental Counting Principle]] states: If one event can occur in $ m $ ways and a second event can occur in $ n $ ways, the two events can occur in sequence in $ m \\cdot n $ ways.",
+          "This extends to any number of events: multiply the number of ways each event can occur.",
+          "It helps count the total number of outcomes in a sample space without listing them all.",
+          "It applies to situations like codes, passwords, menu choices, and any sequence of choices."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Choices",
+              "Number of Ways"
+            ],
+            "title": "Car Selection Example",
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Manufacturer",
+                "1": "Ford, GM, Honda",
+                "2": "3"
+              },
+              {
+                "0": "Car size",
+                "1": "Compact, Midsize",
+                "2": "2"
+              },
+              {
+                "0": "Color",
+                "1": "White, Red, Black, Green",
+                "2": "4"
+              },
+              {
+                "0": "Total combinations",
+                "1": "$ 3 \\times 2 \\times 4 $",
+                "2": "24"
+              }
+            ]
+          }
+        ]
+      },
+      "id": "fundamental-counting-principle",
+      "examples": [
+        {
+          "steps": [
+            "Number of ways to choose appetizer: 5.",
+            "Number of ways to choose entrée: 10.",
+            "Number of ways to choose dessert: 4.",
+            "Total meals = $ 5 \\times 10 \\times 4 = 200 $."
+          ],
+          "prompt": "A restaurant offers 5 appetizers, 10 entrées, and 4 desserts. How many different meals (appetizer + entrée + dessert) are possible?",
+          "title": "Example A – Counting Outfits",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does the number of choices decrease with each digit?",
+          "role": "peer-explain",
+          "steps": [
+            "First digit: 10 choices.",
+            "Second digit: 9 choices (one digit used).",
+            "Third digit: 8 choices; fourth: 7 choices.",
+            "Total codes = $ 10 \\times 9 \\times 8 \\times 7 = 5040 $.",
+            "If repetition were allowed, it would be $ 10^4 = 10,000 $."
+          ],
+          "minLength": 2,
+          "prompt": "An access code consists of four digits, each 0–9, but digits cannot be repeated. How many possible codes?",
+          "title": "Example B – Access Code Without Repetition"
+        },
+        {
+          "title": "Example C – License Plates",
+          "prompt": "A license plate consists of three letters followed by three digits. Letters can be repeated; digits cannot be repeated. How many different plates are possible?",
+          "steps": [
+            "Letters: $ 26 \\times 26 \\times 26 = 26^3 = 17,576 $.",
+            "Digits: $ 10 \\times 9 \\times 8 = 720 $.",
+            "Total plates = $ 17,576 \\times 720 = 12,654,720 $."
+          ],
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'If you have 3 shirts and 4 pants, how many outfits can you make?' Then extend to multiple categories.",
+        "Write the formula $ m \\times n $ on the board and explain its extension."
+      ],
+      "title": "The Fundamental Counting Principle",
+      "questions": [
+        {
+          "prompt": "The Fundamental Counting Principle states that if one event can occur in $ m $ ways and a second event in $ n $ ways, the total number of ways both can occur in sequence is ___.",
+          "type": "fill-blank",
+          "id": "q2-1",
+          "hints": [
+            "It's multiplication.",
+            "Multiply the number of choices."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "$ m \\times n $",
+                "m times n",
+                "m * n",
+                "m×n"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Total ways = $ m \\times n $."
+        },
+        {
+          "feedbackIfWrong": "$ 26 \\times 26 \\times 10 \\times 10 = 67,600 $.",
+          "answer": "67600",
+          "id": "q2-2",
+          "type": "short-answer",
+          "answers": [
+            "67600",
+            "67,600"
+          ],
+          "hints": [
+            "Letters: $ 26 \\times 26 $; digits: $ 10 \\times 10 $.",
+            "Multiply all: $ 26^2 \\times 10^2 $."
+          ],
+          "prompt": "A password consists of two letters (A–Z) followed by two digits (0–9). If repetition is allowed, how many passwords are possible?"
+        },
+        {
+          "answer": "58500",
+          "answers": [
+            "58500",
+            "58,500"
+          ],
+          "feedbackIfWrong": "$ 26 \\times 25 \\times 10 \\times 9 = 58,500 $.",
+          "prompt": "If the password in Q2‑2 cannot repeat any letter or digit, how many passwords? (Letters first, then digits, all distinct.)",
+          "id": "q2-3",
+          "type": "short-answer",
+          "hints": [
+            "Letters: $ 26 \\times 25 $; digits: $ 10 \\times 9 $.",
+            "Multiply: $ 26 \\times 25 \\times 10 \\times 9 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "When the problem says 'can be repeated', the number of choices stays the same at each step. When 'cannot be repeated' or 'used only once', the number of choices decreases. [[imp:Read carefully to decide which case applies.]]",
+        "title": "Repetition vs. No Repetition"
+      },
+      "discoveryHook": {
+        "scenario": "Choosing a new car: 3 manufacturers, 2 sizes, 4 colors. You could list all combinations, but that's inefficient. The Fundamental Counting Principle lets you multiply the number of choices at each step to get the total possibilities instantly."
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Not all probabilities are calculated the same way. Flipping a coin has equally likely outcomes (classical). A survey of voter preferences uses data (empirical). A doctor's estimate of recovery is based on experience (subjective). Understanding which type you're dealing with is crucial."
+      },
+      "examples": [
+        {
+          "title": "Example A – Classical Probability",
+          "prompt": "You roll a fair six‑sided die. Find the probability of rolling a number less than 5.",
+          "role": "guided",
+          "steps": [
+            "Sample space: $ \\{1,2,3,4,5,6\\} $, 6 outcomes.",
+            "Event $ C $: $ \\{1,2,3,4\\} $, 4 outcomes.",
+            "$ P(C) = \\frac{4}{6} = \\frac{2}{3} \\approx 0.667 $."
+          ]
+        },
+        {
+          "steps": [
+            "The probability is based on past survey results, so it's [[kw:empirical probability]].",
+            "$ P(\\text{positive}) = \\frac{406}{1504} \\approx 0.270 $.",
+            "This estimate relies on the data; if we surveyed more people, the percentage might change."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Is this classical, empirical, or subjective? Why?",
+          "title": "Example B – Empirical Probability",
+          "prompt": "In a telephone survey of 1504 people, 406 gave a positive response. What is the probability the next person surveyed will respond positively?",
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Law of Large Numbers",
+          "prompt": "If you toss a fair coin 10 times and get 3 heads, what is the empirical probability of heads? How does it compare to the classical probability?",
+          "steps": [
+            "Empirical probability = $ 3/10 = 0.3 $.",
+            "Classical probability of a fair coin is $ 0.5 $.",
+            "With only 10 tosses, the empirical probability may be far from 0.5. The Law of Large Numbers says that as the number of tosses increases, the empirical probability will approach 0.5."
+          ],
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Classical probability assumes equally likely outcomes and uses counting. Empirical probability uses past data. If the data change, the empirical probability may change. [[imp:Do not confuse a theoretical probability with a long‑run relative frequency.]]",
+        "title": "Classical vs. Empirical"
+      },
+      "title": "Types of Probability",
+      "id": "types-of-probability",
+      "questions": [
+        {
+          "id": "q3-1",
+          "feedbackIfWrong": "Empirical (or statistical) probability uses collected data.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "empirical",
+                "Empirical",
+                "statistical",
+                "Statistical"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the 'relative frequency' approach.",
+            "Not theoretical."
+          ],
+          "prompt": "Probability based on observed data or experiments is called ___ probability."
+        },
+        {
+          "feedbackIfWrong": "P(heads) = 1/2 = 0.5.",
+          "type": "short-answer",
+          "answer": "0.5",
+          "hints": [
+            "Two equally likely outcomes.",
+            "1 divided by 2."
+          ],
+          "answers": [
+            "0.5",
+            ".5",
+            "1/2",
+            "50%"
+          ],
+          "prompt": "A fair coin is tossed. What is the classical probability of heads? (Give decimal.)",
+          "id": "q3-2"
+        },
+        {
+          "answers": [
+            "theoretical",
+            "classical",
+            "actual",
+            "true"
+          ],
+          "hints": [
+            "It's the 'true' probability.",
+            "The type based on equally likely outcomes."
+          ],
+          "type": "short-answer",
+          "prompt": "According to the Law of Large Numbers, as the number of trials increases, the empirical probability gets closer to the ___ probability.",
+          "id": "q3-3",
+          "feedbackIfWrong": "The empirical probability approaches the theoretical (classical) probability.",
+          "answer": "theoretical"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "[[kw:Classical (theoretical) probability]]: used when each outcome in the sample space is equally likely. $ P(E) = \\frac{\\text{Number of outcomes in } E}{\\text{Total number of outcomes}} $.",
+          "[[kw:Empirical (statistical) probability]]: based on observed data or experiments. $ P(E) = \\frac{\\text{Frequency of event } E}{\\text{Total frequency}} = \\frac{f}{n} $.",
+          "[[kw:Subjective probability]]: based on intuition, educated guess, or estimate. Example: 'There's a 90% chance of recovery.'",
+          "The [[kw:Law of Large Numbers]] says that as an experiment is repeated many times, the empirical probability approaches the theoretical probability.",
+          "All probabilities are between 0 (impossible) and 1 (certain). An event with probability $ \\leq 0.05 $ is considered [[imp:unusual]]."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Classical",
+                "1": "Equally likely outcomes",
+                "2": "Rolling a 3 on a fair die: $ P = 1/6 $"
+              },
+              {
+                "0": "Empirical",
+                "1": "Observed frequencies",
+                "2": "Survey: 406 out of 1504 positive → $ P \\approx 0.27 $"
+              },
+              {
+                "0": "Subjective",
+                "1": "Expert judgment",
+                "2": "Doctor estimates 90% chance of recovery"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Type",
+              "How Determined",
+              "Example"
+            ],
+            "type": "table",
+            "title": "Types of Probability"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "frequency of event $E$",
+              "tone": "core",
+              "symbol": "$f$"
+            },
+            {
+              "tone": "core",
+              "symbol": "$n$",
+              "meaning": "total number of trials or observations"
+            }
+          ],
+          "formula": "$$P(E) = \\frac{\\text{outcomes in } E}{\\text{total outcomes}} \\quad \\text{(Classical)}$$ $$P(E) = \\frac{f}{n} \\quad \\text{(Empirical)}$$ $$0 \\leq P(E) \\leq 1$$",
+          "title": "Probability Formulas"
+        }
+      },
+      "teacherCues": [
+        "Ask: 'If I flip a fair coin, what's the probability of heads?' (Classical). Then ask: 'What's the probability that it will rain tomorrow?' (Empirical or Subjective).",
+        "Show the three formulas on the board: Classical, Empirical, and the Law of Large Numbers."
+      ]
+    },
+    {
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "E'",
+                "$E'$",
+                "E prime"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The complement is denoted $E'$.",
+          "id": "q4-1",
+          "hints": [
+            "It's read 'E prime'.",
+            "It's the set of outcomes not in $E$."
+          ],
+          "prompt": "The complement of an event $E$ is denoted by ___."
+        },
+        {
+          "answer": "0.8",
+          "id": "q4-2",
+          "prompt": "If the probability of an event is 0.2, what is the probability of its complement?",
+          "answers": [
+            "0.8",
+            ".8",
+            "80%",
+            "4/5"
+          ],
+          "feedbackIfWrong": "Complement probability = 1 – 0.2 = 0.8.",
+          "hints": [
+            "Use $ P(E') = 1 - P(E) $.",
+            "$ 1 - 0.2 = ? $"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "id": "q4-3",
+          "answers": [
+            "3/4",
+            "375/500",
+            "0.75"
+          ],
+          "feedbackIfWrong": "P(not yes) = (500‑125)/500 = 375/500 = 3/4.",
+          "hints": [
+            "Number who did NOT say yes = 500 – 125 = 375.",
+            "Probability = 375/500 = ?"
+          ],
+          "prompt": "In a survey of 500 people, 125 said 'yes' to a question. What is the probability that a randomly selected person did NOT say 'yes'? (Give a fraction.)",
+          "answer": "3/4",
+          "type": "short-answer"
+        }
+      ],
+      "id": "complementary-events",
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$E'$",
+              "meaning": "complement of event $E$ (everything not in $E$)"
+            }
+          ],
+          "formula": "$$P(E') = 1 - P(E)$$ $$P(E) + P(E') = 1$$",
+          "title": "Complement Rule"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Example: Employee Ages",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Age 25‑34",
+                "1": "$ 366/1000 = 0.366 $",
+                "2": "Not 25‑34: $ 1 - 0.366 = 0.634 $"
+              },
+              {
+                "0": "Age 45‑54",
+                "1": "$ 180/1000 = 0.18 $",
+                "2": "Not 45‑54: $ 1 - 0.18 = 0.82 $"
+              }
+            ],
+            "headers": [
+              "Event",
+              "Probability",
+              "Complement"
+            ]
+          }
+        ],
+        "explanation": [
+          "The [[kw:complement]] of an event $ E $, denoted $ E' $, is the set of all outcomes in the sample space that are not in $ E $.",
+          "The sum of the probabilities of an event and its complement is 1: $ P(E) + P(E') = 1 $.",
+          "Thus, $ P(E) = 1 - P(E') $ and $ P(E') = 1 - P(E) $.",
+          "This is useful when finding the complement is easier than finding the event itself."
+        ]
+      },
+      "title": "Complementary Events",
+      "teacherCues": [
+        "Write: 'If P(rain) = 0.3, then P(no rain) = ?' Show that they sum to 1.",
+        "Draw a Venn diagram with a rectangle (sample space) and a circle (event E); the outside is E'."
+      ],
+      "examples": [
+        {
+          "prompt": "A frequency distribution of 1000 employee ages shows 366 are 25‑34. What is the probability a randomly chosen employee is NOT in that age group?",
+          "role": "guided",
+          "title": "Example A – Using Complement",
+          "steps": [
+            "$ P(25‑34) = 366/1000 = 0.366 $.",
+            "Complement = not 25‑34.",
+            "$ P(\\text{not } 25‑34) = 1 - 0.366 = 0.634 $.",
+            "So there is a 63.4% chance the employee is outside that age range."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Access Code",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why is it easier to find the complement here than the event itself?",
+          "steps": [
+            "Total codes = $ 10^3 = 1000 $.",
+            "Probability of guessing the correct code = $ 1/1000 = 0.001 $.",
+            "Complement: NOT guessing correctly = $ 1 - 0.001 = 0.999 $.",
+            "It's much simpler than counting all wrong codes."
+          ],
+          "minLength": 2,
+          "prompt": "A three‑digit access code (each digit 0‑9, repetition allowed) is generated. What is the probability it is NOT the correct code?"
+        },
+        {
+          "prompt": "A three‑day trip: probability of rain each day is independent (not from book, but concept). If P(no rain any day) = 0.216, what is P(at least one rainy day)?",
+          "title": "Example C – At Least One Rainy Day",
+          "steps": [
+            "Event 'at least one rainy day' is the complement of 'no rain any day'.",
+            "$ P(\\text{at least one}) = 1 - P(\\text{no rain}) = 1 - 0.216 = 0.784 $.",
+            "So, about 78.4% chance of rain on at least one day."
+          ],
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "The complement includes everything outside the event. If the event is 'rain all three days', the complement is 'not rain all three days' (i.e., at least one day without rain). [[imp:Make sure you define the complement correctly.]]",
+        "title": "Don't Double‑Count the Complement"
+      },
+      "discoveryHook": {
+        "scenario": "Sometimes it's easier to find the probability that an event does NOT occur, and then subtract from 1. This is the complement rule — a powerful shortcut in probability."
+      }
+    },
+    {
+      "id": "blueprint-probability-problems",
+      "discoveryHook": {
+        "scenario": "Probability problems often involve multiple steps: defining the experiment, counting outcomes, identifying events, and then calculating. The blueprint helps you break down the problem systematically, avoiding common pitfalls."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Experiment} \\;\\xrightarrow{\\text{Understand}} \\; \\text{Sample Space \\& Event} \\;\\xrightarrow{\\text{Solve}} \\; P(E) = \\frac{|E|}{|S|} \\;\\xrightarrow{\\text{Conclude}} \\; \\text{Interpret}$$",
+          "title": "Probability Blueprint",
+          "legend": [
+            {
+              "symbol": "$|S|$",
+              "tone": "core",
+              "meaning": "size of sample space (total outcomes)"
+            }
+          ]
+        },
+        "explanation": [
+          "Use [[imp:Understand → Solve → Conclude]] for probability problems.",
+          "1. [[kw:Understand]]: Identify the experiment, sample space, and the event. Determine if counting principle or tree diagram is needed.",
+          "2. [[kw:Solve]]: Use the Fundamental Counting Principle to find total outcomes. Count outcomes in the event. Apply classical, empirical, or complement rules as appropriate.",
+          "3. [[kw:Conclude]]: State the probability as a fraction, decimal, or percent. Check that $ 0 \\leq P \\leq 1 $ and interpret in context."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Experiment: randomly generate 3 digits 0‑9. Event: getting your specific code.",
+                "2": "Sample space size: $10^3=1000$, event size: 1."
+              },
+              {
+                "0": "Solve",
+                "1": "Classical probability: $ P = 1/1000 = 0.001 $",
+                "2": "Complement: probability of NOT getting code = 0.999"
+              },
+              {
+                "0": "Conclude",
+                "1": "Probability of guessing correctly is very small (0.001). The event is unusual.",
+                "2": "Thus, the code is secure."
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Details"
+            ],
+            "type": "table",
+            "title": "Blueprint Example: Probability of Correct Access Code"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Present a problem: 'Find the probability of getting at least one tail when tossing a coin three times.' Ask: 'What's the first step?'",
+        "Walk through Understand–Solve–Conclude with tree diagram and counting principle."
+      ],
+      "confusionCorner": {
+        "title": "Check Your Probability Range",
+        "body": "Always ensure your final probability is between 0 and 1. If you get a negative or greater than 1, you made a mistake. [[imp:Probabilities are never below 0 or above 1.]]"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Understand: total outcomes = $ 2 \\times 8 = 16 $.",
+            "Solve: Event 'tail and odd' includes T1, T3, T5, T7 → 4 outcomes.",
+            "P = $ 4/16 = 1/4 = 0.25 $.",
+            "Conclude: 25% chance."
+          ],
+          "role": "guided",
+          "title": "Example A – Coin and Spinner",
+          "prompt": "Toss a coin and spin a spinner with numbers 1–8 (equally likely). Find P(tail and odd number)."
+        },
+        {
+          "title": "Example B – At Least One",
+          "prompt": "Toss a coin three times. Find P(at least one head). Use the complement: P(no heads) = P(all tails).",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why is the complement method faster than listing all outcomes with at least one head?",
+          "minLength": 2,
+          "steps": [
+            "Sample space: 8 outcomes (HHH, HHT, … TTT).",
+            "Event 'all tails': TTT, probability = $ 1/8 = 0.125 $.",
+            "P(at least one head) = $ 1 - 0.125 = 0.875 $.",
+            "Complement avoids counting 7 outcomes individually."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Total passwords = $ 26^2 \\times 10^2 = 67,600 $.",
+            "Only one is correct.",
+            "P = $ 1/67,600 \\approx 0.0000148 $. Extremely unlikely."
+          ],
+          "role": "independent",
+          "prompt": "A password consists of two letters followed by two digits, all repeatable. What is the probability of guessing the password correctly?",
+          "title": "Example C – Passwords"
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "The first step in solving a probability problem is to ___ the experiment and identify the sample space.",
+          "hints": [
+            "It's the 'U' phase.",
+            "Know what you're working with."
+          ],
+          "id": "q5-1",
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "Understand"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Start by understanding the experiment and the sample space.",
+          "type": "fill-blank"
+        },
+        {
+          "id": "q5-2",
+          "prompt": "You toss a coin twice. How many outcomes are in the sample space?",
+          "hints": [
+            "First toss: 2, second: 2.",
+            "$ 2 \\times 2 = ? $"
+          ],
+          "feedbackIfWrong": "There are 4 outcomes: HH, HT, TH, TT.",
+          "answer": "4",
+          "answers": [
+            "4",
+            "four"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "A probability of 0 means the event is impossible.",
+          "answers": [
+            "impossible",
+            "Impossible"
+          ],
+          "type": "short-answer",
+          "id": "q5-3",
+          "answer": "impossible",
+          "hints": [
+            "It cannot happen.",
+            "Opposite of certain."
+          ],
+          "prompt": "If the probability of an event is 0, the event is ___."
+        }
+      ],
+      "title": "Blueprint Aid: Solving Probability Problems"
+    }
+  ],
+  "type": "interactive-lesson",
+  "standards": [
+    "HSS.CP.A.1",
+    "HSS.CP.A.2",
+    "HSS.CP.B.7"
+  ],
+  "title": "Basic Concepts of Probability and Counting",
+  "schemaVersion": 2,
+  "id": "chapter-3-1-basic-probability-counting",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,815 @@
+{
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\hat{p} = \\frac{x}{n}, \\qquad \\hat{q} = 1 - \\hat{p}$$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "sample proportion (point estimate of $p$)",
+              "symbol": "$\\hat{p}$"
+            },
+            {
+              "meaning": "number of successes in the sample",
+              "tone": "subtle",
+              "symbol": "$x$"
+            }
+          ],
+          "title": "Point Estimate of $p$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Example: Checking E‑mail at Work (n = 1000)",
+            "headers": [
+              "Statistic",
+              "Symbol",
+              "Value"
+            ],
+            "rows": [
+              {
+                "0": "Number who say yes",
+                "1": "$x$",
+                "2": "662"
+              },
+              {
+                "0": "Sample size",
+                "1": "$n$",
+                "2": "1000"
+              },
+              {
+                "0": "Sample proportion (point estimate)",
+                "1": "$\\hat{p} = x/n$",
+                "2": "$0.662$ (or 66.2%)"
+              },
+              {
+                "0": "Sample proportion of 'no'",
+                "1": "$\\hat{q} = 1 - \\hat{p}$",
+                "2": "$0.338$ (or 33.8%)"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "The [[kw:population proportion]] $p$ is the true fraction of the population that has a certain characteristic (a 'success').",
+          "The [[kw:sample proportion]] $\\hat{p}$ (read 'p‑hat') is the point estimate of $p$: $$\\hat{p} = \\frac{x}{n}$$ where $x$ is the number of successes and $n$ is the sample size.",
+          "The proportion of failures is $\\hat{q} = 1 - \\hat{p}$.",
+          "$\\hat{p}$ is an [[imp:unbiased estimator]] of $p$; over many samples, the average of all $\\hat{p}$ values equals $p$.",
+          "Because a point estimate alone doesn't tell us its precision, we later build a confidence interval around $\\hat{p}$."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Polls and surveys often report percentages—like 66% of adults approve of something. That percentage comes from a sample. The sample proportion $\\hat{p}$ is the point estimate for the true population proportion $p$. But how close is it to the truth?"
+      },
+      "title": "Point Estimate for a Population Proportion",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Identify $x = 662$, $n = 1000$.",
+            "$\\hat{p} = \\frac{662}{1000} = 0.662$.",
+            "So the point estimate is 0.662, or 66.2%.",
+            "We estimate that 66.2% of all U.S. adults find this acceptable."
+          ],
+          "title": "Example A – Computing a Point Estimate",
+          "prompt": "In a survey of 1000 U.S. adults, 662 said checking personal e‑mail at work is acceptable. Find the point estimate for the population proportion."
+        },
+        {
+          "title": "Example B – Another Sample",
+          "prompt": "In a survey of 1006 U.S. adults, 181 said Abraham Lincoln was the greatest president. Explain to a partner how to find $\\hat{p}$ and what it means.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If we surveyed another 1006 adults, would $\\hat{p}$ be exactly the same? Why or why not?",
+          "minLength": 2,
+          "steps": [
+            "$\\hat{p} = 181 / 1006 \\approx 0.180$ (about 18.0%).",
+            "This is our best single guess for the true proportion of all U.S. adults who would say Lincoln.",
+            "Because of sampling variability, another sample would likely give a slightly different $\\hat{p}$."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "$\\hat{p} = 0.71$, $n = 498$.",
+            "$x = n \\cdot \\hat{p} = 498 \\times 0.71 \\approx 353.6$, round to 354 adults.",
+            "So about 354 out of 498 gave that answer."
+          ],
+          "prompt": "A survey of 498 adults found that 71% think teenagers are the more dangerous drivers. If 71% is $\\hat{p}$, how many adults in the sample said teenagers?",
+          "title": "Example C – Your Turn",
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "title": "$\\hat{p}$ vs. $p$",
+        "body": "$\\hat{p}$ is the sample proportion (what we observe); $p$ is the unknown true population proportion. We use $\\hat{p}$ to estimate $p$, but they are rarely equal. [[imp:A confidence interval will give a range of plausible values for $p$.]]"
+      },
+      "id": "point-estimate-proportion",
+      "questions": [
+        {
+          "prompt": "The sample proportion $\\hat{p}$ is the point estimate of the population ___.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the parameter we are trying to estimate.",
+            "Denoted by $p$."
+          ],
+          "id": "q1-1",
+          "feedbackIfWrong": "$\\hat{p}$ is the point estimate of the population proportion $p$.",
+          "blanks": [
+            {
+              "accept": [
+                "proportion",
+                "Proportion",
+                "p"
+              ]
+            }
+          ]
+        },
+        {
+          "answers": [
+            "0.24",
+            ".24",
+            "24%"
+          ],
+          "prompt": "If a sample of 500 items has 120 successes, what is $\\hat{p}$? (Give decimal.)",
+          "feedbackIfWrong": "$\\hat{p} = 120/500 = 0.24$.",
+          "hints": [
+            "$\\hat{p} = x / n$.",
+            "$120 / 500 = ?$"
+          ],
+          "answer": "0.24",
+          "type": "short-answer",
+          "id": "q1-2"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "$\\hat{q} = 1 - \\hat{p}$.",
+            "$1 - 0.6 = ?$"
+          ],
+          "answers": [
+            "0.4",
+            ".4",
+            "40%"
+          ],
+          "prompt": "If $\\hat{p} = 0.6$, what is $\\hat{q}$?",
+          "answer": "0.4",
+          "feedbackIfWrong": "$\\hat{q} = 1 - 0.6 = 0.4$.",
+          "id": "q1-3"
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'In a survey of 1000 adults, 662 said checking personal e‑mail at work is acceptable. What proportion of the sample is that?'",
+        "Write the formula $\\hat{p} = x/n$ and explain that $\\hat{p}$ (p‑hat) estimates the true proportion $p$."
+      ]
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\hat{p} \\pm z_c \\sqrt{\\frac{\\hat{p} \\hat{q}}{n}}$$ $$\\text{Conditions: } n\\hat{p} \\ge 5 \\text{ and } n\\hat{q} \\ge 5$$",
+          "legend": [
+            {
+              "symbol": "$z_c$",
+              "tone": "core",
+              "meaning": "critical value from standard normal (e.g., 1.96 for 95%)"
+            }
+          ],
+          "title": "Confidence Interval for $p$"
+        },
+        "visuals": [
+          {
+            "title": "95% Confidence Interval for E‑mail Survey",
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Point estimate",
+                "1": "$\\hat{p} = 662/1000$",
+                "2": "$0.662$"
+              },
+              {
+                "0": "$\\hat{q}$",
+                "1": "$1 - \\hat{p}$",
+                "2": "$0.338$"
+              },
+              {
+                "0": "Check conditions",
+                "1": "$n\\hat{p} = 662$, $n\\hat{q} = 338$",
+                "2": "Both $\\ge 5$ (OK)"
+              },
+              {
+                "0": "$z_c$ (95%)",
+                "1": "Standard Normal Table",
+                "2": "$1.96$"
+              },
+              {
+                "0": "Margin of error",
+                "1": "$E = 1.96 \\sqrt{(0.662)(0.338)/1000}$",
+                "2": "$\\approx 0.029$"
+              },
+              {
+                "0": "Confidence interval",
+                "1": "$0.662 \\pm 0.029$",
+                "2": "$(0.633, 0.691)$"
+              }
+            ],
+            "headers": [
+              "Component",
+              "Formula",
+              "Value"
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:c-confidence interval for a population proportion $p$]] is: $\\hat{p} - E < p < \\hat{p} + E$.",
+          "The margin of error is $E = z_c \\sqrt{ \\frac{\\hat{p} \\hat{q}}{n} }$, where $\\hat{q} = 1 - \\hat{p}$.",
+          "[[imp:Conditions]]: The sampling distribution of $\\hat{p}$ is approximately normal if $n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$.",
+          "The critical value $z_c$ is the same as for means (1.645 for 90%, 1.96 for 95%, 2.575 for 99%).",
+          "Interpretation: 'We are $c$% confident that the true population proportion $p$ is between the lower and upper bounds.'"
+        ]
+      },
+      "confusionCorner": {
+        "body": "Because $p$ is unknown, we use the point estimate $\\hat{p}$ in the standard error formula. [[imp:This is why the conditions use $n\\hat{p}$ and $n\\hat{q}$ instead of $np$ and $nq$.]]",
+        "title": "$\\hat{p}$ Is Used in the Standard Error"
+      },
+      "id": "confidence-intervals-proportions",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "$\\hat{p} = 0.662$, $\\hat{q} = 0.338$. Check $n\\hat{p}=662 \\ge 5$, $n\\hat{q}=338 \\ge 5$.",
+            "$z_c = 1.96$. $E = 1.96 \\sqrt{(0.662)(0.338)/1000} \\approx 1.96 \\times 0.0149 = 0.029$.",
+            "Interval: $0.662 - 0.029 = 0.633$ to $0.662 + 0.029 = 0.691$.",
+            "We are 95% confident that the true proportion of U.S. adults who find checking e‑mail at work acceptable is between 63.3% and 69.1%."
+          ],
+          "prompt": "From the e‑mail survey (n=1000, x=662), construct a 95% CI for $p$.",
+          "title": "Example A – Full Construction"
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: What could happen to the shape of the sampling distribution if these conditions are not met?",
+          "title": "Example B – Checking Conditions",
+          "steps": [
+            "The normal approximation to the binomial requires $np$ and $nq$ to be at least 5.",
+            "Here we use $\\hat{p}$ in place of $p$. If either product is less than 5, the binomial distribution is too skewed.",
+            "The confidence interval formula relies on normality; without it, the interval may not be accurate."
+          ],
+          "prompt": "Explain to a partner why we must check $n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$ before using the normal approximation."
+        },
+        {
+          "prompt": "A survey of 498 adults found 71% think teenagers are more dangerous drivers. Construct a 99% CI.",
+          "role": "independent",
+          "steps": [
+            "$\\hat{p}=0.71$, $\\hat{q}=0.29$. Check $n\\hat{p} \\approx 354$, $n\\hat{q} \\approx 144$, both $\\ge 5$.",
+            "99% → $z_c = 2.575$.",
+            "$E = 2.575 \\sqrt{(0.71)(0.29)/498} \\approx 2.575 \\times 0.0203 = 0.052$.",
+            "Interval: $0.71 \\pm 0.052 = (0.658, 0.762)$. We are 99% confident the true proportion is between 65.8% and 76.2%."
+          ],
+          "title": "Example C – Teenage Drivers Survey"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A survey reports 66.2% with a margin of error of ±2.9%. That margin of error comes from the formula for a proportion. We can now build the entire confidence interval: from 63.3% to 69.1%."
+      },
+      "teacherCues": [
+        "Ask: 'We estimated 66.2% find email acceptable. But what's the margin of error?' Show the formula $E = z_c \\sqrt{\\hat{p}\\hat{q}/n}$.",
+        "Walk through Example 2: $\\hat{p}=0.662$, $n=1000$, 95% CI."
+      ],
+      "title": "Confidence Intervals for a Population Proportion",
+      "questions": [
+        {
+          "id": "q2-1",
+          "prompt": "The margin of error for a population proportion depends on $\\hat{p}$, $\\hat{q}$, $n$, and the critical value ___.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the same critical value used for means.",
+            "It comes from the standard normal distribution."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "$z_c$",
+                "zc",
+                "z"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The margin of error uses the critical value $z_c$."
+        },
+        {
+          "prompt": "For $\\hat{p}=0.5$, $\\hat{q}=0.5$, $n=100$, and 95% confidence ($z_c=1.96$), compute $E$. (Round to three decimals.)",
+          "answers": [
+            "0.098",
+            ".098"
+          ],
+          "hints": [
+            "$E = 1.96 \\sqrt{(0.5)(0.5)/100}$.",
+            "$\\sqrt{0.25/100} = \\sqrt{0.0025} = 0.05$, times 1.96 = 0.098."
+          ],
+          "answer": "0.098",
+          "type": "short-answer",
+          "feedbackIfWrong": "$E = 1.96 \\times 0.05 = 0.098$.",
+          "id": "q2-2"
+        },
+        {
+          "answer": "$n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$",
+          "type": "short-answer",
+          "feedbackIfWrong": "Check $n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$.",
+          "prompt": "What must you check to ensure the sampling distribution of $\\hat{p}$ is approximately normal? (Answer: $n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$)",
+          "id": "q2-3",
+          "hints": [
+            "Both the expected number of successes and failures must be at least 5.",
+            "These are the conditions for normal approximation to the binomial."
+          ],
+          "answers": [
+            "nphat ≥ 5 and nqhat ≥ 5",
+            "np̂ ≥ 5 and nq̂ ≥ 5",
+            "both ≥ 5"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Finding a Minimum Sample Size",
+      "examples": [
+        {
+          "steps": [
+            "No preliminary estimate → use $\\hat{p}=0.5$, $\\hat{q}=0.5$. $z_c=1.96$, $E=0.03$.",
+            "$n = (0.5)(0.5) (1.96 / 0.03)^2 = 0.25 (65.333)^2$? Wait, compute carefully: $1.96 / 0.03 = 65.333$, square = 4268.4.",
+            "$n = 0.25 \\times 4268.4 = 1067.1$.",
+            "Round up: at least 1068 voters must be surveyed."
+          ],
+          "prompt": "A political campaign wants to estimate the proportion of voters supporting its candidate within 3% (E=0.03), with 95% confidence. No prior estimate is available. Find the minimum sample size.",
+          "title": "Example A – No Preliminary Estimate",
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "A prior poll found $\\hat{p}=0.31$ support. For the same desired error (E=0.03) and confidence (95%), find the required sample size and explain why it's smaller.",
+          "steps": [
+            "$\\hat{p}=0.31$, $\\hat{q}=0.69$, product = 0.2139.",
+            "$n = 0.2139 (1.96/0.03)^2 = 0.2139 \\times 4268.4 = 913.0$.",
+            "Round up to 914. This is smaller because $0.2139 < 0.25$.",
+            "The product $\\hat{p}\\hat{q}$ is largest when $\\hat{p}=0.5$; any other value gives a smaller product, hence a smaller $n$."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does having a preliminary estimate reduce the required sample size?",
+          "title": "Example B – Using a Prior Estimate"
+        },
+        {
+          "steps": [
+            "$z_c$ for 90% = 1.645. $\\hat{q}=0.8$.",
+            "In a cell: `=CEILING.MATH(0.2*0.8*(1.645/0.04)^2)`.",
+            "Compute: $0.16 \\times (41.125)^2 = 0.16 \\times 1691.27 = 270.6$, round up to 271."
+          ],
+          "role": "independent",
+          "prompt": "Use Google Sheets to find the minimum sample size for $E=0.04$, 90% confidence, and a prior estimate $\\hat{p}=0.2$.",
+          "title": "Example C – Google Sheets"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A campaign wants to poll voters, but how many people should they call? If they have a guess for the proportion, they need fewer people. If they have no idea, they must assume the proportion is 50%—the most conservative case, giving the largest sample size."
+      },
+      "confusionCorner": {
+        "title": "Why $\\hat{p}=0.5$ is the Safest Choice",
+        "body": "The product $\\hat{p}\\hat{q}$ is greatest when $\\hat{p}=0.5$. Using any other value without justification could underestimate the sample size needed. [[imp:When in doubt, use $\\hat{p}=0.5$—it guarantees the sample is large enough.]]"
+      },
+      "concept": {
+        "explanation": [
+          "Given a desired margin of error $E$ and confidence level $c$, the minimum sample size to estimate a population proportion is: $n = \\hat{p} \\hat{q} \\left( \\frac{z_c}{E} \\right)^2$.",
+          "If a preliminary estimate $\\hat{p}$ is available (from a prior study), use that value and $\\hat{q} = 1 - \\hat{p}$.",
+          "If [[imp:no preliminary estimate]] is available, use $\\hat{p} = 0.5$ and $\\hat{q} = 0.5$. This maximizes the product $\\hat{p} \\hat{q}$, yielding the largest (most conservative) sample size.",
+          "[[imp:Always round up]] to the nearest whole number."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "None (use 0.5)",
+                "1": "$0.5 \\times 0.5 = 0.25$",
+                "2": "$0.25 (1.96/0.03)^2 = 0.25(4268.4) = 1067.1$",
+                "3": "1068"
+              },
+              {
+                "0": "$\\hat{p} = 0.31$",
+                "1": "$0.31 \\times 0.69 = 0.2139$",
+                "2": "$0.2139 (1.96/0.03)^2 = 0.2139(4268.4) = 913.0$",
+                "3": "914"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Sample Size Examples (95% confidence, $z_c=1.96$, $E=0.03$)",
+            "headers": [
+              "Preliminary $\\hat{p}$",
+              "$\\hat{p} \\hat{q}$",
+              "Calculation",
+              "Minimum $n$"
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "title": "Minimum Sample Size for Estimating $p$",
+          "formula": "$$n = \\hat{p} \\hat{q} \\left( \\frac{z_c}{E} \\right)^2$$ $$\\text{If } \\hat{p} \\text{ unknown, use } \\hat{p} = 0.5, \\hat{q} = 0.5$$",
+          "legend": [
+            {
+              "meaning": "desired margin of error (as a decimal, e.g., 0.03 for 3%)",
+              "symbol": "$E$",
+              "tone": "core"
+            }
+          ]
+        }
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "0.5",
+                ".5",
+                "50%"
+              ]
+            }
+          ],
+          "hints": [
+            "This value maximizes the product $\\hat{p} \\hat{q}$.",
+            "It gives the largest possible sample size."
+          ],
+          "id": "q3-1",
+          "feedbackIfWrong": "Use $\\hat{p} = 0.5$ when no prior estimate is available.",
+          "prompt": "If no preliminary estimate of $\\hat{p}$ is available, the most conservative choice is to set $\\hat{p} = $ ___.",
+          "type": "fill-blank"
+        },
+        {
+          "id": "q3-2",
+          "answers": [
+            "385",
+            "three hundred eighty-five"
+          ],
+          "feedbackIfWrong": "$0.25 \\times (39.2)^2 = 384.16$, round up to 385.",
+          "answer": "385",
+          "type": "short-answer",
+          "hints": [
+            "$n = 0.25 (1.96/0.05)^2 = 0.25 (39.2)^2 = 0.25 \\times 1536.64 = 384.16$.",
+            "Round up from 384.16."
+          ],
+          "prompt": "You want to estimate a proportion within 5% with 95% confidence, and no prior estimate is available. What is the minimum sample size? (Round up.)"
+        },
+        {
+          "answers": [
+            "decrease",
+            "decreases"
+          ],
+          "hints": [
+            "The product $0.8 \\times 0.2 = 0.16$, which is less than 0.25.",
+            "A smaller product gives a smaller $n$."
+          ],
+          "prompt": "If a prior study gives $\\hat{p}=0.8$, does the required sample size increase or decrease compared to using $\\hat{p}=0.5$?",
+          "type": "short-answer",
+          "id": "q3-3",
+          "answer": "decrease",
+          "feedbackIfWrong": "The required sample size decreases because $\\hat{p}\\hat{q}$ is smaller."
+        }
+      ],
+      "id": "minimum-sample-size-proportion",
+      "teacherCues": [
+        "Ask: 'How many voters must we survey to estimate the proportion supporting a candidate within 3%, with 95% confidence?'",
+        "Derive the formula $n = \\hat{p} \\hat{q} (z_c / E)^2$ and explain why we use $\\hat{p} = 0.5$ when no estimate is available."
+      ]
+    },
+    {
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "different",
+                "Different",
+                "not equal"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Non‑overlapping intervals suggest the proportions are different.",
+          "hints": [
+            "If they don't share any values, it's unlikely they are the same.",
+            "The true proportions probably differ."
+          ],
+          "type": "fill-blank",
+          "prompt": "If two confidence intervals for population proportions do not overlap, the proportions are likely ___.",
+          "id": "q4-1"
+        },
+        {
+          "prompt": "A 95% CI for $p$ is (0.42, 0.48). What is the margin of error?",
+          "type": "short-answer",
+          "hints": [
+            "Margin of error = (upper – lower)/2.",
+            "(0.48 – 0.42)/2 = 0.03."
+          ],
+          "answers": [
+            "0.03",
+            ".03",
+            "3%"
+          ],
+          "answer": "0.03",
+          "id": "q4-2",
+          "feedbackIfWrong": "E = (0.48 - 0.42)/2 = 0.03."
+        },
+        {
+          "prompt": "If a confidence interval for a proportion is entirely above 0.50, can we be confident the majority holds that view? (Yes or No)",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "id": "q4-3",
+          "hints": [
+            "The entire interval is above 50%.",
+            "We are confident the true proportion exceeds 0.50."
+          ],
+          "answer": "Yes",
+          "type": "short-answer",
+          "feedbackIfWrong": "Yes, if the entire interval is above 0.50, we are confident a majority holds that view."
+        }
+      ],
+      "id": "interpreting-proportion-cis",
+      "teacherCues": [
+        "Show a poll result: '66.2% ± 2.9%'. Ask: 'What does the margin of error mean in context?'",
+        "Point out that if two groups' confidence intervals overlap, the difference might not be significant."
+      ],
+      "discoveryHook": {
+        "scenario": "News reports often say '52% approve, with a margin of error of ±3%.' The confidence interval is 49% to 55%. Because 50% is inside this interval, it's plausible the true approval is below half. Overlapping intervals from two groups suggest their true proportions might be equal."
+      },
+      "confusionCorner": {
+        "title": "Overlap ≠ Definitely Equal",
+        "body": "Overlapping confidence intervals suggest the proportions might be equal, but a formal hypothesis test is needed for a definitive answer. Conversely, non‑overlapping intervals provide strong evidence that the proportions differ. [[imp:Use overlap as a visual check, not a rigorous test.]]"
+      },
+      "examples": [
+        {
+          "title": "Example A – Interpreting a Poll",
+          "role": "guided",
+          "prompt": "A 95% CI for the proportion of U.S. adults who want more funding for alternative energy is (0.74, 0.82). Interpret this interval.",
+          "steps": [
+            "We are 95% confident that the true proportion of all U.S. adults who want more funding for alternative energy is between 74% and 82%.",
+            "Because the entire interval is above 50%, a majority clearly supports more funding.",
+            "The margin of error is $(0.82 - 0.74)/2 = 0.04$, or 4%."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "From the table, the 99% CI for the U.S. is (0.390, 0.470) and for Italy is (0.612, 0.688). Do these intervals overlap? What does that suggest?",
+          "title": "Example B – Comparing Countries",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If the intervals don't overlap, can we conclude the true proportions are different?",
+          "minLength": 2,
+          "steps": [
+            "The U.S. interval ends at 0.470; the Italy interval starts at 0.612.",
+            "They do not overlap — there is a gap.",
+            "This strongly suggests the true proportion of adults who see climate change as a large threat is higher in Italy than in the U.S."
+          ]
+        },
+        {
+          "title": "Example C – Overlapping Intervals",
+          "prompt": "Great Britain's 99% CI is (0.593, 0.667) and Italy's is (0.612, 0.688). They overlap. What can you conclude?",
+          "steps": [
+            "The intervals overlap in the range 0.612 to 0.667.",
+            "It is possible the true proportions in Italy and Great Britain are equal.",
+            "We cannot confidently say one country's proportion is higher than the other based on these intervals."
+          ],
+          "role": "independent"
+        }
+      ],
+      "title": "Interpreting Confidence Intervals for Proportions",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Non‑overlapping CIs} \\;\\Rightarrow\\; \\text{likely different } p \\text{'s}$$ $$\\text{Overlapping CIs} \\;\\Rightarrow\\; \\text{possibly equal } p \\text{'s}$$",
+          "title": "Interpretation Guidelines",
+          "legend": [
+            {
+              "symbol": "Note",
+              "meaning": "Overlap is a rough guide; formal hypothesis tests (Chapter 7) give a precise answer.",
+              "tone": "core"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Comparing Two Polls on Climate Change Threat (99% CI)",
+            "type": "table",
+            "headers": [
+              "Country",
+              "$\\hat{p}$",
+              "$n$",
+              "99% CI"
+            ],
+            "rows": [
+              {
+                "0": "U.S.",
+                "1": "0.43",
+                "2": "1017",
+                "3": "(0.390, 0.470)"
+              },
+              {
+                "0": "Italy",
+                "1": "0.65",
+                "2": "1060",
+                "3": "(0.612, 0.688)"
+              },
+              {
+                "0": "Great Britain",
+                "1": "0.63",
+                "2": "1126",
+                "3": "(0.593, 0.667)"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "The confidence interval for a proportion is interpreted the same way as for a mean: 'We are $c$% confident that the true population proportion $p$ is between the lower and upper bounds.'",
+          "The width of the interval is $2E$. A narrower interval indicates a more precise estimate.",
+          "When comparing two groups, if their confidence intervals [[imp:overlap]], it is possible the true proportions are equal. If they do not overlap, the proportions are likely different.",
+          "The margin of error in the media is usually for 95% confidence. It is calculated as $E = z_c \\sqrt{\\hat{p}\\hat{q}/n}$."
+        ]
+      }
+    },
+    {
+      "concept": {
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Identify $x$, $n$, and the confidence level $c$. Determine whether you are building an interval or finding a sample size. Check conditions ($n\\hat{p} \\ge 5$, $n\\hat{q} \\ge 5$).",
+          "2. [[kw:Solve]]: Compute $\\hat{p} = x/n$, $\\hat{q} = 1-\\hat{p}$. Find $z_c$ for the given $c$. Compute $E = z_c \\sqrt{\\hat{p}\\hat{q}/n}$. Form the interval $\\hat{p} \\pm E$. For sample size, use $n = \\hat{p} \\hat{q} (z_c/E)^2$ (with $\\hat{p}=0.5$ if no estimate).",
+          "3. [[kw:Conclude]]: State the interval or sample size, interpret in context, and note any overlap with other groups."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "$n=2000$, $x=1100$, $c=0.95$. Check conditions.",
+                "2": "$\\hat{p}=0.55$, $n\\hat{p}=1100$, $n\\hat{q}=900$ (OK)."
+              },
+              {
+                "0": "Solve – $z_c$",
+                "1": "95% confidence",
+                "2": "$z_c = 1.96$"
+              },
+              {
+                "0": "Solve – $E$",
+                "1": "$E = 1.96 \\sqrt{(0.55)(0.45)/2000}$",
+                "2": "$E \\approx 1.96 \\times 0.0111 = 0.0218$"
+              },
+              {
+                "0": "Solve – Interval",
+                "1": "$0.55 \\pm 0.0218$",
+                "2": "$(0.5282, 0.5718)$"
+              },
+              {
+                "0": "Conclude",
+                "1": "We are 95% confident the mayor's true approval rating is between 52.8% and 57.2%.",
+                "2": ""
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action",
+              "Details"
+            ],
+            "title": "Blueprint for Mayor Approval Survey (n=2000, x=1100, 95% CI)"
+          }
+        ],
+        "formulaCard": {
+          "title": "Google Sheets Functions",
+          "formula": "$$E = \\text{CONFIDENCE.NORM}(1-c, \\sqrt{\\hat{p}\\hat{q}}, n) \\text{ (not directly)} $$ $$\\text{Better: } E = z_c \\cdot \\text{SQRT}(\\hat{p}\\hat{q}/n)$$ $$n = \\text{CEILING.MATH}(\\hat{p}\\hat{q} \\cdot (z_c/E)^2)$$",
+          "legend": [
+            {
+              "tone": "subtle",
+              "meaning": "There is no single CONFIDENCE function for proportions; compute directly using the formula.",
+              "symbol": "Note"
+            }
+          ]
+        }
+      },
+      "title": "Blueprint Aid: Solving Proportion Confidence Interval Problems",
+      "confusionCorner": {
+        "body": "The margin of error $E$ in the formulas must be in decimal form, not percentage. For example, 3% is 0.03. [[imp:Always convert percentages to decimals before plugging them into the formulas.]]",
+        "title": "Units of $E$"
+      },
+      "id": "blueprint-proportion-problems",
+      "teacherCues": [
+        "Project a problem: 'A survey of 2000 voters found 1100 approve of the mayor. Construct a 95% CI for the true approval rating.' Walk through Understand‑Solve‑Conclude.",
+        "Emphasize: 'Always check $n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$ first.'"
+      ],
+      "questions": [
+        {
+          "prompt": "The first step in the blueprint for a proportion problem is to compute the point estimate ___.",
+          "feedbackIfWrong": "Compute $\\hat{p} = x/n$ as the point estimate.",
+          "id": "q5-1",
+          "type": "fill-blank",
+          "hints": [
+            "It's the sample proportion.",
+            "Formula: $x/n$."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "$\\hat{p}$",
+                "p-hat",
+                "p̂"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "A 95% CI for a proportion is (0.28, 0.34). What is the point estimate $\\hat{p}$?",
+          "hints": [
+            "$\\hat{p}$ is the midpoint of the interval.",
+            "(0.28 + 0.34)/2 = ?"
+          ],
+          "answer": "0.31",
+          "type": "short-answer",
+          "answers": [
+            "0.31",
+            ".31",
+            "31%"
+          ],
+          "id": "q5-2",
+          "feedbackIfWrong": "$\\hat{p} = (0.28 + 0.34)/2 = 0.31$."
+        },
+        {
+          "answer": "0.05",
+          "id": "q5-3",
+          "prompt": "If a problem asks for a margin of error of 5%, what value should you use for $E$ in the formula? (Give decimal.)",
+          "answers": [
+            "0.05",
+            ".05"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "Convert the percentage to a decimal.",
+            "5% = 5/100 = ?"
+          ],
+          "feedbackIfWrong": "Use $E = 0.05$."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A – Blueprint for Interval",
+          "role": "guided",
+          "prompt": "A survey of 7000 women found 4431 change their nail polish once a week. Construct a 95% CI for the true proportion.",
+          "steps": [
+            "Understand: $x=4431$, $n=7000$, $c=0.95$.",
+            "Solve: $\\hat{p}=4431/7000 \\approx 0.633$, $\\hat{q}=0.367$. Check $n\\hat{p} \\approx 4431$, $n\\hat{q} \\approx 2569$, both $\\ge 5$.",
+            "$z_c=1.96$. $E = 1.96 \\sqrt{(0.633)(0.367)/7000} \\approx 1.96 \\times 0.00576 = 0.0113$.",
+            "Interval: $0.633 \\pm 0.0113 = (0.6217, 0.6443)$.",
+            "Conclude: We are 95% confident that between 62.2% and 64.4% of women change nail polish weekly."
+          ]
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "title": "Example B – Blueprint for Sample Size",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we use the prior $\\hat{p}$ instead of 0.5 here?",
+          "steps": [
+            "Understand: $E=0.02$, $c=0.99$ → $z_c=2.575$, $\\hat{p}=0.47$, $\\hat{q}=0.53$.",
+            "Solve: $n = (0.47)(0.53) (2.575/0.02)^2 = 0.2491 \\times (128.75)^2 = 0.2491 \\times 16576.6 \\approx 4130.2$.",
+            "Round up to 4131.",
+            "Using the prior estimate reduces the sample size compared to using $\\hat{p}=0.5$."
+          ],
+          "prompt": "We want to estimate the proportion of adults who read fiction, within 2% (E=0.02), with 99% confidence. A prior study suggests $\\hat{p}=0.47$. Find the minimum sample size."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "In Sheets: `=CEILING.MATH(0.25 * (1.645/0.05)^2)`.",
+            "$1.645/0.05 = 32.9$, square = 1082.41. $0.25 \\times 1082.41 = 270.6$.",
+            "Round up to 271."
+          ],
+          "title": "Example C – Google Sheets for Sample Size",
+          "prompt": "Use Google Sheets to find the minimum sample size for a 90% CI, E=0.05, with no prior estimate."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Whether you're constructing a confidence interval for a proportion or determining how many people to survey, a blueprint keeps you on track: understand the given information and the goal, solve using the proportion formulas, and conclude with a clear interpretation."
+      }
+    }
+  ],
+  "title": "Confidence Intervals for Population Proportions",
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Block 1: Keep the definition of $\\hat{p}$ simple. The distinction between $p$ and $\\hat{p}$ is important.",
+    "Block 2: The formula is similar to the mean case but uses $\\sqrt{\\hat{p}\\hat{q}/n}$. Emphasize the conditions $n\\hat{p} \\ge 5$ and $n\\hat{q} \\ge 5$.",
+    "Block 3: The sample size formula is crucial for planning surveys. Show that $\\hat{p}=0.5$ maximizes $\\hat{p}\\hat{q}$, giving the largest $n$.",
+    "Block 4: Interpretation and comparison of intervals are practical skills. The overlapping intervals heuristic is a good preview of hypothesis testing.",
+    "Block 5: The blueprint ties everything together. Use the mayoral approval example to show a complete solution."
+  ],
+  "standards": [
+    "HSS.IC.B.4",
+    "HSS.IC.B.5"
+  ],
+  "id": "chapter-6-3-confidence-intervals-proportions",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

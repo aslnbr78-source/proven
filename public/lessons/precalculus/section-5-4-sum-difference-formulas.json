@@ -1,0 +1,702 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-5-4-sum-difference-formulas",
+  "title": "Section 5.4 — Sum and Difference Formulas",
+  "blocks": [
+    {
+      "id": "intro-sum-difference",
+      "title": "Sum and Difference Formulas",
+      "teacherCues": [
+        "Write sin(u+v) = sin u cos v + cos u sin v on the board. Underline the plus sign: 'Plus here, plus there.'",
+        "Ask: What happens to the sign in the cosine formula? (cos(u+v) has a minus, cos(u-v) has a plus)"
+      ],
+      "discoveryHook": {
+        "scenario": "Suppose you know exact values for 30° and 45°. Can you find the exact sine of 75° = 30° + 45°? Sum formulas let you break an unfamiliar angle into familiar pieces and compute exactly, without a calculator."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:sum and difference formulas]] expand trig functions of sums or differences of angles:",
+          "For sine: $\\sin(u \\pm v) = \\sin u \\cos v \\pm \\cos u \\sin v$ (sign matches).",
+          "For cosine: $\\cos(u \\pm v) = \\cos u \\cos v \\mp \\sin u \\sin v$ (sign flips).",
+          "For tangent: $\\tan(u \\pm v) = \\frac{\\tan u \\pm \\tan v}{1 \\mp \\tan u \\tan v}$ (sign matches numerator)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Quick Reference",
+            "headers": [
+              "Function",
+              "Sum",
+              "Difference"
+            ],
+            "rows": [
+              {
+                "0": "$\\sin$",
+                "1": "$\\sin u \\cos v + \\cos u \\sin v$",
+                "2": "$\\sin u \\cos v - \\cos u \\sin v$"
+              },
+              {
+                "0": "$\\cos$",
+                "1": "$\\cos u \\cos v - \\sin u \\sin v$",
+                "2": "$\\cos u \\cos v + \\sin u \\sin v$"
+              },
+              {
+                "0": "$\\tan$",
+                "1": "$\\frac{\\tan u + \\tan v}{1 - \\tan u \\tan v}$",
+                "2": "$\\frac{\\tan u - \\tan v}{1 + \\tan u \\tan v}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Sine Sum Formula",
+          "formula": "$$\\sin(u+v) = \\sin u \\cos v + \\cos u \\sin v$$",
+          "notes": [
+            "Both terms mix sine and cosine.",
+            "The sign matches the one inside the parentheses."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Evaluate sin(π/12)",
+          "prompt": "Find the exact value of $\\sin(\\frac{\\pi}{12})$ using $\\frac{\\pi}{12} = \\frac{\\pi}{3} - \\frac{\\pi}{4}$.",
+          "steps": [
+            "Write $\\sin(\\frac{\\pi}{3} - \\frac{\\pi}{4}) = \\sin\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} - \\cos\\frac{\\pi}{3}\\sin\\frac{\\pi}{4}$.",
+            "Substitute known values: $\\sin\\frac{\\pi}{3}=\\frac{\\sqrt{3}}{2}$, $\\cos\\frac{\\pi}{4}=\\frac{\\sqrt{2}}{2}$, $\\cos\\frac{\\pi}{3}=\\frac{1}{2}$, $\\sin\\frac{\\pi}{4}=\\frac{\\sqrt{2}}{2}$.",
+            "Multiply: $\\frac{\\sqrt{3}}{2}\\cdot\\frac{\\sqrt{2}}{2} - \\frac{1}{2}\\cdot\\frac{\\sqrt{2}}{2} = \\frac{\\sqrt{6} - \\sqrt{2}}{4}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Cosine Difference Sign",
+          "prompt": "Why does $\\cos(u-v)$ have a plus sign but $\\cos(u+v)$ has a minus?",
+          "peerPrompt": "Explain to your partner: Look at the formula table. For cosine, the sign inside the parentheses and the sign between the terms are opposite. Why might that be?",
+          "minLength": 2,
+          "steps": [
+            "$\\cos(u-v) = \\cos u \\cos v + \\sin u \\sin v$ (minus becomes plus).",
+            "$\\cos(u+v) = \\cos u \\cos v - \\sin u \\sin v$ (plus becomes minus).",
+            "This is because $\\cos(-v)=\\cos v$ and $\\sin(-v)=-\\sin v$, so the sign flips compared to sine."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Try cos(π/12)",
+          "prompt": "Find the exact value of $\\cos(\\frac{\\pi}{12})$ using $\\frac{\\pi}{12} = \\frac{\\pi}{3} - \\frac{\\pi}{4}$.",
+          "steps": [
+            "Use $\\cos(\\frac{\\pi}{3} - \\frac{\\pi}{4}) = \\cos\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} + \\sin\\frac{\\pi}{3}\\sin\\frac{\\pi}{4}$.",
+            "Plug values: $\\frac{1}{2}\\cdot\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{3}}{2}\\cdot\\frac{\\sqrt{2}}{2} = \\frac{\\sqrt{2} + \\sqrt{6}}{4}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sine vs Cosine Sign",
+        "body": "For sine, the sign in the expansion matches the operation. For cosine, the sign is the opposite. Write $\\cos(u+v) = \\cos u \\cos v - \\sin u \\sin v$ and remember [[imp:plus becomes minus]] for cosine."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "The sum formula for sine is $\\sin u \\cos v + \\cos u$ ___ $v$.",
+          "blanks": [
+            {
+              "accept": [
+                "sin"
+              ]
+            }
+          ],
+          "hints": [
+            "Complete the pattern: sin·cos + cos·?",
+            "It's the same function as on the left."
+          ],
+          "feedbackIfWrong": "It's sin v."
+        },
+        {
+          "id": "q2",
+          "type": "fill-blank",
+          "prompt": "In $\\cos(u+v) = \\cos u \\cos v - \\sin u \\sin v$, the sign between the terms is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "minus",
+                "-"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the opposite of the plus inside.",
+            "Look at the middle of the right side."
+          ],
+          "feedbackIfWrong": "It's a minus sign."
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "prompt": "To find $\\sin(75^\\circ)$, which two special angles (in degrees) would you add? (Write as '30 and 45')",
+          "answer": "30 and 45",
+          "hints": [
+            "Think of angles whose trig values you know exactly.",
+            "75° = 30° + ?"
+          ],
+          "feedbackIfWrong": "Use 30° and 45°."
+        }
+      ]
+    },
+    {
+      "id": "evaluating-exact-values",
+      "title": "Evaluating Functions at Non-Standard Angles",
+      "teacherCues": [
+        "Write $75^\\circ = 30^\\circ + 45^\\circ$. Ask: Which formula would you use to find $\\cos 75^\\circ$?",
+        "Show $\\frac{11\\pi}{12} = \\frac{3\\pi}{4} + \\frac{\\pi}{6}$. Ask: What are the sine and cosine of $\\frac{3\\pi}{4}$?"
+      ],
+      "discoveryHook": {
+        "scenario": "Angles like $\\frac{7\\pi}{12}$ are not on the unit circle chart, but they are sums of familiar angles. The sum/difference formulas unlock their exact trigonometric values for free."
+      },
+      "concept": {
+        "explanation": [
+          "To evaluate $\\sin$ or $\\cos$ of an angle like $\\frac{7\\pi}{12}$ or $105^\\circ$, rewrite it as a sum or difference of special angles ($30^\\circ, 45^\\circ, 60^\\circ$, etc.).",
+          "Apply the appropriate formula, then substitute exact values.",
+          "Simplify the result to a single fraction with a rationalized denominator if needed."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Break-Down Examples",
+            "headers": [
+              "Angle",
+              "Rewrite",
+              "Formula"
+            ],
+            "rows": [
+              {
+                "0": "$75^\\circ$",
+                "1": "$30^\\circ + 45^\\circ$",
+                "2": "$\\cos(30^\\circ+45^\\circ)$"
+              },
+              {
+                "0": "$\\frac{7\\pi}{12}$",
+                "1": "$\\frac{\\pi}{3} + \\frac{\\pi}{4}$",
+                "2": "$\\sin(\\frac{\\pi}{3}+\\frac{\\pi}{4})$"
+              },
+              {
+                "0": "$15^\\circ$",
+                "1": "$45^\\circ - 30^\\circ$",
+                "2": "$\\sin(45^\\circ-30^\\circ)$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Exact Value Recipe",
+          "formula": "$$\\cos 75^\\circ = \\cos(30^\\circ+45^\\circ) = \\frac{\\sqrt{6}-\\sqrt{2}}{4}$$",
+          "notes": [
+            "Write as sum, expand, substitute.",
+            "Simplify the fraction."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – cos 75°",
+          "prompt": "Find $\\cos 75^\\circ$ using $75^\\circ = 30^\\circ + 45^\\circ$.",
+          "steps": [
+            "Use $\\cos(30^\\circ+45^\\circ) = \\cos 30^\\circ \\cos 45^\\circ - \\sin 30^\\circ \\sin 45^\\circ$.",
+            "Plug: $\\frac{\\sqrt{3}}{2}\\cdot\\frac{\\sqrt{2}}{2} - \\frac{1}{2}\\cdot\\frac{\\sqrt{2}}{2}$.",
+            "Result: $\\frac{\\sqrt{6} - \\sqrt{2}}{4}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – sin 75°",
+          "prompt": "Find $\\sin 75^\\circ$ using the same sum of angles.",
+          "peerPrompt": "Explain to your partner: Which formula do you use? Why does the sign stay positive?",
+          "minLength": 2,
+          "steps": [
+            "$\\sin(30^\\circ+45^\\circ) = \\sin 30^\\circ \\cos 45^\\circ + \\cos 30^\\circ \\sin 45^\\circ$.",
+            "Values: $\\frac{1}{2}\\cdot\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{3}}{2}\\cdot\\frac{\\sqrt{2}}{2} = \\frac{\\sqrt{2} + \\sqrt{6}}{4}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – sin π/12 Again",
+          "prompt": "Evaluate $\\sin\\frac{\\pi}{12}$ using $\\frac{\\pi}{4} - \\frac{\\pi}{6}$.",
+          "steps": [
+            "$\\sin(\\frac{\\pi}{4} - \\frac{\\pi}{6}) = \\sin\\frac{\\pi}{4}\\cos\\frac{\\pi}{6} - \\cos\\frac{\\pi}{4}\\sin\\frac{\\pi}{6}$.",
+            "Substitute: $\\frac{\\sqrt{2}}{2}\\cdot\\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{2}}{2}\\cdot\\frac{1}{2} = \\frac{\\sqrt{6} - \\sqrt{2}}{4}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Rationalizing Not Required Here",
+        "body": "The final answer usually has a denominator of 4. No need to rationalize; it's fine as $\\frac{\\sqrt{6}-\\sqrt{2}}{4}$."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "To find $\\cos 105^\\circ$, you could write $105^\\circ = 60^\\circ$ +  ___ $^\\circ$.",
+          "blanks": [
+            {
+              "accept": [
+                "45"
+              ]
+            }
+          ],
+          "hints": [
+            "What angle do you add to 60° to get 105°?",
+            "It's a special angle."
+          ],
+          "feedbackIfWrong": "Add 45°."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "In $\\cos(60^\\circ + 45^\\circ)$, the sign between the terms is ___ (plus or minus).",
+          "answer": "minus",
+          "hints": [
+            "Cosine sum: $\\cos(u+v) = \\cos u \\cos v \\_ \\sin u \\sin v$.",
+            "The sign flips."
+          ],
+          "feedbackIfWrong": "It's a minus sign."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "$\\sin 15^\\circ$ can be found using $15^\\circ = 45^\\circ - 30^\\circ$ and the sine ___ formula.",
+          "blanks": [
+            {
+              "accept": [
+                "difference"
+              ]
+            }
+          ],
+          "hints": [
+            "The angle is a subtraction.",
+            "Use $\\sin(u-v)$."
+          ],
+          "feedbackIfWrong": "Use the difference formula."
+        }
+      ]
+    },
+    {
+      "id": "evaluating-with-partial-info",
+      "title": "Evaluating Expressions with Partial Information",
+      "teacherCues": [
+        "Given $\\sin u = 4/5$ (Q I) and $\\cos v = -12/13$ (Q II), ask: How do we find $\\cos u$ and $\\sin v$? (Pythagorean identity, then quadrant sign)",
+        "Show how to plug into $\\sin(u+v)$ formula."
+      ],
+      "discoveryHook": {
+        "scenario": "You know the sine of one angle and the cosine of another, but not their sum directly. Using sum formulas, you can combine the known pieces to find exactly $\\sin(u+v)$ or $\\tan(u-v)$, without ever finding the angles themselves."
+      },
+      "concept": {
+        "explanation": [
+          "Given partial trig values and quadrant signs, first find the missing trig values using $\\sin^2 + \\cos^2 = 1$ and the correct quadrant sign.",
+          "Then substitute all values into the sum or difference formula.",
+          "Simplify the result exactly."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example Setup",
+            "headers": [
+              "Given",
+              "Quadrant",
+              "Find"
+            ],
+            "rows": [
+              {
+                "0": "$\\sin u = \\frac{4}{5}$",
+                "1": "QI (cos positive)",
+                "2": "$\\cos u = \\frac{3}{5}$"
+              },
+              {
+                "0": "$\\cos v = -\\frac{12}{13}$",
+                "1": "QII (sin positive)",
+                "2": "$\\sin v = \\frac{5}{13}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Plugging Into sin(u+v)",
+          "formula": "$$\\sin(u+v) = \\sin u \\cos v + \\cos u \\sin v = -\\frac{33}{65}$$",
+          "notes": [
+            "Check signs carefully.",
+            "Simplify the fraction at the end."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – sin(u+v) Given Values",
+          "prompt": "Find $\\sin(u+v)$ given $\\sin u = 4/5$ (QI), $\\cos v = -12/13$ (QII).",
+          "steps": [
+            "Since $u$ in QI, $\\cos u = +\\sqrt{1 - (4/5)^2} = 3/5$.",
+            "Since $v$ in QII, $\\sin v = +\\sqrt{1 - (-12/13)^2} = 5/13$.",
+            "Now $\\sin(u+v) = (4/5)(-12/13) + (3/5)(5/13) = -48/65 + 15/65 = -33/65$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – cos(u+v) from Same Info",
+          "prompt": "Using the same $\\sin u$ and $\\cos v$, find $\\cos(u+v)$.",
+          "peerPrompt": "Work with a partner: First compute $\\cos(u+v)$ using the cosine sum formula. Check the signs: is $\\cos(u+v)$ positive or negative? Why?",
+          "minLength": 2,
+          "steps": [
+            "$\\cos(u+v) = \\cos u \\cos v - \\sin u \\sin v = (3/5)(-12/13) - (4/5)(5/13)$.",
+            "$= -36/65 - 20/65 = -56/65$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – tan(u+v)",
+          "prompt": "Find $\\tan(u+v)$ using the values from above (you may use $\\tan = \\sin/\\cos$).",
+          "steps": [
+            "$\\tan(u+v) = \\frac{\\sin(u+v)}{\\cos(u+v)} = \\frac{-33/65}{-56/65} = \\frac{33}{56}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Quadrant Signs for Missing Functions",
+        "body": "When finding $\\cos u$ from $\\sin u$, the Pythagorean identity gives $\\pm$. Choose the correct sign based on the quadrant: QI cosine positive, QII sine positive."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "If $\\sin u = 3/5$ and $u$ is in QI, then $\\cos u = $ ___$/5$.",
+          "blanks": [
+            {
+              "accept": [
+                "4"
+              ]
+            }
+          ],
+          "hints": [
+            "Use $\\cos^2 u = 1 - \\sin^2 u$.",
+            "$3^2+?^2=5^2$."
+          ],
+          "feedbackIfWrong": "$\\cos u = 4/5$."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "If $v$ is in Quadrant II, the sine of $v$ is positive or negative?",
+          "answer": "positive",
+          "hints": [
+            "In QII, x is negative, y is positive, so sine (y/r) is positive.",
+            "Think: 'All Students Take Calculus' – sine is positive in QII."
+          ],
+          "feedbackIfWrong": "Sine is positive in QII."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "The sum formula for sine is $\\sin(u+v) = \\sin u \\cos v + \\cos u$ ___ $v$.",
+          "blanks": [
+            {
+              "accept": [
+                "sin"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the same function as in the first term's second factor.",
+            "The pattern is sin·cos + cos·sin."
+          ],
+          "feedbackIfWrong": "It's sin v."
+        }
+      ]
+    },
+    {
+      "id": "verifying-identities-solving",
+      "title": "Verifying Identities and Solving Equations",
+      "teacherCues": [
+        "Write $\\cos(\\frac{\\pi}{2} - x) = \\sin x$. Ask: Can we use the cosine difference formula to prove this?",
+        "Show $\\sin(x+\\frac{\\pi}{4}) + \\sin(x-\\frac{\\pi}{4}) = -1$. Expand both to simplify."
+      ],
+      "discoveryHook": {
+        "scenario": "Sum and difference formulas aren't just for computing values; they can simplify complicated equations and verify identities. Expanding a sum inside a trig function often cancels terms and leaves a simple equation."
+      },
+      "concept": {
+        "explanation": [
+          "To verify an identity like $\\cos(\\frac{\\pi}{2}-x) = \\sin x$, expand the left side using the cosine difference formula.",
+          "To solve an equation with arguments like $x+\\pi/4$ and $x-\\pi/4$, expand each, then combine like terms to get an equation in $\\sin x$ or $\\cos x$ alone."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Identity Verification Steps",
+            "headers": [
+              "Step",
+              "$\\cos(\\frac{\\pi}{2} - x)$"
+            ],
+            "rows": [
+              {
+                "0": "Expand",
+                "1": "$\\cos\\frac{\\pi}{2}\\cos x + \\sin\\frac{\\pi}{2}\\sin x$"
+              },
+              {
+                "0": "Substitute",
+                "1": "$0 \\cdot \\cos x + 1 \\cdot \\sin x$"
+              },
+              {
+                "0": "Simplify",
+                "1": "$\\sin x$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Equation Solving Example",
+          "formula": "$$\\sin(x+\\frac{\\pi}{4}) + \\sin(x-\\frac{\\pi}{4}) = -1 \\implies \\sqrt{2}\\sin x = -1$$",
+          "notes": [
+            "Expanding both sines cancels the cosine terms, leaving only a sine term.",
+            "Then solve $\\sin x = -\\frac{\\sqrt{2}}{2}$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Verify Cofunction Identity",
+          "prompt": "Verify $\\cos(\\frac{\\pi}{2} - x) = \\sin x$.",
+          "steps": [
+            "Use $\\cos(u-v) = \\cos u \\cos v + \\sin u \\sin v$ with $u=\\frac{\\pi}{2}$, $v=x$.",
+            "$\\cos\\frac{\\pi}{2}\\cos x + \\sin\\frac{\\pi}{2}\\sin x = 0\\cdot\\cos x + 1\\cdot\\sin x = \\sin x$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve an Equation",
+          "prompt": "Solve $\\sin(x+\\frac{\\pi}{4}) + \\sin(x-\\frac{\\pi}{4}) = -1$ in $[0, 2\\pi)$.",
+          "peerPrompt": "Explain to your partner: After expanding, why do the $\\cos x$ terms cancel? Then solve $\\sqrt{2}\\sin x = -1$ together.",
+          "minLength": 2,
+          "steps": [
+            "Expand: $\\sin x\\cos\\frac{\\pi}{4} + \\cos x\\sin\\frac{\\pi}{4} + \\sin x\\cos\\frac{\\pi}{4} - \\cos x\\sin\\frac{\\pi}{4} = 2\\sin x\\cos\\frac{\\pi}{4}$.",
+            "$\\cos\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}$, so $2\\sin x\\cdot\\frac{\\sqrt{2}}{2} = \\sqrt{2}\\sin x = -1$.",
+            "$\\sin x = -\\frac{1}{\\sqrt{2}} = -\\frac{\\sqrt{2}}{2}$. Solutions: $x = \\frac{5\\pi}{4}, \\frac{7\\pi}{4}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Verify Another Identity",
+          "prompt": "Verify $\\sin(x-\\frac{\\pi}{2}) = -\\cos x$.",
+          "steps": [
+            "Use $\\sin(u-v) = \\sin u \\cos v - \\cos u \\sin v$ with $u=x$, $v=\\frac{\\pi}{2}$.",
+            "$\\sin x\\cos\\frac{\\pi}{2} - \\cos x\\sin\\frac{\\pi}{2} = \\sin x\\cdot 0 - \\cos x\\cdot 1 = -\\cos x$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sine Difference Sign",
+        "body": "In $\\sin(x-\\frac{\\pi}{2})$, the formula is $\\sin x\\cos\\frac{\\pi}{2} - \\cos x\\sin\\frac{\\pi}{2}$. The minus sign stays minus. Don't change it to plus."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "To verify $\\cos(\\frac{\\pi}{2} - x) = \\sin x$, you use the ___ formula for cosine.",
+          "blanks": [
+            {
+              "accept": [
+                "difference"
+              ]
+            }
+          ],
+          "hints": [
+            "The angle is subtraction: $\\frac{\\pi}{2} - x$.",
+            "Use $\\cos(u-v)$."
+          ],
+          "feedbackIfWrong": "Use the difference formula."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "In $\\sin(x+\\frac{\\pi}{4}) + \\sin(x-\\frac{\\pi}{4})$, which terms cancel? (sin x terms or cos x terms)",
+          "answer": "cos x terms",
+          "hints": [
+            "Write out: $\\sin x\\cos\\frac{\\pi}{4} + \\cos x\\sin\\frac{\\pi}{4} + \\sin x\\cos\\frac{\\pi}{4} - \\cos x\\sin\\frac{\\pi}{4}$.",
+            "The $\\cos x\\sin\\frac{\\pi}{4}$ terms have opposite signs."
+          ],
+          "feedbackIfWrong": "The $\\cos x$ terms cancel."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "After simplifying $\\sin(x+\\frac{\\pi}{4}) + \\sin(x-\\frac{\\pi}{4}) = -1$, we get $\\sqrt{2}\\sin x = -1$. Then $\\sin x = -\\frac{\\sqrt{2}}{2}$, so one solution in $[0,2\\pi)$ is $\\frac{5\\pi}{4}$, which lies in Quadrant ___.",
+          "blanks": [
+            {
+              "accept": [
+                "III"
+              ]
+            }
+          ],
+          "hints": [
+            "$5\\pi/4$ is between $\\pi$ and $3\\pi/2$.",
+            "Write the Roman numeral."
+          ],
+          "feedbackIfWrong": "Quadrant III."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-tan-sum",
+      "title": "Blueprint Aid – Finding $\\tan 105^\\circ$ Exactly",
+      "teacherCues": [
+        "Write $105^\\circ = 60^\\circ + 45^\\circ$. Ask: Which formula applies? ($\\tan(u+v)$)",
+        "Work through the rationalization step carefully."
+      ],
+      "discoveryHook": {
+        "scenario": "You need the exact tangent of $105^\\circ$ for a bridge truss design. The sum formula gives a precise radical value, avoiding the rounding errors of decimal approximations."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Blueprint Aid]] method: [[imp:Understand]] which two special angles sum to the target; [[imp:Solve]] by applying the sum formula for tangent; [[imp:Conclude]] by rationalizing to a clean exact form.",
+          "$\\tan(u+v) = \\frac{\\tan u + \\tan v}{1 - \\tan u \\tan v}$.",
+          "For $105^\\circ = 60^\\circ + 45^\\circ$, $\\tan 60^\\circ = \\sqrt{3}$, $\\tan 45^\\circ = 1$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint Steps",
+            "headers": [
+              "Phase",
+              "What to Do"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Choose $u=60^\\circ$, $v=45^\\circ$."
+              },
+              {
+                "0": "Solve",
+                "1": "Plug into $\\tan(u+v)$: $\\frac{\\sqrt{3}+1}{1 - \\sqrt{3}\\cdot 1}$."
+              },
+              {
+                "0": "Conclude",
+                "1": "Rationalize and simplify to $-2-\\sqrt{3}$."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Tangent Sum in Action",
+          "formula": "$$\\tan(105^\\circ) = \\frac{\\tan 60^\\circ + \\tan 45^\\circ}{1 - \\tan 60^\\circ \\tan 45^\\circ} = -2-\\sqrt{3}$$",
+          "notes": [
+            "The denominator becomes negative, so the overall value is negative (since $105^\\circ$ is in QII).",
+            "Multiply by $1+\\sqrt{3}$ to rationalize."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand: Set Up $\\tan 105^\\circ$",
+          "prompt": "Identify the two special angles that sum to $105^\\circ$ and write the sum formula for tangent.",
+          "steps": [
+            "$105^\\circ = 60^\\circ + 45^\\circ$.",
+            "$\\tan(105^\\circ) = \\frac{\\tan 60^\\circ + \\tan 45^\\circ}{1 - \\tan 60^\\circ \\tan 45^\\circ}$.",
+            "Now $\\tan 60^\\circ = \\sqrt{3}$, $\\tan 45^\\circ = 1$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve: Compute and Rationalize",
+          "prompt": "Plug in the values and rationalize to find the exact value.",
+          "peerPrompt": "Work with a partner: First substitute, then multiply numerator and denominator by $1+\\sqrt{3}$ to clear the radical in the denominator. Explain why the answer is negative.",
+          "minLength": 2,
+          "steps": [
+            "Substitute: $\\frac{\\sqrt{3}+1}{1-\\sqrt{3}}$.",
+            "Multiply top and bottom by $1+\\sqrt{3}$: $\\frac{(\\sqrt{3}+1)(1+\\sqrt{3})}{1-3} = \\frac{(\\sqrt{3}+1)^2}{-2} = \\frac{3+2\\sqrt{3}+1}{-2} = \\frac{4+2\\sqrt{3}}{-2} = -2-\\sqrt{3}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude: Find $\\tan 75^\\circ$",
+          "prompt": "Use $75^\\circ = 45^\\circ + 30^\\circ$ and the sum formula for tangent to find the exact value.",
+          "steps": [
+            "$\\tan 75^\\circ = \\frac{\\tan 45^\\circ + \\tan 30^\\circ}{1 - \\tan 45^\\circ \\tan 30^\\circ} = \\frac{1 + \\frac{\\sqrt{3}}{3}}{1 - 1\\cdot\\frac{\\sqrt{3}}{3}} = \\frac{\\frac{3+\\sqrt{3}}{3}}{\\frac{3-\\sqrt{3}}{3}} = \\frac{3+\\sqrt{3}}{3-\\sqrt{3}}$.",
+            "Rationalize: multiply by $3+\\sqrt{3}$: $\\frac{(3+\\sqrt{3})^2}{9-3} = \\frac{9+6\\sqrt{3}+3}{6} = \\frac{12+6\\sqrt{3}}{6} = 2+\\sqrt{3}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check the Quadrant",
+        "body": "$105^\\circ$ is in Quadrant II, where tangent is negative. If you get a positive answer, you've made a sign error—probably in the denominator sign."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the blueprint, the first phase is to ___ the problem by choosing the right special angles.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the U in Understand-Solve-Conclude.",
+            "Begins with 'u'."
+          ],
+          "feedbackIfWrong": "The first phase is Understand."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is the exact value of $\\tan 60^\\circ$? (Write as sqrt3)",
+          "answer": "sqrt3",
+          "hints": [
+            "Opposite/adjacent in a 30-60-90 triangle.",
+            "Square root of 3."
+          ],
+          "feedbackIfWrong": "$\\tan 60^\\circ = \\sqrt{3}$."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The final simplified exact value of $\\tan 105^\\circ$ is -2 - ___.",
+          "blanks": [
+            {
+              "accept": [
+                "sqrt3",
+                "√3"
+              ]
+            }
+          ],
+          "hints": [
+            "After rationalizing, you get $-2-\\sqrt{3}$.",
+            "It's the square root of 3."
+          ],
+          "feedbackIfWrong": "$\\tan 105^\\circ = -2-\\sqrt{3}$."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Find the exact value of $\\tan 15^\\circ$ using the difference formula with $45^\\circ$ and $30^\\circ$.",
+        "type": "short-answer",
+        "answers": [
+          "2-sqrt3"
+        ],
+        "hints": [
+          "Use $\\tan(45^\\circ-30^\\circ)$.",
+          "After rationalizing, you should get $2-\\sqrt{3}$."
+        ],
+        "feedbackIfWrong": "$\\tan 15^\\circ = 2-\\sqrt{3}$."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

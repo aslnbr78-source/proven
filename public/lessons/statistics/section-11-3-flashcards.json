@@ -1,0 +1,71 @@
+{
+  "id": "section-11-3-flashcards",
+  "type": "flashcard",
+  "cards": [
+    {
+      "back": "It is a nonparametric test that compares three or more independent samples to determine whether they come from populations with the same distribution. It is the alternative to one‑way ANOVA when normality is violated.",
+      "front": "What is the [[kw:Kruskal-Wallis test]] used for?"
+    },
+    {
+      "front": "State the null and alternative hypotheses for the Kruskal-Wallis test.",
+      "back": "$H_0$: All populations have the same distribution.\n$H_a$: At least one population has a different distribution.\nThe test is always right‑tailed."
+    },
+    {
+      "front": "What are the conditions for using the Kruskal-Wallis test?",
+      "back": "1. Each sample is randomly selected.\n2. Each sample size is at least 5.\nThe test does not require normality or equal variances."
+    },
+    {
+      "front": "How do you compute the test statistic $H$?",
+      "back": "Combine and rank all data (1 = smallest). Let $R_i$ = sum of ranks for sample $i$, $n_i$ = size of sample $i$, $N$ = total observations. Then:\n$$H = \\frac{12}{N(N+1)} \\sum_{i=1}^{k} \\frac{R_i^2}{n_i} - 3(N+1)$$"
+    },
+    {
+      "back": "Under $H_0$, $H$ approximately follows a [[imp:chi‑square distribution]] with $df = k - 1$, where $k$ is the number of groups.",
+      "front": "What distribution does the $H$ statistic follow?"
+    },
+    {
+      "back": "Tied values receive the [[imp:average]] of the ranks they would occupy. For example, if two values tie for ranks 5 and 6, both get rank 5.5.",
+      "front": "How are ties handled in the Kruskal-Wallis test?"
+    },
+    {
+      "front": "Why is the Kruskal-Wallis test always right‑tailed?",
+      "back": "The test statistic $H$ measures differences among rank sums. If the distributions are the same, $H$ is close to 0. Large $H$ values indicate large differences, so we reject $H_0$ only for large $H$."
+    },
+    {
+      "back": "Reject $H_0$ because $12.52 > 9.210$. There is enough evidence that the distributions of crimes differ among the three precincts.",
+      "front": "In the crime example, $H \\approx 12.52$, $df=2$, critical value at $\\alpha=0.01$ is $9.210$. Decision?"
+    },
+    {
+      "back": "The rank sums are similar across groups, which is consistent with $H_0$. You would fail to reject $H_0$; there is no evidence of a difference in distributions.",
+      "front": "What does a small $H$ value (close to 0) indicate?"
+    },
+    {
+      "back": "ANOVA compares means and assumes normality and equal variances. Kruskal-Wallis uses ranks and does not require normality. It is more robust when data are skewed or contain outliers.",
+      "front": "How does the Kruskal-Wallis test differ from one‑way ANOVA?"
+    },
+    {
+      "front": "What is the degrees of freedom for a Kruskal-Wallis test with 4 groups?",
+      "back": "$$df = k - 1 = 4 - 1 = 3$$"
+    },
+    {
+      "back": "The test tells you that at least one group differs but not which ones. You need [[imp:post‑hoc tests]] (e.g., pairwise comparisons using Dunn's test) to identify which specific groups differ.",
+      "front": "After a significant Kruskal-Wallis test, what additional analysis is needed?"
+    },
+    {
+      "front": "How do you find the critical value for the Kruskal-Wallis test?",
+      "back": "Use the chi‑square table (Table 6) with $df = k - 1$ and the given $\\alpha$. Reject $H_0$ if $H$ > critical value. In Google Sheets: `=CHISQ.INV.RT(α, df)`."
+    },
+    {
+      "back": "Reject $H_0$ because $34.74 > 5.991$. The salary distributions differ significantly among the three states.",
+      "front": "In the veterinarians' salary example, $H \\approx 34.74$, $df=2$, critical value $5.991$ at $\\alpha=0.05$. Decision?"
+    },
+    {
+      "front": "True or False: A significant Kruskal-Wallis test means that all groups are different from each other.",
+      "back": "False. It means [[imp:at least one group]] differs from the others, but not necessarily all. Post‑hoc tests are needed to determine which specific groups differ."
+    }
+  ],
+  "title": "The Kruskal-Wallis Test",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

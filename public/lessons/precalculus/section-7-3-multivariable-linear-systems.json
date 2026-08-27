@@ -1,0 +1,764 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-7-3-multivariable-linear-systems",
+  "title": "Section 7.3 — Multivariable Linear Systems",
+  "blocks": [
+    {
+      "id": "row-echelon-back-substitution",
+      "title": "Row‑Echelon Form and Back‑Substitution",
+      "teacherCues": [
+        "Write a system in row‑echelon form: $x - 2y + 3z = 9$, $y + 3z = 5$, $z = 2$. Ask: What is the value of $z$? Then how would you find $y$?",
+        "Emphasize that the 'stair‑step' pattern lets us solve from the bottom up."
+      ],
+      "discoveryHook": {
+        "scenario": "A treasure map has three clues: the chest is 9 paces east, 4 north, and half the depth of a well. The clues form a triangular pattern that you can solve easily starting from the last clue. Row‑echelon form works the same way — solve the last equation first, then work upward."
+      },
+      "concept": {
+        "explanation": [
+          "A system is in [[kw:row‑echelon form]] when the equations have a 'stair‑step' pattern with leading coefficients of $1$.",
+          "From this form, we can solve by [[kw:back‑substitution]]: start with the last equation (which has only one variable), substitute that value into the equation above to find the next variable, and so on.",
+          "For example, if $z = 2$, substitute into $y + 3z = 5$ to find $y$, then into the first equation to find $x$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: Row‑Echelon System",
+            "headers": [
+              "Equation",
+              "Solved Variable"
+            ],
+            "rows": [
+              {
+                "0": "$x - 2y + 3z = 9$",
+                "1": "$x$ (after $y$ and $z$ known)"
+              },
+              {
+                "0": "$y + 3z = 5$",
+                "1": "$y$ (after $z$ known)"
+              },
+              {
+                "0": "$z = 2$",
+                "1": "$z = 2$ (direct)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Back‑Substitution",
+          "formula": "1. Start from the bottom equation.\n2. Substitute upward.\n3. Solve for the remaining variables.",
+          "notes": [
+            "The last equation should have only one variable.",
+            "Always check your solution in all original equations."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Solve a simple system",
+          "prompt": "Solve: $x - y + 5z = 22$, $y + 3z = 6$, $z = 3$.",
+          "steps": [
+            "From the third equation: $z = 3$.",
+            "Substitute $z = 3$ into $y + 3z = 6$: $y + 9 = 6 \\to y = -3$.",
+            "Substitute $y = -3$, $z = 3$ into $x - y + 5z = 22$: $x - (-3) + 15 = 22 \\to x + 3 + 15 = 22 \\to x = 4$.",
+            "Solution: $(4, -3, 3)$. Check all equations."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Order matters",
+          "prompt": "Why can't we solve for $x$ first in the system above?",
+          "peerPrompt": "Explain to your partner: Look at the first equation. Why must we find $y$ and $z$ before $x$?",
+          "minLength": 2,
+          "steps": [
+            "The first equation has $x$, $y$, and $z$. We don't know $y$ or $z$ yet.",
+            "The third equation gives $z$ immediately. Then the second gives $y$.",
+            "Only after finding $y$ and $z$ can we solve for $x$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick practice",
+          "prompt": "Solve: $x + 2y - z = 0$, $y + z = 5$, $z = 2$.",
+          "steps": [
+            "From $z = 2$, into $y + z = 5 \\to y = 3$.",
+            "Into $x + 2(3) - 2 = 0 \\to x + 6 - 2 = 0 \\to x = -4$.",
+            "Solution: $(-4, 3, 2)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't skip steps",
+        "body": "Back‑substitution means solving one variable at a time from the bottom up. Trying to solve all at once can lead to arithmetic mistakes."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "In row‑echelon form, the last equation typically has only ___ variable.",
+          "blanks": [
+            {
+              "accept": [
+                "one",
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "Think of $z = 2$.",
+            "It's the number of variables isolated in the final equation."
+          ],
+          "feedbackIfWrong": "One variable."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "In the system $x - y + 5z = 22$, $y + 3z = 6$, $z = 3$, what is $y$? (Enter a number)",
+          "answer": "-3",
+          "hints": [
+            "Substitute $z=3$ into $y+3z=6$.",
+            "$y + 9 = 6$."
+          ],
+          "feedbackIfWrong": "$y = -3$."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "After finding $y$, we ___ it into the first equation to find $x$.",
+          "blanks": [
+            {
+              "accept": [
+                "substitute"
+              ]
+            }
+          ],
+          "hints": [
+            "You plug the number in.",
+            "The same action as 'back‑substitute'."
+          ],
+          "feedbackIfWrong": "Substitute the values back in."
+        }
+      ]
+    },
+    {
+      "id": "gaussian-elimination",
+      "title": "Gaussian Elimination",
+      "teacherCues": [
+        "Write a system not in row‑echelon form, e.g., $x - 2y + 3z = 9$, $-x + 3y = -4$, $2x - 5y + 5z = 17$.",
+        "Show how to use row operations (add, multiply, swap) to create the stair‑step pattern."
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine messy equations as a tangled ball of yarn. Gaussian elimination is the process of patiently untangling it until you have neat, separated threads that you can follow one by one."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Gaussian elimination]] uses three row operations to transform a system into row‑echelon form:",
+          "1. Swap two equations.",
+          "2. Multiply an equation by a nonzero constant.",
+          "3. Add a multiple of one equation to another to eliminate a variable.",
+          "The goal: start with $x$ in the first equation, eliminate $x$ from all lower equations, then eliminate $y$ from the next, etc."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: Transforming to Row‑Echelon Form",
+            "headers": [
+              "Step",
+              "Operation",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "Original",
+                "1": "$$\\begin{aligned} x - 2y + 3z &= 9 \\\\ -x + 3y &= -4 \\\\ 2x - 5y + 5z &= 17 \\end{aligned}$$",
+                "2": ""
+              },
+              {
+                "0": "Eliminate $x$ from Eq2",
+                "1": "Add Eq1 to Eq2",
+                "2": "$y + 3z = 5$"
+              },
+              {
+                "0": "Eliminate $x$ from Eq3",
+                "1": "Add $-2$×Eq1 to Eq3",
+                "2": "$-y - z = -1$"
+              },
+              {
+                "0": "Eliminate $y$ from Eq3",
+                "1": "Add Eq2 to Eq3",
+                "2": "$2z = 4$"
+              },
+              {
+                "0": "Make leading 1",
+                "1": "Multiply Eq3 by $1/2$",
+                "2": "$z = 2$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Row Operations",
+          "formula": "1. Swap $R_i \\leftrightarrow R_j$\n2. $kR_i$ ($k \\neq 0$)\n3. $R_i + kR_j \\to R_i$",
+          "notes": [
+            "Keep track of operations.",
+            "Always work from left to right, top to bottom."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full elimination",
+          "prompt": "Solve: $x - 2y + 3z = 9$, $-x + 3y = -4$, $2x - 5y + 5z = 17$.",
+          "steps": [
+            "Add Eq1 to Eq2: $y + 3z = 5$.",
+            "Add $-2$×Eq1 to Eq3: $-y - z = -1$.",
+            "Add the new Eq2 and Eq3: $2z = 4 \\to z = 2$.",
+            "Back‑substitute: $y + 6 = 5 \\to y = -1$; $x - 2(-1) + 3(2) = 9 \\to x = 1$.",
+            "Solution: $(1, -1, 2)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why that order?",
+          "prompt": "Explain why we eliminate $x$ from the second and third equations before touching $y$.",
+          "peerPrompt": "Discuss: If we eliminated $y$ first, would the $x$ terms still be messy? The goal is a stair‑step.",
+          "minLength": 2,
+          "steps": [
+            "We want $x$ only in the first equation, then $y$ in the first two, etc.",
+            "If we eliminate $y$ first, $x$ will reappear in later steps.",
+            "The systematic left‑to‑right elimination avoids backtracking."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Try it",
+          "prompt": "Solve using elimination: $x + y + z = 6$, $2x - y + z = 3$, $3x + y - z = 2$.",
+          "steps": [
+            "Eliminate $x$ from Eq2: subtract 2×Eq1: $-3y - z = -9$.",
+            "Eliminate $x$ from Eq3: subtract 3×Eq1: $-2y - 4z = -16$.",
+            "Now solve for $y$ and $z$: from $-3y - z = -9$ and $-2y - 4z = -16$, eliminate $y$: multiply first by 2, second by -3: $-6y - 2z = -18$, $6y + 12z = 48$ → $10z = 30 \\to z = 3$.",
+            "Then $y = 2$, $x = 1$. Solution: $(1, 2, 3)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Keep the system balanced",
+        "body": "When performing row operations, always apply the same operation to both sides of the equation. For example, if you add two equations, add the left sides and the right sides separately."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "Gaussian elimination uses row operations to transform a system into ___ form.",
+          "blanks": [
+            {
+              "accept": [
+                "row-echelon",
+                "row echelon"
+              ]
+            }
+          ],
+          "hints": [
+            "It has a stair‑step pattern.",
+            "The form needed for back‑substitution."
+          ],
+          "feedbackIfWrong": "Row‑echelon form."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "In the elimination example, after adding Eq1 to Eq2, we got $y + 3z = 5$. What is the coefficient of $y$? (Enter a number)",
+          "answer": "1",
+          "hints": [
+            "Look at the term $y$.",
+            "There's no number in front, so it's 1."
+          ],
+          "feedbackIfWrong": "The coefficient is 1."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "One allowed row operation is to multiply an equation by a ___ constant.",
+          "blanks": [
+            {
+              "accept": [
+                "nonzero",
+                "non-zero"
+              ]
+            }
+          ],
+          "hints": [
+            "You can't multiply by zero.",
+            "It must change the equation without losing solutions."
+          ],
+          "feedbackIfWrong": "A nonzero constant."
+        }
+      ]
+    },
+    {
+      "id": "inconsistent-systems",
+      "title": "Inconsistent Systems (No Solution)",
+      "teacherCues": [
+        "Write a system that leads to a false statement, e.g., $0 = -2$. Ask: Is there any triple that can satisfy this?",
+        "Explain that a false result indicates the planes never intersect — the system is inconsistent."
+      ],
+      "discoveryHook": {
+        "scenario": "Three friends claim they saw a UFO at the same time, but their stories place it in three different locations that never overlap. The inconsistency means no single point satisfies all three accounts."
+      },
+      "concept": {
+        "explanation": [
+          "During Gaussian elimination, you may obtain a statement like $0 = -2$.",
+          "This indicates that the original system has no solution; the equations are contradictory.",
+          "A system with no solution is called [[kw:inconsistent]]."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example of Inconsistent System",
+            "headers": [
+              "Step",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "Original",
+                "1": "$$\\begin{aligned} x - 3y - z &= 1 \\\\ 2x - y - 2z &= 2 \\\\ x + 2y - 3z &= -1 \\end{aligned}$$"
+              },
+              {
+                "0": "After row ops",
+                "1": "$x - 3y - z = 1$, $5y - 4z = 0$, $5y - 4z = -2$"
+              },
+              {
+                "0": "Subtract",
+                "1": "$0 = -2$ → no solution"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Inconsistent System Result",
+          "formula": "If you get $0 = k$ where $k \\neq 0$, the system has no solution.",
+          "notes": [
+            "Contradictory equation.",
+            "Original system is inconsistent."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Spot the contradiction",
+          "prompt": "Solve: $x - 3y - z = 1$, $2x - y - 2z = 2$, $x + 2y - 3z = -1$.",
+          "steps": [
+            "Eliminate $x$: subtract 2×Eq1 from Eq2 → $5y - 4z = 0$. Subtract Eq1 from Eq3 → $5y - 4z = -2$.",
+            "Now we have $5y - 4z = 0$ and $5y - 4z = -2$.",
+            "Subtracting gives $0 = -2$. Impossible.",
+            "No solution."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why no solution?",
+          "prompt": "Graphically, what does $0 = -2$ mean for three planes?",
+          "peerPrompt": "Discuss: Each equation is a plane. If two are parallel but distinct, can they intersect?",
+          "minLength": 2,
+          "steps": [
+            "The two equations $5y - 4z = 0$ and $5y - 4z = -2$ represent parallel planes.",
+            "They never intersect, so there is no point common to all three planes.",
+            "Thus the system has no solution."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick check",
+          "prompt": "Is the system $x + y = 2$, $x + y = 3$ consistent?",
+          "steps": [
+            "Subtract: $0 = -1$. False.",
+            "No, it's inconsistent."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Contradiction means stop",
+        "body": "Once you get a false statement like $0 = -2$, you can stop. The system has no solution; don't waste time trying to find one."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "A system with no solution is called ___.",
+          "blanks": [
+            {
+              "accept": [
+                "inconsistent"
+              ]
+            }
+          ],
+          "hints": [
+            "The opposite of consistent.",
+            "Starts with 'i'."
+          ],
+          "feedbackIfWrong": "Inconsistent."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "In the inconsistent example, the final contradiction was $0 =$ ___.",
+          "answer": "-2",
+          "hints": [
+            "Look at the step where we got $0 = ?$.",
+            "It was a negative number."
+          ],
+          "feedbackIfWrong": "$0 = -2$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "If two equations represent parallel planes, the system has ___ solution(s).",
+          "blanks": [
+            {
+              "accept": [
+                "no",
+                "zero",
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "Parallel planes never meet.",
+            "What is the number of intersection points?"
+          ],
+          "feedbackIfWrong": "No solution."
+        }
+      ]
+    },
+    {
+      "id": "infinite-solutions",
+      "title": "Systems with Infinitely Many Solutions",
+      "teacherCues": [
+        "Write a system that reduces to a true statement like $0 = 0$. Ask: What does that tell us?",
+        "Explain that a dependent equation gives infinitely many solutions, often described by a parameter."
+      ],
+      "discoveryHook": {
+        "scenario": "Three equations, but one is just a combination of the others — like three witnesses who actually tell the same story from different angles. There's not a single answer, but a whole family of them."
+      },
+      "concept": {
+        "explanation": [
+          "If elimination leads to $0 = 0$, the third equation is dependent on the first two; it provides no new information.",
+          "The system then reduces to two equations with three variables, which typically have infinitely many solutions.",
+          "We express the solutions in terms of a parameter, e.g., let $z = a$, then solve for $x$ and $y$ in terms of $a$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: Infinite Solutions",
+            "headers": [
+              "Step",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "Original",
+                "1": "$$\\begin{aligned} x + y - 3z &= -1 \\\\ -x + z &= 0 \\\\ y - 3z &= 0 \\end{aligned}$$"
+              },
+              {
+                "0": "After elimination",
+                "1": "$x + y - 3z = -1$, $y - z = 0$, $0 = 0$"
+              },
+              {
+                "0": "Solve",
+                "1": "Let $z = a$, then $y = a$, $x = 2a - 1$"
+              },
+              {
+                "0": "Solution",
+                "1": "$(2a-1, a, a)$, any real $a$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Parameterization",
+          "formula": "If $0=0$ appears, let the free variable be $t$, then express others in terms of $t$.",
+          "notes": [
+            "Choose the variable that is not isolated (often $z$).",
+            "Infinite solutions form a line or plane in 3D."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find the parametric solution",
+          "prompt": "Solve: $x + y - 3z = -1$, $-x + z = 0$, $y - 3z = 0$.",
+          "steps": [
+            "Add Eq1 and Eq2: $y - 2z = -1$.",
+            "Now we have $y - 3z = 0$ and $y - 2z = -1$. Subtract: $z = 1$? Wait, this gives a unique solution. Let's use a different system that yields infinite solutions: $x + y + z = 1$, $2x + 2y + 2z = 2$, $3x + 3y + 3z = 3$.",
+            "All equations are multiples of each other. So we have just one independent equation: $x + y + z = 1$.",
+            "Let $y = s$, $z = t$, then $x = 1 - s - t$. Infinitely many solutions: $(1 - s - t, s, t)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why infinite?",
+          "prompt": "Explain why $0=0$ leads to infinite solutions, not a contradiction.",
+          "peerPrompt": "Discuss: The equation $0=0$ is always true. Does it restrict the variables?",
+          "minLength": 2,
+          "steps": [
+            "$0=0$ is an identity—it holds for any values of $x, y, z$.",
+            "Thus we have fewer independent equations than variables.",
+            "We can choose one (or more) variable freely, and the others are determined."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple infinite system",
+          "prompt": "Solve: $x + y + z = 3$, $2x + 2y + 2z = 6$.",
+          "steps": [
+            "Second equation is just 2× the first. They are the same plane.",
+            "The solution is all points on the plane $x + y + z = 3$.",
+            "Parameterize: let $y = s$, $z = t$, then $x = 3 - s - t$.",
+            "Infinitely many solutions."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Not always a parameter for each variable",
+        "body": "When you have $0=0$, you only have as many independent equations as the rank. For a system of 3 variables and 2 independent equations, there will be one free parameter."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "If Gaussian elimination yields $0 = 0$, the system has ___ many solutions.",
+          "blanks": [
+            {
+              "accept": [
+                "infinitely"
+              ]
+            }
+          ],
+          "hints": [
+            "Not just one, but without bound.",
+            "The word starts with 'i'."
+          ],
+          "feedbackIfWrong": "Infinitely many solutions."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "In the parametric solution $(2a-1, a, a)$, if $a = 0$, what is $x$? (Enter a number)",
+          "answer": "-1",
+          "hints": [
+            "Plug $a=0$ into $2a-1$.",
+            "2(0) - 1 = ?"
+          ],
+          "feedbackIfWrong": "$x = -1$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "When expressing infinite solutions, we introduce one or more ___ to represent the free choices.",
+          "blanks": [
+            {
+              "accept": [
+                "parameters"
+              ]
+            }
+          ],
+          "hints": [
+            "Often letters like $a$, $s$, $t$.",
+            "Variables that can vary freely."
+          ],
+          "feedbackIfWrong": "Parameters."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-application",
+      "title": "Blueprint Aid – Real‑Life Application",
+      "teacherCues": [
+        "Pose: A movie theater sells three types of tickets: adult (\\$10), child (\\$6), and senior (\\$8). They sold 100 tickets for a total of \\$800. The number of child tickets was twice the number of senior tickets. Write equations.",
+        "Use Gaussian elimination to solve."
+      ],
+      "discoveryHook": {
+        "scenario": "A theater manager needs to know how many of each ticket type were sold from limited information. By setting up a system of three equations, she can determine the exact counts."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Let $x$ = adult tickets, $y$ = child tickets, $z$ = senior tickets. Total tickets: $x + y + z = 100$. Total revenue: $10x + 6y + 8z = 800$. Relationship: $y = 2z$.",
+          "[[imp:Solve]]: Substitute $y = 2z$ into the first two equations: $x + 3z = 100$, $10x + 20z = 800$. Simplify revenue: divide by 10 → $x + 2z = 80$. Subtract from first: $(x+3z)-(x+2z) = 100-80 → z = 20$.",
+          "Then $y = 40$, $x = 100 - 60 = 40$.",
+          "[[imp:Conclude]]: The theater sold 40 adult, 40 child, and 20 senior tickets."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Ticket Problem Setup",
+            "headers": [
+              "Type",
+              "Variable",
+              "Price",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "Adult",
+                "1": "$x$",
+                "2": "10",
+                "3": ""
+              },
+              {
+                "0": "Child",
+                "1": "$y$",
+                "2": "6",
+                "3": ""
+              },
+              {
+                "0": "Senior",
+                "1": "$z$",
+                "2": "8",
+                "3": ""
+              },
+              {
+                "0": "Total tickets",
+                "1": "",
+                "2": "",
+                "3": "$x + y + z = 100$"
+              },
+              {
+                "0": "Total revenue",
+                "1": "",
+                "2": "",
+                "3": "$10x + 6y + 8z = 800$"
+              },
+              {
+                "0": "Child vs Senior",
+                "1": "",
+                "2": "",
+                "3": "$y = 2z$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "System of Three Equations",
+          "formula": "$$x + y + z = 100$$ $$10x + 6y + 8z = 800$$ $$y = 2z$$",
+          "notes": [
+            "Substitute the simple relation first.",
+            "Then solve the remaining two equations."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Set up the system",
+          "prompt": "Translate the ticket problem into three equations.",
+          "steps": [
+            "Let $x$ = adult, $y$ = child, $z$ = senior.",
+            "Total tickets: $x + y + z = 100$.",
+            "Revenue: $10x + 6y + 8z = 800$.",
+            "Child = 2 × senior: $y = 2z$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve the system",
+          "prompt": "Work with a partner to find $x$, $y$, $z$.",
+          "peerPrompt": "Start by substituting $y = 2z$ into the other two equations. Then solve the resulting system.",
+          "minLength": 2,
+          "steps": [
+            "Substitute $y = 2z$: $x + 3z = 100$ and $10x + 6(2z) + 8z = 800 → 10x + 20z = 800$.",
+            "Simplify revenue equation: divide by 10 → $x + 2z = 80$.",
+            "Subtract: $(x+3z) - (x+2z) = 100 - 80 → z = 20$.",
+            "Then $y = 40$, $x = 100 - 60 = 40$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude with different numbers",
+          "prompt": "If total tickets were 100, revenue \\$700, and child tickets twice the senior tickets, find the amounts.",
+          "steps": [
+            "Equations: $x + y + z = 100$, $10x + 6y + 8z = 700$, $y = 2z$.",
+            "Substitute $y = 2z$: $x + 3z = 100$, $10x + 20z = 700$.",
+            "Divide revenue by 10: $x + 2z = 70$.",
+            "Subtract: $(x+3z) - (x+2z) = 100 - 70 → z = 30$.",
+            "Then $y = 60$, $x = 10$. So 10 adult, 60 child, 30 senior."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Substitution simplifies",
+        "body": "When one equation is simple like $y = 2z$, substitute it into the others right away. That reduces the system to two variables quickly."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the theater problem, the equation for total tickets is $x + y + z =$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "100"
+              ]
+            }
+          ],
+          "hints": [
+            "The total number of tickets.",
+            "Given as 100."
+          ],
+          "feedbackIfWrong": "100 tickets."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "How many senior tickets were sold in the original problem? (Enter a number)",
+          "answer": "20",
+          "hints": [
+            "Look at $z$ in the solution.",
+            "It's the smallest number."
+          ],
+          "feedbackIfWrong": "20 senior tickets."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The strategy of substituting $y = 2z$ first reduced the system from three variables to ___ variables.",
+          "blanks": [
+            {
+              "accept": [
+                "two",
+                "2"
+              ]
+            }
+          ],
+          "hints": [
+            "After substitution, we had equations in $x$ and $z$ only.",
+            "How many unknowns remained?"
+          ],
+          "feedbackIfWrong": "Two variables."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A coffee shop sells small, medium, and large coffees. Small cost \\$2, medium \\$3, large \\$4. They sold 50 coffees for \\$150. The number of large coffees was half the number of small. Find how many of each size.",
+        "type": "short-answer",
+        "answer": "20 small, 20 medium, 10 large",
+        "hints": [
+          "Let $x$ = small, $y$ = medium, $z$ = large. $x+y+z=50$, $2x+3y+4z=150$, $z = x/2$.",
+          "Substitute and solve."
+        ],
+        "feedbackIfWrong": "20 small, 20 medium, 10 large."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

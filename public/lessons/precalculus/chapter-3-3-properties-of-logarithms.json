@@ -1,0 +1,694 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-3-3-properties-of-logarithms",
+  "title": "Properties of Logarithms",
+  "standards": [
+    "HSF.LE.A.4",
+    "HSF.BF.B.5"
+  ],
+  "blocks": [
+    {
+      "id": "change-of-base",
+      "title": "Change-of-Base Formula",
+      "teacherCues": [
+        "Ask: How can you evaluate $\\log_3 10$ on a calculator that only has LOG and LN keys?",
+        "Write the change-of-base formula on the board: $\\log_a x = \\frac{\\log_b x}{\\log_b a}$."
+      ],
+      "discoveryHook": {
+        "scenario": "Most calculators only have buttons for log base 10 and base e. But what if you need $\\log_2 15$ or $\\log_5 100$? The change-of-base formula lets you convert any logarithm into a quotient of common or natural logs."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:change-of-base formula]] allows you to evaluate $\\log_a x$ using any base $b$: $$\\log_a x = \\frac{\\log_b x}{\\log_b a}$$",
+          "Common choices: base 10 (common log) or base $e$ (natural log): $\\log_a x = \\frac{\\log x}{\\log a} = \\frac{\\ln x}{\\ln a}$.",
+          "It works because logarithms with different bases are [[imp:constant multiples]] of each other.",
+          "Use it to compute logs with unusual bases on a calculator."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Change-of-Base Variants",
+            "headers": [
+              "To base $b$",
+              "Base 10",
+              "Base $e$"
+            ],
+            "rows": [
+              {
+                "0": "$ \\log_a x = \\frac{\\log_b x}{\\log_b a} $",
+                "1": "$ \\log_a x = \\frac{\\log x}{\\log a} $",
+                "2": "$ \\log_a x = \\frac{\\ln x}{\\ln a} $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Change-of-Base Formula",
+          "formula": "$$ \\log_a x = \\frac{\\log_b x}{\\log_b a} $$",
+          "notes": [
+            "Valid for any positive $a\\neq1$, $b\\neq1$, and $x>0$.",
+            "Often used with $b=10$ or $b=e$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Using Common Logs",
+          "prompt": "Evaluate $\\log_4 25$ using common logarithms. Round to four decimal places.",
+          "steps": [
+            "Apply the formula with base 10: $\\log_4 25 = \\frac{\\log 25}{\\log 4}$.",
+            "Use calculator: $\\log 25 \\approx 1.39794$, $\\log 4 \\approx 0.60206$.",
+            "Divide: $1.39794 / 0.60206 \\approx 2.3219$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Using Natural Logs",
+          "prompt": "Evaluate the same $\\log_4 25$ using natural logarithms. Explain why you get the same answer.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does changing the base not change the final value?",
+          "minLength": 8,
+          "steps": [
+            "Using base $e$: $\\log_4 25 = \\frac{\\ln 25}{\\ln 4}$.",
+            "$\\ln 25 \\approx 3.21888$, $\\ln 4 \\approx 1.38629$.",
+            "Divide: $3.21888 / 1.38629 \\approx 2.3219$, same as before because the ratio of logs is invariant."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Evaluating an Unusual Base",
+          "prompt": "Evaluate $\\log_3 17$ using natural logs. Round to three decimal places.",
+          "steps": [
+            "Write $\\log_3 17 = \\frac{\\ln 17}{\\ln 3}$.",
+            "$\\ln 17 \\approx 2.83321$, $\\ln 3 \\approx 1.09861$.",
+            "Result: $2.83321 / 1.09861 \\approx 2.579$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't invert the fraction!",
+        "body": "The change-of-base formula is $\\log_a x = \\frac{\\log_b x}{\\log_b a}$, not $\\frac{\\log_b a}{\\log_b x}$. The base you're converting from ($a$) goes in the denominator."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "In the change-of-base formula $\\log_a x = \\frac{\\ln x}{\\ln \\_\\_\\_}$, the denominator is the natural log of ___.",
+          "blanks": [
+            {
+              "accept": [
+                "a"
+              ]
+            }
+          ],
+          "hints": [
+            "The original base goes in the denominator.",
+            "It's the base you are converting from."
+          ],
+          "feedbackIfWrong": "The denominator is $\\ln a$."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "Evaluate $\\log_2 10$ using the change-of-base formula with common logs. Round to two decimal places.",
+          "answers": [
+            "3.32"
+          ],
+          "hints": [
+            "$\\log 10 / \\log 2 = 1 / 0.3010 \\approx 3.3219$.",
+            "Round to two decimals."
+          ],
+          "feedbackIfWrong": "$\\log_2 10 \\approx 3.32$."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "True or false: $\\log_a x = \\frac{\\log x}{\\log a}$ for any base $a>0$, $a\\neq 1$.",
+          "answers": [
+            "true"
+          ],
+          "hints": [
+            "This is the common log version of change-of-base.",
+            "Denominator is log of the original base."
+          ],
+          "feedbackIfWrong": "True."
+        }
+      ]
+    },
+    {
+      "id": "properties-of-logs",
+      "title": "Properties of Logarithms",
+      "teacherCues": [
+        "Write on the board: $\\log_a (uv) = \\log_a u + \\log_a v$, $\\log_a (u/v) = \\log_a u - \\log_a v$, $\\log_a u^n = n \\log_a u$.",
+        "Ask: How do these properties connect to exponent rules?"
+      ],
+      "discoveryHook": {
+        "scenario": "The properties of logarithms are just exponent rules in disguise. They transform multiplication into addition, division into subtraction, and powers into products. This is how logarithms simplified complex calculations before calculators."
+      },
+      "concept": {
+        "explanation": [
+          "1. [[imp:Product Property]]: $\\log_a (uv) = \\log_a u + \\log_a v$ (and $\\ln(uv) = \\ln u + \\ln v$).",
+          "2. [[imp:Quotient Property]]: $\\log_a \\frac{u}{v} = \\log_a u - \\log_a v$ (and $\\ln \\frac{u}{v} = \\ln u - \\ln v$).",
+          "3. [[imp:Power Property]]: $\\log_a u^n = n \\log_a u$ (and $\\ln u^n = n \\ln u$).",
+          "These properties hold for $u>0$, $v>0$, $a>0$, $a\\neq 1$, and any real $n$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Logarithm Properties",
+            "headers": [
+              "Property",
+              "General Base $a$",
+              "Natural Log"
+            ],
+            "rows": [
+              {
+                "0": "Product",
+                "1": "$ \\log_a(uv) = \\log_a u + \\log_a v $",
+                "2": "$ \\ln(uv) = \\ln u + \\ln v $"
+              },
+              {
+                "0": "Quotient",
+                "1": "$ \\log_a \\frac{u}{v} = \\log_a u - \\log_a v $",
+                "2": "$ \\ln \\frac{u}{v} = \\ln u - \\ln v $"
+              },
+              {
+                "0": "Power",
+                "1": "$ \\log_a u^n = n \\log_a u $",
+                "2": "$ \\ln u^n = n \\ln u $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Key Logarithm Properties",
+          "formula": "$$ \\log_a (uv) = \\log_a u + \\log_a v $$ $$ \\log_a \\frac{u}{v} = \\log_a u - \\log_a v $$ $$ \\log_a u^n = n \\log_a u $$",
+          "notes": [
+            "These are the three fundamental properties.",
+            "Remember: there is no property for $\\log_a(u+v)$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Using Product and Quotient",
+          "prompt": "Write $\\ln 6$ in terms of $\\ln 2$ and $\\ln 3$.",
+          "steps": [
+            "Since $6 = 2 \\cdot 3$, use the product property: $\\ln 6 = \\ln(2 \\cdot 3) = \\ln 2 + \\ln 3$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Combining Properties",
+          "prompt": "Write $\\ln \\frac{2}{27}$ in terms of $\\ln 2$ and $\\ln 3$. Explain each step.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does the quotient property interact with the power property here?",
+          "minLength": 8,
+          "steps": [
+            "Quotient: $\\ln \\frac{2}{27} = \\ln 2 - \\ln 27$.",
+            "$27 = 3^3$, so power property: $\\ln 27 = 3 \\ln 3$.",
+            "Thus $\\ln \\frac{2}{27} = \\ln 2 - 3 \\ln 3$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Exact Value",
+          "prompt": "Find the exact value of $\\log_5 \\sqrt[3]{5}$ without a calculator.",
+          "steps": [
+            "$\\sqrt[3]{5} = 5^{1/3}$.",
+            "Power property: $\\log_5 5^{1/3} = \\frac{1}{3} \\log_5 5 = \\frac{1}{3}(1) = \\frac{1}{3}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "No Property for Sum",
+        "body": "$\\log_a(u+v)$ cannot be simplified using log properties. The product/quotient/power rules apply to multiplication, division, and exponents, not addition inside the argument."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "$\\log_a (uv) = \\log_a u + \\log_a v$ is called the ___ property of logarithms.",
+          "blanks": [
+            {
+              "accept": [
+                "product"
+              ]
+            }
+          ],
+          "hints": [
+            "It involves multiplication.",
+            "The result is a sum of logs."
+          ],
+          "feedbackIfWrong": "This is the product property."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "Condense $\\log_2 5 + \\log_2 7$ into a single logarithm.",
+          "answers": [
+            "log2 35",
+            "log_2 35",
+            "log2(35)"
+          ],
+          "hints": [
+            "Product property in reverse.",
+            "$5 \\times 7 = 35$."
+          ],
+          "feedbackIfWrong": "$\\log_2 35$."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "Write $\\log x^3$ as a multiple of $\\log x$.",
+          "answers": [
+            "3logx",
+            "3 log x",
+            "3log x"
+          ],
+          "hints": [
+            "Power property: exponent becomes coefficient.",
+            "$\\log x^3 = 3 \\log x$."
+          ],
+          "feedbackIfWrong": "$3 \\log x$."
+        }
+      ]
+    },
+    {
+      "id": "expanding-logs",
+      "title": "Expanding Logarithmic Expressions",
+      "teacherCues": [
+        "Demonstrate expanding $\\log_3(9x^2)$ into $\\log_3 9 + 2\\log_3 x = 2 + 2\\log_3 x$.",
+        "Emphasize: work from the outside in; use product/quotient rules first, then power."
+      ],
+      "discoveryHook": {
+        "scenario": "Expanding a logarithm means breaking a single log into a sum, difference, and multiples of simpler logs. This is essential for solving equations and for calculus."
+      },
+      "concept": {
+        "explanation": [
+          "To [[kw:expand]] a logarithmic expression, use the properties in reverse order: deal with quotients and products first, then powers.",
+          "Common steps: rewrite radicals as fractional exponents, apply quotient/product rules to separate terms, then use the power rule to bring exponents down as coefficients.",
+          "The goal is to write the expression as sums and differences of logs with no exponents inside the argument."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Expanding Strategy",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Rewrite radicals as rational exponents."
+              },
+              {
+                "0": "2",
+                "1": "Apply quotient rule: $\\log(u/v) = \\log u - \\log v$."
+              },
+              {
+                "0": "3",
+                "1": "Apply product rule: $\\log(uv) = \\log u + \\log v$."
+              },
+              {
+                "0": "4",
+                "1": "Apply power rule: $\\log u^n = n \\log u$."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Expanding Logs",
+          "formula": "$$ \\log_a \\frac{u^n}{v^m} = n\\log_a u - m\\log_a v $$",
+          "notes": [
+            "Always completely expand so that no exponents remain inside the log arguments.",
+            "Check that all arguments are positive."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Expanding a Product",
+          "prompt": "Expand $\\log_4 (5x^3 y)$.",
+          "steps": [
+            "Product rule: $\\log_4 5 + \\log_4 x^3 + \\log_4 y$.",
+            "Power rule on $\\log_4 x^3$: $3 \\log_4 x$.",
+            "Result: $\\log_4 5 + 3\\log_4 x + \\log_4 y$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Expanding a Quotient with Radical",
+          "prompt": "Expand $\\ln \\frac{\\sqrt{3x-5}}{7}$. Explain how to handle the radical.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What do you do with the square root before applying log rules?",
+          "minLength": 8,
+          "steps": [
+            "Rewrite $\\sqrt{3x-5}$ as $(3x-5)^{1/2}$.",
+            "Quotient rule: $\\ln(3x-5)^{1/2} - \\ln 7$.",
+            "Power rule: $\\frac{1}{2} \\ln(3x-5) - \\ln 7$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Expand Completely",
+          "prompt": "Expand $\\log_3 \\frac{4x^2}{\\sqrt{y}}$.",
+          "steps": [
+            "Quotient rule: $\\log_3 4x^2 - \\log_3 \\sqrt{y}$.",
+            "Product rule on first term: $\\log_3 4 + \\log_3 x^2$.",
+            "Power rule: $\\log_3 4 + 2\\log_3 x - \\frac{1}{2}\\log_3 y$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Radicals First!",
+        "body": "Always rewrite radicals as rational exponents before applying log properties. For $\\sqrt[n]{x^m} = x^{m/n}$, then use the power rule."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "To expand $\\log \\sqrt{x}$, first rewrite the radical as $x^{1/2}$, then use the ___ property.",
+          "blanks": [
+            {
+              "accept": [
+                "power"
+              ]
+            }
+          ],
+          "hints": [
+            "It brings the exponent down.",
+            "Then you get $\\frac{1}{2}\\log x$."
+          ],
+          "feedbackIfWrong": "Use the power property."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "Expand $\\log_2 (8x)$ into a sum of logs.",
+          "answers": [
+            "log2 8 + log2 x",
+            "3 + log2 x"
+          ],
+          "hints": [
+            "$\\log_2(8x) = \\log_2 8 + \\log_2 x$.",
+            "And $\\log_2 8 = 3$."
+          ],
+          "feedbackIfWrong": "$\\log_2 8 + \\log_2 x$ or $3 + \\log_2 x$."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "Expand $\\ln 5x^2$.",
+          "answers": [
+            "ln5+2lnx",
+            "ln 5 + 2 ln x"
+          ],
+          "hints": [
+            "Product rule: $\\ln 5 + \\ln x^2$.",
+            "Then power: $2 \\ln x$."
+          ],
+          "feedbackIfWrong": "$\\ln 5 + 2 \\ln x$."
+        }
+      ]
+    },
+    {
+      "id": "condensing-logs",
+      "title": "Condensing Logarithmic Expressions",
+      "teacherCues": [
+        "Write $2\\log x + 3\\log(x+1)$ on the board and ask: How can we combine these into a single log?",
+        "Demonstrate using power rule first, then product rule."
+      ],
+      "discoveryHook": {
+        "scenario": "Condensing is the reverse of expanding — turning a sum/difference of logs back into a single logarithm. This is useful for solving logarithmic equations where both sides need to be a single log."
+      },
+      "concept": {
+        "explanation": [
+          "To [[kw:condense]] a logarithmic expression, apply the properties in this order: first use the power rule to move coefficients back as exponents, then use the product and quotient rules to combine terms.",
+          "Examples: $n \\log_a u = \\log_a u^n$; $\\log_a u + \\log_a v = \\log_a(uv)$; $\\log_a u - \\log_a v = \\log_a(u/v)$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Condensing Steps",
+            "headers": [
+              "Given",
+              "Step 1 (Power)",
+              "Step 2 (Combine)"
+            ],
+            "rows": [
+              {
+                "0": "$2\\log x + 3\\log(x+1)$",
+                "1": "$\\log x^2 + \\log(x+1)^3$",
+                "2": "$\\log [x^2(x+1)^3]$"
+              },
+              {
+                "0": "$\\frac{1}{2}\\ln x - \\ln y$",
+                "1": "$\\ln x^{1/2} - \\ln y$",
+                "2": "$\\ln \\frac{\\sqrt{x}}{y}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Condensing Logs",
+          "formula": "$$ a\\log_b u + c\\log_b v = \\log_b (u^a v^c) $$ $$ a\\log_b u - c\\log_b v = \\log_b \\frac{u^a}{v^c} $$",
+          "notes": [
+            "Always apply the power rule before product/quotient.",
+            "The final argument must be a single expression with no coefficients outside the log."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Condensing a Sum",
+          "prompt": "Condense $\\frac{1}{2}\\log x + 3\\log(x+1)$ into a single logarithm.",
+          "steps": [
+            "Power rule: $\\log x^{1/2} + \\log(x+1)^3$.",
+            "Product rule: $\\log [\\sqrt{x}(x+1)^3]$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Condensing a Difference",
+          "prompt": "Condense $2\\ln(x+2) - \\ln x$. Explain why the power rule must be applied first.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why can't you combine $2\\ln(x+2)$ and $-\\ln x$ directly without using the power rule?",
+          "minLength": 8,
+          "steps": [
+            "The coefficient 2 must become an exponent first: $\\ln(x+2)^2 - \\ln x$.",
+            "Then apply quotient rule: $\\ln \\frac{(x+2)^2}{x}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Condensing with Brackets",
+          "prompt": "Condense $\\frac{1}{3}[\\log_2 x + \\log_2 (x+1)]$.",
+          "steps": [
+            "First combine inside brackets: $\\log_2 [x(x+1)]$.",
+            "Multiply by $\\frac{1}{3}$ using power rule: $\\log_2 [x(x+1)]^{1/3} = \\log_2 \\sqrt[3]{x(x+1)}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Power Rule First",
+        "body": "When condensing, always move coefficients inside as exponents using the power rule BEFORE using the product or quotient rules. Coefficients must become exponents on their arguments."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "To condense $3\\log_2 x + \\log_2 y$, first rewrite $3\\log_2 x$ as $\\log_2 x$ raised to the ___ power.",
+          "blanks": [
+            {
+              "accept": [
+                "3",
+                "third"
+              ]
+            }
+          ],
+          "hints": [
+            "The coefficient becomes the exponent.",
+            "Power rule."
+          ],
+          "feedbackIfWrong": "Rewrite $3\\log_2 x$ as $\\log_2 x^3$."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "Condense $\\ln x - \\ln 2$ into a single logarithm.",
+          "answers": [
+            "ln(x/2)",
+            "ln (x/2)"
+          ],
+          "hints": [
+            "Quotient rule in reverse.",
+            "$\\ln u - \\ln v = \\ln(u/v)$."
+          ],
+          "feedbackIfWrong": "$\\ln \\frac{x}{2}$."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "Condense $2\\log_5 a + \\log_5 b - 3\\log_5 c$.",
+          "answers": [
+            "log5(a^2 b / c^3)",
+            "log_5 (a^2 b / c^3)"
+          ],
+          "hints": [
+            "Power rule first: $\\log_5 a^2 + \\log_5 b - \\log_5 c^3$.",
+            "Then product and quotient."
+          ],
+          "feedbackIfWrong": "$\\log_5 \\frac{a^2 b}{c^3}$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-expand-condense",
+      "title": "Blueprint Aid — Expanding and Condensing",
+      "teacherCues": [
+        "Write the blueprint steps on the board: 1. Identify operation (expand or condense). 2. Apply power rule first (if condensing). 3. Apply product/quotient rules. 4. Simplify radicals/exponents.",
+        "Model with $\\ln \\frac{x^2\\sqrt{y}}{z}$."
+      ],
+      "discoveryHook": {
+        "scenario": "Using a consistent blueprint for expanding or condensing logarithmic expressions prevents sign errors and ensures every term is handled correctly. Think of it as an algorithm: power first, then product/quotient."
+      },
+      "concept": {
+        "explanation": [
+          "**Expanding**: 1. Rewrite radicals as exponents. 2. Apply quotient rule to split fractions. 3. Apply product rule to split products. 4. Apply power rule to bring exponents down.",
+          "**Condensing**: 1. Apply power rule to move coefficients back as exponents. 2. Combine sums into products, differences into quotients. 3. Simplify the argument if possible.",
+          "This blueprint keeps the process structured and reduces mistakes."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Log Manipulation",
+            "headers": [
+              "Task",
+              "Step 1",
+              "Step 2",
+              "Step 3"
+            ],
+            "rows": [
+              {
+                "0": "Expand",
+                "1": "Radicals → exp.",
+                "2": "Quotient → difference",
+                "3": "Product → sum, Power → coeff."
+              },
+              {
+                "0": "Condense",
+                "1": "Power → exponents",
+                "2": "Sum → product, Diff. → quotient",
+                "3": "Simplify"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Expand/Condense Blueprint",
+          "formula": "$$ \\text{Power} \\rightarrow \\text{Product/Quotient} $$",
+          "notes": [
+            "Expand: outside-in, ultimately no exponents inside logs.",
+            "Condense: inside-out, ultimately a single log with no coefficients."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Blueprint Expansion",
+          "prompt": "Expand $\\log_5 \\frac{25x^3}{y^2}$ using the blueprint.",
+          "steps": [
+            "Quotient: $\\log_5 25x^3 - \\log_5 y^2$.",
+            "Product: $\\log_5 25 + \\log_5 x^3 - \\log_5 y^2$.",
+            "Power: $\\log_5 25 = 2$, $3\\log_5 x$, $-2\\log_5 y$.",
+            "Result: $2 + 3\\log_5 x - 2\\log_5 y$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Blueprint Condensation",
+          "prompt": "Explain how to condense $4\\log x - 2\\log y + \\frac{1}{3}\\log z$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the $\\frac{1}{3}$ become a cube root?",
+          "minLength": 8,
+          "steps": [
+            "Power: $\\log x^4 - \\log y^2 + \\log z^{1/3}$.",
+            "Combine into a single log: $\\log \\frac{x^4 \\cdot z^{1/3}}{y^2} = \\log \\frac{x^4 \\sqrt[3]{z}}{y^2}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Blueprint Practice",
+          "prompt": "Use the blueprint to condense $3\\ln a - \\ln b + \\frac{1}{2}\\ln c$.",
+          "steps": [
+            "Power: $\\ln a^3 - \\ln b + \\ln c^{1/2}$.",
+            "Combine: $\\ln \\frac{a^3 \\sqrt{c}}{b}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Signs When Condensing",
+        "body": "Recall: $+ \\log M$ becomes a factor $M$ in the numerator; $- \\log M$ becomes a factor in the denominator. Keep track of signs—losing a sign flips the fraction."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "fill-blank",
+          "prompt": "When expanding $\\log \\frac{x^2}{y}$, the quotient rule gives $\\log x^2 - $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "log y",
+                "logy"
+              ]
+            }
+          ],
+          "hints": [
+            "Quotient rule: $\\log(u/v) = \\log u - \\log v$.",
+            "The denominator."
+          ],
+          "feedbackIfWrong": "$\\log x^2 - \\log y$."
+        },
+        {
+          "id": "q5-2",
+          "type": "short-answer",
+          "prompt": "Condense $2\\log_3 m + \\log_3 n$ into a single log.",
+          "answers": [
+            "log3(m^2 n)",
+            "log_3 (m^2 n)"
+          ],
+          "hints": [
+            "Power first: $\\log_3 m^2$.",
+            "Then product: $\\log_3 (m^2 n)$."
+          ],
+          "feedbackIfWrong": "$\\log_3 (m^2 n)$."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "True or false: $\\log(x+y) = \\log x + \\log y$.",
+          "answers": [
+            "false"
+          ],
+          "hints": [
+            "There is no sum property.",
+            "Product property applies to multiplication, not addition."
+          ],
+          "feedbackIfWrong": "False. $\\log(x+y)$ cannot be split."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

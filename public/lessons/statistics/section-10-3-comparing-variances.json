@@ -1,0 +1,659 @@
+{
+  "schemaVersion": 2,
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.B.4"
+  ],
+  "blocks": [
+    {
+      "teacherCues": [
+        "Draw an F‑curve: starts at 0, hump near 1, long right tail.",
+        "Ask: Why can F never be negative?"
+      ],
+      "questions": [
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The F‑distribution is right‑skewed.",
+          "answer": "right",
+          "hints": [
+            "It has a long tail on one side.",
+            "Starts at 0, hump near 1."
+          ],
+          "prompt": "The F‑distribution is always skewed to the ___.",
+          "id": "q10-3-1"
+        },
+        {
+          "answer": "0.025",
+          "type": "short-answer",
+          "prompt": "For a two‑tailed F‑test at α = 0.05, which α value do you look up in the table? (Give number: 0.025)",
+          "feedbackIfWrong": "Use α/2 = 0.025 for a two‑tailed test.",
+          "hints": [
+            "It's half of the significance level.",
+            "0.05 / 2 = ?"
+          ],
+          "id": "q10-3-2"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "F.INV.RT",
+                "=F.INV.RT"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Use =F.INV.RT(α, d.f.N, d.f.D).",
+          "hints": [
+            "Starts with F.INV.",
+            "Ends with RT."
+          ],
+          "type": "fill-blank",
+          "id": "q10-3-3",
+          "prompt": "Google Sheets function to get a right‑tailed critical F‑value is ___."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When we compare two sample variances, their ratio follows a special curve called the F‑distribution. It helps us decide if one variance is really bigger than the other, or just different by chance."
+      },
+      "title": "The F‑Distribution",
+      "confusionCorner": {
+        "body": "The F‑distribution uses two degrees of freedom: one for the top variance, one for the bottom. [[imp:Don't mix them up.]] The numerator df comes from the sample with the larger variance.",
+        "title": "Two df Numbers, Not One!"
+      },
+      "id": "f-distribution-basics",
+      "concept": {
+        "explanation": [
+          "The [[kw:F‑distribution]] is a curve used to compare two variances.",
+          "It is always skewed to the right. Values are zero or positive.",
+          "The shape depends on two numbers: [[imp:degrees of freedom for the top (numerator)]] and [[imp:degrees of freedom for the bottom (denominator)]].",
+          "We use an F‑table (Table 7) to find [[kw:critical values]]. Match the numerator df (column) and denominator df (row) for a given $\\alpha$."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Right‑tailed: use $\\alpha$ table.",
+            "Two‑tailed: use $\\frac{1}{2}\\alpha$ table.",
+            "Google Sheets: `=F.INV.RT(α, d.f.N, d.f.D)`"
+          ],
+          "title": "F Critical Value Notation",
+          "formula": "$$ F_{\\alpha, d.f._N, d.f._D} $$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Finding an F Critical Value (α = 0.10)",
+            "rows": [
+              {
+                "0": "5",
+                "1": "28",
+                "2": "2.06"
+              }
+            ],
+            "headers": [
+              "d.f.N = 5",
+              "d.f.D = 28",
+              "Critical Value"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "steps": [
+            "In the α = 0.05 table, find column 4.",
+            "Scroll down to row 15.",
+            "The value is 3.06. So reject if F > 3.06."
+          ],
+          "role": "guided",
+          "title": "Example A – Reading the Table",
+          "prompt": "Find the right‑tailed critical value for α = 0.05, numerator df = 4, denominator df = 15."
+        },
+        {
+          "steps": [
+            "Because we put the larger variance in the numerator, F is always ≥ 1.",
+            "So we only check the right tail.",
+            "To keep the total α = 0.05, we split it: 0.025 in the right tail."
+          ],
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "Why do we look at the 0.025 table for a two‑tailed test with α = 0.05?",
+          "peerPrompt": "Without looking back...\n\nDiscuss: We always put the larger variance on top, so F ≥ 1. Which tail are we really checking?",
+          "title": "Example B – Two‑Tailed Test"
+        },
+        {
+          "steps": [
+            "Numerator df = n₁ − 1 = 9.",
+            "Denominator df = n₂ − 1 = 20.",
+            "We need these two numbers to look up the critical value."
+          ],
+          "prompt": "Sample sizes: 10 and 21. The larger variance is from the first sample. Find both degrees of freedom.",
+          "title": "Example C – Degrees of Freedom",
+          "role": "independent"
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "To compare two variances, we simply divide the larger sample variance by the smaller one. The result is our F‑statistic. If this number is large, the variances likely differ."
+      },
+      "questions": [
+        {
+          "id": "q10-3-4",
+          "prompt": "If s₁² = 50 and s₂² = 20, what is the F‑statistic? (Answer as decimal: 2.5)",
+          "feedbackIfWrong": "F = 50 / 20 = 2.5.",
+          "answer": "2.5",
+          "hints": [
+            "F = larger / smaller.",
+            "50 / 20 = ?"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "larger",
+                "bigger"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Always put the larger sample variance in the numerator.",
+          "hints": [
+            "So that F ≥ 1.",
+            "The larger of the two sample variances."
+          ],
+          "type": "fill-blank",
+          "prompt": "In the F‑test, we always put the ___ variance in the numerator.",
+          "id": "q10-3-5"
+        },
+        {
+          "id": "q10-3-6",
+          "feedbackIfWrong": "Numerator df = 15.",
+          "prompt": "If the sample with the larger variance has n = 16, what is the numerator df?",
+          "hints": [
+            "df = n − 1.",
+            "16 − 1 = ?"
+          ],
+          "answer": "15",
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "36 > 25, so numerator = 36, denominator = 25.",
+            "$F = 36/25 = 1.44$.",
+            "Numerator df = 12 − 1 = 11; denominator df = 15 − 1 = 14."
+          ],
+          "title": "Example A – Calculate F",
+          "role": "guided",
+          "prompt": "Sample A: n=12, s²=36. Sample B: n=15, s²=25. Compute F and the degrees of freedom."
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Why Larger on Top?",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nWhat would happen if the smaller variance were on top and F < 1? Would the F‑table still work?",
+          "steps": [
+            "F‑table values are all greater than 1.",
+            "If F < 1, we couldn't use the table directly.",
+            "By putting the larger variance on top, F ≥ 1 and the test becomes right‑tailed."
+          ],
+          "prompt": "Explain to a partner why we always put the larger sample variance in the numerator."
+        },
+        {
+          "title": "Example C – Check Conditions",
+          "role": "independent",
+          "prompt": "Two groups of students take different exams. Their scores are recorded. Can we use an F‑test to compare score variances?",
+          "steps": [
+            "Random? If students were randomly selected, yes.",
+            "Independent? Two separate groups, yes.",
+            "Normal? Exam scores often approximately normal; assume okay.",
+            "Conditions seem satisfied."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:two‑sample F‑test]] compares two population variances.",
+          "Test statistic: $$F = \\frac{s_1^2}{s_2^2}$$ Always put the [[imp:larger sample variance in the numerator]] so F ≥ 1.",
+          "Degrees of freedom: numerator df = n₁ − 1, denominator df = n₂ − 1.",
+          "Hypotheses: $H_0$ usually says the variances are equal. $H_a$ can be one‑sided or two‑sided.",
+          "Three conditions: 1) random samples, 2) independent samples, 3) both populations normal."
+        ],
+        "formulaCard": {
+          "notes": [
+            "$s_1^2 \\ge s_2^2$.",
+            "Numerator df = $n_1 - 1$, denominator df = $n_2 - 1$.",
+            "Reject $H_0$ if $F$ > critical value."
+          ],
+          "formula": "$$ F = \\frac{s_1^2}{s_2^2} $$",
+          "title": "F‑Test Statistic"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "",
+              "Sample 1 (larger s²)",
+              "Sample 2 (smaller s²)"
+            ],
+            "title": "F‑Test Setup",
+            "rows": [
+              {
+                "0": "Sample variance",
+                "1": "$s_1^2$",
+                "2": "$s_2^2$"
+              },
+              {
+                "0": "Sample size",
+                "1": "$n_1$",
+                "2": "$n_2$"
+              },
+              {
+                "0": "df",
+                "1": "$n_1 - 1$",
+                "2": "$n_2 - 1$"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "id": "f-test-statistic",
+      "confusionCorner": {
+        "title": "F‑Test Is Sensitive",
+        "body": "The F‑test assumes both populations are normal. If they are not normal, the test may give wrong results. [[imp:Always check the normality assumption.]]"
+      },
+      "title": "The F‑Test Statistic",
+      "teacherCues": [
+        "Write F = s₁² / s₂² with s₁² ≥ s₂². Emphasize: larger variance always on top.",
+        "List three conditions: random, independent, normal populations."
+      ]
+    },
+    {
+      "title": "Example: Restaurant Wait Times",
+      "concept": {
+        "explanation": [
+          "Old variance = 400, new variance = 256. Larger is old, so numerator: $F = 400/256 = 1.5625$.",
+          "Numerator df = 10 − 1 = 9, denominator df = 21 − 1 = 20.",
+          "We want to show old variance > new variance. So $H_0: \\sigma_{old}^2 \\le \\sigma_{new}^2$, $H_a: \\sigma_{old}^2 > \\sigma_{new}^2$ (right‑tailed).",
+          "Critical value from α = 0.10 table with d.f.N=9, d.f.D=20 is 1.96.",
+          "$F = 1.56 < 1.96$, so fail to reject $H_0$. Not enough evidence the new system reduces variance."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Old",
+                "1": "10",
+                "2": "400"
+              },
+              {
+                "0": "New",
+                "1": "21",
+                "2": "256"
+              }
+            ],
+            "title": "Wait Time Data",
+            "headers": [
+              "System",
+              "n",
+              "s²"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "A manager wants to prove the new system has smaller variance in wait times. We'll test this at α = 0.10 using an F‑test."
+      },
+      "confusionCorner": {
+        "title": "Small F, No Difference",
+        "body": "An F value close to 1 means the sample variances are similar. Even if one is a bit larger, it may not be statistically significant. [[imp:Only a large F (above critical value) shows a real difference.]]"
+      },
+      "id": "example-restaurant-wait-times",
+      "examples": [
+        {
+          "prompt": "Old variance 400, new variance 256. Find F.",
+          "role": "guided",
+          "title": "Example A – Compute F",
+          "steps": [
+            "Larger is 400, smaller 256.",
+            "$F = 400 / 256 = 1.5625$.",
+            "F ≈ 1.56."
+          ]
+        },
+        {
+          "title": "Example B – Find Critical Value",
+          "minLength": 2,
+          "prompt": "How do we find the critical value for α = 0.10, d.f.N=9, d.f.D=20?",
+          "role": "peer-explain",
+          "steps": [
+            "In the α = 0.10 table, find numerator df = 9 column.",
+            "Go down to denominator df = 20 row.",
+            "The intersection is 1.96.",
+            "This is the critical value."
+          ],
+          "peerPrompt": "Without looking back...\n\nLook at the α = 0.10 F‑table. Find column 9, row 20. What number is there?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "1.56 < 1.96, so F is not in the rejection region.",
+            "Fail to reject H₀.",
+            "The data do not support the claim that the new system has smaller variance."
+          ],
+          "prompt": "F = 1.56, critical value = 1.96. What is the conclusion?",
+          "title": "Example C – Decision"
+        }
+      ],
+      "teacherCues": [
+        "Write: Old system n=10, s²=400; New system n=21, s²=256. α=0.10.",
+        "Guide through computing F, finding critical value, making decision."
+      ],
+      "questions": [
+        {
+          "answer": "1.56",
+          "prompt": "In the restaurant example, what is the F‑statistic? (Answer to two decimals: 1.56)",
+          "type": "short-answer",
+          "hints": [
+            "F = 400 / 256.",
+            "Round to two decimal places."
+          ],
+          "feedbackIfWrong": "F = 400/256 ≈ 1.56.",
+          "id": "q10-3-7"
+        },
+        {
+          "feedbackIfWrong": "The critical value is 1.96.",
+          "answer": "1.96",
+          "id": "q10-3-8",
+          "type": "short-answer",
+          "hints": [
+            "From F‑table, column 9, row 20.",
+            "The value is just below 2."
+          ],
+          "prompt": "What is the critical value for α=0.10, d.f.N=9, d.f.D=20? (Answer: 1.96)"
+        },
+        {
+          "prompt": "Since 1.56 < 1.96, we ___ to reject H₀.",
+          "type": "fill-blank",
+          "feedbackIfWrong": "We fail to reject H₀.",
+          "hints": [
+            "We do not have enough evidence.",
+            "The word is 'fail'."
+          ],
+          "id": "q10-3-9",
+          "blanks": [
+            {
+              "accept": [
+                "fail"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "type": "short-answer",
+          "hints": [
+            "F = 32.49 / 12.25.",
+            "Round to two decimals."
+          ],
+          "prompt": "In the stock example, what is F to two decimal places? (Answer: 2.65)",
+          "feedbackIfWrong": "F ≈ 2.65.",
+          "id": "q10-3-10",
+          "answer": "2.65"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "0.025"
+              ]
+            }
+          ],
+          "hints": [
+            "Half of 0.05.",
+            "α/2."
+          ],
+          "type": "fill-blank",
+          "prompt": "For a two‑tailed F‑test at α=0.05, use the F‑table with α = ___.",
+          "feedbackIfWrong": "Use α/2 = 0.025.",
+          "id": "q10-3-11"
+        },
+        {
+          "prompt": "If F = 2.65 and critical value = 2.09, do we reject H₀? (yes or no)",
+          "hints": [
+            "Is 2.65 > 2.09?",
+            "If F is larger, reject."
+          ],
+          "feedbackIfWrong": "Yes, reject H₀ because 2.65 > 2.09.",
+          "type": "short-answer",
+          "answer": "yes",
+          "id": "q10-3-12"
+        }
+      ],
+      "id": "two-tailed-f-test-stocks",
+      "confusionCorner": {
+        "body": "If you are given standard deviations, remember to square them to get variances before computing F. [[imp:F compares variances, not standard deviations!]]",
+        "title": "Don't Forget to Square"
+      },
+      "teacherCues": [
+        "Write Stock A: n=30, s=3.5; Stock B: n=31, s=5.7.",
+        "Show that we put larger variance (Stock B) on top, then use α/2 = 0.025."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Compute F",
+          "prompt": "Stock A: s=3.5, Stock B: s=5.7. Find F.",
+          "steps": [
+            "Stock B variance = 5.7² = 32.49; Stock A variance = 3.5² = 12.25.",
+            "Larger is 32.49, so $F = 32.49 / 12.25 \\approx 2.65$."
+          ]
+        },
+        {
+          "minLength": 2,
+          "title": "Example B – Critical Value",
+          "prompt": "Find the critical value for two‑tailed α=0.05, d.f.N=30, d.f.D=29.",
+          "role": "peer-explain",
+          "steps": [
+            "Look at the 0.025 F‑table (since two‑tailed).",
+            "Numerator df = 30, denominator df = 29.",
+            "The critical value is approximately 2.09.",
+            "Reject H₀ if F > 2.09."
+          ],
+          "peerPrompt": "Without looking back...\n\nUse the 0.025 table. Column 30, row 29. The value is about 2.09."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "2.65 > 2.09, so reject H₀.",
+            "The variances differ significantly.",
+            "One stock is riskier than the other."
+          ],
+          "title": "Example C – Decision",
+          "prompt": "F = 2.65, critical value = 2.09. What do you conclude?"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Which stock is riskier? Risk is measured by variance. We'll test if the two stocks' daily price variances are different (two‑tailed test, α = 0.05)."
+      },
+      "title": "Two‑Tailed F‑Test: Stock Risk",
+      "concept": {
+        "explanation": [
+          "Stock B: $s^2 = 5.7^2 = 32.49$. Stock A: $s^2 = 3.5^2 = 12.25$.",
+          "$F = 32.49 / 12.25 \\approx 2.65$.",
+          "Numerator df = 30 (since n₁=31), denominator df = 29 (n₂=30).",
+          "For two‑tailed α=0.05, use the 0.025 F‑table. Critical value ≈ 2.09.",
+          "$F = 2.65 > 2.09$, so reject $H_0$. The variances are significantly different."
+        ],
+        "visuals": [
+          {
+            "title": "Stock Data",
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Stock",
+              "n",
+              "s",
+              "s²"
+            ],
+            "rows": [
+              {
+                "0": "A",
+                "1": "30",
+                "2": "3.5",
+                "3": "12.25"
+              },
+              {
+                "0": "B",
+                "1": "31",
+                "2": "5.7",
+                "3": "32.49"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "confusionCorner": {
+        "body": "With small samples, critical values are large, making it hard to reject H₀. Failing to reject does not prove variances are equal; it just means we didn't see a big enough difference.",
+        "title": "Small Sample Caution"
+      },
+      "teacherCues": [
+        "Walk through: Company A says its appliances have less variance in life than Company B.",
+        "n₁=20, s₁²=2.6; n₂=25, s₂²=2.8. α=0.05."
+      ],
+      "discoveryHook": {
+        "scenario": "A company claims its appliances' lifetimes vary less than a competitor's. Let's test this using Understand–Solve–Conclude."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Understand",
+          "prompt": "Identify the claim and set up H₀ and Hₐ.",
+          "steps": [
+            "Claim: A's variance < B's variance.",
+            "Larger variance is B's. Set numerator = B.",
+            "$H_0: \\sigma_B^2 \\le \\sigma_A^2$, $H_a: \\sigma_B^2 > \\sigma_A^2$ (right‑tailed)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "$F = 2.8 / 2.6 \\approx 1.077$.",
+            "Critical value from table ≈ 2.11.",
+            "Reject H₀ if F > 2.11."
+          ],
+          "prompt": "Compute F and find the critical value.",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\n$F = 2.8/2.6 \\approx 1.08$. Use F‑table with α=0.05, d.f.N=24, d.f.D=19 to find critical value (≈2.11).",
+          "title": "Example B – Solve"
+        },
+        {
+          "role": "independent",
+          "prompt": "F = 1.08, critical value 2.11. Decision?",
+          "steps": [
+            "1.08 < 2.11, so fail to reject H₀.",
+            "Not enough evidence that A's variance is smaller.",
+            "The sample sizes may be too small to detect a difference."
+          ],
+          "title": "Example C – Conclude"
+        }
+      ],
+      "title": "Blueprint Aid: Testing a Claim About Variances",
+      "questions": [
+        {
+          "feedbackIfWrong": "Company B has the larger variance, so it's in the numerator.",
+          "answer": "B",
+          "id": "q10-3-13",
+          "type": "short-answer",
+          "prompt": "Which company's variance goes in the numerator? (A or B)",
+          "hints": [
+            "B has variance 2.8, A has 2.6.",
+            "Larger variance is numerator."
+          ]
+        },
+        {
+          "answer": "1.08",
+          "prompt": "What is the F‑statistic? (Answer to two decimals: 1.08)",
+          "id": "q10-3-14",
+          "type": "short-answer",
+          "hints": [
+            "F = 2.8 / 2.6.",
+            "Round to two decimal places."
+          ],
+          "feedbackIfWrong": "F ≈ 1.08."
+        },
+        {
+          "prompt": "With F = 1.08 < 2.11, we ___ to reject H₀.",
+          "hints": [
+            "We do not have enough evidence.",
+            "The word is 'fail'."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "fail"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "id": "q10-3-15",
+          "feedbackIfWrong": "We fail to reject H₀."
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "**Understand**: Claim is A's variance < B's variance. B's variance is larger (2.8), so B is numerator. $H_0: \\sigma_B^2 \\le \\sigma_A^2$, $H_a: \\sigma_B^2 > \\sigma_A^2$ (right‑tailed).",
+          "**Solve**: $F = 2.8/2.6 \\approx 1.08$. Numerator df = 25−1=24, denominator df = 20−1=19. Critical value for α=0.05 is about 2.11.",
+          "**Conclude**: 1.08 < 2.11, fail to reject H₀. No evidence that A's variance is smaller."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "A",
+                "1": "20",
+                "2": "2.6"
+              },
+              {
+                "0": "B",
+                "1": "25",
+                "2": "2.8"
+              }
+            ],
+            "headers": [
+              "Company",
+              "n",
+              "s²"
+            ],
+            "title": "Appliance Life Data",
+            "variant": "colorful",
+            "type": "table"
+          }
+        ]
+      },
+      "id": "blueprint-f-test"
+    }
+  ],
+  "id": "section-10-3-comparing-variances",
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Keep the F‑test idea simple: ratio of variances, larger on top, compare to table.",
+    "Reinforce that F‑test requires normal populations.",
+    "Show Google Sheets: =F.TEST(data1, data2) gives two‑tailed p‑value instantly.",
+    "Remind students to square standard deviations before computing F."
+  ],
+  "title": "Comparing Two Variances",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

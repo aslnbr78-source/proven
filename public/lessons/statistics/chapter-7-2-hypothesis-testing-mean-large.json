@@ -1,0 +1,791 @@
+{
+  "presenterNotes": [
+    "Block 1: Focus on the meaning of the P-value and the decision rule. The three types of tests should be second nature. Show how to compute P-values using Google Sheets.",
+    "Block 2: Walk through the z-test step by step. Emphasize the condition n ≥ 30 for using s. The pit stop example is memorable.",
+    "Block 3: The critical value concept is important. The table of common values is a quick reference. Google Sheets NORM.S.INV makes finding any critical value easy.",
+    "Block 4: Show that the rejection region method gives the same answer as P-value. Students can choose either method.",
+    "Block 5: The blueprint ties everything together. The gas mileage and cereal box examples are realistic. Remind students about the difference between statistical and practical significance."
+  ],
+  "id": "chapter-7-2-hypothesis-testing-mean-large",
+  "title": "Hypothesis Testing for the Mean (Large Samples)",
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Left‑tailed ($ H_a < $)",
+                "1": "Area to the left of $ z $",
+                "2": "`=NORM.S.DIST(z, TRUE)`"
+              },
+              {
+                "0": "Right‑tailed ($ H_a > $)",
+                "1": "Area to the right of $ z $",
+                "2": "`=1 - NORM.S.DIST(z, TRUE)`"
+              },
+              {
+                "0": "Two‑tailed ($ H_a \\neq $)",
+                "1": "Twice the tail area",
+                "2": "`=2 * (1 - NORM.S.DIST(ABS(z), TRUE))`"
+              }
+            ],
+            "headers": [
+              "Test Type",
+              "Area to Use",
+              "Google Sheets Formula"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Finding the P‑Value for a z‑Test"
+          }
+        ],
+        "formulaCard": {
+          "title": "Decision Rule",
+          "formula": "$$ \\text{If P-value } \\le \\alpha \\;\\rightarrow\\; \\text{Reject } H_0 $$ $$ \\text{If P-value } > \\alpha \\;\\rightarrow\\; \\text{Fail to reject } H_0 $$",
+          "legend": [
+            {
+              "symbol": "$ \\alpha $",
+              "meaning": "level of significance (e.g., 0.05)",
+              "tone": "core"
+            }
+          ]
+        },
+        "explanation": [
+          "The [[kw:P‑value]] is the probability of obtaining a test statistic as extreme as (or more extreme than) the observed value, assuming $ H_0 $ is true.",
+          "Decision rule: If $ \\text{P-value} \\le \\alpha $, reject $ H_0 $. If $ \\text{P-value} > \\alpha $, fail to reject $ H_0 $.",
+          "For a [[kw:left‑tailed test]]: P‑value = area in the left tail (from the z‑table or `=NORM.S.DIST(z, TRUE)` in Google Sheets).",
+          "For a [[kw:right‑tailed test]]: P‑value = area in the right tail (`=1 - NORM.S.DIST(z, TRUE)`).",
+          "For a [[kw:two‑tailed test]]: P‑value = twice the area in the tail of the test statistic (`=2 * (1 - NORM.S.DIST(ABS(z), TRUE))`).",
+          "A smaller P‑value means stronger evidence against $ H_0 $."
+        ]
+      },
+      "title": "Using P‑Values to Make Decisions",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "reject",
+                "Reject"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the decision when evidence is strong enough.",
+            "Opposite of 'fail to reject'."
+          ],
+          "type": "fill-blank",
+          "id": "q1-1",
+          "prompt": "If the P‑value is less than or equal to $ \\alpha $, we ___ the null hypothesis.",
+          "feedbackIfWrong": "Reject $ H_0 $ when P ≤ α."
+        },
+        {
+          "feedbackIfWrong": "Right‑tailed P‑value = area to the right of z.",
+          "id": "q1-2",
+          "hints": [
+            "The alternative is $ > $, so evidence is on the high end.",
+            "Look to the larger values."
+          ],
+          "answers": [
+            "right",
+            "Right"
+          ],
+          "prompt": "For a right‑tailed test, the P‑value is the area to the ___ of the test statistic.",
+          "type": "short-answer",
+          "answer": "right"
+        },
+        {
+          "prompt": "A test gives P‑value = 0.007 with $ \\alpha = 0.01 $. Should you reject $ H_0 $? (Yes or No)",
+          "hints": [
+            "Compare 0.007 to 0.01.",
+            "0.007 ≤ 0.01."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "feedbackIfWrong": "Yes, because 0.007 ≤ 0.01, reject $ H_0 $.",
+          "answer": "Yes",
+          "id": "q1-3"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A P‑value of 0.023 means: if the null hypothesis were true, you'd see a sample result this extreme only 2.3% of the time. Is that rare enough to doubt the null? That's what the significance level α helps you decide."
+      },
+      "teacherCues": [
+        "Ask: 'If the P‑value is 0.023, what does that mean in plain English?'",
+        "Write the decision rule on the board: 'If P ≤ α → reject H₀; if P > α → fail to reject H₀.'"
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "(1) $ 0.0237 \\le 0.05 $ → reject $ H_0 $.",
+            "(2) $ 0.0237 > 0.01 $ → fail to reject $ H_0 $.",
+            "Thus, at the 5% level there is evidence against $ H_0 $, but at the 1% level there is not."
+          ],
+          "prompt": "A hypothesis test yields a P‑value of 0.0237. Decide whether to reject $ H_0 $ at (1) $ \\alpha = 0.05 $ and (2) $ \\alpha = 0.01 $.",
+          "title": "Example A – Interpreting a Given P‑Value"
+        },
+        {
+          "steps": [
+            "In a left‑tailed test, the alternative is $ H_a: \\mu < k $, so evidence against $ H_0 $ lies only in the left tail.",
+            "From the z‑table, area left of $ -2.23 $ is 0.0129. So P‑value = 0.0129.",
+            "$ 0.0129 > 0.01 $ → fail to reject $ H_0 $."
+          ],
+          "minLength": 2,
+          "prompt": "A left‑tailed test has $ z = -2.23 $. Find the P‑value and decide at $ \\alpha = 0.01 $. Explain to a partner why the P‑value is just the left‑tail area.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why don't we multiply by 2 for a left‑tailed test?",
+          "title": "Example B – Left‑Tailed P‑Value from z",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Two‑Tailed P‑Value",
+          "prompt": "A two‑tailed test has $ z = 2.14 $. Find the P‑value and decide at $ \\alpha = 0.05 $.",
+          "steps": [
+            "Area right of $ 2.14 $: $ 1 - 0.9838 = 0.0162 $.",
+            "For two‑tailed, P‑value = $ 2 \\times 0.0162 = 0.0324 $.",
+            "$ 0.0324 \\le 0.05 $ → reject $ H_0 $.",
+            "Google Sheets: `=2*(1 - NORM.S.DIST(2.14, TRUE))`."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "P‑Value ≠ Probability That $ H_0 $ Is True",
+        "body": "The P‑value is the probability of the observed data (or more extreme) assuming $ H_0 $ is true. It is [[imp:NOT]] the probability that $ H_0 $ is true. A small P‑value casts doubt on $ H_0 $, but doesn't give the probability that $ H_0 $ is false."
+      },
+      "id": "pvalues-decisions"
+    },
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "$ H_0: \\mu \\ge 13 $, $ H_a: \\mu < 13 $. $ \\alpha = 0.01 $.",
+            "Since $ n=32 \\ge 30 $, use $ z = \\frac{12.9 - 13}{0.19/\\sqrt{32}} \\approx -2.98 $.",
+            "Left‑tailed P‑value = area left of $ -2.98 $ = 0.0014.",
+            "$ 0.0014 \\le 0.01 $ → reject $ H_0 $. Enough evidence to support the claim."
+          ],
+          "prompt": "A pit crew claims $ \\mu < 13 $ sec. A sample of 32 stops has $ \\bar{x} = 12.9 $ sec, $ s = 0.19 $ sec. Test at $ \\alpha = 0.01 $.",
+          "title": "Example A – Left‑Tailed z‑Test (Pit Stop)"
+        },
+        {
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does 'different from' lead to a two‑tailed test?",
+          "title": "Example B – Two‑Tailed z‑Test (Surgery Cost)",
+          "prompt": "The claimed mean cost of weight‑loss surgery is $22,500. A sample of 30 patients has $ \\bar{x} = 21,545 $, $ s = 3015 $. Test at $ \\alpha = 0.05 $ if the mean differs. Explain to a partner why this is two‑tailed.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "$ H_0: \\mu = 22500 $, $ H_a: \\mu \\neq 22500 $. Two‑tailed.",
+            "$ z = \\frac{21545 - 22500}{3015/\\sqrt{30}} \\approx -1.73 $.",
+            "Area left of $ -1.73 $ = 0.0418. P‑value = $ 2 \\times 0.0418 = 0.0836 $.",
+            "$ 0.0836 > 0.05 $ → fail to reject $ H_0 $. Not enough evidence to say the mean differs."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Right‑Tailed z‑Test (Speeding)",
+          "prompt": "Residents claim mean speed > 35 mph. Sample of 100 cars: $ \\bar{x}=36 $ mph, $ s=4 $ mph. Test at $ \\alpha = 0.05 $.",
+          "steps": [
+            "$ H_0: \\mu \\le 35 $, $ H_a: \\mu > 35 $. $ \\alpha = 0.05 $, right‑tailed.",
+            "$ z = \\frac{36-35}{4/\\sqrt{100}} = 2.5 $.",
+            "P‑value = area right of 2.5 = $ 1 - 0.9938 = 0.0062 $.",
+            "Reject $ H_0 $. There is enough evidence to support the claim."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A pit crew claims their average stop is under 13 seconds. You time 32 stops and get a mean of 12.9 seconds with a standard deviation of 0.19 second. Is this enough evidence? A z‑test with the P‑value method gives a clear answer."
+      },
+      "id": "z-test-pvalue",
+      "confusionCorner": {
+        "title": "Large Sample → Use s for $ \\sigma $",
+        "body": "When $ n \\ge 30 $, the Central Limit Theorem justifies using the sample standard deviation $ s $ in place of $ \\sigma $ in the z‑test statistic. [[imp:If $ n < 30 $ and $ \\sigma $ is unknown, you must use the t‑test instead.]]"
+      },
+      "teacherCues": [
+        "Write the z‑test statistic formula: $ z = \\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}} $. Emphasize that when $ n \\ge 30 $, we can use $ s $ in place of $ \\sigma $.",
+        "Walk through a full example: pit stop times."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "30",
+                "thirty"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the condition for the Central Limit Theorem to apply.",
+            "The magic number for large samples."
+          ],
+          "prompt": "The z‑test for the mean requires either a normal population with known $ \\sigma $, or a sample size of at least ___.",
+          "id": "q2-1",
+          "feedbackIfWrong": "The sample size must be at least 30 to use the z‑test when $ \\sigma $ is unknown."
+        },
+        {
+          "answer": "-1.77",
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "If $ H_0: \\mu = 100 $, $ n = 50 $, $ \\bar{x} = 97 $, $ s = 12 $, compute the z test statistic. (Round to two decimals.)",
+          "answers": [
+            "-1.77",
+            "-1.77"
+          ],
+          "hints": [
+            "$ z = (97 - 100) / (12 / \\sqrt{50}) $.",
+            "$ -3 / 1.697 \\approx ? $"
+          ],
+          "feedbackIfWrong": "$ z = -3 / 1.697 \\approx -1.77 $."
+        },
+        {
+          "answer": "left",
+          "answers": [
+            "left",
+            "Left"
+          ],
+          "feedbackIfWrong": "In a left‑tailed test, P‑value = area to the left of z.",
+          "type": "short-answer",
+          "prompt": "In a left‑tailed test, the P‑value is the area to the ___ of z.",
+          "id": "q2-3",
+          "hints": [
+            "The alternative hypothesis contains $ < $.",
+            "Evidence is on the lower side."
+          ]
+        }
+      ],
+      "title": "Conducting a z‑Test for the Mean (P‑Value Method)",
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ H_0, H_a $",
+                "1": "$ H_0: \\mu \\ge 13 $, $ H_a: \\mu < 13 $ (claim)"
+              },
+              {
+                "0": "$ \\bar{x}, s, n $",
+                "1": "$ 12.9 $ sec, $ 0.19 $ sec, $ 32 $"
+              },
+              {
+                "0": "$ z $",
+                "1": "$ \\frac{12.9 - 13}{0.19/\\sqrt{32}} \\approx -2.98 $"
+              },
+              {
+                "0": "P‑value (left‑tailed)",
+                "1": "0.0014 (from table or `=NORM.S.DIST(-2.98, TRUE)`)"
+              },
+              {
+                "0": "Decision",
+                "1": "$ 0.0014 \\le 0.01 $ → reject $ H_0 $"
+              }
+            ],
+            "headers": [
+              "Component",
+              "Value"
+            ],
+            "variant": "colorful",
+            "title": "z‑Test for Pit Stop Example ($ \\alpha = 0.01 $)",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "title": "z‑Test Statistic",
+          "formula": "$$ z = \\frac{\\bar{x} - \\mu_0}{\\sigma/\\sqrt{n}} \\;\\;\\left(\\text{or } \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} \\text{ if } n \\ge 30\\right) $$",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$ \\mu_0 $",
+              "meaning": "the value of $ \\mu $ stated in $ H_0 $"
+            }
+          ]
+        },
+        "explanation": [
+          "The [[kw:z‑test for a mean]] can be used when the population is normal and $ \\sigma $ is known, or when $ n \\ge 30 $ (by the CLT).",
+          "The standardized test statistic is: $ z = \\frac{\\bar{x} - \\mu_0}{\\sigma/\\sqrt{n}} $, where $ \\mu_0 $ is the hypothesized mean from $ H_0 $.",
+          "If $ \\sigma $ is unknown but $ n \\ge 30 $, replace $ \\sigma $ with the sample standard deviation $ s $.",
+          "Steps: (1) State $ H_0 $ and $ H_a $. (2) Specify $ \\alpha $. (3) Compute $ z $. (4) Find the P‑value using the z‑table or Google Sheets. (5) Make a decision and interpret."
+        ]
+      }
+    },
+    {
+      "concept": {
+        "explanation": [
+          "The [[kw:rejection region]] (critical region) is the set of values of the test statistic that lead to rejecting $ H_0 $.",
+          "The [[kw:critical value]] $ z_0 $ separates the rejection region from the non‑rejection region.",
+          "For a left‑tailed test at $ \\alpha $, $ z_0 $ is the z‑score with area $ \\alpha $ to its left (negative). For a right‑tailed test, $ z_0 $ has area $ \\alpha $ to its right (positive).",
+          "For a two‑tailed test, the critical values are $ \\pm z_0 $, where each tail has area $ \\alpha/2 $.",
+          "In Google Sheets, find critical values with `=NORM.S.INV(probability)`. For left‑tailed: `=NORM.S.INV(α)`. For right‑tailed: `=NORM.S.INV(1-α)`. For two‑tailed: `=NORM.S.INV(α/2)` and `=NORM.S.INV(1-α/2)`."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$ \\alpha $",
+              "meaning": "level of significance"
+            }
+          ],
+          "formula": "$$ \\text{Left: } =\\text{NORM.S.INV}(\\alpha) $$ $$ \\text{Right: } =\\text{NORM.S.INV}(1-\\alpha) $$ $$ \\text{Two-tailed: } \\pm =\\text{NORM.S.INV}(1-\\alpha/2) $$",
+          "title": "Critical Values via Google Sheets"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Critical Values for Common $ \\alpha $ Levels",
+            "headers": [
+              "$ \\alpha $",
+              "Left‑tailed $ z_0 $",
+              "Right‑tailed $ z_0 $",
+              "Two‑tailed $ \\pm z_0 $"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "0.10",
+                "1": "$ -1.28 $",
+                "2": "$ 1.28 $",
+                "3": "$ \\pm 1.645 $"
+              },
+              {
+                "0": "0.05",
+                "1": "$ -1.645 $",
+                "2": "$ 1.645 $",
+                "3": "$ \\pm 1.96 $"
+              },
+              {
+                "0": "0.01",
+                "1": "$ -2.33 $",
+                "2": "$ 2.33 $",
+                "3": "$ \\pm 2.575 $"
+              }
+            ]
+          }
+        ]
+      },
+      "teacherCues": [
+        "Draw a normal curve, shade the rejection region, and label the critical value $ z_0 $. Ask: 'What does it mean if our test statistic falls here?'",
+        "Show the table of common critical values: $ \\pm 1.645 $, $ \\pm 1.96 $, $ \\pm 2.575 $."
+      ],
+      "title": "Rejection Regions and Critical Values",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "rejecting",
+                "Rejecting"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The rejection region leads to rejecting $ H_0 $.",
+          "hints": [
+            "It's the opposite of failing to reject.",
+            "If the test statistic falls here, we reject."
+          ],
+          "type": "fill-blank",
+          "prompt": "The rejection region is the set of values that lead to ___ $ H_0 $.",
+          "id": "q3-1"
+        },
+        {
+          "hints": [
+            "Area to the right is 0.05, so area to the left is 0.95.",
+            "Look up 0.95 in the z‑table or use `=NORM.S.INV(0.95)`."
+          ],
+          "id": "q3-2",
+          "feedbackIfWrong": "The critical value is 1.645.",
+          "prompt": "For a right‑tailed test with $ \\alpha = 0.05 $, what is the critical value $ z_0 $?",
+          "type": "short-answer",
+          "answer": "1.645",
+          "answers": [
+            "1.645",
+            "1.645"
+          ]
+        },
+        {
+          "answer": "±1.645",
+          "id": "q3-3",
+          "prompt": "For a two‑tailed test with $ \\alpha = 0.10 $, what are the critical values? (e.g., ±1.645)",
+          "answers": [
+            "±1.645",
+            "+/-1.645",
+            "-1.645 and 1.645"
+          ],
+          "feedbackIfWrong": "The critical values are $ \\pm 1.645 $.",
+          "hints": [
+            "Each tail gets $ \\alpha/2 = 0.05 $.",
+            "Area left of the upper critical value is 0.95."
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Critical Value vs. Test Statistic",
+        "body": "Don't confuse the critical value (a fixed cutoff from the null distribution) with the test statistic (calculated from the sample). [[imp:If the test statistic is more extreme than the critical value, it falls in the rejection region.]]"
+      },
+      "id": "rejection-regions-critical-values",
+      "discoveryHook": {
+        "scenario": "Instead of computing a P‑value, you can compare your test statistic to a threshold called the critical value. If the statistic is more extreme than this cutoff, you reject $ H_0 $. This method was used before computers made P‑values easy to find, and it's still widely taught."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Find the critical value and rejection region for a left‑tailed test with $ \\alpha = 0.01 $.",
+          "title": "Example A – Critical Value for a Left‑Tailed Test",
+          "steps": [
+            "In a left‑tailed test, the critical value has area $ 0.01 $ to its left.",
+            "From the z‑table, the closest z‑score is $ -2.33 $.",
+            "So $ z_0 = -2.33 $. Rejection region: $ z < -2.33 $.",
+            "Google Sheets: `=NORM.S.INV(0.01)` returns about $ -2.326 $."
+          ]
+        },
+        {
+          "title": "Example B – Two‑Tailed Critical Values",
+          "role": "peer-explain",
+          "steps": [
+            "For two‑tailed, the rejection region is split: $ \\alpha/2 = 0.025 $ in each tail.",
+            "The critical values are the z‑scores with areas 0.025 and 0.975 to the left.",
+            "These are $ -1.96 $ and $ 1.96 $. Rejection regions: $ z < -1.96 $ or $ z > 1.96 $.",
+            "Splitting equally ensures the total probability of a Type I error remains $ \\alpha $."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we split $ \\alpha $ equally between the two tails?",
+          "minLength": 2,
+          "prompt": "Find the critical values for a two‑tailed test with $ \\alpha = 0.05 $. Explain to a partner why there are two values."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Right‑tailed: area to the right is 0.05, so area to the left is 0.95.",
+            "`=NORM.S.INV(0.95)` returns about 1.645.",
+            "Thus $ z_0 = 1.645 $. Rejection region: $ z > 1.645 $."
+          ],
+          "title": "Example C – Google Sheets Critical Value",
+          "prompt": "Use Google Sheets to find the right‑tailed critical value for $ \\alpha = 0.05 $."
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "You can also make a decision by checking whether the test statistic falls in the rejection region defined by the critical value. If it does, reject $ H_0 $; if not, fail to reject. This method gives the same conclusion as the P‑value approach."
+      },
+      "teacherCues": [
+        "Walk through the pit stop example again, but this time using the critical value $ z_0 = -2.33 $ for $ \\alpha = 0.01 $. Show that $ z = -2.98 $ falls in the rejection region.",
+        "Contrast this with the P‑value method — both lead to the same conclusion."
+      ],
+      "questions": [
+        {
+          "prompt": "In a right‑tailed test, if the test statistic $ z $ is greater than the critical value $ z_0 $, we ___ $ H_0 $.",
+          "feedbackIfWrong": "Reject $ H_0 $ if the test statistic is in the rejection region.",
+          "type": "fill-blank",
+          "id": "q4-1",
+          "hints": [
+            "The test statistic falls in the rejection region.",
+            "It's the same decision as when P ≤ α."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "reject",
+                "Reject"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q4-2",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "feedbackIfWrong": "Yes, because $ -1.8 $ is less than $ -1.645 $, it falls in the rejection region.",
+          "type": "short-answer",
+          "answer": "Yes",
+          "hints": [
+            "Is $ -1.8 < -1.645 $?",
+            "More extreme means further into the tail."
+          ],
+          "prompt": "A left‑tailed test has $ z = -1.8 $ and critical value $ z_0 = -1.645 $. Should you reject $ H_0 $? (Yes or No)"
+        },
+        {
+          "feedbackIfWrong": "Yes, both methods lead to the same decision.",
+          "prompt": "Will the P‑value method and the rejection region method always give the same conclusion? (Yes or No)",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "id": "q4-3",
+          "hints": [
+            "They are algebraically equivalent.",
+            "If one rejects, the other does too."
+          ],
+          "answer": "Yes",
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "$ H_0: \\mu \\ge 68000 $, $ H_a: \\mu < 68000 $. Left‑tailed.",
+            "$ \\alpha = 0.05 $ → critical value $ z_0 = -1.645 $. Rejection region: $ z < -1.645 $.",
+            "$ z = \\frac{66900-68000}{5500/\\sqrt{30}} \\approx -1.10 $.",
+            "$ -1.10 $ is NOT less than $ -1.645 $, so fail to reject $ H_0 $. Not enough evidence to support the claim."
+          ],
+          "prompt": "A company claims $ \\mu \\ge 68,000 $ salary. Sample: $ n=30 $, $ \\bar{x}=66,900 $, $ s=5500 $, $ \\alpha = 0.05 $. Test using a rejection region.",
+          "role": "guided",
+          "title": "Example A – Left‑Tailed with Critical Value"
+        },
+        {
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does such a large sample size make it easier to reject $ H_0 $ even for a small difference?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "title": "Example B – Two‑Tailed with Critical Values",
+          "prompt": "USDA claims child‑rearing cost $ \\mu = 13,120 $. Sample: $ n=500 $, $ \\bar{x}=12,925 $, $ s=1745 $, $ \\alpha = 0.10 $. Test using rejection regions. Explain why the null is rejected despite the sample mean being close.",
+          "steps": [
+            "$ H_0: \\mu = 13120 $, $ H_a: \\mu \\neq 13120 $. Two‑tailed. $ \\alpha = 0.10 $ → critical values $ \\pm 1.645 $.",
+            "$ z = \\frac{12925-13120}{1745/\\sqrt{500}} \\approx -2.50 $.",
+            "$ -2.50 < -1.645 $, so reject $ H_0 $. The large sample size gives a small standard error, making even moderate differences statistically significant."
+          ]
+        },
+        {
+          "title": "Example C – Right‑Tailed with Critical Value",
+          "prompt": "A manufacturer claims $ \\mu \\ge 135 $ °F. Sample: $ n=32 $, $ \\bar{x}=133 $, $ s=3.3 $, $ \\alpha = 0.08 $. Test using rejection region.",
+          "role": "independent",
+          "steps": [
+            "$ H_0: \\mu \\ge 135 $, $ H_a: \\mu < 135 $. Left‑tailed. Wait, the claim is at least 135, so we test if it's less. $ H_a $ is $ < $, left‑tailed.",
+            "$ \\alpha = 0.08 $ → critical value $ z_0 = -1.41 $ (from table or `=NORM.S.INV(0.08)`).",
+            "$ z = \\frac{133-135}{3.3/\\sqrt{32}} \\approx -3.43 $.",
+            "$ -3.43 < -1.41 $ → reject $ H_0 $. Enough evidence to reject the manufacturer's claim."
+          ]
+        }
+      ],
+      "id": "z-test-rejection-region",
+      "title": "Using Rejection Regions for a z‑Test",
+      "concept": {
+        "formulaCard": {
+          "title": "Rejection Region Decision Rules",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "critical value (positive for right‑tailed, negative for left‑tailed)",
+              "symbol": "$ z_0 $"
+            }
+          ],
+          "formula": "$$ \\text{Left-tailed: Reject if } z < z_0 $$ $$ \\text{Right-tailed: Reject if } z > z_0 $$ $$ \\text{Two-tailed: Reject if } z < -z_0 \\text{ or } z > z_0 $$"
+        },
+        "explanation": [
+          "To conduct a z‑test using rejection regions: (1) State $ H_0 $ and $ H_a $. (2) Specify $ \\alpha $. (3) Find the critical value(s) and determine the rejection region. (4) Compute the test statistic $ z $. (5) If $ z $ falls in the rejection region, reject $ H_0 $; otherwise, fail to reject.",
+          "Left‑tailed: reject if $ z < z_0 $ (where $ z_0 $ is negative). Right‑tailed: reject if $ z > z_0 $ (where $ z_0 $ is positive). Two‑tailed: reject if $ z < -z_0 $ or $ z > z_0 $.",
+          "Both the P‑value and rejection region methods always produce the same decision. The choice is a matter of convenience or preference."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ H_0, H_a $",
+                "1": "$ H_0: \\mu \\ge 13 $, $ H_a: \\mu < 13 $ (left‑tailed)"
+              },
+              {
+                "0": "$ \\alpha $",
+                "1": "0.01"
+              },
+              {
+                "0": "Critical value",
+                "1": "$ z_0 = -2.33 $"
+              },
+              {
+                "0": "Rejection region",
+                "1": "$ z < -2.33 $"
+              },
+              {
+                "0": "Test statistic",
+                "1": "$ z = -2.98 $"
+              },
+              {
+                "0": "Decision",
+                "1": "$ -2.98 < -2.33 $ → reject $ H_0 $"
+              }
+            ],
+            "title": "Pit Stop Example Using Rejection Region ($ \\alpha = 0.01 $)",
+            "type": "table",
+            "headers": [
+              "Step",
+              "Detail"
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Same Decision, Different Approach",
+        "body": "The P‑value method and the rejection region method always yield the same conclusion. The rejection region method was historically easier before computers, but the P‑value provides more information (the strength of evidence). [[imp:You can use whichever method you prefer, but always report the P‑value if possible.]]"
+      }
+    },
+    {
+      "id": "blueprint-ztest",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "Understand"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the 'U' phase.",
+            "You identify the claim and set up the hypotheses."
+          ],
+          "id": "q5-1",
+          "type": "fill-blank",
+          "feedbackIfWrong": "Start by understanding the claim and stating the hypotheses.",
+          "prompt": "The first step in the hypothesis testing blueprint is to ___ the claim and write $ H_0 $ and $ H_a $."
+        },
+        {
+          "hints": [
+            "One uses the test statistic directly compared to a cutoff.",
+            "The other finds a probability."
+          ],
+          "prompt": "In the blueprint, after computing the test statistic $ z $, what two methods can you use to make a decision? (Name both.)",
+          "type": "short-answer",
+          "answers": [
+            "P-value and rejection region",
+            "p-value and critical value"
+          ],
+          "answer": "P-value and rejection region",
+          "id": "q5-2",
+          "feedbackIfWrong": "You can use either the P‑value method or the rejection region (critical value) method."
+        },
+        {
+          "id": "q5-3",
+          "hints": [
+            "2.05 > 1.645.",
+            "It falls in the rejection region."
+          ],
+          "prompt": "A z‑test yields $ z = 2.05 $ with a right‑tailed rejection region of $ z > 1.645 $. Should you reject $ H_0 $? (Yes or No)",
+          "feedbackIfWrong": "Yes, because 2.05 > 1.645, reject $ H_0 $.",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "type": "short-answer",
+          "answer": "Yes"
+        }
+      ],
+      "title": "Blueprint Aid: Choosing and Applying a z‑Test",
+      "examples": [
+        {
+          "title": "Example A – Full Blueprint (P‑Value)",
+          "steps": [
+            "Understand: Claim $ \\mu > 750 $, support → $ H_0: \\mu \\le 750 $, $ H_a: \\mu > 750 $. Right‑tailed. $ \\alpha=0.05 $, $ n=36 \\ge 30 $.",
+            "Solve: $ z = \\frac{735-750}{40/\\sqrt{36}} = -2.25 $. Right‑tailed P = area right of $ -2.25 = 0.9878 $.",
+            "Conclude: $ 0.9878 > 0.05 $ → fail to reject $ H_0 $. Not enough evidence to support the claim that the mean life exceeds 750 hours."
+          ],
+          "prompt": "A light bulb claim: $ \\mu > 750 $ hours. Sample: $ n=36 $, $ \\bar{x}=735 $, $ s=40 $, $ \\alpha = 0.05 $. Use the blueprint with the P‑value method.",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Claim $ \\mu = 12 $ is $ H_0 $. $ H_a: \\mu \\neq 12 $. Two‑tailed.",
+            "Critical values: $ \\pm 1.96 $. Rejection region: $ z < -1.96 $ or $ z > 1.96 $.",
+            "$ z = \\frac{11.9-12}{0.3/\\sqrt{40}} \\approx -2.11 $.",
+            "$ -2.11 < -1.96 $ → reject $ H_0 $. Evidence suggests the true mean is different from 12 oz."
+          ],
+          "role": "peer-explain",
+          "prompt": "A cereal box claim: $ \\mu = 12 $ oz. Sample: $ n=40 $, $ \\bar{x}=11.9 $, $ s=0.3 $, $ \\alpha = 0.05 $. Use rejection region method. Explain why this is two‑tailed.",
+          "title": "Example B – Blueprint with Rejection Region",
+          "minLength": 2,
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does 'the mean is 12 oz' lead to a two‑tailed test?"
+        },
+        {
+          "title": "Example C – Your Turn",
+          "prompt": "A report claims the mean sales per day is 150. Sample: $ n=35 $, $ \\bar{x}=143 $, $ s=15 $, $ \\alpha = 0.01 $. Test the claim using either method.",
+          "steps": [
+            "Understand: Claim $ \\mu = 150 $ is $ H_0 $. $ H_a: \\mu \\neq 150 $. Two‑tailed. $ \\alpha = 0.01 $, $ n=35 $.",
+            "Solve: $ z = \\frac{143-150}{15/\\sqrt{35}} \\approx -2.76 $. Two‑tailed P = $ 2 \\times 0.0029 = 0.0058 $. Or critical values $ \\pm 2.575 $; $ -2.76 < -2.575 $ → reject.",
+            "Conclude: Reject $ H_0 $. Enough evidence to doubt the claim of 150 daily sales."
+          ],
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sample Size Matters!",
+        "body": "With a very large sample, even a small difference between $ \\bar{x} $ and the hypothesized mean can produce a large $ |z| $ and a small P‑value, leading to rejection. [[imp:Statistical significance does not always mean practical importance. Always consider the context.]]"
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{Claim} \\;\\rightarrow\\; H_0, H_a \\;\\rightarrow\\; \\text{Check } n \\ge 30 \\;\\rightarrow\\; z = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} \\;\\rightarrow\\; \\text{P-value or Rejection Region} \\;\\rightarrow\\; \\text{Decision} $$",
+          "title": "Hypothesis Testing Blueprint",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "Both P‑value and rejection region methods yield the same conclusion. Choose whichever is more comfortable.",
+              "symbol": "Key"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Blueprint for Gas Mileage Example",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Claim: $ \\mu \\neq 30 $. $ H_0: \\mu = 30 $, $ H_a: \\mu \\neq 30 $. Two‑tailed. $ \\alpha = 0.05 $.",
+                "2": "$ n=36 \\ge 30 $ (OK)."
+              },
+              {
+                "0": "Solve – z",
+                "1": "$ z = \\frac{31.5 - 30}{2.1/\\sqrt{36}} = 4.29 $",
+                "2": ""
+              },
+              {
+                "0": "Solve – P‑value",
+                "1": "Two‑tailed P = $ 2 \\times P(z > 4.29) \\approx 0.00002 $",
+                "2": "Tiny P‑value."
+              },
+              {
+                "0": "Conclude",
+                "1": "Reject $ H_0 $. There is enough evidence to reject the claim of 30 mpg. The true mean appears higher.",
+                "2": ""
+              }
+            ],
+            "headers": [
+              "Step",
+              "Action",
+              "Details"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Write the claim mathematically. State $ H_0 $ and $ H_a $. Decide whether the test is left‑, right‑, or two‑tailed. Choose $ \\alpha $ (usually 0.05 unless stated). Verify that $ n \\ge 30 $ or the population is normal with known $ \\sigma $.",
+          "2. [[kw:Solve]]: Compute the test statistic $ z = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} $ (or $ \\sigma $ if known). For P‑value method: find the P‑value using the z‑table or Google Sheets and compare to $ \\alpha $. For rejection region method: find the critical value(s) and check if $ z $ falls in the rejection region.",
+          "3. [[kw:Conclude]]: Make a decision (reject or fail to reject $ H_0 $). Write a sentence interpreting the decision in the context of the original claim. Use 'there is (or is not) enough evidence to support/reject the claim that...'."
+        ]
+      },
+      "teacherCues": [
+        "Display a flowchart: Claim → Hypotheses → α → Conditions (n ≥ 30 or σ known?) → Compute z → Find P‑value or compare to critical value → Decision → Interpretation.",
+        "Walk through a complete problem: 'Gas mileage claim μ = 30 mpg, sample n = 36, x̄ = 31.5, s = 2.1, α = 0.05.'"
+      ],
+      "discoveryHook": {
+        "scenario": "A clear blueprint ensures you don't miss a step in hypothesis testing. Whether you use the P‑value or rejection region approach, the structure is the same: Understand the claim, Solve by computing the test statistic and comparing, and Conclude by interpreting in context."
+      }
+    }
+  ],
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.A.1"
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

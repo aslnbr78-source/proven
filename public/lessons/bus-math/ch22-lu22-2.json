@@ -1,0 +1,821 @@
+{
+  "standards": [
+    "BUSMATH.22.2"
+  ],
+  "id": "ch22-lu22-2",
+  "title": "Frequency Distributions and Graphs",
+  "blocks": [
+    {
+      "examples": [
+        {
+          "title": "A – Build a frequency distribution",
+          "prompt": "Data: 5, 8, 12, 15, 15, 18, 22, 25, 28, 30, 35, 38, 42, 45, 48, 55. Range = 55 – 5 = 50. Use 5 classes. Class width = 50 ÷ 5 = 10. Build the distribution.",
+          "steps": [
+            "Classes: 0‑9, 10‑19, 20‑29, 30‑39, 40‑49, 50‑59 (actually 6 classes if you start at 0, but we can adjust). Let's use classes: 0‑9, 10‑19, 20‑29, 30‑39, 40‑49, 50‑59. Count frequencies: 0‑9: 2 (5,8); 10‑19: 4 (12,15,15,18); 20‑29: 3 (22,25,28); 30‑39: 3 (30,35,38); 40‑49: 3 (42,45,48); 50‑59: 1 (55).",
+            "Total = 16.",
+            "This distribution shows most data are between 10‑49."
+          ],
+          "role": "guided"
+        },
+        {
+          "title": "B – Why use frequency distributions?",
+          "prompt": "Explain how a frequency distribution helps in decision‑making.",
+          "steps": [
+            "It condenses a large amount of data into a manageable summary.",
+            "It reveals which ranges are most common (e.g., peak sales hours).",
+            "Managers can quickly see patterns and allocate resources accordingly."
+          ],
+          "peerPrompt": "Think about a manager looking at sales data.",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Class frequency = 4; total = 16.",
+            "Relative frequency = (4 / 16) × 100 = 25%.",
+            "So 25% of the hours had 10‑19 customers."
+          ],
+          "title": "C – Relative frequency",
+          "prompt": "Using the distribution from A, compute the relative frequency (percent) of the 10‑19 class."
+        }
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "classes (or intervals).",
+          "id": "b1q1",
+          "hints": [
+            "Categories.",
+            "Not individual numbers."
+          ],
+          "prompt": "A frequency distribution groups data into ___ and counts how many values fall into each.",
+          "blanks": [
+            {
+              "accept": [
+                "classes",
+                "intervals"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "Data range = 40, 5 classes desired. Class width? (number only)",
+          "answers": [
+            "8"
+          ],
+          "id": "b1q2",
+          "type": "short-answer",
+          "hints": [
+            "40 ÷ 5.",
+            "= 8."
+          ],
+          "feedbackIfWrong": "8."
+        },
+        {
+          "prompt": "In a frequency distribution with 50 observations, a class has frequency 15. Relative frequency = ___%. (number only)",
+          "feedbackIfWrong": "30.",
+          "hints": [
+            "(15 / 50) × 100.",
+            "= 30."
+          ],
+          "answers": [
+            "30"
+          ],
+          "type": "short-answer",
+          "id": "b1q3"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Sample Frequency Distribution (Customer Counts per Hour)",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "0 – 9",
+                "1": "////",
+                "2": "4"
+              },
+              {
+                "0": "10 – 19",
+                "1": "//// //",
+                "2": "7"
+              },
+              {
+                "0": "20 – 29",
+                "1": "//// ////",
+                "2": "10"
+              },
+              {
+                "0": "30 – 39",
+                "1": "//// //",
+                "2": "8"
+              },
+              {
+                "0": "40 – 49",
+                "1": "////",
+                "2": "5"
+              },
+              {
+                "0": "50 – 59",
+                "1": "//// /",
+                "2": "6"
+              },
+              {
+                "0": "Total",
+                "1": "",
+                "2": "40"
+              }
+            ],
+            "caption": "Class width = 10; tally marks count the observations in each class.",
+            "headers": [
+              "Class (Customers)",
+              "Tally",
+              "Frequency"
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:frequency distribution]] organizes raw data into classes (intervals) and shows how many data points fall into each class.",
+          "Steps: 1. Determine the range (highest – lowest value). 2. Choose the number of classes (usually 5–20). 3. Compute class width (range ÷ number of classes, rounded up). 4. List class intervals and tally the data.",
+          "The [[kw:class frequency]] is the count in each class; the [[kw:relative frequency]] is the fraction or percent of total.",
+          "[[imp:Frequency distributions summarize large data sets and reveal patterns like central tendency, spread, and skewness.]]"
+        ],
+        "formulaCard": {
+          "title": "Constructing a Frequency Distribution",
+          "formula": "$$\\text{Range} = \\text{Max} - \\text{Min}$$ $$\\text{Class Width} = \\frac{\\text{Range}}{\\text{Number of Classes}} \\text{ (round up)}$$ $$\\text{Relative Frequency} = \\frac{\\text{Class Frequency}}{\\text{Total Observations}} \\times 100$$",
+          "notes": [
+            "Classes should not overlap and should cover all data.",
+            "Class boundaries must be clearly defined (e.g., 0‑9, 10‑19, etc.)."
+          ]
+        }
+      },
+      "discoveryHook": {
+        "scenario": "A store records the number of customers each hour for 40 hours. Instead of a long list, the manager groups the data into intervals like 0‑9, 10‑19, etc., and counts how many hours fall into each interval. This [[kw:frequency distribution]] quickly shows the busiest times."
+      },
+      "id": "frequency-distribution",
+      "title": "1. Frequency Distributions",
+      "teacherCues": [
+        "Ask: 'If you have a long list of numbers, how can you organize them to see patterns?'",
+        "Explain that grouping data into classes creates a frequency distribution."
+      ],
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "40-49:1, 50-59:1, 60-69:2, 70-79:4, 80-89:5, 90-99:3"
+        ],
+        "prompt": "A teacher recorded test scores: 45, 55, 60, 62, 70, 72, 75, 78, 80, 82, 85, 88, 90, 92, 95, 98. Construct a frequency distribution with 5 classes starting at 40‑49. List the class intervals and frequencies.",
+        "optional": true,
+        "hints": [
+          "Range=98-45=53; class width=11, so classes: 40-49, 50-59, 60-69, 70-79, 80-89, 90-99.",
+          "Count each score into its class."
+        ]
+      },
+      "confusionCorner": {
+        "body": "Class intervals must be mutually exclusive and cover the entire range. [[imp:Don't let a data point fall into two classes.]]",
+        "title": "Watch out!"
+      }
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "Draw axes: x‑axis = day of week; y‑axis = sales ($).",
+            "Scale y‑axis from $0 to $250 in increments of $50.",
+            "For Monday, draw a bar up to $100; for Tuesday to $150; etc.",
+            "Label each bar and title the graph 'Daily Sales'."
+          ],
+          "role": "guided",
+          "title": "A – Construct a bar graph (description)",
+          "prompt": "Using the data above, describe how you would draw a bar graph for daily sales."
+        },
+        {
+          "minLength": 2,
+          "steps": [
+            "Bars let you instantly see which day is highest or lowest.",
+            "Tables require reading and comparing numbers.",
+            "Visuals are more engaging and easier to remember."
+          ],
+          "role": "peer-explain",
+          "title": "B – Why bar graphs?",
+          "peerPrompt": "Think about visual impact.",
+          "prompt": "Explain why a bar graph is better than a table for presenting sales data to a group."
+        },
+        {
+          "prompt": "If a bar graph shows Product A with a bar at 300 units and Product B at 500 units, about how many times more is B than A? (number)",
+          "role": "independent",
+          "title": "C – Reading a bar graph",
+          "steps": [
+            "B / A = 500 / 300 ≈ 1.67.",
+            "Product B sold about 1.67 times more than Product A."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "The width of bars should be consistent. [[imp:Varying bar widths can distort visual comparison.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "optional": true,
+        "answers": [
+          "200k",
+          "50"
+        ],
+        "type": "short-answer",
+        "hints": [
+          "Total = 40+55+60+45 = 200k.",
+          "Q3 vs Q1: (60-40)/40 × 100 = 50% higher."
+        ],
+        "prompt": "A bar graph shows profits: Q1 $40k, Q2 $55k, Q3 $60k, Q4 $45k. What is the total annual profit? How much greater is Q3 than Q1 in percent?"
+      },
+      "questions": [
+        {
+          "prompt": "In a bar graph, categories are on the ___ axis.",
+          "blanks": [
+            {
+              "accept": [
+                "horizontal",
+                "x"
+              ]
+            }
+          ],
+          "id": "b2q1",
+          "hints": [
+            "Not the vertical.",
+            "The bottom axis."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "horizontal (x‑axis)."
+        },
+        {
+          "hints": [
+            "5 × 1,000.",
+            "= 5,000."
+          ],
+          "id": "b2q2",
+          "type": "short-answer",
+          "feedbackIfWrong": "5,000.",
+          "answers": [
+            "5000",
+            "5,000"
+          ],
+          "prompt": "If a bar graph shows sales in thousands, a bar reaching 5 means sales of $___ (number only, no $)."
+        },
+        {
+          "id": "b2q3",
+          "type": "short-answer",
+          "hints": [
+            "Not a higher number.",
+            "Absolute zero."
+          ],
+          "feedbackIfWrong": "0.",
+          "answers": [
+            "0",
+            "zero"
+          ],
+          "prompt": "To avoid misleading visuals, the vertical axis of a bar graph should start at ___ (number)."
+        }
+      ],
+      "title": "2. Bar Graphs",
+      "teacherCues": [
+        "Ask: 'How can we visually compare the number of customers across different days?'",
+        "Explain that a bar graph uses rectangular bars to represent frequencies."
+      ],
+      "discoveryHook": {
+        "scenario": "A bar graph of weekly sales shows a tall bar for Saturday and a short one for Monday. The height of each bar represents the sales amount, making comparisons immediate. Bar graphs can be vertical or horizontal."
+      },
+      "id": "bar-graphs",
+      "concept": {
+        "explanation": [
+          "A [[kw:bar graph]] uses bars of equal width to represent the frequency or amount of each category.",
+          "Categories are on the horizontal axis; frequencies (or values) on the vertical axis.",
+          "Bars are separated by spaces to indicate distinct categories.",
+          "Bar graphs are ideal for comparing discrete categories (e.g., days of week, product types).",
+          "[[imp:Always start the vertical axis at zero to avoid misleading comparisons.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Monday",
+                "1": "$100",
+                "2": "Short"
+              },
+              {
+                "0": "Tuesday",
+                "1": "$150",
+                "2": "Medium"
+              },
+              {
+                "0": "Wednesday",
+                "1": "$120",
+                "2": "Medium"
+              },
+              {
+                "0": "Thursday",
+                "1": "$200",
+                "2": "Tall"
+              },
+              {
+                "0": "Friday",
+                "1": "$180",
+                "2": "Tall"
+              }
+            ],
+            "variant": "colorful",
+            "caption": "The bar for Thursday would be the tallest.",
+            "headers": [
+              "Day",
+              "Sales",
+              "Bar Height (approx)"
+            ],
+            "title": "Data for Bar Graph (Daily Sales)"
+          }
+        ]
+      }
+    },
+    {
+      "confusionCorner": {
+        "body": "Using different scales for multiple lines on the same graph can mislead comparisons. [[imp:Always label axes clearly and use a consistent scale when comparing lines.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "hints": [
+          "(80 – 50) / 4 = 30/4 = 7.5k per year.",
+          "Average annual increase = $7,500."
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "prompt": "A line graph shows a company's profit: Year 1 $50k, Year 2 $60k, Year 3 $72k, Year 4 $65k, Year 5 $80k. What is the average annual increase over the 5 years? (Hint: (Final – Initial) / (Years – 1) = average increase)",
+        "answers": [
+          "7.5k",
+          "7.5"
+        ]
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Monthly Sales Data for Line Graph",
+            "variant": "colorful",
+            "caption": "Plot each month's sales, connect with lines to see rising trend.",
+            "headers": [
+              "Month",
+              "Sales ($000s)"
+            ],
+            "rows": [
+              {
+                "0": "January",
+                "1": "10"
+              },
+              {
+                "0": "February",
+                "1": "12"
+              },
+              {
+                "0": "March",
+                "1": "15"
+              },
+              {
+                "0": "April",
+                "1": "14"
+              },
+              {
+                "0": "May",
+                "1": "18"
+              },
+              {
+                "0": "June",
+                "1": "20"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "A [[kw:line graph]] plots data points (x, y) and connects them with lines to show trends over time or continuous data.",
+          "Time is usually on the x‑axis (horizontal); the variable measured on the y‑axis (vertical).",
+          "Line graphs highlight increases, decreases, and seasonal patterns.",
+          "Multiple lines can be plotted on the same graph to compare different series.",
+          "[[imp:Choose consistent intervals on the time axis to avoid distorting the trend.]]"
+        ]
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "b3q1",
+          "blanks": [
+            {
+              "accept": [
+                "time"
+              ]
+            }
+          ],
+          "hints": [
+            "Not categories.",
+            "Chronological."
+          ],
+          "feedbackIfWrong": "time.",
+          "prompt": "A line graph is best for showing data over ___."
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "100.",
+          "prompt": "If a line graph shows sales rising from $20k to $40k over 5 years, the total increase is ___%. (number only)",
+          "id": "b3q2",
+          "answers": [
+            "100"
+          ],
+          "hints": [
+            "(40-20)/20 × 100.",
+            "= 100%."
+          ]
+        },
+        {
+          "prompt": "A horizontal line on a line graph indicates no ___ over time. (word)",
+          "hints": [
+            "It's flat.",
+            "Constant value."
+          ],
+          "feedbackIfWrong": "change.",
+          "id": "b3q3",
+          "type": "short-answer",
+          "answers": [
+            "change",
+            "trend"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "A line graph shows production output rising from 100 units in January to 180 units in June, then falling to 140 in December. Describe the trend.",
+          "title": "A – Interpret a line graph",
+          "steps": [
+            "Jan–Jun: increasing trend (growth).",
+            "Jun–Dec: decreasing trend (decline after peak).",
+            "Overall, peaked in June."
+          ],
+          "role": "guided"
+        },
+        {
+          "title": "B – Line vs. bar",
+          "steps": [
+            "Use a line graph for time‑series data to show trends and changes over periods.",
+            "Bar graphs are better for comparing distinct categories at one point in time.",
+            "Lines emphasize the flow from one period to the next."
+          ],
+          "peerPrompt": "Think about whether the data is over time or separate categories.",
+          "minLength": 2,
+          "prompt": "Explain when you would use a line graph instead of a bar graph.",
+          "role": "peer-explain"
+        },
+        {
+          "title": "C – Slope interpretation",
+          "steps": [
+            "It indicates a rapid increase in the measured variable during that period.",
+            "The steeper the slope, the faster the growth."
+          ],
+          "prompt": "If a line graph shows a steep upward slope from May to June, what does that indicate?",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A company's monthly sales over a year: Jan $10k, Feb $12k, Mar $15k, etc. Plotting these points and connecting them with lines shows the upward trend clearly. A [[kw:line graph]] is ideal for displaying time‑series data."
+      },
+      "teacherCues": [
+        "Ask: 'What type of graph best shows a trend over time?'",
+        "Explain that a line graph connects data points to show changes."
+      ],
+      "id": "line-graphs",
+      "title": "3. Line Graphs"
+    },
+    {
+      "discoveryHook": {
+        "scenario": "A company's total budget is $100,000. Marketing gets $30,000 (30%), salaries $50,000 (50%), and rent $20,000 (20%). A [[kw:circle graph]] shows these proportions as slices of a pie, making it easy to see that half the budget goes to salaries."
+      },
+      "teacherCues": [
+        "Ask: 'How can we show the proportion of a budget spent on different categories?'",
+        "Explain that a circle graph divides a circle into slices representing parts of a whole."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Marketing",
+                "1": "$30,000",
+                "2": "30%",
+                "3": "30 × 3.6 = 108°"
+              },
+              {
+                "0": "Salaries",
+                "1": "$50,000",
+                "2": "50%",
+                "3": "50 × 3.6 = 180°"
+              },
+              {
+                "0": "Rent",
+                "1": "$20,000",
+                "2": "20%",
+                "3": "20 × 3.6 = 72°"
+              },
+              {
+                "0": "Total",
+                "1": "$100,000",
+                "2": "100%",
+                "3": "360°"
+              }
+            ],
+            "caption": "Each slice is proportional to the category's share of the total.",
+            "headers": [
+              "Category",
+              "Amount",
+              "% of Total",
+              "Slice Angle"
+            ],
+            "title": "Budget Breakdown for Circle Graph",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "title": "Circle Graph Calculations",
+          "notes": [
+            "The sum of all percentages must equal 100%.",
+            "The sum of slice angles must equal 360°."
+          ],
+          "formula": "$$\\text{Percent of Total} = \\frac{\\text{Category Amount}}{\\text{Total}} \\times 100$$ $$\\text{Slice Angle} = \\text{Percent} \\times 3.6°$$"
+        },
+        "explanation": [
+          "A [[kw:circle graph]] (pie chart) represents data as slices of a circle, where each slice's angle is proportional to its percentage of the total.",
+          "Each category's percentage = (Category amount ÷ Total) × 100.",
+          "The angle of each slice = Percentage × 3.6° (since 100% = 360°).",
+          "Circle graphs are best for showing parts of a whole at a single point in time.",
+          "[[imp:Limit the number of slices to 5‑7 for clarity; too many slices make the chart hard to read.]]"
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A store's sales are: Clothing $120,000, Shoes $60,000, Accessories $20,000. Total = $200,000. Find the angle for the Clothing slice.",
+          "steps": [
+            "Clothing % = ($120,000 / $200,000) × 100 = 60%.",
+            "Angle = 60 × 3.6° = 216°.",
+            "The Clothing slice will take up more than half the circle."
+          ],
+          "title": "A – Calculate slice angles"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "Explain why a circle graph is better than a bar graph for showing budget allocation.",
+          "peerPrompt": "Think about what you want to emphasize.",
+          "title": "B – When to use a circle graph",
+          "steps": [
+            "A circle graph emphasizes the relative size of each part compared to the whole.",
+            "It quickly shows that Salaries are half of expenses, while Marketing is a smaller slice.",
+            "Bar graphs compare absolute amounts; circle graphs show proportions."
+          ]
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Percent = Angle ÷ 3.6° = 90 ÷ 3.6 = 25%.",
+            "The slice represents one‑quarter of the whole."
+          ],
+          "prompt": "A slice has an angle of 90°. What percent of the total does it represent?",
+          "title": "C – Percent from angle"
+        }
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "percentage (or portion).",
+          "id": "b4q1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "percentage",
+                "portion",
+                "share"
+              ]
+            }
+          ],
+          "hints": [
+            "Not the whole.",
+            "A part."
+          ],
+          "prompt": "Each slice of a circle graph represents a ___ of the total."
+        },
+        {
+          "hints": [
+            "40 × 3.6.",
+            "= 144."
+          ],
+          "prompt": "A category is 40% of the total. Its slice angle = ___° (number only).",
+          "id": "b4q2",
+          "type": "short-answer",
+          "answers": [
+            "144"
+          ],
+          "feedbackIfWrong": "144."
+        },
+        {
+          "prompt": "The total of all percentages in a circle graph must equal ___ (number).",
+          "answers": [
+            "100"
+          ],
+          "hints": [
+            "The whole.",
+            "Sum of parts."
+          ],
+          "feedbackIfWrong": "100.",
+          "type": "short-answer",
+          "id": "b4q3"
+        }
+      ],
+      "id": "circle-graphs",
+      "challengeCorner": {
+        "hints": [
+          "Housing: 1200/3000=0.40→40%; angle=40×3.6=144°.",
+          "Transport: 400/3000≈0.1333→13.3%; angle=13.33×3.6≈48°."
+        ],
+        "optional": true,
+        "type": "short-answer",
+        "prompt": "A family budget: Housing $1,200, Food $600, Transportation $400, Other $800. Total = $3,000. Compute the percentage and slice angle for Housing and for Transportation.",
+        "answers": [
+          "40% 144°, 13.3% 48°"
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't use a circle graph when the total is not meaningful or when categories don't add to a whole. [[imp:Use circle graphs only for part‑to‑whole relationships.]]"
+      },
+      "title": "4. Circle Graphs (Pie Charts)"
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Time series (trends)",
+                "1": "Line graph",
+                "2": "Monthly sales"
+              },
+              {
+                "0": "Categorical comparison",
+                "1": "Bar graph",
+                "2": "Sales by product"
+              },
+              {
+                "0": "Part‑to‑whole",
+                "1": "Circle graph",
+                "2": "Budget allocation"
+              },
+              {
+                "0": "Frequency distribution",
+                "1": "Histogram/Bar graph",
+                "2": "Customer counts"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Data Type",
+              "Best Graph",
+              "Example"
+            ],
+            "caption": "Select the graph that best reveals the pattern in the data.",
+            "title": "Choosing the Right Graph"
+          }
+        ],
+        "explanation": [
+          "Apply the blueprint to data presentation problems:",
+          "1. Understand: identify the type of data (time series, categorical, part‑to‑whole) and the message to convey.",
+          "2. Solve: choose the appropriate graph (line for trends, bar for categories, circle for proportions). If computing a price relative, use $$\\text{Price Relative} = \\frac{\\text{Current Price}}{\\text{Base Price}} \\times 100$$.",
+          "3. Conclude: create or interpret the graph; state the trend or comparison. Verify that axes are labeled, scales are appropriate, and the graph is not misleading.",
+          "This structured approach avoids using the wrong graph for the data."
+        ],
+        "formulaCard": {
+          "title": "Price Relative",
+          "notes": [
+            "A price relative above 100 indicates an increase from the base period.",
+            "Below 100 indicates a decrease."
+          ],
+          "formula": "$$\\text{Price Relative} = \\frac{\\text{Current Price}}{\\text{Base Price}} \\times 100$$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "A store manager wants to show monthly sales trends and also compare this month's prices to a base period. The blueprint helps decide which graph to use and how to calculate a [[kw:price relative]]: (Current price ÷ Base period price) × 100."
+      },
+      "id": "blueprint-graphs",
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't use a line graph for categorical data that isn't sequential. [[imp:Connecting dots for categories like 'Apples, Oranges, Bananas' implies a false order.]]"
+      },
+      "challengeCorner": {
+        "prompt": "A company wants to present: (a) sales by region (North, South, East, West), (b) market share of three competitors, (c) quarterly profit over 5 years. Which graph for each? Also, if the base price is $25 and current price is $30, find the price relative.",
+        "answers": [
+          "bar, circle, line, 120"
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "hints": [
+          "Use bar graph for regions, circle graph for market share, line graph for quarterly profit.",
+          "Price relative = (30/25)×100 = 120."
+        ]
+      },
+      "title": "5. Blueprint Aid for Graphs and Price Relatives",
+      "questions": [
+        {
+          "hints": [
+            "Identify type and message.",
+            "U in U‑S‑C."
+          ],
+          "feedbackIfWrong": "understand.",
+          "prompt": "The first step of the blueprint is to ___ the data.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "id": "b5q1",
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "130"
+          ],
+          "type": "short-answer",
+          "prompt": "Base price $50, current price $65. Price relative? (number only)",
+          "feedbackIfWrong": "130.",
+          "hints": [
+            "(65 / 50) × 100.",
+            "= 130."
+          ],
+          "id": "b5q2"
+        },
+        {
+          "hints": [
+            "Less than 100.",
+            "Not higher."
+          ],
+          "id": "b5q3",
+          "feedbackIfWrong": "decrease.",
+          "answers": [
+            "decrease"
+          ],
+          "prompt": "A price relative below 100 indicates a price ___ from the base period. (word: increase or decrease)",
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "You want to show how the unemployment rate has changed each month over the last two years. Which graph should you use?",
+          "steps": [
+            "Data is over time → line graph.",
+            "Plot each month's rate and connect the dots to show trend."
+          ],
+          "title": "A – Choose the graph"
+        },
+        {
+          "prompt": "Explain why a circle graph is inappropriate for unemployment rate over time.",
+          "steps": [
+            "Unemployment rate is a single value each month, not a part of a whole.",
+            "Circle graphs are for components that sum to 100%, like a budget.",
+            "A line graph correctly shows how the rate changes over time."
+          ],
+          "title": "B – Why not circle?",
+          "peerPrompt": "Think about whether the data are parts of a whole.",
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "prompt": "The price of a textbook was $80 in 2020 (base year) and is $96 today. Compute the price relative.",
+          "role": "independent",
+          "title": "C – Price relative",
+          "steps": [
+            "Price relative = ($96 / $80) × 100 = 120.",
+            "This means the price is 120% of the base, a 20% increase."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that involves choosing the right graph and computing price relatives."
+      ]
+    }
+  ],
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

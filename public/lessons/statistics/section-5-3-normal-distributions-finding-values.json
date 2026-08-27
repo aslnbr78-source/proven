@@ -1,0 +1,712 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "section-5-3-normal-distributions-finding-values",
+  "title": "Normal Distributions: Finding Values",
+  "standards": [
+    "HSS.ID.A.4",
+    "HSS.MD.B.7"
+  ],
+  "blocks": [
+    {
+      "id": "finding-z-scores",
+      "title": "Finding Z-Scores Given an Area",
+      "teacherCues": [
+        "Ask: 'If 10% of the data lies above a certain value, how do we find that value?'",
+        "Write on board: given area → find z-score using table (reverse lookup)."
+      ],
+      "discoveryHook": {
+        "scenario": "A university wants to know the lowest test score for the top 10% of applicants. Or a medical researcher needs the cutoff for the middle 90% of patients by age. When you know the probability and need the value, you work backward through the normal table to find the z-score first!"
+      },
+      "concept": {
+        "explanation": [
+          "In Section 5.2, you found probabilities from x-values. Now you will find x-values from probabilities.",
+          "Step 1: Find the z-score that corresponds to the given cumulative area using the Standard Normal Table.",
+          "To find a z-score from an area, locate the area inside the table, then read the row and column to determine the z-score.",
+          "If the area is not in the table, use the closest entry. If halfway between two entries, use the z-score halfway between the corresponding z-scores.",
+          "For right-tail areas, subtract from 1 to get the cumulative area to the left."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Finding Z-Scores from Areas",
+            "headers": [
+              "Given",
+              "Step",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "Cumulative area = 0.3632",
+                "1": "Locate 0.3632 in table",
+                "2": "$z = -0.35$"
+              },
+              {
+                "0": "Right-tail area = 0.1075",
+                "1": "Cumulative = $1 - 0.1075 = 0.8925$",
+                "2": "$z = 1.24$"
+              },
+              {
+                "0": "Area = 0.05 (left tail)",
+                "1": "Locate 0.05 in table",
+                "2": "$z = -1.645$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Z-Score from Area",
+          "formula": "$$ \\text{Area} \\rightarrow z \\text{ (reverse table lookup)} $$",
+          "notes": [
+            "For right-tail, first convert: cumulative = $1 - $ right area.",
+            "Round z to nearest hundredth."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Cumulative Area to Z-Score",
+          "prompt": "Find the z-score that corresponds to a cumulative area of 0.3632.",
+          "steps": [
+            "Locate 0.3632 in the body of the Standard Normal Table.",
+            "The row value is -0.3 and the column value is 0.05.",
+            "So the z-score is $z = -0.35$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Right-Tail Area to Z-Score",
+          "prompt": "Find the z-score that has 10.75% of the distribution's area to its right.",
+          "peerPrompt": "Explain to a partner: Why must you subtract 0.1075 from 1 before looking in the table?",
+          "minLength": 2,
+          "steps": [
+            "Right-tail area = 0.1075.",
+            "Cumulative area = $1 - 0.1075 = 0.8925$.",
+            "Locate 0.8925 in table: row 1.2, column 0.04, so $z = 1.24$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Finding Percentile Z-Score",
+          "prompt": "Find the z-score for the 90th percentile, $P_{90}$.",
+          "steps": [
+            "The 90th percentile means cumulative area = 0.90.",
+            "Locate 0.90 in table; closest is 0.8997.",
+            "Corresponding z-score is $z \\approx 1.28$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Left vs. Right Area",
+        "body": "The table always works with cumulative area to the left. If given a right-tail area, always subtract from 1 before looking up the z-score."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "To find a z-score from a right-tail area, first subtract the area from ___ to get the cumulative area.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "Total area is 1.",
+            "The table uses left-tail areas."
+          ],
+          "feedbackIfWrong": "Subtract from 1 to get the left-tail cumulative area."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "What z-score corresponds to a cumulative area of 0.5?",
+          "answer": "0",
+          "hints": [
+            "The median of standard normal.",
+            "Half the area is on each side."
+          ],
+          "feedbackIfWrong": "The z-score is 0."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "Find the z-score for the 5th percentile, $P_5$.",
+          "answer": "-1.645",
+          "hints": [
+            "Area to the left is 0.05.",
+            "Halfway between -1.64 and -1.65."
+          ],
+          "feedbackIfWrong": "$z \\approx -1.645$."
+        }
+      ]
+    },
+    {
+      "id": "transforming-z-to-x",
+      "title": "Transforming a Z-Score to an X-Value",
+      "teacherCues": [
+        "Start with $z = \\frac{x - \\mu}{\\sigma}$. Solve for x: $x = \\mu + z\\sigma$.",
+        "Demonstrate with $\\mu = 9$, $\\sigma = 2$, and several z-scores."
+      ],
+      "discoveryHook": {
+        "scenario": "You've found the z-score, but what does it mean in the original units? A z-score of 1.96 for cat weights means something very different for dog weights. Converting back to the original x-value brings the answer to life!"
+      },
+      "concept": {
+        "explanation": [
+          "Once you have a z-score, you can convert it back to an x-value using the formula $$ x = \\mu + z\\sigma $$",
+          "This formula is obtained by solving $ z = \\frac{x - \\mu}{\\sigma} $ for $x$.",
+          "$\\mu$ is the mean, $\\sigma$ is the standard deviation, and $z$ is the z-score.",
+          "Positive z-scores give x-values above the mean; negative z-scores give x-values below the mean.",
+          "The x-value is in the original units of the data."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Converting Z to X",
+            "headers": [
+              "z-score",
+              "x-value ($\\mu=9$, $\\sigma=2$)"
+            ],
+            "rows": [
+              {
+                "0": "$z = 1.96$",
+                "1": "$x = 9 + 1.96(2) = 12.92$"
+              },
+              {
+                "0": "$z = -0.44$",
+                "1": "$x = 9 + (-0.44)(2) = 8.12$"
+              },
+              {
+                "0": "$z = 0$",
+                "1": "$x = 9 + 0(2) = 9$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Z-Score to X-Value",
+          "formula": "$$ x = \\mu + z\\sigma $$",
+          "notes": [
+            "$\\mu$ = mean, $\\sigma$ = standard deviation.",
+            "Use original units."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Convert Z to X",
+          "prompt": "Cat weights are normally distributed with $\\mu = 9$ pounds and $\\sigma = 2$ pounds. Find the weight for $z = 1.96$.",
+          "steps": [
+            "Use $x = \\mu + z\\sigma$.",
+            "Substitute: $x = 9 + 1.96(2) = 9 + 3.92 = 12.92$.",
+            "So the weight is 12.92 pounds, above the mean."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Negative Z-Score",
+          "prompt": "For the same cats, find the weight for $z = -0.44$.",
+          "peerPrompt": "Explain to a partner: Why does a negative z-score give a weight below the mean?",
+          "minLength": 2,
+          "steps": [
+            "Use $x = \\mu + z\\sigma$.",
+            "$x = 9 + (-0.44)(2) = 9 - 0.88 = 8.12$.",
+            "The weight is 8.12 pounds, below the mean."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Dog Weights",
+          "prompt": "Dog weights have $\\mu = 52$ pounds, $\\sigma = 15$ pounds. Find the weight for $z = 3.10$.",
+          "steps": [
+            "$x = 52 + 3.10(15) = 52 + 46.5 = 98.5$.",
+            "The weight is 98.5 pounds."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Forget the Units",
+        "body": "The x-value is in the original units (pounds, inches, etc.), not in z-scores. Always include units in your interpretation."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "The formula to convert a z-score to an x-value is $x = \\mu + z \\cdot $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "sigma",
+                "standard deviation",
+                "σ"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the spread parameter.",
+            "Denoted by $\\sigma$."
+          ],
+          "feedbackIfWrong": "$x = \\mu + z\\sigma$."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "If $\\mu = 100$, $\\sigma = 15$, and $z = 2$, what is x?",
+          "answer": "130",
+          "hints": [
+            "Multiply z by sigma, then add mean.",
+            "$100 + 2(15)$."
+          ],
+          "feedbackIfWrong": "$x = 100 + 2(15) = 130$."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "If $z = 0$, what is the x-value?",
+          "answer": "mu",
+          "hints": [
+            "Zero standard deviations from mean.",
+            "It equals the mean."
+          ],
+          "feedbackIfWrong": "$x = \\mu + 0\\sigma = \\mu$."
+        }
+      ]
+    },
+    {
+      "id": "finding-data-value-for-probability",
+      "title": "Finding a Specific Data Value for a Given Probability",
+      "teacherCues": [
+        "Combine the two steps: area → z-score → x-value.",
+        "Use the top 10% example: find z for area 0.9, then x = μ + zσ."
+      ],
+      "discoveryHook": {
+        "scenario": "An agency will only hire applicants in the top 10% of exam scores. What is the lowest score you can earn and still be hired? You must work backward: 10% above means 90% below, find that z-score, then convert to a score. That's the full process!"
+      },
+      "concept": {
+        "explanation": [
+          "To find a specific data value $x$ for a given probability:",
+          "Step 1: Determine the cumulative area from the given probability (e.g., top 10% means cumulative area = 0.90).",
+          "Step 2: Find the z-score that corresponds to that cumulative area using the table.",
+          "Step 3: Convert the z-score to an x-value using $ x = \\mu + z\\sigma $.",
+          "This process answers questions like 'What value separates the top 10% from the rest?'"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Steps for Finding Data Value from Probability",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Determine cumulative area"
+              },
+              {
+                "0": "2",
+                "1": "Find z-score from table"
+              },
+              {
+                "0": "3",
+                "1": "Compute $x = \\mu + z\\sigma$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Probability to X-Value",
+          "formula": "$$ \\text{Area} \\rightarrow z \\rightarrow x = \\mu + z\\sigma $$",
+          "notes": [
+            "Top p% means cumulative area = $1 - p/100$.",
+            "Bottom p% means cumulative area = $p/100$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Top 10% Score",
+          "prompt": "Scores for a test are normally distributed with $\\mu = 50$ and $\\sigma = 10$. An agency hires applicants in the top 10%. What is the lowest score you can earn and still be hired?",
+          "steps": [
+            "Top 10% means cumulative area = $1 - 0.10 = 0.90$.",
+            "Find z for area 0.90: $z \\approx 1.28$.",
+            "Compute $x = 50 + 1.28(10) = 62.8$.",
+            "The lowest score is about 63."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Bottom 1% Cholesterol",
+          "prompt": "Women ages 20-34 have mean cholesterol 188 mg/dL with $\\sigma = 41.3$. Find the highest cholesterol level in the bottom 1%.",
+          "peerPrompt": "Explain to a partner: Why does 'bottom 1%' correspond to a cumulative area of 0.01?",
+          "minLength": 2,
+          "steps": [
+            "Bottom 1% means cumulative area = 0.01.",
+            "Find z for area 0.01: $z \\approx -2.33$.",
+            "Compute $x = 188 + (-2.33)(41.3) \\approx 91.77$.",
+            "The highest level in bottom 1% is about 92 mg/dL."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Longest Braking Distance in Bottom 1%",
+          "prompt": "Braking distances of Nissan Altimas are normally distributed with $\\mu = 129$ feet, $\\sigma = 5.18$ feet. What is the longest braking distance in the bottom 1%?",
+          "steps": [
+            "Bottom 1% means cumulative area = 0.01.",
+            "Find z: $z \\approx -2.33$.",
+            "Compute $x = 129 + (-2.33)(5.18) \\approx 116.9$.",
+            "The longest distance in bottom 1% is about 117 feet."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Top vs. Bottom",
+        "body": "For 'top p%', the cumulative area is $1 - p/100$. For 'bottom p%', the cumulative area is $p/100$. Getting this backward reverses the answer."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "To find the value separating the top 10%, the cumulative area to use is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "0.9",
+                "0.90"
+              ]
+            }
+          ],
+          "hints": [
+            "Top 10% means 90% below.",
+            "$1 - 0.10$."
+          ],
+          "feedbackIfWrong": "Cumulative area = 0.90."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "For bottom 5%, what cumulative area do you use?",
+          "answer": "0.05",
+          "hints": [
+            "Bottom 5% means 5% below.",
+            "Directly the decimal."
+          ],
+          "feedbackIfWrong": "Cumulative area = 0.05."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "If $z = 1.28$, $\\mu = 50$, $\\sigma = 10$, what is x?",
+          "answer": "62.8",
+          "hints": [
+            "$x = 50 + 1.28(10)$.",
+            "Add 12.8 to 50."
+          ],
+          "feedbackIfWrong": "$x = 50 + 1.28(10) = 62.8$."
+        }
+      ]
+    },
+    {
+      "id": "percentiles-and-cutoffs",
+      "title": "Percentiles and Cutoff Values",
+      "teacherCues": [
+        "Ask: 'What does the 95th percentile mean in terms of area below?'",
+        "Demonstrate finding height for 95th percentile and first quartile."
+      ],
+      "discoveryHook": {
+        "scenario": "Percentiles are everywhere—test scores, baby growth charts, and medical measurements. The 95th percentile for height means 95% of people are shorter. Normal distributions let you find the actual measurement that corresponds to any percentile!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:percentile]] $P_k$ is the value below which $k$% of the data falls.",
+          "To find the value for a given percentile, convert the percentile to a cumulative area: $P_k$ means area = $k/100$.",
+          "Find the z-score for that cumulative area using the table.",
+          "Convert the z-score to an x-value: $ x = \\mu + z\\sigma $.",
+          "Common percentiles: quartiles (25th, 50th, 75th), 90th, 95th, 99th."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Common Percentiles and Z-Scores",
+            "headers": [
+              "Percentile",
+              "Cumulative Area",
+              "Approximate z-score"
+            ],
+            "rows": [
+              {
+                "0": "$P_5$",
+                "1": "0.05",
+                "2": "$-1.645$"
+              },
+              {
+                "0": "$P_{25}$ (Q1)",
+                "1": "0.25",
+                "2": "$-0.67$"
+              },
+              {
+                "0": "$P_{50}$ (median)",
+                "1": "0.50",
+                "2": "$0$"
+              },
+              {
+                "0": "$P_{75}$ (Q3)",
+                "1": "0.75",
+                "2": "$0.67$"
+              },
+              {
+                "0": "$P_{90}$",
+                "1": "0.90",
+                "2": "$1.28$"
+              },
+              {
+                "0": "$P_{95}$",
+                "1": "0.95",
+                "2": "$1.645$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Percentile to X-Value",
+          "formula": "$$ P_k: \\text{area} = k/100 \\rightarrow z \\rightarrow x = \\mu + z\\sigma $$",
+          "notes": [
+            "Area is always to the left.",
+            "Quartiles: Q1 = $P_{25}$, Q3 = $P_{75}$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – 95th Percentile Height",
+          "prompt": "Women's heights have $\\mu = 64.3$ inches, $\\sigma = 2.6$ inches. What height represents the 95th percentile?",
+          "steps": [
+            "95th percentile means cumulative area = 0.95.",
+            "Find z for area 0.95: $z \\approx 1.645$.",
+            "Compute $x = 64.3 + 1.645(2.6) = 68.58$.",
+            "The 95th percentile height is about 68.6 inches."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – First Quartile",
+          "prompt": "Using the same data, find the first quartile (25th percentile).",
+          "peerPrompt": "Explain to a partner: Why does the first quartile have a negative z-score?",
+          "minLength": 2,
+          "steps": [
+            "25th percentile means area = 0.25.",
+            "Find z: $z \\approx -0.67$.",
+            "Compute $x = 64.3 + (-0.67)(2.6) \\approx 62.56$.",
+            "First quartile is about 62.6 inches."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Middle 50%",
+          "prompt": "Sleeping times have $\\mu = 6.1$ hours, $\\sigma = 1.0$ hour. Between what two values does the middle 50% lie?",
+          "steps": [
+            "Middle 50% goes from $P_{25}$ to $P_{75}$.",
+            "Find z for 0.25 and 0.75: $z \\approx \\pm 0.67$.",
+            "Lower: $6.1 + (-0.67)(1) = 5.43$; Upper: $6.1 + 0.67(1) = 6.77$.",
+            "Middle 50% lies between 5.43 and 6.77 hours."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Middle vs. Tail Areas",
+        "body": "For the middle 50%, you need two z-scores: one for the 25th percentile and one for the 75th percentile. The area in each tail is 25%."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "The 25th percentile is also known as the first ___.",
+          "blanks": [
+            {
+              "accept": [
+                "quartile"
+              ]
+            }
+          ],
+          "hints": [
+            "It divides data into four parts.",
+            "Denoted Q1."
+          ],
+          "feedbackIfWrong": "First quartile."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "For the 75th percentile, what cumulative area do you use?",
+          "answer": "0.75",
+          "hints": [
+            "75% below the value.",
+            "Directly as decimal."
+          ],
+          "feedbackIfWrong": "Cumulative area = 0.75."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "What z-score corresponds to the median (50th percentile)?",
+          "answer": "0",
+          "hints": [
+            "Half the area below.",
+            "Center of standard normal."
+          ],
+          "feedbackIfWrong": "z = 0."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-finding-values",
+      "title": "Blueprint Aid – Solving Normal Distribution Value Problems",
+      "teacherCues": [
+        "Display Understand → Solve → Conclude. Walk through a full value-finding problem: top 10%, find cutoff.",
+        "Emphasize: Understand identifies percentile/area; Solve finds z then x; Conclude interprets in context."
+      ],
+      "discoveryHook": {
+        "scenario": "Finding values from probabilities involves two reverse steps: area to z-score, then z-score to x-value. The blueprint keeps you organized so you don't confuse left and right tails or skip a step!"
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]] – Read the problem. Is it asking for a value that separates the top or bottom percentage? Determine the cumulative area. Identify $\\mu$ and $\\sigma$.",
+          "[[imp:Solve]] – Step 1: Find the z-score for the cumulative area using the table or invNorm. Step 2: Convert to x-value using $x = \\mu + z\\sigma$.",
+          "[[imp:Conclude]] – State the value in context. Check if it is unusual (|z| > 2). Interpret the result."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Finding Values",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify area (top/bottom %), $\\mu$, $\\sigma$."
+              },
+              {
+                "0": "Solve",
+                "1": "Area → z-score → x = $\\mu + z\\sigma$."
+              },
+              {
+                "0": "Conclude",
+                "1": "State value; check unusual; interpret."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Reverse Normal Formula",
+          "formula": "$$ \\text{Area} \\rightarrow z \\rightarrow x = \\mu + z\\sigma $$",
+          "notes": [
+            "Use invNorm on TI-83/84 for z-score.",
+            "Top p% means area = $1-p$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full Blueprint: Top 10%",
+          "prompt": "Use blueprint: Test scores have $\\mu = 50$, $\\sigma = 10$. Find the lowest score for the top 10%.",
+          "steps": [
+            "Understand: Top 10% means cumulative area = 0.90. $\\mu = 50$, $\\sigma = 10$.",
+            "Solve: z for 0.90 is 1.28. $x = 50 + 1.28(10) = 62.8$.",
+            "Conclude: Lowest score for top 10% is about 63."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Full Blueprint: Bottom 5%",
+          "prompt": "Use blueprint: Waiting times have $\\mu = 204$ days, $\\sigma = 25.7$ days. Find the 5th percentile.",
+          "peerPrompt": "Explain to a partner: Why does the 5th percentile use a negative z-score?",
+          "minLength": 2,
+          "steps": [
+            "Understand: 5th percentile means area = 0.05.",
+            "Solve: z for 0.05 is -1.645. $x = 204 + (-1.645)(25.7) \\approx 161.7$.",
+            "Conclude: The 5th percentile waiting time is about 162 days."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Decide and Compute",
+          "prompt": "Use blueprint: Apple consumption has $\\mu = 16.2$ pounds, $\\sigma = 4$ pounds. Find the smallest consumption in the top 25%.",
+          "steps": [
+            "Understand: Top 25% means area = 0.75.",
+            "Solve: z for 0.75 is 0.67. $x = 16.2 + 0.67(4) = 18.88$.",
+            "Conclude: The smallest top 25% consumption is about 18.9 pounds."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Two-Step Process",
+        "body": "Always remember there are two steps: area → z-score, then z-score → x-value. Skipping either step leads to incorrect answers."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "In the Understand phase, what must you determine from 'top 10%'?",
+          "answer": "cumulative area",
+          "hints": [
+            "It is the area to the left.",
+            "For top 10%, it's 0.90."
+          ],
+          "feedbackIfWrong": "Determine the cumulative area (0.90)."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "In the Solve phase, first find the ___ from the area, then convert to x using $x = \\mu + z\\sigma$.",
+          "blanks": [
+            {
+              "accept": [
+                "z-score"
+              ]
+            }
+          ],
+          "hints": [
+            "It standardizes the value.",
+            "Starts with 'z'."
+          ],
+          "feedbackIfWrong": "First find the z-score."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "If $\\mu = 100$, $\\sigma = 15$, and the z-score for the 90th percentile is 1.28, what is the 90th percentile value? Round to one decimal place.",
+          "answer": "119.2",
+          "hints": [
+            "$x = 100 + 1.28(15)$.",
+            "$1.28 \\times 15 = 19.2$."
+          ],
+          "feedbackIfWrong": "$x = 100 + 1.28(15) = 119.2$."
+        }
+      ]
+    }
+  ],
+  "presenterNotes": [
+    "Start with the reverse table lookup. Many students find this harder than forward lookup, so practice several examples.",
+    "Emphasize the two-step process: area → z-score, then z-score → x-value. Use sketches to clarify left vs. right tails.",
+    "Connect to percentiles and quartiles. Students should recognize common z-scores for 5th, 25th, 75th, and 95th percentiles.",
+    "Use technology (invNorm) to check table-based answers.",
+    "The blueprint is especially useful here because of the multi-step nature of these problems."
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

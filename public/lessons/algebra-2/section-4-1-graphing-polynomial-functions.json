@@ -1,0 +1,730 @@
+{
+  "presenterNotes": [
+    "Emphasize the difference between polynomial and non‑polynomial functions by focusing on whole‑number exponents.",
+    "End behavior is determined solely by the leading term; the rest of the polynomial only affects the middle.",
+    "When graphing, a table of values gives the shape, and end behavior extends it. Connect points smoothly.",
+    "The blueprint example ties together evaluation, average rate of change, and critical thinking about model limitations."
+  ],
+  "schemaVersion": 2,
+  "id": "section-4-1-graphing-polynomial-functions",
+  "standards": [
+    "HSF.IF.B.4",
+    "HSF.IF.C.7c",
+    "HSF.BF.B.3"
+  ],
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "A polynomial function is like a recipe with only whole-number powers of $x$, like $x^3$, $x^2$, $x$, and constants. If you see a negative exponent or a variable inside a radical, it's not a polynomial. Recognizing them is the first step to understanding their graphs."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:polynomial function]] is a function of the form $$ f(x) = a_n x^n + a_{n-1} x^{n-1} + \\dots + a_1 x + a_0 $$ where the exponents are all [[imp:whole numbers]] and the coefficients are real numbers. The highest exponent $n$ is the [[kw:degree]].",
+          "The term with the highest power is the [[imp:leading term]], and its coefficient $a_n$ is the [[imp:leading coefficient]]. The constant term is $a_0$.",
+          "Polynomial functions are classified by degree: degree 0 (constant), degree 1 (linear), degree 2 (quadratic), degree 3 ([[kw:cubic]]), degree 4 ([[kw:quartic]]).",
+          "To check if a function is a polynomial, look at each term's exponent. If any exponent is not a whole number (negative, fraction, variable in denominator), it is [[imp:not a polynomial]]."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "0",
+                "1": "Constant",
+                "2": "$ f(x) = 7 $",
+                "3": "$ 7 $"
+              },
+              {
+                "0": "1",
+                "1": "Linear",
+                "2": "$ f(x) = 5x - 3 $",
+                "3": "$ 5 $"
+              },
+              {
+                "0": "2",
+                "1": "Quadratic",
+                "2": "$ f(x) = -2x^2 + 4x + 1 $",
+                "3": "$ -2 $"
+              },
+              {
+                "0": "3",
+                "1": "Cubic",
+                "2": "$ f(x) = x^3 - 2x $",
+                "3": "$ 1 $"
+              },
+              {
+                "0": "4",
+                "1": "Quartic",
+                "2": "$ f(x) = 0.5x^4 + 3x^2 $",
+                "3": "$ 0.5 $"
+              }
+            ],
+            "headers": [
+              "Degree",
+              "Type",
+              "Example",
+              "Leading Coefficient"
+            ],
+            "type": "table",
+            "title": "Common Polynomial Types",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ f(x) = a_n x^n + a_{n-1} x^{n-1} + \\dots + a_1 x + a_0 $$",
+          "notes": [
+            "Exponents must be whole numbers (0, 1, 2, …).",
+            "Leading coefficient $ a_n \\ne 0 $.",
+            "Degree = $ n $, the highest exponent.",
+            "Write in descending order of exponents."
+          ],
+          "title": "Standard Form of a Polynomial"
+        }
+      },
+      "questions": [
+        {
+          "hints": [
+            "Look for the highest exponent of $ x $.",
+            "The term $ 5x^3 $ has exponent 3."
+          ],
+          "answer": "3",
+          "feedbackIfWrong": "The degree is the highest exponent, which is 3.",
+          "prompt": "What is the degree of the polynomial $ f(x) = 5x^3 - 2x^2 + 7 $?",
+          "id": "q4-1-1",
+          "type": "short-answer"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "quartic"
+              ]
+            }
+          ],
+          "id": "q4-1-2",
+          "type": "fill-blank",
+          "prompt": "A polynomial function of degree 4 is called a ___ function.",
+          "feedbackIfWrong": "Degree 4 is called quartic.",
+          "hints": [
+            "It follows linear, quadratic, cubic.",
+            "The word starts with 'q'."
+          ]
+        },
+        {
+          "answer": "no",
+          "prompt": "Is $ g(x) = 4x^{-2} + 3x + 1 $ a polynomial function? (yes or no)",
+          "hints": [
+            "Check the exponent on $ x^{-2} $.",
+            "Polynomials require whole‑number exponents."
+          ],
+          "id": "q4-1-3",
+          "feedbackIfWrong": "No, because $ -2 $ is not a whole‑number exponent.",
+          "type": "short-answer"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Functions with variables in the denominator, like $ \\frac{1}{x} $, or under a radical, like $ \\sqrt{x} $, are [[imp:not polynomials]]. Even if they look simple, the exponent rules break the whole‑number requirement.",
+        "title": "Hidden Non‑Polynomials"
+      },
+      "title": "Identifying Polynomial Functions",
+      "examples": [
+        {
+          "title": "Example A – Is It a Polynomial?",
+          "steps": [
+            "Check each term: $ -2x^3 $ (exponent 3, whole), $ 5x $ (exponent 1, whole), $ 8 $ (constant, exponent 0).",
+            "All exponents are whole numbers → it is a polynomial.",
+            "The highest exponent is 3, so degree = 3 (cubic). Leading coefficient = $ -2 $."
+          ],
+          "prompt": "Decide whether $ f(x) = -2x^3 + 5x + 8 $ is a polynomial function. If so, give its degree and leading coefficient.",
+          "role": "guided"
+        },
+        {
+          "prompt": "Explain to a partner why $ h(x) = -x^2 + 7x^{-1} + 4x $ is NOT a polynomial function.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "title": "Example B – Spotting Non‑Polynomials",
+          "peerPrompt": "Without looking back...\n\nLook at the term $ 7x^{-1} $. What does the negative exponent mean? Can you have a negative exponent in a polynomial?",
+          "steps": [
+            "The term $ 7x^{-1} $ has an exponent of $ -1 $, which is not a whole number.",
+            "Polynomials only allow non‑negative integer exponents (0, 1, 2, …).",
+            "Because of that term, $ h(x) $ is not a polynomial function."
+          ]
+        },
+        {
+          "role": "independent",
+          "prompt": "Write $ q(x) = 3x^4 - 6x + x^3 $ in standard form. What is the degree and leading coefficient?",
+          "steps": [
+            "Arrange terms in descending order of exponents: $ 3x^4 + x^3 - 6x $.",
+            "Highest exponent is 4, so degree = 4 (quartic).",
+            "Leading coefficient = $ 3 $."
+          ],
+          "title": "Example C – Putting in Standard Form"
+        }
+      ],
+      "id": "identifying-polynomial-functions",
+      "teacherCues": [
+        "Write several functions on the board, some with negative exponents or variables in denominators. Ask: Which are polynomials? Why?",
+        "Circle the exponents and emphasize they must be whole numbers. Show the standard form with terms in descending order."
+      ]
+    },
+    {
+      "id": "end-behavior",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Describe the end behavior of $ f(x) = -0.5x^4 + 2.5x^2 + x - 1 $.",
+          "title": "Example A – Describing End Behavior",
+          "steps": [
+            "Degree = 4 (even). Leading coefficient = $ -0.5 $ (negative).",
+            "Even degree + negative leading coefficient → both ends go down.",
+            "So $ f(x) \\to -\\infty $ as $ x \\to -\\infty $ and $ f(x) \\to -\\infty $ as $ x \\to +\\infty $."
+          ]
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nThink about $ x $ getting huge, like a million. Compare $ 2x^3 $ and $ 100x^2 $. Which term grows faster? Why does the lower‑degree term become insignificant?",
+          "role": "peer-explain",
+          "prompt": "Explain to a partner why only the leading term matters for end behavior, not the other terms.",
+          "steps": [
+            "For very large $ |x| $, the highest power of $ x $ overwhelms all lower‑degree terms.",
+            "The leading term grows (or shrinks) faster than any other term.",
+            "Thus, the graph's far‑away behavior mirrors the leading term."
+          ],
+          "title": "Example B – Why Does the Leading Term Dominate?",
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "Rises to the left means $ f(x) \\to +\\infty $ as $ x \\to -\\infty $. Falls to the right means $ f(x) \\to -\\infty $ as $ x \\to +\\infty $.",
+            "This matches odd degree, negative leading coefficient.",
+            "So the leading coefficient is [[imp:negative]]."
+          ],
+          "role": "independent",
+          "title": "Example C – Determine Leading Coefficient Sign from Graph",
+          "prompt": "The graph of a cubic polynomial rises to the left and falls to the right. Is the leading coefficient positive or negative?"
+        }
+      ],
+      "teacherCues": [
+        "Draw four graphs on the board showing the four possible end behaviors. Ask: What happens to $ y $ as $ x $ goes far to the right? Far to the left?",
+        "Write the rule: The degree (odd/even) and the sign of the leading coefficient determine the end behavior."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "End Behavior Summary",
+            "rows": [
+              {
+                "0": "Odd",
+                "1": "Positive",
+                "2": "$ f(x) \\to -\\infty $",
+                "3": "$ f(x) \\to +\\infty $"
+              },
+              {
+                "0": "Odd",
+                "1": "Negative",
+                "2": "$ f(x) \\to +\\infty $",
+                "3": "$ f(x) \\to -\\infty $"
+              },
+              {
+                "0": "Even",
+                "1": "Positive",
+                "2": "$ f(x) \\to +\\infty $",
+                "3": "$ f(x) \\to +\\infty $"
+              },
+              {
+                "0": "Even",
+                "1": "Negative",
+                "2": "$ f(x) \\to -\\infty $",
+                "3": "$ f(x) \\to -\\infty $"
+              }
+            ],
+            "headers": [
+              "Degree",
+              "Leading Coefficient",
+              "As $ x \\to -\\infty $",
+              "As $ x \\to +\\infty $"
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "The [[kw:end behavior]] of a polynomial graph describes what happens to $ f(x) $ as $ x \\to +\\infty $ (far right) and as $ x \\to -\\infty $ (far left).",
+          "It is determined by the [[imp:degree]] (odd or even) and the [[imp:sign of the leading coefficient]].",
+          "• Odd degree, positive leading coefficient: $ f(x) \\to -\\infty $ as $ x \\to -\\infty $, and $ f(x) \\to +\\infty $ as $ x \\to +\\infty $.",
+          "• Odd degree, negative leading coefficient: flips — $ f(x) \\to +\\infty $ as $ x \\to -\\infty $, and $ f(x) \\to -\\infty $ as $ x \\to +\\infty $.",
+          "• Even degree, positive leading coefficient: both ends go up ($ +\\infty $).",
+          "• Even degree, negative leading coefficient: both ends go down ($ -\\infty $)."
+        ],
+        "formulaCard": {
+          "title": "End Behavior Rule",
+          "notes": [
+            "Leading coefficient positive → right end goes up.",
+            "Leading coefficient negative → right end goes down.",
+            "Left end follows the parity rule."
+          ],
+          "formula": "$$ \\text{Odd degree: opposite directions} $$ $$ \\text{Even degree: same direction} $$"
+        }
+      },
+      "title": "End Behavior of Polynomial Functions",
+      "questions": [
+        {
+          "answer": "up",
+          "hints": [
+            "Think of a U‑shape that opens upward.",
+            "Positive leading coefficient means the right side goes up."
+          ],
+          "prompt": "If the degree is even and the leading coefficient is positive, both ends of the graph go which direction? (up or down)",
+          "id": "q4-1-4",
+          "feedbackIfWrong": "Both ends go up when the degree is even and the leading coefficient is positive.",
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "Look at the highest exponent: 7.",
+            "The coefficient of $ x^7 $ is 7, which is positive."
+          ],
+          "id": "q4-1-5",
+          "type": "fill-blank",
+          "prompt": "For $ f(x) = 7x^7 + 12x^5 - 6x^3 - 2x - 18 $, the degree is ___ (odd or even) and the leading coefficient is ___ (positive or negative).",
+          "feedbackIfWrong": "Degree 7 is odd; the leading coefficient 7 is positive.",
+          "blanks": [
+            {
+              "accept": [
+                "odd",
+                "7",
+                "seven"
+              ]
+            },
+            {
+              "accept": [
+                "positive",
+                "+"
+              ]
+            }
+          ]
+        },
+        {
+          "answer": "left",
+          "hints": [
+            "Odd degree, negative: $ f(x) \\to +\\infty $ as $ x \\to -\\infty $.",
+            "That means it goes up on the left side."
+          ],
+          "feedbackIfWrong": "It rises to the left (as $ x \\to -\\infty $).",
+          "prompt": "If a polynomial function has odd degree and negative leading coefficient, the graph rises to the ___ (left or right).",
+          "id": "q4-1-6",
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "As $ x $ goes off to infinity (way to the right or left), the highest-degree term dominates. So whether the graph ultimately rises or falls depends on just two things: the degree and the sign of the leading coefficient."
+      },
+      "confusionCorner": {
+        "body": "Odd‑degree polynomials have [[imp:opposite]] end behaviors (one up, one down). Even‑degree polynomials have the [[imp:same]] end behavior on both sides. The sign of the leading coefficient determines which direction that is.",
+        "title": "Odd vs. Even: Don't Mix Them Up!"
+      }
+    },
+    {
+      "title": "Graphing Polynomial Functions",
+      "examples": [
+        {
+          "prompt": "Graph $ f(x) = -x^3 + x^2 + 3x - 3 $ using a table and end behavior.",
+          "title": "Example A – Graphing a Cubic",
+          "role": "guided",
+          "steps": [
+            "Make a table: $ x = -2, -1, 0, 1, 2 $ gives $ f(x) = 3, -4, -3, 0, -1 $.",
+            "Plot these points. Connect them with a smooth curve.",
+            "Degree 3 (odd), leading coefficient $ -1 $ (negative) → rises left, falls right.",
+            "Extend the graph: left side goes up, right side goes down."
+          ]
+        },
+        {
+          "steps": [
+            "Polynomials are built from addition, subtraction, and multiplication of powers of $ x $.",
+            "These operations produce smooth, continuous curves — no division by zero, no absolute values.",
+            "Thus, the graph flows without breaks, holes, or sharp corners."
+          ],
+          "title": "Example B – Why Must the Graph Be Smooth?",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nThink about the formula for a polynomial. Is there any operation that would cause a sudden jump or a sharp turn?",
+          "prompt": "Explain to a partner why polynomial graphs have no sharp corners or breaks.",
+          "minLength": 2
+        },
+        {
+          "prompt": "Graph $ f(x) = x^4 - x^3 - 4x^2 + 4 $ using a table: $ x = -2, -1, 0, 1, 2 $ gives $ 12, 2, 4, 0, -4 $. Describe the end behavior.",
+          "title": "Example C – Graphing a Quartic",
+          "steps": [
+            "Plot the points and connect smoothly. The graph dips below the $ x $-axis between $ 1 $ and $ 2 $.",
+            "Degree 4 (even), leading coefficient $ 1 $ (positive) → both ends go up.",
+            "So the graph rises on both the far left and far right."
+          ],
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Table for $ f(x) = -x^3 + x^2 + 3x - 3 $",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$ f(x) $",
+                "1": "$ 3 $",
+                "2": "$ -4 $",
+                "3": "$ -3 $",
+                "4": "$ 0 $",
+                "5": "$ -1 $"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "$ x $",
+              "$ -2 $",
+              "$ -1 $",
+              "$ 0 $",
+              "$ 1 $",
+              "$ 2 $"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{1. Make a table of values.} $$ $$ \\text{2. Plot points and connect smoothly.} $$ $$ \\text{3. Use end behavior to extend.} $$",
+          "notes": [
+            "Choose $ x $-values around the origin.",
+            "The graph is smooth and continuous.",
+            "Check end behavior for large positive and negative $ x $."
+          ],
+          "title": "Graphing Steps"
+        },
+        "explanation": [
+          "To graph a polynomial function by hand:",
+          "1. Make a [[imp:table of values]] for selected $ x $-values, typically centered around zero.",
+          "2. Plot the points and connect them with a [[imp:smooth, continuous curve]].",
+          "3. Use the [[imp:end behavior]] (degree and leading coefficient) to extend the graph beyond your plotted points.",
+          "The graph of a polynomial function is always continuous — no breaks, jumps, or gaps."
+        ]
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "hints": [
+            "Substitute $ x = 1 $ into the function.",
+            "$ -(1)^3 + (1)^2 + 3(1) - 3 = -1 + 1 + 3 - 3 $."
+          ],
+          "feedbackIfWrong": "$ f(1) = -1 + 1 + 3 - 3 = 0 $.",
+          "prompt": "For $ f(x) = -x^3 + x^2 + 3x - 3 $, what is $ f(1) $?",
+          "id": "q4-1-7",
+          "answer": "0"
+        },
+        {
+          "type": "fill-blank",
+          "hints": [
+            "No breaks, holes, or jumps.",
+            "The opposite of discontinuous."
+          ],
+          "prompt": "The graph of a polynomial function is always smooth and ___ (continuous or discontinuous).",
+          "id": "q4-1-8",
+          "blanks": [
+            {
+              "accept": [
+                "continuous"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Polynomial graphs are continuous."
+        },
+        {
+          "answer": "-4",
+          "hints": [
+            "Plug $ x = 2 $ into the function.",
+            "$ 16 - 8 - 16 + 4 = -4 $."
+          ],
+          "prompt": "In the table for $ f(x) = x^4 - x^3 - 4x^2 + 4 $, $ f(2) $ equals what number?",
+          "feedbackIfWrong": "$ f(2) = 16 - 8 - 16 + 4 = -4 $.",
+          "id": "q4-1-9",
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "To graph a polynomial, you don't need hundreds of points. Plot a few strategic values to capture the 'middle' of the graph, then let the end behavior guide the tails. The result is a smooth, continuous curve with no sharp corners."
+      },
+      "teacherCues": [
+        "Make a table of values for $ f(x) = -x^3 + x^2 + 3x - 3 $. Ask: What do you notice about the shape?",
+        "Emphasize: Plot several points, connect smoothly, then use end behavior to extend the graph beyond the plotted points."
+      ],
+      "confusionCorner": {
+        "body": "When plotting points, connect them with a [[imp:smooth curve]], not a series of straight segments. Polynomial graphs have gentle bends, not sharp angles.",
+        "title": "Don't Connect with Straight Lines!"
+      },
+      "id": "graphing-polynomial-functions"
+    },
+    {
+      "confusionCorner": {
+        "body": "$ f(x) > 0 $ means the graph is [[imp:above]] the $ x $-axis (high). $ f(x) $ increasing means the graph is [[imp:rising]] as you move right. These are independent: a graph can be above the axis but decreasing.",
+        "title": "Positive/Negative vs. Increasing/Decreasing"
+      },
+      "questions": [
+        {
+          "answer": "above",
+          "prompt": "If $ f(x) > 0 $ on the interval $ (1, 4) $, the graph lies ___ the $ x $-axis on that interval. (above or below)",
+          "type": "short-answer",
+          "hints": [
+            "Positive $ y $-values are above the axis.",
+            "The inequality $ f(x) > 0 $ means the output is positive."
+          ],
+          "feedbackIfWrong": "The graph is above the $ x $-axis when $ f(x) > 0 $.",
+          "id": "q4-1-10"
+        },
+        {
+          "prompt": "A turning point occurs where a function changes from increasing to ___ or vice versa.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "decreasing"
+              ]
+            }
+          ],
+          "id": "q4-1-11",
+          "hints": [
+            "It's the opposite of increasing.",
+            "The graph goes down."
+          ],
+          "feedbackIfWrong": "A turning point is where it changes from increasing to decreasing (or the opposite)."
+        },
+        {
+          "type": "short-answer",
+          "prompt": "If a polynomial graph rises to the left and rises to the right, is the degree even or odd?",
+          "answer": "even",
+          "hints": [
+            "Same direction on both ends → even degree.",
+            "Both ends go up."
+          ],
+          "id": "q4-1-12",
+          "feedbackIfWrong": "Same end behavior on both sides indicates an even degree."
+        }
+      ],
+      "id": "sketching-graphs-from-characteristics",
+      "examples": [
+        {
+          "steps": [
+            "Mark the $ x $-intercepts at $ -2, 3, 5 $ (where sign changes).",
+            "From left to right: below axis until $ -2 $, then above until $ 3 $, below until $ 5 $, then above.",
+            "Increasing means rising; decreasing means falling. The graph rises to a peak at $ x = 0 $, falls to a valley at $ x = 4 $, then rises again.",
+            "End behavior: $ f(x) \\to -\\infty $ as $ x \\to -\\infty $ and $ f(x) \\to +\\infty $ as $ x \\to +\\infty $ → odd degree, positive leading coefficient."
+          ],
+          "role": "guided",
+          "title": "Example A – Sketch from Given Intervals",
+          "prompt": "Sketch a graph: increasing on $ (-\\infty, 0) $ and $ (4, \\infty) $; decreasing on $ (0, 4) $. $ f(x) > 0 $ on $ (-2, 3) $ and $ (5, \\infty) $; $ f(x) < 0 $ elsewhere."
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nA turning point is where the graph changes from increasing to decreasing, or vice versa. Look at the interval boundaries.",
+          "steps": [
+            "At $ x = -1.5 $, the function changes from decreasing to increasing → local minimum.",
+            "At $ x = 2.5 $, it changes from increasing to decreasing → local maximum.",
+            "These are the locations of the turning points."
+          ],
+          "prompt": "Given: decreasing on $ (-\\infty, -1.5) $ and $ (2.5, \\infty) $; increasing on $ (-1.5, 2.5) $. Where are the turning points? Explain to a partner.",
+          "title": "Example B – How to Find Turning Points from Description",
+          "minLength": 2
+        },
+        {
+          "prompt": "A polynomial graph falls to the left and rises to the right. The graph has two turning points. What can you say about the degree and leading coefficient?",
+          "role": "independent",
+          "steps": [
+            "Falls left, rises right → odd degree, positive leading coefficient.",
+            "Two turning points mean at least degree 3 (cubic could have up to 2 turning points).",
+            "So the degree is odd and at least 3; leading coefficient is positive."
+          ],
+          "title": "Example C – Determine Degree and Leading Coefficient"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "You don't always have an equation. Sometimes you're given a description: 'the graph goes up here, down there, is positive between these points.' From that, you can sketch a rough graph and even deduce the degree and leading coefficient."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{Increasing: graph goes up} $$ $$ \\text{Decreasing: graph goes down} $$ $$ \\text{Above axis: } f(x) > 0 \\quad \\text{Below axis: } f(x) < 0 $$",
+          "notes": [
+            "$ x $-intercepts occur where the sign changes.",
+            "Turning points occur where increasing/decreasing changes.",
+            "End behavior gives degree and leading coefficient sign."
+          ],
+          "title": "Sketching from Description"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Interval",
+              "Behavior"
+            ],
+            "rows": [
+              {
+                "0": "$ x < -2 $",
+                "1": "$ f(x) < 0 $ (below axis)"
+              },
+              {
+                "0": "$ -2 < x < 3 $",
+                "1": "$ f(x) > 0 $ (above axis)"
+              },
+              {
+                "0": "$ 3 < x < 5 $",
+                "1": "$ f(x) < 0 $"
+              },
+              {
+                "0": "$ x > 5 $",
+                "1": "$ f(x) > 0 $"
+              }
+            ],
+            "type": "table",
+            "title": "Characteristics to Sketch",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "A function is [[imp:increasing]] when its graph rises as $ x $ moves to the right; [[imp:decreasing]] when it falls.",
+          "The intervals where $ f(x) > 0 $ are where the graph lies [[imp:above]] the $ x $-axis; $ f(x) < 0 $ means it lies [[imp:below]].",
+          "Given these intervals, you can sketch a graph that moves up or down in each region and crosses the $ x $-axis at the boundaries between positive and negative.",
+          "The [[imp:end behavior]] (deduced from the far‑left and far‑right directions) reveals the parity of the degree and the sign of the leading coefficient."
+        ]
+      },
+      "title": "Sketching Graphs from Characteristics",
+      "teacherCues": [
+        "Read a list of increasing/decreasing intervals and where $ f(x) > 0 $ or $ < 0 $. Ask: Can you draw a curve that fits all these conditions?",
+        "Emphasize: The $ x $-intercepts (where $ f(x) = 0 $) are boundaries between positive and negative regions. The turning points are boundaries between increasing and decreasing."
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "The number of electric vehicles in use (in thousands) from 2001 to 2010 can be modeled by a cubic polynomial. We can use the function to describe the trend, compute the average growth rate, and discuss whether the model makes sense for years outside the data range."
+      },
+      "concept": {
+        "explanation": [
+          "**Understand**: $ V(t) $ gives electric vehicles in thousands, with $ t = 1 $ for 2001. The function is cubic (degree 3) with a positive leading coefficient. We want to describe the behavior on $ 1 \\le t \\le 10 $, find the average rate of change from 2001 to 2010, and discuss the model's validity beyond 2010.",
+          "**Solve**: Graph the function on $ 1 \\le t \\le 10 $. It increases from about 18.6 thousand to 58.6 thousand. The average rate of change is $ \\frac{V(10) - V(1)}{10 - 1} \\approx \\frac{58.57 - 18.58}{9} \\approx 4.44 $ thousand vehicles per year.",
+          "**Conclude**: The model shows growth, with a slight dip in growth rate around 2005. Because the degree is odd and the leading coefficient positive, $ V(t) \\to +\\infty $ as $ t \\to +\\infty $. This unlimited growth is unrealistic in the long term, so the model should not be used far beyond 2010. For years before 2001, $ V(0) $ is negative, which doesn't make sense, so the model is only valid near the given time frame."
+        ],
+        "formulaCard": {
+          "title": "Average Rate of Change",
+          "notes": [
+            "Measures the slope of the secant line.",
+            "For $ 1 \\le t \\le 10 $, about 4.44 thousand vehicles/year.",
+            "Use to describe overall trend over an interval."
+          ],
+          "formula": "$$ \\frac{V(t_2) - V(t_1)}{t_2 - t_1} $$"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ V(t) $ (thousands)",
+                "1": "≈ 18.58",
+                "2": "≈ 28.5",
+                "3": "≈ 58.57"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "$ t $ (year)",
+              "1 (2001)",
+              "5 (2005)",
+              "10 (2010)"
+            ],
+            "title": "Electric Vehicle Model Data (Partial)"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Extrapolation vs. Interpolation",
+        "body": "Using the model within the given domain (here $ 1 \\le t \\le 10 $) is [[imp:interpolation]] — generally safe. Using it far outside that domain is [[imp:extrapolation]] — often unreliable. Always check if the model's predictions make sense in the real‑world context."
+      },
+      "title": "Blueprint Aid: Modeling with a Polynomial Function (Electric Vehicles)",
+      "examples": [
+        {
+          "title": "Example A – Understand the Model",
+          "prompt": "Identify the independent and dependent variables. What do $ t = 1 $ and $ V(1) $ represent?",
+          "role": "guided",
+          "steps": [
+            "Independent variable $ t $: number of years after 2000 (so $ t=1 $ is 2001).",
+            "Dependent variable $ V(t) $: number of electric vehicles in use (in thousands).",
+            "$ V(1) \\approx 18.58 $ means about 18,580 electric vehicles were in use in 2001."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Average rate $ = \\frac{58.57 - 18.58}{9} \\approx 4.44 $ thousand vehicles per year.",
+            "It means that, on average, the number of electric vehicles grew by about 4,440 each year over the 9‑year period.",
+            "It is not the same as the increase each individual year."
+          ],
+          "title": "Example B – Solve: Find the Average Rate of Change",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nUse the formula $ \\frac{V(10) - V(1)}{10 - 1} $. The result is about 4.44 thousand vehicles per year. Discuss: Does this mean the number increased by exactly 4.44 thousand each year?",
+          "prompt": "Compute the average rate of change from 2001 ($ t=1 $) to 2010 ($ t=10 $). What does this number mean?"
+        },
+        {
+          "prompt": "Explain why the model should not be used for $ t = 0 $ (year 2000) or for $ t = 20 $ (year 2020).",
+          "title": "Example C – Conclude: Validity of the Model",
+          "role": "independent",
+          "steps": [
+            "For $ t = 0 $, $ V(0) \\approx -2.041 $, which is negative. A negative number of vehicles doesn't make sense.",
+            "For $ t = 20 $, the cubic model predicts continued rapid growth, but real‑world constraints (market saturation, production limits) would prevent unlimited growth.",
+            "Models are only reliable within or near the range of the data used to create them."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "answer": "2005",
+          "hints": [
+            "$ t $ is years after 2000.",
+            "Add 5 to 2000."
+          ],
+          "prompt": "In the electric vehicle model, what does $ t = 5 $ represent? (Answer: 2005)",
+          "type": "short-answer",
+          "feedbackIfWrong": "$ t = 5 $ corresponds to the year 2005.",
+          "id": "q4-1-13"
+        },
+        {
+          "prompt": "The average rate of change from 2001 to 2010 was about ___ thousand vehicles per year. (Round to one decimal: 4.4)",
+          "type": "fill-blank",
+          "feedbackIfWrong": "The average rate is about 4.4 thousand vehicles per year.",
+          "blanks": [
+            {
+              "accept": [
+                "4.4"
+              ]
+            }
+          ],
+          "hints": [
+            "Use $ \\frac{V(10) - V(1)}{9} $.",
+            "The result is approximately 4.44, rounded to 4.4."
+          ],
+          "id": "q4-1-14"
+        },
+        {
+          "answer": "no",
+          "prompt": "Should this model be used to predict the number of electric vehicles in 2025? (yes or no)",
+          "hints": [
+            "2025 is far outside the original data range (2001–2010).",
+            "Unlimited growth is unrealistic."
+          ],
+          "id": "q4-1-15",
+          "feedbackIfWrong": "No, because the model's predictions far beyond 2010 are likely unreliable.",
+          "type": "short-answer"
+        }
+      ],
+      "id": "blueprint-real-life-modeling",
+      "teacherCues": [
+        "Display the electric vehicle model $ V(t) = 0.151280t^3 - 3.28234t^2 + 23.7565t - 2.041 $ for $ 1 \\le t \\le 10 $. Ask: What does the graph tell us about the trend?",
+        "Use Understand–Solve–Conclude: Understand the context, Solve by evaluating and finding average rate of change, Conclude about the model's validity."
+      ]
+    }
+  ],
+  "title": "Graphing Polynomial Functions",
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

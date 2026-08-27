@@ -1,0 +1,237 @@
+{
+  "type": "quiz",
+  "id": "section-8-5-quiz",
+  "title": "Applications of Matrices and Determinants",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple-choice",
+      "prompt": "What is Cramer's Rule used for?",
+      "options": [
+        "A. Finding the area of a triangle",
+        "B. Solving systems of linear equations using determinants",
+        "C. Multiplying matrices",
+        "D. Finding the inverse of a matrix"
+      ],
+      "correctIndex": 1,
+      "hints": [
+        "It involves determinants of coefficient matrices.",
+        "It gives $x = D_x/D$, etc."
+      ],
+      "feedbackIfWrong": "Cramer's Rule solves systems of linear equations using determinants."
+    },
+    {
+      "id": "q2",
+      "type": "fill-blank",
+      "prompt": "In Cramer's Rule for a $2 \\times 2$ system, the denominator $D$ is the determinant of the ___ matrix.",
+      "blanks": [
+        {
+          "accept": [
+            "coefficient"
+          ]
+        }
+      ],
+      "hints": [
+        "It contains the coefficients of $x$ and $y$.",
+        "Not the constants."
+      ],
+      "feedbackIfWrong": "It's the coefficient matrix."
+    },
+    {
+      "id": "q3",
+      "type": "short-answer",
+      "prompt": "For the system $4x - 2y = 10$, $3x - 5y = 11$, what is the value of $D_x$? (Enter a number)",
+      "answer": "-28",
+      "hints": [
+        "Replace the $x$ column with the constants.",
+        "Compute $10(-5) - (-2)(11)$."
+      ],
+      "feedbackIfWrong": "$D_x = 10(-5) - (-2)(11) = -50 + 22 = -28$."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "When can you NOT apply Cramer's Rule?",
+      "options": [
+        "A. When the system has a unique solution",
+        "B. When the determinant of the coefficient matrix is nonzero",
+        "C. When the determinant of the coefficient matrix is zero",
+        "D. When there are more variables than equations"
+      ],
+      "correctIndex": 2,
+      "hints": [
+        "Division by zero is undefined.",
+        "Cramer's Rule fails if $D=0$."
+      ],
+      "feedbackIfWrong": "Cramer's Rule cannot be applied when $D=0$."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "For a $3 \\times 3$ system, $D_y$ is formed by replacing the ___ column of the coefficient matrix with the constants.",
+      "blanks": [
+        {
+          "accept": [
+            "second"
+          ]
+        }
+      ],
+      "hints": [
+        "It corresponds to the variable $y$.",
+        "It's the middle column."
+      ],
+      "feedbackIfWrong": "The second column."
+    },
+    {
+      "id": "q6",
+      "type": "short-answer",
+      "prompt": "Using Cramer's Rule on the system $x+y+z=0$, $2x-y+z=1$, $x+y-z=2$, what is the value of $z$? (Enter a number)",
+      "answer": "-1",
+      "hints": [
+        "We computed $D_z = -6$ and $D=6$.",
+        "$z = D_z/D = -6/6 = -1$."
+      ],
+      "feedbackIfWrong": "$z = -1$."
+    },
+    {
+      "id": "q7",
+      "type": "multiple-choice",
+      "prompt": "The area of a triangle with vertices $(1,0),(2,2),(4,3)$ using determinants is:",
+      "options": [
+        "A. $3$",
+        "B. $\\frac32$",
+        "C. $\\frac12$",
+        "D. $1$"
+      ],
+      "correctIndex": 1,
+      "hints": [
+        "Compute the $3 \\times 3$ determinant with last column 1's.",
+        "The determinant was $-3$, area $= -\\frac12(-3) = 3/2$."
+      ],
+      "feedbackIfWrong": "The area is $\\frac32$ square units."
+    },
+    {
+      "id": "q8",
+      "type": "fill-blank",
+      "prompt": "Three points are collinear if the determinant $\\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix}$ equals ___.",
+      "blanks": [
+        {
+          "accept": [
+            "0",
+            "zero"
+          ]
+        }
+      ],
+      "hints": [
+        "When they lie on a straight line.",
+        "The area is zero."
+      ],
+      "feedbackIfWrong": "The determinant is zero for collinear points."
+    },
+    {
+      "id": "q9",
+      "type": "short-answer",
+      "prompt": "Are the points $(0,1)$, $(2,2)$, $(4,3)$ collinear? (yes or no)",
+      "answer": "yes",
+      "hints": [
+        "Compute the determinant; it equals 0.",
+        "The area of the triangle formed is zero."
+      ],
+      "feedbackIfWrong": "Yes, the determinant is zero."
+    },
+    {
+      "id": "q10",
+      "type": "multiple-choice",
+      "prompt": "Which determinant gives the equation of a line through two points?",
+      "options": [
+        "A. $\\begin{vmatrix} x & y & 1 \\\\ x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\end{vmatrix} = 0$",
+        "B. $\\begin{vmatrix} x_1 & y_1 \\\\ x_2 & y_2 \\end{vmatrix} = 0$",
+        "C. $\\begin{vmatrix} x & x_1 & x_2 \\\\ y & y_1 & y_2 \\end{vmatrix} = 0$",
+        "D. $\\begin{vmatrix} x & y \\\\ x_1 & y_1 \\end{vmatrix} = 0$"
+      ],
+      "correctIndex": 0,
+      "hints": [
+        "It's a $3 \\times 3$ determinant with $x, y, 1$ in the first row.",
+        "The other two rows are the given points with a 1 in the third column."
+      ],
+      "feedbackIfWrong": "The correct form is $\\begin{vmatrix} x & y & 1 \\\\ x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\end{vmatrix} = 0$."
+    },
+    {
+      "id": "q11",
+      "type": "fill-blank",
+      "prompt": "Using the determinant method, the line through $(2,4)$ and $(-1,3)$ has equation $x - 3y +$ ___ $= 0$.",
+      "blanks": [
+        {
+          "accept": [
+            "10"
+          ]
+        }
+      ],
+      "hints": [
+        "Expand the determinant and simplify.",
+        "The constant term is $10$."
+      ],
+      "feedbackIfWrong": "The constant term is $10$."
+    },
+    {
+      "id": "q12",
+      "type": "short-answer",
+      "prompt": "What is the equation of the line through $(1,2)$ and $(3,6)$ using determinants? (Enter in the form y=2x)",
+      "answer": "y=2x",
+      "hints": [
+        "The determinant yields $-4x+2y=0$.",
+        "Solve for $y$: $y=2x$."
+      ],
+      "feedbackIfWrong": "The line is $y=2x$."
+    },
+    {
+      "id": "q13",
+      "type": "multiple-choice",
+      "prompt": "In the triangle area formula, why is there a $\\pm$ sign?",
+      "options": [
+        "A. Because the determinant can be positive or negative, and area must be positive",
+        "B. Because the triangle could be above or below the x-axis",
+        "C. Because the formula works only for acute triangles",
+        "D. Because you may use either clockwise or counterclockwise ordering"
+      ],
+      "correctIndex": 0,
+      "hints": [
+        "The determinant might be negative.",
+        "We take the absolute value (or choose sign) to make area positive."
+      ],
+      "feedbackIfWrong": "The $\\pm$ ensures the area is positive; you choose the sign that makes it so."
+    },
+    {
+      "id": "q14",
+      "type": "fill-blank",
+      "prompt": "To find $D_z$ in Cramer's Rule for a $3 \\times 3$ system, replace the ___ column of the coefficient matrix with the constants.",
+      "blanks": [
+        {
+          "accept": [
+            "third"
+          ]
+        }
+      ],
+      "hints": [
+        "It corresponds to $z$.",
+        "It's the last column before augmentation."
+      ],
+      "feedbackIfWrong": "Replace the third column."
+    },
+    {
+      "id": "q15",
+      "type": "short-answer",
+      "prompt": "If $D=0$ and $D_x \\neq 0$, how many solutions does the system have? (Enter a number)",
+      "answer": "0",
+      "hints": [
+        "Inconsistent system.",
+        "No solution."
+      ],
+      "feedbackIfWrong": "The system has no solution (0 solutions)."
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

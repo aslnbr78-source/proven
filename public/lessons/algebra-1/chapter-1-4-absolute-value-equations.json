@@ -1,0 +1,697 @@
+{
+  "standards": [
+    "HSA.REI.B.3",
+    "HSA.CED.A.1"
+  ],
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "Think of absolute value as a measure of distance from zero. If you're 5 steps away from home, you could be 5 steps east or 5 steps west. Absolute value equations capture that 'either‑or' idea — and solving them unlocks two possible positions!"
+      },
+      "concept": {
+        "explanation": [
+          "An [[kw:absolute value equation]] contains an absolute value expression, like $ |x| = a $.",
+          "Because absolute value is always non‑negative, $ |ax + b| = c $ has [[imp:no solution if $ c < 0 $]].",
+          "When $ c \\ge 0 $, rewrite the equation as two [[imp:related linear equations]]: $ ax + b = c $ or $ ax + b = -c $.",
+          "Solve each linear equation separately. Both are possible solutions.",
+          "Always check your answers in the original equation."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Solving $ |ax + b| = c $",
+            "type": "table",
+            "headers": [
+              "Case",
+              "Equation",
+              "Solution"
+            ],
+            "rows": [
+              {
+                "0": "$ c > 0 $",
+                "1": "$ ax + b = c $ or $ ax + b = -c $",
+                "2": "Two solutions"
+              },
+              {
+                "0": "$ c = 0 $",
+                "1": "$ ax + b = 0 $",
+                "2": "One solution"
+              },
+              {
+                "0": "$ c < 0 $",
+                "1": "No equation needed",
+                "2": "No solution"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Absolute Value Equation",
+          "notes": [
+            "Only valid when $ c \\ge 0 $.",
+            "Absolute value is distance from zero, never negative."
+          ],
+          "formula": "$$ |ax + b| = c \\quad\\Rightarrow\\quad ax + b = c \\;\\text{or}\\; ax + b = -c $$"
+        }
+      },
+      "id": "solving-abs-value-eq",
+      "examples": [
+        {
+          "title": "A – Two Positive Solutions",
+          "steps": [
+            "Since $ 6 \\ge 0 $, write two equations: $ x - 4 = 6 $ or $ x - 4 = -6 $.",
+            "Solve: $ x = 10 $ and $ x = -2 $.",
+            "Graph: points at -2 and 10, both 6 units away from 4."
+          ],
+          "role": "guided",
+          "prompt": "Solve $ |x - 4| = 6 $. Graph the solutions on a number line."
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Solve $ |3x + 1| = -5 $.",
+          "steps": [
+            "The absolute value of any expression is always $ \\ge 0 $.",
+            "It can never equal a negative number like -5.",
+            "So the equation has no solution."
+          ],
+          "title": "B – No Solution Case",
+          "peerPrompt": "Explain to a partner: Why does this equation have no solution, without doing any algebra?"
+        },
+        {
+          "steps": [
+            "Write two equations: $ w = 6 $ or $ w = -6 $.",
+            "Both are solutions. Check: $ |6| = 6 $, $ |-6| = 6 $."
+          ],
+          "role": "independent",
+          "title": "C – A Simple Case",
+          "prompt": "Solve $ |w| = 6 $."
+        }
+      ],
+      "questions": [
+        {
+          "hints": [
+            "Absolute value gives two opposite numbers.",
+            "What is the opposite of 5?"
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "-5",
+                "negative 5"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "The equation $ |x| = 5 $ is equivalent to $ x = 5 $ or $ x = $ ___.",
+          "id": "q1-1",
+          "feedbackIfWrong": "The opposite of 5 is -5."
+        },
+        {
+          "id": "q1-2",
+          "hints": [
+            "Can absolute value be negative?",
+            "Check the right-hand side."
+          ],
+          "prompt": "Solve $ |r| = -2 $. How many solutions?",
+          "answer": "0",
+          "type": "short-answer",
+          "feedbackIfWrong": "Absolute value cannot equal -2, so there are no solutions."
+        },
+        {
+          "prompt": "What must be true about $ c $ for $ |ax + b| = c $ to have solutions?",
+          "id": "q1-3",
+          "hints": [
+            "Think about the definition of absolute value.",
+            "Distance is never negative."
+          ],
+          "feedbackIfWrong": "c must be greater than or equal to 0.",
+          "answer": "c >= 0",
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Write |x+2|=3 on the board. Ask: 'What numbers can x+2 be to have an absolute value of 3?'",
+        "Draw a number line showing a point and its opposite, each the same distance from zero."
+      ],
+      "confusionCorner": {
+        "body": "If you see $ |something| = \\text{negative} $, there is [[imp:no solution]]. Don't waste time writing two equations — the absolute value can't be negative.",
+        "title": "Negative Right‑Hand Side? Stop!"
+      },
+      "title": "Solving Absolute Value Equations"
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "The absolute value has -7 outside.",
+            "Undo that subtraction first."
+          ],
+          "prompt": "What is the first step in solving $ |m + 3| - 7 = 0 $?",
+          "id": "q2-1",
+          "feedbackIfWrong": "Add 7 to both sides to isolate the absolute value.",
+          "answer": "add 7 to both sides",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "Divide: |p| = 4, so p = 4 or p = -4.",
+          "answer": "4",
+          "prompt": "Solve $ 3|p| = 12 $. What is one possible value of $ p $?",
+          "id": "q2-2",
+          "type": "short-answer",
+          "hints": [
+            "Divide by 3 first.",
+            "Then split into two equations."
+          ]
+        },
+        {
+          "prompt": "Before splitting an absolute value equation into two cases, make sure the absolute value is ___ on one side.",
+          "type": "fill-blank",
+          "id": "q2-3",
+          "blanks": [
+            {
+              "accept": [
+                "isolated",
+                "alone"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The absolute value must be isolated (alone) on one side.",
+          "hints": [
+            "It means by itself.",
+            "No other numbers attached to it."
+          ]
+        }
+      ],
+      "title": "Isolating the Absolute Value First",
+      "teacherCues": [
+        "Write $ |3x + 9| - 10 = -4 $ on the board. Ask: 'What is different about this equation compared to the last one?'",
+        "Demonstrate adding 10 to both sides to isolate the absolute value before splitting."
+      ],
+      "examples": [
+        {
+          "title": "A – Add First, Then Split",
+          "steps": [
+            "Isolate the absolute value: subtract 5: $ |x - 2| = 4 $.",
+            "Write two equations: $ x - 2 = 4 $ or $ x - 2 = -4 $.",
+            "Solve: $ x = 6 $ or $ x = -2 $. Check: $ |6-2|+5 = 9 $, $ |-2-2|+5 = 9 $."
+          ],
+          "role": "guided",
+          "prompt": "Solve $ |x - 2| + 5 = 9 $."
+        },
+        {
+          "peerPrompt": "Explain to a partner: Why must we divide by 4 before writing the two equations?",
+          "title": "B – Multiplying to Isolate",
+          "steps": [
+            "Divide both sides by 4: $ |2x + 7| = 4 $.",
+            "Now split: $ 2x + 7 = 4 $ or $ 2x + 7 = -4 $.",
+            "Solve: $ 2x = -3 \\Rightarrow x = -1.5 $; $ 2x = -11 \\Rightarrow x = -5.5 $."
+          ],
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Solve $ 4|2x + 7| = 16 $."
+        },
+        {
+          "steps": [
+            "Add 3: $ -2|5x - 1| = -8 $. Divide by -2: $ |5x - 1| = 4 $.",
+            "Split: $ 5x - 1 = 4 $ or $ 5x - 1 = -4 $.",
+            "Solve: $ 5x = 5 \\Rightarrow x = 1 $; $ 5x = -3 \\Rightarrow x = -0.6 $."
+          ],
+          "prompt": "Solve $ -2|5x - 1| - 3 = -11 $.",
+          "role": "independent",
+          "title": "C – Subtraction and Negative"
+        }
+      ],
+      "id": "isolating-abs-value",
+      "confusionCorner": {
+        "body": "If you write two equations before isolating, you'll get incorrect results. In $ |x - 2| + 5 = 9 $, do not write $ x - 2 + 5 = 9 $ and $ x - 2 + 5 = -9 $. The absolute value bars act as a container — the +5 is outside.",
+        "title": "Don't Split Too Early"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "title": "Isolate Before Splitting",
+            "headers": [
+              "Step",
+              "Action",
+              "Example: $ |3x + 9| - 10 = -4 $"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Undo addition/subtraction outside the absolute value.",
+                "2": "Add 10: $ |3x + 9| = 6 $"
+              },
+              {
+                "0": "2",
+                "1": "Write two equations.",
+                "2": "$ 3x + 9 = 6 $ or $ 3x + 9 = -6 $"
+              },
+              {
+                "0": "3",
+                "1": "Solve each.",
+                "2": "$ x = -1 $ or $ x = -5 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ |expression| + a = b \\;\\Rightarrow\\; |expression| = b - a $$",
+          "notes": [
+            "Treat the absolute value bars like parentheses — undo outside operations first.",
+            "Then split and solve."
+          ],
+          "title": "Isolate First"
+        },
+        "explanation": [
+          "If the absolute value expression is combined with other terms, [[imp:isolate it on one side]] first.",
+          "Use inverse operations (add, subtract, multiply, divide) to get $ |expression| = \\text{number} $.",
+          "Then apply the standard method: split into two equations.",
+          "Never split until the absolute value is completely alone."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Sometimes the absolute value is trapped with other numbers. Like digging for treasure, you need to isolate it — get it alone on one side — before you can unlock its two hidden solutions."
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Midpoint vs. Average",
+        "body": "The midpoint is just the average of the min and max. But the distance is half the range. Don't accidentally use the full range as the distance — it's the distance from the center to one side."
+      },
+      "discoveryHook": {
+        "scenario": "A soccer ball must weigh between 410 g and 450 g. Instead of writing two inequalities, you can capture the whole range with one sleek absolute value equation. That's the power of absolute value as a distance from the center!"
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "answer": "15",
+          "id": "q3-1",
+          "feedbackIfWrong": "Midpoint = (10+20)/2 = 15.",
+          "prompt": "If a range is 10 to 20, what is the midpoint?",
+          "hints": [
+            "Add the min and max, then divide by 2.",
+            "(10 + 20) / 2 = ?"
+          ]
+        },
+        {
+          "prompt": "If the midpoint is 50 and the distance is 5, what is the absolute value equation? (Use x as the variable.)",
+          "type": "short-answer",
+          "feedbackIfWrong": "The equation is |x - 50| = 5.",
+          "id": "q3-2",
+          "hints": [
+            "Template: |x - midpoint| = distance.",
+            "Plug in 50 and 5."
+          ],
+          "answer": "|x - 50| = 5"
+        },
+        {
+          "prompt": "To write an absolute value equation from a range, you need to find the ___ (average of min and max) and the distance to each endpoint.",
+          "blanks": [
+            {
+              "accept": [
+                "midpoint"
+              ]
+            }
+          ],
+          "id": "q3-3",
+          "hints": [
+            "It's the center point of the interval.",
+            "It starts with 'mid'."
+          ],
+          "feedbackIfWrong": "You need the midpoint.",
+          "type": "fill-blank"
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "A routine must be between 4 and 5 minutes. Write an absolute value equation representing the allowed lengths.",
+          "title": "A – Cheerleading Routine",
+          "steps": [
+            "Midpoint: $ (4 + 5) / 2 = 4.5 $. Distance: $ (5 - 4) / 2 = 0.5 $.",
+            "Equation: $ |x - 4.5| = 0.5 $.",
+            "Check: $ |4 - 4.5| = 0.5 $, $ |5 - 4.5| = 0.5 $."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "steps": [
+            "Midpoint: $ (16 + 32) / 2 = 24 $. Distance: $ (32 - 16) / 2 = 8 $.",
+            "Equation: $ |x - 24| = 8 $."
+          ],
+          "prompt": "Minimum 16 lines, maximum 32 lines. Write the absolute value equation.",
+          "title": "B – Poetry Contest",
+          "peerPrompt": "Explain to a partner: Why is the midpoint 24? How do you calculate it?",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "prompt": "A soccer ball should weigh 430 g, with a tolerance of ±20 g. Write the absolute value equation.",
+          "steps": [
+            "Min = 410, max = 450. Midpoint = 430. Distance = 20.",
+            "Equation: $ |x - 430| = 20 $."
+          ],
+          "title": "C – Soccer Ball Weight"
+        }
+      ],
+      "title": "Writing Absolute Value Equations",
+      "teacherCues": [
+        "Display a number line with min 4 and max 5. Ask: 'What is the midpoint? The distance from the midpoint to each endpoint?'",
+        "Guide: midpoint = (min+max)/2, distance = (max-min)/2. Equation: |x - midpoint| = distance."
+      ],
+      "id": "writing-abs-value-equations",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "$ m = \\frac{\\text{min} + \\text{max}}{2} $ (midpoint)",
+            "$ d = \\frac{\\text{max} - \\text{min}}{2} $ (distance to endpoint)"
+          ],
+          "title": "Write an Absolute Value Equation",
+          "formula": "$$ |x - m| = d $$"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "From Range to Absolute Value Equation",
+            "rows": [
+              {
+                "0": "4 to 5",
+                "1": "4.5",
+                "2": "0.5",
+                "3": "$ |x - 4.5| = 0.5 $"
+              },
+              {
+                "0": "16 to 32",
+                "1": "24",
+                "2": "8",
+                "3": "$ |x - 24| = 8 $"
+              },
+              {
+                "0": "410 to 450",
+                "1": "430",
+                "2": "20",
+                "3": "$ |x - 430| = 20 $"
+              }
+            ],
+            "headers": [
+              "Range",
+              "Midpoint",
+              "Distance",
+              "Equation"
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "If you know the minimum and maximum acceptable values, you can write an absolute value equation.",
+          "Find the [[imp:midpoint]]: $ \\frac{\\text{min} + \\text{max}}{2} $.",
+          "Find the [[imp:distance]] from the midpoint to either endpoint: $ \\frac{\\text{max} - \\text{min}}{2} $.",
+          "The equation is $ |x - \\text{midpoint}| = \\text{distance} $."
+        ]
+      }
+    },
+    {
+      "concept": {
+        "explanation": [
+          "To solve $ |ax + b| = |cx + d| $, write two equations: $ ax + b = cx + d $ or $ ax + b = -(cx + d) $.",
+          "Solve both. Each may give a solution.",
+          "An [[kw:extraneous solution]] is a value that arises from solving but does [[imp:not satisfy the original equation]].",
+          "Always check your solutions in the original equation, especially when absolute values appear on both sides."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Equation",
+              "Split Into",
+              "Check"
+            ],
+            "rows": [
+              {
+                "0": "$ |3x - 4| = |x| $",
+                "1": "$ 3x - 4 = x $ or $ 3x - 4 = -x $",
+                "2": "$ x=2 $ and $ x=1 $ both valid"
+              },
+              {
+                "0": "$ |2x + 12| = 4x $",
+                "1": "$ 2x+12 = 4x $ or $ 2x+12 = -4x $",
+                "2": "$ x=6 $ valid; $ x=-2 $ extraneous"
+              },
+              {
+                "0": "$ |x+5| = |x+11| $",
+                "1": "$ x+5 = x+11 $ (no) or $ x+5 = -(x+11) $",
+                "2": "$ x=-8 $ only"
+              }
+            ],
+            "title": "Handling Two Absolute Values",
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Check every solution; extraneous ones are possible.",
+            "If one equation gives a false statement, ignore it."
+          ],
+          "title": "Two Absolute Values",
+          "formula": "$$ |ax + b| = |cx + d| \\;\\Rightarrow\\; ax + b = cx + d \\;\\text{or}\\; ax + b = -(cx + d) $$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "When two absolute values face off, like $ |3x - 4| = |x| $, the expressions inside could be equal, or they could be opposites. And sometimes, a solution that pops out of your algebra doesn't actually fit the original equation — an imposter! That's an extraneous solution, and you must check to expose it."
+      },
+      "title": "Two Absolute Values & Extraneous Solutions",
+      "id": "two-abs-values-extraneous",
+      "examples": [
+        {
+          "title": "A – Two Absolute Values",
+          "prompt": "Solve $ |3x - 4| = |x| $.",
+          "steps": [
+            "Split: $ 3x - 4 = x $ or $ 3x - 4 = -x $.",
+            "Solve first: $ 2x = 4 \\Rightarrow x = 2 $. Solve second: $ 4x = 4 \\Rightarrow x = 1 $.",
+            "Check both: $ |3(2)-4| = |2| = 2 $ ✓; $ |3(1)-4| = |-1| = 1 = |1| $ ✓."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why is $ x = -2 $ extraneous? What goes wrong when you plug it in?",
+          "title": "B – Extraneous Solution",
+          "steps": [
+            "Split: $ 2x + 12 = 4x $ (gives $ x = 6 $); $ 2x + 12 = -4x $ (gives $ x = -2 $).",
+            "Check $ x=6 $: $ |24| = 24 $ ✓. Check $ x=-2 $: $ |8| = -8 $? No — absolute value cannot equal a negative.",
+            "$ x = -2 $ is extraneous. Only $ x = 6 $ is a solution."
+          ],
+          "minLength": 2,
+          "prompt": "Solve $ |2x + 12| = 4x $ and check for extraneous solutions."
+        },
+        {
+          "role": "independent",
+          "prompt": "Solve $ |x + 6| = 2x $.",
+          "steps": [
+            "Split: $ x + 6 = 2x \\Rightarrow x = 6 $; $ x + 6 = -2x \\Rightarrow 3x = -6 \\Rightarrow x = -2 $.",
+            "Check $ x=6 $: $ |12| = 12 $ ✓. Check $ x=-2 $: $ |4| = -4 $? No.",
+            "Only $ x = 6 $ is a solution."
+          ],
+          "title": "C – Only One Valid"
+        }
+      ],
+      "questions": [
+        {
+          "hints": [
+            "It starts with 'e'.",
+            "It means 'coming from outside'."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "extraneous"
+              ]
+            }
+          ],
+          "id": "q4-1",
+          "feedbackIfWrong": "It's an extraneous solution.",
+          "prompt": "A solution that appears from algebra but does not satisfy the original equation is called an ___ solution.",
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "The equations give x=7 and x=-3; the smaller is -3.",
+          "type": "short-answer",
+          "id": "q4-2",
+          "answer": "-3",
+          "prompt": "Solve $ |x + 8| = |2x + 1| $. What is the smaller of the two solutions?",
+          "hints": [
+            "Set up the two equations: x+8 = 2x+1 and x+8 = -(2x+1).",
+            "Solve both equations, then choose the smaller number."
+          ]
+        },
+        {
+          "answer": "absolute value cannot equal a negative",
+          "hints": [
+            "Plug -2 into the right side: 4(-2) = ?",
+            "Can absolute value equal a negative number?"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "Because the right side becomes -8, and absolute value can't be negative.",
+          "prompt": "In $ |2x + 12| = 4x $, why is $ x = -2 $ rejected?",
+          "id": "q4-3"
+        }
+      ],
+      "teacherCues": [
+        "Write $ |3x - 4| = |x| $ on the board. Ask: 'If two absolute values are equal, what can we say about the expressions inside?'",
+        "Introduce the term 'extraneous solution' with the example $ |2x + 12| = 4x $."
+      ],
+      "confusionCorner": {
+        "title": "Always Check!",
+        "body": "Extraneous solutions often appear when the absolute value is set equal to a variable expression (like $ 4x $) that could be negative. The absolute value on the left is non‑negative, so the right side must be non‑negative. If a solution makes the right side negative, reject it."
+      }
+    },
+    {
+      "title": "Blueprint Aid – Absolute Value Problems",
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude framework. Walk through a real‑world absolute value problem, labeling each phase.",
+        "Emphasize that 'Understand' includes recognizing the absolute value structure and isolating if needed."
+      ],
+      "questions": [
+        {
+          "answer": "isolate the absolute value",
+          "feedbackIfWrong": "First isolate the absolute value: subtract 2 from both sides.",
+          "hints": [
+            "It's not yet in the form $ |...| = c $.",
+            "Undo the addition outside."
+          ],
+          "prompt": "In the blueprint, what is the first step when you see an equation like $ |x - 3| + 2 = 7 $?",
+          "id": "q5-1",
+          "type": "short-answer"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "check",
+                "test"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "hints": [
+            "It starts with 'c'.",
+            "Plug the value back in."
+          ],
+          "prompt": "After splitting into two equations, you must ___ each candidate solution in the original equation to check for extraneous results.",
+          "id": "q5-2",
+          "feedbackIfWrong": "You must check each solution to see if it works."
+        },
+        {
+          "prompt": "If the range of acceptable values is 10 to 20, what is the absolute value equation? (Use $ x $ as the variable, write as |x - a| = b with numbers.)",
+          "type": "short-answer",
+          "id": "q5-3",
+          "feedbackIfWrong": "The equation is |x - 15| = 5.",
+          "hints": [
+            "Midpoint is 15, distance is 5.",
+            "Template: |x - midpoint| = distance."
+          ],
+          "answer": "|x - 15| = 5"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Interpreting the Two Solutions",
+        "body": "In a distance problem like the car example, two solutions make sense: one when the car is approaching, and one after it passes. Don't discard a solution just because it's larger — it may be physically meaningful."
+      },
+      "concept": {
+        "explanation": [
+          "The [[imp:Understand → Solve → Conclude]] blueprint helps you break down any absolute value problem.",
+          "[[imp:Understand]]: Identify whether you're solving an equation or writing one from a range. Isolate the absolute value if needed.",
+          "[[imp:Solve]]: Split into two linear equations, solve both, and check for extraneous solutions.",
+          "[[imp:Conclude]]: State the solution(s) clearly, with units if applicable, and verify against the original context."
+        ],
+        "formulaCard": {
+          "formula": "$$ |\\text{expression}| = c \\;\\Rightarrow\\; \\text{expression} = \\pm c $$",
+          "title": "Blueprint in One Line",
+          "notes": [
+            "Only after isolating the absolute value.",
+            "Check each candidate in the original equation."
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "title": "Absolute Value Blueprint",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify the equation or range; isolate absolute value."
+              },
+              {
+                "0": "Solve",
+                "1": "Split into two cases; solve each; check for extraneous solutions."
+              },
+              {
+                "0": "Conclude",
+                "1": "State solutions; interpret in context if real‑world problem."
+              }
+            ],
+            "headers": [
+              "Phase",
+              "Actions"
+            ]
+          }
+        ]
+      },
+      "id": "blueprint-aid-absolute-value",
+      "examples": [
+        {
+          "title": "A – Car Distance Problem",
+          "steps": [
+            "Understand: Set $ |300 - 48t| = 60 $. This is an absolute value equation.",
+            "Solve: Split: $ 300 - 48t = 60 $ → $ -48t = -240 $ → $ t = 5 $ s; $ 300 - 48t = -60 $ → $ -48t = -360 $ → $ t = 7.5 $ s.",
+            "Conclude: The car is 60 ft away at 5 seconds (approaching) and again at 7.5 seconds (after passing)."
+          ],
+          "prompt": "A car starts 300 ft away and drives toward you at 48 ft/s. Its distance from you after $ t $ seconds is $ d = |300 - 48t| $. When is the car 60 ft away?",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Explain to a partner: How do you know the equation is $ |x - 68| = 5 $?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "Understand: Midpoint = 68, distance = 5. Equation: $ |x - 68| = 5 $.",
+            "Solve: $ x - 68 = 5 $ → $ x = 73 $; $ x - 68 = -5 $ → $ x = 63 $.",
+            "Conclude: The true percentage is between 63% and 73%."
+          ],
+          "prompt": "A survey says 68% favor year‑round school, with a ±5% error. Write and solve an absolute value equation to find the actual minimum and maximum percentages.",
+          "title": "B – Survey Tolerance"
+        },
+        {
+          "prompt": "A part must be 50 mm long with a tolerance of ±0.2 mm. Write the absolute value equation and find the minimum and maximum acceptable lengths.",
+          "steps": [
+            "Understand: Midpoint = 50, distance = 0.2. Equation: $ |x - 50| = 0.2 $.",
+            "Solve: $ x - 50 = 0.2 $ → $ x = 50.2 $; $ x - 50 = -0.2 $ → $ x = 49.8 $.",
+            "Conclude: Acceptable lengths are between 49.8 mm and 50.2 mm."
+          ],
+          "title": "C – Tolerances in Manufacturing",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "From tolerance in manufacturing to distances on a number line, absolute value problems follow a clear blueprint. Understand the situation, solve the equation, and conclude with the real‑world meaning. No more guesswork!"
+      }
+    }
+  ],
+  "title": "Chapter 1.4 — Solving Absolute Value Equations",
+  "presenterNotes": [
+    "The key to absolute value equations is the 'two cases' idea. Use a number line to show distance = absolute value.",
+    "When isolating, physically circle the absolute value bars and say 'this must be alone'.",
+    "Extraneous solutions are a new concept; spend extra time on checking solutions. The car distance example naturally shows why both times are valid."
+  ],
+  "id": "chapter-1-4-absolute-value-equations",
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

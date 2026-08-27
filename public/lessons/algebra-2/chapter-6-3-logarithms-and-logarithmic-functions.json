@@ -1,0 +1,782 @@
+{
+  "title": "Logarithms and Logarithmic Functions",
+  "blocks": [
+    {
+      "confusionCorner": {
+        "body": "The argument $y$ in $\\log_b y$ must be [[imp:positive]]. You cannot take the log of zero or a negative number. That's because no real exponent can make a positive base $b$ equal zero or a negative number.",
+        "title": "Argument Must Be Positive"
+      },
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$b$",
+              "tone": "core",
+              "meaning": "base ($b>0$, $b \\neq 1$)"
+            },
+            {
+              "symbol": "$y$",
+              "meaning": "argument ($y>0$)",
+              "tone": "core"
+            },
+            {
+              "meaning": "logarithm (the exponent)",
+              "symbol": "$x$",
+              "tone": "subtle"
+            }
+          ],
+          "formula": "$$ \\log_b y = x \\iff b^x = y $$"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$\\log_2 8 = 3$",
+                "1": "$2^3 = 8$"
+              },
+              {
+                "0": "$\\log_5 1 = 0$",
+                "1": "$5^0 = 1$"
+              },
+              {
+                "0": "$\\log_4 16 = 2$",
+                "1": "$4^2 = 16$"
+              },
+              {
+                "0": "$\\log_{10} 0.1 = -1$",
+                "1": "$10^{-1} = 0.1$"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Converting Between Forms",
+            "headers": [
+              "Logarithmic Form",
+              "Exponential Form"
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:logarithm]] is the inverse operation to exponentiation. The statement $\\log_b y = x$ means $b^x = y$.",
+          "$b$ is the [[kw:base]] of the logarithm, $y$ is the argument (must be positive), and $x$ is the exponent.",
+          "The equations $\\log_b y = x$ (logarithmic form) and $b^x = y$ (exponential form) are equivalent.",
+          "Two special values: $\\log_b 1 = 0$ (since $b^0 = 1$) and $\\log_b b = 1$ (since $b^1 = b$).",
+          "A [[kw:common logarithm]] is base 10, written $\\log_{10} x$ or simply $\\log x$. A [[kw:natural logarithm]] is base $e$, written $\\ln x$."
+        ]
+      },
+      "id": "defining-logarithms",
+      "teacherCues": [
+        "Write $2^x = 8$ and ask: What is $x$? Then write $2^x = 6$ and ask: How can we express $x$?",
+        "Introduce the definition: $\\log_b y = x$ if and only if $b^x = y$. Show that logarithms are exponents."
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "y"
+              ]
+            }
+          ],
+          "prompt": "The equation $\\log_b y = x$ is read as \"log base $b$ of $y$ equals $x$\". It means $b$ raised to the power $x$ equals ___.",
+          "hints": [
+            "It's the argument of the logarithm.",
+            "In $b^x = y$, $y$ is the result."
+          ],
+          "id": "q6-3-1",
+          "type": "fill-blank",
+          "feedbackIfWrong": "The logarithmic equation $\\log_b y = x$ means $b^x = y$."
+        },
+        {
+          "id": "q6-3-2",
+          "feedbackIfWrong": "The logarithmic form is $\\log_3 81 = 4$.",
+          "prompt": "Rewrite $3^4 = 81$ in logarithmic form. (Use format log_3(81)=4)",
+          "hints": [
+            "Base is 3, exponent is 4, result is 81.",
+            "The logarithm equals the exponent."
+          ],
+          "answers": [
+            "log_3 81 = 4",
+            "log_3(81)=4"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "Any base to the zero power equals 1.",
+            "$2^? = 1$"
+          ],
+          "prompt": "What is $\\log_2 1$? (Enter a number)",
+          "feedbackIfWrong": "$\\log_2 1 = 0$ because $2^0 = 1$.",
+          "answers": [
+            "0",
+            "zero"
+          ],
+          "type": "short-answer",
+          "id": "q6-3-3"
+        }
+      ],
+      "title": "Defining Logarithms",
+      "examples": [
+        {
+          "title": "Example A — Rewriting Logarithmic to Exponential",
+          "prompt": "Rewrite $\\log_3 81 = 4$ in exponential form.",
+          "steps": [
+            "The base is 3, the argument is 81, the logarithm is 4.",
+            "By definition, $3^4 = 81$.",
+            "Check: $3^4 = 81$, correct."
+          ],
+          "role": "guided"
+        },
+        {
+          "prompt": "Rewrite $5^{-1} = 0.2$ in logarithmic form.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you identify the base, the exponent, and the result when converting to a logarithm? What becomes the argument of the log?",
+          "role": "peer-explain",
+          "steps": [
+            "Base = 5, exponent = $-1$, result = $0.2$.",
+            "In $\\log_b y = x$, $b$ is the original base, $y$ is the result, $x$ is the exponent.",
+            "So $\\log_5 0.2 = -1$."
+          ],
+          "title": "Example B — Rewriting Exponential to Logarithmic",
+          "minLength": 8
+        },
+        {
+          "title": "Example C — Special Logarithms",
+          "steps": [
+            "Any base to the power 0 equals 1, so $\\log_7 1 = 0$.",
+            "Any base to the power 1 equals itself, so $\\log_7 7 = 1$."
+          ],
+          "role": "independent",
+          "prompt": "Evaluate $\\log_7 1$ and $\\log_7 7$ without a calculator."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "We can solve $2^x = 8$ because $8$ is a power of $2$. But what about $2^x = 6$? The answer isn't an integer, but we can still name it: $x = \\log_2 6$. Logarithms give us a way to express unknown exponents."
+      }
+    },
+    {
+      "id": "evaluating-logarithms",
+      "examples": [
+        {
+          "title": "Example A — Evaluating a Logarithm by Hand",
+          "prompt": "Evaluate $\\log_3 81$.",
+          "steps": [
+            "Ask: 3 raised to what power equals 81?",
+            "We know $3^4 = 81$, so the answer is 4.",
+            "Thus $\\log_3 81 = 4$."
+          ],
+          "role": "guided"
+        },
+        {
+          "prompt": "Evaluate $\\log_8 4$.",
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: $8$ and $4$ can both be written as powers of 2. How does that help? What exponent on 8 gives 4?",
+          "role": "peer-explain",
+          "steps": [
+            "Rewrite 8 as $2^3$ and 4 as $2^2$. Then $8^x = 4$ becomes $(2^3)^x = 2^2$.",
+            "So $2^{3x} = 2^2 \\Rightarrow 3x = 2 \\Rightarrow x = \\frac{2}{3}$.",
+            "Thus $\\log_8 4 = \\frac{2}{3}$."
+          ],
+          "title": "Example B — Fractional and Negative Exponents"
+        },
+        {
+          "title": "Example C — Using a Calculator",
+          "prompt": "Evaluate $\\ln 0.3$ to three decimal places.",
+          "steps": [
+            "Press LN, then 0.3, ENTER.",
+            "Result: approximately -1.204.",
+            "Check: $e^{-1.204} \\approx 0.3$."
+          ],
+          "role": "independent"
+        }
+      ],
+      "title": "Evaluating Logarithms",
+      "concept": {
+        "explanation": [
+          "To evaluate a logarithm $\\log_b y$ by hand, ask: $b$ raised to what power equals $y$? That power is the answer.",
+          "For example, $\\log_2 8 = 3$ because $2^3 = 8$. $\\log_{10} 0.01 = -2$ because $10^{-2} = 0.01$.",
+          "A [[kw:common logarithm]] ($\\log$) has base 10. A [[kw:natural logarithm]] ($\\ln$) has base $e$.",
+          "Use the LOG and LN keys on a calculator for bases other than 10 and $e$. For other bases, use the change‑of‑base formula (later) or guess‑and‑check with powers."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Logarithm",
+              "Meaning",
+              "Value"
+            ],
+            "title": "Evaluating Simple Logarithms",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$\\log_2 8$",
+                "1": "$2^? = 8$",
+                "2": "3"
+              },
+              {
+                "0": "$\\log_{10} 100$",
+                "1": "$10^? = 100$",
+                "2": "2"
+              },
+              {
+                "0": "$\\log_5 0.2$",
+                "1": "$5^? = 0.2 = \\frac{1}{5}$",
+                "2": "-1"
+              },
+              {
+                "0": "$\\ln e^3$",
+                "1": "$e^? = e^3$",
+                "2": "3"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\log_b b^x = x $$ $$ \\log 10^x = x $$ $$ \\ln e^x = x $$",
+          "legend": [
+            {
+              "symbol": "$\\log$",
+              "meaning": "common log (base 10)",
+              "tone": "core"
+            },
+            {
+              "symbol": "$\\ln$",
+              "tone": "core",
+              "meaning": "natural log (base $e$)"
+            }
+          ]
+        }
+      },
+      "discoveryHook": {
+        "scenario": "Logarithms help answer questions like 'How many times must I double $1 to get $64?' That's $\\log_2 64 = 6$. From Richter scales to pH, evaluating logs is the key to unlocking real‑world measurements."
+      },
+      "questions": [
+        {
+          "id": "q6-3-4",
+          "blanks": [
+            {
+              "accept": [
+                "10",
+                "ten"
+              ]
+            }
+          ],
+          "prompt": "The common logarithm $\\log x$ has base ___. (Enter a number)",
+          "feedbackIfWrong": "Common logarithm has base 10.",
+          "hints": [
+            "It's the base of our number system.",
+            "The LOG button on a calculator uses this base."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "id": "q6-3-5",
+          "feedbackIfWrong": "$\\log_2 32 = 5$ because $2^5 = 32$.",
+          "hints": [
+            "$2^5 = 32$.",
+            "2 to the 5th power."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "5",
+            "five"
+          ],
+          "prompt": "Evaluate $\\log_2 32$."
+        },
+        {
+          "id": "q6-3-6",
+          "type": "short-answer",
+          "answers": [
+            "0.903"
+          ],
+          "hints": [
+            "Press LOG, then 8, ENTER.",
+            "Round to three decimal places."
+          ],
+          "prompt": "Use a calculator to find $\\log 8$ to three decimal places. (Enter a number, e.g., 0.903)",
+          "feedbackIfWrong": "$\\log 8 \\approx 0.903$."
+        }
+      ],
+      "confusionCorner": {
+        "body": "Remember that the value of a logarithm is an [[imp:exponent]]. When you see $\\log_2 32 = 5$, the 5 is the power you raise 2 to in order to get 32.",
+        "title": "Log Is an Exponent"
+      },
+      "teacherCues": [
+        "Ask: $\\log_4 64$ means '4 to what power gives 64?' Guide: $4^3=64$, so $\\log_4 64=3$.",
+        "Show how to use a calculator for common log (LOG) and natural log (LN)."
+      ]
+    },
+    {
+      "teacherCues": [
+        "Ask: What is the inverse of $f(x)=2^x$? Write $f^{-1}(x)=\\log_2 x$.",
+        "Show that $\\log_b(b^x)=x$ and $b^{\\log_b x}=x$. These are the inverse properties."
+      ],
+      "examples": [
+        {
+          "title": "Example A — Simplifying Using Inverse Properties",
+          "steps": [
+            "This is of the form $b^{\\log_b x}$ with $b=10$, $x=4$.",
+            "By the inverse property, $10^{\\log 4} = 4$."
+          ],
+          "role": "guided",
+          "prompt": "Simplify $10^{\\log 4}$."
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How can you rewrite 25 as a power of 5? Then use the inverse property to simplify.",
+          "role": "peer-explain",
+          "title": "Example B — Simplifying $\\log_5 25^x$",
+          "minLength": 8,
+          "prompt": "Simplify $\\log_5 25^x$.",
+          "steps": [
+            "Rewrite 25 as $5^2$: $\\log_5 (5^2)^x = \\log_5 5^{2x}$.",
+            "By inverse property, $\\log_5 5^{2x} = 2x$."
+          ]
+        },
+        {
+          "title": "Example C — Finding Inverse of a Logarithmic Function",
+          "prompt": "Find the inverse of $y = \\ln(x+3)$.",
+          "steps": [
+            "Switch $x$ and $y$: $x = \\ln(y+3)$.",
+            "Rewrite in exponential form: $e^x = y+3$.",
+            "Solve for $y$: $y = e^x - 3$.",
+            "The inverse is $f^{-1}(x) = e^x - 3$."
+          ],
+          "role": "independent"
+        }
+      ],
+      "title": "Inverse Properties of Logarithms",
+      "id": "inverse-properties",
+      "questions": [
+        {
+          "hints": [
+            "Log base 2 and base 2 exponent cancel.",
+            "They are inverse operations."
+          ],
+          "prompt": "The expression $\\log_2 2^x$ simplifies to ___.",
+          "blanks": [
+            {
+              "accept": [
+                "x"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "$\\log_2 2^x = x$ by the inverse property.",
+          "id": "q6-3-7",
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "5",
+            "five"
+          ],
+          "type": "short-answer",
+          "prompt": "Simplify $e^{\\ln 5}$.",
+          "hints": [
+            "$e^{\\ln x} = x$.",
+            "The base $e$ and natural log cancel."
+          ],
+          "id": "q6-3-8",
+          "feedbackIfWrong": "$e^{\\ln 5} = 5$."
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "5^x",
+            "f^(-1)(x)=5^x"
+          ],
+          "id": "q6-3-9",
+          "prompt": "What is the inverse of $f(x) = \\log_5 x$? (Use f^(-1)(x) = ... format)",
+          "hints": [
+            "The inverse of a logarithmic function is exponential.",
+            "Switch $x$ and $y$, then write $5^y = x$."
+          ],
+          "feedbackIfWrong": "The inverse is $f^{-1}(x) = 5^x$."
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Inverse Properties",
+            "headers": [
+              "Property",
+              "Example"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "$\\log_b b^x = x$",
+                "1": "$\\log_2 2^5 = 5$"
+              },
+              {
+                "0": "$b^{\\log_b x} = x$",
+                "1": "$3^{\\log_3 10} = 10$"
+              },
+              {
+                "0": "$\\ln e^x = x$",
+                "1": "$\\ln e^{2x} = 2x$"
+              },
+              {
+                "0": "$e^{\\ln x} = x$",
+                "1": "$e^{\\ln 7} = 7$"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "The logarithmic function $g(x) = \\log_b x$ is the [[kw:inverse]] of the exponential function $f(x) = b^x$.",
+          "Two inverse properties: $\\log_b b^x = x$ (for any real $x$) and $b^{\\log_b x} = x$ (for $x > 0$).",
+          "For common logs: $\\log 10^x = x$, $10^{\\log x} = x$.",
+          "For natural logs: $\\ln e^x = x$, $e^{\\ln x} = x$.",
+          "To find the inverse of a logarithmic function, switch $x$ and $y$ and write in exponential form."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "base ($b>0$, $b \\neq 1$)",
+              "tone": "core",
+              "symbol": "$b$"
+            },
+            {
+              "symbol": "$x$",
+              "tone": "subtle",
+              "meaning": "for $b^{\\log_b x}$, $x>0$"
+            }
+          ],
+          "formula": "$$ \\log_b b^x = x \\quad \\text{and} \\quad b^{\\log_b x} = x $$"
+        }
+      },
+      "confusionCorner": {
+        "title": "Domain of the Inverse",
+        "body": "When finding the inverse of a logarithmic function, remember that the original function's domain ($x >$ something) becomes the range of the inverse. The inverse's domain will be all real numbers for exponential functions."
+      },
+      "discoveryHook": {
+        "scenario": "Because logs and exponentials are inverses, they cancel each other out—just like addition and subtraction. $10^{\\log 4}$ simplifies instantly to 4, and $\\ln e^{5} = 5$. This is the key to solving exponential equations."
+      }
+    },
+    {
+      "concept": {
+        "explanation": [
+          "Because $f(x) = \\log_b x$ is the inverse of $g(x) = b^x$, the graph of $f$ is the reflection of $g$ across the line $y = x$.",
+          "For $b > 1$, the graph of $\\log_b x$ passes through $(1,0)$, increases slowly, and has a [[kw:vertical asymptote]] at $x = 0$ (the $y$-axis).",
+          "Domain: $x > 0$. Range: all real numbers.",
+          "For $0 < b < 1$, the graph also passes through $(1,0)$ but decreases from left to right.",
+          "Transformations (shifts, stretches) apply to logarithmic graphs just like other functions."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Feature",
+              "$b > 1$",
+              "$0 < b < 1$"
+            ],
+            "variant": "colorful",
+            "title": "Key Features of $f(x) = \\log_b x$",
+            "rows": [
+              {
+                "0": "Domain",
+                "1": "$x > 0$",
+                "2": "$x > 0$"
+              },
+              {
+                "0": "Range",
+                "1": "All real numbers",
+                "2": "All real numbers"
+              },
+              {
+                "0": "$x$-intercept",
+                "1": "$(1,0)$",
+                "2": "$(1,0)$"
+              },
+              {
+                "0": "Asymptote",
+                "1": "$x = 0$ (vertical)",
+                "2": "$x = 0$ (vertical)"
+              },
+              {
+                "0": "Behavior",
+                "1": "Increasing",
+                "2": "Decreasing"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ f(x) = \\log_b x $$ $$ \\text{Domain: } x > 0, \\text{ Range: all reals, Vertical Asymptote: } x = 0 $$",
+          "legend": [
+            {
+              "symbol": "$b$",
+              "meaning": "base ($b>0$, $b \\neq 1$)",
+              "tone": "core"
+            }
+          ]
+        }
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "The vertical asymptote is $x = 0$ (the $y$-axis).",
+          "hints": [
+            "It's the $y$-axis.",
+            "The log function is undefined for $x \\le 0$."
+          ],
+          "prompt": "The graph of $y = \\log_b x$ has a vertical asymptote at $x =$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "zero"
+              ]
+            }
+          ],
+          "id": "q6-3-10"
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The domain is $x > -4$.",
+          "id": "q6-3-11",
+          "prompt": "What is the domain of $y = \\log(x+4)$? (Use x > ... or similar)",
+          "answers": [
+            "x > -4",
+            "x > -4",
+            "(-4, ∞)"
+          ],
+          "hints": [
+            "Set the argument $> 0$.",
+            "$x+4 > 0$."
+          ]
+        },
+        {
+          "feedbackIfWrong": "The $x$-intercept is $(1,0)$.",
+          "answers": [
+            "1",
+            "one"
+          ],
+          "id": "q6-3-12",
+          "hints": [
+            "Set $\\ln x = 0$.",
+            "$\\ln 1 = 0$."
+          ],
+          "type": "short-answer",
+          "prompt": "What is the $x$-intercept of $y = \\ln x$? (Enter a number)"
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Inverse is $g(x) = 3^x$. Make a table: $x=-2,-1,0,1,2$ gives $g(x)=\\frac{1}{9},\\frac{1}{3},1,3,9$.",
+            "Plot $g(x)$, then swap coordinates to get points for $f$: $(\\frac{1}{9},-2)$, $(\\frac{1}{3},-1)$, $(1,0)$, $(3,1)$, $(9,2)$.",
+            "Draw smooth curve through these points. Vertical asymptote at $x=0$."
+          ],
+          "title": "Example A — Graphing $y = \\log_3 x$ Using Inverse",
+          "role": "guided",
+          "prompt": "Graph $f(x) = \\log_3 x$ by first graphing its inverse."
+        },
+        {
+          "minLength": 8,
+          "prompt": "Describe how to graph $y = \\log_2(x+2) - 1$.",
+          "title": "Example B — Transformations of Log Graphs",
+          "steps": [
+            "Start with parent $y = \\log_2 x$.",
+            "$+2$ inside shifts the graph left 2 units. The vertical asymptote shifts to $x = -2$.",
+            "$-1$ outside shifts the graph down 1 unit.",
+            "The point $(1,0)$ on the parent moves to $(-1,-1)$."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What transformation does $(x+2)$ inside the log cause? What about the $-1$ outside?"
+        },
+        {
+          "prompt": "What is the domain of $f(x) = \\ln(x-3)$?",
+          "title": "Example C — Domain from Graph",
+          "role": "independent",
+          "steps": [
+            "The argument of the natural log must be positive: $x-3 > 0$.",
+            "So $x > 3$.",
+            "Domain: $x > 3$. The vertical asymptote is $x=3$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "Logarithmic functions have a [[imp:vertical]] asymptote ($x=0$ for the parent), unlike exponential functions which have a horizontal asymptote ($y=0$). Don't mix them up.",
+        "title": "Vertical Asymptote, Not Horizontal"
+      },
+      "teacherCues": [
+        "Graph $y = 3^x$ and then reflect it across $y=x$ to get $y = \\log_3 x$. Point out the asymptote $x=0$.",
+        "Show the parent graphs for $b>1$ and $0<b<1$, highlighting domain $x>0$ and vertical asymptote."
+      ],
+      "id": "graphing-logarithmic-functions",
+      "discoveryHook": {
+        "scenario": "The graph of a logarithmic function is the mirror image of the exponential graph. By flipping the exponential curve over the line $y=x$, you instantly see the log graph—with its vertical asymptote and slow rise."
+      },
+      "title": "Graphing Logarithmic Functions"
+    },
+    {
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude steps. Model solving a logarithmic equation by converting to exponential form.",
+        "Use the problem: Solve $\\log_2(x+1) = 3$."
+      ],
+      "discoveryHook": {
+        "scenario": "When you encounter a logarithmic equation, the Blueprint helps you systematically rewrite it in exponential form, solve for the variable, and check the domain to avoid extraneous answers."
+      },
+      "title": "Blueprint Aid — Working with Logarithms",
+      "questions": [
+        {
+          "id": "q6-3-13",
+          "type": "short-answer",
+          "answers": [
+            "9",
+            "nine"
+          ],
+          "prompt": "Solve $\\log_3 x = 2$. What is $x$?",
+          "feedbackIfWrong": "$3^2 = 9$, so $x = 9$.",
+          "hints": [
+            "Convert to exponential form: $3^2 = x$.",
+            "3 squared."
+          ]
+        },
+        {
+          "prompt": "When solving $\\log_5(x-1) = 2$, the argument $x-1$ must be greater than ___.",
+          "feedbackIfWrong": "We need $x-1 > 0$, so the argument must be greater than 0.",
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "zero"
+              ]
+            }
+          ],
+          "id": "q6-3-14",
+          "hints": [
+            "The log of a negative number is undefined.",
+            "The domain requires the inside to be positive."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "id": "q6-3-15",
+          "feedbackIfWrong": "$x = e \\approx 2.72$.",
+          "prompt": "Solve $\\ln x = 1$. What is $x$? (Round to two decimal places)",
+          "answers": [
+            "2.72",
+            "e",
+            "2.718"
+          ],
+          "hints": [
+            "Rewrite as $e^1 = x$.",
+            "$e \\approx 2.718$."
+          ]
+        }
+      ],
+      "id": "blueprint-aid-logarithms",
+      "confusionCorner": {
+        "title": "Don't Forget the Domain",
+        "body": "Always check that the argument of the logarithm is positive. A solution that makes the argument $\\le 0$ is [[imp:extraneous]] and must be rejected."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Blueprint for Logarithmic Equations",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify base, argument; note domain ($y>0$)."
+              },
+              {
+                "0": "Solve",
+                "1": "Convert to exponential form; solve; use inverse properties if needed."
+              },
+              {
+                "0": "Conclude",
+                "1": "Check solution(s) in original equation; discard extraneous."
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$u$",
+              "meaning": "argument (must be $>0$)",
+              "tone": "core"
+            },
+            {
+              "meaning": "value of the logarithm",
+              "tone": "core",
+              "symbol": "$v$"
+            }
+          ],
+          "formula": "$$ \\log_b (u) = v \\iff b^v = u $$"
+        },
+        "explanation": [
+          "[[imp:Understand]]: Identify the logarithmic form. Note the base, argument, and what the logarithm equals. Check domain restrictions (argument must be $> 0$).",
+          "[[imp:Solve]]: Rewrite the equation in exponential form using the definition. Solve the resulting equation. If there are multiple logs, use inverse properties to simplify.",
+          "[[imp:Conclude]]: State the solution and verify it satisfies the original logarithmic equation. Discard any solutions that make the argument non‑positive."
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Understand: Base = 2, argument = $x+1$, value = 3. Domain: $x+1 > 0 \\Rightarrow x > -1$.",
+            "Solve: Convert to exponential form: $2^3 = x+1$ → $8 = x+1$ → $x = 7$.",
+            "Conclude: $x=7$ is $> -1$, so valid. Check: $\\log_2(7+1) = \\log_2 8 = 3$ ✓."
+          ],
+          "prompt": "Solve $\\log_2(x+1) = 3$.",
+          "title": "Example A — Solve a Simple Log Equation"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Convert to exponential form: $e^0 = 2x$.",
+            "Since $e^0 = 1$, we have $1 = 2x$ → $x = 0.5$.",
+            "Check: $\\ln(2 \\cdot 0.5) = \\ln 1 = 0$ ✓."
+          ],
+          "title": "Example B — Using Inverse Properties to Solve",
+          "prompt": "Solve $\\ln(2x) = 0$.",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: How can you rewrite this equation without logs? What is $e^0$?",
+          "minLength": 8
+        },
+        {
+          "steps": [
+            "Isolate log: $\\log(x-2) = -1$.",
+            "Exponential form: $10^{-1} = x-2$ → $0.1 = x-2$ → $x = 2.1$.",
+            "Domain: $x-2 > 0 \\Rightarrow x > 2$. $2.1 > 2$, so valid."
+          ],
+          "role": "independent",
+          "title": "Example C — Domain Check",
+          "prompt": "Solve $\\log(x-2) + 1 = 0$."
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 2,
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Emphasize that a logarithm is an exponent. This is the single most important concept for students to grasp.",
+    "When converting between forms, use arrows to show the base stays the same, the exponent becomes the output, and the result becomes the argument.",
+    "For evaluating logs, start with simple powers of the base. Then move to fractional and negative exponents.",
+    "The inverse relationship is key to solving equations. Spend time on simplifying expressions like $\\log_b b^x$ and $b^{\\log_b x}$.",
+    "Graphing log functions by reflecting the exponential graph helps students visualize the asymptote and domain.",
+    "In the Blueprint block, emphasize checking the domain. Extraneous solutions can appear when solving log equations."
+  ],
+  "standards": [
+    "HSF.LE.A.1",
+    "HSF.LE.A.4",
+    "HSF.IF.C.7e",
+    "HSF.BF.B.4a"
+  ],
+  "id": "chapter-6-3-logarithms-and-logarithmic-functions",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

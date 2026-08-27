@@ -1,0 +1,729 @@
+{
+  "blocks": [
+    {
+      "title": "The Parent Square Root Function",
+      "examples": [
+        {
+          "steps": [
+            "Set the radicand $\\ge 0$: $x-5 \\ge 0$.",
+            "Add 5 to both sides: $x \\ge 5$.",
+            "Domain: all real numbers $x \\ge 5$."
+          ],
+          "prompt": "Describe the domain of $f(x) = 3\\sqrt{x-5}$.",
+          "title": "Example A — Domain from Equation",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Graph $f(x) = \\sqrt{x} + 3$ and describe its range.",
+          "minLength": 2,
+          "title": "Example B — Graph and Range",
+          "peerPrompt": "Without looking back… Explain to a partner: Why does adding 3 move the whole graph up? How does the range change?",
+          "steps": [
+            "Domain: $x \\ge 0$. Table: $(0,3), (1,4), (4,5), (9,6)$.",
+            "Plot points; smooth curve from $(0,3)$ upward.",
+            "Range: $y \\ge 3$."
+          ]
+        },
+        {
+          "prompt": "Describe the domain of $y = \\sqrt{-x+1}$.",
+          "title": "Example C — Your Turn",
+          "steps": [
+            "Radicand $\\ge 0$: $-x+1 \\ge 0$.",
+            "Subtract 1: $-x \\ge -1$. Multiply by $-1$ (flip sign): $x \\le 1$.",
+            "Domain: $x \\le 1$."
+          ],
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Key Points of $f(x)=\\sqrt{x}$",
+            "type": "table",
+            "headers": [
+              "$x$",
+              "0",
+              "1",
+              "4",
+              "9",
+              "16"
+            ],
+            "rows": [
+              {
+                "0": "$f(x)$",
+                "1": "0",
+                "2": "1",
+                "3": "2",
+                "4": "3",
+                "5": "4"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:square root function]] has the independent variable inside a square root. Parent: $ f(x) = \\sqrt{x} $.",
+          "The [[kw:domain]] is $ x \\ge 0 $ because you can't square-root a negative number.",
+          "The [[kw:range]] is $ y \\ge 0 $; the graph begins at $(0,0)$ and slowly rises.",
+          "Key points: $(0,0), (1,1), (4,2), (9,3), (16,4)$."
+        ],
+        "formulaCard": {
+          "formula": "$$ f(x) = \\sqrt{x} $$",
+          "notes": [
+            "Domain: $x \\ge 0$.",
+            "Range: $y \\ge 0$.",
+            "Starts at $(0,0)$; increases slowly."
+          ],
+          "title": "Parent Square Root Function"
+        }
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "The domain is $x \\ge 0$.",
+          "hints": [
+            "You cannot take the square root of a negative number.",
+            "The graph starts at the origin."
+          ],
+          "id": "q1-1",
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "zero"
+              ]
+            }
+          ],
+          "prompt": "The parent square root function is $f(x) = \\sqrt{x}$. Its domain is $x \\ge$ ___."
+        },
+        {
+          "prompt": "What is the range of $f(x) = \\sqrt{x}$? (Type an inequality, e.g., y>=0)",
+          "feedbackIfWrong": "The range is $y \\ge 0$.",
+          "type": "short-answer",
+          "answers": [
+            "y>=0",
+            "y ≥ 0"
+          ],
+          "id": "q1-2",
+          "hints": [
+            "The graph only has non‑negative y-values.",
+            "The smallest y is 0, and it increases."
+          ]
+        },
+        {
+          "feedbackIfWrong": "The domain is $x \\ge 4$; smallest value is 4.",
+          "type": "short-answer",
+          "id": "q1-3",
+          "prompt": "For $h(x) = \\sqrt{x-4}$, what is the smallest x-value in the domain?",
+          "hints": [
+            "Set the radicand $\\ge 0$: $x-4 \\ge 0$.",
+            "Add 4."
+          ],
+          "answers": [
+            "4",
+            "four"
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Write $f(x)=\\sqrt{x}$ on the board. Ask: What x-values can we plug in? What y-values come out?",
+        "Have students make a table: (0,0), (1,1), (4,2), (9,3). Ask: What shape does this make? Why does it start at (0,0) and only go right?"
+      ],
+      "confusionCorner": {
+        "body": "For $\\sqrt{\\text{stuff}}$, the domain is $\\text{stuff} \\ge 0$. It's the radicand, not the whole expression, that can't be negative.",
+        "title": "Domain: Inside the Radical"
+      },
+      "discoveryHook": {
+        "scenario": "A square root function only works when the number under the radical is non‑negative. Its graph starts at the origin and gently curves upward — like a rising rocket. This simple shape is the foundation for all square root graphs."
+      },
+      "id": "parent-square-root-function"
+    },
+    {
+      "title": "Transformations of $f(x) = \\sqrt{x}$",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Starting point (vertex) is $(h, k)$.",
+            "Domain: $x \\ge h$. Range depends on $a$ and $k$.",
+            "$a<0$ reflects down; $|a|>1$ steeper, $0<|a|<1$ flatter."
+          ],
+          "title": "General Square Root Function",
+          "formula": "$$ y = a\\sqrt{x - h} + k $$"
+        },
+        "explanation": [
+          "General form: $y = a\\sqrt{x - h} + k$. Graph starts at $(h, k)$.",
+          "Horizontal shift: $h$ moves left ($h<0$) or right ($h>0$).",
+          "Vertical shift: $k$ moves up ($k>0$) or down ($k<0$).",
+          "Reflection: If $a<0$, flip across x‑axis.",
+          "Stretch/Shrink: $|a|>1$ steeper; $0<|a|<1$ flatter."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Form",
+              "Effect",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "$y = \\sqrt{x - h}$",
+                "1": "Right $h$ if $h>0$",
+                "2": "$y = \\sqrt{x-2}$ starts at $(2,0)$"
+              },
+              {
+                "0": "$y = \\sqrt{x} + k$",
+                "1": "Up $k$ if $k>0$",
+                "2": "$y = \\sqrt{x} + 3$ starts at $(0,3)$"
+              },
+              {
+                "0": "$y = -\\sqrt{x}$",
+                "1": "Reflection in x‑axis",
+                "2": "$y = -\\sqrt{x}$ starts at $(0,0)$, goes down"
+              },
+              {
+                "0": "$y = a\\sqrt{x}$",
+                "1": "Stretch ($|a|>1$) or shrink ($0<|a|<1$)",
+                "2": "$y = 2\\sqrt{x}$ steeper"
+              }
+            ],
+            "title": "Transformations of $f(x)=\\sqrt{x}$",
+            "variant": "colorful",
+            "type": "table"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "It shifts 3 units right.",
+          "id": "q2-1",
+          "prompt": "The graph of $y = \\sqrt{x - 3}$ is a horizontal translation 3 units to the ___.",
+          "hints": [
+            "$x-3$ means $h=3$, shift right.",
+            "Inside the radical, opposite sign."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "right",
+                "Right"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "The starting point is $(0, -4)$.",
+          "answers": [
+            "(0,-4)"
+          ],
+          "prompt": "Where does the graph of $g(x) = \\sqrt{x} - 4$ start? (Type as ordered pair without spaces, e.g., (0,-4))",
+          "id": "q2-2",
+          "type": "short-answer",
+          "hints": [
+            "No horizontal shift; $h=0$.",
+            "Vertical shift down 4; $k=-4$."
+          ]
+        },
+        {
+          "prompt": "If $g(x) = -\\sqrt{x}$, the graph is a reflection of the parent function across which axis? (Type 'x' or 'y')",
+          "answers": [
+            "x",
+            "X"
+          ],
+          "feedbackIfWrong": "Reflection across the x‑axis.",
+          "hints": [
+            "The negative sign is in front of the radical.",
+            "It flips the graph upside down."
+          ],
+          "id": "q2-3",
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Just like other functions, we can slide, stretch, and flip the square root graph. The form $y = a\\sqrt{x-h} + k$ gives the new starting point at $(h, k)$. Mastering these moves lets you sketch any square root function in seconds!"
+      },
+      "teacherCues": [
+        "Write $g(x) = \\sqrt{x-2}$ on the board. Ask: Where does the graph start now? Why did it move right?",
+        "Then write $h(x) = -\\sqrt{x-2}$. Say: The negative sign flips it upside down — a reflection in the x‑axis."
+      ],
+      "id": "transformations-of-square-root-functions",
+      "examples": [
+        {
+          "steps": [
+            "Domain: $x \\ge 2$. Start at $(2,0)$.",
+            "Table: $x=2,3,6,11$ → $g(x)=0,-1,-2,-3$.",
+            "Graph shifted 2 units right and reflected in the x‑axis."
+          ],
+          "role": "guided",
+          "title": "Example A — Translation Right and Reflect",
+          "prompt": "Graph $g(x) = -\\sqrt{x-2}$ and compare to $f(x) = \\sqrt{x}$."
+        },
+        {
+          "peerPrompt": "Without looking back… Explain to a partner: In what order would you apply the transformations? Why does the graph start at $(3,-2)$?",
+          "minLength": 2,
+          "steps": [
+            "Start: $f(x)=\\sqrt{x}$.",
+            "Right 3: $\\sqrt{x-3}$.",
+            "Stretch by 2: $2\\sqrt{x-3}$.",
+            "Reflect in x‑axis: $-2\\sqrt{x-3}$.",
+            "Down 2: $-2\\sqrt{x-3}-2$. Starts at $(3,-2)$."
+          ],
+          "role": "peer-explain",
+          "title": "Example B — Full Transformation",
+          "prompt": "For $g(x) = -2\\sqrt{x-3} - 2$, describe transformations from $f(x) = \\sqrt{x}$."
+        },
+        {
+          "steps": [
+            "$h = -4$, $k = 1$. Start at $(-4,1)$.",
+            "$a = \\frac{1}{2}$ → vertical shrink (flatter).",
+            "Domain $x \\ge -4$. Table: $x=-4,0,5$ → $h(x)=1,2,2.5$."
+          ],
+          "role": "independent",
+          "title": "Example C — Your Turn",
+          "prompt": "Graph $h(x) = \\frac{1}{2}\\sqrt{x+4} + 1$. Where does it start?"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Changes inside the radical ($x-h$) move left/right but opposite the sign. Changes outside ($+k$) move up/down exactly as they appear. $a$ changes steepness; negative $a$ flips.",
+        "title": "Inside vs. Outside"
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "On the Moon, gravity is weaker, so a falling object picks up speed more slowly. Calculating the average rate of change of the square root velocity functions lets us measure exactly how much slower — and the numbers tell a clear story."
+      },
+      "examples": [
+        {
+          "title": "Example A — Moon vs Earth (d=0 to 10)",
+          "steps": [
+            "Earth: $(0,0)$ and $(10,14)$ → avg rate $=14/10=1.4$.",
+            "Moon: $v(0)=0$, $v(10)=\\sqrt{32}\\approx5.7$. Avg rate $=5.7/10=0.57$.",
+            "Earth's velocity increases about 2.5 times faster on average."
+          ],
+          "prompt": "Moon velocity $v(d)=\\sqrt{3.2d}$. Compare average rates from $d=0$ to $d=10$ with Earth.",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back… Explain to a partner: Why is the average rate of change smaller on this interval compared to $d=0$ to $d=10$?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "$v(30)=\\sqrt{96}\\approx9.8$, $v(40)=\\sqrt{128}\\approx11.3$.",
+            "Average rate $=(11.3-9.8)/10 = 0.15$ m/s per meter.",
+            "Smaller because the square root function flattens as $d$ grows."
+          ],
+          "prompt": "For the Moon, find the average rate of change from $d=30$ to $d=40$.",
+          "title": "Example B — Later Interval"
+        },
+        {
+          "prompt": "Using the Earth graph, estimate the average rate of change from $d=30$ to $d=40$.",
+          "steps": [
+            "From graph: $v(30)\\approx24$, $v(40)\\approx28$.",
+            "Average rate $=(28-24)/10 = 0.4$ m/s per meter.",
+            "Also decreasing."
+          ],
+          "title": "Example C — Your Turn",
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "hints": [
+            "It's the horizontal difference.",
+            "Formula: $(f(b)-f(a))/(b-a)$."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "x",
+                "X"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Divide by the change in $x$.",
+          "prompt": "The average rate of change between $x=a$ and $x=b$ is found by dividing the change in $y$ by the change in ___.",
+          "id": "q3-1",
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "Average rate is $0.57$, rounds to $0.6$.",
+          "answers": [
+            "0.6",
+            ".6"
+          ],
+          "hints": [
+            "Average rate $=5.7/10$.",
+            "Divide and round."
+          ],
+          "prompt": "For the Moon model, $v(10) \\approx 5.7$. What is the average rate of change from $d=0$ to $d=10$ rounded to the nearest tenth?",
+          "id": "q3-2"
+        },
+        {
+          "hints": [
+            "The graph flattens out.",
+            "The slope of secant lines gets smaller."
+          ],
+          "id": "q3-3",
+          "prompt": "As $x$ increases, the average rate of change of a square root function ___. (Type 'increases' or 'decreases')",
+          "feedbackIfWrong": "The average rate decreases.",
+          "type": "short-answer",
+          "answers": [
+            "decreases",
+            "Decreases"
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:average rate of change]] between $a$ and $b$ is $\\frac{f(b)-f(a)}{b-a}$.",
+          "For square root functions, the average rate is not constant — it decreases as $x$ increases.",
+          "Earth free‑fall velocity (graph): at $d=10$, $v \\approx 14$ m/s. Avg rate $= \\frac{14-0}{10} = 1.4$ m/s per meter.",
+          "Moon free‑fall: $v(d) = \\sqrt{3.2d}$. At $d=10$, $v \\approx 5.7$. Avg rate $= \\frac{5.7-0}{10} = 0.57$ m/s per meter.",
+          "[[imp:The Moon's velocity increases at a slower average rate than Earth's.]]"
+        ],
+        "visuals": [
+          {
+            "title": "Average Rate of Change from $d=0$ to $d=10$",
+            "rows": [
+              {
+                "0": "Earth",
+                "1": "0 m/s",
+                "2": "≈14 m/s",
+                "3": "$\\frac{14-0}{10}=1.4$"
+              },
+              {
+                "0": "Moon",
+                "1": "0 m/s",
+                "2": "≈5.7 m/s",
+                "3": "$\\frac{5.7-0}{10}=0.57$"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Location",
+              "$v(0)$",
+              "$v(10)$",
+              "Avg Rate (m/s per m)"
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "For square root functions, rate decreases as the $x$-interval moves right.",
+            "Used to compare growth rates of different models."
+          ],
+          "title": "Average Rate of Change",
+          "formula": "$$ \\frac{f(b) - f(a)}{b - a} $$"
+        }
+      },
+      "confusionCorner": {
+        "body": "The average rate over an interval is the slope of the secant line. For square root functions, the average rate decreases as the interval moves to the right.",
+        "title": "Average Rate ≠ Instantaneous Rate"
+      },
+      "teacherCues": [
+        "Write Moon velocity formula $v(d) = \\sqrt{2gd}$ with $g=1.6$. Calculate $v(10) \\approx 5.7$.",
+        "Compare to Earth graph: at $d=10$, $v \\approx 14$. Ask: Which has a steeper average rate? Why does the Moon's velocity grow slower?"
+      ],
+      "title": "Average Rate of Change of Square Root Functions",
+      "id": "average-rate-of-change"
+    },
+    {
+      "confusionCorner": {
+        "body": "The model assumes constant depth. In reality, ocean floor slopes, so depth changes. But over a small distance, this square root model gives a good estimate.",
+        "title": "Square Root Model Limitations"
+      },
+      "id": "tsunami-velocity-application",
+      "questions": [
+        {
+          "answers": [
+            "99",
+            "ninety-nine"
+          ],
+          "feedbackIfWrong": "The velocity is about 99 m/s.",
+          "type": "short-answer",
+          "hints": [
+            "$v = \\sqrt{9800}$.",
+            "$\\sqrt{9800} \\approx 98.99$, rounds to 99."
+          ],
+          "id": "q4-1",
+          "prompt": "In the tsunami model $v = \\sqrt{9.8x}$, what velocity (m/s) corresponds to a depth of $x=1000$ meters? Round to the nearest whole number."
+        },
+        {
+          "prompt": "As water depth increases, the average rate of change of the tsunami's velocity ___.",
+          "id": "q4-2",
+          "blanks": [
+            {
+              "accept": [
+                "decreases",
+                "Decreases"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The average rate decreases.",
+          "type": "fill-blank",
+          "hints": [
+            "Look at the table of average rates.",
+            "The numbers get smaller."
+          ]
+        },
+        {
+          "feedbackIfWrong": "The depth is about 4082 meters.",
+          "type": "short-answer",
+          "id": "q4-3",
+          "prompt": "At what depth (to the nearest meter) does the tsunami velocity exceed 200 m/s?",
+          "hints": [
+            "From the graph, $x \\approx 4082$ when $v=200$.",
+            "Solve $200 = \\sqrt{9.8x}$ by squaring."
+          ],
+          "answers": [
+            "4082"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "Use $v(x) = \\sqrt{9.8x}$ to find the depth where velocity exceeds 200 m/s.",
+          "role": "guided",
+          "title": "Example A — Finding Critical Depth",
+          "steps": [
+            "Graph $y = \\sqrt{9.8x}$ on a calculator.",
+            "Use the trace feature to find $x$ when $y \\approx 200$.",
+            "$x \\approx 4082$ meters."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Calculate the average rate of change from $x=1000$ to $x=2000$.",
+          "peerPrompt": "Without looking back… Explain to a partner: Why is the average rate of change smaller over this interval than from $0$ to $1000$? What does this tell us about the tsunami?",
+          "title": "Example B — Average Rate Decrease",
+          "minLength": 2,
+          "steps": [
+            "$v(1000)=\\sqrt{9800}\\approx98.99$; $v(2000)=\\sqrt{19600}\\approx140$.",
+            "Average rate $=(140-98.99)/1000\\approx0.041$ m/s per meter.",
+            "It's smaller because the square root function flattens."
+          ]
+        },
+        {
+          "role": "independent",
+          "prompt": "At what depth does the tsunami velocity exceed 100 m/s?",
+          "steps": [
+            "Set $100 = \\sqrt{9.8x}$ → square both sides: $10000 = 9.8x$.",
+            "$x = 10000/9.8 \\approx 1020$ meters."
+          ],
+          "title": "Example C — Depth for 100 m/s"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A tsunami's speed depends on ocean depth. The deeper the water, the faster the wave travels. Using $v(x) = \\sqrt{9.8x}$, we can find exactly how deep the water must be for the wave to reach dangerous speeds — and how the acceleration slows as depth increases."
+      },
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "$x$ = water depth (meters), $v$ = velocity (m/s).",
+            "Velocity increases with depth, but rate of increase slows."
+          ],
+          "formula": "$$ v(x) = \\sqrt{9.8x} $$",
+          "title": "Tsunami Velocity Model"
+        },
+        "explanation": [
+          "Tsunami model: $v(x) = \\sqrt{9.8x}$ ($x$ depth in m, $v$ velocity in m/s).",
+          "Find depth where $v>200$: graph and trace; at $x\\approx4082$ m, $v\\approx200$.",
+          "Average rates of change decrease as depth increases:",
+          "  $0$–$1000$ m: about $0.099$ m/s per meter.",
+          "  $1000$–$2000$ m: about $0.041$.",
+          "  $2000$–$3000$ m: about $0.031$.",
+          "[[imp:The tsunami gains speed rapidly in shallow water, then the rate slows.]]"
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "$0$ to $1000$",
+                "1": "≈ 0.099"
+              },
+              {
+                "0": "$1000$ to $2000$",
+                "1": "≈ 0.041"
+              },
+              {
+                "0": "$2000$ to $3000$",
+                "1": "≈ 0.031"
+              }
+            ],
+            "title": "Tsunami Velocity – Average Rates of Change",
+            "headers": [
+              "Interval (m)",
+              "Avg Rate (m/s per m)"
+            ]
+          }
+        ]
+      },
+      "title": "Real‑Life: Tsunami Velocity Model",
+      "teacherCues": [
+        "Write tsunami velocity function $v(x) = \\sqrt{9.8x}$ on the board. '$x$ is water depth in meters, $v$ is velocity in m/s.'",
+        "Use a graphing calculator: trace to where $v \\approx 200$. Then calculate average rates over intervals."
+      ]
+    },
+    {
+      "id": "blueprint-square-root-graphing",
+      "confusionCorner": {
+        "body": "The graph of $y = \\sqrt{x-h}$ only exists for $x \\ge h$. Don't draw any curve to the left of the starting point.",
+        "title": "Don't Extend Left!"
+      },
+      "title": "Blueprint Aid: Graph & Analyze $y = a\\sqrt{x-h} + k$",
+      "discoveryHook": {
+        "scenario": "With the blueprint for $y = a\\sqrt{x-h} + k$, you can graph any square root function in four steps: locate the starting point, pick x-values to the right, plot, and connect with a smooth curve. Use it to model anything from tsunami speeds to falling objects!"
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "Look at $h$ in $y = \\sqrt{x-h}$.",
+            "The starting x-value."
+          ],
+          "id": "q5-1",
+          "blanks": [
+            {
+              "accept": [
+                "2",
+                "two"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Domain is $x \\ge 2$.",
+          "prompt": "For $y = \\sqrt{x - 2}$, the graph starts at $(2, 0)$. The domain is all real numbers $x \\ge$ ___."
+        },
+        {
+          "id": "q5-2",
+          "feedbackIfWrong": "The range is $y \\le 4$.",
+          "type": "short-answer",
+          "hints": [
+            "The graph starts at $(0,4)$ and goes down.",
+            "Maximum y-value is 4."
+          ],
+          "answers": [
+            "y<=4",
+            "y ≤ 4"
+          ],
+          "prompt": "What is the range of $y = -\\sqrt{x} + 4$? (Type an inequality, e.g., y<=4)"
+        },
+        {
+          "prompt": "For the fire hose model $f = 120\\sqrt{p}$, what is the flow rate when pressure $p = 16$ psi?",
+          "answers": [
+            "480"
+          ],
+          "id": "q5-3",
+          "type": "short-answer",
+          "hints": [
+            "$\\sqrt{16} = 4$.",
+            "$120 \\times 4$."
+          ],
+          "feedbackIfWrong": "The flow rate is $120 \\times 4 = 480$ gallons per minute."
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "**Understand:** Identify $a$, $h$, $k$. The graph starts at $(h, k)$. Domain: $x \\ge h$.",
+          "**Solve – Table:** Use $x = h$, then $x = h+1$, $h+4$, $h+9$, etc. to get nice square roots. Compute $y$.",
+          "**Solve – Plot:** Plot the points and draw a smooth curve from $(h, k)$.",
+          "**Conclude:** Domain $x \\ge h$; Range: $y \\ge k$ (if $a>0$) or $y \\le k$ (if $a<0$).",
+          "For real‑world models, calculate average rates of change to compare growth."
+        ],
+        "formulaCard": {
+          "formula": "$$ y = a\\sqrt{x - h} + k $$",
+          "title": "Blueprint: Square Root Function Graphing",
+          "notes": [
+            "Start at $(h, k)$.",
+            "Choose $x = h, h+1, h+4, h+9, \\dots$ for an easy table.",
+            "Domain: $x \\ge h$; Range: $y \\ge k$ ($a>0$) or $y \\le k$ ($a<0$)."
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "$a=-2, h=3, k=-2$",
+                "2": "Starts at $(3,-2)$, reflected, steeper"
+              },
+              {
+                "0": "Table",
+                "1": "$x=3,4,7,12$",
+                "2": "$g(x) = -2,-4,-6,-8$"
+              },
+              {
+                "0": "Plot & Draw",
+                "1": "Curve from $(3,-2)$ downward",
+                "2": "Domain $x \\ge 3$, Range $y \\le -2$"
+              },
+              {
+                "0": "Conclude",
+                "1": "Transformations",
+                "2": "Right 3, stretch by 2, reflect, down 2"
+              }
+            ],
+            "title": "Blueprint for $g(x) = -2\\sqrt{x-3} - 2$"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Post the blueprint steps: 1) Find starting point $(h, k)$. 2) Use domain $x \\ge h$. 3) Make a table of friendly x-values. 4) Plot and draw a smooth curve from the starting point.",
+        "Emphasize: The graph only goes right (or left for $\\sqrt{-x}$); it never doubles back."
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Understand: $a=1, h=-2, k=-3$. Starts at $(-2,-3)$.",
+            "Table: $x=-2,-1,2,7$ → $h(x) = -3, -2, -1, 0$.",
+            "Plot and draw curve from $(-2,-3)$ going right and up.",
+            "Conclude: Domain $x \\ge -2$, Range $y \\ge -3$."
+          ],
+          "prompt": "Graph $h(x) = \\sqrt{x+2} - 3$ and state domain and range.",
+          "title": "Example A — Graph Using Blueprint",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "$v = \\sqrt{9.8} \\cdot \\sqrt{x}$, so $a = \\sqrt{9.8} \\approx 3.13$, $h=0, k=0$.",
+            "Starts at $(0,0)$. Domain $x \\ge 0$. The graph rises, flattening out.",
+            "Velocity increases rapidly at first, then more slowly."
+          ],
+          "role": "peer-explain",
+          "title": "Example B — Real‑World Tsunami",
+          "prompt": "Use the blueprint to explain the tsunami model $v(x) = \\sqrt{9.8x}$. What is the starting point?",
+          "peerPrompt": "Without looking back… Explain to a partner: Why is the domain $x \\ge 0$? How does the shape of the graph reflect the real‑world behavior?",
+          "minLength": 2
+        },
+        {
+          "prompt": "The flow rate of a fire hose is $f = 120\\sqrt{p}$. Graph and describe domain and range.",
+          "role": "independent",
+          "title": "Example C — Fire Hose Flow",
+          "steps": [
+            "Domain $p \\ge 0$. Start at $(0,0)$. $a=120$ → steep.",
+            "Range $f \\ge 0$. Flow increases with pressure."
+          ]
+        }
+      ]
+    }
+  ],
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-10-1-graphing-square-root-functions",
+  "title": "Chapter 10.1 — Graphing Square Root Functions",
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

@@ -1,0 +1,841 @@
+{
+  "blocks": [
+    {
+      "title": "1. Simple vs. Compound Interest",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Year 1 Interest",
+                "1": "$6.40",
+                "2": "$6.40"
+              },
+              {
+                "0": "Year 2 Interest",
+                "1": "$6.40",
+                "2": "$6.91"
+              },
+              {
+                "0": "Year 3 Interest",
+                "1": "$6.40",
+                "2": "$7.46"
+              },
+              {
+                "0": "Year 4 Interest",
+                "1": "$6.40",
+                "2": "$8.06"
+              },
+              {
+                "0": "Total Interest",
+                "1": "$25.60",
+                "2": "$28.83"
+              },
+              {
+                "0": "Final Amount",
+                "1": "$105.60",
+                "2": "$108.83"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "",
+              "Simple Interest",
+              "Compound Interest"
+            ],
+            "title": "Simple vs. Compound Interest ($80 at 8% for 4 years)",
+            "caption": "Compound interest adds each period's interest to the principal for the next calculation."
+          }
+        ],
+        "explanation": [
+          "[[kw:Simple interest]] is calculated only on the original principal each period.",
+          "[[kw:Compound interest]] calculates interest on the principal plus any previously earned interest.",
+          "Compounding results in a higher total return because interest earns interest.",
+          "[[kw:Future value (FV)]] or compound amount is the total value at the end of the investment/loan.",
+          "[[imp:Compounding grows money faster over time – start saving early.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Simple: } I = P \\times R \\times T$$ $$\\text{Compound: } FV = PV \\times (1 + i)^n$$",
+          "title": "Simple Interest vs. Compound Interest",
+          "notes": [
+            "Simple interest: interest constant each period.",
+            "Compound interest: interest grows because base grows."
+          ]
+        }
+      },
+      "teacherCues": [
+        "Ask: 'What is the difference between earning interest only on the principal versus earning interest on interest?'",
+        "Show Figure 12-1: $1 growing at 2% annually over 4 years."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Simple: I = 100 × 0.10 × 2 = $20; total = $120.",
+            "Compound: Year 1: 100 × 1.10 = $110; Year 2: 110 × 1.10 = $121.",
+            "Compound interest = $121 - $100 = $21, $1 more than simple."
+          ],
+          "title": "A – Compare earnings",
+          "prompt": "Compare simple and compound interest on $100 at 10% for 2 years (annual compounding)."
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Think about what happens to the base each period.",
+          "steps": [
+            "With simple interest, the base (principal) stays the same each year.",
+            "With compound interest, the interest earned in previous periods is added to the base, so the base grows.",
+            "This means interest is calculated on an ever-increasing amount, accelerating growth."
+          ],
+          "title": "B – Why compounding works",
+          "minLength": 2,
+          "prompt": "Explain to a classmate why compound interest grows faster than simple interest over time."
+        },
+        {
+          "steps": [
+            "Year 1: 200 × 1.06 = $212.",
+            "Year 2: 212 × 1.06 = $224.72.",
+            "Year 3: 224.72 × 1.06 = $238.20 (rounded). Compound interest = $238.20 - $200 = $38.20."
+          ],
+          "title": "C – Calculate compound amount",
+          "role": "independent",
+          "prompt": "Find the compound amount and compound interest on $200 at 6% compounded annually for 3 years."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Bill Smith deposits $80 in a savings account for 4 years at 8% interest. With simple interest, he earns $25.60, for a total of $105.60. With compound interest, interest is added to the principal each year, and he earns interest on interest, ending with $108.83. That extra $3.23 is the power of compounding."
+      },
+      "id": "simple-vs-compound",
+      "questions": [
+        {
+          "hints": [
+            "Interest that has already been added.",
+            "Not only the original principal."
+          ],
+          "feedbackIfWrong": "previous (or accumulated).",
+          "prompt": "Compound interest calculates interest on principal plus any ___ earned interest.",
+          "blanks": [
+            {
+              "accept": [
+                "previous",
+                "accumulated",
+                "prior"
+              ]
+            }
+          ],
+          "id": "b1q1",
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "id": "b1q2",
+          "feedbackIfWrong": "60.",
+          "prompt": "Simple interest on $500 at 4% for 3 years. (number only, no $)",
+          "hints": [
+            "I = P × R × T.",
+            "500 × 0.04 × 3 = ?"
+          ],
+          "answers": [
+            "60",
+            "60.00"
+          ]
+        },
+        {
+          "id": "b1q3",
+          "type": "short-answer",
+          "hints": [
+            "It earns interest on interest.",
+            "It accelerates growth."
+          ],
+          "feedbackIfWrong": "compound.",
+          "answers": [
+            "compound"
+          ],
+          "prompt": "Which type of interest yields more over the same time and rate? (word: simple or compound)"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Don't confuse compound interest with simple interest. [[imp:Compound interest adds previous interest to the principal before computing next period's interest.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "prompt": "If $1,000 earns 5% simple interest for 10 years, how much less would it be than if it earned 5% compound interest annually? (Hint: simple interest = $500; compound = 1000×1.05^10 - 1000)",
+        "answers": [
+          "128.89",
+          "128.89 less"
+        ],
+        "hints": [
+          "Simple total = 1000 + 500 = 1500.",
+          "Compound = 1000 × 1.05^10 ≈ 1628.89; difference ≈ 128.89."
+        ],
+        "optional": true,
+        "type": "short-answer"
+      }
+    },
+    {
+      "id": "compounding-periods",
+      "concept": {
+        "explanation": [
+          "Compounding frequency determines how often interest is calculated and added to the principal.",
+          "[[kw:Annually]]: once per year.",
+          "[[kw:Semiannually]]: twice per year (every 6 months).",
+          "[[kw:Quarterly]]: four times per year (every 3 months).",
+          "[[kw:Monthly]]: twelve times per year.",
+          "[[kw:Daily]]: 360 times per year (ordinary) or 365 (exact) depending on the convention.",
+          "[[imp:More frequent compounding = higher effective rate and future value.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$n = \\text{Years} \\times \\text{Periods per year}$$ $$i = \\frac{\\text{Annual Rate}}{\\text{Periods per year}}$$",
+          "notes": [
+            "Number of periods (n) replaces time in the compound interest formula.",
+            "Periodic rate (i) is the rate used for each compounding period."
+          ],
+          "title": "Key Variables for Compounding"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Frequency",
+              "Periods per Year",
+              "Total Periods (n)",
+              "Periodic Rate (i = annual rate/periods per year)"
+            ],
+            "title": "Compounding Frequency & Periods (for a 4-year investment)",
+            "caption": "n = number of years × periods per year; i = annual rate ÷ periods per year.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Annually",
+                "1": "1",
+                "2": "4 × 1 = 4",
+                "3": "8% ÷ 1 = 8%"
+              },
+              {
+                "0": "Semiannually",
+                "1": "2",
+                "2": "4 × 2 = 8",
+                "3": "8% ÷ 2 = 4%"
+              },
+              {
+                "0": "Quarterly",
+                "1": "4",
+                "2": "4 × 4 = 16",
+                "3": "8% ÷ 4 = 2%"
+              },
+              {
+                "0": "Monthly",
+                "1": "12",
+                "2": "4 × 12 = 48",
+                "3": "8% ÷ 12 ≈ 0.6667%"
+              },
+              {
+                "0": "Daily",
+                "1": "360",
+                "2": "4 × 360 = 1440",
+                "3": "8% ÷ 360 ≈ 0.0222%"
+              }
+            ]
+          }
+        ]
+      },
+      "challengeCorner": {
+        "prompt": "If interest is compounded daily (360-day year), what is the periodic rate for a 3.65% annual rate? (as a decimal, 4 decimals)",
+        "optional": true,
+        "hints": [
+          "Rate = 3.65% ÷ 360 = 0.0365 ÷ 360.",
+          "= 0.00010139 ≈ 0.0001 (rounded to 4 decimals)."
+        ],
+        "answers": [
+          "0.0001"
+        ],
+        "type": "short-answer"
+      },
+      "discoveryHook": {
+        "scenario": "If Bill's 8% interest were compounded semiannually instead of annually, he'd earn even more interest because the interest is added twice a year. The more frequently interest is compounded, the greater the future value."
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Always divide the annual rate by the number of compounding periods per year to get the periodic rate. [[imp:Use the periodic rate, not the annual rate, in formulas and tables.]]"
+      },
+      "title": "2. Compounding Periods and Terminology",
+      "teacherCues": [
+        "Write on board: Annually (1×), Semiannually (2×), Quarterly (4×), Monthly (12×), Daily (360×).",
+        "Explain that more frequent compounding means more interest earned."
+      ],
+      "questions": [
+        {
+          "hints": [
+            "Every 3 months.",
+            "Quarter of a year."
+          ],
+          "feedbackIfWrong": "4.",
+          "prompt": "For quarterly compounding, there are ___ periods per year.",
+          "blanks": [
+            {
+              "accept": [
+                "4",
+                "four"
+              ]
+            }
+          ],
+          "id": "b2q1",
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "4.",
+          "type": "short-answer",
+          "hints": [
+            "2 × 2 = ?",
+            "Semiannually = 2 times per year."
+          ],
+          "id": "b2q2",
+          "answers": [
+            "4"
+          ],
+          "prompt": "Annual rate 8%, compounded semiannually for 2 years. Find n (total periods). (number only)"
+        },
+        {
+          "prompt": "Same: 8% compounded semiannually. What is the periodic rate i? (as a percent, just the number)",
+          "id": "b2q3",
+          "feedbackIfWrong": "4.",
+          "hints": [
+            "8% ÷ 2.",
+            "Divide by number of periods per year."
+          ],
+          "answers": [
+            "4"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A $1,000 investment earns 6% compounded quarterly for 3 years. Find n and i.",
+          "steps": [
+            "n = 3 years × 4 periods/year = 12 periods.",
+            "i = 6% ÷ 4 = 1.5% per quarter (0.015 as decimal).",
+            "Use these in the compound amount formula or table."
+          ],
+          "title": "A – Find n and i"
+        },
+        {
+          "peerPrompt": "Think about when interest starts earning interest.",
+          "prompt": "Explain why compounding more frequently increases the future value.",
+          "title": "B – Why more periods?",
+          "steps": [
+            "When interest is added more often, the principal grows sooner.",
+            "Then the next interest calculation is on a larger amount.",
+            "So the interest-on-interest effect starts earlier, boosting the total."
+          ],
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "prompt": "An account pays 4.5% interest compounded monthly. Find n and i for 5 years.",
+          "steps": [
+            "n = 5 × 12 = 60 periods.",
+            "i = 4.5% ÷ 12 = 0.375% per month (0.00375 as decimal)."
+          ],
+          "title": "C – Compute n and i"
+        }
+      ]
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$FV = PV \\times (1 + i)^n$$ $$\\text{Compound Interest} = FV - PV$$",
+          "title": "Compound Amount (Future Value) Formula",
+          "notes": [
+            "i = periodic interest rate (decimal).",
+            "n = total number of compounding periods."
+          ]
+        },
+        "explanation": [
+          "Manual calculation: start with the principal (PV). For each period, multiply by (1 + i), where i is the periodic rate.",
+          "After n periods, the future value is $$FV = PV \\times (1 + i)^n$$.",
+          "Alternatively, calculate interest period by period: add interest to the old balance to get the new balance.",
+          "Compound interest = FV - PV.",
+          "[[imp:The factor (1+i) is called the accumulation factor; raising it to the n-th power gives the growth over n periods.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$80.00",
+                "2": "$6.40",
+                "3": "$86.40"
+              },
+              {
+                "0": "2",
+                "1": "$86.40",
+                "2": "$6.91",
+                "3": "$93.31"
+              },
+              {
+                "0": "3",
+                "1": "$93.31",
+                "2": "$7.46",
+                "3": "$100.77"
+              },
+              {
+                "0": "4",
+                "1": "$100.77",
+                "2": "$8.06",
+                "3": "$108.83"
+              }
+            ],
+            "caption": "Each period: Interest = Balance × i; new balance = old balance + interest.",
+            "headers": [
+              "Year",
+              "Beginning Balance",
+              "Interest (8%)",
+              "Ending Balance"
+            ],
+            "variant": "colorful",
+            "title": "Manual Compounding of $80 at 8% for 4 Years"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Compute FV manually",
+          "steps": [
+            "Year 1: 500 × 1.04 = $520.",
+            "Year 2: 520 × 1.04 = $540.80.",
+            "Year 3: 540.80 × 1.04 = $562.43 (rounded)."
+          ],
+          "prompt": "Find the compound amount on $500 at 4% compounded annually for 3 years."
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Explain why multiplying by (1+i) repeatedly is equivalent to using the formula $FV = PV \\times (1+i)^n$.",
+          "steps": [
+            "Multiplying by (1+i) each year is the same as multiplying by (1+i) n times.",
+            "That's exactly what (1+i)^n means.",
+            "So the formula condenses the step-by-step process."
+          ],
+          "title": "B – Shortcut method",
+          "minLength": 2,
+          "peerPrompt": "Think about what exponentiation means."
+        },
+        {
+          "prompt": "$200 invested at 10% compounded semiannually for 1 year. Find FV and compound interest.",
+          "title": "C – Compound interest calculation",
+          "steps": [
+            "i = 10% ÷ 2 = 5% per period = 0.05; n = 2.",
+            "FV = 200 × (1.05)^2 = 200 × 1.1025 = $220.50.",
+            "Compound interest = 220.50 - 200 = $20.50."
+          ],
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Without tables or a financial calculator, you can manually compute compound amount by applying the factor (1 + i) repeatedly. For Bill's $80 at 8% annual for 4 years, multiplying $80 by 1.08 four times yields $108.83."
+      },
+      "teacherCues": [
+        "Walk through the step-by-step manual method: multiply by (1+i) each period.",
+        "Show the shortcut: use the multiplication factor repeatedly."
+      ],
+      "id": "manual-compounding",
+      "title": "3. Manual Calculation of Compound Amount",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "Number of periods.",
+            "It replaces time in the simple interest formula."
+          ],
+          "feedbackIfWrong": "n.",
+          "blanks": [
+            {
+              "accept": [
+                "n"
+              ]
+            }
+          ],
+          "prompt": "The compound amount formula is FV = PV × (1 + i)^___.",
+          "id": "b3q1"
+        },
+        {
+          "hints": [
+            "FV = 300 × (1.02)^4 = 300 × 1.08243 = 324.73.",
+            "Round to two decimal places."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "324.73"
+          ],
+          "prompt": "PV $300, i = 2% per quarter, n = 4. Find FV. (number only, no $)",
+          "feedbackIfWrong": "324.73.",
+          "id": "b3q2"
+        },
+        {
+          "feedbackIfWrong": "100.",
+          "type": "short-answer",
+          "answers": [
+            "100",
+            "100.00"
+          ],
+          "id": "b3q3",
+          "prompt": "FV is $500, PV was $400. Compound interest? (number only, no $)",
+          "hints": [
+            "Compound interest = FV - PV.",
+            "500 - 400 = ?"
+          ]
+        }
+      ],
+      "challengeCorner": {
+        "hints": [
+          "i = 8%/4 = 2% = 0.02; n = 2×4 = 8.",
+          "FV = 1000 × (1.02)^8 = 1000 × 1.17166 = 1,171.66."
+        ],
+        "optional": true,
+        "answers": [
+          "1171.66"
+        ],
+        "prompt": "Compute FV of $1,000 at 8% compounded quarterly for 2 years using the formula.",
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "body": "For semiannual or quarterly compounding, divide the annual rate first, then multiply by the number of periods. [[imp:Do not use the annual rate directly unless compounding is annual.]]",
+        "title": "Watch out!"
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Make sure the periodic rate matches the table's i values. [[imp:If compounding is semiannual, i = annual rate ÷ 2, not the annual rate.]]"
+      },
+      "title": "4. Using Future Value Table",
+      "id": "table-lookup",
+      "challengeCorner": {
+        "hints": [
+          "i=2%, n=8, factor=1.17166.",
+          "FV = 3,200 × 1.17166 = 3,749.31."
+        ],
+        "answers": [
+          "3749.31"
+        ],
+        "optional": true,
+        "type": "short-answer",
+        "prompt": "An investment of $3,200 earns 8% compounded quarterly for 2 years. Use the formula or table to find FV (factor (1.02)^8 = 1.17166)."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Factor = (1 + i)^n. Multiply principal by factor to get FV.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "4",
+                "1": "1.02015",
+                "2": "1.04060",
+                "3": "1.08243"
+              },
+              {
+                "0": "8",
+                "1": "1.04071",
+                "2": "1.08286",
+                "3": "1.17166"
+              },
+              {
+                "0": "12",
+                "1": "1.06168",
+                "2": "1.12683",
+                "3": "1.26824"
+              }
+            ],
+            "title": "Future Value of $1 Table (Excerpt)",
+            "headers": [
+              "n\\i",
+              "0.5%",
+              "1%",
+              "2%"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "A [[kw:future value of $1 table]] provides pre-calculated values of $(1 + i)^n$ for common i and n.",
+          "Steps: 1. Calculate n and i for the given compounding frequency. 2. Look up the factor at the intersection of i (row) and n (column). 3. Multiply the principal (PV) by the factor to get FV.",
+          "This method is simpler than manual exponentiation.",
+          "Tables often have row labels for periodic interest rate and column labels for number of periods.",
+          "[[imp:Always ensure i and n correspond to the same compounding frequency.]]"
+        ],
+        "formulaCard": {
+          "title": "FV Using Table",
+          "notes": [
+            "Find i (periodic rate) and n (total periods) before using the table.",
+            "If the exact i is not in the table, use the formula or interpolation."
+          ],
+          "formula": "$$FV = PV \\times \\text{Table Factor}$$ $$\\text{Table Factor} = (1 + i)^n$$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "Instead of manual calculations, banks used to rely on [[kw:future value tables]] that show the compound amount of $1 for various i and n. You simply multiply the principal by the table factor. For example, for i=2% and n=12, the table might show 1.26824. If you invest $1,000, FV = 1,000 × 1.26824 = $1,268.24."
+      },
+      "examples": [
+        {
+          "prompt": "Using the table above, find FV of $2,500 at 2% periodic rate for 8 periods.",
+          "title": "A – Use table factor",
+          "role": "guided",
+          "steps": [
+            "Locate i=2%, n=8: factor = 1.17166.",
+            "FV = 2,500 × 1.17166 = $2,929.15."
+          ]
+        },
+        {
+          "peerPrompt": "Calculate (1+i)^n with a calculator.",
+          "role": "peer-explain",
+          "prompt": "Explain how you can check the table factor using the formula.",
+          "minLength": 2,
+          "title": "B – Verify with formula",
+          "steps": [
+            "The table factor is just (1 + i)^n.",
+            "You can compute it directly on a calculator to verify the table.",
+            "Example: (1.02)^8 = 1.17166 (matches table)."
+          ]
+        },
+        {
+          "prompt": "How much will $800 grow to in 12 periods at 1% per period? Use table.",
+          "steps": [
+            "Factor for i=1%, n=12 is 1.12683.",
+            "FV = 800 × 1.12683 = $901.46."
+          ],
+          "role": "independent",
+          "title": "C – Find FV using table"
+        }
+      ],
+      "teacherCues": [
+        "Show a future value of $1 table; explain how to locate the factor for given i and n.",
+        "FV = Principal × Table Factor."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "table"
+              ]
+            }
+          ],
+          "prompt": "Using a future value table, FV = Principal × ___ factor.",
+          "id": "b4q1",
+          "feedbackIfWrong": "table.",
+          "hints": [
+            "The number from the table.",
+            "Not the interest rate."
+          ]
+        },
+        {
+          "hints": [
+            "Look at row n=4, column i=2%.",
+            "It's 1.08243 rounded to 4 decimals: 1.0824."
+          ],
+          "id": "b4q2",
+          "feedbackIfWrong": "1.0824.",
+          "type": "short-answer",
+          "prompt": "Using the example table, what is the factor for i=2%, n=4? (4 decimals)",
+          "answers": [
+            "1.0824"
+          ]
+        },
+        {
+          "feedbackIfWrong": "585.83.",
+          "id": "b4q3",
+          "prompt": "If factor is 1.17166 and principal is $500, find FV. (number only, no $)",
+          "hints": [
+            "FV = 500 × 1.17166.",
+            "= 585.83."
+          ],
+          "answers": [
+            "585.83"
+          ],
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Two banks offer 8% interest, but one compounds annually, the other quarterly. Which is better? The quarterly compounding yields an [[kw:effective annual rate (APY)]] higher than 8%. The formula: APY = (1 + periodic rate)^periods per year - 1. For 8% quarterly: APY = (1.02)^4 - 1 ≈ 8.24%."
+      },
+      "teacherCues": [
+        "Define APY (Annual Percentage Yield) as the true annual interest rate accounting for compounding.",
+        "Effective rate = (1 + i)^m - 1, where m = compounding periods per year."
+      ],
+      "challengeCorner": {
+        "prompt": "A credit card charges 18% nominal rate compounded monthly. What is the APY? (as percent, 2 decimals)",
+        "answers": [
+          "19.56"
+        ],
+        "optional": true,
+        "hints": [
+          "i = 18%/12 = 1.5% = 0.015.",
+          "APY = (1.015)^12 - 1 = 1.195618 - 1 = 0.195618 = 19.56%."
+        ],
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "body": "Do not compare nominal rates directly when compounding periods differ. [[imp:Use APY to make fair comparisons.]]",
+        "title": "Watch out!"
+      },
+      "title": "5. Effective Rate (APY)",
+      "questions": [
+        {
+          "feedbackIfWrong": "yield.",
+          "id": "b5q1",
+          "prompt": "APY stands for Annual Percentage ___.",
+          "hints": [
+            "Not rate.",
+            "It's the effective annual return."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "yield"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "id": "b5q2",
+          "type": "short-answer",
+          "answers": [
+            "0.1025"
+          ],
+          "prompt": "Nominal rate 10%, compounded semiannually. Find APY (as decimal, 4 decimals).",
+          "feedbackIfWrong": "0.1025.",
+          "hints": [
+            "i = 5% = 0.05; APY = (1.05)^2 - 1 = 0.1025.",
+            "1.1025 - 1 = 0.1025."
+          ]
+        },
+        {
+          "id": "b5q3",
+          "feedbackIfWrong": "8.",
+          "type": "short-answer",
+          "hints": [
+            "Nominal rate = periodic rate × 4.",
+            "0.02 × 4 = 0.08 = 8%."
+          ],
+          "answers": [
+            "8",
+            "8.00"
+          ],
+          "prompt": "If APY = 0.0824, what is the nominal rate if compounding is quarterly? (Hint: (1+i)^4 = 1.0824, so i = 1.0824^(1/4) - 1 ≈ 0.02, then nominal = 4 × 0.02 = 8%). (number only, no % sign)"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:Annual Percentage Yield (APY)]] or effective annual rate is the true interest rate after taking compounding into account.",
+          "Formula: $$APY = \\left(1 + \\frac{r}{m}\\right)^m - 1$$ where $r$ = nominal annual rate, $m$ = compounding periods per year.",
+          "Alternatively: $APY = (1 + i)^m - 1$ where $i$ = periodic rate.",
+          "APY allows comparison of investments with different compounding frequencies.",
+          "[[imp:APY is always greater than or equal to the nominal rate if compounding is more frequent than annual.]]"
+        ],
+        "formulaCard": {
+          "title": "Effective Annual Rate (APY)",
+          "notes": [
+            "r = nominal annual rate (decimal).",
+            "m = number of compounding periods per year.",
+            "Use APY to compare investments with different compounding frequencies."
+          ],
+          "formula": "$$APY = \\left(1 + \\frac{r}{m}\\right)^m - 1$$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Compounding",
+              "Periods per year (m)",
+              "Periodic Rate (i)",
+              "APY"
+            ],
+            "caption": "More frequent compounding increases APY.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Annually",
+                "1": "1",
+                "2": "8%",
+                "3": "8.00%"
+              },
+              {
+                "0": "Semiannually",
+                "1": "2",
+                "2": "4%",
+                "3": "(1.04)^2 - 1 = 8.16%"
+              },
+              {
+                "0": "Quarterly",
+                "1": "4",
+                "2": "2%",
+                "3": "(1.02)^4 - 1 = 8.24%"
+              },
+              {
+                "0": "Monthly",
+                "1": "12",
+                "2": "0.6667%",
+                "3": "(1.006667)^12 - 1 ≈ 8.30%"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Nominal Rate vs. APY (8% nominal)"
+          }
+        ]
+      },
+      "id": "effective-rate-apy",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Find the APY for a 6% nominal rate compounded quarterly.",
+          "steps": [
+            "Periodic rate i = 6% ÷ 4 = 1.5% = 0.015.",
+            "APY = (1.015)^4 - 1 = 1.06136 - 1 = 0.06136 = 6.14% (rounded)."
+          ],
+          "title": "A – Compute APY"
+        },
+        {
+          "peerPrompt": "Think about the effective rate.",
+          "title": "B – Why APY matters",
+          "steps": [
+            "With monthly compounding, interest is added to principal each month.",
+            "So later months earn interest on previously added interest.",
+            "The APY will be higher than 7%, making the true cost higher than a simple interest loan at 7%."
+          ],
+          "minLength": 2,
+          "prompt": "Explain why a loan with a 7% nominal rate compounded monthly is more expensive than a 7% simple interest loan.",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Bank A offers 5% compounded semiannually; Bank B offers 4.9% compounded monthly. Which has the higher APY?",
+          "role": "independent",
+          "title": "C – APY comparison",
+          "steps": [
+            "Bank A: i = 2.5% = 0.025; APY = (1.025)^2 - 1 = 1.050625 - 1 = 5.0625%.",
+            "Bank B: i = 4.9%/12 ≈ 0.4083%; APY = (1.004083)^12 - 1 ≈ 1.0509 - 1 = 5.09%.",
+            "Bank B has a slightly higher APY (5.09% > 5.06%)."
+          ]
+        }
+      ]
+    }
+  ],
+  "id": "ch12-lu12-1",
+  "title": "Compound Interest (Future Value)",
+  "schemaVersion": 2,
+  "standards": [
+    "BUSMATH.12.1"
+  ],
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

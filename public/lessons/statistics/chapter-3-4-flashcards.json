@@ -1,0 +1,127 @@
+{
+  "title": "Additional Topics in Probability and Counting",
+  "cards": [
+    {
+      "front": "What is a [[kw:factorial]] $ n! $?",
+      "back": [
+        "The product of all positive integers from $ n $ down to 1.",
+        "$$ n! = n \\times (n-1) \\times (n-2) \\times \\dots \\times 3 \\times 2 \\times 1 $$",
+        "Special case: $ 0! = 1 $.",
+        "Example: $ 5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120 $."
+      ]
+    },
+    {
+      "front": "Define a [[kw:permutation]].",
+      "back": [
+        "An [[imp:ordered arrangement]] of distinct objects.",
+        "The number of permutations of $ n $ distinct objects is $ n! $.",
+        "For $ r $ out of $ n $ objects (order matters): $$ _nP_r = \\frac{n!}{(n-r)!} $$"
+      ]
+    },
+    {
+      "front": "How many ways can 6 books be arranged on a shelf?",
+      "back": [
+        "This is a permutation of 6 distinct objects.",
+        "Number of arrangements = $ 6! = 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 720 $."
+      ]
+    },
+    {
+      "front": "Find the number of four-digit codes (digits 0-9) with no repeated digits.",
+      "back": [
+        "Order matters (a code is a sequence).",
+        "$ n=10 $, $ r=4 $: $ _{10}P_4 = \\frac{10!}{6!} = 10 \\times 9 \\times 8 \\times 7 = 5040 $."
+      ]
+    },
+    {
+      "back": [
+        "When some objects are identical, we divide by the factorials of their counts.",
+        "$$ \\frac{n!}{n_1! \\cdot n_2! \\cdot \\dots \\cdot n_k!} $$",
+        "Example: arranging the letters of MISSISSIPPI: $ \\frac{11!}{1!4!4!2!} = 34,650 $."
+      ],
+      "front": "What is a [[kw:distinguishable permutation]]?"
+    },
+    {
+      "front": "How many distinguishable ways can the letters of STATISTICS be arranged?",
+      "back": [
+        "Count letters: S=3, T=3, A=1, I=2, C=1. Total 10 letters.",
+        "$$ \\frac{10!}{3! \\, 3! \\, 1! \\, 2! \\, 1!} = \\frac{3,628,800}{72} = 50,400 $$"
+      ]
+    },
+    {
+      "front": "Define a [[kw:combination]].",
+      "back": [
+        "A selection of objects where [[imp:order does NOT matter]].",
+        "Formula: $$ _nC_r = \\frac{n!}{(n-r)! \\, r!} $$",
+        "Example: choosing 3 toppings from 9: $ _9C_3 = 84 $."
+      ]
+    },
+    {
+      "front": "How many ways can a 3-person committee be chosen from 20 employees?",
+      "back": [
+        "Order does not matter - combination.",
+        "$ _{20}C_3 = \\frac{20!}{17! \\, 3!} = \\frac{20 \\times 19 \\times 18}{3 \\times 2 \\times 1} = 1140 $."
+      ]
+    },
+    {
+      "back": [
+        "Ask: 'Does the order matter?'",
+        "Yes: [[imp:permutations]] (e.g., passwords, race finishes, officer positions).",
+        "No: [[imp:combinations]] (e.g., committees, lottery numbers, subsets)."
+      ],
+      "front": "How do you decide between [[kw:permutations]] and [[kw:combinations]]?"
+    },
+    {
+      "back": [
+        "Order does not matter - combination.",
+        "$ _{52}C_6 = 25,827,165 $ possible sets of 6 numbers."
+      ],
+      "front": "Find the number of ways to pick 6 lottery numbers from 1 to 52."
+    },
+    {
+      "back": [
+        "Favorable: 1 arrangement (the word).",
+        "Total distinguishable permutations: $ \\frac{11!}{1!4!4!2!} = 34,650 $.",
+        "$$ P = \\frac{1}{34,650} \\approx 0.00003 $$ Extremely unlikely."
+      ],
+      "front": "What is the probability of randomly spelling 'MISSISSIPPI' with those 11 letters?"
+    },
+    {
+      "back": [
+        "Order matters (distinct positions) - permutation.",
+        "Total ways: $ _{17}P_3 = 17 \\times 16 \\times 15 = 4080 $.",
+        "Probability = $ 1 / 4080 \\approx 0.00024 $."
+      ],
+      "front": "A board has 17 members. Three are randomly selected for chair, secretary, webmaster. What is the probability the current three officers are chosen?"
+    },
+    {
+      "front": "From 400 kernels (3 toxic, 397 nontoxic), 4 are randomly chosen. Find $ P(\\text{exactly 1 toxic}) $.",
+      "back": [
+        "Favorable: choose 1 toxic from 3 AND 3 nontoxic from 397.",
+        "Ways = $ _3C_1 \\times _{397}C_3 $. Total = $ _{400}C_4 $.",
+        "$$ P = \\frac{3 \\times _{397}C_3}{_{400}C_4} \\approx 0.030 $$"
+      ]
+    },
+    {
+      "back": [
+        "$$ _nP_r = _nC_r \\times r! $$",
+        "A combination, once chosen, can be arranged in $ r! $ orders.",
+        "So permutations count $ r! $ times as many possibilities as combinations."
+      ],
+      "front": "What is the relationship between $ _nP_r $ and $ _nC_r $?"
+    },
+    {
+      "back": [
+        "Understand: Does order matter? Are there identical objects? Define the event and sample space.",
+        "Solve: Use the correct counting formula ($ n! $, $ _nP_r $, $ _nC_r $, or distinguishable permutations) for both favorable and total outcomes.",
+        "Conclude: Compute $ P = \\frac{\\text{favorable}}{\\text{total}} $. Check if the event is unusual ($ P \\le 0.05 $)."
+      ],
+      "front": "Blueprint: How do you solve a counting-based probability problem?"
+    }
+  ],
+  "type": "flashcard",
+  "id": "chapter-3-4-flashcards",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,818 @@
+{
+  "blocks": [
+    {
+      "id": "hourly-overtime",
+      "discoveryHook": {
+        "scenario": "Ramon Valdez works at Logan Company assembling dolls. His hourly rate is $9. This week he worked 61.5 hours. For the first 40 hours, he earns $9/hour. Any extra hours are paid at time‑and‑a‑half ($9 × 1.5 = $13.50). His gross pay = (40 × $9) + (21.5 × $13.50) = $360 + $290.25 = $650.25. Overtime makes a big difference!"
+      },
+      "examples": [
+        {
+          "prompt": "Maya earns $12/hour. Last week she worked 46 hours. Find her gross pay.",
+          "title": "A – Compute overtime pay",
+          "role": "guided",
+          "steps": [
+            "Regular pay = 40 × $12 = $480.",
+            "Overtime rate = $12 × 1.5 = $18. OT hours = 46 - 40 = 6.",
+            "Gross = $480 + (6 × $18) = $480 + $108 = $588."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Explain why the overtime rate is 1.5 times the hourly rate, not just the same rate.",
+          "steps": [
+            "Federal law requires employers to compensate extra hours at a premium to discourage overwork.",
+            "Time-and-a-half provides an incentive for workers and covers the additional toll on their time.",
+            "It ensures workers are fairly paid for sacrificing personal time."
+          ],
+          "minLength": 2,
+          "title": "B – Why 1.5?",
+          "peerPrompt": "Think about fairness and compensation for extra work."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Regular = 40 × $15 = $600.",
+            "Overtime rate = $15 × 1.5 = $22.50. OT hours = 10.",
+            "Gross = $600 + (10 × $22.50) = $600 + $225 = $825."
+          ],
+          "prompt": "John earns $15/hour and works 50 hours one week. Compute his gross pay.",
+          "title": "C – Find gross pay"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "[[kw:Gross pay]] for hourly workers = Hours × Rate.",
+          "[[kw:Overtime]]: Most workers earn 1.5× their regular rate for hours over 40 per week (Fair Labor Standards Act).",
+          "Overtime rate = Regular hourly rate × 1.5.",
+          "Gross pay = (Regular hours × Regular rate) + (Overtime hours × Overtime rate).",
+          "[[imp:Always separate regular and overtime hours before calculating.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Overtime Rate} = \\text{Hourly Rate} \\times 1.5$$ $$\\text{Gross Pay} = (40 \\times \\text{Rate}) + (\\text{OT Hours} \\times \\text{OT Rate})$$",
+          "title": "Hourly Overtime Formulas",
+          "notes": [
+            "Regular hours are usually 40 per week.",
+            "OT rate is not rounded until the final answer."
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Hourly Pay vs. Overtime",
+            "caption": "Overtime rate is 1.5× the regular rate. Total gross = regular + overtime.",
+            "headers": [
+              "Type",
+              "Hours",
+              "Rate",
+              "Amount"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Regular",
+                "1": "40",
+                "2": "$9.00",
+                "3": "$360.00"
+              },
+              {
+                "0": "Overtime",
+                "1": "21.5",
+                "2": "$13.50",
+                "3": "$290.25"
+              },
+              {
+                "0": "Total Gross",
+                "1": "61.5",
+                "2": "",
+                "3": "$650.25"
+              }
+            ]
+          }
+        ]
+      },
+      "title": "1. Hourly Pay & Overtime",
+      "questions": [
+        {
+          "hints": [
+            "It's one and a half times.",
+            "Decimal form."
+          ],
+          "prompt": "Overtime rate = Hourly rate × ___.",
+          "id": "b1q1",
+          "blanks": [
+            {
+              "accept": [
+                "1.5"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "1.5."
+        },
+        {
+          "feedbackIfWrong": "60.",
+          "id": "b1q2",
+          "type": "short-answer",
+          "answers": [
+            "60"
+          ],
+          "prompt": "Rate $10, works 44 hours. Find overtime pay. (whole number, no $)",
+          "hints": [
+            "OT hours = 4, OT rate = $15.",
+            "4 × 15 = ?"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "936.",
+          "id": "b1q3",
+          "prompt": "Hourly rate $18, 48 hours. Find total gross pay. (number only, no $)",
+          "hints": [
+            "Regular: 40 × 18 = 720. Overtime: 8 × 27 = 216.",
+            "720+216 = ?"
+          ],
+          "answers": [
+            "936"
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'How many hours make a regular work week?'",
+        "Write the overtime formula on the board: Overtime rate = Hourly rate × 1.5."
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Some employees are exempt from overtime (e.g., managers). [[imp:Overtime applies only to non‑exempt workers under FLSA.]]"
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "1150",
+          "1,150"
+        ],
+        "prompt": "An employee earns $20/hour and works 55 hours. What is the gross pay?",
+        "optional": true,
+        "hints": [
+          "Regular: $800. OT: 15 × $30 = $450.",
+          "Total = 800+450 = 1,150."
+        ]
+      }
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Week 1",
+                "1": "900",
+                "2": "$0.96",
+                "3": "$864.00"
+              },
+              {
+                "0": "Week 2",
+                "1": "1,100",
+                "2": "$0.96",
+                "3": "$1,056.00"
+              }
+            ],
+            "caption": "Higher output directly increases earnings.",
+            "title": "Piece Rate Pay Example",
+            "headers": [
+              "Week",
+              "Dolls Produced",
+              "Rate",
+              "Gross Pay"
+            ]
+          }
+        ],
+        "explanation": [
+          "[[kw:Straight piece rate]] pay compensates employees based on output, not time.",
+          "Gross pay = Number of units produced × Rate per unit.",
+          "Defective units are often excluded; only good units count.",
+          "This system rewards productivity and is common in manufacturing.",
+          "[[imp:Workers must track accurate production counts.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Gross Pay} = \\text{Units Produced} \\times \\text{Rate per Unit}$$",
+          "title": "Piece Rate Formula",
+          "notes": [
+            "Rate is per good unit.",
+            "If a base hourly wage is also paid, add that separately."
+          ]
+        }
+      },
+      "teacherCues": [
+        "Ask: 'What motivates a worker paid by the number of units they produce?'",
+        "Write the formula: Gross Pay = Units × Rate per unit."
+      ],
+      "discoveryHook": {
+        "scenario": "Ryan Foss produces dolls at Logan Company. He earns $0.96 for every doll he makes. Last week he produced 900 dolls. His gross pay = 900 × $0.96 = $864. The more he produces, the higher his paycheck—a direct incentive."
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "optional": true,
+        "hints": [
+          "Base = 40 × $15 = $600. Bonus units = (260-200) = 60, × $0.50 = $30.",
+          "Total = $600 + $30 = $630."
+        ],
+        "answers": [
+          "630",
+          "630.00"
+        ],
+        "prompt": "A manufacturer offers a base hourly wage of $15 plus $0.50 per unit over 200. A worker works 40 hours and produces 260 units. Find gross pay."
+      },
+      "confusionCorner": {
+        "body": "A piece rate does not include overtime automatically. [[imp:If the worker is hourly plus piece rate, overtime may apply to the hourly portion.]]",
+        "title": "Watch out!"
+      },
+      "examples": [
+        {
+          "title": "A – Calculate piece rate pay",
+          "role": "guided",
+          "steps": [
+            "Gross = 150 × $1.20 = $180.",
+            "No overtime; she is paid solely by output."
+          ],
+          "prompt": "A worker earns $1.20 per basket woven. She completes 150 baskets. Find her gross pay."
+        },
+        {
+          "steps": [
+            "Advantage: earn more by working faster / producing more.",
+            "Disadvantage: if production is slow, pay is low, and there is no guaranteed minimum.",
+            "Some companies offer a guaranteed base plus piece‑rate bonus."
+          ],
+          "peerPrompt": "Think about income stability vs. productivity incentive.",
+          "title": "B – Pros and cons",
+          "prompt": "Explain one advantage and one disadvantage of piece‑rate pay for the worker.",
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Good toys = 200 – 15 = 185.",
+            "Gross = 185 × $0.80 = $148.",
+            "Defective units are not paid."
+          ],
+          "title": "C – With defects",
+          "prompt": "An employee receives $0.80 per good toy. She makes 200 toys, but 15 are defective. Find gross pay."
+        }
+      ],
+      "id": "piece-rate",
+      "questions": [
+        {
+          "id": "b2q1",
+          "prompt": "Gross pay for piecework = Units produced × ___ per unit.",
+          "blanks": [
+            {
+              "accept": [
+                "rate"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "rate.",
+          "hints": [
+            "It's the payment per piece.",
+            "One word."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "200.",
+          "type": "short-answer",
+          "hints": [
+            "80 × 2.50.",
+            "= 200."
+          ],
+          "answers": [
+            "200"
+          ],
+          "prompt": "Rate is $2.50 per basket, worker makes 80. Find gross pay. (number only, no $)",
+          "id": "b2q2"
+        },
+        {
+          "id": "b2q3",
+          "prompt": "A worker gets $1.10 per item; produces 350 items. What is total gross? (number only)",
+          "answers": [
+            "385"
+          ],
+          "hints": [
+            "350 × 1.10.",
+            "= 385."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "385."
+        }
+      ],
+      "title": "2. Straight Piece Rate Pay"
+    },
+    {
+      "teacherCues": [
+        "Show a tiered schedule and explain how each tier has a different rate.",
+        "Use a cumulative calculation approach."
+      ],
+      "questions": [
+        {
+          "prompt": "In a differential pay schedule, each tier has its own ___ per unit.",
+          "id": "b3q1",
+          "blanks": [
+            {
+              "accept": [
+                "rate"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "rate.",
+          "hints": [
+            "It's the payment per piece.",
+            "One word."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "100 × 0.30 = 30. Then 20 × 0.45 = 9.",
+            "30 + 9 = 39."
+          ],
+          "id": "b3q2",
+          "answers": [
+            "39.00",
+            "39.0",
+            "39"
+          ],
+          "feedbackIfWrong": "39.00.",
+          "type": "short-answer",
+          "prompt": "Schedule: 1-100 $0.30, 101-200 $0.45. Worker makes 120 units. Find gross pay. (two decimals, no $)"
+        },
+        {
+          "feedbackIfWrong": "66.",
+          "type": "short-answer",
+          "id": "b3q3",
+          "answers": [
+            "66.00",
+            "66",
+            "66.0"
+          ],
+          "prompt": "Same schedule: 180 units. Compute gross pay. (no $)",
+          "hints": [
+            "100 × 0.30 = 30. Then 80 × 0.45 = 36.",
+            "30 + 36 = 66."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "[[imp:Only the units within that tier get that tier's rate. Do not multiply the entire quantity by the highest rate.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Schedule: up to 50 $1.00; 51-100 $1.20; over 100 $1.50. Worker makes 130. Gross pay?",
+        "answers": [
+          "155.00",
+          "155"
+        ],
+        "hints": [
+          "50×1.00=50; 50×1.20=60; 30×1.50=45.",
+          "Sum = 155."
+        ],
+        "type": "short-answer"
+      },
+      "title": "3. Differential Pay Schedule",
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Total gross pay is the sum of all tier earnings.",
+            "headers": [
+              "Tier",
+              "Units Range",
+              "Rate per Unit",
+              "Units Produced",
+              "Amount"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "1-50",
+                "2": "$0.50",
+                "3": "50",
+                "4": "$25.00"
+              },
+              {
+                "0": "2",
+                "1": "51-150",
+                "2": "$0.62",
+                "3": "100",
+                "4": "$62.00"
+              },
+              {
+                "0": "3",
+                "1": "151-200",
+                "2": "$0.75",
+                "3": "50",
+                "4": "$37.50"
+              },
+              {
+                "0": "4",
+                "1": "over 200",
+                "2": "$1.25",
+                "3": "100",
+                "4": "$125.00"
+              },
+              {
+                "0": "Total",
+                "1": "",
+                "2": "",
+                "3": "300",
+                "4": "$249.50"
+              }
+            ],
+            "title": "Abby's Differential Schedule",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "A [[kw:differential pay schedule]] sets different piece rates for different production levels.",
+          "The rate per unit increases as output reaches higher tiers.",
+          "Each tier applies only to the units within that range.",
+          "Gross pay is the sum of (units in tier × rate for tier) across all tiers.",
+          "This system strongly encourages high productivity."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Determine how many units fall into each tier by comparing total units to the tier limits.",
+            "Units beyond the last tier are multiplied by the top rate."
+          ],
+          "title": "Differential Pay",
+          "formula": "$$\\text{Gross Pay} = \\sum (\\text{Units in Tier} \\times \\text{Rate for Tier})$$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "Abby Rogers also makes dolls, but she earns different rates depending on how many she produces. The schedule: first 50 dolls → $0.50 each; next 100 → $0.62; next 50 → $0.75; over 200 → $1.25. Last week she made 300 dolls. Her gross = (50×0.50)+(100×0.62)+(50×0.75)+(100×1.25) = $25+$62+$37.50+$125 = $249.50. Higher production = higher rates."
+      },
+      "id": "differential-pay",
+      "examples": [
+        {
+          "steps": [
+            "First 100: 100 × $0.40 = $40.",
+            "Next 100: 100 × $0.55 = $55.",
+            "Remaining 50: 50 × $0.80 = $40.",
+            "Total = $40 + $55 + $40 = $135."
+          ],
+          "prompt": "Schedule: 1-100 units $0.40; 101-200 $0.55; over 200 $0.80. Worker produces 250 units. Find gross pay.",
+          "title": "A – Differential calculation",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Think about motivation and production goals.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "title": "B – Why differential?",
+          "steps": [
+            "It rewards high producers with higher per-unit earnings.",
+            "Encourages workers to exceed targets to reach higher tiers.",
+            "Can increase overall productivity."
+          ],
+          "prompt": "Why would an employer use a differential schedule instead of a flat piece rate?"
+        },
+        {
+          "role": "independent",
+          "prompt": "Same schedule as A. Worker produces 90 units. What is gross pay?",
+          "steps": [
+            "All 90 fall in first tier: 90 × $0.40 = $36.",
+            "No higher tier rates apply.",
+            "Gross = $36."
+          ],
+          "title": "C – Small production"
+        }
+      ]
+    },
+    {
+      "id": "commission-draw",
+      "questions": [
+        {
+          "feedbackIfWrong": "commission.",
+          "type": "fill-blank",
+          "hints": [
+            "It's a percent of sales.",
+            "One word, starts with C."
+          ],
+          "id": "b4q1",
+          "blanks": [
+            {
+              "accept": [
+                "commission"
+              ]
+            }
+          ],
+          "prompt": "Commission = Net sales × ___ rate."
+        },
+        {
+          "answers": [
+            "900"
+          ],
+          "hints": [
+            "Commission = 12,000 × 0.20 = 2,400.",
+            "2,400 – 1,500 = ?"
+          ],
+          "feedbackIfWrong": "900.",
+          "id": "b4q2",
+          "type": "short-answer",
+          "prompt": "Net sales $12,000, commission 20%, draw $1,500. Find final pay. (number only, no $)"
+        },
+        {
+          "type": "short-answer",
+          "prompt": "Sales $5,000, commission 8%, draw $600. Final pay? (can be negative, number only)",
+          "id": "b4q3",
+          "answers": [
+            "-200"
+          ],
+          "hints": [
+            "Commission = 5,000 × 0.08 = 400.",
+            "400 – 600 = -200."
+          ],
+          "feedbackIfWrong": "-200."
+        }
+      ],
+      "teacherCues": [
+        "Define commission: a percentage of sales.",
+        "Explain a draw as an advance against commission."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "$14,500",
+                "1": "15%",
+                "2": "$2,175",
+                "3": "$2,000",
+                "4": "$175"
+              },
+              {
+                "0": "$10,000",
+                "1": "15%",
+                "2": "$1,500",
+                "3": "$2,000",
+                "4": "-$500 (owes)"
+              }
+            ],
+            "headers": [
+              "Net Sales",
+              "Commission Rate",
+              "Commission",
+              "Draw",
+              "Final Pay"
+            ],
+            "caption": "Final pay can be positive or negative depending on sales.",
+            "title": "Commission with Draw Example"
+          }
+        ],
+        "explanation": [
+          "[[kw:Straight commission]] = a percent of the salesperson's net sales (total sales – returns).",
+          "A [[kw:draw]] is an advance paid before the commission is earned.",
+          "Final pay = Commission earned – Draw.",
+          "If commission > draw, the salesperson receives the difference; if commission < draw, they owe the difference (or it's carried over).",
+          "This method gives salespeople a regular income while still incentivizing sales."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Commission} = \\text{Net Sales} \\times \\text{Commission Rate}$$ $$\\text{Final Pay} = \\text{Commission} - \\text{Draw}$$",
+          "title": "Commission with Draw",
+          "notes": [
+            "Net sales = Gross sales – Returns.",
+            "If final pay is negative, the salesperson may need to repay the draw or carry it forward."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "prompt": "A salesperson earns 10% commission on $8,000 net sales. She received a $500 draw. Final pay?",
+          "title": "A – Calculate final pay",
+          "steps": [
+            "Commission = $8,000 × 0.10 = $800.",
+            "Final pay = $800 – $500 = $300.",
+            "She receives an additional $300."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "title": "B – Why a draw?",
+          "peerPrompt": "Think about income stability for the salesperson.",
+          "steps": [
+            "It provides a guaranteed base income each month.",
+            "Reduces the risk of zero income during slow periods.",
+            "Companies often set a draw that is recoverable, meaning it must be covered by future commissions."
+          ],
+          "prompt": "Why might a company offer a draw to salespeople?",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Same salesperson as A, but this month net sales are only $4,000. Draw is still $500. What is final pay?",
+          "role": "independent",
+          "title": "C – Negative final pay",
+          "steps": [
+            "Commission = $4,000 × 0.10 = $400.",
+            "Final pay = $400 – $500 = –$100.",
+            "She owes the company $100 (or it's carried forward)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The draw is subtracted after calculating commission. [[imp:Do not subtract the draw before calculating commission.]]"
+      },
+      "challengeCorner": {
+        "hints": [
+          "Draw minus commission.",
+          "3,000 – 2,500 = ?"
+        ],
+        "answers": [
+          "500"
+        ],
+        "prompt": "A salesperson earned $2,500 commission, but had a $3,000 draw. How much does she owe?",
+        "type": "short-answer",
+        "optional": true
+      },
+      "title": "4. Straight Commission with Draw",
+      "discoveryHook": {
+        "scenario": "Jackie Okamoto sells dolls and earns 15% commission on her net sales. In May, her net sales were $14,500. Her commission = 0.15 × $14,500 = $2,175. However, Logan Company gave her a $2,000 draw at the beginning of the month. So her final pay for May is $2,175 – $2,000 = $175. If commission is less than the draw, she would owe the company."
+      }
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "title": "Salary Plus Commission & Variable Commission",
+          "notes": [
+            "For variable commission, apply each rate to the sales within that bracket.",
+            "Salary is a fixed amount per pay period."
+          ],
+          "formula": "$$\\text{Gross Pay} = \\text{Salary} + (\\text{Total Sales} \\times \\text{Commission Rate})$$ $$\\text{Variable Commission} = \\sum (\\text{Sales in Tier} \\times \\text{Tier Rate})$$"
+        },
+        "explanation": [
+          "[[kw:Variable commission scale]]: different commission rates for different levels of sales (like differential piece rate).",
+          "Total commission = sum of (sales in each tier × rate).",
+          "[[kw:Salary plus commission]]: Gross pay = Fixed salary + (Sales × Commission rate).",
+          "These plans motivate sales growth while providing a safety net.",
+          "[[imp:Understand the tier structure before calculating total commission.]]"
+        ],
+        "visuals": [
+          {
+            "title": "Variable Commission Scale Example",
+            "caption": "Rates increase with sales volume.",
+            "headers": [
+              "Sales Tier",
+              "Commission Rate",
+              "Sales in Tier",
+              "Commission Earned"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "First $10,000",
+                "1": "5%",
+                "2": "$10,000",
+                "3": "$500"
+              },
+              {
+                "0": "Next $10,000",
+                "1": "7%",
+                "2": "$8,000",
+                "3": "$560"
+              },
+              {
+                "0": "Total Commission",
+                "1": "",
+                "2": "$18,000",
+                "3": "$1,060"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "Base salary $2,500/month; 4% commission on all sales. Sales this month $30,000. Find gross pay.",
+          "role": "guided",
+          "title": "A – Salary plus commission",
+          "steps": [
+            "Commission = $30,000 × 0.04 = $1,200.",
+            "Gross = $2,500 + $1,200 = $3,700."
+          ]
+        },
+        {
+          "prompt": "Explain how a variable commission scale encourages higher sales.",
+          "peerPrompt": "Think about marginal benefit of selling more.",
+          "steps": [
+            "As sales climb, the commission rate increases, so each additional dollar brings more income.",
+            "This creates a strong incentive to exceed the thresholds.",
+            "It rewards top performers much more than a flat commission."
+          ],
+          "role": "peer-explain",
+          "title": "B – Variable commission logic",
+          "minLength": 2
+        },
+        {
+          "prompt": "Commission: 4% on first $20,000; 7% on sales above $20,000. Sales = $35,000. Find total commission.",
+          "steps": [
+            "First $20,000: $20,000 × 0.04 = $800.",
+            "Remaining $15,000: $15,000 × 0.07 = $1,050.",
+            "Total = $800 + $1,050 = $1,850."
+          ],
+          "role": "independent",
+          "title": "C – Variable commission calculation"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Some salespeople earn higher commission rates on higher sales tiers: 5% on first $10,000, 7% on next $10,000, etc. Others receive a fixed salary plus a commission (e.g., $2,000/month + 5% of sales). These plans balance income stability with sales incentives."
+      },
+      "teacherCues": [
+        "Explain variable commission scales (e.g., different rates for different sales levels).",
+        "Show how salary plus commission combines a base salary with sales commission."
+      ],
+      "id": "other-commission",
+      "title": "5. Variable Commission & Salary Plus Commission",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "commission"
+              ]
+            }
+          ],
+          "hints": [
+            "Not salary.",
+            "One word."
+          ],
+          "prompt": "In a variable commission scale, different sales levels have different ___ rates.",
+          "feedbackIfWrong": "commission.",
+          "type": "fill-blank",
+          "id": "b5q1"
+        },
+        {
+          "type": "short-answer",
+          "id": "b5q2",
+          "feedbackIfWrong": "5,500.",
+          "hints": [
+            "Commission = 50,000 × 0.05 = 2,500.",
+            "3,000 + 2,500 = ?"
+          ],
+          "answers": [
+            "5500",
+            "5,500"
+          ],
+          "prompt": "Salary $3,000, sales $50,000, commission 5%. Find gross pay. (number only, no $)"
+        },
+        {
+          "feedbackIfWrong": "780.",
+          "hints": [
+            "First 10k: 10,000 × 0.03 = 300.",
+            "Excess 8k: 8,000 × 0.06 = 480; sum = 780."
+          ],
+          "type": "short-answer",
+          "id": "b5q3",
+          "answers": [
+            "780",
+            "780.00"
+          ],
+          "prompt": "Variable: 3% on first $10,000, 6% on excess. Sales $18,000. Total commission? (number only, no $)"
+        }
+      ],
+      "challengeCorner": {
+        "hints": [
+          "Salary=2,000; first 20k: 20,000×0.03=600.",
+          "Excess 12k: 12,000×0.05=600; total=2,000+600+600=3,200."
+        ],
+        "answers": [
+          "3200",
+          "3,200"
+        ],
+        "type": "short-answer",
+        "prompt": "A salesperson earns a $2,000 salary plus 3% on sales up to $20,000 and 5% on sales above. This month sales are $32,000. Find gross pay.",
+        "optional": true
+      },
+      "confusionCorner": {
+        "body": "When combining salary with commission, the salary is not affected by sales. [[imp:Commission is calculated on sales only, not on salary.]]",
+        "title": "Watch out!"
+      }
+    }
+  ],
+  "title": "Calculating Various Types of Employees' Gross Pay",
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "standards": [
+    "BUSMATH.9.1"
+  ],
+  "id": "ch9-lu9-1",
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

@@ -1,0 +1,725 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-3-5-exponential-and-logarithmic-models",
+  "title": "Exponential and Logarithmic Models",
+  "standards": [
+    "HSF.LE.A.1",
+    "HSF.LE.B.5",
+    "HSS.ID.B.6"
+  ],
+  "blocks": [
+    {
+      "id": "common-models-overview",
+      "title": "Five Common Types of Models",
+      "teacherCues": [
+        "Display the five model equations on the board and ask: Which ones have horizontal asymptotes?",
+        "Point out the differences between growth, decay, Gaussian, logistic, and logarithmic shapes."
+      ],
+      "discoveryHook": {
+        "scenario": "From population growth to the spread of a rumor, nature uses exponential and logarithmic patterns. Understanding the five fundamental model types helps you choose the right equation for any data set."
+      },
+      "concept": {
+        "explanation": [
+          "1. [[kw:Exponential Growth Model]]: $y = a e^{bx}$, $b>0$. Increases without bound; has horizontal asymptote $y=0$ as $x\\to -\\infty$.",
+          "2. [[kw:Exponential Decay Model]]: $y = a e^{-bx}$, $b>0$. Decreases toward $y=0$; has horizontal asymptote $y=0$ as $x\\to \\infty$.",
+          "3. [[kw:Gaussian Model]]: $y = a e^{-(x-b)^2/c}$. Bell‑shaped curve; symmetric about $x=b$; approaches $0$ as $x\\to \\pm\\infty$.",
+          "4. [[kw:Logistic Growth Model]]: $y = \\frac{a}{1 + b e^{-rx}}$. S‑shaped curve; horizontal asymptotes $y=0$ and $y=a$.",
+          "5. [[kw:Logarithmic Models]]: $y = a + b \\ln x$ or $y = a + b \\log x$. Increase slowly; vertical asymptote $x=0$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "The Five Model Types",
+            "headers": [
+              "Model",
+              "Equation",
+              "Key Feature"
+            ],
+            "rows": [
+              {
+                "0": "Exponential Growth",
+                "1": "$ y = a e^{bx} $",
+                "2": "Rises to the right; $y=0$ asymptote"
+              },
+              {
+                "0": "Exponential Decay",
+                "1": "$ y = a e^{-bx} $",
+                "2": "Falls to the right; $y=0$ asymptote"
+              },
+              {
+                "0": "Gaussian",
+                "1": "$ y = a e^{-(x-b)^2/c} $",
+                "2": "Bell curve; max at $x=b$"
+              },
+              {
+                "0": "Logistic Growth",
+                "1": "$ y = \\frac{a}{1+be^{-rx}} $",
+                "2": "S‑curve; $y=a$ upper asymptote"
+              },
+              {
+                "0": "Logarithmic",
+                "1": "$ y = a + b \\ln x $",
+                "2": "Slow increase; $x=0$ vertical asymptote"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Exponential Growth Model",
+          "formula": "$$ y = a e^{bx} $$",
+          "notes": [
+            "$a$ = initial value.",
+            "$b>0$ = growth rate.",
+            "Used for populations, investments, etc."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Identifying the Model",
+          "prompt": "Which model type best describes the function $y = 5e^{-0.2x}$?",
+          "steps": [
+            "The exponent is negative, so this is exponential decay.",
+            "The horizontal asymptote is $y=0$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Logistic vs. Exponential",
+          "prompt": "Explain why $y=\\frac{10}{1+2e^{-0.5x}}$ is logistic, not exponential.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What feature distinguishes logistic growth from simple exponential growth?",
+          "minLength": 8,
+          "steps": [
+            "It has an upper bound (horizontal asymptote $y=10$).",
+            "Pure exponential growth has no upper bound.",
+            "The S‑shape indicates growth that slows as it approaches the carrying capacity."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Asymptotes",
+          "prompt": "Identify the horizontal asymptote of $y=\\frac{100}{1+4e^{-0.3x}}$.",
+          "steps": [
+            "As $x\\to\\infty$, $e^{-0.3x}\\to 0$, so $y\\to 100$.",
+            "As $x\\to -\\infty$, $e^{-0.3x}\\to\\infty$, so $y\\to 0$.",
+            "Horizontal asymptotes: $y=0$ and $y=100$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Growth vs. Decay",
+        "body": "Positive exponent in $e^{bx}$ means growth; negative means decay. The sign of $b$ determines the direction."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "The model $y = a e^{bx}$ with $b>0$ represents exponential ___.",
+          "blanks": [
+            {
+              "accept": [
+                "growth"
+              ]
+            }
+          ],
+          "hints": [
+            "The function increases over time.",
+            "Population and investments often use this."
+          ],
+          "feedbackIfWrong": "It's exponential growth."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "What is the horizontal asymptote of $y = 3e^{-2x}$ as $x\\to \\infty$?",
+          "answers": [
+            "0",
+            "y=0"
+          ],
+          "hints": [
+            "As $x$ gets large, $e^{-2x}\\to 0$.",
+            "The graph approaches but never reaches it."
+          ],
+          "feedbackIfWrong": "The horizontal asymptote is $y=0$."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "Which model has an S‑shaped curve and an upper bound?",
+          "answers": [
+            "logistic",
+            "logistic growth"
+          ],
+          "hints": [
+            "It's used for populations with a carrying capacity.",
+            "Its formula has a denominator."
+          ],
+          "feedbackIfWrong": "Logistic growth model."
+        }
+      ]
+    },
+    {
+      "id": "exponential-growth-decay",
+      "title": "Exponential Growth and Decay Applications",
+      "teacherCues": [
+        "Present the fruit fly population problem: after 2 days 100 flies, after 4 days 300 flies. Ask: How can we find the exponential model?",
+        "Demonstrate solving for $a$ and $b$ using two data points."
+      ],
+      "discoveryHook": {
+        "scenario": "A population of fruit flies grows exponentially. With only two data points, we can find the exact model that predicts future growth—an essential skill for biologists and economists alike."
+      },
+      "concept": {
+        "explanation": [
+          "To find an exponential model $y = a e^{bt}$ from two data points: 1. Substitute both points into the equation to get a system. 2. Solve for $a$ in terms of $b$ from one equation. 3. Substitute into the other equation to solve for $b$. 4. Then find $a$.",
+          "Once the model is known, any future value can be predicted by plugging in $t$.",
+          "Common applications: population growth, radioactive decay, compound interest."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Exponential Growth/Decay Parameters",
+            "headers": [
+              "Parameter",
+              "Meaning"
+            ],
+            "rows": [
+              {
+                "0": "$a$",
+                "1": "Initial amount (when $t=0$)"
+              },
+              {
+                "0": "$b$",
+                "1": "Growth ($b>0$) or decay ($b<0$) rate"
+              },
+              {
+                "0": "$t$",
+                "1": "Time (or independent variable)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Two‑Point Method",
+          "formula": "$$ y_1 = a e^{bt_1},\\quad y_2 = a e^{bt_2} $$",
+          "notes": [
+            "Divide the equations to eliminate $a$.",
+            "Solve for $b$, then for $a$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Finding the Model",
+          "prompt": "A population has 100 at $t=2$ and 300 at $t=4$. Find the exponential model $y = a e^{bt}$.",
+          "steps": [
+            "Set up: $100 = a e^{2b}$ and $300 = a e^{4b}$.",
+            "Divide: $\\frac{300}{100} = \\frac{a e^{4b}}{a e^{2b}} \\Rightarrow 3 = e^{2b}$.",
+            "Take $\\ln$: $\\ln 3 = 2b$, so $b = \\frac{1}{2}\\ln 3 \\approx 0.5493$.",
+            "Find $a$: $a = \\frac{100}{e^{2(0.5493)}} = \\frac{100}{3} \\approx 33.33$.",
+            "Model: $y = 33.33 e^{0.5493t}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Carbon Dating",
+          "prompt": "Explain why the carbon‑dating model $R = \\frac{1}{10^{12}} e^{-t/8223}$ is an exponential decay model.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How can you tell it's decay just by looking at the exponent?",
+          "minLength": 8,
+          "steps": [
+            "The exponent is $-t/8223$, which is negative for $t>0$.",
+            "As $t$ increases, $e^{-t/8223}$ decreases, so $R$ decreases.",
+            "This matches the definition of exponential decay: $y = a e^{-bx}$ with $b>0$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Predicting Future Value",
+          "prompt": "Using the fruit fly model $y = 33.33 e^{0.5493t}$, estimate the population after 5 days.",
+          "steps": [
+            "Plug $t=5$: $y = 33.33 e^{0.5493(5)} = 33.33 e^{2.7465}$.",
+            "Calculate $e^{2.7465} \\approx 15.6$, so $y \\approx 33.33 \\times 15.6 \\approx 520$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Solving for $a$ and $b$",
+        "body": "Dividing the two equations eliminates $a$ and makes solving for $b$ straightforward. Then substitute $b$ back to find $a$. Always check that your model fits the given data points."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "In the exponential model $y = a e^{bt}$, the constant $b$ is called the ___ rate.",
+          "blanks": [
+            {
+              "accept": [
+                "growth"
+              ]
+            }
+          ],
+          "hints": [
+            "It determines how fast the quantity increases.",
+            "If $b>0$, it's growth."
+          ],
+          "feedbackIfWrong": "$b$ is the growth rate."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "Given $y=50e^{0.1t}$, find $y$ when $t=10$. Round to nearest integer.",
+          "answers": [
+            "136",
+            "135.9"
+          ],
+          "hints": [
+            "Compute $e^{0.1\\cdot 10}=e^1 \\approx 2.718$.",
+            "$50 \\times 2.718 \\approx 135.9$."
+          ],
+          "feedbackIfWrong": "$y \\approx 136$."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "What is the half‑life of a substance if its decay model is $y = 100 e^{-0.04t}$? (Round to one decimal.)",
+          "answers": [
+            "17.3"
+          ],
+          "hints": [
+            "Set $y=50$ and solve $50=100e^{-0.04t}$.",
+            "Then $t = \\ln(0.5)/(-0.04)$."
+          ],
+          "feedbackIfWrong": "Half‑life $t \\approx 17.3$."
+        }
+      ]
+    },
+    {
+      "id": "gaussian-models",
+      "title": "Gaussian Models",
+      "teacherCues": [
+        "Display the bell curve $y = e^{-x^2}$ and ask: Where is the maximum? What are the asymptotes?",
+        "Show the SAT score model $y = 0.0033 e^{-(x-511)^2/28800}$ and ask: What does the maximum represent?"
+      ],
+      "discoveryHook": {
+        "scenario": "Many real‑world measurements—heights, test scores, errors—follow a bell‑shaped Gaussian distribution. The peak tells you the average, and the spread tells you the standard deviation."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:Gaussian model]] is of the form $y = a e^{-(x-b)^2/c}$, where $a>0$, $c>0$.",
+          "Its graph is a symmetric bell‑shaped curve centered at $x=b$ (the average).",
+          "The maximum value is $y=a$, occurring at $x=b$.",
+          "As $x\\to\\pm\\infty$, $y\\to 0$, so the $x$-axis is a horizontal asymptote.",
+          "Gaussian models are used to describe normally distributed data (e.g., SAT scores, measurement errors)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Gaussian Model Parameters",
+            "headers": [
+              "Parameter",
+              "Meaning"
+            ],
+            "rows": [
+              {
+                "0": "$a$",
+                "1": "Maximum height (peak)"
+              },
+              {
+                "0": "$b$",
+                "1": "Center (mean/average)"
+              },
+              {
+                "0": "$c$",
+                "1": "Related to spread (variance)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Gaussian Model",
+          "formula": "$$ y = a e^{-(x-b)^2/c} $$",
+          "notes": [
+            "Symmetric about $x=b$.",
+            "Maximum $y=a$ at $x=b$.",
+            "Approaches $0$ as $x\\to\\pm\\infty$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Finding the Average",
+          "prompt": "The SAT math scores follow $y = 0.0033 e^{-(x-511)^2/28800}$. What is the average score?",
+          "steps": [
+            "The maximum occurs at the center: $x = b = 511$.",
+            "So the average SAT math score is 511."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Shape of the Curve",
+          "prompt": "Explain why the Gaussian model has horizontal asymptotes but exponential growth does not.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What happens to $e^{-x^2}$ as $x$ gets very large in either direction?",
+          "minLength": 8,
+          "steps": [
+            "The exponent $-x^2$ becomes very negative as $x\\to\\pm\\infty$.",
+            "$e^{-\\text{large}}$ approaches $0$, so the curve hugs the $x$-axis on both sides.",
+            "Exponential growth $e^{bx}$ shoots up to $\\infty$ on one side."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Interpreting the Spread",
+          "prompt": "A Gaussian model $y = 0.05 e^{-(x-70)^2/50}$ represents test scores. Between what two scores do you expect most data?",
+          "steps": [
+            "The peak is at $x=70$.",
+            "The spread parameter $c=50$ relates to variance; most data falls within a few units of the mean.",
+            "Roughly between 60 and 80 (within about $\\sqrt{50}\\approx 7$ points of the mean)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Gaussian vs. Exponential Decay",
+        "body": "Both decay models approach zero, but Gaussian decays symmetrically on both sides, while exponential decay only falls in one direction."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "A Gaussian model $y = a e^{-(x-b)^2/c}$ has its maximum at $x =$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "b"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the center of the bell curve.",
+            "The value that makes $(x-b)^2=0$."
+          ],
+          "feedbackIfWrong": "The maximum is at $x=b$."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "What is the maximum value of $y = 4 e^{-(x-10)^2/25}$?",
+          "answers": [
+            "4"
+          ],
+          "hints": [
+            "The maximum occurs when the exponent is $0$, i.e., at $x=10$.",
+            "Then $y = 4 e^0 = 4$."
+          ],
+          "feedbackIfWrong": "The maximum is $y=4$."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "True or false: A Gaussian curve has a vertical asymptote.",
+          "answers": [
+            "false"
+          ],
+          "hints": [
+            "It approaches the $x$-axis but never crosses it.",
+            "No denominator that can be zero."
+          ],
+          "feedbackIfWrong": "False. Gaussian curves have horizontal asymptotes at $y=0$, not vertical."
+        }
+      ]
+    },
+    {
+      "id": "logistic-logarithmic-models",
+      "title": "Logistic and Logarithmic Models",
+      "teacherCues": [
+        "Graph $y = \\frac{100}{1+5e^{-0.5x}}$ and identify the upper asymptote. What does it represent?",
+        "Show $y = 1+\\ln x$ and ask: Why does this model grow slowly for large $x$?"
+      ],
+      "discoveryHook": {
+        "scenario": "Populations with limited resources follow logistic growth—rapid at first, then leveling off at a carrying capacity. Logarithmic models capture relationships that grow very slowly, like the Richter scale for earthquakes."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:logistic growth model]] is $y = \\frac{a}{1 + b e^{-rx}}$. It has two horizontal asymptotes: $y=0$ (lower) and $y=a$ (upper, the carrying capacity). The curve is S‑shaped.",
+          "The [[kw:logarithmic model]] $y = a + b \\ln x$ (or $\\log x$) increases without bound but very slowly. It has a vertical asymptote at $x=0$.",
+          "Logistic models are used for populations, spread of disease, and learning curves. Logarithmic models appear in measuring earthquake magnitudes, sound intensity (decibels), and pH."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Logistic vs. Logarithmic",
+            "headers": [
+              "Feature",
+              "Logistic $y=\\frac{a}{1+be^{-rx}}$",
+              "Logarithmic $y=a+b\\ln x$"
+            ],
+            "rows": [
+              {
+                "0": "Asymptotes",
+                "1": "Horizontal $y=0$, $y=a$",
+                "2": "Vertical $x=0$"
+              },
+              {
+                "0": "Shape",
+                "1": "S‑curve",
+                "2": "Slow, unbounded increase"
+              },
+              {
+                "0": "Example",
+                "1": "Population with cap",
+                "2": "Richter scale, decibels"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Logistic Growth Model",
+          "formula": "$$ y = \\frac{a}{1 + b e^{-rx}} $$",
+          "notes": [
+            "$a$ = carrying capacity (upper asymptote).",
+            "$b$ = constant related to initial value.",
+            "$r$ = growth rate parameter."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Logistic Carrying Capacity",
+          "prompt": "For the model $y = \\frac{500}{1+10e^{-0.2t}}$, find the carrying capacity.",
+          "steps": [
+            "As $t\\to\\infty$, $e^{-0.2t}\\to 0$, so $y\\to 500$.",
+            "The carrying capacity is $a = 500$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Logarithmic Model Application",
+          "prompt": "The Richter magnitude $R$ of an earthquake is given by $R = \\log I$, where $I$ is intensity. Explain why a magnitude 5 quake is 10 times stronger than magnitude 4.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does the base‑10 log affect the scale?",
+          "minLength": 8,
+          "steps": [
+            "If $R_2 - R_1 = 1$, then $\\log I_2 - \\log I_1 = 1$.",
+            "$\\log(I_2/I_1) = 1$, so $I_2/I_1 = 10^1 = 10$.",
+            "Each unit increase in magnitude corresponds to a tenfold increase in intensity."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Finding the Halfway Point",
+          "prompt": "For the logistic model $y = \\frac{100}{1+9e^{-0.5t}}$, at what $t$ does $y=50$?",
+          "steps": [
+            "Set $50 = \\frac{100}{1+9e^{-0.5t}}$; multiply: $50(1+9e^{-0.5t}) = 100$.",
+            "Divide by 50: $1+9e^{-0.5t} = 2$ → $9e^{-0.5t} = 1$ → $e^{-0.5t} = 1/9$.",
+            "Take $\\ln$: $-0.5t = \\ln(1/9) = -\\ln 9$, so $t = 2\\ln 9 \\approx 4.39$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Logistic Upper Bound",
+        "body": "The carrying capacity $a$ is a horizontal asymptote. The graph never exceeds this value, representing the maximum sustainable population."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "In the logistic model $y = \\frac{a}{1+be^{-rt}}$, the parameter $a$ represents the ___ capacity.",
+          "blanks": [
+            {
+              "accept": [
+                "carrying"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the upper horizontal asymptote.",
+            "The maximum sustainable population."
+          ],
+          "feedbackIfWrong": "$a$ is the carrying capacity."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "What is the vertical asymptote of $y = 2 + 3\\ln x$?",
+          "answers": [
+            "x=0",
+            "0"
+          ],
+          "hints": [
+            "Logarithmic functions are undefined for $x\\le 0$.",
+            "The graph approaches $x=0$ from the right."
+          ],
+          "feedbackIfWrong": "Vertical asymptote: $x=0$."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "True or false: A logistic model has a vertical asymptote.",
+          "answers": [
+            "false"
+          ],
+          "hints": [
+            "It has horizontal asymptotes, not vertical.",
+            "The denominator never becomes zero."
+          ],
+          "feedbackIfWrong": "False. Logistic models have horizontal asymptotes, not vertical."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-choosing-model",
+      "title": "Blueprint Aid — Choosing the Right Model",
+      "teacherCues": [
+        "Present four data scenarios: bacteria doubling, radioactive decay, test scores, population with a cap. Ask: Which model fits each?",
+        "Outline a decision flowchart: Is there an upper bound? (Logistic) Does it decay to zero? (Exponential decay) Is it symmetric bell? (Gaussian) Increases slowly? (Logarithmic)."
+      ],
+      "discoveryHook": {
+        "scenario": "The hardest part of modeling is choosing the right equation. A simple blueprint: look at the trend, check for asymptotes, and match the shape to one of the five standard models."
+      },
+      "concept": {
+        "explanation": [
+          "**Step 1**: Plot the data or analyze the description. Look for trends: increasing rapidly? (growth) Decreasing to zero? (decay) Bell‑shaped? (Gaussian) S‑shaped with a cap? (logistic) Slow increase? (logarithmic).",
+          "**Step 2**: Identify asymptotes. Horizontal asymptotes suggest growth/decay or logistic; vertical asymptotes suggest logarithmic.",
+          "**Step 3**: Select the model form and use data points to solve for parameters (like $a$ and $b$).",
+          "**Step 4**: Validate the model by checking additional data points or known values."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Model Selection Guide",
+            "headers": [
+              "Data Behavior",
+              "Model to Use"
+            ],
+            "rows": [
+              {
+                "0": "Rapid, unbounded increase",
+                "1": "Exponential Growth $y=ae^{bx}$"
+              },
+              {
+                "0": "Decreases toward zero",
+                "1": "Exponential Decay $y=ae^{-bx}$"
+              },
+              {
+                "0": "Symmetric bell shape",
+                "1": "Gaussian $y=ae^{-(x-b)^2/c}$"
+              },
+              {
+                "0": "S‑curve with upper limit",
+                "1": "Logistic $y=a/(1+be^{-rx})$"
+              },
+              {
+                "0": "Slow, unbounded increase",
+                "1": "Logarithmic $y=a+b\\ln x$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Model Selection Blueprint",
+          "formula": "$$ \\text{Trend} \\rightarrow \\text{Asymptotes} \\rightarrow \\text{Model} \\rightarrow \\text{Parameters} $$",
+          "notes": [
+            "Identify the behavior of the data first.",
+            "Check for bounds (horizontal/vertical asymptotes).",
+            "Match to the closest of the five standard forms."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Choosing Between Growth and Logistic",
+          "prompt": "A population starts at 50, grows rapidly, but the growth slows as it approaches 500. Which model?",
+          "steps": [
+            "It approaches an upper limit of 500.",
+            "The S‑shaped growth with a cap indicates logistic.",
+            "Use $y = \\frac{500}{1 + b e^{-rt}}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Exponential vs. Logarithmic",
+          "prompt": "Explain why earthquake magnitudes use a logarithmic scale rather than exponential.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What advantage does a log scale have for very large numbers?",
+          "minLength": 8,
+          "steps": [
+            "Logarithmic scales compress huge ranges (e.g., intensity from 1 to 10^10).",
+            "Exponential scales would spread them out too much.",
+            "A log scale makes ratios (like 10×) correspond to equal increments."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Identifying the Model from Data",
+          "prompt": "A set of data points forms a symmetric bell shape centered at 75. Which model?",
+          "steps": [
+            "Symmetric bell shape → Gaussian.",
+            "Center at 75 means $b=75$.",
+            "Model: $y = a e^{-(x-75)^2/c}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Force a Model",
+        "body": "Not all data fits these five types perfectly. Real data may require transformations or piecewise models. Use these as starting points."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "fill-blank",
+          "prompt": "If a quantity doubles every fixed time period, an exponential ___ model is appropriate.",
+          "blanks": [
+            {
+              "accept": [
+                "growth"
+              ]
+            }
+          ],
+          "hints": [
+            "It's increasing.",
+            "The pattern is $y = a e^{bt}$ with $b>0$."
+          ],
+          "feedbackIfWrong": "Exponential growth model."
+        },
+        {
+          "id": "q5-2",
+          "type": "short-answer",
+          "prompt": "Which model would you use for the height of a bouncing ball that loses half its height each bounce?",
+          "answers": [
+            "exponential decay"
+          ],
+          "hints": [
+            "It decreases by a constant factor each time.",
+            "Not bounded below by zero abruptly."
+          ],
+          "feedbackIfWrong": "Exponential decay."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "What type of asymptote does a logarithmic model have?",
+          "answers": [
+            "vertical",
+            "vertical asymptote"
+          ],
+          "hints": [
+            "It's $x=0$ for $\\ln x$.",
+            "The graph approaches the $y$-axis."
+          ],
+          "feedbackIfWrong": "A vertical asymptote at $x=0$."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

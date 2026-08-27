@@ -1,0 +1,697 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-6-2-law-of-cosines",
+  "title": "Law of Cosines",
+  "blocks": [
+    {
+      "id": "intro-law-of-cosines",
+      "title": "The Law of Cosines",
+      "teacherCues": [
+        "Write the three standard forms on the board: a² = b² + c² – 2bc cos A, etc. Explain each term.",
+        "Ask: When can we NOT use the Law of Sines? (Answer: when we have SSS or SAS.)"
+      ],
+      "discoveryHook": {
+        "scenario": "When you know all three sides of a triangle but no angles, the Law of Sines won't help. The Law of Cosines is like a general Pythagorean theorem—it works for any triangle, not just right triangles."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:Law of Cosines]] relates the three sides of a triangle to the cosine of an angle:",
+          "Standard form (to find a side): $$a^2 = b^2 + c^2 - 2bc \\cos A$$",
+          "Alternative form (to find an angle): $$\\cos A = \\frac{b^2 + c^2 - a^2}{2bc}$$",
+          "Use it for [[imp:SSS]] (three sides) or [[imp:SAS]] (two sides and the included angle)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "When to Use Law of Cosines",
+            "headers": [
+              "Given Information",
+              "What to Find"
+            ],
+            "rows": [
+              {
+                "0": "Three sides (SSS)",
+                "1": "Angles (use alternative form)"
+              },
+              {
+                "0": "Two sides and included angle (SAS)",
+                "1": "Third side (use standard form)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Law of Cosines (Standard)",
+          "formula": "$$c^2 = a^2 + b^2 - 2ab \\cos C$$",
+          "notes": [
+            "The side on the left is opposite the angle at the end.",
+            "If C = 90°, it becomes the Pythagorean theorem."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Label and Write",
+          "prompt": "In triangle ABC, a = 8, b = 6, C = 60°. Write the correct Law of Cosines formula to find c.",
+          "steps": [
+            "The sides are a, b and known angle C, so use the formula with c² on the left.",
+            "c² = a² + b² – 2ab cos C.",
+            "Plug in: c² = 8² + 6² – 2·8·6·cos60°."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Find an Angle (SSS)",
+          "prompt": "If you know all three sides, which form of the Law of Cosines do you use? Explain to a partner why.",
+          "peerPrompt": "Discuss: The standard form has a squared side on the left. If you want an angle, which version isolates the cosine?",
+          "minLength": 2,
+          "steps": [
+            "Use the alternative form: cos A = (b² + c² – a²) / (2bc).",
+            "This solves directly for the angle."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Check if Acute or Obtuse",
+          "prompt": "If cos B is negative, what kind of angle is B?",
+          "steps": [
+            "Cosine is negative for angles between 90° and 180°.",
+            "So angle B is obtuse (greater than 90°)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Mix Up the Sides",
+        "body": "In the formula a² = b² + c² – 2bc cos A, the side squared on the left is opposite the angle A. The other two sides (b and c) are multiplied and used with cos A."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "The Law of Cosines formula to find side a is a² = b² + c² – 2bc cos ___.",
+          "blanks": [
+            {
+              "accept": [
+                "A"
+              ]
+            }
+          ],
+          "hints": [
+            "The angle must be opposite side a.",
+            "Side a is opposite angle A."
+          ],
+          "feedbackIfWrong": "It is cos A."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "When you are given all three sides of a triangle, which form of the Law of Cosines do you use? (Write 'alternative')",
+          "answer": "alternative",
+          "hints": [
+            "You need to solve for an angle.",
+            "The form with cosine alone on the left."
+          ],
+          "feedbackIfWrong": "Use the alternative form."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "If the Pythagorean theorem is a special case of the Law of Cosines when the angle is ___ degrees.",
+          "blanks": [
+            {
+              "accept": [
+                "90"
+              ]
+            }
+          ],
+          "hints": [
+            "a² = b² + c² – 2bc cos 90° yields a² = b² + c² because cos 90° = 0.",
+            "The angle is a right angle."
+          ],
+          "feedbackIfWrong": "It is 90°."
+        }
+      ]
+    },
+    {
+      "id": "sss-case",
+      "title": "Solving SSS Triangles",
+      "teacherCues": [
+        "Draw a triangle with three sides labeled, e.g., a=8, b=19, c=14. Ask: Which angle should we find first? (the one opposite the longest side, B).",
+        "Work out cos B = (a² + c² – b²)/(2ac) ≈ –0.4509. B ≈ 116.8°."
+      ],
+      "discoveryHook": {
+        "scenario": "Given three sides, you have all the measurements but no angles. The Law of Cosines helps you find the largest angle first, ensuring the others are acute."
+      },
+      "concept": {
+        "explanation": [
+          "For SSS: use the alternative form to find the largest angle first (opposite the longest side).",
+          "Then use the Law of Sines to find a second angle (ensuring it's acute if the largest is obtuse).",
+          "Finally, the third angle is 180° minus the sum of the first two."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "SSS Example (a=8, b=19, c=14)",
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "Find B (largest angle)",
+                "1": "cos B = (8²+14²–19²)/(2·8·14) ≈ –0.4509 → B ≈ 116.8°"
+              },
+              {
+                "0": "Find A",
+                "1": "sin A = a·sin B / b ≈ 8·sin116.8°/19 ≈ 0.3758 → A ≈ 22.1°"
+              },
+              {
+                "0": "Find C",
+                "1": "C = 180° – 116.8° – 22.1° = 41.1°"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Alternative Form",
+          "formula": "$$\\cos B = \\frac{a^2 + c^2 - b^2}{2ac}$$",
+          "notes": [
+            "b is the longest side, so B is the largest angle.",
+            "If cos B is negative, B is obtuse."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find Largest Angle",
+          "prompt": "Given a=8 ft, b=19 ft, c=14 ft. Find angle B.",
+          "steps": [
+            "Use cos B = (a² + c² – b²) / (2ac).",
+            "Plug in: (64 + 196 – 361) / (2·8·14) = (–101) / 224 ≈ –0.4509.",
+            "B = arccos(–0.4509) ≈ 116.8°."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Then Use Law of Sines",
+          "prompt": "After finding B, find angle A using the Law of Sines.",
+          "peerPrompt": "Explain to a partner: Why is it safe to use the Law of Sines now? (Because we already know the triangle is valid and B is obtuse, so A must be acute.)",
+          "minLength": 2,
+          "steps": [
+            "Use sin A / a = sin B / b.",
+            "sin A = a·sin B / b = 8·sin116.8° / 19 ≈ 0.3758.",
+            "A ≈ arcsin(0.3758) ≈ 22.1° (acute)."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find Remaining Angle",
+          "prompt": "Find angle C.",
+          "steps": [
+            "C = 180° – A – B = 180° – 22.1° – 116.8° = 41.1°."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Largest Angle First",
+        "body": "Always find the angle opposite the longest side first. If it is obtuse, the other two must be acute, avoiding the ambiguous case when using Law of Sines."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "In SSS, you should find the angle opposite the ___ side first.",
+          "blanks": [
+            {
+              "accept": [
+                "longest"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the largest angle.",
+            "The side with the greatest length."
+          ],
+          "feedbackIfWrong": "It's the longest side."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "If cos B is negative, is angle B acute or obtuse? (Enter 'obtuse')",
+          "answer": "obtuse",
+          "hints": [
+            "Cosine negative means angle > 90°.",
+            "Cosine of 120° is negative."
+          ],
+          "feedbackIfWrong": "Obtuse."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "After finding two angles, the third angle is found by subtracting their sum from ___°.",
+          "blanks": [
+            {
+              "accept": [
+                "180"
+              ]
+            }
+          ],
+          "hints": [
+            "Sum of angles in a triangle is 180°.",
+            "Subtract the two known angles from 180°."
+          ],
+          "feedbackIfWrong": "It's 180°."
+        }
+      ]
+    },
+    {
+      "id": "sas-case",
+      "title": "Solving SAS Triangles",
+      "teacherCues": [
+        "Draw a triangle with two sides and the included angle, e.g., b=9, c=12, A=25°. Find a.",
+        "Use a² = b² + c² – 2bc cos A. Compute a ≈ 5.41. Then use Law of Sines to find angles."
+      ],
+      "discoveryHook": {
+        "scenario": "A softball field: you know two distances and the angle between them. The Law of Cosines gives the third side, completing the triangle."
+      },
+      "concept": {
+        "explanation": [
+          "For SAS: use the standard form of the Law of Cosines to find the third side.",
+          "Then use the Law of Sines to find an angle (preferably the smaller one to avoid ambiguity).",
+          "Finally, the third angle is 180° minus the sum of the other two."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "SAS Example (b=9, c=12, A=25°)",
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "Find a",
+                "1": "a² = 9² + 12² – 2·9·12·cos25° ≈ 29.24 → a ≈ 5.41"
+              },
+              {
+                "0": "Find B",
+                "1": "sin B = b·sin A / a ≈ 9·sin25°/5.41 ≈ 0.7034 → B ≈ 44.7° (acute chosen)"
+              },
+              {
+                "0": "Find C",
+                "1": "C = 180° – 25° – 44.7° = 110.3°"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Standard Form for Side",
+          "formula": "$$a^2 = b^2 + c^2 - 2bc \\cos A$$",
+          "notes": [
+            "The side a is opposite the given angle A.",
+            "After finding a, use Law of Sines to find another angle."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find side a",
+          "prompt": "Given b=9 m, c=12 m, A=25°. Find side a.",
+          "steps": [
+            "a² = 9² + 12² – 2·9·12·cos25°.",
+            "a² = 81 + 144 – 216·cos25° ≈ 225 – 195.76 ≈ 29.24.",
+            "a ≈ √29.24 ≈ 5.41 m."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Find Angle B",
+          "prompt": "Now use the Law of Sines to find angle B.",
+          "peerPrompt": "Explain: Which two ratios do you set equal? Why is B acute?",
+          "minLength": 2,
+          "steps": [
+            "sin B / b = sin A / a → sin B = b·sin A / a = 9·sin25° / 5.41 ≈ 0.7034.",
+            "B₁ ≈ 44.7° (acute), B₂ ≈ 135.3° (but would make A+B > 180°, so discard).",
+            "Thus B ≈ 44.7°."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find angle C",
+          "prompt": "Find the remaining angle C.",
+          "steps": [
+            "C = 180° – A – B = 180° – 25° – 44.7° = 110.3°."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Avoiding the Ambiguous Case",
+        "body": "After finding the side, use the Law of Sines to find the smaller of the two remaining angles first. Check that the larger angle doesn't violate the sum of angles."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "In the SAS case, the first step is to find the ___ side using the Law of Cosines.",
+          "blanks": [
+            {
+              "accept": [
+                "third"
+              ]
+            }
+          ],
+          "hints": [
+            "You have two sides and need the one opposite the given angle.",
+            "That completes the three sides."
+          ],
+          "feedbackIfWrong": "It's the third side."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "After finding side a, which law do you use to find angle B? (Write 'Law of Sines')",
+          "answer": "Law of Sines",
+          "hints": [
+            "You now have a side and opposite angle pair (a and A).",
+            "With another side (b), you can find its opposite angle."
+          ],
+          "feedbackIfWrong": "Law of Sines."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "When using Law of Sines after SAS, choose the ___ angle first to avoid ambiguity.",
+          "blanks": [
+            {
+              "accept": [
+                "smaller",
+                "acute"
+              ]
+            }
+          ],
+          "hints": [
+            "The smaller angle is the one opposite the shorter side.",
+            "It will be acute, so no ambiguous case."
+          ],
+          "feedbackIfWrong": "It's the smaller (or acute) angle."
+        }
+      ]
+    },
+    {
+      "id": "applications",
+      "title": "Real-Life Applications",
+      "teacherCues": [
+        "Show the softball field diagram: pitcher's mound 43 ft from home, bases 60 ft apart, angle at home 45°. Find the distance from pitcher to first base.",
+        "Work through the Law of Cosines: h² = 43² + 60² – 2·43·60·cos45°."
+      ],
+      "discoveryHook": {
+        "scenario": "Softball field geometry: using the Law of Cosines, you can find distances on the field without leaving the dugout."
+      },
+      "concept": {
+        "explanation": [
+          "The Law of Cosines models many real-life problems where you know two sides and the included angle.",
+          "For example, in navigation, finding the distance or bearing after traveling two legs.",
+          "Sketch the situation, label known sides and angle, then apply the appropriate form of the Law of Cosines."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Softball Field Example",
+            "headers": [
+              "Known",
+              "Values"
+            ],
+            "rows": [
+              {
+                "0": "Side f (HP to pitcher)",
+                "1": "43 ft"
+              },
+              {
+                "0": "Side p (HP to 1st base)",
+                "1": "60 ft"
+              },
+              {
+                "0": "Angle H",
+                "1": "45° (bisected right angle)"
+              },
+              {
+                "0": "Side h (pitcher to 1st)",
+                "1": "h² = 43² + 60² – 2·43·60·cos45° ≈ 1800.33 → h ≈ 42.43 ft"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Law of Cosines Application",
+          "formula": "$$h^2 = f^2 + p^2 - 2fp \\cos H$$",
+          "notes": [
+            "f = distance from home to pitcher, p = home to 1st base.",
+            "Angle H is the angle between those two segments."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Softball Problem",
+          "prompt": "Find the distance from the pitcher's mound to first base.",
+          "steps": [
+            "Label triangle HPF: H = 45°, f = 43 ft, p = 60 ft.",
+            "Use the Law of Cosines to find h opposite H: h² = f² + p² – 2fp cos H.",
+            "Compute: 43² + 60² – 2·43·60·cos45° ≈ 1849 + 3600 – 3648.67 ≈ 1800.33.",
+            "h ≈ √1800.33 ≈ 42.43 ft."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Ship Bearing",
+          "prompt": "A ship goes 60 mi N, then 80 mi, and finds it is 139 mi from start. Find the angle at B.",
+          "peerPrompt": "Explain how to use the alternative form to find angle B, given all three sides. Which side is opposite B?",
+          "minLength": 2,
+          "steps": [
+            "Sides: a = 80 mi, b = 139 mi, c = 60 mi.",
+            "cos B = (a² + c² – b²) / (2ac) = (6400 + 3600 – 19321) / (2·80·60) ≈ (–9321)/9600 ≈ –0.9709.",
+            "B ≈ 166.1°. Then the bearing from B to C is N 13.9° W."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Center fielder throw",
+          "prompt": "Center fielder is 240 ft from home plate. Bases are 60 ft apart, home to third is 60 ft at a right angle. Find distance from center fielder to third base.",
+          "steps": [
+            "Form triangle: home, center, third. Distance home-center = 240 ft, home-third = 60 ft, angle between them = 90° (since center is straight out and third is to the left).",
+            "So SAS: d² = 240² + 60² – 2·240·60·cos90° = 240² + 60² (cos90°=0) = 57600+3600=61200, d≈247.39 ft."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Right Angle Shortcut",
+        "body": "If the included angle is 90°, the Law of Cosines reduces to the Pythagorean theorem because cos90° = 0. Use that shortcut when possible."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "In the softball example, the angle at home plate is ___° because the line to the pitcher bisects the 90° base paths.",
+          "blanks": [
+            {
+              "accept": [
+                "45"
+              ]
+            }
+          ],
+          "hints": [
+            "Half of a right angle.",
+            "90° / 2."
+          ],
+          "feedbackIfWrong": "It's 45°."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "What distance does the Law of Cosines compute in the softball field problem? (pitcher to first, home to second, etc.)",
+          "answer": "pitcher to first",
+          "hints": [
+            "Look at the sides: f=43, p=60, H=45°.",
+            "The unknown side is from pitcher's mound to first base."
+          ],
+          "feedbackIfWrong": "It's the distance from pitcher to first base."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "If the included angle is 90°, the Law of Cosines becomes the ___ theorem.",
+          "blanks": [
+            {
+              "accept": [
+                "Pythagorean"
+              ]
+            }
+          ],
+          "hints": [
+            "a² = b² + c² – 2bc cos90° yields a² = b² + c² because cos90° = 0.",
+            "That's the Pythagorean theorem."
+          ],
+          "feedbackIfWrong": "It's the Pythagorean theorem."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-heron",
+      "title": "Blueprint Aid – Heron's Area Formula",
+      "teacherCues": [
+        "Write Heron's formula on the board: Area = √[s(s-a)(s-b)(s-c)], where s = (a+b+c)/2.",
+        "Work through an example: a=43, b=53, c=72 → s=84, area ≈ 1131.89."
+      ],
+      "discoveryHook": {
+        "scenario": "Given only the three side lengths of a triangular garden, Heron's formula calculates the area without knowing any height or angle—perfect for irregular plots."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Heron's Area Formula]] gives the area of a triangle when you know all three sides.",
+          "First compute the semiperimeter: $$s = \\frac{a+b+c}{2}$$",
+          "Then area = $$\\sqrt{s(s-a)(s-b)(s-c)}.$$",
+          "It is derived from the Law of Cosines."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Heron's Formula Steps",
+            "headers": [
+              "Step",
+              "Example: a=5, b=9, c=8"
+            ],
+            "rows": [
+              {
+                "0": "Find s",
+                "1": "s = (5+9+8)/2 = 11"
+              },
+              {
+                "0": "Plug into formula",
+                "1": "Area = √[11·(11-5)·(11-9)·(11-8)]"
+              },
+              {
+                "0": "Compute",
+                "1": "= √[11·6·2·3] = √396 ≈ 19.90 square inches"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Heron's Area Formula",
+          "formula": "$$\\text{Area} = \\sqrt{s(s-a)(s-b)(s-c)}$$",
+          "notes": [
+            "s = (a+b+c)/2 (semiperimeter)",
+            "Works for any triangle, even with integer sides."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find semiperimeter",
+          "prompt": "For a=43 m, b=53 m, c=72 m, find s.",
+          "steps": [
+            "s = (a+b+c)/2 = (43+53+72)/2 = 168/2 = 84 m."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Compute Area",
+          "prompt": "Now use Heron's formula to find the area.",
+          "peerPrompt": "Explain each step to your partner: subtract each side from s, multiply them all with s, then take the square root.",
+          "minLength": 2,
+          "steps": [
+            "s-a = 84-43=41, s-b=84-53=31, s-c=84-72=12.",
+            "Multiply: 84·41·31·12 = 84·15252 = ? Actually compute: 84·41·31·12 = (84·41)·(31·12)=3444·372 = 1281168.",
+            "Then square root: √1281168 ≈ 1131.89 m²."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Another Triangle",
+          "prompt": "Use Heron's formula for a=5 in, b=9 in, c=8 in. Compute area.",
+          "steps": [
+            "s = (5+9+8)/2 = 11.",
+            "Area = √[11·(11-5)·(11-9)·(11-8)] = √[11·6·2·3] = √396 ≈ 19.90 in²."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Semiperimeter, Not Perimeter",
+        "body": "Don't forget to divide (a+b+c) by 2 to get s. Using the full perimeter will give a much larger (incorrect) area."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In Heron's formula, s stands for ___ (half the perimeter).",
+          "blanks": [
+            {
+              "accept": [
+                "semiperimeter"
+              ]
+            }
+          ],
+          "hints": [
+            "It's half of the sum of the sides.",
+            "The term starts with 'semi'."
+          ],
+          "feedbackIfWrong": "It's the semiperimeter."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "Compute s for a triangle with sides 6, 8, 10. (Enter a number)",
+          "answer": "12",
+          "hints": [
+            "Add the sides: 6+8+10 = 24.",
+            "Divide by 2."
+          ],
+          "feedbackIfWrong": "s = 12."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "Heron's formula uses a ___ root of the product s(s-a)(s-b)(s-c).",
+          "blanks": [
+            {
+              "accept": [
+                "square"
+              ]
+            }
+          ],
+          "hints": [
+            "The symbol is √.",
+            "It's the opposite of squaring."
+          ],
+          "feedbackIfWrong": "It's a square root."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A triangle has sides 13, 14, 15. Using Heron's formula, find its area. (Hint: s=21, and the product s(s-a)(s-b)(s-c) = 21·8·7·6 = 7056. Square root of 7056 = 84.)",
+        "type": "short-answer",
+        "answers": [
+          "84"
+        ],
+        "hints": [
+          "s = (13+14+15)/2 = 21.",
+          "Compute 21·8·7·6 = 7056, √7056 = 84."
+        ],
+        "feedbackIfWrong": "Area is 84."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

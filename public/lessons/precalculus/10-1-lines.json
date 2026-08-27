@@ -1,0 +1,663 @@
+{
+  "type": "interactive-lesson",
+  "id": "10-1-lines",
+  "title": "Lines – Key Concepts",
+  "blocks": [
+    {
+      "id": "inclination",
+      "title": "Inclination of a Line",
+      "teacherCues": [
+        "Draw a line with positive slope. Ask: 'What is the angle with the x‑axis?'",
+        "Write $ m = \\tan \\theta $ on the board. Point out $ \\theta $ is measured counterclockwise."
+      ],
+      "discoveryHook": {
+        "scenario": "A wheelchair ramp’s steepness is described by its slope, but engineers think in terms of the angle of inclination. The formula $ m = \\tan \\theta $ connects the two."
+      },
+      "concept": {
+        "explanation": [
+          "The **inclination** $ \\theta $ of a nonhorizontal line is the [[kw:positive angle]] ( $ 0 \\le \\theta < \\pi $ ) measured counterclockwise from the positive $ x $ -axis to the line.",
+          "For a nonvertical line with slope $ m $: $ m = \\tan \\theta $.",
+          "If $ m \\ge 0 $, then $ \\theta = \\arctan m $ (in $ [0, \\pi/2) $ ).",
+          "If $ m < 0 $, then $ \\theta = \\pi + \\arctan m $ (in $ (\\pi/2, \\pi) $ )."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Quick Reference",
+            "headers": [
+              "$ m $",
+              "$ \\theta $ (radians)",
+              "$ \\theta $ (degrees)"
+            ],
+            "rows": [
+              {
+                "0": "$ 1 $",
+                "1": "$ \\frac{\\pi}{4} $",
+                "2": "$ 45^\\circ $"
+              },
+              {
+                "0": "$ \\sqrt{3} $",
+                "1": "$ \\frac{\\pi}{3} $",
+                "2": "$ 60^\\circ $"
+              },
+              {
+                "0": "$ -1 $",
+                "1": "$ \\frac{3\\pi}{4} $",
+                "2": "$ 135^\\circ $"
+              },
+              {
+                "0": "$ -\\sqrt{3} $",
+                "1": "$ \\frac{2\\pi}{3} $",
+                "2": "$ 120^\\circ $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Inclination–Slope Relation",
+          "formula": "$$ m = \\tan \\theta $$",
+          "notes": [
+            "$ \\theta $: angle with positive $ x $ -axis",
+            "Use $ \\arctan $ for $ m \\ge 0 $; add $ \\pi $ for $ m < 0 $"
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Inclination from slope $ m = 2 $",
+          "prompt": "Find the inclination (in radians and degrees) of a line with slope $ m = 2 $.",
+          "steps": [
+            "Since $ m > 0 $, $ \\theta = \\arctan 2 $.",
+            "Compute: $ \\theta \\approx 1.1071 $ rad.",
+            "Convert: $ 1.1071 \\times \\frac{180}{\\pi} \\approx 63.4^\\circ $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Inclination from a line equation",
+          "prompt": "Determine the inclination of $ 2x + 3y = 6 $.",
+          "peerPrompt": "Explain to your partner: 'How do we get the slope first? Why do we add $ \\pi $ if the slope is negative?'",
+          "minLength": 2,
+          "steps": [
+            "Rewrite as $ y = -\\frac{2}{3}x + 2 $ → $ m = -\\frac{2}{3} $.",
+            "$ m < 0 $, so $ \\theta = \\pi + \\arctan(-\\frac{2}{3}) $.",
+            "$ \\theta \\approx \\pi + (-0.5880) = 2.5536 $ rad ($ \\approx 146.3^\\circ $)."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Inclination from two points",
+          "prompt": "Find the inclination of the line through $ (1,2) $ and $ (4,-1) $.",
+          "steps": [
+            "Slope $ m = \\frac{-1-2}{4-1} = \\frac{-3}{3} = -1 $.",
+            "$ m < 0 $, so $ \\theta = \\pi + \\arctan(-1) = \\pi - \\frac{\\pi}{4} = \\frac{3\\pi}{4} $ rad ($ 135^\\circ $)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "arctan range",
+        "body": "[[imp:arctan always returns an angle in $ (-\\pi/2, \\pi/2) $]]. For a negative slope, you must add $ \\pi $ to get an inclination in $ (\\pi/2, \\pi) $."
+      },
+      "questions": [
+        {
+          "id": "q-incl-1",
+          "type": "fill-blank",
+          "prompt": "The inclination of a horizontal line is ___ radians.",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "Horizontal lines have slope 0.",
+            "$ \\tan 0 = 0 $."
+          ],
+          "feedbackIfWrong": "A horizontal line has inclination 0."
+        },
+        {
+          "id": "q-incl-2",
+          "type": "short-answer",
+          "prompt": "If a line has slope $ m = \\sqrt{3} $, its inclination $ \\theta $ (in radians) is what fraction of $ \\pi $? (Answer as a fraction like 1/3)",
+          "answer": "1/3",
+          "hints": [
+            "$ \\tan(\\pi/3) = \\sqrt{3} $.",
+            "Think of the special angle."
+          ],
+          "feedbackIfWrong": "It is $ \\pi/3 $, so the fraction is 1/3."
+        },
+        {
+          "id": "q-incl-3",
+          "type": "short-answer",
+          "prompt": "For a line with negative slope, do we add $ \\pi $ or subtract $ \\pi $ to arctan(m) to get the inclination?",
+          "answer": "add",
+          "hints": [
+            "We need an angle greater than $ \\pi/2 $.",
+            "arctan gives a negative angle; adding $ \\pi $ makes it positive."
+          ],
+          "feedbackIfWrong": "We add $ \\pi $ to get an angle in $(\\pi/2,\\pi)$."
+        }
+      ]
+    },
+    {
+      "id": "angle-between",
+      "title": "Angle Between Two Lines",
+      "teacherCues": [
+        "Draw two intersecting lines. Ask: 'How do we find the acute angle between them?'",
+        "Write the formula: $ \\tan \\theta = \\left| \\frac{m_2 - m_1}{1 + m_1 m_2} \\right| $. Highlight the absolute value."
+      ],
+      "discoveryHook": {
+        "scenario": "When two roads cross, the acute angle between them determines turning radius and sight lines. The slope‑based formula gives that angle directly."
+      },
+      "concept": {
+        "explanation": [
+          "For two nonperpendicular lines with slopes $ m_1 $ and $ m_2 $, the [[kw:angle between the lines]] $ \\theta $ (acute) satisfies:",
+          "$$ \\tan \\theta = \\left| \\frac{m_2 - m_1}{1 + m_1 m_2} \\right| $$",
+          "If the denominator is zero, the lines are perpendicular and $ \\theta = 90^\\circ $.",
+          "[[imp:Absolute value]] ensures we get the acute (or right) angle."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Example slopes and $ \\tan \\theta $",
+            "headers": [
+              "$ m_1 $",
+              "$ m_2 $",
+              "$ \\tan \\theta $",
+              "$ \\theta \\approx $"
+            ],
+            "rows": [
+              {
+                "0": "$ 2 $",
+                "1": "$ -\\frac{3}{4} $",
+                "2": "$ \\frac{11}{2} $",
+                "3": "$ 79.7^\\circ $"
+              },
+              {
+                "0": "$ 1 $",
+                "1": "$ -1 $",
+                "2": "undefined (⊥)",
+                "3": "$ 90^\\circ $"
+              },
+              {
+                "0": "$ 3 $",
+                "1": "$ \\frac{1}{3} $",
+                "2": "$ 0 $",
+                "3": "$ 0^\\circ $ (parallel)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Angle Between Two Lines",
+          "formula": "$$ \\tan \\theta = \\left| \\frac{m_2 - m_1}{1 + m_1 m_2} \\right| $$",
+          "notes": [
+            "Result: acute angle ($ 0^\\circ < \\theta \\le 90^\\circ $)",
+            "$ m_1, m_2 $ are slopes of the two lines."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Angle from slopes",
+          "prompt": "Find the angle between the lines $ y = 2x + 3 $ and $ y = -\\frac{3}{4}x + 1 $.",
+          "steps": [
+            "Slopes: $ m_1 = 2 $, $ m_2 = -\\frac{3}{4} $.",
+            "Compute $ \\tan \\theta = \\left| \\frac{-3/4 - 2}{1 + 2(-3/4)} \\right| = \\left| \\frac{-11/4}{-1/2} \\right| = \\frac{11}{2} $.",
+            "$ \\theta = \\arctan(11/2) \\approx 1.3909 $ rad $ \\approx 79.7^\\circ $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Perpendicular lines",
+          "prompt": "Two lines have slopes $ 1 $ and $ -1 $. What is the angle between them?",
+          "peerPrompt": "Discuss with a partner: 'What happens to the denominator $ 1 + m_1 m_2 $? Why is the angle exactly $ 90^\\circ $?'",
+          "minLength": 2,
+          "steps": [
+            "$ m_1 m_2 = 1 \\cdot (-1) = -1 $ → denominator $ 1 + (-1) = 0 $.",
+            "Thus $ \\tan \\theta $ is undefined, implying $ \\theta = 90^\\circ $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Angle from line equations",
+          "prompt": "Find the acute angle between $ 3x + y = 3 $ and $ x - y = 2 $.",
+          "steps": [
+            "Rewrite: $ y = -3x + 3 $ ($ m_1 = -3 $), $ y = x - 2 $ ($ m_2 = 1 $).",
+            "$ \\tan \\theta = \\left| \\frac{1 - (-3)}{1 + (-3)(1)} \\right| = \\left| \\frac{4}{-2} \\right| = 2 $.",
+            "$ \\theta = \\arctan 2 \\approx 1.107 $ rad $ \\approx 63.4^\\circ $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Why absolute value?",
+        "body": "Without the absolute value, the formula could give the [[imp:obtuse supplement]]. We always want the **acute** (or right) angle between the lines."
+      },
+      "questions": [
+        {
+          "id": "q-ang-1",
+          "type": "fill-blank",
+          "prompt": "If two lines have slopes $ 2 $ and $ -\\frac{1}{2} $, the angle between them is ___ degrees.",
+          "blanks": [
+            {
+              "accept": [
+                "90"
+              ]
+            }
+          ],
+          "hints": [
+            "Multiplying the slopes gives $ -1 $.",
+            "Perpendicular lines."
+          ],
+          "feedbackIfWrong": "They are perpendicular: 90°."
+        },
+        {
+          "id": "q-ang-2",
+          "type": "short-answer",
+          "prompt": "For lines with slopes $ 1 $ and $ 0 $, the acute angle is what? (Answer in degrees)",
+          "answer": "45",
+          "hints": [
+            "$ m_1 = 1 $ (45° inclination), $ m_2 = 0 $ (horizontal).",
+            "The difference is exactly the inclination of the steeper line."
+          ],
+          "feedbackIfWrong": "It's 45°."
+        },
+        {
+          "id": "q-ang-3",
+          "type": "short-answer",
+          "prompt": "If the denominator $ 1 + m_1 m_2 = 0 $, the lines are ___.",
+          "answer": "perpendicular",
+          "hints": [
+            "Denominator zero → tangent undefined.",
+            "Undefined tan → angle is 90°."
+          ],
+          "feedbackIfWrong": "The lines are perpendicular."
+        }
+      ]
+    },
+    {
+      "id": "distance-point-line",
+      "title": "Distance Between a Point and a Line",
+      "teacherCues": [
+        "Draw a point not on a line and the perpendicular segment. Ask: 'How would you find that length?'",
+        "Write the distance formula: $ d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}} $."
+      ],
+      "discoveryHook": {
+        "scenario": "To position a sprinkler exactly 3 feet from a fence line, you need the perpendicular distance. This formula gives it without drawing."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:distance]] from a point $ (x_1, y_1) $ to the line $ Ax + By + C = 0 $ is:",
+          "$$ d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}} $$",
+          "[[imp:Always convert the line to general form]] $ Ax + By + C = 0 $ first.",
+          "The numerator uses the absolute value, so distance is always non‑negative."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Common conversions",
+            "headers": [
+              "Given form",
+              "General form $ Ax+By+C=0 $"
+            ],
+            "rows": [
+              {
+                "0": "$ y = 2x + 1 $",
+                "1": "$ -2x + y - 1 = 0 $"
+              },
+              {
+                "0": "$ y = -3x + 2 $",
+                "1": "$ 3x + y - 2 = 0 $"
+              },
+              {
+                "0": "$ 7x + 5y = -13 $",
+                "1": "$ 7x + 5y + 13 = 0 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Point–Line Distance",
+          "formula": "$$ d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}} $$",
+          "notes": [
+            "$ (x_1, y_1) $ is the point",
+            "Line must be in $ Ax + By + C = 0 $ form."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Distance given slope‑intercept",
+          "prompt": "Find the distance from $ (4,1) $ to the line $ y = 2x + 1 $.",
+          "steps": [
+            "Rewrite: $ y = 2x + 1 \\rightarrow -2x + y - 1 = 0 $ → $ A = -2, B = 1, C = -1 $.",
+            "Plug into formula: $ d = \\frac{|-2(4) + 1(1) - 1|}{\\sqrt{(-2)^2 + 1^2}} = \\frac{|-8 + 1 - 1|}{\\sqrt{5}} $.",
+            "$ = \\frac{8}{\\sqrt{5}} \\approx 3.58 $ units."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Distance given general form",
+          "prompt": "Find the distance from $ (2,-1) $ to $ 7x + 5y = -13 $.",
+          "peerPrompt": "Explain to your partner: 'Why is it crucial to move all terms to one side before identifying A, B, C?'",
+          "minLength": 2,
+          "steps": [
+            "Move all terms: $ 7x + 5y + 13 = 0 $ → $ A = 7, B = 5, C = 13 $.",
+            "$ d = \\frac{|7(2) + 5(-1) + 13|}{\\sqrt{7^2 + 5^2}} = \\frac{|14 - 5 + 13|}{\\sqrt{74}} $.",
+            "$ = \\frac{22}{\\sqrt{74}} \\approx 2.56 $ units."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Distance with negative coefficients",
+          "prompt": "Find the distance from $ (3,2) $ to the line $ -3x + 5y = -2 $.",
+          "steps": [
+            "General form: $ -3x + 5y + 2 = 0 $, so $ A = -3, B = 5, C = 2 $.",
+            "$ d = \\frac{|-3(3) + 5(2) + 2|}{\\sqrt{(-3)^2 + 5^2}} = \\frac{|-9 + 10 + 2|}{\\sqrt{34}} = \\frac{3}{\\sqrt{34}} \\approx 0.51 $ units."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sign of C",
+        "body": "Don’t forget to [[imp:move all terms to the left side]] so the constant $ C $ is correct. The sign matters inside the absolute value."
+      },
+      "questions": [
+        {
+          "id": "q-dist-1",
+          "type": "fill-blank",
+          "prompt": "The distance from a point to a line is always measured along a ___ to the line.",
+          "blanks": [
+            {
+              "accept": [
+                "perpendicular"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the shortest path.",
+            "It forms a 90° angle."
+          ],
+          "feedbackIfWrong": "It's the perpendicular distance."
+        },
+        {
+          "id": "q-dist-2",
+          "type": "short-answer",
+          "prompt": "In the distance formula, the denominator is the square root of what expression? (Use A and B)",
+          "answer": "A^2+B^2",
+          "hints": [
+            "It looks like the hypotenuse in the Pythagorean theorem.",
+            "It's the square root of the sum of squares of coefficients."
+          ],
+          "feedbackIfWrong": "The denominator is √(A² + B²)."
+        },
+        {
+          "id": "q-dist-3",
+          "type": "short-answer",
+          "prompt": "If the point lies exactly on the line, the numerator of the distance formula evaluates to what?",
+          "answer": "0",
+          "hints": [
+            "Plug the point into the line equation.",
+            "Distance is zero."
+          ],
+          "feedbackIfWrong": "The numerator becomes 0, so the distance is 0."
+        }
+      ]
+    },
+    {
+      "id": "altitude-area",
+      "title": "Application: Altitude & Area of a Triangle",
+      "teacherCues": [
+        "Draw a triangle on a coordinate plane. Ask: 'How can we find its area without measuring a physical height?'",
+        "Show that altitude from a vertex to the opposite side is the point‑line distance."
+      ],
+      "discoveryHook": {
+        "scenario": "Surveyors often need the area of a triangular plot of land. Using coordinates and the distance formula, they can compute the area without stepping onto the land."
+      },
+      "concept": {
+        "explanation": [
+          "For a triangle with vertices $ (x_1,y_1), (x_2,y_2), (x_3,y_3) $, the [[kw:altitude]] from a vertex to the opposite side is the distance from that point to the line containing the opposite side.",
+          "Once altitude $ h $ and base length $ b $ (distance between the other two vertices) are known,",
+          "$$ \\text{Area} = \\frac{1}{2} b h $$"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Steps to find area",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Find equation of the line containing the base (two vertices)."
+              },
+              {
+                "0": "2",
+                "1": "Compute altitude = distance from the third vertex to that line."
+              },
+              {
+                "0": "3",
+                "1": "Compute base length = distance between the two base vertices."
+              },
+              {
+                "0": "4",
+                "1": "Area = $ \\frac{1}{2} \\times $ base $ \\times $ altitude."
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Finding altitude from vertex B",
+          "prompt": "Triangle vertices: $ A(-3,0), B(0,4), C(5,2) $. Find altitude from $ B $ to side $ AC $.",
+          "steps": [
+            "Line $ AC $: slope $ = \\frac{2-0}{5-(-3)} = \\frac{1}{4} $ → equation: $ y = \\frac{1}{4}(x+3) $ → $ x - 4y + 3 = 0 $.",
+            "Altitude $ h $ = distance from $ B(0,4) $ to $ x - 4y + 3 = 0 $: $ h = \\frac{|1(0) - 4(4) + 3|}{\\sqrt{1^2+(-4)^2}} = \\frac{13}{\\sqrt{17}} $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Computing the area",
+          "prompt": "Continue from part A. Find the area of the triangle.",
+          "peerPrompt": "Discuss with a partner: 'How do you find the base length $ AC $? Why can you use any side as the base as long as you use the corresponding altitude?'",
+          "minLength": 2,
+          "steps": [
+            "Base $ AC $: distance between $ (-3,0) $ and $ (5,2) $ = $ \\sqrt{(5-(-3))^2 + (2-0)^2} = \\sqrt{68} = 2\\sqrt{17} $.",
+            "Area = $ \\frac{1}{2} \\cdot (2\\sqrt{17}) \\cdot \\frac{13}{\\sqrt{17}} = 13 $ square units."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Area from a different vertex",
+          "prompt": "Triangle vertices: $ A(-2,0), B(0,5), C(4,3) $. Find the area using base $ AC $ and altitude from $ B $.",
+          "steps": [
+            "Line $ AC $: slope $ = \\frac{3-0}{4-(-2)} = \\frac{1}{2} $ → equation: $ y = \\frac{1}{2}(x+2) $ → $ x - 2y + 2 = 0 $.",
+            "Altitude from $ B(0,5) $: $ h = \\frac{|1(0) - 2(5) + 2|}{\\sqrt{1^2+(-2)^2}} = \\frac{8}{\\sqrt{5}} $.",
+            "Base $ AC $: distance $ = \\sqrt{(4+2)^2+(3-0)^2} = \\sqrt{36+9} = \\sqrt{45} = 3\\sqrt{5} $.",
+            "Area = $ \\frac{1}{2} \\cdot 3\\sqrt{5} \\cdot \\frac{8}{\\sqrt{5}} = 12 $ square units."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Choosing the base wisely",
+        "body": "Pick the vertex that gives the simplest line equation. Avoid messy fractions if possible. [[imp:Any side can be the base.]"
+      },
+      "questions": [
+        {
+          "id": "q-app-1",
+          "type": "fill-blank",
+          "prompt": "In a triangle, the altitude from a vertex is the ___ distance from that vertex to the line containing the opposite side.",
+          "blanks": [
+            {
+              "accept": [
+                "perpendicular"
+              ]
+            }
+          ],
+          "hints": [
+            "It’s the shortest distance.",
+            "Same as point‑line distance."
+          ],
+          "feedbackIfWrong": "It's the perpendicular distance."
+        },
+        {
+          "id": "q-app-2",
+          "type": "short-answer",
+          "prompt": "If the base length is 10 and altitude is 6, the area is what number?",
+          "answer": "30",
+          "hints": [
+            "Area = 1/2 × base × height.",
+            "10 × 6 = 60, then half."
+          ],
+          "feedbackIfWrong": "It's 30."
+        },
+        {
+          "id": "q-app-3",
+          "type": "short-answer",
+          "prompt": "To compute area using coordinates, you need the base length and the ___ from the opposite vertex.",
+          "answer": "altitude",
+          "hints": [
+            "Another word for height in a triangle.",
+            "It’s the perpendicular distance."
+          ],
+          "feedbackIfWrong": "You need the altitude."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-lines",
+      "title": "Blueprint Aid: Lines Problem Solving",
+      "teacherCues": [
+        "On the board, write Understand → Solve → Conclude. Ask: 'What are we given? What formula connects it?'",
+        "Emphasize that the same three steps apply to inclination, angle, and distance problems."
+      ],
+      "discoveryHook": {
+        "scenario": "When faced with a wordy geometry problem, a simple three‑step blueprint keeps you on track: Understand what you’re given, Solve using the right formula, and Conclude with a clear answer."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Understand]]: Identify known points, slopes, equations. Draw a quick sketch.",
+          "[[kw:Solve]]: Choose the formula (inclination $ \\rightarrow m = \\tan \\theta $, angle $ \\rightarrow \\tan\\theta = |...|$, distance $ \\rightarrow d = \\frac{|Ax_1+By_1+C|}{\\sqrt{A^2+B^2}} $).",
+          "[[kw:Conclude]]: State the answer with units (radians, degrees, or linear units). Double‑check if angle asked is acute."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Problem type ↔ Formula",
+            "headers": [
+              "Problem",
+              "Formula"
+            ],
+            "rows": [
+              {
+                "0": "Inclination from slope",
+                "1": "$ \\theta = \\left\\{\\begin{array}{ll}\\arctan m,& m\\ge 0\\\\ \\pi + \\arctan m,& m<0\\end{array}\\right. $"
+              },
+              {
+                "0": "Angle between lines",
+                "1": "$ \\tan \\theta = \\left|\\frac{m_2-m_1}{1+m_1 m_2}\\right| $"
+              },
+              {
+                "0": "Point–line distance",
+                "1": "$ d = \\frac{|Ax_1+By_1+C|}{\\sqrt{A^2+B^2}} $"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Blueprint Example: Triangle area from coordinates",
+          "prompt": "A triangle has vertices $ A(-3,0) $, $ B(0,4) $, $ C(5,2) $. Find its area.",
+          "steps": [
+            "**Understand**: Need base and altitude. Choose base $ AC $.",
+            "**Solve**: Find line $ AC $: slope $ 1/4 $, equation $ x-4y+3=0 $. Altitude from $ B $ = $ 13/\\sqrt{17} $. Base $ AC = 2\\sqrt{17} $.",
+            "**Conclude**: Area = $ \\frac{1}{2}(2\\sqrt{17})\\cdot\\frac{13}{\\sqrt{17}} = 13 $ square units."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Blueprint Example: Angle between lines",
+          "prompt": "Apply the blueprint to find the acute angle between $ x-2y=7 $ and $ 6x+2y=5 $.",
+          "peerPrompt": "Work with a partner: 'After finding slopes, which formula do you use? Why must you take the absolute value?'",
+          "minLength": 2,
+          "steps": [
+            "**Understand**: Lines: $ y=\\frac{1}{2}x -\\frac{7}{2} $ ($ m_1=1/2 $), $ y=-3x+\\frac{5}{2} $ ($ m_2=-3 $).",
+            "**Solve**: $ \\tan\\theta = \\left|\\frac{-3-1/2}{1+(1/2)(-3)}\\right| = \\left|\\frac{-7/2}{1-3/2}\\right| = \\left|\\frac{-7/2}{-1/2}\\right| = 7 $.",
+            "**Conclude**: $ \\theta = \\arctan 7 \\approx 81.87^\\circ $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Your Turn: Blueprint",
+          "prompt": "Find the distance from $ (6,2) $ to the line $ -3x+4y=-5 $.",
+          "steps": [
+            "Understand: point $ (6,2) $, line $ -3x+4y+5=0 $.",
+            "Solve: $ d = \\frac{|-3(6)+4(2)+5|}{\\sqrt{(-3)^2+4^2}} = \\frac{|-18+8+5|}{\\sqrt{25}} = \\frac{|-5|}{5} = 1 $.",
+            "Conclude: distance is exactly $ 1 $ unit."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Common blueprint slip",
+        "body": "Skipping the **Understand** step leads to using the wrong formula. Always write down what you have (slope, points, line form) first."
+      },
+      "questions": [
+        {
+          "id": "q-blue-1",
+          "type": "fill-blank",
+          "prompt": "The blueprint’s three steps are Understand, ___, and Conclude.",
+          "blanks": [
+            {
+              "accept": [
+                "Solve"
+              ]
+            }
+          ],
+          "hints": [
+            "It’s the middle step.",
+            "Where you apply the formula."
+          ],
+          "feedbackIfWrong": "The step is Solve."
+        },
+        {
+          "id": "q-blue-2",
+          "type": "short-answer",
+          "prompt": "When finding an angle between lines, what operation ensures you get the acute angle? (One word)",
+          "answer": "absolute",
+          "hints": [
+            "It makes the result positive.",
+            "The vertical bars in the formula."
+          ],
+          "feedbackIfWrong": "The absolute value ensures an acute angle."
+        },
+        {
+          "id": "q-blue-3",
+          "type": "short-answer",
+          "prompt": "If the blueprint asks for area, which two measurements do you multiply? base and ___",
+          "answer": "altitude",
+          "hints": [
+            "It’s the perpendicular distance.",
+            "Another word for height."
+          ],
+          "feedbackIfWrong": "base and altitude (or height)."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "type": "math-game",
+  "id": "ch01-domain-dash-game",
+  "title": "Domain Dash",
+  "subtitle": "Hit every checkpoint — one wrong domain costs a life.",
+  "description": "Race through domains of rational, radical, and log functions. Watch for sneaky endpoint traps.",
+  "game": "domain-dash",
+  "lives": 3,
+  "promptLabel": "Next checkpoint",
+  "rounds": [
+    {
+      "prompt": "What is the domain of $f(x)=\\dfrac{1}{x-2}$?",
+      "choices": [
+        { "id": "a", "label": "All real $x$ except $x=2$" },
+        { "id": "b", "label": "All real $x$ except $x=-2$" },
+        { "id": "c", "label": "$x \\ge 2$" },
+        { "id": "d", "label": "$x > 2$" }
+      ],
+      "correctId": "a",
+      "explain": "Denominator cannot be $0$, so $x \\neq 2$.",
+      "missExplain": "Exclude where $x-2=0$, i.e. $x=2$."
+    },
+    {
+      "prompt": "What is the domain of $f(x)=\\sqrt{x-3}$?",
+      "choices": [
+        { "id": "a", "label": "$x > 3$" },
+        { "id": "b", "label": "$x \\ge 3$" },
+        { "id": "c", "label": "$x \\le 3$" },
+        { "id": "d", "label": "All real $x$" }
+      ],
+      "correctId": "b",
+      "explain": "Radicand must be $\\ge 0$: $x-3 \\ge 0 \\Rightarrow x \\ge 3$.",
+      "missExplain": "Square root needs $x-3 \\ge 0$, so $x \\ge 3$."
+    },
+    {
+      "prompt": "What is the domain of $f(x)=\\ln(x)$?",
+      "choices": [
+        { "id": "a", "label": "$x \\ge 0$" },
+        { "id": "b", "label": "$x > 0$" },
+        { "id": "c", "label": "All real $x$" },
+        { "id": "d", "label": "$x \\neq 0$" }
+      ],
+      "correctId": "b",
+      "explain": "Natural log is only defined for positive inputs: $x > 0$.",
+      "missExplain": "$\\ln(x)$ requires $x > 0$ (not including $0$)."
+    },
+    {
+      "prompt": "What is the domain of $f(x)=\\dfrac{1}{\\sqrt{x+1}}$?",
+      "choices": [
+        { "id": "a", "label": "$x \\ge -1$" },
+        { "id": "b", "label": "$x > -1$" },
+        { "id": "c", "label": "$x \\le -1$" },
+        { "id": "d", "label": "All real $x$ except $x=-1$" }
+      ],
+      "correctId": "b",
+      "explain": "Need $x+1 > 0$ (sqrt defined and nonzero in the denominator).",
+      "missExplain": "Require $x+1 > 0$, so $x > -1$."
+    },
+    {
+      "prompt": "What is the domain of $f(x)=\\dfrac{x+1}{x^2-1}$?",
+      "choices": [
+        { "id": "a", "label": "All real $x$ except $x=1$" },
+        { "id": "b", "label": "All real $x$ except $x=-1$" },
+        { "id": "c", "label": "All real $x$ except $x=\\pm 1$" },
+        { "id": "d", "label": "$x \\neq 0$" }
+      ],
+      "correctId": "c",
+      "explain": "$x^2-1=(x-1)(x+1)=0$ at $x=\\pm 1$.",
+      "missExplain": "Exclude both roots of the denominator: $x \\neq \\pm 1$."
+    },
+    {
+      "prompt": "What is the domain of $f(x)=\\sqrt{4-x^2}$?",
+      "choices": [
+        { "id": "a", "label": "$x \\ge 2$" },
+        { "id": "b", "label": "$-2 \\le x \\le 2$" },
+        { "id": "c", "label": "$x < -2$ or $x > 2$" },
+        { "id": "d", "label": "All real $x$" }
+      ],
+      "correctId": "b",
+      "explain": "$4-x^2 \\ge 0 \\Rightarrow x^2 \\le 4 \\Rightarrow |x| \\le 2$.",
+      "missExplain": "Need $4-x^2 \\ge 0$, so $-2 \\le x \\le 2$."
+    },
+    {
+      "prompt": "What is the domain of $f(x)=\\log(x-1)$?",
+      "choices": [
+        { "id": "a", "label": "$x > 1$" },
+        { "id": "b", "label": "$x \\ge 1$" },
+        { "id": "c", "label": "$x < 1$" },
+        { "id": "d", "label": "All real $x$ except $x=1$" }
+      ],
+      "correctId": "a",
+      "explain": "Argument of log must be positive: $x-1 > 0 \\Rightarrow x > 1$.",
+      "missExplain": "Need $x-1 > 0$, so $x > 1$."
+    },
+    {
+      "prompt": "What is the domain of $f(x)=\\dfrac{\\sqrt{x}}{x-4}$?",
+      "choices": [
+        { "id": "a", "label": "$x \\ge 0$" },
+        { "id": "b", "label": "$x > 0$, $x \\neq 4$" },
+        { "id": "c", "label": "$x \\ge 0$, $x \\neq 4$" },
+        { "id": "d", "label": "All real $x$ except $x=4$" }
+      ],
+      "correctId": "c",
+      "explain": "Need $x \\ge 0$ for the square root, and $x \\neq 4$ for the denominator.",
+      "missExplain": "Combine $\\sqrt{x}$ ($x \\ge 0$) with $x \\neq 4$."
+    }
+  ]
+}

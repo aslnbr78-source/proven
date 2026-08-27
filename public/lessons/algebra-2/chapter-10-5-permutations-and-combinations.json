@@ -1,0 +1,716 @@
+{
+  "id": "chapter-10-5-permutations-and-combinations",
+  "blocks": [
+    {
+      "id": "permutations-counting",
+      "questions": [
+        {
+          "prompt": "What is the value of 5! (5 factorial)?",
+          "answer": "120",
+          "type": "short-answer",
+          "hints": [
+            "Multiply 5·4·3·2·1.",
+            "5·4 = 20, 20·3 = 60, ..."
+          ],
+          "feedbackIfWrong": "5! = 5·4·3·2·1 = 120.",
+          "id": "q1-1"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "order",
+                "Order"
+              ]
+            }
+          ],
+          "id": "q1-2",
+          "type": "fill-blank",
+          "prompt": "A permutation is an arrangement where ___ matters.",
+          "feedbackIfWrong": "In permutations, order is important.",
+          "hints": [
+            "Starts with 'o'.",
+            "In permutations, ABC is different from CBA."
+          ]
+        },
+        {
+          "hints": [
+            "6P2 = 6! / (6-2)! = 6! / 4!",
+            "Expand: 6·5·4! / 4! = 6·5 = ?"
+          ],
+          "id": "q1-3",
+          "answer": "30",
+          "feedbackIfWrong": "6P2 = 6·5 = 30.",
+          "type": "short-answer",
+          "prompt": "Evaluate 6P2."
+        }
+      ],
+      "title": "Permutations and Factorials",
+      "confusionCorner": {
+        "title": "When to Use Permutations?",
+        "body": "Ask: Does the order matter? If yes (like assigning 1st, 2nd, 3rd place or forming a sequence), use permutations. If order doesn't matter (like selecting a committee), you'll use combinations."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "$n$",
+              "$n!$",
+              "Meaning"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "1",
+                "2": "1"
+              },
+              {
+                "0": "2",
+                "1": "2",
+                "2": "2·1"
+              },
+              {
+                "0": "3",
+                "1": "6",
+                "2": "3·2·1"
+              },
+              {
+                "0": "4",
+                "1": "24",
+                "2": "4·3·2·1"
+              },
+              {
+                "0": "5",
+                "1": "120",
+                "2": "5·4·3·2·1"
+              }
+            ],
+            "title": "Factorial Growth",
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "A [[kw:permutation]] is an arrangement of objects in which order is important. Changing the order creates a different permutation.",
+          "The [[kw:Fundamental Counting Principle]] says: if event 1 can occur in $m$ ways and event 2 in $n$ ways, the two events together can occur in $m \\cdot n$ ways. This extends to any number of events.",
+          "[[kw:Factorial]] notation: $n! = n \\cdot (n-1) \\cdot (n-2) \\cdots 3 \\cdot 2 \\cdot 1$. By definition, $0! = 1$.",
+          "The number of permutations of $n$ distinct objects is $n!$. Example: arranging 4 books on a shelf: $4! = 24$ ways.",
+          "The number of permutations of $n$ objects taken $r$ at a time is: $$ _{n}P_{r} = \\frac{n!}{(n-r)!} $$"
+        ],
+        "formulaCard": {
+          "notes": [
+            "$n$ = total number of objects",
+            "$r$ = number of objects being arranged",
+            "Order matters! ABC is different from ACB."
+          ],
+          "title": "Permutation Formula (nPr)",
+          "formula": "$$ _{n}P_{r} = \\frac{n!}{(n-r)!} $$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "Imagine you're setting a 4-digit passcode using the digits 1, 2, 3, 4 without repeating any digit. How many different codes can you make? The answer is 4! (24), and it's all about permutations — arrangements where order matters!"
+      },
+      "teacherCues": [
+        "Write the word 'JULY' on the board and ask: 'In how many different orders can we arrange these letters?'",
+        "Introduce the factorial notation: 4! = 4·3·2·1. Show how it connects to the Fundamental Counting Principle."
+      ],
+      "examples": [
+        {
+          "prompt": "How many ways can you arrange all letters in the word 'ROCK'?",
+          "role": "guided",
+          "steps": [
+            "The word has 4 distinct letters. We are arranging all of them.",
+            "Number of permutations of 4 objects = 4! = 4·3·2·1 = 24.",
+            "So there are 24 different arrangements."
+          ],
+          "title": "Example A – Arranging Letters"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the formula 4P2 = 4!/(4-2)! give 12? How does this relate to the counting principle (4 choices for first letter, 3 for second)?",
+          "minLength": 2,
+          "title": "Example B – Arranging 2 of 4 Letters",
+          "prompt": "How many ways can you arrange 2 letters from the word 'ROCK'?",
+          "steps": [
+            "This is a permutation of 4 items taken 2 at a time.",
+            "4P2 = 4! / (4-2)! = 4! / 2! = (4·3·2·1) / (2·1) = 12.",
+            "By counting principle: 4 choices for 1st letter, then 3 for 2nd → 4·3 = 12. Same result."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "We are selecting and ordering 3 horses out of 10.",
+            "Use permutations: 10P3 = 10! / (10-3)! = 10! / 7!.",
+            "Expand: 10·9·8·7! / 7! = 10·9·8 = 720.",
+            "There are 720 possible top-3 finishes."
+          ],
+          "prompt": "Ten horses run a race. How many ways can they finish first, second, and third? (No ties.)",
+          "title": "Example C – Race Finishes"
+        }
+      ]
+    },
+    {
+      "examples": [
+        {
+          "prompt": "You can choose 2 side dishes from a list of 8. How many combinations are possible?",
+          "title": "Example A – Pizza Toppings",
+          "role": "guided",
+          "steps": [
+            "Order doesn't matter, so combinations: 8C2.",
+            "Formula: 8C2 = 8! / (6!·2!) = (8·7·6!) / (6!·2·1).",
+            "Cancel 6!: (8·7) / 2 = 28.",
+            "There are 28 different pairs of side dishes."
+          ]
+        },
+        {
+          "title": "Example B – Handshakes",
+          "prompt": "If 10 people each shake hands with every other person exactly once, how many handshakes occur?",
+          "steps": [
+            "A handshake between person A and B is the same as B and A — order doesn't matter.",
+            "We choose 2 people out of 10 to shake hands: 10C2.",
+            "10C2 = 10!/(8!·2!) = (10·9)/2 = 45.",
+            "So, 45 handshakes total."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is this a combination problem and not a permutation? What would 10C2 represent?",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C – Yearbook Photos",
+          "role": "independent",
+          "prompt": "A yearbook editor selects 14 photos. 2 will be placed at the top of the page at random. What is the probability your photo and your friend's photo are the two selected?",
+          "steps": [
+            "Total combinations of 2 photos from 14: 14C2 = 91.",
+            "Only 1 favorable combination (yours and your friend's).",
+            "Probability = 1/91 ≈ 0.011."
+          ]
+        }
+      ],
+      "id": "combinations",
+      "title": "Combinations",
+      "concept": {
+        "explanation": [
+          "A [[kw:combination]] is a selection of objects where order does NOT matter.",
+          "The number of combinations of $n$ objects taken $r$ at a time is: $$ _{n}C_{r} = \\frac{n!}{(n-r)! \\cdot r!} $$",
+          "Notice: combinations are always less than or equal to permutations for the same $n$ and $r$, because different orderings of the same items count as one combination.",
+          "Example: Choosing 2 side dishes from 8. Order doesn't matter, so use combinations: 8C2 = 28."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Permutations (4P2)",
+                "1": "AB, AC, AD, BA, BC, BD, CA, CB, CD, DA, DB, DC",
+                "2": "12"
+              },
+              {
+                "0": "Combinations (4C2)",
+                "1": "AB, AC, AD, BC, BD, CD (order doesn't matter)",
+                "2": "6"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Type",
+              "List",
+              "Count"
+            ],
+            "variant": "colorful",
+            "title": "Permutations vs. Combinations (selecting 2 from A, B, C, D)"
+          }
+        ],
+        "formulaCard": {
+          "title": "Combination Formula (nCr)",
+          "notes": [
+            "Also written as $\\binom{n}{r}$.",
+            "Use when order does NOT matter.",
+            "Symmetric: $_{n}C_{r} = _{n}C_{n-r}$."
+          ],
+          "formula": "$$ _{n}C_{r} = \\frac{n!}{(n-r)! \\cdot r!} $$"
+        }
+      },
+      "teacherCues": [
+        "Write ABC, ACB, BAC, BCA, CAB, CBA. Ask: 'If these are just groups, not ordered lists, how many distinct groups of 3 letters?'",
+        "Introduce nCr formula, contrast with nPr."
+      ],
+      "questions": [
+        {
+          "hints": [
+            "5C2 = 5! / (3!·2!)",
+            "5·4/2 = ?"
+          ],
+          "answer": "10",
+          "prompt": "Evaluate 5C2.",
+          "type": "short-answer",
+          "feedbackIfWrong": "5C2 = 5!/(3!·2!) = (5·4)/2 = 10.",
+          "id": "q2-1"
+        },
+        {
+          "id": "q2-2",
+          "type": "fill-blank",
+          "hints": [
+            "The opposite of permutations.",
+            "For combinations, AB is the same as BA."
+          ],
+          "prompt": "In a combination, order does ___ matter.",
+          "blanks": [
+            {
+              "accept": [
+                "not",
+                "Not"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "In combinations, order does NOT matter."
+        },
+        {
+          "type": "short-answer",
+          "prompt": "How many different 5-card hands are possible from a standard 52-card deck? Use the notation nCr in your answer (just write the expression, like 52C5).",
+          "answer": "52C5",
+          "id": "q2-3",
+          "feedbackIfWrong": "The number of 5-card hands is 52C5.",
+          "hints": [
+            "Order of cards in a hand doesn't matter.",
+            "We're choosing 5 cards out of 52."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "You're picking 2 toppings for a pizza from a list of 8. Does it matter which topping you name first? No — pepperoni and mushrooms is the same as mushrooms and pepperoni. When order doesn't matter, you're counting combinations!"
+      },
+      "confusionCorner": {
+        "body": "Ask: If I swap the two items, does it count as a different outcome? If yes → permutation. If no → combination. For example: committee (combination), race finish order (permutation).",
+        "title": "Permutation or Combination?"
+      }
+    },
+    {
+      "questions": [
+        {
+          "type": "short-answer",
+          "prompt": "What is the coefficient of $a^2 b$ in the expansion of $(a+b)^3$?",
+          "answer": "3",
+          "id": "q3-1",
+          "hints": [
+            "Use 3C1 or Pascal's Triangle row 3.",
+            "The term is 3C1·a^{2}·b^{1}."
+          ],
+          "feedbackIfWrong": "The coefficient is 3C1 = 3."
+        },
+        {
+          "id": "q3-2",
+          "feedbackIfWrong": "The coefficients are combinations (nCr).",
+          "hints": [
+            "Starts with 'c'.",
+            "It's what we use when order doesn't matter."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "combination",
+                "Combination"
+              ]
+            }
+          ],
+          "prompt": "In the Binomial Theorem, each coefficient can be written as a ___ (nCr)."
+        },
+        {
+          "feedbackIfWrong": "Exponent of x is n-r = 5-2 = 3.",
+          "prompt": "In the expansion of $(x+3)^5$, what is the exponent of $x$ in the term where $r=2$?",
+          "id": "q3-3",
+          "answer": "3",
+          "type": "short-answer",
+          "hints": [
+            "General form: nCr·x^{n-r}·3^r.",
+            "Here n=5, r=2, so exponent = 5-2."
+          ]
+        }
+      ],
+      "title": "Binomial Theorem and Combinations",
+      "discoveryHook": {
+        "scenario": "Expanding (x+y)^5 by multiplying it out five times would be tedious. But combinations give you the coefficients instantly! This connection between probability and algebra is the Binomial Theorem."
+      },
+      "teacherCues": [
+        "Remind students of Pascal's Triangle from Chapter 4.2. Show that the coefficients in (a+b)^n are combinations.",
+        "Write (a+b)^3 = 3C0 a^3 + 3C1 a^2 b + 3C2 a b^2 + 3C3 b^3."
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:Binomial Theorem]] states that for any positive integer $n$: $$ (a+b)^n = \\sum_{r=0}^{n} _{n}C_{r} \\, a^{n-r} b^{r} $$",
+          "Each term has the form $_{n}C_{r} \\, a^{n-r} b^{r}$, where $r$ goes from $0$ to $n$.",
+          "The coefficient $_{n}C_{r}$ is the same as the entry in Pascal's Triangle in row $n$, position $r$.",
+          "You can find a specific term's coefficient without expanding the whole thing: for $x^k$ in $(ax+b)^n$, set exponent and solve for $r$."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "$n$",
+              "Pascal's Triangle Coefficients",
+              "As Combinations"
+            ],
+            "variant": "colorful",
+            "title": "Binomial Coefficients = Combinations",
+            "rows": [
+              {
+                "0": "2",
+                "1": "1 2 1",
+                "2": "$_{2}C_{0}$, $_{2}C_{1}$, $_{2}C_{2}$"
+              },
+              {
+                "0": "3",
+                "1": "1 3 3 1",
+                "2": "$_{3}C_{0}$, $_{3}C_{1}$, $_{3}C_{2}$, $_{3}C_{3}$"
+              },
+              {
+                "0": "4",
+                "1": "1 4 6 4 1",
+                "2": "$_{4}C_{0}$, $_{4}C_{1}$, $_{4}C_{2}$, $_{4}C_{3}$, $_{4}C_{4}$"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "$_{n}C_{r}$ is the coefficient.",
+            "Exponents of $a$ decrease from $n$ to $0$, exponents of $b$ increase from $0$ to $n$.",
+            "For $(a-b)^n$, treat $b$ as negative and the signs alternate."
+          ],
+          "title": "Binomial Theorem",
+          "formula": "$$ (a+b)^n = \\sum_{r=0}^{n} _{n}C_{r} \\, a^{n-r} b^{r} $$"
+        }
+      },
+      "examples": [
+        {
+          "steps": [
+            "Write terms for r=0 to 3: 3C0·x^3·2^0 + 3C1·x^2·2^1 + 3C2·x^1·2^2 + 3C3·x^0·2^3.",
+            "Compute combinations: 3C0=1, 3C1=3, 3C2=3, 3C3=1.",
+            "Simplify: 1·x^3·1 + 3·x^2·2 + 3·x·4 + 1·1·8 = x^3 + 6x^2 + 12x + 8."
+          ],
+          "prompt": "Use the Binomial Theorem to expand $(x+2)^3$.",
+          "role": "guided",
+          "title": "Example A – Expanding a Binomial"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "Find the coefficient of $x^4$ in the expansion of $(3x+2)^{10}$.",
+          "steps": [
+            "General term: 10Cr·(3x)^{10-r}·2^r.",
+            "For $x^4$, the exponent of x is 10-r = 4 → r = 6.",
+            "Term: 10C6·(3x)^4·2^6 = 210·81x^4·64 = 1,088,640 x^4.",
+            "So the coefficient is 1,088,640."
+          ],
+          "title": "Example B – Finding a Specific Coefficient",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you determine which term contains $x^4$? What does r represent?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Treat as $(2p + (-q))^4$.",
+            "Terms: 4C0(2p)^4 + 4C1(2p)^3(-q) + 4C2(2p)^2(-q)^2 + 4C3(2p)(-q)^3 + 4C4(-q)^4.",
+            "Calculate: 1·16p^4 + 4·8p^3·(-q) + 6·4p^2·q^2 + 4·2p·(-q^3) + 1·q^4.",
+            "Simplify: 16p^4 - 32p^3 q + 24p^2 q^2 - 8p q^3 + q^4."
+          ],
+          "title": "Example C – Negative Term",
+          "prompt": "Expand $(2p - q)^4$ using the Binomial Theorem."
+        }
+      ],
+      "id": "binomial-theorem",
+      "confusionCorner": {
+        "body": "When a term inside the binomial has a coefficient, like $(3x+2)^{10}$, remember to raise the entire term to the power: $(3x)^{10-r}$. It's not just $x^{10-r}$.",
+        "title": "Don't Forget the Coefficients Inside"
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "In a raffle drawing, 3 winners are pulled from 50 entries. What's the chance you win the first prize? Counting total outcomes and favorable ones is exactly where permutations and combinations shine!"
+      },
+      "id": "probability-with-counting",
+      "teacherCues": [
+        "Write: P(event) = (number of favorable outcomes) / (total outcomes). Use permutations/combinations to count both.",
+        "Do Example 3 from the textbook: 12 floats, find P(yours first, chorus second)."
+      ],
+      "confusionCorner": {
+        "title": "Consistency is Key",
+        "body": "If you use permutations for total outcomes, use permutations for favorable outcomes. If combinations, use combinations. Mixing them will give a wrong probability."
+      },
+      "examples": [
+        {
+          "title": "Example A – Float Parade",
+          "steps": [
+            "Total outcomes: all orders of 12 floats = 12!.",
+            "Favorable: you first, chorus second, remaining 10 floats in any order = 10!.",
+            "Probability = 10! / 12! = 10! / (12·11·10!) = 1/132."
+          ],
+          "role": "guided",
+          "prompt": "12 floats in a parade, order chosen at random. Find P(your float is first and the school chorus is second)."
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we use combinations in both numerator and denominator? How would the problem change if the 5 students had different roles?",
+          "steps": [
+            "Total combinations of 5 from 30: 30C5.",
+            "Favorable: your group of 3 is chosen, plus any 2 from the remaining 27: 27C2.",
+            "Probability = 27C2 / 30C5."
+          ],
+          "prompt": "In a class of 30, a teacher randomly selects 5 students for a project. What is the probability that you and your 2 best friends (3 specific students) are all chosen?",
+          "title": "Example B – Group Project Selection",
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "Total combinations: 49C6.",
+            "Only 1 winning combination.",
+            "Probability = 1 / 49C6."
+          ],
+          "role": "independent",
+          "title": "Example C – Lottery",
+          "prompt": "A lottery requires picking 6 numbers from 1 to 49. Order doesn't matter. Find the probability of winning with a single ticket."
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Probability with Counting",
+          "notes": [
+            "Be consistent: use permutations for both numerator and denominator if order matters, or combinations if not.",
+            "Many problems simplify by cancelling factorials."
+          ],
+          "formula": "$$ P(\\text{event}) = \\frac{\\text{Number of favorable permutations (or combinations)}}{\\text{Total number of permutations (or combinations)}} $$"
+        },
+        "explanation": [
+          "Probability problems often require counting the total number of possible outcomes (sample space) and the number of favorable outcomes.",
+          "Use permutations when order matters (e.g., assigning specific positions). Total outcomes often use $n!$ or $_{n}P_{r}$.",
+          "Use combinations when order doesn't matter (e.g., selecting a group). Total outcomes often use $_{n}C_{r}$.",
+          "Then probability = favorable outcomes / total outcomes."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Scenario",
+              "Order Matters?",
+              "Counting Method"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Line up 5 books on a shelf",
+                "1": "Yes",
+                "2": "5! = 120"
+              },
+              {
+                "0": "Pick 3 finalists from 10 contestants (ranked 1st,2nd,3rd)",
+                "1": "Yes",
+                "2": "10P3 = 720"
+              },
+              {
+                "0": "Choose a committee of 3 from 10 people",
+                "1": "No",
+                "2": "10C3 = 120"
+              },
+              {
+                "0": "Draw 5 cards from a deck (hand)",
+                "1": "No",
+                "2": "52C5 = 2,598,960"
+              }
+            ],
+            "title": "Choosing the Right Counting Tool"
+          }
+        ]
+      },
+      "title": "Probability Using Permutations & Combinations",
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "short-answer",
+          "hints": [
+            "Number of favorable outcomes: that runner is first, remaining 9 can be any order: 9!.",
+            "Total outcomes: 10!."
+          ],
+          "feedbackIfWrong": "Probability = 9!/10! = 1/10.",
+          "prompt": "In a race with 10 runners, what is the probability that a specific runner finishes first? (Assume all orders equally likely.)",
+          "answer": "1/10"
+        },
+        {
+          "type": "fill-blank",
+          "hints": [
+            "Starts with 'p'.",
+            "It's the counting method that treats AB and BA as different."
+          ],
+          "prompt": "When order is important, we use ___ to count outcomes.",
+          "blanks": [
+            {
+              "accept": [
+                "permutations",
+                "Permutations"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "When order matters, we use permutations.",
+          "id": "q4-2"
+        },
+        {
+          "prompt": "A committee of 3 is chosen from 9 people. How many total possible committees? (Write the expression using nCr, like 9C3).",
+          "type": "short-answer",
+          "answer": "9C3",
+          "hints": [
+            "Order doesn't matter.",
+            "Choose 3 from 9."
+          ],
+          "feedbackIfWrong": "The number of committees is 9C3.",
+          "id": "q4-3"
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "You're playing poker. What's the chance you're dealt a flush (all five cards same suit)? The Probability Blueprint – combined with combinations – makes this calculation straightforward!"
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "answer": "combinations",
+          "prompt": "In a 5-card hand from a standard deck, do you use permutations or combinations to count total hands? (Answer 'permutations' or 'combinations').",
+          "hints": [
+            "Does the order in which you receive the cards matter?",
+            "A hand is the same set of cards regardless of order."
+          ],
+          "feedbackIfWrong": "Order doesn't matter in a hand, so we use combinations (52C5).",
+          "type": "short-answer"
+        },
+        {
+          "id": "q5-2",
+          "blanks": [
+            {
+              "accept": [
+                "Solve",
+                "solve"
+              ]
+            }
+          ],
+          "prompt": "In the Probability Blueprint, after understanding the problem, the next step is to ___ (find the total and favorable outcomes).",
+          "type": "fill-blank",
+          "hints": [
+            "It's the 'S' in Understand-Solve-Conclude.",
+            "You apply formulas in this step."
+          ],
+          "feedbackIfWrong": "The second step is Solve, where you count outcomes."
+        },
+        {
+          "id": "q5-3",
+          "hints": [
+            "8! / 10! = 1 / (10·9).",
+            "10·9 = 90."
+          ],
+          "feedbackIfWrong": "8!/10! = 1/(10·9) = 1/90.",
+          "type": "short-answer",
+          "answer": "1/90",
+          "prompt": "If there are 8! ways to arrange the remaining floats after fixing two, and 10! total orders, what is the probability? Simplify to a fraction a/b."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A – Flush Probability",
+          "steps": [
+            "Understand: Order doesn't matter. Total outcomes = 52C5. Favorable: choose 5 hearts from the 13 hearts = 13C5.",
+            "Solve: P = 13C5 / 52C5.",
+            "Conclude: Simplify or calculate: 13C5=1287, 52C5=2,598,960, so P ≈ 0.000495."
+          ],
+          "prompt": "You are dealt a 5-card hand from a standard deck. Find P(all 5 cards are hearts).",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Understand: P(at least one shared) = 1 - P(all different).",
+            "Solve: P(all different) = 365P3 / 365^3 (order matters because we assign birthdays to distinct people).",
+            "= (365·364·363) / 365^3 ≈ 0.9918. So P(shared) ≈ 0.0082.",
+            "Conclude: About 0.8% chance."
+          ],
+          "title": "Example B – Birthday Problem (Simplified)",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is it easier to find the complement: P(no shared birthday)? How can permutations count the no-shared-birthday outcomes?",
+          "prompt": "In a group of 3 people, find the probability that at least 2 share a birthday. (Assume 365 days, equally likely.)",
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "Understand: Total orders = 10!. Favorable: you at 5th, rival at 4th. Remaining 8 performers in other 8 spots: 8!.",
+            "Solve: P = 8! / 10! = 1/(10·9) = 1/90.",
+            "Conclude: Probability is 1/90."
+          ],
+          "role": "independent",
+          "prompt": "10 performers, order at random. You are one of them. Find P(you perform last before intermission (5th) and your rival performs immediately before you (4th)).",
+          "title": "Example C – Talent Show Order"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Birthday Problem Trick",
+        "body": "Counting 'at least one shared birthday' directly is messy. Almost always, you find the complement using permutations: P(no shared) = 365Pn / 365^n. Then subtract from 1."
+      },
+      "title": "Blueprint Aid – Counting for Probability",
+      "teacherCues": [
+        "Walk through the blueprint with a new problem: '5 cards dealt from a standard deck. Find P(all hearts).'",
+        "Emphasize: Understand if order matters (it doesn't for a hand), then Solve with combinations, then Conclude."
+      ],
+      "id": "blueprint-counting",
+      "concept": {
+        "explanation": [
+          "1. [[imp:Understand]]: Does order matter? (e.g., a hand of cards: no. A lineup: yes.) What is the event?",
+          "2. [[imp:Solve]]: Use the appropriate counting tool: permutations ($n!$ or $_nP_r$) or combinations ($_nC_r$) to find total outcomes and favorable outcomes. Simplify factorials where possible.",
+          "3. [[imp:Conclude]]: Write the probability as a fraction, decimal, or percent, and interpret in context."
+        ],
+        "formulaCard": {
+          "formula": "$$ P(\\text{event}) = \\frac{\\text{Favorable outcomes (nPr or nCr)}}{\\text{Total outcomes (nPr or nCr)}} $$",
+          "notes": [
+            "Use permutations for sequences, combinations for sets.",
+            "Break down complex events into combinations of smaller counting tasks."
+          ],
+          "title": "Counting & Probability Blueprint"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Key Questions"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Order matters? Are we selecting or arranging? What is the event?"
+              },
+              {
+                "0": "Solve",
+                "1": "Total outcomes? Favorable outcomes? Use nPr or nCr appropriately."
+              },
+              {
+                "0": "Conclude",
+                "1": "Probability = favorable / total. Simplify and interpret."
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Counting Problems"
+          }
+        ]
+      }
+    }
+  ],
+  "schemaVersion": 2,
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Use physical examples: have students line up (permutations) and select teams (combinations).",
+    "Relate combinations to Pascal's Triangle to connect to earlier algebra work on binomial expansions.",
+    "For probability problems, emphasize the consistency of counting method between numerator and denominator."
+  ],
+  "standards": [
+    "HSS.CP.B.9",
+    "HSA.APR.C.5"
+  ],
+  "title": "Permutations and Combinations",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

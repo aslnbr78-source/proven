@@ -1,0 +1,653 @@
+{
+  "promptLabel": "Define exactly",
+  "game": "choice-rounds",
+  "lives": 3,
+  "description": "A 25‑round vocabulary drill on the six core parent functions: match equations to names, sort symmetries, and trap the wrong definition before lives run out. No solving — just the exact terminology.",
+  "roundsPerRun": 8,
+  "type": "math-game",
+  "courseId": "precalculus",
+  "chapterHint": "Chapter 1.6 · Parent Functions",
+  "timer": 30,
+  "rounds": [
+    {
+      "explain": "Exactly — the simplest linear parent returns whatever you put in.",
+      "prompt": "The identity function is $f(x)=x$.",
+      "missExplain": "Trap sprung! It's true: the identity function is $f(x)=x$.",
+      "answer": true,
+      "kind": "true-false"
+    },
+    {
+      "explain": "Yes — a parent function is the simplest, most basic form.",
+      "prompt": "One word breaks the definition. Tap it.",
+      "hint": "Is a parent function complex or basic?",
+      "sentence": "A parent function is the most complex form of a family of functions.",
+      "fix": "simple",
+      "missExplain": "Trap sprung! The wrong word is \"complex\". Parent functions are simple, without added constants.",
+      "kind": "spot",
+      "wrongWord": "complex"
+    },
+    {
+      "correctId": "a",
+      "choices": [
+        {
+          "label": "Parabola",
+          "id": "a"
+        },
+        {
+          "id": "b",
+          "label": "Hyperbola"
+        },
+        {
+          "id": "c",
+          "label": "Line"
+        },
+        {
+          "id": "d",
+          "label": "Cubic curve"
+        }
+      ],
+      "explain": "Clean — the graph of a squaring function is a parabola.",
+      "missExplain": "Trap sprung! The U‑shape is a parabola, not a hyperbola or line.",
+      "prompt": "What is the U‑shaped graph of $f(x)=x^2$ called?",
+      "kind": "choice"
+    },
+    {
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "Identity (linear)",
+          "right": "$f(x)=x$"
+        },
+        {
+          "id": "p2",
+          "left": "Squaring",
+          "right": "$f(x)=x^2$"
+        },
+        {
+          "right": "$f(x)=x^3$",
+          "id": "p3",
+          "left": "Cubic"
+        },
+        {
+          "left": "Square root",
+          "id": "p4",
+          "right": "$f(x)=\\sqrt{x}$"
+        },
+        {
+          "left": "Reciprocal",
+          "id": "p5",
+          "right": "$f(x)=\\frac{1}{x}$"
+        }
+      ],
+      "missExplain": "One slipped. Reciprocal is $1/x$, square root is $\\sqrt{x}$.",
+      "kind": "match",
+      "prompt": "Connect each parent function to its equation.",
+      "explain": "All matched — the core parent functions."
+    },
+    {
+      "explain": "Yes — identity, squaring, and cubic accept any real input. Square root is restricted to $x \\ge 0$.",
+      "kind": "multi",
+      "missExplain": "Trap sprung! Square root function has domain $x \\ge 0$; the others are all real numbers.",
+      "prompt": "Select ALL functions whose domain is all real numbers.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "$f(x)=x$"
+        },
+        {
+          "label": "$f(x)=x^2$",
+          "id": "b"
+        },
+        {
+          "id": "c",
+          "label": "$f(x)=x^3$"
+        },
+        {
+          "id": "d",
+          "label": "$f(x)=\\sqrt{x}$"
+        }
+      ],
+      "correctIds": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "prompt": "Sort each parent function into even, odd, or neither.",
+      "bins": [
+        {
+          "label": "Even",
+          "id": "even"
+        },
+        {
+          "id": "odd",
+          "label": "Odd"
+        },
+        {
+          "label": "Neither",
+          "id": "neither"
+        }
+      ],
+      "explain": "Sorted! Squaring is even, cubic and identity are odd, square root has no full symmetry because its domain is only $[0,\\infty)$.",
+      "items": [
+        {
+          "label": "$f(x)=x^2$",
+          "id": "i1",
+          "binId": "even"
+        },
+        {
+          "id": "i2",
+          "label": "$f(x)=x^3$",
+          "binId": "odd"
+        },
+        {
+          "label": "$f(x)=x$",
+          "id": "i3",
+          "binId": "odd"
+        },
+        {
+          "binId": "neither",
+          "id": "i4",
+          "label": "$f(x)=\\sqrt{x}$"
+        }
+      ],
+      "missExplain": "Check again — $\\sqrt{x}$ isn't symmetric on both sides, so it's neither.",
+      "kind": "sort"
+    },
+    {
+      "missExplain": "Almost — start by substituting $-x$, then simplify, then see which equality holds.",
+      "items": [
+        {
+          "id": "a",
+          "label": "Replace $x$ with $-x$ in the function"
+        },
+        {
+          "label": "Simplify the resulting expression",
+          "id": "b"
+        },
+        {
+          "id": "c",
+          "label": "Compare with $f(x)$ and $-f(x)$"
+        }
+      ],
+      "orderLabel": "Tap first step → last step",
+      "prompt": "Arrange the steps to test if a function is even or odd algebraically.",
+      "kind": "order",
+      "explain": "Perfect — substitute, simplify, compare.",
+      "correctOrder": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "kind": "spot",
+      "fix": "odd",
+      "prompt": "One word makes this false. Tap it.",
+      "missExplain": "Trap sprung! The wrong word is \"even\". The cubic function is odd.",
+      "sentence": "The cubic function $f(x)=x^3$ is an even function.",
+      "hint": "What type of symmetry does $x^3$ have?",
+      "wrongWord": "even",
+      "explain": "Yes — cubic is odd because $f(-x) = -f(x)$."
+    },
+    {
+      "missExplain": "Almost — zero is allowed, so the domain is $x \\ge 0$, not just positive numbers.",
+      "prompt": "What is the domain of the square root function $f(x)=\\sqrt{x}$?",
+      "kind": "choice",
+      "correctId": "b",
+      "explain": "Right — the domain includes zero, so $[0, \\infty)$.",
+      "choices": [
+        {
+          "label": "All real numbers",
+          "id": "a"
+        },
+        {
+          "id": "b",
+          "label": "$x \\ge 0$"
+        },
+        {
+          "id": "c",
+          "label": "$x > 0$"
+        },
+        {
+          "label": "$x \\le 0$",
+          "id": "d"
+        }
+      ]
+    },
+    {
+      "explain": "All matched — domains reflect operational restrictions.",
+      "prompt": "Connect each parent function to its domain description.",
+      "kind": "match",
+      "missExplain": "One slipped. Reciprocal excludes zero, square root excludes negatives, others accept all reals.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "Identity, $f(x)=x$",
+          "right": "All real numbers"
+        },
+        {
+          "right": "All real numbers",
+          "id": "p2",
+          "left": "Squaring, $f(x)=x^2$"
+        },
+        {
+          "left": "Square root, $f(x)=\\sqrt{x}$",
+          "right": "$x \\ge 0$",
+          "id": "p3"
+        },
+        {
+          "left": "Reciprocal, $f(x)=\\frac{1}{x}$",
+          "right": "$x \\neq 0$",
+          "id": "p4"
+        }
+      ]
+    },
+    {
+      "kind": "multi",
+      "correctIds": [
+        "a",
+        "b",
+        "c"
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "label": "$f(x)=x^3$"
+        },
+        {
+          "id": "b",
+          "label": "$f(x)=x$"
+        },
+        {
+          "id": "c",
+          "label": "$f(x)=\\frac{1}{x}$"
+        },
+        {
+          "label": "$f(x)=x^2$",
+          "id": "d"
+        }
+      ],
+      "missExplain": "Trap sprung! $x^2$ is even; the other three are odd.",
+      "explain": "Yes — cubic, identity, and reciprocal satisfy $f(-x)=-f(x)$. Squaring is even.",
+      "prompt": "Select ALL functions that are odd."
+    },
+    {
+      "bins": [
+        {
+          "id": "even",
+          "label": "Even ($y$-axis symmetry)"
+        },
+        {
+          "id": "odd",
+          "label": "Odd (origin symmetry)"
+        },
+        {
+          "id": "neither",
+          "label": "Neither"
+        }
+      ],
+      "prompt": "Sort each function by its symmetry type.",
+      "kind": "sort",
+      "explain": "Sorted! Absolute value and squaring are even; reciprocal and cubic are odd.",
+      "items": [
+        {
+          "id": "i1",
+          "label": "$f(x)=x^2$",
+          "binId": "even"
+        },
+        {
+          "label": "$f(x)=|x|$",
+          "id": "i2",
+          "binId": "even"
+        },
+        {
+          "label": "$f(x)=\\frac{1}{x}$",
+          "binId": "odd",
+          "id": "i3"
+        },
+        {
+          "id": "i4",
+          "binId": "odd",
+          "label": "$f(x)=x^3$"
+        }
+      ],
+      "missExplain": "Check again — $|x|$ is even, $1/x$ is odd."
+    },
+    {
+      "prompt": "Arrange the steps to identify a parent function from a graph.",
+      "items": [
+        {
+          "id": "a",
+          "label": "Observe the basic shape of the graph"
+        },
+        {
+          "label": "Match the shape to a known parent (line, U, S, etc.)",
+          "id": "b"
+        },
+        {
+          "label": "Name the function family (linear, quadratic, etc.)",
+          "id": "c"
+        }
+      ],
+      "explain": "Perfect — shape first, then match, then label.",
+      "missExplain": "Almost — start by looking at the overall shape, not the equation.",
+      "orderLabel": "Tap first step → last step",
+      "kind": "order",
+      "correctOrder": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "kind": "spot",
+      "fix": "greatest integer less than or equal",
+      "wrongWord": "nearest",
+      "explain": "Yes — it always gives the integer less than or equal to the input, not the nearest.",
+      "hint": "Does it round to the closest, or always down?",
+      "sentence": "The greatest integer function rounds a number to the nearest integer.",
+      "missExplain": "Trap sprung! The wrong word is \"nearest\". It floors the number, not rounding to the closest.",
+      "prompt": "One word is wrong. Tap it."
+    },
+    {
+      "missExplain": "Almost — constant is $f(x)=c$; quadratic is $x^2$.",
+      "prompt": "What is another name for the linear parent function $f(x)=x$?",
+      "kind": "choice",
+      "explain": "Clean — identity because output matches input.",
+      "choices": [
+        {
+          "label": "Identity function",
+          "id": "a"
+        },
+        {
+          "id": "b",
+          "label": "Constant function"
+        },
+        {
+          "id": "c",
+          "label": "Quadratic function"
+        },
+        {
+          "label": "Reciprocal function",
+          "id": "d"
+        }
+      ],
+      "correctId": "a"
+    },
+    {
+      "pairs": [
+        {
+          "id": "p1",
+          "right": "U‑shaped graph of $f(x)=x^2$",
+          "left": "Parabola"
+        },
+        {
+          "id": "p2",
+          "left": "Step function",
+          "right": "Disconnected horizontal steps, like the greatest integer function"
+        },
+        {
+          "left": "Odd function",
+          "id": "p3",
+          "right": "Satisfies $f(-x)=-f(x)$"
+        },
+        {
+          "id": "p4",
+          "right": "Values of $x$ that are not allowed",
+          "left": "Domain restriction"
+        }
+      ],
+      "kind": "match",
+      "missExplain": "One slipped. Odd function means $f(-x)=-f(x)$; step function refers to the staircase‑like graph.",
+      "prompt": "Connect each term to its meaning.",
+      "explain": "All matched — key vocabulary for parent functions."
+    },
+    {
+      "missExplain": "Trap sprung! $0$ is not allowed, so it's not defined for all real numbers.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "Its domain excludes $0$"
+        },
+        {
+          "id": "b",
+          "label": "Its graph is a hyperbola"
+        },
+        {
+          "id": "c",
+          "label": "It is an odd function"
+        },
+        {
+          "label": "It is defined for all real numbers",
+          "id": "d"
+        }
+      ],
+      "correctIds": [
+        "a",
+        "b",
+        "c"
+      ],
+      "kind": "multi",
+      "prompt": "Select ALL statements that are true about the reciprocal function $f(x)=\\frac{1}{x}$.",
+      "explain": "Yes — reciprocal is odd, excludes zero, and is a hyperbola. It is not defined everywhere."
+    },
+    {
+      "explain": "Sorted! Square root and reciprocal have restrictions; cubic and squaring do not.",
+      "bins": [
+        {
+          "id": "restrict",
+          "label": "Domain restricted"
+        },
+        {
+          "label": "Domain all real numbers",
+          "id": "all"
+        }
+      ],
+      "items": [
+        {
+          "label": "$f(x)=\\sqrt{x}$",
+          "binId": "restrict",
+          "id": "i1"
+        },
+        {
+          "id": "i2",
+          "label": "$f(x)=\\frac{1}{x}$",
+          "binId": "restrict"
+        },
+        {
+          "binId": "all",
+          "id": "i3",
+          "label": "$f(x)=x^3$"
+        },
+        {
+          "label": "$f(x)=x^2$",
+          "binId": "all",
+          "id": "i4"
+        }
+      ],
+      "kind": "sort",
+      "prompt": "Sort each function into 'Domain restricted' or 'Domain all real numbers'.",
+      "missExplain": "Check again — $\\sqrt{x}$ requires $x \\ge 0$, $1/x$ excludes $0$. The others accept any real number."
+    },
+    {
+      "missExplain": "Almost — first locate, then find the integer ≤ it.",
+      "explain": "Perfect — the definition of the floor function.",
+      "kind": "order",
+      "prompt": "Arrange the steps to identify the greatest integer value of a number.",
+      "orderLabel": "Tap first step → last step",
+      "items": [
+        {
+          "id": "a",
+          "label": "Locate the number on the real number line"
+        },
+        {
+          "id": "b",
+          "label": "Find the greatest integer that is less than or equal to it"
+        },
+        {
+          "id": "c",
+          "label": "That integer is the output"
+        }
+      ],
+      "correctOrder": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "prompt": "One word must be changed. Tap it.",
+      "hint": "What inputs are allowed under a square root?",
+      "fix": "non‑negative",
+      "explain": "Yes — only non‑negative numbers are in the domain.",
+      "kind": "spot",
+      "sentence": "The square root function is defined for all real numbers.",
+      "missExplain": "Trap sprung! The wrong word is \"all\". The domain is $x \\ge 0$.",
+      "wrongWord": "all"
+    },
+    {
+      "missExplain": "Almost — zero is included, so the range is $[0, \\infty)$.",
+      "prompt": "What is the range of the squaring function $f(x)=x^2$?",
+      "explain": "Right — the output is never negative, and zero is included.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "$y \\ge 0$"
+        },
+        {
+          "id": "b",
+          "label": "All real numbers"
+        },
+        {
+          "label": "$y > 0$",
+          "id": "c"
+        },
+        {
+          "id": "d",
+          "label": "$y \\le 0$"
+        }
+      ],
+      "correctId": "a",
+      "kind": "choice"
+    },
+    {
+      "pairs": [
+        {
+          "right": "Straight diagonal line",
+          "id": "p1",
+          "left": "$f(x)=x$"
+        },
+        {
+          "id": "p2",
+          "left": "$f(x)=x^2$",
+          "right": "U‑shaped parabola"
+        },
+        {
+          "right": "S‑shaped cubic curve",
+          "id": "p3",
+          "left": "$f(x)=x^3$"
+        },
+        {
+          "right": "Half parabola opening right",
+          "id": "p4",
+          "left": "$f(x)=\\sqrt{x}$"
+        },
+        {
+          "left": "$f(x)=\\frac{1}{x}$",
+          "right": "Hyperbola (two branches)",
+          "id": "p5"
+        }
+      ],
+      "kind": "match",
+      "missExplain": "One slipped. Reciprocal is two separate curves; cubic is an S‑shape.",
+      "explain": "All matched — quick visual identification.",
+      "prompt": "Connect each parent function to the shape of its graph."
+    },
+    {
+      "kind": "multi",
+      "missExplain": "Trap sprung! $x^2$ is even, not odd. The others are odd.",
+      "correctIds": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explain": "Yes — these are odd functions. $x^2$ has $y$-axis symmetry.",
+      "choices": [
+        {
+          "label": "$f(x)=x^3$",
+          "id": "a"
+        },
+        {
+          "label": "$f(x)=x$",
+          "id": "b"
+        },
+        {
+          "id": "c",
+          "label": "$f(x)=\\frac{1}{x}$"
+        },
+        {
+          "label": "$f(x)=x^2$",
+          "id": "d"
+        }
+      ],
+      "prompt": "Select ALL functions that have origin symmetry."
+    },
+    {
+      "prompt": "Sort each function under 'Even', 'Odd', or 'Neither'.",
+      "kind": "sort",
+      "items": [
+        {
+          "binId": "even",
+          "id": "i1",
+          "label": "$f(x)=x^2$"
+        },
+        {
+          "id": "i2",
+          "binId": "odd",
+          "label": "$f(x)=x^3$"
+        },
+        {
+          "label": "$f(x)=x^2+x$",
+          "id": "i3",
+          "binId": "neither"
+        },
+        {
+          "binId": "odd",
+          "id": "i4",
+          "label": "$f(x)=\\frac{1}{x}$"
+        }
+      ],
+      "missExplain": "Check again — $1/x$ is odd, $x^2+x$ is neither.",
+      "explain": "Sorted! $x^2+x$ fails both tests; the others follow the standard patterns.",
+      "bins": [
+        {
+          "id": "even",
+          "label": "Even"
+        },
+        {
+          "id": "odd",
+          "label": "Odd"
+        },
+        {
+          "label": "Neither",
+          "id": "neither"
+        }
+      ]
+    },
+    {
+      "missExplain": "Trap sprung! The wrong word is \"smooth\". A step function's graph is not continuous.",
+      "explain": "Yes — step functions are disconnected, like stair steps.",
+      "hint": "What does the graph of a step function look like?",
+      "wrongWord": "smooth",
+      "sentence": "A step function has a smooth, continuous graph.",
+      "fix": "disconnected",
+      "prompt": "One word is wrong. Tap it.",
+      "kind": "spot"
+    }
+  ],
+  "id": "ch01-6-parent-lexicon-25",
+  "title": "Ch 1.6 · Parent Function Lexicon",
+  "subtitle": "Know every parent by name — one mislabeled equation and the whole family tree collapses."
+}

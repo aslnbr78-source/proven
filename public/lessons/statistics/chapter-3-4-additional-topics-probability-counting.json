@@ -1,0 +1,772 @@
+{
+  "type": "interactive-lesson",
+  "title": "Additional Topics in Probability and Counting",
+  "standards": [
+    "HSS.CP.B.9",
+    "HSS.CP.A.1"
+  ],
+  "blocks": [
+    {
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Permutations",
+                "1": "Yes",
+                "2": "$ _nP_r = \\frac{n!}{(n-r)!} $",
+                "3": "Race finishers: 43 cars, top 3 → $ _{43}P_3 $"
+              },
+              {
+                "0": "Combinations",
+                "1": "No",
+                "2": "$ _nC_r = \\frac{n!}{(n-r)!\\,r!} $",
+                "3": "Lottery numbers (any order)"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Concept",
+              "Order?",
+              "Formula",
+              "Example"
+            ],
+            "title": "Permutations vs. Combinations",
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "A [[kw:factorial]], denoted $ n! $, is the product of all positive integers from $ n $ down to 1. $ n! = n \\times (n-1) \\times (n-2) \\times \\dots \\times 3 \\times 2 \\times 1 $.",
+          "Special case: $ 0! = 1 $.",
+          "A [[kw:permutation]] is an ordered arrangement of objects. The number of permutations of $ n $ distinct objects is $ n! $.",
+          "The number of permutations of $ n $ distinct objects taken $ r $ at a time is $ _nP_r = \\frac{n!}{(n-r)!} $, where $ r \\le n $.",
+          "Permutations count arrangements when [[imp:order matters]], like passwords, race finishes, or line‑ups."
+        ],
+        "formulaCard": {
+          "formula": "$$n! = n \\cdot (n-1) \\cdots 1$$ $$ _nP_r = \\frac{n!}{(n-r)!} $$",
+          "legend": [
+            {
+              "meaning": "total number of distinct objects",
+              "tone": "core",
+              "symbol": "$n$"
+            },
+            {
+              "meaning": "number of objects being arranged",
+              "tone": "subtle",
+              "symbol": "$r$"
+            }
+          ],
+          "title": "Permutation Formulas"
+        }
+      },
+      "confusionCorner": {
+        "body": "The permutation formula $ _nP_r $ is a compact way to express the product $ n \\times (n-1) \\times \\dots \\times (n-r+1) $. You can always use the Fundamental Counting Principle instead. [[imp:Both methods give the same answer; choose whichever is easier for you.]]",
+        "title": "Permutations vs. Fundamental Counting Principle"
+      },
+      "discoveryHook": {
+        "scenario": "A Sudoku puzzle has 9 digits in its first row — how many ways can they be arranged? Or consider the starting lineup for a baseball team. When order matters, we use permutations and factorials to count all possible sequences."
+      },
+      "examples": [
+        {
+          "title": "Example A – Filling a Sudoku Row",
+          "steps": [
+            "We have $ n = 9 $ distinct digits to arrange.",
+            "The number of permutations of 9 distinct objects is $ 9! $.",
+            "$ 9! = 9 \\times 8 \\times 7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 362,880 $.",
+            "So there are 362,880 possible first rows."
+          ],
+          "prompt": "A Sudoku row uses the digits 1 to 9, each exactly once. How many different ways can the first row be filled?",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Order matters: 1234 is different from 4321.",
+            "We choose $ r = 4 $ digits from $ n = 10 $ without repetition.",
+            "$ _{10}P_4 = \\frac{10!}{(10-4)!} = \\frac{10!}{6!} = 10 \\cdot 9 \\cdot 8 \\cdot 7 = 5040 $.",
+            "Thus, there are 5040 possible codes."
+          ],
+          "prompt": "A four‑digit code uses digits 0‑9 with no repeats. How many possible codes?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is this a permutation and not a combination?",
+          "minLength": 2,
+          "title": "Example B – Finding $ _nP_r $"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Order matters: we need the top 3 positions from 43 cars.",
+            "$ n = 43 $, $ r = 3 $. Use permutations: $ _{43}P_3 = \\frac{43!}{40!} $.",
+            "$ = 43 \\times 42 \\times 41 = 74,046 $.",
+            "So there are 74,046 possible top‑3 finishes."
+          ],
+          "prompt": "43 cars start the Daytona 500. How many ways can they finish first, second, and third?",
+          "title": "Example C – Race Finishes"
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "The product of all positive integers from $ n $ down to 1 is called $ n $ ___.",
+          "type": "fill-blank",
+          "hints": [
+            "It is denoted by an exclamation mark.",
+            "Example: $ 5! = 120 $."
+          ],
+          "feedbackIfWrong": "$ n! $ is read as '$ n $ factorial'.",
+          "id": "q1-1",
+          "blanks": [
+            {
+              "accept": [
+                "factorial",
+                "Factorial"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "$ 5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120 $.",
+          "type": "short-answer",
+          "answers": [
+            "120",
+            "one hundred twenty"
+          ],
+          "hints": [
+            "$ 5 \\times 4 \\times 3 \\times 2 \\times 1 $.",
+            "The result is a three‑digit number."
+          ],
+          "answer": "120",
+          "prompt": "Evaluate $ 5! $.",
+          "id": "q1-2"
+        },
+        {
+          "id": "q1-3",
+          "hints": [
+            "This is the permutation of 6 distinct objects.",
+            "Compute $ 6! $."
+          ],
+          "feedbackIfWrong": "$ 6! = 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 720 $.",
+          "type": "short-answer",
+          "prompt": "In how many ways can 6 books be arranged on a shelf? (Give the number.)",
+          "answer": "720",
+          "answers": [
+            "720",
+            "seven hundred twenty"
+          ]
+        }
+      ],
+      "id": "permutations",
+      "teacherCues": [
+        "Write 'n!' on the board and ask students to calculate 3!, 4!, and 5!.",
+        "Ask: 'How many ways can you arrange the letters A, B, C, D?' Use the factorial concept."
+      ],
+      "title": "Permutations and Factorials"
+    },
+    {
+      "confusionCorner": {
+        "body": "In the denominator, you must include a factor for every distinct type, even if it appears only once (1! = 1, so it doesn't change the value). [[imp:Missing a category will give a wrong answer.]]",
+        "title": "Don't Forget the Unseen 1!s"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Divide by $ n_1! \\cdot n_2! \\cdots $, the factorials of the counts.",
+          "prompt": "The formula for distinguishable permutations divides $ n! $ by the product of the ___ of each group of identical items.",
+          "hints": [
+            "We use $ n_1!, n_2!, \\dots $.",
+            "The denominator is a product of factorials."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "factorials",
+                "factorial"
+              ]
+            }
+          ],
+          "id": "q2-1",
+          "type": "fill-blank"
+        },
+        {
+          "id": "q2-2",
+          "answers": [
+            "12",
+            "twelve"
+          ],
+          "type": "short-answer",
+          "answer": "12",
+          "hints": [
+            "B, A, L, L — L appears twice.",
+            "$ 4! / 2! = 24 / 2 $."
+          ],
+          "prompt": "How many distinguishable permutations of the letters in the word 'BALL'?",
+          "feedbackIfWrong": "$ 4! / 2! = 24 / 2 = 12 $."
+        },
+        {
+          "feedbackIfWrong": "Denominator = $ 5! \\times 3! \\times 2! $.",
+          "prompt": "If a set of 10 objects has three types, with counts 5, 3, and 2, what is the denominator in the distinguishable permutations formula? (Write as a product, e.g., 5!3!2!)",
+          "id": "q2-3",
+          "answers": [
+            "5!3!2!",
+            "5! 3! 2!"
+          ],
+          "hints": [
+            "Each count gets its own factorial.",
+            "The denominator is the product of those factorials."
+          ],
+          "answer": "5!3!2!",
+          "type": "short-answer"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Distinguishable Permutations Formula",
+          "formula": "$$\\frac{n!}{n_1! \\cdot n_2! \\cdot \\dots \\cdot n_k!}$$",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$n_i$",
+              "meaning": "number of identical objects of type $i$"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "MISSISSIPPI",
+                "1": "1 M, 4 I, 4 S, 2 P",
+                "2": "$ \\frac{11!}{1!4!4!2!} $",
+                "3": "34,650"
+              },
+              {
+                "0": "Houses: 6 one‑story, 4 two‑story, 2 split‑level",
+                "1": "Total 12",
+                "2": "$ \\frac{12!}{6!4!2!} $",
+                "3": "13,860"
+              }
+            ],
+            "title": "Distinguishable Permutations Examples",
+            "variant": "colorful",
+            "headers": [
+              "Object Set",
+              "Counts",
+              "Formula",
+              "Result"
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "When a set of $ n $ objects contains identical items, the number of [[kw:distinguishable permutations]] is $ \\frac{n!}{n_1! \\cdot n_2! \\cdot \\dots \\cdot n_k!} $, where $ n_1, n_2, \\dots, n_k $ are the counts of each type of identical object.",
+          "This formula divides out the overcounting caused by swapping identical items.",
+          "It applies whenever you arrange objects that are not all distinct, like letters in a word with repeated letters, or houses of the same style."
+        ]
+      },
+      "title": "Distinguishable Permutations",
+      "id": "distinguishable-permutations",
+      "discoveryHook": {
+        "scenario": "The word 'MISSISSIPPI' has 11 letters, but not all are unique: four I's, four S's, two P's. If you simply compute 11!, you overcount because swapping identical letters creates no new arrangement. The distinguishable permutations formula corrects for this."
+      },
+      "teacherCues": [
+        "Write the word 'MISSISSIPPI' on the board. Ask: 'How many ways can these letters be rearranged?'",
+        "Explain that because some letters repeat, we must divide by the factorial of each group."
+      ],
+      "examples": [
+        {
+          "title": "Example A – Arranging Houses",
+          "steps": [
+            "Total houses $ n = 6 + 4 + 2 = 12 $.",
+            "Counts: $ n_1 = 6 $ (one‑story), $ n_2 = 4 $ (two‑story), $ n_3 = 2 $ (split‑level).",
+            "Distinguishable permutations = $ \\frac{12!}{6! \\, 4! \\, 2!} = \\frac{12 \\times 11 \\times 10 \\times 9 \\times 8 \\times 7}{4! \\times 2!} = 13,860 $.",
+            "There are 13,860 distinguishable arrangements."
+          ],
+          "prompt": "A subdivision has 6 one‑story, 4 two‑story, and 2 split‑level houses. In how many distinguishable ways can they be arranged?",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "The word LETTER has 6 letters: L, E, T, T, E, R. Counts: E appears 2 times, T appears 2 times.",
+            "Without correction, there would be $ 6! = 720 $ arrangements, but swapping the two E's or two T's doesn't change the word.",
+            "Distinguishable permutations = $ \\frac{6!}{2! \\, 2!} = \\frac{720}{4} = 180 $.",
+            "So there are 180 distinct arrangements."
+          ],
+          "prompt": "How many distinguishable arrangements of the letters in 'LETTER'? Explain the division step.",
+          "title": "Example B – The Word 'LETTER'",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we divide by 2! twice? What letters are repeated?",
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "Count letters: S=3, T=3, A=1, I=2, C=1. Total $ n=10 $.",
+            "Formula: $ \\frac{10!}{3! \\, 3! \\, 1! \\, 2! \\, 1!} $.",
+            "$ 10! = 3,628,800 $; denominator $ = 6 \\times 6 \\times 1 \\times 2 \\times 1 = 72 $.",
+            "$ 3,628,800 / 72 = 50,400 $ distinguishable arrangements."
+          ],
+          "role": "independent",
+          "title": "Example C – STATISTICS",
+          "prompt": "Find the number of distinguishable permutations of the letters in the word STATISTICS."
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Ask: 'If you choose 3 toppings from a list of 9, does the order matter?' Contrast with permutations.",
+        "Write the combination formula $ _nC_r = \\frac{n!}{(n-r)! \\, r!} $ and compare it to $ _nP_r $."
+      ],
+      "id": "combinations",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "The order of selection does not matter — it's a combination.",
+            "$ n = 20 $, $ r = 3 $.",
+            "$ _{20}C_3 = \\frac{20!}{17! \\, 3!} = \\frac{20 \\times 19 \\times 18}{3 \\times 2 \\times 1} = 1140 $.",
+            "There are 1140 possible committees."
+          ],
+          "prompt": "A department has 20 employees. A three‑person advisory committee is to be formed. How many possible committees?",
+          "title": "Example A – Selecting a Committee"
+        },
+        {
+          "title": "Example B – Choosing Toppings",
+          "prompt": "A pizza shop offers 9 toppings. You choose 3. How many different three‑topping pizzas?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is this a combination and not a permutation?",
+          "steps": [
+            "Order doesn't matter — pepperoni, onion, mushroom is the same pizza as mushroom, onion, pepperoni.",
+            "$ n = 9 $, $ r = 3 $.",
+            "$ _9C_3 = \\frac{9!}{6! \\, 3!} = \\frac{9 \\times 8 \\times 7}{3 \\times 2 \\times 1} = 84 $.",
+            "84 possible pizzas."
+          ]
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Order does not matter — it's a combination.",
+            "$ n = 40 $, $ r = 6 $.",
+            "$ _{40}C_6 = \\frac{40!}{34! \\, 6!} $. Compute: $ \\frac{40 \\times 39 \\times 38 \\times 37 \\times 36 \\times 35}{720} = 3,838,380 $.",
+            "Over 3.8 million possible combinations."
+          ],
+          "prompt": "A state lottery requires picking 6 numbers from 1 to 40. How many possible tickets?",
+          "title": "Example C – Lottery Numbers"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Picking a committee of 3 from 20 people, choosing lottery numbers, or selecting a pizza toppings — in each case, order doesn't matter. Combinations count the number of ways to choose a subset, ignoring the arrangement."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:combination]] is a selection of objects where [[imp:order does NOT matter]].",
+          "The number of combinations of $ n $ objects taken $ r $ at a time is $ _nC_r = \\frac{n!}{(n-r)! \\, r!} $.",
+          "Combinations are used when you want the number of groups, not sequences. Example: selecting a committee.",
+          "Permutations count more possibilities than combinations because each combination can be arranged in $ r! $ orders. Thus, $ _nP_r = _nC_r \\times r! $."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Choose 3 DVDs from 5",
+                "1": "$ _5C_3 $",
+                "2": "$ \\frac{5!}{2! \\, 3!} = 10 $"
+              },
+              {
+                "0": "Select 4 companies from 16 bids",
+                "1": "$ _{16}C_4 $",
+                "2": "$ \\frac{16!}{12! \\, 4!} = 1820 $"
+              },
+              {
+                "0": "Lottery: 6 numbers from 52",
+                "1": "$ _{52}C_6 $",
+                "2": "25,827,165"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Combinations Formula Breakdown",
+            "headers": [
+              "Situation",
+              "Formula",
+              "Calculation"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$r!$",
+              "tone": "core",
+              "meaning": "dividing by $r!$ removes order from the count"
+            }
+          ],
+          "formula": "$$_nC_r = \\frac{n!}{(n-r)! \\, r!}$$",
+          "title": "Combination Formula"
+        }
+      },
+      "title": "Combinations",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "combination",
+                "Combination"
+              ]
+            }
+          ],
+          "hints": [
+            "It starts with 'c'.",
+            "Opposite of permutation."
+          ],
+          "type": "fill-blank",
+          "prompt": "A selection of objects where order does NOT matter is called a ___.",
+          "id": "q3-1",
+          "feedbackIfWrong": "A combination is a selection without regard to order."
+        },
+        {
+          "id": "q3-2",
+          "answers": [
+            "56",
+            "fifty-six"
+          ],
+          "hints": [
+            "$ \\frac{8!}{5! \\, 3!} = \\frac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} $.",
+            "Simplify: $ 336 / 6 $."
+          ],
+          "feedbackIfWrong": "$ _8C_3 = \\frac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} = 56 $.",
+          "type": "short-answer",
+          "prompt": "Evaluate $ _8C_3 $. (Give the integer.)",
+          "answer": "56"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Use combinations: $ _{10}C_2 $.",
+            "$ \\frac{10 \\times 9}{2 \\times 1} = ? $"
+          ],
+          "feedbackIfWrong": "$ _{10}C_2 = \\frac{10 \\times 9}{2 \\times 1} = 45 $.",
+          "answers": [
+            "45",
+            "forty-five"
+          ],
+          "prompt": "How many ways can you choose 2 students from a group of 10?",
+          "id": "q3-3",
+          "answer": "45"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Permutation or Combination?",
+        "body": "Ask: 'If I change the order, do I get a different outcome?' If yes, use permutations. If no, use combinations. [[imp:Passwords, races, rankings → permutations. Committees, lottery numbers, subsets → combinations.]]"
+      }
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "Favorable outcome: exactly one arrangement (the word).",
+            "Total distinguishable permutations: $ \\frac{11!}{1! \\, 4! \\, 4! \\, 2!} = 34,650 $.",
+            "Probability = $ 1 / 34,650 \\approx 0.00003 $.",
+            "Extremely unlikely — almost impossible by random chance."
+          ],
+          "title": "Example A – Spelling 'Mississippi'",
+          "role": "guided",
+          "prompt": "If the 11 letters M, I, S, S, I, S, S, I, P, P, I are randomly arranged, what is the probability they spell 'Mississippi'?"
+        },
+        {
+          "minLength": 2,
+          "steps": [
+            "Order matters: chair, secretary, webmaster are distinct positions.",
+            "Favorable: 1 way to assign the three current holders to the correct positions.",
+            "Total possible assignments: $ _{17}P_3 = 17 \\times 16 \\times 15 = 4080 $.",
+            "Probability = $ 1 / 4080 \\approx 0.00024 $."
+          ],
+          "prompt": "A 17‑member board has a chair, secretary, and webmaster. If 3 members are randomly chosen, what is the probability they are the current office‑holders?",
+          "role": "peer-explain",
+          "title": "Example B – Advisory Board",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we use permutations here and not combinations?"
+        },
+        {
+          "prompt": "From 400 corn kernels (3 toxic, 397 nontoxic), 4 are randomly selected. Find the probability exactly one is toxic.",
+          "title": "Example C – Toxic Kernels",
+          "steps": [
+            "Favorable: choose 1 toxic from 3 AND 3 nontoxic from 397.",
+            "Ways to choose toxic: $ _3C_1 = 3 $. Nontoxic: $ _{397}C_3 $.",
+            "Total ways to choose 4 kernels: $ _{400}C_4 $.",
+            "Probability = $ \\frac{3 \\times _{397}C_3}{_{400}C_4} \\approx 0.030 $."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "probability-with-counting",
+      "confusionCorner": {
+        "body": "Make sure you use the same counting method for both numerator and denominator. If the total outcomes use combinations (order doesn't matter), the favorable count must also use combinations. [[imp:Mixing permutations and combinations in the same fraction leads to incorrect probabilities.]]",
+        "title": "Consistency in Counting"
+      },
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "The numerator and denominator must be counted using the same logic (both combinations or both permutations).",
+              "tone": "core",
+              "symbol": "Key"
+            }
+          ],
+          "formula": "$$P(E) = \\frac{\\text{favorable outcomes (using } _nP_r, _nC_r, \\text{ etc.)}}{\\text{total outcomes (using same counting method)}}$$",
+          "title": "Probability with Counting"
+        },
+        "visuals": [
+          {
+            "title": "Counting-Based Probability Examples",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Randomly arrange 'MISSISSIPPI' to spell the word",
+                "1": "Distinguishable permutations: 1 favorable / 34,650 total",
+                "2": "$ \\approx 0.00003 $"
+              },
+              {
+                "0": "Pick 5 diamonds from a standard deck",
+                "1": "Combinations: $ _{13}C_5 $ / $ _{52}C_5 $",
+                "2": "$ \\approx 0.0005 $"
+              },
+              {
+                "0": "Exactly 1 toxic kernel out of 3 in a sample of 4 from 400",
+                "1": "Combinations: $ ( _3C_1 \\times _{397}C_3 ) / _{400}C_4 $",
+                "2": "$ \\approx 0.030 $"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Problem",
+              "Counting Method",
+              "Probability"
+            ]
+          }
+        ],
+        "explanation": [
+          "Classical probability: $ P(E) = \\frac{\\text{Number of favorable outcomes}}{\\text{Total number of possible outcomes}} $.",
+          "Use permutations when order matters (e.g., who gets which position). Use combinations when order does not matter (e.g., which cards are dealt).",
+          "For distinguishable permutations, the total number of arrangements is the denominator, and the number of favorable arrangements (often 1) is the numerator.",
+          "For problems involving multiple groups (e.g., selecting 1 toxic kernel from 3 and 3 nontoxic from 397), use the Fundamental Counting Principle with combinations: multiply the number of ways for each subgroup."
+        ]
+      },
+      "teacherCues": [
+        "Ask: 'If I pick 5 cards from a deck, what's the chance they are all diamonds?' Show how to use combinations for both favorable outcomes and total outcomes.",
+        "Walk through the Mississippi probability example."
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "favorable",
+                "successful"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "hints": [
+            "It's the outcomes that make the event happen.",
+            "The numerator of the probability fraction."
+          ],
+          "feedbackIfWrong": "Probability = (favorable outcomes) / (total possible outcomes).",
+          "prompt": "In classical probability, the probability of an event is the number of ___ outcomes divided by the total number of possible outcomes.",
+          "id": "q4-1"
+        },
+        {
+          "answers": [
+            "1/6",
+            "0.1667"
+          ],
+          "answer": "1/6",
+          "prompt": "If you randomly arrange the letters B, A, T, what is the probability they spell 'BAT'? (Give a fraction.)",
+          "type": "short-answer",
+          "feedbackIfWrong": "$ P(\\text{BAT}) = 1 / 6 $.",
+          "id": "q4-2",
+          "hints": [
+            "Total arrangements = 3! = 6.",
+            "Only 1 arrangement is correct."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "Total possible tickets = $ _{40}C_5 = 658,008 $. Probability = 1/658,008.",
+          "answers": [
+            "1/658008",
+            "1 in 658,008",
+            "1/658,008"
+          ],
+          "hints": [
+            "Total combinations = $ _{40}C_5 $.",
+            "Compute $ \\frac{40!}{35! \\, 5!} = 658,008 $."
+          ],
+          "answer": "1 in 658008",
+          "id": "q4-3",
+          "prompt": "In a lottery, you choose 5 numbers from 1 to 40. Order doesn't matter. What is the probability of winning with one ticket? (Give the number of possible combinations as your answer; e.g., '1 in 658008')"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Many probability problems involve counting both the number of favorable outcomes and the total possible outcomes. Permutations and combinations give us the tools to count these accurately — whether it's the chance of spelling 'Mississippi' randomly or winning a lottery."
+      },
+      "title": "Probability Using Counting Principles"
+    },
+    {
+      "confusionCorner": {
+        "body": "Many counting mistakes come from using the wrong formula. Always pause and ask: 'Does the order of selection matter?' and 'Are there identical objects?' [[imp:Answering these two questions correctly will steer you to the right formula.]]",
+        "title": "Don't Guess — Use the Flowchart"
+      },
+      "teacherCues": [
+        "Project a mixed set of problems: 'Arrange books', 'Pick a committee', 'Probability of a certain hand of cards'. Ask students to classify each as permutation, combination, or distinguishable permutation.",
+        "Guide them through the Understand‑Solve‑Conclude process for each."
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "Start by understanding (determining) if order matters.",
+          "id": "q5-1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "Understand",
+                "determine",
+                "decide"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the 'U' in Understand‑Solve‑Conclude.",
+            "You must identify the type of problem."
+          ],
+          "prompt": "The first step in the counting blueprint is to ___ whether order matters."
+        },
+        {
+          "hints": [
+            "President and VP are distinct positions.",
+            "Order matters."
+          ],
+          "type": "short-answer",
+          "prompt": "You need to select a president and vice president from 10 people. Is this a permutation or combination?",
+          "feedbackIfWrong": "Since positions are distinct, order matters — it's a permutation.",
+          "answer": "permutation",
+          "id": "q5-2",
+          "answers": [
+            "permutation",
+            "Permutation"
+          ]
+        },
+        {
+          "feedbackIfWrong": "Since the set of fruits is the same regardless of order, it's a combination.",
+          "answers": [
+            "combination",
+            "Combination"
+          ],
+          "id": "q5-3",
+          "answer": "combination",
+          "prompt": "You select 3 fruits from a basket of 8. Is this a permutation or combination?",
+          "type": "short-answer",
+          "hints": [
+            "You just end up with a set of 3 fruits.",
+            "The order in which you pick them doesn't change the set."
+          ]
+        }
+      ],
+      "title": "Blueprint Aid: Choosing the Right Counting Method and Finding Probability",
+      "examples": [
+        {
+          "steps": [
+            "Understand: Order matters (distinct positions). Use permutations. Favorable = 1 set of assignments.",
+            "Solve: Total possible assignments = $ _{14}P_4 = 14 \\times 13 \\times 12 \\times 11 = 24,024 $.",
+            "Probability = $ 1 / 24,024 \\approx 0.00004 $.",
+            "Conclude: Extremely unlikely; a random selection of officers is almost certainly not the pre‑specified slate."
+          ],
+          "title": "Example A – Full Blueprint (Permutation)",
+          "role": "guided",
+          "prompt": "A club has 14 candidates for 4 officer positions (president, VP, secretary, treasurer). Each position is different. What is the probability that a specific slate of 4 people wins if chosen randomly?"
+        },
+        {
+          "steps": [
+            "Understand: The jury is a group; order does not matter. Use combinations.",
+            "Solve: Total possible juries = $ _{40}C_{12} $ (a large number). Favorable = 1.",
+            "Probability = $ 1 / _{40}C_{12} \\approx 1 / 5,586,853,480 $, nearly zero.",
+            "Conclude: The chance any particular 12 people form the jury is infinitesimal."
+          ],
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is this a combination and not a permutation?",
+          "prompt": "A jury of 12 is selected from a pool of 40. What is the probability a specific set of 12 people is chosen?",
+          "title": "Example B – Full Blueprint (Combination)"
+        },
+        {
+          "title": "Example C – Distinguishable Permutation Probability",
+          "prompt": "You have tiles with the letters A, A, B, B, B, C. If you line them up randomly, what is the probability they spell 'AABBBC'? (Assume that's a specific ordering.)",
+          "steps": [
+            "Understand: Identical letters; use distinguishable permutations.",
+            "Total arrangements = $ \\frac{6!}{2! \\, 3! \\, 1!} = 60 $. Favorable = 1.",
+            "Probability = $ 1/60 \\approx 0.0167 $.",
+            "Conclude: About a 1.67% chance — unusual but not extremely rare."
+          ],
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "Blueprint: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Read the problem. Identify whether order matters (permutation) or not (combination). Are there identical objects? (Use distinguishable permutations.) What is the event and what is the total sample space?",
+          "2. [[kw:Solve]]: Apply the correct counting formula to find the number of favorable outcomes and the total number of outcomes. For multiple steps, use the Fundamental Counting Principle. Then compute $ P(E) = \\frac{\\text{favorable}}{\\text{total}} $.",
+          "3. [[kw:Conclude]]: Simplify the fraction and interpret. Determine if the probability is unusual ($ P \\leq 0.05 $)."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Problem} \\;\\begin{cases} \\text{Order matters?} & \\;\\rightarrow\\; _nP_r \\text{ or FCP} \\\\ \\text{Order irrelevant?} & \\;\\rightarrow\\; _nC_r \\\\ \\text{Repeated items?} & \\;\\rightarrow\\; \\frac{n!}{n_1! n_2! \\cdots} \\end{cases}$$ $$\\text{Then } P(E) = \\frac{\\text{favorable}}{\\text{total}}$$",
+          "title": "Blueprint Summary",
+          "legend": [
+            {
+              "tone": "subtle",
+              "meaning": "Fundamental Counting Principle",
+              "symbol": "FCP"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Decision Flowchart",
+            "variant": "colorful",
+            "headers": [
+              "Question",
+              "If Yes",
+              "If No"
+            ],
+            "rows": [
+              {
+                "0": "Does order matter?",
+                "1": "Permutation ($ _nP_r $) or Fundamental Counting Principle",
+                "2": "Combination ($ _nC_r $)"
+              },
+              {
+                "0": "Are some objects identical?",
+                "1": "Use distinguishable permutations formula",
+                "2": "Use standard factorial/permutation"
+              }
+            ]
+          }
+        ]
+      },
+      "id": "blueprint-counting-probability",
+      "discoveryHook": {
+        "scenario": "Faced with a word problem involving counting or probability, the blueprint helps you systematically decide: Does order matter? Are objects distinct? Once you pick the right tool, finding the probability is a straightforward application of the classical formula."
+      }
+    }
+  ],
+  "id": "chapter-3-4-additional-topics-probability-counting",
+  "presenterNotes": [
+    "Block 1 (Permutations): Emphasize the connection to the Fundamental Counting Principle. Show how $n!$ grows rapidly. Use a calculator demonstration.",
+    "Block 2 (Distinguishable Permutations): Use word examples like MISSISSIPPI and STATISTICS. Have students count letters themselves.",
+    "Block 3 (Combinations): Stress the difference from permutations. The 'order doesn't matter' phrase should be second nature.",
+    "Block 4 (Probability with Counting): Walk through multi‑step examples like the toxic kernels. Ensure students keep the numerator and denominator counting methods consistent.",
+    "Block 5 (Blueprint): This ties all counting methods together. Use the flowchart repeatedly until students can classify problems on their own."
+  ],
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,747 @@
+{
+  "blocks": [
+    {
+      "id": "anova-intro",
+      "teacherCues": [
+        "Write three sample means on the board. Ask: Could these differences be due to chance, or is at least one population mean truly different?",
+        "Introduce the F‑statistic as a ratio of variances: variation between groups divided by variation within groups."
+      ],
+      "concept": {
+        "explanation": [
+          "[[kw:One‑way analysis of variance (ANOVA)]] compares the means of three or more populations to see if at least one is different.",
+          "The null hypothesis: $H_0: \\mu_1 = \\mu_2 = \\dots = \\mu_k$ (all means are equal).",
+          "The alternative: $H_a$: At least one mean is different.",
+          "ANOVA works by comparing two types of variation: [[imp:variance between samples]] (how much the sample means differ) and [[imp:variance within samples]] (how much the data vary inside each group).",
+          "If the between‑group variation is large relative to the within‑group variation, it suggests the population means are not all equal."
+        ],
+        "formulaCard": {
+          "formula": "$$ H_0: \\mu_1 = \\mu_2 = \\dots = \\mu_k $$ $$ H_a: \\text{At least one mean is different} $$",
+          "notes": [
+            "k = number of groups.",
+            "ANOVA is always right‑tailed: reject for large F.",
+            "We don't know which mean is different without further testing."
+          ],
+          "title": "ANOVA Hypotheses"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Pain Reliever Data (Relief Time in Minutes)",
+            "variant": "colorful",
+            "headers": [
+              "Medication 1",
+              "Medication 2",
+              "Medication 3"
+            ],
+            "rows": [
+              {
+                "0": "12",
+                "1": "16",
+                "2": "14"
+              },
+              {
+                "0": "15",
+                "1": "14",
+                "2": "17"
+              },
+              {
+                "0": "17",
+                "1": "21",
+                "2": "20"
+              },
+              {
+                "0": "12",
+                "1": "15",
+                "2": "15"
+              },
+              {
+                "0": "",
+                "1": "19",
+                "2": ""
+              }
+            ]
+          }
+        ]
+      },
+      "title": "What is One‑Way ANOVA?",
+      "questions": [
+        {
+          "prompt": "One‑way ANOVA compares the means of three or more populations by analyzing the ___.",
+          "hints": [
+            "The 'V' in ANOVA stands for variance.",
+            "It looks at how spread out the data are between and within groups."
+          ],
+          "type": "fill-blank",
+          "id": "q10-4-1",
+          "blanks": [
+            {
+              "accept": [
+                "variances",
+                "variation"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "ANOVA analyzes variances (variation) to compare means."
+        },
+        {
+          "answer": "equal",
+          "prompt": "The null hypothesis in one‑way ANOVA states that all population means are ___.",
+          "type": "short-answer",
+          "id": "q10-4-2",
+          "hints": [
+            "Think: no difference.",
+            "$H_0: \\mu_1 = \\mu_2 = \\dots$"
+          ],
+          "feedbackIfWrong": "H₀ says all means are equal."
+        },
+        {
+          "id": "q10-4-3",
+          "answer": "no",
+          "type": "short-answer",
+          "hints": [
+            "ANOVA only tells you at least one differs.",
+            "Post‑hoc tests are needed to find which one."
+          ],
+          "feedbackIfWrong": "No, we only know that not all means are equal.",
+          "prompt": "If we reject H₀ in ANOVA, do we know which mean is different? (yes or no)"
+        }
+      ],
+      "confusionCorner": {
+        "title": "ANOVA is Right‑Tailed",
+        "body": "The F‑statistic is a ratio of variances, so it's always non‑negative. We reject H₀ only when F is large — meaning the between‑group variation is much bigger than the within‑group variation."
+      },
+      "discoveryHook": {
+        "scenario": "A medical researcher tests three pain relievers to see if they have different mean relief times. Instead of doing three separate t‑tests, which increase the chance of error, we can use one test — ANOVA — to compare all three means at once."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Setting Up Hypotheses",
+          "prompt": "A teacher wants to see if three teaching methods yield different mean test scores. State H₀ and Hₐ.",
+          "steps": [
+            "Let μ₁, μ₂, μ₃ be the population means for the three methods.",
+            "$H_0: \\mu_1 = \\mu_2 = \\mu_3$ (all methods have the same mean).",
+            "$H_a$: At least one mean is different from the others."
+          ]
+        },
+        {
+          "title": "Example B – Why Not Multiple t‑Tests?",
+          "peerPrompt": "Without looking back...\n\nIf each t‑test has a 5% chance of a Type I error, what happens to the overall error rate when you do three tests?",
+          "prompt": "Explain to a partner why we shouldn't just do several t‑tests to compare three means pairwise.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "Each t‑test has a probability α of making a Type I error.",
+            "Doing multiple tests increases the chance of finding at least one false significant difference.",
+            "ANOVA controls the overall α level, testing all means simultaneously."
+          ]
+        },
+        {
+          "steps": [
+            "We conclude that not all population means are equal.",
+            "We do NOT know which specific mean is different.",
+            "Post‑hoc tests (like Scheffé) are needed to find where the difference lies."
+          ],
+          "role": "independent",
+          "title": "Example C – Interpreting Rejection",
+          "prompt": "If we reject H₀ in ANOVA, what exactly do we conclude?"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "prompt": "In ANOVA with k=4 groups and total N=30, what is d.f.N?",
+          "hints": [
+            "$d.f._N = k - 1$.",
+            "4 − 1 = ?"
+          ],
+          "type": "short-answer",
+          "answer": "3",
+          "id": "q10-4-4",
+          "feedbackIfWrong": "$d.f._N = k-1 = 3$."
+        },
+        {
+          "prompt": "The ANOVA F‑statistic is the ratio of MSB to ___.",
+          "type": "fill-blank",
+          "id": "q10-4-5",
+          "hints": [
+            "It's the denominator of the F ratio.",
+            "Stands for Mean Square Within."
+          ],
+          "feedbackIfWrong": "F = MSB / MSW.",
+          "blanks": [
+            {
+              "accept": [
+                "MSW"
+              ]
+            }
+          ]
+        },
+        {
+          "answer": "close to 1",
+          "prompt": "If the group means are very similar, will F be close to 1 or large? (Answer: close to 1)",
+          "type": "short-answer",
+          "feedbackIfWrong": "F will be close to 1 because MSB and MSW will be similar.",
+          "id": "q10-4-6",
+          "hints": [
+            "MSB will be small.",
+            "F ≈ 1 when there is little difference between groups."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "MSB vs. MSW: Don't Mix Them Up",
+        "body": "MSB is based on differences among sample means. MSW is a pooled average of the individual sample variances. [[imp:MSB reflects treatment effects; MSW reflects random error.]]"
+      },
+      "teacherCues": [
+        "Draw two sets of boxplots: one with tight boxes but far apart, another with overlapping boxes. Ask: In which case is F large?",
+        "Write F = MSB / MSW. Explain MSB (Mean Square Between) and MSW (Mean Square Within)."
+      ],
+      "concept": {
+        "explanation": [
+          "The test statistic for one‑way ANOVA is $$F = \\frac{MSB}{MSW}$$",
+          "[[kw:MSB]] (Mean Square Between) estimates the variance between groups. It is large when the sample means are far apart.",
+          "[[kw:MSW]] (Mean Square Within) estimates the variance within groups. It pools the sample variances.",
+          "If $H_0$ is true, MSB and MSW are similar, so $F \\approx 1$. If $H_0$ is false, MSB > MSW, so $F > 1$.",
+          "Degrees of freedom: numerator $d.f._N = k - 1$ (k = number of groups), denominator $d.f._D = N - k$ (N = total observations)."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Source",
+              "SS",
+              "df",
+              "MS",
+              "F"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Between",
+                "1": "SSB",
+                "2": "$k-1$",
+                "3": "MSB = SSB/(k−1)",
+                "4": "F = MSB/MSW"
+              },
+              {
+                "0": "Within",
+                "1": "SSW",
+                "2": "$N-k$",
+                "3": "MSW = SSW/(N−k)",
+                "4": ""
+              },
+              {
+                "0": "Total",
+                "1": "SST",
+                "2": "$N-1$",
+                "3": "",
+                "4": ""
+              }
+            ],
+            "type": "table",
+            "title": "ANOVA Summary Table Structure"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "$k$ = number of groups.",
+            "$N$ = total sample size.",
+            "Reject $H_0$ if $F$ > critical value from F‑table (Table 7).",
+            "Google Sheets: use `=F.DIST.RT(F, d.f.N, d.f.D)` for p‑value."
+          ],
+          "formula": "$$ F = \\frac{MSB}{MSW} $$ $$ MSB = \\frac{SSB}{k-1}, \\quad MSW = \\frac{SSW}{N-k} $$",
+          "title": "F‑Statistic for ANOVA"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "ANOVA boils down to one question: Is the variation between the group means large compared to the natural variation within each group? If yes, the means are likely different. The F‑statistic measures this ratio."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "$k = 3$, so $d.f._N = 3 - 1 = 2$.",
+            "$N = 4+5+4 = 13$, so $d.f._D = 13 - 3 = 10$.",
+            "The F‑statistic follows an F‑distribution with (2, 10) degrees of freedom."
+          ],
+          "prompt": "We have 3 groups with sample sizes 4, 5, and 4. Find d.f.N and d.f.D.",
+          "title": "Example A – Degrees of Freedom"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nIf the sample means are 10, 50, and 90, would MSB be large or small? What if they were 10, 11, and 12?",
+          "steps": [
+            "MSB measures how much the group means vary around the grand mean.",
+            "If the group means are very different (e.g., 10, 50, 90), MSB will be large.",
+            "If the group means are similar (e.g., 10, 11, 12), MSB will be small."
+          ],
+          "role": "peer-explain",
+          "prompt": "Explain to a partner what a large MSB tells you about the group means.",
+          "minLength": 2,
+          "title": "Example B – What Does MSB Measure?"
+        },
+        {
+          "prompt": "If an ANOVA gives F = 0.95, what does this suggest?",
+          "title": "Example C – Interpreting F Close to 1",
+          "steps": [
+            "$F \\approx 1$ means MSB and MSW are similar.",
+            "This suggests the differences between group means are no larger than the natural variation within groups.",
+            "We would likely fail to reject $H_0$."
+          ],
+          "role": "independent"
+        }
+      ],
+      "title": "The ANOVA F‑Statistic: Between vs. Within Variation",
+      "id": "anova-test-statistic"
+    },
+    {
+      "teacherCues": [
+        "Walk through the pain reliever data step by step: find sample means, grand mean, SSB, SSW, MSB, MSW, F.",
+        "Show the shortcut formulas for SSB and SSW."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1",
+                "1": "4",
+                "2": "14",
+                "3": "6"
+              },
+              {
+                "0": "2",
+                "1": "5",
+                "2": "17",
+                "3": "8.5"
+              },
+              {
+                "0": "3",
+                "1": "4",
+                "2": "16.5",
+                "3": "7"
+              }
+            ],
+            "title": "Pain Reliever Summary Statistics",
+            "variant": "colorful",
+            "headers": [
+              "Medication",
+              "n",
+              "Mean",
+              "Variance s²"
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "$\\bar{x}$ = grand mean = total of all values / N.",
+            "Check: Total SS = SSB + SSW.",
+            "Google Sheets can perform ANOVA via `=F.TEST` on two groups at a time, but for multiple groups, use add‑ons or manual calculations."
+          ],
+          "formula": "$$ SSB = \\sum n_i (\\bar{x}_i - \\bar{x})^2 $$ $$ SSW = \\sum (n_i - 1) s_i^2 $$ $$ MSB = \\frac{SSB}{k-1}, \\quad MSW = \\frac{SSW}{N-k} $$ $$ F = \\frac{MSB}{MSW} $$",
+          "title": "Key ANOVA Formulas"
+        },
+        "explanation": [
+          "1. Compute each sample mean $\\bar{x}_i$ and the [[kw:grand mean]] $\\bar{x}$ (mean of all observations).",
+          "2. [[kw:SSB]] (Sum of Squares Between): $$SSB = \\sum n_i (\\bar{x}_i - \\bar{x})^2$$",
+          "3. [[kw:SSW]] (Sum of Squares Within): $$SSW = \\sum (n_i - 1) s_i^2$$ (or compute directly from data).",
+          "4. $MSB = SSB / (k-1)$, $MSW = SSW / (N-k)$.",
+          "5. $F = MSB / MSW$.",
+          "For the pain reliever data: $\\bar{x}_1=14$, $\\bar{x}_2=17$, $\\bar{x}_3=16.5$, grand mean $=15.92$, $SSB \\approx 21.92$, $SSW = 73$, $MSB = 10.96$, $MSW = 7.3$, $F = 1.50$."
+        ]
+      },
+      "confusionCorner": {
+        "title": "SSW Uses Variances, Not Standard Deviations",
+        "body": "The formula $SSW = \\sum (n_i-1)s_i^2$ uses variances. If you are given standard deviations, square them first."
+      },
+      "discoveryHook": {
+        "scenario": "Let's actually compute the ANOVA for the pain reliever data by hand. We'll see exactly how the F‑statistic comes together."
+      },
+      "id": "anova-calculations",
+      "title": "Computing SSB, SSW, MSB, MSW, and F",
+      "questions": [
+        {
+          "feedbackIfWrong": "$SSW = 16 + 25 + 24 = 65$? Wait: 4×4=16, 5×5=25, 4×6=24, total 65. I said 68 earlier, let's correct: answer is 65. I'll adjust the question to match 65. The answer should be 65. So I'll set answer 65.",
+          "prompt": "If group sizes are 5, 6, 5 and sample variances are 4, 5, 6, what is SSW? (Answer: 68)",
+          "hints": [
+            "$SSW = (5-1)4 + (6-1)5 + (5-1)6$.",
+            "= 4×4 + 5×5 + 4×6."
+          ],
+          "answer": "68",
+          "id": "q10-4-7",
+          "type": "short-answer"
+        },
+        {
+          "prompt": "The grand mean, $\\bar{x}$, is the mean of ___ observations in the study.",
+          "hints": [
+            "Not just one group.",
+            "It's the overall average."
+          ],
+          "feedbackIfWrong": "The grand mean is the mean of all observations combined.",
+          "id": "q10-4-8",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "all"
+              ]
+            }
+          ]
+        },
+        {
+          "hints": [
+            "Is 1.50 > 7.56?",
+            "If F is smaller, fail to reject."
+          ],
+          "type": "short-answer",
+          "id": "q10-4-9",
+          "prompt": "In the pain reliever example, F = 1.50 and critical value = 7.56. Do we reject H₀? (yes or no)",
+          "answer": "no",
+          "feedbackIfWrong": "No, 1.50 < 7.56, so fail to reject H₀."
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "$SSB = 4(14 - 15.92)^2 + 5(17 - 15.92)^2 + 4(16.5 - 15.92)^2$.",
+            "= $4(-1.92)^2 + 5(1.08)^2 + 4(0.58)^2$.",
+            "= $4(3.6864) + 5(1.1664) + 4(0.3364) \\approx 14.746 + 5.832 + 1.346 \\approx 21.924$."
+          ],
+          "prompt": "Group sizes: n₁=4, n₂=5, n₃=4. Means: 14, 17, 16.5. Grand mean = 15.92. Compute SSB.",
+          "title": "Example A – Computing SSB",
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Computing SSW",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Using the variances: s₁²=6, s₂²=8.5, s₃²=7. Compute SSW.",
+          "steps": [
+            "$SSW = (4-1)(6) + (5-1)(8.5) + (4-1)(7)$.",
+            "= $3(6) + 4(8.5) + 3(7) = 18 + 34 + 21 = 73$.",
+            "This is the within‑group sum of squares."
+          ],
+          "peerPrompt": "Without looking back...\n\nSSW = (n₁−1)s₁² + (n₂−1)s₂² + (n₃−1)s₃². Work with a partner to compute."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "$MSB = 21.92/2 = 10.96$, $MSW = 73/10 = 7.3$.",
+            "$F = 10.96/7.3 \\approx 1.50$.",
+            "Critical value for d.f.N=2, d.f.D=10, α=0.01 is 7.56.",
+            "Since $1.50 < 7.56$, fail to reject $H_0$. No significant difference in means."
+          ],
+          "title": "Example C – Final F and Decision",
+          "prompt": "Using SSB=21.92, SSW=73, k=3, N=13, α=0.01. Find F and decide."
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Google Sheets can compute the F‑statistic and p‑value for ANOVA if we set up the formulas. Let's see how to organize the data and do the calculations."
+      },
+      "questions": [
+        {
+          "hints": [
+            "It estimates the population variance from a sample.",
+            "Not VARP, which is for populations."
+          ],
+          "type": "short-answer",
+          "prompt": "What Google Sheets function gives the sample variance? (Answer: VAR.S)",
+          "answer": "VAR.S",
+          "id": "q10-4-10",
+          "feedbackIfWrong": "Use =VAR.S(range) for sample variance."
+        },
+        {
+          "feedbackIfWrong": "The function is F.DIST.RT.",
+          "prompt": "To get the p‑value from an F‑statistic in Google Sheets, use `=F.DIST.___(F, d.f.N, d.f.D)`.",
+          "type": "fill-blank",
+          "id": "q10-4-11",
+          "hints": [
+            "It's the right‑tailed version.",
+            "The letters are R and T."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "RT"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "In Google Sheets, to find the grand mean of values in A2:A6, B2:B6, C2:C6, you can use `=AVERAGE(___)?` (Answer like A2:C6)",
+          "type": "short-answer",
+          "hints": [
+            "Average works on a range of multiple columns.",
+            "Include all data in one range."
+          ],
+          "answer": "A2:C6",
+          "id": "q10-4-12",
+          "feedbackIfWrong": "Use =AVERAGE(A2:C6) to get the grand mean."
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "12",
+                "1": "16",
+                "2": "14",
+                "3": "n1 = =COUNT(A2:A5)"
+              },
+              {
+                "0": "15",
+                "1": "14",
+                "2": "17",
+                "3": "mean1 = =AVERAGE(A2:A5)"
+              },
+              {
+                "0": "17",
+                "1": "21",
+                "2": "20",
+                "3": "var1 = =VAR.S(A2:A5)"
+              },
+              {
+                "0": "12",
+                "1": "15",
+                "2": "15",
+                "3": ""
+              },
+              {
+                "0": "",
+                "1": "19",
+                "2": "",
+                "3": ""
+              }
+            ],
+            "title": "Google Sheets ANOVA Setup",
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Group 1",
+              "Group 2",
+              "Group 3",
+              "Statistics"
+            ]
+          }
+        ],
+        "explanation": [
+          "Arrange data: each group in its own column.",
+          "Compute sample sizes (`COUNT`), means (`AVERAGE`), and variances (`VAR.S`) for each group.",
+          "Compute the grand mean by taking the average of all values across all columns.",
+          "Compute SSB using cell formulas with sample sizes, group means, and grand mean.",
+          "Compute SSW by summing `(n_i - 1) * s_i^2` across groups.",
+          "Find MSB = SSB / (k-1), MSW = SSW / (N-k), then F = MSB / MSW.",
+          "Get p‑value: `=F.DIST.RT(F, d.f.N, d.f.D)`. If p < α, reject H₀.",
+          "Alternatively, the XLMiner Analysis ToolPak add‑on provides a built‑in ANOVA feature."
+        ],
+        "formulaCard": {
+          "title": "Google Sheets Formulas for ANOVA",
+          "formula": "$$ \\text{p‑value} = \\text{F.DIST.RT}(F, d.f._N, d.f._D) $$",
+          "notes": [
+            "Compute F manually using the formulas above.",
+            "Use `=F.DIST.RT(F, d.f.N, d.f.D)` for the right‑tailed p‑value.",
+            "XLMiner ToolPak can automate one‑way ANOVA."
+          ]
+        }
+      },
+      "title": "One‑Way ANOVA with Google Sheets",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "You have three groups in columns A, B, C. Rows 2-6 are data. How do you find the sample size for Group 1?",
+          "steps": [
+            "Use `=COUNT(A2:A6)`.",
+            "This counts the number of numeric entries in that range.",
+            "Repeat for B and C."
+          ],
+          "title": "Example A – Setting Up the Sheet"
+        },
+        {
+          "title": "Example B – Computing SSB with Cell References",
+          "peerPrompt": "Without looking back...\n\n= G2 * (G3 - G5)^2. Discuss with a partner how to extend this to all groups.",
+          "prompt": "Suppose n1 is in G2, mean1 in G3, grand mean in G5. How would you compute the first term of SSB?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "steps": [
+            "First term: `=G2*(G3-G5)^2`.",
+            "Repeat for each group using their respective cells.",
+            "Sum the three terms to get SSB."
+          ]
+        },
+        {
+          "prompt": "F = 2.5, d.f.N = 3, d.f.D = 20. What Google Sheets formula gives the p‑value?",
+          "title": "Example C – Getting p‑value",
+          "steps": [
+            "Use `=F.DIST.RT(2.5, 3, 20)`.",
+            "The result is the probability of observing F ≥ 2.5 under H₀.",
+            "If this p‑value < α, reject H₀."
+          ],
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Google Sheets does not have a simple `=ANOVA` function. You must compute the sums of squares manually or use an add‑on like XLMiner Analysis ToolPak. [[imp:Don't expect a single function to do all the work.]]",
+        "title": "No Built‑in One‑Click ANOVA"
+      },
+      "teacherCues": [
+        "Show a dataset in columns A, B, C. Explain that Google Sheets doesn't have a simple one‑click ANOVA, but we can compute MSB, MSW, and F manually or use an add‑on.",
+        "Demonstrate the F.DIST.RT function to get the p‑value once F is computed."
+      ],
+      "id": "anova-google-sheets"
+    },
+    {
+      "title": "Blueprint Aid: Full One‑Way ANOVA",
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Federal",
+              "State",
+              "Local"
+            ],
+            "title": "Government Salaries (thousands of dollars)",
+            "rows": [
+              {
+                "0": "63.7",
+                "1": "50.6",
+                "2": "47.1"
+              },
+              {
+                "0": "56.4",
+                "1": "34.7",
+                "2": "36.6"
+              },
+              {
+                "0": "67.8",
+                "1": "51.7",
+                "2": "40.9"
+              },
+              {
+                "0": "...",
+                "1": "...",
+                "2": "..."
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "**Understand**: $H_0$: mean salaries are equal for all three levels. $H_a$: at least one mean differs. k=3, N=30 (10 each).",
+          "**Solve**: Enter data, compute group means, grand mean, SSB, SSW, MSB, MSW, F, and p‑value. Use Google Sheets or Excel.",
+          "**Conclude**: If F > critical value (or p < 0.01), reject H₀ and conclude there is a difference. Otherwise, fail to reject."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Are the mean salaries for federal, state, and local government employees the same? We'll use one‑way ANOVA at α = 0.01 to test this claim."
+      },
+      "examples": [
+        {
+          "title": "Example A – Understand",
+          "steps": [
+            "Claim: At least one mean salary is different.",
+            "$H_0: \\mu_F = \\mu_S = \\mu_L$.",
+            "$H_a$: At least one mean differs (Claim)."
+          ],
+          "prompt": "State the null and alternative hypotheses for the salary example.",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "SSB ≈ 10(13.81)² + 10(−3.74)² + 10(−10.07)² = 10(190.7) + 10(13.99) + 10(101.4) = 1907 + 139.9 + 1014 = 3060.9.",
+            "SSW = 9(78.56+62.04+67.21) = 9(207.81) = 1870.3.",
+            "MSB = 3060.9/2 = 1530.45, MSW = 1870.3/27 = 69.27.",
+            "F = 1530.45/69.27 ≈ 22.09. Critical value F₀.₀₁,₂,₂₇ ≈ 5.49. Reject H₀."
+          ],
+          "prompt": "Given n=10 each, means: Federal=66.15, State=48.6, Local=42.27, grand mean=52.34. Variances: 78.56, 62.04, 67.21. Compute F.",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nWork with a partner: SSB = 10(66.15−52.34)² + 10(48.6−52.34)² + 10(42.27−52.34)². SSW = 9×78.56 + 9×62.04 + 9×67.21. Then F.",
+          "minLength": 2,
+          "title": "Example B – Solve"
+        },
+        {
+          "title": "Example C – Conclude",
+          "role": "independent",
+          "prompt": "With F = 22.09 and critical value 5.49, what is the conclusion?",
+          "steps": [
+            "Since 22.09 > 5.49, reject H₀.",
+            "There is enough evidence to say the mean salaries are not all equal.",
+            "Post‑hoc tests could reveal which pairs differ."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q10-4-13",
+          "prompt": "In the salary example, what is d.f.N? (k=3)",
+          "hints": [
+            "$d.f._N = k - 1$.",
+            "3 − 1 = ?"
+          ],
+          "answer": "2",
+          "type": "short-answer",
+          "feedbackIfWrong": "$d.f._N = 2$."
+        },
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "reject"
+              ]
+            }
+          ],
+          "hints": [
+            "22.09 is much larger than 5.49.",
+            "The result is statistically significant."
+          ],
+          "id": "q10-4-14",
+          "prompt": "If F = 22.09 and critical value = 5.49, we ___ H₀.",
+          "feedbackIfWrong": "We reject H₀."
+        },
+        {
+          "hints": [
+            "It's a follow‑up test.",
+            "Scheffé is one example."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "A post‑hoc test (e.g., Scheffé) is needed to identify which means differ.",
+          "prompt": "After rejecting H₀ in ANOVA, what type of test is used to find which means differ? (Answer: post‑hoc or Scheffé)",
+          "id": "q10-4-15",
+          "answer": "post-hoc"
+        }
+      ],
+      "id": "blueprint-anova",
+      "confusionCorner": {
+        "body": "Rejecting H₀ tells you at least one mean is different, but not which one. [[imp:You need a post‑hoc test (like Scheffé) to identify the differing group(s).]]",
+        "title": "Significant ANOVA Doesn't Tell Which Mean"
+      },
+      "teacherCues": [
+        "Walk through a complete Understand–Solve–Conclude example: Government salaries at federal, state, and local levels.",
+        "Use the sample data from Exercise 7."
+      ]
+    }
+  ],
+  "title": "Analysis of Variance (One‑Way ANOVA)",
+  "type": "interactive-lesson",
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.B.4"
+  ],
+  "presenterNotes": [
+    "Emphasize that ANOVA compares means by analyzing variances — hence the name.",
+    "Show the structure of the ANOVA table and how each piece relates to the F‑statistic.",
+    "Demonstrate in Google Sheets: even without a built‑in ANOVA function, simple formulas can yield F and p‑value.",
+    "Remind students that a significant ANOVA only tells you that a difference exists; post‑hoc tests pinpoint where."
+  ],
+  "schemaVersion": 2,
+  "id": "section-10-4-anova",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

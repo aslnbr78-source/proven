@@ -1,0 +1,761 @@
+{
+  "presenterNotes": [
+    "Emphasize the difference between common ratio (exponential) and constant differences (linear/quadratic). Students often confuse these.",
+    "When writing exponential functions from two points, walk through the substitution method carefully. The formula for b is a handy shortcut but ensure they understand the derivation.",
+    "The linearization technique (x, ln y) is powerful. Have students plot these transformed points to see the straight line, reinforcing the concept.",
+    "Technology regression is essential for real-world data. Demonstrate on a calculator or Desmos. Point out the r^2 value and what it means.",
+    "In the Blueprint block, tie everything together. Show how to approach a new data set systematically."
+  ],
+  "schemaVersion": 2,
+  "type": "interactive-lesson",
+  "title": "Modeling with Logarithmic Functions",
+  "id": "chapter-6-7-modeling-with-exponential-and-logarithmic-functions",
+  "standards": [
+    "HSF.LE.A.1",
+    "HSF.LE.A.2",
+    "HSF.LE.B.5",
+    "HSS.ID.B.6a"
+  ],
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "Data can follow many patterns—linear, quadratic, exponential. Recognizing these patterns helps us choose the right model to make predictions. Exponential data grows by a constant factor, not a constant amount."
+      },
+      "examples": [
+        {
+          "steps": [
+            "Check consecutive y-values: 1/0.5 = 2, 2/1 = 2, 4/2 = 2, etc.",
+            "The common ratio is 2, so the data represents an exponential function.",
+            "The base b = 2, so the function is of the form y = a·2^x. Since y(0)=2, a = 2, so y = 2·2^x = 2^(x+1)? Wait, check y(0)=2, so a=2. Actually y(-2)=0.5, etc. Yes exponential."
+          ],
+          "title": "Example A — Exponential Data by Common Ratio",
+          "role": "guided",
+          "prompt": "Determine the type of function represented by the table: x = -2,-1,0,1,2,3,4 with y = 0.5,1,2,4,8,16,32."
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you find first and second differences? Why do constant second differences mean quadratic?",
+          "prompt": "Explain why the table with x = -2,0,2,4,6,8,10 and y = 2,0,2,8,18,32,50 represents a quadratic function.",
+          "title": "Example B — Quadratic by Second Differences",
+          "steps": [
+            "Compute first differences: 0-2 = -2, 2-0 = 2, 8-2 = 6, 18-8 = 10, 32-18 = 14, 50-32 = 18. Not constant.",
+            "Compute second differences: 2-(-2) = 4, 6-2 = 4, 10-6 = 4, 14-10 = 4, 18-14 = 4. Constant!",
+            "Constant second differences indicate a quadratic function."
+          ],
+          "role": "peer-explain",
+          "minLength": 8
+        },
+        {
+          "prompt": "A table has x = 0,10,20,30 with y = 15,12,9,6. Determine the function type.",
+          "role": "independent",
+          "steps": [
+            "First differences: 12-15 = -3, 9-12 = -3, 6-9 = -3. Constant.",
+            "Constant first differences → linear function."
+          ],
+          "title": "Example C — Identifying Linear Data"
+        }
+      ],
+      "confusionCorner": {
+        "body": "For exponential data, look for a constant [[imp:ratio]] (multiplication), not a constant difference (addition). Don't mix up the pattern: exponential data multiply, linear data add.",
+        "title": "Ratios vs. Differences"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Linear",
+                "1": "Constant first differences",
+                "2": "y: 2, 5, 8, 11 (diff = 3)"
+              },
+              {
+                "0": "Quadratic",
+                "1": "Constant second differences",
+                "2": "y: 1, 4, 9, 16 (2nd diff = 2)"
+              },
+              {
+                "0": "Exponential",
+                "1": "Constant ratio between consecutive y-values",
+                "2": "y: 3, 6, 12, 24 (ratio = 2)"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Identifying Data Patterns",
+            "headers": [
+              "Pattern",
+              "How to Recognize",
+              "Example"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{If } \\frac{y_{i+1}}{y_i} = \\text{constant } r \\text{ for all } i, \\text{ the data is exponential.} $$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "common ratio (growth factor)",
+              "symbol": "$r$"
+            }
+          ]
+        },
+        "explanation": [
+          "To determine the type of function that fits a data set with equally spaced x-values, look at the pattern of y-values.",
+          "For [[kw:linear]] data, the first differences (y-values subtracted consecutively) are constant.",
+          "For [[kw:quadratic]] data, the second differences are constant.",
+          "For [[kw:exponential]] data, consecutive y-values have a [[kw:common ratio]]: each y-value is the previous one multiplied by a constant factor.",
+          "If the x-values are not equally spaced, check the overall shape of a scatter plot, or transform the data (e.g., take logs) to test for exponential patterns."
+        ]
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "A constant ratio indicates exponential data.",
+          "hints": [
+            "It involves a constant multiplier.",
+            "Opposite of linear growth."
+          ],
+          "id": "q6-7-1",
+          "prompt": "If each y-value in a data set is obtained by multiplying the previous y-value by the same number, the data is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "exponential"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "For the sequence 3, 6, 12, 24, what is the common ratio?",
+          "id": "q6-7-2",
+          "type": "short-answer",
+          "hints": [
+            "Divide each term by the previous one.",
+            "6/3 = ?"
+          ],
+          "feedbackIfWrong": "Each term is multiplied by 2 to get the next, so the ratio is 2.",
+          "answers": [
+            "2",
+            "two"
+          ]
+        },
+        {
+          "id": "q6-7-3",
+          "hints": [
+            "Think of y = x^2.",
+            "Second differences are the same."
+          ],
+          "prompt": "What kind of function has constant second differences?",
+          "feedbackIfWrong": "Constant second differences indicate a quadratic function.",
+          "answers": [
+            "quadratic"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "title": "Classifying Data Sets",
+      "id": "classifying-data-sets",
+      "teacherCues": [
+        "Show a table with x-values increasing by 1 and y-values multiplying by a constant. Ask: What pattern do you notice?",
+        "Compare with a table where second differences are constant. Ask: How is this different from the first table?"
+      ]
+    },
+    {
+      "concept": {
+        "explanation": [
+          "An exponential function has the form $y = a b^x$. Two points $(x_1, y_1)$ and $(x_2, y_2)$ on its graph give two equations: $y_1 = a b^{x_1}$ and $y_2 = a b^{x_2}$.",
+          "Solve one equation for $a$: $a = \\frac{y_1}{b^{x_1}}$, then substitute into the second.",
+          "This yields an equation with $b$ as the only unknown. Solve for $b$ (take positive root because $b>0$).",
+          "Then find $a$ by substituting $b$ back into either original equation.",
+          "Write the final function and check that it passes through both points."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$a$",
+              "meaning": "initial value (y-intercept when x=0)",
+              "tone": "core"
+            },
+            {
+              "meaning": "base (growth/decay factor)",
+              "symbol": "$b$",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ y = a b^x $$ $$ a = \\frac{y_1}{b^{x_1}}, \\quad b = \\left( \\frac{y_2}{y_1} \\right)^{\\frac{1}{x_2-x_1}} $$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "variant": "colorful",
+            "title": "Steps to Find y = ab^x from Two Points",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Substitute each point into y = ab^x to get two equations."
+              },
+              {
+                "0": "2",
+                "1": "Solve the first equation for a in terms of b."
+              },
+              {
+                "0": "3",
+                "1": "Substitute this expression for a into the second equation."
+              },
+              {
+                "0": "4",
+                "1": "Solve for b (take positive root)."
+              },
+              {
+                "0": "5",
+                "1": "Find a using the value of b."
+              },
+              {
+                "0": "6",
+                "1": "Write the function and verify with given points."
+              }
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Set up: 6 = ab^1, 54 = ab^3.",
+            "Solve first for a: a = 6/b. Substitute into second: 54 = (6/b) b^3 = 6b^2.",
+            "Solve: b^2 = 9 → b = 3 (positive). Then a = 6/3 = 2.",
+            "Function: y = 2·3^x."
+          ],
+          "title": "Example A — Finding y = ab^x from (1,6) and (3,54)",
+          "prompt": "Write an exponential function y = ab^x passing through (1,6) and (3,54)."
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Why does this formula work? How does the exponent 1/(x2-x1) relate to the time between points?",
+          "title": "Example B — Using the Ratio Method",
+          "prompt": "Explain how the formula $b = \\left( \\frac{y_2}{y_1} \\right)^{\\frac{1}{x_2-x_1}}$ quickly finds b from two points.",
+          "steps": [
+            "From the two equations, dividing gives $\\frac{y_2}{y_1} = b^{x_2-x_1}$.",
+            "Taking the (x2-x1)-th root yields $b = (y_2/y_1)^{1/(x_2-x_1)}$.",
+            "This gives the base directly. Then find a by plugging b into one of the original points.",
+            "Example: (2,12) and (5,96): b = (96/12)^(1/3) = 8^(1/3) = 2."
+          ],
+          "minLength": 8,
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Decay Example",
+          "prompt": "Find the exponential function passing through (0, 100) and (2, 25).",
+          "steps": [
+            "From (0,100): 100 = a·b^0 → a = 100.",
+            "From (2,25): 25 = 100·b^2 → b^2 = 0.25 → b = 0.5 (positive).",
+            "Function: y = 100·(0.5)^x (exponential decay)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "The base of an exponential function is defined to be positive. When solving for b, take the [[imp:positive root]]. The negative root does not produce a real exponential function.",
+        "title": "b Must Be Positive"
+      },
+      "teacherCues": [
+        "Ask: If we know two points on an exponential curve y = ab^x, how can we find a and b?",
+        "Set up a system of equations: (1,6) → 6 = ab, (3,54) → 54 = ab^3. Show solving by substitution."
+      ],
+      "id": "writing-exponential-functions-two-points",
+      "title": "Writing Exponential Functions from Two Points",
+      "discoveryHook": {
+        "scenario": "Two points determine a line; similarly, two points determine an exponential curve. Given the number of bacteria at two different times, we can find the exponential growth function."
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "Because b^0 = 1, a equals the y-coordinate at x=0, which is 5.",
+          "id": "q6-7-4",
+          "answers": [
+            "5",
+            "five"
+          ],
+          "hints": [
+            "Plug x=0: y = a·b^0 = a·1 = a.",
+            "So a = y when x=0."
+          ],
+          "prompt": "In y = ab^x, if the graph passes through (0, 5), what is the value of a?"
+        },
+        {
+          "feedbackIfWrong": "The formula is $b = (y_2/y_1)^{1/(x_2 - x_1)}$.",
+          "id": "q6-7-5",
+          "blanks": [
+            {
+              "accept": [
+                "x1"
+              ]
+            }
+          ],
+          "hints": [
+            "The exponent denominator is the difference in x-values.",
+            "Subtract the x-values."
+          ],
+          "prompt": "To find the base b from two points (x1,y1) and (x2,y2) on an exponential curve, use $b = (y_2/y_1)^{1/(x_2-___)}$.",
+          "type": "fill-blank"
+        },
+        {
+          "id": "q6-7-6",
+          "hints": [
+            "Divide equations: 64/4 = b^(3-1) = b^2.",
+            "So b^2 = 16, b = ?"
+          ],
+          "prompt": "Given points (1, 4) and (3, 64), find b for y = ab^x.",
+          "answers": [
+            "4",
+            "four"
+          ],
+          "feedbackIfWrong": "$b^2 = 16$, so $b = 4$ (positive).",
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "When x=0, ln y = ln a.",
+            "The intercept is the log of the initial value."
+          ],
+          "prompt": "If y = ab^x, then taking the natural log gives $\\ln y = \\ln a + x \\ln b$. This is a linear equation with slope $\\ln b$ and y-intercept $\\ln$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "a"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The intercept is $\\ln a$.",
+          "type": "fill-blank",
+          "id": "q6-7-7"
+        },
+        {
+          "feedbackIfWrong": "It indicates that the original data is exponential.",
+          "answers": [
+            "exponential",
+            "exponential relationship"
+          ],
+          "id": "q6-7-8",
+          "hints": [
+            "The line comes from the logarithmic transformation.",
+            "The original data follows an exponential pattern."
+          ],
+          "type": "short-answer",
+          "prompt": "If a set of transformed points (x, ln y) lies on a straight line, what does that indicate about the original (x, y) data?"
+        },
+        {
+          "feedbackIfWrong": "$b = e^{1.2} \\approx 3.3$.",
+          "id": "q6-7-9",
+          "type": "short-answer",
+          "prompt": "Given the linearized equation $\\ln y = 1.2x + 0.8$, find the base $b$ of the exponential model. (Round to one decimal place, e.g., 3.3)",
+          "answers": [
+            "3.3"
+          ],
+          "hints": [
+            "$\\ln b = 1.2$.",
+            "$b = e^{1.2}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Choosing the Base for Logs",
+        "body": "You can use natural log (ln) or common log (log) to linearize. The slope will be log b or ln b respectively. [[imp:Consistency is key—use the same log type for all transformations.]]"
+      },
+      "title": "Linearizing Exponential Data with Logarithms",
+      "examples": [
+        {
+          "title": "Example A — Transforming Trampoline Sales Data",
+          "steps": [
+            "Compute ln y for each y: approx 2.48, 2.77, 3.22, 3.58, 3.91, 4.20, 4.56.",
+            "Plot (x, ln y). Points are nearly linear, so exponential model fits.",
+            "Choose two points on the line, e.g., (1, 2.48) and (7, 4.56). Slope m = (4.56-2.48)/(7-1) = 2.08/6 ≈ 0.3467.",
+            "Then b = e^0.3467 ≈ 1.415. Intercept: using point-slope, ln y - 2.48 = 0.3467(x-1). At x=0, ln y ≈ 2.48 - 0.3467 = 2.1333, so a = e^2.1333 ≈ 8.44.",
+            "Model: y = 8.44(1.415)^x."
+          ],
+          "prompt": "Given the data (x, y): (1,12), (2,16), (3,25), (4,36), (5,50), (6,67), (7,96), compute (x, ln y) and determine if an exponential model fits. Then find the model.",
+          "role": "guided"
+        },
+        {
+          "minLength": 8,
+          "role": "peer-explain",
+          "steps": [
+            "The properties: ln(ab^x) = ln a + ln(b^x) = ln a + x ln b (Power Property).",
+            "Let Y = ln y, m = ln b, c = ln a. Then Y = m x + c, which is a linear equation.",
+            "So plotting (x, ln y) gives a straight line if the original data is perfectly exponential."
+          ],
+          "prompt": "Explain why taking the logarithm turns an exponential into a linear relationship.",
+          "title": "Example B — Why Linear?",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Use the property ln(ab^x) = ln a + ln(b^x) = ln a + x ln b. Why is this now in the form y = mx + c?"
+        },
+        {
+          "title": "Example C — Finding an Exponential Model from Transformed Data",
+          "steps": [
+            "Compare to ln y = ln a + x ln b. So ln a = 2.13 → a = e^2.13 ≈ 8.41.",
+            "ln b = 0.35 → b = e^0.35 ≈ 1.42.",
+            "Model: y = 8.41(1.42)^x."
+          ],
+          "role": "independent",
+          "prompt": "The transformed points (x, ln y) for a data set lie on a line with equation ln y = 0.35x + 2.13. Find the exponential model y = ab^x."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "If we take the natural log of the y-values from an exponential function, the transformed points (x, ln y) fall on a straight line. This linearization trick lets us check if data is exponential and find the model using linear regression techniques."
+      },
+      "id": "transformed-points-linearization",
+      "teacherCues": [
+        "Write y = ab^x. Ask: What happens if we take the natural log of both sides? (ln y = ln a + x ln b)",
+        "Show that (x, ln y) should be linear if the original data is exponential."
+      ],
+      "concept": {
+        "explanation": [
+          "Given $y = a b^x$, taking the natural log gives $\\ln y = \\ln a + x \\ln b$. This is a linear equation with slope $\\ln b$ and intercept $\\ln a$.",
+          "To test if data is exponential, plot $(x, \\ln y)$. If the points lie approximately on a line, an exponential model is appropriate.",
+          "To find the model, pick two points on the line $(x_1, \\ln y_1)$ and $(x_2, \\ln y_2)$, find the slope $m = \\frac{\\ln y_2 - \\ln y_1}{x_2 - x_1} = \\ln b$. Then $b = e^m$ and $a = e^{\\text{intercept}}$.",
+          "This method is especially useful when the data has more than two points and we want to fit the best exponential curve."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Original",
+              "Transformed",
+              "Linear Equation"
+            ],
+            "variant": "colorful",
+            "title": "Linearizing y = ab^x",
+            "type": "table",
+            "rows": [
+              {
+                "0": "$y = a b^x$",
+                "1": "Take $\\ln$ of both sides",
+                "2": "$\\ln y = \\ln a + x \\ln b$"
+              },
+              {
+                "0": "Exponential curve",
+                "1": "Straight line on $(x, \\ln y)$ plane",
+                "2": "Slope $= \\ln b$, intercept $= \\ln a$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\ln y = \\ln a + x \\ln b $$ $$ b = e^{\\text{slope}}, \\; a = e^{\\text{intercept}} $$",
+          "legend": [
+            {
+              "meaning": "natural log of dependent variable",
+              "tone": "core",
+              "symbol": "$\\ln y$"
+            },
+            {
+              "symbol": "slope",
+              "meaning": "$\\ln b$",
+              "tone": "subtle"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Different Forms of Logarithmic Regression",
+        "body": "The calculator may offer LnReg y=a+b ln x. If your variables are swapped, you might need to do LnReg x=a+b ln y. Always check which variable is independent. [[imp:Input the independent variable as x, dependent as y.]]"
+      },
+      "id": "technology-regression-exp-log",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "b^x"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "On a graphing calculator, the command ExpReg finds a model of the form $y = a \\cdot$ ___.",
+          "feedbackIfWrong": "ExpReg gives $y = a \\cdot b^x$.",
+          "hints": [
+            "It's the exponential base raised to the power x.",
+            "The form is y = a * b^x."
+          ],
+          "id": "q6-7-10"
+        },
+        {
+          "prompt": "In the trampoline regression model, what was the base b rounded to two decimal places? (e.g., 1.42)",
+          "feedbackIfWrong": "The base b was approximately 1.42.",
+          "id": "q6-7-11",
+          "type": "short-answer",
+          "hints": [
+            "From the regression output.",
+            "b ≈ 1.4188... rounds to 1.42."
+          ],
+          "answers": [
+            "1.42"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "id": "q6-7-12",
+          "hints": [
+            "Compute ln 0.75 ≈ -0.2877.",
+            "Then 0.86 - 6.45(-0.2877) ≈ 0.86 + 1.86 = 2.72 ≈ 2.7."
+          ],
+          "prompt": "Using the logarithmic model h = 0.86 - 6.45 ln p, find h when p = 0.75. Round to one decimal place.",
+          "feedbackIfWrong": "h ≈ 2.7 km.",
+          "answers": [
+            "2.7"
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Demonstrate on a graphing calculator: enter trampoline data into lists, then use ExpReg to find y = a*b^x.",
+        "Show how to perform logarithmic regression (LnReg) for altitude vs pressure data."
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{ExpReg: } y = a \\cdot b^x $$ $$ \\text{LnReg: } y = a + b \\ln x $$",
+          "legend": [
+            {
+              "symbol": "$a$",
+              "tone": "core",
+              "meaning": "regression coefficients (calculator output)"
+            },
+            {
+              "meaning": "coefficient of determination (close to 1 = good fit)",
+              "symbol": "$r^2$",
+              "tone": "subtle"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Enter x-values in List 1, y-values in List 2."
+              },
+              {
+                "0": "2",
+                "1": "Choose regression type (ExpReg or LnReg) from STAT CALC menu."
+              },
+              {
+                "0": "3",
+                "1": "Record the equation and $r^2$ value."
+              },
+              {
+                "0": "4",
+                "1": "Graph the regression curve with the scatter plot to visually check fit."
+              },
+              {
+                "0": "5",
+                "1": "Use the model to predict unknown values."
+              }
+            ],
+            "type": "table",
+            "title": "Using Calculator Regression"
+          }
+        ],
+        "explanation": [
+          "A graphing calculator or software can perform [[kw:exponential regression]] (ExpReg) to find the best-fit model of the form $y = a b^x$.",
+          "Similarly, [[kw:logarithmic regression]] (LnReg) finds models of the form $y = a + b \\ln x$ or $x = a + b \\ln y$.",
+          "The calculator provides values for $a$, $b$, and often $r^2$ (coefficient of determination) indicating goodness of fit.",
+          "To make a prediction, substitute the desired x-value into the regression model.",
+          "Compare predictions from different models (e.g., two-point model vs. regression model) to assess reliability."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "When you have many data points, technology finds the best-fit exponential or logarithmic curve in seconds. The regression feature minimizes error and gives a model you can use for accurate predictions."
+      },
+      "title": "Exponential and Logarithmic Regression with Technology",
+      "examples": [
+        {
+          "prompt": "Use a graphing calculator to find an exponential model for the trampoline sales data, and predict year 8 sales.",
+          "title": "Example A — Exponential Regression for Trampoline Sales",
+          "role": "guided",
+          "steps": [
+            "Enter data: years in L1, sales in L2. Run ExpReg (y=a*b^x).",
+            "Calculator gives a ≈ 8.457, b ≈ 1.419.",
+            "Model: y = 8.457(1.419)^x.",
+            "Predict year 8: y(8) = 8.457(1.419)^8 ≈ 140.",
+            "This is the best-fit model based on all data points."
+          ]
+        },
+        {
+          "minLength": 8,
+          "role": "peer-explain",
+          "title": "Example B — Logarithmic Regression for Altitude vs Pressure",
+          "prompt": "The data (p, h) with p pressure, h altitude: (1,0), (0.55,5), (0.25,10), (0.12,15), (0.06,20), (0.02,25). Use logarithmic regression to find h = a + b ln p. Estimate altitude when p=0.75.",
+          "steps": [
+            "Enter pressure in L1, altitude in L2. Run LnReg (y=a+b ln x).",
+            "Results: a ≈ 0.863, b ≈ -6.447.",
+            "Model: h = 0.863 - 6.447 ln p.",
+            "For p=0.75: h = 0.863 - 6.447 ln 0.75 ≈ 0.863 - 6.447(-0.2877) ≈ 0.863 + 1.855 ≈ 2.72 km."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Why is a logarithmic model appropriate here? What does the regression equation tell us about the relationship?"
+        },
+        {
+          "title": "Example C — Comparing Predictions",
+          "steps": [
+            "Example 3: 8.32(1.44)^8 ≈ 154.",
+            "Example 4: 8.41(1.42)^8 ≈ 139.",
+            "Regression: 8.46(1.42)^8 ≈ 140.",
+            "The regression and transformed models agree closely; the two-point model overestimates."
+          ],
+          "prompt": "From Example 3 (two-point model: y=8.32(1.44)^x), Example 4 (transformed model: y=8.41(1.42)^x), and the regression model (y=8.46(1.42)^x), predict sales for year 8 and compare.",
+          "role": "independent"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "It's where you find the model parameters.",
+            "You do this after analyzing the data."
+          ],
+          "id": "q6-7-13",
+          "feedbackIfWrong": "After understanding, you Solve — find the model using points or regression.",
+          "type": "short-answer",
+          "prompt": "In the Blueprint, after understanding the data pattern, what is the next step? (Solve, Conclude, or Understand)",
+          "answers": [
+            "Solve"
+          ]
+        },
+        {
+          "id": "q6-7-14",
+          "blanks": [
+            {
+              "accept": [
+                "growth"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "b > 1 indicates exponential growth.",
+          "prompt": "When using exponential regression, the model $y = a \\cdot b^x$ is used. If $b > 1$, the data shows exponential ___.",
+          "type": "fill-blank",
+          "hints": [
+            "Values increase over time.",
+            "Opposite of decay."
+          ]
+        },
+        {
+          "hints": [
+            "Negative slope means as x increases, y decreases.",
+            "The log curve goes down."
+          ],
+          "answers": [
+            "decreasing"
+          ],
+          "feedbackIfWrong": "A negative $b$ means the function is decreasing.",
+          "type": "short-answer",
+          "prompt": "A logarithmic model has $b < 0$ in $y = a + b \\ln x$. What does this imply about the relationship? (Increasing/Decreasing)",
+          "id": "q6-7-15"
+        }
+      ],
+      "id": "blueprint-aid-modeling",
+      "confusionCorner": {
+        "title": "Correlation vs. Causation",
+        "body": "A high $r^2$ means the model fits the data, but it doesn't prove that x causes y. Use the model for prediction, but be careful about extrapolating far beyond the data range."
+      },
+      "discoveryHook": {
+        "scenario": "When given a real-world data set, the Blueprint guides you: identify the pattern (common ratio? linearized log plot?), choose the right model (exponential or logarithmic), use technology to fit it, and then interpret predictions in context."
+      },
+      "title": "Blueprint Aid — Modeling with Exponential and Logarithmic Functions",
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude poster. Walk through the trampoline modeling problem as a blueprint.",
+        "Ask: How do we decide whether to use an exponential or logarithmic model?"
+      ],
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Examine the data. Check for common ratios (exponential) or plot (x, ln y) to test linearity. Determine which variable is independent and which is dependent.",
+          "[[imp:Solve]]: If exponential, write model y = ab^x either from two points or using regression. If logarithmic, use regression of the form y = a + b ln x (or x = a + b ln y). Use calculator to find coefficients.",
+          "[[imp:Conclude]]: Write the model equation. Use it to make predictions. Interpret the meaning of parameters (e.g., growth rate). Check if the model makes sense in context (e.g., positive values, appropriate domain)."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Analyze data pattern; plot (x, ln y); identify independent/dependent variables."
+              },
+              {
+                "0": "Solve",
+                "1": "Choose model type; use points or regression to find parameters."
+              },
+              {
+                "0": "Conclude",
+                "1": "Write model; make predictions; interpret in real-world context."
+              }
+            ],
+            "title": "Blueprint for Exponential/Logarithmic Modeling"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ y = a b^x \\quad \\text{or} \\quad y = a + b \\ln x $$",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "data pattern",
+              "meaning": "ratio or linearized log plot determines model"
+            }
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "The table shows website visits (y) in month x: (1,22), (2,39), (3,70), (4,126), (5,227), (6,408), (7,735). Model and predict visits after 1 year (x=12).",
+          "steps": [
+            "Understand: Ratios are about 1.77, 1.79, 1.8, 1.8, 1.8 — roughly constant, so exponential. Let's also check (x, ln y) plot.",
+            "Solve: Use ExpReg on calculator: a ≈ 12.0, b ≈ 1.77. Model: y = 12.0(1.77)^x.",
+            "Conclude: Predict x=12: y = 12.0(1.77)^12 ≈ 12.0 * 1380 ≈ 16,560 visits. This seems high—check if model holds. Use cautiously."
+          ],
+          "title": "Example A — Full Modeling Process"
+        },
+        {
+          "steps": [
+            "Differences: 5, 5, 6, 12, 16, 18 — not constant (so not linear).",
+            "Ratios: 14/9 ≈ 1.56, 19/14 ≈ 1.36, 25/19 ≈ 1.32, 37/25 ≈ 1.48, 53/37 ≈ 1.43, 71/53 ≈ 1.34 — roughly around 1.4, not constant but suggesting exponential.",
+            "Check (x, ln y): ln y values 2.20, 2.64, 2.94, 3.22, 3.61, 3.97, 4.26 — nearly linear. So exponential model appropriate."
+          ],
+          "role": "peer-explain",
+          "title": "Example B — Choosing Between Exponential and Logarithmic",
+          "minLength": 8,
+          "prompt": "Data: (x, y) = (1, 9), (2, 14), (3, 19), (4, 25), (5, 37), (6, 53), (7, 71). Why might an exponential model be better than a linear one?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Look at the increases in y. Are they roughly constant, or do they grow? What does that suggest?"
+        },
+        {
+          "steps": [
+            "Plug f = 5.657: s = 1.5 + 2.0 ln(5.657).",
+            "ln(5.657) ≈ 1.733, so s ≈ 1.5 + 3.466 = 4.966.",
+            "Interpret: The light measure increases logarithmically with f-stop."
+          ],
+          "title": "Example C — Logarithmic Model Interpretation",
+          "prompt": "A camera f-stop model is s = a + b ln f, where s is light measure, f is f-stop. Given regression s = 1.5 + 2.0 ln f, predict s for f = 5.657.",
+          "role": "independent"
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

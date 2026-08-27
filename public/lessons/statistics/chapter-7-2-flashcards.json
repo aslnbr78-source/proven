@@ -1,0 +1,137 @@
+{
+  "id": "chapter-7-2-flashcards",
+  "cards": [
+    {
+      "front": "State the decision rule using a [[kw:P‑value]].",
+      "back": [
+        "If $ \\text{P‑value} \\le \\alpha $, [[imp:reject $ H_0 $]].",
+        "If $ \\text{P‑value} > \\alpha $, [[imp:fail to reject $ H_0 $]].",
+        "The P‑value is the probability of observing a test statistic as extreme as (or more extreme than) the one computed, assuming $ H_0 $ is true."
+      ]
+    },
+    {
+      "front": "How is the P‑value found for a [[kw:left‑tailed test]]?",
+      "back": [
+        "P‑value = area in the [[imp:left tail]] of the standard normal curve.",
+        "From the z‑table: look up the cumulative area to the left of $ z $.",
+        "Google Sheets: `=NORM.S.DIST(z, TRUE)`."
+      ]
+    },
+    {
+      "back": [
+        "P‑value = area in the [[imp:right tail]].",
+        "From the z‑table: $ 1 - $(area to the left of $ z $).",
+        "Google Sheets: `=1 - NORM.S.DIST(z, TRUE)`."
+      ],
+      "front": "How is the P‑value found for a [[kw:right‑tailed test]]?"
+    },
+    {
+      "back": [
+        "P‑value = [[imp:twice]] the area in the tail beyond the test statistic.",
+        "If $ z $ is negative, P‑value = $ 2 \\times $(area left of $ z $). If positive, $ 2 \\times $(area right of $ z $).",
+        "Google Sheets: `=2 * (1 - NORM.S.DIST(ABS(z), TRUE))`."
+      ],
+      "front": "How is the P‑value found for a [[kw:two‑tailed test]]?"
+    },
+    {
+      "back": [
+        "$$ z = \\frac{\\bar{x} - \\mu_0}{\\sigma / \\sqrt{n}} $$",
+        "If $ \\sigma $ is unknown but $ n \\ge 30 $, use the sample standard deviation $ s $: $$ z = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}} $$",
+        "$ \\mu_0 $ is the hypothesized mean from $ H_0 $."
+      ],
+      "front": "Give the formula for the [[kw:z‑test statistic]] for a mean."
+    },
+    {
+      "back": [
+        "1. The population is normally distributed and $ \\sigma $ is known.",
+        "2. The sample size is at least 30 ($ n \\ge 30 $). In this case, you can use $ s $ in place of $ \\sigma $ (by the Central Limit Theorem)."
+      ],
+      "front": "When can you use a [[kw:z‑test for a mean]]?"
+    },
+    {
+      "back": [
+        "$ z = \\frac{12.9 - 13}{0.19 / \\sqrt{32}} \\approx -2.98 $.",
+        "Left‑tailed P‑value = area left of $ -2.98 \\approx 0.0014 $.",
+        "Since $ 0.0014 < 0.01 $, reject $ H_0 $ and support the claim."
+      ],
+      "front": "A pit crew claims $ \\mu < 13 $ sec. Sample: $ n=32 $, $ \\bar{x}=12.9 $, $ s=0.19 $. Find the test statistic and P‑value (left‑tailed)."
+    },
+    {
+      "front": "Mean surgery cost claimed as $ \\$22,500 $. Sample: $ n=30 $, $ \\bar{x}=21,545 $, $ s=3015 $. Test if different (two‑tailed) at $ \\alpha=0.05 $.",
+      "back": [
+        "$ H_0: \\mu = 22500 $, $ H_a: \\mu \\neq 22500 $.",
+        "$ z = \\frac{21545 - 22500}{3015 / \\sqrt{30}} \\approx -1.73 $.",
+        "Right‑tail area $ \\approx 0.0418 $; two‑tailed P‑value $ = 2 \\times 0.0418 = 0.0836 $.",
+        "$ 0.0836 > 0.05 $ → fail to reject $ H_0 $. Not enough evidence to say the mean differs."
+      ]
+    },
+    {
+      "back": [
+        "The [[kw:rejection region]] is the range of values of the test statistic that leads to rejecting $ H_0 $.",
+        "The [[kw:critical value]] $ z_0 $ is the boundary that separates the rejection region from the non‑rejection region.",
+        "If the test statistic falls in the rejection region, reject $ H_0 $."
+      ],
+      "front": "What is a [[kw:rejection region]] and a [[kw:critical value]]?"
+    },
+    {
+      "back": [
+        "The critical value has area $ \\alpha = 0.01 $ to its left.",
+        "From the z‑table, $ z_0 = -2.33 $.",
+        "Rejection region: $ z < -2.33 $.",
+        "Google Sheets: `=NORM.S.INV(0.01)` returns about $ -2.326 $."
+      ],
+      "front": "Find the critical value for a [[kw:left‑tailed test]] at $ \\alpha = 0.01 $."
+    },
+    {
+      "back": [
+        "Each tail has area $ \\alpha/2 = 0.025 $.",
+        "The critical values are $ z_0 $ with area 0.025 to its left and $ z_0 $ with area 0.975 to its left.",
+        "Thus $ -z_0 = -1.96 $ and $ z_0 = 1.96 $.",
+        "Rejection region: $ z < -1.96 $ or $ z > 1.96 $."
+      ],
+      "front": "Find the critical values for a [[kw:two‑tailed test]] at $ \\alpha = 0.05 $."
+    },
+    {
+      "back": [
+        "$ \\alpha = 0.10 $: $ \\pm 1.645 $",
+        "$ \\alpha = 0.05 $: $ \\pm 1.96 $",
+        "$ \\alpha = 0.01 $: $ \\pm 2.575 $",
+        "For one‑tailed tests, use the single value with the same tail area (e.g., right‑tailed $ 0.05 $ → $ 1.645 $)."
+      ],
+      "front": "Give the critical values for the common significance levels: $ \\alpha = 0.10, 0.05, 0.01 $ (two‑tailed)."
+    },
+    {
+      "back": [
+        "Left‑tailed: reject $ H_0 $ if $ z < z_0 $.",
+        "Right‑tailed: reject $ H_0 $ if $ z > z_0 $.",
+        "Two‑tailed: reject $ H_0 $ if $ z < -z_0 $ or $ z > z_0 $.",
+        "If $ z $ is not in the rejection region, fail to reject $ H_0 $."
+      ],
+      "front": "How do you make a decision using the [[kw:rejection region]]?"
+    },
+    {
+      "back": [
+        "$ H_0: \\mu \\ge 68000 $, $ H_a: \\mu < 68000 $ (left‑tailed). $ z_0 = -1.645 $.",
+        "$ z = \\frac{66900 - 68000}{5500/\\sqrt{30}} \\approx -1.10 $.",
+        "$ -1.10 > -1.645 $, not in rejection region → fail to reject $ H_0 $.",
+        "Not enough evidence to support the claim that salaries are less."
+      ],
+      "front": "Salaries claimed $ \\mu \\ge 68,000 $. Sample: $ n=30 $, $ \\bar{x}=66,900 $, $ s=5500 $, $ \\alpha=0.05 $. Test using a rejection region."
+    },
+    {
+      "front": "USDA claims child‑rearing cost $ \\mu = 13,120 $. Sample: $ n=500 $, $ \\bar{x}=12,925 $, $ s=1745 $, $ \\alpha=0.10 $. Test with rejection region.",
+      "back": [
+        "Two‑tailed: $ \\pm z_0 = \\pm 1.645 $.",
+        "$ z = \\frac{12925 - 13120}{1745/\\sqrt{500}} \\approx -2.50 $.",
+        "$ -2.50 < -1.645 $ → reject $ H_0 $.",
+        "Large sample makes even a small difference statistically significant."
+      ]
+    }
+  ],
+  "title": "Hypothesis Testing for the Mean (Large Samples)",
+  "type": "flashcard",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

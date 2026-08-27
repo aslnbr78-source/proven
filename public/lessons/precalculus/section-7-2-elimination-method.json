@@ -1,0 +1,749 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-7-2-elimination-method",
+  "title": "Two‑Variable Linear Systems",
+  "blocks": [
+    {
+      "id": "elimination-method",
+      "title": "The Elimination Method",
+      "teacherCues": [
+        "Write the system: $3x + 2y = 4$ and $5x - 2y = 12$. Ask what happens if we add them.",
+        "Explain that elimination means creating opposite coefficients so a variable cancels when the equations are added."
+      ],
+      "discoveryHook": {
+        "scenario": "Two friends share snacks. One bought 3 sodas and 2 pretzels for \\$4, the other returned 2 pretzels but bought 5 sodas for \\$12. Adding the two orders makes the pretzels disappear, letting us find the soda price."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:elimination method]] solves a system by adding or subtracting equations to remove one variable.",
+          "Step 1: Make the coefficients of one variable opposites (e.g., $+2y$ and $-2y$).",
+          "Step 2: Add the equations to eliminate that variable.",
+          "Step 3: Solve the resulting single‑variable equation.",
+          "Step 4: Back‑substitute to find the other variable.",
+          "Step 5: Check the solution in both original equations."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $3x+2y=4$, $5x-2y=12$",
+            "headers": [
+              "Action",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "Original system",
+                "1": "$3x+2y=4$ ; $5x-2y=12$"
+              },
+              {
+                "0": "Add equations",
+                "1": "$8x = 16$"
+              },
+              {
+                "0": "Solve for $x$",
+                "1": "$x = 2$"
+              },
+              {
+                "0": "Back‑substitute",
+                "1": "$3(2)+2y=4 \\to y=-1$"
+              },
+              {
+                "0": "Solution",
+                "1": "$(2,-1)$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Elimination Steps",
+          "formula": "1. Make opposite coefficients.\n2. Add equations to eliminate one variable.\n3. Solve.\n4. Back‑substitute.\n5. Check.",
+          "notes": [
+            "Multiply one or both equations by a constant if needed.",
+            "Always check your solution in the original equations."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Simple elimination",
+          "prompt": "Solve $3x+2y=4$, $5x-2y=12$.",
+          "steps": [
+            "The coefficients of $y$ are $+2$ and $-2$ (opposites). Add: $(3x+2y)+(5x-2y)=4+12$.",
+            "This gives $8x = 16$, so $x = 2$.",
+            "Substitute $x=2$ into $3x+2y=4$: $6+2y=4 \\to 2y=-2 \\to y=-1$.",
+            "Solution: $(2,-1)$. Check: $3(2)+2(-1)=4$, $5(2)-2(-1)=12$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Another simple pair",
+          "prompt": "Solve $2x + y = 4$, $2x - y = 0$.",
+          "peerPrompt": "Explain to your partner: Which variable will cancel? Why? Then add the equations to find $x$.",
+          "minLength": 2,
+          "steps": [
+            "The $y$ terms are $+y$ and $-y$ (opposites). Add: $(2x+y)+(2x-y)=4+0$.",
+            "$4x = 4 \\to x = 1$.",
+            "Back‑substitute $x=1$ into $2x+y=4$: $2+y=4 \\to y=2$.",
+            "Solution: $(1,2)$. Check both equations."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick check",
+          "prompt": "Does $(0,4)$ satisfy the system $2x + y = 4$, $2x - y = 0$?",
+          "steps": [
+            "First eq: $2(0)+4=4$ works. Second: $2(0)-4=-4 \\neq 0$. No."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Opposite coefficients",
+        "body": "The key is to get one variable's coefficients to be opposites (like $+2y$ and $-2y$). Then adding the equations makes that variable disappear."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "The elimination method aims to make the coefficients of one variable ___ so they cancel when added.",
+          "blanks": [
+            {
+              "accept": [
+                "opposite",
+                "opposites"
+              ]
+            }
+          ],
+          "hints": [
+            "Like $+2y$ and $-2y$.",
+            "They add to zero."
+          ],
+          "feedbackIfWrong": "Opposite coefficients cancel when added."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "In the system $3x+2y=4$, $5x-2y=12$, what is $x$? (Enter a number)",
+          "answer": "2",
+          "hints": [
+            "Add the two equations.",
+            "You get $8x=16$."
+          ],
+          "feedbackIfWrong": "$x=2$."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "After finding $x$, you ___ it back into one equation to find $y$.",
+          "blanks": [
+            {
+              "accept": [
+                "substitute"
+              ]
+            }
+          ],
+          "hints": [
+            "You plug the value in.",
+            "The step after solving for the first variable."
+          ],
+          "feedbackIfWrong": "You substitute the value back in."
+        }
+      ]
+    },
+    {
+      "id": "multiplying-to-eliminate",
+      "title": "Multiplying to Create Opposites",
+      "teacherCues": [
+        "Write $2x-4y=-7$, $5x+y=-1$. Ask: Are any coefficients already opposites? No.",
+        "Show how multiplying the second equation by 4 makes the $y$ terms opposite."
+      ],
+      "discoveryHook": {
+        "scenario": "Sometimes the coefficients aren't ready to cancel. By scaling one or both equations, we can force one variable to disappear, like adjusting ingredients in a recipe to balance flavors."
+      },
+      "concept": {
+        "explanation": [
+          "When coefficients are not already opposites, multiply one or both equations by a constant to create opposites.",
+          "Choose a variable to eliminate. Multiply each equation by the coefficient of that variable from the other equation (with an appropriate sign).",
+          "Then add the equations and solve.",
+          "Back‑substitute to find the other variable."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $2x-4y=-7$, $5x+y=-1$",
+            "headers": [
+              "Action",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "Multiply Eq2 by 4",
+                "1": "$20x+4y=-4$"
+              },
+              {
+                "0": "Now with Eq1",
+                "1": "$2x-4y=-7$ ; $20x+4y=-4$"
+              },
+              {
+                "0": "Add",
+                "1": "$22x = -11 \\to x = -1/2$"
+              },
+              {
+                "0": "Back‑substitute",
+                "1": "$5(-1/2)+y=-1 \\to y = 3/2$"
+              },
+              {
+                "0": "Solution",
+                "1": "$(-1/2, 3/2)$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Multiplication Strategy",
+          "formula": "To eliminate $y$, multiply each equation by the coefficient of $y$ from the other equation (adjust signs).",
+          "notes": [
+            "You can eliminate either variable.",
+            "Check your solution in the original equations."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Multiply one equation",
+          "prompt": "Solve $2x-4y=-7$, $5x+y=-1$.",
+          "steps": [
+            "Multiply equation 2 by 4: $20x+4y=-4$.",
+            "Add to equation 1: $2x-4y=-7$ and $20x+4y=-4$ gives $22x=-11$, so $x=-1/2$.",
+            "Substitute into $5x+y=-1$: $5(-1/2)+y=-1 \\to -5/2+y=-1 \\to y=3/2$.",
+            "Solution: $(-1/2, 3/2)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Multiply both equations",
+          "prompt": "Solve $2x+3y=3$, $4x+6y=6$.",
+          "peerPrompt": "What happens if you multiply the first equation by $-2$? Then add.",
+          "minLength": 2,
+          "steps": [
+            "Multiply first by $-2$: $-4x-6y=-6$. Add to second: $0=0$.",
+            "This means the two equations are the same line; infinitely many solutions."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple multiplication",
+          "prompt": "Solve $x + 2y = 5$, $3x - 2y = 3$.",
+          "steps": [
+            "Add directly: $(x+2y)+(3x-2y)=5+3 \\to 4x=8 \\to x=2$.",
+            "Back‑substitute: $2+2y=5 \\to y=1.5$ or $3/2$.",
+            "Solution: $(2, 1.5)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Multiply every term",
+        "body": "When you multiply an equation, multiply the constant on the right side as well. Forgetting this is a common mistake."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "In the system $2x-4y=-7$, $5x+y=-1$, we multiplied the second equation by ___ to make the $y$ coefficients opposite.",
+          "blanks": [
+            {
+              "accept": [
+                "4"
+              ]
+            }
+          ],
+          "hints": [
+            "We wanted +4y to cancel -4y.",
+            "What number times 1 gives 4?"
+          ],
+          "feedbackIfWrong": "Multiply by 4."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "After adding $2x-4y=-7$ and $20x+4y=-4$, what is the coefficient of $x$ on the left side? (Enter a number)",
+          "answer": "22",
+          "hints": [
+            "Add $2x$ and $20x$.",
+            "The $y$ terms cancel."
+          ],
+          "feedbackIfWrong": "It's $22x$."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "When multiplying an equation, you must multiply the ___ side as well.",
+          "blanks": [
+            {
+              "accept": [
+                "right",
+                "constant"
+              ]
+            }
+          ],
+          "hints": [
+            "Don't forget the number after the equals.",
+            "The entire equation must be multiplied."
+          ],
+          "feedbackIfWrong": "Multiply the constant on the right side too."
+        }
+      ]
+    },
+    {
+      "id": "graphical-interpretations",
+      "title": "Graphical Interpretation of Solutions",
+      "teacherCues": [
+        "Draw three pairs of lines: intersecting, parallel, coincident.",
+        "Ask: How many solutions does each pair have? (1, 0, infinite)."
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine two roads on a map. They can cross at one point, never meet, or run on top of each other. Linear systems work the same way."
+      },
+      "concept": {
+        "explanation": [
+          "For two linear equations in two variables:",
+          "Different slopes → lines intersect at one point → exactly one solution ([[kw:consistent]]).",
+          "Same slopes but different $y$‑intercepts → parallel lines → no solution ([[kw:inconsistent]]).",
+          "Same slopes and same $y$‑intercepts → same line → infinitely many solutions (consistent)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Three Cases",
+            "headers": [
+              "Slopes",
+              "$y$‑intercepts",
+              "Number of solutions",
+              "Consistent?"
+            ],
+            "rows": [
+              {
+                "0": "Different",
+                "1": "Any",
+                "2": "Exactly 1",
+                "3": "Yes"
+              },
+              {
+                "0": "Equal",
+                "1": "Different",
+                "2": "0",
+                "3": "No (inconsistent)"
+              },
+              {
+                "0": "Equal",
+                "1": "Equal",
+                "2": "Infinite",
+                "3": "Yes"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Slope-Intercept Check",
+          "formula": "Write both in $y = mx + b$ form. Compare $m$ values, then $b$ values.",
+          "notes": [
+            "If $m_1 \\neq m_2$, one solution.",
+            "If $m_1 = m_2$ and $b_1 \\neq b_2$, no solution.",
+            "If $m_1 = m_2$ and $b_1 = b_2$, infinite solutions."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Identify case",
+          "prompt": "How many solutions for $x+y=2$, $2x+2y=4$?",
+          "steps": [
+            "Write each in $y = mx + b$: $y = -x + 2$, $y = -x + 2$.",
+            "Same slope ($-1$), same $y$‑intercept ($2$). They are the same line.",
+            "Infinitely many solutions; consistent."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Parallel lines",
+          "prompt": "Does $x+y=2$, $x+y=3$ have a solution?",
+          "peerPrompt": "Find the slopes and $y$‑intercepts. What do you conclude?",
+          "minLength": 2,
+          "steps": [
+            "First: $y = -x + 2$. Second: $y = -x + 3$.",
+            "Same slope, different $y$‑intercepts → parallel → no solution."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – One solution",
+          "prompt": "How many solutions for $2x+y=4$, $x-y=1$?",
+          "steps": [
+            "Slopes: first $-2$, second $1$ → different → exactly one solution."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Same line means infinite",
+        "body": "If one equation is a multiple of the other, they represent the same line. There are infinitely many points that satisfy both."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "When two lines have different slopes, the system has ___ solution(s).",
+          "blanks": [
+            {
+              "accept": [
+                "1",
+                "one"
+              ]
+            }
+          ],
+          "hints": [
+            "They cross at a single point.",
+            "How many intersections?"
+          ],
+          "feedbackIfWrong": "Exactly one solution."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "A system with no solution is called (consistent / inconsistent).",
+          "answer": "inconsistent",
+          "hints": [
+            "It means the lines are parallel.",
+            "Starts with 'i'."
+          ],
+          "feedbackIfWrong": "Inconsistent."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "If two lines are identical, the system has ___ many solutions.",
+          "blanks": [
+            {
+              "accept": [
+                "infinitely"
+              ]
+            }
+          ],
+          "hints": [
+            "Not just many, but without limit.",
+            "Every point on the line is a solution."
+          ],
+          "feedbackIfWrong": "Infinitely many solutions."
+        }
+      ]
+    },
+    {
+      "id": "application-mixture",
+      "title": "Application – Mixture Problem",
+      "teacherCues": [
+        "Pose: 500 gallons of 89‑octane gasoline made by mixing 87‑ and 92‑octane. Write total volume: $x + y = 500$. Write octane: $87x + 92y = 44500$.",
+        "Solve by elimination."
+      ],
+      "discoveryHook": {
+        "scenario": "A gas station blends 87‑octane and 92‑octane fuels to create 500 gallons of 89‑octane fuel. How much of each is needed? This is a classic mixture problem."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Mixture problems]] involve combining two quantities to achieve a desired average.",
+          "Total amount: $x + y = \\text{total volume}$.",
+          "Total attribute: $a x + b y = c \\times \\text{total volume}$.",
+          "Solve the system using elimination."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Gasoline Mixture Setup",
+            "headers": [
+              "Variable",
+              "Gallons",
+              "Octane",
+              "Octane points"
+            ],
+            "rows": [
+              {
+                "0": "87‑octane",
+                "1": "$x$",
+                "2": "87",
+                "3": "$87x$"
+              },
+              {
+                "0": "92‑octane",
+                "1": "$y$",
+                "2": "92",
+                "3": "$92y$"
+              },
+              {
+                "0": "Final blend",
+                "1": "500",
+                "2": "89",
+                "3": "$89 \\times 500 = 44500$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Mixture Equations",
+          "formula": "$$x + y = \\text{total}$$ $$a x + b y = c \\cdot \\text{total}$$",
+          "notes": [
+            "$a$, $b$ are the attribute values (e.g., octane ratings).",
+            "$c$ is the desired final attribute."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Set up",
+          "prompt": "Write the equations for the gasoline mix: 500 gal of 89‑octane from 87‑ and 92‑octane.",
+          "steps": [
+            "Let $x$ = gal of 87‑octane, $y$ = gal of 92‑octane.",
+            "Total volume: $x + y = 500$.",
+            "Octane sum: $87x + 92y = 89 \\times 500 = 44500$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve",
+          "prompt": "Solve the system: $x + y = 500$, $87x + 92y = 44500$.",
+          "peerPrompt": "Work with a partner: Multiply the first equation by 87, then subtract to eliminate $x$.",
+          "minLength": 2,
+          "steps": [
+            "Multiply $x+y=500$ by 87: $87x + 87y = 43500$.",
+            "Subtract from the second equation: $(87x+92y) - (87x+87y) = 44500 - 43500$.",
+            "$5y = 1000 \\to y = 200$.",
+            "Then $x = 500 - 200 = 300$.",
+            "Answer: 300 gal of 87‑octane, 200 gal of 92‑octane."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Different mix",
+          "prompt": "How much of each to make 1000 gal of 90‑octane from 85‑ and 95‑octane?",
+          "steps": [
+            "Equations: $x + y = 1000$, $85x + 95y = 90000$.",
+            "Multiply first by 85: $85x + 85y = 85000$. Subtract: $10y = 5000 \\to y = 500$.",
+            "$x = 500$. So 500 gal of each."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Unit consistency",
+        "body": "Make sure the rate (octane rating) is multiplied by the volume to get total octane‑points. Do not just average the rates without volumes."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "In the gasoline mixture, the total octane equation is $87x + 92y = 89 \\times$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "500"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the total volume.",
+            "The total gallons mentioned."
+          ],
+          "feedbackIfWrong": "It's 500, the total gallons."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "How many gallons of 92‑octane were used in the original problem? (Enter a number)",
+          "answer": "200",
+          "hints": [
+            "Look at the solution for $y$.",
+            "The higher‑octane component."
+          ],
+          "feedbackIfWrong": "200 gallons."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "This type of problem, involving mixing two substances, is called a ___ problem.",
+          "blanks": [
+            {
+              "accept": [
+                "mixture"
+              ]
+            }
+          ],
+          "hints": [
+            "It involves mixing two things.",
+            "Starts with 'm'."
+          ],
+          "feedbackIfWrong": "Mixture problem."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-elimination",
+      "title": "Blueprint Aid – Solving by Elimination",
+      "teacherCues": [
+        "Write the system: $5x+3y=9$, $2x-4y=14$. Goal: eliminate a variable.",
+        "Outline the blueprint: Understand (choose variable), Solve (multiply, add, back‑substitute), Conclude (solution and check)."
+      ],
+      "discoveryHook": {
+        "scenario": "You are managing a store. 5 shirts and 3 hats cost \\$9, while 2 shirts minus 4 hats cost \\$14 (a return). Using elimination, you can quickly find the individual prices."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: We'll eliminate $y$ because its coefficients are $3$ and $-4$. Multiply to get $\\pm 12y$.",
+          "[[imp:Solve]]: Multiply Eq1 by 4 → $20x+12y=36$. Multiply Eq2 by 3 → $6x-12y=42$. Add: $26x=78$ → $x=3$. Back‑substitute into Eq2: $2(3)-4y=14$ → $-4y=8$ → $y=-2$.",
+          "[[imp:Conclude]]: The solution is $(3,-2)$. Check in both original equations."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint Steps for $5x+3y=9$, $2x-4y=14$",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Eliminate $y$; multiply to get $\\pm 12y$."
+              },
+              {
+                "0": "Solve",
+                "1": "Eq1 $\\times 4$ → $20x+12y=36$ ; Eq2 $\\times 3$ → $6x-12y=42$."
+              },
+              {
+                "0": "Add",
+                "1": "$26x = 78$ → $x = 3$."
+              },
+              {
+                "0": "Back‑substitute",
+                "1": "$2(3)-4y=14$ → $y = -2$."
+              },
+              {
+                "0": "Conclude",
+                "1": "Solution $(3,-2)$. Check both original equations."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Elimination Blueprint",
+          "formula": "1. Choose variable to eliminate.\n2. Multiply to get opposite coefficients.\n3. Add equations.\n4. Solve for the remaining variable.\n5. Back‑substitute.\n6. Check.",
+          "notes": [
+            "Multiply each equation by the other's coefficient of the chosen variable (adjust sign).",
+            "Always verify your solution."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand & set up",
+          "prompt": "For $5x+3y=9$, $2x-4y=14$, which variable should we eliminate? How?",
+          "steps": [
+            "Look at coefficients: $3y$ and $-4y$. The LCM is 12.",
+            "We'll multiply Eq1 by 4 (to get 12y) and Eq2 by 3 (to get -12y)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve with a partner",
+          "prompt": "Carry out the elimination steps to find $x$ and $y$.",
+          "peerPrompt": "Multiply the equations, add them, solve for $x$, then back‑substitute to find $y$. Check each other's work.",
+          "minLength": 2,
+          "steps": [
+            "Eq1 $\\times 4$: $20x+12y=36$. Eq2 $\\times 3$: $6x-12y=42$.",
+            "Add: $26x = 78$ → $x = 3$.",
+            "Substitute $x=3$ into Eq2: $6-4y=14$ → $-4y=8$ → $y=-2$.",
+            "Solution: $(3,-2)$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude with check",
+          "prompt": "Verify $(3,-2)$ in both original equations.",
+          "steps": [
+            "Eq1: $5(3)+3(-2)=15-6=9$ ✓.",
+            "Eq2: $2(3)-4(-2)=6+8=14$ ✓."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Signs when multiplying",
+        "body": "When you multiply an equation, multiply every term, including the constant. Keep the signs straight."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the blueprint, to eliminate $y$, we multiplied the first equation by ___.",
+          "blanks": [
+            {
+              "accept": [
+                "4"
+              ]
+            }
+          ],
+          "hints": [
+            "We needed 12y, and the first had 3y.",
+            "What times 3 equals 12?"
+          ],
+          "feedbackIfWrong": "Multiply by 4."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is $x$ in the solution of the blueprint example? (Enter a number)",
+          "answer": "3",
+          "hints": [
+            "After adding, we got $26x=78$.",
+            "Divide 78 by 26."
+          ],
+          "feedbackIfWrong": "$x = 3$."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "After finding $x$, we substituted into the ___ equation to find $y$.",
+          "blanks": [
+            {
+              "accept": [
+                "second"
+              ]
+            }
+          ],
+          "hints": [
+            "We used $2x-4y=14$.",
+            "It's the second original equation."
+          ],
+          "feedbackIfWrong": "We used the second equation."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A chemist needs 10 liters of a 25% acid solution. She has 10% and 50% solutions. Write the system and find how many liters of each are needed.",
+        "type": "short-answer",
+        "answer": "6.25 L of 10%, 3.75 L of 50%",
+        "hints": [
+          "Total volume: $x + y = 10$.",
+          "Total acid: $0.10x + 0.50y = 0.25(10) = 2.5$."
+        ],
+        "feedbackIfWrong": "You need 6.25 L of 10% and 3.75 L of 50%."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

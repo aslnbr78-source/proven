@@ -1,0 +1,821 @@
+{
+  "blocks": [
+    {
+      "examples": [
+        {
+          "steps": [
+            "Find $ r = \\sqrt{(-4)^2 + 3^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5 $.",
+            "Use the definitions: $ \\sin \\theta = \\frac{3}{5} $, $ \\cos \\theta = \\frac{-4}{5} $, $ \\tan \\theta = \\frac{3}{-4} = -\\frac{3}{4} $.",
+            "Reciprocals: $ \\csc \\theta = \\frac{5}{3} $, $ \\sec \\theta = \\frac{5}{-4} = -\\frac{5}{4} $, $ \\cot \\theta = \\frac{-4}{3} = -\\frac{4}{3} $."
+          ],
+          "title": "Example A — Evaluate Six Functions from a Point",
+          "role": "guided",
+          "prompt": "Let $ (-4, 3) $ be a point on the terminal side of an angle $ \\theta $ in standard position. Evaluate the six trigonometric functions of $ \\theta $."
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 8,
+          "steps": [
+            "Find $ r = \\sqrt{(-5)^2 + (-12)^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13 $.",
+            "Compute: $ \\sin \\theta = \\frac{-12}{13} $, $ \\cos \\theta = \\frac{-5}{13} $, $ \\tan \\theta = \\frac{-12}{-5} = \\frac{12}{5} $.",
+            "The point is in Quadrant III, where only tangent (and cotangent) are positive; sine and cosine are negative. The results match this."
+          ],
+          "title": "Example B — Points with Negative Coordinates",
+          "prompt": "The point $ (-5, -12) $ lies on the terminal side of $ \\theta $. Evaluate $ \\sin \\theta $, $ \\cos \\theta $, and $ \\tan \\theta $, and explain why the signs are as you found.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does the quadrant of the point affect the signs of the trigonometric functions? Which functions are positive in Quadrant III?"
+        },
+        {
+          "prompt": "The terminal side of $ \\theta $ passes through $ (3, -3) $. Find $ \\sec \\theta $ and $ \\csc \\theta $.",
+          "title": "Example C — Find Missing Trig Values",
+          "role": "independent",
+          "steps": [
+            "$ r = \\sqrt{3^2 + (-3)^2} = \\sqrt{18} = 3\\sqrt{2} $.",
+            "$ \\sec \\theta = \\frac{r}{x} = \\frac{3\\sqrt{2}}{3} = \\sqrt{2} $.",
+            "$ \\csc \\theta = \\frac{r}{y} = \\frac{3\\sqrt{2}}{-3} = -\\sqrt{2} $."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$ x, y $",
+              "tone": "core",
+              "meaning": "coordinates of a point on the terminal side"
+            },
+            {
+              "symbol": "$ r $",
+              "meaning": "distance from the origin (always positive)",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ r = \\sqrt{x^2 + y^2} $$ $$ \\sin \\theta = \\frac{y}{r}, \\; \\cos \\theta = \\frac{x}{r}, \\; \\tan \\theta = \\frac{y}{x} $$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "General Definitions of Trigonometric Functions",
+            "rows": [
+              {
+                "0": "$ \\sin \\theta $",
+                "1": "$ \\frac{y}{r} $",
+                "2": "None"
+              },
+              {
+                "0": "$ \\cos \\theta $",
+                "1": "$ \\frac{x}{r} $",
+                "2": "None"
+              },
+              {
+                "0": "$ \\tan \\theta $",
+                "1": "$ \\frac{y}{x} $",
+                "2": "$ x \\neq 0 $"
+              },
+              {
+                "0": "$ \\csc \\theta $",
+                "1": "$ \\frac{r}{y} $",
+                "2": "$ y \\neq 0 $"
+              },
+              {
+                "0": "$ \\sec \\theta $",
+                "1": "$ \\frac{r}{x} $",
+                "2": "$ x \\neq 0 $"
+              },
+              {
+                "0": "$ \\cot \\theta $",
+                "1": "$ \\frac{x}{y} $",
+                "2": "$ y \\neq 0 $"
+              }
+            ],
+            "headers": [
+              "Function",
+              "Definition",
+              "Restriction"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "Let $ \\theta $ be an angle in standard position, and let $ (x, y) $ be a point on its terminal side, at a distance $ r = \\sqrt{x^2 + y^2} $ from the origin.",
+          "The [[kw:general definitions]] of the six trigonometric functions are:",
+          "$$ \\sin \\theta = \\frac{y}{r} \\quad \\csc \\theta = \\frac{r}{y} \\, (y \\neq 0) $$",
+          "$$ \\cos \\theta = \\frac{x}{r} \\quad \\sec \\theta = \\frac{r}{x} \\, (x \\neq 0) $$",
+          "$$ \\tan \\theta = \\frac{y}{x} \\, (x \\neq 0) \\quad \\cot \\theta = \\frac{x}{y} \\, (y \\neq 0) $$",
+          "The signs of the functions depend on the quadrant in which the terminal side lies. The radius $ r $ is always positive."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Right triangle definitions only work for acute angles. But what if the angle is 150° or even -60°? By placing the angle in a circle and using coordinates, we can define the six trigonometric functions for [[imp:any angle]]—opening up the full power of trigonometry."
+      },
+      "questions": [
+        {
+          "prompt": "For a point $ (x, y) $ on the terminal side of $ \\theta $, the distance from the origin is $ r = \\sqrt{x^2 + y^2} $. The value of $ \\sin \\theta $ is $ \\frac{y}{r} $ and $ \\cos \\theta $ is $ \\frac{x}{___} $.",
+          "feedbackIfWrong": "The denominator is $ r $.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "r"
+              ]
+            }
+          ],
+          "hints": [
+            "Same denominator as sine.",
+            "It's the distance from the origin."
+          ],
+          "id": "q9-3-1"
+        },
+        {
+          "answers": [
+            "10",
+            "ten"
+          ],
+          "prompt": "A point on the terminal side of $ \\theta $ is $ (6, -8) $. What is the value of $ r $?",
+          "feedbackIfWrong": "$ r = \\sqrt{36 + 64} = \\sqrt{100} = 10 $.",
+          "type": "short-answer",
+          "id": "q9-3-2",
+          "hints": [
+            "Use the Pythagorean Theorem: $ r = \\sqrt{6^2 + (-8)^2} $.",
+            "$ \\sqrt{36 + 64} $."
+          ]
+        },
+        {
+          "prompt": "If the terminal side of $ \\theta $ passes through $ (-1, 0) $, what is $ \\sin \\theta $?",
+          "hints": [
+            "$ y = 0 $, $ r = 1 $.",
+            "$ \\sin \\theta = \\frac{y}{r} $."
+          ],
+          "answers": [
+            "0",
+            "zero"
+          ],
+          "feedbackIfWrong": "$ \\sin \\theta = \\frac{0}{1} = 0 $.",
+          "type": "short-answer",
+          "id": "q9-3-3"
+        }
+      ],
+      "teacherCues": [
+        "Write the point $ (-4, 3) $ on the board. Ask: How can we find the distance $ r $ from the origin to this point? Once we have $ r $, how can we define sine, cosine, and tangent?",
+        "Draw a circle with radius $ r $ and an angle $ \\theta $. Ask: Why is $ \\sin \\theta = \\frac{y}{r} $ and $ \\cos \\theta = \\frac{x}{r} $ for any point on the terminal side?"
+      ],
+      "id": "evaluating-trig-functions-given-point",
+      "title": "Evaluating Trigonometric Functions Given a Point",
+      "confusionCorner": {
+        "title": "Radius Is Always Positive",
+        "body": "The distance $ r $ is the length of the hypotenuse of the reference right triangle, so it is [[imp:always positive]]. The signs of the trigonometric functions come only from the signs of $ x $ and $ y $."
+      }
+    },
+    {
+      "questions": [
+        {
+          "id": "q9-3-4",
+          "feedbackIfWrong": "On the unit circle, $ \\sin \\theta = y $.",
+          "hints": [
+            "It's the vertical coordinate.",
+            "$ \\sin \\theta = y $."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "y"
+              ]
+            }
+          ],
+          "prompt": "On the unit circle, the radius is 1, so $ \\sin \\theta $ equals the ___ coordinate of the point where the terminal side intersects the circle."
+        },
+        {
+          "id": "q9-3-5",
+          "type": "short-answer",
+          "prompt": "What is $ \\cos 90^\\circ $?",
+          "answers": [
+            "0",
+            "zero"
+          ],
+          "feedbackIfWrong": "$ \\cos 90^\\circ = 0 $.",
+          "hints": [
+            "The point on the unit circle at 90° is $ (0, 1) $.",
+            "$ \\cos \\theta = x $."
+          ]
+        },
+        {
+          "hints": [
+            "Secant is $ \\frac{r}{x} $; at 270°, $ x = 0 $.",
+            "Division by zero makes secant undefined."
+          ],
+          "feedbackIfWrong": "Secant is undefined because $ x = 0 $ leads to division by zero.",
+          "answers": [
+            "secant",
+            "sec"
+          ],
+          "id": "q9-3-6",
+          "type": "short-answer",
+          "prompt": "At $ \\theta = 270^\\circ $, which function is undefined: sine or secant?"
+        }
+      ],
+      "title": "The Unit Circle and Quadrantal Angles",
+      "confusionCorner": {
+        "title": "Undefined vs. Zero",
+        "body": "When the terminal side is on an axis, some trigonometric functions are zero, and others are [[imp:undefined]] because their definitions involve division by zero. For example, at 180°, $ \\sin \\theta = 0 $ but $ \\csc \\theta $ is undefined. Don't confuse the two!"
+      },
+      "teacherCues": [
+        "Draw the unit circle $ x^2 + y^2 = 1 $. Ask: Why does $ \\sin \\theta = y $ and $ \\cos \\theta = x $ on the unit circle?",
+        "Ask: What are the coordinates of the points where the terminal side of $ 90^\\circ $, $ 180^\\circ $, $ 270^\\circ $ intersect the unit circle? How can we use them to find trigonometric values?"
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:unit circle]] is the circle $ x^2 + y^2 = 1 $ centered at the origin. Because $ r = 1 $, the definitions simplify to $ \\sin \\theta = y $ and $ \\cos \\theta = x $.",
+          "A [[kw:quadrantal angle]] is an angle in standard position whose terminal side lies on an axis. Its measure is a multiple of $ 90^\\circ $ or $ \\frac{\\pi}{2} $ radians.",
+          "For quadrantal angles, the coordinates are: $ 0^\\circ $: $ (1,0) $; $ 90^\\circ $: $ (0,1) $; $ 180^\\circ $: $ (-1,0) $; $ 270^\\circ $: $ (0,-1) $.",
+          "Using these coordinates, you can directly read $ \\sin \\theta $ and $ \\cos \\theta $ and compute the other four functions. Some will be undefined where a coordinate is zero (division by zero).",
+          "For angles that are coterminal with quadrantal angles, such as $ 540^\\circ $ (coterminal with $ 180^\\circ $), use the same coordinates."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "$ 0^\\circ $",
+                "1": "$ 0 $",
+                "2": "$ (1, 0) $",
+                "3": "0",
+                "4": "1"
+              },
+              {
+                "0": "$ 90^\\circ $",
+                "1": "$ \\frac{\\pi}{2} $",
+                "2": "$ (0, 1) $",
+                "3": "1",
+                "4": "0"
+              },
+              {
+                "0": "$ 180^\\circ $",
+                "1": "$ \\pi $",
+                "2": "$ (-1, 0) $",
+                "3": "0",
+                "4": "-1"
+              },
+              {
+                "0": "$ 270^\\circ $",
+                "1": "$ \\frac{3\\pi}{2} $",
+                "2": "$ (0, -1) $",
+                "3": "-1",
+                "4": "0"
+              },
+              {
+                "0": "$ 360^\\circ $",
+                "1": "$ 2\\pi $",
+                "2": "$ (1, 0) $",
+                "3": "0",
+                "4": "1"
+              }
+            ],
+            "title": "Quadrantal Angles on the Unit Circle",
+            "variant": "colorful",
+            "headers": [
+              "$ \\theta $ (degrees)",
+              "$ \\theta $ (radians)",
+              "Point $ (x, y) $",
+              "$ \\sin \\theta $",
+              "$ \\cos \\theta $"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{On the unit circle: } \\sin \\theta = y, \\; \\cos \\theta = x $$",
+          "legend": [
+            {
+              "symbol": "$ x, y $",
+              "tone": "core",
+              "meaning": "coordinates of intersection with unit circle"
+            }
+          ]
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Use the unit circle to evaluate the six trigonometric functions of $ \\theta = 270^\\circ $.",
+          "role": "guided",
+          "title": "Example A — Evaluate at 270°",
+          "steps": [
+            "The terminal side intersects the unit circle at $ (0, -1) $. So $ x = 0, y = -1, r = 1 $.",
+            "$ \\sin 270^\\circ = -1 $, $ \\cos 270^\\circ = 0 $, $ \\tan 270^\\circ = \\frac{-1}{0} $ (undefined).",
+            "Reciprocals: $ \\csc 270^\\circ = -1 $, $ \\sec 270^\\circ = \\frac{1}{0} $ (undefined), $ \\cot 270^\\circ = \\frac{0}{-1} = 0 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 8,
+          "steps": [
+            "At 90°, the point on the unit circle is $ (0, 1) $.",
+            "$ \\tan \\theta = \\frac{y}{x} = \\frac{1}{0} $.",
+            "Division by zero is undefined, so $ \\tan 90^\\circ $ does not exist.",
+            "This is why the tangent function has vertical asymptotes at odd multiples of 90°."
+          ],
+          "title": "Example B — Why tan 90° Is Undefined",
+          "prompt": "Explain why $ \\tan 90^\\circ $ is undefined using the unit circle.",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What are the coordinates of the point for 90°? What happens when you try to compute $ \\tan \\theta = \\frac{y}{x} $?"
+        },
+        {
+          "prompt": "Use the unit circle to evaluate the six trigonometric functions of $ 180^\\circ $.",
+          "role": "independent",
+          "title": "Example C — Evaluate at 180°",
+          "steps": [
+            "Point: $ (-1, 0) $. $ \\sin 180^\\circ = 0 $, $ \\cos 180^\\circ = -1 $, $ \\tan 180^\\circ = \\frac{0}{-1} = 0 $.",
+            "$ \\csc 180^\\circ = \\frac{1}{0} $ (undefined), $ \\sec 180^\\circ = -1 $, $ \\cot 180^\\circ = \\frac{-1}{0} $ (undefined)."
+          ]
+        }
+      ],
+      "id": "unit-circle-quadrantal-angles",
+      "discoveryHook": {
+        "scenario": "The unit circle—a circle with radius 1—is the ultimate tool for trigonometry. Because $ r = 1 $, the sine and cosine of any angle are simply the $ y $- and $ x $-coordinates of the point where the terminal side meets the circle. Quadrantal angles (0°, 90°, 180°, 270°) land right on the axes, making their trigonometric values easy to read off."
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Always to the x-axis!",
+        "body": "The reference angle is always measured to the [[imp:nearest x-axis]], not the y-axis. This ensures it is an acute angle (less than 90°)."
+      },
+      "discoveryHook": {
+        "scenario": "Every angle (except quadrantal angles) has an acute 'twin' called its reference angle. This reference angle has the same trigonometric values up to a sign. By finding the reference angle, you can use the exact values you already know for 30°, 45°, and 60° to evaluate trig functions for any angle."
+      },
+      "title": "Finding Reference Angles",
+      "questions": [
+        {
+          "hints": [
+            "Subtract from a full circle.",
+            "360° minus the angle."
+          ],
+          "feedbackIfWrong": "In Quadrant IV, $ \\theta' = 360^\\circ - \\theta $.",
+          "type": "fill-blank",
+          "prompt": "The reference angle is always between $ 0^\\circ $ and $ 90^\\circ $. For an angle in Quadrant II, the reference angle is $ 180^\\circ - \\theta $. For Quadrant III, it is $ \\theta - 180^\\circ $. For Quadrant IV, it is $ ___^\\circ - \\theta $.",
+          "id": "q9-3-7",
+          "blanks": [
+            {
+              "accept": [
+                "360",
+                "three hundred sixty"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "Find the reference angle for $ 210^\\circ $.",
+          "feedbackIfWrong": "$ 210^\\circ - 180^\\circ = 30^\\circ $.",
+          "hints": [
+            "210° is in Quadrant III.",
+            "Subtract 180° from 210°."
+          ],
+          "id": "q9-3-8",
+          "type": "short-answer",
+          "answers": [
+            "30",
+            "thirty"
+          ]
+        },
+        {
+          "prompt": "What is the reference angle for $ \\frac{3\\pi}{4} $? (Use format like π/4 without spaces)",
+          "type": "short-answer",
+          "id": "q9-3-9",
+          "hints": [
+            "$ \\frac{3\\pi}{4} $ is in Quadrant II.",
+            "Reference angle = $ \\pi - \\frac{3\\pi}{4} $."
+          ],
+          "answers": [
+            "π/4",
+            "pi/4"
+          ],
+          "feedbackIfWrong": "$ \\pi - \\frac{3\\pi}{4} = \\frac{\\pi}{4} $."
+        }
+      ],
+      "id": "reference-angles",
+      "teacherCues": [
+        "Write $ \\theta = 210^\\circ $ on the board. Ask: What is the acute angle between the terminal side and the x-axis?",
+        "Write the formulas for reference angles in each quadrant. Ask: Why is the reference angle always measured to the x-axis, not the y-axis?"
+      ],
+      "examples": [
+        {
+          "steps": [
+            "$ \\frac{5\\pi}{3} = 300^\\circ $, which lies in Quadrant IV.",
+            "Use Quadrant IV formula: $ \\theta' = 2\\pi - \\theta = 2\\pi - \\frac{5\\pi}{3} = \\frac{\\pi}{3} $.",
+            "The reference angle is $ 60^\\circ $."
+          ],
+          "role": "guided",
+          "title": "Example A — Reference Angle in Quadrant IV",
+          "prompt": "Find the reference angle $ \\theta' $ for $ \\theta = \\frac{5\\pi}{3} $."
+        },
+        {
+          "prompt": "Find the reference angle for $ \\theta = -130^\\circ $.",
+          "title": "Example B — Negative Angle",
+          "steps": [
+            "Add 360° to get a positive coterminal angle: $ -130^\\circ + 360^\\circ = 230^\\circ $.",
+            "230° is in Quadrant III.",
+            "Reference angle: $ 230^\\circ - 180^\\circ = 50^\\circ $.",
+            "So $ \\theta' = 50^\\circ $."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we first find a coterminal angle between 0° and 360°? What quadrant is that angle in, and how do we then find the reference angle?",
+          "minLength": 8
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Subtract $ 2\\pi $ (or $ \\frac{8\\pi}{4} $) to get a coterminal angle: $ \\frac{15\\pi}{4} - 2\\pi = \\frac{7\\pi}{4} $.",
+            "$ \\frac{7\\pi}{4} $ is in Quadrant IV.",
+            "Reference angle: $ 2\\pi - \\frac{7\\pi}{4} = \\frac{\\pi}{4} $."
+          ],
+          "prompt": "Find the reference angle for $ \\frac{15\\pi}{4} $.",
+          "title": "Example C — Large Angle"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:reference angle]] $ \\theta' $ for an angle $ \\theta $ is the acute angle formed by the terminal side of $ \\theta $ and the horizontal x-axis.",
+          "To find $ \\theta' $, first determine the quadrant in which the terminal side lies (or the coterminal angle between 0° and 360°).",
+          "Quadrant I: $ \\theta' = \\theta $; Quadrant II: $ \\theta' = 180^\\circ - \\theta $ (or $ \\pi - \\theta $); Quadrant III: $ \\theta' = \\theta - 180^\\circ $ (or $ \\theta - \\pi $); Quadrant IV: $ \\theta' = 360^\\circ - \\theta $ (or $ 2\\pi - \\theta $).",
+          "For negative angles or angles > 360°, first find a coterminal angle between 0° and 360° (or 0 and $ 2\\pi $).",
+          "Reference angles are always between 0° and 90° (0 and $ \\frac{\\pi}{2} $)."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Reference Angle Formulas",
+            "headers": [
+              "Quadrant",
+              "Degrees",
+              "Radians"
+            ],
+            "rows": [
+              {
+                "0": "I",
+                "1": "$ \\theta' = \\theta $",
+                "2": "$ \\theta' = \\theta $"
+              },
+              {
+                "0": "II",
+                "1": "$ \\theta' = 180^\\circ - \\theta $",
+                "2": "$ \\theta' = \\pi - \\theta $"
+              },
+              {
+                "0": "III",
+                "1": "$ \\theta' = \\theta - 180^\\circ $",
+                "2": "$ \\theta' = \\theta - \\pi $"
+              },
+              {
+                "0": "IV",
+                "1": "$ \\theta' = 360^\\circ - \\theta $",
+                "2": "$ \\theta' = 2\\pi - \\theta $"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\theta' = \\text{acute angle between terminal side and } x\\text{-axis} $$",
+          "legend": [
+            {
+              "symbol": "$ \\theta' $",
+              "meaning": "reference angle (always $ 0^\\circ \\le \\theta' \\le 90^\\circ $)",
+              "tone": "core"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "sine",
+                "sin"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "The mnemonic 'All Students Take Calculus' helps remember which trig functions are positive in each quadrant. In Quadrant II, only ___ and its reciprocal are positive.",
+          "id": "q9-3-10",
+          "feedbackIfWrong": "In Quadrant II, sine (and cosecant) are positive.",
+          "hints": [
+            "The 'S' in 'Students' stands for this function.",
+            "It's opposite over hypotenuse."
+          ]
+        },
+        {
+          "id": "q9-3-11",
+          "hints": [
+            "135° is in Quadrant II, reference angle 45°.",
+            "Secant is reciprocal of cosine; cosine is negative in QII."
+          ],
+          "feedbackIfWrong": "$ \\sec 135^\\circ = -\\frac{1}{\\cos 45^\\circ} = -\\sqrt{2} $.",
+          "type": "short-answer",
+          "prompt": "Evaluate $ \\sec 135^\\circ $ without a calculator. (Enter a simplified radical, e.g., -√2)",
+          "answers": [
+            "-√2",
+            "-\\sqrt{2}",
+            "negative square root of 2"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "300° is in Quadrant IV.",
+            "In Quadrant IV, cosine is positive."
+          ],
+          "answers": [
+            "positive"
+          ],
+          "feedbackIfWrong": "Cosine is positive in Quadrant IV.",
+          "prompt": "What is the sign of $ \\cos 300^\\circ $? (positive/negative)",
+          "id": "q9-3-12"
+        }
+      ],
+      "id": "evaluating-functions-reference-angles",
+      "teacherCues": [
+        "Write $ \\tan(-240^\\circ) $ on the board. Ask: How can we find this without a calculator?",
+        "Ask: After finding the reference angle and its function value, how do we determine the sign of the final answer?"
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Quadrant",
+              "Positive Functions",
+              "Negative Functions"
+            ],
+            "rows": [
+              {
+                "0": "I (All)",
+                "1": "$ \\sin, \\cos, \\tan $, all",
+                "2": "None"
+              },
+              {
+                "0": "II (Students)",
+                "1": "$ \\sin $, $ \\csc $",
+                "2": "$ \\cos, \\sec, \\tan, \\cot $"
+              },
+              {
+                "0": "III (Take)",
+                "1": "$ \\tan $, $ \\cot $",
+                "2": "$ \\sin, \\csc, \\cos, \\sec $"
+              },
+              {
+                "0": "IV (Calculus)",
+                "1": "$ \\cos $, $ \\sec $",
+                "2": "$ \\sin, \\csc, \\tan, \\cot $"
+              }
+            ],
+            "type": "table",
+            "title": "Signs of Trigonometric Functions by Quadrant",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "reference angle (acute)",
+              "symbol": "$ \\theta' $"
+            },
+            {
+              "meaning": "sign depends on quadrant of $ \\theta $",
+              "tone": "core",
+              "symbol": "$ \\pm $"
+            }
+          ],
+          "formula": "$$ \\text{Trig value at } \\theta = \\pm \\text{(trig value at } \\theta'\\text{)} $$"
+        },
+        "explanation": [
+          "To evaluate a trigonometric function for any angle $ \\theta $:",
+          "Step 1: Find the reference angle $ \\theta' $ (the acute angle with the $ x $-axis).",
+          "Step 2: Evaluate the function at $ \\theta' $ using known exact values (if special) or a calculator.",
+          "Step 3: Determine the sign of the function in the quadrant where $ \\theta $ lies.",
+          "Signs: In Quadrant I, all are positive. In Quadrant II, only sine and cosecant are positive. In Quadrant III, only tangent and cotangent are positive. In Quadrant IV, only cosine and secant are positive.",
+          "The mnemonic '[[kw:All Students Take Calculus]]' reminds you of these signs."
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "Evaluate $ \\tan(-240^\\circ) $ without a calculator.",
+          "steps": [
+            "Find coterminal angle: $ -240^\\circ + 360^\\circ = 120^\\circ $ (Quadrant II).",
+            "Reference angle: $ 180^\\circ - 120^\\circ = 60^\\circ $. $ \\tan 60^\\circ = \\sqrt{3} $.",
+            "In Quadrant II, tangent is negative.",
+            "So $ \\tan(-240^\\circ) = -\\sqrt{3} $."
+          ],
+          "title": "Example A — Tangent of a Negative Angle",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 8,
+          "steps": [
+            "Subtract $ 2\\pi $: $ \\frac{17\\pi}{6} - \\frac{12\\pi}{6} = \\frac{5\\pi}{6} $ (Quadrant II).",
+            "Reference angle: $ \\pi - \\frac{5\\pi}{6} = \\frac{\\pi}{6} $. $ \\csc \\frac{\\pi}{6} = 2 $.",
+            "In Quadrant II, sine (and cosecant) are positive.",
+            "So $ \\csc \\frac{17\\pi}{6} = 2 $."
+          ],
+          "prompt": "Evaluate $ \\csc \\frac{17\\pi}{6} $ without a calculator.",
+          "title": "Example B — Cosecant of a Large Radian Angle",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you find a coterminal angle for $ \\frac{17\\pi}{6} $? What is its reference angle, and what is the sign of cosecant in that quadrant?"
+        },
+        {
+          "prompt": "Evaluate $ \\cos(-210^\\circ) $ without a calculator.",
+          "title": "Example C — Cosine of a Negative Angle",
+          "role": "independent",
+          "steps": [
+            "Coterminal: $ -210^\\circ + 360^\\circ = 150^\\circ $ (Quadrant II).",
+            "Reference angle: $ 180^\\circ - 150^\\circ = 30^\\circ $. $ \\cos 30^\\circ = \\frac{\\sqrt{3}}{2} $.",
+            "In Quadrant II, cosine is negative.",
+            "So $ \\cos(-210^\\circ) = -\\frac{\\sqrt{3}}{2} $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sign Errors Are Common",
+        "body": "The most frequent mistake is forgetting to apply the correct sign. Always determine the quadrant of the [[imp:original angle]] (not the reference angle) to decide the sign. The reference angle only gives the magnitude."
+      },
+      "title": "Evaluating Functions Using Reference Angles",
+      "discoveryHook": {
+        "scenario": "Reference angles unlock the full power of trigonometric evaluation. By combining the reference angle's exact value with the quadrant's sign rule ('All Students Take Calculus'), you can evaluate trigonometric functions for any angle—no calculator needed!"
+      }
+    },
+    {
+      "title": "Blueprint Aid — Real-Life Projectile Motion",
+      "confusionCorner": {
+        "body": "The model uses $ \\sin(2\\theta) $, not $ \\sin \\theta $. Always double the given angle before finding the sine. [[imp:For $ \\theta = 30^\\circ $, you need $ \\sin 60^\\circ $, not $ \\sin 30^\\circ $.]]",
+        "title": "Don't Forget the Doubled Angle"
+      },
+      "questions": [
+        {
+          "answers": [
+            "80",
+            "eighty"
+          ],
+          "feedbackIfWrong": "You need $ \\sin(2 \\times 40^\\circ) = \\sin 80^\\circ $.",
+          "prompt": "In the projectile model, if $ \\theta = 40^\\circ $, what angle do you take the sine of? (Enter a number)",
+          "hints": [
+            "The formula uses $ 2\\theta $.",
+            "Double 40°."
+          ],
+          "type": "short-answer",
+          "id": "q9-3-13"
+        },
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "4",
+                "four"
+              ]
+            }
+          ],
+          "prompt": "In the model $ d = \\frac{v^2}{32} \\sin(2\\theta) $, the speed $ v $ is squared. So if the initial speed doubles, the distance traveled is multiplied by ___.",
+          "id": "q9-3-14",
+          "hints": [
+            "Squaring a doubled number gives 4 times the original square.",
+            "$ (2v)^2 = 4v^2 $."
+          ],
+          "feedbackIfWrong": "Doubling the speed quadruples the distance."
+        },
+        {
+          "feedbackIfWrong": "$ d = \\frac{1024}{32} \\times 1 = 32 $ feet.",
+          "id": "q9-3-15",
+          "hints": [
+            "$ 2\\theta = 90^\\circ $, $ \\sin 90^\\circ = 1 $.",
+            "$ d = \\frac{32^2}{32} \\times 1 = 32 $."
+          ],
+          "answers": [
+            "32",
+            "thirty two"
+          ],
+          "prompt": "A projectile is launched at 45° with initial speed 32 ft/s. What is the horizontal distance? (Enter a number)",
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "The distance a projectile travels depends on its launch angle and speed. Using the formula $ d = \\frac{v^2}{32} \\sin 2\\theta $, you can optimize a kick, a throw, or a jump. The Blueprint guides you through evaluating the trigonometric function for any given angle."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A golf ball is hit at 50° with an initial speed of 105 feet per second. Estimate the horizontal distance traveled.",
+          "title": "Example A — Golf Ball Distance",
+          "steps": [
+            "Understand: $ v = 105 $, $ \\theta = 50^\\circ $. Need $ \\sin(2\\theta) = \\sin 100^\\circ $.",
+            "Solve: 100° is in Quadrant II, reference angle 80°. $ \\sin 100^\\circ $ is positive.",
+            "Use calculator: $ \\sin 100^\\circ \\approx 0.9848 $.",
+            "Compute $ d = \\frac{105^2}{32} \\times 0.9848 \\approx \\frac{11025}{32} \\times 0.9848 \\approx 339 $ feet.",
+            "Conclude: The ball travels about 339 feet."
+          ]
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the formula use $ 2\\theta $? What is $ 2\\theta $ in this case, and how do you find its sine?",
+          "minLength": 8,
+          "prompt": "A long jumper jumps at 20° with initial speed 27 ft/s. Estimate the horizontal distance.",
+          "role": "peer-explain",
+          "steps": [
+            "Understand: $ v = 27 $, $ \\theta = 20^\\circ $. $ 2\\theta = 40^\\circ $.",
+            "Solve: $ \\sin 40^\\circ \\approx 0.6428 $.",
+            "Compute $ d = \\frac{27^2}{32} \\times 0.6428 \\approx \\frac{729}{32} \\times 0.6428 \\approx 14.6 $ feet.",
+            "Conclude: The jump travels about 14.6 feet."
+          ],
+          "title": "Example B — Long Jumper"
+        },
+        {
+          "title": "Example C — Football Kick",
+          "steps": [
+            "$ 2\\theta = 120^\\circ $. $ \\sin 120^\\circ = \\sin 60^\\circ = \\frac{\\sqrt{3}}{2} \\approx 0.8660 $.",
+            "$ d = \\frac{49^2}{32} \\times 0.8660 = \\frac{2401}{32} \\times 0.8660 \\approx 75.0 \\times 0.8660 \\approx 65.0 $ feet.",
+            "The football travels about 65 feet."
+          ],
+          "role": "independent",
+          "prompt": "A football is kicked at 60° with initial speed 49 ft/s. Estimate the horizontal distance."
+        }
+      ],
+      "teacherCues": [
+        "Display the model $ d = \\frac{v^2}{32} \\sin 2\\theta $. Ask: What do the variables represent? How can we use trigonometry to find horizontal distance?",
+        "Pose: A golf ball hit at 50° with initial speed 105 ft/s. How far does it travel horizontally?"
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Projectile Motion Variables",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "$ d $",
+                "1": "Horizontal distance traveled",
+                "2": "feet"
+              },
+              {
+                "0": "$ v $",
+                "1": "Initial speed",
+                "2": "feet per second"
+              },
+              {
+                "0": "$ \\theta $",
+                "1": "Launch angle above horizontal",
+                "2": "degrees"
+              }
+            ],
+            "headers": [
+              "Variable",
+              "Meaning",
+              "Units"
+            ]
+          }
+        ],
+        "explanation": [
+          "[[imp:Understand]]: Identify the given initial speed $ v $ and launch angle $ \\theta $. Note that the formula uses $ 2\\theta $, so you will need to find the sine of twice the angle.",
+          "[[imp:Solve]]: Substitute the values into $ d = \\frac{v^2}{32} \\sin(2\\theta) $. Determine the quadrant of $ 2\\theta $ if necessary, find its reference angle, evaluate the sine, and apply the correct sign. Then multiply by $ \\frac{v^2}{32} $.",
+          "[[imp:Conclude]]: State the horizontal distance in feet, rounded appropriately. Check that the angle is reasonable (between 0° and 90° for a forward launch)."
+        ],
+        "formulaCard": {
+          "formula": "$$ d = \\frac{v^2}{32} \\sin(2\\theta) $$",
+          "legend": [
+            {
+              "symbol": "$ d $",
+              "meaning": "horizontal distance",
+              "tone": "core"
+            },
+            {
+              "tone": "core",
+              "symbol": "$ v $",
+              "meaning": "initial speed"
+            },
+            {
+              "tone": "subtle",
+              "meaning": "launch angle",
+              "symbol": "$ \\theta $"
+            }
+          ]
+        }
+      },
+      "id": "blueprint-aid-projectile-motion"
+    }
+  ],
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "title": "Trigonometric Functions of Any Angle",
+  "id": "chapter-9-3-trigonometric-functions-of-any-angle",
+  "standards": [
+    "HSG.SRT.C.6",
+    "HSF.TF.A.2",
+    "HSF.TF.A.3"
+  ],
+  "presenterNotes": [
+    "Emphasize the transition from right-triangle definitions (acute angles) to general definitions using a point on the terminal side. The formula $ r = \\sqrt{x^2 + y^2} $ is key.",
+    "For the unit circle, reinforce that $ \\sin \\theta = y $ and $ \\cos \\theta = x $ only when $ r = 1 $. Quadrantal angles are a great place to discuss undefined functions due to division by zero.",
+    "Reference angles can be tricky. Walk through each quadrant carefully, and stress that the reference angle is always with the x-axis. Use plenty of sketches.",
+    "The 'All Students Take Calculus' mnemonic is a student favorite. Have them label the quadrants and practice determining signs before combining with reference angles.",
+    "The Blueprint block on projectile motion ties together angle evaluation and a real‑life formula. Point out the $ 2\\theta $ in the sine function—a common oversight."
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

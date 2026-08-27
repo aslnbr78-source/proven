@@ -1,0 +1,793 @@
+{
+  "schemaVersion": 2,
+  "presenterNotes": [
+    "Block 1: Use clear examples to distinguish mutually exclusive from non‑mutually exclusive. The Venn diagram visual is helpful.",
+    "Block 2: The formula is straightforward, but the subtraction is often forgotten. Drill multiple examples, both with and without overlap.",
+    "Block 3: Two‑way tables are a practical application. Have students practice identifying the correct cell for the intersection.",
+    "Block 4: Combining complement with Addition Rule is powerful. Introduce De Morgan's laws intuitively.",
+    "Block 5: The blueprint ties the section together. Emphasize the 'mutual exclusivity first' rule."
+  ],
+  "id": "chapter-3-3-addition-rule",
+  "standards": [
+    "HSS.CP.A.1",
+    "HSS.CP.B.7"
+  ],
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "title": "Mutually Exclusive Events",
+      "teacherCues": [
+        "Ask: 'Can you roll a 3 and a 4 on a single die at the same time?' Then ask: 'Can you draw a king and a heart at the same time?'",
+        "Show a Venn diagram of two non‑overlapping circles versus overlapping circles."
+      ],
+      "concept": {
+        "explanation": [
+          "Two events are [[kw:mutually exclusive]] if they [[imp:cannot occur at the same time]].",
+          "Mutually exclusive events have [[imp:no outcomes in common]]. In a Venn diagram, their circles do not overlap.",
+          "If events are not mutually exclusive, they can occur together (e.g., selecting a male and a nursing major).",
+          "For mutually exclusive events, $ P(A \\text{ and } B) = 0 $.",
+          "Examples: Rolling a 3 and a 4 on one die (mutually exclusive); Selecting a heart and a king (not mutually exclusive)."
+        ],
+        "formulaCard": {
+          "formula": "$$A \\text{ and } B \\text{ mutually exclusive} \\;\\Longleftrightarrow\\; P(A \\text{ and } B) = 0$$",
+          "legend": [
+            {
+              "symbol": "$A \\cap B = \\emptyset$",
+              "meaning": "the intersection is empty",
+              "tone": "core"
+            }
+          ],
+          "title": "Mutually Exclusive Events"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Mutually Exclusive vs. Not Mutually Exclusive",
+            "rows": [
+              {
+                "0": "Roll a 3 and roll a 4 on one die",
+                "1": "Yes",
+                "2": "They cannot occur together."
+              },
+              {
+                "0": "Select a male and a nursing major",
+                "1": "No",
+                "2": "A student can be both male and a nursing major."
+              },
+              {
+                "0": "Type O blood and type A blood",
+                "1": "Yes",
+                "2": "One donor cannot have both types."
+              },
+              {
+                "0": "Type B blood and Rh-negative",
+                "1": "No",
+                "2": "A donor can have both."
+              }
+            ],
+            "headers": [
+              "Situation",
+              "Mutually Exclusive?",
+              "Reason"
+            ]
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "When you roll a die, getting a 3 and getting a 4 cannot happen together — they are mutually exclusive. But getting a heart and a king can happen together (the king of hearts). Recognizing whether events overlap is the first step in using the Addition Rule."
+      },
+      "id": "mutually-exclusive-events",
+      "confusionCorner": {
+        "body": "Mutually exclusive events cannot occur together; independent events have no influence on each other's probability. In fact, mutually exclusive events with non‑zero probabilities are always [[imp:dependent]]: if one occurs, the other cannot. Keep these concepts separate!",
+        "title": "Mutually Exclusive ≠ Independent"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Event A has outcome {3}; Event B has outcome {4}.",
+            "These outcomes cannot occur at the same time on one roll.",
+            "Therefore, they are [[kw:mutually exclusive]].",
+            "$ P(A \\text{ and } B) = 0 $."
+          ],
+          "prompt": "Decide if the events are mutually exclusive: Event A: Roll a 3 on a die. Event B: Roll a 4 on a die.",
+          "title": "Example A – Identifying Mutually Exclusive Events"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Can a student be both male and a nursing major? What does that tell you about mutual exclusivity?",
+          "steps": [
+            "A student can be both male and a nursing major.",
+            "The events share outcomes (male nursing majors).",
+            "Therefore, they are [[imp:not mutually exclusive]].",
+            "$ P(A \\text{ and } B) > 0 $."
+          ],
+          "title": "Example B – Not Mutually Exclusive",
+          "prompt": "Event A: Randomly select a male student. Event B: Randomly select a nursing major. Are these mutually exclusive?",
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C – Your Turn",
+          "steps": [
+            "A jack is a face card (jack, queen, king).",
+            "The events share the outcome 'jack'.",
+            "Thus, they are [[imp:not mutually exclusive]].",
+            "You can select a card that is both a jack and a face card."
+          ],
+          "prompt": "Decide if the events are mutually exclusive: Event A: Randomly select a jack from a deck. Event B: Randomly select a face card from a deck.",
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "Events that cannot occur together are mutually exclusive.",
+          "prompt": "Two events that cannot occur at the same time are called ___ exclusive.",
+          "type": "fill-blank",
+          "id": "q1-1",
+          "hints": [
+            "Starts with 'm'.",
+            "It means 'each other'."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "mutually",
+                "Mutually"
+              ]
+            }
+          ]
+        },
+        {
+          "answers": [
+            "0",
+            "zero"
+          ],
+          "id": "q1-2",
+          "answer": "0",
+          "type": "short-answer",
+          "hints": [
+            "They have no outcomes in common.",
+            "The probability of an impossible event."
+          ],
+          "feedbackIfWrong": "For mutually exclusive events, $P(A \\text{ and } B) = 0$.",
+          "prompt": "If events A and B are mutually exclusive, what is $P(A \\text{ and } B)$? (Give a number.)"
+        },
+        {
+          "id": "q1-3",
+          "hints": [
+            "Even numbers are 2,4,6; 5 is odd.",
+            "Can a die show both at once?"
+          ],
+          "feedbackIfWrong": "Yes, they cannot occur together, so they are mutually exclusive.",
+          "type": "short-answer",
+          "prompt": "Can rolling an even number and rolling a 5 on a die be mutually exclusive? (Yes or No)",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "answer": "Yes"
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Ask: 'If I select a card, what's the probability it's a 4 or an ace?' Show the two separate groups. Then ask: 'What about a heart or a king?' Show the overlap.",
+        "Write the formula on the board: $P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$. Circle the subtraction term."
+      ],
+      "discoveryHook": {
+        "scenario": "To find the probability that at least one of two events happens — a 4 or an ace, a heart or a king — we add their individual probabilities. But if they overlap, we've double‑counted the intersection, so we must subtract it. That's the Addition Rule."
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "q2-1",
+          "blanks": [
+            {
+              "accept": [
+                "$P(A \\text{ and } B)$",
+                "P(A and B)",
+                "the intersection"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the probability that both events occur.",
+            "Subtract this to avoid double‑counting."
+          ],
+          "prompt": "The general Addition Rule is $ P(A \\text{ or } B) = P(A) + P(B) - $ ___.",
+          "feedbackIfWrong": "Subtract $P(A \\text{ and } B)$, the probability of the intersection."
+        },
+        {
+          "feedbackIfWrong": "$P(A \\text{ or } B) = 0.4 + 0.3 - 0.1 = 0.6$.",
+          "hints": [
+            "Use the Addition Rule: $0.4 + 0.3 - 0.1$.",
+            "Add, then subtract the overlap."
+          ],
+          "answers": [
+            "0.6",
+            ".6"
+          ],
+          "id": "q2-2",
+          "prompt": "If $P(A) = 0.4$, $P(B) = 0.3$, and $P(A \\text{ and } B) = 0.1$, find $P(A \\text{ or } B)$.",
+          "type": "short-answer",
+          "answer": "0.6"
+        },
+        {
+          "feedbackIfWrong": "For mutually exclusive events, $P(A \\text{ or } B) = P(A) + P(B)$.",
+          "hints": [
+            "No subtraction needed.",
+            "Just add the two probabilities."
+          ],
+          "id": "q2-3",
+          "answers": [
+            "P(A) + P(B)",
+            "P(A)+P(B)",
+            "sum of probabilities"
+          ],
+          "type": "short-answer",
+          "prompt": "When events are mutually exclusive, the Addition Rule simplifies to $P(A \\text{ or } B) = $ ___.",
+          "answer": "$P(A) + P(B)$"
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "A card cannot be both a 4 and an ace, so the events are mutually exclusive.",
+            "$ P(4) = 4/52 $, $ P(\\text{ace}) = 4/52 $.",
+            "Since mutually exclusive: $ P(4 \\text{ or ace}) = 4/52 + 4/52 = 8/52 = 2/13 \\approx 0.154 $.",
+            "No subtraction needed because $P(4 \\text{ and ace}) = 0$."
+          ],
+          "title": "Example A – Mutually Exclusive Events",
+          "prompt": "You select a card from a standard deck. Find the probability that the card is a 4 or an ace."
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Not Mutually Exclusive",
+          "prompt": "You roll a die. Find the probability of rolling a number less than 3 or an odd number.",
+          "minLength": 2,
+          "steps": [
+            "Less than 3: {1,2}. Odd: {1,3,5}. Outcome 1 is in both.",
+            "Events are not mutually exclusive.",
+            "$ P(\\text{less than 3}) = 2/6 $, $ P(\\text{odd}) = 3/6 $, $ P(\\text{both}) = 1/6 $.",
+            "$ P(\\text{less than 3 or odd}) = 2/6 + 3/6 - 1/6 = 4/6 = 2/3 \\approx 0.667 $."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why must we subtract $P(\\text{less than 3 and odd})$? Which outcome is double‑counted?"
+        },
+        {
+          "title": "Example C – Blood Types",
+          "prompt": "A blood bank: 184 type O, 164 type A, 45 type B, 16 type AB out of 409 donors. Find $P(\\text{type B or type AB})$.",
+          "role": "independent",
+          "steps": [
+            "Type B and type AB are mutually exclusive (a donor cannot have both).",
+            "$ P(\\text{B}) = 45/409 $, $ P(\\text{AB}) = 16/409 $.",
+            "$ P(\\text{B or AB}) = 45/409 + 16/409 = 61/409 \\approx 0.149 $.",
+            "No overlap, so just add."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Addition Rule Formulas",
+          "formula": "$$P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$$ $$\\text{If mutually exclusive: } P(A \\text{ or } B) = P(A) + P(B)$$",
+          "legend": [
+            {
+              "meaning": "probability of the intersection; subtracted to avoid double‑counting",
+              "tone": "core",
+              "symbol": "$P(A \\text{ and } B)$"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Mutually exclusive events",
+                "1": "$ P(A \\text{ or } B) = P(A) + P(B) $",
+                "2": "4 or ace: $ \\frac{4}{52} + \\frac{4}{52} = \\frac{8}{52} $"
+              },
+              {
+                "0": "Not mutually exclusive",
+                "1": "$ P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B) $",
+                "2": "Heart or king: $ \\frac{13}{52} + \\frac{4}{52} - \\frac{1}{52} = \\frac{16}{52} $"
+              }
+            ],
+            "title": "Addition Rule Summary",
+            "headers": [
+              "Situation",
+              "Formula",
+              "Example"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "The [[kw:Addition Rule]] finds the probability that event $A$ or event $B$ (or both) occurs.",
+          "General formula: $ P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B) $.",
+          "If $A$ and $B$ are [[imp:mutually exclusive]], then $ P(A \\text{ and } B) = 0 $, so the formula simplifies to $ P(A \\text{ or } B) = P(A) + P(B) $.",
+          "The subtraction of $ P(A \\text{ and } B) $ avoids double‑counting outcomes that belong to both events.",
+          "The word 'or' in probability is usually [[imp:inclusive]] (it includes the possibility of both)."
+        ]
+      },
+      "confusionCorner": {
+        "body": "When events are not mutually exclusive, adding probabilities without subtracting the intersection will overstate the true probability. [[imp:Always check for overlap before applying the Addition Rule.]]",
+        "title": "Don't Forget to Subtract the Overlap!"
+      },
+      "id": "addition-rule",
+      "title": "The Addition Rule"
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Real data often comes in two‑way tables — blood type and Rh‑factor, gender and charity involvement. The Addition Rule helps answer questions like 'What's the chance a donor has type O or is Rh‑positive?' directly from the table by summing the right cells and avoiding double‑counts."
+      },
+      "title": "Using the Addition Rule with Two‑Way Tables",
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "",
+              "Type O",
+              "Type A",
+              "Type B",
+              "Type AB",
+              "Total"
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Rh‑positive",
+                "1": "156",
+                "2": "139",
+                "3": "37",
+                "4": "12",
+                "5": "344"
+              },
+              {
+                "0": "Rh‑negative",
+                "1": "28",
+                "2": "25",
+                "3": "8",
+                "4": "4",
+                "5": "65"
+              },
+              {
+                "0": "Total",
+                "1": "184",
+                "2": "164",
+                "3": "45",
+                "4": "16",
+                "5": "409"
+              }
+            ],
+            "title": "Blood Type and Rh‑Factor (n = 409)"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$P(A \\text{ or } B) = \\frac{\\text{count}_A + \\text{count}_B - \\text{count}_{A \\text{ and } B}}{n}$$",
+          "title": "Addition Rule from a Table",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "frequency from the appropriate row, column, or cell",
+              "symbol": "count"
+            }
+          ]
+        },
+        "explanation": [
+          "Two‑way tables (contingency tables) show the joint frequencies of two categorical variables.",
+          "To use the Addition Rule with tables: find $P(A)$, $P(B)$, and $P(A \\text{ and } B)$ from the cell counts and total.",
+          "$ P(A) = \\frac{\\text{total for row/column of } A}{n} $, $ P(B) = \\frac{\\text{total for row/column of } B}{n} $, $ P(A \\text{ and } B) = \\frac{\\text{cell where } A \\text{ and } B \\text{ intersect}}{n} $.",
+          "Then apply $ P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B) $.",
+          "This method works whether events are mutually exclusive or not; if mutually exclusive, the intersection cell will be zero."
+        ]
+      },
+      "teacherCues": [
+        "Show the blood type table. Ask: 'What's the probability of type O or Rh‑positive? Type B or Rh‑negative? How do we handle overlaps?'",
+        "Walk through computing row and column totals and using them in the Addition Rule."
+      ],
+      "questions": [
+        {
+          "prompt": "In a two‑way table, the probability of the intersection $P(A \\text{ and } B)$ is found from the ___ where the row and column meet.",
+          "hints": [
+            "It's the single entry at the intersection.",
+            "Not the row or column total."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "cell",
+                "Cell"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The intersection probability comes from the cell where A and B intersect.",
+          "id": "q3-1"
+        },
+        {
+          "id": "q3-2",
+          "answers": [
+            "0.908",
+            ".908"
+          ],
+          "answer": "0.908",
+          "feedbackIfWrong": "$P = (184+344-156)/409 = 372/409 \\approx 0.908$.",
+          "type": "short-answer",
+          "hints": [
+            "Type O count = 184, Rh‑positive count = 344, intersection (O and Rh‑pos) = 156.",
+            "Apply the Addition Rule: $(184+344-156)/409$."
+          ],
+          "prompt": "Using the blood type table, what is $P(\\text{type O or Rh‑positive})$? (Give a decimal to three places, e.g., 0.908)"
+        },
+        {
+          "answers": [
+            "0",
+            "zero"
+          ],
+          "hints": [
+            "They have no outcomes in common.",
+            "The cell would be empty."
+          ],
+          "type": "short-answer",
+          "id": "q3-3",
+          "prompt": "If two events are mutually exclusive, what does the intersection cell in a two‑way table equal? (Answer with a number.)",
+          "feedbackIfWrong": "For mutually exclusive events, the intersection count is 0.",
+          "answer": "0"
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Type O and type A are mutually exclusive (a donor cannot have both).",
+            "Count for O = 184, for A = 164; total n = 409.",
+            "$ P(\\text{O or A}) = \\frac{184}{409} + \\frac{164}{409} = \\frac{348}{409} \\approx 0.851 $.",
+            "No overlap to subtract."
+          ],
+          "title": "Example A – Mutually Exclusive from Table",
+          "prompt": "Using the blood type table, find the probability a donor has type O or type A blood.",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Find the probability a donor has type B blood or is Rh‑negative.",
+          "steps": [
+            "Count for type B = 45; count for Rh‑negative = 65; intersection (B and Rh‑negative) = 8.",
+            "Events are not mutually exclusive (a donor can have both).",
+            "$ P(\\text{B or Rh‑neg}) = \\frac{45}{409} + \\frac{65}{409} - \\frac{8}{409} = \\frac{102}{409} \\approx 0.249 $.",
+            "Without subtraction, the 8 donors would be counted twice."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we subtract the cell where B and Rh‑negative intersect?",
+          "minLength": 2,
+          "title": "Example B – Not Mutually Exclusive from Table"
+        },
+        {
+          "role": "independent",
+          "prompt": "From the charity table: 428 frequently, 886 occasionally, 1536 not at all; total 2850. Find $P(\\text{frequently or occasionally})$.",
+          "steps": [
+            "Frequently and occasionally are mutually exclusive (a person cannot be both).",
+            "Count for frequently = 428, occasionally = 886.",
+            "$ P = \\frac{428}{2850} + \\frac{886}{2850} = \\frac{1314}{2850} \\approx 0.461 $.",
+            "No subtraction needed."
+          ],
+          "title": "Example C – Charity Work"
+        }
+      ],
+      "id": "addition-rule-tables",
+      "confusionCorner": {
+        "body": "When events are not mutually exclusive, the intersection is the cell where both characteristics occur. In a two‑way table, it's where the row and column meet. [[imp:Identify it carefully — using the wrong cell will give an incorrect probability.]]",
+        "title": "Double‑Check Your Intersection Cell"
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Sometimes you need the probability that neither of two events occurs — like a draft pick is not a running back and not a wide receiver. This is the complement of 'running back or wide receiver'. Combining the Addition Rule with the complement rule makes this easy."
+      },
+      "teacherCues": [
+        "Show the NFL draft picks graph. Ask: 'What's the probability a pick is NOT a running back or wide receiver?'",
+        "Point out that 'not (A or B)' is the complement of 'A or B'."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Events: RB and WR are mutually exclusive.",
+            "$ P(\\text{RB or WR}) = \\frac{22}{256} + \\frac{34}{256} = \\frac{56}{256} = \\frac{7}{32} \\approx 0.219 $.",
+            "Complement: $ P(\\text{not RB or WR}) = 1 - \\frac{7}{32} = \\frac{25}{32} \\approx 0.781 $.",
+            "So about 78.1% of picks are not RBs or WRs."
+          ],
+          "title": "Example A – Not a Running Back or Wide Receiver",
+          "prompt": "From the draft table, find the probability a randomly selected pick is not a running back or a wide receiver."
+        },
+        {
+          "minLength": 2,
+          "prompt": "Given the charity table, find $P(\\text{not female or not frequently involved})$. Explain why this is tricky.",
+          "steps": [
+            "'Not female or not frequently' is the complement of 'female and frequently'.",
+            "So $P(\\text{not F or not Fr}) = 1 - P(\\text{F and Fr})$.",
+            "Using the table, $P(\\text{F and Fr}) = 207/2850 \\approx 0.0726$.",
+            "Thus $P = 1 - 0.0726 = 0.9274$. The Addition Rule would be more complicated."
+          ],
+          "title": "Example B – Not Female or Not Involved in Charity",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why can't we just add $P(\\text{not female})$ and $P(\\text{not frequently})$? What rule must we use?",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "At least $50,000 means $50,000–$74,999, $75,000–$99,999, etc.",
+            "That's the complement of less than $50,000.",
+            "$ P(\\text{less than } \\$50,000) = (3+5)/36 = 8/36 $.",
+            "$ P(\\text{at least } \\$50,000) = 1 - 8/36 = 28/36 \\approx 0.778 $."
+          ],
+          "prompt": "A sales rep's monthly sales pattern: $0–$24,999 (3 months), $25,000–$49,999 (5), $50,000–$74,999 (6) out of 36 months. Find $P(\\text{sales are at least } \\$50,000)$.",
+          "title": "Example C – Sales Volume"
+        }
+      ],
+      "title": "Combining the Addition Rule and Complements",
+      "confusionCorner": {
+        "body": "The complement of 'A or B' is 'not A and not B'. The complement of 'A and B' is 'not A or not B'. These are De Morgan's Laws. [[imp:Be careful when translating a 'not both' or 'neither' statement into an event.]]",
+        "title": "'Or' vs. 'And' in Complements"
+      },
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "not (A or B)",
+              "tone": "core",
+              "meaning": "neither A nor B occurs"
+            }
+          ],
+          "formula": "$$P(\\text{not } (A \\text{ or } B)) = 1 - P(A \\text{ or } B)$$",
+          "title": "Complement of 'Or'"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Combining Rules for Draft Picks (256 picks)",
+            "rows": [
+              {
+                "0": "Running back (RB)",
+                "1": "22"
+              },
+              {
+                "0": "Wide receiver (WR)",
+                "1": "34"
+              },
+              {
+                "0": "Other positions",
+                "1": "200"
+              }
+            ],
+            "headers": [
+              "Position",
+              "Count"
+            ]
+          }
+        ],
+        "explanation": [
+          "The event 'not (A or B)' is the complement of 'A or B'.",
+          "So, $ P(\\text{not } (A \\text{ or } B)) = 1 - P(A \\text{ or } B) $.",
+          "This is useful when finding the probability of avoiding multiple outcomes.",
+          "You can also use the complement to answer questions like 'probability that a person is not female or not involved in charity', which may require careful decomposition."
+        ]
+      },
+      "id": "combining-rules",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "and",
+                "And"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "The complement is 'not A and not B'.",
+          "hints": [
+            "De Morgan's Law: the negation of 'or' is 'and'.",
+            "Think: 'neither A nor B' means 'not A and not B'."
+          ],
+          "id": "q4-1",
+          "prompt": "The complement of 'A or B' is 'not A ___ not B'."
+        },
+        {
+          "answers": [
+            "0.65",
+            ".65"
+          ],
+          "feedbackIfWrong": "$P(\\text{neither}) = 1 - 0.35 = 0.65$.",
+          "prompt": "If $P(A \\text{ or } B) = 0.35$, what is $P(\\text{neither A nor B})$?",
+          "hints": [
+            "Use the complement rule.",
+            "$1 - 0.35 = ?$"
+          ],
+          "answer": "0.65",
+          "id": "q4-2",
+          "type": "short-answer"
+        },
+        {
+          "prompt": "From the draft table, what is $P(\\text{not a linebacker})$ if there are 30 linebackers out of 256 picks? (Give decimal to three places, e.g., 0.883)",
+          "answers": [
+            "0.883",
+            ".883"
+          ],
+          "hints": [
+            "$P(\\text{LB}) = 30/256$.",
+            "$P(\\text{not LB}) = 1 - 30/256$."
+          ],
+          "answer": "0.883",
+          "type": "short-answer",
+          "id": "q4-3",
+          "feedbackIfWrong": "$P(\\text{not LB}) = 1 - 30/256 = 226/256 \\approx 0.883$."
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "prompt": "The first step in the blueprint for 'or' probability problems is to ___ the events and check if they are mutually exclusive.",
+          "hints": [
+            "It's the 'U' in Understand‑Solve‑Conclude.",
+            "You need to know what A and B are."
+          ],
+          "type": "fill-blank",
+          "id": "q5-1",
+          "feedbackIfWrong": "Start by understanding (defining) the events and checking mutual exclusivity.",
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "Understand",
+                "define",
+                "Define"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "If $P(A)=0.5$, $P(B)=0.4$, and events are mutually exclusive, what is $P(A \\text{ or } B)$?",
+          "hints": [
+            "Mutually exclusive means just add.",
+            "$0.5 + 0.4 = ?$"
+          ],
+          "answers": [
+            "0.9",
+            ".9",
+            "90%"
+          ],
+          "type": "short-answer",
+          "answer": "0.9",
+          "feedbackIfWrong": "Since they are mutually exclusive, $P(A \\text{ or } B) = 0.5 + 0.4 = 0.9$.",
+          "id": "q5-2"
+        },
+        {
+          "hints": [
+            "It's the 'C' in Understand‑Solve‑Conclude.",
+            "You interpret the result."
+          ],
+          "type": "short-answer",
+          "prompt": "In the blueprint, after solving, what is the final step? (Answer with one word.)",
+          "feedbackIfWrong": "The final step is Conclude — interpret the probability in context.",
+          "answer": "Conclude",
+          "id": "q5-3",
+          "answers": [
+            "Conclude",
+            "conclude"
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Define events $A$ and $B$. Determine whether they are mutually exclusive (can they occur together?). Identify total sample space.",
+          "2. [[kw:Solve]]: Compute $P(A)$, $P(B)$, and $P(A \\text{ and } B)$ from counts, table, or given probabilities. Apply the Addition Rule: $P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$. If mutually exclusive, omit the subtraction.",
+          "3. [[kw:Conclude]]: Calculate the probability. If the question involves 'not', use the complement. Interpret the result in context, checking for unusual events ($P \\leq 0.05$)."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "Key",
+              "meaning": "Check mutual exclusivity first — it determines the formula.",
+              "tone": "core"
+            }
+          ],
+          "title": "Blueprint Decision Tree",
+          "formula": "$$\\text{'Or' Problem} \\;\\begin{cases} \\text{Mutually exclusive?} & \\;\\begin{cases} \\text{Yes} & \\;\\rightarrow\\; P(A)+P(B) \\\\ \\text{No} & \\;\\rightarrow\\; P(A)+P(B)-P(A \\text{ and } B) \\end{cases} \\\\ \\text{Want 'not'?} & \\;\\rightarrow\\; 1 - P(\\text{event}) \\end{cases}$$"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Define events, check mutual exclusivity",
+                "2": "Can A and B happen together?"
+              },
+              {
+                "0": "Solve – Mutually Exclusive",
+                "1": "Add probabilities: $P(A)+P(B)$",
+                "2": "No subtraction needed."
+              },
+              {
+                "0": "Solve – Not Mutually Exclusive",
+                "1": "Add, then subtract intersection: $P(A)+P(B)-P(A \\text{ and } B)$",
+                "2": "What is the overlap?"
+              },
+              {
+                "0": "Conclude",
+                "1": "Compute, complement if needed, interpret",
+                "2": "Is the probability unusual?"
+              }
+            ],
+            "headers": [
+              "Step",
+              "Action",
+              "Question to Ask"
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint Checklist for 'Or' Problems"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Project a problem: 'Find the probability a card is a face card or a heart.' Walk through the blueprint.",
+        "Emphasize: 'Always check for mutual exclusivity first — it determines whether you need to subtract the intersection.'"
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Understand: $A$ = club (13 cards), $B$ = 3 (4 cards). They are not mutually exclusive (the 3 of clubs is both).",
+            "Solve: $P(A) = 13/52$, $P(B) = 4/52$, $P(A \\text{ and } B) = 1/52$.",
+            "$P(\\text{club or 3}) = 13/52 + 4/52 - 1/52 = 16/52 = 4/13 \\approx 0.308$.",
+            "Conclude: About a 30.8% chance."
+          ],
+          "role": "guided",
+          "prompt": "Find the probability a randomly selected card is a club or a 3.",
+          "title": "Example A – Applying Blueprint to Cards"
+        },
+        {
+          "steps": [
+            "Understand: $A$ = left‑handed, $B$ = female. Not mutually exclusive (a person can be both).",
+            "Solve: $P(A) = 113/1000$, $P(B) = 475/1000$, $P(A \\text{ and } B) = 50/1000$.",
+            "$P(A \\text{ or } B) = (113 + 475 - 50)/1000 = 538/1000 = 0.538$.",
+            "Conclude: About a 53.8% chance."
+          ],
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "From a survey of 1000 people, 525 are male, 475 female; 113 left‑handed (63 male, 50 female). Find $P(\\text{left‑handed or female})$.",
+          "title": "Example B – Blueprint with Table",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Walk through the three blueprint steps to solve this."
+        },
+        {
+          "title": "Example C – Defective Cartons",
+          "role": "independent",
+          "prompt": "A company finds $P(\\text{puncture}) = 0.05$, $P(\\text{smashed corner}) = 0.08$, $P(\\text{both}) = 0.004$. Find $P(\\text{puncture or smashed corner})$.",
+          "steps": [
+            "Understand: Not mutually exclusive, since both can occur.",
+            "Solve: $P(\\text{puncture or smashed}) = 0.05 + 0.08 - 0.004 = 0.126$.",
+            "Conclude: There is a 12.6% chance a carton has at least one of these defects."
+          ]
+        }
+      ],
+      "title": "Blueprint Aid: Solving 'Or' Probability Problems",
+      "confusionCorner": {
+        "body": "Skipping the mutual exclusivity check is the most common mistake with the Addition Rule. Even a tiny overlap changes the answer. [[imp:Make it the first question you ask: 'Can these events both happen?' If yes, subtract.]]",
+        "title": "Always Check the Overlap"
+      },
+      "discoveryHook": {
+        "scenario": "Facing a probability problem with the word 'or'? The blueprint gives you a clear path: identify the events, check if they can both occur, apply the Addition Rule (with or without subtraction), and interpret the result. No more guessing!"
+      },
+      "id": "blueprint-addition-rule"
+    }
+  ],
+  "title": "The Addition Rule",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

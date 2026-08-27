@@ -1,0 +1,128 @@
+{
+  "id": "chapter-8-2-flashcards",
+  "type": "flashcard",
+  "cards": [
+    {
+      "back": [
+        "1. The samples are [[imp:randomly selected]].",
+        "2. The samples are [[imp:independent]].",
+        "3. Each population is [[imp:normally distributed]].",
+        "Used when sample sizes are small ($n_1 < 30$ or $n_2 < 30$) and population standard deviations are unknown."
+      ],
+      "front": "What are the conditions for a [[kw:two‑sample t‑test]]?"
+    },
+    {
+      "back": [
+        "$$s_p^2 = \\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2}$$",
+        "It is a weighted average of the two sample variances.",
+        "Degrees of freedom: $d.f. = n_1 + n_2 - 2$."
+      ],
+      "front": "How do you compute the [[kw:pooled variance]] $s_p^2$ (equal variances)?"
+    },
+    {
+      "front": "Give the standard error for the difference of means when variances are [[kw:equal]] (pooled).",
+      "back": [
+        "$$s_{\\bar{x}_1 - \\bar{x}_2} = s_p \\sqrt{\\frac{1}{n_1} + \\frac{1}{n_2}}$$",
+        "$s_p$ is the pooled standard deviation (square root of pooled variance)."
+      ]
+    },
+    {
+      "front": "Give the standard error for the difference of means when variances are [[kw:not equal]] (Welch's).",
+      "back": [
+        "$$s_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$$",
+        "Same formula as the large‑sample z‑test, but use the t‑distribution."
+      ]
+    },
+    {
+      "front": "What are the degrees of freedom for a two‑sample t‑test with [[kw:unequal variances]]?",
+      "back": [
+        "Use the [[imp:smaller]] of $n_1 - 1$ and $n_2 - 1$.",
+        "$$d.f. = \\min(n_1-1,\\; n_2-1)$$",
+        "This is a conservative choice that keeps the actual Type I error rate close to $\\alpha$."
+      ]
+    },
+    {
+      "back": [
+        "$$s_p^2 = \\frac{13 \\cdot 45^2 + 15 \\cdot 30^2}{14 + 16 - 2} = \\frac{13 \\cdot 2025 + 15 \\cdot 900}{28} = \\frac{26325 + 13500}{28} \\approx 1422.32$$",
+        "Pooled standard deviation $s_p \\approx 37.71$."
+      ],
+      "front": "A manufacturer claims its phone has greater range. Manufacturer: $\\bar{x}_1=1275$, $s_1=45$, $n_1=14$; Competitor: $\\bar{x}_2=1250$, $s_2=30$, $n_2=16$. Variances equal. Compute the pooled variance."
+    },
+    {
+      "front": "Continuing the phone example, compute the standard error and the t statistic.",
+      "back": [
+        "$$s_{\\bar{x}_1 - \\bar{x}_2} = 37.71 \\sqrt{\\frac{1}{14} + \\frac{1}{16}} \\approx 37.71 \\times 0.366 \\approx 13.80$$",
+        "$$t = \\frac{1275 - 1250}{13.80} \\approx 1.811$$",
+        "Degrees of freedom: $d.f. = 14 + 16 - 2 = 28$."
+      ]
+    },
+    {
+      "front": "For the phone example (right‑tailed, $\\alpha=0.05$), what is the critical value and decision?",
+      "back": [
+        "Critical value $t_0 = 1.701$ (from t‑table with d.f.=28).",
+        "$t = 1.811 > 1.701$ → [[imp:reject $H_0$]].",
+        "There is enough evidence to support the claim that the manufacturer's phone has greater range."
+      ]
+    },
+    {
+      "back": [
+        "$$s_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{39.7^2}{8} + \\frac{24.5^2}{18}} = \\sqrt{197.0 + 33.35} \\approx 15.18$$",
+        "Degrees of freedom: $d.f. = \\min(7, 17) = 7$."
+      ],
+      "front": "Teacher 1 (n=8): $\\bar{x}_1=473$, $s_1=39.7$; Teacher 2 (n=18): $\\bar{x}_2=459$, $s_2=24.5$. Variances not equal. Compute the standard error."
+    },
+    {
+      "front": "For the teacher example, $t = 0.922$, two‑tailed, $d.f.=7$, $\\alpha=0.10$. What is the decision?",
+      "back": [
+        "Critical values: $\\pm 1.895$.",
+        "$0.922$ is between $-1.895$ and $1.895$ → [[imp:fail to reject $H_0$]].",
+        "Not enough evidence to say the mean scores differ."
+      ]
+    },
+    {
+      "back": [
+        "Use `=T.DIST.RT(t, d.f.)`.",
+        "Example: `=T.DIST.RT(1.811, 28)` returns about 0.041.",
+        "If P‑value $\\le \\alpha$, reject $H_0$."
+      ],
+      "front": "In Google Sheets, how do you find the P‑value for a [[kw:right‑tailed]] two‑sample t‑test?"
+    },
+    {
+      "back": [
+        "Use `=T.DIST.2T(ABS(t), d.f.)`.",
+        "Example: `=T.DIST.2T(0.922, 7)` returns about 0.387.",
+        "This automatically doubles the tail area."
+      ],
+      "front": "In Google Sheets, how do you find the P‑value for a [[kw:two‑tailed]] two‑sample t‑test?"
+    },
+    {
+      "back": [
+        "Left‑tailed: reject $H_0$ if $t < t_0$ (where $t_0$ is negative).",
+        "Right‑tailed: reject $H_0$ if $t > t_0$ (where $t_0$ is positive).",
+        "Two‑tailed: reject $H_0$ if $t < -t_0$ or $t > t_0$."
+      ],
+      "front": "What are the rejection regions for a two‑sample t‑test?"
+    },
+    {
+      "front": "Mini cars: $\\bar{x}_1=1621$, $s_1=493$, $n_1=6$; Midsize: $\\bar{x}_2=1895$, $s_2=648$, $n_2=16$. Equal variances, $\\alpha=0.10$, test if mini cost less.",
+      "back": [
+        "$H_0: \\mu_1 \\ge \\mu_2$, $H_a: \\mu_1 < \\mu_2$ (left‑tailed). Pooled variance $s_p^2 \\approx 375690$, $s_p \\approx 613$. SE $\\approx 293.5$.",
+        "$t = (1621-1895)/293.5 \\approx -0.934$. $d.f.=20$, $t_0 = -1.325$.",
+        "$-0.934 > -1.325$ → [[imp:fail to reject $H_0$]]. Not enough evidence."
+      ]
+    },
+    {
+      "back": [
+        "Pooled variance: when the problem states that the population variances are [[imp:equal]].",
+        "Separate variance (Welch's): when variances are [[imp:not equal]] or not stated.",
+        "When in doubt, the separate variance method is safer."
+      ],
+      "front": "When should you use the [[kw:pooled variance]] vs. the [[kw:separate variance]] method?"
+    }
+  ],
+  "title": "Testing the Difference Between Means (Small Independent Samples)",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

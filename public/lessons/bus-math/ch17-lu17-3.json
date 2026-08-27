@@ -1,0 +1,887 @@
+{
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "questions": [
+        {
+          "hints": [
+            "Takes more expense early.",
+            "Opposite of straight‑line."
+          ],
+          "id": "b1q1",
+          "type": "fill-blank",
+          "prompt": "The declining‑balance method is an ___ depreciation method.",
+          "feedbackIfWrong": "accelerated.",
+          "blanks": [
+            {
+              "accept": [
+                "accelerated"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "40.",
+          "type": "short-answer",
+          "hints": [
+            "Multiply by 2.",
+            "20 × 2 = ?"
+          ],
+          "prompt": "Straight‑line rate is 20%. Double‑declining rate? (percent, just the number)",
+          "answers": [
+            "40"
+          ],
+          "id": "b1q2"
+        },
+        {
+          "id": "b1q3",
+          "hints": [
+            "12,000 × 0.40.",
+            "= 4,800."
+          ],
+          "prompt": "Book value at start of year $12,000, DDB rate 40%. Depreciation for the year? (number only, no $)",
+          "answers": [
+            "4800",
+            "4,800"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "4,800."
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Straight‑Line vs. Double‑Declining Balance ($10,000, 5‑year life)",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$2,000",
+                "2": "$4,000 (40% of $10,000)"
+              },
+              {
+                "0": "2",
+                "1": "$2,000",
+                "2": "$2,400 (40% of $6,000)"
+              },
+              {
+                "0": "3",
+                "1": "$2,000",
+                "2": "$1,440 (40% of $3,600)"
+              },
+              {
+                "0": "4",
+                "1": "$2,000",
+                "2": "$864 (40% of $2,160)"
+              },
+              {
+                "0": "5",
+                "1": "$2,000",
+                "2": "$518.40 (remaining to reach residual if any)"
+              }
+            ],
+            "type": "table",
+            "caption": "DDB yields much higher expense in earlier years. Total depreciation is the same.",
+            "headers": [
+              "Year",
+              "Straight‑Line Dep.",
+              "DDB Dep."
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Declining Rate} = \\frac{\\text{Straight‑Line Rate} \\times \\text{Multiplier}}{\\text{Useful Life}}$$",
+          "notes": [
+            "Double‑declining: multiplier = 2. Straight‑line rate = 1 / useful life.",
+            "150% declining: multiplier = 1.5."
+          ],
+          "title": "Declining‑Balance Rate"
+        },
+        "explanation": [
+          "The [[kw:declining‑balance method]] is an accelerated depreciation method that records higher depreciation expense in the early years of an asset's life and lower expense in later years.",
+          "It applies a constant rate to the asset's declining book value each year.",
+          "Common rates are double the straight‑line rate ([[kw:double‑declining‑balance]]) or 150% declining balance.",
+          "Formula: $$\\text{Annual Depreciation} = \\text{Book Value at Beginning of Year} \\times \\text{Declining Rate}$$.",
+          "[[imp:Residual value is not subtracted initially, but depreciation stops when book value reaches residual value.]]"
+        ]
+      },
+      "teacherCues": [
+        "Ask: 'Why might a company want to take more depreciation in the early years of an asset's life?'",
+        "Explain that accelerated methods reduce taxes sooner."
+      ],
+      "id": "declining-balance-concept",
+      "examples": [
+        {
+          "title": "A – Find the declining rate",
+          "steps": [
+            "Straight‑line rate = 1/5 = 20%.",
+            "Double‑declining rate = 2 × 20% = 40%."
+          ],
+          "role": "guided",
+          "prompt": "An asset has a 5‑year life. What is the double‑declining‑balance rate?"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Think about tax benefits and asset productivity.",
+          "steps": [
+            "Higher early depreciation reduces taxable income, lowering taxes in the near term.",
+            "Often, assets are more productive and generate more revenue when new.",
+            "Matching higher expense with higher early revenue can be more accurate."
+          ],
+          "title": "B – Why accelerate?",
+          "role": "peer-explain",
+          "prompt": "Explain why a company might choose an accelerated method like declining‑balance."
+        },
+        {
+          "title": "C – First‑year DDB depreciation",
+          "steps": [
+            "DDB rate = 2/5 = 40%.",
+            "Year 1 depreciation = $20,000 × 0.40 = $8,000."
+          ],
+          "prompt": "A machine costs $20,000, 5‑year life, no residual. Using DDB (40%), find year 1 depreciation.",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A company buys a computer system for $10,000 with a 5‑year life and no residual value. Instead of $2,000 per year (straight‑line), it could use [[kw:declining‑balance]] depreciation to take larger deductions early on, when the asset is newer and more productive. This reduces taxable income when the asset provides the most benefit."
+      },
+      "title": "1. Concept of Accelerated Depreciation",
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Under declining‑balance, you do NOT subtract residual value before calculating depreciation. [[imp:However, you must stop depreciating when book value reaches residual value.]]"
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "0.20"
+        ],
+        "prompt": "An asset costs $50,000, 10‑year life, residual $5,000. DDB rate? (decimal, e.g., 0.20)",
+        "hints": [
+          "Straight‑line rate = 1/10 = 10%; DDB = 2 × 10% = 20% = 0.20.",
+          "Residual is ignored in calculation."
+        ],
+        "optional": true
+      }
+    },
+    {
+      "title": "2. Double‑Declining‑Balance Schedule",
+      "examples": [
+        {
+          "title": "A – Build year 2",
+          "prompt": "Cost $8,000, 4‑year life, no residual. DDB rate = 50%. Year 1 depreciation = $4,000, ending book value $4,000. Find year 2 depreciation and ending book value.",
+          "steps": [
+            "Year 2 depreciation = $4,000 × 0.50 = $2,000.",
+            "Ending book value = $4,000 – $2,000 = $2,000."
+          ],
+          "role": "guided"
+        },
+        {
+          "prompt": "Explain why the depreciation expense decreases each year under DDB.",
+          "title": "B – Why does expense decline?",
+          "steps": [
+            "The expense is calculated on the book value, which gets smaller each year.",
+            "Even though the rate stays the same, the declining base causes the expense to decline.",
+            "This is what makes it an accelerated method."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Think about the base used for the calculation.",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "An asset cost $15,000, residual $3,000, 5‑year life, DDB rate 40%. After year 4, book value is $3,240. Year 5 depreciation should be?",
+          "title": "C – Final year adjustment",
+          "steps": [
+            "Normally 40% of $3,240 = $1,296, which would drop book value below $3,000.",
+            "Must limit depreciation to $240 ($3,240 – $3,000) to keep book value at residual.",
+            "Year 5 expense = $240."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "ddb-schedule",
+      "discoveryHook": {
+        "scenario": "For the $10,000 computer with a 5‑year life and no residual, the DDB schedule shows depreciation of $4,000 in year 1, $2,400 in year 2, $1,440 in year 3, etc. The expense declines each year because the book value is getting smaller."
+      },
+      "questions": [
+        {
+          "prompt": "DDB rate = 2 ÷ ___ life.",
+          "blanks": [
+            {
+              "accept": [
+                "useful"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "useful.",
+          "hints": [
+            "The number of years.",
+            "Not residual."
+          ],
+          "id": "b2q1",
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "3,000.",
+          "answers": [
+            "3000",
+            "3,000"
+          ],
+          "id": "b2q2",
+          "hints": [
+            "6,000 × 0.50.",
+            "= 3,000."
+          ],
+          "type": "short-answer",
+          "prompt": "Cost $6,000, DDB rate 50%. Year 1 depreciation? (number only, no $)"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "500"
+          ],
+          "prompt": "Book value before year 4 is $1,500. DDB rate 40%. If residual is $1,000, what is year 4 depreciation? (number only, no $)",
+          "feedbackIfWrong": "500.",
+          "hints": [
+            "Normal: 1,500×0.40=600, but that would drop book to $900 (< residual).",
+            "Limit to 1,500 – 1,000 = $500."
+          ],
+          "id": "b2q3"
+        }
+      ],
+      "challengeCorner": {
+        "answers": [
+          "12000",
+          "7200",
+          "4320"
+        ],
+        "prompt": "A machine costs $30,000, residual $6,000, 5‑year life. Using DDB (40%), compute year 1, year 2, and year 3 depreciation.",
+        "optional": true,
+        "hints": [
+          "Yr1: 30,000×0.40=12,000; Book=18,000.",
+          "Yr2: 18,000×0.40=7,200; Book=10,800. Yr3: 10,800×0.40=4,320; Book=6,480."
+        ],
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "If the DDB calculation in a later year results in an expense that would push book value below residual, you only depreciate the amount needed to reach residual. [[imp:Never go below residual.]]"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$10,000",
+                "2": "40%",
+                "3": "$4,000",
+                "4": "$4,000",
+                "5": "$6,000"
+              },
+              {
+                "0": "2",
+                "1": "$6,000",
+                "2": "40%",
+                "3": "$2,400",
+                "4": "$6,400",
+                "5": "$3,600"
+              },
+              {
+                "0": "3",
+                "1": "$3,600",
+                "2": "40%",
+                "3": "$1,440",
+                "4": "$7,840",
+                "5": "$2,160"
+              },
+              {
+                "0": "4",
+                "1": "$2,160",
+                "2": "40%",
+                "3": "$864",
+                "4": "$8,704",
+                "5": "$1,296"
+              },
+              {
+                "0": "5",
+                "1": "$1,296",
+                "2": "—",
+                "3": "$1,296",
+                "4": "$10,000",
+                "5": "$0"
+              }
+            ],
+            "type": "table",
+            "title": "DDB Schedule: $10,000, 5‑year life, no residual",
+            "headers": [
+              "Year",
+              "Beginning Book Value",
+              "DDB Rate",
+              "Depreciation Expense",
+              "Accumulated Depreciation",
+              "Ending Book Value"
+            ],
+            "caption": "Year 5 expense is the remaining book value to reach $0. Note expense declines each year."
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{DDB Rate} = \\frac{2}{\\text{Useful Life}}$$ $$\\text{Annual Depreciation} = \\text{Beginning Book Value} \\times \\text{DDB Rate}$$ $$\\text{Ending Book Value} = \\text{Beginning Book Value} - \\text{Depreciation}$$",
+          "title": "DDB Schedule Formulas",
+          "notes": [
+            "If the calculated depreciation would bring book value below residual, adjust to keep book value = residual.",
+            "Total depreciation over life = Cost – Residual."
+          ]
+        },
+        "explanation": [
+          "To build a [[kw:double‑declining‑balance schedule]]:",
+          "1. Calculate the DDB rate = 2 / Useful life.",
+          "2. For each year, depreciation expense = Beginning book value × DDB rate.",
+          "3. Accumulated depreciation = sum of expenses to date.",
+          "4. Book value at end of year = Beginning book value – Depreciation expense.",
+          "In the final year(s), depreciation is adjusted so that book value does not fall below residual value.",
+          "[[imp:Do not depreciate below residual value; the last year's expense may be a plug figure.]]"
+        ]
+      },
+      "teacherCues": [
+        "Walk through the schedule: each year, multiply the beginning book value by the DDB rate.",
+        "Show that the expense decreases each year."
+      ]
+    },
+    {
+      "teacherCues": [
+        "Explain that companies often switch to straight‑line when it yields higher depreciation.",
+        "Show the comparison: in later years, DDB gives a smaller expense than straight‑line."
+      ],
+      "id": "switch-to-straight-line",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "greater",
+                "higher",
+                "more"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "Companies switch from DDB to straight‑line when straight‑line depreciation is ___ than DDB.",
+          "id": "b3q1",
+          "feedbackIfWrong": "greater (or higher).",
+          "hints": [
+            "To maximize expense.",
+            "If SL gives a larger deduction."
+          ]
+        },
+        {
+          "hints": [
+            "$5,000 ÷ 2.",
+            "= 2,500."
+          ],
+          "id": "b3q2",
+          "answers": [
+            "2500",
+            "2,500"
+          ],
+          "prompt": "Remaining book value $5,000, residual $0, 2 years left. Straight‑line depreciation per year? (number only, no $)",
+          "type": "short-answer",
+          "feedbackIfWrong": "2,500."
+        },
+        {
+          "answers": [
+            "yes"
+          ],
+          "type": "short-answer",
+          "id": "b3q3",
+          "hints": [
+            "SL higher → switch.",
+            "To capture larger deduction."
+          ],
+          "prompt": "If DDB in year 4 is $1,200 and straight‑line is $1,500, should the company switch? (yes or no)",
+          "feedbackIfWrong": "yes."
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "caption": "In year 4, straight‑line ($1,080) exceeds DDB ($864), so the company switches.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$10,000",
+                "2": "$4,000",
+                "3": "$2,000 (over 5 yrs)",
+                "4": "No"
+              },
+              {
+                "0": "2",
+                "1": "$6,000",
+                "2": "$2,400",
+                "3": "$1,500 ($6,000/4)",
+                "4": "No"
+              },
+              {
+                "0": "3",
+                "1": "$3,600",
+                "2": "$1,440",
+                "3": "$1,200 ($3,600/3)",
+                "4": "No"
+              },
+              {
+                "0": "4",
+                "1": "$2,160",
+                "2": "$864",
+                "3": "$1,080 ($2,160/2)",
+                "4": "Switch to SL $1,080"
+              },
+              {
+                "0": "5",
+                "1": "$1,080",
+                "2": "$432",
+                "3": "$1,080",
+                "4": "Already switched"
+              }
+            ],
+            "title": "Switch Decision: $10,000, 5‑year, DDB vs. Straight‑Line",
+            "headers": [
+              "Year",
+              "Beginning Book",
+              "DDB (40%)",
+              "SL on Rem. Book/Rem. Life",
+              "Switch?"
+            ]
+          }
+        ],
+        "explanation": [
+          "Under [[kw:modified accelerated cost recovery system (MACRS)]], the half‑year convention is used, but in financial accounting, companies can switch from DDB to straight‑line when it results in higher depreciation.",
+          "To determine if a switch is beneficial, compare the DDB expense to the straight‑line expense on the remaining book value over the remaining life.",
+          "If straight‑line is larger, switch; the switch is permanent for the remaining life.",
+          "This ensures the asset is fully depreciated by the end of its life.",
+          "[[imp:The switch is made in the year when straight‑line depreciation on the remaining balance equals or exceeds DDB.]]"
+        ],
+        "formulaCard": {
+          "notes": [
+            "Once switched, straight‑line is used for the remaining life.",
+            "Total depreciation remains the same."
+          ],
+          "title": "Switch Decision Rule",
+          "formula": "$$\\text{SL Depreciation} = \\frac{\\text{Remaining Book Value} - \\text{Residual}}{\\text{Remaining Life}}$$ $$\\text{Switch if } \\text{SL} \\ge \\text{DDB}$$"
+        }
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "In the year of switch, use the straight‑line amount for that year and all remaining years. [[imp:The switch is not reversible; stick with straight‑line thereafter.]]"
+      },
+      "discoveryHook": {
+        "scenario": "In year 4 of the computer example, DDB gives only $864 depreciation, while straight‑line on the remaining life would be $1,296 ÷ 2 years = $648? Actually, straight‑line on remaining $2,160 over 2 years = $1,080 per year, which is more than $864. So a company might switch to straight‑line to capture higher depreciation in those later years."
+      },
+      "challengeCorner": {
+        "hints": [
+          "Year 5: book value after yr4 DDB = $2,592–$1,036.80=$1,555.20.",
+          "DDB yr5 = $622.08, but SL = ($1,555.20–$2,000)/1 = negative, so we'd just depreciate to residual. Switch to SL in year 5."
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "prompt": "An asset cost $12,000, residual $2,000, 5‑year life. DDB rate 40%. After year 3, book value is $2,592. DDB year 4 = $1,036.80. SL (remaining 2 yrs) = ($2,592 – $2,000)/2 = $296. So DDB is still higher. In what year would a switch occur, if ever? (Hint: check year 5)",
+        "answers": [
+          "year 5"
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "Year 3: beginning book value $3,600, residual $0, 3 years remaining. DDB = $1,440. Straight‑line = $3,600 / 3 = $1,200. Should the company switch?",
+          "title": "A – Determine if switch",
+          "role": "guided",
+          "steps": [
+            "Compare: DDB $1,440 > SL $1,200.",
+            "No, DDB still gives higher expense, so do not switch."
+          ]
+        },
+        {
+          "peerPrompt": "Think about maximizing depreciation expense.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain why a company would switch from DDB to straight‑line.",
+          "steps": [
+            "As the asset ages, DDB expense becomes very low.",
+            "Straight‑line on the remaining balance may provide higher deductions.",
+            "Switching allows the company to fully depreciate the asset by the end of its life while maximizing tax benefits."
+          ],
+          "title": "B – Why switch?"
+        },
+        {
+          "title": "C – Compute switch year",
+          "steps": [
+            "DDB $1,728 > SL $1,160. No switch yet.",
+            "Check year 5: beginning book after year 4 DDB = $4,320 – $1,728 = $2,592. DDB year 5 = $2,592×0.40=$1,036.80. SL = ($2,592-$2,000)/1=$592. DDB still higher. But SL $592 vs DDB $1,037 — DDB higher, so no switch. Actually, we just ensure not to go below residual."
+          ],
+          "prompt": "Cost $20,000, residual $2,000, 5‑year life. After year 3, book value is $4,320. Remaining life = 2 years. DDB year 4 = $4,320 × 0.40 = $1,728. SL = ($4,320 – $2,000) / 2 = $1,160. Switch?",
+          "role": "independent"
+        }
+      ],
+      "title": "3. Switching from DDB to Straight‑Line"
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Total depreciation is the same; pattern of expense differs.",
+            "headers": [
+              "Year",
+              "Straight‑Line",
+              "DDB (approx)",
+              "Units (example)"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$4,000",
+                "2": "$10,000",
+                "3": "Varies"
+              },
+              {
+                "0": "2",
+                "1": "$4,000",
+                "2": "$6,000",
+                "3": "Varies"
+              },
+              {
+                "0": "3",
+                "1": "$4,000",
+                "2": "$3,600",
+                "3": "Varies"
+              },
+              {
+                "0": "4",
+                "1": "$4,000",
+                "2": "$400 (adj)",
+                "3": "Varies"
+              },
+              {
+                "0": "5",
+                "1": "$4,000",
+                "2": "$0",
+                "3": "Varies"
+              },
+              {
+                "0": "Total",
+                "1": "$20,000",
+                "2": "$20,000",
+                "3": "$20,000"
+              }
+            ],
+            "title": "Comparison of Depreciation Methods ($25,000, residual $5,000, 5‑yr life, DDB 40%)",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Total Depreciation} = \\text{Cost} - \\text{Residual}$$",
+          "title": "Method Summary",
+          "notes": [
+            "Straight‑line: equal payments, time‑based.",
+            "Units‑of‑production: usage‑based.",
+            "Declining‑balance: accelerated, time‑based but declining."
+          ]
+        },
+        "explanation": [
+          "All depreciation methods allocate the same total depreciable cost over the asset's life; only the timing differs.",
+          "Straight‑line: constant expense, simple, widely used.",
+          "Units‑of‑production: variable expense, matches usage, best for equipment with uneven use.",
+          "Declining‑balance: accelerated, higher early expense, beneficial for tax purposes.",
+          "[[imp:Choose the method that most closely reflects the asset's pattern of economic benefits.]]"
+        ]
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "same",
+                "identical",
+                "equal"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "same.",
+          "prompt": "Total depreciation over an asset's life is the ___ regardless of depreciation method.",
+          "type": "fill-blank",
+          "id": "b4q1",
+          "hints": [
+            "Only timing changes.",
+            "Depreciable cost is fixed."
+          ]
+        },
+        {
+          "hints": [
+            "Accelerated method.",
+            "Higher early deductions."
+          ],
+          "prompt": "Which method gives the highest depreciation expense in the first year? (straight‑line, units, or DDB)",
+          "answers": [
+            "DDB",
+            "declining-balance"
+          ],
+          "id": "b4q2",
+          "type": "short-answer",
+          "feedbackIfWrong": "DDB (declining‑balance)."
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "units.",
+          "hints": [
+            "Based on activity.",
+            "Not time."
+          ],
+          "prompt": "Which method best matches expense with usage for a machine with fluctuating hours? (straight‑line, units, or DDB)",
+          "answers": [
+            "units"
+          ],
+          "id": "b4q3"
+        }
+      ],
+      "id": "comparison-methods",
+      "teacherCues": [
+        "Create a side‑by‑side comparison of total depreciation and annual patterns.",
+        "Highlight that total depreciation is identical across methods."
+      ],
+      "discoveryHook": {
+        "scenario": "A $25,000 asset with $5,000 residual and 5‑year life will have total depreciation of $20,000 regardless of method. Straight‑line gives $4,000 each year; DDB gives $10,000, $6,000, $3,600, $400, $0 (or similar); units‑of‑production varies with usage. Each method serves different purposes."
+      },
+      "title": "4. Comparing Straight‑Line, Units‑of‑Production, and DDB",
+      "examples": [
+        {
+          "steps": [
+            "DDB is much higher in year 1 ($6,000 vs $2,400).",
+            "This illustrates the accelerated nature of DDB."
+          ],
+          "title": "A – Compare first‑year expense",
+          "role": "guided",
+          "prompt": "Cost $15,000, residual $3,000, 5‑year life. Straight‑line: $2,400. DDB: 40% × $15,000 = $6,000. Which is higher in year 1?"
+        },
+        {
+          "title": "B – Which method for a delivery truck?",
+          "steps": [
+            "Units‑of‑production would best match the truck's usage to its expense.",
+            "In high‑mileage years, depreciation would be higher, and lower in light‑use years.",
+            "This reflects the actual consumption of the truck's value."
+          ],
+          "role": "peer-explain",
+          "prompt": "A delivery truck will be driven varying miles each year. Which depreciation method would you recommend and why?",
+          "minLength": 2,
+          "peerPrompt": "Consider the matching principle."
+        },
+        {
+          "steps": [
+            "Total depreciation = depreciable cost = $40,000 – $8,000 = $32,000 regardless of method.",
+            "Only the timing differs."
+          ],
+          "role": "independent",
+          "title": "C – Total depreciation check",
+          "prompt": "A machine costs $40,000, residual $8,000. Under both straight‑line (8‑year) and DDB (25%), what is the total depreciation over the life?"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "While DDB yields higher early deductions, it does not change the total depreciation taken. [[imp:It merely shifts the expense to earlier periods.]]"
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "8000",
+          "20000"
+        ],
+        "prompt": "An asset costs $60,000, residual $12,000, 6‑year life. Compute straight‑line annual depreciation and DDB first‑year depreciation. (DDB rate = 2/6 ≈ 33.33%).",
+        "optional": true,
+        "hints": [
+          "Straight‑line = (60k-12k)/6 = 8,000.",
+          "DDB = 60k × 0.3333 = 20,000."
+        ]
+      }
+    },
+    {
+      "id": "blueprint-ddb",
+      "examples": [
+        {
+          "steps": [
+            "Year 1 depreciation = $80,000 × 0.40 = $32,000.",
+            "Ending book value = $80,000 – $32,000 = $48,000."
+          ],
+          "role": "guided",
+          "title": "A – Full blueprint",
+          "prompt": "Cost $80,000, residual $8,000, 5‑year life. DDB rate 40%. Year 1 depreciation? Year 1 ending book value?"
+        },
+        {
+          "steps": [
+            "The 'Solve' step includes checking whether the calculated depreciation would push book value below residual.",
+            "If yes, the depreciation for that year is limited to (book value – residual).",
+            "This ensures the asset is never carried below its estimated salvage value."
+          ],
+          "prompt": "Explain how the blueprint prevents depreciating below residual value.",
+          "title": "B – Avoiding the residual trap",
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Think about the cap check."
+        },
+        {
+          "title": "C – Practice DDB with cap",
+          "steps": [
+            "Yr1: 12,000×0.50=6,000; Book=6,000.",
+            "Yr2: 6,000×0.50=3,000; Book=3,000.",
+            "Yr3: 3,000×0.50=1,500, but that would make book 1,500 which is below residual 2,000? Actually 3,000-1,500=1,500 < 2,000, so cap depreciation to 1,000 (3,000-2,000). Expense=1,000; Book=2,000.",
+            "Yr4: since book=residual, depreciation=0."
+          ],
+          "prompt": "Asset cost $12,000, residual $2,000, 4‑year life. DDB rate 50%. Find depreciation for years 1‑4.",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A company acquires equipment for $50,000 with a 10‑year life and $5,000 residual value. They plan to use DDB. Use the blueprint to determine the first three years' depreciation and check when, if ever, to switch to straight‑line."
+      },
+      "concept": {
+        "explanation": [
+          "Apply the blueprint to declining‑balance problems:",
+          "1. Understand: identify asset cost, residual value, useful life, and the declining rate (150% or 200%).",
+          "2. Solve: compute the DDB rate; for each year, calculate expense = beginning book value × rate; check if book value would fall below residual; if so, cap the expense. Determine if a switch to straight‑line would be beneficial in any year.",
+          "3. Conclude: verify that total depreciation = depreciable cost; book value ends at residual.",
+          "This structured approach prevents the common error of ignoring the residual value cap."
+        ],
+        "formulaCard": {
+          "notes": [
+            "If the formula gives depreciation that would drop book value below residual, limit it.",
+            "Optionally check switch to straight‑line."
+          ],
+          "title": "DDB Blueprint Formulas",
+          "formula": "$$\\text{DDB Rate} = \\frac{2}{\\text{Life}}$$ $$\\text{Annual Depreciation} = \\text{Beginning Book Value} \\times \\text{DDB Rate}$$ $$\\text{Adjusted if } \\text{Beg BV} - \\text{Depreciation} < \\text{Residual}$$"
+        },
+        "visuals": [
+          {
+            "caption": "Always check the residual cap each year.",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Cost $50,000, residual $5,000, life 10 yrs, DDB rate 20%.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Yr1",
+                "1": "Depreciation = $50,000 × 0.20 = $10,000; Book = $40,000.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Yr2",
+                "1": "$40,000 × 0.20 = $8,000; Book = $32,000.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Yr3",
+                "1": "$32,000 × 0.20 = $6,400; Book = $25,600.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Switch check",
+                "1": "No switch yet; DDB still higher than SL on remaining.",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Continue until book approaches residual; cap expense if needed.",
+                "2": ""
+              }
+            ],
+            "type": "table",
+            "title": "Blueprint: Equipment DDB",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "title": "5. Blueprint Aid for Declining‑Balance Problems",
+      "questions": [
+        {
+          "id": "b5q1",
+          "type": "fill-blank",
+          "hints": [
+            "Identify cost, residual, life, rate.",
+            "U in U‑S‑C."
+          ],
+          "prompt": "The first blueprint step is to ___ the problem.",
+          "feedbackIfWrong": "understand.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "8,000.",
+          "answers": [
+            "8000",
+            "8,000"
+          ],
+          "prompt": "Cost $20,000, DDB rate 40%. First‑year depreciation? (number only, no $)",
+          "id": "b5q2",
+          "hints": [
+            "20,000 × 0.40.",
+            "= 8,000."
+          ],
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "3,000 – 2,500.",
+            "= 500."
+          ],
+          "answers": [
+            "500"
+          ],
+          "feedbackIfWrong": "500.",
+          "type": "short-answer",
+          "prompt": "If book value is $3,000 and residual is $2,500, maximum depreciation in that year is ___ (number only, no $).",
+          "id": "b5q3"
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A company purchases a machine for $100,000 (residual $10,000, 8‑year life) and uses DDB (25%). Compute depreciation for year 1 and year 2. Also, determine if a switch to straight‑line should occur in year 5 if the book value then is $17,797. (Remaining life 4 years, SL = ($17,797–$10,000)/4 = $1,949.25; DDB = $17,797×0.25 = $4,449.25 → no switch.)",
+        "answers": [
+          "25000",
+          "18750",
+          "no"
+        ],
+        "type": "short-answer",
+        "hints": [
+          "Yr1: 100,000×0.25=25,000; Book=75,000. Yr2: 75,000×0.25=18,750; Book=56,250.",
+          "Year 5: DDB $4,449 > SL $1,949, so no switch."
+        ],
+        "optional": true
+      },
+      "confusionCorner": {
+        "body": "In DDB, never subtract the residual before multiplying by the rate. [[imp:Residual is only used to cap the depreciation, not to compute the rate.]]",
+        "title": "Watch out!"
+      },
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Walk through a problem that requires building a DDB schedule and possibly switching."
+      ]
+    }
+  ],
+  "title": "Declining-Balance Method",
+  "id": "ch17-lu17-3",
+  "schemaVersion": 2,
+  "standards": [
+    "BUSMATH.17.3"
+  ],
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

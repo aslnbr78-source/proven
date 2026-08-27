@@ -1,0 +1,684 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-6-5-complex-plane",
+  "title": "The Complex Plane",
+  "blocks": [
+    {
+      "id": "complex-plane-absolute-value",
+      "title": "Complex Plane and Absolute Value",
+      "teacherCues": [
+        "Draw a complex plane, label real axis (horizontal) and imaginary axis (vertical). Plot point (a,b) for a+bi.",
+        "Ask: How do you find the distance from the origin? (√(a²+b²))"
+      ],
+      "discoveryHook": {
+        "scenario": "Just like a GPS coordinate, a complex number has a location on a flat map. Its distance from the origin is the 'modulus'—essentially how far it is from zero."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:complex plane]] has a horizontal real axis and a vertical imaginary axis. Each complex number z = a+bi is plotted at (a,b).",
+          "The [[kw:absolute value]] (or modulus) of z, denoted |z|, is the distance from the origin: $$|z| = \\sqrt{a^2 + b^2}.$$",
+          "If b=0 (real number), this reduces to the usual absolute value."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Examples",
+            "headers": [
+              "Complex number",
+              "Point",
+              "Absolute value"
+            ],
+            "rows": [
+              {
+                "0": "3+4i",
+                "1": "(3,4)",
+                "2": "√(3²+4²)=5"
+              },
+              {
+                "0": "-2+5i",
+                "1": "(-2,5)",
+                "2": "√(4+25)=√29"
+              },
+              {
+                "0": "-7i",
+                "1": "(0,-7)",
+                "2": "√(0+49)=7"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Absolute Value (Modulus)",
+          "formula": "$$|a+bi| = \\sqrt{a^2+b^2}$$",
+          "notes": [
+            "Distance from origin to point (a,b).",
+            "Always non‑negative real number."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Plot and find |z|",
+          "prompt": "Plot z = -2+5i and find its absolute value.",
+          "steps": [
+            "Coordinates: (-2,5).",
+            "Compute |z| = √((-2)² + 5²) = √(4+25) = √29."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Real number case",
+          "prompt": "Explain why | -7 | as a real number equals |-7+0i|.",
+          "peerPrompt": "In the complex plane, what are the coordinates? Then apply the modulus formula.",
+          "minLength": 2,
+          "steps": [
+            "For -7, coordinates are (-7,0).",
+            "|z| = √((-7)²+0²) = √49 = 7, which matches |-7|."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple modulus",
+          "prompt": "Find |4-6i|.",
+          "steps": [
+            "√(4²+(-6)²) = √(16+36) = √52 = 2√13."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Imaginary part includes the sign",
+        "body": "The coordinate for the imaginary axis is b, the coefficient of i, so include its sign. For -7i, b=-7."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "In the complex plane, the horizontal axis is the ___ axis.",
+          "blanks": [
+            {
+              "accept": [
+                "real"
+              ]
+            }
+          ],
+          "hints": [
+            "It corresponds to the real part of a+bi.",
+            "What axis is horizontal?"
+          ],
+          "feedbackIfWrong": "It's the real axis."
+        },
+        {
+          "id": "q2",
+          "type": "fill-blank",
+          "prompt": "The absolute value of 3+4i is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "5"
+              ]
+            }
+          ],
+          "hints": [
+            "Use the formula √(a²+b²) with a=3, b=4.",
+            "3²+4² = 25, then square root."
+          ],
+          "feedbackIfWrong": "|3+4i| = √(9+16) = 5."
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "prompt": "What is the imaginary part (b) of 2-5i? (Enter a number)",
+          "answer": "-5",
+          "hints": [
+            "The imaginary part is the coefficient of i.",
+            "It includes the sign."
+          ],
+          "feedbackIfWrong": "b = -5."
+        }
+      ]
+    },
+    {
+      "id": "adding-complex-geometrically",
+      "title": "Adding Complex Numbers Geometrically",
+      "teacherCues": [
+        "Draw vectors u=⟨1,3⟩ and v=⟨2,1⟩. The sum u+v=⟨3,4⟩ corresponds to (1+3i)+(2+i)=3+4i.",
+        "Emphasize: add the real parts, add the imaginary parts; geometrically, use the parallelogram law."
+      ],
+      "discoveryHook": {
+        "scenario": "Adding complex numbers is like combining two moves on a city grid: one step right/up for the first number, then another step for the second."
+      },
+      "concept": {
+        "explanation": [
+          "To add complex numbers geometrically, represent each as a vector from the origin. The sum is the vector obtained by the [[kw:parallelogram law]] (or tip‑to‑tail).",
+          "Algebraically, (a+bi) + (c+di) = (a+c) + (b+d)i.",
+          "The graphical sum corresponds exactly to component addition."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example",
+            "headers": [
+              "Step",
+              "Vectors",
+              "Complex Numbers"
+            ],
+            "rows": [
+              {
+                "0": "First number",
+                "1": "u=⟨1,3⟩",
+                "2": "1+3i"
+              },
+              {
+                "0": "Second number",
+                "1": "v=⟨2,1⟩",
+                "2": "2+i"
+              },
+              {
+                "0": "Sum",
+                "1": "u+v=⟨3,4⟩",
+                "2": "3+4i"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Addition",
+          "formula": "$$(a+bi)+(c+di) = (a+c)+(b+d)i$$",
+          "notes": [
+            "Add real parts, add imaginary parts.",
+            "Geometrically, it's vector addition."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Sum of two numbers",
+          "prompt": "Find (1+3i)+(2+i) and illustrate.",
+          "steps": [
+            "Real parts: 1+2 = 3. Imaginary parts: 3+1 = 4.",
+            "Result: 3+4i. The vectors ⟨1,3⟩ and ⟨2,1⟩ sum to ⟨3,4⟩."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Geometric interpretation",
+          "prompt": "Explain how (3+i)+(1+2i) = 4+3i corresponds to vector addition.",
+          "peerPrompt": "Describe the vectors, draw them, and show the sum vector.",
+          "minLength": 2,
+          "steps": [
+            "Vectors: u=⟨3,1⟩, v=⟨1,2⟩.",
+            "Sum: ⟨3+1, 1+2⟩ = ⟨4,3⟩, which is 4+3i."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick addition",
+          "prompt": "Add (8-2i) + (2+6i).",
+          "steps": [
+            "Real: 8+2=10, Imaginary: -2+6=4. So 10+4i."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Imaginary unit i is not a variable",
+        "body": "i is not a variable; just combine its coefficients. Don't forget the sign."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "To add complex numbers geometrically, you use the ___ law of vector addition.",
+          "blanks": [
+            {
+              "accept": [
+                "parallelogram"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the method where you place vectors tail to tail and draw the diagonal.",
+            "Starts with 'p'."
+          ],
+          "feedbackIfWrong": "It's the parallelogram law."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "Add (5+2i) + (3+4i). Write the result as a+bi (e.g., 8+6i).",
+          "answer": "8+6i",
+          "hints": [
+            "Add the real parts, then add the imaginary parts.",
+            "5+3 and 2+4."
+          ],
+          "feedbackIfWrong": "The sum is (5+3) + (2+4)i = 8+6i."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "Geometrically, the sum of two complex numbers is represented by the ___ from the origin to the opposite corner of the parallelogram.",
+          "blanks": [
+            {
+              "accept": [
+                "diagonal"
+              ]
+            }
+          ],
+          "hints": [
+            "Think of the parallelogram formed by the two vectors.",
+            "The result is the line connecting opposite corners."
+          ],
+          "feedbackIfWrong": "It's the diagonal."
+        }
+      ]
+    },
+    {
+      "id": "subtracting-and-conjugates",
+      "title": "Subtracting and Complex Conjugates",
+      "teacherCues": [
+        "Subtraction: (4+2i) - (3-i) = (4-3)+(2-(-1))i = 1+3i. Geometrically, add the opposite vector.",
+        "Plot z = -3+i and its conjugate -3-i. Note reflection across real axis."
+      ],
+      "discoveryHook": {
+        "scenario": "Subtracting a complex number is like adding its mirror image in reverse; the conjugate is a simple reflection across the horizontal axis."
+      },
+      "concept": {
+        "explanation": [
+          "Subtraction: (a+bi) - (c+di) = (a-c)+(b-d)i. Geometrically, this is u - v = u + (-v).",
+          "The [[kw:complex conjugate]] of a+bi is a-bi. In the complex plane, it is a reflection across the real axis."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Conjugate Examples",
+            "headers": [
+              "Number",
+              "Conjugate"
+            ],
+            "rows": [
+              {
+                "0": "-3+i",
+                "1": "-3-i"
+              },
+              {
+                "0": "2-3i",
+                "1": "2+3i"
+              },
+              {
+                "0": "5",
+                "1": "5"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Subtraction & Conjugate",
+          "formula": "$$(a+bi)-(c+di) = (a-c)+(b-d)i$$ $$\\overline{a+bi} = a - bi$$",
+          "notes": [
+            "Subtract real parts, subtract imaginary parts.",
+            "Conjugate changes the sign of the imaginary part only."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Subtract vectors",
+          "prompt": "Subtract (4+2i) - (3-i) and interpret geometrically.",
+          "steps": [
+            "Write as u - v with u=⟨4,2⟩, v=⟨3,-1⟩.",
+            "Algebraic: (4-3)+(2-(-1))i = 1+3i.",
+            "Geometrically, add u and -v=⟨-3,1⟩ to get ⟨1,3⟩."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Conjugate",
+          "prompt": "Plot z=2-3i and its conjugate. Write the conjugate.",
+          "peerPrompt": "Where is the reflection? Which sign changes?",
+          "minLength": 2,
+          "steps": [
+            "Conjugate is 2+3i. The point (2,-3) reflects across the real axis to (2,3)."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Subtract",
+          "prompt": "Find (2-4i) - (1+i).",
+          "steps": [
+            "(2-1) + (-4-1)i = 1 - 5i."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Double negative",
+        "body": "When subtracting a negative imaginary part, watch the sign: (a+bi) - (c+di) when d is negative becomes plus."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "The complex conjugate of a+bi is a-bi. The points are reflections across the ___ axis.",
+          "blanks": [
+            {
+              "accept": [
+                "real"
+              ]
+            }
+          ],
+          "hints": [
+            "Which axis is horizontal?",
+            "The reflection flips the sign of the imaginary part."
+          ],
+          "feedbackIfWrong": "It's the real axis."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "Find the conjugate of -5+3i. (Write as -5-3i)",
+          "answer": "-5-3i",
+          "hints": [
+            "Change the sign of the imaginary part only.",
+            "The real part stays the same."
+          ],
+          "feedbackIfWrong": "The conjugate is -5-3i."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "To subtract complex numbers geometrically, you add the ___ of the second vector.",
+          "blanks": [
+            {
+              "accept": [
+                "negative",
+                "opposite"
+              ]
+            }
+          ],
+          "hints": [
+            "Subtraction = addition of the ___ vector.",
+            "You reverse the direction of the subtracted vector."
+          ],
+          "feedbackIfWrong": "It's the negative (or opposite) vector."
+        }
+      ]
+    },
+    {
+      "id": "distance-formula",
+      "title": "Distance in the Complex Plane",
+      "teacherCues": [
+        "Write the Distance Formula: d = √((s-a)² + (t-b)²). It's just the modulus of the difference.",
+        "Example: distance between 2+3i and 5-2i = √((5-2)²+(-2-3)²) = √34."
+      ],
+      "discoveryHook": {
+        "scenario": "How far apart are two ships on a radar screen? Treat their positions as complex numbers and compute the distance."
+      },
+      "concept": {
+        "explanation": [
+          "The distance between two complex numbers a+bi and s+ti is the modulus of their difference: $$d = \\sqrt{(s-a)^2 + (t-b)^2}.$$",
+          "This is the same as the Euclidean distance between points (a,b) and (s,t)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Distance Example",
+            "headers": [
+              "Point 1",
+              "Point 2",
+              "Difference vector",
+              "Distance"
+            ],
+            "rows": [
+              {
+                "0": "(2,3) ↔ 2+3i",
+                "1": "(5,-2) ↔ 5-2i",
+                "2": "⟨3,-5⟩",
+                "3": "√(3²+(-5)²)=√34"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Distance Formula",
+          "formula": "$$d = \\sqrt{(s-a)^2 + (t-b)^2}$$",
+          "notes": [
+            "Difference of the complex numbers: (s+ti)-(a+bi).",
+            "Then take modulus."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find distance",
+          "prompt": "Find the distance between 2+3i and 5-2i.",
+          "steps": [
+            "Set a=2,b=3; s=5,t=-2.",
+            "d = √((5-2)² + (-2-3)²) = √(3²+(-5)²) = √(9+25) = √34 ≈ 5.83."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Modulus of difference",
+          "prompt": "Show that the distance is the modulus of (5-2i) - (2+3i).",
+          "peerPrompt": "Compute the difference, then its modulus. Compare with the previous result.",
+          "minLength": 2,
+          "steps": [
+            "Difference = (5-2) + (-2-3)i = 3 - 5i.",
+            "Modulus = √(3²+(-5)²) = √34."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Distance practice",
+          "prompt": "Find the distance between 5-4i and 6+5i.",
+          "steps": [
+            "Difference: (6-5) + (5-(-4))i = 1 + 9i.",
+            "Distance = √(1²+9²) = √(1+81) = √82 ≈ 9.06."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Order doesn't matter for distance",
+        "body": "Whether you compute z₁-z₂ or z₂-z₁, the modulus is the same."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "The distance between two complex numbers is the modulus of their ___.",
+          "blanks": [
+            {
+              "accept": [
+                "difference"
+              ]
+            }
+          ],
+          "hints": [
+            "What operation do you perform to find the vector between them?",
+            "Subtract one from the other."
+          ],
+          "feedbackIfWrong": "It's the difference."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "What is the distance between 0 and 5i? (Enter a number)",
+          "answer": "5",
+          "hints": [
+            "0 = 0+0i, 5i = 0+5i.",
+            "Distance = √((0-0)² + (5-0)²) = √25."
+          ],
+          "feedbackIfWrong": "The distance is 5."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "For points (a,b) and (s,t), the distance formula is √((s-a)² + (t-___)²).",
+          "blanks": [
+            {
+              "accept": [
+                "b"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the difference of the imaginary parts.",
+            "The vertical coordinate change."
+          ],
+          "feedbackIfWrong": "It's (t - b)²."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-midpoint",
+      "title": "Blueprint Aid – Midpoint in the Complex Plane",
+      "teacherCues": [
+        "Write the Midpoint Formula: ((a+s)/2, (b+t)/2). This gives the average of the coordinates.",
+        "Example: midpoint of (4,-3) and (2,2) is ((4+2)/2, (-3+2)/2) = (3, -1/2)."
+      ],
+      "discoveryHook": {
+        "scenario": "Finding the halfway point between two cities on a map uses the same idea as finding the midpoint of two complex numbers."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: We need the midpoint of the segment joining points corresponding to z₁ = a+bi and z₂ = s+ti.",
+          "[[imp:Solve]]: Use the Midpoint Formula: $$\\text{Midpoint} = \\left(\\frac{a+s}{2}, \\frac{b+t}{2}\\right).$$",
+          "[[imp:Conclude]]: This point corresponds to the complex number $$\\frac{a+s}{2} + \\frac{b+t}{2}i.$$"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Midpoint Example",
+            "headers": [
+              "z₁",
+              "z₂",
+              "Midpoint"
+            ],
+            "rows": [
+              {
+                "0": "4-3i ↔ (4,-3)",
+                "1": "2+2i ↔ (2,2)",
+                "2": "((4+2)/2, (-3+2)/2) = (3, -0.5) ↔ 3 - 0.5i"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Midpoint Formula",
+          "formula": "$$\\text{Midpoint} = \\left(\\frac{a+s}{2},\\ \\frac{b+t}{2}\\right)$$",
+          "notes": [
+            "Averages the real and imaginary parts separately.",
+            "The result is a complex number."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find midpoint",
+          "prompt": "Find the midpoint of the segment joining 4-3i and 2+2i.",
+          "steps": [
+            "Real part average: (4+2)/2 = 3.",
+            "Imaginary part average: (-3+2)/2 = -1/2.",
+            "Midpoint = 3 - 0.5i (or 3 - 1/2 i)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Verify with distance",
+          "prompt": "Show that the midpoint is equidistant from both endpoints.",
+          "peerPrompt": "Compute distance from midpoint to each endpoint using the distance formula.",
+          "minLength": 2,
+          "steps": [
+            "Distance from (3,-0.5) to (4,-3): √((1)² + (2.5)²) = √(1+6.25)=√7.25.",
+            "Distance from (3,-0.5) to (2,2): √((1)² + (2.5)²)=√7.25. Equal."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Midpoint practice",
+          "prompt": "Find the midpoint of 2+i and 5-5i.",
+          "steps": [
+            "Real average: (2+5)/2 = 3.5, Imaginary average: (1+(-5))/2 = -2.",
+            "Midpoint = 3.5 - 2i."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Keep the imaginary part sign",
+        "body": "When averaging imaginary parts, include the sign. For -3 and +2, sum is -1, divided by 2 is -0.5."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "The midpoint of the segment joining (a,b) and (s,t) is ((a+s)/2, ___/2).",
+          "blanks": [
+            {
+              "accept": [
+                "(b+t)",
+                "b+t"
+              ]
+            }
+          ],
+          "hints": [
+            "You average the imaginary parts.",
+            "Add b and t, then divide by 2."
+          ],
+          "feedbackIfWrong": "It's (b+t)/2."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "Find the midpoint of 1+4i and 7+2i. Write as a+bi (e.g., 4+3i).",
+          "answer": "4+3i",
+          "hints": [
+            "Average the real parts: (1+7)/2 = 4.",
+            "Average imaginary parts: (4+2)/2 = 3."
+          ],
+          "feedbackIfWrong": "The midpoint is 4+3i."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "In the complex plane, the midpoint formula gives a point that is ___ from both endpoints.",
+          "blanks": [
+            {
+              "accept": [
+                "equidistant"
+              ]
+            }
+          ],
+          "hints": [
+            "The midpoint is the same distance to each end.",
+            "Starts with 'equi'."
+          ],
+          "feedbackIfWrong": "It's equidistant."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "If the midpoint of two complex numbers is 2+i and one endpoint is 5+3i, find the other endpoint.",
+        "type": "short-answer",
+        "answers": [
+          "-1-i"
+        ],
+        "hints": [
+          "Use midpoint formula: ( (x+5)/2 = 2, (y+3)/2 = 1 ).",
+          "Solve for x and y."
+        ],
+        "feedbackIfWrong": "The other endpoint is -1 - i."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

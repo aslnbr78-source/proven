@@ -1,0 +1,575 @@
+{
+  "id": "chapter-11-6-making-inferences-from-experiments",
+  "presenterNotes": [
+    "Use physical cards or colored chips to demonstrate resampling: combine two groups, shuffle, and deal into new groups. Compute means and difference.",
+    "Emphasize the logic: if the treatment really had no effect, then the original group labels were arbitrary; resampling simulates all the ways the data could have been assigned.",
+    "Connect to the broader idea of hypothesis testing and p-values (though not named, the proportion of resampled differences beyond the observed is an empirical p-value)."
+  ],
+  "schemaVersion": 2,
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.B.6"
+  ],
+  "title": "Making Inferences from Experiments",
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "teacherCues": [
+        "Draw two dot plots on the board representing control and treatment group yields. Ask: 'How can we quantify the difference between these two groups?'",
+        "Introduce the formula: experimental difference = x̄_treatment − x̄_control. Emphasize that a positive difference suggests the treatment increased the outcome."
+      ],
+      "discoveryHook": {
+        "scenario": "A gardener wants to know if a new soil supplement really boosts tomato yield. She gives it to 10 plants and leaves 10 without. The difference in average yields might suggest the supplement works — but could the difference just be luck? To find out, we need a way to measure and test that difference."
+      },
+      "examples": [
+        {
+          "title": "Example A – Music Therapy and Depression",
+          "prompt": "A study tests music therapy on depression scores (scale 20–80, >50 indicates depression). Control group (8 students): 49,45,43,47,46,45,47,46. Treatment group (8 students): 39,40,39,37,41,40,42,43. Find the experimental difference of means and interpret.",
+          "steps": [
+            "Control mean = (49+45+43+47+46+45+47+46)/8 = 368/8 = 46.",
+            "Treatment mean = (39+40+39+37+41+40+42+43)/8 = 321/8 = 40.125.",
+            "Difference = 40.125 − 46 = −5.875, about −5.9 points.",
+            "Negative: the treatment group has a lower depression score, suggesting music therapy may reduce depression."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: If the difference is +3.2, which group had the higher average? Does this mean the treatment 'works'? Could it be just random variation?",
+          "prompt": "In a different experiment, the difference is +3.2. What does the sign tell you about the treatment?",
+          "title": "Example B – Interpreting Differences",
+          "role": "peer-explain",
+          "steps": [
+            "Positive difference → treatment mean > control mean.",
+            "The treatment group scored higher, but we don't yet know if 3.2 is a large enough difference to rule out chance.",
+            "Small sample sizes make it hard to tell; we need a method like resampling to see if 3.2 is unusual."
+          ]
+        },
+        {
+          "title": "Example C – Waist Circumference",
+          "prompt": "A laser therapy study has control group mean waist circumference 34.9 inches, treatment group mean 32.6 inches. Find the experimental difference and interpret.",
+          "steps": [
+            "Difference = 32.6 − 34.9 = −2.3 inches.",
+            "The treatment group had a smaller average waist, a reduction of 2.3 inches.",
+            "Again, this is the observed effect; further analysis is needed to see if it's significant."
+          ],
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Measures the treatment effect.",
+            "Also called the 'observed difference'.",
+            "A single number; does not yet tell us if the difference is statistically meaningful."
+          ],
+          "title": "Experimental Difference of Means",
+          "formula": "$$ \\bar{x}_{\\text{treatment}} - \\bar{x}_{\\text{control}} $$"
+        },
+        "visuals": [
+          {
+            "title": "Example: Tomato Yields (kg)",
+            "headers": [
+              "Group",
+              "Data Values",
+              "Mean"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Control",
+                "1": "1.2, 1.3, 0.9, 1.4, 2.0, 1.2, 0.7, 1.9, 1.4, 1.7",
+                "2": "1.37"
+              },
+              {
+                "0": "Treatment",
+                "1": "1.4, 0.9, 1.5, 1.8, 1.6, 1.8, 2.4, 1.9, 1.9, 1.7",
+                "2": "1.69"
+              },
+              {
+                "0": "Experimental Difference",
+                "1": "1.69 − 1.37 = 0.32 kg",
+                "2": ""
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:randomized comparative experiment]] has at least two groups: a control group and one or more treatment groups.",
+          "The [[kw:experimental difference of means]] is: $$ \\bar{x}_{\\text{treatment}} - \\bar{x}_{\\text{control}} $$",
+          "A positive difference means the treatment group had a higher average; negative means lower; zero means no difference.",
+          "To visualize the data, use side‑by‑side dot plots or box plots. Look for overlap, symmetry, and outliers.",
+          "A small difference with a small sample size could easily happen by chance, even if the treatment has no effect."
+        ]
+      },
+      "id": "two-sample-experiment-mean-difference",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "treatment",
+                "Treatment"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "id": "q1-1",
+          "prompt": "The experimental difference of means is found by subtracting the control group mean from the ___ group mean.",
+          "hints": [
+            "Starts with 't'.",
+            "It's the group that receives the intervention."
+          ],
+          "feedbackIfWrong": "The formula is x̄_treatment − x̄_control."
+        },
+        {
+          "answer": "-3",
+          "id": "q1-2",
+          "prompt": "If x̄_control = 10 and x̄_treatment = 7, what is the experimental difference?",
+          "hints": [
+            "7 − 10 = ?",
+            "Be careful with the sign."
+          ],
+          "feedbackIfWrong": "7 − 10 = −3.",
+          "type": "short-answer"
+        },
+        {
+          "type": "short-answer",
+          "prompt": "A positive experimental difference indicates the treatment ___ the measured outcome. (Answer 'increased' or 'decreased')",
+          "answer": "increased",
+          "hints": [
+            "Positive means treatment mean is larger.",
+            "Think of higher yield, higher score, etc."
+          ],
+          "feedbackIfWrong": "Positive difference means the treatment increased the outcome.",
+          "id": "q1-3"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sign of the Difference",
+        "body": "Always subtract in the same order: treatment − control. A negative number means the treatment reduced the measured quantity (like depression or waist size); a positive means it increased it (like yield or test scores). [[imp:Pay attention to the context!]]"
+      },
+      "title": "Experiments with Two Samples"
+    },
+    {
+      "concept": {
+        "explanation": [
+          "[[kw:Resampling]] is a method where the original data from both groups are combined, then repeatedly split at random into two new groups of the same sizes as the original.",
+          "For each resample, compute the difference of the means of the two new groups. This creates a [[kw:resampling distribution]] of differences.",
+          "The hypothesis we are testing is that the treatment has no effect, i.e., the true difference is 0.",
+          "The resampling distribution shows what differences occur by random chance alone. It is centered near 0.",
+          "If the original experimental difference is far out in the tail of this distribution, it suggests the difference is [[imp:unlikely to be due to chance alone]]."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Combine all measurements from both groups into one list."
+              },
+              {
+                "0": "2",
+                "1": "Randomly draw a new 'control group' of the same size as the original, without replacement."
+              },
+              {
+                "0": "3",
+                "1": "The remaining data form the new 'treatment group'."
+              },
+              {
+                "0": "4",
+                "1": "Compute the difference: new treatment mean − new control mean."
+              },
+              {
+                "0": "5",
+                "1": "Repeat many times (e.g., 200) and build a histogram of differences."
+              }
+            ],
+            "variant": "colorful",
+            "title": "Steps of a Resampling Simulation"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "The new groups are formed completely at random from the combined data.",
+            "This simulates a world where the treatment has no effect.",
+            "200 or more resamples are typical."
+          ],
+          "title": "Resampling Difference",
+          "formula": "$$ \\text{Resampling difference} = \\bar{x}_{\\text{new treatment}} - \\bar{x}_{\\text{new control}} $$"
+        }
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "q2-1",
+          "feedbackIfWrong": "This method is called resampling.",
+          "blanks": [
+            {
+              "accept": [
+                "resampling",
+                "Resampling"
+              ]
+            }
+          ],
+          "hints": [
+            "Starts with 'r'.",
+            "It involves taking new samples from the original data."
+          ],
+          "prompt": "The process of repeatedly randomly reassigning data to groups to create a distribution of differences is called ___."
+        },
+        {
+          "answer": "without",
+          "prompt": "In resampling, the new groups are formed by drawing ___ replacement from the combined data. (Answer 'with' or 'without')",
+          "feedbackIfWrong": "We draw without replacement to preserve the data distribution.",
+          "hints": [
+            "We don't want to use the same data point twice in one resample.",
+            "Think: each original value is used exactly once per resample."
+          ],
+          "type": "short-answer",
+          "id": "q2-2"
+        },
+        {
+          "type": "short-answer",
+          "id": "q2-3",
+          "feedbackIfWrong": "The resampling distribution should be centered at 0.",
+          "hints": [
+            "If treatment has no effect, true difference is 0.",
+            "The resampling process simulates that null hypothesis."
+          ],
+          "prompt": "What is the center of the resampling distribution of differences expected to be, assuming the treatment has no effect?",
+          "answer": "0"
+        }
+      ],
+      "title": "Resampling: Creating a Null Distribution",
+      "id": "resampling-method",
+      "teacherCues": [
+        "Write the hypothesis on the board: 'The treatment has no effect.' Explain that resampling simulates this 'no effect' world.",
+        "Demonstrate the resampling process using numbered cards or a random number generator: combine data, randomly assign to new groups, compute difference, repeat."
+      ],
+      "examples": [
+        {
+          "title": "Example A – Single Resample",
+          "steps": [
+            "New treatment mean − new control mean = 1.57 − 1.49 = 0.08 kg.",
+            "This is much smaller than the original experimental difference of 0.32 kg.",
+            "This suggests the original difference of 0.32 might not occur often by chance."
+          ],
+          "role": "guided",
+          "prompt": "Combine the 10 control and 10 treatment tomato yields. Randomly draw 10 values for a new control group; the rest become new treatment. The new control mean is 1.49 kg, new treatment mean is 1.57 kg. What is the resampling difference?"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What would happen if we resampled with replacement? How does resampling preserve the original distribution of values?",
+          "prompt": "Why do we draw new groups without replacement from the combined data?",
+          "minLength": 2,
+          "title": "Example B – Why Resample Without Replacement?",
+          "role": "peer-explain",
+          "steps": [
+            "We draw without replacement so each original data point is used exactly once per resample.",
+            "This preserves the overall distribution of the data while randomizing which group each value goes to.",
+            "If we drew with replacement, some values could appear multiple times, distorting the variability."
+          ]
+        },
+        {
+          "title": "Example C – Resampling the Music Therapy Data",
+          "prompt": "A researcher resamples the music therapy data 200 times. The histogram of resampling differences is approximately bell-shaped and centered at 0. The original experimental difference was −5.9. If −5.9 lies far in the left tail of the histogram, what does that suggest?",
+          "steps": [
+            "The histogram shows differences that occur by chance if music therapy had no effect.",
+            "If −5.9 is far in the tail, it is a rare outcome under 'no effect'.",
+            "This provides evidence that music therapy might actually have an effect (reducing depression scores)."
+          ],
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Here we resample without replacement to simulate randomization under the null hypothesis. This is a permutation test. Bootstrapping, another resampling method, samples with replacement and is used for confidence intervals. They are related but have different goals.",
+        "title": "Resampling vs. Bootstrapping"
+      },
+      "discoveryHook": {
+        "scenario": "If the soil supplement really has zero effect, then any difference we saw between groups was just due to random assignment. Resampling mimics that: it shuffles the data, creates new fake 'treatment' and 'control' groups over and over, and shows what differences happen purely by chance."
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "After 200 resamplings, you see that differences as large as the one you observed (0.32 kg) occur only about 5% of the time by chance. That's rare! So you have strong evidence that the soil supplement really does boost tomato yield. The histogram tells the story."
+      },
+      "title": "Making Inferences from Resampling",
+      "examples": [
+        {
+          "title": "Example A – Tomato Supplement",
+          "prompt": "For the tomato experiment, the observed difference is 0.32. In 200 resamples, only about 8 differences were greater than 0.32 (4%). The middle 90% of differences ranged from −0.275 to 0.275. Should we reject 'no effect'?",
+          "steps": [
+            "0.32 is outside the middle 90% (which is −0.275 to 0.275).",
+            "Only about 4% of resampled differences are as large as 0.32, which is less than 5%.",
+            "We conclude the soil supplement does increase tomato yield."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "title": "Example B – Not Significant",
+          "prompt": "Suppose the experimental difference was 0.15, and 35% of resampled differences were greater than 0.15. It lies within the central 90%. What do we conclude?",
+          "steps": [
+            "0.15 is not unusual — it falls in the range of typical chance differences.",
+            "We do not have enough evidence to say the treatment works.",
+            "We 'fail to reject' the no‑effect hypothesis; we don't prove the treatment has zero effect, only that we can't distinguish it from chance."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why don't we say 'the treatment has no effect'? Why do we say 'we fail to reject the hypothesis of no effect'?"
+        },
+        {
+          "prompt": "The music therapy experimental difference is −5.875. In 200 resamples, the middle 90% of differences is from −4.25 to 4.25, and −5.875 occurs in only 2% of resamples. What is your conclusion?",
+          "role": "independent",
+          "steps": [
+            "−5.875 is outside the central 90% and occurs rarely (2% of the time).",
+            "This is strong evidence against 'no effect'.",
+            "We conclude that music therapy reduces depression scores."
+          ],
+          "title": "Example C – Music Therapy"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Fail to Reject vs. Accept",
+        "body": "We never 'accept' the hypothesis of no effect; we only 'fail to reject' it. There might be a small effect that our sample wasn't large enough to detect. [[imp:Absence of evidence is not evidence of absence.]]"
+      },
+      "id": "drawing-conclusions-resampling",
+      "teacherCues": [
+        "Display the histogram of 200 resampling differences from the tomato example. Draw a vertical line at the observed 0.32. Ask: 'What percent of resampled differences are at least this large?'",
+        "Explain the 5% threshold: if the observed difference lies outside the middle 95% of resampled differences, it's considered statistically significant."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "reject",
+                "Reject"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "We reject the 'no effect' hypothesis.",
+          "prompt": "If the experimental difference lies outside the middle 90% of resampled differences, we ___ the hypothesis that the treatment has no effect.",
+          "id": "q3-1",
+          "hints": [
+            "Starts with 'r'.",
+            "We conclude the treatment probably does have an effect."
+          ]
+        },
+        {
+          "feedbackIfWrong": "About 4% of resampled differences were larger, a rare outcome.",
+          "type": "short-answer",
+          "hints": [
+            "The text said about 5 to 10 out of 200, which is at most 5%.",
+            "8 out of 200 is 4%."
+          ],
+          "id": "q3-2",
+          "prompt": "In the tomato example, what percentage of resampled differences were greater than the observed 0.32? (Approximate: 4, 15, or 50?)",
+          "answer": "4"
+        },
+        {
+          "hints": [
+            "Center differences are common by chance.",
+            "We cannot distinguish the effect from random noise."
+          ],
+          "feedbackIfWrong": "No, a central difference is consistent with random variation; evidence is not strong.",
+          "id": "q3-3",
+          "answer": "no",
+          "prompt": "If an experimental difference falls near the center of the resampling distribution, do we have strong evidence that the treatment works? Answer 'yes' or 'no'.",
+          "type": "short-answer"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Inference from Resampling",
+          "formula": "$$ \\text{If experimental difference is extreme relative to resampling distribution, conclude effect.} $$",
+          "notes": [
+            "A common threshold: fewer than 5% of resampled differences are as extreme (or more extreme) than the observed.",
+            "The histogram should be approximately bell‑shaped."
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Outside the central 90% (or 95%) of resampled differences",
+                "1": "Reject 'no effect'; treatment has a significant effect."
+              },
+              {
+                "0": "Inside the central 90% (or 95%)",
+                "1": "Fail to reject 'no effect'; evidence of an effect is not strong enough."
+              }
+            ],
+            "title": "Decision Rule from Resampling",
+            "variant": "colorful",
+            "headers": [
+              "Location of Experimental Difference",
+              "Conclusion"
+            ]
+          }
+        ],
+        "explanation": [
+          "After building a histogram of many resampling differences, compare the original experimental difference to this distribution.",
+          "If the experimental difference is in the far tail (e.g., beyond the central 90% or 95% of resampled differences), it's unlikely to occur by random chance alone.",
+          "In such cases, we [[imp:reject the hypothesis]] that the treatment has no effect, and conclude the treatment does have an effect.",
+          "The cutoff for 'unlikely' is often the central 90% or 95% of the resampling distribution (90% or 95% confidence).",
+          "If the experimental difference falls within the central region, we do not have enough evidence to reject the 'no effect' hypothesis."
+        ]
+      }
+    },
+    {
+      "concept": {
+        "explanation": [
+          "1. [[imp:Understand]]: Identify the control and treatment groups, their sample sizes, and the hypothesis: 'The treatment has no effect.'",
+          "2. [[imp:Observe]]: Calculate the experimental difference $\\bar{x}_{\\text{treatment}} - \\bar{x}_{\\text{control}}$.",
+          "3. [[imp:Resample]]: Combine the data. Repeatedly (200+ times) randomly split into new groups of the original sizes. For each split, compute the new difference. Build a histogram.",
+          "4. [[imp:Conclude]]: Determine if the observed difference is in the tail of the histogram (e.g., outside the middle 90%). If yes, reject the 'no effect' hypothesis. If no, fail to reject. State your conclusion in context."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify groups, hypothesis: 'no effect'.",
+                "2": "Control n=8, treatment n=8. H₀: no effect on depression score."
+              },
+              {
+                "0": "Observe",
+                "1": "Compute experimental difference.",
+                "2": "x̄_control = 46, x̄_treatment = 40.125, diff = −5.875."
+              },
+              {
+                "0": "Resample",
+                "1": "Combine, split randomly 200 times, record differences.",
+                "2": "Histogram of 200 resampling differences centered at 0."
+              },
+              {
+                "0": "Conclude",
+                "1": "Is observed diff in tail? Reject or fail to reject H₀.",
+                "2": "−5.875 is far in left tail (rare) → reject H₀, music therapy reduces depression."
+              }
+            ],
+            "title": "Resampling Blueprint",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Example (Music Therapy)"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Resampling Blueprint Formula",
+          "notes": [
+            "The p-value is the proportion of resampled differences as extreme as yours.",
+            "A p-value < 0.05 is commonly considered significant."
+          ],
+          "formula": "$$ \\text{If } P(\\text{resampled diff} \\ge |\\text{observed diff}|) \\text{ is small (< 0.05), reject } H_0. $$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "You've conducted a randomized experiment. Now what? The Resampling Blueprint takes you from data to decision in four clear steps, ensuring you don't mistake random chance for a real treatment effect."
+      },
+      "title": "Blueprint Aid – Testing an Experiment with Resampling",
+      "examples": [
+        {
+          "prompt": "Laser therapy study: control mean = 34.9 in., treatment mean = 32.6 in., n=8 each. After 200 resamples, the middle 90% of differences is (−2.1, 2.1). The observed difference is −2.3. What do you conclude?",
+          "title": "Example A – Full Blueprint for Waist Circumference",
+          "role": "guided",
+          "steps": [
+            "Understand: H₀: laser therapy has no effect on waist size. Observed diff = −2.3.",
+            "Observe: −2.3 is outside (−2.1, 2.1), so it is in the tail.",
+            "Resample: The histogram shows differences outside ±2.1 are rare.",
+            "Conclude: Reject H₀. There is evidence laser therapy reduces waist circumference."
+          ]
+        },
+        {
+          "title": "Example B – When the Difference Is Not Extreme",
+          "steps": [
+            "−1.0 is not extreme; it falls in the range of typical chance differences.",
+            "We fail to reject H₀: there is not enough evidence to say the therapy works.",
+            "This doesn't prove it has zero effect; the sample might be too small to detect a small true effect."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: If −1.0 is common under the resampling distribution, what does that mean? Why can't we claim the therapy works?",
+          "prompt": "Suppose the waist difference was −1.0, well inside (−2.1, 2.1). How would the conclusion change?",
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C – Your Turn",
+          "prompt": "An experiment tests a new study app. Control mean test score = 75, treatment mean = 82, n=15 each. After 200 resamples, the histogram of differences is approximately normal with middle 90% from −6 to +6. Observed difference = +7. What is your conclusion?",
+          "steps": [
+            "Observed diff = 82 − 75 = +7, which is outside (−6,6).",
+            "This falls in the tail, so it's unlikely due to chance.",
+            "Reject H₀; the study app appears to improve test scores."
+          ],
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Write the blueprint steps: 1) Understand the experiment and state the 'no effect' hypothesis. 2) Compute the experimental difference. 3) Resample many times and build a histogram. 4) Compare and conclude.",
+        "Model the process with the music therapy data, from start to finish."
+      ],
+      "confusionCorner": {
+        "body": "Resampling only works if you generate enough resamples (at least 100–200). A single resample tells you nothing. The histogram reveals the distribution of chance differences.",
+        "title": "Don't Skip the Histogram"
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "feedbackIfWrong": "The second step is Observe: calculate the experimental difference.",
+          "type": "short-answer",
+          "prompt": "In the resampling blueprint, after understanding the experiment, what is the second step? (One word, starts with 'O')",
+          "answer": "Observe",
+          "hints": [
+            "You compute the experimental difference in this step.",
+            "It's the 'O' in Understand‑Observe‑Resample‑Conclude."
+          ]
+        },
+        {
+          "feedbackIfWrong": "We build a histogram of resampling differences.",
+          "id": "q4-2",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "resampling",
+                "Resampling",
+                "resampled",
+                "Resampled"
+              ]
+            }
+          ],
+          "prompt": "To test the hypothesis of no effect, we combine all data, randomly split many times, and build a histogram of ___ differences.",
+          "hints": [
+            "Starts with 'r'.",
+            "These differences come from the random splits."
+          ]
+        },
+        {
+          "feedbackIfWrong": "We reject the hypothesis of no effect.",
+          "id": "q4-3",
+          "hints": [
+            "Extreme outcomes cast doubt on the null hypothesis.",
+            "Think of the tomato supplement example."
+          ],
+          "type": "short-answer",
+          "answer": "reject",
+          "prompt": "If the experimental difference is in the tail of the resampling histogram, we ___ the hypothesis of no effect. (Answer 'reject' or 'fail to reject')"
+        }
+      ],
+      "id": "resampling-blueprint"
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

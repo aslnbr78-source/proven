@@ -1,0 +1,793 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "ch1-lu1-8",
+  "title": "Combinations of Functions",
+  "standards": [
+    "HSF.BF.A.1",
+    "HSF.BF.A.2"
+  ],
+  "blocks": [
+    {
+      "id": "arithmetic-combos",
+      "title": "1. Arithmetic Combinations of Functions",
+      "teacherCues": [
+        "Ask: 'If we have two functions, $ f(x) $ and $ g(x) $, can we add them like numbers?'",
+        "Write the four operations on the board and show examples."
+      ],
+      "discoveryHook": {
+        "scenario": "A company's revenue is $ R(x) = 2x + 1 $ (in thousands) and its cost is $ C(x) = x^2 + 2x - 1 $. Profit is revenue minus cost: $ P(x) = R(x) - C(x) $. We can create new functions by adding, subtracting, multiplying, or dividing two functions—these are called [[kw:arithmetic combinations]]."
+      },
+      "concept": {
+        "explanation": [
+          "Given two functions $ f $ and $ g $ with overlapping domains, define:",
+          "1. **Sum**: $ (f+g)(x) = f(x) + g(x) $",
+          "2. **Difference**: $ (f-g)(x) = f(x) - g(x) $",
+          "3. **Product**: $ (fg)(x) = f(x) \\cdot g(x) $",
+          "4. **Quotient**: $ \\left(\\frac{f}{g}\\right)(x) = \\frac{f(x)}{g(x)} $, where $ g(x) \\neq 0 $",
+          "The domain of the combined function is the intersection of the domains of $ f $ and $ g $; for quotients, also exclude any $ x $ making $ g(x) = 0 $.",
+          "[[imp: Evaluate combined functions by plugging $ x $ into the resulting expression.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Arithmetic Combinations (Example)",
+            "variant": "colorful",
+            "headers": [
+              "Operation",
+              "Formula",
+              "Example with $ f(x)=2x+1 $, $ g(x)=x^2+2x-1 $"
+            ],
+            "rows": [
+              {
+                "0": "Sum $ (f+g)(x) $",
+                "1": "$ f(x)+g(x) $",
+                "2": "$ x^2+4x $"
+              },
+              {
+                "0": "Difference $ (f-g)(x) $",
+                "1": "$ f(x)-g(x) $",
+                "2": "$ -x^2+2 $"
+              },
+              {
+                "0": "Product $ (fg)(x) $",
+                "1": "$ f(x) \\cdot g(x) $",
+                "2": "$ 2x^3+ \\ldots $"
+              },
+              {
+                "0": "Quotient $ (f/g)(x) $",
+                "1": "$ f(x)/g(x) $",
+                "2": "$ \\frac{2x+1}{x^2+2x-1} $, $ x \\neq \\text{roots} $"
+              }
+            ],
+            "caption": "Combine the function values at each $ x $ in the common domain."
+          }
+        ],
+        "formulaCard": {
+          "title": "Arithmetic Combinations",
+          "formula": "$$ (f+g)(x) = f(x) + g(x) $$ $$ (f-g)(x) = f(x) - g(x) $$ $$ (fg)(x) = f(x) \\cdot g(x) $$ $$ \\left(\\frac{f}{g}\\right)(x) = \\frac{f(x)}{g(x)}, \\; g(x) \\neq 0 $$",
+          "notes": [
+            "Domain: intersection of individual domains; for quotient, exclude zeros of denominator.",
+            "The notation $ (f+g) $ means a new function."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find sum and evaluate",
+          "prompt": "Given $ f(x) = 2x+1 $ and $ g(x) = x^2+2x-1 $, find $ (f+g)(x) $ and then $ (f+g)(3) $.",
+          "steps": [
+            "Add: $ (f+g)(x) = (2x+1)+(x^2+2x-1) = x^2+4x $.",
+            "Evaluate: $ (f+g)(3) = (3)^2+4(3) = 9+12 = 21 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why subtract functions?",
+          "prompt": "Explain why a business might use $ (R-C)(x) $, the difference of revenue and cost functions.",
+          "peerPrompt": "Think about profit.",
+          "minLength": 2,
+          "steps": [
+            "Revenue $ R(x) $ minus cost $ C(x) $ gives profit $ P(x) $.",
+            "So $ (R-C)(x) = R(x) - C(x) $ represents the profit function.",
+            "This is an arithmetic combination that models net earnings."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Product of functions",
+          "prompt": "Given $ f(x) = x^2 $ and $ g(x) = x-3 $, find $ (fg)(x) $ and evaluate at $ x=4 $.",
+          "steps": [
+            "$ (fg)(x) = x^2(x-3) = x^3-3x^2 $.",
+            "$ (fg)(4) = 4^3 - 3(4)^2 = 64 - 48 = 16 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "$ (f+g)(x) $ is not the same as $ f(x)+g(x) $ in terms of simplification—it's the definition. [[imp: In the quotient, always list domain restrictions.]]"
+      },
+      "questions": [
+        {
+          "id": "b1q1",
+          "type": "fill-blank",
+          "prompt": "The sum of two functions $ f $ and $ g $ is defined as $ (f+g)(x) = f(x) $ ___ $ g(x) $.",
+          "blanks": [
+            {
+              "accept": [
+                "+",
+                "plus"
+              ]
+            }
+          ],
+          "hints": [
+            "Add the outputs.",
+            "Not multiply."
+          ],
+          "feedbackIfWrong": "+ (plus)."
+        },
+        {
+          "id": "b1q2",
+          "type": "short-answer",
+          "prompt": "Given $ f(x) = x^2 $ and $ g(x) = 1-x $, find $ (f+g)(2) $. (number only)",
+          "answers": [
+            "3"
+          ],
+          "hints": [
+            "$ f(2)=4 $, $ g(2)= -1 $.",
+            "Sum = 3."
+          ],
+          "feedbackIfWrong": "3."
+        },
+        {
+          "id": "b1q3",
+          "type": "short-answer",
+          "prompt": "For the quotient $ (f/g)(x) = \\frac{f(x)}{g(x)} $, what additional restriction applies to the domain?",
+          "answers": [
+            "g(x) ≠ 0",
+            "g(x) != 0",
+            "denominator not zero"
+          ],
+          "hints": [
+            "Cannot divide by zero.",
+            "The denominator function must not be zero."
+          ],
+          "feedbackIfWrong": "$ g(x) \\neq 0 $."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Given $ f(x) = \\sqrt{x} $ and $ g(x) = \\sqrt{4-x^2} $, find the domain of $ f+g $.",
+        "type": "short-answer",
+        "answers": [
+          "[0, 2]"
+        ],
+        "hints": [
+          "Intersection of domains: $ f $ requires $ x \\ge 0 $; $ g $ requires $ -2 \\le x \\le 2 $.",
+          "Common part: $ 0 \\le x \\le 2 $."
+        ]
+      }
+    },
+    {
+      "id": "domain-quotients",
+      "title": "2. Domains of Combined Functions and Quotients",
+      "teacherCues": [
+        "Ask: 'What happens to the domain when we combine functions with different domains?'",
+        "Show how to find the intersection and exclude zeros for quotients."
+      ],
+      "discoveryHook": {
+        "scenario": "One function is defined only for $ x \\ge 0 $, another only for $ x \\le 2 $. Their sum exists only where both are defined: $ 0 \\le x \\le 2 $. With quotients, we also avoid $ x $-values that make the denominator zero. Understanding domain restrictions in combinations prevents errors in equations."
+      },
+      "concept": {
+        "explanation": [
+          "For $ f+g, f-g, fg $: domain = intersection of domain of $ f $ and domain of $ g $.",
+          "For $ f/g $: additionally require $ g(x) \\neq 0 $.",
+          "For $ g/f $: similarly require $ f(x) \\neq 0 $.",
+          "Example: $ f(x) = \\sqrt{x} $ (domain $ [0,\\infty) $), $ g(x) = \\sqrt{4-x^2} $ (domain $ [-2,2] $). Intersection: $ [0,2] $.",
+          "For $ f/g $, exclude $ x=2 $ because $ g(2)=0 $, so domain $ [0,2) $. For $ g/f $, exclude $ x=0 $, so domain $ (0,2] $.",
+          "[[imp: Always check both original domains and denominator restrictions.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Domain of Quotient Functions",
+            "variant": "colorful",
+            "headers": [
+              "Function",
+              "Domain of Numerator",
+              "Domain of Denominator",
+              "Common + $ g(x)\\neq 0 $",
+              "Final Domain"
+            ],
+            "rows": [
+              {
+                "0": "$ f/g $",
+                "1": "$ [0,\\infty) $",
+                "2": "$ [-2,2] $",
+                "3": "$ [0,2] $, exclude $ x=2 $",
+                "4": "$ [0,2) $"
+              },
+              {
+                "0": "$ g/f $",
+                "1": "$ [-2,2] $",
+                "2": "$ [0,\\infty) $",
+                "3": "$ [0,2] $, exclude $ x=0 $",
+                "4": "$ (0,2] $"
+              }
+            ],
+            "caption": "The order in the quotient matters for which denominator zeros are excluded."
+          }
+        ],
+        "formulaCard": {
+          "title": "Domain of a Quotient",
+          "formula": "$$ \\text{Domain of } \\frac{f}{g} = ( \\text{Dom}(f) \\cap \\text{Dom}(g) ) \\setminus \\{x \\mid g(x)=0\\} $$",
+          "notes": [
+            "Intersection of domains first.",
+            "Then remove values that make denominator zero."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find domain of quotient",
+          "prompt": "For $ f(x) = \\sqrt{x-3} $ and $ g(x) = \\sqrt{16-x^2} $, find the domain of $ f/g $.",
+          "steps": [
+            "Domain of $ f $: $ x-3 \\ge 0 $ → $ x \\ge 3 $; $ [3,\\infty) $.",
+            "Domain of $ g $: $ 16-x^2 \\ge 0 $ → $ -4 \\le x \\le 4 $; $ [-4,4] $.",
+            "Intersection: $ [3,4] $.",
+            "Denominator zero: $ g(x)=0 $ at $ x= \\pm 4 $; in intersection, exclude $ x=4 $.",
+            "Domain of $ f/g $: $ [3,4) $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why does $ f/g $ and $ g/f $ have different domains?",
+          "prompt": "Explain why the domains of $ f/g $ and $ g/f $ are not the same even though they use the same functions.",
+          "peerPrompt": "What condition applies to the denominator?",
+          "minLength": 2,
+          "steps": [
+            "In $ f/g $, $ g(x) $ is the denominator, so any $ x $ where $ g(x)=0 $ must be excluded from that specific combination.",
+            "In $ g/f $, $ f(x) $ is the denominator, so zeros of $ f $ are excluded.",
+            "Thus the sets of excluded values differ, leading to different domains."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Write domain",
+          "prompt": "Given $ f(x) = \\frac{1}{x-1} $ and $ g(x) = \\sqrt{x} $, find the domain of $ f \\cdot g $ (product) and $ f/g $.",
+          "steps": [
+            "Domain of $ f $: $ x \\neq 1 $. Domain of $ g $: $ x \\ge 0 $.",
+            "Product domain: intersection $ [0,1) \\cup (1,\\infty) $.",
+            "Quotient $ f/g $: additionally $ g(x) \\neq 0 $ → $ x>0 $; domain $ (0,1) \\cup (1,\\infty) $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't forget to exclude zeros of the denominator. [[imp: Even a single $ x $-value that makes denominator zero is removed from the domain.]]"
+      },
+      "questions": [
+        {
+          "id": "b2q1",
+          "type": "fill-blank",
+          "prompt": "The domain of $ f+g $ is the ___ of the domains of $ f $ and $ g $.",
+          "blanks": [
+            {
+              "accept": [
+                "intersection"
+              ]
+            }
+          ],
+          "hints": [
+            "Common part.",
+            "Where both are defined."
+          ],
+          "feedbackIfWrong": "intersection."
+        },
+        {
+          "id": "b2q2",
+          "type": "short-answer",
+          "prompt": "If $ f(x) = \\sqrt{x} $ and $ g(x) = \\frac{1}{x-2} $, what is the domain of $ f+g $? (use interval notation: [0,2)U(2,∞))",
+          "answers": [
+            "[0,2)U(2,∞)",
+            "[0,2) U (2,∞)"
+          ],
+          "hints": [
+            "$ f $ requires $ x \\ge 0 $.",
+            "$ g $ requires $ x \\neq 2 $. Intersection."
+          ],
+          "feedbackIfWrong": "$ [0,2) \\cup (2,\\infty) $."
+        },
+        {
+          "id": "b2q3",
+          "type": "short-answer",
+          "prompt": "For $ (f/g)(x) $, what condition on $ g $ must be satisfied in addition to domain intersection?",
+          "answers": [
+            "g(x) ≠ 0",
+            "g(x) != 0",
+            "g(x) not zero"
+          ],
+          "hints": [
+            "Division rule.",
+            "Denominator cannot be zero."
+          ],
+          "feedbackIfWrong": "$ g(x) \\neq 0 $."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Given $ f(x) = \\frac{1}{x} $ and $ g(x) = \\sqrt{x+1} $, find the domain of $ (g/f)(x) = g(x)/f(x) $.",
+        "type": "short-answer",
+        "answers": [
+          "(-1,0)U(0,∞)",
+          "[-1,0)U(0,∞)"
+        ],
+        "hints": [
+          "$ g $ domain: $ x+1 \\ge 0 $ → $ [-1,\\infty) $; $ f $ denominator of $ g/f $ must be $ f(x) \\neq 0 $ → $ x \\neq 0 $.",
+          "Intersection without zero: $ [-1,0) \\cup (0,\\infty) $."
+        ]
+      }
+    },
+    {
+      "id": "composition",
+      "title": "3. Composition of Functions",
+      "teacherCues": [
+        "Ask: 'What if we take the output of one function and make it the input of another?'",
+        "Define $ (f \\circ g)(x) = f(g(x)) $."
+      ],
+      "discoveryHook": {
+        "scenario": "The temperature of food $ T(t) $ depends on time $ t $, and bacteria count $ N(T) $ depends on temperature. To find bacteria as a function of time, we chain them: $ N(T(t)) $. This is a [[kw:composition]] of functions, denoted $ (N \\circ T)(t) $. Intuitively, you apply the inner function first, then the outer function."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:composition]] of $ f $ with $ g $ is $ (f \\circ g)(x) = f(g(x)) $. Read \"$ f $ composed with $ g $\".",
+          "First evaluate $ g(x) $ (inner function), then plug that result into $ f $ (outer function).",
+          "The domain of $ f \\circ g $: $ x $ must be in the domain of $ g $, and $ g(x) $ must be in the domain of $ f $.",
+          "In general, $ f \\circ g $ is not equal to $ g \\circ f $—order matters!",
+          "[[imp: Composition is not commutative.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Composition Example",
+            "variant": "colorful",
+            "headers": [
+              "Expression",
+              "Computation",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "$ (f \\circ g)(x) $, $ f(x)=x+2 $, $ g(x)=4-x^2 $",
+                "1": "$ f(g(x)) = f(4-x^2) = (4-x^2)+2 $",
+                "2": "$ -x^2+6 $"
+              },
+              {
+                "0": "$ (g \\circ f)(x) $, same $ f,g $",
+                "1": "$ g(f(x)) = g(x+2) = 4-(x+2)^2 $",
+                "2": "$ -x^2-4x $"
+              }
+            ],
+            "caption": "Notice $ f \\circ g \\neq g \\circ f $."
+          }
+        ],
+        "formulaCard": {
+          "title": "Composition of Functions",
+          "formula": "$$ (f \\circ g)(x) = f(g(x)) $$",
+          "notes": [
+            "Apply $ g $ first, then $ f $.",
+            "Domain: $ x $ in domain of $ g $ AND $ g(x) $ in domain of $ f $.",
+            "In general, $ f \\circ g \\neq g \\circ f $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Compute composition",
+          "prompt": "Given $ f(x) = 2x+5 $ and $ g(x) = 4x^2+1 $, find $ (f \\circ g)(x) $ and $ (f \\circ g)(-\\frac{1}{2}) $.",
+          "steps": [
+            "$ (f \\circ g)(x) = f(g(x)) = f(4x^2+1) = 2(4x^2+1)+5 = 8x^2+2+5 = 8x^2+7 $.",
+            "$ (f \\circ g)(-\\frac{1}{2}) = 8(\\frac{1}{4})+7 = 2+7 = 9 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why isn't composition commutative?",
+          "prompt": "Using $ f(x) = x+2 $ and $ g(x) = x^2 $, compute both compositions and explain why they differ.",
+          "peerPrompt": "What does each order mean?",
+          "minLength": 2,
+          "steps": [
+            "$ (f \\circ g)(x) = f(x^2) = x^2+2 $ (add 2 after squaring).",
+            "$ (g \\circ f)(x) = g(x+2) = (x+2)^2 = x^2+4x+4 $ (square after adding 2).",
+            "The operations are applied in reverse order, producing different algebraic expressions.",
+            "Thus $ f \\circ g \\neq g \\circ f $ in general."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Composition with numbers",
+          "prompt": "Given $ f(x) = 3x-1 $ and $ g(x) = x^2 $, find $ (f \\circ g)(2) $ and $ (g \\circ f)(2) $.",
+          "steps": [
+            "$ g(2)=4 $, then $ f(4)=3(4)-1=11 $ → $ (f \\circ g)(2)=11 $.",
+            "$ f(2)=5 $, then $ g(5)=25 $ → $ (g \\circ f)(2)=25 $.",
+            "The results are different, reinforcing non-commutativity."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't confuse $ f(g(x)) $ with $ f(x) \\cdot g(x) $. [[imp: Composition is substitution, not multiplication.]]"
+      },
+      "questions": [
+        {
+          "id": "b3q1",
+          "type": "fill-blank",
+          "prompt": "$ (f \\circ g)(x) = f( $ ___ $ ) $.",
+          "blanks": [
+            {
+              "accept": [
+                "g(x)"
+              ]
+            }
+          ],
+          "hints": [
+            "Input to $ f $.",
+            "The inner function's output."
+          ],
+          "feedbackIfWrong": "$ g(x) $."
+        },
+        {
+          "id": "b3q2",
+          "type": "short-answer",
+          "prompt": "If $ f(x) = x^2 $ and $ g(x) = x+3 $, find $ (f \\circ g)(x) $. (simplify: (x+3)^2)",
+          "answers": [
+            "(x+3)^2",
+            "x^2+6x+9"
+          ],
+          "hints": [
+            "Plug $ g(x) $ into $ f $.",
+            "$ f(x+3) = (x+3)^2 $."
+          ],
+          "feedbackIfWrong": "$ (x+3)^2 = x^2+6x+9 $."
+        },
+        {
+          "id": "b3q3",
+          "type": "short-answer",
+          "prompt": "Is $ (f \\circ g)(x) $ generally equal to $ (g \\circ f)(x) $? (yes or no)",
+          "answers": [
+            "no"
+          ],
+          "hints": [
+            "Order matters.",
+            "Try with simple functions."
+          ],
+          "feedbackIfWrong": "no."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Given $ f(x) = \\frac{1}{x} $ and $ g(x) = 2x+1 $, find $ (f \\circ g)(x) $ and its domain.",
+        "type": "short-answer",
+        "answers": [
+          "1/(2x+1), x ≠ -1/2"
+        ],
+        "hints": [
+          "$ f(g(x)) = f(2x+1) = \\frac{1}{2x+1} $.",
+          "Domain: $ 2x+1 \\neq 0 $ → $ x \\neq -\\frac{1}{2} $."
+        ]
+      }
+    },
+    {
+      "id": "decompose",
+      "title": "4. Decomposing Composite Functions",
+      "teacherCues": [
+        "Ask: 'Can you break $ h(x) = (3x-5)^3 $ into two simpler functions?'",
+        "Show how to identify inner and outer functions."
+      ],
+      "discoveryHook": {
+        "scenario": "A complex function like $ h(x) = \\frac{1}{(x-2)^2} $ can be seen as the composition of two simpler functions: an inner function $ g(x) = x-2 $ and an outer function $ f(x) = \\frac{1}{x^2} $. This process of [[kw:decomposing]] a composite function is essential in calculus for applying the chain rule."
+      },
+      "concept": {
+        "explanation": [
+          "To **decompose** $ h(x) $ into $ f(g(x)) $, look for an **inner function** $ g $ (the part inside parentheses, roots, denominators, etc.) and an **outer function** $ f $ (what is done to that expression).",
+          "Steps: 1. Identify the expression that appears inside (e.g., $ x-2 $). 2. Define $ g(x) $ as that expression. 3. Define $ f(x) $ as the operation applied to $ g $, returning $ h(x) = f(g(x)) $.",
+          "There can be multiple valid decompositions; choose one that is useful.",
+          "[[imp: In calculus, you'll decompose to find derivatives, so practice recognizing inner and outer functions.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Decomposition Examples",
+            "variant": "colorful",
+            "headers": [
+              "$ h(x) $",
+              "Inner $ g(x) $",
+              "Outer $ f(x) $",
+              "Verification"
+            ],
+            "rows": [
+              {
+                "0": "$ (3x-5)^3 $",
+                "1": "$ 3x-5 $",
+                "2": "$ x^3 $",
+                "3": "$ f(g(x)) = (3x-5)^3 $"
+              },
+              {
+                "0": "$ \\frac{1}{(x-2)^2} $",
+                "1": "$ x-2 $",
+                "2": "$ \\frac{1}{x^2} $",
+                "3": "$ f(g(x)) = \\frac{1}{(x-2)^2} $"
+              },
+              {
+                "0": "$ \\sqrt{5x+1} $",
+                "1": "$ 5x+1 $",
+                "2": "$ \\sqrt{x} $",
+                "3": "$ f(g(x)) = \\sqrt{5x+1} $"
+              }
+            ],
+            "caption": "Often the inner function is inside parentheses or under a radical."
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Decompose a function",
+          "prompt": "Write $ h(x) = \\sqrt[3]{8-x} $ as a composition of two functions.",
+          "steps": [
+            "Identify inner expression: $ 8-x $ → $ g(x) = 8-x $.",
+            "Outer operation: cube root → $ f(x) = \\sqrt[3]{x} $.",
+            "Check: $ f(g(x)) = \\sqrt[3]{8-x} = h(x) $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why decompose?",
+          "prompt": "Explain why decomposing a function into simpler pieces is useful, referencing calculus.",
+          "peerPrompt": "Think about taking derivatives.",
+          "minLength": 2,
+          "steps": [
+            "In calculus, the chain rule requires knowing the inner and outer functions.",
+            "By writing $ h(x) = f(g(x)) $, you can differentiate $ h $ as $ f'(g(x)) \\cdot g'(x) $.",
+            "Decomposition is the first step in applying this rule."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find another decomposition",
+          "prompt": "Decompose $ h(x) = \\frac{1}{(2x+3)^2} $ in two different ways.",
+          "steps": [
+            "Way 1: $ g(x) = 2x+3 $, $ f(x) = \\frac{1}{x^2} $.",
+            "Way 2: $ g(x) = (2x+3)^2 $, $ f(x) = \\frac{1}{x} $.",
+            "Both are valid; the first is more natural."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Decomposition is not unique. [[imp: Choose the decomposition that makes the next step (like differentiation) easiest.]]"
+      },
+      "questions": [
+        {
+          "id": "b4q1",
+          "type": "fill-blank",
+          "prompt": "To decompose $ h(x) = \\sqrt{x^2+1} $, one possible inner function is $ g(x) = $ ___ (write the expression inside the root).",
+          "blanks": [
+            {
+              "accept": [
+                "x^2+1",
+                "x^2 + 1"
+              ]
+            }
+          ],
+          "hints": [
+            "What is under the radical?",
+            "The argument of the square root."
+          ],
+          "feedbackIfWrong": "$ x^2+1 $."
+        },
+        {
+          "id": "b4q2",
+          "type": "short-answer",
+          "prompt": "If $ h(x) = (5x-2)^4 $, identify a valid outer function $ f(x) $.",
+          "answers": [
+            "x^4",
+            "f(x)=x^4"
+          ],
+          "hints": [
+            "What operation is applied to $ 5x-2 $?",
+            "Raise to the fourth power."
+          ],
+          "feedbackIfWrong": "$ f(x) = x^4 $."
+        },
+        {
+          "id": "b4q3",
+          "type": "short-answer",
+          "prompt": "True or False: There is only one correct way to decompose a composite function. (true or false)",
+          "answers": [
+            "false"
+          ],
+          "hints": [
+            "Think of different inner/outer choices.",
+            "Decomposition is not unique."
+          ],
+          "feedbackIfWrong": "false."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Write $ h(x) = \\frac{1}{\\sqrt{3x+2}} $ as a composition of two functions in two different ways.",
+        "type": "short-answer",
+        "answers": [
+          "Way1: g(x)=3x+2, f(x)=1/√x; Way2: g(x)=√(3x+2), f(x)=1/x"
+        ],
+        "hints": [
+          "First way: inner = $ 3x+2 $, outer = $ 1/\\sqrt{x} $.",
+          "Second way: inner = $ \\sqrt{3x+2} $, outer = $ 1/x $."
+        ]
+      }
+    },
+    {
+      "id": "domain-application",
+      "title": "5. Domain of Composites and Real‑World Application",
+      "teacherCues": [
+        "Ask: 'How do we find the domain of $ f(g(x)) $?'",
+        "Use the bacteria count example to show composition modeling."
+      ],
+      "discoveryHook": {
+        "scenario": "Refrigerated food bacteria count depends on temperature, which depends on time after removal. To find bacteria count as a function of time, we compose the functions. The resulting composite function $ (N \\circ T)(t) $ gives bacteria count at time $ t $, but only for times where temperatures stay in the original model's domain."
+      },
+      "concept": {
+        "explanation": [
+          "The domain of $ f \\circ g $: $ x $ must be in the domain of $ g $, AND $ g(x) $ must be in the domain of $ f $.",
+          "To find it: start with the domain of $ g $, then exclude any $ x $ that make $ g(x) $ fall outside the domain of $ f $.",
+          "In applications, composite functions model chains of real-world relationships: Time → Temperature → Bacteria count.",
+          "Example: $ N(T) = 20T^2-80T+500 $ (bacteria count at temperature $ T $) and $ T(t) = 4t+2 $ (temperature at time $ t $). Then $ (N \\circ T)(t) = 320t^2+420 $ gives bacteria count at time $ t $.",
+          "[[imp: Interpret the input and output units of the composite function in the context.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Bacteria Count Composition",
+            "variant": "colorful",
+            "headers": [
+              "Function",
+              "Meaning",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "$ T(t) = 4t+2 $",
+                "1": "Temperature after $ t $ hours",
+                "2": "$ t=1 $ → $ T=6^\\circ C $"
+              },
+              {
+                "0": "$ N(T) = 20T^2-80T+500 $",
+                "1": "Bacteria count at temp $ T $",
+                "2": "$ T=6 $ → $ N=... $"
+              },
+              {
+                "0": "$ (N \\circ T)(t) $",
+                "1": "Bacteria count after $ t $ hours",
+                "2": "$ t=2 $ → $ N = 320(4)+420 = 1700 $"
+              }
+            ],
+            "caption": "The composition chains time to temperature to bacteria."
+          }
+        ],
+        "formulaCard": {
+          "title": "Domain of $ f \\circ g $",
+          "formula": "$$ \\text{Dom}(f \\circ g) = \\{ x \\in \\text{Dom}(g) \\mid g(x) \\in \\text{Dom}(f) \\} $$",
+          "notes": [
+            "Works from inside out.",
+            "Helpful in avoiding extraneous inputs in real-world problems."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find domain of composite",
+          "prompt": "For $ f(x) = \\frac{1}{x-1} $ and $ g(x) = \\sqrt{x} $, find the domain of $ f \\circ g $.",
+          "steps": [
+            "Domain of $ g $: $ x \\ge 0 $.",
+            "Domain of $ f $: $ x \\neq 1 $.",
+            "Require $ g(x) \\neq 1 $ → $ \\sqrt{x} \\neq 1 $ → $ x \\neq 1 $.",
+            "Combine: $ x \\ge 0 $ and $ x \\neq 1 $ → domain $ [0,1) \\cup (1,\\infty) $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Bacteria application",
+          "prompt": "Using the bacteria model $ N(T) = 20T^2-80T+500 $, $ T(t)=4t+2 $, explain how to find when bacteria count reaches 2000.",
+          "peerPrompt": "What equation do you set?",
+          "minLength": 2,
+          "steps": [
+            "Compose: $ (N \\circ T)(t) = 320t^2+420 $.",
+            "Set $ 320t^2+420 = 2000 $ → $ 320t^2 = 1580 $ → $ t^2 = 4.9375 $ → $ t \\approx 2.22 $ hours.",
+            "Reject negative time; answer is about 2.2 hours."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Domain from application",
+          "prompt": "Given $ N(T)=8T^2-14T+200 $ for $ 2 \\le T \\le 12 $ and $ T(t)=2t+2 $ for $ 0 \\le t \\le 5 $, find the domain of $ N \\circ T $.",
+          "steps": [
+            "Domain of $ T(t) $: $ t \\in [0,5] $.",
+            "Also need $ T(t) \\in [2,12] $ → $ 2 \\le 2t+2 \\le 12 $ → $ 0 \\le t \\le 5 $.",
+            "Already satisfied by $ t $ domain, so domain is $ [0,5] $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The domain of $ f \\circ g $ may be smaller than the domain of $ g $. [[imp: Always check that the output of $ g $ lies in the domain of $ f $.]]"
+      },
+      "questions": [
+        {
+          "id": "b5q1",
+          "type": "fill-blank",
+          "prompt": "For $ f \\circ g $, we must ensure that $ g(x) $ is in the ___ of $ f $.",
+          "blanks": [
+            {
+              "accept": [
+                "domain"
+              ]
+            }
+          ],
+          "hints": [
+            "Allowed inputs to $ f $.",
+            "Where $ f $ is defined."
+          ],
+          "feedbackIfWrong": "domain."
+        },
+        {
+          "id": "b5q2",
+          "type": "short-answer",
+          "prompt": "If $ f(x) = \\sqrt{x} $ and $ g(x) = x-4 $, find the domain of $ f \\circ g $. (use inequality: x ≥ ?)",
+          "answers": [
+            "x ≥ 4",
+            "x>=4"
+          ],
+          "hints": [
+            "$ g(x) $ must be $ \\ge 0 $.",
+            "$ x-4 \\ge 0 $ → $ x \\ge 4 $."
+          ],
+          "feedbackIfWrong": "$ x \\ge 4 $."
+        },
+        {
+          "id": "b5q3",
+          "type": "short-answer",
+          "prompt": "In the bacteria model, $ (N \\circ T)(t) $ gives bacteria count as a function of ___ (time or temperature).",
+          "answers": [
+            "time"
+          ],
+          "hints": [
+            "Input is $ t $.",
+            "It's composed with $ T(t) $."
+          ],
+          "feedbackIfWrong": "time."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A circle's area $ A(r) = \\pi r^2 $ depends on radius $ r $, and the radius of an inflating balloon depends on time: $ r(t) = 2t $. Find $ (A \\circ r)(t) $ and interpret. Find the area when $ t=3 $.",
+        "type": "short-answer",
+        "answers": [
+          "A(t) = 4πt^2; at t=3, area = 36π"
+        ],
+        "hints": [
+          "$ A(r(t)) = \\pi (2t)^2 = 4\\pi t^2 $.",
+          "At $ t=3 $, area $ = 4\\pi (9) = 36\\pi $."
+        ]
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

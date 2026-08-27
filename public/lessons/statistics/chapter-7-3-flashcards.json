@@ -1,0 +1,132 @@
+{
+  "type": "flashcard",
+  "cards": [
+    {
+      "back": [
+        "When the population standard deviation $ \\sigma $ is [[imp:unknown]] and the sample size is small ($ n < 30 $).",
+        "The population must be approximately normally distributed.",
+        "The t‑test accounts for extra variability from using $ s $ instead of $ \\sigma $."
+      ],
+      "front": "When should you use a [[kw:t‑test]] for a mean instead of a z‑test?"
+    },
+    {
+      "front": "Give the formula for the [[kw:t‑test statistic]] for a mean.",
+      "back": [
+        "$$ t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}} $$",
+        "Degrees of freedom: $ d.f. = n - 1 $.",
+        "$ \\mu_0 $ is the hypothesized mean from $ H_0 $."
+      ]
+    },
+    {
+      "front": "How do you find the critical value $ t_0 $ for a left‑tailed t‑test?",
+      "back": [
+        "Use the t‑table with $ d.f. = n-1 $ and the [[imp:'One Tail, $ \\alpha $']] column.",
+        "The critical value is [[imp:negative]].",
+        "Example: $ \\alpha=0.05, n=21 \\rightarrow d.f.=20, t_0 = -1.725 $.",
+        "Google Sheets: `=T.INV(0.05, 20)` returns about -1.7247."
+      ]
+    },
+    {
+      "back": [
+        "Use the t‑table with the [[imp:'Two Tails, $ \\alpha $']] column.",
+        "The critical values are $ \\pm t_0 $.",
+        "Example: $ \\alpha=0.10, n=26 \\rightarrow d.f.=25, \\pm t_0 = \\pm 1.708 $.",
+        "Google Sheets: `=T.INV.2T(0.10, 25)` returns about 1.708."
+      ],
+      "front": "How do you find the critical values for a two‑tailed t‑test?"
+    },
+    {
+      "front": "A used car dealer claims $ \\mu \\ge \\$20,500 $. Sample: $ n=14 $, $ \\bar{x}=\\$19,850 $, $ s=\\$1084 $, $ \\alpha=0.05 $ (normal). Test the claim.",
+      "back": [
+        "$ H_0: \\mu \\ge 20500 $, $ H_a: \\mu < 20500 $ (left‑tailed).",
+        "$ d.f.=13 $, $ t_0 = -1.771 $. $ t = \\frac{19850-20500}{1084/\\sqrt{14}} \\approx -2.244 $.",
+        "$ -2.244 < -1.771 $ → [[imp:reject $ H_0 $]]. Enough evidence to reject the dealer's claim."
+      ]
+    },
+    {
+      "back": [
+        "Use `=T.DIST(t, d.f., TRUE)`.",
+        "This returns the cumulative area to the [[imp:left]] of the t statistic.",
+        "Example: `=T.DIST(-2.244, 13, TRUE)` gives the P‑value."
+      ],
+      "front": "In Google Sheets, how do you find the P‑value for a left‑tailed t‑test?"
+    },
+    {
+      "back": [
+        "Use `=T.DIST.RT(t, d.f.)`.",
+        "This returns the area to the [[imp:right]] of the t statistic directly—no need to subtract from 1.",
+        "Example: `=T.DIST.RT(2.116, 6)`."
+      ],
+      "front": "In Google Sheets, how do you find the P‑value for a right‑tailed t‑test?"
+    },
+    {
+      "front": "In Google Sheets, how do you find the P‑value for a two‑tailed t‑test?",
+      "back": [
+        "Use `=T.DIST.2T(ABS(t), d.f.)`.",
+        "This automatically doubles the tail area.",
+        "Example: `=T.DIST.2T(2.63, 19)` returns the two‑tailed P‑value."
+      ]
+    },
+    {
+      "front": "DMV claims $ \\mu < 14 $ minutes. Sample: $ n=10 $, $ \\bar{x}=13 $, $ s=3.5 $, $ \\alpha=0.10 $ (normal). Use P‑value method.",
+      "back": [
+        "$ H_0: \\mu \\ge 14 $, $ H_a: \\mu < 14 $. $ t = \\frac{13-14}{3.5/\\sqrt{10}} \\approx -0.904 $, $ d.f.=9 $.",
+        "P‑value = `=T.DIST(-0.904, 9, TRUE)` ≈ 0.195.",
+        "$ 0.195 > 0.10 $ → [[imp:fail to reject $ H_0 $]]. Not enough evidence to support the office's claim."
+      ]
+    },
+    {
+      "front": "What assumption is required to use a t‑test when $ n < 30 $?",
+      "back": [
+        "The population must be [[imp:approximately normally distributed]].",
+        "If the population is heavily skewed and the sample is small, the t‑test is not valid.",
+        "Check normality with a histogram or normal probability plot."
+      ]
+    },
+    {
+      "front": "A sample of 25 has unknown $ \\sigma $ and is from a normal population. Should you use a z‑test or t‑test?",
+      "back": [
+        "Use the [[kw:t‑test]].",
+        "Because $ \\sigma $ is unknown, $ n < 30 $, and the population is normal.",
+        "If $ \\sigma $ were known, you could use the z‑test."
+      ]
+    },
+    {
+      "front": "How does the t critical value compare to the z critical value for the same $ \\alpha $?",
+      "back": [
+        "The t critical value is [[imp:larger]] (farther from zero).",
+        "Because the t‑distribution has thicker tails, you must go further out to capture the same tail area.",
+        "As $ d.f. $ increase, the t critical values approach the z values."
+      ]
+    },
+    {
+      "back": [
+        "Since $ 0.017 \\le 0.10 $, [[imp:reject $ H_0 $]].",
+        "The P‑value is less than the significance level, so the result is statistically significant."
+      ],
+      "front": "A t‑test gives a P‑value of 0.017 with $ \\alpha = 0.10 $. What is the decision?"
+    },
+    {
+      "front": "Find the critical values for a two‑tailed t‑test with $ \\alpha = 0.05 $ and $ n = 20 $.",
+      "back": [
+        "$ d.f. = 19 $. In the 'Two Tails, 0.05' column, the value is 2.093.",
+        "Critical values are $ \\pm t_0 = \\pm 2.093 $.",
+        "Google Sheets: `=T.INV.2T(0.05, 19)` returns about 2.093."
+      ]
+    },
+    {
+      "back": [
+        "Two‑tailed: $ H_0: \\mu = 6.8 $, $ H_a: \\mu \\neq 6.8 $. $ d.f.=18 $, $ \\pm t_0 = \\pm 2.101 $.",
+        "$ t = \\frac{6.7-6.8}{0.24/\\sqrt{19}} \\approx -1.816 $.",
+        "$ -1.816 $ is not in the rejection region → [[imp:fail to reject $ H_0 $]]. Not enough evidence to reject the claim."
+      ],
+      "front": "A company claims $ \\mu = 6.8 $ pH. Sample: $ n=19 $, $ \\bar{x}=6.7 $, $ s=0.24 $, $ \\alpha=0.05 $ (normal). What is the decision using critical values?"
+    }
+  ],
+  "title": "Hypothesis Testing for the Mean (Small Samples)",
+  "id": "chapter-7-3-flashcards",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

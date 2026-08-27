@@ -1,0 +1,791 @@
+{
+  "schemaVersion": 2,
+  "title": "Testing the Difference Between Means (Large Independent Samples)",
+  "type": "interactive-lesson",
+  "standards": [
+    "HSS.IC.B.5",
+    "HSS.IC.A.1"
+  ],
+  "blocks": [
+    {
+      "confusionCorner": {
+        "title": "Same Sample Size ≠ Dependent",
+        "body": "Even if two samples have the same number of observations, they are independent if there is no logical pairing. [[imp:Focus on whether the data can be matched, not just the sample sizes.]]"
+      },
+      "id": "independent-dependent-samples",
+      "teacherCues": [
+        "Ask: 'If I measure the weight of 30 students before and after freshman year, are those samples related?'",
+        "Write 'Independent: no pairing. Dependent: paired/matched.' on the board."
+      ],
+      "discoveryHook": {
+        "scenario": "To compare two groups—like male and female college students' online time, or before-and-after test scores—we first need to know if the samples are independent or dependent. The answer determines which statistical test to use."
+      },
+      "examples": [
+        {
+          "prompt": "Sample 1: Weights of 65 college students before freshman year. Sample 2: Weights of the same 65 students after freshman year. Are these samples independent or dependent?",
+          "title": "Example A – Classifying Samples",
+          "role": "guided",
+          "steps": [
+            "The same individuals are measured twice.",
+            "Each 'before' weight can be paired with the 'after' weight of the same student.",
+            "Therefore, the samples are [[kw:dependent]]."
+          ]
+        },
+        {
+          "title": "Example B – Independent Samples",
+          "minLength": 2,
+          "prompt": "Sample 1: Scores of 38 adult males on an ADHD screening test. Sample 2: Scores of 50 adult females on the same test. Explain why these are independent.",
+          "role": "peer-explain",
+          "steps": [
+            "The two groups consist of different individuals.",
+            "There is no natural or logical way to pair a male's score with a female's score.",
+            "Also, the sample sizes are different, but that alone isn't the deciding factor.",
+            "Thus, the samples are [[kw:independent]]."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Could you pair a male's score with a specific female's score in a meaningful way?"
+        },
+        {
+          "prompt": "Classify as independent or dependent: (1) Midterm exam scores of 14 chemistry students and final exam scores of the same 14 students. (2) Systolic blood pressures of 30 adult females and 30 adult males.",
+          "title": "Example C – Your Turn",
+          "role": "independent",
+          "steps": [
+            "(1) Dependent — same students, paired by individual.",
+            "(2) Independent — different individuals, no pairing."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "Two samples are [[kw:independent]] if the selection of one sample does not influence the selection of the other. There is no natural pairing between observations.",
+          "Two samples are [[kw:dependent]] (or paired) if each member of one sample can be matched with a member of the other sample. This often occurs in before‑after studies or when subjects are paired based on a characteristic.",
+          "Examples:",
+          "– Independent: weights of 30 men and weights of 30 women (different individuals).",
+          "– Dependent: blood pressure of 20 patients before and after taking a drug (same individuals).",
+          "In this section, we focus on [[imp:large independent samples]]."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Relationship",
+                "1": "No pairing between samples",
+                "2": "Each observation in one sample is paired with one in the other"
+              },
+              {
+                "0": "Example",
+                "1": "SAT scores of 35 students who didn't take a prep course vs. 40 who did",
+                "2": "SAT scores of the same 44 students before and after a prep course"
+              },
+              {
+                "0": "Analysis method",
+                "1": "Two‑sample z‑test (or t‑test)",
+                "2": "Paired t‑test (not covered here)"
+              }
+            ],
+            "title": "Independent vs. Dependent Samples",
+            "headers": [
+              "Feature",
+              "Independent",
+              "Dependent (Paired)"
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "title": "Key Distinction",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Check",
+              "meaning": "Ask: 'Can I match each data point in Sample 1 to a unique data point in Sample 2?'"
+            }
+          ],
+          "formula": "$$\\text{Independent: } (x_{1i}, x_{2j}) \\text{ unrelated}$$ $$\\text{Dependent: } (x_{1i}, x_{2i}) \\text{ are paired}$$"
+        }
+      },
+      "questions": [
+        {
+          "prompt": "Two samples are ___ if each member of one sample can be paired with a member of the other sample.",
+          "hints": [
+            "Often called paired samples.",
+            "Before‑after studies use this type."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "dependent",
+                "Dependent",
+                "paired",
+                "Paired"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Samples that can be paired are dependent.",
+          "id": "q1-1"
+        },
+        {
+          "answers": [
+            "independent",
+            "Independent"
+          ],
+          "type": "short-answer",
+          "answer": "independent",
+          "id": "q1-2",
+          "feedbackIfWrong": "These are independent samples; there is no natural pairing.",
+          "hints": [
+            "Different individuals.",
+            "Can you pair a female's score to a specific male's score meaningfully?"
+          ],
+          "prompt": "Are the IQ scores of 60 females and 60 males independent or dependent?"
+        },
+        {
+          "id": "q1-3",
+          "answers": [
+            "dependent",
+            "Dependent",
+            "paired"
+          ],
+          "feedbackIfWrong": "These samples are dependent (paired), because each driver is measured twice.",
+          "answer": "dependent",
+          "type": "short-answer",
+          "hints": [
+            "Same 10 drivers are measured twice.",
+            "Before and after on the same subjects."
+          ],
+          "prompt": "A researcher measures the reaction time of 10 drivers before and after drinking coffee. Are the samples independent or dependent?"
+        }
+      ],
+      "title": "Independent and Dependent Samples"
+    },
+    {
+      "title": "Two‑Sample Hypotheses for the Difference Between Means",
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Claim",
+              "$H_0$",
+              "$H_a$",
+              "Test Type"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "There is a difference in mean credit card debt.",
+                "1": "$\\mu_1 = \\mu_2$",
+                "2": "$\\mu_1 \\neq \\mu_2$ (claim)",
+                "3": "Two‑tailed"
+              },
+              {
+                "0": "The mean daily cost in Texas is less than in Virginia.",
+                "1": "$\\mu_1 \\ge \\mu_2$",
+                "2": "$\\mu_1 < \\mu_2$ (claim)",
+                "3": "Left‑tailed"
+              },
+              {
+                "0": "The mean wind speed in Region A is greater than in Region B.",
+                "1": "$\\mu_1 \\le \\mu_2$",
+                "2": "$\\mu_1 > \\mu_2$ (claim)",
+                "3": "Right‑tailed"
+              }
+            ],
+            "type": "table",
+            "title": "Hypothesis Examples"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$H_0: \\mu_1 = \\mu_2 \\quad \\text{(or } \\mu_1 \\ge \\mu_2, \\; \\mu_1 \\le \\mu_2)$$ $$H_a: \\mu_1 \\neq \\mu_2, \\; \\mu_1 < \\mu_2, \\; \\text{or } \\mu_1 > \\mu_2$$",
+          "legend": [
+            {
+              "meaning": "population means of groups 1 and 2",
+              "tone": "core",
+              "symbol": "$\\mu_1, \\mu_2$"
+            }
+          ],
+          "title": "Standard Hypotheses"
+        },
+        "explanation": [
+          "For two populations with means $\\mu_1$ and $\\mu_2$, the [[kw:null hypothesis]] typically states that there is no difference: $H_0: \\mu_1 = \\mu_2$ (or equivalently $\\mu_1 - \\mu_2 = 0$).",
+          "The [[kw:alternative hypothesis]] can be two‑tailed ($H_a: \\mu_1 \\neq \\mu_2$), left‑tailed ($H_a: \\mu_1 < \\mu_2$), or right‑tailed ($H_a: \\mu_1 > \\mu_2$).",
+          "We always assume $H_0$ is true when performing the test, so the hypothesized difference $\\mu_1 - \\mu_2$ is 0 unless stated otherwise.",
+          "The test statistic measures how far the observed difference in sample means is from 0, in standard error units."
+        ]
+      },
+      "id": "two-sample-hypotheses",
+      "examples": [
+        {
+          "steps": [
+            "Let $\\mu_1$ be the mean debt in NY, $\\mu_2$ be the mean debt in TX.",
+            "Claim: 'there is a difference' → $\\mu_1 \\neq \\mu_2$.",
+            "This becomes the alternative hypothesis because it does not contain equality.",
+            "So $H_0: \\mu_1 = \\mu_2$, $H_a: \\mu_1 \\neq \\mu_2$ (claim). Two‑tailed test."
+          ],
+          "prompt": "A credit card watchdog group claims there is a difference in the mean credit card debts of households in New York and Texas. Write the null and alternative hypotheses.",
+          "title": "Example A – Writing Hypotheses for a Claim",
+          "role": "guided"
+        },
+        {
+          "prompt": "A travel agency claims the average daily cost in Texas is less than in Virginia. Write the hypotheses. Explain why the claim is $H_a$.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: How does 'less than' tell you which hypothesis is the claim?",
+          "minLength": 2,
+          "steps": [
+            "Let $\\mu_1$ be Texas, $\\mu_2$ be Virginia. Claim: $\\mu_1 < \\mu_2$.",
+            "The claim does not contain equality, so it must be $H_a$.",
+            "The complement with equality is $\\mu_1 \\ge \\mu_2$, which becomes $H_0$.",
+            "Thus $H_0: \\mu_1 \\ge \\mu_2$, $H_a: \\mu_1 < \\mu_2$ (claim). Left‑tailed test."
+          ],
+          "role": "peer-explain",
+          "title": "Example B – Directional Claim"
+        },
+        {
+          "role": "independent",
+          "prompt": "An energy company will choose Region A if its average wind speed is greater than Region B's. Write the hypotheses.",
+          "steps": [
+            "$H_0: \\mu_1 \\le \\mu_2$ (no difference or B is faster).",
+            "$H_a: \\mu_1 > \\mu_2$ (claim). Right‑tailed test."
+          ],
+          "title": "Example C – Greater Than"
+        }
+      ],
+      "teacherCues": [
+        "Write on the board: 'H₀: μ₁ = μ₂' and 'Hₐ: μ₁ ≠ μ₂', 'Hₐ: μ₁ < μ₂', 'Hₐ: μ₁ > μ₂'.",
+        "Ask: 'If a credit card group claims there is a difference in mean debt between NY and TX, which pair of hypotheses fits?'"
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "equal",
+                "the same",
+                "Equal",
+                "= 0",
+                "no difference"
+              ]
+            }
+          ],
+          "id": "q2-1",
+          "hints": [
+            "It assumes no difference.",
+            "$H_0: \\mu_1 = \\mu_2$."
+          ],
+          "prompt": "The null hypothesis for a two‑sample test usually states that the two population means are ___.",
+          "feedbackIfWrong": "The null usually states $\\mu_1 = \\mu_2$ (no difference)."
+        },
+        {
+          "id": "q2-2",
+          "answer": "$\\mu_1 \\neq \\mu_2$",
+          "feedbackIfWrong": "$H_a: \\mu_1 \\neq \\mu_2$.",
+          "type": "short-answer",
+          "prompt": "A claim states 'the mean salary in Georgia is different from Ohio'. Write the alternative hypothesis using $\\mu_1$ and $\\mu_2$. (e.g., $\\mu_1 \\neq \\mu_2$)",
+          "hints": [
+            "Different means 'not equal'.",
+            "Use the not‑equal symbol."
+          ],
+          "answers": [
+            "μ1 ≠ μ2",
+            "mu1 ≠ mu2",
+            "$\\mu_1 \\neq \\mu_2$"
+          ]
+        },
+        {
+          "answers": [
+            "left-tailed",
+            "left tailed",
+            "Left-tailed"
+          ],
+          "prompt": "If $H_a: \\mu_1 < \\mu_2$, is the test left‑tailed, right‑tailed, or two‑tailed?",
+          "answer": "left-tailed",
+          "hints": [
+            "The inequality points to the left.",
+            "< means the rejection region is on the left."
+          ],
+          "feedbackIfWrong": "A less‑than alternative is a left‑tailed test.",
+          "type": "short-answer",
+          "id": "q2-3"
+        }
+      ],
+      "confusionCorner": {
+        "title": "The Claim Can Be Either $H_0$ or $H_a$",
+        "body": "If the claim contains equality ($=$, $\\le$, $\\ge$), it is $H_0$. If it contains strict inequality ($\\neq$, $<$, $>$), it is $H_a$. [[imp:The null is always the statement we assume true and try to disprove.]]"
+      },
+      "discoveryHook": {
+        "scenario": "We often want to know if two populations have the same mean, or if one is larger. The null hypothesis usually states 'no difference', and the alternative states the claim we want to test."
+      }
+    },
+    {
+      "id": "two-sample-z-test-statistic",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Compute the standard error: $$\\sqrt{\\frac{1045.70^2}{250} + \\frac{1361.95^2}{250}} \\approx \\sqrt{4374.9 + 7420.6} \\approx 108.60$$",
+            "The difference in sample means: $4446.25 - 4567.24 = -120.99$.",
+            "Under $H_0$, the hypothesized difference is 0, so $$z = \\frac{-120.99 - 0}{108.60} \\approx -1.11$$"
+          ],
+          "prompt": "Credit card debt: NY: $\\bar{x}_1 = 4446.25$, $s_1 = 1045.70$, $n_1 = 250$; TX: $\\bar{x}_2 = 4567.24$, $s_2 = 1361.95$, $n_2 = 250$. Test $H_0: \\mu_1 = \\mu_2$. Compute the z statistic.",
+          "title": "Example A – Calculating the Test Statistic"
+        },
+        {
+          "title": "Example B – Interpreting a z Value",
+          "minLength": 2,
+          "prompt": "If $z = -1.11$ for a two‑tailed test with $\\alpha = 0.05$, what is the decision? Explain why this z does not lead to rejection.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Where does $z = -1.11$ fall relative to the critical values $\\pm 1.96$?",
+          "role": "peer-explain",
+          "steps": [
+            "Critical values for a two‑tailed test at $\\alpha=0.05$ are $\\pm 1.96$.",
+            "$z = -1.11$ is between $-1.96$ and $1.96$, so it is not in the rejection region.",
+            "Therefore, we fail to reject $H_0$. The observed difference is not statistically significant at the 5% level."
+          ]
+        },
+        {
+          "prompt": "Use Google Sheets to compute the standard error and z statistic for the credit card debt data.",
+          "title": "Example C – Google Sheets Calculation",
+          "steps": [
+            "Standard error: `=SQRT(1045.70^2/250 + 1361.95^2/250)` returns about 108.60.",
+            "z: `=(4446.25 - 4567.24) / 108.60` returns about -1.11.",
+            "Then find the two‑tailed P‑value: `=2 * NORM.S.DIST(-1.11, TRUE)` ≈ 0.267."
+          ],
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "sample means",
+              "tone": "core",
+              "symbol": "$\\bar{x}_1, \\bar{x}_2$"
+            },
+            {
+              "tone": "subtle",
+              "symbol": "$s_1^2, s_2^2$",
+              "meaning": "sample variances (used when $n \\ge 30$ and $\\sigma$ unknown)"
+            }
+          ],
+          "title": "Two‑Sample z‑Test Statistic",
+          "formula": "$$z = \\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1 - \\mu_2)}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$$ $$\\text{Under } H_0: \\mu_1 - \\mu_2 = 0$$"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Condition",
+              "Requirement"
+            ],
+            "type": "table",
+            "title": "Conditions for a Two‑Sample z‑Test",
+            "rows": [
+              {
+                "0": "Random sampling",
+                "1": "Both samples are randomly selected."
+              },
+              {
+                "0": "Independence",
+                "1": "The samples are independent of each other."
+              },
+              {
+                "0": "Sample size or normality",
+                "1": "$n_1 \\ge 30$ and $n_2 \\ge 30$, OR populations are normal with known $\\sigma$."
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "When both samples are large ($n_1 \\ge 30$, $n_2 \\ge 30$) or come from normal populations with known standard deviations, the sampling distribution of $\\bar{x}_1 - \\bar{x}_2$ is approximately normal.",
+          "The [[kw:standard error of the difference]] is: $$\\sigma_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$$",
+          "If population standard deviations are unknown, use the sample standard deviations $s_1$ and $s_2$ when $n_1, n_2 \\ge 30$.",
+          "The [[kw:standardized test statistic]] (z) is: $$z = \\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1 - \\mu_2)}{\\sigma_{\\bar{x}_1 - \\bar{x}_2}}$$",
+          "Under the null hypothesis $H_0: \\mu_1 = \\mu_2$, the term $(\\mu_1 - \\mu_2)$ is 0, so the statistic simplifies to the observed difference divided by its standard error."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "To test whether two population means differ, we look at the difference between the sample means. The z‑test tells us how many standard errors this difference is from zero, assuming the null hypothesis is true."
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "sum",
+                "Sum"
+              ]
+            }
+          ],
+          "hints": [
+            "You add them, not subtract.",
+            "$\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "It is the sum of the variances divided by n.",
+          "id": "q3-1",
+          "prompt": "The standard error of the difference between two sample means is the square root of the ___ of the variances divided by their sample sizes."
+        },
+        {
+          "id": "q3-2",
+          "prompt": "Sample 1: $n_1=35$, $s_1=5$. Sample 2: $n_2=40$, $s_2=4$. Compute the standard error of the difference. (Round to three decimals.)",
+          "feedbackIfWrong": "Standard error ≈ 1.053.",
+          "answer": "1.053",
+          "hints": [
+            "$\\sqrt{5^2/35 + 4^2/40} = \\sqrt{25/35 + 16/40}$.",
+            "$\\sqrt{0.7143 + 0.4} = \\sqrt{1.1143} \\approx ?$"
+          ],
+          "answers": [
+            "1.053",
+            "1.05",
+            "1.053"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "prompt": "If the null hypothesis is $\\mu_1 = \\mu_2$, what value does $\\mu_1 - \\mu_2$ take in the numerator of the z statistic?",
+          "answers": [
+            "0",
+            "zero"
+          ],
+          "hints": [
+            "Under $H_0$, there is no difference.",
+            "The formula uses the hypothesized difference."
+          ],
+          "type": "short-answer",
+          "answer": "0",
+          "id": "q3-3",
+          "feedbackIfWrong": "Under $H_0$, the hypothesized difference is 0."
+        }
+      ],
+      "title": "The Two‑Sample z‑Test Statistic",
+      "confusionCorner": {
+        "title": "Don't Forget to Square the Standard Deviations!",
+        "body": "The standard error uses variances ($s_1^2$, $s_2^2$). A common mistake is to plug in the standard deviations without squaring. [[imp:Always square s before dividing by n.]]"
+      },
+      "teacherCues": [
+        "Write the formula for the standard error of the difference: $\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$.",
+        "Then write the z statistic: $z = \\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1 - \\mu_2)}{\\text{standard error}}$."
+      ]
+    },
+    {
+      "questions": [
+        {
+          "prompt": "In a two‑sample z‑test, if $z = 2.5$ and the critical value for a right‑tailed test is $1.645$, we ___ the null hypothesis.",
+          "id": "q4-1",
+          "type": "fill-blank",
+          "hints": [
+            "2.5 > 1.645, so it falls in the rejection region.",
+            "We have enough evidence against $H_0$."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "reject",
+                "Reject"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Reject $H_0$ because $z$ is in the rejection region."
+        },
+        {
+          "answer": "0.0214",
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "A two‑tailed test gives $z = -2.3$. The area to the left of -2.3 is 0.0107. What is the P‑value?",
+          "hints": [
+            "Two‑tailed P‑value = 2 × tail area.",
+            "2 × 0.0107 = ?"
+          ],
+          "answers": [
+            "0.0214",
+            ".0214"
+          ],
+          "feedbackIfWrong": "P‑value = 2 × 0.0107 = 0.0214."
+        },
+        {
+          "hints": [
+            "0.008 ≤ 0.01.",
+            "The P‑value is smaller than alpha."
+          ],
+          "prompt": "If the P‑value is 0.008 and $\\alpha = 0.01$, should you reject $H_0$? (Yes or No)",
+          "id": "q4-3",
+          "type": "short-answer",
+          "answer": "Yes",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "feedbackIfWrong": "Yes, reject $H_0$ because 0.008 ≤ 0.01."
+        }
+      ],
+      "title": "Full Example: Two‑Sample z‑Test for a Claim",
+      "id": "example-two-sample-z-test",
+      "teacherCues": [
+        "Walk through the credit card debt example with rejection regions and P‑value.",
+        "Show both the critical value approach and the P‑value approach."
+      ],
+      "discoveryHook": {
+        "scenario": "A travel agency claims the average daily cost for two in Texas is less than in Virginia. With sample data from 50 Texas vacationers and 35 Virginia vacationers, we can put the two‑sample z‑test to work."
+      },
+      "examples": [
+        {
+          "prompt": "Using the credit card debt data (NY: $\\bar{x}_1=4446.25$, $s_1=1045.70$, $n_1=250$; TX: $\\bar{x}_2=4567.24$, $s_2=1361.95$, $n_2=250$), test the claim that there is a difference at $\\alpha=0.05$.",
+          "role": "guided",
+          "title": "Example A – Credit Card Debt (Two‑Tailed)",
+          "steps": [
+            "$H_0: \\mu_1 = \\mu_2$, $H_a: \\mu_1 \\neq \\mu_2$ (claim). Two‑tailed, critical values $\\pm 1.96$.",
+            "Standard error $\\approx 108.60$. $z = (4446.25 - 4567.24) / 108.60 \\approx -1.11$.",
+            "$-1.11$ is between $-1.96$ and $1.96$, so we fail to reject $H_0$.",
+            "Not enough evidence to support the claim of a difference."
+          ]
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If the company will choose Region A only if it's strictly greater, why is the alternative $H_a: \\mu_1 > \\mu_2$?",
+          "steps": [
+            "The claim is $\\mu_1 > \\mu_2$, so $H_a$ is right‑tailed. $H_0: \\mu_1 \\le \\mu_2$.",
+            "Critical value $z_0 = 1.645$. Standard error $= \\sqrt{2.3^2/60 + 2.7^2/60} \\approx 0.4576$.",
+            "$z = (13.2 - 12.5) / 0.4576 \\approx 1.53$.",
+            "$1.53 < 1.645$ → fail to reject $H_0$. Not enough evidence to choose Region A."
+          ],
+          "prompt": "An energy company tests whether Region A has higher wind speed than Region B. Region A: $\\bar{x}_1=13.2$, $s_1=2.3$, $n_1=60$; Region B: $\\bar{x}_2=12.5$, $s_2=2.7$, $n_2=60$. Test at $\\alpha=0.05$. Explain why the company wants a right‑tailed test.",
+          "title": "Example B – Wind Energy (Right‑Tailed)",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "For the wind energy test, $z = 1.53$. Find the P‑value using Google Sheets and decide at $\\alpha = 0.05$.",
+          "steps": [
+            "Right‑tailed P‑value = `=1 - NORM.S.DIST(1.53, TRUE)` ≈ 0.063.",
+            "Since $0.063 > 0.05$, fail to reject $H_0$.",
+            "The P‑value approach agrees with the critical value approach."
+          ],
+          "role": "independent",
+          "title": "Example C – P‑Value Method"
+        }
+      ],
+      "confusionCorner": {
+        "body": "The two‑sample z‑test relies on the Central Limit Theorem when $n_1, n_2 \\ge 30$. If one or both samples are small, and populations are normal with unknown variances, a different test (two‑sample t‑test) is required. [[imp:Always check sample sizes first.]]",
+        "title": "Large Samples Are Key"
+      },
+      "concept": {
+        "explanation": [
+          "To perform a complete two‑sample z‑test:",
+          "1. State $H_0$ and $H_a$. Identify the claim.",
+          "2. Choose $\\alpha$ and find the critical value(s) or use P‑value.",
+          "3. Compute the standard error and the z statistic.",
+          "4. Compare z to the critical value or compare the P‑value to $\\alpha$.",
+          "5. Make a decision and interpret in context.",
+          "Example: Texas vs. Virginia daily cost. $H_0: \\mu_1 \\ge \\mu_2$, $H_a: \\mu_1 < \\mu_2$ (claim). $\\alpha=0.01$, left‑tailed. Critical value $z_0 = -2.33$. Rejection region: $z < -2.33$.",
+          "Given $\\bar{x}_1=216$, $s_1=18$, $n_1=50$; $\\bar{x}_2=222$, $s_2=24$, $n_2=35$. The standard error is $\\sqrt{\\frac{18^2}{50} + \\frac{24^2}{35}} \\approx 4.76$. $z = \\frac{216-222}{4.76} \\approx -1.26$. Since $-1.26 > -2.33$, we fail to reject $H_0$. Not enough evidence to support the claim."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$H_0, H_a$",
+                "1": "$H_0: \\mu_1 \\ge \\mu_2$, $H_a: \\mu_1 < \\mu_2$ (claim)"
+              },
+              {
+                "0": "Critical value",
+                "1": "$z_0 = -2.33$"
+              },
+              {
+                "0": "Standard error",
+                "1": "$\\approx 4.76$"
+              },
+              {
+                "0": "$z$ statistic",
+                "1": "$-1.26$"
+              },
+              {
+                "0": "Decision",
+                "1": "$-1.26 > -2.33$ → fail to reject $H_0$"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Component",
+              "Value"
+            ],
+            "variant": "colorful",
+            "title": "Texas vs. Virginia Daily Cost ($\\alpha=0.01$, left‑tailed)"
+          }
+        ],
+        "formulaCard": {
+          "title": "Decision Rules",
+          "legend": [
+            {
+              "symbol": "P‑value",
+              "tone": "core",
+              "meaning": "For left‑tailed, P‑value = area to left of z; right‑tailed, area to right; two‑tailed, twice the tail area."
+            }
+          ],
+          "formula": "$$\\text{Reject } H_0 \\text{ if } z \\text{ falls in the rejection region, or if P‑value } \\le \\alpha$$"
+        }
+      }
+    },
+    {
+      "id": "blueprint-two-sample-z-test",
+      "concept": {
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Are the samples independent? Are both $n_1$ and $n_2 \\ge 30$ (or populations normal with known $\\sigma$)? Identify the claim and write $H_0$ and $H_a$. Choose $\\alpha$.",
+          "2. [[kw:Solve]]: Compute the standard error $\\sqrt{s_1^2/n_1 + s_2^2/n_2}$. Compute $z = \\frac{(\\bar{x}_1 - \\bar{x}_2) - 0}{\\text{standard error}}$. Find the critical value(s) or P‑value using the z‑table or Google Sheets. Make a decision.",
+          "3. [[kw:Conclude]]: State whether there is enough evidence to support/reject the claim. Use 'There is (or is not) enough evidence at the $\\alpha$ level to…'."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action",
+              "Details"
+            ],
+            "title": "Blueprint for Braking Distance Example ($\\alpha=0.10$)",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Claim: mean braking distances differ. $H_0: \\mu_1 = \\mu_2$, $H_a: \\mu_1 \\neq \\mu_2$. $n_1=n_2=35$, $\\alpha=0.10$.",
+                "2": "Two‑tailed, critical values $\\pm 1.645$."
+              },
+              {
+                "0": "Solve – SE",
+                "1": "$\\sqrt{4.7^2/35 + 4.3^2/35} \\approx 1.076$",
+                "2": ""
+              },
+              {
+                "0": "Solve – z",
+                "1": "$z = (42-45)/1.076 \\approx -2.79$",
+                "2": ""
+              },
+              {
+                "0": "Conclude",
+                "1": "$-2.79 < -1.645$ → reject $H_0$. There is enough evidence to support the claim that the braking distances differ.",
+                "2": ""
+              }
+            ],
+            "variant": "colorful",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Key",
+              "meaning": "The standard error formula is the heart of the two‑sample z‑test."
+            }
+          ],
+          "title": "Blueprint Summary",
+          "formula": "$$\\text{Check independence \\& } n_i \\ge 30 \\;\\rightarrow\\; H_0, H_a \\;\\rightarrow\\; SE = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}} \\;\\rightarrow\\; z = \\frac{\\bar{x}_1 - \\bar{x}_2}{SE} \\;\\rightarrow\\; \\text{Decision}$$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "The two‑sample z‑test follows a clear blueprint: verify the conditions, set up hypotheses, calculate the test statistic, and draw a conclusion. A structured approach ensures no steps are skipped."
+      },
+      "teacherCues": [
+        "Display a flowchart: Independent samples? → Check n≥30 → State hypotheses → Compute standard error → Compute z → Decision (critical value or P‑value) → Interpret.",
+        "Work through a complete example: 'A safety engineer tests braking distances of two tire types with 35 tests each.'"
+      ],
+      "title": "Blueprint Aid: Conducting a Two‑Sample z‑Test",
+      "confusionCorner": {
+        "body": "Be consistent with which population is Group 1 and which is Group 2. The direction of the inequality in $H_a$ depends on this assignment. [[imp:Label the groups clearly and stick to that order throughout the calculations.]]",
+        "title": "Don't Mix Up the Groups!"
+      },
+      "examples": [
+        {
+          "prompt": "A safety engineer tests two tire types. Type A: $\\bar{x}_1=42$ ft, $s_1=4.7$ ft, $n_1=35$. Type B: $\\bar{x}_2=45$ ft, $s_2=4.3$ ft, $n_2=35$. At $\\alpha=0.10$, can the engineer support the claim that the mean braking distances differ?",
+          "role": "guided",
+          "title": "Example A – Braking Distance (Two‑Tailed)",
+          "steps": [
+            "Understand: Claim of a difference → $H_0: \\mu_1 = \\mu_2$, $H_a: \\mu_1 \\neq \\mu_2$. Two‑tailed, $\\alpha=0.10$, $z_0 = \\pm 1.645$.",
+            "Solve: SE $= \\sqrt{4.7^2/35 + 4.3^2/35} \\approx 1.076$. $z = (42-45)/1.076 \\approx -2.79$.",
+            "Conclude: $-2.79 < -1.645$ → reject $H_0$. There is evidence of a difference."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "The company will only choose Region A if its wind speed is strictly greater, so the claim is $\\mu_1 > \\mu_2$. This is a right‑tailed test.",
+            "Critical value $z_0 = 1.645$. SE $= \\sqrt{2.3^2/60 + 2.7^2/60} \\approx 0.4576$. $z = (13.2-12.5)/0.4576 \\approx 1.53$.",
+            "$1.53 < 1.645$ → fail to reject $H_0$. Not enough evidence to support the claim that Region A is windier."
+          ],
+          "prompt": "An energy company wants to show that Region A has a higher average wind speed than Region B. Region A: $\\bar{x}_1=13.2$, $s_1=2.3$, $n_1=60$; Region B: $\\bar{x}_2=12.5$, $s_2=2.7$, $n_2=60$. Test at $\\alpha=0.05$. Explain why this is right‑tailed.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we set up $H_a: \\mu_1 > \\mu_2$ and not $H_a: \\mu_1 \\neq \\mu_2$?",
+          "minLength": 2,
+          "title": "Example B – Directional Claim (Right‑Tailed)"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Understand: Claim $\\mu_1 > \\mu_2$ → $H_0: \\mu_1 \\le \\mu_2$, $H_a: \\mu_1 > \\mu_2$. Right‑tailed, $\\alpha=0.10$, $z_0 = 1.28$.",
+            "Solve: SE $= \\sqrt{4.8^2/49 + 5.4^2/44} \\approx 1.065$. $z = (22.2-20.0)/1.065 \\approx 2.07$.",
+            "Conclude: $2.07 > 1.28$ → reject $H_0$. There is enough evidence to support the counselor's claim."
+          ],
+          "title": "Example C – Full Blueprint from Start to Finish",
+          "prompt": "A guidance counselor claims that students in a college prep program have higher ACT scores than those in a general program. Prep: $\\bar{x}_1=22.2$, $s_1=4.8$, $n_1=49$. General: $\\bar{x}_2=20.0$, $s_2=5.4$, $n_2=44$. Test at $\\alpha=0.10$."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q5-1",
+          "prompt": "The first step in the two‑sample z‑test blueprint is to ___ the claim and check that the samples are independent and large enough.",
+          "type": "fill-blank",
+          "feedbackIfWrong": "Start by understanding the claim and checking conditions.",
+          "hints": [
+            "It's the 'U' phase.",
+            "You verify conditions and state hypotheses."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "Understand"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q5-2",
+          "feedbackIfWrong": "You can use the P‑value method or the rejection region (critical value) method.",
+          "answer": "P-value and rejection region",
+          "answers": [
+            "P-value and rejection region",
+            "p-value and critical value"
+          ],
+          "hints": [
+            "One uses probability, the other a cutoff.",
+            "Both lead to the same conclusion."
+          ],
+          "type": "short-answer",
+          "prompt": "In the blueprint, after computing the standard error and z statistic, what two methods can you use to make a decision? (Name both.)"
+        },
+        {
+          "feedbackIfWrong": "Yes, reject $H_0$ because 0.002 ≤ 0.01.",
+          "id": "q5-3",
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "answer": "Yes",
+          "hints": [
+            "0.002 ≤ 0.01.",
+            "Very small P‑value."
+          ],
+          "prompt": "A two‑sample z‑test gives a P‑value of 0.002 with $\\alpha = 0.01$. Should you reject $H_0$? (Yes or No)",
+          "type": "short-answer"
+        }
+      ]
+    }
+  ],
+  "presenterNotes": [
+    "Block 1: Emphasize the pairing concept. Use concrete examples like before‑after studies vs. independent groups.",
+    "Block 2: Show the three forms of hypotheses. The claim can be either H0 or Ha; stress the equality rule.",
+    "Block 3: Walk through the standard error formula carefully. Use the credit card debt data to compute step‑by‑step.",
+    "Block 4: Do a full example with both rejection region and P‑value. The Texas vs. Virginia data is good. Show the Google Sheets P‑value.",
+    "Block 5: The blueprint ties everything together. Use the braking distance example as a complete walk‑through."
+  ],
+  "id": "chapter-8-1-two-sample-z-test-means",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,804 @@
+{
+  "standards": [
+    "BUSMATH.7.1"
+  ],
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "McGraw Hill sells textbooks to a college bookstore. The list price is \\$11,550, but the bookstore gets a 25% trade discount. That's \\$2,887.50 off, so they pay only \\$8,662.50. A trade discount is a reduction from the list price to allow the retailer to earn a profit when reselling."
+      },
+      "title": "1. Trade Discount Basics",
+      "examples": [
+        {
+          "title": "A – Calculate discount and net price",
+          "steps": [
+            "Discount amount = \\$2,700 × 0.40 = \\$1,080.",
+            "Net price = \\$2,700 – \\$1,080 = \\$1,620.",
+            "The retailer pays \\$1,620."
+          ],
+          "role": "guided",
+          "prompt": "A laptop lists for \\$2,700 with a 40% trade discount. Find the trade discount amount and net price."
+        },
+        {
+          "steps": [
+            "Manufacturers want to sell in bulk to retailers, who then handle storage, display, and selling to individuals.",
+            "Trade discount allows the retailer to mark up the product and still be competitive.",
+            "End customers buy at the retail price, which is higher than the net price."
+          ],
+          "title": "B – Why not to customers?",
+          "peerPrompt": "Think about the supply chain.",
+          "role": "peer-explain",
+          "prompt": "Explain why a manufacturer gives a trade discount only to retailers, not to end customers.",
+          "minLength": 2
+        },
+        {
+          "prompt": "An invoice shows list price \\$5,000, trade discount 30%, freight \\$150. Find the total invoice amount.",
+          "steps": [
+            "Discount = \\$5,000 × 0.30 = \\$1,500.",
+            "Net price = \\$5,000 – \\$1,500 = \\$3,500.",
+            "Total invoice = \\$3,500 + \\$150 = \\$3,650."
+          ],
+          "title": "C – Invoice total",
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'Why would a manufacturer give a retailer a discount off the list price?'",
+        "Write the two key formulas on the board."
+      ],
+      "questions": [
+        {
+          "hints": [
+            "It's a percent.",
+            "Not net price."
+          ],
+          "id": "b1q1",
+          "prompt": "Trade discount amount = List price × ___.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "trade discount rate",
+                "discount rate"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Trade discount rate."
+        },
+        {
+          "hints": [
+            "Discount = 800 × 0.25 = ?",
+            "Net = 800 – discount."
+          ],
+          "answers": [
+            "600",
+            "600.00"
+          ],
+          "id": "b1q2",
+          "type": "short-answer",
+          "prompt": "List price \\$800, trade discount 25%. Find the net price.",
+          "feedbackIfWrong": "Net price is \\$600."
+        },
+        {
+          "feedbackIfWrong": "20%.",
+          "prompt": "If trade discount amount is \\$200 and list price is \\$1,000, what is the trade discount rate? (percent, just number)",
+          "answers": [
+            "20",
+            "20%"
+          ],
+          "type": "short-answer",
+          "id": "b1q3",
+          "hints": [
+            "Rate = Discount ÷ List.",
+            "200 ÷ 1,000 = 0.20 → 20%."
+          ]
+        }
+      ],
+      "id": "trade-discount-basics",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "The trade discount rate must be in decimal form when used in the formula.",
+            "Trade discounts are not related to early payment – they are given for being a retailer."
+          ],
+          "title": "Trade Discount Formulas",
+          "formula": "$$\\text{Trade Discount Amount} = \\text{List Price} \\times \\text{Trade Discount Rate}$$ $$\\text{Net Price} = \\text{List Price} - \\text{Trade Discount Amount}$$"
+        },
+        "explanation": [
+          "A [[kw:trade discount]] is a reduction from the manufacturer's suggested list price, given to retailers so they can resell at a profit.",
+          "[[imp:Trade discount amount = List price × Trade discount rate.]]",
+          "[[imp:Net price = List price – Trade discount amount.]]",
+          "The trade discount rate is expressed as a percent; convert to decimal before multiplying.",
+          "Invoices often list merchandise total, then subtract trade discount, then add freight to get the total invoice amount."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "List Price",
+                "1": "Suggested retail price",
+                "2": "\\$11,550.00"
+              },
+              {
+                "0": "Trade Discount Rate",
+                "1": "Percent off list",
+                "2": "25% (0.25)"
+              },
+              {
+                "0": "Trade Discount Amount",
+                "1": "List price × Rate",
+                "2": "\\$11,550 × 0.25 = \\$2,887.50"
+              },
+              {
+                "0": "Net Price",
+                "1": "List price – Discount amount",
+                "2": "\\$11,550 – \\$2,887.50 = \\$8,662.50"
+              }
+            ],
+            "type": "table",
+            "title": "Trade Discount Terms",
+            "headers": [
+              "Term",
+              "Meaning",
+              "Example ($11,550 list, 25% discount)"
+            ],
+            "caption": "Retailer pays the net price, then adds markup to get selling price."
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Do not take the trade discount on freight or sales tax. [[imp:Trade discount applies only to the merchandise list price.]]"
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "optional": true,
+        "prompt": "A retailer pays net price \\$4,500 after a 25% trade discount. What was the list price? (Hint: Net price = 75% of list).",
+        "hints": [
+          "List = Net ÷ 0.75.",
+          "4,500 ÷ 0.75 = ?"
+        ],
+        "answers": [
+          "6000",
+          "6,000"
+        ]
+      }
+    },
+    {
+      "challengeCorner": {
+        "type": "short-answer",
+        "optional": true,
+        "answers": [
+          "472.50"
+        ],
+        "prompt": "A catalog lists an item at \\$450 less 30%. What is the net price? If the retailer further marks up the net price by 50%, what is the selling price?",
+        "hints": [
+          "Net = 450 × 0.70 = 315.",
+          "Selling = 315 × 1.50 = 472.50."
+        ]
+      },
+      "confusionCorner": {
+        "body": "If you need to find list price from net, don't multiply. [[imp:Divide by (1 – rate).]]",
+        "title": "Watch out!"
+      },
+      "teacherCues": [
+        "Walk through the blueprint: Understand → Solve → Conclude.",
+        "Assign variables: L = list price, R = trade discount rate, D = discount amount, N = net price."
+      ],
+      "id": "single-trade-discount",
+      "concept": {
+        "explanation": [
+          "Use the blueprint aid to organize trade discount problems.",
+          "1. Understand: identify knowns (list price, discount rate) and unknowns (discount amount, net price).",
+          "2. Solve: apply the formulas. Discount = List × Rate (as decimal). Net = List – Discount.",
+          "3. Conclude: check that the net price plus discount equals the list price.",
+          "For problems where the net price and rate are known, use the complement: [[imp:Net price = List price × (1 – Trade discount rate).]] So List = Net ÷ (1 – Rate)."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{List Price} = \\frac{\\text{Net Price}}{1 - \\text{Trade Discount Rate}}$$",
+          "title": "Finding List Price from Net Price",
+          "notes": [
+            "This is the complement method.",
+            "If rate is 25%, then net price = 75% of list."
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "List=\\$2,700, Rate=40%",
+                "2": "Find D and N."
+              },
+              {
+                "0": "Solve",
+                "1": "D = 2,700 × 0.40 = \\$1,080. N = 2,700 – 1,080 = \\$1,620.",
+                "2": ""
+              },
+              {
+                "0": "Conclude",
+                "1": "Check: 1,620 + 1,080 = 2,700. Correct.",
+                "2": "Net price = \\$1,620."
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Example (List \\$2,700, Rate 40%)"
+            ],
+            "caption": "Use this structure for any single trade discount problem.",
+            "title": "Blueprint for Single Trade Discount"
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "The MacBook Pro lists for \\$2,700 with a 40% trade discount. Using the blueprint aid, the bookstore can quickly compute the discount and net price, ensuring accurate payment."
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Trade discount rate.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the percent off.",
+            "Not net price rate."
+          ],
+          "id": "b2q1",
+          "blanks": [
+            {
+              "accept": [
+                "trade discount",
+                "discount"
+              ]
+            }
+          ],
+          "prompt": "Net price = List price × (1 – ___ rate)."
+        },
+        {
+          "prompt": "List price \\$2,000, trade discount 35%. Find trade discount amount.",
+          "id": "b2q2",
+          "answers": [
+            "700",
+            "700.00"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "\\$700.",
+          "hints": [
+            "2,000 × 0.35 = ?",
+            "Multiply."
+          ]
+        },
+        {
+          "answers": [
+            "6000",
+            "6,000"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "\\$6,000.",
+          "prompt": "After a 20% trade discount, net price is \\$4,800. What was the list price?",
+          "id": "b2q3",
+          "hints": [
+            "List = 4,800 ÷ 0.80.",
+            "Divide by complement."
+          ]
+        }
+      ],
+      "title": "2. Single Trade Discount & Blueprint Aid",
+      "examples": [
+        {
+          "prompt": "A retailer pays \\$1,200 after a 20% trade discount. What is the list price?",
+          "title": "A – Find list price from net",
+          "steps": [
+            "Net price = 80% of list (since 100% – 20% = 80%).",
+            "List = Net ÷ 0.80 = \\$1,200 ÷ 0.80 = \\$1,500.",
+            "List price is \\$1,500."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Net price is the remaining part after the discount.",
+          "role": "peer-explain",
+          "title": "B – Why complement?",
+          "prompt": "Explain why you divide by (1 – rate) to find list price when you know the net price.",
+          "steps": [
+            "Net price = List × (1 – rate).",
+            "So List = Net ÷ (1 – rate).",
+            "Dividing back gives the original whole before the discount."
+          ]
+        },
+        {
+          "title": "C – Full calculation",
+          "steps": [
+            "Discount = \\$3,500 × 0.30 = \\$1,050.",
+            "Net = \\$3,500 – \\$1,050 = \\$2,450.",
+            "Complement check: Net = \\$3,500 × 0.70 = \\$2,450. Same."
+          ],
+          "prompt": "List price \\$3,500, trade discount rate 30%. Find discount amount and net price. Then verify using complement.",
+          "role": "independent"
+        }
+      ]
+    },
+    {
+      "id": "freight-terms",
+      "challengeCorner": {
+        "hints": [
+          "Net merchandise = 12,000 × 0.80 = 9,600.",
+          "Add freight 300 = 9,900."
+        ],
+        "answers": [
+          "9,900"
+        ],
+        "prompt": "A company buys goods for \\$12,000 list, less 20%, FOB shipping point. Freight is \\$300. If the buyer pays within the discount period (2/10, n/30), how much is the check? (Cash discount covered later, but here ignore cash discount).",
+        "optional": true,
+        "type": "short-answer"
+      },
+      "examples": [
+        {
+          "title": "A – Identify who pays",
+          "prompt": "Goods are shipped FOB destination. In transit, the truck has an accident. Who bears the loss?",
+          "steps": [
+            "FOB destination means the seller owns the goods until delivery.",
+            "The seller bears the loss and must file any insurance claim.",
+            "The buyer is not responsible for the damaged goods."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "The invoice shows merchandise \\$1,000 less 20%, plus freight \\$50 prepaid. Terms FOB shipping point. How do you compute the total?",
+          "steps": [
+            "Discount only on merchandise: \\$1,000 × 0.20 = \\$200 off; net merchandise = \\$800.",
+            "Add freight \\$50 because FOB shipping point; buyer pays freight.",
+            "Total invoice = \\$800 + \\$50 = \\$850."
+          ],
+          "minLength": 2,
+          "title": "B – Invoice with freight",
+          "peerPrompt": "Does the discount apply to freight?"
+        },
+        {
+          "title": "C – FOB destination",
+          "steps": [
+            "Net price = \\$5,000 × 0.70 = \\$3,500.",
+            "Since FOB destination, seller pays freight; the freight is not added to the buyer's invoice.",
+            "Invoice total = \\$3,500."
+          ],
+          "prompt": "Merchandise list \\$5,000, trade discount 30%, freight \\$120, terms FOB destination. The seller prepaid freight. What is the invoice total from the seller?",
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't apply trade discount to freight. [[imp:Freight is always added after the net merchandise price is calculated.]]"
+      },
+      "questions": [
+        {
+          "hints": [
+            "Not the seller.",
+            "Title transfers at the shipping point."
+          ],
+          "id": "b3q1",
+          "type": "fill-blank",
+          "prompt": "FOB shipping point means the ___ pays the freight.",
+          "feedbackIfWrong": "Buyer.",
+          "blanks": [
+            {
+              "accept": [
+                "buyer"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3q2",
+          "prompt": "Who owns the goods during transit under FOB destination?",
+          "type": "short-answer",
+          "feedbackIfWrong": "The seller owns them until delivery.",
+          "answers": [
+            "seller"
+          ],
+          "hints": [
+            "They haven't arrived yet.",
+            "Title transfers at the destination."
+          ]
+        },
+        {
+          "id": "b3q3",
+          "type": "short-answer",
+          "prompt": "Is freight included in the trade discount calculation?",
+          "answers": [
+            "no"
+          ],
+          "hints": [
+            "Discount is on merchandise only.",
+            "Not on shipping charges."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Total Invoice with Freight",
+          "notes": [
+            "Cash discounts are taken on net merchandise price, not on freight.",
+            "Always check FOB terms before calculating payment."
+          ],
+          "formula": "Total Invoice = (List Price – Trade Discount Amount) + Freight (if FOB shipping point and prepaid)"
+        },
+        "visuals": [
+          {
+            "caption": "Understanding FOB determines who bears freight costs and risk during transit.",
+            "rows": [
+              {
+                "0": "FOB Shipping Point",
+                "1": "Buyer",
+                "2": "At shipping point (seller's dock)",
+                "3": "Freight often added to invoice by seller"
+              },
+              {
+                "0": "FOB Destination",
+                "1": "Seller",
+                "2": "At buyer's receiving dock",
+                "3": "Seller includes freight in its own costs; not on buyer's invoice"
+              }
+            ],
+            "title": "FOB Terms Comparison",
+            "type": "table",
+            "headers": [
+              "Term",
+              "Who Pays Freight?",
+              "When Does Title Transfer?",
+              "Invoice Handling"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "[[kw:FOB shipping point]] means the buyer pays freight and owns the goods once they leave the seller's location.",
+          "[[kw:FOB destination]] means the seller pays freight and owns the goods until they arrive at the buyer's location.",
+          "FOB stands for 'Free on Board'.",
+          "When the seller prepays freight, it is added to the invoice; the buyer still ultimately pays for FOB shipping point.",
+          "[[imp:Trade discounts apply only to merchandise, not to freight charges.]]"
+        ]
+      },
+      "title": "3. Freight Terms: FOB Shipping Point & FOB Destination",
+      "teacherCues": [
+        "Draw a map showing buyer and seller and who pays the freight.",
+        "Explain how freight affects invoice total."
+      ],
+      "discoveryHook": {
+        "scenario": "If IBM in San Diego buys from Argo in Boston FOB Boston (shipping point), IBM pays the freight and takes title when goods leave the seller. If FOB San Diego (destination), Argo pays freight and keeps ownership until delivery."
+      }
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "title": "Chain Discount Formulas",
+          "notes": [
+            "Rates must be in decimal form.",
+            "The net price equivalent rate directly multiplied by list gives final net price."
+          ],
+          "formula": "$$\\text{Net Price Equivalent Rate} = (1 - R_1) \\times (1 - R_2) \\times \\dots$$ $$\\text{Single Equivalent Discount Rate} = 1 - \\text{Net Price Equivalent Rate}$$"
+        },
+        "explanation": [
+          "A [[kw:chain discount]] is a series of trade discounts, e.g., 20/10/5 means 20% off, then 10% off the remainder, then 5% off that remainder.",
+          "To find the final net price: multiply the list price by the complements of each discount sequentially.",
+          "[[imp:Net price equivalent rate = (1 – R1) × (1 – R2) × (1 – R3) ...]] This gives the percentage of list price paid.",
+          "[[imp:Single equivalent discount rate = 1 – Net price equivalent rate.]] This tells you the total discount as one percent.",
+          "Example: 20/10: complements 0.80 and 0.90; net price equivalent = 0.80 × 0.90 = 0.72, so a single equivalent discount of 28%."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Calculation",
+              "Remaining Balance"
+            ],
+            "caption": "Net price = \\$684. Net price equivalent rate = 0.80 × 0.90 × 0.95 = 0.684. Single equivalent discount = 31.6%.",
+            "title": "Chain Discount 20/10/5 on \\$1,000 list",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "List Price",
+                "1": "\\$1,000",
+                "2": "\\$1,000"
+              },
+              {
+                "0": "After 20%",
+                "1": "1,000 × 0.80 = 800",
+                "2": "\\$800"
+              },
+              {
+                "0": "After 10% on 800",
+                "1": "800 × 0.90 = 720",
+                "2": "\\$720"
+              },
+              {
+                "0": "After 5% on 720",
+                "1": "720 × 0.95 = 684",
+                "2": "\\$684"
+              }
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "title": "4. Chain Discounts",
+      "confusionCorner": {
+        "body": "Never add chain discount percentages. [[imp:Always multiply the complements (1 – rate) for each discount to find the net price equivalent rate.]]",
+        "title": "Watch out!"
+      },
+      "id": "chain-discounts",
+      "challengeCorner": {
+        "hints": [
+          "Complements: 0.70 × 0.80 × 0.90 = 0.504.",
+          "Single equivalent = 1 – 0.504 = 49.6%; net price = 5,000 × 0.504 = 2,520."
+        ],
+        "answers": [
+          "49.6%",
+          "2520"
+        ],
+        "type": "short-answer",
+        "prompt": "A wholesaler offers a chain discount of 30/20/10. What is the single equivalent discount rate, and what is the net price on a \\$5,000 list item?",
+        "optional": true
+      },
+      "questions": [
+        {
+          "hints": [
+            "Not single.",
+            "Multiple linked discounts."
+          ],
+          "prompt": "A series of trade discounts applied one after another is called a ___ discount.",
+          "blanks": [
+            {
+              "accept": [
+                "chain"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Chain.",
+          "id": "b4q1",
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "Complements 0.90 and 0.95.",
+            "0.90 × 0.95 = 0.855; 1,000 × 0.855 = ?"
+          ],
+          "prompt": "List price \\$1,000, chain discount 10/5. Find the net price.",
+          "feedbackIfWrong": "\\$855.",
+          "id": "b4q2",
+          "type": "short-answer",
+          "answers": [
+            "855",
+            "855.00"
+          ]
+        },
+        {
+          "id": "b4q3",
+          "type": "short-answer",
+          "hints": [
+            "Net equivalent = 0.80 × 0.90 × 0.95 = 0.684.",
+            "Single equivalent = 1 – 0.684 = 0.316 or 31.6%."
+          ],
+          "prompt": "For chain discount 20/10/5, what is the single equivalent discount rate? (percent, just number)",
+          "answers": [
+            "31.6",
+            "31.6%"
+          ],
+          "feedbackIfWrong": "31.6%."
+        }
+      ],
+      "teacherCues": [
+        "Show how multiple discounts are applied sequentially.",
+        "Introduce the net price equivalent rate and single equivalent discount rate."
+      ],
+      "discoveryHook": {
+        "scenario": "Sometimes a manufacturer gives a retailer a series of discounts, like 20/10/5. Each discount is applied to the remaining balance, not just added. The net price equivalent rate gives the final percent of list the retailer pays."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Chain discount calculation",
+          "prompt": "List price \\$2,000, chain discount 15/10. Find the net price and single equivalent discount rate.",
+          "steps": [
+            "Complements: 0.85 and 0.90.",
+            "Net price equivalent rate = 0.85 × 0.90 = 0.765.",
+            "Net price = \\$2,000 × 0.765 = \\$1,530. Single equivalent discount = 1 – 0.765 = 0.235 = 23.5%."
+          ]
+        },
+        {
+          "title": "B – Why not just add?",
+          "peerPrompt": "Think about what the second discount is applied to.",
+          "role": "peer-explain",
+          "steps": [
+            "The second discount is applied to the already reduced price, not the original.",
+            "Adding discounts ignores that the second percent is taken on a smaller amount.",
+            "So 20/10 results in a total discount less than 30%."
+          ],
+          "minLength": 2,
+          "prompt": "Why isn't a 20/10 chain discount equal to a 30% single discount?"
+        },
+        {
+          "prompt": "After a 25/5 chain discount, the net price is \\$712.50. What was the list price?",
+          "steps": [
+            "Net price equivalent rate = 0.75 × 0.95 = 0.7125.",
+            "List = Net ÷ 0.7125 = \\$712.50 ÷ 0.7125 = \\$1,000."
+          ],
+          "title": "C – Find list price from chain",
+          "role": "independent"
+        }
+      ]
+    },
+    {
+      "title": "5. Reading an Invoice & Credit Terms (Preview)",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Invoice Total} = \\text{Net Price} + \\text{Freight (if applicable)}$$",
+          "title": "Invoice Total (before cash discount)",
+          "notes": [
+            "Cash discount, if taken, is applied to net price, not including freight."
+          ]
+        },
+        "explanation": [
+          "An invoice summarizes the transaction: item descriptions, list price, trade discount(s), net price, freight, and credit terms.",
+          "[[kw:Credit terms]] like '2/10, n/30' tell the buyer when to pay and what discount they can earn for early payment.",
+          "For now, focus on the trade discount and freight sections; the cash discount will be detailed in LU 7–2.",
+          "[[imp:Always read the invoice carefully to identify all charges and discounts before making payment.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Merchandise Total",
+                "1": "50 books @ \\$195 each = \\$9,750",
+                "2": "Sum of list prices."
+              },
+              {
+                "0": "Trade Discount",
+                "1": "25% off \\$11,550 = \\$2,887.50",
+                "2": "Reduction for retailer."
+              },
+              {
+                "0": "Net Price",
+                "1": "\\$11,550 – \\$2,887.50 = \\$8,662.50",
+                "2": "Amount before freight and cash discount."
+              },
+              {
+                "0": "Freight",
+                "1": "\\$125.00 prepaid",
+                "2": "Shipping cost, added if FOB shipping point."
+              },
+              {
+                "0": "Credit Terms",
+                "1": "2/10, n/30",
+                "2": "2% discount if paid within 10 days; net due in 30 days."
+              }
+            ],
+            "variant": "colorful",
+            "caption": "The total invoice amount is net merchandise price plus freight.",
+            "headers": [
+              "Section",
+              "Example",
+              "Meaning"
+            ],
+            "title": "Sample Invoice Sections"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "10 days.",
+          "prompt": "Credit terms of '2/10, n/30' mean a 2% discount if paid within ___ days.",
+          "id": "b5q1",
+          "blanks": [
+            {
+              "accept": [
+                "10"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the number after the slash.",
+            "Not 30."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "1960",
+            "1,960"
+          ],
+          "prompt": "If the net price is \\$2,000 and terms are 2/10, how much would you pay if you take the cash discount?",
+          "type": "short-answer",
+          "feedbackIfWrong": "\\$1,960.",
+          "hints": [
+            "Discount = 2,000 × 0.02 = \\$40.",
+            "Amount = 2,000 - 40."
+          ],
+          "id": "b5q2"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "net price"
+          ],
+          "prompt": "A cash discount is taken on the net price or the list price?",
+          "id": "b5q3",
+          "feedbackIfWrong": "Net price.",
+          "hints": [
+            "After trade discount.",
+            "Not the original list."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "3/15 means a 3% cash discount can be taken if the invoice is paid within 15 days of the invoice date.",
+            "n/45 means the full net amount is due within 45 days.",
+            "If not paid within 15 days, the buyer loses the cash discount."
+          ],
+          "title": "A – Interpret credit terms",
+          "role": "guided",
+          "prompt": "What does '3/15, n/45' mean?"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Why would a seller offer terms like 2/10, n/30?",
+          "peerPrompt": "Benefit to seller?",
+          "title": "B – Why early payment discount?",
+          "minLength": 2,
+          "steps": [
+            "The seller receives cash sooner, improving cash flow.",
+            "The discount encourages the buyer to pay early, reducing collection risk and administrative costs."
+          ]
+        },
+        {
+          "role": "independent",
+          "prompt": "Invoice: list \\$4,000, trade discount 15%, freight \\$80 (FOB shipping point). Find the total invoice amount.",
+          "steps": [
+            "Trade discount = \\$4,000 × 0.15 = \\$600. Net price = \\$3,400.",
+            "Add freight = \\$80.",
+            "Total invoice = \\$3,480."
+          ],
+          "title": "C – Calculate invoice total"
+        }
+      ],
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "4,970"
+        ],
+        "prompt": "Invoice terms 3/15, n/45. Net price \\$5,000, freight \\$120 prepaid (FOB shipping point). If paid within the discount period, what is the amount of the check? (Remember, cash discount on net price only, then add freight.)",
+        "optional": true,
+        "hints": [
+          "Cash discount = 5,000 × 0.03 = 150.",
+          "Amount = (5,000 - 150) + 120 = 4,970."
+        ]
+      },
+      "teacherCues": [
+        "Project a sample invoice. Point out trade discounts, freight, and credit terms like '2/10, n/30'.",
+        "Explain that cash discounts will be covered later in LU 7–2."
+      ],
+      "confusionCorner": {
+        "body": "Cash discount is not the same as trade discount. [[imp:Trade discount is always taken off the list price; cash discount is taken off the net price for early payment.]]",
+        "title": "Watch out!"
+      },
+      "discoveryHook": {
+        "scenario": "The invoice in Figure 7–1 lists trade discount, net price, prepaid freight, and terms '2/10, n/30'. The '2/10' means the buyer can take a 2% cash discount if paid within 10 days, otherwise the full net price is due in 30 days."
+      },
+      "id": "invoice-and-credit-terms"
+    }
+  ],
+  "schemaVersion": 2,
+  "id": "ch7-lu7-1",
+  "title": "Trade Discounts—Single and Chain (Includes Freight)",
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

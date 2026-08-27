@@ -1,0 +1,746 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-2-6-rational-functions",
+  "title": "Rational Functions",
+  "standards": [
+    "HSF.IF.C.7d",
+    "HSF.IF.B.4",
+    "HSA.APR.D.6"
+  ],
+  "blocks": [
+    {
+      "id": "rational-function-domain",
+      "title": "1. Rational Functions and Their Domain",
+      "teacherCues": [
+        "Write $ f(x)=\\frac{1}{x} $ and ask: \"For which x is this function undefined?\" Then define domain.",
+        "Use a table to explore values of $ f(x) $ as $ x $ approaches 0 from left and right to introduce asymptotic behavior."
+      ],
+      "discoveryHook": {
+        "scenario": "A rational function is a fraction of two polynomials. Its domain excludes any x that makes the denominator zero. Near those forbidden values, the graph often shoots up or down to infinity—creating invisible fences called asymptotes."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:rational function]] is a function of the form $ f(x) = \\frac{N(x)}{D(x)} $, where $ N(x) $ and $ D(x) $ are polynomials and $ D(x) \\neq 0 $ (not the zero polynomial).",
+          "The domain of a rational function is all real numbers except the zeros of the denominator $ D(x) $.",
+          "Near an excluded x‑value, the function may increase or decrease without bound. This behavior is studied using a table of values and leads to the idea of a [[kw:vertical asymptote]].",
+          "Example: $ f(x)=\\frac{1}{x} $ has domain $ x \\neq 0 $. As $ x \\to 0^- $, $ f(x) \\to -\\infty $; as $ x \\to 0^+ $, $ f(x) \\to \\infty $."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Behavior of $ f(x)=1/x $ near $ x=0 $",
+            "headers": [
+              "$ x $ (left of 0)",
+              "$ f(x) $",
+              "$ x $ (right of 0)",
+              "$ f(x) $"
+            ],
+            "rows": [
+              {
+                "0": "-1",
+                "1": "-1",
+                "2": "0.001",
+                "3": "1000"
+              },
+              {
+                "0": "-0.5",
+                "1": "-2",
+                "2": "0.01",
+                "3": "100"
+              },
+              {
+                "0": "-0.1",
+                "1": "-10",
+                "2": "0.1",
+                "3": "10"
+              },
+              {
+                "0": "-0.001",
+                "1": "-1000",
+                "2": "1",
+                "3": "1"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Rational Function",
+          "formula": "$$ f(x) = \\frac{N(x)}{D(x)} $$",
+          "notes": [
+            "$ N(x) $ and $ D(x) $ are polynomials.",
+            "Domain: all real $ x $ such that $ D(x) \\neq 0 $.",
+            "Vertical asymptotes occur where $ D(x)=0 $ (after simplification)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find the domain",
+          "prompt": "Find the domain of $ f(x) = \\frac{3x}{x-1} $ and describe the behavior near the excluded value.",
+          "steps": [
+            "Denominator zero when $ x-1=0 \\to x=1 $. So domain: all real numbers except $ x=1 $.",
+            "Near $ x=1 $, make a table: for $ x \\to 1^- $ (like 0.9), $ f(x) \\to -\\infty $; for $ x \\to 1^+ $ (like 1.1), $ f(x) \\to \\infty $.",
+            "The line $ x=1 $ is a vertical asymptote."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Excluded values from denominator zeros",
+          "prompt": "Why is $ x=0 $ not in the domain of $ f(x)=\\frac{x^2+4}{x} $? What happens to the graph there?",
+          "peerPrompt": "Explain to a partner: How does the denominator being zero break the function? Why can't we just plug in $ x=0 $ and get a value?",
+          "minLength": 2,
+          "steps": [
+            "Setting denominator $ x=0 $ gives division by zero, which is undefined.",
+            "Thus $ x=0 $ is excluded from the domain.",
+            "As $ x \\to 0 $, the function grows without bound (vertically), forming a vertical asymptote."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Domain with multiple restrictions",
+          "prompt": "Find the domain of $ f(x) = \\frac{x+2}{(x-3)(x+1)} $.",
+          "steps": [
+            "Set denominator equal to zero: $ (x-3)(x+1)=0 \\to x=3, x=-1 $.",
+            "These values are excluded. Domain: all real numbers except $ x=3 $ and $ x=-1 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Domain is about denominator, not numerator",
+        "body": "Only denominator zeros (after simplifying common factors) restrict the domain. Numerator zeros give x‑intercepts, not domain restrictions."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "A rational function is undefined when its denominator equals ___.",
+          "blanks": [
+            {
+              "accept": [
+                "zero",
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "Division by what is undefined?",
+            "It's the number that makes the fraction blow up."
+          ],
+          "feedbackIfWrong": "zero."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "Find the excluded value(s) for $ f(x)=\\frac{2}{x+5} $.",
+          "answers": [
+            "-5"
+          ],
+          "hints": [
+            "Set denominator = 0.",
+            "x+5=0 → x=?"
+          ],
+          "feedbackIfWrong": "x = -5."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "As $ x \\to 0^+ $, $ \\frac{1}{x} \\to $? (Answer: ∞ or -∞)",
+          "answers": [
+            "∞",
+            "infinity",
+            "positive infinity"
+          ],
+          "hints": [
+            "Right side of zero gives positive large numbers.",
+            "Consider x=0.001 → 1/0.001 = 1000."
+          ],
+          "feedbackIfWrong": "∞."
+        }
+      ]
+    },
+    {
+      "id": "asymptotes",
+      "title": "2. Vertical and Horizontal Asymptotes",
+      "teacherCues": [
+        "Draw a graph with a dashed vertical line and a dashed horizontal line. Ask: \"What are these lines called and how do we find them?\"",
+        "Emphasize that vertical asymptotes come from denominator zeros (after simplification), horizontal from leading terms comparison."
+      ],
+      "discoveryHook": {
+        "scenario": "Asymptotes are the invisible boundaries that rational function graphs approach but rarely cross. Vertical asymptotes act like electrified fences where the function shoots up or down. Horizontal asymptotes describe the function's long‑run behavior as x grows huge."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:vertical asymptote]] at $ x=a $ occurs when $ f(x) \\to \\pm\\infty $ as $ x \\to a $ (from left or right). Found by setting the denominator (after simplifying) equal to zero.",
+          "A [[kw:horizontal asymptote]] $ y=b $ describes the end behavior: $ f(x) \\to b $ as $ x \\to \\infty $ or $ x \\to -\\infty $.",
+          "To find horizontal asymptotes, compare the degrees of numerator $ n $ and denominator $ m $:",
+          "  - If $ n < m $: horizontal asymptote $ y = 0 $ (the x‑axis).",
+          "  - If $ n = m $: horizontal asymptote $ y = \\frac{a_n}{b_m} $ (ratio of leading coefficients).",
+          "  - If $ n > m $: no horizontal asymptote (there may be a slant asymptote).",
+          "These rules assume the rational function is in lowest terms (no common factors)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Horizontal Asymptote Rules",
+            "headers": [
+              "Degree Comparison",
+              "Horizontal Asymptote"
+            ],
+            "rows": [
+              {
+                "0": "$ n < m $",
+                "1": "$ y = 0 $"
+              },
+              {
+                "0": "$ n = m $",
+                "1": "$ y = a_n / b_m $ (leading coefficients)"
+              },
+              {
+                "0": "$ n > m $",
+                "1": "None (may have slant asymptote)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Asymptote Finder",
+          "formula": "$$ \\text{Vertical: } D(x)=0 \\text{ (after simplification)} $$ $$ \\text{Horizontal: compare degrees } n, m $$",
+          "notes": [
+            "VA: solve $ D(x)=0 $ after canceling common factors.",
+            "HA: $ y=0 $ if $ n<m $; $ y=a_n/b_m $ if $ n=m $; none if $ n>m $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find asymptotes of $ f(x)=\\frac{2x^2}{x^2-1} $",
+          "prompt": "Find all vertical and horizontal asymptotes.",
+          "steps": [
+            "Denominator $ x^2-1=0 \\to x=\\pm 1 $. So vertical asymptotes: $ x=1, x=-1 $.",
+            "Degree: numerator and denominator both 2, so $ n=m $. Horizontal asymptote: $ y=\\frac{2}{1}=2 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Can a graph cross a horizontal asymptote?",
+          "prompt": "Discuss: Is it possible for a rational function to cross its horizontal asymptote? When might that happen?",
+          "peerPrompt": "Think about the function $ f(x)=\\frac{2x+1}{x+1} $. It has horizontal asymptote $ y=2 $. Does the graph ever touch $ y=2 $?",
+          "minLength": 2,
+          "steps": [
+            "Horizontal asymptote describes long‑run behavior, not a strict barrier.",
+            "Some rational functions can cross their horizontal asymptote at finite x-values.",
+            "For $ f(x)=\\frac{2x+1}{x+1} $, set $ f(x)=2 $: $ 2x+1=2x+2 \\to 1=2 $ no solution, so it doesn't cross. But other functions may cross."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Asymptotes of $ f(x)=\\frac{x^2+x-2}{x^2-x-6} $",
+          "prompt": "Find vertical and horizontal asymptotes after simplifying.",
+          "steps": [
+            "Factor: $ f(x)=\\frac{(x-1)(x+2)}{(x+2)(x-3)} = \\frac{x-1}{x-3} $, $ x \\neq -2 $.",
+            "Vertical asymptote: $ x=3 $ (zero of denominator after simplification). There is a hole at $ x=-2 $.",
+            "Degrees $ n=m=1 $; leading coefficients both 1 → horizontal asymptote $ y=1 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Common factors lead to holes, not asymptotes",
+        "body": "If numerator and denominator share a factor, cancel it; the resulting hole is not a vertical asymptote. Only the remaining denominator zeros give VAs."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "short-answer",
+          "prompt": "A rational function has denominator $ (x-2)^2 $ with no common factor. What is the vertical asymptote?",
+          "answers": [
+            "x=2"
+          ],
+          "hints": [
+            "Set the denominator equal to zero.",
+            "Even multiplicity still gives a vertical asymptote."
+          ],
+          "feedbackIfWrong": "x=2."
+        },
+        {
+          "id": "q2-2",
+          "type": "fill-blank",
+          "prompt": "If the degree of the numerator is less than the degree of the denominator, the horizontal asymptote is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "y=0",
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "Think of $ 1/x $.",
+            "y = ?"
+          ],
+          "feedbackIfWrong": "y = 0."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "For $ f(x)=\\frac{3x+5}{2x-7} $, what is the horizontal asymptote?",
+          "answers": [
+            "y=3/2",
+            "y=1.5",
+            "y = 3/2"
+          ],
+          "hints": [
+            "n=m, leading coefficients: 3 and 2.",
+            "Ratio is 3/2."
+          ],
+          "feedbackIfWrong": "y = 3/2."
+        }
+      ]
+    },
+    {
+      "id": "sketching-rational",
+      "title": "3. Sketching Rational Functions",
+      "teacherCues": [
+        "Outline the step‑by‑step guidelines: simplify, intercepts, asymptotes, extra points, connect.",
+        "Emphasize plotting at least one point in each region defined by vertical asymptotes and x‑intercepts."
+      ],
+      "discoveryHook": {
+        "scenario": "Graphing a rational function is like mapping a landscape with invisible boundaries. By finding intercepts, asymptotes, and a few key points, you can sketch the complete shape without plotting dozens of points."
+      },
+      "concept": {
+        "explanation": [
+          "**Guidelines for sketching $ f(x)=\\frac{N(x)}{D(x)} $:**",
+          "1. **Simplify** if possible. Note any holes (canceled factors).",
+          "2. **y‑intercept**: $ f(0) $ (if 0 in domain).",
+          "3. **x‑intercepts**: zeros of $ N(x) $ (after simplification).",
+          "4. **Vertical asymptotes**: zeros of $ D(x) $ after simplification.",
+          "5. **Horizontal (or slant) asymptote**.",
+          "6. **Plot extra points** in each interval created by vertical asymptotes and x‑intercepts to determine the graph's sign and shape.",
+          "7. **Draw smooth curves** respecting asymptotes."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Sketching $ g(x)=\\frac{3}{x-2} $",
+            "headers": [
+              "Feature",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "y‑intercept",
+                "1": "$ g(0) = -3/2 $"
+              },
+              {
+                "0": "x‑intercept",
+                "1": "None (numerator constant)"
+              },
+              {
+                "0": "Vertical asymptote",
+                "1": "$ x=2 $"
+              },
+              {
+                "0": "Horizontal asymptote",
+                "1": "$ y=0 $ (degree num < den)"
+              },
+              {
+                "0": "Test intervals",
+                "1": "Left of 2: $ g(-4)=-1/2 $ (negative). Right of 2: $ g(3)=3 $ (positive)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Graphing a Rational Function",
+          "formula": "$$ f(x) = \\frac{N(x)}{D(x)} $$",
+          "notes": [
+            "Simplify first.",
+            "Intercepts (x and y).",
+            "Vertical asymptotes from simplified denominator.",
+            "Horizontal/slant asymptote.",
+            "Test points in each interval."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Simple rational function",
+          "prompt": "Sketch $ g(x) = \\frac{3}{x-2} $ and state its domain.",
+          "steps": [
+            "Domain: $ x \\neq 2 $.",
+            "y‑intercept: $ g(0) = -3/2 $.",
+            "No x‑intercept (numerator 3 never zero).",
+            "Vertical asymptote $ x=2 $, horizontal asymptote $ y=0 $.",
+            "Test left of 2 ($ x=0 $ already), right of 2: $ x=3 \\to g(3)=3 $ positive.",
+            "Sketch: curve in left region below x‑axis approaching $ y=0 $, curve in right region above x‑axis."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Interpreting the sign chart",
+          "prompt": "For $ f(x)=\\frac{2x-1}{x} $, explain how the sign chart helps you draw the graph.",
+          "peerPrompt": "Talk to a partner: Where does this function have x‑intercepts and vertical asymptotes? How do the signs of the function change in the intervals?",
+          "minLength": 2,
+          "steps": [
+            "x‑intercept: $ x=1/2 $; vertical asymptote: $ x=0 $.",
+            "Intervals: $ (-\\infty,0) $, $ (0,1/2) $, $ (1/2,\\infty) $.",
+            "Test point in each; signs: left of 0 negative? Actually $ x=-1 \\to f(-1)=3 $ positive; between 0 and 1/2: $ x=0.1 \\to $ negative; right of 1/2 positive.",
+            "That tells you which side of each asymptote/intercept the graph lies."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Sketch $ f(x)=\\frac{x+2}{x-3} $",
+          "prompt": "Find all key features and sketch the graph.",
+          "steps": [
+            "Domain: $ x \\neq 3 $. y‑intercept: $ f(0) = -2/3 $.",
+            "x‑intercept: $ x=-2 $. Vertical asymptote: $ x=3 $.",
+            "Degrees equal (both 1) → horizontal asymptote $ y=1 $ (ratio 1/1).",
+            "Test intervals: $ (-\\infty,-2) $, $ (-2,3) $, $ (3,\\infty) $. Use test points to determine signs.",
+            "Draw: curve approaching $ y=1 $ far left, passing through (-2,0) and (0,-2/3), shooting down near $ x=3 $ from left, then from right above approaching $ y=1 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget to simplify first",
+        "body": "If $ N(x) $ and $ D(x) $ share a factor, cancel them. The canceled factor gives a hole, not an asymptote. The simplified function determines the asymptotes and intercepts."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "The x‑intercepts of a rational function come from setting the ___ equal to zero (after simplification).",
+          "blanks": [
+            {
+              "accept": [
+                "numerator"
+              ]
+            }
+          ],
+          "hints": [
+            "Top of the fraction.",
+            "N(x) = 0."
+          ],
+          "feedbackIfWrong": "numerator."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "Find the y‑intercept of $ f(x)=\\frac{4}{x+1} $.",
+          "answers": [
+            "4",
+            "(0,4)"
+          ],
+          "hints": [
+            "Plug in x=0.",
+            "4/(0+1)."
+          ],
+          "feedbackIfWrong": "4 (or (0,4))."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "How many vertical asymptotes does $ f(x)=\\frac{x+1}{x^2-4} $ have? (after simplification)",
+          "answers": [
+            "2"
+          ],
+          "hints": [
+            "Denominator x²-4 = (x-2)(x+2), no common factors.",
+            "Zeros are 2 and -2."
+          ],
+          "feedbackIfWrong": "2."
+        }
+      ]
+    },
+    {
+      "id": "slant-asymptotes",
+      "title": "4. Slant Asymptotes",
+      "teacherCues": [
+        "Ask: \"What happens when the numerator degree is exactly one more than the denominator degree?\" Introduce slant asymptotes.",
+        "Demonstrate polynomial long division to find the slant asymptote equation."
+      ],
+      "discoveryHook": {
+        "scenario": "Sometimes a rational function doesn't settle down horizontally; its graph follows a slanted line. These [[kw:slant asymptotes]] occur when the numerator degree is exactly one more than the denominator degree, and you find them by polynomial division."
+      },
+      "concept": {
+        "explanation": [
+          "If the degree of the numerator exceeds the degree of the denominator by exactly 1, the graph has a [[kw:slant (oblique) asymptote]].",
+          "To find it, perform polynomial long division. The quotient (ignoring the remainder) gives the slant asymptote equation.",
+          "Example: $ f(x)=\\frac{x^2+1}{x-2} $. Divide: $ x^2+1 \\div (x-2) $ gives quotient $ x+2 $ and remainder 5. So slant asymptote is $ y = x+2 $.",
+          "The graph approaches this slanted line as $ x \\to \\pm\\infty $.",
+          "If the degree difference is 2 or more, there is no linear asymptote (the end behavior is like a polynomial of higher degree)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Finding a Slant Asymptote",
+            "headers": [
+              "Rational Function",
+              "Division",
+              "Quotient (slant asymptote)"
+            ],
+            "rows": [
+              {
+                "0": "$ \\frac{x^2+1}{x-2} $",
+                "1": "$ x^2+1 \\div (x-2) $",
+                "2": "$ y = x+2 $"
+              },
+              {
+                "0": "$ \\frac{2x^3+3x}{x^2+1} $",
+                "1": "$ (2x^3+3x) \\div (x^2+1) $",
+                "2": "$ y = 2x $ (ignore remainder)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Slant Asymptote Rule",
+          "formula": "$$ \\text{If degree of } N = \\text{degree of } D + 1, \\text{ the slant asymptote is } y = \text{quotient of } \\frac{N(x)}{D(x)} $$",
+          "notes": [
+            "Perform polynomial long division.",
+            "The slant asymptote is the polynomial part of the result.",
+            "Ignore the remainder."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find slant asymptote",
+          "prompt": "Find the slant asymptote of $ f(x) = \\frac{x^2+1}{x-2} $.",
+          "steps": [
+            "Degree of numerator (2) = degree of denominator (1) + 1.",
+            "Divide: $ x^2+1 \\div (x-2) $. Use synthetic or long division.",
+            "Long division yields $ x+2 + \\frac{5}{x-2} $.",
+            "Slant asymptote: $ y = x+2 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why ignore the remainder?",
+          "prompt": "In the division $ \\frac{x^2+1}{x-2} = x+2 + \\frac{5}{x-2} $, why is the slant asymptote $ y=x+2 $ and not something else?",
+          "peerPrompt": "Discuss: As $ x \\to \\infty $, what happens to the term $ \\frac{5}{x-2} $? How does the function behave?",
+          "minLength": 2,
+          "steps": [
+            "As $ x \\to \\pm\\infty $, the remainder fraction $ \\frac{5}{x-2} \\to 0 $.",
+            "Thus $ f(x) $ approaches $ x+2 $.",
+            "The line $ y=x+2 $ is the asymptote because the function gets arbitrarily close to it."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Slant asymptote for a cubic over quadratic",
+          "prompt": "Determine if $ f(x)=\\frac{x^3-2x}{x^2+1} $ has a slant asymptote and find it.",
+          "steps": [
+            "Degree num=3, den=2 → difference is 1, so yes, a slant asymptote exists.",
+            "Divide: $ (x^3-2x) \\div (x^2+1) = x + \\frac{-3x}{x^2+1} $.",
+            "Slant asymptote: $ y = x $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Not the same as horizontal",
+        "body": "If the numerator degree is exactly one more than denominator degree, the asymptote is slanted, not horizontal. If the difference is more than 1, there is no linear asymptote; the graph behaves like a polynomial."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "A rational function has a slant asymptote when the degree of the numerator is exactly ___ more than the degree of the denominator.",
+          "blanks": [
+            {
+              "accept": [
+                "1",
+                "one"
+              ]
+            }
+          ],
+          "hints": [
+            "Think of when horizontal asymptote fails.",
+            "Difference must be 1."
+          ],
+          "feedbackIfWrong": "1."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "Find the slant asymptote of $ f(x)=\\frac{x^2+2x}{x-1} $.",
+          "answers": [
+            "y = x + 3",
+            "y=x+3"
+          ],
+          "hints": [
+            "Perform division: $ (x^2+2x) \\div (x-1) $.",
+            "Quotient is $ x+3 $, remainder 3."
+          ],
+          "feedbackIfWrong": "y = x + 3."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "Does $ f(x)=\\frac{2x^4+1}{x^2} $ have a slant asymptote? (yes/no)",
+          "answers": [
+            "no"
+          ],
+          "hints": [
+            "Degree difference is 2.",
+            "Slant requires difference exactly 1."
+          ],
+          "feedbackIfWrong": "No."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid",
+      "title": "5. Blueprint Aid: Graphing a Rational Function Step by Step",
+      "teacherCues": [
+        "Walk through a complete example from finding domain to the final sketch.",
+        "Emphasize the Understand → Solve → Conclude cycle: set up, analyze, graph."
+      ],
+      "discoveryHook": {
+        "scenario": "You've learned about domain, intercepts, and asymptotes. Now let's combine them into a seamless graphing method—the Blueprint Aid—that turns a messy rational expression into a clear, accurate sketch."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Understand]]: Identify the rational function. Simplify if possible. Note any holes and domain restrictions.",
+          "[[kw:Solve]]: Compute intercepts (x and y). Determine vertical asymptotes (from simplified denominator). Find horizontal or slant asymptote. Create a sign chart using test points in intervals formed by vertical asymptotes and x‑intercepts.",
+          "[[kw:Conclude]]: Draw asymptotes as dashed lines. Plot intercepts and additional points. Connect the curve in each interval, respecting the asymptotes and the sign information."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint: $ f(x)=\\frac{x+2}{x-3} $",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Domain: $ x \\neq 3 $. No common factors → no holes."
+              },
+              {
+                "0": "Solve",
+                "1": "y‑int: $ -2/3 $; x‑int: $ -2 $; VA: $ x=3 $; HA: $ y=1 $; signs via test points."
+              },
+              {
+                "0": "Conclude",
+                "1": "Dashed VA and HA. Plot intercepts. Connect curves: left of -2 above? test $ x=-3 $ → positive, etc."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Rational Function Graphing Blueprint",
+          "formula": "$$ f(x) = \\frac{N(x)}{D(x)} $$",
+          "notes": [
+            "Simplify. List restrictions.",
+            "Find intercepts and asymptotes.",
+            "Test intervals; sketch."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full graphing walk‑through",
+          "prompt": "Sketch $ f(x) = \\frac{2x}{x^2-4} $.",
+          "steps": [
+            "Simplify: $ \\frac{2x}{(x-2)(x+2)} $, no common factors. Domain: $ x \\neq \\pm 2 $.",
+            "y‑intercept: $ f(0)=0 $. x‑intercept: $ x=0 $.",
+            "Vertical asymptotes: $ x=2, x=-2 $.",
+            "Degree num=1, den=2 → HA: $ y=0 $.",
+            "Make sign chart: intervals $ (-\\infty,-2), (-2,0), (0,2), (2,\\infty) $. Test points: signs alternate. Sketch accordingly."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Discussing the importance of test points",
+          "prompt": "Why can't we just connect the dots without testing signs?",
+          "peerPrompt": "Explain to a partner: If you only know intercepts and asymptotes, how do you know whether the graph goes above or below the asymptote in an interval?",
+          "minLength": 2,
+          "steps": [
+            "In each interval, the function could be positive or negative.",
+            "A test point gives the sign and helps determine the general shape.",
+            "Without test points, you might draw the curve on the wrong side of an asymptote."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Graph a function with a hole",
+          "prompt": "Sketch $ f(x) = \\frac{x-2}{x^2-4} $.",
+          "steps": [
+            "Factor: $ \\frac{x-2}{(x-2)(x+2)} = \\frac{1}{x+2}, x \\neq 2 $.",
+            "Hole at $ x=2 $. Domain: $ x \\neq \\pm 2 $.",
+            "Simplified: $ f(x)=\\frac{1}{x+2} $ (x≠2). y‑int: (0,1/2). No x‑int.",
+            "VA: $ x=-2 $; HA: $ y=0 $.",
+            "Plot hole at (2,1/4). Graph behaves like $ 1/(x+2) $ elsewhere."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Holes are single points",
+        "body": "When a factor cancels, the graph has a missing point at that x-value. Show it with an open circle. The rest of the graph follows the simplified function."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "After simplifying $ f(x)=\\frac{x^2-1}{x-1} $, what is the simplified function?",
+          "answers": [
+            "x+1"
+          ],
+          "hints": [
+            "Factor numerator: (x-1)(x+1).",
+            "Cancel (x-1)."
+          ],
+          "feedbackIfWrong": "x+1."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "In your sketch, a canceled factor results in a ___ in the graph.",
+          "blanks": [
+            {
+              "accept": [
+                "hole"
+              ]
+            }
+          ],
+          "hints": [
+            "It's not an asymptote.",
+            "It's an open circle."
+          ],
+          "feedbackIfWrong": "hole."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "For $ f(x)=\\frac{1}{x+2} $, after finding VA and HA, what test point would you use to check the interval (-2, ∞)?",
+          "answers": [
+            "0",
+            "1",
+            "any number > -2"
+          ],
+          "hints": [
+            "Pick a number greater than -2.",
+            "x=0 is easy."
+          ],
+          "feedbackIfWrong": "0 (or any number > -2)."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

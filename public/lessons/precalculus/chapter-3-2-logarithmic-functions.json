@@ -1,0 +1,729 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-3-2-logarithmic-functions",
+  "title": "Logarithmic Functions and Their Graphs",
+  "standards": [
+    "HSF.IF.C.7e",
+    "HSF.BF.B.5",
+    "HSF.LE.A.4"
+  ],
+  "blocks": [
+    {
+      "id": "logarithmic-functions-intro",
+      "title": "Logarithmic Functions — Definition and Evaluation",
+      "teacherCues": [
+        "Write the exponential equation $2^3=8$ and the logarithmic equation $\\log_2 8 = 3$. Ask: How are they related?",
+        "Emphasize that a logarithm is an exponent: $\\log_a x$ is the power to which $a$ must be raised to get $x$."
+      ],
+      "discoveryHook": {
+        "scenario": "If you know that a population doubles every year, how long does it take to reach 1000? The answer involves the inverse of exponentiation — the logarithm. Logarithms unlock the time variable from exponential growth and decay."
+      },
+      "concept": {
+        "explanation": [
+          "For $a>0$, $a\\neq 1$, and $x>0$, the [[kw:logarithmic function]] with base $a$ is defined by $y = \\log_a x$ if and only if $x = a^y$.",
+          "The equations $y = \\log_a x$ and $x = a^y$ are equivalent. The logarithm $\\log_a x$ is the exponent to which $a$ must be raised to produce $x$.",
+          "The function $f(x) = \\log_a x$ is the inverse of the exponential function $g(x) = a^x$.",
+          "Common bases: base 10 is the [[kw:common logarithm]], written $\\log x$ (base 10 implied). Base $e$ is the [[kw:natural logarithm]], written $\\ln x$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Equivalence between Exponential and Logarithmic Forms",
+            "headers": [
+              "Exponential Form",
+              "Logarithmic Form"
+            ],
+            "rows": [
+              {
+                "0": "$ 2^3 = 8 $",
+                "1": "$ \\log_2 8 = 3 $"
+              },
+              {
+                "0": "$ 5^{-2} = \\frac{1}{25} $",
+                "1": "$ \\log_5 \\frac{1}{25} = -2 $"
+              },
+              {
+                "0": "$ 10^0 = 1 $",
+                "1": "$ \\log_{10} 1 = 0 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Logarithm Definition",
+          "formula": "$$ y = \\log_a x \\quad\\Longleftrightarrow\\quad x = a^y $$",
+          "notes": [
+            "Base $a>0$, $a\\neq 1$; argument $x>0$.",
+            "$\\log_a x$ is the exponent."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Evaluating Logarithms",
+          "prompt": "Evaluate $\\log_2 32$ without a calculator.",
+          "steps": [
+            "Ask: 2 raised to what power gives 32?",
+            "Since $2^5 = 32$, the exponent is $5$.",
+            "Therefore $\\log_2 32 = 5$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Rewriting Logarithmic to Exponential Form",
+          "prompt": "Rewrite $\\log_3 81 = 4$ in exponential form and explain why it's true.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does the logarithmic equation translate to an exponential statement?",
+          "minLength": 8,
+          "steps": [
+            "The base is 3, the logarithm (exponent) is 4, and the result is 81.",
+            "Exponential form: $3^4 = 81$.",
+            "Check: $3^4 = 3 \\times 3 \\times 3 \\times 3 = 81$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Solving a Simple Logarithmic Equation",
+          "prompt": "Solve $\\log_4 x = 3$ for $x$.",
+          "steps": [
+            "Rewrite in exponential form: $x = 4^3$.",
+            "Compute: $4^3 = 64$.",
+            "Thus $x = 64$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Logarithm = Exponent",
+        "body": "A logarithm is just an exponent. If you can think of $\\log_2 8 = 3$ as '2 to what power equals 8?', you can evaluate any logarithm."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "The equation $2^5 = 32$ is equivalent to $\\log_2 32 = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "5"
+              ]
+            }
+          ],
+          "hints": [
+            "The exponent is the logarithm.",
+            "What power of 2 gives 32?"
+          ],
+          "feedbackIfWrong": "$\\log_2 32 = 5$."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "Evaluate $\\log_{10} 1000$.",
+          "answers": [
+            "3",
+            "three"
+          ],
+          "hints": [
+            "10 to what power equals 1000?",
+            "$10^3 = 1000$."
+          ],
+          "feedbackIfWrong": "$\\log_{10} 1000 = 3$."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "What is the base of the common logarithm, written as $\\log x$ without a base?",
+          "answers": [
+            "10",
+            "ten"
+          ],
+          "hints": [
+            "It's the base of our number system.",
+            "When no base is shown, it's this."
+          ],
+          "feedbackIfWrong": "The common logarithm has base 10."
+        }
+      ]
+    },
+    {
+      "id": "properties-of-logarithms",
+      "title": "Properties of Logarithms and the One-to-One Property",
+      "teacherCues": [
+        "Write on the board: $\\log_a 1 = 0$, $\\log_a a = 1$, $\\log_a a^x = x$, $a^{\\log_a x} = x$. Ask students to justify each using the definition.",
+        "Demonstrate the One-to-One Property: If $\\log_a x = \\log_a y$, then $x = y$."
+      ],
+      "discoveryHook": {
+        "scenario": "Logarithms have special 'cancellation' properties that make them powerful for solving equations. The inverse properties let you switch between exponential and logarithmic forms instantly, just like addition and subtraction undo each other."
+      },
+      "concept": {
+        "explanation": [
+          "1. $\\log_a 1 = 0$ because $a^0 = 1$.",
+          "2. $\\log_a a = 1$ because $a^1 = a$.",
+          "3. $\\log_a a^x = x$ and $a^{\\log_a x} = x$ — these are the [[imp:Inverse Properties]].",
+          "4. If $\\log_a x = \\log_a y$, then $x = y$ — the [[kw:One-to-One Property]] of logarithms."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Logarithm Properties",
+            "headers": [
+              "Property",
+              "Explanation"
+            ],
+            "rows": [
+              {
+                "0": "$ \\log_a 1 = 0 $",
+                "1": "$ a^0 = 1 $"
+              },
+              {
+                "0": "$ \\log_a a = 1 $",
+                "1": "$ a^1 = a $"
+              },
+              {
+                "0": "$ \\log_a a^x = x $",
+                "1": "Log of a power returns the exponent"
+              },
+              {
+                "0": "$ a^{\\log_a x} = x $",
+                "1": "Exponential of a log returns the argument"
+              },
+              {
+                "0": "If $ \\log_a x = \\log_a y $ then $ x = y $",
+                "1": "One-to-One Property"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Inverse Properties",
+          "formula": "$$ \\log_a a^x = x \\quad\\text{and}\\quad a^{\\log_a x} = x $$",
+          "notes": [
+            "These show that $\\log_a$ and $a^{\\,\\cdot}$ are inverse operations.",
+            "Use them to simplify expressions like $3^{\\log_3 5}$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Simplifying Using Inverse Properties",
+          "prompt": "Simplify $7^{\\log_7 13}$.",
+          "steps": [
+            "Recognize the form $a^{\\log_a x}$ with $a=7$, $x=13$.",
+            "By the inverse property, $a^{\\log_a x} = x$.",
+            "So $7^{\\log_7 13} = 13$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Using the One-to-One Property",
+          "prompt": "Solve $\\log_2 (x+3) = \\log_2 7$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why can we drop the logs and set the arguments equal?",
+          "minLength": 8,
+          "steps": [
+            "Since the logs have the same base and are equal, their arguments must be equal.",
+            "Set $x+3 = 7$.",
+            "Solve: $x = 4$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Solving with One-to-One Property",
+          "prompt": "Solve $\\log_5 (x^2 - 6) = \\log_5 10$.",
+          "steps": [
+            "Set arguments equal: $x^2 - 6 = 10$.",
+            "Solve: $x^2 = 16$, so $x = \\pm 4$.",
+            "Check domain: both arguments must be positive. For $x = -4$, $x^2-6 = 10 > 0$, so both solutions are valid."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Domain Matters!",
+        "body": "When using the One-to-One Property, always ensure the original arguments are positive. For $\\log_a x$, $x$ must be greater than 0."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "$\\log_3 1 = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "zero"
+              ]
+            }
+          ],
+          "hints": [
+            "$3^0 = 1$.",
+            "Log of 1 is always this."
+          ],
+          "feedbackIfWrong": "$\\log_3 1 = 0$."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "Simplify $\\log_2 2^9$.",
+          "answers": [
+            "9"
+          ],
+          "hints": [
+            "Use inverse property: $\\log_a a^x = x$.",
+            "The exponent is the answer."
+          ],
+          "feedbackIfWrong": "$\\log_2 2^9 = 9$."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "If $\\log_4 (2x) = \\log_4 10$, then $x = $ ___.",
+          "answers": [
+            "5"
+          ],
+          "hints": [
+            "Set $2x = 10$ by One-to-One Property.",
+            "Divide by 2."
+          ],
+          "feedbackIfWrong": "$x = 5$."
+        }
+      ]
+    },
+    {
+      "id": "graphs-of-logarithmic-functions",
+      "title": "Graphs of Logarithmic Functions",
+      "teacherCues": [
+        "Graph $y=2^x$ and $y=\\log_2 x$ on the same axes. Highlight symmetry across $y=x$.",
+        "Ask: What is the vertical asymptote of $y=\\log_a x$? Why does it occur?"
+      ],
+      "discoveryHook": {
+        "scenario": "Because logs and exponentials are inverses, their graphs are mirror images across the line $y=x$. Understanding this symmetry helps you sketch either graph from the other in seconds."
+      },
+      "concept": {
+        "explanation": [
+          "For $a>1$, the graph of $f(x)=\\log_a x$ has the following characteristics:",
+          "Domain: $(0,\\infty)$; Range: $(-\\infty,\\infty)$; $x$-intercept: $(1,0)$.",
+          "The graph is [[imp:increasing]] and passes the Horizontal Line Test, so it is one-to-one.",
+          "The [[kw:y-axis]] ($x=0$) is a vertical asymptote: as $x\\to 0^+$, $\\log_a x \\to -\\infty$.",
+          "The graph of $y=\\log_a x$ is the reflection of $y=a^x$ across the line $y=x$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Comparing $y=a^x$ and $y=\\log_a x$ ($a>1$)",
+            "headers": [
+              "Feature",
+              "$y=a^x$",
+              "$y=\\log_a x$"
+            ],
+            "rows": [
+              {
+                "0": "Domain",
+                "1": "$(-\\infty,\\infty)$",
+                "2": "$(0,\\infty)$"
+              },
+              {
+                "0": "Range",
+                "1": "$(0,\\infty)$",
+                "2": "$(-\\infty,\\infty)$"
+              },
+              {
+                "0": "Intercept",
+                "1": "$(0,1)$",
+                "2": "$(1,0)$"
+              },
+              {
+                "0": "Asymptote",
+                "1": "Horizontal $y=0$",
+                "2": "Vertical $x=0$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Logarithmic Function Graph",
+          "formula": "$$ f(x) = \\log_a x,\\quad a>1 $$",
+          "notes": [
+            "Domain: $(0,\\infty)$; Range: $(-\\infty,\\infty)$",
+            "Vertical asymptote: $x=0$",
+            "$x$-intercept: $(1,0)$"
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Sketching $y=\\log_3 x$ from a Table",
+          "prompt": "Create a table of values and sketch the graph of $f(x)=\\log_3 x$.",
+          "steps": [
+            "Choose $x$-values that are powers of 3: $1/9, 1/3, 1, 3, 9$.",
+            "Compute: $\\log_3(1/9) = -2$, $\\log_3(1/3) = -1$, $\\log_3 1 = 0$, $\\log_3 3 = 1$, $\\log_3 9 = 2$.",
+            "Plot points and draw a smooth increasing curve approaching the $y$-axis (vertical asymptote)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Domain and Asymptote Discussion",
+          "prompt": "Explain why the domain of $g(x)=\\log_2 (x-4)$ is $(4,\\infty)$ and its vertical asymptote is $x=4$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does the transformation inside the logarithm affect the domain and asymptote?",
+          "minLength": 8,
+          "steps": [
+            "The argument $x-4$ must be positive: $x-4>0$, so $x>4$.",
+            "The vertical asymptote occurs where $x-4=0$, i.e., $x=4$.",
+            "Shifting the basic graph right by 4 shifts the asymptote to $x=4$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Identifying Key Features",
+          "prompt": "For $h(x)=\\log_5 x + 2$, find the domain, vertical asymptote, and $x$-intercept.",
+          "steps": [
+            "Domain: $x>0$ (the shift up does not affect domain).",
+            "Vertical asymptote: $x=0$.",
+            "$x$-intercept: set $\\log_5 x + 2 = 0$ → $\\log_5 x = -2$ → $x = 5^{-2} = 1/25$, so $(1/25, 0)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Asymptote Moves with Horizontal Shifts",
+        "body": "For $f(x)=\\log_a (x-h)$, the vertical asymptote is $x=h$. For $f(x)=\\log_a x + k$, the asymptote remains $x=0$ (vertical shifts do not move the asymptote)."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "The vertical asymptote of $y=\\ln x$ is the line ___.",
+          "blanks": [
+            {
+              "accept": [
+                "x=0",
+                "x = 0"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the $y$-axis.",
+            "The graph approaches it from the right."
+          ],
+          "feedbackIfWrong": "The vertical asymptote is $x=0$."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "What is the $x$-intercept of any logarithmic function $f(x)=\\log_a x$?",
+          "answers": [
+            "1",
+            "one"
+          ],
+          "hints": [
+            "Solve $\\log_a x = 0$.",
+            "$a^0 = 1$."
+          ],
+          "feedbackIfWrong": "The $x$-intercept is 1, at the point $(1,0)$."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "Find the domain of $f(x)=\\log_3 (x+5)$.",
+          "answers": [
+            "x>-5",
+            "x > -5",
+            "(-5,∞)"
+          ],
+          "hints": [
+            "Set argument $x+5 > 0$.",
+            "Solve the inequality."
+          ],
+          "feedbackIfWrong": "Domain: $x > -5$, or $(-5,\\infty)$."
+        }
+      ]
+    },
+    {
+      "id": "transformations-of-log-graphs",
+      "title": "Transformations of Logarithmic Graphs",
+      "teacherCues": [
+        "Graph $f(x)=\\log x$, then $g(x)=\\log(x-1)$ and $h(x)=2+\\log x$. Ask: How do vertical and horizontal shifts affect the asymptote?",
+        "Point out that $y=\\log(-x)$ reflects across the $y$-axis, not the $x$-axis."
+      ],
+      "discoveryHook": {
+        "scenario": "Just like with other functions, shifting a logarithmic graph lets you model data that starts at different times or has different thresholds. For instance, $\\log(x-1)$ models a process that 'starts' at $x=1$ rather than $0$."
+      },
+      "concept": {
+        "explanation": [
+          "Transformations of $f(x)=\\log_a x$ follow the same rules as all functions.",
+          "$g(x) = \\log_a (x-h)$ shifts the graph horizontally by $h$ units (right if $h>0$, left if $h<0$). The vertical asymptote shifts to $x=h$.",
+          "$h(x) = k + \\log_a x$ shifts the graph vertically by $k$ units. The vertical asymptote remains $x=0$.",
+          "Reflections: $y = -\\log_a x$ reflects across the $x$-axis; $y = \\log_a (-x)$ reflects across the $y$-axis (and changes domain to $x<0$)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Transformations of $f(x)=\\log_a x$",
+            "headers": [
+              "Transformation",
+              "Effect"
+            ],
+            "rows": [
+              {
+                "0": "$ f(x) = \\log_a (x-h) $",
+                "1": "Horizontal shift by $h$, asymptote $x=h$"
+              },
+              {
+                "0": "$ f(x) = \\log_a x + k $",
+                "1": "Vertical shift by $k$, asymptote unchanged"
+              },
+              {
+                "0": "$ f(x) = -\\log_a x $",
+                "1": "Reflection across $x$-axis"
+              },
+              {
+                "0": "$ f(x) = \\log_a (-x) $",
+                "1": "Reflection across $y$-axis, domain $x<0$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "General Transformed Logarithm",
+          "formula": "$$ f(x) = a \\cdot \\log_b (x-h) + k $$",
+          "notes": [
+            "$h$: horizontal shift; asymptote $x=h$.",
+            "$k$: vertical shift.",
+            "$a$: vertical stretch/compression and possible reflection."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Shifting Right and Down",
+          "prompt": "Sketch $g(x)=\\log_2 (x-3) - 1$ and identify its asymptote and intercepts.",
+          "steps": [
+            "Start with $f(x)=\\log_2 x$.",
+            "Shift right by 3: $\\log_2 (x-3)$ → asymptote $x=3$.",
+            "Shift down by 1: $-1$ added to the function.",
+            "$x$-intercept: set $\\log_2 (x-3) - 1 = 0$ → $\\log_2 (x-3) = 1$ → $x-3 = 2$ → $x=5$, so $(5,0)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Reflection and Vertical Stretch",
+          "prompt": "Describe the transformations from $f(x)=\\ln x$ to $g(x)= -2\\ln(x) + 3$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What is the order of operations for transformations?",
+          "minLength": 8,
+          "steps": [
+            "Start with $\\ln x$.",
+            "Vertical stretch by a factor of 2: $2\\ln x$.",
+            "Reflect across $x$-axis: $-2\\ln x$.",
+            "Shift up by 3: $-2\\ln x + 3$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Domain After Transformation",
+          "prompt": "Find the domain and vertical asymptote of $h(x)=\\log_5 (8-2x)$.",
+          "steps": [
+            "Set argument $8-2x > 0$ → $-2x > -8$ → $x < 4$.",
+            "Domain: $(-\\infty, 4)$.",
+            "Vertical asymptote: where $8-2x = 0$ → $x = 4$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Domain Shifts and Asymptotes",
+        "body": "For $f(x)=\\log_a (expression)$, the expression must be positive. The vertical asymptote occurs where the expression equals zero. Always solve the inequality to get the domain."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "The vertical asymptote of $f(x)=\\log_2 (x+4)$ is $x = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "-4"
+              ]
+            }
+          ],
+          "hints": [
+            "Set $x+4 = 0$ and solve.",
+            "It's where the argument becomes zero."
+          ],
+          "feedbackIfWrong": "The asymptote is $x=-4$."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "What transformation turns $y=\\ln x$ into $y=\\ln(x-1)+2$? Answer with two words (direction and number).",
+          "answers": [
+            "right 1 up 2",
+            "right 1, up 2"
+          ],
+          "hints": [
+            "Inside the log: $x-1$ is a horizontal shift.",
+            "Outside: $+2$ is vertical."
+          ],
+          "feedbackIfWrong": "Shift right by 1 and up by 2."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "The domain of $f(x)=\\ln(5-x)$ is $x$ < ___.",
+          "answers": [
+            "5"
+          ],
+          "hints": [
+            "Set $5-x > 0$.",
+            "Solve for $x$."
+          ],
+          "feedbackIfWrong": "Domain: $x < 5$."
+        }
+      ]
+    },
+    {
+      "id": "natural-logarithm-and-blueprint",
+      "title": "The Natural Logarithm and Blueprint Aid",
+      "teacherCues": [
+        "Graph $y=e^x$ and $y=\\ln x$ on the same axes. Note the symmetry across $y=x$.",
+        "Write $\\ln e = 1$ and $\\ln 1 = 0$. Ask: How do these follow from the definition?"
+      ],
+      "discoveryHook": {
+        "scenario": "The natural logarithm $\\ln x$ is the inverse of the most important exponential function, $e^x$. It appears in calculus, compound interest, and growth models. Mastering $\\ln x$ now will pay off throughout the rest of the course."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:natural logarithmic function]] is $f(x) = \\ln x = \\log_e x$, where $e\\approx 2.71828$.",
+          "Properties: $\\ln 1 = 0$, $\\ln e = 1$, $\\ln e^x = x$, $e^{\\ln x} = x$.",
+          "Its graph has the same shape as any $\\log_a x$ with $a>1$: increasing, domain $(0,\\infty)$, range $(-\\infty,\\infty)$, $x$-intercept $(1,0)$, vertical asymptote $x=0$.",
+          "The blueprint for solving logarithmic equations uses the One-to-One Property or rewriting in exponential form."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Natural Logarithm Properties",
+            "headers": [
+              "Property",
+              "Statement"
+            ],
+            "rows": [
+              {
+                "0": "$\\ln 1 = 0$",
+                "1": "$e^0 = 1$"
+              },
+              {
+                "0": "$\\ln e = 1$",
+                "1": "$e^1 = e$"
+              },
+              {
+                "0": "$\\ln e^x = x$",
+                "1": "Inverse property"
+              },
+              {
+                "0": "$e^{\\ln x} = x$",
+                "1": "Inverse property"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Natural Logarithm",
+          "formula": "$$ \\ln x = \\log_e x $$",
+          "notes": [
+            "$\\ln x$ is the exponent to which $e$ must be raised to get $x$.",
+            "Same graph features as $\\log_a x$ with $a=e$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Simplifying $\\ln e^3$ and $e^{\\ln 7}$",
+          "prompt": "Simplify each expression using inverse properties.",
+          "steps": [
+            "$\\ln e^3 = 3$ because $\\ln e^x = x$.",
+            "$e^{\\ln 7} = 7$ because $e^{\\ln x} = x$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Solving $\\ln(2x) = \\ln(x+4)$",
+          "prompt": "Solve and check. Explain why we can apply the One-to-One Property.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What condition must the arguments satisfy after solving?",
+          "minLength": 8,
+          "steps": [
+            "By One-to-One Property: $2x = x+4$ → $x = 4$.",
+            "Check: $\\ln(8) = \\ln(8)$, both arguments positive.",
+            "Solution valid."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Solving an Exponential Equation Using Logs",
+          "prompt": "Solve $e^x = 5$ using the natural logarithm.",
+          "steps": [
+            "Take $\\ln$ of both sides: $\\ln e^x = \\ln 5$.",
+            "Simplify: $x = \\ln 5$.",
+            "Approximate: $x \\approx 1.609$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "$\\ln$ vs. $\\log$",
+        "body": "$\\ln x$ is just $\\log_e x$. When you see $\\log x$ without a base, it usually means base 10. Both follow the same rules; only the base differs."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "fill-blank",
+          "prompt": "The natural logarithm function $\\ln x$ has base ___.",
+          "blanks": [
+            {
+              "accept": [
+                "e"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the natural base.",
+            "Approximately 2.718."
+          ],
+          "feedbackIfWrong": "The base of the natural logarithm is $e$."
+        },
+        {
+          "id": "q5-2",
+          "type": "short-answer",
+          "prompt": "Simplify $\\ln e^{10}$.",
+          "answers": [
+            "10"
+          ],
+          "hints": [
+            "$\\ln e^x = x$.",
+            "The exponent is the answer."
+          ],
+          "feedbackIfWrong": "$\\ln e^{10} = 10$."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "Solve $\\ln(x-1) = \\ln 3$ for $x$.",
+          "answers": [
+            "4"
+          ],
+          "hints": [
+            "Use One-to-One Property: $x-1 = 3$.",
+            "Solve."
+          ],
+          "feedbackIfWrong": "$x = 4$."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

@@ -1,0 +1,681 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-4-2-binomial-distributions",
+  "title": "Binomial Distributions",
+  "blocks": [
+    {
+      "id": "binomial-experiments",
+      "title": "Binomial Experiments",
+      "teacherCues": [
+        "Ask: 'If I flip a coin 10 times and count heads, is that a binomial experiment? What about drawing cards without replacement?'",
+        "Write the four conditions on the board and ask students to identify which one fails for a non-binomial example."
+      ],
+      "discoveryHook": {
+        "scenario": "A basketball player shoots free throws. Each shot has two outcomes: make or miss. The probability of making each shot is the same, and shots are independent. Counting the number of makes in a fixed number of attempts is a classic binomial experiment—used everywhere from medical trials to quality control!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:binomial experiment]] is a probability experiment that satisfies four conditions.",
+          "1. The experiment is repeated for a fixed number of trials, and each trial is independent of the others.",
+          "2. Each trial has only two possible outcomes: success (S) or failure (F).",
+          "3. The probability of success $p$ is the same for every trial.",
+          "4. The random variable $x$ counts the number of successful trials.",
+          "Notation: $n$ = number of trials, $p$ = probability of success, $q = 1-p$ = probability of failure, and $x$ can be $0,1,2,\\dots,n$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Notation for Binomial Experiments",
+            "headers": [
+              "Symbol",
+              "Description"
+            ],
+            "rows": [
+              {
+                "0": "$n$",
+                "1": "number of times a trial is repeated"
+              },
+              {
+                "0": "$p$",
+                "1": "probability of success in a single trial"
+              },
+              {
+                "0": "$q$",
+                "1": "probability of failure in a single trial ($q = 1-p$)"
+              },
+              {
+                "0": "$x$",
+                "1": "random variable: number of successes in $n$ trials"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Binomial Experiment Conditions",
+          "formula": "$$ \\text{Fixed } n, \\quad \\text{two outcomes per trial}, \\quad p \\text{ constant}, \\quad x \\text{ counts successes} $$",
+          "notes": [
+            "$q = 1-p$",
+            "$x \\in \\{0,1,2,\\dots,n\\}$"
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Identifying a Binomial Experiment",
+          "prompt": "A surgical procedure has an 85% success rate. A doctor performs the procedure on 8 patients. The random variable represents the number of successful surgeries. Is this binomial? If so, identify $n,p,q,x$.",
+          "steps": [
+            "Each surgery is a trial; there are 8 fixed, independent trials.",
+            "Two outcomes: success or failure.",
+            "Probability of success $p = 0.85$ is constant; $q = 0.15$.",
+            "$x$ = number of successful surgeries, possible values $0$ to $8$. Yes, binomial."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why Not Binomial?",
+          "prompt": "A jar has 5 red, 9 blue, and 6 green marbles. You randomly select 3 marbles without replacement. The random variable is the number of red marbles. Is this binomial?",
+          "peerPrompt": "Explain to a partner: Which of the four conditions fails? How does removing a marble change the probability?",
+          "minLength": 2,
+          "steps": [
+            "The trials are not independent because the composition of the jar changes after each draw.",
+            "The probability of selecting a red marble is not constant: first draw $5/20$, but if red drawn, second becomes $4/19$.",
+            "Therefore, not a binomial experiment."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Multiple-Choice Quiz",
+          "prompt": "You take a 10-question multiple-choice quiz, each with 4 options, and randomly guess. The random variable is the number of correct answers. Is this binomial? If yes, identify $n,p,q$.",
+          "steps": [
+            "Fixed number of trials $n=10$.",
+            "Each trial independent, two outcomes: correct or incorrect.",
+            "$p = 1/4 = 0.25$, $q = 0.75$.",
+            "Yes, binomial. $x$ = 0 to 10 correct answers."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sampling Without Replacement",
+        "body": "When selections are made without replacement, trials are not independent and $p$ changes. Such experiments are not binomial. For binomial, trials must be independent with constant $p$."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "In a binomial experiment, the probability of failure is denoted by $q$, where $q = 1 - $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "p"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the complement of success probability.",
+            "$p + q = 1$."
+          ],
+          "feedbackIfWrong": "$q = 1 - p$."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "For a binomial experiment with $n=5$ trials, list the possible values of $x$ separated by commas (e.g., 0,1,2).",
+          "answer": "0,1,2,3,4,5",
+          "hints": [
+            "$x$ can be any integer from 0 to n.",
+            "n=5, so include 0 through 5."
+          ],
+          "feedbackIfWrong": "The possible values are 0,1,2,3,4,5."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "A jar contains marbles and you draw without replacement. Are the trials independent? (yes/no)",
+          "answer": "no",
+          "hints": [
+            "After each draw, the composition changes.",
+            "Drawing without replacement means probability changes."
+          ],
+          "feedbackIfWrong": "No, without replacement trials are not independent."
+        }
+      ]
+    },
+    {
+      "id": "binomial-probability-formula",
+      "title": "Binomial Probability Formula",
+      "teacherCues": [
+        "Derive the formula using combinations: number of ways to get x successes in n trials times probability of each arrangement.",
+        "Show example: n=3, p=0.75, x=2. Compute 3C2 * (0.75)^2 * (0.25)^1."
+      ],
+      "discoveryHook": {
+        "scenario": "If a basketball player makes 75% of free throws, what is the probability she makes exactly 2 out of 3? You could list all possible sequences (SSF, SFS, FSS) and add probabilities. The binomial formula simplifies this into one calculation!"
+      },
+      "concept": {
+        "explanation": [
+          "The probability of exactly $x$ successes in $n$ trials is given by the [[kw:binomial probability formula]].",
+          "$$ P(x) = {}_nC_x p^x q^{n-x} = \\frac{n!}{(n-x)!x!} p^x q^{n-x} $$",
+          "${}_nC_x$ counts the number of ways to choose which $x$ trials are successes.",
+          "$p^x$ is the probability of $x$ successes, $q^{n-x}$ is the probability of $n-x$ failures.",
+          "The formula works because trials are independent and the probability of each sequence is the product of its component probabilities."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Formula Components",
+            "headers": [
+              "Component",
+              "Meaning"
+            ],
+            "rows": [
+              {
+                "0": "${}_nC_x$",
+                "1": "number of arrangements of x successes in n trials"
+              },
+              {
+                "0": "$p^x$",
+                "1": "probability of x successes"
+              },
+              {
+                "0": "$q^{n-x}$",
+                "1": "probability of n-x failures"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Binomial Probability",
+          "formula": "$$ P(x) = {}_nC_x p^x q^{n-x} $$",
+          "notes": [
+            "${}_nC_x = \\frac{n!}{(n-x)!x!}$",
+            "$q = 1-p$"
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Exactly Two Successes",
+          "prompt": "Microfracture knee surgery has a 75% chance of success. Surgery is performed on 3 patients. Find the probability of exactly 2 successes.",
+          "steps": [
+            "Identify: $n=3$, $p=0.75$, $q=0.25$, $x=2$.",
+            "Compute ${}_3C_2 = 3$.",
+            "$P(2) = 3 \\cdot (0.75)^2 \\cdot (0.25)^1 = 3 \\cdot 0.5625 \\cdot 0.25 = 0.421875 \\approx 0.422$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why the Combination?",
+          "prompt": "Explain why the binomial formula includes ${}_nC_x$, not just $p^x q^{n-x}$.",
+          "peerPrompt": "Discuss with a partner: If order matters, why do we multiply by the number of arrangements?",
+          "minLength": 2,
+          "steps": [
+            "Each sequence of x successes and n-x failures has probability $p^x q^{n-x}$.",
+            "There are ${}_nC_x$ distinct sequences with exactly x successes.",
+            "So total probability is ${}_nC_x$ times that base probability."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Card Drawing",
+          "prompt": "A card is selected from a standard deck and replaced. This is repeated 5 times. Find the probability of selecting exactly 3 clubs.",
+          "steps": [
+            "Success = club: $p = 13/52 = 1/4 = 0.25$, $q = 0.75$, $n=5$, $x=3$.",
+            "${}_5C_3 = 10$.",
+            "$P(3) = 10 \\cdot (0.25)^3 \\cdot (0.75)^2 = 10 \\cdot 0.015625 \\cdot 0.5625 = 0.087890625 \\approx 0.088$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Order Matters, Combination Handles It",
+        "body": "Do not forget ${}_nC_x$. Without it, you only get the probability for one specific sequence, not all sequences with x successes."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "In the binomial probability formula, the number of ways to arrange x successes in n trials is given by ___.",
+          "blanks": [
+            {
+              "accept": [
+                "nCx",
+                "combination"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the binomial coefficient.",
+            "Written as ${}_nC_x$."
+          ],
+          "feedbackIfWrong": "The number of arrangements is ${}_nC_x$."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "For $n=4$, $p=0.5$, $q=0.5$, compute $P(2)$. Round to three decimal places.",
+          "answer": "0.375",
+          "hints": [
+            "${}_4C_2 = 6$.",
+            "$(0.5)^2 (0.5)^2 = 0.0625$."
+          ],
+          "feedbackIfWrong": "${}_4C_2 (0.5)^2 (0.5)^2 = 6 \\cdot 0.0625 = 0.375$."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "If $p=0.2$, what is $q$?",
+          "answer": "0.8",
+          "hints": [
+            "$q = 1-p$.",
+            "Subtract 0.2 from 1."
+          ],
+          "feedbackIfWrong": "$q = 1 - 0.2 = 0.8$."
+        }
+      ]
+    },
+    {
+      "id": "finding-binomial-probabilities",
+      "title": "Finding Binomial Probabilities",
+      "teacherCues": [
+        "Demonstrate using formula for at least/at most: sum probabilities or use complement rule.",
+        "Show technology output for large n and p. Mention table use."
+      ],
+      "discoveryHook": {
+        "scenario": "What is the probability that at least 8 out of 10 randomly selected men are baseball fans? You could compute each probability from 8 to 10, or use the complement rule. Efficient calculation is key when n is large!"
+      },
+      "concept": {
+        "explanation": [
+          "To find the probability of 'exactly x', use the formula directly.",
+          "For 'at least x' ($P(x \\ge a)$), sum probabilities from $a$ to $n$: $P(a) + P(a+1) + \\dots + P(n)$.",
+          "For 'fewer than x' or 'at most x', sum from 0 to the cutoff.",
+          "The complement rule: $P(x \\ge a) = 1 - P(x < a)$ is often easier.",
+          "Technology (binompdf, binomcdf) and tables can speed up calculations."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Probability Scenarios",
+            "headers": [
+              "Phrase",
+              "Method"
+            ],
+            "rows": [
+              {
+                "0": "Exactly x",
+                "1": "Use formula directly"
+              },
+              {
+                "0": "At least x",
+                "1": "Sum P(x) to P(n) or use 1 - P(0) - ... - P(x-1)"
+              },
+              {
+                "0": "Fewer than x",
+                "1": "Sum P(0) to P(x-1)"
+              },
+              {
+                "0": "More than x",
+                "1": "1 - P(0) - ... - P(x)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Complement Rule",
+          "formula": "$$ P(x \\ge a) = 1 - P(x < a) = 1 - \\sum_{k=0}^{a-1} P(k) $$",
+          "notes": [
+            "Use for 'at least' and 'more than'.",
+            "For 'more than a', subtract probabilities 0 through a."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – At Least Two",
+          "prompt": "Survey: 41% of women consider reading favorite leisure activity. Randomly select 4 women. Find probability at least two respond yes.",
+          "steps": [
+            "$n=4$, $p=0.41$, $q=0.59$.",
+            "Compute $P(2), P(3), P(4)$ using formula.",
+            "$P(2)=6(0.41)^2(0.59)^2 \\approx 0.3511$, $P(3)=4(0.41)^3(0.59)^1 \\approx 0.1627$, $P(4)=1(0.41)^4(0.59)^0 \\approx 0.0283$.",
+            "Sum: $0.3511 + 0.1627 + 0.0283 = 0.5421 \\approx 0.542$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Complement Shortcut",
+          "prompt": "Using the same data, find probability fewer than two respond yes.",
+          "peerPrompt": "Explain to a partner: How can you use the result from part A to find this quickly?",
+          "minLength": 2,
+          "steps": [
+            "Fewer than two is complement of at least two.",
+            "$P(x < 2) = 1 - P(x \\ge 2) = 1 - 0.542 = 0.458$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Using Technology",
+          "prompt": "67% of U.S. adults consider air conditioning a necessity. Randomly select 100 adults. Find probability exactly 75 say yes using technology.",
+          "steps": [
+            "Identify $n=100$, $p=0.67$, $x=75$.",
+            "Use binompdf(100,0.67,75) or equivalent.",
+            "Result $\\approx 0.0201$. This is less than 0.05, so unusual."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "At Least vs. More Than",
+        "body": "'At least x' includes x. 'More than x' does not. For 'at least 2', sum P(2)+P(3)+...; for 'more than 2', sum P(3)+P(4)+.... Be careful with boundaries."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "To find the probability of at least 3 successes, you can compute $1 - P(0) - P(1) - P(2)$. This is an application of the ___ rule.",
+          "blanks": [
+            {
+              "accept": [
+                "complement"
+              ]
+            }
+          ],
+          "hints": [
+            "It involves subtracting from 1.",
+            "The word starts with 'c'."
+          ],
+          "feedbackIfWrong": "It is the complement rule."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "If $P(x \\ge 2) = 0.542$, what is $P(x < 2)$? Round to three decimal places.",
+          "answer": "0.458",
+          "hints": [
+            "Complement: total probability = 1.",
+            "1 - 0.542."
+          ],
+          "feedbackIfWrong": "$1 - 0.542 = 0.458$."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "Using technology, binompdf(100,0.67,75) gives 0.0201. Is this event unusual? (yes/no)",
+          "answer": "yes",
+          "hints": [
+            "Compare to 0.05.",
+            "0.0201 < 0.05."
+          ],
+          "feedbackIfWrong": "Yes, 0.0201 is less than 0.05, so unusual."
+        }
+      ]
+    },
+    {
+      "id": "graphing-binomial-and-mean-variance",
+      "title": "Graphing Binomial Distributions and Mean, Variance, Standard Deviation",
+      "teacherCues": [
+        "Construct a binomial distribution table and histogram for n=6, p=0.6. Point out skew left.",
+        "Derive mean=np, variance=npq, std=sqrt(npq). Emphasize these are simpler than general formulas."
+      ],
+      "discoveryHook": {
+        "scenario": "If 60% of households own a game console, and you sample 6 households, you can list probabilities for 0 through 6 and graph them. The shape of the histogram tells you about likely outcomes. Mean and standard deviation summarize center and spread without computing all probabilities."
+      },
+      "concept": {
+        "explanation": [
+          "A binomial distribution is a discrete probability distribution, so you can graph it with a relative frequency histogram.",
+          "Graph skew: if $p > 0.5$, skewed left; if $p < 0.5$, skewed right; if $p = 0.5$, symmetric.",
+          "Population parameters of a binomial distribution: mean $ \\mu = np $, variance $ \\sigma^2 = npq $, standard deviation $ \\sigma = \\sqrt{npq} $.",
+          "Unusual values are more than two standard deviations from the mean.",
+          "These formulas are much simpler than the general formulas from Section 4.1."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Binomial Parameters",
+            "headers": [
+              "Parameter",
+              "Formula"
+            ],
+            "rows": [
+              {
+                "0": "Mean",
+                "1": "$\\mu = np$"
+              },
+              {
+                "0": "Variance",
+                "1": "$\\sigma^2 = npq$"
+              },
+              {
+                "0": "Standard deviation",
+                "1": "$\\sigma = \\sqrt{npq}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Binomial Distribution Parameters",
+          "formula": "$$ \\mu = np, \\qquad \\sigma^2 = npq, \\qquad \\sigma = \\sqrt{npq} $$",
+          "notes": [
+            "$q = 1-p$",
+            "Use these only for binomial distributions."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Construct and Graph",
+          "prompt": "60% of households own a video game console. Randomly select 6 households. Construct the binomial distribution and graph.",
+          "steps": [
+            "$n=6$, $p=0.6$, $q=0.4$. Compute P(x) for x=0 to 6 using formula.",
+            "Results: P(0)=0.004, P(1)=0.037, P(2)=0.138, P(3)=0.276, P(4)=0.311, P(5)=0.187, P(6)=0.047.",
+            "Graph with x-axis 0-6, y-axis probabilities; histogram bars."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Mean and Standard Deviation",
+          "prompt": "In Pittsburgh, about 56% of days in June are cloudy. Find mean and standard deviation for number of cloudy days in June (30 days).",
+          "peerPrompt": "Explain to a partner: Why can we use $\\mu = np$ here? What is $n$?",
+          "minLength": 2,
+          "steps": [
+            "$n=30$, $p=0.56$, $q=0.44$.",
+            "$\\mu = 30 \\cdot 0.56 = 16.8$ cloudy days.",
+            "$\\sigma = \\sqrt{30 \\cdot 0.56 \\cdot 0.44} = \\sqrt{7.392} \\approx 2.7$ days."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Unusual Values",
+          "prompt": "Using the Pittsburgh example, determine which numbers of cloudy days would be unusual.",
+          "steps": [
+            "Mean 16.8, std 2.7.",
+            "Unusual if more than 2 std from mean: below $16.8 - 2(2.7) = 11.4$ or above $16.8 + 2(2.7) = 22.2$.",
+            "So 11 or fewer cloudy days, or 23 or more, would be unusual."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Mix Up Formulas",
+        "body": "For binomial distributions, use $\\mu = np$, $\\sigma = \\sqrt{npq}$. The general formulas $\\mu = \\sum xP(x)$ and $\\sigma = \\sqrt{\\sum (x-\\mu)^2P(x)}$ also work but are slower."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "For a binomial distribution, the mean is given by $\\mu = n \\cdot $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "p"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the probability of success.",
+            "Mean equals trials times success probability."
+          ],
+          "feedbackIfWrong": "$\\mu = np$."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "If $n=50$ and $p=0.4$, what is the mean?",
+          "answer": "20",
+          "hints": [
+            "$\\mu = np$.",
+            "Multiply 50 by 0.4."
+          ],
+          "feedbackIfWrong": "$\\mu = 50 \\cdot 0.4 = 20$."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "For $n=10$, $p=0.3$, compute the standard deviation. Round to two decimal places.",
+          "answer": "1.45",
+          "hints": [
+            "$q = 0.7$.",
+            "$\\sigma = \\sqrt{10 \\cdot 0.3 \\cdot 0.7} = \\sqrt{2.1}$."
+          ],
+          "feedbackIfWrong": "$\\sqrt{2.1} \\approx 1.45$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-binomial",
+      "title": "Blueprint Aid – Solving Binomial Distribution Problems",
+      "teacherCues": [
+        "Display Understand → Solve → Conclude. Walk through a binomial problem: identify n, p, x, then apply formula or complement, then interpret.",
+        "Stress: Understand phase includes checking if experiment is binomial."
+      ],
+      "discoveryHook": {
+        "scenario": "From quality control to medical trials, binomial problems require careful setup. The blueprint helps you confirm the experiment is binomial, choose the right formula, and interpret the probability—including whether the event is unusual."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]] – Verify the four binomial conditions. Identify $n$, $p$, $q$, and the value(s) of $x$ described (exactly, at least, etc.).",
+          "[[imp:Solve]] – Apply binomial formula for exact probabilities, or use complement/sum for cumulative probabilities. Use technology for large $n$.",
+          "[[imp:Conclude]] – State the probability, compare to 0.05 for unusualness, and interpret in context."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Binomial Blueprint",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Confirm binomial; find $n,p,q$; determine x range."
+              },
+              {
+                "0": "Solve",
+                "1": "Use $P(x) = {}_nC_x p^x q^{n-x}$ or complement/sum; technology if needed."
+              },
+              {
+                "0": "Conclude",
+                "1": "State probability; check if unusual; interpret."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Binomial Formula",
+          "formula": "$$ P(x) = {}_nC_x p^x q^{n-x} $$",
+          "notes": [
+            "For 'at least', use complement.",
+            "Unusual if probability < 0.05."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full Blueprint: At Least",
+          "prompt": "Use blueprint: 59% of men are baseball fans. Randomly select 10 men. Find probability at least 8 are fans.",
+          "steps": [
+            "Understand: Binomial, $n=10$, $p=0.59$, $q=0.41$, need $P(x \\ge 8)$.",
+            "Solve: $P(8)+P(9)+P(10)$. Compute each: P(8)=0.095, P(9)=0.014, P(10)=0.001 (approx). Sum = 0.110.",
+            "Conclude: Probability about 0.110. Not unusual (≥0.05)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Full Blueprint: Exactly",
+          "prompt": "Use blueprint: 10% of workers carpool. Randomly select 8 workers. Find probability exactly 4 carpool.",
+          "peerPrompt": "Explain to a partner: How do you know this is binomial? Then compute using formula or table.",
+          "minLength": 2,
+          "steps": [
+            "Understand: Binomial, $n=8$, $p=0.10$, $q=0.90$, $x=4$.",
+            "Solve: $P(4) = {}_8C_4 (0.1)^4 (0.9)^4 \\approx 0.0046$ or table gives 0.005.",
+            "Conclude: Probability 0.005, less than 0.05, so unusual."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Decide and Compute",
+          "prompt": "A multiple-choice quiz has 5 questions, each with 4 choices. You guess on each. Use blueprint to find probability of getting at least 3 correct.",
+          "steps": [
+            "Understand: Binomial, $n=5$, $p=0.25$, $q=0.75$, need $P(x \\ge 3)$.",
+            "Solve: $P(3)+P(4)+P(5)$. P(3)=0.0879, P(4)=0.0146, P(5)=0.0010. Sum = 0.1035.",
+            "Conclude: Probability ≈ 0.104. Not unusual."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check Binomial First",
+        "body": "If trials are not independent or $p$ changes, the binomial formula is invalid. Always verify the four conditions before using $P(x) = {}_nC_x p^x q^{n-x}$."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "short-answer",
+          "prompt": "In the Understand phase, what two parameters must you identify?",
+          "answer": "n,p",
+          "hints": [
+            "Number of trials and probability of success.",
+            "Also need q."
+          ],
+          "feedbackIfWrong": "Identify $n$ (trials) and $p$ (success probability)."
+        },
+        {
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "For 'at least x' probabilities, it is often easier to use the ___ rule.",
+          "blanks": [
+            {
+              "accept": [
+                "complement"
+              ]
+            }
+          ],
+          "hints": [
+            "Subtract from 1.",
+            "It avoids summing many probabilities."
+          ],
+          "feedbackIfWrong": "Use the complement rule."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "If a probability is 0.04, is the event unusual? (yes/no)",
+          "answer": "yes",
+          "hints": [
+            "Compare to 0.05.",
+            "0.04 < 0.05."
+          ],
+          "feedbackIfWrong": "Yes, 0.04 is less than 0.05, so unusual."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,795 @@
+{
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "id": "inventory-basics",
+      "challengeCorner": {
+        "prompt": "A store had beginning inventory $5,000, purchases $15,000. A physical count showed ending inventory $4,200. Find cost of goods sold.",
+        "answers": [
+          "15800",
+          "15,800"
+        ],
+        "optional": true,
+        "hints": [
+          "Goods available = 5,000 + 15,000 = 20,000.",
+          "COGS = 20,000 – 4,200 = 15,800."
+        ],
+        "type": "short-answer"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:periodic inventory system]] relies on a physical count at least once a year; it does not track inventory continuously.",
+          "The [[kw:perpetual inventory system]] updates inventory records after every sale and purchase (e.g., scanners at checkout).",
+          "Inventory valuation answers two questions: 1) cost of [[kw:ending inventory]] (balance sheet), 2) cost of goods sold (income statement).",
+          "The basic formula: $$\\text{Cost of Goods Available for Sale} = \\text{Ending Inventory} + \\text{Cost of Goods Sold}$$",
+          "[[imp:Different inventory methods can yield different amounts for ending inventory and COGS, affecting profit.]]"
+        ],
+        "visuals": [
+          {
+            "title": "Inventory Flow for Blue Company",
+            "variant": "colorful",
+            "caption": "Physical count determines ending inventory; COGS = Available – Ending Inventory.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Beginning Inventory",
+                "1": "40"
+              },
+              {
+                "0": "Total Purchases",
+                "1": "80"
+              },
+              {
+                "0": "Goods Available for Sale",
+                "1": "120"
+              },
+              {
+                "0": "Ending Inventory (unsold)",
+                "1": "48"
+              },
+              {
+                "0": "Cost of Goods Sold",
+                "1": "72"
+              }
+            ],
+            "headers": [
+              "",
+              "Number of Tubes"
+            ]
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Cost of goods sold is an expense on the income statement; ending inventory is an asset on the balance sheet. [[imp:The choice of inventory method affects both statements.]]"
+      },
+      "teacherCues": [
+        "Ask: 'Why does a company need to know the cost of its inventory?'",
+        "Explain the flow of inventory costs to the balance sheet and income statement."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "ending inventory.",
+          "blanks": [
+            {
+              "accept": [
+                "ending inventory"
+              ]
+            }
+          ],
+          "prompt": "Cost of goods sold = Goods available for sale – ___.",
+          "hints": [
+            "What's left unsold.",
+            "Found by physical count."
+          ],
+          "id": "b1q1"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "25,000 – 9,000.",
+            "= 16,000."
+          ],
+          "prompt": "Available $25,000, ending inventory $9,000. Find COGS. (number only, no $)",
+          "id": "b1q2",
+          "answers": [
+            "16000",
+            "16,000"
+          ],
+          "feedbackIfWrong": "16,000."
+        },
+        {
+          "prompt": "Which inventory system uses scanners to track each sale? (word: periodic or perpetual)",
+          "hints": [
+            "Real‑time tracking.",
+            "Not based on annual counts."
+          ],
+          "feedbackIfWrong": "perpetual.",
+          "answers": [
+            "perpetual"
+          ],
+          "type": "short-answer",
+          "id": "b1q3"
+        }
+      ],
+      "examples": [
+        {
+          "title": "A – Identify the unknown",
+          "steps": [
+            "COGS = Goods available – Ending inventory.",
+            "$10,000 – $3,000 = $7,000."
+          ],
+          "prompt": "Goods available for sale = $10,000, ending inventory = $3,000. Find cost of goods sold.",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Think about the number of transactions.",
+          "prompt": "Explain why a grocery store would use a perpetual system rather than a periodic system.",
+          "minLength": 2,
+          "steps": [
+            "A grocery store has thousands of items and constant sales.",
+            "A perpetual system (scanners) immediately updates inventory, providing real‑time data.",
+            "A periodic system would require frequent physical counts, which is impractical."
+          ],
+          "title": "B – Perpetual vs periodic"
+        },
+        {
+          "role": "independent",
+          "prompt": "Beginning inventory 50 units, purchases 100 units, ending inventory 60 units. How many units were sold?",
+          "steps": [
+            "Units available = 50 + 100 = 150.",
+            "Units sold = 150 – 60 = 90."
+          ],
+          "title": "C – Calculate units sold"
+        }
+      ],
+      "title": "1. Importance of Inventory Valuation",
+      "discoveryHook": {
+        "scenario": "Blue Company sells art paint tubes. At year‑end, it has 48 tubes left from a total of 120 available during the year. The company must assign a dollar value to the ending inventory for the balance sheet and determine the [[kw:cost of goods sold]] for the income statement. How it values inventory affects reported profit."
+      }
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "Ending inventory = cost of the specific car still on hand = $24,000.",
+            "The other two are considered sold."
+          ],
+          "role": "guided",
+          "title": "A – Compute ending inventory",
+          "prompt": "A dealer has 3 identical cars, each purchased at different costs: $20,000, $22,000, $24,000. If one car remains in inventory (the $24,000 car), what is the ending inventory cost?"
+        },
+        {
+          "prompt": "Explain why a hardware store would not use specific identification for boxes of nails.",
+          "peerPrompt": "Think about the number and similarity of items.",
+          "title": "B – Why not for nails?",
+          "steps": [
+            "Nails are low‑cost and identical; tracking each box's exact purchase price is impractical and not cost‑effective.",
+            "Specific identification is only used for high‑value, distinguishable items.",
+            "For bulk items, methods like weighted‑average are used."
+          ],
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "title": "C – Calculate COGS",
+          "prompt": "Total goods available for sale = $5,000. Under specific identification, ending inventory is $1,800. What is COGS?",
+          "role": "independent",
+          "steps": [
+            "COGS = $5,000 – $1,800 = $3,200."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The specific identification method requires detailed record‑keeping. [[imp:If you cannot identify which specific units remain, you cannot use this method.]]"
+      },
+      "discoveryHook": {
+        "scenario": "Blue Company color‑codes each paint tube by purchase date, so it can identify the exact invoice cost of every tube. The 48 tubes left include 20 from April ($9 each), 20 from October ($12 each), and 8 from December ($13 each). Ending inventory cost = $180 + $240 + $104 = $524. Then COGS = $1,200 – $524 = $676."
+      },
+      "id": "specific-identification",
+      "challengeCorner": {
+        "optional": true,
+        "hints": [
+          "Goods available = $40,000.",
+          "COGS = $40,000 – $12,000 = $28,000."
+        ],
+        "prompt": "A jeweler has 10 rings, each purchased at different prices totaling $40,000. At year‑end, 3 rings remain with identified costs of $12,000. COGS?",
+        "answers": [
+          "28000",
+          "28,000"
+        ],
+        "type": "short-answer"
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "costs"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "Specific identification matches the actual flow of goods with the actual flow of ___.",
+          "id": "b2q1",
+          "feedbackIfWrong": "costs.",
+          "hints": [
+            "Not units.",
+            "The dollar amounts."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "8,000 – 2,500.",
+            "= 5,500."
+          ],
+          "feedbackIfWrong": "5,500.",
+          "id": "b2q2",
+          "answers": [
+            "5500",
+            "5,500"
+          ],
+          "prompt": "Goods available $8,000, ending inventory identified as $2,500. COGS? (number only, no $)"
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "unique.",
+          "id": "b2q3",
+          "prompt": "This method is most appropriate for which type of items? (word: unique or bulk)",
+          "answers": [
+            "unique"
+          ],
+          "hints": [
+            "High‑value, distinguishable.",
+            "Like cars or jewelry."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Explain that each item can be traced to its original purchase cost.",
+        "Use the steps: 1) cost of goods available 2) ending inventory at actual costs 3) COGS."
+      ],
+      "title": "2. Specific Identification Method",
+      "concept": {
+        "explanation": [
+          "The [[kw:specific identification method]] assigns the actual cost to each item sold and each item in ending inventory.",
+          "It is used when items are unique or high‑value (cars, jewelry, custom goods).",
+          "Steps: 1. Sum the cost of all units available for sale. 2. Identify which specific units remain in ending inventory and multiply their quantities by their actual purchase prices. 3. COGS = Goods available – Ending inventory cost.",
+          "[[imp:This method matches the physical flow exactly, but it is impractical for large volumes of similar, low‑cost items.]]"
+        ],
+        "visuals": [
+          {
+            "caption": "Only the specifically identified units are valued; others are assumed sold.",
+            "headers": [
+              "Source",
+              "Units",
+              "Cost/Unit",
+              "Total Cost"
+            ],
+            "title": "Specific Identification – Blue Company Ending Inventory",
+            "rows": [
+              {
+                "0": "April 1 purchase",
+                "1": "20",
+                "2": "$9",
+                "3": "$180"
+              },
+              {
+                "0": "October 1 purchase",
+                "1": "20",
+                "2": "$12",
+                "3": "$240"
+              },
+              {
+                "0": "December 1 purchase",
+                "1": "8",
+                "2": "$13",
+                "3": "$104"
+              },
+              {
+                "0": "Total ending inventory",
+                "1": "48",
+                "2": "",
+                "3": "$524"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ]
+      }
+    },
+    {
+      "questions": [
+        {
+          "feedbackIfWrong": "units.",
+          "blanks": [
+            {
+              "accept": [
+                "units"
+              ]
+            }
+          ],
+          "prompt": "Weighted‑average cost = Total cost ÷ Total ___.",
+          "type": "fill-blank",
+          "id": "b3q1",
+          "hints": [
+            "The number of items.",
+            "Not cost."
+          ]
+        },
+        {
+          "feedbackIfWrong": "20.",
+          "type": "short-answer",
+          "hints": [
+            "4,000 ÷ 200.",
+            "= 20."
+          ],
+          "answers": [
+            "20",
+            "20.00"
+          ],
+          "id": "b3q2",
+          "prompt": "Total cost $4,000, total units 200. Average cost? (number only, no $)"
+        },
+        {
+          "feedbackIfWrong": "600.",
+          "answers": [
+            "600",
+            "600.00"
+          ],
+          "id": "b3q3",
+          "prompt": "Average cost $15, ending inventory 40 units. Ending inventory cost? (number only, no $)",
+          "type": "short-answer",
+          "hints": [
+            "40 × 15.",
+            "= 600."
+          ]
+        }
+      ],
+      "title": "3. Weighted‑Average Method",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Average cost = $2,500 ÷ 100 = $25.00/unit."
+          ],
+          "title": "A – Compute average cost",
+          "prompt": "A store had 100 units available at a total cost of $2,500. Find the average cost per unit."
+        },
+        {
+          "prompt": "Explain why the weighted‑average method uses total cost divided by total units, not the simple average of unit prices.",
+          "title": "B – Weighted vs simple average",
+          "minLength": 2,
+          "steps": [
+            "A simple average would give each purchase equal weight, ignoring that some purchases had more units.",
+            "The weighted average accounts for the fact that larger purchases contribute more to the total cost.",
+            "It gives a more accurate average cost when purchase quantities vary."
+          ],
+          "peerPrompt": "Think about different quantities purchased.",
+          "role": "peer-explain"
+        },
+        {
+          "title": "C – Ending inventory and COGS",
+          "steps": [
+            "Ending inventory = 30 × $12 = $360.",
+            "COGS = $600 – $360 = $240."
+          ],
+          "role": "independent",
+          "prompt": "Average cost $12, ending inventory 30 units. Goods available $600. Find ending inventory cost and COGS."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Blue Company doesn't want to track which specific tubes are left. Instead, it calculates an average cost per tube: $1,200 ÷ 120 = $10.00. Ending inventory = 48 tubes × $10 = $480; COGS = 72 × $10 = $720. This smooths out price fluctuations."
+      },
+      "teacherCues": [
+        "Show the formula: Average cost = Total cost of goods available ÷ Total units available.",
+        "Then ending inventory = average cost × units on hand; COGS = average cost × units sold."
+      ],
+      "id": "weighted-average",
+      "concept": {
+        "visuals": [
+          {
+            "caption": "All units—sold and unsold—are valued at the same average cost.",
+            "headers": [
+              "Step",
+              "Calculation",
+              "Result"
+            ],
+            "title": "Weighted‑Average for Blue Company",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1. Average cost",
+                "1": "$1,200 ÷ 120 units",
+                "2": "$10.00/unit"
+              },
+              {
+                "0": "2. Ending inventory",
+                "1": "48 units × $10.00",
+                "2": "$480"
+              },
+              {
+                "0": "3. COGS",
+                "1": "72 units × $10.00",
+                "2": "$720"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "The [[kw:weighted‑average method]] uses a single average cost for all units.",
+          "Step 1: $$\\text{Average Cost per Unit} = \\frac{\\text{Total Cost of Goods Available}}{\\text{Total Units Available}}$$.",
+          "Step 2: Ending inventory = Average cost × Units on hand.",
+          "Step 3: COGS = Average cost × Units sold (or Goods available – Ending inventory).",
+          "[[imp:This method is simple and dampens the effect of price changes.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Average Cost} = \\frac{\\text{Total Cost of Goods Available}}{\\text{Total Units Available}}$$ $$\\text{Ending Inventory} = \\text{Average Cost} \\times \\text{Units on Hand}$$ $$\\text{COGS} = \\text{Goods Available} - \\text{Ending Inventory}$$",
+          "notes": [
+            "The average cost is not simply the average of purchase prices; it's weighted by the quantities purchased.",
+            "Total units available = beginning inventory + purchases."
+          ],
+          "title": "Weighted‑Average Formulas"
+        }
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The average cost changes every time new purchases are made. [[imp:In the periodic system, we compute one average for the entire period.]]"
+      },
+      "challengeCorner": {
+        "hints": [
+          "Total cost = (50×2)+(150×3) = 100+450=550. Average = 550/200 = 2.75.",
+          "Ending inventory = 60 × 2.75 = 165."
+        ],
+        "optional": true,
+        "prompt": "A company has beginning inventory 50 units at $2, purchases 150 units at $3. Total units available = 200. Find weighted‑average cost and ending inventory if 60 units remain.",
+        "answers": [
+          "2.75",
+          "165"
+        ],
+        "type": "short-answer"
+      }
+    },
+    {
+      "teacherCues": [
+        "Explain: The oldest costs are assigned to COGS; newest costs remain in ending inventory.",
+        "Show the calculation using Blue Company data."
+      ],
+      "challengeCorner": {
+        "hints": [
+          "Latest purchase: 100 units at $4 = $400; next 50 units from the $3 purchase = 50 × $3 = $150; total = $550.",
+          "Work backward from the most recent purchase."
+        ],
+        "answers": [
+          "550"
+        ],
+        "type": "short-answer",
+        "prompt": "A company has: beginning inventory 100 units at $2, purchase 200 units at $3, purchase 100 units at $4. Ending inventory = 150 units. Using FIFO, find ending inventory cost.",
+        "optional": true
+      },
+      "examples": [
+        {
+          "title": "A – Apply FIFO",
+          "prompt": "Beginning inventory 10 units at $5. Purchase 20 units at $6. Ending inventory 15 units. Under FIFO, what is ending inventory cost?",
+          "role": "guided",
+          "steps": [
+            "Assume the last 15 units are from the purchase: 15 × $6 = $90.",
+            "Ending inventory = $90."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Think about which costs remain in inventory.",
+          "steps": [
+            "FIFO leaves the most recent (higher) costs in ending inventory.",
+            "LIFO leaves the oldest (lower) costs in ending inventory.",
+            "Therefore FIFO ending inventory is higher."
+          ],
+          "title": "B – FIFO during inflation",
+          "prompt": "Explain why FIFO gives a higher ending inventory value than LIFO when prices are rising."
+        },
+        {
+          "title": "C – Calculate COGS under FIFO",
+          "steps": [
+            "COGS = $170 – $90 = $80.",
+            "The 10 units sold came from beginning inventory at $5 each."
+          ],
+          "prompt": "Using the guided example: goods available = (10×$5)+(20×$6) = $50+$120 = $170. Ending inventory = $90. COGS?",
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "FIFO assumes oldest costs are sold first, regardless of actual physical flow. [[imp:It is an assumption about cost flow, not necessarily goods flow.]]"
+      },
+      "title": "4. FIFO (First‑In, First‑Out) Method",
+      "id": "fifo",
+      "discoveryHook": {
+        "scenario": "Blue Company assumes the first tubes purchased are the first ones sold (FIFO). Thus, the 48 tubes left in inventory come from the most recent purchases: 20 from December ($13), 20 from October ($12), and 8 from May ($10). Ending inventory = $260 + $240 + $80 = $580. COGS = $1,200 – $580 = $620. During inflation, FIFO results in higher ending inventory and lower COGS."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Source (most recent first)",
+              "Units",
+              "Cost/Unit",
+              "Total Cost"
+            ],
+            "caption": "Oldest costs flow to COGS; newest stay in inventory.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "December 1",
+                "1": "20",
+                "2": "$13",
+                "3": "$260"
+              },
+              {
+                "0": "October 1",
+                "1": "20",
+                "2": "$12",
+                "3": "$240"
+              },
+              {
+                "0": "May 1 (8 of 20)",
+                "1": "8",
+                "2": "$10",
+                "3": "$80"
+              },
+              {
+                "0": "Total ending inventory",
+                "1": "48",
+                "2": "",
+                "3": "$580"
+              }
+            ],
+            "variant": "colorful",
+            "title": "FIFO Ending Inventory for Blue Company"
+          }
+        ],
+        "explanation": [
+          "[[kw:FIFO (First‑In, First‑Out)]] assumes the oldest inventory items are sold first.",
+          "Ending inventory consists of the most recently purchased units.",
+          "Steps: 1. List purchases from earliest to latest. 2. Assign the latest costs to the units in ending inventory, moving backward in time until all ending units are valued. 3. COGS = Goods available – Ending inventory.",
+          "[[imp:In periods of rising prices, FIFO produces a higher ending inventory value and lower COGS compared to LIFO.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Ending Inventory} = \\sum (\\text{Units from Latest Purchases} \\times \\text{Their Costs})$$ $$\\text{COGS} = \\text{Goods Available} - \\text{Ending Inventory}$$",
+          "notes": [
+            "Work backward from the most recent purchase until the ending inventory quantity is filled.",
+            "FIFO approximates physical flow for many products (perishables)."
+          ],
+          "title": "FIFO Costing"
+        }
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "newest",
+                "latest",
+                "most recent"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "Under FIFO, the ___ costs remain in ending inventory.",
+          "feedbackIfWrong": "newest (or latest).",
+          "id": "b4q1",
+          "hints": [
+            "Opposite of oldest.",
+            "Most recently purchased."
+          ]
+        },
+        {
+          "hints": [
+            "2,000 – 720.",
+            "= 1,280."
+          ],
+          "prompt": "Total goods available $2,000, ending inventory under FIFO $720. COGS? (number only, no $)",
+          "answers": [
+            "1280",
+            "1,280"
+          ],
+          "id": "b4q2",
+          "feedbackIfWrong": "1,280.",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "lower.",
+          "prompt": "In a period of rising prices, FIFO COGS will be ___ than LIFO COGS. (word: higher or lower)",
+          "hints": [
+            "Older costs are lower.",
+            "So expense is smaller."
+          ],
+          "id": "b4q3",
+          "type": "short-answer",
+          "answers": [
+            "lower"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lifo",
+      "title": "5. LIFO (Last‑In, First‑Out) and Comparison",
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Method",
+              "Ending Inventory",
+              "Cost of Goods Sold"
+            ],
+            "rows": [
+              {
+                "0": "Specific Identification",
+                "1": "$524",
+                "2": "$676"
+              },
+              {
+                "0": "Weighted‑Average",
+                "1": "$480",
+                "2": "$720"
+              },
+              {
+                "0": "FIFO",
+                "1": "$580",
+                "2": "$620"
+              },
+              {
+                "0": "LIFO",
+                "1": "$392",
+                "2": "$808"
+              }
+            ],
+            "type": "table",
+            "caption": "Different methods lead to different inventory and COGS amounts, affecting profit.",
+            "title": "Comparison of Methods for Blue Company",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "title": "LIFO Costing",
+          "formula": "$$\\text{Ending Inventory} = \\sum (\\text{Units from Earliest Costs} \\times \\text{Their Costs})$$ $$\\text{COGS} = \\text{Goods Available} - \\text{Ending Inventory}$$",
+          "notes": [
+            "Work forward from the earliest purchase until the ending inventory quantity is filled.",
+            "LIFO is not permitted under IFRS."
+          ]
+        },
+        "explanation": [
+          "[[kw:LIFO (Last‑In, First‑Out)]] assumes the newest inventory items are sold first.",
+          "Ending inventory consists of the oldest costs.",
+          "Steps: 1. Start with the earliest costs and assign them to ending inventory until the required units are reached. 2. COGS = Goods available – Ending inventory.",
+          "Comparison: During inflation, LIFO gives lowest ending inventory, highest COGS → lower taxable income. FIFO gives highest ending inventory, lowest COGS. Weighted‑average falls in between.",
+          "[[imp:LIFO is allowed in the U.S. but not under international accounting standards.]]"
+        ]
+      },
+      "questions": [
+        {
+          "id": "b5q1",
+          "prompt": "Under LIFO, the ___ costs are assigned to ending inventory.",
+          "blanks": [
+            {
+              "accept": [
+                "oldest",
+                "earliest"
+              ]
+            }
+          ],
+          "hints": [
+            "Opposite of newest.",
+            "Beginning inventory costs."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "oldest (or earliest)."
+        },
+        {
+          "feedbackIfWrong": "LIFO.",
+          "type": "short-answer",
+          "answers": [
+            "LIFO"
+          ],
+          "prompt": "In rising prices, which method results in the highest cost of goods sold? (acronym: FIFO, LIFO, or WA)",
+          "id": "b5q2",
+          "hints": [
+            "Newest costs are expensed.",
+            "Reduces profit."
+          ]
+        },
+        {
+          "answers": [
+            "3500",
+            "3,500"
+          ],
+          "id": "b5q3",
+          "hints": [
+            "5,000 – 1,500.",
+            "= 3,500."
+          ],
+          "prompt": "If total goods available is $5,000 and LIFO ending inventory is $1,500, COGS = ___ (number only, no $).",
+          "type": "short-answer",
+          "feedbackIfWrong": "3,500."
+        }
+      ],
+      "teacherCues": [
+        "Explain: The newest costs are assigned to COGS; oldest costs remain in ending inventory.",
+        "Compare all four methods for Blue Company."
+      ],
+      "discoveryHook": {
+        "scenario": "Under LIFO, Blue Company assumes the most recently purchased tubes are sold first. The 48 tubes left come from the oldest costs: 40 from beginning inventory ($8) and 8 from the April purchase ($9). Ending inventory = $320 + $72 = $392; COGS = $1,200 – $392 = $808. In inflation, LIFO results in higher COGS and lower ending inventory, reducing taxable income."
+      },
+      "challengeCorner": {
+        "optional": true,
+        "type": "short-answer",
+        "prompt": "Blue Company has total available $1,200. Under FIFO, ending inventory is $580; LIFO is $392. Compute COGS under both and determine which method reports higher profit and by how much.",
+        "answers": [
+          "620",
+          "808",
+          "FIFO",
+          "188"
+        ],
+        "hints": [
+          "FIFO COGS = 1,200-580 = 620; LIFO COGS = 1,200-392 = 808.",
+          "FIFO COGS lower by $188, so profit higher by $188."
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "Beginning inventory 30 units at $10. Purchase 20 units at $12. Ending inventory 25 units. Under LIFO, find ending inventory cost.",
+          "role": "guided",
+          "title": "A – Apply LIFO",
+          "steps": [
+            "Assume the 25 units are from beginning inventory: 25 × $10 = $250.",
+            "The 20 units purchased (plus 5 from beginning) were sold."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "LIFO assigns the most recent (higher) costs to COGS, which reduces net income.",
+            "Lower net income means lower income taxes.",
+            "This can improve cash flow in the short term."
+          ],
+          "peerPrompt": "Think about the effect on net income.",
+          "title": "B – Why LIFO for taxes?",
+          "prompt": "Explain why a company might choose LIFO during periods of high inflation.",
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "FIFO gives the lowest COGS, so highest gross profit and net income.",
+            "LIFO gives the highest COGS, lowest net income.",
+            "Weighted‑average is in between."
+          ],
+          "role": "independent",
+          "title": "C – Compare methods",
+          "prompt": "In a period of rising prices, which method gives the highest net income? (FIFO, LIFO, or Weighted‑Average)"
+        }
+      ],
+      "confusionCorner": {
+        "body": "LIFO can create 'old' inventory layers on the balance sheet that are valued at very outdated costs. [[imp:Under LIFO, the inventory on the balance sheet may be severely understated relative to current replacement cost.]]",
+        "title": "Watch out!"
+      }
+    }
+  ],
+  "standards": [
+    "BUSMATH.18.1"
+  ],
+  "id": "ch18-lu18-1",
+  "schemaVersion": 2,
+  "title": "Inventory Methods",
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

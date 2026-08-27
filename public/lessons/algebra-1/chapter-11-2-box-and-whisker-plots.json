@@ -1,0 +1,769 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-11-2-box-and-whisker-plots",
+  "title": "Chapter 11.2 — Box-and-Whisker Plots",
+  "blocks": [
+    {
+      "id": "making-box-whisker-plot",
+      "title": "Making a Box-and-Whisker Plot",
+      "teacherCues": [
+        "Write the ages 24, 30, 30, 22, 25, 22, 18, 25, 28, 30, 25, 27 on the board. Ask: 'How can we find the median? Then split into four equal groups.'",
+        "After ordering, circle the median, then medians of the lower and upper halves. Label them Q1, Q2, Q3. Draw the number line."
+      ],
+      "discoveryHook": {
+        "scenario": "A box-and-whisker plot turns a list of numbers into a simple picture. By finding the five-number summary — least value, first quartile, median, third quartile, greatest value — you can draw a box and whiskers that reveal the center, spread, and shape of any data set at a glance."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:box-and-whisker plot]] shows the variability of a data set on a number line using five key values.",
+          "The [[kw:five-number summary]] consists of: least value, first quartile (Q1), median (Q2), third quartile (Q3), greatest value.",
+          "[[kw:Quartiles]] divide the ordered data into four equal parts. Q1 is the median of the lower half; Q3 is the median of the upper half.",
+          "To make the plot: (1) Order the data. (2) Find the five-number summary. (3) Draw a number line. (4) Draw a box from Q1 to Q3 with a vertical line at the median. (5) Draw whiskers from the box to the least and greatest values."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Five-Number Summary (Backpacker Ages)",
+            "headers": [
+              "Statistic",
+              "How to Find",
+              "Value"
+            ],
+            "rows": [
+              {
+                "0": "Minimum",
+                "1": "Smallest value",
+                "2": "18"
+              },
+              {
+                "0": "Q1",
+                "1": "Median of lower half (18,22,22,24,25,25)",
+                "2": "23"
+              },
+              {
+                "0": "Median (Q2)",
+                "1": "Average of 6th and 7th (25,25)",
+                "2": "25"
+              },
+              {
+                "0": "Q3",
+                "1": "Median of upper half (25,27,28,30,30,30)",
+                "2": "29"
+              },
+              {
+                "0": "Maximum",
+                "1": "Largest value",
+                "2": "30"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Five-Number Summary",
+          "formula": "$$ \\text{Min} \\quad Q_1 \\quad \\text{Median} \\quad Q_3 \\quad \\text{Max} $$",
+          "notes": [
+            "Order the data first.",
+            "Q1 = median of the lower half; Q3 = median of the upper half.",
+            "If the median falls exactly on a data value, exclude it from both halves when finding quartiles."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Make a Box-and-Whisker Plot",
+          "prompt": "Ages of backpackers: 24, 30, 30, 22, 25, 22, 18, 25, 28, 30, 25, 27. Make the plot.",
+          "steps": [
+            "Order: 18, 22, 22, 24, 25, 25, 25, 27, 28, 30, 30, 30.",
+            "Find median (Q2): average of 6th and 7th = (25+25)/2 = 25.",
+            "Find Q1: median of first six = (22+24)/2 = 23.",
+            "Find Q3: median of last six = (28+30)/2 = 29.",
+            "Draw number line from 18 to 30. Box from 23 to 29, line at 25, whiskers to 18 and 30."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Basketball Scores",
+          "prompt": "Scores: 14, 16, 20, 5, 22, 30, 16, 28. Make a box-and-whisker plot.",
+          "peerPrompt": "Explain to a partner: How do you decide which values to include in the lower half when the data set has an even number of values?",
+          "minLength": 2,
+          "steps": [
+            "Order: 5, 14, 16, 16, 20, 22, 28, 30.",
+            "Median = (16+20)/2 = 18. Lower half: 5,14,16,16 → Q1 = (14+16)/2 = 15. Upper half: 20,22,28,30 → Q3 = (22+28)/2 = 25.",
+            "Five-number summary: Min=5, Q1=15, Median=18, Q3=25, Max=30. Draw the plot."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Practice",
+          "prompt": "Hours of TV: 0, 3, 4, 5, 2, 4, 6, 5. Make the box-and-whisker plot.",
+          "steps": [
+            "Order: 0, 2, 3, 4, 4, 5, 5, 6.",
+            "Median = (4+4)/2 = 4. Q1 = (2+3)/2 = 2.5. Q3 = (5+5)/2 = 5.",
+            "Five-number summary: 0, 2.5, 4, 5, 6."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Exclude the Median When Finding Quartiles",
+        "body": "If the median is a single data value (not an average), exclude it from both halves before finding Q1 and Q3. For an even number of values, the two middle numbers naturally split the data."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "The five-number summary of a data set consists of the least value, first quartile, median, third quartile, and ___ value.",
+          "blanks": [
+            {
+              "accept": [
+                "greatest",
+                "maximum",
+                "largest"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the opposite of least.",
+            "It's the highest number in the data set."
+          ],
+          "feedbackIfWrong": "The five-number summary ends with the greatest (maximum) value."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "For the backpacker ages, the lower half is 18, 22, 22, 24, 25, 25. What is Q1?",
+          "answers": [
+            "23",
+            "twenty three"
+          ],
+          "hints": [
+            "Find the median of those six numbers.",
+            "Average of 22 and 24."
+          ],
+          "feedbackIfWrong": "Q1 = (22+24)/2 = 23."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "In a box-and-whisker plot, the box is drawn from Q1 to Q3. The line inside the box represents the ___.",
+          "answers": [
+            "median",
+            "Median",
+            "Q2"
+          ],
+          "hints": [
+            "It's the middle quartile.",
+            "It divides the data into two equal halves."
+          ],
+          "feedbackIfWrong": "The line inside the box is the median (Q2)."
+        }
+      ]
+    },
+    {
+      "id": "interpreting-box-whisker-plots",
+      "title": "Interpreting a Box-and-Whisker Plot",
+      "teacherCues": [
+        "Display a box-and-whisker plot of song lengths. Ask: 'What does the length of the box tell us? What about the whiskers?'",
+        "Point to the left whisker, the box, the right whisker. Say: 'Each whisker holds about 25% of the data; the box holds the middle 50%.'"
+      ],
+      "discoveryHook": {
+        "scenario": "A box-and-whisker plot instantly shows where the middle half of the data lies, how spread out the extremes are, and whether the data lean left or right. By reading the box and whiskers, you can describe the distribution without seeing a single original number."
+      },
+      "concept": {
+        "explanation": [
+          "Each section of a box-and-whisker plot represents about 25% of the data: left whisker, left part of box, right part of box, right whisker.",
+          "The [[kw:interquartile range (IQR)]] is $Q_3 - Q_1$. It measures the spread of the middle 50% of the data.",
+          "The shape of the distribution is shown by the whisker lengths and the position of the median:",
+          "  • Skewed left: left whisker longer; most data on the right.",
+          "  • Symmetric: whiskers about equal; median centered.",
+          "  • Skewed right: right whisker longer; most data on the left."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Reading a Box-and-Whisker Plot (Song Lengths)",
+            "headers": [
+              "Feature",
+              "Value",
+              "Interpretation"
+            ],
+            "rows": [
+              {
+                "0": "Range",
+                "1": "$300-160 = 140$ sec",
+                "2": "Overall spread is 140 seconds."
+              },
+              {
+                "0": "IQR",
+                "1": "$280-220 = 60$ sec",
+                "2": "Middle 50% vary by at most 60 sec."
+              },
+              {
+                "0": "Left whisker",
+                "1": "160 to 220",
+                "2": "25% of songs are 160–220 sec."
+              },
+              {
+                "0": "Box",
+                "1": "220 to 280",
+                "2": "50% of songs are 220–280 sec."
+              },
+              {
+                "0": "Right whisker",
+                "1": "280 to 300",
+                "2": "25% of songs are 280–300 sec."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Interquartile Range (IQR)",
+          "formula": "$$ \\text{IQR} = Q_3 - Q_1 $$",
+          "notes": [
+            "IQR measures the spread of the middle half of the data.",
+            "It is resistant to outliers."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Find and Interpret Range & IQR",
+          "prompt": "A box-and-whisker plot of song lengths has min=160, Q1=220, Q3=280, max=300. Find the range and IQR.",
+          "steps": [
+            "Range = max − min = 300 − 160 = 140 seconds.",
+            "IQR = Q3 − Q1 = 280 − 220 = 60 seconds.",
+            "The overall spread is 140 sec; the middle 50% spread is 60 sec."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Shape and Spread",
+          "prompt": "In the same song-length plot, the left whisker is longer than the right whisker. Describe the shape.",
+          "peerPrompt": "Without looking back… Explain to a partner: How can you tell from the whiskers whether the data are skewed left or right?",
+          "minLength": 2,
+          "steps": [
+            "Left whisker is longer → data are more spread out on the low end.",
+            "Most data are on the right side of the plot.",
+            "The distribution is skewed left."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Practice",
+          "prompt": "In the song-length plot, are data more spread out below Q1 or above Q3?",
+          "steps": [
+            "Below Q1: span = 220 − 160 = 60 sec.",
+            "Above Q3: span = 300 − 280 = 20 sec.",
+            "Data below Q1 are more spread out."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Longer Whisker = More Spread",
+        "body": "A longer whisker means the data in that quarter are more spread out. This often indicates skewness in that direction. Don't confuse whisker length with the amount of data — each whisker still represents about 25% of the data."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "The interquartile range (IQR) is the difference between the third quartile and the ___ quartile.",
+          "blanks": [
+            {
+              "accept": [
+                "first",
+                "1st"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the lower quartile.",
+            "Q1."
+          ],
+          "feedbackIfWrong": "IQR = Q3 − Q1."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "In the song-length plot, Q1=220 and Q3=280. What is the IQR?",
+          "answers": [
+            "60",
+            "sixty"
+          ],
+          "hints": [
+            "Subtract Q1 from Q3.",
+            "280 − 220."
+          ],
+          "feedbackIfWrong": "IQR = 60 seconds."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "If the left whisker is much longer than the right whisker, the distribution is skewed ___. (Type 'left' or 'right')",
+          "answers": [
+            "left",
+            "Left"
+          ],
+          "hints": [
+            "Longer left whisker means more spread on the low end.",
+            "Most data are on the right side."
+          ],
+          "feedbackIfWrong": "Skewed left."
+        }
+      ]
+    },
+    {
+      "id": "comparing-data-sets",
+      "title": "Comparing Box-and-Whisker Plots",
+      "teacherCues": [
+        "Display two box-and-whisker plots on the same number line. Ask: 'Which data set has a larger range? Which has a larger IQR?'",
+        "Then ask: 'What does the shape of each plot tell you about the distribution?'"
+      ],
+      "discoveryHook": {
+        "scenario": "Side-by-side box-and-whisker plots make comparing two data sets easy. You can instantly see which group has a higher median, which is more spread out, and whether the shapes are symmetric or skewed — all without crunching numbers."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:double box-and-whisker plot]] places two plots on the same number line for easy comparison.",
+          "Compare centers: look at the medians. The group with the higher median has a higher typical value.",
+          "Compare spread: look at the range and IQR. A longer box or longer whiskers indicate more variability.",
+          "Compare shapes: check whisker lengths to see skewness. Symmetric plots have roughly equal whiskers."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Comparing Test Scores",
+            "headers": [
+              "Feature",
+              "Your Class",
+              "Friend's Class"
+            ],
+            "rows": [
+              {
+                "0": "Median",
+                "1": "~85",
+                "2": "~78"
+              },
+              {
+                "0": "Range",
+                "1": "~30",
+                "2": "~40"
+              },
+              {
+                "0": "IQR",
+                "1": "~12",
+                "2": "~18"
+              },
+              {
+                "0": "Shape",
+                "1": "Skewed left",
+                "2": "Symmetric"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Comparing Box-and-Whisker Plots",
+          "formula": "$$ \\text{Higher median} \\rightarrow \\text{higher typical value} $$ $$ \\text{Larger IQR/range} \\rightarrow \\text{more spread out} $$",
+          "notes": [
+            "Always use the same scale when comparing.",
+            "Both the box length (IQR) and whisker lengths matter for spread."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Compare Test Scores",
+          "prompt": "Your class and a friend's class took a test. The double box-and-whisker plot shows your class median ~85, friend's ~78. Which performed better?",
+          "steps": [
+            "Your class median is higher → better typical score.",
+            "Friend's class has larger IQR and range → more spread out.",
+            "Your class is skewed left; friend's class is symmetric."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Surfboard Prices",
+          "prompt": "Shop A's box is narrower and its median is lower than Shop B's. Which shop has more consistent prices?",
+          "peerPrompt": "Explain to a partner: How does a smaller IQR indicate more consistency? Which shop would you choose for predictable pricing?",
+          "minLength": 2,
+          "steps": [
+            "Shop A has smaller IQR → prices are more consistent.",
+            "Shop A's median is lower, so prices are generally cheaper.",
+            "Shop B has larger spread; prices vary more."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Practice",
+          "prompt": "Two brands of cell phones have battery lives: Brand A box from 3 to 5 hrs; Brand B box from 3.5 to 6 hrs. Which brand lasts longer for the middle 50%?",
+          "steps": [
+            "Brand B's box extends further right (up to 6 hrs).",
+            "Brand B's median is also higher.",
+            "The middle 50% of Brand B phones last longer."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Compare Whiskers Alone",
+        "body": "When comparing spread, consider both the IQR (box length) and the overall range. A data set could have a smaller IQR but a larger range if it has outliers. The box shows the middle 50%, which is often more reliable."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "In a double box-and-whisker plot, the data set with the larger interquartile range has more ___ in the middle 50%.",
+          "blanks": [
+            {
+              "accept": [
+                "spread",
+                "variation",
+                "variability"
+              ]
+            }
+          ],
+          "hints": [
+            "Think about how wide the box is.",
+            "Larger IQR means the middle half is more spread out."
+          ],
+          "feedbackIfWrong": "Larger IQR means more spread (variation)."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "If two data sets have the same median, but Set A has a longer box, which set has a larger IQR? (Type 'A' or 'B')",
+          "answers": [
+            "A",
+            "a"
+          ],
+          "hints": [
+            "Longer box means greater distance between Q1 and Q3.",
+            "IQR = length of the box."
+          ],
+          "feedbackIfWrong": "Set A has the larger IQR."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "A double box-and-whisker plot shows that Shop A's left whisker is much longer than its right whisker. What is the shape of Shop A's distribution? (Type 'skewed left', 'symmetric', or 'skewed right')",
+          "answers": [
+            "skewed left",
+            "Skewed left"
+          ],
+          "hints": [
+            "Longer left whisker means stretched to the low end.",
+            "Most data are on the right."
+          ],
+          "feedbackIfWrong": "The distribution is skewed left."
+        }
+      ]
+    },
+    {
+      "id": "real-life-entree-prices",
+      "title": "Real‑Life: Entrée Prices at a Restaurant",
+      "teacherCues": [
+        "Display the box-and-whisker plot for entrée prices: min=8.75, Q1=10.5, median=13.25, Q3=14.75, max=18.25. Ask: 'What does the range tell us? What about the IQR?'",
+        "Point to the whiskers: 'Which whisker is longer? What does that mean?'"
+      ],
+      "discoveryHook": {
+        "scenario": "A restaurant's menu prices can be summarized in a single box-and-whisker plot. You can see at a glance the cheapest and most expensive dishes, the typical price range for the middle half, and whether the high‑end dishes are far above the rest."
+      },
+      "concept": {
+        "explanation": [
+          "Entrée prices (dollars): min = 8.75, Q1 = 10.5, median = 13.25, Q3 = 14.75, max = 18.25.",
+          "Range = 18.25 − 8.75 = 9.50. Prices vary by at most $9.50.",
+          "IQR = 14.75 − 10.5 = 4.25. The middle 50% of prices fall within a $4.25 range.",
+          "The right whisker is longer than the left whisker → skewed right. There are some higher‑priced entrées stretching the upper end.",
+          "This plot helps a customer quickly understand the price spread."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Entrée Price Summary",
+            "headers": [
+              "Statistic",
+              "Value",
+              "Meaning"
+            ],
+            "rows": [
+              {
+                "0": "Range",
+                "1": "$9.50$",
+                "2": "Overall spread of prices"
+              },
+              {
+                "0": "IQR",
+                "1": "$4.25$",
+                "2": "Spread of middle 50% of prices"
+              },
+              {
+                "0": "Median",
+                "1": "$13.25$",
+                "2": "Typical entrée price"
+              },
+              {
+                "0": "Shape",
+                "1": "Skewed right",
+                "2": "Some higher‑priced entrées"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Restaurant Price Analysis",
+          "formula": "$$ \\text{Range} = \\text{Max} - \\text{Min} \\qquad \\text{IQR} = Q_3 - Q_1 $$",
+          "notes": [
+            "Use range for overall spread; IQR for the middle half.",
+            "Longer right whisker → skewed right (some high values)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Find Range and IQR",
+          "prompt": "Entrée prices: min=8.75, Q1=10.5, median=13.25, Q3=14.75, max=18.25. Find the range and IQR.",
+          "steps": [
+            "Range = 18.25 − 8.75 = 9.50 dollars.",
+            "IQR = 14.75 − 10.5 = 4.25 dollars.",
+            "The middle 50% of entrées are priced within $4.25 of each other."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Describe Distribution",
+          "prompt": "Describe the shape and spread of the entrée prices.",
+          "peerPrompt": "Explain to a partner: What does the longer right whisker tell you about the restaurant's menu?",
+          "minLength": 2,
+          "steps": [
+            "Right whisker is longer → skewed right.",
+            "There are a few more expensive entrées pulling the upper end.",
+            "Most entrées are clustered between $10.50 and $14.75."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Effect of a New Item",
+          "prompt": "If a new entrée is added at $22.00, how would that affect the box-and-whisker plot?",
+          "steps": [
+            "The max would increase to $22.00, lengthening the right whisker.",
+            "Q3, median, and Q1 would likely stay similar.",
+            "The range would increase; IQR would remain about the same."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Quartiles vs. Percentiles",
+        "body": "Quartiles divide data into four groups. Q1 is the 25th percentile; median is the 50th percentile; Q3 is the 75th percentile. The IQR covers the middle 50%, from the 25th to the 75th percentile."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "short-answer",
+          "prompt": "What is the range of entrée prices if min=8.75 and max=18.25?",
+          "answers": [
+            "9.5",
+            "9.50"
+          ],
+          "hints": [
+            "Subtract the min from the max.",
+            "18.25 − 8.75."
+          ],
+          "feedbackIfWrong": "The range is $9.50."
+        },
+        {
+          "id": "q4-2",
+          "type": "fill-blank",
+          "prompt": "If the right whisker of a box-and-whisker plot is longer than the left whisker, the distribution is skewed ___.",
+          "blanks": [
+            {
+              "accept": [
+                "right",
+                "Right"
+              ]
+            }
+          ],
+          "hints": [
+            "The tail stretches to the higher values.",
+            "Opposite of skewed left."
+          ],
+          "feedbackIfWrong": "Skewed right."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "In the entrée price plot, Q1=10.5 and Q3=14.75. What is the IQR?",
+          "answers": [
+            "4.25"
+          ],
+          "hints": [
+            "Subtract Q1 from Q3.",
+            "14.75 − 10.5."
+          ],
+          "feedbackIfWrong": "IQR = $4.25."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-box-whisker",
+      "title": "Blueprint Aid: Construct and Analyze a Box-and-Whisker Plot",
+      "teacherCues": [
+        "Summarize the blueprint: 1) Order the data. 2) Find the five-number summary. 3) Draw the plot. 4) Interpret the center, spread, and shape.",
+        "Emphasize: The box shows the middle 50%; whiskers show the outer 25% on each side."
+      ],
+      "discoveryHook": {
+        "scenario": "With a systematic blueprint, any data set can be turned into a box-and-whisker plot. Order, find the five numbers, draw the box, and then read the story the plot tells — center, spread, shape, and all."
+      },
+      "concept": {
+        "explanation": [
+          "**Understand:** Collect and order the data. Note the number of values.",
+          "**Solve – Five-Number Summary:** Identify the minimum, Q1, median, Q3, and maximum.",
+          "**Solve – Draw:** Draw a number line spanning the min and max. Place a box from Q1 to Q3 with a line at the median. Extend whiskers to the min and max.",
+          "**Conclude – Interpret:** Use the plot to describe the center (median), spread (range, IQR), and shape (skewed left, symmetric, skewed right).",
+          "When comparing two data sets, place their plots on the same number line and compare medians, IQRs, and shapes."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for a Box-and-Whisker Plot",
+            "headers": [
+              "Step",
+              "Action",
+              "Example (Ages)"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Order the data",
+                "2": "18,22,22,24,25,25,25,27,28,30,30,30"
+              },
+              {
+                "0": "Five-Number Summary",
+                "1": "Min, Q1, Median, Q3, Max",
+                "2": "18, 23, 25, 29, 30"
+              },
+              {
+                "0": "Draw",
+                "1": "Number line, box, whiskers",
+                "2": "Box 23–29, median 25, whiskers to 18 & 30"
+              },
+              {
+                "0": "Interpret",
+                "1": "Center, spread, shape",
+                "2": "Median 25, IQR 6, slightly skewed left"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Box-and-Whisker Plot Blueprint",
+          "formula": "$$ \\text{Order} \\rightarrow \\text{Five-Number Summary} \\rightarrow \\text{Draw} \\rightarrow \\text{Interpret} $$",
+          "notes": [
+            "The box shows the IQR (middle 50%).",
+            "Longer whisker on one side indicates skewness in that direction."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Full Blueprint",
+          "prompt": "Use the blueprint to create and analyze the box-and-whisker plot for the backpacker ages.",
+          "steps": [
+            "Understand: 12 ages. Order: 18,22,22,24,25,25,25,27,28,30,30,30.",
+            "Five-number: Min=18, Q1=23, Median=25, Q3=29, Max=30.",
+            "Draw: Number line 18–30, box 23–29, line at 25, whiskers to 18 and 30.",
+            "Interpret: Median age 25; IQR=6; slightly skewed left (left whisker longer)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Compare Two Data Sets",
+          "prompt": "Double box-and-whisker plot of your class and friend's class test scores. Use the blueprint to compare.",
+          "peerPrompt": "Without looking back… Explain to a partner: How can you tell which class performed better overall? Which class had more consistent scores?",
+          "minLength": 2,
+          "steps": [
+            "Your class: median higher → better typical score.",
+            "Friend's class: larger IQR and range → more spread out, less consistent.",
+            "Your class: skewed left; friend's class: symmetric."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Entrée Prices",
+          "prompt": "Apply the blueprint to the entrée price data.",
+          "steps": [
+            "Five-number: 8.75, 10.5, 13.25, 14.75, 18.25.",
+            "Draw: box 10.5–14.75, median 13.25, whiskers to 8.75 and 18.25.",
+            "Interpret: Median $13.25; IQR $4.25; skewed right (longer right whisker)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Box Length ≠ Number of Data Points",
+        "body": "The length of the box or whiskers shows spread, not how many values are in that section. Each section contains approximately 25% of the data, regardless of its length."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "fill-blank",
+          "prompt": "The first step in making a box-and-whisker plot is to ___ the data from least to greatest.",
+          "blanks": [
+            {
+              "accept": [
+                "order",
+                "sort",
+                "arrange"
+              ]
+            }
+          ],
+          "hints": [
+            "You need to find the median.",
+            "Put the numbers in numerical order."
+          ],
+          "feedbackIfWrong": "Order (or sort) the data."
+        },
+        {
+          "id": "q5-2",
+          "type": "short-answer",
+          "prompt": "In the backpacker ages plot, what is the IQR?",
+          "answers": [
+            "6",
+            "six"
+          ],
+          "hints": [
+            "Q3=29, Q1=23.",
+            "Subtract 23 from 29."
+          ],
+          "feedbackIfWrong": "IQR = 6 years."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "If a box-and-whisker plot has whiskers of equal length and the median is centered in the box, the distribution is ___.",
+          "answers": [
+            "symmetric",
+            "Symmetric",
+            "symmetrical"
+          ],
+          "hints": [
+            "It's balanced.",
+            "Neither skewed left nor right."
+          ],
+          "feedbackIfWrong": "Symmetric."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

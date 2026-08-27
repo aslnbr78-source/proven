@@ -1,0 +1,799 @@
+{
+  "standards": [
+    "HSA.CED.A.2",
+    "HSF.BF.A.1",
+    "HSF.LE.A.2",
+    "HSS.ID.B.6a"
+  ],
+  "blocks": [
+    {
+      "id": "writing-cubic-from-intercepts",
+      "teacherCues": [
+        "Write $ f(x)=a(x+4)(x-1)(x-3) $ and ask: What information do we need to find $ a $?",
+        "Show a graph with three $ x $-intercepts and one other point. Ask: How can we build the equation?"
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "The third factor is $ (x-5) $, so the blank is $ 5 $.",
+          "id": "q4-9-1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "5"
+              ]
+            }
+          ],
+          "prompt": "A cubic function with $ x $-intercepts $ 2, -1, 5 $ has the factored form $ f(x) = a(x-2)(x+1)(x-___)$.",
+          "hints": [
+            "The third intercept is $ 5 $.",
+            "Factor is $ (x - 5) $."
+          ]
+        },
+        {
+          "id": "q4-9-2",
+          "feedbackIfWrong": "$ a = -1 $.",
+          "answers": [
+            "-1"
+          ],
+          "type": "short-answer",
+          "prompt": "For a cubic with $ x $-intercepts $ -3, 0, 4 $ and passing through $ (1, 8) $, what is the value of $ a $?",
+          "hints": [
+            "Substitute $ x=1, y=8 $ into $ a(x+3)(x)(x-4) $.",
+            "Compute the product: $ (1+3)(1)(1-4) = 4 \\cdot 1 \\cdot (-3) = -12 $. Then $ 8 = a(-12) $."
+          ]
+        },
+        {
+          "answers": [
+            "4",
+            "four"
+          ],
+          "feedbackIfWrong": "Four points determine a cubic function (three $ x $-intercepts plus one more, or any four distinct points).",
+          "prompt": "How many points (minimum) are needed to determine a unique cubic function?",
+          "type": "short-answer",
+          "hints": [
+            "It's one more than the degree.",
+            "A line needs 2, a parabola needs 3."
+          ],
+          "id": "q4-9-3"
+        }
+      ],
+      "title": "Writing Cubic Functions from Intercepts",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ f(x) = a(x - r_1)(x - r_2)(x - r_3) $$",
+          "legend": [
+            {
+              "meaning": "the $ x $-intercepts (zeros)",
+              "symbol": "$ r_1, r_2, r_3 $",
+              "tone": "core"
+            },
+            {
+              "symbol": "$ a $",
+              "meaning": "leading coefficient; found using an extra point",
+              "tone": "core"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1",
+                "1": "Identify the three $ x $-intercepts: $ r_1, r_2, r_3 $."
+              },
+              {
+                "0": "2",
+                "1": "Write $ f(x) = a(x - r_1)(x - r_2)(x - r_3) $."
+              },
+              {
+                "0": "3",
+                "1": "Pick a fourth point $ (x_0, y_0) $ on the graph."
+              },
+              {
+                "0": "4",
+                "1": "Substitute $ x_0 $ and $ y_0 $ and solve for $ a $."
+              },
+              {
+                "0": "5",
+                "1": "Write the final function and check end behavior."
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Steps to Write a Cubic from Its Graph",
+            "headers": [
+              "Step",
+              "Action"
+            ]
+          }
+        ],
+        "explanation": [
+          "Two points determine a line (linear), three points determine a parabola (quadratic), and four points not on a line or parabola determine a [[kw:cubic function]].",
+          "If you know the three $ x $-intercepts of a cubic, write the factored form: $$ f(x) = a(x - r_1)(x - r_2)(x - r_3) $$",
+          "To find the leading coefficient $ a $, substitute the coordinates of a fourth point on the graph (not an intercept).",
+          "Solve for $ a $ and then you can expand to standard form if needed.",
+          "Always check the end behavior to make sure the sign of $ a $ matches the graph."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Signs in Factored Form",
+        "body": "Remember: an $ x $-intercept of $ -4 $ gives the factor $ (x - (-4)) = (x + 4) $. [[imp:Watch the signs carefully when writing factors!]]"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "The graph of a cubic function has $ x $-intercepts at $ -4, 1, 3 $ and passes through $ (0, -6) $. Write the function.",
+          "steps": [
+            "Factored form: $ f(x) = a(x + 4)(x - 1)(x - 3) $.",
+            "Substitute $ (0, -6) $: $ -6 = a(0+4)(0-1)(0-3) = a(4)(-1)(-3) = 12a $.",
+            "Solve: $ a = -\\frac{1}{2} $.",
+            "The function is $ f(x) = -\\frac{1}{2}(x+4)(x-1)(x-3) $."
+          ],
+          "title": "Example A — Finding $ a $ from a Fourth Point"
+        },
+        {
+          "prompt": "Why can't we determine a cubic function uniquely from only its three $ x $-intercepts?",
+          "title": "Example B — Why a Fourth Point?",
+          "steps": [
+            "Many different cubics can cross the $ x $-axis at the same three places if they are stretched vertically by different factors or reflected.",
+            "The leading coefficient $ a $ controls the vertical stretch and whether the graph opens upward or downward.",
+            "Without a fourth point, $ a $ can be any nonzero number, giving infinitely many curves.",
+            "The extra point pins down the exact value of $ a $."
+          ],
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Two different cubic functions can share the same three $ x $-intercepts. What makes them different? Sketch two possibilities.",
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C — Write from Given Points",
+          "steps": [
+            "Factored form: $ f(x) = a(x+1)(x-2)(x-3) $.",
+            "Substitute $ (0, -12) $: $ -12 = a(1)(-2)(-3) = 6a $.",
+            "$ a = -2 $.",
+            "So $ f(x) = -2(x+1)(x-2)(x-3) $."
+          ],
+          "role": "independent",
+          "prompt": "A cubic function has $ x $-intercepts $ -1, 2, 3 $ and passes through $ (0, -12) $. Write the function."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A baseball's distance after being hit depends on speed and angle. By knowing the speed at three key points and one extra measurement, we can model the distance with a cubic function—just like connecting dots, but with a smooth curve."
+      }
+    },
+    {
+      "teacherCues": [
+        "Show a table of equally spaced $ x $-values and their $ y $-values. Demonstrate subtracting to get first differences, then second, third.",
+        "Ask: If the third differences are constant, what degree is the polynomial?"
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "Constant second differences indicate a quadratic (degree 2) polynomial.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "quadratic"
+              ]
+            }
+          ],
+          "id": "q4-9-4",
+          "prompt": "If the second differences of a data set are constant and nonzero, the data can be modeled by a ___ function.",
+          "hints": [
+            "Degree 2.",
+            "The graph is a parabola."
+          ]
+        },
+        {
+          "answers": [
+            "4,6,8,10",
+            "4, 6, 8, 10"
+          ],
+          "feedbackIfWrong": "First differences: $ 6-2=4, 12-6=6, 20-12=8, 30-20=10 $.",
+          "prompt": "Given the $ y $-values 2, 6, 12, 20, 30 for $ x=1,2,3,4,5 $, what are the first differences? (List without spaces: 4,6,8,10)",
+          "hints": [
+            "Subtract consecutive $ y $'s: 6-2, 12-6, etc.",
+            "They should increase by 2 each time."
+          ],
+          "id": "q4-9-5",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "Constant third differences mean a cubic polynomial (degree 3).",
+          "answers": [
+            "3",
+            "three"
+          ],
+          "prompt": "If third differences are constant, what is the degree of the polynomial?",
+          "hints": [
+            "The order of constant differences equals the degree.",
+            "First differences → linear, second → quadratic."
+          ],
+          "id": "q4-9-6",
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine you have a set of data points equally spaced in $ x $. By repeatedly subtracting consecutive $ y $-values, you can uncover the exact degree of the polynomial that fits the data—like a secret code hidden in the numbers."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "The table shows $ (1,1), (2,4), (3,10), (4,20), (5,35), (6,56), (7,84) $. Find the degree of the polynomial that fits this data exactly.",
+          "steps": [
+            "1st differences: $ 3,6,10,15,21,28 $ (not constant).",
+            "2nd differences: $ 3,4,5,6,7 $ (not constant).",
+            "3rd differences: $ 1,1,1,1 $ (constant!).",
+            "Third differences constant → cubic polynomial (degree 3)."
+          ],
+          "title": "Example A — Determine Degree from Differences"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Take $ f(x)=x^2 $. Compute $ f(x+1)-f(x) $ and then again. What happens to the $ x^2 $ term?",
+          "role": "peer-explain",
+          "title": "Example B — Why Constant $ n $th Differences?",
+          "minLength": 8,
+          "steps": [
+            "For $ f(x)=x^2 $, $ f(x+1)-f(x) = (x+1)^2 - x^2 = 2x+1 $ (linear).",
+            "The second difference: $ (2(x+1)+1) - (2x+1) = 2 $, constant.",
+            "Each subtraction reduces the degree by 1, so after $ n $ subtractions, an $ n $th-degree polynomial becomes constant."
+          ],
+          "prompt": "Explain why a quadratic function ($ x^2 $) has constant second differences."
+        },
+        {
+          "prompt": "Given $ (-3,6), (-2,15), (-1,22), (0,21), (1,6), (2,-29) $, determine the degree.",
+          "role": "independent",
+          "steps": [
+            "First differences: $ 9,7,-1,-15,-35 $ (not constant).",
+            "Second differences: $ -2,-8,-14,-20 $ (not constant).",
+            "Third differences: $ -6,-6,-6 $ (constant).",
+            "Degree 3 (cubic)."
+          ],
+          "title": "Example C — Using Differences to Find Degree"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Finite Differences for $ f(x) = x^2 $",
+            "headers": [
+              "$ x $",
+              "$ y $",
+              "1st diff",
+              "2nd diff"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "-3",
+                "1": "9",
+                "2": "",
+                "3": ""
+              },
+              {
+                "0": "-2",
+                "1": "4",
+                "2": "$ 4-9 = -5 $",
+                "3": ""
+              },
+              {
+                "0": "-1",
+                "1": "1",
+                "2": "$ 1-4 = -3 $",
+                "3": "$ -3 - (-5) = 2 $"
+              },
+              {
+                "0": "0",
+                "1": "0",
+                "2": "$ 0-1 = -1 $",
+                "3": "$ -1 - (-3) = 2 $"
+              },
+              {
+                "0": "1",
+                "1": "1",
+                "2": "$ 1-0 = 1 $",
+                "3": "$ 1 - (-1) = 2 $"
+              },
+              {
+                "0": "2",
+                "1": "4",
+                "2": "$ 4-1 = 3 $",
+                "3": "$ 3 - 1 = 2 $"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{If } n\\text{th differences are constant } \\neq 0, \\text{ then degree } = n. $$",
+          "legend": [
+            {
+              "symbol": "$ n $",
+              "tone": "core",
+              "meaning": "the order of constant differences"
+            },
+            {
+              "symbol": "constant",
+              "tone": "subtle",
+              "meaning": "the differences don't change from row to row"
+            }
+          ]
+        },
+        "explanation": [
+          "[[kw:Finite differences]] are found by subtracting consecutive $ y $-values when the $ x $-values are equally spaced.",
+          "If the first differences are constant, the data fits a linear model (degree 1).",
+          "If the second differences are constant, the data fits a quadratic model (degree 2).",
+          "In general, if the $ n $th differences are nonzero and constant, the data can be modeled exactly by a polynomial of degree $ n $.",
+          "Once you know the degree, you can use regression (calculator) to find the exact polynomial coefficients."
+        ]
+      },
+      "id": "finite-differences",
+      "confusionCorner": {
+        "title": "Equally Spaced $ x $-Values Are Key",
+        "body": "Finite differences only work when the $ x $-values are [[imp:equally spaced]]. If the spacing is uneven, you cannot use this method directly."
+      },
+      "title": "Finite Differences and Polynomial Degree"
+    },
+    {
+      "confusionCorner": {
+        "body": "Polynomial models are reliable only within or near the range of the given data. Predicting far outside that range (extrapolation) can give absurd results because polynomials grow rapidly.",
+        "title": "Beware of Extrapolation"
+      },
+      "title": "Finding Polynomial Models with Technology",
+      "examples": [
+        {
+          "steps": [
+            "Enter data: $ t $ in L1, $ y $ in L2. Scatter plot shows a curve.",
+            "Perform CubicReg: $ y = -2.545t^3 + 51.95t^2 - 118.1t + 2732 $.",
+            "$ R^2 \\approx 0.989 $ (excellent fit).",
+            "For $ t=13 $: $ y \\approx -2.545(2197) + 51.95(169) - 118.1(13) + 2732 \\approx 4385 $.",
+            "The estimated consumption in year 13 (2013) is about 4385 trillion Btus."
+          ],
+          "title": "Example A — Biomass Energy Model",
+          "prompt": "Use the biomass energy data (year $ t=1 $ to $ 12 $, consumption $ y $) to find a cubic model. Then estimate consumption in year 13.",
+          "role": "guided"
+        },
+        {
+          "title": "Example B — Interpreting $ R^2 $",
+          "steps": [
+            "$ R^2 $ measures how closely the model's predicted values match the actual data. A value of 1 means perfect fit.",
+            "$ R^2 = 0.99 $ means the model explains 99% of the variation in the data; only 1% is due to other factors or randomness.",
+            "High $ R^2 $ gives confidence in predictions made with the model."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If two models have $ R^2 $ values of 0.99 and 0.80, which one better captures the data? Why?",
+          "role": "peer-explain",
+          "prompt": "What does an $ R^2 $ value of 0.99 mean, and why is it important?",
+          "minLength": 8
+        },
+        {
+          "title": "Example C — Finding a Model Yourself",
+          "steps": [
+            "Enter data and run CubicReg. Assume you get a model like $ y = 0.0003x^3 + 0.02x^2 + 0.5x - 1 $ (approximate).",
+            "Plug $ x=28 $ into the model and compute $ y \\approx 16.5 $.",
+            "Exact numbers depend on calculator output."
+          ],
+          "role": "independent",
+          "prompt": "The table shows engine speed $ x $ (hundreds of RPM) and boat speed $ y $ (mph): (10,4.5), (20,8.9), (25,13.8), (30,18.9), (45,29.9), (55,37.7). Use cubic regression to estimate $ y $ at $ x=28 $ (hundreds RPM)."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Real-world data rarely follows a perfect polynomial. But with regression technology, we can find the best-fitting cubic (or quartic) model to make predictions—just like scientists forecasting energy use or population growth."
+      },
+      "concept": {
+        "explanation": [
+          "When data do not fit exactly, use a graphing calculator or software to perform [[kw:polynomial regression]].",
+          "Steps: 1) Enter data into lists. 2) Make a scatter plot to see the shape. 3) Choose a polynomial degree (often cubic or quartic). 4) Use regression to find coefficients.",
+          "The calculator gives the polynomial and a value $ R^2 $ (coefficient of determination). The closer $ R^2 $ is to 1, the better the fit.",
+          "After obtaining the model, graph it over the scatter plot to visually check, then use the model to predict other values.",
+          "Cubic regression gives a model of the form $$ y = ax^3 + bx^2 + cx + d $$"
+        ],
+        "formulaCard": {
+          "formula": "$$ y = ax^3 + bx^2 + cx + d $$",
+          "legend": [
+            {
+              "symbol": "$ a, b, c, d $",
+              "meaning": "coefficients from cubic regression",
+              "tone": "core"
+            },
+            {
+              "meaning": "closer to 1 = better fit",
+              "tone": "subtle",
+              "symbol": "$ R^2 $"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1",
+                "1": "Enter $ x $-values in List 1, $ y $-values in List 2."
+              },
+              {
+                "0": "2",
+                "1": "Turn on scatter plot and graph to see pattern."
+              },
+              {
+                "0": "3",
+                "1": "Choose CubicReg from the STAT CALC menu."
+              },
+              {
+                "0": "4",
+                "1": "Record the coefficients $ a, b, c, d $ and $ R^2 $."
+              },
+              {
+                "0": "5",
+                "1": "Enter the model equation in Y= and graph over the data."
+              },
+              {
+                "0": "6",
+                "1": "Use the model to predict unknown $ y $ for given $ x $."
+              }
+            ],
+            "type": "table",
+            "title": "Using a Graphing Calculator for Cubic Regression",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "$ R^2 $ indicates the goodness of fit.",
+          "blanks": [
+            {
+              "accept": [
+                "fits"
+              ]
+            }
+          ],
+          "prompt": "The coefficient of determination $ R^2 $ measures how well a regression model ___ the data.",
+          "id": "q4-9-7",
+          "hints": [
+            "Think of how closely the curve matches the points.",
+            "A perfect match has $ R^2 = 1 $."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "d"
+          ],
+          "prompt": "In the cubic regression model $ y = ax^3 + bx^2 + cx + d $, which coefficient corresponds to the constant term?",
+          "id": "q4-9-8",
+          "feedbackIfWrong": "The constant term is $ d $.",
+          "hints": [
+            "It's the term without $ x $.",
+            "It's the last letter in the list."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "It was very close to 1.",
+            "The example gave it as about 0.989."
+          ],
+          "answers": [
+            "0.989"
+          ],
+          "feedbackIfWrong": "The $ R^2 $ value was approximately 0.989.",
+          "prompt": "For the biomass data, what was the approximate $ R^2 $ value (as given in the example)? (Enter a decimal like 0.989)",
+          "id": "q4-9-9"
+        }
+      ],
+      "teacherCues": [
+        "Show the biomass consumption data. Ask: Does it look perfectly cubic? Can we still model it?",
+        "Demonstrate how to enter data in a graphing calculator and use cubic regression."
+      ],
+      "id": "technology-regression"
+    },
+    {
+      "questions": [
+        {
+          "answers": [
+            "overfitting",
+            "overfit"
+          ],
+          "feedbackIfWrong": "Overfitting occurs when a model is excessively complex.",
+          "type": "short-answer",
+          "id": "q4-9-10",
+          "prompt": "What word describes a model that is too complex and fits the noise instead of the trend?",
+          "hints": [
+            "It starts with 'over'.",
+            "It happens when the degree is too high."
+          ]
+        },
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "differences"
+              ]
+            }
+          ],
+          "prompt": "When $ x $-values are not equally spaced, you cannot use finite ___ to determine the degree.",
+          "feedbackIfWrong": "Finite differences require equally spaced $ x $-values.",
+          "id": "q4-9-11",
+          "hints": [
+            "It's the method of subtracting consecutive $ y $'s.",
+            "Requires equal spacing."
+          ]
+        },
+        {
+          "hints": [
+            "Constant first differences indicate degree 1.",
+            "Linear means degree 1."
+          ],
+          "feedbackIfWrong": "Use linear regression when first differences are constant.",
+          "answers": [
+            "linear"
+          ],
+          "prompt": "If first differences are nearly constant, what type of regression should you try first? (one word)",
+          "type": "short-answer",
+          "id": "q4-9-12"
+        }
+      ],
+      "id": "combining-methods",
+      "title": "Combining Finite Differences and Regression",
+      "concept": {
+        "explanation": [
+          "Step 1: Check if $ x $-values are equally spaced. If so, compute finite differences to determine the likely degree of the polynomial model.",
+          "Step 2: Use a graphing calculator to perform polynomial regression of that degree (or nearby degrees) and compare $ R^2 $ values.",
+          "Step 3: Choose the simplest model (lowest degree) that fits well. A high $ R^2 $ with a lower degree is usually better than a slightly higher $ R^2 $ with a higher degree.",
+          "Step 4: Use the model to make predictions within the data range.",
+          "Real data may not have exact constant differences, but the order where they become nearly constant suggests the degree."
+        ],
+        "visuals": [
+          {
+            "title": "Choosing the Right Model",
+            "rows": [
+              {
+                "0": "First differences nearly constant",
+                "1": "Linear regression"
+              },
+              {
+                "0": "Second differences nearly constant",
+                "1": "Quadratic regression"
+              },
+              {
+                "0": "Third differences nearly constant",
+                "1": "Cubic regression"
+              },
+              {
+                "0": "Higher differences constant",
+                "1": "Higher-degree polynomial regression (but be careful of overfitting)"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "If …",
+              "Then try …"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "differences",
+              "meaning": "indicate the polynomial degree"
+            },
+            {
+              "meaning": "finds the best-fit coefficients",
+              "symbol": "regression",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ \\text{Finite differences} \\rightarrow \\text{degree} \\rightarrow \\text{regression} \\rightarrow \\text{model} $$"
+        }
+      },
+      "teacherCues": [
+        "Ask: If you have a table of equally spaced data, what should you check first?",
+        "Show how finite differences suggest the degree, then regression finds the exact model."
+      ],
+      "examples": [
+        {
+          "steps": [
+            "$ x $-values are not equally spaced (1,2,4,6,7,8), so finite differences won't work directly. Use regression.",
+            "Scatter plot suggests a gentle curve. Try quadratic and cubic regressions.",
+            "Quadratic might fit well with a high $ R^2 $. (Actual regression gives something like $ y = -0.5x^2 + 7.5x + 8 $.)",
+            "Choose the simplest model with strong $ R^2 $."
+          ],
+          "prompt": "The table shows cat age $ x $ (1,2,4,6,7,8) and human years $ y $ (15,24,32,40,44,48). Determine the type of model and find it.",
+          "role": "guided",
+          "title": "Example A — Cat Age to Human Years"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What's wrong with using a very high-degree polynomial for a small data set?",
+          "prompt": "Why not simply use a degree 10 polynomial to get a perfect fit?",
+          "title": "Example B — Why Not Always Higher Degree?",
+          "minLength": 8,
+          "steps": [
+            "A high-degree polynomial will wiggle to pass exactly through all points, but it may swing wildly between them, giving terrible predictions.",
+            "This is called overfitting. A simpler model captures the trend without the noise.",
+            "Lower-degree polynomials are smoother and usually more reliable."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "First differences are nearly constant (around 5). Second differences are close to zero.",
+            "A linear model would fit very well; a quadratic is unnecessary.",
+            "So choose linear."
+          ],
+          "prompt": "Given equally spaced data, first differences are 5.1, 5.0, 4.9, 5.0, 5.1. Second differences are -0.1, -0.1, 0.1, 0.1. Which model is more appropriate?",
+          "title": "Example C — Choosing Linear vs Quadratic"
+        }
+      ],
+      "confusionCorner": {
+        "body": "If $ x $-values are not equally spaced, finite differences cannot be used. Rely on scatter plots and regression to determine the model. [[imp:Always check equal spacing before computing differences.]]",
+        "title": "Gaps in Data"
+      },
+      "discoveryHook": {
+        "scenario": "Finite differences reveal the degree; technology provides the equation. Together, they form a powerful detective kit for uncovering the hidden polynomial behind any data set."
+      }
+    },
+    {
+      "id": "blueprint-aid-modeling",
+      "examples": [
+        {
+          "title": "Example A — Forecasting Biomass",
+          "prompt": "Using the biomass model $ y = -2.545x^3 + 51.95x^2 - 118.1x + 2732 $, predict consumption for year 14 (2014) and comment.",
+          "steps": [
+            "Understand: $ x=14 $, model is cubic, $ R^2 \\approx 0.989 $.",
+            "Solve: Compute $ y \\approx -2.545(2744) + 51.95(196) - 118.1(14) + 2732 \\approx 4528 $.",
+            "Conclude: Estimated consumption in 2014 is about 4528 trillion Btus, continuing the upward trend."
+          ],
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What if the model predicted a negative consumption for a future year? How would you know something is wrong?",
+          "role": "peer-explain",
+          "minLength": 8,
+          "title": "Example B — Checking Reasonableness",
+          "prompt": "Why is it important to check if a prediction makes sense in context?",
+          "steps": [
+            "Real-world quantities like energy use cannot be negative. If the model predicts negative, it's a sign that the model is not valid outside the data range.",
+            "Always compare the predicted value to the trend; a sudden jump or drop indicates overfitting or a bad model choice.",
+            "Skepticism of extrapolation is healthy."
+          ]
+        },
+        {
+          "title": "Example C — Predict with a Different Model",
+          "steps": [
+            "For $ x=13 $: $ y = 22.4(169) - 150(13) + 2900 = 3785.6 - 1950 + 2900 = 4735.6 $.",
+            "Cubic predicted 4385. The quadratic gives a higher estimate. The cubic's higher $ R^2 $ suggests it's more reliable."
+          ],
+          "role": "independent",
+          "prompt": "A quadratic model for the same biomass data is $ y = 22.4x^2 - 150x + 2900 $. Predict year 13 and compare with the cubic model's 4385."
+        }
+      ],
+      "title": "Blueprint Aid — Modeling Real-Life Data",
+      "confusionCorner": {
+        "body": "The regression equation is an approximation. Predictions are estimates, not exact values. Always report predictions with appropriate rounding and mention that they are approximate.",
+        "title": "Regression Doesn't Give Exact Answers"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "title": "Blueprint for Data Modeling",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Define variables, note data range, state goal."
+              },
+              {
+                "0": "Solve",
+                "1": "Check finite differences (if applicable), perform regression, check $ R^2 $."
+              },
+              {
+                "0": "Conclude",
+                "1": "Make prediction, interpret with units, assess reasonableness."
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "[[imp:Understand]]: Identify the variables ($ x $ = year, $ y $ = consumption), the goal (predict future value), and the data range.",
+          "[[imp:Solve]]: Make a scatter plot. If the pattern curves, try a cubic or quadratic regression. Check $ R^2 $ and the graph to confirm fit. Write the model equation.",
+          "[[imp:Conclude]]: Use the model to predict for the desired $ x $. State the result with units and check if it seems plausible compared to existing data."
+        ],
+        "formulaCard": {
+          "formula": "$$ y = -2.545x^3 + 51.95x^2 - 118.1x + 2732 $$",
+          "legend": [
+            {
+              "meaning": "year index (1 = 2001)",
+              "tone": "core",
+              "symbol": "$ x $"
+            },
+            {
+              "symbol": "$ y $",
+              "tone": "core",
+              "meaning": "biomass consumption (trillion Btus)"
+            }
+          ]
+        }
+      },
+      "discoveryHook": {
+        "scenario": "You are an energy analyst. You have 12 years of biomass consumption data and need to forecast next year's value. By following the Blueprint, you'll turn a table of numbers into a reliable prediction."
+      },
+      "teacherCues": [
+        "Display the biomass data again and walk through Understand, Solve, Conclude.",
+        "Emphasize that after finding the model, we interpret predictions with units and check reasonableness."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "The last step involves explaining the meaning.",
+            "You also verify reasonableness."
+          ],
+          "id": "q4-9-13",
+          "prompt": "In the Blueprint, after finding the model, you must ___ the prediction to ensure it makes sense in the real-world context.",
+          "feedbackIfWrong": "You should interpret (and check) the prediction.",
+          "blanks": [
+            {
+              "accept": [
+                "interpret",
+                "check"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "$ x=6 $ corresponds to 2006.",
+          "id": "q4-9-14",
+          "hints": [
+            "Year $ t=1 $ is 2001, so $ x=6 $ is 2001+5.",
+            "Add 5 to 2001."
+          ],
+          "type": "short-answer",
+          "prompt": "For the biomass model, what does $ x=6 $ represent? (Give the year, e.g., 2006)",
+          "answers": [
+            "2006"
+          ]
+        },
+        {
+          "answers": [
+            "outside"
+          ],
+          "id": "q4-9-15",
+          "prompt": "Extrapolation means predicting for $ x $-values ___ the range of the data. (before/after/outside)",
+          "feedbackIfWrong": "Extrapolation is predicting outside the given data range.",
+          "hints": [
+            "It's the opposite of interpolation.",
+            "Going beyond the known data."
+          ],
+          "type": "short-answer"
+        }
+      ]
+    }
+  ],
+  "id": "chapter-4-9-modeling-with-polynomials",
+  "schemaVersion": 2,
+  "title": "Modeling with Polynomial Functions",
+  "presenterNotes": [
+    "In Block 1, students often struggle with signs when writing factors from intercepts. Emphasize that an intercept of -4 yields (x - (-4)) = (x + 4).",
+    "For finite differences, walk through an example slowly on the board. Let students do the subtractions themselves to see the pattern.",
+    "When introducing technology regression, show the actual calculator steps if possible. Highlight the R^2 value and what it means.",
+    "In the Blueprint, stress that models are approximations. Use the biomass example to discuss extrapolation and its risks."
+  ],
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

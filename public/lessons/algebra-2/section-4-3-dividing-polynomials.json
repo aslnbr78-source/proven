@@ -1,0 +1,725 @@
+{
+  "title": "Dividing Polynomials",
+  "id": "section-4-3-dividing-polynomials",
+  "schemaVersion": 2,
+  "standards": [
+    "HSA.APR.D.6",
+    "HSA.APR.B.2"
+  ],
+  "blocks": [
+    {
+      "questions": [
+        {
+          "feedbackIfWrong": "The remainder's degree must be less than the divisor's degree.",
+          "type": "short-answer",
+          "hints": [
+            "It cannot be greater than or equal.",
+            "If it were not, you could divide again."
+          ],
+          "id": "q4-3-1",
+          "answer": "less",
+          "prompt": "In polynomial long division, the process stops when the degree of the remainder is ___ than the degree of the divisor."
+        },
+        {
+          "feedbackIfWrong": "Write the dividend as $ x^3 + 0x^2 + 2x - 5 $.",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "prompt": "When dividing $ x^3 + 2x - 5 $ by $ x - 1 $, you should insert ___ as the coefficient of the missing $ x^2 $ term.",
+          "id": "q4-3-2",
+          "hints": [
+            "The dividend must have every power from the highest down to the constant.",
+            "The missing term is $ x^2 $."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "$ q(x) $ is the quotient.",
+          "type": "short-answer",
+          "id": "q4-3-3",
+          "prompt": "In the division algorithm $ f(x) = d(x) \\cdot q(x) + r(x) $, what does $ q(x) $ represent? (Answer: quotient)",
+          "answer": "quotient",
+          "hints": [
+            "It is the result of the division, not including the remainder.",
+            "It starts with 'q'."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Just like dividing 154 by 12, dividing polynomials follows a step‑by‑step process: divide, multiply, subtract, bring down. The result is a quotient plus a remainder (if any). This long division method works for any polynomial divisor, not just binomials."
+      },
+      "confusionCorner": {
+        "body": "Always write the dividend with all powers of $ x $ descending, using $ 0 $ as a placeholder for any missing degree. If you skip a term, the subtraction won't line up correctly. [[imp:Insert $ 0x^2 $, $ 0x $, etc., as needed.]]",
+        "title": "Don't Forget Missing Terms!"
+      },
+      "examples": [
+        {
+          "prompt": "Divide $ 2x^4 + 3x^3 + 5x - 1 $ by $ x^2 + 3x + 2 $.",
+          "title": "Example A – Performing Long Division",
+          "steps": [
+            "Write dividend with a $ 0x^2 $ term: $ 2x^4 + 3x^3 + 0x^2 + 5x - 1 $.",
+            "Divide $ 2x^4 $ by $ x^2 $ → $ 2x^2 $. Multiply divisor by $ 2x^2 $, subtract.",
+            "Bring down $ 5x $. Divide $ -3x^3 $ by $ x^2 $ → $ -3x $. Multiply, subtract.",
+            "Bring down $ -1 $. Divide $ 5x^2 $ by $ x^2 $ → $ 5 $. Multiply, subtract.",
+            "Quotient: $ 2x^2 - 3x + 5 $, Remainder: $ -4x - 11 $. Final answer: $ 2x^2 - 3x + 5 + \\frac{-4x - 11}{x^2 + 3x + 2} $."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "title": "Example B – Why Must the Remainder Have Lower Degree?",
+          "peerPrompt": "Without looking back...\n\nIf the remainder still had an $ x^2 $ term and the divisor is $ x^2 + 3x + 2 $, could you continue dividing? What would happen?",
+          "steps": [
+            "If the remainder had degree $ \\ge $ divisor's degree, you could still divide the leading term of the remainder by the leading term of the divisor.",
+            "The process continues until the remainder is 'too small' to be divided by the divisor.",
+            "This ensures the division algorithm is complete and the remainder is unique."
+          ],
+          "prompt": "Explain to a partner why we stop dividing when the degree of the remainder is less than the divisor.",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "$ (2x^2 - 3x + 5)(x^2 + 3x + 2) + (-4x - 11) $",
+            "Expand the product: $ 2x^4 + 6x^3 + 4x^2 - 3x^3 - 9x^2 - 6x + 5x^2 + 15x + 10 $.",
+            "Combine like terms: $ 2x^4 + 3x^3 + 0x^2 + 9x + 10 $? Wait, let's recalc: $ 4x^2 - 9x^2 + 5x^2 = 0x^2 $; $ -6x + 15x = 9x $. Then add remainder $ -4x - 11 $ → $ 9x - 4x = 5x $; $ 10 - 11 = -1 $. So we get $ 2x^4 + 3x^3 + 5x - 1 $, which matches the original dividend."
+          ],
+          "title": "Example C – Checking the Answer",
+          "role": "independent",
+          "prompt": "Verify the result of Example A by multiplying the quotient by the divisor and adding the remainder."
+        }
+      ],
+      "id": "long-division-of-polynomials",
+      "concept": {
+        "visuals": [
+          {
+            "title": "Long Division Setup: $ 2x^4 + 3x^3 + 0x^2 + 5x - 1 $ by $ x^2 + 3x + 2 $",
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Divide $ 2x^4 $ by $ x^2 $",
+                "2": "$ 2x^2 $ (first quotient term)"
+              },
+              {
+                "0": "2",
+                "1": "Multiply $ 2x^2(x^2 + 3x + 2) $",
+                "2": "$ 2x^4 + 6x^3 + 4x^2 $"
+              },
+              {
+                "0": "3",
+                "1": "Subtract, bring down $ 5x $",
+                "2": "$ -3x^3 - 4x^2 + 5x $"
+              },
+              {
+                "0": "4",
+                "1": "Divide $ -3x^3 $ by $ x^2 $",
+                "2": "$ -3x $ (next quotient term)"
+              },
+              {
+                "0": "...",
+                "1": "Continue until remainder degree < 2",
+                "2": "Quotient: $ 2x^2 - 3x + 5 $, Remainder: $ -4x - 11 $"
+              }
+            ],
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Insert zeros for missing terms in the dividend.",
+            "Divide, multiply, subtract, bring down.",
+            "Stop when the degree of the remainder is less than the divisor."
+          ],
+          "title": "Division Algorithm for Polynomials",
+          "formula": "$$ f(x) = d(x) \\cdot q(x) + r(x) $$ $$ \\text{degree of } r(x) < \\text{degree of } d(x) $$"
+        },
+        "explanation": [
+          "[[kw:Polynomial long division]] is a method for dividing a polynomial $ f(x) $ (the dividend) by a nonzero polynomial $ d(x) $ (the divisor). The result is a quotient $ q(x) $ and a remainder $ r(x) $: $$ \\frac{f(x)}{d(x)} = q(x) + \\frac{r(x)}{d(x)} $$",
+          "The degree of the remainder must be [[imp:less than]] the degree of the divisor. If the remainder is 0, the divisor divides evenly into the dividend.",
+          "Steps: 1) Write the polynomials in standard form, inserting $ 0 $ coefficients for missing terms. 2) Divide the leading term of the current dividend by the leading term of the divisor to get the next term of the quotient. 3) [[imp:Multiply]] the entire divisor by that term, [[imp:subtract]], and [[imp:bring down]] the next term. 4) Repeat until the degree of the remainder is less than the divisor.",
+          "Always check: $ (\\text{quotient})(\\text{divisor}) + \\text{remainder} = \\text{dividend} $."
+        ]
+      },
+      "title": "Long Division of Polynomials",
+      "teacherCues": [
+        "Write $ (2x^4 + 3x^3 + 5x - 1) \\div (x^2 + 3x + 2) $ on the board. Ask: How is this similar to long division of numbers?",
+        "Point out that we divide the leading term of the dividend by the leading term of the divisor, then multiply, subtract, and bring down."
+      ]
+    },
+    {
+      "confusionCorner": {
+        "title": "Synthetic Division Only for Linear Divisors",
+        "body": "Synthetic division works [[imp:only]] when the divisor is of the form $ x - k $ (degree 1 with leading coefficient 1). For divisors like $ x^2 + 3x + 2 $ or $ 2x - 1 $, you must use long division."
+      },
+      "questions": [
+        {
+          "answer": "-2",
+          "hints": [
+            "Rewrite $ x + 2 $ as $ x - (\\text{?}) $.",
+            "The number that makes $ x + 2 = 0 $ is $ -2 $."
+          ],
+          "prompt": "Synthetic division can only be used when the divisor is of the form $ x - k $. For $ x + 2 $, what is the value of $ k $?",
+          "id": "q4-3-4",
+          "feedbackIfWrong": "$ k = -2 $ because $ x + 2 = x - (-2) $.",
+          "type": "short-answer"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "remainder"
+              ]
+            }
+          ],
+          "id": "q4-3-5",
+          "prompt": "In synthetic division, the last number in the bottom row is the ___.",
+          "hints": [
+            "It is the value left over after division.",
+            "It is the constant term in the result $ \\frac{r}{x-k} $."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "The last number is the remainder."
+        },
+        {
+          "id": "q4-3-6",
+          "answer": "2",
+          "prompt": "If you divide a polynomial of degree 3 by $ x - 2 $ using synthetic division, what is the degree of the quotient?",
+          "feedbackIfWrong": "The quotient has degree $ 3 - 1 = 2 $.",
+          "hints": [
+            "The quotient's degree is one less than the dividend.",
+            "Degree 3 minus 1."
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Long division works, but it's tedious for divisors like $ x - 3 $. Synthetic division is a brilliant shortcut: you only work with the coefficients and a single number $ k $. It's faster, cleaner, and reveals the quotient and remainder in one row."
+      },
+      "teacherCues": [
+        "Write the coefficients of $ -x^3 + 4x^2 + 9 $ on the board. Ask: If we divide by $ x - 3 $, can we find a shortcut?",
+        "Demonstrate synthetic division: bring down the first coefficient, multiply by $ k $, add, repeat."
+      ],
+      "id": "synthetic-division",
+      "title": "Synthetic Division (for divisors of the form $ x - k $)",
+      "concept": {
+        "explanation": [
+          "[[kw:Synthetic division]] is a shortcut for dividing a polynomial by a binomial of the form $ x - k $. It only uses the [[imp:coefficients]] of the polynomial.",
+          "Steps: 1) Write the coefficients in descending order (use $ 0 $ for missing terms). Write $ k $ to the left. 2) Bring down the first coefficient. 3) Multiply by $ k $ and add to the next coefficient. Repeat. 4) The last number is the [[imp:remainder]]; the others are the coefficients of the quotient, which has degree one less than the dividend.",
+          "For $ x + a $, rewrite as $ x - (-a) $, so $ k = -a $.",
+          "The quotient's degree is always one less than the dividend's degree."
+        ],
+        "formulaCard": {
+          "title": "Synthetic Division Process",
+          "formula": "$$ \\begin{array}{c|cccc} k & a_n & a_{n-1} & \\dots & a_0 \\\\ & & k b_{n-1} & \\dots & k b_0 \\\\ \\hline & b_{n-1} & b_{n-2} & \\dots & r \\end{array} $$",
+          "notes": [
+            "Only works for divisors of the form $ x - k $.",
+            "Quotient coefficients: $ b_{n-1}, \\dots, b_0 $. Last number $ r $ is remainder.",
+            "Degree of quotient = degree of dividend $ - 1 $."
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Numbers"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1: Write $ k = 3 $ and coefficients",
+                "1": "$ 3 \\mid -1 \\quad 4 \\quad 0 \\quad 9 $"
+              },
+              {
+                "0": "2: Bring down $ -1 $",
+                "1": "$ 3 \\mid -1 \\quad 4 \\quad 0 \\quad 9 $ <br> $ \\quad\\quad\\;\\downarrow $ <br> $ \\quad\\quad -1 $"
+              },
+              {
+                "0": "3: Multiply $ -1 \\cdot 3 = -3 $, add to 4",
+                "1": "$ 3 \\mid -1 \\quad 4 \\quad 0 \\quad 9 $ <br> $ \\quad\\quad\\quad -3 $ <br> $ \\quad\\quad -1 \\quad 1 $"
+              },
+              {
+                "0": "4: Continue: $ 1 \\cdot 3 = 3 $, add to 0; $ 3 \\cdot 3 = 9 $, add to 9",
+                "1": "$ \\quad\\quad -1 \\quad 1 \\quad 3 \\mid 18 $"
+              },
+              {
+                "0": "Result",
+                "1": "Quotient: $ -x^2 + x + 3 $, Remainder: $ 18 $"
+              }
+            ],
+            "title": "Synthetic Division of $ -x^3 + 4x^2 + 9 $ by $ x - 3 $"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "Divide $ -x^3 + 4x^2 + 9 $ by $ x - 3 $ using synthetic division.",
+          "title": "Example A – Basic Synthetic Division",
+          "role": "guided",
+          "steps": [
+            "Coefficients: $ -1, 4, 0, 9 $. $ k = 3 $ (since $ x - 3 $).",
+            "Bring down $ -1 $. Multiply $ -1 \\cdot 3 = -3 $, add to 4 → $ 1 $.",
+            "Multiply $ 1 \\cdot 3 = 3 $, add to 0 → $ 3 $.",
+            "Multiply $ 3 \\cdot 3 = 9 $, add to 9 → $ 18 $ (remainder).",
+            "Quotient: $ -x^2 + x + 3 $. Final answer: $ -x^2 + x + 3 + \\frac{18}{x-3} $."
+          ]
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nWrite $ x + 1 $ as $ x - (\\text{?}) $. What value makes the expression $ x - k $?",
+          "steps": [
+            "$ x + 1 = x - (-1) $, so $ k = -1 $.",
+            "Synthetic division uses the number that makes the divisor zero.",
+            "So for $ x + 1 $, set $ x + 1 = 0 \\Rightarrow x = -1 $, which is $ k $."
+          ],
+          "title": "Example B – Handling $ x + 1 $ (k is negative)",
+          "prompt": "Explain to a partner why $ k = -1 $ when dividing by $ x + 1 $."
+        },
+        {
+          "prompt": "Use synthetic division with $ k = -1 $.",
+          "title": "Example C – Dividing $ 3x^3 - 2x^2 + 2x - 5 $ by $ x + 1 $",
+          "role": "independent",
+          "steps": [
+            "Coefficients: $ 3, -2, 2, -5 $. $ k = -1 $.",
+            "Bring down $ 3 $. Multiply $ 3(-1) = -3 $, add to $ -2 $ → $ -5 $.",
+            "Multiply $ -5(-1) = 5 $, add to 2 → $ 7 $.",
+            "Multiply $ 7(-1) = -7 $, add to $ -5 $ → $ -12 $ (remainder).",
+            "Quotient: $ 3x^2 - 5x + 7 $. Answer: $ 3x^2 - 5x + 7 - \\frac{12}{x+1} $."
+          ]
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "The Remainder Theorem reveals a beautiful connection: to find $ f(k) $, you can either plug $ k $ into the function or do synthetic division and look at the remainder. The two methods give the exact same result, but synthetic division is often quicker for high-degree polynomials."
+      },
+      "teacherCues": [
+        "Write $ f(x) = (x - k)q(x) + r $ on the board. Ask: What happens if we substitute $ x = k $?",
+        "Emphasize that the remainder when dividing by $ x - k $ is simply $ f(k) $. This connects division to function evaluation."
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Set up synthetic division with $ k = -4 $ and coefficients $ 5, -1, 13, 29 $.",
+            "Bring down 5. $ 5(-4) = -20 $; $ -1 + (-20) = -21 $.",
+            "$ -21(-4) = 84 $; $ 13 + 84 = 97 $.",
+            "$ 97(-4) = -388 $; $ 29 + (-388) = -359 $.",
+            "Remainder = $ -359 $, so $ f(-4) = -359 $."
+          ],
+          "role": "guided",
+          "title": "Example A – Using Synthetic Division to Evaluate",
+          "prompt": "Use synthetic division to evaluate $ f(x) = 5x^3 - x^2 + 13x + 29 $ at $ x = -4 $."
+        },
+        {
+          "minLength": 2,
+          "prompt": "Explain to a partner why the remainder from synthetic division equals $ f(k) $.",
+          "title": "Example B – Why Does This Work?",
+          "steps": [
+            "The division algorithm gives $ f(x) = (x - k)q(x) + r $.",
+            "Plugging in $ x = k $ makes $ (k - k)q(k) = 0 $, leaving $ f(k) = r $.",
+            "Thus, the remainder from division is exactly the function value at $ k $."
+          ],
+          "peerPrompt": "Without looking back...\n\nStart with $ f(x) = (x - k)q(x) + r $. What happens when you set $ x = k $?",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Perform synthetic division with $ k = 2 $ and coefficients $ 1, -3, -4, 12 $.",
+            "Bring down 1. $ 1(2) = 2 $; $ -3 + 2 = -1 $. $ -1(2) = -2 $; $ -4 + (-2) = -6 $. $ -6(2) = -12 $; $ 12 + (-12) = 0 $.",
+            "Remainder = 0, so $ f(2) = 0 $. Yes, $ x = 2 $ is a zero."
+          ],
+          "role": "independent",
+          "title": "Example C – Checking if a Value Is a Zero",
+          "prompt": "Use the Remainder Theorem to determine if $ x = 2 $ is a zero of $ f(x) = x^3 - 3x^2 - 4x + 12 $."
+        }
+      ],
+      "id": "remainder-theorem",
+      "confusionCorner": {
+        "title": "Remainder vs. Quotient",
+        "body": "The Remainder Theorem tells you $ f(k) $, which is the [[imp:remainder]], not the quotient. Don't confuse the two. The quotient gives the other factor when $ f(x) $ is factored."
+      },
+      "questions": [
+        {
+          "hints": [
+            "Apply the Remainder Theorem directly.",
+            "The remainder equals the function value at that $ x $."
+          ],
+          "id": "q4-3-7",
+          "feedbackIfWrong": "By the Remainder Theorem, $ f(3) = 7 $.",
+          "answer": "7",
+          "prompt": "If a polynomial $ f(x) $ is divided by $ x - 3 $ and the remainder is 7, what is $ f(3) $?",
+          "type": "short-answer"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "zero",
+                "root"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "If the remainder is 0, $ x = -1 $ is a zero (or root) of $ f $.",
+          "prompt": "If synthetic division of $ f(x) $ by $ x + 1 $ yields a remainder of 0, then $ x = -1 $ is a ___ of $ f $.",
+          "id": "q4-3-8",
+          "hints": [
+            "Remainder 0 means the divisor is a factor.",
+            "The value that makes the divisor zero is a zero of the function."
+          ]
+        },
+        {
+          "id": "q4-3-9",
+          "answer": "5",
+          "prompt": "Using synthetic division to evaluate $ f(5) $, which number is placed to the left of the vertical bar?",
+          "hints": [
+            "The value you are evaluating is $ k $.",
+            "For $ f(5) $, $ k = 5 $."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "Place $ k = 5 $ to the left of the bar."
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "If $ r = 0 $, $ k $ is a zero of $ f $ and $ x - k $ is a factor.",
+            "Synthetic division provides a fast way to evaluate polynomials.",
+            "Works for any polynomial $ f(x) $ and any real number $ k $."
+          ],
+          "title": "Remainder Theorem",
+          "formula": "$$ \\text{If } f(x) \\div (x - k) \\text{ has remainder } r, \\text{ then } r = f(k) $$"
+        },
+        "explanation": [
+          "The [[kw:Remainder Theorem]] states: If a polynomial $ f(x) $ is divided by $ x - k $, then the remainder is $ r = f(k) $.",
+          "Proof: From the division algorithm, $ f(x) = (x - k)q(x) + r $. Substitute $ x = k $: $ f(k) = (k - k)q(k) + r = 0 + r = r $.",
+          "This means you can [[imp:evaluate]] $ f(k) $ by performing synthetic division with $ k $ and checking the remainder. If the remainder is 0, $ x - k $ is a factor, and $ k $ is a [[kw:zero]] of the function.",
+          "This theorem is the basis for the Factor Theorem and helps in factoring polynomials."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Direct substitution",
+                "1": "Plug $ x = -4 $ into $ f(x) $",
+                "2": "$ -320 - 16 - 52 + 29 = -359 $"
+              },
+              {
+                "0": "Synthetic division",
+                "1": "Divide by $ x + 4 $ ($ k = -4 $)",
+                "2": "Remainder = $ -359 $"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Method",
+              "Process",
+              "Result"
+            ],
+            "title": "Evaluating $ f(x) = 5x^3 - x^2 + 13x + 29 $ at $ x = -4 $"
+          }
+        ]
+      },
+      "title": "The Remainder Theorem"
+    },
+    {
+      "confusionCorner": {
+        "title": "Synthetic Division Only Evaluates at k",
+        "body": "The remainder gives $ f(k) $. If you want $ f(2) $ and $ f(-3) $, you must do two separate synthetic divisions with $ k = 2 $ and $ k = -3 $. [[imp:One synthetic division gives one function value.]]"
+      },
+      "title": "Evaluating Polynomial Functions with Synthetic Division",
+      "concept": {
+        "explanation": [
+          "The Remainder Theorem lets you use synthetic division as an [[imp:evaluation tool]]. To find $ f(k) $, perform synthetic division of $ f(x) $ by $ x - k $; the remainder is $ f(k) $.",
+          "Steps: 1) Write coefficients of $ f(x) $ in descending order (include zeros for missing terms). 2) Use $ k $ as the synthetic divisor. 3) Complete the synthetic division. 4) The last number is $ f(k) $.",
+          "This is often faster than direct substitution for high‑degree polynomials or when evaluating at several points.",
+          "If the remainder is 0, you also know that $ x - k $ is a factor."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Direct substitution",
+                "1": "$ 4(25) - 50 - 21 = 100 - 71 $",
+                "2": "$ 29 $"
+              },
+              {
+                "0": "Synthetic division ($ k = 5 $)",
+                "1": "$ 5 \\mid 4 \\; -10 \\; -21 $ <br> $ \\quad\\;\\; 20 \\quad 50 $ <br> $ \\quad 4 \\quad 10 \\mid 29 $",
+                "2": "Remainder $ 29 $"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Method",
+              "Steps",
+              "Answer"
+            ],
+            "title": "Evaluating $ f(x) = 4x^2 - 10x - 21 $ at $ x = 5 $",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "title": "Evaluating $ f(k) $ via Synthetic Division",
+          "notes": [
+            "Use synthetic division with $ k $.",
+            "The last number in the bottom row is $ f(k) $.",
+            "Works for any polynomial $ f(x) $."
+          ],
+          "formula": "$$ f(k) = \\text{remainder when } f(x) \\text{ is divided by } x - k $$"
+        }
+      },
+      "teacherCues": [
+        "Write $ f(x) = 4x^2 - 10x - 21 $ and ask: How would you find $ f(5) $? Now show synthetic division as an alternative.",
+        "Emphasize that synthetic division is especially useful for high-degree polynomials and large $ k $ values."
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Coefficients: $ 4, -10, -21 $. $ k = 5 $.",
+            "Bring down 4. $ 4 \\cdot 5 = 20 $; $ -10 + 20 = 10 $.",
+            "$ 10 \\cdot 5 = 50 $; $ -21 + 50 = 29 $.",
+            "Remainder is $ 29 $, so $ f(5) = 29 $."
+          ],
+          "role": "guided",
+          "prompt": "Evaluate $ f(x) = 4x^2 - 10x - 21 $ at $ x = 5 $ using synthetic division.",
+          "title": "Example A – Evaluate a Quadratic"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDirect substitution involves $ 3^4 = 81 $, $ 6 \\cdot 9 = 54 $, etc. Synthetic division handles the arithmetic step‑by‑step with smaller numbers.",
+          "prompt": "Explain to a partner why synthetic division is easier than direct substitution for $ f(x) = x^4 + 6x^2 - 7x + 1 $ at $ x = 3 $.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "steps": [
+            "Direct substitution requires computing powers: $ 3^4 = 81 $, $ 3^2 = 9 $, then combining terms.",
+            "Synthetic division breaks the work into simple multiply‑add steps, reducing the chance of arithmetic error.",
+            "For higher‑degree polynomials, synthetic division is especially more efficient."
+          ],
+          "title": "Example B – When Synthetic Division Is Faster"
+        },
+        {
+          "title": "Example C – Evaluate a Cubic",
+          "role": "independent",
+          "steps": [
+            "Coefficients: $ 1, 0, -6, 1 $. $ k = 6 $.",
+            "Bring down 1. $ 1 \\cdot 6 = 6 $; $ 0 + 6 = 6 $. $ 6 \\cdot 6 = 36 $; $ -6 + 36 = 30 $. $ 30 \\cdot 6 = 180 $; $ 1 + 180 = 181 $.",
+            "Remainder $ 181 $, so $ f(6) = 181 $."
+          ],
+          "prompt": "Use synthetic division to evaluate $ f(x) = x^3 - 6x + 1 $ at $ x = 6 $."
+        }
+      ],
+      "questions": [
+        {
+          "answer": "7",
+          "prompt": "To evaluate $ f(7) $ using synthetic division, the number placed to the left of the vertical bar is ___.",
+          "hints": [
+            "The $ k $ value is the number you are evaluating.",
+            "For $ f(7) $, $ k = 7 $."
+          ],
+          "feedbackIfWrong": "Place $ k = 7 $ to the left of the bar.",
+          "type": "short-answer",
+          "id": "q4-3-10"
+        },
+        {
+          "type": "fill-blank",
+          "id": "q4-3-11",
+          "blanks": [
+            {
+              "accept": [
+                "-12"
+              ]
+            }
+          ],
+          "prompt": "If the remainder from synthetic division is $ -12 $, then $ f(k) = $ ___.",
+          "feedbackIfWrong": "$ f(k) = -12 $.",
+          "hints": [
+            "The Remainder Theorem says remainder = $ f(k) $.",
+            "Just read the last number in the bottom row."
+          ]
+        },
+        {
+          "id": "q4-3-12",
+          "hints": [
+            "Direct substitution requires computing many powers.",
+            "Synthetic division uses repeated multiply‑add."
+          ],
+          "answer": "synthetic division",
+          "feedbackIfWrong": "Synthetic division is often faster, especially for higher‑degree polynomials.",
+          "type": "short-answer",
+          "prompt": "Which is usually faster for evaluating a polynomial of degree 5 at a specific $ x $: direct substitution or synthetic division? (Answer: synthetic division)"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Need to evaluate a polynomial at several points? Instead of plugging numbers and computing huge powers, use synthetic division. It's faster, reduces arithmetic errors, and gives you the quotient as a bonus."
+      },
+      "id": "evaluating-functions-synthetic"
+    },
+    {
+      "confusionCorner": {
+        "title": "Zero vs. Factor",
+        "body": "If $ x = k $ is a zero, then $ x - k $ is a factor. Don't confuse the sign. If $ f(2) = 0 $, the factor is $ (x - 2) $, not $ (x + 2) $. [[imp:The sign flips when going from zero to factor.]]"
+      },
+      "questions": [
+        {
+          "answer": "x-4",
+          "prompt": "If synthetic division of $ f(x) $ by $ x - 4 $ gives remainder 0, what is one factor of $ f(x) $?",
+          "hints": [
+            "Remainder 0 means the divisor divides evenly.",
+            "The factor is exactly the divisor."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "$ x - 4 $ is a factor.",
+          "id": "q4-3-13"
+        },
+        {
+          "id": "q4-3-14",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "prompt": "After dividing $ f(x) = (x - 3)(\\text{quotient}) $, the quotient is $ x^2 + x - 2 $. Factoring this further gives $ (x + 2)(x - $ ___$ ) $.",
+          "hints": [
+            "Factor $ x^2 + x - 2 $ by finding two numbers that multiply to -2 and add to 1.",
+            "The numbers are 2 and -1, so the factors are $ (x+2)(x-1) $."
+          ],
+          "feedbackIfWrong": "The missing number is 1, giving $ (x - 1) $."
+        },
+        {
+          "id": "q4-3-15",
+          "prompt": "If $ f(5) = 0 $, what is a factor of $ f(x) $? (Answer like $ x-5 $)",
+          "type": "short-answer",
+          "answer": "x-5",
+          "feedbackIfWrong": "Since $ f(5) = 0 $, $ x - 5 $ is a factor.",
+          "hints": [
+            "The Remainder Theorem: if $ f(k) = 0 $, then $ x - k $ is a factor.",
+            "Here $ k = 5 $."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A cubic polynomial can sometimes be factored if you know one zero. Use synthetic division to test possible zeros. If the remainder is 0, you've found a factor, and the quotient is the remaining quadratic, which you can then factor or solve."
+      },
+      "id": "blueprint-dividing-polynomials",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ f(k) = 0 \\quad \\Longleftrightarrow \\quad x - k \\text{ is a factor of } f(x) $$",
+          "notes": [
+            "Use synthetic division to test possible $ k $ values.",
+            "If remainder = 0, the quotient gives the remaining factor.",
+            "Continue factoring the quotient if possible."
+          ],
+          "title": "Factor Test Using Remainder Theorem"
+        },
+        "visuals": [
+          {
+            "title": "Synthetic Division for $ f(x) = x^3 - 2x^2 - 5x + 6 $ with $ k = 3 $",
+            "rows": [
+              {
+                "0": "Setup",
+                "1": "$ 3 \\mid 1 \\; -2 \\; -5 \\; 6 $",
+                "2": ""
+              },
+              {
+                "0": "Bring down",
+                "1": "",
+                "2": "1"
+              },
+              {
+                "0": "Multiply‑add",
+                "1": "$ 1(3) = 3 $; $ -2+3 = 1 $",
+                "2": "1"
+              },
+              {
+                "0": "Multiply‑add",
+                "1": "$ 1(3) = 3 $; $ -5+3 = -2 $",
+                "2": "-2"
+              },
+              {
+                "0": "Multiply‑add",
+                "1": "$ -2(3) = -6 $; $ 6 + (-6) = 0 $",
+                "2": "0 (remainder)"
+              }
+            ],
+            "headers": [
+              "Step",
+              "Operation",
+              "Result"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "**Understand**: We want to know if $ x - 3 $ is a factor of $ f(x) = x^3 - 2x^2 - 5x + 6 $. By the Remainder Theorem, $ x - 3 $ is a factor if and only if $ f(3) = 0 $.",
+          "**Solve**: Perform synthetic division with $ k = 3 $ and coefficients $ 1, -2, -5, 6 $. Bring down 1. $ 1(3) = 3 $; $ -2 + 3 = 1 $. $ 1(3) = 3 $; $ -5 + 3 = -2 $. $ -2(3) = -6 $; $ 6 + (-6) = 0 $. Remainder is 0, so $ x - 3 $ is a factor. The quotient is $ x^2 + x - 2 $.",
+          "**Conclude**: $ f(x) = (x - 3)(x^2 + x - 2) $. The quadratic factors further: $ (x + 2)(x - 1) $. So $ f(x) = (x - 3)(x + 2)(x - 1) $, and the zeros are $ 3, -2, 1 $."
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "To test if $ x - 3 $ is a factor of $ f(x) = x^3 - 2x^2 - 5x + 6 $, what should we compute?",
+          "title": "Example A – Understand: Set Up the Test",
+          "role": "guided",
+          "steps": [
+            "According to the Remainder Theorem, $ x - 3 $ is a factor if $ f(3) = 0 $.",
+            "We can find $ f(3) $ by synthetic division with $ k = 3 $.",
+            "Set up the synthetic division with coefficients $ 1, -2, -5, 6 $."
+          ]
+        },
+        {
+          "title": "Example B – Solve: Perform Synthetic Division and Factor",
+          "steps": [
+            "Synthetic division yields quotient $ x^2 + x - 2 $.",
+            "Factor the quadratic: $ (x + 2)(x - 1) $.",
+            "Thus, $ f(x) = (x - 3)(x + 2)(x - 1) $."
+          ],
+          "role": "peer-explain",
+          "prompt": "Perform the synthetic division and show that the remainder is 0. Then factor the quotient.",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nAfter synthetic division, you get coefficients $ 1, 1, -2 $ and remainder 0. So the quotient is $ x^2 + x - 2 $. Can you factor that?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Set each factor equal to zero: $ x - 3 = 0 \\Rightarrow x = 3 $; $ x + 2 = 0 \\Rightarrow x = -2 $; $ x - 1 = 0 \\Rightarrow x = 1 $.",
+            "The zeros are $ 3, -2, 1 $.",
+            "These are the $ x $-intercepts of the graph."
+          ],
+          "title": "Example C – Conclude: Find All Zeros",
+          "prompt": "From the factored form $ (x - 3)(x + 2)(x - 1) $, list all zeros of $ f $."
+        }
+      ],
+      "teacherCues": [
+        "Present a problem: Given $ f(x) = x^3 - 2x^2 - 5x + 6 $, determine if $ x - 3 $ is a factor. If so, find the remaining quadratic factor.",
+        "Use Understand–Solve–Conclude with synthetic division and the Remainder Theorem."
+      ],
+      "title": "Blueprint Aid: Finding Factors and Zeros Using Division"
+    }
+  ],
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Emphasize the parallels between numeric long division and polynomial long division. The process is identical; only the objects are algebraic terms.",
+    "Synthetic division is a powerful shortcut but only applies to divisors of the form $ x - k $. Stress that the divisor must have leading coefficient 1.",
+    "The Remainder Theorem ties together function evaluation and division. It's the gateway to the Factor Theorem and finding polynomial zeros.",
+    "In the blueprint, show how synthetic division is used both to check factors and to break down a polynomial into simpler factors."
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

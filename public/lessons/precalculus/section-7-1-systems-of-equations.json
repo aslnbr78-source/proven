@@ -1,0 +1,745 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-7-1-systems-of-equations",
+  "title": "Linear and Nonlinear Systems of Equations",
+  "blocks": [
+    {
+      "id": "intro-systems",
+      "title": "What Is a System of Equations?",
+      "teacherCues": [
+        "Write $x + y = 4$ and $x - y = 2$. Ask: Can you guess two numbers that work in both?",
+        "Explain that a solution is an ordered pair $(x, y)$ that satisfies every equation in the system."
+      ],
+      "discoveryHook": {
+        "scenario": "Two friends share a pizza. Together they ate 8 slices, and one ate 2 more than the other. How many did each eat? This everyday puzzle is a system of equations."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:system of equations]] consists of two or more equations with the same variables.",
+          "A solution is an ordered pair $(x, y)$ that makes every equation true at the same time.",
+          "[[kw:Substitution]] solves one equation for a variable and substitutes that expression into the other equation.",
+          "The result is a single‑variable equation. Solve it, then back‑substitute to find the other variable.",
+          "Always check your answer in both original equations."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Is $(3, 1)$ a solution?",
+            "headers": [
+              "Equation",
+              "Substitution",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "$x + y = 4$",
+                "1": "$3 + 1 = 4$",
+                "2": "True"
+              },
+              {
+                "0": "$x - y = 2$",
+                "1": "$3 - 1 = 2$",
+                "2": "True"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Substitution Steps",
+          "formula": "1. Solve one equation for a variable.\n2. Substitute into the other equation.\n3. Solve the resulting equation.\n4. Back‑substitute.\n5. Check.",
+          "notes": [
+            "Pick the simpler equation to solve first.",
+            "Always test your solution in both original equations."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Solve by substitution",
+          "prompt": "Solve: $x + y = 4$, $x - y = 2$.",
+          "steps": [
+            "Solve the first equation for $y$: $y = 4 - x$.",
+            "Substitute into the second: $x - (4 - x) = 2$.",
+            "Simplify: $x - 4 + x = 2$ → $2x = 6$ → $x = 3$.",
+            "Back‑substitute: $y = 4 - 3 = 1$.",
+            "Solution: $(3, 1)$. Check: $3+1=4$, $3-1=2$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Starting with $x$",
+          "prompt": "What if you solve for $x$ first? From $x - y = 2$, get $x = y + 2$. Then substitute into the first equation.",
+          "peerPrompt": "Explain to your partner: Does the order matter? Do we get the same solution?",
+          "minLength": 2,
+          "steps": [
+            "$x = y + 2$.",
+            "Substitute into $x + y = 4$: $(y+2) + y = 4$ → $2y = 2$ → $y = 1$.",
+            "Then $x = 1 + 2 = 3$. Same solution: $(3, 1)$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Is $(2, 2)$ a solution?",
+          "prompt": "Check whether $(2, 2)$ satisfies the system.",
+          "steps": [
+            "First equation: $2+2=4$. Works.",
+            "Second equation: $2-2=0$, not $2$. Fails.",
+            "So $(2, 2)$ is NOT a solution."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Parentheses are crucial",
+        "body": "When substituting an expression with a minus sign, wrap it in parentheses: $x - (4 - x) = x - 4 + x$. [[imp:Don't forget to distribute the minus!]]"
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "A system of equations is a set of two or more equations with the same ___.",
+          "blanks": [
+            {
+              "accept": [
+                "variables"
+              ]
+            }
+          ],
+          "hints": [
+            "They are the letters like $x$ and $y$.",
+            "What do you solve for?"
+          ],
+          "feedbackIfWrong": "They are variables."
+        },
+        {
+          "id": "q2",
+          "type": "fill-blank",
+          "prompt": "To solve for a variable means to get that variable ___ on one side.",
+          "blanks": [
+            {
+              "accept": [
+                "alone",
+                "isolated"
+              ]
+            }
+          ],
+          "hints": [
+            "You want '$y = ...$'",
+            "The opposite of being mixed with other terms."
+          ],
+          "feedbackIfWrong": "Isolate the variable."
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "prompt": "What is the $x$-coordinate of the solution $(3, 1)$? (Enter a number)",
+          "answer": "3",
+          "hints": [
+            "Look at the ordered pair.",
+            "The first number is $x$."
+          ],
+          "feedbackIfWrong": "$x = 3$."
+        }
+      ]
+    },
+    {
+      "id": "linear-systems",
+      "title": "Solving Simple Linear Systems",
+      "teacherCues": [
+        "Write $x - y = 0$ and $5x - 3y = 6$. Ask: What does the first equation tell you about $x$ and $y$?",
+        "Demonstrate substituting $x = y$ into the second equation."
+      ],
+      "discoveryHook": {
+        "scenario": "You buy pens and pencils. Pens cost \\$5 each, pencils \\$3. You spent \\$6 and bought the same number of each. Let $x$ = pens, $y$ = pencils. Write equations and solve."
+      },
+      "concept": {
+        "explanation": [
+          "When one equation is already solved for a variable, substitution is fast.",
+          "For example, $x - y = 0$ means $x = y$.",
+          "Replace $x$ with $y$ in the other equation and solve for $y$.",
+          "Then back‑substitute to find $x$.",
+          "If you get a false statement like $0=5$, there is no solution. If $0=0$, infinitely many."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $x - y = 0$, $5x - 3y = 6$",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Isolate variable",
+                "1": "$x = y$"
+              },
+              {
+                "0": "Substitute",
+                "1": "$5y - 3y = 6$"
+              },
+              {
+                "0": "Simplify",
+                "1": "$2y = 6$ → $y = 3$"
+              },
+              {
+                "0": "Find $x$",
+                "1": "$x = 3$"
+              },
+              {
+                "0": "Solution",
+                "1": "$(3, 3)$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Quick Substitution",
+          "formula": "If $x = y$, then $5x - 3y$ becomes $5y - 3y$.",
+          "notes": [
+            "Simplify to $2y = 6$.",
+            "Then $y = 3$ and $x = 3$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Solve $x - y = 0$, $5x - 3y = 6$",
+          "prompt": "Use substitution to solve.",
+          "steps": [
+            "From $x - y = 0$, we get $x = y$.",
+            "Substitute: $5y - 3y = 6$.",
+            "$2y = 6$ → $y = 3$.",
+            "Then $x = 3$. Check: $3-3=0$, $15-9=6$. Solution $(3,3)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Another pair",
+          "prompt": "Solve: $2x + y = 5$, $x - y = 1$.",
+          "peerPrompt": "Tell your partner which equation you'd solve first and why. Then work it out together.",
+          "minLength": 2,
+          "steps": [
+            "From $x - y = 1$ → $x = y + 1$.",
+            "Substitute: $2(y+1) + y = 5$ → $3y + 2 = 5$ → $y = 1$.",
+            "Then $x = 2$. Solution: $(2, 1)$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick check",
+          "prompt": "Does $(1, 2)$ satisfy $x + y = 3$, $x - y = -1$?",
+          "steps": [
+            "Check first: $1+2=3$. Yes.",
+            "Check second: $1-2 = -1$. Yes."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "No or infinite solutions",
+        "body": "If after substituting you get a contradiction like $0=5$, the lines are parallel (no solution). If you get $0=0$, the equations are the same line (infinitely many solutions)."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "If $x - y = 0$, then $x$ and $y$ must be ___.",
+          "blanks": [
+            {
+              "accept": [
+                "equal"
+              ]
+            }
+          ],
+          "hints": [
+            "Their difference is zero.",
+            "They are the same number."
+          ],
+          "feedbackIfWrong": "They are equal."
+        },
+        {
+          "id": "q5",
+          "type": "fill-blank",
+          "prompt": "After substituting $x = y$, $5x - 3y = 6$ becomes $5y - 3y = 6$, which simplifies to ___ $y = 6$.",
+          "blanks": [
+            {
+              "accept": [
+                "2"
+              ]
+            }
+          ],
+          "hints": [
+            "$5y$ minus $3y$ is ?",
+            "What is $5 - 3$?"
+          ],
+          "feedbackIfWrong": "It's $2y = 6$."
+        },
+        {
+          "id": "q6",
+          "type": "short-answer",
+          "prompt": "If $2y = 6$, what is $y$? (Enter a number)",
+          "answer": "3",
+          "hints": [
+            "Divide both sides by $2$.",
+            "Half of $6$."
+          ],
+          "feedbackIfWrong": "$y = 3$."
+        }
+      ]
+    },
+    {
+      "id": "nonlinear-two-solutions",
+      "title": "Nonlinear Systems — Line and Parabola",
+      "teacherCues": [
+        "Write $3x^2 + 4x - y = 7$ and $2x - y = -1$. Note the first is quadratic.",
+        "Show how to solve the linear equation for $y$ and substitute into the quadratic."
+      ],
+      "discoveryHook": {
+        "scenario": "A parabolic arch and a straight ramp can cross at two points. Substituting the line's equation into the parabola's gives a quadratic that locates those crossings exactly."
+      },
+      "concept": {
+        "explanation": [
+          "When one equation is quadratic and the other linear, solve the linear for $y$ (or $x$) and substitute into the quadratic.",
+          "You get a quadratic equation in one variable. Solve by factoring or the Quadratic Formula.",
+          "Each real $x$-value yields a $y$-value when back‑substituted.",
+          "Systems like this can have $0$, $1$, or $2$ real solutions."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $3x^2+4x-y=7$, $2x-y=-1$",
+            "headers": [
+              "Step",
+              "Work"
+            ],
+            "rows": [
+              {
+                "0": "Express $y$",
+                "1": "$y = 2x + 1$"
+              },
+              {
+                "0": "Substitute",
+                "1": "$3x^2+4x - (2x+1) = 7 \\to 3x^2+2x-8 = 0$"
+              },
+              {
+                "0": "Factor",
+                "1": "$(3x-4)(x+2) = 0 \\to x = 4/3,\\, x = -2$"
+              },
+              {
+                "0": "Find $y$",
+                "1": "$x=4/3 \\to y=11/3$; $x=-2 \\to y=-3$"
+              },
+              {
+                "0": "Solutions",
+                "1": "$(4/3, 11/3)$ and $(-2, -3)$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Quadratic After Substitution",
+          "formula": "$3x^2 + 2x - 8 = 0$",
+          "notes": [
+            "Distribute the minus sign carefully.",
+            "Factor or use the Quadratic Formula."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Two intersection points",
+          "prompt": "Solve: $3x^2 + 4x - y = 7$, $2x - y = -1$.",
+          "steps": [
+            "From $2x - y = -1$ → $y = 2x + 1$.",
+            "Substitute: $3x^2 + 4x - (2x+1) = 7$ → $3x^2 + 2x - 1 = 7$ → $3x^2 + 2x - 8 = 0$.",
+            "Factor: $(3x-4)(x+2) = 0$ → $x = 4/3$ or $x = -2$.",
+            "For $x=4/3$: $y = 2(4/3)+1 = 11/3$; for $x=-2$: $y = 2(-2)+1 = -3$.",
+            "Solutions: $(4/3, 11/3)$ and $(-2, -3)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Check a solution",
+          "prompt": "Verify that $(-2, -3)$ works in both equations.",
+          "peerPrompt": "Work with a partner: plug $x=-2$, $y=-3$ into each equation and see if they hold.",
+          "minLength": 2,
+          "steps": [
+            "First eq: $3(-2)^2 + 4(-2) - (-3) = 12 - 8 + 3 = 7$ ✓.",
+            "Second eq: $2(-2) - (-3) = -4 + 3 = -1$ ✓."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Another system",
+          "prompt": "Solve: $y = x^2 + 1$, $x + y = 3$.",
+          "steps": [
+            "Substitute: $x + (x^2+1) = 3$ → $x^2 + x - 2 = 0$.",
+            "Factor: $(x+2)(x-1) = 0$ → $x = -2$ or $x = 1$.",
+            "For $x=-2$: $y = 5$; for $x=1$: $y = 2$.",
+            "Solutions: $(-2, 5)$ and $(1, 2)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Distribute the negative sign",
+        "body": "When you see $-(2x+1)$, it becomes $-2x - 1$. [[imp:Apply the minus to both terms inside the parentheses.]]"
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "From $2x - y = -1$, solving for $y$ yields $y = 2x +$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "Move $y$ to the right and $-1$ to the left.",
+            "$2x + 1 = y$."
+          ],
+          "feedbackIfWrong": "$y = 2x + 1$."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "After substitution you got $3x^2 + 2x - 8 = 0$. Name one possible $x$-value. (Enter 4/3 or -2)",
+          "answer": "4/3 or -2",
+          "hints": [
+            "Factor and set each factor to zero.",
+            "Factors: $(3x-4)$ and $(x+2)$."
+          ],
+          "feedbackIfWrong": "$x = 4/3$ or $x = -2$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "This system had ___ real solutions.",
+          "blanks": [
+            {
+              "accept": [
+                "2",
+                "two"
+              ]
+            }
+          ],
+          "hints": [
+            "We found two ordered pairs.",
+            "Line and parabola met twice."
+          ],
+          "feedbackIfWrong": "Two real solutions."
+        }
+      ]
+    },
+    {
+      "id": "nonlinear-no-real-solution",
+      "title": "When There Is No Real Solution",
+      "teacherCues": [
+        "Write $-x + y = 4$, $x^2 + y = 3$. Solve for $y = x + 4$ and substitute.",
+        "Show that the result, $x^2 + x + 1 = 0$, has a negative discriminant → no real solutions."
+      ],
+      "discoveryHook": {
+        "scenario": "A line and a parabola may never cross. The algebra will reveal this when the resulting quadratic has no real roots."
+      },
+      "concept": {
+        "explanation": [
+          "After substitution, you may get a quadratic equation whose discriminant ($b^2 - 4ac$) is negative.",
+          "That means the two graphs do not intersect in the real plane.",
+          "We say the system has no real solution."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example: $-x + y = 4$, $x^2 + y = 3$",
+            "headers": [
+              "Step",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "Express $y$",
+                "1": "$y = x + 4$"
+              },
+              {
+                "0": "Substitute",
+                "1": "$x^2 + (x+4) = 3 \\to x^2 + x + 1 = 0$"
+              },
+              {
+                "0": "Discriminant",
+                "1": "$1^2 - 4\\cdot1\\cdot1 = -3$ (negative)"
+              },
+              {
+                "0": "Conclusion",
+                "1": "No real solution"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Discriminant Test",
+          "formula": "If $b^2 - 4ac < 0$, the quadratic has no real roots.",
+          "notes": [
+            "If discriminant is negative, stop.",
+            "The graphs do not intersect."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – No intersection",
+          "prompt": "Solve: $-x + y = 4$, $x^2 + y = 3$.",
+          "steps": [
+            "From $-x + y = 4$ → $y = x + 4$.",
+            "Substitute: $x^2 + (x+4) = 3$ → $x^2 + x + 1 = 0$.",
+            "Discriminant: $1 - 4 = -3 < 0$.",
+            "No real solution."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why don't they meet?",
+          "prompt": "Explain why the line $y = x + 4$ and the parabola $y = 3 - x^2$ never intersect.",
+          "peerPrompt": "Sketch mentally: line has $y$-intercept $4$, slope $1$; parabola opens down from $(0, 3)$. Discuss why they miss each other.",
+          "minLength": 2,
+          "steps": [
+            "The line lies entirely above the vertex of the parabola.",
+            "Since the parabola opens downward, it is always below the line — no intersection."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Does it intersect?",
+          "prompt": "Determine whether $y = x + 2$ and $y = x^2$ have real solutions.",
+          "steps": [
+            "Set $x+2 = x^2$ → $x^2 - x - 2 = 0$.",
+            "Discriminant: $(-1)^2 - 4(1)(-2) = 1 + 8 = 9 > 0$.",
+            "Yes, they intersect (two points)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "No real vs. no solution",
+        "body": "The equations may have complex solutions (involving $i$). In this course we only consider real solutions, so 'no solution' means the graphs don't cross."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "If the discriminant of a quadratic is negative, the equation has ___ real solution(s).",
+          "blanks": [
+            {
+              "accept": [
+                "no"
+              ]
+            }
+          ],
+          "hints": [
+            "The graph does not cross the $x$-axis.",
+            "Zero real roots."
+          ],
+          "feedbackIfWrong": "No real solutions."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "Find the discriminant of $x^2 + x + 1 = 0$. (Enter a number)",
+          "answer": "-3",
+          "hints": [
+            "Use $b^2 - 4ac$ with $a=1$, $b=1$, $c=1$.",
+            "$1 - 4 = ?$"
+          ],
+          "feedbackIfWrong": "Discriminant = $-3$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "From $-x + y = 4$, solving for $y$ gives $y = x +$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "4"
+              ]
+            }
+          ],
+          "hints": [
+            "Add $x$ to both sides.",
+            "$-x + y = 4$ → $y = x + 4$."
+          ],
+          "feedbackIfWrong": "$y = x + 4$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-investment",
+      "title": "Blueprint Aid – Investment Problem",
+      "teacherCues": [
+        "Pose: \\$12,000 total invested, part at 5%, part at 3%. Annual interest is \\$500. Write equations.",
+        "Multiply the interest equation by 100 to avoid decimals, then solve by substitution."
+      ],
+      "discoveryHook": {
+        "scenario": "You invested \\$12,000 in two accounts — one paying 5%, the other 3%. After a year you earned \\$500. How much was in each account? A real‑world system of equations."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Let $x$ = amount at 5%, $y$ = amount at 3%. Then $x + y = 12{,}000$ and $0.05x + 0.03y = 500$.",
+          "[[imp:Solve]]: Multiply the interest equation by $100$ → $5x + 3y = 50{,}000$. Solve the first for $x$: $x = 12{,}000 - y$. Substitute: $5(12{,}000-y) + 3y = 50{,}000$ → $y = 5{,}000$, $x = 7{,}000$.",
+          "[[imp:Conclude]]: \\$7,000 at 5%, \\$5,000 at 3%."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Investment Solution Steps",
+            "headers": [
+              "Step",
+              "Equation / Action"
+            ],
+            "rows": [
+              {
+                "0": "Write system",
+                "1": "$x + y = 12{,}000$ ; $0.05x + 0.03y = 500$"
+              },
+              {
+                "0": "Clear decimals",
+                "1": "Multiply by $100$ → $5x + 3y = 50{,}000$"
+              },
+              {
+                "0": "Isolate $x$",
+                "1": "$x = 12{,}000 - y$"
+              },
+              {
+                "0": "Substitute",
+                "1": "$5(12{,}000-y) + 3y = 50{,}000$"
+              },
+              {
+                "0": "Solve for $y$",
+                "1": "$y = 5{,}000$"
+              },
+              {
+                "0": "Find $x$",
+                "1": "$x = 7{,}000$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Decimals Elimination",
+          "formula": "$0.05x + 0.03y = 500$ → $5x + 3y = 50{,}000$",
+          "notes": [
+            "Multiply every term by $100$ to work with integers.",
+            "Then use substitution."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Set up",
+          "prompt": "Translate the problem into equations.",
+          "steps": [
+            "Let $x$ = dollars at 5%, $y$ = dollars at 3%.",
+            "Total principal: $x + y = 12{,}000$.",
+            "Total interest: $0.05x + 0.03y = 500$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve",
+          "prompt": "Work with a partner to find $x$ and $y$.",
+          "peerPrompt": "Multiply the interest equation by 100, then use substitution. Check your partner's arithmetic.",
+          "minLength": 2,
+          "steps": [
+            "Multiply Eq2 by $100$: $5x + 3y = 50{,}000$.",
+            "From Eq1: $x = 12{,}000 - y$.",
+            "Substitute: $5(12{,}000-y) + 3y = 50{,}000$ → $60{,}000 - 5y + 3y = 50{,}000$ → $y = 5{,}000$.",
+            "Then $x = 12{,}000 - 5{,}000 = 7{,}000$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Different amounts",
+          "prompt": "If \\$25,000 is invested at 6.5% and 8.5% with \\$2,000 interest, find the amounts.",
+          "steps": [
+            "System: $x + y = 25{,}000$ ; $0.065x + 0.085y = 2{,}000$.",
+            "Multiply Eq2 by $1000$: $65x + 85y = 2{,}000{,}000$.",
+            "$x = 25{,}000 - y$. Substitute: $65(25{,}000-y) + 85y = 2{,}000{,}000$ → $20y = 375{,}000$ → $y = 18{,}750$.",
+            "$x = 6{,}250$. So \\$6,250 at 6.5%, \\$18,750 at 8.5%."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Large numbers",
+        "body": "When multiplying by $100$ or $1000$, make sure every term is multiplied. A small slip makes a big difference."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "The total investment is represented by $x + y =$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "12000"
+              ]
+            }
+          ],
+          "hints": [
+            "Sum of the two parts.",
+            "Problem says \\$12,000 total."
+          ],
+          "feedbackIfWrong": "$x + y = 12{,}000$."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "After multiplying $0.05x + 0.03y = 500$ by $100$, what is the new coefficient of $x$? (Enter a number)",
+          "answer": "5",
+          "hints": [
+            "$0.05 \\times 100 = ?$",
+            "Move the decimal two places."
+          ],
+          "feedbackIfWrong": "It becomes $5$."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "How much was invested at 5%? \\$___.",
+          "blanks": [
+            {
+              "accept": [
+                "7000"
+              ]
+            }
+          ],
+          "hints": [
+            "Look at the solution for $x$.",
+            "$x = 7{,}000$."
+          ],
+          "feedbackIfWrong": "\\$7,000."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A chemist mixes a 10% salt solution with a 30% salt solution to make 200 mL of a 25% solution. Set up the system and find how many mL of each are needed.",
+        "type": "short-answer",
+        "answer": "50 mL of 10%, 150 mL of 30%",
+        "hints": [
+          "Total volume: $x + y = 200$.",
+          "Total salt: $0.10x + 0.30y = 0.25 \\times 200 = 50$."
+        ],
+        "feedbackIfWrong": "The mixture requires 50 mL of 10% and 150 mL of 30%."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

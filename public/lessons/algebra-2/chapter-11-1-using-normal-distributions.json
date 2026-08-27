@@ -1,0 +1,712 @@
+{
+  "id": "chapter-11-1-using-normal-distributions",
+  "blocks": [
+    {
+      "examples": [
+        {
+          "prompt": "A normal distribution has mean $\\mu$ and standard deviation $\\sigma$. Find $P(\\mu - 2\\sigma \\le x \\le \\mu)$.",
+          "title": "Example A – Finding Area Between Two Values",
+          "role": "guided",
+          "steps": [
+            "The interval from $\\mu-2\\sigma$ to $\\mu$ is the left half of the $\\mu\\pm 2\\sigma$ range.",
+            "The total area within $\\mu\\pm 2\\sigma$ is 95%, so the area from $\\mu-2\\sigma$ to $\\mu$ is half of that.",
+            "95% ÷ 2 = 47.5%, plus the 34% from $\\mu-\\sigma$ to $\\mu$? Let's break it: 13.5% (from -2σ to -1σ) + 34% (from -1σ to μ) = 47.5%.",
+            "So $P(\\mu-2\\sigma \\le x \\le \\mu) = 0.475$."
+          ]
+        },
+        {
+          "prompt": "A state test has scores normally distributed with mean 55 and standard deviation 12. What percent of scores are between 43 and 67?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How can you tell that 43 and 67 are exactly one standard deviation from the mean? What percent does the empirical rule give?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "43 = 55 - 12 = μ - 1σ; 67 = 55 + 12 = μ + 1σ.",
+            "The empirical rule says about 68% of data falls within μ ± 1σ.",
+            "So about 68% of test scores are between 43 and 67."
+          ],
+          "title": "Example B – Test Scores"
+        },
+        {
+          "title": "Example C – Eligibility Score",
+          "prompt": "Using the same test (μ=55, σ=12), an agency hires only applicants with scores of 67 or greater. What percent are eligible?",
+          "steps": [
+            "67 is μ + 1σ. The area to the right of μ + 1σ is half of the remaining 32% (100% - 68%) = 16%.",
+            "Breakdown: 13.5% + 2.35% + 0.15% = 16%.",
+            "So about 16% of test-takers are eligible."
+          ],
+          "role": "independent"
+        }
+      ],
+      "title": "Normal Distributions and the Empirical Rule",
+      "confusionCorner": {
+        "title": "Don't Forget the Symmetry",
+        "body": "The empirical rule percentages are split equally on both sides of the mean. For example, the area from $\\mu$ to $\\mu+\\sigma$ is 34%, not 68%. Always draw the curve and shade the region you need."
+      },
+      "id": "normal-distribution-empirical-rule",
+      "teacherCues": [
+        "Draw a bell-shaped curve on the board. Mark the mean and the points μ±σ, μ±2σ, μ±3σ. Label the 68%, 95%, 99.7% areas.",
+        "Ask: 'If a data set is normally distributed, what percent of the data is above the mean?'"
+      ],
+      "discoveryHook": {
+        "scenario": "From heights and test scores to the weights of cereal boxes, many real-world data sets follow a bell-shaped pattern called a normal distribution. Knowing just the mean and standard deviation, you can estimate the percentage of data within any range using the Empirical Rule!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:normal distribution]] is a probability distribution that is bell-shaped and symmetric about the mean $\\mu$.",
+          "The graph of a normal distribution is called a [[kw:normal curve]]. The total area under the curve is exactly $1$.",
+          "The [[kw:Empirical Rule]] (68‑95‑99.7 rule) states:",
+          "• About 68% of the data falls within $\\mu \\pm 1\\sigma$.",
+          "• About 95% within $\\mu \\pm 2\\sigma$.",
+          "• About 99.7% within $\\mu \\pm 3\\sigma$.",
+          "Because the curve is symmetric, half of each area lies on each side of the mean. For example, 34% lies between $\\mu$ and $\\mu+\\sigma$."
+        ],
+        "formulaCard": {
+          "notes": [
+            "68% for $k=1$, 95% for $k=2$, 99.7% for $k=3$.",
+            "The areas outside these intervals are split equally in the two tails.",
+            "Use these percentages only if the data is approximately normal."
+          ],
+          "title": "Empirical Rule Summary",
+          "formula": "$$ P(\\mu - k\\sigma \\le x \\le \\mu + k\\sigma) \\approx \\text{area for } k=1,2,3 $$"
+        },
+        "visuals": [
+          {
+            "title": "Areas Under a Normal Curve (Empirical Rule)",
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Interval",
+              "Percentage of Data"
+            ],
+            "rows": [
+              {
+                "0": "$\\mu \\pm 1\\sigma$",
+                "1": "68%"
+              },
+              {
+                "0": "$\\mu \\pm 2\\sigma$",
+                "1": "95%"
+              },
+              {
+                "0": "$\\mu \\pm 3\\sigma$",
+                "1": "99.7%"
+              },
+              {
+                "0": "Tail beyond $\\mu \\pm 3\\sigma$",
+                "1": "0.15% each tail"
+              }
+            ]
+          }
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "The empirical rule states that about 68% of data lies within 1 standard deviation of the mean.",
+          "hints": [
+            "It's the first number in the 68‑95‑99.7 rule.",
+            "Just the number."
+          ],
+          "id": "q1-1",
+          "prompt": "For a normal distribution, about ___% of the data lies within one standard deviation of the mean.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "68",
+                "sixty-eight",
+                "68%"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q1-2",
+          "answer": "60",
+          "prompt": "In a normal distribution with mean 50 and standard deviation 5, what is the value of μ + 2σ?",
+          "hints": [
+            "Add twice the standard deviation to the mean.",
+            "50 + 2×5 = ?"
+          ],
+          "feedbackIfWrong": "μ + 2σ = 50 + 10 = 60.",
+          "type": "short-answer"
+        },
+        {
+          "id": "q1-3",
+          "hints": [
+            "The normal curve is symmetric about the mean.",
+            "Half the area is to the right of the mean."
+          ],
+          "answer": "0.5",
+          "prompt": "If a normal distribution has mean μ, what is P(x ≥ μ)? Answer as a decimal.",
+          "feedbackIfWrong": "P(x ≥ μ) = 0.5 because the distribution is symmetric.",
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "examples": [
+        {
+          "title": "Example A – Find P(z ≤ 1.5)",
+          "prompt": "Use the standard normal table to find the probability that a randomly selected z-value is less than or equal to 1.5.",
+          "role": "guided",
+          "steps": [
+            "In the standard normal table, locate the row for z = 1.5.",
+            "The intersection of row 1.5 and column .00 gives the value 0.9332.",
+            "So P(z ≤ 1.5) = 0.9332.",
+            "This means about 93.32% of the area under the standard normal curve lies to the left of z = 1.5."
+          ]
+        },
+        {
+          "title": "Example B – Convert to Z‑Score",
+          "steps": [
+            "Use z = (x - μ) / σ = (4170 - 3270) / 600 = 900/600 = 1.5.",
+            "z = 1.5 means the weight is 1.5 standard deviations above the mean.",
+            "From the table, P(z ≤ 1.5) = 0.9332.",
+            "So the probability a randomly chosen infant weighs 4170 g or less is about 0.9332."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What does a z-score of 1.5 actually mean? How would you find the probability that a baby weighs less than 4170 grams?",
+          "minLength": 2,
+          "prompt": "Infant birth weights are N(3270, 600). Find the z-score for a weight of 4170 grams.",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "prompt": "For the same infant weights (μ=3270, σ=600), find the probability that an infant weighs 3990 grams or more.",
+          "steps": [
+            "First, z = (3990 - 3270) / 600 = 720/600 = 1.2.",
+            "P(z ≤ 1.2) = 0.8849 from the table.",
+            "We want P(x ≥ 3990) = P(z ≥ 1.2) = 1 - 0.8849 = 0.1151.",
+            "So about 11.5% of infants weigh 3990 grams or more."
+          ],
+          "title": "Example C – Probability Greater Than"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:standard normal distribution]] is a normal distribution with mean $0$ and standard deviation $1$.",
+          "Any x-value from a normal distribution can be transformed into a [[kw:z-score]]: $$ z = \\frac{x - \\mu}{\\sigma} $$",
+          "The z-score tells how many standard deviations $x$ is above or below the mean.",
+          "A positive z-score means $x$ is above the mean; negative means below.",
+          "You can use the standard normal table to find $P(z \\le \\text{a given value})$."
+        ],
+        "visuals": [
+          {
+            "title": "Z‑Score Interpretation",
+            "headers": [
+              "z-score",
+              "Meaning"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "$z = 0$",
+                "1": "x equals the mean"
+              },
+              {
+                "0": "$z = 1.5$",
+                "1": "x is 1.5 standard deviations above the mean"
+              },
+              {
+                "0": "$z = -2$",
+                "1": "x is 2 standard deviations below the mean"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ z = \\frac{x - \\mu}{\\sigma} $$",
+          "title": "Z‑Score Formula",
+          "notes": [
+            "Subtract the mean, then divide by the standard deviation.",
+            "Use the standard normal table to find $P(Z \\le z)$.",
+            "For $P(Z \\ge z) = 1 - P(Z \\le z)$."
+          ]
+        }
+      },
+      "teacherCues": [
+        "Write the z-score formula on the board: z = (x - μ) / σ.",
+        "Show the standard normal table and explain how to look up probabilities."
+      ],
+      "title": "The Standard Normal Distribution and Z‑Scores",
+      "id": "standard-normal-z-scores",
+      "confusionCorner": {
+        "body": "The standard normal table usually gives $P(Z \\le z)$. If you need $P(Z \\ge z)$, remember to subtract from 1. For $P(a \\le Z \\le b)$, do $P(Z \\le b) - P(Z \\le a)$.",
+        "title": "Table Gives 'Less Than'"
+      },
+      "discoveryHook": {
+        "scenario": "What if you want to know the probability that a baby weighs less than 4170 grams, but the mean is 3270 and the standard deviation is 600? By converting the weight to a z‑score, you can use a single standard normal table to answer any normal distribution question!"
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "id": "q2-1",
+          "hints": [
+            "z = (130 - 100) / 15.",
+            "That's 30 / 15."
+          ],
+          "prompt": "If μ = 100 and σ = 15, what is the z-score for x = 130?",
+          "answer": "2",
+          "feedbackIfWrong": "z = (130 - 100) / 15 = 30/15 = 2."
+        },
+        {
+          "feedbackIfWrong": "The mean of the standard normal distribution is 0.",
+          "prompt": "The standard normal distribution has mean ___ and standard deviation 1.",
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "zero"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "hints": [
+            "It's the center of the distribution.",
+            "The number that the curve is symmetric around."
+          ],
+          "id": "q2-2"
+        },
+        {
+          "feedbackIfWrong": "P(z ≤ 1.0) = 0.8413.",
+          "type": "short-answer",
+          "prompt": "From the standard normal table, what is P(z ≤ 1.0)? Answer as a decimal rounded to 4 places.",
+          "id": "q2-3",
+          "answer": "0.8413",
+          "hints": [
+            "Look at the table for row 1.0 and column .00.",
+            "The value is 0.8413."
+          ]
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "You have 11 minutes to finish your banking. If the wait time is normally distributed with mean 8 minutes and SD 2 minutes, what's the chance you're late? Z‑scores turn a real-world question into a simple table lookup!"
+      },
+      "title": "Finding Probabilities in Real‑World Normal Distributions",
+      "questions": [
+        {
+          "feedbackIfWrong": "A negative z-score means the x-value is below the mean.",
+          "hints": [
+            "Negative means less than the mean.",
+            "Think of the formula: x - μ is negative."
+          ],
+          "id": "q3-1",
+          "answer": "below",
+          "type": "short-answer",
+          "prompt": "If a z-score is negative, is the x-value above or below the mean?"
+        },
+        {
+          "feedbackIfWrong": "P(X ≤ μ+σ) = 0.5 + 0.34 = 0.84.",
+          "hints": [
+            "115 is 1 standard deviation above the mean.",
+            "Add the area below the mean (0.5) to the area from mean to +1σ (0.34)."
+          ],
+          "type": "short-answer",
+          "answer": "0.84",
+          "id": "q3-2",
+          "prompt": "For N(100,15), find P(X ≤ 115). Use the empirical rule to answer (do not use the table). Answer as a decimal."
+        },
+        {
+          "hints": [
+            "Starts with 's'.",
+            "It's the operation for finding the difference."
+          ],
+          "prompt": "To find the probability that x is between a and b, compute the z-scores, find their table values, and then ___ the smaller from the larger.",
+          "feedbackIfWrong": "You subtract the smaller cumulative probability from the larger.",
+          "blanks": [
+            {
+              "accept": [
+                "subtract",
+                "Subtract"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "id": "q3-3"
+        }
+      ],
+      "teacherCues": [
+        "Work through a problem: 'The waiting time at a bank is N(8,2) minutes. Find P(x > 11).'",
+        "Emphasize the three steps: 1) z-score, 2) table lookup, 3) adjust for greater than/between."
+      ],
+      "concept": {
+        "explanation": [
+          "To find the probability that a normally distributed variable $x$ is in an interval:",
+          "1. Convert the boundary x-values to z-scores using $z = \\frac{x-\\mu}{\\sigma}$.",
+          "2. Use the standard normal table to find $P(Z \\le z)$ for each boundary.",
+          "3. For $P(a \\le X \\le b) = P(Z \\le z_b) - P(Z \\le z_a)$. For $P(X \\ge a) = 1 - P(Z \\le z_a)$.",
+          "Real‑world problems often ask for percentages, so multiply the probability by 100."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Always sketch the normal curve and shade the region.",
+            "For 'between' probabilities, subtract the smaller table value from the larger."
+          ],
+          "title": "Using Z‑Scores to Find Probabilities",
+          "formula": "$$ P(X \\le x) = P\\left(Z \\le \\frac{x-\\mu}{\\sigma}\\right) $$ $$ P(X \\ge x) = 1 - P\\left(Z \\le \\frac{x-\\mu}{\\sigma}\\right) $$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action",
+              "Example (x≥11, μ=8, σ=2)"
+            ],
+            "variant": "colorful",
+            "title": "Steps for Normal Probability Problems",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Find z-score",
+                "2": "z = (11-8)/2 = 1.5"
+              },
+              {
+                "0": "2",
+                "1": "Look up P(Z ≤ z)",
+                "2": "P(Z ≤ 1.5) = 0.9332"
+              },
+              {
+                "0": "3",
+                "1": "Adjust if needed",
+                "2": "P(X ≥ 11) = 1 - 0.9332 = 0.0668"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Bank waiting times are N(8,2) minutes. Find the probability you are late if you have only 11 minutes.",
+          "steps": [
+            "You're late if waiting time > 11 min.",
+            "z = (11 - 8) / 2 = 1.5. P(Z ≤ 1.5) = 0.9332.",
+            "P(X > 11) = 1 - 0.9332 = 0.0668.",
+            "So about a 6.68% chance of being late."
+          ],
+          "title": "Example A – Late for a Meeting"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you use the z-score and the table to find this percent? Why is '8 minutes or less' directly a table lookup?",
+          "minLength": 2,
+          "steps": [
+            "x = 8, μ = 6, σ = 1. z = (8-6)/1 = 2.",
+            "P(Z ≤ 2) = 0.9772 from the table.",
+            "So about 97.72% of emergencies have arrival times ≤ 8 minutes."
+          ],
+          "title": "Example B – Fire Department Arrival",
+          "prompt": "Fire department arrival times are N(6,1) minutes. What percent of emergencies have arrival times of 8 minutes or less?"
+        },
+        {
+          "steps": [
+            "z = (50 - 73) / 14.1 ≈ -1.63. (Use -1.6 and .03: 0.0516).",
+            "P(Z ≤ -1.63) = 0.0516.",
+            "So there is about a 5.16% chance of observing at most 50 seals."
+          ],
+          "role": "independent",
+          "title": "Example C – Seal Observation",
+          "prompt": "Seal counts per survey are N(73,14.1). Find the probability that at most 50 seals are observed."
+        }
+      ],
+      "id": "finding-probabilities-real-world",
+      "confusionCorner": {
+        "body": "The standard normal table often has negative z-scores on a separate page or same page. For negative z, just look up the row for the negative value. Because of symmetry, $P(Z \\le -z) = P(Z \\ge z) = 1 - P(Z \\le z)$.",
+        "title": "Negative Z‑Scores"
+      }
+    },
+    {
+      "teacherCues": [
+        "Show three histograms: bell-shaped symmetric, skewed left, skewed right.",
+        "Ask: 'Which one could be modeled by a normal distribution?'"
+      ],
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Use a histogram or boxplot to check for skewness.",
+            "For approximately normal data, you can apply the empirical rule and z-scores.",
+            "If skewed, use other methods (like median and IQR)."
+          ],
+          "title": "Normality Check",
+          "formula": "$$ \\text{Normal: histogram is bell-shaped, symmetric, mean } \\approx \\text{ median} $$"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Bell-shaped",
+                "1": "Symmetric",
+                "2": "Mean = Median",
+                "3": "Yes"
+              },
+              {
+                "0": "Skewed left",
+                "1": "Asymmetric (long left tail)",
+                "2": "Mean < Median",
+                "3": "No"
+              },
+              {
+                "0": "Skewed right",
+                "1": "Asymmetric (long right tail)",
+                "2": "Mean > Median",
+                "3": "No"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Shape",
+              "Symmetry",
+              "Mean vs. Median",
+              "Normal?"
+            ],
+            "title": "Normal vs. Skewed Distributions"
+          }
+        ],
+        "explanation": [
+          "A data set has a [[kw:normal distribution]] if its histogram is bell-shaped and symmetric. In a normal distribution, the mean and median are equal.",
+          "A distribution is [[kw:skewed left]] if the left tail is longer; the mean is less than the median.",
+          "A distribution is [[kw:skewed right]] if the right tail is longer; the mean is greater than the median.",
+          "You cannot use the normal model for skewed distributions – the empirical rule and z‑score methods assume normality."
+        ]
+      },
+      "title": "Recognizing Normal vs. Skewed Distributions",
+      "examples": [
+        {
+          "prompt": "A histogram of math quiz scores is bell-shaped and symmetric. Does it have a normal distribution?",
+          "title": "Example A – Math Quiz Scores",
+          "role": "guided",
+          "steps": [
+            "Check shape: bell-shaped and symmetric.",
+            "Mean is approximately equal to the median.",
+            "Yes, it can be modeled by a normal distribution."
+          ]
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why can't you use the empirical rule for a skewed distribution? What might happen if you tried?",
+          "role": "peer-explain",
+          "steps": [
+            "The long right tail means it is skewed right.",
+            "In a right-skewed distribution, the mean > median.",
+            "It is not normal; the empirical rule would give misleading results."
+          ],
+          "prompt": "A histogram of the population of Brazil by age shows a longer right tail. Is it normal?",
+          "title": "Example B – Population Ages",
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "The description suggests a bell-shaped symmetric pattern.",
+            "If the histogram is symmetric with a single peak and no extreme skew, it's approximately normal.",
+            "Yes, it likely has a normal distribution."
+          ],
+          "role": "independent",
+          "title": "Example C – Time to Complete an Exam",
+          "prompt": "A histogram of exam completion times shows most students finish around 45 minutes, with a few taking much longer and a few finishing earlier. The bars are roughly symmetric. Determine if it has a normal distribution."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q4-1",
+          "blanks": [
+            {
+              "accept": [
+                "left",
+                "Left"
+              ]
+            }
+          ],
+          "prompt": "A distribution with a long left tail is called skewed ___.",
+          "feedbackIfWrong": "It is skewed left.",
+          "hints": [
+            "The tail points to the left side.",
+            "Opposite of skewed right."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "In a normal distribution, the mean and ___ are equal.",
+          "answer": "median",
+          "feedbackIfWrong": "In a normal distribution, the mean equals the median.",
+          "hints": [
+            "It's a measure of center that splits the data into two equal halves.",
+            "Starts with 'm'."
+          ]
+        },
+        {
+          "feedbackIfWrong": "No, a skewed distribution cannot be modeled by a normal distribution.",
+          "type": "short-answer",
+          "hints": [
+            "The normal model requires symmetry.",
+            "Skewed data cannot be modeled by a normal curve."
+          ],
+          "answer": "no",
+          "prompt": "A histogram of house prices is skewed to the right. Should you use the normal distribution to model house prices? Answer 'yes' or 'no'.",
+          "id": "q4-3"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Not every data set is bell-shaped. Some are lopsided – like income data (skewed right). Before using the empirical rule or z‑scores, you must check that the data is approximately normal!"
+      },
+      "confusionCorner": {
+        "body": "Many real-world distributions (income, house prices) are skewed. Always plot the data before applying normal distribution methods. [[imp:If it's not bell-shaped, don't use the normal model!]]",
+        "title": "Don't Assume Normality"
+      },
+      "id": "recognizing-normal-distributions"
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "It starts with 'U'.",
+            "You identify μ, σ, and the interval in this step."
+          ],
+          "answer": "Understand",
+          "prompt": "In the blueprint, what is the first step? (Answer: Understand, Solve, or Conclude?)",
+          "type": "short-answer",
+          "id": "q5-1",
+          "feedbackIfWrong": "The first step is Understand."
+        },
+        {
+          "feedbackIfWrong": "You subtract the table value from 1.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the operation used for complements.",
+            "Starts with 's'."
+          ],
+          "id": "q5-2",
+          "prompt": "To find P(X ≥ a), you find the z-score, look up P(Z ≤ z), and then ___ from 1.",
+          "blanks": [
+            {
+              "accept": [
+                "subtract",
+                "Subtract"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "z = (7-12)/2 = -2.5.",
+          "prompt": "For N(12,2), what z-score corresponds to x = 7?",
+          "answer": "-2.5",
+          "hints": [
+            "z = (7 - 12) / 2.",
+            "That's -5 / 2."
+          ],
+          "id": "q5-3"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "The heights of guayule plants are normally distributed with a mean of 12 inches and a standard deviation of 2 inches. What percent are between 7 and 14 inches? Following the blueprint, you'll answer this in three clear steps!"
+      },
+      "confusionCorner": {
+        "title": "Rounding and Table Precision",
+        "body": "If the exact z-score has more decimals than the table, round to the closest value in the table (e.g., -2.45 can use -2.4 or -2.5). The result is an approximation."
+      },
+      "teacherCues": [
+        "Write the blueprint steps: 1) Understand (mean, sd, boundaries), 2) Solve (z-score, table, or empirical rule), 3) Conclude (probability, percent).",
+        "Model with the guayule plant height problem: N(12,2)."
+      ],
+      "id": "blueprint-normal-probability",
+      "title": "Blueprint Aid – Solving Normal Distribution Problems",
+      "examples": [
+        {
+          "prompt": "Heights of guayule plants are N(12,2). Find the probability a randomly chosen plant is between 7 and 14 inches.",
+          "role": "guided",
+          "title": "Example A – Between Two Values",
+          "steps": [
+            "Understand: μ=12, σ=2. a=7, b=14.",
+            "Solve: z_a = (7-12)/2 = -2.5, z_b = (14-12)/2 = 1.0. P(Z ≤ 1) = 0.8413, P(Z ≤ -2.5) = 0.0062. P = 0.8413 - 0.0062 = 0.8351.",
+            "Conclude: About 83.5% of plants have heights between 7 and 14 inches."
+          ]
+        },
+        {
+          "title": "Example B – At Least a Value",
+          "prompt": "For the same plants N(12,2), find the probability a plant is at least 16 inches tall.",
+          "steps": [
+            "Understand: We want P(X ≥ 16). 16 is μ + 2σ.",
+            "Solve: Using empirical rule, 2σ above mean: tail area = 2.5% (half of 5%). So P ≈ 0.025. With table: z=2, P(Z≤2)=0.9772, P=1-0.9772=0.0228.",
+            "Conclude: About 2.3% of plants are at least 16 inches tall."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do you use the complement here? How do you find P(X ≥ 16) using the z-score and table?",
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Cereal Box Weights",
+          "prompt": "Cereal box weights are N(20,0.25) oz. Find the probability that a box contains no more than 19.4 oz.",
+          "role": "independent",
+          "steps": [
+            "Understand: μ=20, σ=0.25. x = 19.4.",
+            "Solve: z = (19.4-20)/0.25 = -2.4. P(Z ≤ -2.4) = 0.0082.",
+            "Conclude: Only about 0.82% of boxes weigh 19.4 oz or less, indicating a possible machine issue if this happens often."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "If boundaries are round multiples of σ, you can use the empirical rule.",
+            "Otherwise, always convert to z-scores and use the table."
+          ],
+          "title": "Normal Probability Blueprint",
+          "formula": "$$ P(a \\le X \\le b) = P\\left(Z \\le \\frac{b-\\mu}{\\sigma}\\right) - P\\left(Z \\le \\frac{a-\\mu}{\\sigma}\\right) $$"
+        },
+        "explanation": [
+          "1. [[imp:Understand]]: Identify the mean $\\mu$, standard deviation $\\sigma$, and the interval of interest. Sketch the normal curve and shade the region.",
+          "2. [[imp:Solve]]: Convert boundaries to z-scores if needed. Use the standard normal table or the empirical rule to find the probability. For 'at least' or 'more than', use complements.",
+          "3. [[imp:Conclude]]: State the probability as a decimal or percent, and interpret it in the context of the problem."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action",
+              "Example (N(12,2), between 7 and 14)"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "μ=12, σ=2, interval 7 to 14. 7 is μ-2.5σ, 14 is μ+1σ."
+              },
+              {
+                "0": "Solve",
+                "1": "z1=(7-12)/2=-2.5, z2=(14-12)/2=1. P= P(Z≤1) - P(Z≤-2.5) = 0.8413 - 0.0062 = 0.8351."
+              },
+              {
+                "0": "Conclude",
+                "1": "About 83.5% of plants are between 7 and 14 inches."
+              }
+            ],
+            "variant": "colorful",
+            "title": "Blueprint Steps for Normal Distribution"
+          }
+        ]
+      }
+    }
+  ],
+  "presenterNotes": [
+    "Use a large bell curve drawn on the board to physically shade the 68%, 95%, 99.7% areas. Have students come up and mark the cut points.",
+    "Provide copies of the standard normal table and have students practice finding probabilities for various z-scores.",
+    "Bring in real data sets (heights of students, test scores) to check for normality using histograms."
+  ],
+  "title": "Using Normal Distributions",
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "standards": [
+    "HSS.ID.A.4",
+    "HSS.MD.A.2",
+    "HSS.MD.B.7"
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

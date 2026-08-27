@@ -1,0 +1,744 @@
+{
+  "id": "section-9-1-correlation",
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Encourage students to plot data before computing r. A scatter plot reveals nonlinear patterns that r misses.",
+    "Demonstrate technology (TI‑84, Excel, Google Sheets) to compute r quickly, then use the table or t‑test for inference.",
+    "Repeatedly stress that correlation ≠ causation. Use memorable examples like firefighter/damage or ice cream/drowning."
+  ],
+  "schemaVersion": 2,
+  "standards": [
+    "HSS.ID.B.6",
+    "HSS.ID.C.8",
+    "HSS.ID.C.9",
+    "HSS.IC.A.1"
+  ],
+  "title": "Correlation",
+  "blocks": [
+    {
+      "id": "scatter-plots-and-types",
+      "examples": [
+        {
+          "steps": [
+            "Look for a general upward or downward slope.",
+            "The points do not consistently rise or fall; they form a cloud.",
+            "Therefore, there is [[imp:no linear correlation]] between exercise hours and GPA in this sample."
+          ],
+          "prompt": "A plot of hours of exercise per week (x) vs. GPA (y) shows points scattered randomly with no clear upward or downward tilt. Describe the correlation.",
+          "title": "Example A – Identifying Correlation from a Scatter Plot",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: The plot shows a positive linear association. Can we be sure that increasing GDP forces emissions up? What other explanations might exist?",
+          "title": "Example B – Interpreting a Positive Trend",
+          "prompt": "You plot GDP (x) vs. CO2 emissions (y) and see points rising to the right. Does this mean higher GDP causes higher emissions?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "steps": [
+            "The scatter plot shows a positive linear correlation: as GDP increases, emissions tend to increase.",
+            "However, correlation does not automatically imply causation. Other factors (population, industrial activity) may be involved.",
+            "We can only say the variables are positively associated, not that one causes the other."
+          ]
+        },
+        {
+          "prompt": "A plot of a person's height vs. their pulse rate shows a flat, horizontal band of points. What type of correlation is this?",
+          "role": "independent",
+          "title": "Example C – Recognizing No Linear Correlation",
+          "steps": [
+            "Check if the points tend to go up or down as height increases.",
+            "No upward or downward trend is visible.",
+            "This indicates [[imp:no linear correlation]] between height and pulse rate."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "A [[kw:scatter plot]] is a graph of ordered pairs $(x, y)$ used to visualize the relationship between two quantitative variables.",
+          "The [[kw:independent (explanatory) variable]] $x$ is plotted on the horizontal axis; the [[kw:dependent (response) variable]] $y$ is on the vertical axis.",
+          "A [[kw:linear correlation]] exists when the points roughly follow a straight line.",
+          "If $y$ tends to increase as $x$ increases, the correlation is [[imp:positive]] (points slope upward).",
+          "If $y$ tends to decrease as $x$ increases, the correlation is [[imp:negative]] (points slope downward).",
+          "If no clear straight-line pattern exists, there is [[imp:no linear correlation]]. A curve or random scatter indicates no linear relationship."
+        ],
+        "formulaCard": {
+          "formula": "$$ (x_1, y_1), (x_2, y_2), \\dots, (x_n, y_n) $$",
+          "notes": [
+            "Plot points as in Algebra I.",
+            "Look for overall linear trend, not just a few points.",
+            "Correlation does not mean causation."
+          ],
+          "title": "Scatter Plot Setup"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Positive",
+                "1": "Upward from left to right",
+                "2": "Study hours vs. test score"
+              },
+              {
+                "0": "Negative",
+                "1": "Downward from left to right",
+                "2": "Age of car vs. its value"
+              },
+              {
+                "0": "None",
+                "1": "Random or curved",
+                "2": "Shoe size vs. IQ"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Pattern",
+              "Direction of Points",
+              "Example"
+            ],
+            "variant": "colorful",
+            "title": "Types of Linear Correlation"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Display several scatter plots: one with points rising to the right, one falling, one random. Ask students to describe the pattern.",
+        "Write 'Explanatory variable (x) → Response variable (y)' on the board and explain that we look for a linear trend."
+      ],
+      "discoveryHook": {
+        "scenario": "A nutritionist wonders if daily water intake can predict weight loss. She records water consumption and pounds lost for 20 people. She plots the data as ordered pairs (water, weight loss). Does it show a rising pattern, a falling pattern, or no pattern at all? That's what a scatter plot reveals."
+      },
+      "questions": [
+        {
+          "id": "q9-1-1",
+          "hints": [
+            "It is also called the explanatory variable.",
+            "It is the variable that might explain or predict the other."
+          ],
+          "type": "short-answer",
+          "prompt": "In a scatter plot, the variable plotted on the x‑axis is called the ___ variable.",
+          "answer": "independent",
+          "feedbackIfWrong": "The variable on the x‑axis is the independent (or explanatory) variable."
+        },
+        {
+          "feedbackIfWrong": "Downward trend indicates a negative linear correlation.",
+          "answer": "negative",
+          "prompt": "If a scatter plot shows points sloping downward to the right, the correlation is ___.",
+          "type": "short-answer",
+          "hints": [
+            "When x increases, y tends to decrease.",
+            "Think of the sign of the slope."
+          ],
+          "id": "q9-1-2"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "linear",
+                "straight-line"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "We use scatter plots to detect a linear relationship.",
+          "hints": [
+            "We are looking for a straight‑line pattern.",
+            "The type of correlation discussed in this chapter is linear."
+          ],
+          "id": "q9-1-3",
+          "prompt": "A scatter plot is a graph of ordered pairs that helps us see if there is a ___ relationship between two variables.",
+          "type": "fill-blank"
+        }
+      ],
+      "title": "Scatter Plots and Types of Correlation",
+      "confusionCorner": {
+        "title": "Nonlinear Patterns Are Not Linear Correlation",
+        "body": "A scatter plot showing a curved pattern (like a U‑shape) does [[imp:not]] have a linear correlation. The methods in this chapter only detect straight‑line relationships. [[imp:Always check the scatter plot before computing r.]]"
+      }
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "The smallest possible r is -1, the largest is 1.",
+            "It is inclusive of both endpoints."
+          ],
+          "id": "q9-1-4",
+          "type": "short-answer",
+          "feedbackIfWrong": "r always falls between -1 and 1, inclusive.",
+          "prompt": "What is the range of possible values for the correlation coefficient r? (Answer like -1 to 1)",
+          "answer": "-1 to 1"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "positive"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "Since r is positive, it is a strong positive linear correlation.",
+          "hints": [
+            "The sign of r is positive.",
+            "Positive means as x increases, y tends to increase."
+          ],
+          "id": "q9-1-5",
+          "prompt": "If r = 0.92, we say there is a strong ___ linear correlation."
+        },
+        {
+          "answer": "-0.81",
+          "feedbackIfWrong": "|-0.81| = 0.81 > 0.76, so r = -0.81 is stronger.",
+          "prompt": "Which indicates a stronger linear relationship: r = -0.81 or r = 0.76? (Answer -0.81 or 0.76)",
+          "id": "q9-1-6",
+          "type": "short-answer",
+          "hints": [
+            "Compare absolute values.",
+            "|-0.81| = 0.81, |0.76| = 0.76."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Compute sums: $\\Sigma x = 6$, $\\Sigma y = 10$, $\\Sigma xy = 1\\cdot2 + 2\\cdot3 + 3\\cdot5 = 23$, $\\Sigma x^2 = 1+4+9=14$, $\\Sigma y^2 = 4+9+25=38$, $n=3$.",
+            "Plug into formula: $r = \\frac{3\\cdot23 - 6\\cdot10}{\\sqrt{3\\cdot14 - 6^2}\\sqrt{3\\cdot38 - 10^2}} = \\frac{69-60}{\\sqrt{42-36}\\sqrt{114-100}} = \\frac{9}{\\sqrt{6}\\sqrt{14}} \\approx \\frac{9}{2.449\\times3.742} \\approx 0.982$.",
+            "Interpretation: $r \\approx 0.98$ indicates a very strong positive linear correlation."
+          ],
+          "title": "Example A – Computing r by Hand (Small Data)",
+          "role": "guided",
+          "prompt": "For the points (1, 2), (2, 3), (3, 5), compute the correlation coefficient r using the formula."
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Does the sign of r affect its strength? How do we compare |r| values?",
+          "title": "Example B – Strength vs. Direction",
+          "minLength": 2,
+          "steps": [
+            "Strength is determined by the absolute value $|r|$, not the sign.",
+            "$|-0.92| = 0.92$ is greater than $0.87$, so $r = -0.92$ represents a stronger linear correlation.",
+            "The sign only tells the direction; the magnitude tells the strength."
+          ],
+          "prompt": "Two studies give $r = -0.92$ and $r = 0.87$. Which correlation is stronger? Explain."
+        },
+        {
+          "title": "Example C – Interpreting r = 0",
+          "steps": [
+            "Since $|0.04|$ is very close to 0, there is [[imp:no linear correlation]].",
+            "This means knowing a person's height would not help predict their IQ using a straight line.",
+            "There might still be a nonlinear relationship, but we wouldn't detect it with r."
+          ],
+          "prompt": "A study finds $r = 0.04$ between height and IQ. What can you conclude?",
+          "role": "independent"
+        }
+      ],
+      "title": "The Correlation Coefficient r",
+      "concept": {
+        "visuals": [
+          {
+            "title": "Interpreting r",
+            "type": "table",
+            "headers": [
+              "Value of r",
+              "Strength",
+              "Direction"
+            ],
+            "rows": [
+              {
+                "0": "$0.8$ to $1.0$",
+                "1": "Strong",
+                "2": "Positive"
+              },
+              {
+                "0": "$-0.8$ to $-1.0$",
+                "1": "Strong",
+                "2": "Negative"
+              },
+              {
+                "0": "$0.5$ to $0.8$",
+                "1": "Moderate",
+                "2": "Positive"
+              },
+              {
+                "0": "$-0.5$ to $-0.8$",
+                "1": "Moderate",
+                "2": "Negative"
+              },
+              {
+                "0": "$0$ to $\\pm 0.5$",
+                "1": "Weak",
+                "2": "Positive or negative"
+              },
+              {
+                "0": "$0$",
+                "1": "No linear correlation",
+                "2": "None"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "The [[kw:correlation coefficient]] $r$ measures the strength and direction of a linear relationship between two variables.",
+          "Its value always lies between $-1$ and $1$: $$-1 \\le r \\le 1$$",
+          "$r > 0$ indicates a [[imp:positive]] correlation; $r < 0$ indicates a [[imp:negative]] correlation.",
+          "The closer $|r|$ is to $1$, the stronger the linear relationship. $r=1$ or $r=-1$ means [[imp:perfect]] linear correlation.",
+          "If $r \\approx 0$, there is [[imp:no linear correlation]], but a nonlinear relationship may still exist.",
+          "The formula for $r$ is $$r = \\frac{n\\Sigma xy - (\\Sigma x)(\\Sigma y)}{\\sqrt{n\\Sigma x^2 - (\\Sigma x)^2}\\sqrt{n\\Sigma y^2 - (\\Sigma y)^2}}$$"
+        ],
+        "formulaCard": {
+          "notes": [
+            "$n$ is the number of pairs.",
+            "Use technology for practical calculation.",
+            "Round $r$ to three decimal places."
+          ],
+          "formula": "$$ r = \\frac{n\\Sigma xy - (\\Sigma x)(\\Sigma y)}{\\sqrt{n\\Sigma x^2 - (\\Sigma x)^2}\\sqrt{n\\Sigma y^2 - (\\Sigma y)^2}} $$",
+          "title": "Correlation Coefficient Formula"
+        }
+      },
+      "teacherCues": [
+        "Project the formula for r and explain that technology usually computes it, but understanding the parts matters.",
+        "Draw a number line from -1 to 1 and place r values to show strength and direction."
+      ],
+      "confusionCorner": {
+        "body": "A scatter plot can show a perfect U‑shaped curve, yet $r$ will be near 0. $r$ only measures [[imp:linear]] association. Always plot the data first.",
+        "title": "r = 0 Does Not Mean No Relationship!"
+      },
+      "discoveryHook": {
+        "scenario": "Two scatter plots can both look roughly linear, but one is tighter than the other. We need a single number that captures both direction (positive/negative) and strength (how close the points are to a line). That number is the correlation coefficient r."
+      },
+      "id": "correlation-coefficient-r"
+    },
+    {
+      "discoveryHook": {
+        "scenario": "You compute r = 0.55 from a sample of 15 pairs. Is that strong enough to say a real correlation exists in the population, or could it just be luck? A table of critical values helps us decide, based on sample size and the risk (α) we are willing to take."
+      },
+      "teacherCues": [
+        "Display Table 11 (Critical Values for the Correlation Coefficient). Walk students through finding the critical value for given n and α.",
+        "Explain that if |r| exceeds the table value, we conclude the correlation is significant at that α."
+      ],
+      "title": "Testing the Significance of r Using a Table",
+      "id": "testing-significance-table",
+      "confusionCorner": {
+        "title": "Always Use Two-Tailed Table for Correlation?",
+        "body": "The values in Table 11 are for a two‑tailed test of $H_0: \\rho = 0$. If you need a one‑tailed test, adjust the significance level appropriately. But in this text, we only use the two‑tailed table."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "5",
+                "1": "0.878",
+                "2": "0.959"
+              },
+              {
+                "0": "10",
+                "1": "0.632",
+                "2": "0.765"
+              },
+              {
+                "0": "15",
+                "1": "0.514",
+                "2": "0.641"
+              },
+              {
+                "0": "20",
+                "1": "0.444",
+                "2": "0.561"
+              },
+              {
+                "0": "25",
+                "1": "0.396",
+                "2": "0.505"
+              },
+              {
+                "0": "30",
+                "1": "0.361",
+                "2": "0.463"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "n",
+              "α = 0.05",
+              "α = 0.01"
+            ],
+            "title": "Portion of Table 11 (Critical Values for r)",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "The [[kw:level of significance]] $\\alpha$ is the probability of mistakenly concluding a correlation exists when the true population correlation is zero. Common values are $\\alpha = 0.05$ or $0.01$.",
+          "To use Table 11, locate the row for your sample size $n$ and the column for your chosen $\\alpha$. The number there is the [[imp:critical value]] for $|r|$.",
+          "If $|r|$ from your sample is [[imp:greater than]] the critical value, you conclude the correlation is significant. Otherwise, there is not enough evidence.",
+          "For example, with $n=25$ and $\\alpha=0.05$, the critical value is $0.396$. If $|r| > 0.396$, the correlation is significant at the 5% level."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Smaller n requires larger |r| to be significant.",
+            "Lower α (0.01) has stricter (higher) critical values.",
+            "This test assumes the data are from a random sample."
+          ],
+          "title": "Decision Rule Using Table 11",
+          "formula": "$$ \\text{If } |r| > \\text{critical value, the correlation is significant.} $$"
+        }
+      },
+      "examples": [
+        {
+          "title": "Example A – Using Table 11",
+          "steps": [
+            "From Table 11, with n=25 and α=0.05, the critical value is 0.396.",
+            "Compare |r| = 0.979 to 0.396.",
+            "Since 0.979 > 0.396, the correlation is significant at the 5% level.",
+            "Conclusion: There is enough evidence of a linear correlation between duration and time until next eruption."
+          ],
+          "prompt": "For Old Faithful eruptions, n=25, r=0.979, α=0.05. Is the correlation significant?",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Why Larger n Allows Smaller r",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: How does having more data points affect our certainty that a moderate r is not just a fluke?",
+          "minLength": 2,
+          "steps": [
+            "With a small sample, a high r could occur by chance even if there's no real correlation.",
+            "Larger samples give a more stable estimate of r, so smaller values can still be statistically significant.",
+            "Thus, the critical value decreases as n increases."
+          ],
+          "prompt": "Explain why the critical value for n=25 is much smaller (0.396) than for n=5 (0.878) at α=0.05."
+        },
+        {
+          "steps": [
+            "Compare |0.65| = 0.65 to 0.632.",
+            "0.65 > 0.632, so the correlation is significant.",
+            "You may reject the null hypothesis of no correlation."
+          ],
+          "prompt": "You have r=0.65 from 10 pairs. Is it significant at α=0.05? (Critical value from table: 0.632)",
+          "role": "independent",
+          "title": "Example C – Deciding with n=10, α=0.05"
+        }
+      ],
+      "questions": [
+        {
+          "type": "short-answer",
+          "hints": [
+            "Look at the portion of Table 11 provided in the book.",
+            "Row n=8, column α=0.05."
+          ],
+          "feedbackIfWrong": "For n=8 and α=0.05, the critical value is 0.707.",
+          "prompt": "In Table 11, for n=8 and α=0.05, what is the critical value? (0.707)",
+          "id": "q9-1-7",
+          "answer": "0.707"
+        },
+        {
+          "hints": [
+            "Compare 0.50 to 0.44.",
+            "If |r| > critical value, it is significant."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "Yes, 0.50 > 0.44, so the correlation is significant.",
+          "prompt": "If |r| = 0.50 and the critical value from Table 11 is 0.44, is the correlation significant? (yes or no)",
+          "answer": "yes",
+          "id": "q9-1-8"
+        },
+        {
+          "id": "q9-1-9",
+          "prompt": "If a correlation is not significant, we say there is not enough evidence to conclude that the population correlation coefficient ___ (use symbol) is different from zero.",
+          "feedbackIfWrong": "The population correlation coefficient is denoted by $\\rho$ (rho).",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "ρ",
+                "rho"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the Greek letter for the population correlation.",
+            "It looks like a curved 'p'."
+          ]
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Derive the t‑statistic formula: t = r * sqrt((n-2)/(1-r^2)).",
+        "Emphasize degrees of freedom = n – 2, and use the t‑table to find critical values."
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "df = 20 - 2 = 18.",
+          "prompt": "What is the degrees of freedom for the t‑test of a correlation coefficient with 20 pairs of data?",
+          "id": "q9-1-10",
+          "answer": "18",
+          "hints": [
+            "df = n - 2.",
+            "20 - 2 = ?"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "2"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The degrees of freedom is n – 2, so the missing number is 2.",
+          "id": "q9-1-11",
+          "hints": [
+            "It's the number subtracted from n in the df.",
+            "We lose 2 degrees because we estimate slope and intercept."
+          ],
+          "type": "fill-blank",
+          "prompt": "The formula for the t‑statistic in a correlation test is $t = r \\sqrt{\\frac{n-2}{1 - r^2}}$. This t follows a t‑distribution with $n -$ ___ degrees of freedom."
+        },
+        {
+          "feedbackIfWrong": "Yes, 3.4 > 2.1, so reject H₀.",
+          "id": "q9-1-12",
+          "hints": [
+            "Compare |t| to critical value.",
+            "If |t| > critical value, reject."
+          ],
+          "prompt": "In the t‑test, if the computed t = 3.4 and the two‑tailed critical value is 2.1, do you reject H₀? (yes or no)",
+          "answer": "yes",
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A – Performing the t‑Test",
+          "role": "guided",
+          "prompt": "From Example 4: n=10, r=0.882, α=0.05 two‑tailed. Test if the correlation is significant.",
+          "steps": [
+            "State hypotheses: $H_0: \\rho = 0$, $H_a: \\rho \\ne 0$.",
+            "Compute $t = 0.882 \\sqrt{\\frac{10-2}{1-0.882^2}} = 0.882 \\sqrt{\\frac{8}{0.222}} \\approx 0.882 \\times \\sqrt{36.036} \\approx 0.882 \\times 6.003 \\approx 5.294$.",
+            "With $df = 8$ and $\\alpha=0.05$ two‑tailed, critical values are $\\pm 2.306$.",
+            "Since $5.294 > 2.306$, reject $H_0$. Conclusion: significant linear correlation."
+          ]
+        },
+        {
+          "steps": [
+            "We estimate two parameters: the slope and the intercept of the regression line.",
+            "Using these estimates consumes 2 degrees of freedom, leaving $n-2$ for the residual variation.",
+            "Hence, the t‑statistic has $df = n-2$."
+          ],
+          "prompt": "Explain to a partner why the t‑test for correlation loses two degrees of freedom.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nThink about: How many parameters are we estimating from the data when we compute the regression line?",
+          "title": "Example B – Why $n-2$ Degrees of Freedom?"
+        },
+        {
+          "title": "Example C – Applying the t‑Test",
+          "prompt": "You have r=0.45, n=30. At α=0.05 two‑tailed, is the correlation significant? Critical t for df=28 is ±2.048.",
+          "steps": [
+            "Compute $t = 0.45 \\sqrt{\\frac{28}{1-0.45^2}} = 0.45 \\sqrt{\\frac{28}{0.7975}} \\approx 0.45 \\times \\sqrt{35.11} \\approx 0.45 \\times 5.925 \\approx 2.67$.",
+            "Compare $|2.67| = 2.67$ to $2.048$.",
+            "$2.67 > 2.048$, so reject $H_0$. The correlation is significant."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "t-test-for-correlation",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "$df = n - 2$",
+            "Use the t‑table with the chosen $\\alpha$ and tail(s).",
+            "If $|t| > t_{crit}$, reject $H_0$."
+          ],
+          "title": "t‑Statistic for Correlation",
+          "formula": "$$ t = r \\sqrt{\\frac{n-2}{1-r^2}} $$"
+        },
+        "explanation": [
+          "A [[kw:two‑tailed t‑test]] can be used to test $H_0: \\rho = 0$ (no correlation) vs. $H_a: \\rho \\ne 0$ (correlation exists).",
+          "The standardized test statistic is $$t = r \\sqrt{\\frac{n-2}{1-r^2}}$$",
+          "Under $H_0$, $t$ follows a $t$‑distribution with $df = n-2$.",
+          "Find the critical value(s) from the $t$‑table for $\\alpha/2$ (two‑tailed) or $\\alpha$ (one‑tailed). If $|t|$ exceeds the critical value, reject $H_0$.",
+          "This test gives the same conclusion as Table 11, but works even when $n$ is not listed."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Two‑tailed",
+                "1": "$\\rho = 0$",
+                "2": "$\\rho \\ne 0$"
+              },
+              {
+                "0": "Right‑tailed",
+                "1": "$\\rho \\le 0$",
+                "2": "$\\rho > 0$"
+              },
+              {
+                "0": "Left‑tailed",
+                "1": "$\\rho \\ge 0$",
+                "2": "$\\rho < 0$"
+              }
+            ],
+            "title": "Hypotheses for the t‑Test",
+            "headers": [
+              "Type",
+              "Null $H_0$",
+              "Alternative $H_a$"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Check the Sign of t",
+        "body": "The t‑statistic will have the same sign as r. In a two‑tailed test, only the absolute value matters. In one‑tailed tests, make sure the sign matches the direction of $H_a$ before rejecting."
+      },
+      "title": "t‑Test for the Population Correlation Coefficient",
+      "discoveryHook": {
+        "scenario": "Instead of a special table, you can perform a familiar t‑test to determine if a correlation is significant. This test works for any sample size and is especially handy when your technology gives you the t‑value directly."
+      }
+    },
+    {
+      "teacherCues": [
+        "Present a newspaper headline: 'Study finds people who drink more coffee live longer.' Then show the underlying correlation and discuss possible confounders.",
+        "Use the Understand–Solve–Conclude pattern to analyze a correlation claim."
+      ],
+      "id": "blueprint-correlation-causation",
+      "concept": {
+        "explanation": [
+          "**Understand**: The claim is that the number of firefighters (x) and damage (y) are positively correlated. We compute r and test for significance.",
+          "**Solve**: Use the data to compute r and perform a t‑test or consult Table 11. Suppose n=30, r=0.85, p‑value < 0.001 → significant.",
+          "**Conclude**: Statistically, there is a strong positive correlation. But logically, a larger fire (a third variable) causes both more firefighters and more damage. This is an example of [[kw:confounding]].",
+          "Always consider: 1) Direct causation, 2) Reverse causation, 3) Confounding variables, 4) Coincidence."
+        ],
+        "formulaCard": {
+          "title": "Key Principle",
+          "formula": "$$ \\text{Correlation does not imply causation.} $$",
+          "notes": [
+            "Even a very high |r| does not prove one variable causes the other.",
+            "Controlled experiments are needed to establish causation.",
+            "Observational studies can only show association."
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Explanation",
+              "Example"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Direct cause‑and‑effect",
+                "1": "More study hours → Higher test scores"
+              },
+              {
+                "0": "Reverse cause‑and‑effect",
+                "1": "Better health → More exercise (not vice versa)"
+              },
+              {
+                "0": "Third variable (confounding)",
+                "1": "Fire size → More firefighters & more damage"
+              },
+              {
+                "0": "Coincidence",
+                "1": "Number of letters in a city's name and crime rate"
+              }
+            ],
+            "title": "Four Explanations for a Significant Correlation"
+          }
+        ]
+      },
+      "title": "Blueprint Aid: Correlation and Causation",
+      "questions": [
+        {
+          "feedbackIfWrong": "No, a high correlation does not prove causation.",
+          "answer": "no",
+          "id": "q9-1-13",
+          "prompt": "If two variables have a correlation of 0.9, does this prove that one causes the other? (yes or no)",
+          "type": "short-answer",
+          "hints": [
+            "Think about the principle discussed.",
+            "High correlation does not establish cause."
+          ]
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "confounding",
+                "lurking"
+              ]
+            }
+          ],
+          "id": "q9-1-14",
+          "type": "fill-blank",
+          "hints": [
+            "It 'confounds' the relationship.",
+            "Fire size is an example."
+          ],
+          "prompt": "A third variable that influences both the explanatory and response variables, creating a false impression of causation, is called a ___ variable.",
+          "feedbackIfWrong": "Such a variable is called a confounding (or lurking) variable."
+        },
+        {
+          "id": "q9-1-15",
+          "feedbackIfWrong": "Controlled experiments are needed to establish causation.",
+          "answer": "experimental",
+          "type": "short-answer",
+          "hints": [
+            "In this type of study, the researcher controls the explanatory variable.",
+            "Randomized controlled trials are an example."
+          ],
+          "prompt": "To establish causation, what type of study is required? (observational or experimental)"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Be Skeptical of Headlines",
+        "body": "When you read 'Study links A to B', always ask: Was it an experiment or just an observational study? Could a third factor explain both? [[imp:Correlation is a clue, not proof.]]"
+      },
+      "examples": [
+        {
+          "title": "Example A – Understand the Claim",
+          "prompt": "A researcher says: 'Because ice cream sales and drowning deaths are highly correlated (r=0.92), eating ice cream causes drowning.' Evaluate.",
+          "role": "guided",
+          "steps": [
+            "Understand: The variables are ice cream sales and drowning deaths. The claim implies a direct cause.",
+            "Think: Is there a third variable? Warm weather increases both swimming (and thus drowning risk) and ice cream consumption.",
+            "The correlation is significant but likely due to a confounding variable (temperature).",
+            "Conclusion: The claim is misleading; correlation does not prove causation."
+          ]
+        },
+        {
+          "title": "Example B – Solving: Test the Correlation",
+          "prompt": "You have data: n=12, r=0.78. At α=0.05, is the correlation significant? Use Table 11 (critical value = 0.576).",
+          "minLength": 2,
+          "steps": [
+            "Since |0.78| = 0.78 > 0.576, the correlation is significant.",
+            "Statistically, there is a strong linear association.",
+            "But this does not prove causation; a controlled experiment or further study is needed."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss: Does significance mean the relationship is causal? What additional steps would you take to establish causation?"
+        },
+        {
+          "title": "Example C – Conclude: Distinguishing Coincidence",
+          "role": "independent",
+          "steps": [
+            "Even though r is significant, the variables are unrelated in any logical causal chain.",
+            "This is likely a coincidence or due to a third variable (age, perhaps).",
+            "Conclusion: Reject the causal claim; the correlation is spurious."
+          ],
+          "prompt": "A student finds a significant correlation (r=0.68, n=20) between the number of TV shows a person watches and their shoe size. Should the student claim TV watching affects foot growth?"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A study reports a strong positive correlation between the number of firefighters at a fire and the amount of damage ($r = 0.85$). Does sending fewer firefighters reduce damage? Let's apply the Understand–Solve–Conclude framework to interpret this relationship correctly."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

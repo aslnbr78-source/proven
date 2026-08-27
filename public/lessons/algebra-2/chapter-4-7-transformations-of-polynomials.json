@@ -1,0 +1,817 @@
+{
+  "presenterNotes": [
+    "Students are already familiar with transformations from quadratic functions. Constantly link back to vertex form to build on prior knowledge.",
+    "When discussing horizontal stretches/shrinks, emphasize the 'opposite' nature: multiplying $ x $ by a number >1 shrinks the graph horizontally. Use a table of values to prove it.",
+    "For the Blueprint block, ensure students understand unit conversion as a composition of functions. A common error is to multiply outside instead of replacing the input."
+  ],
+  "id": "chapter-4-7-transformations-of-polynomials",
+  "type": "interactive-lesson",
+  "title": "Transformations of Polynomial Functions",
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "Just like moving a parabola, we can slide, flip, and stretch any polynomial graph. The same transformation rules you learned for quadratics and absolute value functions apply to cubics, quartics, and beyond!"
+      },
+      "confusionCorner": {
+        "body": "Remember: $ f(x+2) $ moves the graph [[imp:left, not right!]] The sign inside the parentheses is opposite to the direction of the shift. This is the same rule you learned for quadratic vertex form.",
+        "title": "Inside Changes Do the Opposite"
+      },
+      "examples": [
+        {
+          "prompt": "Describe the transformation of $ f(x)=x^3 $ represented by $ g(x)=(x+5)^3+2 $ and sketch both graphs.",
+          "role": "guided",
+          "steps": [
+            "Rewrite $ g(x)=(x-(-5))^3+2 $ to match $ f(x-h)+k $.",
+            "Here $ h=-5 $ and $ k=2 $. So the graph shifts 5 units left and 2 units up.",
+            "The point $ (0,0) $ on $ f $ moves to $ (-5,2) $.",
+            "The shape remains the same cubic curve."
+          ],
+          "title": "Example A — Translating a Cubic"
+        },
+        {
+          "prompt": "Describe how the graph of $ g(x)=-x^4 $ is obtained from $ f(x)=x^4 $.",
+          "role": "peer-explain",
+          "title": "Example B — Reflection of a Quartic",
+          "steps": [
+            "$ g(x)=-f(x) $, so it's a reflection over the $ x $-axis.",
+            "Every $ y $-value is multiplied by $ -1 $: $ (1,1) $ becomes $ (1,-1) $.",
+            "The graph flips upside down, opening downward like an inverted cup.",
+            "Even degree with negative leading coefficient means both ends go to $ -\\infty $."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does $ -x^4 $ open downward while $ x^4 $ opens upward? How is this similar to quadratic reflections?",
+          "minLength": 8
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Identify $ h=3 $, $ k=-1 $ from the form $ f(x-h)+k $.",
+            "The graph shifts 3 units right and 1 unit down.",
+            "Vertex of the quartic (its minimum point) moves from $ (0,0) $ to $ (3,-1) $."
+          ],
+          "prompt": "Describe the transformation of $ f(x)=x^4 $ represented by $ g(x)=(x-3)^4-1 $.",
+          "title": "Example C — Translation of $ x^4 $"
+        }
+      ],
+      "id": "translations-and-reflections",
+      "title": "Translations and Reflections of Polynomials",
+      "questions": [
+        {
+          "hints": [
+            "Positive $ k $ means add to all outputs.",
+            "Think of lifting the graph higher."
+          ],
+          "id": "q4-7-1",
+          "feedbackIfWrong": "Adding a positive number $ k $ shifts the graph upward by $ k $ units.",
+          "type": "fill-blank",
+          "prompt": "The graph of $ g(x)=f(x)+k $ is a vertical translation of the graph of $ f $. If $ k>0 $, the graph shifts ___.",
+          "blanks": [
+            {
+              "accept": [
+                "up",
+                "upward"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "How many units left does the graph of $ f(x)=x^4 $ shift to become $ g(x)=(x+7)^4 $?",
+          "feedbackIfWrong": "The graph shifts 7 units left because $ x+7 $ means $ h=-7 $.",
+          "type": "short-answer",
+          "id": "q4-7-2",
+          "hints": [
+            "Inside the parentheses: $ x+7 = x - (-7) $.",
+            "The shift is opposite to the sign inside."
+          ],
+          "answers": [
+            "7",
+            "seven"
+          ]
+        },
+        {
+          "hints": [
+            "Negative outside the function multiplies all $ y $-values by -1.",
+            "It flips over the horizontal axis."
+          ],
+          "prompt": "The graph of $ g(x)=-x^3 $ is a reflection of $ f(x)=x^3 $ over which axis? (type 'x' or 'y')",
+          "feedbackIfWrong": "Multiplying the output by -1 reflects over the $ x $-axis.",
+          "answers": [
+            "x"
+          ],
+          "type": "short-answer",
+          "id": "q4-7-3"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Transformation",
+              "Notation",
+              "Example on $ f(x)=x^4 $"
+            ],
+            "rows": [
+              {
+                "0": "Horizontal shift",
+                "1": "$ f(x-h) $",
+                "2": "$ g(x)=(x-5)^4 $ — 5 units right"
+              },
+              {
+                "0": "Vertical shift",
+                "1": "$ f(x)+k $",
+                "2": "$ g(x)=x^4+1 $ — 1 unit up"
+              },
+              {
+                "0": "Reflect over $ y $-axis",
+                "1": "$ f(-x) $",
+                "2": "$ g(x)=(-x)^4=x^4 $ (even function unchanged)"
+              },
+              {
+                "0": "Reflect over $ x $-axis",
+                "1": "$ -f(x) $",
+                "2": "$ g(x)=-x^4 $ — flips upside down"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Basic Transformation Rules",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ g(x) = a \\cdot f(b(x-h)) + k $$",
+          "legend": [
+            {
+              "symbol": "$ h $",
+              "meaning": "horizontal shift (opposite sign!)",
+              "tone": "core"
+            },
+            {
+              "meaning": "vertical shift",
+              "symbol": "$ k $",
+              "tone": "core"
+            },
+            {
+              "symbol": "$ a $",
+              "tone": "subtle",
+              "meaning": "vertical stretch/compression and reflection"
+            },
+            {
+              "symbol": "$ b $",
+              "meaning": "horizontal stretch/compression",
+              "tone": "subtle"
+            }
+          ]
+        },
+        "explanation": [
+          "The graph of any polynomial function can be transformed using the same rules from earlier chapters.",
+          "A [[kw:translation]] shifts the graph horizontally or vertically without changing its shape. Horizontal: $ f(x-h) $ moves right by $ h $; vertical: $ f(x)+k $ moves up by $ k $.",
+          "A [[kw:reflection]] flips the graph over an axis. $ f(-x) $ reflects across the $ y $-axis; $ -f(x) $ reflects across the $ x $-axis.",
+          "For the basic cubic $ f(x)=x^3 $, the function $ g(x)=(x+5)^3+2 $ is a translation [[imp:5 units left and 2 units up]].",
+          "The form $ f(x)=a(x-h)^n+k $ allows us to identify both translations and the effect of $ a $ (stretch/reflection) directly."
+        ]
+      },
+      "teacherCues": [
+        "Write $ f(x) = x^3 $ and ask: How would the graph move if we changed it to $ (x-2)^3 $? What about $ (x+5)^3 + 2 $?",
+        "Draw a quick parabola and a cubic, then reflect them. Ask: What happens to the equation when the graph flips over the $ x $-axis?"
+      ]
+    },
+    {
+      "confusionCorner": {
+        "title": "Horizontal vs. Vertical: Inside vs. Outside",
+        "body": "If the multiplier is inside the function (with $ x $), it's a [[imp:horizontal]] transformation. If it's outside (multiplying the whole function), it's a [[imp:vertical]] transformation. And inside multipliers do the opposite of what you might expect!"
+      },
+      "discoveryHook": {
+        "scenario": "Imagine taking the graph of $ y=x^3 $ and pulling it upward to make it steeper, or squishing it horizontally to make it narrower. Stretches and shrinks change the rate at which the polynomial grows—and they're controlled by coefficients."
+      },
+      "teacherCues": [
+        "Hold up a rubber band: stretch it vertically and horizontally. Ask: How would the equation change if we stretch a graph?",
+        "Write $ g(x)=8x^4 $ and $ g(x)=(2x)^4 $. Ask: Which one is a horizontal shrink? Which is a vertical stretch?"
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ g(x)=4x^3 $",
+                "1": "Vertical stretch by 4",
+                "2": "Steeper, $ y $-values multiplied by 4"
+              },
+              {
+                "0": "$ g(x)=\\frac{1}{2}x^3 $",
+                "1": "Vertical shrink by 1/2",
+                "2": "Shallower, $ y $-values halved"
+              },
+              {
+                "0": "$ g(x)=(2x)^3 $",
+                "1": "Horizontal shrink by 1/2",
+                "2": "Narrower, $ x $ compressed toward $ y $-axis"
+              },
+              {
+                "0": "$ g(x)=(\\frac{1}{2}x)^3 $",
+                "1": "Horizontal stretch by 2",
+                "2": "Wider, $ x $ stretched away from $ y $-axis"
+              }
+            ],
+            "type": "table",
+            "title": "Stretch and Shrink Examples for $ f(x)=x^3 $",
+            "headers": [
+              "Function",
+              "Effect",
+              "Description"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ g(x) = a \\cdot f(bx) $$",
+          "legend": [
+            {
+              "symbol": "$ a $",
+              "tone": "core",
+              "meaning": "vertical stretch (|a|>1) or shrink (0<|a|<1); if negative, reflection over $ x $-axis"
+            },
+            {
+              "symbol": "$ b $",
+              "meaning": "horizontal stretch (0<|b|<1) or shrink (|b|>1); if negative, reflection over $ y $-axis",
+              "tone": "core"
+            }
+          ]
+        },
+        "explanation": [
+          "A [[kw:vertical stretch or shrink]] multiplies the output $ f(x) $ by a factor $ a $: $ g(x)=a \\cdot f(x) $. If $ |a|>1 $, the graph stretches away from the $ x $-axis; if $ 0<|a|<1 $, it shrinks toward the $ x $-axis.",
+          "A [[kw:horizontal stretch or shrink]] multiplies the input $ x $ by a factor $ b $: $ g(x)=f(bx) $. If $ |b|>1 $, the graph shrinks horizontally (gets narrower); if $ 0<|b|<1 $, it stretches horizontally (gets wider).",
+          "These transformations can be combined with translations and reflections. The order matters: generally apply stretches/shrinks/reflections first, then translations.",
+          "For even-degree polynomials like $ x^4 $, a vertical stretch makes the \"U\" shape narrower; for odd-degree like $ x^3 $, it makes the curve steeper near the origin."
+        ]
+      },
+      "title": "Stretches and Shrinks",
+      "id": "stretches-and-shrinks",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Describe the transformation of $ f(x)=x^4 $ represented by $ g(x)=-\\frac{1}{4}x^4 $. Then sketch.",
+          "steps": [
+            "Compare to $ a \\cdot f(x) $: $ a=-\\frac{1}{4} $.",
+            "Negative sign: reflection across the $ x $-axis.",
+            "$ |a|=\\frac{1}{4}<1 $: vertical shrink by a factor of $ \\frac{1}{4} $.",
+            "The graph opens downward and is much shallower than the original."
+          ],
+          "title": "Example A — Vertical Stretch"
+        },
+        {
+          "title": "Example B — Horizontal Shrink and Translation",
+          "steps": [
+            "Inside the function: $ f(2x) $ is a horizontal shrink by a factor of $ \\frac{1}{2} $ (values of $ x $ are halved to get the same $ y $).",
+            "The $ -3 $ at the end is a vertical translation 3 units down.",
+            "So the graph is compressed horizontally toward the $ y $-axis and shifted down."
+          ],
+          "role": "peer-explain",
+          "prompt": "Describe the transformation of $ f(x)=x^5 $ represented by $ g(x)=(2x)^5-3 $.",
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Why does multiplying $ x $ by 2 make the graph narrower, not wider? How does the $ -3 $ move the graph?"
+        },
+        {
+          "steps": [
+            "The factor $ 5 $ multiplies $ f(x) $: vertical stretch by 5.",
+            "The $ +1 $ adds to the output: vertical shift up by 1.",
+            "The graph is steeper and shifted upward."
+          ],
+          "title": "Example C — Combined Transformations",
+          "role": "independent",
+          "prompt": "Describe the transformation of $ f(x)=x^3 $ represented by $ g(x)=5x^3+1 $."
+        }
+      ],
+      "questions": [
+        {
+          "hints": [
+            "Since $ |3|>1 $, the $ y $-values get larger.",
+            "It pulls the graph away from the $ x $-axis."
+          ],
+          "type": "fill-blank",
+          "id": "q4-7-4",
+          "blanks": [
+            {
+              "accept": [
+                "stretch"
+              ]
+            }
+          ],
+          "prompt": "The function $ g(x)=3f(x) $ represents a vertical ___ by a factor of 3.",
+          "feedbackIfWrong": "Multiplying the output by a number greater than 1 stretches the graph vertically."
+        },
+        {
+          "answers": [
+            "2",
+            "two"
+          ],
+          "prompt": "For $ f(x)=x^3 $, the function $ g(x)=(\\frac{1}{2}x)^3 $ stretches the graph horizontally by a factor of what number?",
+          "type": "short-answer",
+          "feedbackIfWrong": "Since $ b=\\frac{1}{2} $, the horizontal stretch factor is $ 1/b = 2 $.",
+          "id": "q4-7-5",
+          "hints": [
+            "Multiplying $ x $ by $ \\frac{1}{2} $ is the same as $ f(\\frac{1}{2}x) $.",
+            "Inside multiplier less than 1 stretches horizontally."
+          ]
+        },
+        {
+          "hints": [
+            "Inside multiplier $ b=3 $, which is greater than 1.",
+            "$ |b|>1 $ compresses toward the $ y $-axis."
+          ],
+          "feedbackIfWrong": "Because $ b=3>1 $, the graph shrinks horizontally by a factor of $ 1/3 $.",
+          "prompt": "Does $ g(x)=(3x)^4 $ represent a horizontal stretch or shrink of $ f(x)=x^4 $? (type 'stretch' or 'shrink')",
+          "type": "short-answer",
+          "answers": [
+            "shrink"
+          ],
+          "id": "q4-7-6"
+        }
+      ]
+    },
+    {
+      "concept": {
+        "explanation": [
+          "Most transformed polynomial functions can be written in the general form $ g(x)=a\\cdot f(b(x-h))+k $.",
+          "The transformations should be applied in this order: 1) horizontal shift ($ h $), 2) horizontal stretch/shrink ($ b $) and reflection if $ b<0 $, 3) vertical stretch/shrink ($ a $) and reflection if $ a<0 $, 4) vertical shift ($ k $).",
+          "If the function is given in a different order, you can rewrite it to identify $ a $, $ b $, $ h $, $ k $.",
+          "For example, $ g(x)=4(x+2)^3 $: $ a=4 $ (vertical stretch by 4), $ h=-2 $ (shift left 2), $ b=1 $, $ k=0 $.",
+          "Combining transformations can dramatically change the appearance of the graph while preserving the overall polynomial degree and end behavior shape (though reflections can flip end directions)."
+        ],
+        "formulaCard": {
+          "formula": "$$ g(x) = a \\cdot f(b(x-h)) + k $$",
+          "legend": [
+            {
+              "symbol": "$ h $",
+              "meaning": "horizontal translation",
+              "tone": "core"
+            },
+            {
+              "symbol": "$ k $",
+              "tone": "core",
+              "meaning": "vertical translation"
+            },
+            {
+              "symbol": "$ a $",
+              "meaning": "vertical stretch/shrink/reflection",
+              "tone": "subtle"
+            },
+            {
+              "meaning": "horizontal stretch/shrink/reflection",
+              "tone": "subtle",
+              "symbol": "$ b $"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Order of Transformations",
+            "headers": [
+              "Step",
+              "Transformation",
+              "Parameter"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Horizontal translation",
+                "2": "$ h $ (opposite sign inside parentheses)"
+              },
+              {
+                "0": "2",
+                "1": "Horizontal stretch/shrink & reflection",
+                "2": "$ b $ (inside with $ x $)"
+              },
+              {
+                "0": "3",
+                "1": "Vertical stretch/shrink & reflection",
+                "2": "$ a $ (outside)"
+              },
+              {
+                "0": "4",
+                "1": "Vertical translation",
+                "2": "$ k $ (added/subtracted at end)"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "In the general transformation form $ g(x)=a \\cdot f(b(x-h))+k $, the parameter $ h $ represents a ___ shift.",
+          "type": "fill-blank",
+          "id": "q4-7-7",
+          "blanks": [
+            {
+              "accept": [
+                "horizontal"
+              ]
+            }
+          ],
+          "hints": [
+            "It moves the graph left or right.",
+            "Inside the parentheses with $ x $."
+          ],
+          "feedbackIfWrong": "$ h $ controls the horizontal translation."
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "$ a $ is $ -3 $, indicating a vertical stretch by 3 and reflection over the $ x $-axis.",
+          "prompt": "For $ g(x) = -3(x+2)^4 $, what is the value of $ a $?",
+          "hints": [
+            "Look at the multiplier outside the parentheses.",
+            "It includes the sign."
+          ],
+          "answers": [
+            "-3"
+          ],
+          "id": "q4-7-8"
+        },
+        {
+          "prompt": "To correctly identify $ h $ in $ g(x)=(4x+8)^3 $, you must first factor out what number?",
+          "answers": [
+            "4",
+            "four"
+          ],
+          "id": "q4-7-9",
+          "type": "short-answer",
+          "hints": [
+            "Factor the coefficient of $ x $ inside.",
+            "$ 4x+8 = 4(\\,\\,\\,) $"
+          ],
+          "feedbackIfWrong": "Factor 4: $ 4(x+2) $, so $ h=-2 $ and $ b=4 $."
+        }
+      ],
+      "title": "Combining Multiple Transformations",
+      "confusionCorner": {
+        "title": "Don't Forget to Factor!",
+        "body": "When you see something like $ (2x-6)^3 $, always factor out the coefficient of $ x $ first: $ (2(x-3))^3 $. Then $ h=3 $ (not 6!) and $ b=2 $ causes a horizontal shrink."
+      },
+      "examples": [
+        {
+          "prompt": "List all transformations of $ f(x)=x^4 $ to obtain $ g(x)=-2(x+3)^4+5 $.",
+          "title": "Example A — Breaking Down Transformations",
+          "steps": [
+            "Identify parameters: $ a=-2 $, $ b=1 $, $ h=-3 $, $ k=5 $.",
+            "$ h=-3 $: shift 3 units left.",
+            "$ a=-2 $: reflect over $ x $-axis and vertical stretch by factor 2.",
+            "$ k=5 $: shift 5 units up.",
+            "Apply order: left 3, reflect + stretch, up 5."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why can't we just say $ h=6 $? What does the coefficient of $ x $ do to the shift?",
+          "prompt": "Explain why $ g(x)= (2x-6)^3 $ requires factoring before identifying $ h $.",
+          "minLength": 8,
+          "steps": [
+            "First factor inside: $ 2x-6 = 2(x-3) $.",
+            "Now $ g(x) = (2(x-3))^3 = f(2(x-3)) $ where $ f(x)=x^3 $.",
+            "So $ b=2 $ (horizontal shrink by 1/2), $ h=3 $ (shift right 3).",
+            "Without factoring, you'd misinterpret the shift!"
+          ],
+          "title": "Example B — Order Matters"
+        },
+        {
+          "prompt": "The graph of $ f(x)=x^5 $ is shifted right 1 unit, vertically stretched by 3, and shifted down 2. Write the function $ g $.",
+          "title": "Example C — Writing from Description",
+          "role": "independent",
+          "steps": [
+            "Right 1: replace $ x $ with $ (x-1) $.",
+            "Vertical stretch by 3: multiply the output by 3.",
+            "Down 2: subtract 2.",
+            "So $ g(x)=3(x-1)^5-2 $."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Real polynomial models often involve a combination of shifts, flips, and stretches—like adjusting the flight path of a rocket that starts higher, accelerates faster, and then turns upside down. Mastering the order of transformations ensures you can describe and graph any polynomial."
+      },
+      "id": "combining-transformations",
+      "teacherCues": [
+        "Write $ g(x)=-2(x+1)^4+5 $ and ask: Can you list all the transformations, in order?",
+        "Discuss the order: first handle the inside (shift, horizontal stretch), then outside (vertical stretch/reflection, vertical shift)."
+      ]
+    },
+    {
+      "examples": [
+        {
+          "title": "Example A — Writing Reflection and Stretch",
+          "steps": [
+            "Replace each $ x $ in $ f $ with $ -x $: $ g(x)=(-x)^3+(-x)^2+1 $.",
+            "Simplify: $ -x^3+x^2+1 $.",
+            "This is a reflection across the $ y $-axis.",
+            "Notice the $ x^3 $ term changed sign (odd degree), $ x^2 $ term stayed the same (even degree)."
+          ],
+          "role": "guided",
+          "prompt": "Let $ f(x)=x^3+x^2+1 $. Write a rule for $ g(x)=f(-x) $ and describe the transformation."
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 8,
+          "steps": [
+            "First, vertical stretch by 2: $ h(x)=2f(x)=2(x^4-2x^2)=2x^4-4x^2 $.",
+            "Then, translate up 3: $ g(x)=h(x)+3=2x^4-4x^2+3 $.",
+            "If we reversed order, $ g $ would be $ 2(f(x)+3)=2x^4-4x^2+6 $, a different result!"
+          ],
+          "prompt": "Let $ f(x)=x^4-2x^2 $. The graph is vertically stretched by a factor of 2, then translated 3 units up. Write the new function $ g $.",
+          "title": "Example B — Vertical Stretch and Combine",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we apply the stretch first, then the shift? What would happen if we added 3 first and then multiplied by 2?"
+        },
+        {
+          "prompt": "The graph of $ f(x)=x^5-4x+6 $ is reflected over the $ x $-axis. Write $ g $.",
+          "role": "independent",
+          "title": "Example C — From Description to Equation",
+          "steps": [
+            "Reflection over $ x $-axis means $ g(x)=-f(x) $.",
+            "So $ g(x)=-(x^5-4x+6)=-x^5+4x-6 $.",
+            "Every term's sign flips."
+          ]
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{If } f(x) \\text{ is given, then } g(x)=a \\cdot f(b(x-h))+k $$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "vertical stretch/shrink/reflection",
+              "symbol": "$ a $"
+            },
+            {
+              "meaning": "horizontal stretch/shrink/reflection",
+              "tone": "core",
+              "symbol": "$ b $"
+            },
+            {
+              "meaning": "horizontal translation",
+              "tone": "subtle",
+              "symbol": "$ h $"
+            },
+            {
+              "meaning": "vertical translation",
+              "tone": "subtle",
+              "symbol": "$ k $"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Desired Transformation",
+              "Write this"
+            ],
+            "rows": [
+              {
+                "0": "Reflect over $ y $-axis",
+                "1": "$ g(x)=f(-x) $"
+              },
+              {
+                "0": "Reflect over $ x $-axis",
+                "1": "$ g(x)=-f(x) $"
+              },
+              {
+                "0": "Vertical stretch by $ c $",
+                "1": "$ g(x)=c \\cdot f(x) $"
+              },
+              {
+                "0": "Horizontal shift $ h $ units",
+                "1": "$ g(x)=f(x-h) $"
+              },
+              {
+                "0": "Vertical shift $ k $ units",
+                "1": "$ g(x)=f(x)+k $"
+              },
+              {
+                "0": "Combine in order",
+                "1": "$ g(x)=a \\cdot f(b(x-h))+k $"
+              }
+            ],
+            "title": "Building Transformed Functions from $ f(x) $"
+          }
+        ],
+        "explanation": [
+          "To write a rule for a transformed function, start with the base function $ f(x) $ and apply transformations step by step.",
+          "For a reflection across the $ y $-axis, replace $ x $ with $ -x $: $ g(x)=f(-x) $.",
+          "For a vertical stretch by a factor $ c $, multiply the entire output: $ g(x)=c \\cdot f(x) $.",
+          "For translations, replace $ x $ with $ (x-h) $ for horizontal shift and add $ k $ to the output for vertical shift.",
+          "When performing multiple transformations in sequence, apply them in the correct order: horizontal changes inside the parentheses first, then vertical changes outside."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Instead of just describing transformations, you can build new polynomial models by applying transformations to a known base function. This is how engineers tweak a basic design—by stretching, shifting, and reflecting—to match desired specifications."
+      },
+      "questions": [
+        {
+          "id": "q4-7-10",
+          "answers": [
+            "x^3+2x-5"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "Subtract 5 from the entire output.",
+            "$ f(x)-5 = (x^3+2x)-5 $."
+          ],
+          "prompt": "If $ f(x)=x^3+2x $ and $ g(x)=f(x)-5 $, what is $ g(x) $? (Write without spaces, e.g., x^3+2x-5)",
+          "feedbackIfWrong": "$ g(x)=f(x)-5 = x^3+2x-5 $."
+        },
+        {
+          "prompt": "To reflect the graph of $ f(x)=x^4+x $ across the $ y $-axis, you replace $ x $ with ___.",
+          "hints": [
+            "The transformation is $ f(-x) $.",
+            "Input becomes the opposite sign."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "-x"
+              ]
+            }
+          ],
+          "id": "q4-7-11",
+          "feedbackIfWrong": "Replace $ x $ with $ -x $: $ g(x)=(-x)^4+(-x)=x^4-x $.",
+          "type": "fill-blank"
+        },
+        {
+          "id": "q4-7-12",
+          "answers": [
+            "-7"
+          ],
+          "prompt": "A function $ f(x)=x^4-3 $ is first vertically stretched by 2, then shifted down 1. What is the constant term of the new function $ g $?",
+          "type": "short-answer",
+          "hints": [
+            "Stretch: $ 2f(x)=2x^4-6 $.",
+            "Then shift down 1: subtract 1 from the whole thing."
+          ],
+          "feedbackIfWrong": "After stretch: $ 2x^4-6 $. Then down 1: $ 2x^4-7 $. Constant term is $ -7 $."
+        }
+      ],
+      "id": "writing-transformed-functions",
+      "title": "Writing Transformed Polynomial Functions",
+      "teacherCues": [
+        "Ask: If I know the basic function and the transformations, how do I write the equation?",
+        "Work through an example: 'Reflect $ f(x)=x^3+x^2+1 $ across the $ y $-axis' — replace $ x $ with $ -x $."
+      ],
+      "confusionCorner": {
+        "body": "When writing a transformed function, the order you apply transformations follows the same PEMDAS logic: work from inside the parentheses outward. [[imp:Stretches and reflections inside (with $ x $) happen before shifts inside; then outside multipliers before outside additions.]]",
+        "title": "Order of Operations Still Rules"
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "A square pyramid's volume depends on its dimensions. If the input units change from feet to yards, the volume function transforms. By applying the right horizontal stretch, you can seamlessly convert models—exactly what engineers do when scaling designs."
+      },
+      "teacherCues": [
+        "Display a volume problem: $ V(x)=\\frac{1}{3}x^3-x^2 $ in feet. Ask: What if we measure in yards? How do we transform the function?",
+        "Walk through the three-step Blueprint using the pyramid volume example."
+      ],
+      "confusionCorner": {
+        "body": "When converting units, think: does the new unit make the number larger or smaller? If the new unit is larger (yards), you need [[imp:fewer of them]] to represent the same length—so you multiply the variable before plugging in (horizontal shrink). If the new unit is smaller (inches), divide (horizontal stretch).",
+        "title": "Unit Conversions and Transformations"
+      },
+      "questions": [
+        {
+          "prompt": "In Example 5, the volume function in feet is $ V(x)=\\frac{1}{3}x^3-x^2 $. To convert to yards, we replace $ x $ with what expression?",
+          "feedbackIfWrong": "We use $ 3x $ because $ x $ yards equals $ 3x $ feet.",
+          "id": "q4-7-13",
+          "hints": [
+            "1 yard = 3 feet.",
+            "Multiply the yard value to get feet."
+          ],
+          "answers": [
+            "3x"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "interpret"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "In the Blueprint, after you write the transformed function, you must ___ the answer in the context of the problem with correct units.",
+          "id": "q4-7-14",
+          "hints": [
+            "It's the final step.",
+            "You explain what the number means."
+          ],
+          "feedbackIfWrong": "The final step is to interpret the result with proper units."
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "You need to convert cm to meters.",
+            "$ x $ cm = $ x/100 $ meters."
+          ],
+          "prompt": "If a pyramid's volume function $ V(x) $ uses $ x $ in meters, and you want a function $ W(x) $ with $ x $ in centimeters, what factor would you divide $ x $ by? (1 m = 100 cm)",
+          "feedbackIfWrong": "You'd use $ V(x/100) $, so the factor is 100.",
+          "answers": [
+            "100"
+          ],
+          "id": "q4-7-15"
+        }
+      ],
+      "title": "Blueprint Aid — Modeling with Transformations",
+      "id": "blueprint-aid-modeling-with-transformations",
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Identify the given function and its variables (units). Determine what transformation is needed (e.g., unit conversion, scaling).",
+          "[[imp:Solve]]: Apply the transformation algebraically. For a change of input units, replace $ x $ appropriately (e.g., $ x $ in yards = $ 3x $ in feet, so $ g(x)=f(3x) $). Simplify the expression.",
+          "[[imp:Conclude]]: Write the new function rule. Evaluate for a specific input and interpret the result in context, with correct units."
+        ],
+        "formulaCard": {
+          "formula": "$$ W(x) = V(3x) $$",
+          "legend": [
+            {
+              "symbol": "$ V(x) $",
+              "tone": "core",
+              "meaning": "volume in cubic feet when $ x $ is in feet"
+            },
+            {
+              "tone": "core",
+              "symbol": "$ W(x) $",
+              "meaning": "volume in cubic feet when $ x $ is in yards"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Blueprint for Transformation Models",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify base function, variables, and required transformation (unit change, scale factor)."
+              },
+              {
+                "0": "Solve",
+                "1": "Write the transformed function by substituting into the base function; simplify."
+              },
+              {
+                "0": "Conclude",
+                "1": "State the new function; compute needed values and interpret with units."
+              }
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "The volume of a square pyramid with base $ x $ ft and height $ (x-3) $ ft is $ V(x)=\\frac{1}{3}x^3-x^2 $ (cubic ft). Write the volume function $ W(x) $ when $ x $ is measured in yards, and find $ W(10) $.",
+          "steps": [
+            "Understand: 1 yard = 3 feet. So if $ x $ is in yards, the dimension in feet is $ 3x $. Therefore $ W(x)=V(3x) $.",
+            "Solve: $ V(3x) = \\frac{1}{3}(3x)^3 - (3x)^2 = \\frac{1}{3}(27x^3) - 9x^2 = 9x^3 - 9x^2 $.",
+            "So $ W(x)=9x^3-9x^2 $.",
+            "Find $ W(10) = 9(1000) - 9(100) = 9000 - 900 = 8100 $.",
+            "Conclude: When $ x=10 $ yards, the volume is 8100 cubic feet."
+          ],
+          "title": "Example A — Pyramid Volume Unit Change"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If $ x $ is in yards, what is the actual length in feet? How does that relate to the input of $ V $?",
+          "minLength": 8,
+          "steps": [
+            "$ V $ expects $ x $ in feet. If we have a measurement in yards, say $ x $ yards, then the length in feet is $ 3x $.",
+            "So to use $ V $, we must input $ 3x $: $ V(3x) $ gives the volume for that actual foot length.",
+            "This is a horizontal shrink by a factor of $ \\frac{1}{3} $ in the graph, because we're compressing the $ x $-values."
+          ],
+          "prompt": "Explain why replacing $ x $ with $ 3x $ in $ V(x) $ converts the input from yards to feet.",
+          "title": "Example B — Why $ V(3x) $?"
+        },
+        {
+          "title": "Example C — Different Unit Conversion",
+          "steps": [
+            "1 foot = 12 inches, so $ x $ inches = $ x/12 $ feet.",
+            "Thus, the new function would be $ W(x) = V(x/12) $.",
+            "This is a horizontal stretch by a factor of 12."
+          ],
+          "prompt": "If $ x $ were measured in inches instead of feet, what transformation would you apply to $ V(x) $?",
+          "role": "independent"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 2,
+  "standards": [
+    "HSF.BF.B.3",
+    "HSF.IF.C.7c",
+    "HSA.CED.A.2"
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

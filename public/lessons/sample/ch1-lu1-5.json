@@ -1,0 +1,787 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "ch1-lu1-5",
+  "title": "Analyzing Graphs of Functions",
+  "standards": [
+    "HSF.IF.A.1",
+    "HSF.IF.A.2",
+    "HSF.IF.B.4",
+    "HSF.IF.C.7"
+  ],
+  "blocks": [
+    {
+      "id": "domain-range-vlt",
+      "title": "1. Domain, Range, and the Vertical Line Test",
+      "teacherCues": [
+        "Ask: 'Given a graph, how can we find all possible inputs and outputs?'",
+        "Use the Vertical Line Test to quickly check if a graph represents a function."
+      ],
+      "discoveryHook": {
+        "scenario": "A seismograph records ground motion during an earthquake. The wiggly line must pass the [[kw:Vertical Line Test]] because at any instant in time, there's only one shaking intensity. The set of times recorded is the [[kw:domain]]; the range of intensities is the [[kw:range]]. Graphs let us see these at a glance."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:domain]] of a function shown by a graph is the set of all $ x $‑values for which there is a point on the graph. Look left and right.",
+          "The [[kw:range]] is the set of all $ y $‑values for which there is a point on the graph. Look down and up.",
+          "Closed dots mean points included; open dots mean excluded.",
+          "The [[kw:Vertical Line Test]]: If any vertical line intersects the graph in more than one point, the graph does NOT represent a function.",
+          "[[imp: A function has exactly one $ y $ for each $ x $; the Vertical Line Test checks this visually.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Interpreting Graph Features (like Figure 1.32)",
+            "variant": "colorful",
+            "headers": [
+              "Feature",
+              "Description",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "Domain",
+                "1": "All $ x $-values from leftmost to rightmost point",
+                "2": "$ [-1, 5) $ because open dot at $ 5 $"
+              },
+              {
+                "0": "Range",
+                "1": "All $ y $-values from lowest to highest point",
+                "2": "$ [-3, 3] $"
+              },
+              {
+                "0": "Closed dot",
+                "1": "Point included",
+                "2": "$ (-1,1) $ included"
+              },
+              {
+                "0": "Open dot",
+                "1": "Point excluded",
+                "2": "$ (5,2) $ excluded"
+              },
+              {
+                "0": "Vertical Line Test fails",
+                "1": "Graph touches a vertical line twice",
+                "2": "Circle or side‑ways parabola"
+              }
+            ],
+            "caption": "A quick check: draw vertical lines; if any hit twice, it's not a function."
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find domain and range from a graph",
+          "prompt": "A graph has points from $ x = -3 $ to $ x = 4 $, with a closed dot at $ (-3, -2) $ and an open dot at $ (4, 1) $. The lowest $ y $ is $ -2 $ and the highest $ y $ is $ 3 $. Find domain and range.",
+          "steps": [
+            "Domain: $ x $ from $ -3 $ to $ 4 $, open at $ 4 $ → $ [-3, 4) $.",
+            "Range: $ y $ from $ -2 $ to $ 3 $, both endpoints closed → $ [-2, 3] $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why the Vertical Line Test works",
+          "prompt": "Explain why the Vertical Line Test checks exactly the definition of a function.",
+          "peerPrompt": "Think about what a vertical line represents.",
+          "minLength": 2,
+          "steps": [
+            "A vertical line represents a specific $ x $ value.",
+            "If that line hits the graph more than once, that $ x $ has multiple $ y $ values.",
+            "This violates the rule that each input must have exactly one output."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Apply the Vertical Line Test",
+          "prompt": "Does a circle centered at the origin represent $ y $ as a function of $ x $? (Think of drawing vertical lines.)",
+          "steps": [
+            "Draw vertical lines through the circle; most will hit the top and bottom.",
+            "One $ x $ value gives two $ y $ values → fails the Vertical Line Test.",
+            "Therefore, a circle does NOT represent a function."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Passing the Vertical Line Test means it's a function, but the inverse may not be true. [[imp: A horizontal line can cross a function many times; that's fine.]]"
+      },
+      "questions": [
+        {
+          "id": "b1q1",
+          "type": "fill-blank",
+          "prompt": "The Vertical Line Test says a graph is a function if every vertical line intersects it at most ___ point(s).",
+          "blanks": [
+            {
+              "accept": [
+                "one",
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "Exactly one, or none.",
+            "No more than one."
+          ],
+          "feedbackIfWrong": "one."
+        },
+        {
+          "id": "b1q2",
+          "type": "short-answer",
+          "prompt": "A graph has $ x $-values from $ -5 $ to $ 3 $ (both closed). Domain? (use interval notation)",
+          "answers": [
+            "[-5,3]"
+          ],
+          "hints": [
+            "Both endpoints included.",
+            "Use square brackets."
+          ],
+          "feedbackIfWrong": "[-5, 3]."
+        },
+        {
+          "id": "b1q3",
+          "type": "short-answer",
+          "prompt": "If a graph has an open dot at the rightmost point $ (6,4) $, is $ 6 $ in the domain? (yes or no)",
+          "answers": [
+            "no"
+          ],
+          "hints": [
+            "Open dot means not included.",
+            "Excluded."
+          ],
+          "feedbackIfWrong": "no."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A graph has domain $ (-\\infty, \\infty) $ but is only drawn above $ y=0 $. The range appears to be $ [0, \\infty) $. Could this be the graph of $ y = x^2 $? Explain.",
+        "type": "short-answer",
+        "answers": [
+          "yes",
+          "x^2 is a function, domain all reals, range [0,∞)"
+        ],
+        "hints": [
+          "Check Vertical Line Test: $ y=x^2 $ passes.",
+          "Domain all reals, range $ [0,\\infty) $ matches."
+        ]
+      }
+    },
+    {
+      "id": "zeros",
+      "title": "2. Zeros of a Function",
+      "teacherCues": [
+        "Ask: 'Where does the graph cross the $ x $-axis?'",
+        "Explain that zeros are $ x $-values where $ f(x) = 0 $."
+      ],
+      "discoveryHook": {
+        "scenario": "A company's profit function $ P(x) $ has zeros where profit is zero—the break‑even points. The zeros of $ f(x) = 3x^2 + x - 10 $ are found by solving $ 3x^2 + x - 10 = 0 $. These $ x $-values are the $ x $-intercepts of the graph."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:zeros]] of a function $ f $ are the values of $ x $ for which $ f(x) = 0 $.",
+          "Graphically, zeros are the $ x $-intercepts of the graph.",
+          "To find zeros algebraically: set the function equal to zero and solve for $ x $ (factor, square root, or multiply by denominator for rational functions).",
+          "[[imp: A function can have no zeros, one zero, or many zeros.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Finding Zeros – Examples",
+            "variant": "colorful",
+            "headers": [
+              "Function",
+              "Set equal to 0",
+              "Solve",
+              "Zeros"
+            ],
+            "rows": [
+              {
+                "0": "$ f(x)=3x^2+x-10 $",
+                "1": "$ 3x^2+x-10=0 $",
+                "2": "Factor: $ (3x-5)(x+2)=0 $",
+                "3": "$ x=\\frac{5}{3}, -2 $"
+              },
+              {
+                "0": "$ g(x)=\\sqrt{10-x^2} $",
+                "1": "$ \\sqrt{10-x^2}=0 $",
+                "2": "Square: $ 10-x^2=0 \\to x=\\pm\\sqrt{10} $",
+                "3": "$ x=\\pm\\sqrt{10} $"
+              },
+              {
+                "0": "$ h(t)=\\frac{2t-3}{t+5} $",
+                "1": "$ \\frac{2t-3}{t+5}=0 $",
+                "2": "Numerator $ 2t-3=0 $",
+                "3": "$ t=\\frac{3}{2} $"
+              }
+            ],
+            "caption": "Different function types require different solving techniques."
+          }
+        ],
+        "formulaCard": {
+          "title": "Finding Zeros",
+          "formula": "$$ \\text{Solve } f(x) = 0 $$",
+          "notes": [
+            "For polynomials: factor, use quadratic formula, or square roots.",
+            "For rationals: set numerator = 0, exclude denominator = 0.",
+            "For radicals: isolate radical, square both sides, check for extraneous solutions."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find zeros of a polynomial",
+          "prompt": "Find the zeros of $ f(x) = 2x^2 + 5x - 3 $.",
+          "steps": [
+            "Set $ 2x^2 + 5x - 3 = 0 $.",
+            "Factor: $ (2x-1)(x+3) = 0 $.",
+            "Zeros: $ x = \\frac{1}{2} $ and $ x = -3 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why set numerator=0 for rational functions?",
+          "prompt": "For $ h(x) = \\frac{2x-3}{x+5} $, explain why we set $ 2x-3=0 $ to find the zero, but must check that $ x+5 \\neq 0 $.",
+          "peerPrompt": "Think about what makes a fraction zero.",
+          "minLength": 2,
+          "steps": [
+            "A fraction equals zero when its numerator is zero (and denominator not zero).",
+            "We set $ 2x-3=0 $ to get $ x = 1.5 $, which doesn't make denominator zero.",
+            "Always ensure the denominator isn't zero at that $ x $; otherwise it's not in the domain."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Square root function zero",
+          "prompt": "Find the zero(s) of $ f(x) = \\sqrt{x-4} - 2 $.",
+          "steps": [
+            "Set $ \\sqrt{x-4} - 2 = 0 $ → $ \\sqrt{x-4} = 2 $.",
+            "Square both sides: $ x-4 = 4 $ → $ x = 8 $.",
+            "Check: $ \\sqrt{8-4} - 2 = 2-2 = 0 $, valid. Zero at $ x = 8 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "When solving radical equations by squaring, you might get extraneous solutions. [[imp: Always check the solutions in the original equation.]]"
+      },
+      "questions": [
+        {
+          "id": "b2q1",
+          "type": "fill-blank",
+          "prompt": "The zeros of a function are the $ x $‑values where $ f(x) = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "The output is zero.",
+            "Crosses x-axis."
+          ],
+          "feedbackIfWrong": "0."
+        },
+        {
+          "id": "b2q2",
+          "type": "short-answer",
+          "prompt": "Find the zeros of $ f(x) = x^2 - 9 $. (list numbers separated by comma)",
+          "answers": [
+            "3,-3",
+            "-3,3"
+          ],
+          "hints": [
+            "Factor as $ (x-3)(x+3)=0 $.",
+            "Set each factor to zero."
+          ],
+          "feedbackIfWrong": "3, -3."
+        },
+        {
+          "id": "b2q3",
+          "type": "short-answer",
+          "prompt": "What is the zero of $ g(x) = \\frac{x-4}{x+1} $? (number only)",
+          "answers": [
+            "4"
+          ],
+          "hints": [
+            "Set numerator $ x-4=0 $.",
+            "Check denominator is not zero."
+          ],
+          "feedbackIfWrong": "4."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Find the zeros of $ f(x) = \\frac{x^2-1}{x-1} $. Note any domain restrictions.",
+        "type": "short-answer",
+        "answers": [
+          "x = -1",
+          "x=1 not in domain"
+        ],
+        "hints": [
+          "Numerator: $ x^2-1=0 \\to x=\\pm1 $.",
+          "But $ x=1 $ makes denominator zero, so only $ x=-1 $."
+        ]
+      }
+    },
+    {
+      "id": "increasing-decreasing",
+      "title": "3. Increasing, Decreasing, and Constant Functions",
+      "teacherCues": [
+        "Ask: 'As we move from left to right, when does the graph go up? Down? Stay flat?'",
+        "Show a graph and trace with finger."
+      ],
+      "discoveryHook": {
+        "scenario": "A stock price chart shows price going up in the morning, steady at lunch, then falling in the afternoon. These behaviors correspond to intervals where the function is [[kw:increasing]], [[kw:constant]], or [[kw:decreasing]]. Mathematical analysis of these intervals helps investors decide when to buy or sell."
+      },
+      "concept": {
+        "explanation": [
+          "A function $ f $ is [[kw:increasing]] on an interval if, as $ x $ increases, $ f(x) $ rises.",
+          "It is [[kw:decreasing]] if as $ x $ increases, $ f(x) $ falls.",
+          "It is [[kw:constant]] if $ f(x) $ stays the same throughout the interval.",
+          "To find these intervals, observe the graph from left to right and note where it goes up, down, or flattens.",
+          "[[imp: Increasing/decreasing is always stated over open intervals (in terms of $ x $).]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Behavior from Graph (like Figure 1.36)",
+            "variant": "colorful",
+            "headers": [
+              "Interval ($ x $)",
+              "Behavior",
+              "Reason"
+            ],
+            "rows": [
+              {
+                "0": "$ (-\\infty, 0) $",
+                "1": "Decreasing",
+                "2": "Falling as $ x $ increases"
+              },
+              {
+                "0": "$ (0, 2) $",
+                "1": "Constant",
+                "2": "Flat line"
+              },
+              {
+                "0": "$ (2, \\infty) $",
+                "1": "Increasing",
+                "2": "Rising"
+              }
+            ],
+            "caption": "Trace the curve with your finger: uphill = increasing; downhill = decreasing; flat = constant."
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Determine intervals from a described graph",
+          "prompt": "A graph falls from $ x=-3 $ to $ x=1 $, then rises from $ x=1 $ to $ x=4 $. Identify intervals of increase and decrease.",
+          "steps": [
+            "Decreasing: $ (-3, 1) $.",
+            "Increasing: $ (1, 4) $.",
+            "No constant interval."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why open intervals?",
+          "prompt": "Explain why we typically use open intervals (parentheses) when describing where a function is increasing or decreasing, even if the behavior includes endpoints.",
+          "peerPrompt": "Think about what happens exactly at the turning point.",
+          "minLength": 2,
+          "steps": [
+            "At a turning point, the function is neither increasing nor decreasing for that instant.",
+            "Open intervals exclude the point itself, avoiding ambiguity.",
+            "It's a convention to make the description precise."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Classify behavior from values",
+          "prompt": "For $ f(x) = x^3 $, as $ x $ goes from $ -\\infty $ to $ \\infty $, is $ f(x) $ ever constant? Is it increasing everywhere?",
+          "steps": [
+            "$ f(x) = x^3 $ is not constant anywhere.",
+            "For any $ x_1 < x_2 $, $ x_1^3 < x_2^3 $, so it is increasing on $ (-\\infty, \\infty) $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't confuse 'positive' with 'increasing.' A function can have positive values but be decreasing (going down from a high positive to a lower positive). [[imp: Increasing/decreasing describes direction, not sign.]]"
+      },
+      "questions": [
+        {
+          "id": "b3q1",
+          "type": "fill-blank",
+          "prompt": "If a graph goes down as $ x $ moves to the right, the function is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "decreasing"
+              ]
+            }
+          ],
+          "hints": [
+            "Opposite of increasing.",
+            "Slopes downward."
+          ],
+          "feedbackIfWrong": "decreasing."
+        },
+        {
+          "id": "b3q2",
+          "type": "short-answer",
+          "prompt": "From a graph, the function rises on $ (-\\infty, 2) $ and falls on $ (2, \\infty) $. At $ x = 2 $, is the function increasing? (yes or no)",
+          "answers": [
+            "no"
+          ],
+          "hints": [
+            "At the peak, it changes direction.",
+            "Use open intervals."
+          ],
+          "feedbackIfWrong": "no."
+        },
+        {
+          "id": "b3q3",
+          "type": "short-answer",
+          "prompt": "A flat horizontal segment on a graph indicates the function is ___ on that interval.",
+          "answers": [
+            "constant"
+          ],
+          "hints": [
+            "No change in y.",
+            "Flat."
+          ],
+          "feedbackIfWrong": "constant."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "The function $ f(x) = |x| $ decreases on $ (-\\infty, 0) $ and increases on $ (0, \\infty) $. Where is the minimum value, and what is its type?",
+        "type": "short-answer",
+        "answers": [
+          "(0,0), absolute and relative minimum"
+        ],
+        "hints": [
+          "The lowest point is at the vertex.",
+          "It's the absolute minimum and also a relative minimum."
+        ]
+      }
+    },
+    {
+      "id": "extrema",
+      "title": "4. Relative Minima and Maxima",
+      "teacherCues": [
+        "Ask: 'Where are the peaks and valleys of the graph?'",
+        "Define relative (local) maxima and minima."
+      ],
+      "discoveryHook": {
+        "scenario": "A mountain range has local peaks (relative maxima) and valleys (relative minima). The highest peak is the absolute maximum, but each hilltop is a relative maximum. In math, we find these turning points to understand a function's shape."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:relative maximum]] is a point where the function changes from increasing to decreasing; it is higher than nearby points.",
+          "A [[kw:relative minimum]] is a point where the function changes from decreasing to increasing; it is lower than nearby points.",
+          "A function can have multiple relative maxima and minima, but no more than one absolute maximum or minimum on a closed interval.",
+          "Approximating these points can be done with a graphing utility or by observing the graph.",
+          "[[imp: Relative extrema are $ y $-values, but we often refer to the point $ (x, y) $ as the extremum.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Identifying Extrema from Graph",
+            "variant": "colorful",
+            "headers": [
+              "Point",
+              "Type",
+              "Behavior around point"
+            ],
+            "rows": [
+              {
+                "0": "$ (-1, 4) $",
+                "1": "Relative maximum",
+                "2": "Rises then falls"
+              },
+              {
+                "0": "$ (2, -3) $",
+                "1": "Relative minimum",
+                "2": "Falls then rises"
+              },
+              {
+                "0": "$ (0, 3) $",
+                "1": "Not an extremum",
+                "2": "Constant on one side, falls on other"
+              }
+            ],
+            "caption": "Peaks are maxima; valleys are minima; plateaus are typically not extrema."
+          }
+        ],
+        "formulaCard": {
+          "title": "Relative Extrema",
+          "formula": "$$ f(a) \\text{ is a relative min if } f(a) \\le f(x) \\text{ nearby} $$ $$ f(a) \\text{ is a relative max if } f(a) \\ge f(x) \\text{ nearby} $$",
+          "notes": [
+            "Use a graphing utility to approximate; precalculus methods provide exact values later.",
+            "Extrema are $ y $-values; the $ x $-value is where they occur."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Approximate a relative minimum",
+          "prompt": "Graph $ f(x) = 3x^2 - 4x - 2 $ on a calculator. Zoom in to find the approximate relative minimum point.",
+          "steps": [
+            "The graph is a parabola opening upward; vertex is the minimum.",
+            "Using trace or minimum feature: $ x \\approx 0.67 $, $ y \\approx -3.33 $.",
+            "Relative minimum is about $ -3.33 $ at $ x \\approx 0.67 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Distinguish relative from absolute extrema",
+          "prompt": "Explain the difference between a relative maximum and an absolute maximum.",
+          "peerPrompt": "Think about a function that oscillates.",
+          "minLength": 2,
+          "steps": [
+            "A relative maximum is the highest point in a local neighborhood; there can be many.",
+            "The absolute maximum is the highest point over the entire domain; at most one.",
+            "Example: $ y = \\sin x $ has many relative maxima (1), but no absolute max because it's periodic."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Identify extrema from description",
+          "prompt": "A graph increases to $ (3, 7) $, then decreases, then increases again from $ (5, 1) $. Identify the relative extrema.",
+          "steps": [
+            "$ (3, 7) $ is a relative maximum (peak).",
+            "$ (5, 1) $ is a relative minimum (valley).",
+            "There are no other extrema described."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Endpoints of a domain can be absolute extrema, but they are not relative extrema (by definition). [[imp: Relative extrema require an interval on both sides.]]"
+      },
+      "questions": [
+        {
+          "id": "b4q1",
+          "type": "fill-blank",
+          "prompt": "A relative minimum occurs where a function changes from decreasing to ___.",
+          "blanks": [
+            {
+              "accept": [
+                "increasing"
+              ]
+            }
+          ],
+          "hints": [
+            "Uphill after the valley.",
+            "Opposite of decreasing."
+          ],
+          "feedbackIfWrong": "increasing."
+        },
+        {
+          "id": "b4q2",
+          "type": "short-answer",
+          "prompt": "Is the point $ (0,0) $ a relative minimum of $ f(x) = x^2 $? (yes or no)",
+          "answers": [
+            "yes"
+          ],
+          "hints": [
+            "It's the lowest point of the parabola.",
+            "Decreases then increases."
+          ],
+          "feedbackIfWrong": "yes."
+        },
+        {
+          "id": "b4q3",
+          "type": "short-answer",
+          "prompt": "A function has a peak at $ x = 2 $ where $ f(2) = 5 $. This is a relative ___ (minimum or maximum).",
+          "answers": [
+            "maximum"
+          ],
+          "hints": [
+            "Peak means high point.",
+            "Opposite of minimum."
+          ],
+          "feedbackIfWrong": "maximum."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Use a graphing utility to approximate the relative maximum of $ f(x) = -4x^2 - 7x + 3 $.",
+        "type": "short-answer",
+        "answers": [
+          "at x ≈ -0.875, y ≈ 6.0625",
+          "(-0.875, 6.06)"
+        ],
+        "hints": [
+          "The vertex of a downward parabola is the maximum.",
+          "$ x = -b/(2a) = -(-7)/(2*-4) = 7/ -8 = -0.875 $, $ y = f(-0.875) $."
+        ]
+      }
+    },
+    {
+      "id": "even-odd",
+      "title": "5. Even and Odd Functions",
+      "teacherCues": [
+        "Ask: 'What kind of symmetry does $ y = x^2 $ have? What about $ y = x^3 $?'",
+        "Define even and odd functions in terms of $ f(-x) $."
+      ],
+      "discoveryHook": {
+        "scenario": "The graph of $ f(x) = x^2 $ is a mirror across the $ y $-axis—the left side is a reflection of the right. Such functions are called [[kw:even functions]]. $ f(x) = x^3 $ looks the same after a 180° rotation about the origin—these are [[kw:odd functions]]. Recognizing these symmetries simplifies graphing."
+      },
+      "concept": {
+        "explanation": [
+          "A function is [[kw:even]] if $ f(-x) = f(x) $ for all $ x $ in the domain. Graph is symmetric about the $ y $-axis.",
+          "A function is [[kw:odd]] if $ f(-x) = -f(x) $ for all $ x $ in the domain. Graph is symmetric about the origin.",
+          "To test algebraically, compute $ f(-x) $ and compare to $ f(x) $ and $ -f(x) $.",
+          "A function can be neither even nor odd.",
+          "[[imp: Even functions have only even powers (after simplification); odd functions have only odd powers.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Testing for Even and Odd",
+            "variant": "colorful",
+            "headers": [
+              "Function",
+              "$ f(-x) $",
+              "Compare",
+              "Type"
+            ],
+            "rows": [
+              {
+                "0": "$ f(x) = x^2 + 3 $",
+                "1": "$ (-x)^2 + 3 = x^2+3 $",
+                "2": "$ f(-x)=f(x) $",
+                "3": "Even"
+              },
+              {
+                "0": "$ f(x) = x^3 - x $",
+                "1": "$ (-x)^3-(-x) = -x^3+x $",
+                "2": "$ f(-x) = -f(x) $",
+                "3": "Odd"
+              },
+              {
+                "0": "$ f(x) = x^2 + x $",
+                "1": "$ x^2 - x $",
+                "2": "Neither equal to $ f(x) $ nor $ -f(x) $",
+                "3": "Neither"
+              }
+            ],
+            "caption": "Compute $ f(-x) $, simplify, and compare."
+          }
+        ],
+        "formulaCard": {
+          "title": "Even and Odd Functions",
+          "formula": "$$ \\text{Even: } f(-x) = f(x) $$ $$ \\text{Odd: } f(-x) = -f(x) $$",
+          "notes": [
+            "For even functions, the graph is symmetric about the $ y $-axis.",
+            "For odd functions, the graph is symmetric about the origin.",
+            "Many functions are neither."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Test for even/odd",
+          "prompt": "Determine if $ g(x) = x^4 - 2x^2 $ is even, odd, or neither.",
+          "steps": [
+            "Compute $ g(-x) = (-x)^4 - 2(-x)^2 = x^4 - 2x^2 = g(x) $.",
+            "Since $ g(-x) = g(x) $, $ g $ is even."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why $ f(-x) = -f(x) $ means odd",
+          "prompt": "Explain why the condition $ f(-x) = -f(x) $ implies the graph is symmetric about the origin.",
+          "peerPrompt": "Consider a point $ (a, b) $ on the graph. Where is $ (-a, -b) $?",
+          "minLength": 2,
+          "steps": [
+            "If $ (a, b) $ is on the graph, $ b = f(a) $.",
+            "For odd function, $ f(-a) = -f(a) = -b $, so $ (-a, -b) $ is also on the graph.",
+            "The two points are symmetric about the origin (180° rotation)."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Classify a function",
+          "prompt": "Is $ h(x) = \\frac{1}{x} $ even, odd, or neither? (Assume $ x \\neq 0 $.)",
+          "steps": [
+            "$ h(-x) = \\frac{1}{-x} = -\\frac{1}{x} = -h(x) $.",
+            "Therefore, $ h $ is odd."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The exponents alone do not guarantee even/odd if there are constants or absolute values. [[imp: Always test algebraically with $ f(-x) $.]]"
+      },
+      "questions": [
+        {
+          "id": "b5q1",
+          "type": "fill-blank",
+          "prompt": "A function is even if $ f(-x) = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "f(x)"
+              ]
+            }
+          ],
+          "hints": [
+            "It equals the original expression.",
+            "No sign change."
+          ],
+          "feedbackIfWrong": "f(x)."
+        },
+        {
+          "id": "b5q2",
+          "type": "short-answer",
+          "prompt": "Is $ f(x) = |x| $ even, odd, or neither?",
+          "answers": [
+            "even"
+          ],
+          "hints": [
+            "$ |-x| = |x| $.",
+            "It's symmetric about y-axis."
+          ],
+          "feedbackIfWrong": "even."
+        },
+        {
+          "id": "b5q3",
+          "type": "short-answer",
+          "prompt": "If $ g $ is odd and $ g(2) = 5 $, what is $ g(-2) $? (number only)",
+          "answers": [
+            "-5"
+          ],
+          "hints": [
+            "Odd means $ g(-a) = -g(a) $.",
+            "Negate the value."
+          ],
+          "feedbackIfWrong": "-5."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A function $ f $ is defined by $ f(x) = 3x^5 - 2x^3 + x $. Prove that $ f $ is odd.",
+        "type": "short-answer",
+        "answers": [
+          "f(-x) = -3x^5 + 2x^3 - x = -(3x^5 - 2x^3 + x) = -f(x)"
+        ],
+        "hints": [
+          "Compute $ f(-x) = 3(-x)^5 - 2(-x)^3 + (-x) $.",
+          "Factor out the negative."
+        ]
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

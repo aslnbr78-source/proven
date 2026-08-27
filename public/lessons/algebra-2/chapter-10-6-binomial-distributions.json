@@ -1,0 +1,745 @@
+{
+  "id": "chapter-10-6-binomial-distributions",
+  "schemaVersion": 2,
+  "title": "Binomial Distributions",
+  "type": "interactive-lesson",
+  "standards": [
+    "HSS.MD.A.1",
+    "HSS.MD.A.3",
+    "HSS.MD.B.6"
+  ],
+  "presenterNotes": [
+    "Use coin flipping or dice rolling simulations to create live probability distributions.",
+    "For the binomial formula, break down $_{n}C_{k}$ with small numbers to show the counting aspect.",
+    "Encourage students to use the complement for 'at least' problems – it's a huge time-saver."
+  ],
+  "blocks": [
+    {
+      "confusionCorner": {
+        "title": "Random Variable vs. Outcome",
+        "body": "A random variable is not the outcome itself; it's a number assigned to the outcome. For two dice, the outcome is a pair like (3,5), but the random variable $x$ is the sum 8. [[imp:Define your random variable clearly.]]"
+      },
+      "discoveryHook": {
+        "scenario": "When you roll two dice, the sum can be anything from 2 to 12, but some sums happen much more often than others. A probability distribution shows exactly how likely each sum is – turning uncertainty into a predictable pattern!"
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "q1-1",
+          "blanks": [
+            {
+              "accept": [
+                "random",
+                "Random"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "It's called a random variable.",
+          "hints": [
+            "Starts with 'r'.",
+            "It's the variable we assign probabilities to."
+          ],
+          "prompt": "A ___ variable is a variable whose value is determined by the outcome of a probability experiment."
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Think about the whole sample space.",
+            "It represents 100%."
+          ],
+          "feedbackIfWrong": "All probabilities in a distribution must sum to 1.",
+          "answer": "1",
+          "prompt": "In a probability distribution, what must the sum of all probabilities equal?",
+          "id": "q1-2"
+        },
+        {
+          "id": "q1-3",
+          "prompt": "When rolling two dice, how many outcomes give a sum of 7?",
+          "answer": "6",
+          "hints": [
+            "List pairs: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1).",
+            "Count them."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "Six outcomes produce a sum of 7."
+        }
+      ],
+      "teacherCues": [
+        "Roll two dice and ask: 'What is the sum? Can we predict exactly? What values can it take?'",
+        "Define random variable, then build a probability distribution table on the board."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Sum of Two Dice",
+          "steps": [
+            "List possible $x$ values: 2 to 12. Count outcomes for each sum from the 36 total.",
+            "Divide each count by 36 to get $P(x)$.",
+            "Find the highest probability: $P(7) = \\frac{6}{36} = \\frac{1}{6}$ is the largest.",
+            "So 7 is the most likely sum."
+          ],
+          "prompt": "Let $x$ be the sum when two fair six-sided dice are rolled. Construct the probability distribution table and find the most likely sum."
+        },
+        {
+          "minLength": 2,
+          "prompt": "A spinner has sections: 1 (half the spinner), 2 (one quarter), 3 (one quarter). Construct the probability distribution for the number spun.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the sum of the probabilities equal 1? How would you draw a histogram for these probabilities?",
+          "title": "Example B – Spinner with Unequal Sections",
+          "steps": [
+            "P(1) = 1/2, P(2) = 1/4, P(3) = 1/4.",
+            "Check: 1/2 + 1/4 + 1/4 = 1. Yes.",
+            "A histogram would have three bars with heights 0.5, 0.25, 0.25."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "prompt": "Using the two-dice probability distribution, find $P(x \\ge 10)$.",
+          "steps": [
+            "$P(x \\ge 10) = P(10) + P(11) + P(12)$.",
+            "$= \\frac{3}{36} + \\frac{2}{36} + \\frac{1}{36} = \\frac{6}{36} = \\frac{1}{6}$.",
+            "So about a 16.7% chance of getting a sum of 10 or more."
+          ],
+          "title": "Example C – Probability of at Least 10"
+        }
+      ],
+      "title": "Random Variables and Probability Distributions",
+      "id": "probability-distributions",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "$x$ is the random variable.",
+            "$P(x)$ is the probability that the random variable equals $x$.",
+            "The sum of all $P(x)$ must equal $1$."
+          ],
+          "title": "Probability Distribution Requirements",
+          "formula": "$$ \\sum P(x) = 1 \\quad \\text{and} \\quad 0 \\le P(x) \\le 1 $$"
+        },
+        "visuals": [
+          {
+            "title": "Probability Distribution: Sum of Two Dice",
+            "type": "table",
+            "headers": [
+              "Sum $x$",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12"
+            ],
+            "rows": [
+              {
+                "0": "Outcomes",
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "5",
+                "8": "4",
+                "9": "3",
+                "10": "2",
+                "11": "1"
+              },
+              {
+                "0": "$P(x)$",
+                "1": "$\\frac{1}{36}$",
+                "2": "$\\frac{2}{36}$",
+                "3": "$\\frac{3}{36}$",
+                "4": "$\\frac{4}{36}$",
+                "5": "$\\frac{5}{36}$",
+                "6": "$\\frac{6}{36}$",
+                "7": "$\\frac{5}{36}$",
+                "8": "$\\frac{4}{36}$",
+                "9": "$\\frac{3}{36}$",
+                "10": "$\\frac{2}{36}$",
+                "11": "$\\frac{1}{36}$"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "A [[kw:random variable]] is a variable whose value is determined by the outcome of a probability experiment. For example, $x =$ sum of two dice.",
+          "A [[kw:probability distribution]] is a function that gives the probability for each possible value of a random variable.",
+          "All probabilities in a distribution must sum to $1$.",
+          "You can display a probability distribution as a table or a histogram, with intervals on the horizontal axis and probabilities as the bar heights."
+        ]
+      }
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{1. Fixed } n \\quad \\text{2. Two outcomes} \\quad \\text{3. Constant } p \\quad \\text{4. Independent trials} $$",
+          "notes": [
+            "The random variable $k$ counts the number of successes.",
+            "Failure probability is $1-p$."
+          ],
+          "title": "Binomial Experiment Conditions"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Flip a coin 10 times, count heads",
+                "1": "Yes (10)",
+                "2": "Yes (H/T)",
+                "3": "Yes (0.5)",
+                "4": "Yes"
+              },
+              {
+                "0": "Roll a die until you get a 6",
+                "1": "No (not fixed)",
+                "2": "Yes",
+                "3": "Yes",
+                "4": "Yes"
+              },
+              {
+                "0": "Draw 5 cards without replacement, count hearts",
+                "1": "Yes (5)",
+                "2": "Yes (heart/not)",
+                "3": "No (changes)",
+                "4": "No"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Situation",
+              "Fixed $n$?",
+              "Two outcomes?",
+              "Constant $p$?",
+              "Independent trials?"
+            ],
+            "title": "Is it a Binomial Experiment?"
+          }
+        ],
+        "explanation": [
+          "A [[kw:binomial experiment]] satisfies four conditions:",
+          "1. There are $n$ independent trials.",
+          "2. Each trial has exactly two possible outcomes: [[imp:success]] (what we're counting) or [[imp:failure]].",
+          "3. The probability of success $p$ is the same for each trial.",
+          "4. The trials are independent.",
+          "Examples: flipping a coin $n$ times (success = heads, $p=0.5$); surveying $n$ people whether they own an e-reader ($p=0.33$)."
+        ]
+      },
+      "teacherCues": [
+        "Ask: 'If I flip a coin 5 times, what makes this a binomial experiment?'",
+        "Write the four conditions for a binomial experiment on the board."
+      ],
+      "discoveryHook": {
+        "scenario": "Flipping a coin, testing a batch of light bulbs, surveying whether people own a smartphone – these all have something in common. They're binomial experiments: fixed number of trials, two outcomes, constant probability, independence!"
+      },
+      "confusionCorner": {
+        "title": "Without Replacement Usually Not Binomial",
+        "body": "If you're selecting from a finite population without replacement, the probability of success changes. However, if the population is very large, it's approximately binomial. [[imp:For small populations without replacement, use combinations, not binomial.]]"
+      },
+      "id": "binomial-experiments",
+      "examples": [
+        {
+          "steps": [
+            "Fixed trials: $n=10$ questions. Yes.",
+            "Two outcomes: correct (success) or incorrect (failure). Yes.",
+            "Constant $p$: each question has $p=0.5$ chance of correct guess. Yes.",
+            "Independent: guessing on one doesn't affect another. Yes.",
+            "It's a binomial experiment."
+          ],
+          "title": "Example A – Is it Binomial?",
+          "role": "guided",
+          "prompt": "You randomly guess on a 10-question true-false quiz. Let $k$ be the number of correct answers. Determine if this is a binomial experiment."
+        },
+        {
+          "prompt": "A bag has 5 red, 3 blue marbles. You draw 4 marbles with replacement, counting reds. Is it binomial?",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does replacement make the trials independent? What would happen if you didn't replace?",
+          "title": "Example B – Drawing Marbles",
+          "role": "peer-explain",
+          "steps": [
+            "Fixed $n=4$, two outcomes (red/not), constant $p=5/8$ (because of replacement), independent trials.",
+            "Yes, binomial. Without replacement, $p$ changes and trials become dependent, so not binomial."
+          ]
+        },
+        {
+          "prompt": "You roll a die until you get a 6. Let $k$ be the number of rolls. Is this a binomial experiment?",
+          "title": "Example C – Not Binomial",
+          "steps": [
+            "No fixed number of trials – you keep rolling until success.",
+            "The number of trials $k$ is the random variable, not fixed in advance.",
+            "Therefore, this is not a binomial experiment (it's geometric)."
+          ],
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "hints": [
+            "Think 'bi-' meaning two.",
+            "Success or failure."
+          ],
+          "answer": "2",
+          "feedbackIfWrong": "Each trial has exactly two outcomes.",
+          "prompt": "In a binomial experiment, how many possible outcomes does each trial have?",
+          "id": "q2-1",
+          "type": "short-answer"
+        },
+        {
+          "id": "q2-2",
+          "feedbackIfWrong": "The probability of success is $p$.",
+          "hints": [
+            "It's a single lowercase letter.",
+            "Often used with $1-p$ for failure."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "p",
+                "P"
+              ]
+            }
+          ],
+          "prompt": "In a binomial experiment, the probability of success is denoted by the letter ___."
+        },
+        {
+          "hints": [
+            "Count the number of people surveyed.",
+            "It's the number of trials."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "The number of trials is $n=4$.",
+          "answer": "4",
+          "id": "q2-3",
+          "prompt": "A survey asks 4 randomly chosen people if they own an e-reader ($p=0.33$). What is the value of $n$?"
+        }
+      ],
+      "title": "Binomial Experiments"
+    },
+    {
+      "title": "Binomial Probability Formula",
+      "examples": [
+        {
+          "steps": [
+            "$n=5$, $p=0.5$, $k=3$. $_{5}C_{3} = 10$.",
+            "$P(3) = _{5}C_{3} (0.5)^3 (0.5)^{2} = 10 \\cdot 0.125 \\cdot 0.25 = 10 \\cdot 0.03125 = 0.3125$.",
+            "So about a 31.25% chance."
+          ],
+          "role": "guided",
+          "title": "Example A – Exactly 3 Heads in 5 Flips",
+          "prompt": "A fair coin is flipped 5 times. Find the probability of getting exactly 3 heads."
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "$n=6$, $p=0.33$, $k=2$. $_{6}C_{2} = 15$.",
+            "$P(2) = 15 \\cdot (0.33)^2 \\cdot (0.67)^4$.",
+            "Compute: $15 \\cdot 0.1089 \\cdot 0.2015 \\approx 0.329$.",
+            "There's about a 32.9% chance exactly 2 own an e-reader."
+          ],
+          "title": "Example B – E-Reader Survey",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we multiply by 6C2? What do each of the three factors represent?",
+          "minLength": 2,
+          "prompt": "33% of adults own an e-reader. You ask 6 people. Find P(exactly 2 own an e-reader)."
+        },
+        {
+          "prompt": "Using the same survey ($n=6$, $p=0.33$), find the probability that at most 2 people own an e-reader.",
+          "role": "independent",
+          "steps": [
+            "$P(k \\le 2) = P(0) + P(1) + P(2)$.",
+            "$P(0) = _{6}C_{0}(0.33)^0(0.67)^6 \\approx 0.090$.",
+            "$P(1) = _{6}C_{1}(0.33)^1(0.67)^5 \\approx 0.267$.",
+            "$P(2) \\approx 0.329$. Total $\\approx 0.090+0.267+0.329 = 0.686$."
+          ],
+          "title": "Example C – At Most 2 E-Readers"
+        }
+      ],
+      "id": "binomial-probability-formula",
+      "questions": [
+        {
+          "prompt": "In the binomial formula, what does $_{n}C_{k}$ count? Answer 'number of successes' or 'number of ways to arrange successes'.",
+          "type": "short-answer",
+          "answer": "number of ways to arrange successes",
+          "hints": [
+            "It's a combination, not a probability.",
+            "It counts patterns of k successes in n trials."
+          ],
+          "id": "q3-1",
+          "feedbackIfWrong": "$_{n}C_{k}$ counts the number of ways to arrange k successes in n trials."
+        },
+        {
+          "feedbackIfWrong": "$6 \\cdot 0.0625 = 0.375$, rounded to 0.38.",
+          "answer": "0.38",
+          "prompt": "A fair coin is flipped 4 times. What is the probability of exactly 2 heads? Use decimal form rounded to 2 decimal places.",
+          "hints": [
+            "$_{4}C_{2}=6$, $p=0.5$, so $6 \\cdot (0.5)^4 = 6 \\cdot 0.0625$.",
+            "6 times 0.0625 equals ?"
+          ],
+          "type": "short-answer",
+          "id": "q3-2"
+        },
+        {
+          "feedbackIfWrong": "The binomial distribution gives probabilities for the number of successes.",
+          "hints": [
+            "Starts with 's'.",
+            "We count these in a binomial experiment."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "successes",
+                "Successes"
+              ]
+            }
+          ],
+          "id": "q3-3",
+          "prompt": "The binomial distribution shows the probabilities of all possible values of $k$, the number of ___."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "If you flip 5 coins, what's the chance of exactly 3 heads? The binomial formula calculates it in one step, combining combinations (for the patterns of heads) with the probabilities of each head and tail!"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Binomial Formula Breakdown (n=6, p=0.33, k=2)",
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$_{6}C_{2}$",
+                "1": "Ways to choose which 2 people own an e-reader",
+                "2": "$15$"
+              },
+              {
+                "0": "$p^2$",
+                "1": "Probability those 2 own an e-reader",
+                "2": "$(0.33)^2$"
+              },
+              {
+                "0": "$(1-p)^4$",
+                "1": "Probability the other 4 do not",
+                "2": "$(0.67)^4$"
+              },
+              {
+                "0": "$P(2)$",
+                "1": "Overall probability",
+                "2": "$15 \\cdot 0.1089 \\cdot 0.2015 \\approx 0.329$"
+              }
+            ],
+            "headers": [
+              "Component",
+              "Meaning",
+              "Calculation"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "$k$ ranges from $0$ to $n$.",
+            "The sum of all probabilities $P(0)+P(1)+...+P(n)=1$.",
+            "You can compute $_{n}C_{k}$ using the formula $\\frac{n!}{k!(n-k)!}$."
+          ],
+          "title": "Binomial Probability Formula",
+          "formula": "$$ P(k \\text{ successes}) = _{n}C_{k} \\, p^{k} \\, (1-p)^{n-k} $$"
+        },
+        "explanation": [
+          "For a binomial experiment with $n$ trials and probability of success $p$, the probability of exactly $k$ successes is: $$ P(k) = _{n}C_{k} \\cdot p^{k} \\cdot (1-p)^{n-k} $$",
+          "$_{n}C_{k}$ counts the number of ways to choose which $k$ trials are successes.",
+          "$p^{k}$ is the probability those $k$ trials all succeed.",
+          "$(1-p)^{n-k}$ is the probability the remaining $n-k$ trials all fail."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Binomial Coefficient is Not the Probability",
+        "body": "$_{n}C_{k}$ only counts the number of patterns. You must multiply by the probabilities of success and failure. [[imp:Don't stop after finding the combination!]]"
+      },
+      "teacherCues": [
+        "Write the formula: P(k) = nCk p^k (1-p)^{n-k}.",
+        "Emphasize: nCk is the number of ways to arrange k successes in n trials."
+      ]
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{For } k = 0,1,\\dots,n: \\quad P(k) = _{n}C_{k} \\, p^{k} \\, (1-p)^{n-k} $$",
+          "title": "Building a Binomial Distribution",
+          "notes": [
+            "Round probabilities to a reasonable number of decimal places.",
+            "Use a histogram with $k$ on the horizontal axis, $P(k)$ on the vertical."
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "$k$ (successes)",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ],
+            "title": "Binomial Distribution for n=6, p=0.33",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "$P(k)$",
+                "1": "0.090",
+                "2": "0.267",
+                "3": "0.329",
+                "4": "0.216",
+                "5": "0.080",
+                "6": "0.016",
+                "7": "0.001"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "To construct a binomial distribution, compute $P(k)$ for every integer $k$ from $0$ to $n$.",
+          "Make a table with $k$ and $P(k)$, then draw a histogram (bar for each $k$).",
+          "The sum of all $P(k)$ should be $1$ (or very close, allowing for rounding).",
+          "Interpretation: the tallest bar is the most likely outcome. To find probabilities like 'at least' or 'at most,' add the relevant bars."
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example A – Complete the Distribution",
+          "steps": [
+            "$n=4$, $p=0.85$, $1-p=0.15$.",
+            "$P(0)= _{4}C_{0}(0.85)^0(0.15)^4 = 1 \\cdot 1 \\cdot 0.0005 = 0.0005$.",
+            "$P(1)= _{4}C_{1}(0.85)^1(0.15)^3 = 4 \\cdot 0.85 \\cdot 0.003375 = 0.0115$.",
+            "Continue for $k=2,3,4$ to complete the table."
+          ],
+          "prompt": "85% of adults use the Internet. You ask 4 randomly chosen adults. Construct the binomial distribution table.",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Compute all: $P(2) \\approx 0.0975$, $P(3) \\approx 0.3685$, $P(4) \\approx 0.522$.",
+            "The probabilities increase with $k$, so $k=4$ is highest.",
+            "Most likely, all 4 use the Internet – makes sense because 85% is a high probability."
+          ],
+          "minLength": 2,
+          "title": "Example B – Most Likely Outcome",
+          "prompt": "Using the table in Example A, what is the most likely number of Internet users among the 4?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How can you tell the most likely outcome from the histogram? Why does it make sense given the high $p$?"
+        },
+        {
+          "prompt": "In the same survey, find the probability that at most 2 of the 4 people use the Internet.",
+          "title": "Example C – At Most 2 Users",
+          "steps": [
+            "$P(k \\le 2) = P(0)+P(1)+P(2)$.",
+            "$\\approx 0.0005 + 0.0115 + 0.0975 = 0.1095$.",
+            "So about a 10.95% chance."
+          ],
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Forget k = 0",
+        "body": "When finding probabilities like 'at most 2', remember to include $P(0)$. Even if it's small, it's still a possible outcome."
+      },
+      "discoveryHook": {
+        "scenario": "Once you have the probabilities for all possible numbers of successes, you can see the whole picture – the binomial distribution. It shows you the most likely outcome, and how likely extremes are!"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "The sum of all binomial probabilities is 1.",
+          "hints": [
+            "It's the total probability of the sample space.",
+            "All possibilities together make 100%."
+          ],
+          "id": "q4-1",
+          "type": "short-answer",
+          "answer": "1",
+          "prompt": "In a binomial distribution, the sum of all probabilities P(k) for k=0 to n must equal what?"
+        },
+        {
+          "id": "q4-2",
+          "feedbackIfWrong": "You add the individual probabilities for k=0,1,2,3.",
+          "type": "fill-blank",
+          "hints": [
+            "You combine probabilities for multiple values.",
+            "The operation is addition."
+          ],
+          "prompt": "To find the probability of at most 3 successes, you ___ the probabilities for k = 0, 1, 2, 3.",
+          "blanks": [
+            {
+              "accept": [
+                "add",
+                "sum",
+                "Add",
+                "Sum"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "short-answer",
+          "id": "q4-3",
+          "hints": [
+            "The binomial distribution is symmetric when p=0.5.",
+            "The peak is at n/2."
+          ],
+          "feedbackIfWrong": "With p=0.5, the distribution is symmetric and peaks at k=2.",
+          "answer": "2",
+          "prompt": "If n=4 and p=0.5, what is the most likely number of successes?"
+        }
+      ],
+      "id": "constructing-binomial-distribution",
+      "title": "Constructing and Interpreting Binomial Distributions",
+      "teacherCues": [
+        "Walk through the e-reader example: build the table for k=0 to 6, then sketch the histogram.",
+        "Ask: 'Which bar is tallest? That's the most likely outcome.'"
+      ]
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "title": "Binomial Blueprint",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Is it binomial? What are n, p? What event are we finding?"
+              },
+              {
+                "0": "Solve",
+                "1": "Use $P(k) = _{n}C_{k} p^k (1-p)^{n-k}$. Sum if needed. Consider complement."
+              },
+              {
+                "0": "Conclude",
+                "1": "Write the probability and interpret. Check if the value is reasonable."
+              }
+            ],
+            "headers": [
+              "Step",
+              "Questions to Ask"
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "title": "Blueprint Formula with Complement",
+          "notes": [
+            "Complement is often easier for 'at least' problems.",
+            "Make sure to include $k=0$ when summing from $0$."
+          ],
+          "formula": "$$ P(k \\ge a) = 1 - P(k < a) = 1 - \\sum_{k=0}^{a-1} P(k) $$"
+        },
+        "explanation": [
+          "1. [[imp:Understand]]: Verify the four binomial conditions. Define $n$, $p$, and the random variable $k$ (number of successes).",
+          "2. [[imp:Solve]]: Use $P(k) = _{n}C_{k} \\, p^{k} \\, (1-p)^{n-k}$. For a range, sum the appropriate $P(k)$. For 'at least', consider the complement: $P(k \\ge a) = 1 - P(k \\le a-1)$.",
+          "3. [[imp:Conclude]]: State the probability in context, rounded appropriately. Check that the answer makes sense."
+        ]
+      },
+      "confusionCorner": {
+        "body": "'At least $a$' includes $a, a+1, \\dots, n$. Don't just calculate $P(a)$. For 'at most $a$', include $0$ through $a$.",
+        "title": "At Least vs. Exactly"
+      },
+      "discoveryHook": {
+        "scenario": "What's the chance that at least 3 out of 5 randomly chosen students own a car? The binomial blueprint will guide you from identifying the experiment to summing the right probabilities – or using the complement shortcut!"
+      },
+      "id": "blueprint-binomial",
+      "title": "Blueprint Aid – Solving Binomial Probability Problems",
+      "examples": [
+        {
+          "prompt": "A coin is flipped 5 times. Find P(at least 1 head).",
+          "role": "guided",
+          "title": "Example A – At Least 1 Head in 5 Flips",
+          "steps": [
+            "Understand: $n=5$, $p=0.5$. 'At least 1' means $k \\ge 1$.",
+            "Solve: Use complement: $P(k \\ge 1) = 1 - P(0)$. $P(0) = (0.5)^5 = 0.03125$.",
+            "$P(k \\ge 1) = 1 - 0.03125 = 0.96875$.",
+            "Conclude: About 96.9% chance of at least one head."
+          ]
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is finding the complement (no one has a ring) much faster than computing P(1)+P(2)+...+P(6)?",
+          "title": "Example B – Class Rings",
+          "steps": [
+            "Understand: $n=6$, $p=0.27$. Complement: $P(k \\ge 1) = 1 - P(0)$.",
+            "$P(0) = (1-0.27)^6 = (0.73)^6 \\approx 0.151$.",
+            "$P(k \\ge 1) \\approx 1 - 0.151 = 0.849$.",
+            "Conclude: About 84.9% chance at least one student has a ring."
+          ],
+          "role": "peer-explain",
+          "prompt": "27% of high school students buy a class ring. You ask 6 students. Find P(at least 1 has a ring).",
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Exactly 4 Girls in 6 Births",
+          "steps": [
+            "Understand: $n=6$, $p=0.5$, $k=4$.",
+            "Solve: $P(4) = _{6}C_{4} (0.5)^4 (0.5)^2 = 15 \\cdot (0.5)^6 = 15/64 \\approx 0.234$.",
+            "Conclude: About 23.4% chance."
+          ],
+          "role": "independent",
+          "prompt": "Assume P(girl)=0.5. Find the probability that a family with 6 children has exactly 4 girls."
+        }
+      ],
+      "questions": [
+        {
+          "hints": [
+            "The complement is P(0)+P(1).",
+            "Which sum has fewer terms?"
+          ],
+          "answer": "complement",
+          "prompt": "To find P(at least 2 successes) in 5 trials, which is easier: summing P(2)+P(3)+P(4)+P(5) or using the complement? Answer 'sum' or 'complement'.",
+          "type": "short-answer",
+          "feedbackIfWrong": "The complement (1 - P(0)-P(1)) is usually easier for 'at least'.",
+          "id": "q5-1"
+        },
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "The first step is Understand.",
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "Understand"
+              ]
+            }
+          ],
+          "prompt": "In the binomial blueprint, the first step is to ___ the problem and verify it's a binomial experiment.",
+          "hints": [
+            "Starts with 'u'.",
+            "It's the U in Understand-Solve-Conclude."
+          ],
+          "id": "q5-2"
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "feedbackIfWrong": "$(0.5)^{10} \\approx 0.00098$.",
+          "prompt": "If n=10 and p=0.5, what is P(k=10)? Answer as a decimal.",
+          "hints": [
+            "$P(10) = (0.5)^{10}$.",
+            "Compute $1/1024$."
+          ],
+          "answer": "0.00098"
+        }
+      ],
+      "teacherCues": [
+        "Write the blueprint steps: 1) Understand the experiment (is it binomial?), 2) Identify n, p, and the event, 3) Solve using the formula and sum probabilities as needed.",
+        "Work a 'at least' problem using the complement."
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

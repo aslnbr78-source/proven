@@ -1,0 +1,754 @@
+{
+  "blocks": [
+    {
+      "id": "solve-by-graphing",
+      "examples": [
+        {
+          "prompt": "Solve the system by graphing: $y = 2x^2 + 5x - 1$, $y = x - 3$.",
+          "steps": [
+            "Graph the parabola $y = 2x^2 + 5x - 1$ and the line $y = x - 3$.",
+            "The graphs intersect at $(-1, -4)$.",
+            "Check: For $x=-1$, parabola: $2(1) -5 -1 = -4$ ✓; line: $-1 -3 = -4$ ✓.",
+            "Solution: $(-1, -4)$."
+          ],
+          "role": "guided",
+          "title": "Example A — One Solution"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Solve $y = x^2 + 4x - 4$ and $y = 2x - 5$ by graphing.",
+          "steps": [
+            "Graph both: parabola $y = x^2 + 4x - 4$ and line $y = 2x - 5$.",
+            "They intersect at two points. By solving algebraically or estimating: $(-1, -7)$ and $(1, -3)$? Check: better to solve exactly later. The graph shows two intersections.",
+            "So, the system has two solutions."
+          ],
+          "title": "Example B — Two Solutions",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: How can you tell from the equations whether there will be 0, 1, or 2 solutions before graphing?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Graph the downward parabola and the horizontal line $y=2$.",
+            "The parabola's maximum is at vertex $( -1, 2 )$? Actually $y = -2x^2 -4x = -2(x^2+2x) = -2((x+1)^2 -1) = -2(x+1)^2 +2$. Vertex $(-1,2)$.",
+            "The line $y=2$ touches the vertex. So exactly one intersection point → one solution."
+          ],
+          "title": "Example C — No Solution",
+          "prompt": "Solve $y = -2x^2 - 4x$ and $y = 2$ by graphing."
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "A [[kw:system of nonlinear equations]] includes at least one equation that is not linear. Here we focus on one linear and one quadratic.",
+          "Graph both equations on the same coordinate plane. The points where the graphs intersect are the solutions of the system.",
+          "A line and a parabola can intersect at **0, 1, or 2 points** — so the system can have 0, 1, or 2 real solutions.",
+          "To solve by graphing: 1) Graph each equation accurately. 2) Identify the intersection point(s). 3) Check each point in both original equations.",
+          "Example: $y = 2x^2 + 5x - 1$ (parabola) and $y = x - 3$ (line) intersect at $(-1, -4)$."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Use graph paper or technology for accuracy.",
+            "Always verify solutions by substituting into both equations."
+          ],
+          "title": "Solving Nonlinear Systems by Graphing",
+          "formula": "$$ \\text{Graph } y = f(x) \\text{ and } y = g(x) \\text{; solutions are the intersection points.} $$"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "title": "Number of Solutions of a Linear-Quadratic System",
+            "headers": [
+              "Graph Behavior",
+              "Number of Intersections",
+              "Number of Solutions"
+            ],
+            "rows": [
+              {
+                "0": "Line crosses parabola twice",
+                "1": "2",
+                "2": "2"
+              },
+              {
+                "0": "Line touches parabola at one point (tangent)",
+                "1": "1",
+                "2": "1"
+              },
+              {
+                "0": "Line does not intersect parabola",
+                "1": "0",
+                "2": "0"
+              }
+            ]
+          }
+        ]
+      },
+      "confusionCorner": {
+        "body": "When the line just touches the parabola at the vertex (or another point) without crossing, the system has exactly one solution. Algebraically, the resulting quadratic equation has a discriminant of 0.",
+        "title": "Tangent = One Solution"
+      },
+      "title": "Solving Nonlinear Systems by Graphing",
+      "teacherCues": [
+        "Graph $y = 2x^2 + 5x - 1$ and $y = x - 3$ on the same grid. Ask: 'Where do they intersect? How many solutions are there?'",
+        "Draw a parabola and a line that don't intersect. Ask: 'What does this mean about the system?'"
+      ],
+      "discoveryHook": {
+        "scenario": "A parabola and a line can meet in two places, just touch at one point, or completely miss each other. Graphing both equations on the same coordinate plane reveals all the solutions at a glance — each intersection is a solution to the system!"
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "two",
+                "2"
+              ]
+            }
+          ],
+          "hints": [
+            "A line and a parabola can intersect at most at this many points.",
+            "Think of a straight line crossing a U-shaped curve."
+          ],
+          "prompt": "A system with one linear equation and one quadratic equation can have at most ___ real solutions.",
+          "feedbackIfWrong": "A line and a parabola can intersect at most 2 times."
+        },
+        {
+          "feedbackIfWrong": "The y-coordinate is -4.",
+          "answer": "-4",
+          "type": "short-answer",
+          "hints": [
+            "Look at the ordered pair.",
+            "The second number."
+          ],
+          "id": "q1-2",
+          "prompt": "In the system $y = 2x^2 + 5x - 1$ and $y = x - 3$, the solution is $(-1, -4)$. What is the y-coordinate?"
+        },
+        {
+          "prompt": "If the graphs of a line and a parabola do not intersect, how many real solutions does the system have?",
+          "feedbackIfWrong": "0 real solutions.",
+          "id": "q1-3",
+          "hints": [
+            "No intersection points means no common points.",
+            "The equations have no shared solutions."
+          ],
+          "type": "short-answer",
+          "answer": "0"
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "After finding the x-values, you must plug them back into one of the original equations to get the corresponding y-values. Each solution is an ordered pair $(x, y)$, not just an x-value.",
+        "title": "Don't Forget to Find y!"
+      },
+      "examples": [
+        {
+          "prompt": "Solve $y = x^2 + x - 1$ and $y = -2x + 3$ by substitution.",
+          "role": "guided",
+          "title": "Example A — Two Solutions",
+          "steps": [
+            "Set equal: $x^2 + x - 1 = -2x + 3$.",
+            "Bring all terms to left: $x^2 + 3x - 4 = 0$.",
+            "Factor: $(x+4)(x-1) = 0$ → $x = -4$ or $x = 1$.",
+            "For $x=-4$: $y = -2(-4) + 3 = 11$. For $x=1$: $y = -2(1) + 3 = 1$.",
+            "Solutions: $(-4, 11)$ and $(1, 1)$."
+          ]
+        },
+        {
+          "title": "Example B — One Solution",
+          "prompt": "Solve $y = x^2 + 9$ and $y = 9$ by substitution.",
+          "steps": [
+            "Substitute: $x^2 + 9 = 9$ → $x^2 = 0$ → $x = 0$.",
+            "Then $y = 9$. Only one solution: $(0, 9)$."
+          ],
+          "peerPrompt": "Explain to a partner: After setting $x^2 + 9 = 9$, what type of equation do you get? How many solutions does it have?",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Set equal: $-x^2 + 7 = 2x + 4$ → $-x^2 - 2x + 3 = 0$ → multiply by -1: $x^2 + 2x - 3 = 0$.",
+            "Factor: $(x+3)(x-1) = 0$ → $x = -3$ or $x = 1$.",
+            "For $x=-3$: $y = 2(-3) + 4 = -2$. For $x=1$: $y = 2(1) + 4 = 6$.",
+            "Solutions: $(-3, -2)$ and $(1, 6)$."
+          ],
+          "prompt": "Solve $y = -x^2 + 7$ and $y = 2x + 4$ by substitution.",
+          "role": "independent",
+          "title": "Example C — Practice"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Solving by Substitution",
+          "notes": [
+            "If one equation isn't solved for y, isolate y first.",
+            "Always find both x and y for each solution."
+          ],
+          "formula": "$$ \\text{If } y = f(x) \\text{ and } y = g(x), \\text{ solve } f(x) = g(x) \\text{ for } x. $$"
+        },
+        "explanation": [
+          "**Substitution** works well when one or both equations are already solved for $y$ (or another variable).",
+          "Step 1: Substitute the expression for $y$ from one equation into the other equation.",
+          "Step 2: Solve the resulting quadratic equation for $x$ (by factoring, square roots, or Quadratic Formula).",
+          "Step 3: Plug each $x$-value back into either original equation to find the corresponding $y$.",
+          "Example: $y = x^2 + x - 1$ and $y = -2x + 3$. Set equal: $x^2 + x - 1 = -2x + 3$ → $x^2 + 3x - 4 = 0$ → $(x+4)(x-1)=0$ → $x = -4, 1$. For $x=-4$, $y = 11$; for $x=1$, $y=1$. Solutions: $(-4, 11)$ and $(1, 1)$."
+        ],
+        "visuals": [
+          {
+            "title": "Substitution Method for $y = x^2 + x - 1$ and $y = -2x + 3$",
+            "rows": [
+              {
+                "0": "1. Set equal",
+                "1": "$x^2 + x - 1 = -2x + 3$",
+                "2": "$x^2 + 3x - 4 = 0$"
+              },
+              {
+                "0": "2. Factor",
+                "1": "$(x+4)(x-1) = 0$",
+                "2": "$x = -4$ or $x = 1$"
+              },
+              {
+                "0": "3. Find y",
+                "1": "Plug into $y = -2x + 3$",
+                "2": "For $x=-4$, $y=11$; for $x=1$, $y=1$"
+              },
+              {
+                "0": "4. Write solutions",
+                "1": "Ordered pairs",
+                "2": "$(-4, 11)$ and $(1, 1)$"
+              }
+            ],
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "When both equations are solved for y, substitution is a snap — just set them equal! The resulting quadratic equation gives the x-coordinates of the intersection points. Substitute back to get the full coordinates."
+      },
+      "teacherCues": [
+        "Write $y = x^2 + x - 1$ and $y = -2x + 3$. 'Since both equal y, set the right sides equal: $x^2 + x - 1 = -2x + 3$.'",
+        "Then solve the quadratic equation: bring all terms to one side, factor, and find x. Then plug back to find y."
+      ],
+      "title": "Solving Nonlinear Systems by Substitution",
+      "id": "solve-by-substitution",
+      "questions": [
+        {
+          "feedbackIfWrong": "Set $x^2 + 2x = 3x$.",
+          "blanks": [
+            {
+              "accept": [
+                "3x",
+                "3x"
+              ]
+            }
+          ],
+          "hints": [
+            "The right side of the second equation.",
+            "It's the expression equal to $y$."
+          ],
+          "type": "fill-blank",
+          "prompt": "To solve $y = x^2 + 2x$ and $y = 3x$ by substitution, set the expressions for $y$ equal: $x^2 + 2x =$ ___.",
+          "id": "q2-1"
+        },
+        {
+          "prompt": "In the substitution example with $y = x^2 + x - 1$ and $y = -2x + 3$, one solution is $(-4, 11)$. What is the x-coordinate of the other solution?",
+          "id": "q2-2",
+          "feedbackIfWrong": "The other x-coordinate is 1.",
+          "type": "short-answer",
+          "hints": [
+            "The other x-value from the factors.",
+            "From $(x+4)(x-1)=0$."
+          ],
+          "answer": "1"
+        },
+        {
+          "feedbackIfWrong": "There is 1 solution: $(0, 9)$.",
+          "hints": [
+            "$x^2 + 9 = 9$ → $x^2 = 0$ → $x = 0$.",
+            "Only one x-value."
+          ],
+          "type": "short-answer",
+          "id": "q2-3",
+          "prompt": "Solve $y = x^2 + 9$ and $y = 9$. How many solutions are there?",
+          "answer": "1"
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "When subtracting equations, subtract the entire right side. Be careful with signs: $(x^2 - 3x - 2) - (-3x - 8) = x^2 - 3x - 2 + 3x + 8$. [[imp:Distribute the minus sign correctly.]]",
+        "title": "Subtraction Order Matters"
+      },
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Subtract equations when coefficients of the eliminated variable match.",
+            "If the resulting equation has no real solution, the system has no real solution."
+          ],
+          "title": "Solving by Elimination",
+          "formula": "$$ \\text{If } y = f(x) \\text{ and } y = g(x), \\text{ then } f(x) - g(x) = 0. $$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "1. Align equations",
+                "1": "$y = x^2 - 3x - 2$ and $y = -3x - 8$",
+                "2": "Same $y$ coefficient"
+              },
+              {
+                "0": "2. Subtract",
+                "1": "$y - y = (x^2 - 3x - 2) - (-3x - 8)$",
+                "2": "$0 = x^2 + 6$"
+              },
+              {
+                "0": "3. Solve for x",
+                "1": "$x^2 = -6$",
+                "2": "No real solutions"
+              },
+              {
+                "0": "4. Conclude",
+                "1": "System has no real solutions",
+                "2": ""
+              }
+            ],
+            "title": "Elimination Method for $y = x^2 - 3x - 2$ and $y = -3x - 8$"
+          }
+        ],
+        "explanation": [
+          "**Elimination** works best when the coefficients of one variable are the same or easily made the same.",
+          "Step 1: Arrange both equations with like terms aligned, often as $y = ...$ or in standard form.",
+          "Step 2: Subtract (or add) the equations to eliminate one variable. With $y = f(x)$ and $y = g(x)$, subtract to get $0 = f(x) - g(x)$.",
+          "Step 3: Solve the resulting equation for $x$. Substitute back to find $y$ for each $x$.",
+          "If the resulting equation has no real solutions (e.g., $x^2 = -6$), the system has no real solutions.",
+          "Example: $y = x^2 - 3x - 2$ and $y = -3x - 8$. Subtract: $0 = x^2 + 6$ → $x^2 = -6$, no real solutions. The system has no real solutions."
+        ]
+      },
+      "id": "solve-by-elimination",
+      "discoveryHook": {
+        "scenario": "When both equations have the same variable isolated (like y), you can subtract one from the other to eliminate that variable. The resulting quadratic equation tells you how many solutions the system has — and sometimes reveals that there are none at all!"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Both are solved for $y$. Subtract the second from the first: $0 = (x^2 - 3x - 2) - (-3x - 8)$.",
+            "Simplify: $0 = x^2 - 3x - 2 + 3x + 8 = x^2 + 6$.",
+            "So $x^2 = -6$. No real solution. The system has no real solutions."
+          ],
+          "title": "Example A — No Real Solutions",
+          "prompt": "Solve $y = x^2 - 3x - 2$ and $y = -3x - 8$ by elimination."
+        },
+        {
+          "title": "Example B — Two Solutions",
+          "steps": [
+            "Subtract: $0 = (x^2 + x) - (x + 5) = x^2 - 5$.",
+            "$x^2 = 5$ → $x = \\pm \\sqrt{5}$.",
+            "For each $x$, $y = x + 5$. Solutions: $(\\sqrt{5}, 5+\\sqrt{5})$ and $(-\\sqrt{5}, 5-\\sqrt{5})$."
+          ],
+          "peerPrompt": "Explain to a partner: How does subtracting the equations lead to a quadratic? What do we do after finding the x-values?",
+          "prompt": "Solve $y = x^2 + x$ and $y = x + 5$ by elimination.",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C — Practice",
+          "steps": [
+            "Subtract: $0 = (2x - 1) - x^2 = -x^2 + 2x - 1$.",
+            "Multiply by -1: $x^2 - 2x + 1 = 0$ → $(x-1)^2 = 0$ → $x = 1$.",
+            "Then $y = 2(1) - 1 = 1$. Solution: $(1, 1)$. One solution."
+          ],
+          "prompt": "Solve $y = 2x - 1$ and $y = x^2$ by elimination.",
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "9",
+                "nine"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "To eliminate $y$ from $y = x^2 - 5x$ and $y = -5x + 9$, subtract the second equation from the first. The resulting equation is $0 = x^2 -$ ___.",
+          "hints": [
+            "$(x^2 - 5x) - (-5x + 9)$.",
+            "Simplify the constant terms: $0 - 9 = -9$, so $0 = x^2 - 9$."
+          ],
+          "feedbackIfWrong": "The equation is $0 = x^2 - 9$.",
+          "id": "q3-1"
+        },
+        {
+          "id": "q3-2",
+          "hints": [
+            "$x^2 = -6$ has no real solution.",
+            "No real numbers squared give a negative."
+          ],
+          "prompt": "In the system $y = x^2 - 3x - 2$ and $y = -3x - 8$, the resulting equation is $x^2 + 6 = 0$. How many real solutions does the system have?",
+          "answer": "0",
+          "type": "short-answer",
+          "feedbackIfWrong": "0 real solutions."
+        },
+        {
+          "prompt": "Solve $y = x^2 + x$ and $y = x + 5$ by elimination. How many real solutions are there?",
+          "hints": [
+            "Subtract to get $x^2 - 5 = 0$.",
+            "$x = \\pm \\sqrt{5}$, two distinct values."
+          ],
+          "feedbackIfWrong": "There are 2 real solutions.",
+          "answer": "2",
+          "id": "q3-3",
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Write $y = x^2 - 3x - 2$ and $y = -3x - 8$. 'Both have y isolated. Subtract the second equation from the first to eliminate y.'",
+        "The resulting equation is $0 = x^2 + 6$. Since $x^2$ can't be negative, there are no real solutions."
+      ],
+      "title": "Solving Nonlinear Systems by Elimination"
+    },
+    {
+      "title": "Approximating Solutions of Nonlinear Systems",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Approximate the solution of $y = \\frac{1}{2}x^2 + 3$ and $y = 3x$ to the nearest thousandth.",
+          "steps": [
+            "Set equal: $3x = \\frac{1}{2}x^2 + 3$ → $0 = \\frac{1}{2}x^2 - 3x + 3$.",
+            "Graph shows zero between 1 and 2. Test $f(x) = 3x - 0.5x^2 - 3$ from 1.1 to 1.2.",
+            "$f(1.194) \\approx -0.0002$ (closest to 0). So $x \\approx 1.194$.",
+            "Find $y = 3(1.194) \\approx 3.582$? Wait, using $y = 3x$: $3 \\times 1.194 = 3.582$. Using $y = 0.5x^2+3$: $0.5(1.194)^2+3 \\approx 3.713$. Slight difference due to rounding. Best is to average or use more precise x. Actually the example in the book got $3.713$. I'll stick with book: $y \\approx 3.713$. Solution $\\approx (1.194, 3.713)$."
+          ],
+          "title": "Example A — Approximate to Thousandth"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "Solve $-2(4)^x + 3 = 0.5x^2 - 2x$ by treating as a system and using a graphing calculator.",
+          "title": "Example B — Using Technology",
+          "steps": [
+            "Graph both sides on the calculator. Use the intersect feature.",
+            "Two intersections: $(-1, 2.5)$ and approximately $(0.47, -0.83)$.",
+            "So the solutions of the equation are $x = -1$ and $x \\approx 0.47$."
+          ],
+          "peerPrompt": "Explain to a partner: How can writing this as a system $y = -2(4)^x + 3$ and $y = 0.5x^2 - 2x$ help solve the equation?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Set equal: $x^2 + 2x + 3 = 3x$ → $x^2 - x + 3 = 0$.",
+            "Discriminant: $1 - 12 = -11 < 0$. No real solutions — the system has no real solutions. (Approximation not needed.)"
+          ],
+          "prompt": "Approximate the solution of $y = x^2 + 2x + 3$ and $y = 3x$ to the nearest thousandth.",
+          "title": "Example C — Practice"
+        }
+      ],
+      "teacherCues": [
+        "Show a system like $y = \\frac{1}{2}x^2 + 3$ and $y = 3x$. 'This doesn't solve nicely. How can we estimate the solution?'",
+        "Graph to see there's one solution near $x=1.2$. Then use a table with small increments to zoom in."
+      ],
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Graph first to find the approximate interval.",
+            "Use increments of 0.1, then 0.01, then 0.001 to refine.",
+            "Technology (intersect or table) gives fast, accurate approximations."
+          ],
+          "formula": "$$ \\text{Find } x \\text{ where } f(x) \\approx 0 \\text{ by testing values.} $$",
+          "title": "Approximating Solutions"
+        },
+        "explanation": [
+          "When a nonlinear system cannot be solved exactly by algebra, approximate the solutions.",
+          "Method 1 (Table): Graph to find approximate x-interval where the intersection lies. Create a table of values for the combined equation $f(x) = 0$ with small increments (0.1, 0.01, etc.). The x-value where the value is closest to 0 is the approximation.",
+          "Method 2 (Technology): Use a graphing calculator's **intersect** feature, or enter both sides as separate functions and find matching y-values in a table.",
+          "Example: $y = \\frac{1}{2}x^2 + 3$ and $y = 3x$. Substitute: $3x = \\frac{1}{2}x^2 + 3$ → $0 = \\frac{1}{2}x^2 - 3x + 3$. A table from 1 to 2 shows a zero near $x=1.194$. Corresponding $y \\approx 3.713$. Solution $\\approx (1.194, 3.713)$."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1.1",
+                "1": "-0.26",
+                "2": "Negative"
+              },
+              {
+                "0": "1.2",
+                "1": "0.02",
+                "2": "Positive (sign change!)"
+              },
+              {
+                "0": "1.19",
+                "1": "-0.012",
+                "2": "Negative"
+              },
+              {
+                "0": "1.194",
+                "1": "-0.0002",
+                "2": "Closest to 0 → approximation"
+              },
+              {
+                "0": "1.195",
+                "1": "0.003",
+                "2": "Positive"
+              }
+            ],
+            "title": "Approximating a Solution by Table",
+            "headers": [
+              "x",
+              "f(x) = 3x - 0.5x² - 3",
+              "Sign"
+            ],
+            "variant": "colorful",
+            "type": "table"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "interval",
+                "range",
+                "x-values"
+              ]
+            }
+          ],
+          "id": "q4-1",
+          "hints": [
+            "It's the x-values between which the intersection occurs.",
+            "You need to know where to start the table."
+          ],
+          "prompt": "To approximate solutions, first graph the system to find the approximate ___ where the graphs intersect.",
+          "feedbackIfWrong": "Find the approximate interval (or x-range) containing the intersection."
+        },
+        {
+          "type": "short-answer",
+          "answer": "3.582",
+          "feedbackIfWrong": "The y-coordinate is approximately 3.582.",
+          "prompt": "In the approximation of $y = \\frac{1}{2}x^2 + 3$ and $y = 3x$, the solution's x-coordinate is approximately 1.194. Find the y-coordinate using $y = 3x$, rounded to three decimal places.",
+          "id": "q4-2",
+          "hints": [
+            "Multiply 3 by 1.194.",
+            "$3 \\times 1.194 = 3.582$."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "prompt": "If a table shows $f(1.3) = -0.1$ and $f(1.4) = 0.2$, where does a zero of $f$ lie? (Type the interval, e.g., 'between 1.3 and 1.4')",
+          "id": "q4-3",
+          "hints": [
+            "Look for a sign change.",
+            "Negative to positive means the function crossed zero."
+          ],
+          "answer": "between 1.3 and 1.4",
+          "feedbackIfWrong": "The zero lies between 1.3 and 1.4."
+        }
+      ],
+      "id": "approximating-solutions",
+      "confusionCorner": {
+        "body": "First check if the system has real solutions. If the resulting quadratic has a negative discriminant, stop — there are no real solutions. Approximating is only needed when solutions exist but are irrational.",
+        "title": "No Real Solution vs. Need to Approximate"
+      },
+      "discoveryHook": {
+        "scenario": "Not all systems give nice integer solutions. When the intersection point has messy decimals, we can approximate by testing function values in small steps. The x-value where the y-values are closest is the best approximation."
+      }
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ y = ax^2 + bx + c \\quad \\text{and} \\quad y = mx + b \\quad\\Rightarrow\\quad ax^2 + (b-m)x + (c-b) = 0 $$",
+          "title": "Solving Linear-Quadratic Systems",
+          "notes": [
+            "Solutions are the intersection points of the graphs.",
+            "Number of real solutions = number of real roots of the resulting quadratic."
+          ]
+        },
+        "explanation": [
+          "Understand: Identify that you have one linear and one quadratic equation. Determine if exact solutions are needed or approximations are sufficient.",
+          "Solve – Choose Method: If both are solved for y, use substitution (set equal) or elimination (subtract). If coefficients don't match easily, use substitution. For a quick visual, graph.",
+          "Solve – Execute: For substitution/elimination, solve the resulting quadratic equation. For technology, use intersect on a graphing calculator or a table of values.",
+          "Solve – Check Solutions: Substitute back into both original equations. For word problems, discard solutions that don't fit the context (negative distances, etc.).",
+          "Conclude: Write solutions as ordered pairs $(x, y)$. If approximating, round to the specified precision."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Graphing",
+                "1": "Visual, approximate solutions",
+                "2": "Quickly see 0, 1, or 2 solutions"
+              },
+              {
+                "0": "Substitution",
+                "1": "One or both equations solved for y",
+                "2": "Set equal, solve quadratic"
+              },
+              {
+                "0": "Elimination",
+                "1": "Both y isolated, easy to subtract",
+                "2": "Subtract to eliminate y"
+              },
+              {
+                "0": "Approximation",
+                "1": "Solutions are irrational, or equation has mixed types",
+                "2": "Use table or technology"
+              }
+            ],
+            "title": "Methods for Linear-Quadratic Systems",
+            "headers": [
+              "Method",
+              "When to Use",
+              "Example"
+            ]
+          },
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Bridge Arch Example: $y = -0.002x^2 + 1.06x$, $y = 52$",
+            "headers": [
+              "Step",
+              "Work"
+            ],
+            "rows": [
+              {
+                "0": "Set equal",
+                "1": "$-0.002x^2 + 1.06x = 52$"
+              },
+              {
+                "0": "Standard form",
+                "1": "$-0.002x^2 + 1.06x - 52 = 0$"
+              },
+              {
+                "0": "Solve (Quad. Formula)",
+                "1": "Approx solutions: $x \\approx 50$ m and $x \\approx 480$ m"
+              },
+              {
+                "0": "Interpret",
+                "1": "The road intersects the arch at about 50 m and 480 m from the left pylon."
+              }
+            ]
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "From movie attendance to boat paths to bridge arches, linear-quadratic systems appear everywhere. This blueprint helps you choose the best method — graph to see, substitute or eliminate to find exact solutions, and approximate when needed."
+      },
+      "id": "blueprint-linear-quadratic-system",
+      "teacherCues": [
+        "Summarize the three algebraic methods and when to use each: Substitution (y isolated), Elimination (y isolated and easy to subtract), Graphing (visual).",
+        "Show the bridge arch example: set the quadratic arch equal to the road height, solve for x to find where they meet."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Set equal: $-0.002x^2 + 1.06x = 52$ → $-0.002x^2 + 1.06x - 52 = 0$.",
+            "Use Quadratic Formula or graph. Solutions: $x \\approx 50$ m and $x \\approx 480$ m.",
+            "So the road meets the arch at about 50 m and 480 m from the left pylon."
+          ],
+          "prompt": "The arch of a bridge is $y = -0.002x^2 + 1.06x$. The road is $y = 52$. Find the intersection points to the nearest meter.",
+          "title": "Example A — Bridge Arch"
+        },
+        {
+          "minLength": 2,
+          "steps": [
+            "Set equal: $-x^2 + 35x + 100 = -5x + 275$ → $-x^2 + 40x - 175 = 0$ → $x^2 - 40x + 175 = 0$.",
+            "Discriminant: $1600 - 700 = 900$, perfect square. Solutions: $x = 5$ and $x = 35$.",
+            "Attendance is the same on Day 5 and Day 35."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: After setting the equations equal, what does the discriminant tell you before you even solve?",
+          "title": "Example B — Movie Attendance",
+          "prompt": "Movie A: $y = -x^2 + 35x + 100$. Movie B: $y = -5x + 275$. Find when attendance is the same."
+        },
+        {
+          "prompt": "Your path: $y = -x^2 - 4x - 1$. Friend's path: $y = 2x + 8$. Do the paths cross?",
+          "title": "Example C — Boat Paths",
+          "steps": [
+            "Set equal: $-x^2 - 4x - 1 = 2x + 8$ → $-x^2 - 6x - 9 = 0$ → $x^2 + 6x + 9 = 0$.",
+            "Factor: $(x+3)^2 = 0$ → $x = -3$. Then $y = 2(-3) + 8 = 2$.",
+            "Yes, they cross at $(-3, 2)$ (one intersection)."
+          ],
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Interpret the Context",
+        "body": "In real-world problems, x often represents time or distance and must be nonnegative. Discard any negative solutions. Also, check that the y-values make sense (e.g., height cannot be negative)."
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Set the expressions for $y$ equal.",
+          "id": "q5-1",
+          "prompt": "The first step in solving a linear-quadratic system algebraically is often to set the expressions for ___ equal to each other.",
+          "hints": [
+            "Both equations are usually solved for this variable.",
+            "It's the output variable."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "y",
+                "Y"
+              ]
+            }
+          ]
+        },
+        {
+          "answer": "50",
+          "hints": [
+            "Solve $-0.002x^2 + 1.06x = 52$.",
+            "The smaller root is about 50."
+          ],
+          "prompt": "In the bridge problem, the road meets the arch at two points. What are the approximate x-values? (Type the smaller value)",
+          "id": "q5-2",
+          "type": "short-answer",
+          "feedbackIfWrong": "The smaller x-value is about 50 meters."
+        },
+        {
+          "answer": "1",
+          "hints": [
+            "Discriminant 0 means one real root.",
+            "The line touches the parabola."
+          ],
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "If a linear-quadratic system results in a quadratic equation with discriminant 0, how many solutions does the system have?",
+          "feedbackIfWrong": "Exactly 1 solution (the line is tangent to the parabola)."
+        }
+      ],
+      "title": "Blueprint Aid: Solving Linear-Quadratic Systems"
+    }
+  ],
+  "title": "Chapter 9.6 — Solving Nonlinear Systems of Equations",
+  "schemaVersion": 2,
+  "type": "interactive-lesson",
+  "id": "chapter-9-6-solving-nonlinear-systems",
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

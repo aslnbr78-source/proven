@@ -1,0 +1,812 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "ch1-lu1-9",
+  "title": "Inverse Functions",
+  "standards": [
+    "HSF.BF.B.4",
+    "HSF.BF.B.4a",
+    "HSF.BF.B.4b",
+    "HSF.BF.B.4c"
+  ],
+  "blocks": [
+    {
+      "id": "informal-inverse",
+      "title": "1. What are Inverse Functions?",
+      "teacherCues": [
+        "Ask: 'If a function adds 4 to an input, what operation would undo that?'",
+        "Define inverse functions as functions that reverse each other's effect."
+      ],
+      "discoveryHook": {
+        "scenario": "The function $ f(x) = x + 4 $ sends $1$ to $5$, $2$ to $6$, etc. Its [[kw:inverse function]] $ f^{-1}(x) = x - 4 $ sends $5$ back to $1$, $6$ back to $2$. The two functions undo each other: applying $ f $ then $ f^{-1} $ (or $ f^{-1} $ then $ f $) returns the original input. The inverse function essentially swaps the input and output of the original."
+      },
+      "concept": {
+        "explanation": [
+          "An [[kw:inverse function]] $ f^{-1} $ of a function $ f $ satisfies: $ f(f^{-1}(x)) = x $ for every $ x $ in the domain of $ f^{-1} $, and $ f^{-1}(f(x)) = x $ for every $ x $ in the domain of $ f $.",
+          "In words, $ f^{-1} $ undoes what $ f $ does, and vice versa.",
+          "Informally, to find an inverse, think: what operation reverses the original? Example: $ f(x) = 4x $ multiplies by 4, so its inverse divides by 4: $ f^{-1}(x) = \\frac{x}{4} $.",
+          "[[imp: The notation $ f^{-1}(x) $ does NOT mean the reciprocal; it denotes the inverse function.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Function vs. Inverse Function",
+            "variant": "colorful",
+            "headers": [
+              "Original $ f $",
+              "Inverse $ f^{-1} $"
+            ],
+            "rows": [
+              {
+                "0": "$ f(x) = x + 4 $",
+                "1": "$ f^{-1}(x) = x - 4 $"
+              },
+              {
+                "0": "$ f(x) = 5x $",
+                "1": "$ f^{-1}(x) = \\frac{x}{5} $"
+              },
+              {
+                "0": "$ f(x) = x^3 $",
+                "1": "$ f^{-1}(x) = \\sqrt[3]{x} $"
+              }
+            ],
+            "caption": "Each inverse operation reverses the original."
+          }
+        ],
+        "formulaCard": {
+          "title": "Inverse Function Verification",
+          "formula": "$$ f(f^{-1}(x)) = x \\quad \\text{and} \\quad f^{-1}(f(x)) = x $$",
+          "notes": [
+            "Composition yields the identity function.",
+            "The domain of $ f $ equals the range of $ f^{-1} $, and vice versa."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find inverse informally",
+          "prompt": "Find the inverse of $ f(x) = 4x $. Then verify using composition.",
+          "steps": [
+            "$ f $ multiplies by 4, so inverse divides by 4: $ f^{-1}(x) = \\frac{x}{4} $.",
+            "Check: $ f(f^{-1}(x)) = 4(\\frac{x}{4}) = x $.",
+            "$ f^{-1}(f(x)) = \\frac{4x}{4} = x $. Verified."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why composition must give x",
+          "prompt": "Explain why $ f(f^{-1}(x)) = x $ is the defining property of inverse functions.",
+          "peerPrompt": "Think about what it means to undo an operation.",
+          "minLength": 2,
+          "steps": [
+            "If you perform a function on an input, then apply its inverse, you should get back exactly what you started with.",
+            "No information should be lost.",
+            "This property ensures the two functions are perfect reversals of each other."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Verify inverse",
+          "prompt": "Show that $ f(x) = x^3 + 1 $ and $ g(x) = \\sqrt[3]{x - 1} $ are inverses.",
+          "steps": [
+            "$ f(g(x)) = (\\sqrt[3]{x-1})^3 + 1 = (x-1) + 1 = x $.",
+            "$ g(f(x)) = \\sqrt[3]{(x^3+1) - 1} = \\sqrt[3]{x^3} = x $.",
+            "Both compositions give $ x $, so they are inverses."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "$ f^{-1}(x) $ is NOT the reciprocal $ \\frac{1}{f(x)} $. [[imp: The superscript -1 indicates the inverse function, not an exponent.]]"
+      },
+      "questions": [
+        {
+          "id": "b1q1",
+          "type": "fill-blank",
+          "prompt": "The inverse function $ f^{-1} $ satisfies $ f(f^{-1}(x)) = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "x"
+              ]
+            }
+          ],
+          "hints": [
+            "It returns the original input.",
+            "The identity."
+          ],
+          "feedbackIfWrong": "x."
+        },
+        {
+          "id": "b1q2",
+          "type": "short-answer",
+          "prompt": "Find the inverse of $ f(x) = x - 7 $ informally. (use f^{-1}(x) = ...)",
+          "answers": [
+            "f^{-1}(x) = x+7",
+            "x+7"
+          ],
+          "hints": [
+            "Reverse subtracting 7.",
+            "Add 7."
+          ],
+          "feedbackIfWrong": "$ f^{-1}(x) = x + 7 $."
+        },
+        {
+          "id": "b1q3",
+          "type": "short-answer",
+          "prompt": "If $ f(3) = 8 $, then what is $ f^{-1}(8) $? (number only)",
+          "answers": [
+            "3"
+          ],
+          "hints": [
+            "Inverse swaps input and output.",
+            "Undo the function."
+          ],
+          "feedbackIfWrong": "3."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Verify that $ f(x) = \\frac{x-4}{7} $ and $ g(x) = 7x+4 $ are inverse functions.",
+        "type": "short-answer",
+        "answers": [
+          "Both compositions equal x"
+        ],
+        "hints": [
+          "Compute $ f(g(x)) = ((7x+4)-4)/7 = 7x/7 = x $.",
+          "Compute $ g(f(x)) = 7((x-4)/7)+4 = (x-4)+4 = x $."
+        ]
+      }
+    },
+    {
+      "id": "graphical-inverse",
+      "title": "2. Graphs of Inverse Functions",
+      "teacherCues": [
+        "Ask: 'If the point (2,5) is on the graph of f, what point must be on the graph of its inverse?'",
+        "Show that the graphs of f and f^{-1} are reflections across the line y = x."
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine folding the coordinate plane along the line $ y = x $. The graph of $ f(x) = 2x - 3 $ would land exactly on the graph of $ f^{-1}(x) = \\frac{x+3}{2} $. This is because inverse functions swap the x and y coordinates—every point $ (a,b) $ on $ f $ becomes $ (b,a) $ on $ f^{-1} $. The line $ y = x $ is the mirror."
+      },
+      "concept": {
+        "explanation": [
+          "If $ (a, b) $ lies on the graph of $ f $, then $ (b, a) $ lies on the graph of $ f^{-1} $.",
+          "Thus the graph of $ f^{-1} $ is a [[kw:reflection]] of the graph of $ f $ across the line $ y = x $.",
+          "Graphically, you can verify two functions are inverses by checking if their graphs are mirror images across $ y = x $.",
+          "[[imp: The line $ y = x $ acts as the axis of symmetry between a function and its inverse.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Points on $ f $ and $ f^{-1} $",
+            "variant": "colorful",
+            "headers": [
+              "Point on $ f(x) = 2x-3 $",
+              "Corresponding point on $ f^{-1}(x) = \\frac{x+3}{2} $"
+            ],
+            "rows": [
+              {
+                "0": "$ (-1,-5) $",
+                "1": "$ (-5,-1) $"
+              },
+              {
+                "0": "$ (0,-3) $",
+                "1": "$ (-3,0) $"
+              },
+              {
+                "0": "$ (2,1) $",
+                "1": "$ (1,2) $"
+              },
+              {
+                "0": "$ (3,3) $",
+                "1": "$ (3,3) $ (lies on $ y=x $)"
+              }
+            ],
+            "caption": "Coordinates are swapped; points on $ y=x $ stay fixed."
+          }
+        ],
+        "formulaCard": {
+          "title": "Graphical Inverse Property",
+          "formula": "$$ (a,b) \\text{ on } f \\iff (b,a) \\text{ on } f^{-1} $$ $$ f^{-1} \\text{ is reflection of } f \\text{ across } y = x $$",
+          "notes": [
+            "If a function is its own inverse, its graph is symmetric about $ y = x $.",
+            "Intersection points of $ f $ and $ f^{-1} $ lie on the line $ y = x $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Verify inverse graphically",
+          "prompt": "Verify that $ f(x) = x^2 $ (with $ x \\ge 0 $) and $ g(x) = \\sqrt{x} $ are inverses by examining points.",
+          "steps": [
+            "Points on $ f $: (0,0), (1,1), (2,4), (3,9).",
+            "Points on $ g $: (0,0), (1,1), (4,2), (9,3).",
+            "Each pair is swapped; the graphs are reflections in $ y = x $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why restrict domain for $ x^2 $?",
+          "prompt": "Explain why $ f(x) = x^2 $ without domain restriction does not have an inverse, but with $ x \\ge 0 $ it does.",
+          "peerPrompt": "Think about the horizontal line test (foreshadowing).",
+          "minLength": 2,
+          "steps": [
+            "Without restriction, $ x^2 $ maps both $2$ and $-2$ to $4$, so it's not one-to-one.",
+            "The inverse would need to map $4$ to both $2$ and $-2$, which is not a function.",
+            "Restricting to $ x \\ge 0 $ makes it one-to-one, allowing an inverse $ f^{-1}(x) = \\sqrt{x} $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find corresponding point",
+          "prompt": "If the graph of $ f $ passes through $ (-3, 5) $, what point lies on the graph of $ f^{-1} $?",
+          "steps": [
+            "Swap coordinates: $ (5, -3) $.",
+            "This point is on $ f^{-1} $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Not all functions have inverses. [[imp: A function must be one-to-one for its inverse to also be a function.]]"
+      },
+      "questions": [
+        {
+          "id": "b2q1",
+          "type": "fill-blank",
+          "prompt": "The graph of $ f^{-1} $ is a reflection of $ f $ across the line $ y = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "x"
+              ]
+            }
+          ],
+          "hints": [
+            "The diagonal line.",
+            "Equality of coordinates."
+          ],
+          "feedbackIfWrong": "x."
+        },
+        {
+          "id": "b2q2",
+          "type": "short-answer",
+          "prompt": "If $ (7, -1) $ is on $ f $, then $ ( -1, 7 ) $ is on $ f^{-1} $. (true or false)",
+          "answers": [
+            "true"
+          ],
+          "hints": [
+            "Swap coordinates.",
+            "The mirror property."
+          ],
+          "feedbackIfWrong": "true."
+        },
+        {
+          "id": "b2q3",
+          "type": "short-answer",
+          "prompt": "A function and its inverse intersect at points that lie on the line $ y = x $. Give one such point for $ f(x) = x^3 $. (format: (a,b))",
+          "answers": [
+            "(0,0)",
+            "(-1,-1)",
+            "(1,1)"
+          ],
+          "hints": [
+            "Solve $ x^3 = x $.",
+            "$ x=0 $ or $ x=\\pm1 $."
+          ],
+          "feedbackIfWrong": "Any of (0,0), (1,1), (-1,-1)."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Verify graphically that $ f(x) = x^2+1 $ ($ x \\ge 0 $) and $ g(x) = \\sqrt{x-1} $ are inverses by comparing points.",
+        "type": "short-answer",
+        "answers": [
+          "(0,1) on f; (1,0) on g. (2,5) on f; (5,2) on g. etc."
+        ],
+        "hints": [
+          "Pick a few points on $ f $, e.g., (0,1), (1,2), (2,5), (3,10).",
+          "Swap coordinates: (1,0), (2,1), (5,2), (10,3) all satisfy $ g $."
+        ]
+      }
+    },
+    {
+      "id": "horizontal-line-test",
+      "title": "3. One-to-One Functions and the Horizontal Line Test",
+      "teacherCues": [
+        "Ask: 'How can we tell from a graph if a function has an inverse?'",
+        "Introduce the Horizontal Line Test as the graphical check for one-to-one functions."
+      ],
+      "discoveryHook": {
+        "scenario": "The function $ f(x) = x^2 $ fails to have an inverse because a horizontal line (like $ y = 4 $) hits the graph at two points ($ x = -2 $ and $ x = 2 $). This means two inputs give the same output, so the inverse would not be a function. The [[kw:Horizontal Line Test]] checks if a function is one-to-one, which is necessary for an inverse to exist."
+      },
+      "concept": {
+        "explanation": [
+          "A function is [[kw:one-to-one]] if each output corresponds to exactly one input.",
+          "The [[kw:Horizontal Line Test]]: a function has an inverse if and only if no horizontal line intersects its graph more than once.",
+          "If any horizontal line hits the graph twice, the function is not one-to-one and does not have an inverse (unless the domain is restricted).",
+          "Common one-to-one functions: linear functions with nonzero slope, $ f(x) = x^3 $, $ f(x) = \\sqrt{x} $.",
+          "[[imp: The Horizontal Line Test is the inverse-function analogue of the Vertical Line Test.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Horizontal Line Test Examples",
+            "variant": "colorful",
+            "headers": [
+              "Function",
+              "Horizontal Line Test",
+              "One-to-One?",
+              "Has Inverse?"
+            ],
+            "rows": [
+              {
+                "0": "$ f(x) = x^3 - 1 $",
+                "1": "Passes",
+                "2": "Yes",
+                "3": "Yes"
+              },
+              {
+                "0": "$ f(x) = x^2 - 1 $",
+                "1": "Fails (e.g., $ y=0 $)",
+                "2": "No",
+                "3": "No (unless restricted)"
+              },
+              {
+                "0": "$ f(x) = |x| $",
+                "1": "Fails",
+                "2": "No",
+                "3": "No (unless restricted)"
+              }
+            ],
+            "caption": "If any horizontal line hits more than once, no inverse function exists."
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Apply Horizontal Line Test",
+          "prompt": "Use the Horizontal Line Test to decide if $ f(x) = x^2 $ (all reals) has an inverse.",
+          "steps": [
+            "Draw a horizontal line $ y = 1 $. It intersects the parabola at $ x = \\pm 1 $, two points.",
+            "Thus $ f $ is not one-to-one.",
+            "Without domain restriction, $ f(x) = x^2 $ does not have an inverse function."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why does $ x^3 $ pass but $ x^2 $ fail?",
+          "prompt": "Explain geometrically why the cubic function $ x^3 $ passes the Horizontal Line Test while the quadratic $ x^2 $ fails.",
+          "peerPrompt": "Think about the shape of each graph.",
+          "minLength": 2,
+          "steps": [
+            "$ x^3 $ is strictly increasing—it never doubles back, so any horizontal line hits it exactly once.",
+            "$ x^2 $ is a parabola that goes down then up, so for any positive y (except the vertex), there are two x-values.",
+            "Thus $ x^3 $ is one-to-one; $ x^2 $ is not."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Determine one-to-one from graph description",
+          "prompt": "A function is increasing on $ (-\\infty, \\infty) $. Does it pass the Horizontal Line Test?",
+          "steps": [
+            "A function that is strictly increasing (or decreasing) everywhere will pass the Horizontal Line Test.",
+            "Because as $ x $ increases, $ y $ never repeats a value.",
+            "Therefore it is one-to-one and has an inverse."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Passing the Horizontal Line Test means the function is one-to-one, but its inverse must also be a function. [[imp: If you restrict the domain of a non‑one‑to‑one function, it may become one‑to‑one on that restricted domain.]]"
+      },
+      "questions": [
+        {
+          "id": "b3q1",
+          "type": "fill-blank",
+          "prompt": "A function is one-to-one if each output corresponds to exactly ___ input(s).",
+          "blanks": [
+            {
+              "accept": [
+                "one",
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "Not two.",
+            "Unique reversal."
+          ],
+          "feedbackIfWrong": "one."
+        },
+        {
+          "id": "b3q2",
+          "type": "short-answer",
+          "prompt": "Does $ f(x) = |x| $ pass the Horizontal Line Test? (yes or no)",
+          "answers": [
+            "no"
+          ],
+          "hints": [
+            "Draw a horizontal line at $ y=2 $.",
+            "Hits at $ x=2 $ and $ x=-2 $."
+          ],
+          "feedbackIfWrong": "no."
+        },
+        {
+          "id": "b3q3",
+          "type": "short-answer",
+          "prompt": "If $ f $ passes the Horizontal Line Test, then $ f $ is ___ (one-to-one or many-to-one).",
+          "answers": [
+            "one-to-one",
+            "one to one"
+          ],
+          "hints": [
+            "Unique outputs.",
+            "Inverse exists."
+          ],
+          "feedbackIfWrong": "one-to-one."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Consider $ f(x) = \\cos x $. Does it pass the Horizontal Line Test on $ (-\\infty,\\infty) $? What restriction could make it one-to-one?",
+        "type": "short-answer",
+        "answers": [
+          "No; restrict to [0,π]"
+        ],
+        "hints": [
+          "$ \\cos x $ is periodic, many horizontal lines hit infinitely often.",
+          "Restricting to $ [0,\\pi] $ makes it decreasing and one-to-one."
+        ]
+      }
+    },
+    {
+      "id": "find-inverse-algebraically",
+      "title": "4. Finding Inverse Functions Algebraically",
+      "teacherCues": [
+        "Write the steps on the board: 1) Replace f(x) with y. 2) Swap x and y. 3) Solve for new y. 4) Rename as f^{-1}(x).",
+        "Show a simple and a complex example."
+      ],
+      "discoveryHook": {
+        "scenario": "For $ f(x) = \\frac{5-x}{3x+2} $, finding the inverse by inspection is impossible. Instead, we use a systematic algebraic method: write $ y = \\frac{5-x}{3x+2} $, swap $ x $ and $ y $, and solve for $ y $. The result is $ f^{-1}(x) = \\frac{5-2x}{3x+1} $. This algebraic process works for any one-to-one function."
+      },
+      "concept": {
+        "explanation": [
+          "To find the inverse of $ f $ algebraically:",
+          "1. Verify $ f $ is one-to-one (Horizontal Line Test).",
+          "2. Write $ y = f(x) $.",
+          "3. Interchange $ x $ and $ y $: $ x = f(y) $.",
+          "4. Solve the resulting equation for $ y $. (If impossible, the function may not have a closed-form inverse.)",
+          "5. Replace $ y $ with $ f^{-1}(x) $.",
+          "6. Verify with composition.",
+          "[[imp: The key step is swapping x and y—this reflects the inverse relation.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Algebraic Method for $ f(x) = \\frac{5-x}{3x+2} $",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Original",
+                "1": "$ y = \\frac{5-x}{3x+2} $"
+              },
+              {
+                "0": "Swap $ x $ and $ y $",
+                "1": "$ x = \\frac{5-y}{3y+2} $"
+              },
+              {
+                "0": "Multiply both sides",
+                "1": "$ x(3y+2) = 5-y $"
+              },
+              {
+                "0": "Expand",
+                "1": "$ 3xy + 2x = 5 - y $"
+              },
+              {
+                "0": "Collect $ y $-terms",
+                "1": "$ 3xy + y = 5 - 2x $"
+              },
+              {
+                "0": "Factor $ y $",
+                "1": "$ y(3x+1) = 5 - 2x $"
+              },
+              {
+                "0": "Solve for $ y $",
+                "1": "$ y = \\frac{5-2x}{3x+1} $"
+              },
+              {
+                "0": "Rename",
+                "1": "$ f^{-1}(x) = \\frac{5-2x}{3x+1} $"
+              }
+            ],
+            "caption": "The algebra can be intricate but follows a consistent pattern."
+          }
+        ],
+        "formulaCard": {
+          "title": "Algebraic Method for Inverse",
+          "formula": "$$ \\text{1. Write } y = f(x) $$ $$ \\text{2. Swap } x \\leftrightarrow y $$ $$ \\text{3. Solve for } y $$ $$ \\text{4. Replace } y \\text{ with } f^{-1}(x) $$",
+          "notes": [
+            "Works for any function where solving for $ y $ is possible.",
+            "Always verify using composition."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find inverse of a simple rational function",
+          "prompt": "Find the inverse of $ f(x) = \\frac{2x+1}{x-3} $.",
+          "steps": [
+            "Write $ y = \\frac{2x+1}{x-3} $.",
+            "Swap: $ x = \\frac{2y+1}{y-3} $.",
+            "Multiply: $ x(y-3) = 2y+1 $ → $ xy - 3x = 2y + 1 $.",
+            "Collect: $ xy - 2y = 3x + 1 $ → $ y(x-2) = 3x + 1 $.",
+            "$ y = \\frac{3x+1}{x-2} $ → $ f^{-1}(x) = \\frac{3x+1}{x-2} $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why swap x and y?",
+          "prompt": "Explain why interchanging $ x $ and $ y $ in the equation reflects the inverse relationship.",
+          "peerPrompt": "Think about what the inverse does to ordered pairs.",
+          "minLength": 2,
+          "steps": [
+            "The inverse function takes output back to input, so the roles of input and output are reversed.",
+            "Swapping $ x $ and $ y $ in the equation ensures that if $ (a,b) $ satisfies $ f $, then $ (b,a) $ satisfies the new equation.",
+            "Solving for $ y $ then gives the rule for the inverse."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Inverse of a linear function",
+          "prompt": "Find the inverse of $ f(x) = -\\frac{2}{3}x + 4 $.",
+          "steps": [
+            "Let $ y = -\\frac{2}{3}x + 4 $. Swap: $ x = -\\frac{2}{3}y + 4 $.",
+            "Solve: $ x - 4 = -\\frac{2}{3}y $ → $ y = -\\frac{3}{2}(x-4) = -\\frac{3}{2}x + 6 $.",
+            "$ f^{-1}(x) = -\\frac{3}{2}x + 6 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't forget to solve completely for $ y $ after swapping. [[imp: The new $ y $ is the inverse function; rename it $ f^{-1}(x) $.]]"
+      },
+      "questions": [
+        {
+          "id": "b4q1",
+          "type": "fill-blank",
+          "prompt": "To find the inverse algebraically, first replace $ f(x) $ with $ y $, then ___ $ x $ and $ y $.",
+          "blanks": [
+            {
+              "accept": [
+                "swap",
+                "interchange"
+              ]
+            }
+          ],
+          "hints": [
+            "Exchange.",
+            "Switch."
+          ],
+          "feedbackIfWrong": "swap (or interchange)."
+        },
+        {
+          "id": "b4q2",
+          "type": "short-answer",
+          "prompt": "Find the inverse of $ f(x) = 3x - 2 $ using the algebraic method. (use f^{-1}(x) = ...)",
+          "answers": [
+            "f^{-1}(x) = (x+2)/3",
+            "(x+2)/3"
+          ],
+          "hints": [
+            "$ y = 3x-2 $ → swap → $ x = 3y-2 $.",
+            "Solve for $ y $: $ y = \\frac{x+2}{3} $."
+          ],
+          "feedbackIfWrong": "$ f^{-1}(x) = \\frac{x+2}{3} $."
+        },
+        {
+          "id": "b4q3",
+          "type": "short-answer",
+          "prompt": "After solving for $ y $ in the swapped equation, you rename $ y $ as ___ (use f^{-1}(x)).",
+          "answers": [
+            "f^{-1}(x)",
+            "f^{-1}(x)"
+          ],
+          "hints": [
+            "The inverse notation.",
+            "It's read 'f inverse of x'."
+          ],
+          "feedbackIfWrong": "$ f^{-1}(x) $."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Find the inverse of $ f(x) = \\frac{x+2}{2x-1} $.",
+        "type": "short-answer",
+        "answers": [
+          "f^{-1}(x) = (x+2)/(2x-1)? actually it's (x+2)/(2x-1) again? Let's compute: y=(x+2)/(2x-1) swap x=(y+2)/(2y-1) → x(2y-1)=y+2 → 2xy - x = y+2 → 2xy - y = x+2 → y(2x-1)=x+2 → y=(x+2)/(2x-1). It is its own inverse!"
+        ],
+        "hints": [
+          "Set up $ x = \\frac{y+2}{2y-1} $.",
+          "Solve: $ y = \\frac{x+2}{2x-1} $ (it's self-inverse)."
+        ]
+      }
+    },
+    {
+      "id": "blueprint-inverse",
+      "title": "5. Blueprint for Inverse Functions",
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through checking one‑to‑one, finding inverse, and verifying."
+      ],
+      "discoveryHook": {
+        "scenario": "An engineer needs to invert a function to find the input that produces a desired output. The blueprint helps systematically verify one‑to‑one, find the inverse algebraically, and check it. This structured approach ensures no step is skipped."
+      },
+      "concept": {
+        "explanation": [
+          "Apply the blueprint to inverse function problems:",
+          "1. **Understand**: Check if the function is one‑to‑one (Horizontal Line Test). If not, can the domain be restricted? Also note domain of $ f $.",
+          "2. **Solve**: Write $ y = f(x) $, swap $ x $ and $ y $, solve for $ y $, rename as $ f^{-1}(x) $. Then state the domain of $ f^{-1} $ (which is the range of $ f $).",
+          "3. **Conclude**: Verify by composition: $ f(f^{-1}(x)) = x $ and $ f^{-1}(f(x)) = x $ for all $ x $ in the appropriate domains.",
+          "[[imp: The domain of $ f^{-1} $ equals the range of $ f $, and the range of $ f^{-1} $ equals the domain of $ f $.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Inverse Function Blueprint",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Example $ f(x) = x^3 $"
+            ],
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "One‑to‑one? Domain?",
+                "2": "Yes, $ (-\\infty,\\infty) $"
+              },
+              {
+                "0": "2. Solve",
+                "1": "Swap and solve",
+                "2": "$ y = x^3 \\to x = \\sqrt[3]{y} \\to f^{-1}(x) = \\sqrt[3]{x} $"
+              },
+              {
+                "0": "2. Domain of inverse",
+                "1": "Range of original",
+                "2": "$ (-\\infty,\\infty) $"
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Compose to verify",
+                "2": "$ (\\sqrt[3]{x})^3 = x $, $ \\sqrt[3]{x^3} = x $"
+              }
+            ],
+            "caption": "The blueprint ensures a complete and verified solution."
+          }
+        ],
+        "formulaCard": {
+          "title": "Inverse Function Blueprint",
+          "formula": "$$ \\text{One‑to‑one?} \\xrightarrow{\\text{yes}} y=f(x) \\xrightarrow{\\text{swap}} x=f(y) \\xrightarrow{\\text{solve}} y=f^{-1}(x) $$ $$ \\text{Verify: } f(f^{-1}(x))=x, \\; f^{-1}(f(x))=x $$",
+          "notes": [
+            "If the function is not one‑to‑one, consider restricting the domain.",
+            "Domain/range swap: dom($ f^{-1} $) = ran($ f $); ran($ f^{-1} $) = dom($ f $)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full blueprint with a rational function",
+          "prompt": "For $ f(x) = \\frac{3x}{x-2} $, determine if one‑to‑one, find the inverse, and verify.",
+          "steps": [
+            "Graph or check that denominator can't cause repeats; $ f $ is one‑to‑one (passes HLT). Domain of $ f $: $ x \\neq 2 $.",
+            "Swap and solve: $ x = \\frac{3y}{y-2} \\to x(y-2)=3y \\to xy-2x=3y \\to xy-3y=2x \\to y(x-3)=2x \\to y = \\frac{2x}{x-3} $.",
+            "$ f^{-1}(x) = \\frac{2x}{x-3} $, domain $ x \\neq 3 $.",
+            "Verify: $ f(f^{-1}(x)) = \\frac{3(\\frac{2x}{x-3})}{(\\frac{2x}{x-3})-2} = \\cdots = x $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Blueprint for restricted domain",
+          "prompt": "Describe how you would find the inverse of $ f(x) = x^2 - 4 $ for $ x \\ge 0 $.",
+          "peerPrompt": "What changes with the domain restriction?",
+          "minLength": 2,
+          "steps": [
+            "With $ x \\ge 0 $, $ f $ is increasing, so it's one‑to‑one.",
+            "Write $ y = x^2 - 4 $, swap: $ x = y^2 - 4 $, solve: $ y^2 = x+4 $, $ y = \\sqrt{x+4} $ (positive root because original $ x \\ge 0 $).",
+            "So $ f^{-1}(x) = \\sqrt{x+4} $, domain $ x \\ge -4 $.",
+            "Verify composition."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Write domain of inverse",
+          "prompt": "If $ f(x) = e^x $ (domain all reals, range $ (0,\\infty) $), what is the domain of $ f^{-1}(x) = \\ln x $?",
+          "steps": [
+            "The domain of the inverse is the range of the original.",
+            "Range of $ e^x $ is $ (0,\\infty) $.",
+            "So domain of $ \\ln x $ is $ (0,\\infty) $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "When taking a square root to solve for the inverse in a restricted domain, choose the correct sign. [[imp: The sign must match the original domain restriction.]]"
+      },
+      "questions": [
+        {
+          "id": "b5q1",
+          "type": "fill-blank",
+          "prompt": "The domain of $ f^{-1} $ equals the ___ of $ f $.",
+          "blanks": [
+            {
+              "accept": [
+                "range"
+              ]
+            }
+          ],
+          "hints": [
+            "Not domain.",
+            "The output set of f."
+          ],
+          "feedbackIfWrong": "range."
+        },
+        {
+          "id": "b5q2",
+          "type": "short-answer",
+          "prompt": "If $ f(x) = \\frac{1}{x+1} $ (domain $ x \\neq -1 $, range $ y \\neq 0 $), what is the domain of $ f^{-1} $?",
+          "answers": [
+            "y ≠ 0",
+            "x ≠ 0",
+            "all real numbers except 0"
+          ],
+          "hints": [
+            "Domain of inverse = range of f.",
+            "Range of f is all real numbers except 0."
+          ],
+          "feedbackIfWrong": "All real numbers except 0."
+        },
+        {
+          "id": "b5q3",
+          "type": "short-answer",
+          "prompt": "After finding $ f^{-1}(x) $, how can you check your work? (one word: composition or graph)",
+          "answers": [
+            "composition",
+            "verify",
+            "compose"
+          ],
+          "hints": [
+            "Plug one into the other.",
+            "Should get $ x $."
+          ],
+          "feedbackIfWrong": "composition (or verify/compose)."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "The function $ f(x) = \\frac{ax+b}{cx+d} $ is its own inverse under certain conditions. Find the relationship between $ a,b,c,d $ that makes $ f(f(x)) = x $.",
+        "type": "short-answer",
+        "answers": [
+          "a = -d"
+        ],
+        "hints": [
+          "Set $ f(f(x)) = x $ and simplify the rational expression.",
+          "The condition simplifies to $ a+d = 0 $ or $ a = -d $."
+        ]
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

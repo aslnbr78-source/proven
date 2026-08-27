@@ -1,0 +1,133 @@
+{
+  "id": "chapter-3-2-flashcards",
+  "type": "flashcard",
+  "title": "Conditional Probability",
+  "cards": [
+    {
+      "back": [
+        "The probability of an event occurring, given that another event has already occurred.",
+        "Denoted $P(B \\mid A)$: \"probability of $B$, given $A$.\"",
+        "Restricts the sample space to only outcomes in $A$."
+      ],
+      "front": "What is a [[kw:conditional probability]]?"
+    },
+    {
+      "front": "Two cards are drawn without replacement. The first is a king. What is $P(\\text{second is a queen} \\mid \\text{first is a king})$?",
+      "back": [
+        "After drawing a king, 51 cards remain, including all 4 queens.",
+        "$P(\\text{Queen} \\mid \\text{King}) = \\frac{4}{51} \\approx 0.078$.",
+        "Contrast: without condition, $P(\\text{Queen}) = 4/52 \\approx 0.077$."
+      ]
+    },
+    {
+      "back": [
+        "Restrict sample space to the 72 children with the gene.",
+        "$P(\\text{High IQ} \\mid \\text{Gene}) = \\frac{33}{72} \\approx 0.458$.",
+        "About 45.8% of children with the gene have a high IQ."
+      ],
+      "front": "From the gene‑IQ table: 33 of 72 children with the gene have a high IQ. Find $P(\\text{High IQ} \\mid \\text{Gene}) $."
+    },
+    {
+      "back": [
+        "Check if the occurrence of one does not affect the probability of the other.",
+        "Formal test: $P(B \\mid A) = P(B)$, or $P(A \\mid B) = P(A)$.",
+        "If equality fails, the events are [[kw:dependent]]."
+      ],
+      "front": "How do you determine if two events are [[kw:independent]]?"
+    },
+    {
+      "back": [
+        "[[kw:Independent]]. The coin's outcome doesn't change the die's probabilities.",
+        "$P(6 \\mid H) = 1/6 = P(6)$.",
+        "Multiply probabilities for sequences: $P(H \\text{ and } 6) = \\frac12 \\cdot \\frac16 = \\frac{1}{12}$."
+      ],
+      "front": "Classify as independent or dependent: tossing a coin and rolling a die."
+    },
+    {
+      "front": "Classify as independent or dependent: selecting a king, not replacing it, then selecting a queen.",
+      "back": [
+        "[[kw:Dependent]]. Removing the king changes the deck composition.",
+        "$P(Q \\mid K) = 4/51 \\neq 4/52 = P(Q)$.",
+        "The first draw affects the second."
+      ]
+    },
+    {
+      "front": "State the general [[kw:Multiplication Rule]] for the probability of $A$ and $B$ occurring in sequence.",
+      "back": [
+        "$$P(A \\text{ and } B) = P(A) \\cdot P(B \\mid A)$$",
+        "Multiply the probability of $A$ by the conditional probability of $B$ given $A$.",
+        "Applies to both dependent and independent events (when independent, $P(B \\mid A) = P(B)$)."
+      ]
+    },
+    {
+      "back": [
+        "$$P(A \\text{ and } B) = P(A) \\cdot P(B)$$",
+        "No conditional probability needed.",
+        "Extends to more events: $P(A \\text{ and } B \\text{ and } C) = P(A) \\cdot P(B) \\cdot P(C)$."
+      ],
+      "front": "How does the Multiplication Rule simplify if $A$ and $B$ are independent?"
+    },
+    {
+      "front": "A coin is tossed and a die is rolled. Find $P(\\text{head and 6})$.",
+      "back": [
+        "Events are independent.",
+        "$P(\\text{head}) = 1/2$, $P(6) = 1/6$.",
+        "$P(\\text{head and 6}) = \\frac12 \\cdot \\frac16 = \\frac{1}{12} \\approx 0.083$."
+      ]
+    },
+    {
+      "back": [
+        "Dependent events.",
+        "$P(\\text{king}) = 4/52$, then $P(\\text{queen} \\mid \\text{king}) = 4/51$.",
+        "Multiply: $\\frac{4}{52} \\cdot \\frac{4}{51} \\approx 0.006$. Very unlikely."
+      ],
+      "front": "Two cards are drawn from a standard deck without replacement. Find $P(\\text{king then queen})$."
+    },
+    {
+      "back": [
+        "Use the complement: $P(\\text{at least one}) = 1 - P(\\text{none})$.",
+        "For independent trials, $P(\\text{none}) = (P(\\text{failure}))^n$.",
+        "This shortcut avoids listing all possibilities."
+      ],
+      "front": "How do you find the probability of \"[[imp:at least one]]\" success in multiple independent trials?"
+    },
+    {
+      "front": "A knee surgery has a success probability of 0.85. Three surgeries are performed. Find the probability at least one succeeds.",
+      "back": [
+        "$P(\\text{failure}) = 1 - 0.85 = 0.15$.",
+        "$P(\\text{none successful}) = 0.15^3 = 0.003375$.",
+        "$P(\\text{at least one success}) = 1 - 0.003375 \\approx 0.997$.",
+        "Almost certain."
+      ]
+    },
+    {
+      "front": "93% of medical seniors matched with a residency; of those, 82% got a top‑3 choice. Find $P(\\text{matched and top‑3})$.",
+      "back": [
+        "Let $A$ = matched, $B$ = top‑3. $P(A)=0.93$, $P(B \\mid A)=0.82$.",
+        "Dependent: $P(A \\text{ and } B) = P(A) \\cdot P(B \\mid A)$.",
+        "$= 0.93 \\times 0.82 \\approx 0.763$.",
+        "About 76.3% of seniors matched with a top‑3 choice."
+      ]
+    },
+    {
+      "back": [
+        "It is the formula for [[kw:conditional probability]] when you know joint and marginal probabilities.",
+        "It can also be written as $\\frac{\\text{number of outcomes in } A \\cap B}{\\text{number of outcomes in } A}$.",
+        "Useful when working with two‑way tables."
+      ],
+      "front": "What does $P(B \\mid A) = \\frac{P(A \\text{ and } B)}{P(A)}$ allow you to calculate?"
+    },
+    {
+      "back": [
+        "Restrict to males: sample space size = 142.",
+        "$P(\\text{less} \\mid \\text{male}) = \\frac{62}{142} \\approx 0.437$.",
+        "About 43.7% of males have less than one month's income saved."
+      ],
+      "front": "A survey: 62 out of 142 males had less than one month's income saved. Find $P(\\text{less} \\mid \\text{male})$."
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,764 @@
+{
+  "standards": [
+    "HSS.IC.B.4",
+    "HSS.IC.B.5",
+    "HSS.ID.B.5"
+  ],
+  "id": "section-10-2-independence",
+  "presenterNotes": [
+    "Reinforce the connection to Section 10.1: both tests use the same chi‑square statistic, but df formulas differ.",
+    "Emphasize that the expected frequencies must be computed from the sample data under the independence assumption.",
+    "Demonstrate Google Sheets: show how to set up the table, compute expected frequencies with formulas, and apply CHISQ.TEST.",
+    "Remind students that a significant result does not tell us the nature of the relationship, only that one exists."
+  ],
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "id": "contingency-tables-expected",
+      "discoveryHook": {
+        "scenario": "A survey asks 300 adults about their primary travel concern (Hotel, Leg room, Car size, Other) and travel purpose (Business or Leisure). We can organize the answers in a contingency table. If concern and purpose are independent, we expect certain counts in each cell. The chi‑square test for independence checks whether the actual counts are far from these expectations."
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "prompt": "In a contingency table, the totals at the bottom and right edges are called ___ frequencies.",
+          "hints": [
+            "They appear in the margins of the table.",
+            "They are the row and column sums."
+          ],
+          "feedbackIfWrong": "The row and column totals are marginal frequencies.",
+          "blanks": [
+            {
+              "accept": [
+                "marginal"
+              ]
+            }
+          ],
+          "id": "q10-2-1"
+        },
+        {
+          "id": "q10-2-2",
+          "answer": "7.5",
+          "feedbackIfWrong": "$E = (50 \\times 30) / 200 = 7.5$.",
+          "hints": [
+            "Multiply row total by column total, then divide by $n$.",
+            "$50 \\times 30 = 1500$, divided by 200."
+          ],
+          "type": "short-answer",
+          "prompt": "If a row total is 50, the column total is 30, and the sample size is 200, what is the expected frequency for that cell? (Answer: 7.5)"
+        },
+        {
+          "answer": "5",
+          "type": "short-answer",
+          "prompt": "What is the minimum expected frequency required in each cell to use the chi‑square test?",
+          "hints": [
+            "If it's less, you may need to combine categories.",
+            "Same rule as the goodness‑of‑fit test."
+          ],
+          "id": "q10-2-3",
+          "feedbackIfWrong": "Each expected frequency must be at least 5."
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ E = \\frac{(\\text{row total}) \\times (\\text{column total})}{n} $$",
+          "title": "Expected Frequency for a Cell",
+          "notes": [
+            "$n$ is the total number of observations.",
+            "Expected frequencies are computed under the assumption of independence.",
+            "Each expected frequency should be at least 5 to use the chi‑square test."
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Travel Concern vs. Purpose (n=300)",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Business",
+                "1": "36",
+                "2": "108",
+                "3": "14",
+                "4": "22",
+                "5": "180"
+              },
+              {
+                "0": "Leisure",
+                "1": "38",
+                "2": "54",
+                "3": "14",
+                "4": "14",
+                "5": "120"
+              },
+              {
+                "0": "Total",
+                "1": "74",
+                "2": "162",
+                "3": "28",
+                "4": "36",
+                "5": "300"
+              }
+            ],
+            "headers": [
+              "",
+              "Hotel",
+              "Leg room",
+              "Car size",
+              "Other",
+              "Total"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "A [[kw:contingency table]] (or two‑way table) displays the frequencies of two categorical variables. The rows represent one variable, the columns the other.",
+          "[[kw:Marginal frequencies]] are the totals of each row and column. [[kw:Joint frequencies]] are the counts inside the table.",
+          "If the two variables are independent, the [[kw:expected frequency]] for a cell is $$E = \\frac{(\\text{row total}) \\times (\\text{column total})}{\\text{sample size}}$$",
+          "The chi‑square test compares observed frequencies $O$ to these expected frequencies $E$. Large differences suggest the variables are associated."
+        ]
+      },
+      "confusionCorner": {
+        "body": "[[imp:Joint frequencies]] are the observed counts in the cells. [[imp:Marginal frequencies]] are the totals at the edges. [[imp:Expected frequencies]] are computed from the marginals under the assumption of independence. Don't mix them up!",
+        "title": "Joint, Marginal, Expected"
+      },
+      "teacherCues": [
+        "Draw a 2×2 table on the board. Ask: If row and column variables are independent, what counts would we expect in each cell?",
+        "Write the formula: E = (row total × column total) / grand total. Emphasize that expected frequencies are based on the assumption of independence."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Computing One Expected Frequency",
+          "prompt": "In the travel table, what is the expected number of business travelers concerned about hotel rooms, assuming independence?",
+          "steps": [
+            "Row total for Business = 180. Column total for Hotel = 74. Sample size $n = 300$.",
+            "$E = 180 \\times 74 / 300 = 13{,}320 / 300 = 44.4$.",
+            "We expect about 44.4 business travelers to list hotel as their primary concern."
+          ]
+        },
+        {
+          "title": "Example B – Why Must Expected Frequencies Be at Least 5?",
+          "peerPrompt": "Without looking back...\n\nThink about the formula $\\chi^2 = \\sum (O-E)^2/E$. What happens if $E$ is very small?",
+          "prompt": "Explain to a partner why the chi‑square test requires all expected cell counts to be ≥ 5.",
+          "minLength": 2,
+          "steps": [
+            "If an expected frequency is tiny, even a small absolute difference $O - E$ can produce a large $(O-E)^2/E$.",
+            "The chi‑square approximation to the true sampling distribution becomes unreliable with small expected counts.",
+            "The rule $E \\ge 5$ ensures the p‑value is reasonably accurate."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Row totals: Business 36+108+14+22 = 180, Leisure 38+54+14+14 = 120. Sum = 300.",
+            "Column totals: Hotel 36+38=74, Leg room 108+54=162, Car size 14+14=28, Other 22+14=36. Sum = 300.",
+            "The marginal frequencies are consistent with the sample size."
+          ],
+          "title": "Example C – Checking Marginal Totals",
+          "prompt": "Verify that the row and column totals in the travel table add up correctly.",
+          "role": "independent"
+        }
+      ],
+      "title": "Contingency Tables and Expected Frequencies"
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "$r = 3$, $c = 4$.",
+            "$df = (3-1)(4-1) = 2 \\times 3 = 6$.",
+            "The test statistic follows a $\\chi^2$ distribution with 6 degrees of freedom."
+          ],
+          "title": "Example A – Degrees of Freedom",
+          "role": "guided",
+          "prompt": "A contingency table has 3 rows and 4 columns. What are the degrees of freedom for the chi‑square test?"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Explain to a partner what it means for two categorical variables to be independent in a contingency table.",
+          "steps": [
+            "If independent, the distribution of preferences is the same for males and females.",
+            "In other words, knowing someone's gender gives no information about their ice cream preference.",
+            "The expected frequencies reflect this equality of distributions across rows (or columns)."
+          ],
+          "peerPrompt": "Without looking back...\n\nIf gender and ice cream preference are independent, does that mean men and women have exactly the same preferences?",
+          "minLength": 2,
+          "title": "Example B – What Does 'Independence' Mean Here?"
+        },
+        {
+          "title": "Example C – Why Is the Test Right‑Tailed?",
+          "role": "independent",
+          "prompt": "Explain why the chi‑square independence test rejects for large values only.",
+          "steps": [
+            "The test statistic is a sum of squares, so it is always ≥ 0.",
+            "Small values mean observed counts are close to expected — no evidence against independence.",
+            "Large values indicate big discrepancies, which suggest the variables are associated. Thus, we reject only in the right tail."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "Degrees of freedom = $(r-1)(c-1)$, not $r \\times c$. A 2×2 table has $(2-1)(2-1) = 1$ df, not 4. [[imp:Always subtract 1 from rows and columns before multiplying.]]",
+        "title": "df Formula: Don't Forget the Minus Ones!"
+      },
+      "title": "The Chi‑Square Test for Independence",
+      "discoveryHook": {
+        "scenario": "Now that we have expected frequencies, we can compute a single number that tells us how far the observed table is from what we'd expect if the variables were independent. That number is the chi‑square statistic."
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "For a 2×5 table, $df = (2-1)(5-1) = 4$.",
+          "id": "q10-2-4",
+          "hints": [
+            "$(2-1)(5-1) = 1 \\times 4$.",
+            "Multiply (rows−1) by (columns−1)."
+          ],
+          "answer": "4",
+          "prompt": "A 2×5 contingency table has how many degrees of freedom? (Answer: 4)"
+        },
+        {
+          "prompt": "If the chi‑square statistic is large, we ___ the null hypothesis of independence.",
+          "hints": [
+            "Large differences between O and E suggest dependence.",
+            "We conclude the variables are associated."
+          ],
+          "id": "q10-2-5",
+          "blanks": [
+            {
+              "accept": [
+                "reject"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "A large $\\chi^2$ leads to rejecting $H_0$."
+        },
+        {
+          "prompt": "In a chi‑square independence test, the expected frequencies are calculated assuming that the variables are ___.",
+          "id": "q10-2-6",
+          "answer": "independent",
+          "hints": [
+            "The null hypothesis states they are not associated.",
+            "The calculation of $E$ uses the marginal totals under this assumption."
+          ],
+          "feedbackIfWrong": "Expected frequencies are computed under the assumption of independence.",
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Write the hypotheses: H₀: Variables are independent, Hₐ: Variables are dependent.",
+        "Show the test statistic formula again: χ² = Σ (O-E)²/E. Degrees of freedom: (r-1)(c-1). Always right‑tailed."
+      ],
+      "id": "chi-square-independence-test-statistic",
+      "concept": {
+        "explanation": [
+          "The [[kw:chi‑square test for independence]] determines whether two categorical variables are associated.",
+          "The null hypothesis: $H_0$: The variables are [[imp:independent]]. The alternative: $H_a$: The variables are [[imp:dependent]] (associated).",
+          "The test statistic is $$\\chi^2 = \\sum \\frac{(O - E)^2}{E}$$ summed over all cells.",
+          "Degrees of freedom: $$df = (r - 1)(c - 1)$$ where $r$ is the number of rows and $c$ is the number of columns.",
+          "The test is always [[imp:right‑tailed]]; large values of $\\chi^2$ indicate strong evidence against independence."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Scenario",
+              "Null Hypothesis $H_0$",
+              "Alternative $H_a$"
+            ],
+            "rows": [
+              {
+                "0": "Ice cream preference and gender",
+                "1": "Independent",
+                "2": "Dependent (claim)"
+              },
+              {
+                "0": "Travel concern and purpose",
+                "1": "Independent",
+                "2": "Dependent (claim)"
+              },
+              {
+                "0": "Age and response to tax cut",
+                "1": "Independent",
+                "2": "Dependent (claim)"
+              }
+            ],
+            "title": "Hypotheses for Independence Test",
+            "variant": "colorful",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "All expected frequencies must be ≥ 5.",
+            "Use chi‑square distribution table (Table 6) for critical values.",
+            "Reject $H_0$ if $\\chi^2$ > critical value."
+          ],
+          "title": "Chi‑Square Independence Test",
+          "formula": "$$ \\chi^2 = \\sum_{i=1}^{r} \\sum_{j=1}^{c} \\frac{(O_{ij} - E_{ij})^2}{E_{ij}} $$ $$ df = (r-1)(c-1) $$"
+        }
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "A sample of 2200 adults gave their favorite way to eat ice cream and their gender. Are these variables related? Let's perform the complete chi‑square test at α = 0.01."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Observed and Expected Frequencies (Ice Cream)",
+            "rows": [
+              {
+                "0": "Male/Cup",
+                "1": "600",
+                "2": "550.91",
+                "3": "4.374"
+              },
+              {
+                "0": "Male/Cone",
+                "1": "288",
+                "2": "342.55",
+                "3": "8.687"
+              },
+              {
+                "0": "Male/Sundae",
+                "1": "204",
+                "2": "209.45",
+                "3": "0.142"
+              },
+              {
+                "0": "Male/Sandwich",
+                "1": "24",
+                "2": "24",
+                "3": "0"
+              },
+              {
+                "0": "Male/Other",
+                "1": "84",
+                "2": "73.09",
+                "3": "1.629"
+              },
+              {
+                "0": "Female/Cup",
+                "1": "410",
+                "2": "459.09",
+                "3": "5.249"
+              },
+              {
+                "0": "Female/Cone",
+                "1": "340",
+                "2": "285.45",
+                "3": "10.425"
+              },
+              {
+                "0": "Female/Sundae",
+                "1": "180",
+                "2": "174.55",
+                "3": "0.170"
+              },
+              {
+                "0": "Female/Sandwich",
+                "1": "20",
+                "2": "20",
+                "3": "0"
+              },
+              {
+                "0": "Female/Other",
+                "1": "50",
+                "2": "60.91",
+                "3": "1.954"
+              },
+              {
+                "0": "Total",
+                "1": "2200",
+                "2": "2200",
+                "3": "$\\chi^2 \\approx 32.630$"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Cell",
+              "O",
+              "E",
+              "(O−E)²/E"
+            ]
+          }
+        ],
+        "explanation": [
+          "The contingency table has $r=2$ rows (Male, Female) and $c=5$ columns (Cup, Cone, Sundae, Sandwich, Other).",
+          "Degrees of freedom: $df = (2-1)(5-1) = 4$.",
+          "At $\\alpha = 0.01$ and $df = 4$, the critical value from Table 6 is $13.277$.",
+          "The expected frequencies were computed earlier. The test statistic is $$\\chi^2 = \\sum \\frac{(O-E)^2}{E} \\approx 32.630$$",
+          "Since $32.630 > 13.277$, we reject $H_0$. There is enough evidence to say ice cream preference depends on gender."
+        ]
+      },
+      "id": "ice-cream-example-full-test",
+      "confusionCorner": {
+        "body": "Rejecting $H_0$ tells you the variables are associated, but it doesn't explain the nature of the association. [[imp:Look at the cell contributions to see which categories drive the dependence.]]",
+        "title": "Don't Stop at Rejecting"
+      },
+      "title": "Full Test: Ice Cream Preference and Gender",
+      "examples": [
+        {
+          "steps": [
+            "Locate the row for $df=4$ in Table 6.",
+            "Go across to the column for $\\alpha=0.01$.",
+            "The value is $13.277$.",
+            "This is the boundary of the rejection region: reject $H_0$ if $\\chi^2 > 13.277$."
+          ],
+          "prompt": "For $df=4$ and $\\alpha=0.01$, find the critical chi‑square value from the table.",
+          "role": "guided",
+          "title": "Example A – Finding the Critical Value"
+        },
+        {
+          "title": "Example B – Which Cells Contribute Most?",
+          "role": "peer-explain",
+          "prompt": "Look at the contributions to $\\chi^2$. Which cell has the largest (O−E)²/E? Why might that be?",
+          "steps": [
+            "The largest contribution is Female/Cone at 10.425.",
+            "Observed = 340, Expected = 285.45. There are many more women choosing cone than expected if gender and preference were independent.",
+            "This cell provides strong evidence that the variables are associated."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: The Female/Cone cell contributes 10.425. What does that say about the observed vs. expected counts?"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Conclusion",
+          "prompt": "Based on $\\chi^2 = 32.630$, $df=4$, critical value $13.277$, what is the conclusion?",
+          "steps": [
+            "Since $32.630 > 13.277$, reject $H_0$.",
+            "There is enough evidence at the 1% level to conclude that ice cream preference and gender are dependent.",
+            "This means the distribution of preferences differs between males and females."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "answer": "13.277",
+          "type": "short-answer",
+          "prompt": "What is the critical chi‑square value for $df=4$ and $\\alpha=0.01$? (Answer: 13.277)",
+          "id": "q10-2-7",
+          "feedbackIfWrong": "The critical value is 13.277.",
+          "hints": [
+            "Look at Table 6, row $df=4$, column 0.01.",
+            "The value is between 13 and 14."
+          ]
+        },
+        {
+          "id": "q10-2-8",
+          "type": "fill-blank",
+          "prompt": "In the ice cream example, the test statistic $\\chi^2 \\approx 32.6$ is ___ than the critical value, so we reject $H_0$.",
+          "hints": [
+            "Compare 32.6 to 13.277.",
+            "If it exceeds the critical value, we reject."
+          ],
+          "feedbackIfWrong": "32.6 > 13.277, so we reject $H_0$.",
+          "blanks": [
+            {
+              "accept": [
+                "greater",
+                "larger",
+                "bigger"
+              ]
+            }
+          ]
+        },
+        {
+          "hints": [
+            "If p < α, reject.",
+            "0.0001 is much smaller than 0.05."
+          ],
+          "type": "short-answer",
+          "prompt": "If a chi‑square test for independence has a p‑value of 0.0001 and $\\alpha = 0.05$, do you reject $H_0$? (yes or no)",
+          "id": "q10-2-9",
+          "answer": "yes",
+          "feedbackIfWrong": "Yes, reject $H_0$ because the p‑value is less than 0.05."
+        }
+      ],
+      "teacherCues": [
+        "Walk through the entire chi‑square test for the ice cream data. Show the observed and expected tables side by side.",
+        "Compute the test statistic step by step, then compare to the critical value from Table 6."
+      ]
+    },
+    {
+      "teacherCues": [
+        "Show how to enter observed frequencies in a range, compute expected frequencies using row and column totals, then use CHISQ.TEST.",
+        "Demonstrate =CHISQ.TEST(observed_range, expected_range) to get the p‑value directly."
+      ],
+      "concept": {
+        "explanation": [
+          "In Google Sheets, enter the observed contingency table (without totals) in a block of cells, e.g., B2:E3.",
+          "Compute expected frequencies in another block using the formula $E = (\\text{row total})(\\text{column total})/n$. Use `SUM` and `$` for fixed references.",
+          "Use `=CHISQ.TEST(observed_range, expected_range)` to get the [[kw:p‑value]] for the test.",
+          "Compare the p‑value to $\\alpha$: if $p < \\alpha$, reject $H_0$.",
+          "To find the critical value, use `=CHISQ.INV.RT(α, df)`."
+        ],
+        "formulaCard": {
+          "title": "Google Sheets Workflow",
+          "formula": "$$ \\text{p‑value} = \\text{CHISQ.TEST}(observed\\_range, expected\\_range) $$",
+          "notes": [
+            "Both ranges must be the same size.",
+            "Expected frequencies must be computed manually or with formulas.",
+            "If p‑value < α, the variables are significantly associated."
+          ]
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "`=CHISQ.TEST(obs, exp)`",
+                "1": "p‑value",
+                "2": "`=CHISQ.TEST(B2:C3, F2:G3)`"
+              },
+              {
+                "0": "`=CHISQ.INV.RT(α, df)`",
+                "1": "Critical value",
+                "2": "`=CHISQ.INV.RT(0.05, 4)`"
+              },
+              {
+                "0": "`=SUM(B2:B3)`",
+                "1": "Row total",
+                "2": "Drag for each row/column"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Google Sheets Functions for Chi‑Square",
+            "headers": [
+              "Function",
+              "Purpose",
+              "Example"
+            ]
+          }
+        ]
+      },
+      "questions": [
+        {
+          "id": "q10-2-10",
+          "feedbackIfWrong": "The function is CHISQ.TEST.",
+          "answer": "CHISQ.TEST",
+          "type": "short-answer",
+          "hints": [
+            "It's a statistical function starting with 'CHISQ'.",
+            "It needs observed and expected ranges."
+          ],
+          "prompt": "Which Google Sheets function returns the p‑value for a chi‑square test? (Answer: CHISQ.TEST)"
+        },
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "RT",
+                "rt"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The function is CHISQ.INV.RT.",
+          "id": "q10-2-11",
+          "hints": [
+            "It stands for 'inverse right‑tailed'.",
+            "The letters are R and T."
+          ],
+          "prompt": "In Google Sheets, to find the critical chi‑square value, use `=CHISQ.INV.___(α, df)`."
+        },
+        {
+          "answer": "no",
+          "type": "short-answer",
+          "prompt": "If CHISQ.TEST returns 0.15 and α = 0.10, do you reject H₀? (yes or no)",
+          "hints": [
+            "Is 0.15 less than 0.10?",
+            "If p > α, fail to reject."
+          ],
+          "id": "q10-2-12",
+          "feedbackIfWrong": "No, because 0.15 > 0.10, we fail to reject H₀."
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Find the row total: `=SUM(B2:C2)`, say in E2.",
+            "Find the column total: `=SUM(B2:B3)`, say in B4.",
+            "The grand total is `=SUM(B2:C3)`.",
+            "Expected frequency: `=E2*B4/n` (with n as the grand total)."
+          ],
+          "title": "Example A – Setting Up the Sheet",
+          "prompt": "You have observed counts in cells B2:C3. How do you compute the expected frequency for the top‑left cell?"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss: If p = 0.02, is that less than 0.05? What does it mean about independence?",
+          "steps": [
+            "0.02 < 0.05, so the result is statistically significant.",
+            "We reject the null hypothesis of independence.",
+            "There is evidence that the two variables are associated."
+          ],
+          "minLength": 2,
+          "prompt": "CHISQ.TEST returns 0.02. With α = 0.05, what do you conclude?",
+          "role": "peer-explain",
+          "title": "Example B – Interpreting the p‑value"
+        },
+        {
+          "steps": [
+            "Use `=CHISQ.INV.RT(0.05, 3)`.",
+            "The result is 7.815.",
+            "This is the value the test statistic must exceed to reject $H_0$."
+          ],
+          "prompt": "For a test with df = 3 and α = 0.05, what formula gives the critical value?",
+          "title": "Example C – Finding the Critical Value",
+          "role": "independent"
+        }
+      ],
+      "id": "google-sheets-independence",
+      "confusionCorner": {
+        "title": "Don't Forget the Expected Range!",
+        "body": "`CHISQ.TEST` requires both observed and expected ranges. If you accidentally use the observed range twice, you'll get incorrect results. [[imp:Always compute expected frequencies in a separate area.]]"
+      },
+      "discoveryHook": {
+        "scenario": "You can perform the entire chi‑square independence test in Google Sheets without a calculator. Just enter your observed counts, compute expected frequencies using formulas, and use CHISQ.TEST to get the p‑value."
+      },
+      "title": "Chi‑Square Independence Test with Google Sheets"
+    },
+    {
+      "title": "Blueprint Aid: Complete Independence Test",
+      "discoveryHook": {
+        "scenario": "Is achieving a basic skill level in a subject related to the location of the school (urban vs. suburban)? A random sample of students gives the counts. We'll use the Understand–Solve–Conclude pattern to test the claim at α = 0.01."
+      },
+      "teacherCues": [
+        "Walk through the Understand–Solve–Conclude framework with the exercise data: achievement and school location.",
+        "Have students identify the claim, compute expected frequencies, find the test statistic, and write a conclusion."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Urban",
+                "1": "43",
+                "2": "42",
+                "3": "38",
+                "4": "123"
+              },
+              {
+                "0": "Suburban",
+                "1": "63",
+                "2": "66",
+                "3": "65",
+                "4": "194"
+              },
+              {
+                "0": "Total",
+                "1": "106",
+                "2": "108",
+                "3": "103",
+                "4": "317"
+              }
+            ],
+            "headers": [
+              "Location",
+              "Reading",
+              "Math",
+              "Science",
+              "Total"
+            ],
+            "variant": "colorful",
+            "title": "Achievement and School Location Data",
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "**Understand**: The claim is that the variables are related. $H_0$: Subject and location are independent. $H_a$: Subject and location are dependent (claim). We have a 2×3 table, so $df = (2-1)(3-1) = 2$.",
+          "**Solve**: Compute expected frequencies, then the $\\chi^2$ statistic. Critical value for $\\alpha = 0.01$, $df = 2$ is $9.210$.",
+          "**Conclude**: Compare $\\chi^2$ to 9.210. If larger, reject $H_0$ and conclude the variables are associated."
+        ]
+      },
+      "questions": [
+        {
+          "id": "q10-2-13",
+          "answer": "9.210",
+          "hints": [
+            "Look at Table 6, row $df=2$, column 0.01.",
+            "The value is just over 9."
+          ],
+          "feedbackIfWrong": "The critical value is 9.210.",
+          "prompt": "What is the critical value for $df=2$ and $\\alpha=0.01$? (Answer: 9.210)",
+          "type": "short-answer"
+        },
+        {
+          "id": "q10-2-14",
+          "blanks": [
+            {
+              "accept": [
+                "fail"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "We fail to reject $H_0$.",
+          "hints": [
+            "We do not have enough evidence against the null.",
+            "The opposite of 'reject'."
+          ],
+          "prompt": "If the computed $\\chi^2$ is smaller than the critical value, we ___ to reject $H_0$.",
+          "type": "fill-blank"
+        },
+        {
+          "answer": "66.1",
+          "prompt": "For the achievement data, what is the expected frequency for Suburban/Math? (Answer to one decimal: 66.1)",
+          "type": "short-answer",
+          "feedbackIfWrong": "$E = 194 \\times 108 / 317 \\approx 66.1$.",
+          "hints": [
+            "Suburban total = 194, Math total = 108, n = 317.",
+            "$194 \\times 108 / 317 \\approx 66.1$."
+          ],
+          "id": "q10-2-15"
+        }
+      ],
+      "id": "blueprint-independence",
+      "examples": [
+        {
+          "steps": [
+            "Claim: They are related (dependent).",
+            "$H_0$: Subject and school location are independent.",
+            "$H_a$: Subject and school location are dependent (Claim)."
+          ],
+          "title": "Example A – Understand the Hypotheses",
+          "prompt": "State the null and alternative hypotheses for testing whether subject and location are related.",
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Solve: Compute One Expected Frequency",
+          "prompt": "Find the expected frequency for Urban/Reading under independence.",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nWork with a partner: Use $E = (\\text{row total})(\\text{col total})/n$. The row total for Urban is 123, column total for Reading is 106, n=317.",
+          "role": "peer-explain",
+          "steps": [
+            "Row total (Urban) = 123. Column total (Reading) = 106. $n = 317$.",
+            "$E = 123 \\times 106 / 317 \\approx 41.1$.",
+            "We expect about 41.1 urban students to achieve basic skills in reading."
+          ]
+        },
+        {
+          "steps": [
+            "Compare $1.2$ to $9.210$: $1.2 < 9.210$.",
+            "Fail to reject $H_0$.",
+            "There is not enough evidence to conclude that subject and school location are related."
+          ],
+          "role": "independent",
+          "prompt": "If the computed $\\chi^2$ is 1.2, and the critical value is 9.210, what is the conclusion?",
+          "title": "Example C – Conclude"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Failing to reject $H_0$ does not prove the variables are independent; it only means the sample didn't provide strong enough evidence of an association. The true relationship could be weak and would require a larger sample to detect.",
+        "title": "Small χ² Does Not Prove Independence"
+      }
+    }
+  ],
+  "title": "Chi‑Square Test for Independence",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

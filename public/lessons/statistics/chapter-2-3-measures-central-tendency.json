@@ -1,0 +1,819 @@
+{
+  "blocks": [
+    {
+      "id": "mean-median-mode",
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Mean",
+                "1": "$ \\approx 527.9 $",
+                "2": "Sum (3695) ÷ 7"
+              },
+              {
+                "0": "Median",
+                "1": "$ 427 $",
+                "2": "Ordered: 388, 397, 397, 427, 432, 782, 872 → middle is 4th"
+              },
+              {
+                "0": "Mode",
+                "1": "$ 397 $",
+                "2": "Appears twice; others appear once"
+              }
+            ],
+            "title": "Flight Prices (in dollars): 872, 432, 397, 427, 388, 782, 397",
+            "headers": [
+              "Measure",
+              "Value",
+              "How Found"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\bar{x} = \\frac{\\sum x}{n},\\qquad \\mu = \\frac{\\sum x}{N}$$ $$\\text{Median} = \\begin{cases} \\text{middle ordered value}, & n \\text{ odd} \\\\ \\frac{x_{(n/2)} + x_{(n/2+1)}}{2}, & n \\text{ even} \\end{cases}$$ $$\\text{Mode} = \\text{most frequent value(s)}$$",
+          "legend": [
+            {
+              "meaning": "sample size; $ N $ = population size",
+              "symbol": "$ n $",
+              "tone": "core"
+            },
+            {
+              "symbol": "Resistance",
+              "meaning": "median is resistant to outliers; mean is not",
+              "tone": "subtle"
+            }
+          ],
+          "title": "Definitions"
+        },
+        "explanation": [
+          "A [[kw:measure of central tendency]] is a single value that represents a typical, central entry of a data set.",
+          "The [[kw:mean]] (arithmetic average) is the sum of all data entries divided by the number of entries.",
+          "Population mean: $ \\mu = \\frac{\\sum x}{N} $, sample mean: $ \\bar{x} = \\frac{\\sum x}{n} $.",
+          "The [[kw:median]] is the middle value when the data are ordered. For odd $ n $, it's the center entry; for even $ n $, it's the average of the two center entries.",
+          "The [[kw:mode]] is the data entry that occurs with the greatest frequency. A data set can be unimodal, bimodal, multimodal, or have no mode.",
+          "The mean uses every value, the median is resistant to outliers, and the mode works for qualitative data as well."
+        ]
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "prompt": "The mean of a sample is denoted by ___ (read 'x bar').",
+          "hints": [
+            "It's an x with a bar over it.",
+            "The symbol is used for sample mean."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "$ \\bar{x} $",
+                "\\bar{x}",
+                "x bar",
+                "x-bar"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Sample mean is $ \\bar{x} $."
+        },
+        {
+          "feedbackIfWrong": "The median is the third value, 8.",
+          "id": "q1-2",
+          "answer": "8",
+          "prompt": "In the ordered list 3, 7, 8, 12, 15, what is the median?",
+          "answers": [
+            "8"
+          ],
+          "hints": [
+            "There are 5 numbers (odd).",
+            "The middle position is the 3rd value."
+          ],
+          "type": "short-answer"
+        },
+        {
+          "id": "q1-3",
+          "answer": "5",
+          "answers": [
+            "5",
+            "five"
+          ],
+          "prompt": "What is the mode of 3, 5, 7, 5, 9, 5, 2?",
+          "hints": [
+            "The mode is the most frequent number.",
+            "Count how many times each number appears."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "5 appears three times, so it is the mode."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "You're comparing round‑trip flights to Cancun and see prices ranging from $388 to $872. The 'average' price you hear quoted could be the mean, median, or mode — and each can give a different impression. Knowing which one to use is a key statistical skill."
+      },
+      "title": "Mean, Median, and Mode",
+      "teacherCues": [
+        "Write the flight prices on the board: 872, 432, 397, 427, 388, 782, 397. Ask: 'What's a typical price? How can we find it?'",
+        "Show three different answers: sum divided by 7, middle value, most frequent value. Label them mean, median, mode."
+      ],
+      "confusionCorner": {
+        "body": "If the data contain outliers (extremely high or low values), the mean gets pulled toward them, while the median stays near the center. [[imp:For skewed data, the median is often a better measure of center.]]",
+        "title": "Mean vs. Median: Which to Trust?"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Sum the prices: $ 872 + 432 + 397 + 427 + 388 + 782 + 397 = 3695 $.",
+            "Divide by $ n = 7 $: $ 3695 / 7 \\approx 527.9 $.",
+            "The mean price is about $ \\$527.90 $ (one more decimal place than the original data)."
+          ],
+          "prompt": "Find the mean of the flight prices: $ 872, 432, 397, 427, 388, 782, 397 $.",
+          "role": "guided",
+          "title": "Example A – Computing the Mean"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why is the median for an even number of data values the average of the two middle numbers?",
+          "title": "Example B – Median with Even $ n $",
+          "prompt": "The $432 flight is no longer available. Find the median of the remaining six prices: 388, 397, 397, 427, 782, 872.",
+          "steps": [
+            "Ordered data: 388, 397, 397, 427, 782, 872.",
+            "The two middle entries are the 3rd (397) and 4th (427).",
+            "Median = $ (397 + 427) / 2 = 412 $.",
+            "The median of $412 is the halfway point; three values are below and three above."
+          ],
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Finding the Mode",
+          "prompt": "What is the mode of the political party affiliations: Democrat (34), Republican (56), Other (21), No response (9)?",
+          "steps": [
+            "The mode is the category with the highest frequency.",
+            "Republican appears 56 times, more than any other.",
+            "So, the mode is [[kw:Republican]].",
+            "This shows the mode can be used with qualitative data."
+          ]
+        }
+      ]
+    },
+    {
+      "examples": [
+        {
+          "prompt": "Scores: test mean 86 (50%), midterm 96 (15%), final 82 (20%), lab 98 (10%), homework 100 (5%). Find the weighted mean.",
+          "steps": [
+            "Multiply each score by its weight: $ 86 \\times 0.50 = 43.0 $, $ 96 \\times 0.15 = 14.4 $, $ 82 \\times 0.20 = 16.4 $, $ 98 \\times 0.10 = 9.8 $, $ 100 \\times 0.05 = 5.0 $.",
+            "Sum the products: $ 43.0 + 14.4 + 16.4 + 9.8 + 5.0 = 88.6 $.",
+            "Sum of weights = $ 1 $.",
+            "Weighted mean = $ 88.6 / 1 = 88.6 $. The student did not reach an A (90)."
+          ],
+          "title": "Example A – Weighted Mean",
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Mean from Grouped Data",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why can we only approximate the mean when data are grouped?",
+          "prompt": "Internet session times: class 12.5 min (f=6), 24.5 (f=10), 36.5 (f=13), 48.5 (f=8), 60.5 (f=5), 72.5 (f=6), 84.5 (f=2). Approximate the mean.",
+          "steps": [
+            "Compute $ x \\cdot f $ for each class: $ 12.5 \\times 6 = 75 $, $ 24.5 \\times 10 = 245 $, $ 36.5 \\times 13 = 474.5 $, $ 48.5 \\times 8 = 388 $, $ 60.5 \\times 5 = 302.5 $, $ 72.5 \\times 6 = 435 $, $ 84.5 \\times 2 = 169 $.",
+            "Sum of $ x \\cdot f = 2089 $, $ n = 50 $.",
+            "Grouped mean $ \\approx 2089 / 50 = 41.8 $ minutes.",
+            "Because we don't know the exact values within each class, the true mean may differ slightly."
+          ],
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "New $ x \\cdot w $ for final: $ 98 \\times 0.20 = 19.6 $ (was 16.4).",
+            "Adjust total: $ 88.6 - 16.4 + 19.6 = 91.8 $.",
+            "New weighted mean = $ 91.8 $. Now the student gets an A."
+          ],
+          "title": "Example C – Recompute Weighted Mean",
+          "prompt": "In Example A, the final exam score was corrected from 82 to 98. Find the new weighted mean."
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'If homework is only 5% of your grade, should it count the same as the final exam?' Introduce the idea of weights.",
+        "Display a frequency table and ask: 'Without the raw data, how can we approximate the mean?' Show midpoints."
+      ],
+      "id": "weighted-mean-grouped",
+      "title": "Weighted Mean and Mean of Grouped Data",
+      "confusionCorner": {
+        "body": "When using decimal weights, make sure they add up to 1. If using percentages as weights, divide the total weighted sum by the sum of the percentages. [[imp:Consistency in weight units avoids calculation errors.]]",
+        "title": "Weights Must Sum to 1 (or 100%)"
+      },
+      "discoveryHook": {
+        "scenario": "Your course grade is a weighted mean: tests 50%, midterm 15%, final 20%, etc. Or you're given a frequency distribution of internet session times — you don't have the original data, only class midpoints. Both situations require a special way to find the mean: weighting each value."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\bar{x}_{\\text{weighted}} = \\frac{\\sum (x \\cdot w)}{\\sum w}$$ $$\\bar{x}_{\\text{grouped}} = \\frac{\\sum (x \\cdot f)}{n},\\; x = \\text{class midpoint}$$",
+          "legend": [
+            {
+              "meaning": "weight (importance or proportion)",
+              "tone": "core",
+              "symbol": "$ w $"
+            },
+            {
+              "symbol": "$ f $",
+              "tone": "subtle",
+              "meaning": "frequency of the class"
+            }
+          ],
+          "title": "Two Weighted Mean Formulas"
+        },
+        "explanation": [
+          "A [[kw:weighted mean]] is the mean of a data set whose entries have different degrees of importance (weights).",
+          "Weighted mean formula: $ \\bar{x} = \\frac{\\sum (x \\cdot w)}{\\sum w} $, where $ w $ is the weight of each value $ x $.",
+          "When data are grouped into a frequency distribution, we approximate the mean by treating each class midpoint $ x $ as representative of that class, weighted by its frequency $ f $.",
+          "Mean of grouped data (sample): $ \\bar{x} = \\frac{\\sum (x \\cdot f)}{n} $, where $ n = \\sum f $."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Source",
+              "Score $ x $",
+              "Weight $ w $",
+              "$ x \\cdot w $"
+            ],
+            "rows": [
+              {
+                "0": "Test mean",
+                "1": "86",
+                "2": "0.50",
+                "3": "43.0"
+              },
+              {
+                "0": "Midterm",
+                "1": "96",
+                "2": "0.15",
+                "3": "14.4"
+              },
+              {
+                "0": "Final exam",
+                "1": "82",
+                "2": "0.20",
+                "3": "16.4"
+              },
+              {
+                "0": "Computer lab",
+                "1": "98",
+                "2": "0.10",
+                "3": "9.8"
+              },
+              {
+                "0": "Homework",
+                "1": "100",
+                "2": "0.05",
+                "3": "5.0"
+              },
+              {
+                "0": "Total",
+                "1": "",
+                "2": "1.00",
+                "3": "88.6"
+              }
+            ],
+            "type": "table",
+            "title": "Weighted Mean Grade Calculation"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "hints": [
+            "It uses weights.",
+            "Not simple arithmetic mean."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "weighted",
+                "Weighted"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The weighted mean accounts for different weights.",
+          "type": "fill-blank",
+          "id": "q2-1",
+          "prompt": "A mean that accounts for varying importance of values is called a ___ mean."
+        },
+        {
+          "feedbackIfWrong": "The class midpoint is used as the representative value.",
+          "id": "q2-2",
+          "hints": [
+            "It's the average of lower and upper class limits.",
+            "We use it as the typical value for that class."
+          ],
+          "prompt": "In a frequency distribution, what value represents an entire class when approximating the mean?",
+          "type": "short-answer",
+          "answer": "midpoint",
+          "answers": [
+            "midpoint",
+            "class midpoint",
+            "class mark"
+          ]
+        },
+        {
+          "prompt": "If homework is weighted 10% and exams 90%, does a perfect homework score (100) raise your mean more than a 10-point increase on an exam? (yes or no)",
+          "hints": [
+            "Compare the weights: 10% vs 90%.",
+            "The exam has more impact."
+          ],
+          "type": "short-answer",
+          "answer": "no",
+          "id": "q2-3",
+          "feedbackIfWrong": "Because exams are weighted more heavily (90%), a 10-point exam increase raises the mean more.",
+          "answers": [
+            "no",
+            "No"
+          ]
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "It's easy to confuse: a distribution is skewed in the direction of the [[imp:tail]], not the direction where the bulk of data piles up. So 'skewed left' means the tail is on the left side.",
+        "title": "Left Skew Means Tail Left!"
+      },
+      "questions": [
+        {
+          "prompt": "A distribution with a tail extending to the right is called ___ (positively) skewed.",
+          "hints": [
+            "The direction of the tail.",
+            "Opposite of left."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "right",
+                "Right"
+              ]
+            }
+          ],
+          "id": "q3-1",
+          "type": "fill-blank",
+          "feedbackIfWrong": "Tail to the right → right‑skewed."
+        },
+        {
+          "hints": [
+            "Mean is pulled toward the tail (left).",
+            "The mode is on the side where data pile up."
+          ],
+          "answers": [
+            "mode",
+            "Mode"
+          ],
+          "type": "short-answer",
+          "id": "q3-2",
+          "prompt": "In a left‑skewed distribution, which is typically the largest: mean, median, or mode?",
+          "feedbackIfWrong": "In left‑skewed data, mode > median > mean.",
+          "answer": "mode"
+        },
+        {
+          "hints": [
+            "They all sit at the center.",
+            "The three measures coincide."
+          ],
+          "type": "short-answer",
+          "prompt": "If a distribution is perfectly symmetric and unimodal, what is the relationship among mean, median, and mode?",
+          "feedbackIfWrong": "In a symmetric unimodal distribution, mean = median = mode.",
+          "answer": "equal",
+          "id": "q3-3",
+          "answers": [
+            "equal",
+            "same",
+            "approximately equal"
+          ]
+        }
+      ],
+      "id": "shapes-distributions",
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Shape vs. Mean, Median, Mode Relationship",
+            "variant": "colorful",
+            "headers": [
+              "Shape",
+              "Relationship",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "Symmetric",
+                "1": "Mean ≈ Median ≈ Mode",
+                "2": "Heights of adult males"
+              },
+              {
+                "0": "Uniform",
+                "1": "No distinct mode; mean ≈ median",
+                "2": "Outcomes of rolling a fair die many times"
+              },
+              {
+                "0": "Skewed Right",
+                "1": "Mean > Median > Mode",
+                "2": "Personal incomes (few very high earners)"
+              },
+              {
+                "0": "Skewed Left",
+                "1": "Mean < Median < Mode",
+                "2": "Age at death (most die older, few die young)"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "A distribution is [[kw:symmetric]] if a vertical line divides it into mirror images. In a symmetric unimodal distribution, the mean, median, and mode are equal.",
+          "A [[kw:uniform]] (rectangular) distribution has all classes with approximately equal frequencies. It is also symmetric.",
+          "A distribution is [[kw:skewed right]] (positively skewed) if the tail extends to the right. Here, $ \\text{mean} > \\text{median} > \\text{mode} $ (usually).",
+          "A distribution is [[kw:skewed left]] (negatively skewed) if the tail extends to the left. Here, $ \\text{mean} < \\text{median} < \\text{mode} $ (usually).",
+          "The mean is pulled in the direction of the skew. The median is more resistant."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "the tail's direction pulls the mean away from the median",
+              "symbol": "Skew direction",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$\\text{Symmetric: } \\bar{x} \\approx \\text{Median} \\approx \\text{Mode}$$ $$\\text{Right‑skewed: } \\bar{x} > \\text{Median} > \\text{Mode}$$ $$\\text{Left‑skewed: } \\bar{x} < \\text{Median} < \\text{Mode}$$",
+          "title": "Mean–Median–Mode Rule"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "The shape of a data distribution tells a story: whether the data are balanced, flat, or pulled toward one end. And the shape determines the relationship among the mean, median, and mode — the three musketeers of central tendency."
+      },
+      "teacherCues": [
+        "Sketch a symmetric bell‑shaped curve, a uniform rectangle, a right‑skewed tail, and a left‑skewed tail. Ask students which one fits test scores that are mostly high but a few failed.",
+        "Write 'Mean = Median = Mode' under symmetric; 'Mean < Median < Mode' under skewed left; 'Mean > Median > Mode' under skewed right."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Identifying Skewness",
+          "prompt": "A histogram of salaries at a company shows most employees earn $30–60K, but a few executives earn over $200K. Describe the shape and the mean–median relationship.",
+          "steps": [
+            "The long tail stretches to the right (high values).",
+            "Shape: [[kw:skewed right]].",
+            "The few very high salaries pull the mean upward, so $ \\bar{x} > \\text{median} $.",
+            "The median remains a better measure of typical salary."
+          ]
+        },
+        {
+          "steps": [
+            "In a symmetric distribution, the two halves mirror each other.",
+            "The mean and median will be close together, both near the center.",
+            "If the distribution is also unimodal, the mode is near them as well."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If a histogram looks roughly the same on both sides of the center, what can you say about the mean and median?",
+          "prompt": "The heights of 30 randomly selected adult women are approximately symmetric. Explain to a partner what that implies about the mean and median.",
+          "title": "Example B – Symmetric or Not?",
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "The bars of the histogram would be roughly equal in height.",
+            "This is a [[kw:uniform distribution]].",
+            "The mean and median are around 3.5; there is no single mode."
+          ],
+          "prompt": "A die is rolled 300 times, and the frequencies for 1 through 6 are 48, 52, 50, 49, 51, 50. What shape is this?",
+          "title": "Example C – Detecting a Uniform Shape"
+        }
+      ],
+      "title": "The Shapes of Distributions"
+    },
+    {
+      "questions": [
+        {
+          "prompt": "A data entry far from the rest of the data is called an ___.",
+          "hints": [
+            "It lies 'outside' the main cluster.",
+            "Starts with 'o'."
+          ],
+          "id": "q4-1",
+          "feedbackIfWrong": "An extreme value far from the others is an outlier.",
+          "blanks": [
+            {
+              "accept": [
+                "outlier",
+                "Outlier"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "Which measure of central tendency is most resistant to outliers?",
+          "hints": [
+            "It's the middle value, regardless of extremes.",
+            "Not the mean."
+          ],
+          "answers": [
+            "median",
+            "Median"
+          ],
+          "type": "short-answer",
+          "answer": "median",
+          "id": "q4-2",
+          "feedbackIfWrong": "The median is resistant to outliers because it depends only on order, not on extreme values."
+        },
+        {
+          "feedbackIfWrong": "The median is usually preferred when outliers are present.",
+          "id": "q4-3",
+          "type": "short-answer",
+          "answer": "median",
+          "hints": [
+            "It's not pulled by the extreme value.",
+            "You used it for the class ages."
+          ],
+          "prompt": "If a data set has an outlier and you want to report a 'typical' value, which measure is usually best?",
+          "answers": [
+            "median",
+            "Median"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Impact of an Outlier",
+          "prompt": "Ages of 20 students: 20,20,20,20,20,20,21,21,21,21,22,22,22,23,23,23,23,24,24,65. Compute mean, median, mode. Which best describes the typical age?",
+          "steps": [
+            "Sum with 65: $ 475 $; mean $ = 475/20 = 23.8 $.",
+            "Ordered data; median is average of 10th and 11th: $ (21+22)/2 = 21.5 $.",
+            "Mode is 20 (most frequent).",
+            "The mean (23.8) is inflated by the 65; the median (21.5) better reflects the typical age."
+          ]
+        },
+        {
+          "steps": [
+            "New sum without 65: $ 475 - 65 = 410 $; $ n = 19 $; mean $ = 410/19 \\approx 21.6 $.",
+            "The median moves from 21.5 to 21 (the middle of the 19 values).",
+            "The mean dropped by about 2.2 points; the median dropped by only 0.5.",
+            "This illustrates the mean's sensitivity to outliers."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does the mean drop so much but the median barely moves?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "Remove the 65 from the class data. Recalculate the mean and median. Explain the change.",
+          "title": "Example B – Removing the Outlier"
+        },
+        {
+          "steps": [
+            "The data are roughly symmetric with no extreme values.",
+            "All three measures are close together.",
+            "The mean is appropriate here because there are no outliers to distort it."
+          ],
+          "prompt": "The top speeds of 7 sports cars (mph): 187.3, 181.8, 180.0, 169.3, 162.2, 158.1, 155.7. No outliers. Which measure should you use?",
+          "title": "Example C – Choosing the Best Measure",
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Mean: } \\bar{x} = \\frac{\\sum x}{n} \\;\\text{(sensitive to extreme values)}$$ $$\\text{Median: resistant to outliers}$$",
+          "title": "Effect of Outliers",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Resistance",
+              "meaning": "median and mode are resistant statistics; mean is not"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Class Ages with and without Outlier",
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Measure",
+              "With 65 (outlier)",
+              "Without 65 (19 students)"
+            ],
+            "rows": [
+              {
+                "0": "Mean",
+                "1": "$ 23.8 $",
+                "2": "$ 21.6 $ (drops significantly)"
+              },
+              {
+                "0": "Median",
+                "1": "$ 21.5 $",
+                "2": "$ 21 $ (barely changes)"
+              },
+              {
+                "0": "Mode",
+                "1": "$ 20 $",
+                "2": "$ 20 $ (unchanged)"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "An [[kw:outlier]] is a data entry far removed from the rest of the data.",
+          "Outliers can dramatically affect the [[imp:mean]] but usually have little effect on the [[imp:median]] or [[imp:mode]].",
+          "When outliers are present, the median often provides a better measure of central tendency than the mean.",
+          "To decide which measure best represents the data: examine the shape, identify any outliers, and choose the measure that stays closest to the bulk of the data."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "A small class of 20‑somethings has one 65‑year‑old student. If you report the mean age, it might look like the class is much older than it really is. The median stays firmly in the 20s, but the mean jumps. This is why it's crucial to compare measures and check for outliers."
+      },
+      "confusionCorner": {
+        "title": "Outliers Aren't Always 'Wrong'",
+        "body": "An outlier may be a valid data point that carries important information. Don't automatically delete it; investigate whether it's a measurement error or a genuine extreme. [[imp:Report measures with and without the outlier to give a complete picture.]]"
+      },
+      "teacherCues": [
+        "Show the class age data: 20,20,20,20,20,20,21,21,21,21,22,22,22,23,23,23,23,24,24,65. Ask: 'What happens to the mean if we remove 65?'",
+        "Draw a dot plot of the ages; mark mean, median, and mode. Show how the mean shifts without the outlier."
+      ],
+      "id": "outliers-and-comparison",
+      "title": "Comparing Measures and the Effect of Outliers"
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Given any data set, the blueprint guides you: understand its shape and whether it has outliers, solve by selecting the right measure and computing it, and conclude by stating what the measure tells you about the data. A structured approach prevents you from blindly averaging and misrepresenting the data."
+      },
+      "id": "blueprint-central-tendency",
+      "concept": {
+        "explanation": [
+          "Blueprint: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Examine the data. Is it quantitative? Check the shape (symmetric, skewed, uniform) and look for outliers (using a stem‑and‑leaf plot, dot plot, or sorted list).",
+          "2. [[kw:Solve]]: Choose the measure. If symmetric with no outliers, the mean is a good choice. If skewed or with outliers, prefer the median. If the most frequent value is of interest, also report the mode. For qualitative data, the mode is the only option. Compute using the appropriate formula (mean, weighted mean, grouped mean).",
+          "3. [[kw:Conclude]]: Report the value(s) in context, noting any cautions (e.g., 'The mean is $23.8 but is inflated by an outlier; the median of $21.5 better represents the typical age')."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Blueprint Decision Table",
+            "headers": [
+              "Data Characteristic",
+              "Recommended Measure",
+              "Why"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Symmetric, no outliers",
+                "1": "Mean",
+                "2": "Uses all data, unbiased"
+              },
+              {
+                "0": "Skewed or with outliers",
+                "1": "Median",
+                "2": "Resistant to extreme values"
+              },
+              {
+                "0": "Qualitative data",
+                "1": "Mode",
+                "2": "Only measure that applies to categories"
+              },
+              {
+                "0": "Multiple modes",
+                "1": "Report all modes",
+                "2": "Indicates subgroups"
+              },
+              {
+                "0": "Grouped data",
+                "1": "Approximate mean using midpoints",
+                "2": "Original data unavailable"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "Select the measure that best summarizes the center for the given distribution",
+              "symbol": "Goal",
+              "tone": "core"
+            }
+          ],
+          "title": "Blueprint Steps",
+          "formula": "$$\\text{Data} \\;\\xrightarrow{\\text{Understand}} \\; \\text{Shape \\& Outliers} \\;\\xrightarrow{\\text{Solve}} \\; \\text{Choose \\& Compute Measure} \\;\\xrightarrow{\\text{Conclude}} \\; \\text{Interpret in Context}$$"
+        }
+      },
+      "examples": [
+        {
+          "steps": [
+            "Understand: Sorted data show a gap at 65; the distribution is skewed right with an outlier.",
+            "Solve: Because of the outlier, choose the median. Compute median = 21.5, mode = 20.",
+            "Conclude: The median age of 21.5 years is a better summary than the mean (23.8), which is inflated by the 65‑year‑old.",
+            "Report both, but emphasize the median."
+          ],
+          "title": "Example A – Blueprint for Class Ages",
+          "role": "guided",
+          "prompt": "Apply the blueprint to the class age data from Example 6 (20 values including 65)."
+        },
+        {
+          "title": "Example B – Blueprint for Grouped Data",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why can't we find the exact median from a grouped frequency distribution, only the mean?",
+          "prompt": "You're given a frequency distribution of internet session times (midpoints and frequencies from Example 8). Apply the blueprint.",
+          "steps": [
+            "Understand: The data are grouped into classes; original individual times are unknown.",
+            "Solve: We can approximate the mean using $ \\bar{x} = \\sum (x \\cdot f) / n = 41.8 $ minutes. The median and mode cannot be exactly determined from grouped data alone.",
+            "Conclude: The approximate mean session time is 41.8 minutes. Without raw data, this is our best estimate."
+          ]
+        },
+        {
+          "steps": [
+            "Understand: The $1.5M sale is an extreme outlier; distribution is skewed right.",
+            "Solve: The median ($200K) is unaffected by the outlier and better represents the typical sale.",
+            "Conclude: Use the median."
+          ],
+          "prompt": "A real estate agent wants to quote a 'typical' home price in a neighborhood where five homes sold for $180K, $190K, $200K, $210K, and $1.5 million. Which measure?",
+          "role": "independent",
+          "title": "Example C – Quick Decision"
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "q5-1",
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "Understand"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Start by understanding the data's shape and checking for outliers.",
+          "hints": [
+            "It's the 'U' phase.",
+            "You look at graphs before calculating."
+          ],
+          "prompt": "The first step of the blueprint for measures of central tendency is to ___ the data by examining shape and outliers."
+        },
+        {
+          "answers": [
+            "mean",
+            "Mean"
+          ],
+          "answer": "mean",
+          "id": "q5-2",
+          "prompt": "If a distribution is symmetric and has no outliers, which measure of central tendency is typically preferred?",
+          "type": "short-answer",
+          "feedbackIfWrong": "The mean is preferred for symmetric data without outliers.",
+          "hints": [
+            "It uses all the data.",
+            "Symmetric means it's not pulled to one side."
+          ]
+        },
+        {
+          "prompt": "For qualitative data, which measure of central tendency is the only one that makes sense?",
+          "hints": [
+            "It's the only measure that works with categories.",
+            "You can't average or find the middle of labels."
+          ],
+          "answers": [
+            "mode",
+            "Mode"
+          ],
+          "answer": "mode",
+          "type": "short-answer",
+          "feedbackIfWrong": "Only the mode can be used with qualitative data.",
+          "id": "q5-3"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Always Check the Shape First",
+        "body": "Jumping straight to the mean without looking at a graph can lead to misleading conclusions. [[imp:Graph it first — stem‑and‑leaf, dot plot, or histogram — then decide.]]"
+      },
+      "teacherCues": [
+        "Project a small data set (e.g., 12, 15, 17, 22, 120). Walk through Understand–Solve–Conclude: identify shape, check for outliers, choose measure, compute.",
+        "Ask: 'What if the data were grouped? How would the blueprint change?'"
+      ],
+      "title": "Blueprint Aid: Choosing and Computing Measures of Central Tendency"
+    }
+  ],
+  "standards": [
+    "HSS.ID.A.2",
+    "HSS.ID.A.3"
+  ],
+  "title": "Measures of Central Tendency",
+  "type": "interactive-lesson",
+  "presenterNotes": [
+    "Block 1: Emphasize the formulas and the difference between population mean (μ) and sample mean (x̄). The flight prices example is memorable because it shows all three measures on the same data.",
+    "Block 2: The weighted mean is intuitive for grades. The grouped mean connects back to frequency distributions from Section 2.1 — revisit midpoints.",
+    "Block 3: Use drawings to make the shapes stick. The mean-median-mode relationship is a key concept that students often confuse. The table should help.",
+    "Block 4: The class age data with the 65-year-old outlier is a powerful demonstration. Remove the outlier and show the shift. Drive home that median is resistant.",
+    "Block 5: This blueprint ties everything together. Emphasize that you should always examine the shape and check for outliers before choosing a measure."
+  ],
+  "id": "chapter-2-3-measures-central-tendency",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

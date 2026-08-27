@@ -1,0 +1,721 @@
+{
+  "id": "chapter-4-4-scatter-plots-lines-of-fit",
+  "presenterNotes": [
+    "Scatter plots are visual. Start by displaying several examples with different correlations and ask students what they notice before defining terms.",
+    "When drawing a line of fit, emphasize that it's an approximation. There is no single 'correct' line; reasonable people may draw slightly different lines.",
+    "The y-intercept in real-world models often lacks meaning because x=0 may be outside the observed range. Always discuss the context.",
+    "Use the blueprint to tie together the exploratory (scatter plot) and algebraic (equation) aspects. The 'Understand' phase is crucial: without a visible correlation, a line of fit is misleading."
+  ],
+  "schemaVersion": 2,
+  "type": "interactive-lesson",
+  "title": "Chapter 4.4 — Scatter Plots and Lines of Fit",
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "A scatter plot is like a snapshot of a relationship between two things—like sugar and calories in smoothies. Each point tells a story: 'This much sugar, that many calories.' By reading the graph, you can spot patterns and answer questions like, 'Does more sugar mean more calories?'"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:scatter plot]] is a graph that displays two data sets as ordered pairs $(x, y)$ on a coordinate plane.",
+          "Each point represents one observation. The $x$-axis shows one variable, the $y$-axis shows the other.",
+          "To find a value, draw a horizontal line from a point to the $y$-axis (for $y$) or a vertical line to the $x$-axis (for $x$).",
+          "Scatter plots reveal trends: points going upward from left to right indicate that $y$ [[imp:increases]] as $x$ increases.",
+          "You can use scatter plots to make predictions by observing the overall pattern."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Question",
+              "Action",
+              "Answer"
+            ],
+            "title": "Reading a Scatter Plot (Smoothies Example)",
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Calories for 56 g sugar?",
+                "1": "Horizontal line from (56, y) to y-axis",
+                "2": "270 calories"
+              },
+              {
+                "0": "Sugar for 320 calories?",
+                "1": "Vertical line from (x, 320) to x-axis",
+                "2": "70 grams"
+              },
+              {
+                "0": "Trend as sugar increases?",
+                "1": "Observe direction of points",
+                "2": "Calories increase"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Ordered pairs } (x, y) \\text{ plotted on a coordinate plane} $$",
+          "title": "Scatter Plot",
+          "notes": [
+            "Each point = one data pair.",
+            "Look for overall trend, not individual points."
+          ]
+        }
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "A scatter plot uses the coordinate plane.",
+          "type": "fill-blank",
+          "id": "q1-1",
+          "prompt": "A scatter plot displays two data sets as ordered pairs on a ___ plane.",
+          "hints": [
+            "It has an x-axis and a y-axis.",
+            "It's the standard grid for graphing points."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "coordinate"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The smoothie has 270 calories.",
+          "answer": "270",
+          "prompt": "In the smoothies scatter plot, how many calories are in the smoothie with 56 grams of sugar?",
+          "id": "q1-2",
+          "hints": [
+            "Find 56 on the x-axis, then look up to the point.",
+            "Read the y-coordinate of that point."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "y increases.",
+          "answer": "increase",
+          "id": "q1-3",
+          "hints": [
+            "Think of the direction of the points.",
+            "Upward slope means both variables rise together."
+          ],
+          "prompt": "If points on a scatter plot go upward from left to right, does y increase or decrease as x increases?"
+        }
+      ],
+      "id": "interpreting-scatter-plots",
+      "title": "Interpreting Scatter Plots",
+      "teacherCues": [
+        "Display a scatter plot of sugar vs. calories. Ask: 'If a smoothie has 56 grams of sugar, how can you find its calories from the graph?'",
+        "Point out that each dot represents one data pair (x, y). Ask: 'What trend do you see as sugar increases?'"
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "The x-coordinate 56 means 56 grams of sugar.",
+            "The y-coordinate 270 means 270 calories.",
+            "So, the smoothie with 56 grams of sugar has 270 calories."
+          ],
+          "title": "A – Reading a Point",
+          "prompt": "The scatter plot shows sugar (x grams) and calories (y). The point (56, 270) is on the graph. What does this point represent?"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: How do you trace from the y-axis to find the corresponding x-value on the graph?",
+          "prompt": "A smoothie has 320 calories. How can you use the scatter plot to estimate its sugar content?",
+          "steps": [
+            "Locate 320 on the y-axis.",
+            "Draw a horizontal line to the point on the graph.",
+            "Drop a vertical line down to the x-axis; it hits at 70 grams."
+          ],
+          "minLength": 2,
+          "title": "B – Finding x from y"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Look at the overall shape of the plotted points.",
+            "The points go upward from left to right.",
+            "So, as sugar increases, calories tend to increase."
+          ],
+          "title": "C – Describing a Trend",
+          "prompt": "As the number of grams of sugar increases, what happens to the number of calories?"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Some points may not follow the overall trend. That's normal. A scatter plot shows a [[imp:general tendency]], not a perfect rule.",
+        "title": "Not Every Point Fits the Pattern"
+      }
+    },
+    {
+      "examples": [
+        {
+          "prompt": "A scatter plot of temperature (x) and ice cream sales (y) shows points going upward. What type of correlation is this?",
+          "title": "A – Positive Correlation",
+          "steps": [
+            "As temperature (x) increases, ice cream sales (y) increase.",
+            "The points slope upward from left to right.",
+            "This is a positive correlation."
+          ],
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Explain to a partner: Why does this show a negative correlation, and what does that mean in real life?",
+          "title": "B – Negative Correlation",
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "As temperature (x) increases, coat sales (y) decrease.",
+            "The points slope downward from left to right.",
+            "This is a negative correlation."
+          ],
+          "prompt": "The scatter plot of temperature and coat sales shows points going downward. Explain the correlation."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "There is no clear upward or downward pattern.",
+            "The points do not follow a trend.",
+            "This is no correlation."
+          ],
+          "title": "C – No Correlation",
+          "prompt": "A scatter plot of a person's age (x) and the number of vehicles they own (y) shows points randomly scattered. What type of correlation?"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Positive",
+                "1": "Upward left to right",
+                "2": "Temperature and ice cream sales"
+              },
+              {
+                "0": "Negative",
+                "1": "Downward left to right",
+                "2": "Temperature and coat sales"
+              },
+              {
+                "0": "No Correlation",
+                "1": "No pattern",
+                "2": "Age and number of vehicles owned"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Types of Correlation",
+            "headers": [
+              "Type",
+              "Direction of Points",
+              "Example"
+            ]
+          }
+        ],
+        "explanation": [
+          "A [[kw:correlation]] is a relationship between two data sets.",
+          "[[imp:Positive correlation]]: as $x$ increases, $y$ tends to increase. The points slope upward.",
+          "[[imp:Negative correlation]]: as $x$ increases, $y$ tends to decrease. The points slope downward.",
+          "[[imp:No correlation]]: there is no apparent pattern. The points are scattered randomly.",
+          "Correlation describes a trend, not a strict rule; exceptions are common."
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Positive: } x \\uparrow, y \\uparrow \\qquad \\text{Negative: } x \\uparrow, y \\downarrow $$",
+          "notes": [
+            "Correlation is not causation.",
+            "Only describes a trend in the data."
+          ],
+          "title": "Correlation"
+        }
+      },
+      "confusionCorner": {
+        "body": "Even if two variables show a strong correlation, it doesn't mean one [[imp:causes]] the other. For example, ice cream sales and drowning incidents both increase in summer, but ice cream doesn't cause drowning. They both correlate with temperature.",
+        "title": "Correlation ≠ Causation"
+      },
+      "id": "identifying-correlations",
+      "teacherCues": [
+        "Show three scatter plots: one with upward trend, one with downward trend, one with random points. Ask: 'Which shows a positive correlation?'",
+        "Write on the board: Positive: as x increases, y increases. Negative: as x increases, y decreases. None: no pattern."
+      ],
+      "discoveryHook": {
+        "scenario": "Does studying more hours lead to higher grades? Does colder weather lead to more coat sales? These relationships are called correlations. A scatter plot can reveal at a glance whether two things move together (positive), move in opposite directions (negative), or have no connection at all."
+      },
+      "title": "Identifying Correlations",
+      "questions": [
+        {
+          "id": "q2-1",
+          "prompt": "If $y$ tends to decrease as $x$ increases, the data show a ___ correlation.",
+          "type": "fill-blank",
+          "hints": [
+            "The points slope downward.",
+            "It's the opposite of positive."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "negative"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "It's a negative correlation."
+        },
+        {
+          "feedbackIfWrong": "It's a positive correlation.",
+          "answer": "positive",
+          "prompt": "The table shows temperature (x) and attendees at an outdoor event (y): high temp, high attendees; low temp, low attendees. What correlation?",
+          "hints": [
+            "As temperature goes up, attendees go up.",
+            "Both variables increase together."
+          ],
+          "type": "short-answer",
+          "id": "q2-2"
+        },
+        {
+          "type": "short-answer",
+          "id": "q2-3",
+          "prompt": "If a scatter plot shows points with no pattern, what type of correlation is it?",
+          "feedbackIfWrong": "It shows no correlation.",
+          "hints": [
+            "There is no trend.",
+            "It's neither positive nor negative."
+          ],
+          "answer": "none"
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "When data points form a rough line, you can draw a 'line of fit' to summarize the trend. This line lets you write an equation, make predictions, and understand the relationship—like finding the signal in the noise!"
+      },
+      "examples": [
+        {
+          "prompt": "The table shows DVD sales (millions) vs. weeks since release: (1,19), (2,15), (3,13), (4,11), (5,10), (6,8), (7,7), (8,5). Draw a line of fit and write an equation. Use points (5,10) and (6,8) on the line.",
+          "title": "A – DVD Sales Line of Fit",
+          "steps": [
+            "Plot the points; they show a negative correlation.",
+            "Draw a line that fits the trend. The points (5,10) and (6,8) lie on this line.",
+            "Slope $m = \\frac{8-10}{6-5} = -2$.",
+            "Using (6,8): $y - 8 = -2(x-6)$ → $y = -2x + 20$."
+          ],
+          "role": "guided"
+        },
+        {
+          "prompt": "For the DVD sales model $y = -2x + 20$, what does the slope mean? What about the y-intercept?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "steps": [
+            "Slope -2 means sales drop by about $2$ million per week.",
+            "y-intercept 20 suggests sales at week 0 would be 20 million, but there are no sales in week 0.",
+            "The y-intercept is the line's starting point but may not reflect actual data."
+          ],
+          "title": "B – Interpreting Slope and y-Intercept",
+          "peerPrompt": "Explain to a partner: Why does the slope of -2 make sense, and why is the y-intercept 20 not meaningful in this context?"
+        },
+        {
+          "title": "C – Making a Prediction",
+          "prompt": "Using the model $y = -2x + 20$, predict the sales in week 9.",
+          "steps": [
+            "Substitute $x=9$: $y = -2(9) + 20 = -18 + 20 = 2$.",
+            "The model predicts about $2$ million in sales in week 9."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "lines-of-fit",
+      "confusionCorner": {
+        "body": "A line of fit is a [[imp:straight line that summarizes the trend]]. It doesn't need to pass through the highest or lowest points. Its goal is to be close to the overall pattern, not to connect every dot.",
+        "title": "Line of Fit ≠ Connecting Dots"
+      },
+      "title": "Drawing and Using a Line of Fit",
+      "questions": [
+        {
+          "hints": [
+            "It summarizes the correlation.",
+            "It is also called a trend line."
+          ],
+          "id": "q3-1",
+          "blanks": [
+            {
+              "accept": [
+                "fit",
+                "best fit"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "It's a line of fit (or line of best fit).",
+          "prompt": "A line drawn on a scatter plot to show the trend in the data is called a line of ___.",
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "They don't have to be original data points.",
+            "They must lie on the drawn line."
+          ],
+          "prompt": "For a line of fit, the points used to write the equation must be on the ___.",
+          "id": "q3-2",
+          "answer": "line",
+          "type": "short-answer",
+          "feedbackIfWrong": "The points must be on the line of fit."
+        },
+        {
+          "feedbackIfWrong": "Sales are decreasing as weeks increase.",
+          "answer": "sales are decreasing",
+          "prompt": "The slope of a line of fit for DVD sales is -2. What does the negative sign indicate?",
+          "hints": [
+            "Think about the direction of the trend.",
+            "As weeks increase, what happens to sales?"
+          ],
+          "id": "q3-3",
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Display a scatter plot with a negative correlation. Ask: 'Can we draw a line that comes close to most of these points?'",
+        "Emphasize that a line of fit doesn't need to pass through every point, but should have roughly equal points above and below."
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Line of Fit Equation",
+          "notes": [
+            "Use two points ON the drawn line.",
+            "Interpret slope as rate of change."
+          ],
+          "formula": "$$ y - y_1 = m(x - x_1) $$"
+        },
+        "explanation": [
+          "A [[kw:line of fit]] (or trend line) is a straight line drawn on a scatter plot that best represents the trend of the data.",
+          "The line does not need to pass through every point, but should have [[imp:approximately as many points above as below]].",
+          "To write an equation, pick two points on the line (not necessarily original data points) and use them to find the slope.",
+          "Then use point-slope form to write the equation and interpret the slope and y-intercept.",
+          "The slope tells how much $y$ changes per unit change in $x$; the y-intercept is the predicted $y$ when $x=0$ (if meaningful)."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1",
+                "1": "Plot the data: (week, sales in millions)."
+              },
+              {
+                "0": "2",
+                "1": "Observe a negative correlation."
+              },
+              {
+                "0": "3",
+                "1": "Draw a line with a balance of points above and below."
+              },
+              {
+                "0": "4",
+                "1": "Pick two points on the line, e.g., (5,10) and (6,8)."
+              },
+              {
+                "0": "5",
+                "1": "Find slope $m = -2$ and write $y = -2x + 20$."
+              }
+            ],
+            "title": "Finding a Line of Fit for DVD Sales",
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "title": "World Birth Rates Model",
+            "headers": [
+              "Variable",
+              "Meaning",
+              "Value from Model"
+            ],
+            "rows": [
+              {
+                "0": "$x$",
+                "1": "Years since 1960",
+                "2": "0 to 50"
+              },
+              {
+                "0": "$y$",
+                "1": "Births per 1000 people",
+                "2": "From data table"
+              },
+              {
+                "0": "Slope",
+                "1": "Rate of decrease per year",
+                "2": "Approx. -0.3"
+              },
+              {
+                "0": "y-intercept",
+                "1": "Birth rate in 1960",
+                "2": "Approx. 35.4"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Real-Life Line of Fit",
+          "notes": [
+            "$m$ = rate of change (slope)",
+            "$b$ = initial value (y-intercept, may not be meaningful)"
+          ],
+          "formula": "$$ y = mx + b $$"
+        },
+        "explanation": [
+          "Real-life data can be modeled with a line of fit to identify trends and make predictions.",
+          "First, make a scatter plot to see if there is a positive or negative correlation.",
+          "Draw a line of fit and find its equation using two points on the line.",
+          "The slope is the [[imp:rate of change]] in real-world units (e.g., births per 1000 people per year).",
+          "The y-intercept is the [[imp:initial value]] when $x=0$, but may not be meaningful if $x=0$ is outside the data range."
+        ]
+      },
+      "confusionCorner": {
+        "title": "y-Intercept May Not Be Meaningful",
+        "body": "In many real-life situations, the y-intercept represents the value when $x=0$, which might be outside the observed data (e.g., a car's value at 0 years, or sales before release). Always check if it makes sense in context."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "World birth rates (per 1000 people): (0, 35.4), (10, 33.6), (20, 28.3), (30, 27.0), (40, 22.4), (50, 20.0). Write a line of fit using points (0, 35) and (50, 20). Interpret.",
+          "steps": [
+            "Slope $m = \\frac{20 - 35}{50 - 0} = \\frac{-15}{50} = -0.3$.",
+            "y-intercept $b = 35$ (from point (0,35)).",
+            "Equation: $y = -0.3x + 35$.",
+            "Slope: birth rate decreases by about 0.3 per year. y-intercept: in 1960, birth rate was about 35 per 1000."
+          ],
+          "title": "A – World Birth Rates"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Data shows positive correlation. Draw a line. Possible points on line: (1,20) and (5,90).",
+            "Slope $m = \\frac{90-20}{5-1} = 17.5$. Using (1,20): $y - 20 = 17.5(x-1)$ → $y = 17.5x + 2.5$.",
+            "Slope: server earns about $17.50 per hour. y-intercept: base amount or error."
+          ],
+          "title": "B – Server Earnings",
+          "minLength": 2,
+          "prompt": "A server's total earnings y (dollars) for x hours: (0,0), (1,18), (2,40), (3,62), (4,77), (5,85), (6,113). Draw a line of fit and write an equation. Interpret slope.",
+          "peerPrompt": "Explain to a partner: How did you choose your two points on the line of fit? Why not just use the first and last data points?"
+        },
+        {
+          "steps": [
+            "Slope $m = \\frac{9 - 21}{7 - 2} = \\frac{-12}{5} = -2.4$.",
+            "Using (2,21): $y - 21 = -2.4(x - 2)$ → $y = -2.4x + 25.8$.",
+            "Slope: car loses about $2,400 in value per year."
+          ],
+          "prompt": "Age of car (years) vs. value (thousands): (1,24), (2,21), (3,19), (4,18), (5,15), (6,12), (7,8), (8,7). Draw a line of fit using (2,21) and (7,9). Write the equation and interpret slope.",
+          "role": "independent",
+          "title": "C – Car Value Depreciation"
+        }
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "The slope means the birth rate decreases by 0.3 per 1000 people each year.",
+          "id": "q4-1",
+          "answers": [
+            "decrease in birth rate per year",
+            "rate of change"
+          ],
+          "hints": [
+            "It's the change in y per unit change in x.",
+            "It tells how much the birth rate drops each year."
+          ],
+          "prompt": "In the birth rate model $y = -0.3x + 35$, what does the slope -0.3 represent?",
+          "type": "short-answer"
+        },
+        {
+          "id": "q4-2",
+          "prompt": "Before drawing a line of fit, you should make a ___ plot of the data.",
+          "type": "fill-blank",
+          "hints": [
+            "It shows the points on a coordinate plane.",
+            "It starts with 's'."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "scatter"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "You should make a scatter plot."
+        },
+        {
+          "hints": [
+            "It's the earnings when hours = 0.",
+            "It could be a fixed shift bonus."
+          ],
+          "answers": [
+            "base pay",
+            "initial amount",
+            "fixed amount"
+          ],
+          "feedbackIfWrong": "It could represent a base amount or a small fixed earning.",
+          "id": "q4-3",
+          "prompt": "The server's earnings model gave a y-intercept of 2.5 dollars. What does this represent?",
+          "type": "short-answer"
+        }
+      ],
+      "id": "real-life-scatter-plots",
+      "discoveryHook": {
+        "scenario": "From global birth rates to a server's tips, scatter plots and lines of fit help us understand trends in business, science, and everyday life. They turn messy data into clear stories—and even allow us to predict the future!"
+      },
+      "title": "Real-Life Applications of Scatter Plots",
+      "teacherCues": [
+        "Present the world birth rates data. Ask: 'What variables are being compared? What kind of correlation do you expect?'",
+        "Guide students to pick two points on their line of fit, find slope, and interpret."
+      ]
+    },
+    {
+      "examples": [
+        {
+          "title": "A – Full Blueprint Walkthrough",
+          "steps": [
+            "Understand: Variables are weeks and sales. Scatter plot shows negative correlation.",
+            "Solve: Draw line. Use points (5,10) and (6,8) on line. $m = -2$. Equation: $y = -2x + 20$.",
+            "Conclude: Slope -2 means sales drop by $2 million/week. y-intercept 20 is sales at week 0 (not meaningful)."
+          ],
+          "prompt": "Use the blueprint to model the DVD sales data: (1,19), (2,15), (3,13), (4,11), (5,10), (6,8), (7,7), (8,5).",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Explain to a partner: How did you decide where to draw the line of fit? Did you use the first and last data points as your line points?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "title": "B – Birth Rate Blueprint",
+          "steps": [
+            "Understand: Negative correlation; as years increase, birth rate decreases.",
+            "Solve: Draw line. Use (0,35) and (50,20) on line. $m = -0.3$. Equation: $y = -0.3x + 35$.",
+            "Conclude: Birth rate drops by 0.3 per year. In 1960, rate was about 35 per 1000."
+          ],
+          "prompt": "World birth rates: (0,35.4), (10,33.6), (20,28.3), (30,27.0), (40,22.4), (50,20.0). Use the blueprint."
+        },
+        {
+          "title": "C – Prediction Blueprint",
+          "steps": [
+            "Understand: x = 60 corresponds to year 2020.",
+            "Solve: Substitute: $y = -0.3(60) + 35 = -18 + 35 = 17$.",
+            "Conclude: The model predicts about 17 births per 1000 people in 2020. Check if reasonable."
+          ],
+          "prompt": "Using the birth rate model $y = -0.3x + 35$, predict the birth rate in 2020 (x = 60 years since 1960).",
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The blueprint for scatter plots: [[imp:Understand]] – What are the variables? Is there a positive, negative, or no correlation?",
+          "[[imp:Solve]] – Make a scatter plot. If there's a correlation, draw a line of fit. Pick two points on the line, find the slope, and write the equation using point-slope form.",
+          "[[imp:Conclude]] – Interpret the slope (rate of change) and y-intercept (initial value) in the context of the problem. Use the model to make predictions if appropriate."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "title": "Scatter Plot Blueprint",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify variables; determine type of correlation from scatter plot."
+              },
+              {
+                "0": "Solve",
+                "1": "Draw line of fit; choose two points on line; find slope; write equation."
+              },
+              {
+                "0": "Conclude",
+                "1": "Interpret slope and y-intercept; predict values; check reasonableness."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ m = \\frac{y_2 - y_1}{x_2 - x_1}, \\quad y - y_1 = m(x - x_1) $$",
+          "title": "Line of Fit Equation from Two Points",
+          "notes": [
+            "Use points ON the drawn line, not necessarily data points.",
+            "Simplify to slope-intercept form for interpretation."
+          ]
+        }
+      },
+      "discoveryHook": {
+        "scenario": "Faced with a table of numbers, the blueprint helps you turn data into insight. Understand the relationship, Solve by fitting a line and finding its equation, and Conclude by interpreting what the slope and intercept mean in the real world."
+      },
+      "id": "blueprint-aid-scatter-plots",
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude framework. Walk through a data set: plot, assess correlation, draw line, write equation, interpret.",
+        "Emphasize that 'Understand' involves looking for a correlation trend before modeling."
+      ],
+      "confusionCorner": {
+        "title": "Choosing Line Points",
+        "body": "The two points used for the equation must lie on the line you drew, not just be original data points. If the line doesn't pass exactly through a data point, estimate a point on the line as best you can."
+      },
+      "questions": [
+        {
+          "answers": [
+            "correlation",
+            "type of correlation"
+          ],
+          "feedbackIfWrong": "Check the correlation (positive, negative, or none).",
+          "hints": [
+            "Look for positive, negative, or no trend.",
+            "It helps decide if a line of fit is appropriate."
+          ],
+          "type": "short-answer",
+          "prompt": "In the blueprint, what is the first thing you check after making a scatter plot?",
+          "id": "q5-1"
+        },
+        {
+          "id": "q5-2",
+          "hints": [
+            "It's the straight line representing the trend.",
+            "Not necessarily original data points."
+          ],
+          "prompt": "The points used to find the slope of a line of fit must lie on the ___ you drew.",
+          "feedbackIfWrong": "The points must lie on the line of fit.",
+          "blanks": [
+            {
+              "accept": [
+                "line"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "id": "q5-3",
+          "hints": [
+            "It's the output when x = 0.",
+            "There are no sales before the DVD is released."
+          ],
+          "feedbackIfWrong": "It represents sales at week 0, but this is not meaningful because there are no sales before release.",
+          "prompt": "For the DVD sales model $y = -2x + 20$, what does the y-intercept of 20 represent?",
+          "answers": [
+            "predicted sales at week 0",
+            "not meaningful",
+            "extrapolation"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "title": "Blueprint Aid – Scatter Plots and Lines of Fit"
+    }
+  ],
+  "standards": [
+    "HSS.ID.B.6",
+    "HSA.CED.A.2"
+  ],
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

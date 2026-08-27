@@ -1,0 +1,668 @@
+{
+  "title": "Bank Statement and Reconciliation Process; Using Mobile and Online Banking",
+  "schemaVersion": 2,
+  "standards": [
+    "BUSMATH.4.2"
+  ],
+  "id": "ch4-lu4-2",
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "title": "1. Understanding the Bank Statement",
+      "id": "bank-statement-overview",
+      "discoveryHook": {
+        "scenario": "Each month, Ipswich Bank sends Gracie's Natural Superstore a bank statement showing all checks paid, deposits, fees, and the ending balance. Molly must compare this to her check register to find any differences."
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "b1q1",
+          "hints": [
+            "It summarizes deposits, checks, and fees.",
+            "It's sent by the bank."
+          ],
+          "feedbackIfWrong": "Bank statement.",
+          "blanks": [
+            {
+              "accept": [
+                "statement"
+              ]
+            }
+          ],
+          "prompt": "A monthly record of account activity from the bank is called a bank ___."
+        },
+        {
+          "id": "b1q2",
+          "type": "short-answer",
+          "prompt": "What is a check that has been written but not yet cleared called?",
+          "hints": [
+            "It's 'out' there in the mail.",
+            "Not yet paid by the bank."
+          ],
+          "feedbackIfWrong": "Outstanding check.",
+          "answers": [
+            "outstanding"
+          ]
+        },
+        {
+          "hints": [
+            "Fees reduce your money.",
+            "Opposite of interest."
+          ],
+          "prompt": "If the bank charges a $3 fee, does your balance increase or decrease?",
+          "id": "b1q3",
+          "answers": [
+            "decrease"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A bank statement shows a service charge of $12. Is this deducted or added to the account?",
+          "steps": [
+            "Service charges are fees taken by the bank.",
+            "They reduce the account balance.",
+            "The statement will show the deduction from the balance."
+          ],
+          "title": "A – Review statement items"
+        },
+        {
+          "prompt": "To a classmate: Why might your check register balance be higher than the bank statement balance?",
+          "role": "peer-explain",
+          "title": "B – Explain outstanding checks",
+          "minLength": 4,
+          "peerPrompt": "Consider a check you mailed last week.",
+          "steps": [
+            "You wrote and deducted the check in your register.",
+            "But the bank hasn't paid (cleared) it yet, so it's not on the statement.",
+            "This outstanding check makes your register balance lower than what the bank thinks you have? Actually: Register balance = original bank balance - outstanding checks + deposits in transit. But the statement balance is before these adjustments. So your register may be lower if checks haven't cleared, but if you haven't recorded a bank fee, your register may be higher. The key is that they differ until reconciled."
+          ]
+        },
+        {
+          "title": "C – Adjusting register",
+          "steps": [
+            "Subtract service charge: $1,500 - $10 = $1,490.",
+            "Add interest: $1,490 + $5 = $1,495.",
+            "Corrected register balance: $1,495."
+          ],
+          "prompt": "Your register shows $1,500. The bank statement shows a $10 service charge and $5 interest earned. What should your register balance be after recording these?",
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Project a sample bank statement. Ask: 'What do the columns mean?'",
+        "Explain the difference between statement balance and check register balance."
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "Register Balance ≠ Statement Balance until reconciliation accounts for outstanding items.",
+          "title": "Key Differences",
+          "notes": [
+            "Outstanding checks: checks you wrote that haven't cleared.",
+            "Deposits in transit: deposits made after the statement date."
+          ]
+        },
+        "explanation": [
+          "A [[kw:bank statement]] is a monthly record from the bank summarizing all activity in your checking account.",
+          "It lists: beginning balance, deposits, checks paid (cleared), debit card transactions, service charges, and the ending balance.",
+          "The bank statement balance often differs from your check register due to [[kw:outstanding checks]] (checks not yet cleared) and [[kw:deposits in transit]].",
+          "[[imp:Always open and review your statement promptly for errors or unauthorized transactions.]]"
+        ],
+        "visuals": [
+          {
+            "title": "Bank Statement vs. Check Register",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Who prepares it",
+                "1": "The bank",
+                "2": "You (account holder)"
+              },
+              {
+                "0": "What it shows",
+                "1": "Cleared checks, deposits, fees, ending balance",
+                "2": "All checks written, deposits made, running balance"
+              },
+              {
+                "0": "Typical difference",
+                "1": "Missing outstanding checks, deposits in transit",
+                "2": "Missing bank fees, interest, unrecorded items"
+              },
+              {
+                "0": "Purpose",
+                "1": "Official record; used for reconciliation",
+                "2": "Personal tracking; helps avoid overdrafts"
+              }
+            ],
+            "headers": [
+              "Feature",
+              "Bank Statement",
+              "Check Register"
+            ],
+            "caption": "The two records are compared during reconciliation."
+          }
+        ]
+      },
+      "challengeCorner": {
+        "optional": true,
+        "type": "short-answer",
+        "prompt": "Your check register shows $2,300. You forgot to record a $25 ATM withdrawal. What is your true available balance assuming no other adjustments?",
+        "answers": [
+          "2,275"
+        ],
+        "hints": [
+          "Subtract the unrecorded withdrawal.",
+          "2,300 - 25 = ?"
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't assume the bank statement balance is your 'available' balance. [[imp:Outstanding checks and pending deposits must be considered.]]"
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Molly's check register says the account balance is $4,500. The bank statement says $4,800. She must reconcile to find the correct balance. The process reveals three outstanding checks and a deposit in transit."
+      },
+      "examples": [
+        {
+          "title": "A – Complete a reconciliation",
+          "role": "guided",
+          "prompt": "Statement balance: $1,200. Deposits in transit: $300. Outstanding checks: #101 $150, #102 $80. Find the adjusted balance.",
+          "steps": [
+            "Start with statement balance: $1,200.",
+            "Add deposits in transit: $1,200 + $300 = $1,500.",
+            "Subtract outstanding checks: $1,500 - ($150+$80) = $1,500 - $230 = $1,270.",
+            "Adjusted bank balance: $1,270."
+          ]
+        },
+        {
+          "steps": [
+            "Reconciliation catches bank errors, such as incorrect check amounts.",
+            "It reveals unauthorized transactions early.",
+            "It ensures your register reflects the true available cash, preventing overdrafts."
+          ],
+          "title": "B – Why reconcile?",
+          "minLength": 4,
+          "prompt": "Explain the importance of bank reconciliation to someone who thinks it's unnecessary.",
+          "role": "peer-explain",
+          "peerPrompt": "Consider what happens if a check is stolen or a bank error occurs."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Subtract service charge: $890 - $12 = $878.",
+            "Add interest: $878 + $3 = $881.",
+            "Adjusted register balance: $881."
+          ],
+          "prompt": "Your check register shows $890. The bank statement shows a $12 service charge and $3 interest. What is the adjusted register balance?",
+          "title": "C – Adjust register"
+        }
+      ],
+      "teacherCues": [
+        "Walk through a reconciliation step by step on the board.",
+        "Use a reconciliation form from the textbook as a guide."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Bank Statement Balance",
+              "$4,800"
+            ],
+            "caption": "Both adjusted balances must match.",
+            "title": "Reconciliation Template",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Add: Deposits in Transit",
+                "1": "+ $200"
+              },
+              {
+                "0": "Subtotal",
+                "1": "$5,000"
+              },
+              {
+                "0": "Less: Outstanding Checks",
+                "1": "– $500"
+              },
+              {
+                "0": "Adjusted Bank Balance",
+                "1": "$4,500"
+              },
+              {
+                "0": "Check Register Balance",
+                "1": "$4,500"
+              },
+              {
+                "0": "Add: Interest Earned",
+                "1": "+ $0"
+              },
+              {
+                "0": "Less: Service Charges",
+                "1": "– $0"
+              },
+              {
+                "0": "Adjusted Check Register Balance",
+                "1": "$4,500"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "[[kw:Bank reconciliation]] is the process of matching your check register balance with the bank statement balance, adjusting for timing differences and errors.",
+          "Steps to reconcile: [[imp:1. Compare the deposits on the statement to your register. 2. List outstanding checks (checks in register not on statement). 3. Identify any bank charges or credits not in your register. 4. Adjust the check register for these items. 5. Compute the adjusted balance; it should equal the adjusted bank balance.]]",
+          "The adjusted balance is the true cash available.",
+          "If the adjusted balances do not match, look for errors in arithmetic, transposed numbers, or forgotten items."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Adjusted Bank Balance} = \\text{Statement Balance} + \\text{Deposits in Transit} - \\text{Outstanding Checks}$$ $$\\text{Adjusted Check Register Balance} = \\text{Register Balance} + \\text{Unrecorded Credits} - \\text{Unrecorded Debits}$$",
+          "notes": [
+            "If the adjusted balances are equal, the reconciliation is complete.",
+            "If not, re‑check outstanding checks and arithmetic."
+          ],
+          "title": "Reconciliation Formulas"
+        }
+      },
+      "title": "2. The Bank Reconciliation Process",
+      "challengeCorner": {
+        "hints": [
+          "Check your math.",
+          "Look for digits switched (e.g., $89 vs $98)."
+        ],
+        "optional": true,
+        "type": "short-answer",
+        "answers": [
+          "arithmetic error",
+          "transposed number",
+          "forgotten deposit"
+        ],
+        "prompt": "What if the adjusted bank balance and adjusted register balance still don't match after listing all items? List two possible reasons."
+      },
+      "id": "reconciliation-process",
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Never assume the bank statement balance is correct until you've reconciled. [[imp:Always list outstanding checks and unrecorded deposits before concluding.]]"
+      },
+      "questions": [
+        {
+          "prompt": "The process of matching the check register to the bank statement is called ___.",
+          "blanks": [
+            {
+              "accept": [
+                "reconciliation"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Reconciliation.",
+          "hints": [
+            "It starts with 'r'.",
+            "It ensures the two records agree."
+          ],
+          "id": "b2q1",
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Add deposits in transit, subtract outstanding checks.",
+            "2,000 + 500 - 350 = ?"
+          ],
+          "id": "b2q2",
+          "feedbackIfWrong": "Adjusted balance is $2,150.",
+          "answers": [
+            "2,150"
+          ],
+          "prompt": "Statement balance $2,000, deposits in transit $500, outstanding checks $350. Adjusted bank balance?"
+        },
+        {
+          "id": "b2q3",
+          "answers": [
+            "decrease"
+          ],
+          "type": "short-answer",
+          "prompt": "If your check register lacks a $5 bank fee, does the register balance increase or decrease to adjust?",
+          "hints": [
+            "Fees reduce your money.",
+            "You must subtract the fee from the register."
+          ]
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Never share your banking app password or PIN. [[imp:Use strong, unique passwords and enable biometric login (fingerprint/face) if available.]]"
+      },
+      "discoveryHook": {
+        "scenario": "Molly no longer needs to visit the bank to deposit checks; she uses the bank's mobile app to snap a photo of the check. She can view balances, transfer funds, and pay bills instantly. Banking is now 24/7."
+      },
+      "examples": [
+        {
+          "title": "A – Mobile check deposit",
+          "prompt": "List the steps to deposit a check using a mobile banking app.",
+          "steps": [
+            "Open the app and select 'Deposit'.",
+            "Endorse the check with 'For mobile deposit only' and sign.",
+            "Enter the check amount.",
+            "Take photos of the front and back of the check.",
+            "Submit; wait for confirmation and funds availability."
+          ],
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Think about logging in with a password and then a code sent to your phone.",
+          "title": "B – Security in mobile banking",
+          "minLength": 4,
+          "steps": [
+            "It requires two or more verification methods: something you know (password) and something you have (phone).",
+            "Even if someone steals your password, they can't log in without the code.",
+            "This greatly reduces the risk of unauthorized access."
+          ],
+          "role": "peer-explain",
+          "prompt": "How does multi‑factor authentication protect your account?"
+        },
+        {
+          "title": "C – Comparing alerts",
+          "steps": [
+            "Set a 'low balance alert' so you receive a notification when funds drop below a chosen amount.",
+            "This gives you time to deposit more money or stop spending.",
+            "Alerts can be sent via text, email, or push notification."
+          ],
+          "prompt": "What alert would you set to avoid overdrafts?",
+          "role": "independent"
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "answers": [
+          "no"
+        ],
+        "hints": [
+          "Total = $3,000.",
+          "Exceeds the daily limit."
+        ],
+        "prompt": "A bank allows mobile deposit up to $2,500 per day. You have three checks: $1,200, $800, and $1,000. Can you deposit all three via mobile on the same day?",
+        "type": "short-answer"
+      },
+      "id": "mobile-online-banking",
+      "teacherCues": [
+        "Discuss the shift from paper to digital banking.",
+        "Show screenshots of a mobile banking app."
+      ],
+      "questions": [
+        {
+          "prompt": "Banking services accessed through a smartphone app is called ___ banking.",
+          "id": "b3q1",
+          "blanks": [
+            {
+              "accept": [
+                "mobile"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Mobile banking.",
+          "type": "fill-blank",
+          "hints": [
+            "It's not desktop.",
+            "You use it on the go."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "id": "b3q2",
+          "prompt": "What endorsement is recommended for mobile check deposit?",
+          "hints": [
+            "It limits the check to deposit only.",
+            "Often required by bank policy."
+          ],
+          "answers": [
+            "restrictive",
+            "for mobile deposit only"
+          ]
+        },
+        {
+          "id": "b3q3",
+          "answers": [
+            "encryption",
+            "multi-factor authentication",
+            "biometric login",
+            "fingerprint"
+          ],
+          "prompt": "Name one security feature common in mobile banking apps.",
+          "type": "short-answer",
+          "hints": [
+            "Protects your data.",
+            "Often requires a code or body part."
+          ]
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Both give you control over your finances without visiting a branch.",
+            "title": "Mobile vs. Online Banking",
+            "headers": [
+              "Feature",
+              "Mobile Banking",
+              "Online Banking"
+            ],
+            "rows": [
+              {
+                "0": "Access Device",
+                "1": "Smartphone or tablet",
+                "2": "Computer (desktop/laptop)"
+              },
+              {
+                "0": "Check Deposit",
+                "1": "Mobile check capture (camera)",
+                "2": "Not always available (scan) but some offer remote deposit capture"
+              },
+              {
+                "0": "Bill Pay",
+                "1": "Yes, via app",
+                "2": "Yes, via browser"
+              },
+              {
+                "0": "Alerts & Notifications",
+                "1": "Push notifications, email, text",
+                "2": "Email alerts, website messages"
+              },
+              {
+                "0": "Primary Advantage",
+                "1": "On‑the‑go convenience",
+                "2": "Full screen review, easier for detailed work"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "Daily limit and hold period set by bank; funds available within 1‑2 business days typically.",
+          "title": "Mobile Deposit Limits",
+          "notes": [
+            "Endorse checks with 'For mobile deposit only' to comply with bank rules.",
+            "Retain physical check until deposit clears."
+          ]
+        },
+        "explanation": [
+          "[[kw:Mobile banking]] uses a smartphone app to access your accounts, deposit checks, pay bills, and transfer money.",
+          "[[kw:Online banking]] is accessed via a web browser on a computer; similar functions.",
+          "Common features: balance inquiry, transaction history, bill pay, funds transfer, mobile check deposit, alerts.",
+          "[[imp:Mobile deposits are subject to limits and hold times; always check your bank's policy.]]",
+          "Security measures: encryption, multi‑factor authentication, and automatic logout."
+        ]
+      },
+      "title": "3. Mobile and Online Banking"
+    },
+    {
+      "examples": [
+        {
+          "prompt": "You owe a friend $25 for lunch. Name a P2P app you could use and describe the process.",
+          "title": "A – P2P payment",
+          "steps": [
+            "Open Venmo or Zelle app; linked to your bank account.",
+            "Enter your friend's username, the amount ($25), and a note.",
+            "Confirm the payment. Funds are transferred immediately or within minutes."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 4,
+          "steps": [
+            "Mobile wallets use tokenization – your actual card number is not transmitted.",
+            "Transactions require biometric authentication (fingerprint or face).",
+            "If your phone is stolen, it's locked with a passcode; a physical card can be used until you report it."
+          ],
+          "peerPrompt": "What happens if your phone is stolen versus your wallet?",
+          "title": "B – Mobile wallet vs. physical card",
+          "prompt": "Explain the security advantage of using Apple Pay vs. a physical debit card."
+        },
+        {
+          "role": "independent",
+          "prompt": "List three safety tips for using an ATM.",
+          "steps": [
+            "Use ATMs in well‑lit, public areas.",
+            "Shield the keypad when entering your PIN.",
+            "Check the machine for skimming devices; if it looks tampered, don't use it."
+          ],
+          "title": "C – ATM safety"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Banking has transformed: from standing in line to tellers to tapping a phone at a store. ATMs provided the first self‑service; now mobile wallets and peer‑to‑peer apps like Venmo let you send money instantly. This unit explores those trends."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "ATM",
+                "1": "1967 (first in US 1969)",
+                "2": "24/7 cash access",
+                "3": "Use well‑lit ATMs, shield PIN"
+              },
+              {
+                "0": "Debit Card",
+                "1": "1970s (widespread 1990s)",
+                "2": "Direct account access; no check writing",
+                "3": "Report lost card immediately"
+              },
+              {
+                "0": "Online Banking",
+                "1": "1990s",
+                "2": "Manage accounts from home",
+                "3": "Use strong passwords, avoid public Wi‑Fi"
+              },
+              {
+                "0": "Mobile Banking App",
+                "1": "Late 2000s",
+                "2": "On‑the‑go access, mobile deposit",
+                "3": "Enable biometric login"
+              },
+              {
+                "0": "P2P Apps (Venmo, Zelle)",
+                "1": "2010s",
+                "2": "Instant person‑to‑person transfers",
+                "3": "Only send to people you know"
+              }
+            ],
+            "headers": [
+              "Service",
+              "Introduced",
+              "Key Benefit",
+              "Security Note"
+            ],
+            "caption": "Technology has increased convenience but requires security awareness.",
+            "title": "Banking Technology Evolution"
+          }
+        ],
+        "explanation": [
+          "[[kw:ATM]] (Automated Teller Machine) allows cash withdrawals, deposits, and balance inquiries 24/7. Most banks no longer charge fees for using their own ATMs.",
+          "[[kw:Debit cards]] now double as check cards; transactions deduct directly from your checking account.",
+          "[[kw:Person‑to‑person (P2P) payment apps]] like Venmo, Zelle, and PayPal enable instant transfers between individuals linked to bank accounts.",
+          "[[kw:Mobile wallets]] (Apple Pay, Google Pay) store card information and allow contactless payments.",
+          "[[imp:Always check your bank's app for the latest features: card lock/unlock, spending analysis, and credit score monitoring.]]"
+        ]
+      },
+      "teacherCues": [
+        "Discuss how banking has evoled with technology.",
+        "Ask students to share their own banking app experiences."
+      ],
+      "title": "4. Trends in Banking: ATMs, Debit Cards, and Apps",
+      "id": "trends-debit-atm",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "ATM.",
+          "hints": [
+            "Stands for Automated Teller Machine.",
+            "Found outside banks."
+          ],
+          "id": "b4q1",
+          "blanks": [
+            {
+              "accept": [
+                "ATM"
+              ]
+            }
+          ],
+          "prompt": "A machine that allows cash withdrawals and deposits 24/7 is called an ___."
+        },
+        {
+          "type": "short-answer",
+          "prompt": "Name one popular P2P payment app.",
+          "id": "b4q2",
+          "hints": [
+            "It's a green app or a bank‑linked service.",
+            "Starts with V, Z, or P."
+          ],
+          "answers": [
+            "Venmo",
+            "Zelle",
+            "PayPal"
+          ],
+          "feedbackIfWrong": "Venmo, Zelle, or PayPal."
+        },
+        {
+          "hints": [
+            "Not a password.",
+            "Uses your body."
+          ],
+          "id": "b4q3",
+          "prompt": "What kind of login uses fingerprint or face recognition?",
+          "answers": [
+            "biometric",
+            "biometrics"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "type": "short-answer",
+        "hints": [
+          "Your bank may charge; the ATM owner may charge.",
+          "Two separate fees."
+        ],
+        "prompt": "Why might a bank charge a fee for using another bank's ATM? What are the two fees sometimes involved?",
+        "answers": [
+          "convenience",
+          "out-of-network"
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "P2P apps may not have the same fraud protection as credit cards. [[imp:Only send money to trusted individuals; once sent, it's often impossible to reverse.]]"
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

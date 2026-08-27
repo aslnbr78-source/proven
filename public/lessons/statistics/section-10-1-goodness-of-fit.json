@@ -1,0 +1,772 @@
+{
+  "blocks": [
+    {
+      "concept": {
+        "explanation": [
+          "A [[kw:multinomial experiment]] is like a binomial experiment but has more than two possible outcomes per trial. The trials are independent, and each outcome has a fixed probability.",
+          "The [[kw:goodness‑of‑fit test]] uses a sample to see if a frequency distribution fits a claimed distribution.",
+          "The [[kw:observed frequency]] $ O $ is the actual count in each category from the sample.",
+          "The [[kw:expected frequency]] $ E $ for each category is calculated by $$ E = n \\times p $$ where $ n $ is the total number of observations and $ p $ is the claimed proportion for that category.",
+          "The test statistic measures how much the observed and expected frequencies differ: $$ \\chi^2 = \\sum \\frac{(O - E)^2}{E} $$"
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Accountant",
+                "1": "25%",
+                "2": "71",
+                "3": "$ 300 \\times 0.25 = 75 $"
+              },
+              {
+                "0": "By hand",
+                "1": "20%",
+                "2": "40",
+                "3": "$ 300 \\times 0.20 = 60 $"
+              },
+              {
+                "0": "Computer software",
+                "1": "35%",
+                "2": "101",
+                "3": "$ 300 \\times 0.35 = 105 $"
+              },
+              {
+                "0": "Friend/family",
+                "1": "5%",
+                "2": "35",
+                "3": "$ 300 \\times 0.05 = 15 $"
+              },
+              {
+                "0": "Tax service",
+                "1": "15%",
+                "2": "53",
+                "3": "$ 300 \\times 0.15 = 45 $"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Method",
+              "Claimed p",
+              "Observed O",
+              "Expected E = 300 × p"
+            ],
+            "title": "Observed and Expected Frequencies for Tax Preparation"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ E_i = n \\, p_i \\qquad \\chi^2 = \\sum_{i=1}^{k} \\frac{(O_i - E_i)^2}{E_i} $$",
+          "notes": [
+            "$ k $ = number of categories.",
+            "All expected frequencies must be $ \\ge 5 $.",
+            "The test is always right‑tailed."
+          ],
+          "title": "Expected Frequency and Test Statistic"
+        }
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "$ O $ is the observed frequency.",
+          "blanks": [
+            {
+              "accept": [
+                "observed"
+              ]
+            }
+          ],
+          "id": "q10-1-1",
+          "type": "fill-blank",
+          "hints": [
+            "It is the frequency you see in the sample.",
+            "Not the calculated or expected one."
+          ],
+          "prompt": "In a goodness‑of‑fit test, the letter $ O $ stands for ___ frequency."
+        },
+        {
+          "answer": "140",
+          "prompt": "If $ n = 400 $ and the claimed proportion is $ 0.35 $, what is the expected frequency?",
+          "type": "short-answer",
+          "feedbackIfWrong": "$ E = 400 \\times 0.35 = 140 $.",
+          "hints": [
+            "Multiply $ n $ by $ p $.",
+            "$ 400 \\times 0.35 = ? $"
+          ],
+          "id": "q10-1-2"
+        },
+        {
+          "feedbackIfWrong": "Each expected frequency must be at least 5.",
+          "answer": "5",
+          "type": "short-answer",
+          "id": "q10-1-3",
+          "hints": [
+            "If it is less than this number, you must combine categories.",
+            "The rule is $ E \\ge $ something."
+          ],
+          "prompt": "What is the minimum expected frequency allowed for each category in a chi‑square goodness‑of‑fit test?"
+        }
+      ],
+      "title": "Multinomial Experiments and Expected Frequencies",
+      "id": "multinomial-experiment-and-expected-frequencies",
+      "examples": [
+        {
+          "prompt": "A company claims that 60% of customers buy product A, 30% buy B, and 10% buy C. In a random sample of 500 customers, how many are expected to buy each product?",
+          "role": "guided",
+          "title": "Example A – Computing Expected Frequencies",
+          "steps": [
+            "Total $ n = 500 $.",
+            "Expected for A: $ 500 \\times 0.60 = 300 $.",
+            "Expected for B: $ 500 \\times 0.30 = 150 $.",
+            "Expected for C: $ 500 \\times 0.10 = 50 $."
+          ]
+        },
+        {
+          "steps": [
+            "The chi‑square statistic comes from a continuous distribution that approximates discrete counts.",
+            "If an expected frequency is tiny, the ratio $ (O-E)^2/E $ can be huge and the approximation fails.",
+            "The rule 'E ≥ 5' ensures the sampling distribution of the statistic is well approximated by the chi‑square distribution."
+          ],
+          "title": "Example B – Why Must E ≥ 5?",
+          "prompt": "Explain to a partner why the chi‑square test requires each expected frequency to be at least 5.",
+          "peerPrompt": "Without looking back...\n\nDiscuss: What happens to the test statistic if an expected frequency is very small? Why might the chi‑square approximation be unreliable then?",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "The sample of 300 adults was randomly selected.",
+            "Check each expected frequency: 75, 60, 105, 15, 45. All are $ \\ge 5 $.",
+            "Thus, the chi‑square goodness‑of‑fit test can be used."
+          ],
+          "prompt": "In the tax preparation example, are the conditions for the goodness‑of‑fit test satisfied?",
+          "title": "Example C – Checking the Conditions"
+        }
+      ],
+      "teacherCues": [
+        "Show a pie chart of a claimed distribution and a table of survey results. Ask: Do the survey results match the claim?",
+        "Write the expected frequency formula: E = n × p. Stress that n is the total sample size and p is the claimed proportion."
+      ],
+      "confusionCorner": {
+        "title": "Observed vs. Expected",
+        "body": "Observed frequencies are the actual counts from your sample. Expected frequencies are computed under the assumption that the null hypothesis is true. [[imp:They are not the same, even if the null hypothesis is correct; some variation is expected.]]"
+      },
+      "discoveryHook": {
+        "scenario": "A tax preparation company believes that 25% of people use an accountant, 20% prepare by hand, 35% use software, 5% ask family, and 15% use a service. To check this, they survey 300 people. Some counts are close to the percentages, others are far off. A chi‑square goodness‑of‑fit test helps decide whether the differences are just chance or if the claimed distribution is wrong."
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "The chi‑square statistic is always zero or positive, and large values mean big differences between what we observed and what we expected. So we only reject the null hypothesis when the statistic is unusually large—that's why it's always a right‑tailed test."
+      },
+      "questions": [
+        {
+          "answer": "6",
+          "prompt": "A goodness‑of‑fit test has 7 categories. What are the degrees of freedom?",
+          "type": "short-answer",
+          "id": "q10-1-4",
+          "hints": [
+            "$ df = k - 1 $.",
+            "7 minus 1 = ?"
+          ],
+          "feedbackIfWrong": "$ df = 7 - 1 = 6 $."
+        },
+        {
+          "feedbackIfWrong": "The test is always right‑tailed.",
+          "prompt": "The chi‑square goodness‑of‑fit test is always a ___‑tailed test.",
+          "type": "fill-blank",
+          "id": "q10-1-5",
+          "hints": [
+            "We reject when the test statistic is large.",
+            "The rejection region is on the side of the larger numbers."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "right"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "It is the inverse of the right‑tailed probability.",
+            "Syntax: =CHISQ.INV.RT(α, df)."
+          ],
+          "prompt": "What Google Sheets function gives the critical chi‑square value? (Answer: CHISQ.INV.RT)",
+          "feedbackIfWrong": "=CHISQ.INV.RT(α, df) returns the critical value.",
+          "answer": "CHISQ.INV.RT",
+          "id": "q10-1-6"
+        }
+      ],
+      "title": "Chi‑Square Distribution and Critical Values",
+      "examples": [
+        {
+          "steps": [
+            "Degrees of freedom: $ df = 6 - 1 = 5 $.",
+            "From the chi‑square table, look up $ \\chi^2_{0.05} $ with $ df = 5 $ → $ 11.071 $.",
+            "Reject $ H_0 $ if the test statistic exceeds $ 11.071 $."
+          ],
+          "prompt": "For a test with 6 categories at α = 0.05, find the critical value.",
+          "title": "Example A – Finding the Critical Value",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "The test statistic is a sum of squared differences, so it is always $ \\ge 0 $.",
+            "A very small $ \\chi^2 $ indicates almost perfect agreement — no reason to reject $ H_0 $.",
+            "Only large values (big discrepancies) suggest $ H_0 $ is false, so the rejection region is in the right tail."
+          ],
+          "prompt": "Explain to a partner why the chi‑square goodness‑of‑fit test has no left‑tailed rejection region.",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nThink about the formula: $ (O-E)^2/E $. Can this ever be negative? What would a very small value mean?",
+          "minLength": 2,
+          "title": "Example B – Why Always Right‑Tailed?"
+        },
+        {
+          "role": "independent",
+          "prompt": "A test compares observed counts in 4 age groups. How many degrees of freedom does the test have?",
+          "steps": [
+            "$ k = 4 $ categories.",
+            "$ df = 4 - 1 = 3 $.",
+            "The chi‑square statistic follows a $ \\chi^2 $ distribution with $ 3 $ degrees of freedom."
+          ],
+          "title": "Example C – Degrees of Freedom"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Degrees of Freedom and Critical Values (Example)",
+            "variant": "colorful",
+            "headers": [
+              "Categories k",
+              "df = k − 1",
+              "Critical value α=0.05",
+              "Critical value α=0.01"
+            ],
+            "rows": [
+              {
+                "0": "3",
+                "1": "2",
+                "2": "5.991",
+                "3": "9.210"
+              },
+              {
+                "0": "5",
+                "1": "4",
+                "2": "9.488",
+                "3": "13.277"
+              },
+              {
+                "0": "6",
+                "1": "5",
+                "2": "11.071",
+                "3": "15.086"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "The test statistic $ \\chi^2 = \\sum \\frac{(O-E)^2}{E} $ follows a [[kw:chi‑square distribution]] with $ df = k - 1 $ degrees of freedom, where $ k $ is the number of categories.",
+          "The chi‑square distribution is [[imp:positively skewed]] (right‑skewed) and always takes non‑negative values.",
+          "Since large values of $ \\chi^2 $ indicate a poor fit, the test is [[imp:always right‑tailed]].",
+          "Find the [[kw:critical value]] $ \\chi^2_\\alpha $ from the chi‑square table (Table 6). If $ \\chi^2 > \\chi^2_\\alpha $, reject $ H_0 $.",
+          "The shape of the chi‑square curve depends on the degrees of freedom; as $ df $ increases, the curve becomes more symmetric."
+        ],
+        "formulaCard": {
+          "title": "Degrees of Freedom and Decision Rule",
+          "formula": "$$ df = k - 1 $$",
+          "notes": [
+            "$ k $ = number of categories.",
+            "Use Table 6 for critical values.",
+            "Reject $ H_0 $ if $ \\chi^2 $ > critical value.",
+            "In Google Sheets, use `=CHISQ.INV.RT(α, df)` for the critical value."
+          ]
+        }
+      },
+      "teacherCues": [
+        "Sketch a chi‑square curve, label the rejection region on the right. Ask: Why is the test always right‑tailed?",
+        "Write the degrees of freedom formula: df = k − 1. Show how to use the table for α = 0.05, 0.01, 0.10."
+      ],
+      "id": "chi-square-distribution-and-critical-values",
+      "confusionCorner": {
+        "title": "Don't Lose the −1!",
+        "body": "Degrees of freedom for the goodness‑of‑fit test is $ k - 1 $, not $ n - 1 $ or $ n - k $. The categories are the groups, not the individual observations. [[imp:Double‑check that you subtract 1 from the number of categories, not the sample size.]]"
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Let's put it all together. We have observed and expected frequencies for tax preparation methods. We compute the chi‑square statistic, find the critical value for α = 0.01 and df = 4, and make a decision. If the statistic is larger than 13.277, we reject the claimed distribution."
+      },
+      "id": "performing-goodness-of-fit-test",
+      "concept": {
+        "visuals": [
+          {
+            "title": "Chi‑Square Calculation for Tax Preparation",
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Accountant",
+                "1": "71",
+                "2": "75",
+                "3": "−4",
+                "4": "$ 16/75 = 0.213 $"
+              },
+              {
+                "0": "By hand",
+                "1": "40",
+                "2": "60",
+                "3": "−20",
+                "4": "$ 400/60 = 6.667 $"
+              },
+              {
+                "0": "Computer",
+                "1": "101",
+                "2": "105",
+                "3": "−4",
+                "4": "$ 16/105 = 0.152 $"
+              },
+              {
+                "0": "Friend/family",
+                "1": "35",
+                "2": "15",
+                "3": "20",
+                "4": "$ 400/15 = 26.667 $"
+              },
+              {
+                "0": "Tax service",
+                "1": "53",
+                "2": "45",
+                "3": "8",
+                "4": "$ 64/45 = 1.422 $"
+              },
+              {
+                "0": "Total",
+                "1": "",
+                "2": "",
+                "3": "",
+                "4": "$ \\chi^2 \\approx 35.121 $"
+              }
+            ],
+            "headers": [
+              "Method",
+              "O",
+              "E",
+              "(O − E)",
+              "(O − E)²/E"
+            ]
+          }
+        ],
+        "explanation": [
+          "To perform the test:",
+          "1. State $ H_0 $: the observed distribution fits the expected (claimed) distribution. $ H_a $: it does not fit.",
+          "2. Compute $ \\chi^2 = \\sum \\frac{(O - E)^2}{E} $.",
+          "3. Find the critical value $ \\chi^2_\\alpha $ with $ df = k - 1 $.",
+          "4. [[imp:Reject $ H_0 $ if $ \\chi^2 $ > critical value.]] Otherwise, fail to reject.",
+          "In the tax example, $ \\chi^2 \\approx 35.12 $, critical value $ = 13.277 $. Since $ 35.12 > 13.277 $, reject $ H_0 $."
+        ]
+      },
+      "questions": [
+        {
+          "id": "q10-1-7",
+          "answer": "0.4",
+          "type": "short-answer",
+          "feedbackIfWrong": "$ (12 - 10)^2 / 10 = 4/10 = 0.4 $.",
+          "hints": [
+            "$ O - E = 2 $, then square = 4.",
+            "Divide 4 by 10."
+          ],
+          "prompt": "For a category with $ O = 12 $ and $ E = 10 $, what is the value of $ (O - E)^2 / E $? (Answer as a decimal: 0.4)"
+        },
+        {
+          "prompt": "If the chi‑square test statistic is greater than the critical value, we ___ the null hypothesis.",
+          "feedbackIfWrong": "If $ \\chi^2 $ > critical value, reject $ H_0 $.",
+          "hints": [
+            "We conclude the observed distribution does not fit the expected one.",
+            "The evidence is strong enough to say the difference is not just chance."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "reject"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "id": "q10-1-8"
+        },
+        {
+          "id": "q10-1-9",
+          "answer": "13.277",
+          "type": "short-answer",
+          "prompt": "What is the critical chi‑square value for $ df = 4 $ and $ \\alpha = 0.01 $? (Use the book's table: 13.277)",
+          "feedbackIfWrong": "The critical value is $ 13.277 $.",
+          "hints": [
+            "From Table 6, row $ df=4 $, column $ \\alpha=0.01 $.",
+            "The value is between 13 and 14."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Walk through the tax preparation example: compute (O−E)²/E for each category, sum to get χ², compare to critical value.",
+        "Use the table on the board to organize the calculations."
+      ],
+      "title": "Performing the Chi‑Square Goodness‑of‑Fit Test",
+      "confusionCorner": {
+        "title": "Small E, Large Impact",
+        "body": "A category with a small expected frequency can have an outsized effect on the test statistic, even with a moderate absolute difference. This is why we require $ E \\ge 5 $. [[imp:Always check the expected frequencies before running the test.]]"
+      },
+      "examples": [
+        {
+          "title": "Example A – Calculating the Test Statistic",
+          "steps": [
+            "$ (O - E) = 71 - 75 = -4 $.",
+            "Square: $ (-4)^2 = 16 $.",
+            "Divide by $ E $: $ 16 / 75 \\approx 0.213 $.",
+            "This category contributes about 0.213 to the total $ \\chi^2 $."
+          ],
+          "prompt": "Given O = 71, E = 75 for one category, compute the contribution to χ².",
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Which Category Contributes Most?",
+          "role": "peer-explain",
+          "prompt": "Look at the table. Which tax method had the largest discrepancy from its expected count? Why?",
+          "minLength": 2,
+          "steps": [
+            "Friend/family: $ O=35, E=15 $, a difference of 20.",
+            "Because $ E $ is small, the squared difference is divided by a small number, yielding a large contribution ($ 26.667 $).",
+            "This category shows the observed count is much higher than expected, strongly disagreeing with the claim."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: The 'Friend/family' row has O=35 and E=15. Why does this produce such a large contribution to χ²?"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Decision and Interpretation",
+          "prompt": "With $ \\chi^2 = 35.12 $, $ df = 4 $, $ \\alpha = 0.01 $, critical value $ = 13.277 $. What is the decision?",
+          "steps": [
+            "Compare $ 35.12 $ to $ 13.277 $: $ 35.12 > 13.277 $.",
+            "Thus, reject $ H_0 $.",
+            "There is enough evidence to say the distribution of tax preparation methods differs from the claimed distribution."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "testing-uniform-distributions",
+      "concept": {
+        "explanation": [
+          "A [[kw:uniform distribution]] means all categories have the same probability. The expected frequency for each category is $$ E = \\frac{n}{k} $$ where $ n $ is the total sample size and $ k $ is the number of categories.",
+          "In the M&M example, $ n = 500 $, $ k = 6 $, so $ E = 500 / 6 \\approx 83.33 $ for each color.",
+          "The hypotheses are: $ H_0 $: the distribution is uniform (Claim), $ H_a $: the distribution is not uniform.",
+          "Compute $ \\chi^2 = \\sum (O - E)^2 / E $. With $ df = 5 $ and $ \\alpha = 0.10 $, the critical value is $ 9.236 $. The computed $ \\chi^2 \\approx 3.016 $.",
+          "Since $ 3.016 < 9.236 $, we fail to reject $ H_0 $. There is not enough evidence to say the colors are not uniformly distributed."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Color",
+              "O",
+              "E = 500/6",
+              "(O − E)²/E"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "M&M Color Counts and Expected Values",
+            "rows": [
+              {
+                "0": "Brown",
+                "1": "80",
+                "2": "83.33",
+                "3": "0.133"
+              },
+              {
+                "0": "Yellow",
+                "1": "95",
+                "2": "83.33",
+                "3": "1.634"
+              },
+              {
+                "0": "Red",
+                "1": "88",
+                "2": "83.33",
+                "3": "0.262"
+              },
+              {
+                "0": "Blue",
+                "1": "83",
+                "2": "83.33",
+                "3": "0.001"
+              },
+              {
+                "0": "Orange",
+                "1": "76",
+                "2": "83.33",
+                "3": "0.645"
+              },
+              {
+                "0": "Green",
+                "1": "78",
+                "2": "83.33",
+                "3": "0.341"
+              },
+              {
+                "0": "Total",
+                "1": "500",
+                "2": "500",
+                "3": "$ \\chi^2 \\approx 3.016 $"
+              }
+            ]
+          }
+        ]
+      },
+      "confusionCorner": {
+        "body": "Even when the null hypothesis of a uniform distribution is true, observed counts will vary due to random chance. The test checks whether the overall pattern of counts is compatible with equal expected frequencies, not whether every count is exactly the same.",
+        "title": "Uniform ≠ Equal Observed Counts"
+      },
+      "examples": [
+        {
+          "steps": [
+            "A fair die has a uniform distribution with $ k = 6 $ faces.",
+            "Total rolls $ n = 120 $.",
+            "$ E = 120 / 6 = 20 $ for each face.",
+            "If the die is fair, we expect about 20 of each number."
+          ],
+          "title": "Example A – Finding Expected Counts for Uniform",
+          "role": "guided",
+          "prompt": "A student rolls a die 120 times to test if it is fair. What is the expected frequency for each face?"
+        },
+        {
+          "title": "Example B – Interpreting a Non‑Significant Result",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "In the M&M test, we failed to reject $ H_0 $. Does this prove the distribution is uniform?",
+          "steps": [
+            "Failing to reject $ H_0 $ means the sample data do not provide strong enough evidence to contradict the uniform claim.",
+            "It does not prove the distribution is exactly uniform — there could be small differences that a larger sample might detect.",
+            "With a larger sample, even small deviations could become statistically significant."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss: If the sample size were much larger, could we still fail to reject even with small differences? What does 'fail to reject' mean?"
+        },
+        {
+          "steps": [
+            "Number of categories $ k = 6 $.",
+            "$ df = k - 1 = 5 $.",
+            "The test statistic follows a $ \\chi^2 $ distribution with $ 5 $ degrees of freedom."
+          ],
+          "role": "independent",
+          "prompt": "How many degrees of freedom does a chi‑square test for a fair six‑sided die have?",
+          "title": "Example C – Degrees of Freedom for a Fair Die"
+        }
+      ],
+      "teacherCues": [
+        "Show a bag of M&M's: 'The company claims each color is equally likely.' How can we test that?",
+        "Explain that for a uniform distribution, all expected frequencies are equal: E = n / k."
+      ],
+      "discoveryHook": {
+        "scenario": "A researcher claims that the different colors in a bag of dark chocolate M&M's are equally distributed. You count 500 candies: Brown 80, Yellow 95, Red 88, Blue 83, Orange 76, Green 78. Does the data support the claim of a uniform distribution? Let's test at α = 0.10."
+      },
+      "title": "Testing a Uniform Distribution",
+      "questions": [
+        {
+          "id": "q10-1-10",
+          "feedbackIfWrong": "$ E = 200 / 4 = 50 $.",
+          "answer": "50",
+          "hints": [
+            "$ E = n / k $.",
+            "$ 200 / 4 = ? $"
+          ],
+          "prompt": "If you have 200 items and 4 categories in a uniform distribution, what is the expected frequency for each category?",
+          "type": "short-answer"
+        },
+        {
+          "type": "fill-blank",
+          "prompt": "When testing whether a die is fair, the null hypothesis states that the outcomes follow a ___ distribution.",
+          "feedbackIfWrong": "The die is claimed to have a uniform distribution.",
+          "hints": [
+            "All faces are equally likely.",
+            "A word meaning 'the same probability for all'."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "uniform"
+              ]
+            }
+          ],
+          "id": "q10-1-11"
+        },
+        {
+          "feedbackIfWrong": "No, $ 3.016 < 9.236 $, so fail to reject $ H_0 $.",
+          "hints": [
+            "Compare the test statistic to the critical value.",
+            "If $ \\chi^2 $ is smaller, we do not reject."
+          ],
+          "id": "q10-1-12",
+          "prompt": "For the M&M test, $ \\chi^2 = 3.016 $ and the critical value is $ 9.236 $. Do we reject $ H_0 $? (yes or no)",
+          "type": "short-answer",
+          "answer": "no"
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "title": "Always Verify Expected Counts",
+        "body": "Before running the test, double‑check that all expected frequencies are at least 5. If any are below 5, combine categories if possible. [[imp:A test with low expected frequencies may give misleading results.]]"
+      },
+      "title": "Blueprint Aid: Complete Goodness‑of‑Fit Test",
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "0–9",
+                "1": "16%",
+                "2": "76",
+                "3": "$ 400 \\times 0.16 = 64 $"
+              },
+              {
+                "0": "10–19",
+                "1": "20%",
+                "2": "84",
+                "3": "$ 400 \\times 0.20 = 80 $"
+              },
+              {
+                "0": "20–29",
+                "1": "8%",
+                "2": "30",
+                "3": "$ 400 \\times 0.08 = 32 $"
+              },
+              {
+                "0": "30–39",
+                "1": "14%",
+                "2": "60",
+                "3": "$ 400 \\times 0.14 = 56 $"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Age",
+              "Old %",
+              "Survey O",
+              "Expected E"
+            ],
+            "variant": "colorful",
+            "title": "Age Distribution Data (Partial)"
+          }
+        ],
+        "explanation": [
+          "**Understand**: The null hypothesis is that the current age distribution matches the one from 10 years ago. The alternative is that it has changed. We have 8 age categories, so $ df = 7 $.",
+          "**Solve**: Compute expected frequencies for each age group using the old percentages and the new sample size $ n = 400 $. Calculate $ \\chi^2 = \\sum \\frac{(O - E)^2}{E} $. Find the critical value for $ \\alpha = 0.05 $, $ df = 7 $ → $ 14.067 $.",
+          "**Conclude**: Compare the computed $ \\chi^2 $ to the critical value. If it exceeds, reject $ H_0 $ and conclude the distribution has changed. Otherwise, fail to reject."
+        ]
+      },
+      "id": "blueprint-goodness-of-fit",
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Understand the Problem",
+          "prompt": "State the hypotheses for the age distribution test.",
+          "steps": [
+            "Claim: The distribution has changed (not the same as before).",
+            "$ H_0 $: The distribution matches the old percentages.",
+            "$ H_a $: The distribution differs from the old percentages (Claim)."
+          ]
+        },
+        {
+          "title": "Example B – Solve: Compute One Contribution",
+          "peerPrompt": "Without looking back...\n\nWork with a partner: Find $ O - E $, square it, divide by $ E $. Compare with the next group's contribution.",
+          "role": "peer-explain",
+          "prompt": "For the 0–9 age group, $ O = 76 $, $ E = 64 $. Calculate its contribution to $ \\chi^2 $.",
+          "steps": [
+            "$ O - E = 76 - 64 = 12 $.",
+            "Square: $ 12^2 = 144 $.",
+            "Divide by $ E $: $ 144 / 64 = 2.25 $.",
+            "This group contributes 2.25 to the total chi‑square statistic."
+          ],
+          "minLength": 2
+        },
+        {
+          "prompt": "If the total $ \\chi^2 = 18.6 $, $ df = 7 $, critical value $ = 14.067 $, what is the conclusion?",
+          "role": "independent",
+          "title": "Example C – Conclude",
+          "steps": [
+            "Compare $ 18.6 $ to $ 14.067 $: $ 18.6 > 14.067 $.",
+            "Reject $ H_0 $.",
+            "There is enough evidence to say the age distribution has changed."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A sociologist claims the age distribution of a city has changed. We'll use the Understand–Solve–Conclude framework to test this claim at α = 0.05. The previous distribution and new survey results are given."
+      },
+      "questions": [
+        {
+          "hints": [
+            "There are 8 age groups.",
+            "$ df = k - 1 $."
+          ],
+          "type": "short-answer",
+          "prompt": "In the age distribution test, what is the degrees of freedom? (k=8, so 7)",
+          "feedbackIfWrong": "$ df = 8 - 1 = 7 $.",
+          "answer": "7",
+          "id": "q10-1-13"
+        },
+        {
+          "prompt": "If the chi‑square statistic is smaller than the critical value, we ___ to reject $ H_0 $.",
+          "hints": [
+            "We do not have enough evidence against the null.",
+            "The opposite of 'reject' in hypothesis testing."
+          ],
+          "type": "fill-blank",
+          "id": "q10-1-14",
+          "blanks": [
+            {
+              "accept": [
+                "fail"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "If $ \\chi^2 $ < critical value, fail to reject $ H_0 $."
+        },
+        {
+          "feedbackIfWrong": "The critical value is $ 14.067 $.",
+          "id": "q10-1-15",
+          "answer": "14.067",
+          "type": "short-answer",
+          "hints": [
+            "Look up in Table 6.",
+            "Row $ df=7 $, column $ 0.05 $."
+          ],
+          "prompt": "What is the critical chi‑square value for $ df = 7 $ and $ \\alpha = 0.05 $? (Answer: 14.067)"
+        }
+      ],
+      "teacherCues": [
+        "Walk through the blueprint: Understand the claim, Solve by computing expected counts and χ², Conclude with decision and interpretation.",
+        "Use the age distribution example from the textbook: Has the age distribution of a city changed from 10 years ago?"
+      ]
+    }
+  ],
+  "standards": [
+    "HSS.IC.B.4",
+    "HSS.IC.B.5",
+    "HSS.ID.A.4"
+  ],
+  "title": "Chi‑Square Goodness‑of‑Fit Test",
+  "presenterNotes": [
+    "Students often confuse the degrees of freedom for chi‑square (k−1) with t‑tests. Emphasize the difference.",
+    "Demonstrate the Google Sheets function =CHISQ.TEST(observed_range, expected_range) to get the p‑value directly, and =CHISQ.INV.RT(α, df) for critical values.",
+    "Reinforce that the test is always right‑tailed. A very small χ² is not evidence against H₀.",
+    "Use colorful tables to show the O−E calculations. Let students practice with a fair die or M&M data."
+  ],
+  "type": "interactive-lesson",
+  "id": "section-10-1-goodness-of-fit",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,808 @@
+{
+  "id": "section-11-4-rank-correlation",
+  "blocks": [
+    {
+      "teacherCues": [
+        "Draw two scatter plots on the board: one linear, one curved but monotonic. Ask: Which one could Pearson miss but Spearman catch?",
+        "Explain that Spearman ranks each variable separately, then computes the correlation on the ranks."
+      ],
+      "questions": [
+        {
+          "hints": [
+            "We assign 1 to the smallest, 2 to the next, etc.",
+            "It's the basis of the calculation."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "Spearman uses the ranks of the data.",
+          "prompt": "The Spearman rank correlation coefficient uses the ___ of the data, not the raw values.",
+          "answer": "ranks",
+          "id": "q11-4-1"
+        },
+        {
+          "type": "fill-blank",
+          "prompt": "In the formula $r_s = 1 - \\frac{6\\Sigma d^2}{n(n^2 - 1)}$, $d$ is the difference between the ___ of each pair.",
+          "hints": [
+            "It's not the raw data difference.",
+            "It's the difference of the position numbers."
+          ],
+          "feedbackIfWrong": "$d$ is the difference of the ranks.",
+          "id": "q11-4-2",
+          "blanks": [
+            {
+              "accept": [
+                "ranks"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "$r_s = -1$.",
+          "answer": "-1",
+          "id": "q11-4-3",
+          "prompt": "If the ranks of two variables are perfectly reversed, what is $r_s$?",
+          "hints": [
+            "Perfect negative correlation.",
+            "The minimum possible value."
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "confusionCorner": {
+        "body": "Do not combine the two variables into one ranking. Rank all $x$ values among themselves, and all $y$ values among themselves. [[imp:Each variable gets its own independent ranking.]]",
+        "title": "Rank x and y Separately"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Computing $r_s$",
+          "prompt": "From the table, $\\Sigma d^2 = 5.5$, $n = 8$. Compute $r_s$.",
+          "steps": [
+            "Plug into formula: $r_s = 1 - \\frac{6(5.5)}{8(8^2 - 1)} = 1 - \\frac{33}{8(63)} = 1 - \\frac{33}{504}$.",
+            "$33/504 \\approx 0.0655$.",
+            "$r_s = 1 - 0.0655 = 0.9345 \\approx 0.935$.",
+            "Interpretation: very strong positive rank correlation."
+          ]
+        },
+        {
+          "title": "Example B – Why Use Ranks?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain to a partner why Spearman uses ranks instead of actual values.",
+          "peerPrompt": "Without looking back...\n\nDiscuss: How does ranking protect against outliers? What kind of relationship can Spearman detect that Pearson cannot?",
+          "steps": [
+            "Ranks limit the influence of extreme values (outliers).",
+            "Spearman detects any monotonic relationship (always going up or always down), even if curved.",
+            "Pearson only detects linear relationships."
+          ]
+        },
+        {
+          "title": "Example C – Perfect Positive Correlation",
+          "prompt": "If the ranks of $x$ and $y$ are exactly the same for every pair, what is $r_s$?",
+          "steps": [
+            "Each $d = 0$, so $\\Sigma d^2 = 0$.",
+            "$r_s = 1 - 0 = 1$.",
+            "This indicates a perfect monotonic increasing relationship."
+          ],
+          "role": "independent"
+        }
+      ],
+      "title": "The Spearman Rank Correlation Coefficient",
+      "id": "spearman-intro",
+      "discoveryHook": {
+        "scenario": "Pearson's r measures linear relationships. But what if the data show a strong pattern that isn't a straight line—like income increasing with age, but leveling off? Spearman's rank correlation can detect any monotonic trend, not just linear ones."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Ranking Male and Female Enrollments (n=8)",
+            "rows": [
+              {
+                "0": "2000",
+                "1": "35.8",
+                "2": "1",
+                "3": "36.4",
+                "4": "1",
+                "5": "0",
+                "6": "0"
+              },
+              {
+                "0": "2001",
+                "1": "36.3",
+                "2": "2",
+                "3": "36.9",
+                "4": "2",
+                "5": "0",
+                "6": "0"
+              },
+              {
+                "0": "2002",
+                "1": "36.8",
+                "2": "3",
+                "3": "37.3",
+                "4": "3",
+                "5": "0",
+                "6": "0"
+              },
+              {
+                "0": "2003",
+                "1": "37.3",
+                "2": "5",
+                "3": "37.6",
+                "4": "4",
+                "5": "1",
+                "6": "1"
+              },
+              {
+                "0": "2004",
+                "1": "37.4",
+                "2": "6.5",
+                "3": "38.0",
+                "4": "5.5",
+                "5": "1",
+                "6": "1"
+              },
+              {
+                "0": "2005",
+                "1": "37.4",
+                "2": "6.5",
+                "3": "38.4",
+                "4": "7.5",
+                "5": "-1",
+                "6": "1"
+              },
+              {
+                "0": "2006",
+                "1": "37.2",
+                "2": "4",
+                "3": "38.0",
+                "4": "5.5",
+                "5": "-1.5",
+                "6": "2.25"
+              },
+              {
+                "0": "2007",
+                "1": "37.6",
+                "2": "8",
+                "3": "38.4",
+                "4": "7.5",
+                "5": "0.5",
+                "6": "0.25"
+              }
+            ],
+            "headers": [
+              "Year",
+              "Male (mill)",
+              "Rank x",
+              "Female (mill)",
+              "Rank y",
+              "d",
+              "d²"
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Rank $x$ and $y$ independently.",
+            "$d$ = difference in ranks for each pair.",
+            "Ties: use average rank.",
+            "If many ties, use Pearson's r on the ranks instead."
+          ],
+          "formula": "$$ r_s = 1 - \\frac{6\\Sigma d^2}{n(n^2 - 1)} $$",
+          "title": "Spearman Rank Correlation Formula"
+        },
+        "explanation": [
+          "The [[kw:Spearman rank correlation coefficient]] $r_s$ is a nonparametric measure of the strength and direction of a [[imp:monotonic]] relationship between two variables.",
+          "It uses the [[kw:ranks]] of the data, not the raw values. First, rank the $x$'s from smallest to largest, then rank the $y$'s independently. Ties get the [[imp:average]] rank.",
+          "If the ranks of the two variables are perfectly matched, $r_s = 1$. If they are perfectly reversed, $r_s = -1$. No correlation gives $r_s \\approx 0$.",
+          "The formula (with no or few ties) is $$r_s = 1 - \\frac{6\\Sigma d^2}{n(n^2 - 1)}$$ where $d$ is the difference between the ranks of each pair and $n$ is the number of pairs.",
+          "Compared to Pearson's $r$, Spearman can detect relationships that are curved but always increasing (or always decreasing)."
+        ]
+      }
+    },
+    {
+      "teacherCues": [
+        "Write the hypotheses: $H_0: \\rho_s = 0$, $H_a: \\rho_s \\ne 0$. Show Table 10 (Critical Values for Spearman).",
+        "Explain that if $|r_s|$ > critical value, reject $H_0$. The test is two‑tailed by default."
+      ],
+      "concept": {
+        "explanation": [
+          "The Spearman rank correlation coefficient can be tested for significance using [[kw:Table 10]] in Appendix B.",
+          "The hypotheses are: $H_0: \\rho_s = 0$ (no correlation) and $H_a: \\rho_s \\ne 0$ (there is a correlation). One‑tailed tests are also possible.",
+          "Find the critical value for your sample size $n$ and significance level $\\alpha$. Table 10 provides values for $n \\le 30$.",
+          "If the absolute value of $r_s$ [[imp:exceeds]] the critical value, reject $H_0$. There is evidence of a significant rank correlation.",
+          "For the enrollment example: $n = 8$, $\\alpha = 0.05$, critical value = $0.738$. Since $|0.935| > 0.738$, reject $H_0$."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "5",
+                "1": "1.000",
+                "2": "—"
+              },
+              {
+                "0": "6",
+                "1": "0.886",
+                "2": "1.000"
+              },
+              {
+                "0": "7",
+                "1": "0.786",
+                "2": "0.929"
+              },
+              {
+                "0": "8",
+                "1": "0.738",
+                "2": "0.881"
+              },
+              {
+                "0": "9",
+                "1": "0.700",
+                "2": "0.833"
+              },
+              {
+                "0": "10",
+                "1": "0.648",
+                "2": "0.794"
+              },
+              {
+                "0": "12",
+                "1": "0.591",
+                "2": "0.777"
+              },
+              {
+                "0": "15",
+                "1": "0.521",
+                "2": "0.703"
+              }
+            ],
+            "title": "Portion of Table 10 (Critical Values for Spearman)",
+            "headers": [
+              "n",
+              "α = 0.05",
+              "α = 0.01"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Use Table 10 for $n \\le 30$.",
+            "For $n > 30$, use $z = r_s \\sqrt{n-1}$ and standard normal table.",
+            "Two‑tailed test is most common."
+          ],
+          "formula": "$$ \\text{Reject } H_0 \\text{ if } |r_s| > \\text{critical value} $$",
+          "title": "Decision Rule for Spearman Test"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "We have $r_s = 0.935$ for the enrollment data. But is that strong enough to say there's a real correlation in the population, or could it happen by chance with only 8 data points? We use Table 10 to find out."
+      },
+      "confusionCorner": {
+        "body": "Table 10 critical values are positive, but $r_s$ can be negative. Always compare the [[imp:absolute value]] of $r_s$ to the critical value. A negative correlation can be just as significant as a positive one.",
+        "title": "Use Absolute Value of $r_s$"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Locate row n=10 in Table 10.",
+            "Under column α=0.05, the value is 0.648.",
+            "Reject $H_0$ if $|r_s| > 0.648$."
+          ],
+          "title": "Example A – Finding the Critical Value",
+          "prompt": "For n=10, α=0.05 (two‑tailed), find the critical value from Table 10.",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss: The table gives the minimum significant value. Does 'greater than' include 'equal to'?",
+          "title": "Example B – What If $|r_s|$ Equals the Critical Value?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "If $|r_s|$ exactly equals the critical value, what should we do?",
+          "steps": [
+            "The rule is 'reject if $|r_s|$ is greater than the critical value.'",
+            "Equality is not strictly greater; conventionally, we would fail to reject.",
+            "However, in many texts, if it exactly equals, it's considered significant. The exact rule depends on the source; for our class, we use 'greater than' only."
+          ]
+        },
+        {
+          "steps": [
+            "Compare $|0.935| = 0.935$ to 0.738.",
+            "$0.935 > 0.738$, so reject $H_0$.",
+            "There is a significant correlation between male and female enrollments."
+          ],
+          "title": "Example C – Decision for Enrollment Data",
+          "role": "independent",
+          "prompt": "$r_s = 0.935$, $n=8$, $\\alpha=0.05$, critical value 0.738. Decision?"
+        }
+      ],
+      "questions": [
+        {
+          "type": "short-answer",
+          "hints": [
+            "Look at Table 10.",
+            "Row n=12, column 0.05."
+          ],
+          "prompt": "What is the critical value for Spearman's test with n=12, α=0.05? (Answer from table: 0.591)",
+          "answer": "0.591",
+          "feedbackIfWrong": "The critical value is 0.591.",
+          "id": "q11-4-4"
+        },
+        {
+          "feedbackIfWrong": "Reject $H_0$.",
+          "prompt": "If $|r_s|$ is greater than the critical value, we ___ the null hypothesis.",
+          "type": "fill-blank",
+          "hints": [
+            "We conclude a significant correlation.",
+            "The opposite of 'fail to reject'."
+          ],
+          "id": "q11-4-5",
+          "blanks": [
+            {
+              "accept": [
+                "reject"
+              ]
+            }
+          ]
+        },
+        {
+          "answer": "ρ_s = 0",
+          "prompt": "What is the null hypothesis for the Spearman rank correlation test? (Use symbol: ρ_s = 0)",
+          "id": "q11-4-6",
+          "type": "short-answer",
+          "feedbackIfWrong": "$H_0: \\rho_s = 0$.",
+          "hints": [
+            "It states there is no correlation.",
+            "The population parameter is rho subscript s."
+          ]
+        }
+      ],
+      "title": "Testing the Significance of $r_s$",
+      "id": "testing-significance-spearman"
+    },
+    {
+      "title": "Handling Ties and Using Google Sheets",
+      "discoveryHook": {
+        "scenario": "What if two data values are exactly equal? In ranking, they tie. We handle this by giving them the average of the ranks they would have occupied. Google Sheets has a built‑in function to do this."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Ties]]: When two or more values are equal, assign each the average of the ranks they would occupy. For example, if two values tie for 3rd and 4th, both get rank $(3+4)/2 = 3.5$.",
+          "The simple formula $r_s = 1 - \\frac{6\\Sigma d^2}{n(n^2-1)}$ works well with few ties. With many ties, it's better to use Pearson's $r$ on the ranks directly.",
+          "In [[kw:Google Sheets]], you can compute Spearman's $r_s$ by:",
+          "  1. Rank $x$ values: `=RANK.AVG(x, x_range, 1)` (for ascending).",
+          "  2. Rank $y$ values similarly.",
+          "  3. Use `=CORREL(rank_x_range, rank_y_range)` to get $r_s$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Google Sheets Functions for Spearman",
+            "variant": "colorful",
+            "headers": [
+              "Function",
+              "Purpose"
+            ],
+            "rows": [
+              {
+                "0": "`=RANK.AVG(value, range, 1)`",
+                "1": "Assigns average rank in ascending order"
+              },
+              {
+                "0": "`=CORREL(y_ranks, x_ranks)`",
+                "1": "Computes Pearson r on the ranks = Spearman r_s"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Spearman via Google Sheets",
+          "formula": "$$ r_s = \\text{CORREL}(\\text{ranked } y, \\text{ranked } x) $$",
+          "notes": [
+            "Rank each column independently with RANK.AVG.",
+            "This method automatically handles ties correctly.",
+            "Use ascending order (third argument = 1) for ranks."
+          ]
+        }
+      },
+      "id": "handling-ties-google-sheets",
+      "teacherCues": [
+        "Show how ties are handled: assign average rank. Demonstrate in Google Sheets using =RANK.AVG.",
+        "Explain that when ties are present, the simple formula is approximate; an exact method uses =CORREL on the ranks."
+      ],
+      "examples": [
+        {
+          "steps": [
+            "The two 20's tie for ranks 2 and 3.",
+            "Average rank = (2+3)/2 = 2.5.",
+            "=RANK.AVG returns 2.5 for both 20's."
+          ],
+          "role": "guided",
+          "title": "Example A – Ranking with Ties in Sheets",
+          "prompt": "In column A, you have values 10, 20, 20, 30. What does =RANK.AVG(A1, A$1:A$4, 1) give for the second 20?"
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B – Why CORREL on Ranks?",
+          "peerPrompt": "Without looking back...\n\nDiscuss: Spearman is just Pearson correlation on the ranks. So what does =CORREL compute?",
+          "minLength": 2,
+          "steps": [
+            "Spearman's $r_s$ is defined as the Pearson correlation coefficient of the ranked data.",
+            "=CORREL computes Pearson's r. If we give it ranks instead of raw data, it yields $r_s$.",
+            "This method automatically handles ties correctly because the ranking step resolves them."
+          ],
+          "prompt": "Explain why applying =CORREL to ranks gives Spearman's $r_s$."
+        },
+        {
+          "steps": [
+            "In column C: `=RANK.AVG(A2, A$2:A$10, 1)` to rank x.",
+            "In column D: `=RANK.AVG(B2, B$2:B$10, 1)` to rank y.",
+            "In any cell: `=CORREL(D2:D10, C2:C10)` → $r_s$."
+          ],
+          "role": "independent",
+          "title": "Example C – Computing $r_s$ Entirely in Sheets",
+          "prompt": "Column A has x values, Column B has y values. Describe the steps to get $r_s$."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Ascending vs. Descending Ranks",
+        "body": "For Spearman, rank in ascending order (1 = smallest). If you rank descending, the sign of $r_s$ will flip. [[imp:Always use ascending ranks for both variables.]]"
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "Use =RANK.AVG for average ranks.",
+          "answer": "RANK.AVG",
+          "hints": [
+            "It handles ties correctly.",
+            "It's RANK dot AVG."
+          ],
+          "prompt": "Which Google Sheets function assigns average ranks? (Answer: RANK.AVG)",
+          "id": "q11-4-7"
+        },
+        {
+          "prompt": "To get Spearman's $r_s$ in Google Sheets, use `=___` on the ranked data.",
+          "hints": [
+            "It computes Pearson correlation.",
+            "The function is six letters."
+          ],
+          "type": "fill-blank",
+          "id": "q11-4-8",
+          "blanks": [
+            {
+              "accept": [
+                "CORREL"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Use =CORREL(ranked_y, ranked_x)."
+        },
+        {
+          "id": "q11-4-9",
+          "type": "short-answer",
+          "answer": "5.5",
+          "hints": [
+            "Average of 5 and 6.",
+            "(5+6)/2 = ?"
+          ],
+          "feedbackIfWrong": "Each gets rank 5.5.",
+          "prompt": "If two values tie for the 5th and 6th rank, what rank does each receive? (Answer as a decimal, e.g., 5.5)"
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Draw a scatter plot with a curved but increasing pattern. Ask: Which correlation coefficient would you use?",
+        "Create a table comparing Pearson and Spearman: assumptions, type of relationship, sensitivity to outliers."
+      ],
+      "questions": [
+        {
+          "answer": "Spearman",
+          "type": "short-answer",
+          "prompt": "Which coefficient is more resistant to outliers, Pearson or Spearman? (Answer: Spearman)",
+          "hints": [
+            "It uses ranks, not raw values.",
+            "The nonparametric one."
+          ],
+          "id": "q11-4-10",
+          "feedbackIfWrong": "Spearman is more resistant because it uses ranks."
+        },
+        {
+          "feedbackIfWrong": "Spearman measures a monotonic relationship.",
+          "blanks": [
+            {
+              "accept": [
+                "monotonic"
+              ]
+            }
+          ],
+          "hints": [
+            "It's not 'linear'.",
+            "Starts with 'm'."
+          ],
+          "type": "fill-blank",
+          "prompt": "Spearman measures the strength of a ___ relationship (always increasing or decreasing).",
+          "id": "q11-4-11"
+        },
+        {
+          "id": "q11-4-12",
+          "hints": [
+            "The direction changes.",
+            "Ranks go down then up, so correlation is weak."
+          ],
+          "prompt": "If a scatter plot shows a U‑shape, will Spearman be close to 1, -1, or 0?",
+          "feedbackIfWrong": "Spearman will be near 0 because the pattern is not monotonic.",
+          "answer": "0",
+          "type": "short-answer"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Monotonic ≠ Linear",
+        "body": "A monotonic relationship is one that never changes direction—it always goes up, or always goes down, but it can be curved. Spearman measures monotonic association. [[imp:If the direction changes (e.g., U‑shape), Spearman may miss it.]]"
+      },
+      "discoveryHook": {
+        "scenario": "You have data on the age of a car and its value. The relationship is negative but might not be perfectly linear. Which correlation should you use? Spearman can capture the monotonic decline even if it's curved."
+      },
+      "examples": [
+        {
+          "prompt": "A scatter plot shows a strong upward trend but the points form a curve, not a straight line. Which coefficient should you use?",
+          "title": "Example A – Choosing the Coefficient",
+          "role": "guided",
+          "steps": [
+            "The pattern is monotonic (always increasing) but not linear.",
+            "Pearson would underestimate the strength of the association.",
+            "Use Spearman; it will better capture the relationship."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "If the relationship is perfectly linear and monotonic, both coefficients will be close to ±1.",
+            "Spearman may be slightly less than 1 if there are ties, but overall they agree.",
+            "When both are similar, it supports the linearity assumption."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss: If the data are exactly on a straight line, what will the ranks look like? Will Spearman also be ±1?",
+          "prompt": "For perfectly linear data, how do Pearson and Spearman compare?",
+          "minLength": 2,
+          "title": "Example B – When Both Give Similar Results"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Detecting Non‑Monotonic Patterns",
+          "prompt": "A scatter plot shows a U‑shaped relationship. What will Pearson and Spearman report?",
+          "steps": [
+            "The pattern is not monotonic (it goes down then up).",
+            "Pearson will be near 0 because there's no linear trend.",
+            "Spearman will also be near 0 because the ranks don't consistently increase or decrease.",
+            "Neither coefficient will detect the U‑shape well."
+          ]
+        }
+      ],
+      "title": "Spearman vs. Pearson: When to Use Each",
+      "id": "spearman-vs-pearson",
+      "concept": {
+        "explanation": [
+          "[[kw:Pearson's r]] measures the strength of a [[imp:linear]] relationship. It assumes both variables are normally distributed and is sensitive to outliers.",
+          "[[kw:Spearman's r_s]] measures the strength of a [[imp:monotonic]] relationship (always increasing or always decreasing). It does not assume normality and is resistant to outliers because it uses ranks.",
+          "Use Pearson when the scatter plot looks linear and the data meet normality assumptions.",
+          "Use Spearman when the scatter plot shows a curved pattern that is consistently increasing or decreasing, or when the data contain outliers, or when variables are ordinal.",
+          "If the relationship is non‑monotonic (e.g., U‑shaped), neither Pearson nor Spearman will capture it well."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Always plot the data first.",
+            "If in doubt, compute both. If they agree, report either. If they differ, investigate why."
+          ],
+          "formula": "$$ \\text{Linear pattern? } \\rightarrow \\text{Pearson} $$ $$ \\text{Curved but one‑directional? } \\rightarrow \\text{Spearman} $$ $$ \\text{Outliers present? } \\rightarrow \\text{Spearman} $$",
+          "title": "Quick Decision: Which Correlation?"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Type of relationship",
+                "1": "Linear",
+                "2": "Monotonic (any increasing/decreasing trend)"
+              },
+              {
+                "0": "Uses",
+                "1": "Raw data",
+                "2": "Ranks"
+              },
+              {
+                "0": "Assumptions",
+                "1": "Normality, linearity",
+                "2": "None (nonparametric)"
+              },
+              {
+                "0": "Sensitivity to outliers",
+                "1": "High",
+                "2": "Low"
+              },
+              {
+                "0": "Range",
+                "1": "−1 to 1",
+                "2": "−1 to 1"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Feature",
+              "Pearson r",
+              "Spearman r_s"
+            ],
+            "title": "Pearson vs. Spearman",
+            "type": "table"
+          }
+        ]
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Failure to Reject ≠ No Relationship",
+        "body": "With only 7 data points, the critical value is very high. Even a fairly large $r_s$ may not be significant. [[imp:Small samples have low power; a real correlation might exist but go undetected.]]"
+      },
+      "concept": {
+        "explanation": [
+          "**Understand**: Claim: there is a correlation. $H_0: \\rho_s = 0$, $H_a: \\rho_s \\ne 0$ (two‑tailed). $n=7$, $\\alpha=0.01$.",
+          "**Solve**: Rank the debt and income data independently. Compute differences $d$, square them, sum to $\\Sigma d^2$. Compute $r_s = 1 - \\frac{6\\Sigma d^2}{7(48)}$. Critical value from Table 10 for $n=7$, $\\alpha=0.01$ is $0.929$.",
+          "**Conclude**: Compare $|r_s|$ to 0.929. If larger, reject $H_0$ and support the claim. Otherwise, fail to reject."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "CA",
+                "1": "19,955",
+                "2": "28,926"
+              },
+              {
+                "0": "IL",
+                "1": "10,480",
+                "2": "8,630"
+              },
+              {
+                "0": "IA",
+                "1": "14,434",
+                "2": "12,942"
+              },
+              {
+                "0": "MN",
+                "1": "9,982",
+                "2": "8,807"
+              },
+              {
+                "0": "NE",
+                "1": "10,085",
+                "2": "11,028"
+              },
+              {
+                "0": "NC",
+                "1": "4,235",
+                "2": "7,008"
+              },
+              {
+                "0": "TX",
+                "1": "13,286",
+                "2": "15,268"
+              }
+            ],
+            "title": "Farming Debt and Income (Millions)",
+            "headers": [
+              "State",
+              "Debt",
+              "Income"
+            ],
+            "variant": "colorful",
+            "type": "table"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Walk through Understand–Solve–Conclude with the farming debt and income data (Exercise 5).",
+        "Guide students to rank, compute d², find r_s, compare to Table 10, and interpret."
+      ],
+      "discoveryHook": {
+        "scenario": "A commodities analyst claims there is a correlation between farm debt and income. We'll test this at α = 0.01 using Spearman's rank correlation. Data: 7 states with debt and income in millions."
+      },
+      "title": "Blueprint Aid: Full Spearman Correlation Analysis",
+      "questions": [
+        {
+          "hints": [
+            "Sum the squared rank differences.",
+            "0+4+1+1+1+0+1 = ?"
+          ],
+          "type": "short-answer",
+          "id": "q11-4-13",
+          "prompt": "In the farming example, what is $\\Sigma d^2$? (Answer: 8)",
+          "answer": "8",
+          "feedbackIfWrong": "$\\Sigma d^2 = 8$."
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "0.929"
+              ]
+            }
+          ],
+          "hints": [
+            "Look at row n=7, column 0.01.",
+            "It's a three‑decimal number."
+          ],
+          "type": "fill-blank",
+          "prompt": "For n=7, α=0.01, the critical value from Table 10 is ___.",
+          "feedbackIfWrong": "The critical value is 0.929.",
+          "id": "q11-4-14"
+        },
+        {
+          "prompt": "With $r_s = 0.857$ and critical value 0.929, do we reject $H_0$? (yes or no)",
+          "id": "q11-4-15",
+          "answer": "no",
+          "feedbackIfWrong": "No, fail to reject $H_0$.",
+          "hints": [
+            "Is 0.857 > 0.929?",
+            "If smaller, fail to reject."
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "id": "blueprint-spearman",
+      "examples": [
+        {
+          "prompt": "State the hypotheses for the farming data.",
+          "title": "Example A – Understand the Problem",
+          "steps": [
+            "Claim: There is a correlation between debt and income.",
+            "$H_0: \\rho_s = 0$ (no correlation).",
+            "$H_a: \\rho_s \\ne 0$ (Claim, two‑tailed)."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Differences: CA: 7-7=0, IL: 4-2=2, IA: 6-5=1, MN: 2-3=-1, NE: 3-4=-1, NC: 1-1=0, TX: 5-6=-1.",
+            "$d^2$: 0, 4, 1, 1, 1, 0, 1. $\\Sigma d^2 = 8$.",
+            "$r_s = 1 - \\frac{6(8)}{7(48)} = 1 - \\frac{48}{336} = 1 - 0.1429 = 0.8571$."
+          ],
+          "peerPrompt": "Without looking back...\n\nWork with a partner: Compute $d$ and $d^2$ for each state. Sum $d^2$.",
+          "prompt": "Debt values: 19,955 (rank 7), 10,480 (4), 14,434 (6), 9,982 (2), 10,085 (3), 4,235 (1), 13,286 (5). Income ranks: 28,926 (7), 8,630 (3), 12,942 (5), 8,807 (4), 11,028 (6), 7,008 (1), 15,268 (6? wait, re‑evaluate). Let's provide correct ranks: Income sorted: 7,008 (1), 8,630 (2), 8,807 (3), 11,028 (4), 12,942 (5), 15,268 (6), 28,926 (7). So ranks: CA 7, IL 2, IA 5, MN 3, NE 4, NC 1, TX 6.",
+          "title": "Example B – Solve: Ranking",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Compare $|0.857|$ to 0.929.",
+            "0.857 < 0.929, so we fail to reject $H_0$.",
+            "There is not enough evidence at the 1% level to conclude a significant correlation between farm debt and income."
+          ],
+          "prompt": "$r_s = 0.857$, critical value = 0.929 at α=0.01. Decision?",
+          "title": "Example C – Conclude"
+        }
+      ]
+    }
+  ],
+  "presenterNotes": [
+    "Emphasize that Spearman is a versatile tool: it can detect relationships that Pearson misses.",
+    "Show how easily Google Sheets can compute $r_s$ with RANK.AVG and CORREL.",
+    "Caution: Spearman does not work well for non‑monotonic patterns like U‑shapes.",
+    "Remind students to always plot the data before choosing a correlation method."
+  ],
+  "schemaVersion": 2,
+  "standards": [
+    "HSS.ID.C.8",
+    "HSS.ID.C.9",
+    "HSS.IC.B.4"
+  ],
+  "title": "Rank Correlation (Spearman)",
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,811 @@
+{
+  "presenterNotes": [
+    "The concept of partial sums leading to a limit is the foundation of infinite series. Use the geometric series as a concrete, visual example of convergence.",
+    "Emphasize the condition $|r| < 1$ for the sum to exist. Show counterexamples where $|r| \\ge 1$ leads to divergence.",
+    "The pendulum and bouncing ball examples are intuitive real‑life applications. Have students identify $a_1$ and $r$ from the description.",
+    "Converting repeating decimals to fractions is a satisfying application that also reinforces rational number concepts.",
+    "In the Blueprint block, tie everything together with a systematic approach: check $|r|$, then apply formula."
+  ],
+  "standards": [
+    "HSA.SSE.B.4",
+    "HSF.IF.A.3",
+    "HSF.BF.A.2"
+  ],
+  "blocks": [
+    {
+      "examples": [
+        {
+          "steps": [
+            "$a_1 = \\frac{1}{2} = 0.5$.",
+            "$S_1 = 0.5$; $S_2 = 0.5 + 0.25 = 0.75$.",
+            "$S_3 = 0.75 + 0.125 = 0.875$; $S_4 \\approx 0.9375$; $S_5 \\approx 0.96875$.",
+            "The partial sums are getting closer to $1$ as more terms are added."
+          ],
+          "role": "guided",
+          "title": "Example A — Finding Partial Sums",
+          "prompt": "Consider the infinite geometric series $\\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\frac{1}{16} + \\frac{1}{32} + \\dots$. Find the partial sums $S_1$ through $S_5$ and describe the trend."
+        },
+        {
+          "prompt": "Explain why the partial sums approach a limit when $|r| < 1$.",
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Look at the formula $S_n = a_1 \\frac{1 - r^n}{1 - r}$. What happens to $r^n$ as $n$ gets very large if $|r| < 1$? What if $|r| > 1$?",
+          "role": "peer-explain",
+          "title": "Example B — Why $r^n$ Matters",
+          "steps": [
+            "When $|r| < 1$, raising $r$ to a large power makes it very close to $0$. For example, $(0.5)^{20} \\approx 0.000001$.",
+            "So $1 - r^n \\approx 1$, and $S_n \\approx a_1 \\frac{1}{1 - r}$, a constant.",
+            "When $|r| > 1$, $r^n$ grows without bound, so the partial sums do not approach a finite number.",
+            "Thus, the series has a sum only when $|r| < 1$."
+          ]
+        },
+        {
+          "prompt": "For $3 + \\frac{3}{4} + \\frac{3}{16} + \\frac{3}{64} + \\dots$, identify $r$ and determine whether the sum exists.",
+          "title": "Example C — Does the Series Converge?",
+          "steps": [
+            "$a_1 = 3$; $r = \\frac{3/4}{3} = \\frac{1}{4}$.",
+            "Since $|r| = \\frac{1}{4} < 1$, the series converges and the sum exists."
+          ],
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The sum $S_n$ of the first $n$ terms of an infinite series is called a [[kw:partial sum]].",
+          "For an infinite geometric series, the partial sums may get closer and closer to a fixed number as $n$ increases. When this happens, we say the series [[kw:converges]] to that number, and that number is the sum of the infinite series.",
+          "For the series $\\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\frac{1}{16} + \\dots$, the partial sums are $0.5, 0.75, 0.875, 0.9375, 0.96875, \\dots$, which approach $1$.",
+          "This happens because the common ratio $r = \\frac{1}{2}$ is between $-1$ and $1$. As $n$ increases, $r^n$ gets closer to $0$, so the sum formula $S_n = a_1 \\frac{1 - r^n}{1 - r}$ approaches $\\frac{a_1}{1 - r}$.",
+          "If $|r| \\ge 1$, the terms do not shrink to zero; the partial sums do not approach a finite number, and the infinite series has [[imp:no sum]]."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "$n$",
+              "Term $a_n$",
+              "Partial Sum $S_n$"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "$\\frac{1}{2}$",
+                "2": "$0.5$"
+              },
+              {
+                "0": "2",
+                "1": "$\\frac{1}{4}$",
+                "2": "$0.75$"
+              },
+              {
+                "0": "3",
+                "1": "$\\frac{1}{8}$",
+                "2": "$0.875$"
+              },
+              {
+                "0": "4",
+                "1": "$\\frac{1}{16}$",
+                "2": "$0.9375$"
+              },
+              {
+                "0": "5",
+                "1": "$\\frac{1}{32}$",
+                "2": "$0.96875$"
+              }
+            ],
+            "title": "Partial Sums of $\\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\dots$",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$ S_n $",
+              "meaning": "partial sum of first $n$ terms"
+            },
+            {
+              "meaning": "common ratio",
+              "symbol": "$ r $",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ S_n = a_1 \\frac{1 - r^n}{1 - r} $$ $$ \\text{If } |r| < 1, \\text{ then } S_n \\to \\frac{a_1}{1 - r} \\text{ as } n \\to \\infty $$"
+        }
+      },
+      "id": "partial-sums-and-convergence",
+      "teacherCues": [
+        "Write the series $\\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\frac{1}{16} + \\dots$ and ask: What happens to the sum as we add more terms?",
+        "Show a table of partial sums $S_1, S_2, S_3, \\dots$ and ask: Do these sums approach a specific number?"
+      ],
+      "confusionCorner": {
+        "title": "Converges vs. Diverges",
+        "body": "If $|r| < 1$, the infinite geometric series has a finite sum (it converges). If $|r| \\ge 1$, the series [[imp:diverges]]—it does not have a finite sum. This is because the terms don't become small enough fast enough."
+      },
+      "discoveryHook": {
+        "scenario": "Imagine walking halfway to a wall, then halfway again, and so on. You'll get closer and closer to the wall without ever quite reaching it. The total distance walked approaches a limit—this is the idea behind an infinite geometric series that converges to a finite sum."
+      },
+      "questions": [
+        {
+          "hints": [
+            "It's a part of the whole.",
+            "The word starts with 'p'."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "It is a partial sum.",
+          "prompt": "The sum of the first $n$ terms of an infinite series is called a ___ sum.",
+          "id": "q8-4-1",
+          "blanks": [
+            {
+              "accept": [
+                "partial"
+              ]
+            }
+          ]
+        },
+        {
+          "hints": [
+            "Add the first three terms: $1 + 0.5 + 0.25$.",
+            "The sum of $1 + 1/2 + 1/4$."
+          ],
+          "id": "q8-4-2",
+          "feedbackIfWrong": "$S_3 = 1 + 0.5 + 0.25 = 1.75$.",
+          "type": "short-answer",
+          "prompt": "For the series $1 + \\frac{1}{2} + \\frac{1}{4} + \\dots$, what is $S_3$? (Enter as a decimal like 1.75)",
+          "answers": [
+            "1.75",
+            "1.75",
+            "7/4"
+          ]
+        },
+        {
+          "answers": [
+            "less",
+            "less than"
+          ],
+          "type": "short-answer",
+          "prompt": "An infinite geometric series has a finite sum only if $|r|$ is ___ than 1.",
+          "feedbackIfWrong": "We need $|r| < 1$, so $|r|$ must be less than 1.",
+          "hints": [
+            "If $|r|$ is too big, the terms don't shrink to zero.",
+            "The condition is $|r| < 1$."
+          ],
+          "id": "q8-4-3"
+        }
+      ],
+      "title": "Partial Sums and Convergence"
+    },
+    {
+      "examples": [
+        {
+          "title": "Example A — Using the Sum Formula",
+          "prompt": "Find the sum of $ \\sum_{i=1}^{\\infty} 3(0.7)^{i-1} $.",
+          "steps": [
+            "Identify $a_1 = 3(0.7)^{0} = 3$ and $r = 0.7$.",
+            "Since $|0.7| < 1$, the sum exists.",
+            "Apply formula: $S = \\frac{3}{1 - 0.7} = \\frac{3}{0.3} = 10$.",
+            "The sum of the infinite series is 10."
+          ],
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "$a_1 = 1$; the second term is $-\\frac{3}{4}$, so $r = \\frac{-3/4}{1} = -\\frac{3}{4}$.",
+            "Since $|-\\frac{3}{4}| = \\frac{3}{4} < 1$, the sum exists.",
+            "$S = \\frac{1}{1 - (-3/4)} = \\frac{1}{1 + 3/4} = \\frac{1}{7/4} = \\frac{4}{7}$.",
+            "The sum is $\\frac{4}{7}$."
+          ],
+          "role": "peer-explain",
+          "minLength": 8,
+          "title": "Example B — Alternating Series",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you find the common ratio of this alternating series? Is $|r| < 1$?",
+          "prompt": "Find the sum of $1 - \\frac{3}{4} + \\frac{9}{16} - \\frac{27}{64} + \\dots$."
+        },
+        {
+          "role": "independent",
+          "prompt": "Find the sum of $2 + \\frac{6}{4} + \\frac{18}{16} + \\frac{54}{64} + \\dots$, if it exists.",
+          "steps": [
+            "$a_1 = 2$; second term is $\\frac{6}{4} = \\frac{3}{2}$, so $r = \\frac{3/2}{2} = \\frac{3}{4}$.",
+            "$|\\frac{3}{4}| < 1$, so the sum exists. Wait, let's recalc: Actually $\\frac{6}{4} = 1.5$, $r = 1.5/2 = 0.75$. So sum exists: $S = \\frac{2}{1 - 0.75} = \\frac{2}{0.25} = 8$. But check example 12 in book: $-5 - 2 - 4/5 - 8/25 - \\dots$ has $r=2/5$. Let's use a different one: $1 + 3 + 9 + 27 + \\dots$ clearly has $r=3$, no sum. I'll use that: $a_1=1$, $r=3$, $|r| \\ge 1$, so no sum."
+          ],
+          "title": "Example C — No Sum",
+          "feedbackIfWrong": "For $1+3+9+27+\\dots$, $r=3$ and $|3| \\ge 1$, so the series has no sum."
+        }
+      ],
+      "teacherCues": [
+        "Write $S = \\frac{a_1}{1 - r}$ on the board and ask: What restrictions must $r$ satisfy for this formula to work?",
+        "Demonstrate with $a_1 = 3$, $r = 0.7$: $S = \\frac{3}{1 - 0.7} = 10$."
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ S = \\frac{a_1}{1 - r}, \\quad |r| < 1 $$",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$ S $",
+              "meaning": "sum of the infinite geometric series"
+            },
+            {
+              "meaning": "first term",
+              "symbol": "$ a_1 $",
+              "tone": "core"
+            },
+            {
+              "meaning": "common ratio ($|r| < 1$)",
+              "symbol": "$ r $",
+              "tone": "core"
+            }
+          ]
+        },
+        "explanation": [
+          "The [[kw:sum of an infinite geometric series]] with first term $a_1$ and common ratio $r$ (where $|r| < 1$) is: $$ S = \\frac{a_1}{1 - r} $$",
+          "This formula is obtained by letting $n \\to \\infty$ in $S_n = a_1 \\frac{1 - r^n}{1 - r}$, because $r^n \\to 0$ when $|r| < 1$.",
+          "If $|r| \\ge 1$, the series does not have a finite sum (it diverges).",
+          "The formula works for both positive and negative $r$ as long as $|r| < 1$. For negative $r$, the terms alternate signs but still shrink in absolute value.",
+          "Always check $|r|$ first before applying the formula."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Examples of Infinite Geometric Series Sums",
+            "headers": [
+              "Series",
+              "$a_1$",
+              "$r$",
+              "$|r| < 1$?",
+              "Sum $S$"
+            ],
+            "rows": [
+              {
+                "0": "$3 + 0.7 \\cdot 3 + 0.7^2 \\cdot 3 + \\dots$",
+                "1": "3",
+                "2": "0.7",
+                "3": "Yes",
+                "4": "$\\frac{3}{1-0.7} = 10$"
+              },
+              {
+                "0": "$1 + 3 + 9 + 27 + \\dots$",
+                "1": "1",
+                "2": "3",
+                "3": "No ($|r| \\ge 1$)",
+                "4": "No sum"
+              },
+              {
+                "0": "$1 - \\frac{3}{4} + \\frac{9}{16} - \\frac{27}{64} + \\dots$",
+                "1": "1",
+                "2": "$-\\frac{3}{4}$",
+                "3": "Yes",
+                "4": "$\\frac{1}{1-(-3/4)} = \\frac{4}{7}$"
+              }
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "r"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The formula is $S = \\frac{a_1}{1 - r}$.",
+          "prompt": "The sum of an infinite geometric series with $|r| < 1$ is given by $S = \\frac{a_1}{1 - ___}$.",
+          "hints": [
+            "It's the common ratio.",
+            "Denominator is $1 - r$."
+          ],
+          "type": "fill-blank",
+          "id": "q8-4-4"
+        },
+        {
+          "feedbackIfWrong": "$S = \\frac{8}{1 - 0.2} = 10$.",
+          "prompt": "Find the sum of $ \\sum_{n=1}^{\\infty} 8 \\left( \\frac{1}{5} \\right)^{n-1} $. (Enter a number)",
+          "hints": [
+            "$a_1 = 8$, $r = 1/5$.",
+            "$S = \\frac{8}{1 - 1/5} = \\frac{8}{4/5} = 10$."
+          ],
+          "answers": [
+            "10",
+            "ten"
+          ],
+          "id": "q8-4-5",
+          "type": "short-answer"
+        },
+        {
+          "id": "q8-4-6",
+          "answers": [
+            "no"
+          ],
+          "prompt": "Does the series $ \\sum_{k=1}^{\\infty} -6 \\left( \\frac{3}{2} \\right)^{k-1} $ have a finite sum? (yes/no)",
+          "hints": [
+            "$r = \\frac{3}{2}$.",
+            "Is $|r| < 1$?"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "No, because $|r| = 1.5 \\ge 1$, so the series diverges."
+        }
+      ],
+      "title": "Sum Formula for Infinite Geometric Series",
+      "discoveryHook": {
+        "scenario": "If you deposit $100$ dollars into a bank account that pays 5% interest forever, the present value of all future interest is a finite number—thanks to the infinite geometric series sum formula. It's the key to valuing investments and loans."
+      },
+      "confusionCorner": {
+        "body": "The formula $S = \\frac{a_1}{1-r}$ is only for [[imp:infinite]] geometric series with $|r|<1$. For a finite series, use $S_n = a_1 \\frac{1 - r^n}{1 - r}$.",
+        "title": "Only Works for Infinite Series"
+      },
+      "id": "sum-of-infinite-geometric-series"
+    },
+    {
+      "questions": [
+        {
+          "id": "q8-4-7",
+          "hints": [
+            "$1 - 0.75 = 0.25$.",
+            "$10 / 0.25 = 40$."
+          ],
+          "prompt": "For a pendulum that swings 10 inches on the first swing and 75% of the previous swing each time, the total distance is $S = \\frac{10}{1 - 0.75} =$ ___ inches.",
+          "blanks": [
+            {
+              "accept": [
+                "40",
+                "forty"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Total distance = 40 inches.",
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "5000",
+            "5000",
+            "five thousand"
+          ],
+          "type": "short-answer",
+          "id": "q8-4-8",
+          "hints": [
+            "$a_1 = 500$, $r = 0.9$.",
+            "$S = \\frac{500}{1 - 0.9} = 500 / 0.1$."
+          ],
+          "feedbackIfWrong": "$S = \\frac{500}{0.1} = 5000$.",
+          "prompt": "A radio contest gives $500$ on day 1, then 90% of the previous day's prize each day. What is the total prize money? (Enter a number like 5000)"
+        },
+        {
+          "prompt": "If a profit decreases by 12% per year, what is the common ratio $r$? (Enter a decimal like 0.88)",
+          "type": "short-answer",
+          "answers": [
+            "0.88",
+            ".88"
+          ],
+          "id": "q8-4-9",
+          "hints": [
+            "100% - 12% = 88%.",
+            "As a decimal, 88% is 0.88."
+          ],
+          "feedbackIfWrong": "$r = 1 - 0.12 = 0.88$."
+        }
+      ],
+      "title": "Real‑Life Applications of Infinite Geometric Series",
+      "id": "real-life-applications-infinite-geometric",
+      "discoveryHook": {
+        "scenario": "From a swinging pendulum to a bouncing ball, many real‑life motions decrease by a constant factor each time. The total distance or time can be found instantly using the infinite geometric series formula."
+      },
+      "confusionCorner": {
+        "body": "Be careful: the total distance often includes both the initial swing and all subsequent swings. The series starts with the first swing distance $a_1$; don't accidentally start with the second. [[imp:Identify $a_1$ correctly.]]",
+        "title": "First Swing vs. Total Series"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Pendulum swings",
+                "1": "18 inches",
+                "2": "0.8",
+                "3": "$S = \\frac{18}{1-0.8} = 90$ inches"
+              },
+              {
+                "0": "Bouncing ball",
+                "1": "10 feet",
+                "2": "0.75",
+                "3": "$S = \\frac{10}{1-0.75} = 40$ feet"
+              },
+              {
+                "0": "Company profit decline",
+                "1": "$\\$350{,}000$",
+                "2": "0.88 (12% decrease)",
+                "3": "$S = \\frac{350000}{1-0.88} \\approx \\$2{,}916{,}667$"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Situation",
+              "$a_1$",
+              "$r$",
+              "Total"
+            ],
+            "title": "Real‑Life Infinite Geometric Series"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ S = \\frac{a_1}{1 - r} $$ $$ \\text{Total distance/amount after infinitely many steps} $$",
+          "legend": [
+            {
+              "symbol": "$ a_1 $",
+              "meaning": "initial amount (first swing, first bounce)",
+              "tone": "core"
+            },
+            {
+              "tone": "core",
+              "symbol": "$ r $",
+              "meaning": "common ratio (fraction remaining each step)"
+            }
+          ]
+        },
+        "explanation": [
+          "Many real‑world processes involve repeated reductions by a constant percent, forming an infinite geometric series.",
+          "Example: A pendulum's swing distance: if each swing is 80% of the previous, the total distance is $S = a_1 + a_1(0.8) + a_1(0.8)^2 + \\dots$.",
+          "Identify $a_1$ (the first amount) and $r$ (the constant multiplier, often a decimal).",
+          "Apply $S = \\frac{a_1}{1 - r}$ to find the total.",
+          "This only works if $|r| < 1$, which is typically true for decay situations (swinging, bouncing, cooling)."
+        ]
+      },
+      "examples": [
+        {
+          "steps": [
+            "The distances form the series: $18 + 18(0.8) + 18(0.8)^2 + \\dots$.",
+            "$a_1 = 18$, $r = 0.8$. Since $0.8 < 1$, the sum exists.",
+            "$S = \\frac{18}{1 - 0.8} = \\frac{18}{0.2} = 90$ inches.",
+            "The pendulum travels a total of 90 inches, or 7.5 feet."
+          ],
+          "role": "guided",
+          "prompt": "A pendulum swings 18 inches on its first swing. Each subsequent swing is 80% of the previous. Find the total distance traveled.",
+          "title": "Example A — Pendulum Total Distance"
+        },
+        {
+          "minLength": 8,
+          "title": "Example B — Bouncing Ball",
+          "prompt": "A ball dropped from 10 feet bounces to 75% of its previous height. What is the total vertical distance traveled (up and down)?",
+          "steps": [
+            "Initial drop: 10 ft down. Then up 7.5 ft, down 7.5 ft, up 5.625 ft, down 5.625 ft, ...",
+            "Total distance = 10 + 2(7.5) + 2(5.625) + ...",
+            "The series after the first drop is geometric with $a_1 = 15$ (the first round trip up and down), $r = 0.75$.",
+            "$S = 10 + \\frac{15}{1 - 0.75} = 10 + \\frac{15}{0.25} = 10 + 60 = 70$ feet."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Why does the ball travel both up and down after the first drop? How does that affect the series?",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Company Profit Decline",
+          "prompt": "A company's profit was $\\$350{,}000$ in year 1 and decreases 12% per year. Find the total profit over the company's lifetime.",
+          "steps": [
+            "Profits: $350000, 350000(0.88), 350000(0.88)^2, \\dots$.",
+            "$a_1 = 350000$, $r = 0.88$. (12% decrease means 88% remains.)",
+            "$S = \\frac{350000}{1 - 0.88} = \\frac{350000}{0.12} \\approx \\$2{,}916{,}667$.",
+            "The total lifetime profit is about $\\$2.92$ million."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Pose: A pendulum swings 18 inches on the first swing, then 80% of the previous swing each time. What is the total distance traveled?",
+        "Ask: What are $a_1$ and $r$? How do we use the infinite sum formula?"
+      ]
+    },
+    {
+      "id": "repeating-decimals-as-fractions",
+      "questions": [
+        {
+          "hints": [
+            "Two digits repeat.",
+            "Each term is shifted two decimal places."
+          ],
+          "feedbackIfWrong": "The ratio is $0.01$ because the block has two digits.",
+          "id": "q8-4-10",
+          "prompt": "For the repeating decimal $0.\\overline{72}$, the common ratio $r$ is ___.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "0.01",
+                ".01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q8-4-11",
+          "answers": [
+            "2/9",
+            "2/9"
+          ],
+          "hints": [
+            "$a_1 = 0.2$, $r = 0.1$.",
+            "Sum = $0.2 / 0.9 = 2/9$."
+          ],
+          "prompt": "Write $0.\\overline{2}$ as a fraction. (Enter like 2/9)",
+          "feedbackIfWrong": "$0.\\overline{2} = \\frac{2}{9}$.",
+          "type": "short-answer"
+        },
+        {
+          "id": "q8-4-12",
+          "type": "short-answer",
+          "hints": [
+            "Look at the digits that repeat.",
+            "It's '13' over and over."
+          ],
+          "prompt": "What is the repeating block of $0.131313\\dots$? (Enter like 13)",
+          "feedbackIfWrong": "The repeating block is '13'.",
+          "answers": [
+            "13"
+          ]
+        }
+      ],
+      "title": "Repeating Decimals as Fractions",
+      "concept": {
+        "explanation": [
+          "A [[kw:repeating decimal]] can be expressed as an infinite geometric series.",
+          "Example: $0.242424\\dots = 0.24 + 0.0024 + 0.000024 + \\dots$. The first term is the repeating block as a decimal, and the common ratio is $0.01$ (for a two‑digit repeat).",
+          "Apply the sum formula $S = \\frac{a_1}{1 - r}$ to get a fraction.",
+          "Then simplify the fraction to lowest terms.",
+          "This method works for any repeating decimal: identify the repeating block to find $a_1$, and $r = 10^{-k}$ where $k$ is the number of repeating digits."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Decimal",
+              "$a_1$",
+              "$r$",
+              "Sum",
+              "Fraction"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Converting Repeating Decimals to Fractions",
+            "rows": [
+              {
+                "0": "$0.\\overline{2}$",
+                "1": "0.2",
+                "2": "0.1",
+                "3": "$\\frac{0.2}{1-0.1} = \\frac{0.2}{0.9}$",
+                "4": "$\\frac{2}{9}$"
+              },
+              {
+                "0": "$0.\\overline{24}$",
+                "1": "0.24",
+                "2": "0.01",
+                "3": "$\\frac{0.24}{1-0.01} = \\frac{0.24}{0.99}$",
+                "4": "$\\frac{24}{99} = \\frac{8}{33}$"
+              },
+              {
+                "0": "$0.\\overline{727272}$",
+                "1": "0.72",
+                "2": "0.01",
+                "3": "$\\frac{0.72}{0.99}$",
+                "4": "$\\frac{72}{99} = \\frac{8}{11}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$ a_1 $",
+              "tone": "core",
+              "meaning": "the repeating block as a decimal (e.g., 0.24)"
+            },
+            {
+              "meaning": "number of digits in the repeating block",
+              "symbol": "$ k $",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ \\text{Repeating decimal} = \\frac{a_1}{1 - r} = \\frac{\\text{repeating block as decimal}}{1 - 10^{-k}} $$"
+        }
+      },
+      "confusionCorner": {
+        "title": "Matching the Decimal Places",
+        "body": "The common ratio $r$ depends on the number of repeating digits. For a 1‑digit repeat, $r = 0.1$; for 2 digits, $r = 0.01$; for 3 digits, $r = 0.001$, and so on. [[imp:Count the digits in the repeating block.]]"
+      },
+      "discoveryHook": {
+        "scenario": "Every repeating decimal is actually a rational number in disguise. By writing it as an infinite geometric series, we can convert any repeating decimal into a simple fraction—proving it's rational."
+      },
+      "examples": [
+        {
+          "prompt": "Write $0.242424\\dots$ as a fraction in simplest form.",
+          "role": "guided",
+          "steps": [
+            "The repeating block is '24', so $a_1 = 0.24$, and $r = 0.01$ (since each term shifts two decimal places).",
+            "Sum: $S = \\frac{0.24}{1 - 0.01} = \\frac{0.24}{0.99}$.",
+            "Multiply numerator and denominator by 100: $\\frac{24}{99}$.",
+            "Simplify by dividing by 3: $\\frac{8}{33}$.",
+            "So $0.\\overline{24} = \\frac{8}{33}$."
+          ],
+          "title": "Example A — Two‑Digit Repeat"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 8,
+          "steps": [
+            "Repeating block '5': $a_1 = 0.5$, $r = 0.1$.",
+            "$S = \\frac{0.5}{1 - 0.1} = \\frac{0.5}{0.9} = \\frac{5}{9}$.",
+            "So $0.\\overline{5} = \\frac{5}{9}$."
+          ],
+          "prompt": "Write $0.555\\dots$ as a fraction.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why is $r = 0.1$ for a one‑digit repeat? How do you find $a_1$?",
+          "title": "Example B — One‑Digit Repeat"
+        },
+        {
+          "steps": [
+            "The repeating part is $0.323232\\dots$. $a_1 = 0.32$, $r = 0.01$.",
+            "Sum of repeating part: $\\frac{0.32}{1 - 0.01} = \\frac{0.32}{0.99} = \\frac{32}{99}$.",
+            "Add the whole number part: $32 + \\frac{32}{99} = \\frac{32 \\cdot 99 + 32}{99} = \\frac{3168 + 32}{99} = \\frac{3200}{99}$.",
+            "Simplify? 3200 and 99 have no common factors, so $\\frac{3200}{99}$."
+          ],
+          "role": "independent",
+          "title": "Example C — Repeating Decimal with Whole Number Part",
+          "prompt": "Write $32.\\overline{32}$ as a fraction in simplest form."
+        }
+      ],
+      "teacherCues": [
+        "Write $0.242424\\dots$ and ask: Is this number rational? How can we write it as a fraction?",
+        "Show that it equals $0.24 + 0.0024 + 0.000024 + \\dots$, a geometric series."
+      ]
+    },
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Find the sum of $ \\sum_{n=1}^{\\infty} 4 \\left( \\frac{2}{3} \\right)^{n-1} $.",
+          "steps": [
+            "Understand: $a_1 = 4$, $r = \\frac{2}{3}$. Since $|\\frac{2}{3}| < 1$, the series converges.",
+            "Solve: $S = \\frac{4}{1 - 2/3} = \\frac{4}{1/3} = 12$.",
+            "Conclude: The sum of the infinite series is 12."
+          ],
+          "title": "Example A — Blueprint for Convergent Series"
+        },
+        {
+          "prompt": "A ball is dropped from 8 feet and bounces to 60% of its previous height. Find the total vertical distance traveled.",
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: How do you set up the series? Why is the first drop treated separately?",
+          "role": "peer-explain",
+          "steps": [
+            "Understand: Initial drop 8 ft. Then up 4.8 ft, down 4.8 ft, up 2.88 ft, down 2.88 ft, ... The up/down pairs after the first drop form a geometric series with $a_1 = 9.6$ (first round trip: 4.8 up + 4.8 down), $r = 0.6$.",
+            "Solve: Total = first drop + sum of pairs = $8 + \\frac{9.6}{1 - 0.6} = 8 + \\frac{9.6}{0.4} = 8 + 24 = 32$ feet.",
+            "Conclude: The ball travels a total of 32 feet."
+          ],
+          "title": "Example B — Real‑Life Blueprint"
+        },
+        {
+          "title": "Example C — Repeating Decimal Blueprint",
+          "steps": [
+            "Understand: Repeating block '81' (2 digits), so $a_1 = 0.81$, $r = 0.01$, $|r| < 1$.",
+            "Solve: $S = \\frac{0.81}{1 - 0.01} = \\frac{0.81}{0.99} = \\frac{81}{99}$.",
+            "Conclude: Simplify by dividing by 9: $\\frac{9}{11}$. So $0.\\overline{81} = \\frac{9}{11}$."
+          ],
+          "role": "independent",
+          "prompt": "Convert $0.\\overline{81}$ to a fraction using the Blueprint."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When faced with an infinite geometric series, the Blueprint helps you systematically determine if it converges and, if so, find its sum. This structured approach prevents mistakes like misidentifying the first term or common ratio."
+      },
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude steps. Model the process: 'Does the series $ \\sum_{n=1}^{\\infty} 4 \\left( \\frac{2}{3} \\right)^{n-1} $ converge? If so, find its sum.'",
+        "Ask: What should we check first? How do we apply the formula?"
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "title": "Blueprint for Infinite Geometric Series",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify $a_1$ and $r$; check $|r|$."
+              },
+              {
+                "0": "Solve",
+                "1": "If $|r|<1$, compute $S = \\frac{a_1}{1-r}$; if not, state no sum."
+              },
+              {
+                "0": "Conclude",
+                "1": "Simplify result; include units if applied; state final answer."
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$ a_1 $",
+              "tone": "core",
+              "meaning": "first term"
+            },
+            {
+              "tone": "core",
+              "symbol": "$ r $",
+              "meaning": "common ratio ($|r|<1$)"
+            }
+          ],
+          "formula": "$$ S = \\frac{a_1}{1 - r}, \\quad |r| < 1 $$"
+        },
+        "explanation": [
+          "[[imp:Understand]]: Identify the type of series—is it geometric? If so, find the first term $a_1$ and the common ratio $r$. Check $|r|$. If $|r| \\ge 1$, the series diverges (no sum). If $|r| < 1$, it converges.",
+          "[[imp:Solve]]: If convergent, apply the sum formula $S = \\frac{a_1}{1 - r}$. For real‑life problems, identify $a_1$ from the context (first swing, first profit, etc.) and $r$ as the percent remaining as a decimal.",
+          "[[imp:Conclude]]: State the sum. For repeating decimals, simplify the fraction to lowest terms. For applications, include units (inches, dollars, etc.) and check that the answer is reasonable."
+        ]
+      },
+      "questions": [
+        {
+          "answers": [
+            "|r| < 1",
+            "absolute value of r < 1",
+            "convergence"
+          ],
+          "feedbackIfWrong": "You must check that $|r| < 1$.",
+          "type": "short-answer",
+          "hints": [
+            "It's a condition on the common ratio.",
+            "The series must converge."
+          ],
+          "id": "q8-4-13",
+          "prompt": "In the Blueprint, what must you check before applying the infinite sum formula?"
+        },
+        {
+          "id": "q8-4-14",
+          "blanks": [
+            {
+              "accept": [
+                "0.1",
+                ".1"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The ratio is $0.1$.",
+          "prompt": "For the repeating decimal $0.\\overline{6}$, the first term of the geometric series is $0.6$ and the common ratio is ___.",
+          "hints": [
+            "One digit repeats.",
+            "Each term is shifted one decimal place."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "$a_1 = 12$, $r = 0.7$.",
+            "$S = 12 / (1 - 0.7) = 12 / 0.3 = 40$."
+          ],
+          "answers": [
+            "40",
+            "forty"
+          ],
+          "prompt": "A pendulum's first swing is 12 cm, and each swing is 70% of the previous. What is the total distance? (Enter a number, e.g., 40)",
+          "type": "short-answer",
+          "id": "q8-4-15",
+          "feedbackIfWrong": "Total distance = 40 cm."
+        }
+      ],
+      "title": "Blueprint Aid — Solving Problems with Infinite Geometric Series",
+      "confusionCorner": {
+        "body": "The infinite sum formula only applies if the process goes on forever. In some real‑life contexts, the process stops after a finite number of steps, so you'd use the finite sum formula. [[imp:Check if the problem describes a repeating process that continues indefinitely.]]",
+        "title": "Is It Really Infinite?"
+      },
+      "id": "blueprint-aid-infinite-geometric"
+    }
+  ],
+  "id": "chapter-8-4-finding-sums-of-infinite-geometric-series",
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "title": "Finding Sums of Infinite Geometric Series",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

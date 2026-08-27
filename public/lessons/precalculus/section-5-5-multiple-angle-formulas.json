@@ -1,0 +1,710 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-5-5-multiple-angle-formulas",
+  "title": "Multiple-Angle and Product-to-Sum Formulas",
+  "blocks": [
+    {
+      "id": "double-angle-formulas",
+      "title": "Double-Angle Formulas",
+      "teacherCues": [
+        "Write $\\sin 2u = 2\\sin u \\cos u$ on the board. Ask: How is this different from $\\sin(u+v)$ when $u=v$?",
+        "Show the three forms for $\\cos 2u$. Which one uses only sine? ($1-2\\sin^2 u$)"
+      ],
+      "discoveryHook": {
+        "scenario": "A football kick follows a parabolic path whose range depends on $\\sin 2\\theta$. Double-angle formulas turn products like $\\sin\\theta\\cos\\theta$ into a single trig function, making it easier to find the optimal kick angle."
+      },
+      "concept": {
+        "explanation": [
+          "Double-angle formulas come from the sum formulas with $u=v$.",
+          "$\\sin 2u = 2\\sin u \\cos u$",
+          "$\\cos 2u = \\cos^2 u - \\sin^2 u = 2\\cos^2 u - 1 = 1 - 2\\sin^2 u$",
+          "$\\tan 2u = \\dfrac{2\\tan u}{1 - \\tan^2 u}$",
+          "They help solve equations and evaluate functions of $2\\theta$ when only $\\theta$ info is given."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Double-Angle Formulas",
+            "headers": [
+              "Function",
+              "Formula"
+            ],
+            "rows": [
+              {
+                "0": "$\\sin 2u$",
+                "1": "$2\\sin u \\cos u$"
+              },
+              {
+                "0": "$\\cos 2u$",
+                "1": "$\\cos^2 u - \\sin^2 u$ (also $2\\cos^2 u-1$, $1-2\\sin^2 u$)"
+              },
+              {
+                "0": "$\\tan 2u$",
+                "1": "$\\dfrac{2\\tan u}{1 - \\tan^2 u}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Key Formula: $\\sin 2u$",
+          "formula": "$$\\sin 2u = 2\\sin u \\cos u$$",
+          "notes": [
+            "The coefficient 2 is outside the product.",
+            "If you know $\\sin u$ and $\\cos u$, you can find $\\sin 2u$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Solve $2\\cos x + \\sin 2x = 0$",
+          "prompt": "Find all solutions in $[0, 2\\pi)$.",
+          "steps": [
+            "Replace $\\sin 2x$ with $2\\sin x \\cos x$.",
+            "Equation becomes $2\\cos x + 2\\sin x \\cos x = 0$.",
+            "Factor $2\\cos x(1 + \\sin x) = 0$.",
+            "$2\\cos x = 0 \\implies x = \\frac{\\pi}{2}, \\frac{3\\pi}{2}$; $1+\\sin x = 0 \\implies \\sin x = -1 \\implies x = \\frac{3\\pi}{2}$ (already included).",
+            "Solutions: $\\frac{\\pi}{2}, \\frac{3\\pi}{2}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Evaluate $\\sin 2\\theta$",
+          "prompt": "Given $\\cos \\theta = \\frac{5}{13}$ with $\\frac{3\\pi}{2}<\\theta<2\\pi$, find $\\sin 2\\theta$.",
+          "peerPrompt": "Tell your partner: Why is $\\sin\\theta$ negative? Use a right triangle to find it. Then plug into the double-angle formula.",
+          "minLength": 2,
+          "steps": [
+            "Quadrant IV: $\\sin\\theta = -\\frac{12}{13}$ (5-12-13 triangle).",
+            "$\\sin 2\\theta = 2\\sin\\theta\\cos\\theta = 2(-\\frac{12}{13})(\\frac{5}{13}) = -\\frac{120}{169}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find $\\cos 2\\theta$",
+          "prompt": "Using the same info, find $\\cos 2\\theta$.",
+          "steps": [
+            "Use $\\cos 2\\theta = 2\\cos^2\\theta - 1$.",
+            "$\\cos^2\\theta = \\frac{25}{169}$, so $\\cos 2\\theta = 2\\cdot\\frac{25}{169} - 1 = \\frac{50}{169} - 1 = -\\frac{119}{169}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Which Form of $\\cos 2\\theta$?",
+        "body": "If you are given $\\sin\\theta$ only, use $1-2\\sin^2\\theta$. If given $\\cos\\theta$ only, use $2\\cos^2\\theta-1$. Choose the one that [[imp:avoids finding the other function]]."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "The double-angle formula for sine is $\\sin 2u = 2\\sin u$ ___ $u$.",
+          "blanks": [
+            {
+              "accept": [
+                "cos u",
+                "cos"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the other function: starts with 'c'.",
+            "The full formula is $\\sin 2u = 2\\sin u \\cos u$."
+          ],
+          "feedbackIfWrong": "It's $\\cos u$."
+        },
+        {
+          "id": "q2",
+          "type": "fill-blank",
+          "prompt": "One form of $\\cos 2u$ uses only sine: $\\cos 2u = 1 - 2($ ___ $)^2$.",
+          "blanks": [
+            {
+              "accept": [
+                "sin u",
+                "sin"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the function that appears with cosine in the Pythagorean identity.",
+            "The function starting with 's'."
+          ],
+          "feedbackIfWrong": "It's $\\sin u$."
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "prompt": "In the equation $2\\cos x + \\sin 2x = 0$, after using the double-angle formula, the common factor is ___ (write the function name, e.g., cos x).",
+          "answer": "cos x",
+          "hints": [
+            "Look at the terms: $2\\cos x$ and $2\\sin x \\cos x$.",
+            "What appears in both?"
+          ],
+          "feedbackIfWrong": "The common factor is $\\cos x$."
+        }
+      ]
+    },
+    {
+      "id": "power-reducing-formulas",
+      "title": "Power-Reducing Formulas",
+      "teacherCues": [
+        "Write $\\sin^2 u = \\frac{1-\\cos 2u}{2}$ on the board. Ask: How does this relate to $\\cos 2u = 1-2\\sin^2 u$?",
+        "Show how to reduce $\\sin^4 x$ by applying the formula twice."
+      ],
+      "discoveryHook": {
+        "scenario": "In calculus, integrating $\\sin^2 x$ is hard, but integrating $\\frac{1-\\cos 2x}{2}$ is easy. Power-reducing formulas turn squared trig functions into linear combinations of cosines, making integration simple."
+      },
+      "concept": {
+        "explanation": [
+          "Power-reducing formulas rewrite squares of trig functions in terms of first powers of cosine of double angles.",
+          "$\\sin^2 u = \\frac{1 - \\cos 2u}{2}$",
+          "$\\cos^2 u = \\frac{1 + \\cos 2u}{2}$",
+          "$\\tan^2 u = \\frac{1 - \\cos 2u}{1 + \\cos 2u}$",
+          "These come from solving the double-angle formulas for $\\sin^2 u$ or $\\cos^2 u$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Power-Reducing Formulas",
+            "headers": [
+              "Square",
+              "Formula"
+            ],
+            "rows": [
+              {
+                "0": "$\\sin^2 u$",
+                "1": "$\\dfrac{1 - \\cos 2u}{2}$"
+              },
+              {
+                "0": "$\\cos^2 u$",
+                "1": "$\\dfrac{1 + \\cos 2u}{2}$"
+              },
+              {
+                "0": "$\\tan^2 u$",
+                "1": "$\\dfrac{1 - \\cos 2u}{1 + \\cos 2u}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Reducing $\\sin^2 u$",
+          "formula": "$$\\sin^2 u = \\frac{1 - \\cos 2u}{2}$$",
+          "notes": [
+            "The angle doubles, the power drops.",
+            "Use repeatedly for higher even powers."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Reduce $\\sin^2 x$",
+          "prompt": "Rewrite $\\sin^2 x$ using a power-reducing formula.",
+          "steps": [
+            "Apply $\\sin^2 x = \\frac{1 - \\cos 2x}{2}$.",
+            "No further simplification needed."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Reduce $\\cos^2 3x$",
+          "prompt": "Rewrite $\\cos^2 3x$ with the power-reducing formula.",
+          "peerPrompt": "Explain to your partner: What doubles — the angle or the coefficient? Be careful: $u = 3x$, so $2u = 6x$.",
+          "minLength": 2,
+          "steps": [
+            "Use $\\cos^2 u = \\frac{1+\\cos 2u}{2}$ with $u=3x$.",
+            "$\\cos^2 3x = \\frac{1 + \\cos(2\\cdot 3x)}{2} = \\frac{1 + \\cos 6x}{2}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Reduce $\\sin^4 x$ (first step)",
+          "prompt": "Write $\\sin^4 x$ as $(\\sin^2 x)^2$ and apply the power-reducing formula to $\\sin^2 x$.",
+          "steps": [
+            "$\\sin^4 x = \\left(\\frac{1-\\cos 2x}{2}\\right)^2 = \\frac{1}{4}(1 - 2\\cos 2x + \\cos^2 2x)$.",
+            "(You'll reduce $\\cos^2 2x$ further if needed.)"
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Forget to Double Inside",
+        "body": "When reducing $\\sin^2(3x)$, the double-angle becomes $\\cos(6x)$, not $\\cos 6x$? Actually that's correct. But be careful: $u=3x$, so $2u = 6x$. Always multiply the angle by 2."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "The power-reducing formula for $\\cos^2 u$ is $\\frac{1 + \\cos(2u)}{2}$. The angle inside cosine is ___ times $u$.",
+          "blanks": [
+            {
+              "accept": [
+                "2"
+              ]
+            }
+          ],
+          "hints": [
+            "Look at the coefficient of $u$ in the formula.",
+            "It's the number that doubles the original angle."
+          ],
+          "feedbackIfWrong": "It's 2."
+        },
+        {
+          "id": "q5",
+          "type": "fill-blank",
+          "prompt": "To reduce $\\sin^4 x$, you first write it as $(\\_\\_\\_)^2$. The expression inside the parentheses is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "sin^2 x",
+                "sin2 x"
+              ]
+            }
+          ],
+          "hints": [
+            "What is the square of?",
+            "It's the square of sine squared."
+          ],
+          "feedbackIfWrong": "It's $\\sin^2 x$."
+        },
+        {
+          "id": "q6",
+          "type": "short-answer",
+          "prompt": "The power-reducing formula for $\\tan^2 u$ has a numerator of $1 - \\cos 2u$ and a denominator of ___.",
+          "answer": "1 + cos 2u",
+          "hints": [
+            "It's similar to the sine formula over the cosine formula.",
+            "The denominator is $1 + \\cos 2u$."
+          ],
+          "feedbackIfWrong": "The denominator is $1 + \\cos 2u$."
+        }
+      ]
+    },
+    {
+      "id": "half-angle-formulas",
+      "title": "Half-Angle Formulas",
+      "teacherCues": [
+        "Write $\\sin\\frac{u}{2} = \\pm\\sqrt{\\frac{1-\\cos u}{2}}$. Ask: Why is there a $\\pm$? (depends on quadrant of $u/2$)",
+        "Show how to find $\\sin 105^\\circ$ using half-angle with $210^\\circ$."
+      ],
+      "discoveryHook": {
+        "scenario": "You need the exact sine of $105^\\circ$, but you only know the values for $210^\\circ$. Since $105^\\circ$ is half of $210^\\circ$, the half-angle formula gives you the answer with a square root, just like magic."
+      },
+      "concept": {
+        "explanation": [
+          "Half-angle formulas come from the power-reducing formulas by replacing $u$ with $\\frac{u}{2}$.",
+          "$\\sin\\frac{u}{2} = \\pm\\sqrt{\\frac{1-\\cos u}{2}}$ ; $\\cos\\frac{u}{2} = \\pm\\sqrt{\\frac{1+\\cos u}{2}}$",
+          "The sign depends on the quadrant of $\\frac{u}{2}$.",
+          "For tangent: $\\tan\\frac{u}{2} = \\frac{1-\\cos u}{\\sin u} = \\frac{\\sin u}{1+\\cos u}$ (no $\\pm$ if using these forms, but need to watch sign)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Half-Angle Formulas",
+            "headers": [
+              "Function",
+              "Formula"
+            ],
+            "rows": [
+              {
+                "0": "$\\sin\\frac{u}{2}$",
+                "1": "$\\pm\\sqrt{\\dfrac{1-\\cos u}{2}}$"
+              },
+              {
+                "0": "$\\cos\\frac{u}{2}$",
+                "1": "$\\pm\\sqrt{\\dfrac{1+\\cos u}{2}}$"
+              },
+              {
+                "0": "$\\tan\\frac{u}{2}$",
+                "1": "$\\dfrac{1-\\cos u}{\\sin u} = \\dfrac{\\sin u}{1+\\cos u}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Evaluating $\\sin 105^\\circ$",
+          "formula": "$$\\sin 105^\\circ = \\sqrt{\\frac{1 - \\cos 210^\\circ}{2}} = \\sqrt{\\frac{1 + \\frac{\\sqrt{3}}{2}}{2}} = \\frac{\\sqrt{2+\\sqrt{3}}}{2}$$",
+          "notes": [
+            "$105^\\circ$ is in QII, sine positive, so choose +.",
+            "$\\cos 210^\\circ = -\\frac{\\sqrt{3}}{2}$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Evaluate $\\sin 105^\\circ$",
+          "prompt": "Use the half-angle formula to find the exact value.",
+          "steps": [
+            "$105^\\circ = \\frac{210^\\circ}{2}$. In QII, sine is positive.",
+            "$\\sin 105^\\circ = \\sqrt{\\frac{1 - \\cos 210^\\circ}{2}}$.",
+            "$\\cos 210^\\circ = -\\frac{\\sqrt{3}}{2}$.",
+            "$\\sin 105^\\circ = \\sqrt{\\frac{1 - (-\\sqrt{3}/2)}{2}} = \\sqrt{\\frac{2+\\sqrt{3}}{4}} = \\frac{\\sqrt{2+\\sqrt{3}}}{2}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Sign Choice",
+          "prompt": "If $u = 300^\\circ$, $\\frac{u}{2} = 150^\\circ$. Determine the sign of $\\cos 150^\\circ$ using the half-angle formula.",
+          "peerPrompt": "Work with a partner: Should the square root be positive or negative? Why?",
+          "minLength": 2,
+          "steps": [
+            "$\\frac{u}{2}=150^\\circ$ is in QII, where cosine is negative.",
+            "Thus $\\cos 150^\\circ = -\\sqrt{\\frac{1+\\cos 300^\\circ}{2}} = -\\sqrt{\\frac{1+1/2}{2}} = -\\sqrt{\\frac{3}{4}} = -\\frac{\\sqrt{3}}{2}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find $\\cos 105^\\circ$",
+          "prompt": "Use the half-angle formula to find $\\cos 105^\\circ$ exactly.",
+          "steps": [
+            "$105^\\circ$ in QII, cosine is negative.",
+            "$\\cos 105^\\circ = -\\sqrt{\\frac{1+\\cos 210^\\circ}{2}} = -\\sqrt{\\frac{1 - \\sqrt{3}/2}{2}} = -\\frac{\\sqrt{2-\\sqrt{3}}}{2}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Negative Inside Square Root?",
+        "body": "If $\\cos u$ is less than $-1$? Impossible. The expression under the root is always between 0 and 1 because $1-\\cos u$ is between 0 and 2. So it's always fine."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "The half-angle formula for $\\sin\\frac{u}{2}$ includes a $\\pm$ sign. The choice depends on the ___ of $\\frac{u}{2}$.",
+          "blanks": [
+            {
+              "accept": [
+                "quadrant"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the location in the coordinate plane.",
+            "Determines whether sine is positive or negative."
+          ],
+          "feedbackIfWrong": "It's the quadrant."
+        },
+        {
+          "id": "q8",
+          "type": "fill-blank",
+          "prompt": "To find $\\sin 105^\\circ$ using a half-angle formula, you need the cosine of ___ $^\\circ$.",
+          "blanks": [
+            {
+              "accept": [
+                "210"
+              ]
+            }
+          ],
+          "hints": [
+            "Double 105°.",
+            "105° × 2 = ?"
+          ],
+          "feedbackIfWrong": "It's 210°."
+        },
+        {
+          "id": "q9",
+          "type": "short-answer",
+          "prompt": "Is $\\sin 105^\\circ$ positive or negative? (Enter positive or negative)",
+          "answer": "positive",
+          "hints": [
+            "105° is in Quadrant II.",
+            "Sine is positive in QII."
+          ],
+          "feedbackIfWrong": "Positive."
+        }
+      ]
+    },
+    {
+      "id": "product-to-sum-sum-to-product",
+      "title": "Product-to-Sum and Sum-to-Product Formulas",
+      "teacherCues": [
+        "Write $\\sin u \\cos v = \\frac{1}{2}[\\sin(u+v) + \\sin(u-v)]$. Ask: How would you rewrite $\\cos 5x \\sin 4x$?",
+        "Show $\\cos 195^\\circ + \\cos 105^\\circ$ can be combined into a product."
+      ],
+      "discoveryHook": {
+        "scenario": "Multiplying two sound waves gives a beat pattern; adding them gives interference. In calculus, turning products into sums (or vice versa) is a powerful technique for integration and solving equations."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Product-to-sum formulas]] convert products of sines/cosines into sums, e.g., $\\sin u \\sin v = \\frac{1}{2}[\\cos(u-v) - \\cos(u+v)]$.",
+          "[[kw:Sum-to-product formulas]] go the other direction, e.g., $\\sin u + \\sin v = 2\\sin\\frac{u+v}{2}\\cos\\frac{u-v}{2}$.",
+          "These are useful for integration, solving equations, and computing exact values."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Key Product-to-Sum",
+            "headers": [
+              "Product",
+              "Sum"
+            ],
+            "rows": [
+              {
+                "0": "$\\sin u \\cos v$",
+                "1": "$\\frac{1}{2}[\\sin(u+v) + \\sin(u-v)]$"
+              },
+              {
+                "0": "$\\cos u \\sin v$",
+                "1": "$\\frac{1}{2}[\\sin(u+v) - \\sin(u-v)]$"
+              },
+              {
+                "0": "$\\cos u \\cos v$",
+                "1": "$\\frac{1}{2}[\\cos(u-v) + \\cos(u+v)]$"
+              },
+              {
+                "0": "$\\sin u \\sin v$",
+                "1": "$\\frac{1}{2}[\\cos(u-v) - \\cos(u+v)]$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Sum-to-Product (cos)",
+          "formula": "$$\\cos u + \\cos v = 2\\cos\\frac{u+v}{2}\\cos\\frac{u-v}{2}$$",
+          "notes": [
+            "Average of angles inside cosine, half-difference inside second cosine.",
+            "Minus version has a negative sign."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Product to Sum",
+          "prompt": "Rewrite $\\cos 5x \\sin 4x$ as a sum.",
+          "steps": [
+            "Match to $\\cos u \\sin v$: $u=5x$, $v=4x$.",
+            "$\\cos 5x \\sin 4x = \\frac{1}{2}[\\sin(5x+4x) - \\sin(5x-4x)] = \\frac{1}{2}\\sin 9x - \\frac{1}{2}\\sin x$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Exact Value via Sum",
+          "prompt": "Use sum-to-product to find $\\cos 195^\\circ + \\cos 105^\\circ$.",
+          "peerPrompt": "Explain: which angles do you average? What's their sum and difference?",
+          "minLength": 2,
+          "steps": [
+            "$\\cos 195^\\circ + \\cos 105^\\circ = 2\\cos\\frac{195^\\circ+105^\\circ}{2}\\cos\\frac{195^\\circ-105^\\circ}{2}$.",
+            "$= 2\\cos 150^\\circ \\cos 45^\\circ = 2(-\\frac{\\sqrt{3}}{2})(\\frac{\\sqrt{2}}{2}) = -\\frac{\\sqrt{6}}{2}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Solve $\\sin 5x + \\sin 3x = 0$",
+          "prompt": "Use sum-to-product to find all solutions in $[0, 2\\pi)$.",
+          "steps": [
+            "Use $\\sin 5x + \\sin 3x = 2\\sin\\frac{5x+3x}{2}\\cos\\frac{5x-3x}{2} = 2\\sin 4x \\cos x = 0$.",
+            "Set $\\sin 4x = 0$ or $\\cos x = 0$.",
+            "$\\sin 4x = 0$ gives $4x = n\\pi \\implies x = n\\pi/4$. In $[0,2\\pi)$, $x=0, \\pi/4, \\pi/2, 3\\pi/4, \\pi, 5\\pi/4, 3\\pi/2, 7\\pi/4$.",
+            "$\\cos x = 0$ gives $x = \\pi/2, 3\\pi/2$, already included."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Signs in Product-to-Sum",
+        "body": "For $\\sin u \\sin v$, the formula has $\\cos(u-v) - \\cos(u+v)$. The minus sign is [[imp:inside the bracket]], not outside."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "The product-to-sum formula for $\\cos u \\cos v$ is $\\frac{1}{2}[\\cos(u-v) + \\cos(u+v)]$. The factor outside the brackets is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1/2",
+                "half"
+              ]
+            }
+          ],
+          "hints": [
+            "It's a fraction.",
+            "It's one-half."
+          ],
+          "feedbackIfWrong": "It's 1/2."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "In the sum-to-product formula $\\cos u + \\cos v = 2\\cos\\frac{u+v}{2}\\cos\\frac{u-v}{2}$, the first angle inside the cosines is the ___ of $u$ and $v$.",
+          "answer": "average",
+          "hints": [
+            "Add the angles and divide by 2.",
+            "Another word for arithmetic mean."
+          ],
+          "feedbackIfWrong": "It's the average."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "Solving $\\sin 5x + \\sin 3x = 0$ by sum-to-product gives $2\\sin 4x \\cos x = 0$. One solution from $\\sin 4x = 0$ in $[0, \\pi/2]$ is ___ (enter a number like 0 or pi/4).",
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "pi/4"
+              ]
+            }
+          ],
+          "hints": [
+            "$\\sin 4x = 0$ means $4x = n\\pi$.",
+            "For $n=0$, $x=0$; for $n=1$, $x=\\pi/4$."
+          ],
+          "feedbackIfWrong": "Possible answers: $0$ or $\\pi/4$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-application",
+      "title": "Blueprint Aid – Maximizing Projectile Range",
+      "teacherCues": [
+        "Write the range formula $r = \\frac{1}{16} v_0^2 \\sin\\theta \\cos\\theta$. Ask: How can we rewrite this with a double-angle?",
+        "Outline Understand (identify product $\\sin\\theta\\cos\\theta$), Solve (use $\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$), Conclude (find max range)."
+      ],
+      "discoveryHook": {
+        "scenario": "A football kicker wants the maximum range. Ignoring air resistance, range is $\\frac{1}{16} v_0^2 \\sin\\theta \\cos\\theta$. The product $\\sin\\theta\\cos\\theta$ is maximized when $\\sin 2\\theta$ is largest—so the kicker should aim for $\\theta = 45^\\circ$."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Blueprint Aid]]: [[imp:Understand]] the range formula $r = \\frac{1}{16} v_0^2 \\sin\\theta \\cos\\theta$ contains the product $\\sin\\theta \\cos\\theta$.",
+          "[[imp:Solve]]: Use the double-angle identity $\\sin 2\\theta = 2\\sin\\theta \\cos\\theta$ to rewrite $r = \\frac{1}{32} v_0^2 \\sin 2\\theta$.",
+          "[[imp:Conclude]]: Since $\\sin 2\\theta \\le 1$, maximum range occurs when $\\sin 2\\theta = 1$, i.e., $2\\theta = 90^\\circ \\implies \\theta = 45^\\circ$. Then $r_{\\max} = \\frac{1}{32} v_0^2$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint Steps",
+            "headers": [
+              "Phase",
+              "What to Do"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify $\\sin\\theta\\cos\\theta$ can be combined using double-angle formula."
+              },
+              {
+                "0": "Solve",
+                "1": "$r = \\frac{1}{16} v_0^2 \\cdot \\frac{\\sin 2\\theta}{2} = \\frac{1}{32} v_0^2 \\sin 2\\theta$."
+              },
+              {
+                "0": "Conclude",
+                "1": "Max when $\\sin 2\\theta = 1$, $\\theta = 45^\\circ$, max range $= \\frac{v_0^2}{32}$."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Double-Angle in Action",
+          "formula": "$$\\sin 2\\theta = 2\\sin\\theta \\cos\\theta \\implies \\sin\\theta \\cos\\theta = \\frac{\\sin 2\\theta}{2}$$",
+          "notes": [
+            "The range becomes proportional to $\\sin 2\\theta$.",
+            "The optimal angle is always $45^\\circ$ in a vacuum."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Understand the Formula",
+          "prompt": "Given $v_0 = 80$ ft/s, what is the range as a function of $\\theta$?",
+          "steps": [
+            "$r = \\frac{1}{16}(80)^2 \\sin\\theta \\cos\\theta = \\frac{1}{16}(6400) \\sin\\theta \\cos\\theta = 400 \\sin\\theta \\cos\\theta$.",
+            "Using double-angle, $r = 200 \\sin 2\\theta$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Solve for Maximum",
+          "prompt": "Find the maximum range for $v_0 = 80$ ft/s.",
+          "peerPrompt": "Explain to your partner: What value of $\\sin 2\\theta$ gives the maximum? What angle makes that happen?",
+          "minLength": 2,
+          "steps": [
+            "$r = 200 \\sin 2\\theta$. Maximum when $\\sin 2\\theta = 1$.",
+            "$2\\theta = 90^\\circ \\implies \\theta = 45^\\circ$.",
+            "$r_{\\max} = 200$ ft."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Conclude for Different Speed",
+          "prompt": "If initial velocity is 100 ft/s, find the maximum range.",
+          "steps": [
+            "$r = \\frac{1}{16}(100)^2 \\sin\\theta \\cos\\theta = 625 \\sin\\theta \\cos\\theta = \\frac{625}{2} \\sin 2\\theta$.",
+            "Max when $\\sin 2\\theta = 1$: $r_{\\max} = 312.5$ ft."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Degrees vs Radians",
+        "body": "When solving $2\\theta = 90^\\circ$ in calculus, you might use radians. But the result $\\theta = 45^\\circ$ is the same."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "Using the double-angle identity, $\\sin\\theta\\cos\\theta = \\frac{1}{2}\\sin($ ___ $\\theta)$.",
+          "blanks": [
+            {
+              "accept": [
+                "2"
+              ]
+            }
+          ],
+          "hints": [
+            "The angle doubles.",
+            "It's 2θ."
+          ],
+          "feedbackIfWrong": "It's $\\sin 2\\theta$."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "For maximum range, what must $\\sin 2\\theta$ equal? (Enter a number)",
+          "answer": "1",
+          "hints": [
+            "Maximum of sine is 1.",
+            "At 90°, sine is 1."
+          ],
+          "feedbackIfWrong": "It's 1."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The optimal kick angle for maximum range (ignoring air resistance) is ___ degrees.",
+          "blanks": [
+            {
+              "accept": [
+                "45"
+              ]
+            }
+          ],
+          "hints": [
+            "Half of 90°.",
+            "The classic physics result."
+          ],
+          "feedbackIfWrong": "It's 45°."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "Show that complementary angles (e.g., 30° and 60°) give the same range, using the double-angle formula.",
+        "type": "short-answer",
+        "answers": [
+          "sin(2·30°) = sin(2·60°) = sin 120° = √3/2"
+        ],
+        "hints": [
+          "Range depends on $\\sin 2\\theta$.",
+          "Calculate for 30° and 60°."
+        ],
+        "feedbackIfWrong": "Because $\\sin(60°)=\\sin(120°)$."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

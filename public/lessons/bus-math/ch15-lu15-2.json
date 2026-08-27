@@ -1,0 +1,841 @@
+{
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "confusionCorner": {
+        "body": "The monthly payment stays constant, but the split changes. [[imp:Don't assume all months have the same principal reduction.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "hints": [
+          "Interest = 250,000 × 0.05/12 ≈ 1,041.67.",
+          "Principal = 1,342.05 – 1,041.67 = 300.38; new balance = 250,000 – 300.38 = 249,699.62."
+        ],
+        "answers": [
+          "1041.67",
+          "300.38",
+          "249699.62"
+        ],
+        "type": "short-answer",
+        "prompt": "A $250,000 loan at 5% (monthly rate 0.4167%) has a payment of $1,342.05. Find month 1 interest and principal, then the new balance.",
+        "optional": true
+      },
+      "title": "1. Splitting the Monthly Payment: Interest and Principal",
+      "id": "interest-principal-split",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "Number of months in a year.",
+            "To get the monthly rate."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "12"
+              ]
+            }
+          ],
+          "prompt": "Monthly interest = Loan balance × (APR ÷ ___).",
+          "feedbackIfWrong": "12.",
+          "id": "b1q1"
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "1,000.",
+          "hints": [
+            "Monthly rate = 4%/12 ≈ 0.3333%.",
+            "300,000 × 0.04/12 = 1,000."
+          ],
+          "answers": [
+            "1000",
+            "1,000"
+          ],
+          "id": "b1q2",
+          "prompt": "Balance $300,000, APR 4%, monthly payment $1,432.25. Find interest for month 1. (number only, no $)"
+        },
+        {
+          "prompt": "If monthly payment is $1,200 and interest is $900, what is the principal payment? (number only, no $)",
+          "feedbackIfWrong": "300.",
+          "id": "b1q3",
+          "hints": [
+            "Principal = Payment – Interest.",
+            "1,200 – 900 = ?"
+          ],
+          "answers": [
+            "300"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Gary's first monthly payment of $718.47 on his $160,000 mortgage at 3.5% only reduces the loan by about $251.80. The remaining $466.67 goes to interest! Over time, the interest portion shrinks and principal portion grows. This is the [[kw:amortization]] process."
+      },
+      "teacherCues": [
+        "Ask: 'In the first month of a mortgage, does more of your payment go to interest or principal?'",
+        "Show the formula: Interest = Balance × Monthly Rate."
+      ],
+      "examples": [
+        {
+          "title": "A – Find interest and principal for month 1",
+          "steps": [
+            "Monthly rate = 6% ÷ 12 = 0.5% = 0.005.",
+            "Interest = $200,000 × 0.005 = $1,000.00.",
+            "Principal = $1,199.10 – $1,000.00 = $199.10."
+          ],
+          "role": "guided",
+          "prompt": "A $200,000 mortgage at 6% for 30 years has a monthly payment of $1,199.10. Compute the first month's interest and principal."
+        },
+        {
+          "steps": [
+            "Interest is calculated on the current loan balance.",
+            "At the start, the balance is at its maximum.",
+            "As you pay down principal, the balance shrinks, so less interest accrues."
+          ],
+          "title": "B – Why interest dominates early",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain why the interest portion is higher at the beginning of the loan.",
+          "peerPrompt": "Think about the balance on which interest is calculated."
+        },
+        {
+          "title": "C – Month 2 calculation",
+          "steps": [
+            "Interest = $199,800.90 × 0.005 = $999.00 (rounded).",
+            "Principal = $1,199.10 – $999.00 = $200.10."
+          ],
+          "role": "independent",
+          "prompt": "Continuing the example A: after month 1, the balance is $199,800.90. Find month 2 interest and principal."
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "First Two Months: $160,000, 3.5%, 30‑year, Payment $718.47",
+            "headers": [
+              "Month",
+              "Beginning Balance",
+              "Interest (0.2917%)",
+              "Principal",
+              "Ending Balance"
+            ],
+            "caption": "Interest = Balance × 0.035 / 12. As balance falls, interest falls and principal rises.",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$160,000.00",
+                "2": "$466.67",
+                "3": "$251.80",
+                "4": "$159,748.20"
+              },
+              {
+                "0": "2",
+                "1": "$159,748.20",
+                "2": "$465.93",
+                "3": "$252.54",
+                "4": "$159,495.66"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Monthly rate = APR ÷ 12.",
+            "Interest is computed on the balance at the beginning of the month."
+          ],
+          "title": "Monthly Interest and Principal",
+          "formula": "$$\\text{Monthly Interest} = \\text{Balance} \\times \\frac{\\text{APR}}{12}$$ $$\\text{Principal Payment} = \\text{Monthly Payment} - \\text{Interest}$$ $$\\text{New Balance} = \\text{Old Balance} - \\text{Principal Payment}$$"
+        },
+        "explanation": [
+          "Each monthly mortgage payment covers two parts: [[kw:interest]] and [[kw:principal]].",
+          "Interest for the month = Current loan balance × Monthly interest rate (APR ÷ 12).",
+          "Principal payment = Total monthly payment – Interest for the month.",
+          "After the principal payment, the loan balance decreases: $$\\text{New Balance} = \\text{Old Balance} - \\text{Principal Payment}$$.",
+          "[[imp:In early years, most of the payment goes to interest; in later years, most goes to principal.]]"
+        ]
+      }
+    },
+    {
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Use the monthly payment amount fixed for all periods.",
+            "Repeat for the total number of payments (e.g., 360 for 30‑year)."
+          ],
+          "formula": "$$\\text{Interest} = \\text{Beginning Balance} \\times \\frac{\\text{APR}}{12}$$ $$\\text{Principal} = \\text{Payment} - \\text{Interest}$$ $$\\text{Ending Balance} = \\text{Beginning Balance} - \\text{Principal}$$",
+          "title": "Amortization Schedule Formulas"
+        },
+        "explanation": [
+          "An [[kw:amortization schedule]] lists every payment, the interest and principal portions, and the remaining balance after each payment.",
+          "To build the schedule:",
+          "1. Record the beginning balance.",
+          "2. Compute interest = Balance × Monthly rate.",
+          "3. Principal = Monthly payment – Interest.",
+          "4. New balance = Beginning balance – Principal; this becomes next month's beginning balance.",
+          "Repeat for each payment until the balance is $0.",
+          "[[imp:The last payment may be slightly different to bring the balance exactly to zero (due to rounding).]]"
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Amortization Schedule (first 3 months and last month) for $160,000, 3.5%, 30‑year, $718.47",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$160,000.00",
+                "2": "$466.67",
+                "3": "$251.80",
+                "4": "$159,748.20"
+              },
+              {
+                "0": "2",
+                "1": "$159,748.20",
+                "2": "$465.93",
+                "3": "$252.54",
+                "4": "$159,495.66"
+              },
+              {
+                "0": "3",
+                "1": "$159,495.66",
+                "2": "$465.19",
+                "3": "$253.28",
+                "4": "$159,242.38"
+              },
+              {
+                "0": "...",
+                "1": "...",
+                "2": "...",
+                "3": "...",
+                "4": "..."
+              },
+              {
+                "0": "360",
+                "1": "$715.00",
+                "2": "$2.08",
+                "3": "$715.00",
+                "4": "$0.00"
+              }
+            ],
+            "headers": [
+              "Payment #",
+              "Beginning Balance",
+              "Interest",
+              "Principal",
+              "Ending Balance"
+            ],
+            "caption": "The interest portion gradually decreases; the principal portion grows. The final balance reaches $0."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "beginning.",
+          "id": "b2q1",
+          "blanks": [
+            {
+              "accept": [
+                "beginning",
+                "new"
+              ]
+            }
+          ],
+          "prompt": "In an amortization schedule, the ending balance after a payment becomes the ___ balance for the next period.",
+          "hints": [
+            "It's the starting point for the next row.",
+            "Not the ending."
+          ]
+        },
+        {
+          "hints": [
+            "Principal = Payment – Interest.",
+            "300 – 25 = ?"
+          ],
+          "prompt": "Beginning balance $5,000, interest $25, monthly payment $300. Find principal payment. (number only, no $)",
+          "feedbackIfWrong": "275.",
+          "id": "b2q2",
+          "answers": [
+            "275"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "id": "b2q3",
+          "hints": [
+            "Interest = Balance × rate.",
+            "23 ÷ 4,600 = ?"
+          ],
+          "feedbackIfWrong": "0.005.",
+          "answers": [
+            "0.005",
+            ".005"
+          ],
+          "type": "short-answer",
+          "prompt": "Ending balance after a payment is $4,600. If the next month's interest is $23, what is the monthly interest rate? (as decimal, e.g., 0.005)"
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Month 1: Interest = 1,000 × 0.01 = $10.00; Principal = 340.02 – 10.00 = $330.02; Ending = $669.98.",
+            "Month 2: Interest = 669.98 × 0.01 ≈ $6.70; Principal = 340.02 – 6.70 = $333.32; Ending = $336.66.",
+            "Month 3: Interest = 336.66 × 0.01 ≈ $3.37; Principal = 340.02 – 3.37 = $336.65; Ending ≈ $0.01 (rounding)."
+          ],
+          "title": "A – Create a partial schedule",
+          "prompt": "A $1,000 loan at 12% per year (1% per month) is to be repaid in 3 monthly payments of $340.02. Create an amortization schedule for all 3 months."
+        },
+        {
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain why the principal portion of each payment increases over time.",
+          "peerPrompt": "Think about the declining balance.",
+          "steps": [
+            "Interest is calculated on the outstanding balance.",
+            "As that balance decreases, less interest is due each month.",
+            "Since the total payment is fixed, less interest means more of the payment can go toward principal."
+          ],
+          "title": "B – Why does principal grow?"
+        },
+        {
+          "title": "C – Last month adjustment",
+          "prompt": "In the schedule for the $1,000 loan, the last payment might be $340.03 instead of $340.02 to zero out the balance. Why?",
+          "steps": [
+            "Rounding causes the final balance to be a few cents off.",
+            "Lenders adjust the last payment so the balance reaches exactly $0.",
+            "This is a normal part of amortization."
+          ],
+          "role": "independent"
+        }
+      ],
+      "challengeCorner": {
+        "type": "short-answer",
+        "hints": [
+          "Month 1: interest = 20,000×0.005 = 100; principal = 386.66-100=286.66; balance=19,713.34.",
+          "Month 2: interest = 19,713.34×0.005≈98.57; principal = 386.66-98.57=288.09."
+        ],
+        "optional": true,
+        "answers": [
+          "100",
+          "286.66",
+          "98.57",
+          "288.09"
+        ],
+        "prompt": "Complete the first two rows of an amortization schedule: Loan $20,000, 6% APR (monthly rate 0.5%), monthly payment $386.66. Find interest and principal for each month."
+      },
+      "teacherCues": [
+        "Demonstrate how to create a table with columns: payment number, beginning balance, interest, principal, ending balance.",
+        "Show that after the last payment, the balance is $0."
+      ],
+      "confusionCorner": {
+        "body": "The total interest listed on the schedule equals the sum of all interest payments. [[imp:This should match the total interest calculated earlier (Total Payments – Loan Amount).]]",
+        "title": "Watch out!"
+      },
+      "title": "2. Building an Amortization Schedule",
+      "discoveryHook": {
+        "scenario": "An [[kw:amortization schedule]] shows how each payment is split between interest and principal, and how the loan balance decreases to zero over time. Lenders provide this schedule at closing so borrowers can see exactly how their loan will be paid off."
+      },
+      "id": "amortization-schedule"
+    },
+    {
+      "title": "3. Checking Total Interest from the Schedule",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Yes, because it matches the formula.",
+            "The schedule is consistent with the known total."
+          ],
+          "title": "A – Verify with schedule",
+          "prompt": "A 2‑year loan of $5,000 at 10% (monthly rate 0.8333%) has monthly payment $230.72. Total payments = 24 × $230.72 = $5,537.28. Total interest by formula = $537.28. If the schedule's interest sum is $537.28, is it correct?"
+        },
+        {
+          "peerPrompt": "Think about errors in manual calculations.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain why verifying the total interest from the schedule against the formula is important.",
+          "steps": [
+            "Manually building a schedule involves many calculations; small errors can accumulate.",
+            "Comparing the sum of interest to the formula provides a quick way to spot mistakes.",
+            "If the totals differ, you know you need to review the schedule."
+          ],
+          "title": "B – Why check?"
+        },
+        {
+          "title": "C – Adjust final payment",
+          "steps": [
+            "Final payment = Principal remaining + Interest = $230.50 + $1.92 = $232.42.",
+            "This ensures the balance hits exactly $0."
+          ],
+          "role": "independent",
+          "prompt": "After 23 payments, the balance is $230.50. The normal payment is $230.72, but interest for month 24 is $1.92. What should the final payment be to bring the balance to $0?"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:total interest]] from an amortization schedule is the sum of the interest column for all periods.",
+          "It must equal: $$\\text{Total Interest} = (\\text{Monthly Payment} \\times N) - \\text{Loan Amount}$$.",
+          "Any discrepancy is due to rounding in the last payment.",
+          "This check helps catch errors in manual schedule preparation.",
+          "[[imp:The schedule's ending balance must be $0 (or very close) after the final payment.]]"
+        ],
+        "visuals": [
+          {
+            "title": "Verification of Total Interest",
+            "headers": [
+              "Method",
+              "Calculation",
+              "Result"
+            ],
+            "caption": "Both methods give the same total interest.",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Schedule sum",
+                "1": "Sum of all interest payments",
+                "2": "$98,649.20 (approx)"
+              },
+              {
+                "0": "Formula",
+                "1": "(Payment × 360) – Loan",
+                "2": "$258,649.20 – $160,000 = $98,649.20"
+              },
+              {
+                "0": "Match?",
+                "1": "Yes",
+                "2": "OK"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Total Interest} = \\sum_{k=1}^{N} I_k = (\\text{Payment} \\times N) - \\text{Loan Amount}$$",
+          "title": "Verifying Total Interest",
+          "notes": [
+            "If the schedule sum differs by more than a few cents, check for rounding or arithmetic mistakes.",
+            "The final balance should be $0 (or adjusted to $0)."
+          ]
+        }
+      },
+      "questions": [
+        {
+          "id": "b3q1",
+          "prompt": "Total interest from an amortization schedule should equal total payments minus the original ___ amount.",
+          "hints": [
+            "The amount borrowed.",
+            "Not interest."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "loan",
+                "mortgage",
+                "principal"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "loan."
+        },
+        {
+          "hints": [
+            "Total interest = total payments – loan.",
+            "12,500 – 10,000 = ?"
+          ],
+          "feedbackIfWrong": "2,500.",
+          "prompt": "Loan $10,000, total payments $12,500. Total interest? (number only, no $)",
+          "answers": [
+            "2500",
+            "2,500"
+          ],
+          "id": "b3q2",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "yes.",
+          "type": "short-answer",
+          "hints": [
+            "It's only a nickel.",
+            "Rounding can cause tiny differences."
+          ],
+          "id": "b3q3",
+          "answers": [
+            "yes"
+          ],
+          "prompt": "If the schedule's interest sum is $3,200.50 and the formula gives $3,200.55, is the difference acceptable? (yes or no)"
+        }
+      ],
+      "id": "total-interest-schedule",
+      "challengeCorner": {
+        "answers": [
+          "yes"
+        ],
+        "prompt": "A 3‑month loan of $3,000 at 8% (monthly rate 0.6667%) is paid with monthly payments of $1,013.39. The schedule shows interest: $20.00, $13.38, $6.73, total $40.11. Is this correct? (yes or no, and why?)",
+        "optional": true,
+        "hints": [
+          "Total payments = 3 × 1,013.39 = 3,040.17.",
+          "Total interest = 3,040.17 – 3,000 = 40.17; schedule sum 40.11 is close (rounding). So acceptable."
+        ],
+        "type": "short-answer"
+      },
+      "discoveryHook": {
+        "scenario": "After building an amortization schedule, you can add up all the interest payments. The total should match the amount calculated by the formula (Total Payments – Loan Amount). This is a great way to verify your schedule."
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The last payment in a real amortization schedule is often slightly different from the others. [[imp:Don't force it to match the fixed payment; adjust it to clear the remaining balance.]]"
+      },
+      "teacherCues": [
+        "Sum the interest column in the amortization schedule.",
+        "Compare to the formula: Total Interest = Total Payments – Loan Amount."
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "Confirm with your lender that extra payments are applied to principal, not just held for future payments. [[imp:Always specify 'apply to principal' when making extra payments.]]",
+        "title": "Watch out!"
+      },
+      "id": "additional-payments",
+      "challengeCorner": {
+        "type": "short-answer",
+        "hints": [
+          "Extra principal = 2,000 – 1,610.46 = 389.54.",
+          "Total principal reduction = 360.46 + 389.54 = 750.00."
+        ],
+        "answers": [
+          "750.00"
+        ],
+        "optional": true,
+        "prompt": "A $300,000 loan at 5% (monthly rate 0.4167%) has a scheduled payment of $1,610.46. In month 1, interest = $1,250.00, scheduled principal = $360.46. If the borrower pays $2,000 total, by how much does the balance drop after that payment?"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Effect of $100 Extra Principal per Month ($160,000, 3.5%, 30‑year)",
+            "headers": [
+              "",
+              "Without Extra",
+              "With $100 Extra"
+            ],
+            "rows": [
+              {
+                "0": "Monthly Payment",
+                "1": "$718.47",
+                "2": "$818.47"
+              },
+              {
+                "0": "Payoff Time",
+                "1": "30 years",
+                "2": "~24 years"
+              },
+              {
+                "0": "Total Interest",
+                "1": "$98,649",
+                "2": "$77,000 (approx)"
+              },
+              {
+                "0": "Interest Saved",
+                "1": "—",
+                "2": "$21,649"
+              }
+            ],
+            "type": "table",
+            "caption": "Extra principal reduces both time and total interest."
+          }
+        ],
+        "explanation": [
+          "[[kw:Additional principal payments]] are amounts paid above the scheduled payment, applied directly to reduce the loan balance.",
+          "Because interest is calculated on the lower balance, each subsequent month's interest is reduced.",
+          "This accelerates the loan payoff and dramatically cuts total interest.",
+          "You can also make lump‑sum extra payments or switch to a biweekly schedule.",
+          "[[imp:The earlier you make extra payments, the greater the interest savings.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Principal Payment} = \\text{Scheduled Payment} + \\text{Extra} - \\text{Interest}$$ $$\\text{New Balance} = \\text{Old Balance} - \\text{Principal Payment}$$",
+          "notes": [
+            "The scheduled payment includes interest, so extra funds go entirely to principal reduction.",
+            "Many lenders allow extra payments without penalty."
+          ],
+          "title": "New Balance with Extra Principal"
+        }
+      },
+      "title": "4. Impact of Additional Principal Payments",
+      "examples": [
+        {
+          "prompt": "A loan has a balance of $100,000, monthly payment $600 (interest $500, principal $100). If you add $200 extra, what is the new balance?",
+          "title": "A – Calculate new balance with extra payment",
+          "role": "guided",
+          "steps": [
+            "Total principal paid = $100 + $200 = $300.",
+            "New balance = $100,000 – $300 = $99,700."
+          ]
+        },
+        {
+          "prompt": "Explain why an extra $100 payment in year 1 saves more interest than the same extra payment in year 25.",
+          "steps": [
+            "An extra payment made early reduces the principal for many remaining months.",
+            "Interest is saved every month thereafter on that reduced principal.",
+            "A late extra payment reduces interest for only a few months, saving much less."
+          ],
+          "title": "B – Why early extra payments matter",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Think about how long the lower balance affects interest."
+        },
+        {
+          "title": "C – Payoff time with extra",
+          "prompt": "A $200,000 loan at 4% has a monthly payment of $954.83. If you pay $1,200/month instead, the loan is paid off in 20 years. How many years are saved?",
+          "steps": [
+            "Original term = 30 years, new term = 20 years.",
+            "Years saved = 30 – 20 = 10 years."
+          ],
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "If Gary adds $100 per month to his principal payment, the loan is paid off years earlier, and he saves tens of thousands in interest. Even small extra payments make a big difference when applied early in the loan."
+      },
+      "teacherCues": [
+        "Show that an extra principal payment reduces the balance faster, saving interest.",
+        "Illustrate with a comparison schedule."
+      ],
+      "questions": [
+        {
+          "id": "b4q1",
+          "prompt": "Extra payments applied directly to the loan balance are called additional ___ payments.",
+          "hints": [
+            "Not interest.",
+            "They reduce the loan amount."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "principal"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "principal."
+        },
+        {
+          "prompt": "Scheduled principal payment is $250; you add $150 extra. Total principal reduction? (number only, no $)",
+          "answers": [
+            "400"
+          ],
+          "id": "b4q2",
+          "feedbackIfWrong": "400.",
+          "hints": [
+            "250 + 150.",
+            "= 400."
+          ],
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "more.",
+          "prompt": "Making extra principal payments early in the loan saves ___ interest than making them later. (more or less)",
+          "type": "short-answer",
+          "id": "b4q3",
+          "hints": [
+            "Interest savings accumulate over time.",
+            "Early reduction has longer impact."
+          ],
+          "answers": [
+            "more"
+          ]
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "You're given a loan amount, interest rate, and monthly payment. Use the blueprint to generate the first three months of the amortization schedule and verify the total interest."
+      },
+      "questions": [
+        {
+          "prompt": "The first blueprint step is to ___ the problem.",
+          "feedbackIfWrong": "understand.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "id": "b5q1",
+          "hints": [
+            "Identify loan amount, rate, payment.",
+            "U in U‑S‑C."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "300"
+          ],
+          "type": "short-answer",
+          "id": "b5q2",
+          "feedbackIfWrong": "300.",
+          "hints": [
+            "40,000 × 0.0075 = ?",
+            "= 300."
+          ],
+          "prompt": "Balance $40,000, APR 9% (monthly rate 0.75%), payment $321.84. Find month 1 interest. (number only, no $)"
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "0.",
+          "id": "b5q3",
+          "prompt": "After the final payment, the loan balance should be ___ (number).",
+          "hints": [
+            "Paid in full.",
+            "No remaining debt."
+          ],
+          "answers": [
+            "0",
+            "zero"
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "When building a schedule, ensure the monthly payment includes only principal and interest. [[imp:If taxes and insurance are included, separate them before calculating the amortization.]]"
+      },
+      "challengeCorner": {
+        "hints": [
+          "Month 1: I = 75,000×0.08/12 = 500.00; P = 550.86-500=50.86; Bal = 74,949.14.",
+          "Month 2: I = 74,949.14×0.08/12 ≈ 499.66."
+        ],
+        "optional": true,
+        "prompt": "A $75,000 loan at 8% (monthly rate 0.6667%) has a monthly payment of $550.86. Find month 1 interest, principal, and new balance. Then compute month 2 interest.",
+        "type": "short-answer",
+        "answers": [
+          "500.00",
+          "50.86",
+          "74949.14",
+          "499.66"
+        ]
+      },
+      "id": "blueprint-amortization",
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that asks for the first few months' interest and principal."
+      ],
+      "examples": [
+        {
+          "title": "A – Full blueprint for first month",
+          "steps": [
+            "Interest = $120,000 × 0.005 = $600.00.",
+            "Principal = $719.46 – $600.00 = $119.46.",
+            "New balance = $120,000 – $119.46 = $119,880.54."
+          ],
+          "prompt": "A $120,000 mortgage at 6% (monthly rate 0.5%) has a monthly payment of $719.46. Find month 1 interest, principal, and new balance.",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Think about repeating the process.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain how the blueprint prevents forgetting to update the balance each month.",
+          "steps": [
+            "The 'Solve' step requires computing the new balance after each payment.",
+            "That new balance becomes the input for the next month's calculation.",
+            "Using a table format makes it obvious if you accidentally reuse the original balance."
+          ],
+          "title": "B – Blueprint vs. errors"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Month 1: I = 30,000×0.008333=250.00; P = 968.02–250.00=718.02; Bal = 29,281.98.",
+            "Month 2: I = 29,281.98×0.008333≈244.02; P = 968.02–244.02=724.00; Bal = 28,557.98.",
+            "Month 3: I = 28,557.98×0.008333≈237.99; P = 968.02–237.99=730.03; Bal = 27,827.95."
+          ],
+          "prompt": "Create months 1–3 for a $30,000 loan at 10% (monthly rate 0.8333%) with a monthly payment of $968.02.",
+          "title": "C – Three‑month schedule"
+        }
+      ],
+      "title": "5. Blueprint Aid for Amortization Schedule Problems",
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "2. Solve",
+                "1": "1",
+                "2": "$50,000.00",
+                "3": "$291.67",
+                "4": "$40.98",
+                "5": "$49,959.02"
+              },
+              {
+                "0": "2. Solve",
+                "1": "2",
+                "2": "$49,959.02",
+                "3": "$291.43",
+                "4": "$41.22",
+                "5": "$49,917.80"
+              },
+              {
+                "0": "2. Solve",
+                "1": "3",
+                "2": "$49,917.80",
+                "3": "$291.19",
+                "4": "$41.46",
+                "5": "$49,876.34"
+              },
+              {
+                "0": "3. Conclude",
+                "1": "",
+                "2": "",
+                "3": "Total interest so far: $874.29",
+                "4": "",
+                "5": ""
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Step",
+              "Month",
+              "Beginning Balance",
+              "Interest",
+              "Principal",
+              "Ending Balance"
+            ],
+            "caption": "Repeat for all payments; verify final balance = $0.",
+            "variant": "colorful",
+            "title": "Blueprint: First 3 Months of a $50,000 Loan at 7% (monthly pmt $332.65)"
+          }
+        ],
+        "explanation": [
+          "Apply the blueprint to amortization problems:",
+          "1. Understand: identify loan amount, APR, monthly payment, and number of payments.",
+          "2. Solve: for each month (starting with month 1), compute interest, principal, and new balance; repeat as needed.",
+          "3. Conclude: verify that the final balance reaches $0 (or adjust last payment), and sum the interest to check against the formula.",
+          "This ensures each month's calculation is accurate and the schedule is complete."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{For each month:}$$ $$I = \\text{Balance} \\times \\frac{\\text{APR}}{12}$$ $$\\text{Principal} = \\text{Payment} - I$$ $$\\text{New Balance} = \\text{Balance} - \\text{Principal}$$",
+          "title": "Amortization Schedule Blueprint",
+          "notes": [
+            "If the final balance is a few cents off, adjust the last payment to bring it to $0.",
+            "Use the sum of interest to verify against Total Interest = (Payment × N) – Loan."
+          ]
+        }
+      }
+    }
+  ],
+  "id": "ch15-lu15-2",
+  "schemaVersion": 2,
+  "title": "Amortization Schedule—Breaking Down the Monthly Payment",
+  "standards": [
+    "BUSMATH.15.2"
+  ],
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

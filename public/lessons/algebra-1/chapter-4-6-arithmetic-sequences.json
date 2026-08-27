@@ -1,0 +1,728 @@
+{
+  "schemaVersion": 2,
+  "id": "chapter-4-6-arithmetic-sequences",
+  "blocks": [
+    {
+      "title": "Identifying and Extending Arithmetic Sequences",
+      "discoveryHook": {
+        "scenario": "A runner adds 2 laps every day to her training. Day 1: 2 laps, Day 2: 4 laps, Day 3: 6 laps... The sequence of laps is arithmetic because the same number is added each day. Recognizing this constant difference lets you predict any day's distance—no guesswork needed!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:sequence]] is an ordered list of numbers. Each number is called a [[kw:term]].",
+          "An [[kw:arithmetic sequence]] has a [[imp:constant difference]] between consecutive terms. This difference is the [[kw:common difference]], denoted by $ d $.",
+          "To find the next term, add the common difference to the previous term.",
+          "You can extend a sequence by repeatedly adding $ d $.",
+          "If the common difference is positive, the sequence increases; if negative, it decreases."
+        ],
+        "formulaCard": {
+          "notes": [
+            "$ a_{n} $ = current term, $ a_{n-1} $ = previous term.",
+            "$ d $ = common difference (can be negative)."
+          ],
+          "title": "Extending an Arithmetic Sequence",
+          "formula": "$$ a_{n} = a_{n-1} + d $$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Position $ n $",
+              "Term $ a_n $",
+              "Pattern"
+            ],
+            "variant": "colorful",
+            "title": "Arithmetic Sequence: $ -7, -14, -21, -28, \\dots $",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$ -7 $",
+                "2": ""
+              },
+              {
+                "0": "2",
+                "1": "$ -14 $",
+                "2": "$ -7 + (-7) $"
+              },
+              {
+                "0": "3",
+                "1": "$ -21 $",
+                "2": "$ -14 + (-7) $"
+              },
+              {
+                "0": "4",
+                "1": "$ -28 $",
+                "2": "$ -21 + (-7) $"
+              },
+              {
+                "0": "5",
+                "1": "$ -35 $",
+                "2": "$ -28 + (-7) $"
+              },
+              {
+                "0": "6",
+                "1": "$ -42 $",
+                "2": "$ -35 + (-7) $"
+              },
+              {
+                "0": "7",
+                "1": "$ -49 $",
+                "2": "$ -42 + (-7) $"
+              }
+            ]
+          }
+        ]
+      },
+      "id": "extending-arithmetic-sequences",
+      "confusionCorner": {
+        "body": "If the terms are decreasing, the common difference is [[imp:negative]]. Always subtract a term from the next term ($ a_{n} - a_{n-1} $) to find $ d $. The sign matters!",
+        "title": "Common Difference Sign"
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "prompt": "In an arithmetic sequence, the constant amount added to each term to get the next term is called the ___ difference.",
+          "hints": [
+            "It starts with 'c'.",
+            "It is the same for all consecutive pairs."
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "It's the common difference.",
+          "blanks": [
+            {
+              "accept": [
+                "common"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "short-answer",
+          "id": "q1-2",
+          "answer": "3",
+          "feedbackIfWrong": "The common difference is 3.",
+          "prompt": "What is the common difference of the sequence $ 2, 5, 8, 11, \\dots $?",
+          "hints": [
+            "Subtract the first term from the second.",
+            "$ 5 - 2 = ? $"
+          ]
+        },
+        {
+          "hints": [
+            "Find the common difference first.",
+            "$ 7 - 10 = -3 $, then $ 1 + (-3) = ? $"
+          ],
+          "answer": "-2",
+          "id": "q1-3",
+          "feedbackIfWrong": "The next term is -2.",
+          "prompt": "Write the next term of the sequence $ 10, 7, 4, 1, \\dots $.",
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "title": "A – Finding the Common Difference",
+          "role": "guided",
+          "prompt": "Find the common difference of the arithmetic sequence $ 13, 18, 23, 28, \\dots $ and write the next term.",
+          "steps": [
+            "Subtract the first term from the second: $ 18 - 13 = 5 $.",
+            "Check: $ 23 - 18 = 5 $, $ 28 - 23 = 5 $. The common difference is $ d = 5 $.",
+            "Next term: $ 28 + 5 = 33 $."
+          ]
+        },
+        {
+          "steps": [
+            "Find the difference: $ 30 - 60 = -30 $, $ 0 - 30 = -30 $. So $ d = -30 $.",
+            "Next term: $ -30 + (-30) = -60 $.",
+            "Then $ -90 $, then $ -120 $. The sequence decreases."
+          ],
+          "title": "B – Negative Common Difference",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: How can you tell the common difference is negative, and what does that mean for the sequence?",
+          "prompt": "Write the next three terms of $ 60, 30, 0, -30, \\dots $.",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Write the next three terms of $ 1.3, 1, 0.7, 0.4, \\dots $.",
+          "role": "independent",
+          "title": "C – Decimal Common Difference",
+          "steps": [
+            "Common difference: $ 1 - 1.3 = -0.3 $. Check: $ 0.7 - 1 = -0.3 $.",
+            "Next: $ 0.4 + (-0.3) = 0.1 $, then $ -0.2 $, then $ -0.5 $."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Write the sequence 5, 10, 15, 20, ... on the board. Ask: 'What number is added each time? What would the next term be?'",
+        "Define common difference: the constant amount added to go from one term to the next."
+      ]
+    },
+    {
+      "title": "Graphing Arithmetic Sequences",
+      "discoveryHook": {
+        "scenario": "If you graph an arithmetic sequence, the points form a perfectly straight line—just like plotting a linear function! The term's position is the x-value, and the term itself is the y-value. The common difference becomes the slope of that line."
+      },
+      "id": "graphing-arithmetic-sequences",
+      "examples": [
+        {
+          "prompt": "Graph the arithmetic sequence $ 4, 8, 12, 16, \\dots $. What do you notice?",
+          "steps": [
+            "Make a table: $ n = 1, 2, 3, 4 $; terms $ 4, 8, 12, 16 $.",
+            "Plot $ (1,4), (2,8), (3,12), (4,16) $.",
+            "The points lie on a straight line with slope $ 4 $."
+          ],
+          "title": "A – Graphing a Positive Sequence",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Explain to a partner: Why does the graph slope downward, and what does that tell you about the common difference?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Graph the sequence $ 15, 12, 9, 6, \\dots $. What is the slope of the line?",
+          "title": "B – Graphing a Decreasing Sequence",
+          "steps": [
+            "Points: $ (1,15), (2,12), (3,9), (4,6) $.",
+            "Common difference $ d = -3 $, so the slope is negative.",
+            "The points fall from left to right."
+          ]
+        },
+        {
+          "steps": [
+            "Find differences: $ 4-2 = 2 $, $ 7-4 = 3 $, $ 11-7 = 4 $.",
+            "The differences are not constant, so this is NOT an arithmetic sequence."
+          ],
+          "role": "independent",
+          "title": "C – Identifying a Sequence from a Graph",
+          "prompt": "A graph shows points $ (1,2), (2,4), (3,7), (4,11) $. Do these points represent an arithmetic sequence?"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Discrete Points, Not a Line",
+        "body": "Although the points of an arithmetic sequence lie on a straight line, the graph consists of [[imp:only the dots]]. You should not draw a continuous line through them because the domain is only positive integers."
+      },
+      "teacherCues": [
+        "Plot the points $ (1, 4), (2, 8), (3, 12), (4, 16) $ on a coordinate plane. Ask: 'What do you notice about these points?'",
+        "State that the points of an arithmetic sequence always lie on a straight line."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "prompt": "When graphing an arithmetic sequence, the $ x $-coordinate of each point is the ___ number of the term.",
+          "hints": [
+            "It tells where the term is in the list.",
+            "It starts at 1 for the first term."
+          ],
+          "feedbackIfWrong": "The x-coordinate is the position number.",
+          "id": "q2-1",
+          "blanks": [
+            {
+              "accept": [
+                "position",
+                "index"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q2-2",
+          "feedbackIfWrong": "The slope is 3.",
+          "answer": "3",
+          "type": "short-answer",
+          "hints": [
+            "The slope equals the common difference.",
+            "$ 6 - 3 = ? $"
+          ],
+          "prompt": "What is the slope of the line formed by the points of the sequence $ 3, 6, 9, 12, \\dots $?"
+        },
+        {
+          "type": "short-answer",
+          "answer": "fall",
+          "hints": [
+            "Think of a line with negative slope.",
+            "As position increases, terms decrease."
+          ],
+          "feedbackIfWrong": "The graph will fall.",
+          "id": "q2-3",
+          "prompt": "If the common difference is negative, will the graph of the sequence rise or fall from left to right?"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1",
+                "1": "4",
+                "2": "$ (1, 4) $"
+              },
+              {
+                "0": "2",
+                "1": "8",
+                "2": "$ (2, 8) $"
+              },
+              {
+                "0": "3",
+                "1": "12",
+                "2": "$ (3, 12) $"
+              },
+              {
+                "0": "4",
+                "1": "16",
+                "2": "$ (4, 16) $"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Graph of $ 4, 8, 12, 16, \\dots $",
+            "type": "table",
+            "headers": [
+              "Position $ n $",
+              "Term $ a_n $",
+              "Ordered Pair"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Domain: positive integers $ n = 1, 2, 3, \\dots $",
+            "The graph is a set of discrete points, not a continuous line."
+          ],
+          "title": "Graph of an Arithmetic Sequence",
+          "formula": "$$ \\text{Points } (n, a_n) \\text{ lie on a line with slope } d $$"
+        },
+        "explanation": [
+          "To graph an arithmetic sequence, let the [[imp:position number]] $ n $ be the $ x $-value and the [[imp:term]] $ a_n $ be the $ y $-value.",
+          "Plot the ordered pairs $ (n, a_n) $.",
+          "Because the difference between consecutive terms is constant, the points [[imp:lie on a straight line]].",
+          "This line has a slope equal to the common difference $ d $.",
+          "Not all points on the line belong to the sequence—only those with positive integer $ x $-values."
+        ]
+      }
+    },
+    {
+      "teacherCues": [
+        "Write the formula $ a_n = a_1 + (n-1)d $ on the board. Ask: 'What does each variable represent?'",
+        "Show how to write the sequence 14, 11, 8, 5,... as $ a_n = -3n + 17 $. Emphasize that this is a linear function with domain positive integers."
+      ],
+      "questions": [
+        {
+          "hints": [
+            "It's the common difference.",
+            "It's added $ (n-1) $ times."
+          ],
+          "id": "q3-1",
+          "blanks": [
+            {
+              "accept": [
+                "d"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The formula uses the common difference d.",
+          "prompt": "The formula for the nth term of an arithmetic sequence is $ a_n = a_1 + (n-1) $ ___.",
+          "type": "fill-blank"
+        },
+        {
+          "feedbackIfWrong": "The equation is $ a_n = 10n + 90 $.",
+          "answer": "a_n = 10n + 90",
+          "hints": [
+            "First term is 100, common difference 10.",
+            "$ a_n = 100 + (n-1)(10) = 10n + 90 $."
+          ],
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "Write the simplified equation for the nth term of $ 100, 110, 120, 130, \\dots $."
+        },
+        {
+          "hints": [
+            "First term $ a_1 = -5 $, $ d = 1 $.",
+            "$ a_{10} = -5 + (9)(1) = 4 $."
+          ],
+          "id": "q3-3",
+          "prompt": "What is the 10th term of the sequence $ -5, -4, -3, -2, \\dots $?",
+          "feedbackIfWrong": "The 10th term is 4.",
+          "answer": "4",
+          "type": "short-answer"
+        }
+      ],
+      "id": "writing-equations-for-sequences",
+      "examples": [
+        {
+          "title": "A – Write and Use the nth Term Formula",
+          "prompt": "Write an equation for the nth term of $ 14, 11, 8, 5, \\dots $ and find $ a_{50} $.",
+          "steps": [
+            "Identify $ a_1 = 14 $, $ d = 11 - 14 = -3 $.",
+            "Substitute: $ a_n = 14 + (n-1)(-3) $.",
+            "Simplify: $ a_n = 14 - 3n + 3 = -3n + 17 $.",
+            "Find $ a_{50} = -3(50) + 17 = -133 $."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: How is the formula similar to slope-intercept form $ y = mx + b $?",
+          "minLength": 2,
+          "steps": [
+            "$ a_1 = 4 $, $ d = 1 $. Equation: $ a_n = 4 + (n-1)(1) = n + 3 $.",
+            "$ a_{25} = 25 + 3 = 28 $."
+          ],
+          "prompt": "Write an equation for the nth term of $ 4, 5, 6, 7, \\dots $ and find $ a_{25} $.",
+          "title": "B – Sequence with Positive d"
+        },
+        {
+          "prompt": "Write an equation for $ \\frac{1}{2}, 1, 1\\frac{1}{2}, 2, \\dots $ and find $ a_{10} $.",
+          "role": "independent",
+          "steps": [
+            "$ a_1 = \\frac{1}{2} $, $ d = 1 - \\frac{1}{2} = \\frac{1}{2} $.",
+            "$ a_n = \\frac{1}{2} + (n-1)\\frac{1}{2} = \\frac{1}{2}n $.",
+            "$ a_{10} = \\frac{1}{2}(10) = 5 $."
+          ],
+          "title": "C – Fractional Terms"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Equation for an Arithmetic Sequence",
+          "notes": [
+            "$ a_1 $ = first term, $ d $ = common difference, $ n $ = position.",
+            "Function form: $ f(n) = a_1 + (n-1)d $."
+          ],
+          "formula": "$$ a_n = a_1 + (n-1)d $$"
+        },
+        "explanation": [
+          "The [[imp:nth term]] of an arithmetic sequence with first term $ a_1 $ and common difference $ d $ is: $$ a_n = a_1 + (n-1)d $$",
+          "This is a linear function with slope $ d $ and $ y $-intercept $ a_1 - d $ (when written as $ a_n = dn + (a_1 - d) $).",
+          "To write an equation, identify $ a_1 $ and $ d $, substitute, and simplify.",
+          "You can use function notation: $ f(n) = a_1 + (n-1)d $. The domain is the set of positive integers.",
+          "This formula lets you find any term without listing all previous terms."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Component",
+              "Value"
+            ],
+            "title": "Example: $ 14, 11, 8, 5, \\dots $",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "First term $ a_1 $",
+                "1": "14"
+              },
+              {
+                "0": "Common difference $ d $",
+                "1": "$ -3 $"
+              },
+              {
+                "0": "Formula",
+                "1": "$ a_n = 14 + (n-1)(-3) $"
+              },
+              {
+                "0": "Simplified",
+                "1": "$ a_n = -3n + 17 $"
+              },
+              {
+                "0": "50th term",
+                "1": "$ a_{50} = -3(50) + 17 = -133 $"
+              }
+            ]
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Domain is Positive Integers",
+        "body": "The function $ f(n) $ for an arithmetic sequence is defined only for $ n = 1, 2, 3, \\dots $. You cannot plug in $ n = 0.5 $ or negative $ n $. The graph is a set of discrete points, not a continuous line."
+      },
+      "title": "Writing Equations for Arithmetic Sequences",
+      "discoveryHook": {
+        "scenario": "An arithmetic sequence is like a linear function in disguise! The common difference is the slope, and the first term helps you find the y-intercept. With the formula $ a_n = a_1 + (n-1)d $, you can jump straight to any term—like finding the 50th term without listing the first 49."
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "First Term vs. Initial Value",
+        "body": "In the carnival problem, the entry fee is $5, but the first term (for 1 game) is $7, not $5. The $5 is the $ y $-intercept of the function $ f(n) = 2n + 5 $, but the sequence starts at $ n=1 $."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "$ a_1 = 60 $, $ d = 5 $. Function: $ f(n) = 60 + (n-1)5 = 5n + 55 $.",
+            "Graph points $ (1,60), (2,65), (3,70), (4,75) $.",
+            "Solve $ 105 = 5n + 55 $ → $ 5n = 50 $ → $ n = 10 $. There were 10 bids."
+          ],
+          "title": "A – Online Bidding",
+          "prompt": "Bidding starts at $60 and increases by $5 per bid. Write a function, graph it, and find the number of bids for a winning bid of $105."
+        },
+        {
+          "prompt": "A carnival charges a $5 entry fee plus $2 per game. Write a function and find how many games you can play with $29.",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: Why is the total cost an arithmetic sequence, and what are $ a_1 $ and $ d $?",
+          "steps": [
+            "Total cost for $ n $ games: first game total $ 5+2=7 $, so $ a_1 = 7 $, $ d = 2 $.",
+            "Function: $ f(n) = 7 + (n-1)2 = 2n + 5 $.",
+            "Solve $ 29 = 2n + 5 $ → $ 2n = 24 $ → $ n = 12 $ games."
+          ],
+          "role": "peer-explain",
+          "title": "B – Carnival Games"
+        },
+        {
+          "steps": [
+            "Sequence: 56, 48, 40,... $ d = -8 $, $ a_1 = 56 $.",
+            "Function: $ f(n) = 56 + (n-1)(-8) = -8n + 64 $.",
+            "Week 6: $ f(6) = -8(6) + 64 = 16 $ million."
+          ],
+          "title": "C – Movie Earnings",
+          "role": "independent",
+          "prompt": "A movie earns $56 million in week 1, $48 million in week 2, $40 million in week 3. Write a function and predict earnings in week 6."
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "Real-life situations that increase or decrease by a fixed amount form arithmetic sequences.",
+          "The first term is the [[imp:initial value]]. The common difference is the [[imp:constant change]] per step.",
+          "Write the function as $ f(n) = a_1 + (n-1)d $ or simplify to $ f(n) = dn + b $.",
+          "Graph the sequence using discrete points (the domain is positive integers).",
+          "To answer questions, substitute the given value into the function and solve for $ n $ or evaluate $ f(n) $."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$ 60 $"
+              },
+              {
+                "0": "2",
+                "1": "$ 65 $"
+              },
+              {
+                "0": "3",
+                "1": "$ 70 $"
+              },
+              {
+                "0": "4",
+                "1": "$ 75 $"
+              }
+            ],
+            "title": "Online Bidding: $60 Initial, $5 per Bid",
+            "headers": [
+              "Bid Number $ n $",
+              "Bid Amount $ f(n) $"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ f(n) = a_1 + (n-1)d $$",
+          "title": "Real-Life Arithmetic Sequence Function",
+          "notes": [
+            "$ a_1 $ = starting value, $ d $ = constant increase/decrease.",
+            "Domain: $ n = 1, 2, 3, \\dots $"
+          ]
+        }
+      },
+      "title": "Real-Life Applications of Arithmetic Sequences",
+      "discoveryHook": {
+        "scenario": "From auction bidding to carnival game costs, many real-world situations grow by a constant amount each step. These are arithmetic sequences! You can model them with a linear function, graph them, and predict future values—like how many bids you can afford."
+      },
+      "teacherCues": [
+        "Pose the bidding problem: 'Online bidding increases by $5 for each bid after a $60 initial bid. How can we model this?'",
+        "Guide students to write $ f(n) = 60 + (n-1)5 $ and graph it."
+      ],
+      "id": "real-life-arithmetic-sequences",
+      "questions": [
+        {
+          "answer": "5",
+          "hints": [
+            "Look at the amount added per bid.",
+            "It's the increase from $60 to $65."
+          ],
+          "prompt": "In the bidding problem, what is the common difference?",
+          "feedbackIfWrong": "The common difference is $5.",
+          "id": "q4-1",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "The $2$ is the cost per game.",
+          "hints": [
+            "It's the amount added each time you play.",
+            "It's the common difference."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "game"
+              ]
+            }
+          ],
+          "id": "q4-2",
+          "prompt": "The total cost for $ n $ carnival games is modeled by $ f(n) = 2n + 5 $. The $2$ represents the cost per ___.",
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "Using $ f(n) = -8n + 64 $, what are the earnings in week 5?",
+          "feedbackIfWrong": "$ -40 + 64 = 24 $ million.",
+          "id": "q4-3",
+          "type": "short-answer",
+          "hints": [
+            "Substitute $ n = 5 $.",
+            "$ -8(5) + 64 = ? $"
+          ],
+          "answer": "24"
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "With the Understand → Solve → Conclude blueprint, you can tackle any arithmetic sequence problem. Understand the pattern (find $ a_1 $ and $ d $), Solve by writing the formula, and Conclude by finding specific terms or answering real-life questions."
+      },
+      "examples": [
+        {
+          "title": "A – Full Blueprint Walkthrough",
+          "prompt": "Use the blueprint to write an equation for $ -6, -9, -12, -15, \\dots $ and find $ a_{10} $.",
+          "steps": [
+            "Understand: $ a_1 = -6 $, $ d = -9 - (-6) = -3 $. Arithmetic.",
+            "Solve: $ a_n = -6 + (n-1)(-3) = -3n - 3 $.",
+            "Conclude: $ a_{10} = -3(10) - 3 = -33 $."
+          ],
+          "role": "guided"
+        },
+        {
+          "prompt": "A baby boom: 5 babies born in minute 1, 10 in minute 2, 15 in minute 3. Write a function and predict minutes for 100 babies.",
+          "minLength": 2,
+          "steps": [
+            "Understand: Sequence 5, 10, 15,... $ a_1 = 5 $, $ d = 5 $.",
+            "Solve: $ f(n) = 5 + (n-1)5 = 5n $.",
+            "Conclude: Set $ 5n = 100 $ → $ n = 20 $ minutes."
+          ],
+          "peerPrompt": "Explain to a partner: How did you use the blueprint to identify $ a_1 $ and $ d $, and then set up the equation to solve for $ n $?",
+          "role": "peer-explain",
+          "title": "B – Real-Life Blueprint"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Understand: $ a_1 = 4 $, $ d = -2 $. Arithmetic, decreasing.",
+            "Solve: Points $ (1,4), (2,2), (3,0), (4,-2) $. Plot as discrete dots.",
+            "Conclude: The graph falls from left to right; the common difference is negative."
+          ],
+          "title": "C – Graph and Analyze",
+          "prompt": "Use the blueprint to graph $ 4, 2, 0, -2, \\dots $ and describe the trend."
+        }
+      ],
+      "title": "Blueprint Aid – Working with Arithmetic Sequences",
+      "concept": {
+        "formulaCard": {
+          "title": "Arithmetic Sequence Blueprint Formula",
+          "notes": [
+            "Step 1: Find $ a_1 $ and $ d $.",
+            "Step 2: Plug into formula.",
+            "Step 3: Answer the question."
+          ],
+          "formula": "$$ a_n = a_1 + (n-1)d $$"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "title": "Blueprint Example: $ 14, 11, 8, 5, \\dots $",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Check differences: $ -3, -3, -3 $ → arithmetic. $ a_1 = 14 $, $ d = -3 $."
+              },
+              {
+                "0": "Solve",
+                "1": "Formula: $ a_n = 14 + (n-1)(-3) = -3n + 17 $."
+              },
+              {
+                "0": "Conclude",
+                "1": "50th term: $ a_{50} = -133 $. Sequence decreases by 3 each step."
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "The blueprint for arithmetic sequences: [[imp:Understand]] – Determine if the sequence is arithmetic by checking for a constant difference. Identify $ a_1 $ and $ d $.",
+          "[[imp:Solve]] – Write the nth term formula $ a_n = a_1 + (n-1)d $ or function $ f(n) = a_1 + (n-1)d $. Simplify if needed. Graph the sequence as discrete points.",
+          "[[imp:Conclude]] – Use the formula to find any term, answer real-life questions, or predict future values. State whether the graph is rising (positive $ d $) or falling (negative $ d $)."
+        ]
+      },
+      "id": "blueprint-aid-arithmetic-sequences",
+      "confusionCorner": {
+        "title": "Arithmetic Check",
+        "body": "Always verify that the difference is constant for at least three pairs. A sequence like $ 1, 2, 4, 8 $ has differences $ 1, 2, 4 $ — not constant — so it is [[imp:not arithmetic]]."
+      },
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude framework. Walk through a sequence problem: identify first term and common difference, write the formula, use it.",
+        "Emphasize: 'Understand' identifies whether the sequence is arithmetic by checking for a constant difference."
+      ],
+      "questions": [
+        {
+          "id": "q5-1",
+          "answers": [
+            "a1 and d",
+            "first term and common difference"
+          ],
+          "hints": [
+            "They are the parameters in the formula.",
+            "One is the starting term, the other is the constant change."
+          ],
+          "prompt": "In the blueprint, what two things must you identify in the Understand phase?",
+          "feedbackIfWrong": "Identify the first term $ a_1 $ and the common difference $ d $.",
+          "type": "short-answer"
+        },
+        {
+          "prompt": "If a sequence has constant differences, it is an ___ sequence.",
+          "type": "fill-blank",
+          "hints": [
+            "Starts with 'a'.",
+            "It's the topic of this lesson."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "arithmetic"
+              ]
+            }
+          ],
+          "id": "q5-2",
+          "feedbackIfWrong": "Arithmetic."
+        },
+        {
+          "id": "q5-3",
+          "answer": "11",
+          "feedbackIfWrong": "$ f(3) = 11 $.",
+          "hints": [
+            "Substitute $ n = 3 $.",
+            "$ 2(3) + 5 = ? $"
+          ],
+          "prompt": "For $ f(n) = 2n + 5 $, what is $ f(3) $?",
+          "type": "short-answer"
+        }
+      ]
+    }
+  ],
+  "type": "interactive-lesson",
+  "title": "Chapter 4.6 — Arithmetic Sequences",
+  "standards": [
+    "HSF.LE.A.2",
+    "HSF.IF.A.3"
+  ],
+  "presenterNotes": [
+    "Emphasize the connection between arithmetic sequences and linear functions: the common difference is the slope, and the points lie on a line.",
+    "When graphing, students often want to connect the dots. Remind them that the domain is discrete (positive integers), so only the points are part of the sequence.",
+    "For the formula $ a_n = a_1 + (n-1)d $, many students mistakenly use $ n $ instead of $ n-1 $. Use the table method to show why the first term has no $ d $ added.",
+    "Real-life problems are a good opportunity to reinforce function notation and the concept of domain restrictions."
+  ],
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

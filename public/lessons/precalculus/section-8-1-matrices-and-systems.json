@@ -1,0 +1,703 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-8-1-matrices-and-systems",
+  "title": "Matrices and Systems of Equations",
+  "blocks": [
+    {
+      "id": "intro-to-matrices",
+      "title": "Introduction to Matrices",
+      "teacherCues": [
+        "Write a 2×2 matrix on the board, e.g., [[1,2],[3,4]]. Ask: How many rows and columns? (2×2) What is the entry in row 2, column 1? (3)",
+        "Explain that matrices are a compact way to represent systems of equations, with rows representing equations and columns representing variables."
+      ],
+      "discoveryHook": {
+        "scenario": "A matrix is like a spreadsheet of numbers. Instead of writing long equations with x, y, z, you can store just the coefficients in a grid and manipulate the whole system at once—saving time and reducing errors."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:matrix]] is a rectangular array of numbers. The dimension is rows × columns (e.g., 2×3).",
+          "The entry in row i, column j is denoted $a_{ij}$. For a square matrix, the diagonal from top-left to bottom-right is the [[kw:main diagonal]].",
+          "The [[kw:augmented matrix]] of a linear system includes the coefficients and the constants (separated by a vertical line).",
+          "To form it, write each equation in standard form with variables aligned; use 0 for missing variables."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "From Equations to Augmented Matrix",
+            "headers": [
+              "System",
+              "Augmented Matrix"
+            ],
+            "rows": [
+              {
+                "0": "x + 4y - 3z = 5",
+                "1": "[[1, -4, 3 | 5], ...] but we need proper formatting. I'll represent as text: 1 -4 3 | 5; -1 3 -1 | -3; 2 0 -4 | 6. Actually format as a matrix with rows."
+              },
+              {
+                "0": "-x + 3y - z = -3",
+                "1": ""
+              },
+              {
+                "0": "2x - 4z = 6",
+                "1": ""
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Augmented Matrix Example",
+          "formula": "$$\\begin{aligned} x - 4y + 3z &= 5 \\\\ -x + 3y - z &= -3 \\\\ 2x + 0y - 4z &= 6 \\end{aligned} \\quad\\to\\quad \\left[\\begin{array}{ccc|c} 1 & -4 & 3 & 5 \\\\ -1 & 3 & -1 & -3 \\\\ 2 & 0 & -4 & 6 \\end{array}\\right]$$",
+          "notes": [
+            "Align variables column by column.",
+            "Use 0 for missing variables."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find dimensions",
+          "prompt": "What is the dimension of the matrix $\\begin{bmatrix} 5 & 0 & -2 \\\\ 1 & 3 & 4 \\end{bmatrix}$?",
+          "steps": [
+            "Count rows: 2 rows.",
+            "Count columns: 3 columns.",
+            "Dimension is 2 × 3 (read '2 by 3')."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Build an augmented matrix",
+          "prompt": "Write the augmented matrix for the system: $x + 2y - z = 0$, $-x + y + 3z = 5$, $2x + z = -2$.",
+          "peerPrompt": "Explain to your partner: Where do the constants go? What do you put for the missing y term in the third equation?",
+          "minLength": 2,
+          "steps": [
+            "Align variables: $x$, $y$, $z$.",
+            "First equation: coefficients 1, 2, -1, constant 0.",
+            "Second: -1, 1, 3, constant 5.",
+            "Third: 2, 0 (missing y), 1, constant -2.",
+            "Augmented matrix: $\\left[\\begin{array}{ccc|c} 1 & 2 & -1 & 0 \\\\ -1 & 1 & 3 & 5 \\\\ 2 & 0 & 1 & -2 \\end{array}\\right]$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Identify an entry",
+          "prompt": "In the matrix $\\begin{bmatrix} 4 & -1 & 0 \\\\ 2 & 3 & 7 \\end{bmatrix}$, what is the value of $a_{23}$?",
+          "steps": [
+            "Row 2, column 3: the entry is 7."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget the zeros",
+        "body": "If a variable is missing in an equation, its coefficient is 0. Always include that 0 in the matrix; otherwise columns will be misaligned."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "A matrix with 3 rows and 2 columns has dimension ___ × 2.",
+          "blanks": [
+            {
+              "accept": [
+                "3"
+              ]
+            }
+          ],
+          "hints": [
+            "Rows come first.",
+            "It's the number of rows."
+          ],
+          "feedbackIfWrong": "The dimension is 3 × 2."
+        },
+        {
+          "id": "q2",
+          "type": "fill-blank",
+          "prompt": "In the augmented matrix, the coefficients and constant terms are separated by a ___ line.",
+          "blanks": [
+            {
+              "accept": [
+                "vertical"
+              ]
+            }
+          ],
+          "hints": [
+            "Not horizontal.",
+            "It's a line that goes up and down."
+          ],
+          "feedbackIfWrong": "It's a vertical line."
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "prompt": "What entry is in row 1, column 2 of $\\begin{bmatrix} 2 & -5 \\\\ 0 & 3 \\end{bmatrix}$? (Enter a number)",
+          "answer": "-5",
+          "hints": [
+            "First row, second column.",
+            "Second number in the first row."
+          ],
+          "feedbackIfWrong": "$a_{12} = -5$."
+        }
+      ]
+    },
+    {
+      "id": "elementary-row-operations",
+      "title": "Elementary Row Operations",
+      "teacherCues": [
+        "Show a matrix and perform an operation: swap rows, multiply a row by 2, add 2 times row 1 to row 3. Ask: What is the notation?",
+        "Explain that these operations produce equivalent systems, just like with equations."
+      ],
+      "discoveryHook": {
+        "scenario": "Think of row operations like editing a spreadsheet: you can swap rows, scale a row up or down, or add one row to another to simplify the numbers. These tools help you untangle the system without changing the solution."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Elementary row operations]] on an augmented matrix preserve the solution set of the corresponding linear system.",
+          "1. Swap two rows: $R_a \\leftrightarrow R_b$.",
+          "2. Multiply a row by a nonzero constant: $cR_a$ ($c \\neq 0$).",
+          "3. Add a multiple of one row to another: $cR_a + R_b \\to R_b$ (replaces row b).",
+          "The new matrix is [[kw:row-equivalent]] to the original."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Row Operation Examples",
+            "headers": [
+              "Operation",
+              "Notation",
+              "Effect"
+            ],
+            "rows": [
+              {
+                "0": "Swap row1 and row2",
+                "1": "$R_1 \\leftrightarrow R_2$",
+                "2": "Rows 1 and 2 exchange places"
+              },
+              {
+                "0": "Multiply row1 by 1/2",
+                "1": "$\\frac{1}{2}R_1$",
+                "2": "Each entry in row1 is halved"
+              },
+              {
+                "0": "Add -2R1 to R3",
+                "1": "$-2R_1 + R_3 \\to R_3$",
+                "2": "Row3 replaced by (-2*row1 + row3)"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Row Operations Notation",
+          "formula": "$R_a \\leftrightarrow R_b$ ; $cR_a$ ; $cR_a + R_b \\to R_b$",
+          "notes": [
+            "Write the operation beside the row that changes.",
+            "These operations are reversible."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Swap rows",
+          "prompt": "Perform $R_1 \\leftrightarrow R_2$ on $\\begin{bmatrix} 0 & 2 & 3 \\\\ 1 & -1 & 4 \\end{bmatrix}$.",
+          "steps": [
+            "Swap the two rows.",
+            "Result: $\\begin{bmatrix} 1 & -1 & 4 \\\\ 0 & 2 & 3 \\end{bmatrix}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Add multiple of row",
+          "prompt": "Perform $-2R_1 + R_3 \\to R_3$ on the matrix $\\begin{bmatrix} 1 & 2 & -4 \\\\ 0 & 3 & -2 \\\\ 2 & 1 & 5 \\end{bmatrix}$.",
+          "peerPrompt": "Explain to your partner: Multiply row1 by -2, then add to row3. Write the new row3.",
+          "minLength": 2,
+          "steps": [
+            "Row1: [1, 2, -4]. Multiply by -2: [-2, -4, 8].",
+            "Add to row3 [2, 1, 5]: [0, -3, 13].",
+            "New matrix: row1, row2 unchanged, row3 becomes [0, -3, 13]."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Multiply a row",
+          "prompt": "Perform $\\frac{1}{2}R_3$ on $\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 2 \\end{bmatrix}$.",
+          "steps": [
+            "Divide each entry in row3 by 2.",
+            "Result: $\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Only multiply by nonzero",
+        "body": "You can multiply a row by any nonzero constant. Multiplying by zero would make the whole row zero, losing information."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "The row operation that swaps two rows is denoted $R_a \\leftrightarrow$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "R_b",
+                "Rb"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the other row.",
+            "The double arrow means interchange."
+          ],
+          "feedbackIfWrong": "It's $R_a \\leftrightarrow R_b$."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "When multiplying a row by a constant, the constant must be ___ (nonzero/zero).",
+          "answer": "nonzero",
+          "hints": [
+            "Cannot be zero.",
+            "It must change the row without destroying information."
+          ],
+          "feedbackIfWrong": "It must be nonzero."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "After performing $cR_a + R_b \\to R_b$, the row that changes is row ___.",
+          "blanks": [
+            {
+              "accept": [
+                "b"
+              ]
+            }
+          ],
+          "hints": [
+            "The arrow points to the row being replaced.",
+            "The subscript after the arrow."
+          ],
+          "feedbackIfWrong": "Row b is replaced."
+        }
+      ]
+    },
+    {
+      "id": "gaussian-elimination-matrices",
+      "title": "Gaussian Elimination with Matrices",
+      "teacherCues": [
+        "Take the system from earlier and write its augmented matrix. Perform row operations to get row-echelon form (stair-step pattern with leading 1s).",
+        "Show how back-substitution works from the matrix form."
+      ],
+      "discoveryHook": {
+        "scenario": "By using row operations, you can transform a messy matrix into a neat staircase pattern. Then, just like climbing stairs backward, you solve for the variables from the last row up—no need to rewrite equations every time."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Gaussian elimination]] uses row operations to convert an augmented matrix to [[kw:row-echelon form]]:",
+          "1. Any row of all zeros is at the bottom.",
+          "2. The first nonzero entry in each row is 1 (leading 1).",
+          "3. The leading 1 in a lower row is to the right of the leading 1 in the row above.",
+          "Then use [[kw:back-substitution]]: start from the last row (which gives one variable), substitute upward to find the others."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Row-Echelon Form Example",
+            "headers": [
+              "Matrix",
+              "Corresponding System"
+            ],
+            "rows": [
+              {
+                "0": "$\\left[\\begin{array}{ccc|c} 1 & -2 & 3 & 9 \\\\ 0 & 1 & 3 & 5 \\\\ 0 & 0 & 1 & 2 \\end{array}\\right]$",
+                "1": "$x - 2y + 3z = 9$; $y + 3z = 5$; $z = 2$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Gaussian Elimination Steps",
+          "formula": "1. Write augmented matrix.\n2. Get leading 1 in upper left (swap/multiply).\n3. Eliminate below the leading 1.\n4. Move to next column and repeat.\n5. Continue until row-echelon form.\n6. Back-substitute to find variables.",
+          "notes": [
+            "Always start from top left and work down.",
+            "If a row becomes all zeros, move it to the bottom."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Row-echelon form",
+          "prompt": "Use row operations to put the augmented matrix of $x - 2y + 3z = 9$, $-x + 3y = -4$, $2x - 5y + 5z = 17$ into row-echelon form.",
+          "steps": [
+            "Augmented matrix: $\\left[\\begin{array}{ccc|c} 1 & -2 & 3 & 9 \\\\ -1 & 3 & 0 & -4 \\\\ 2 & -5 & 5 & 17 \\end{array}\\right]$.",
+            "$R_1+R_2 \\to R_2$: $\\left[\\begin{array}{ccc|c} 1 & -2 & 3 & 9 \\\\ 0 & 1 & 3 & 5 \\\\ 2 & -5 & 5 & 17 \\end{array}\\right]$.",
+            "$-2R_1+R_3 \\to R_3$: $\\left[\\begin{array}{ccc|c} 1 & -2 & 3 & 9 \\\\ 0 & 1 & 3 & 5 \\\\ 0 & -1 & -1 & -1 \\end{array}\\right]$.",
+            "$R_2+R_3 \\to R_3$: $\\left[\\begin{array}{ccc|c} 1 & -2 & 3 & 9 \\\\ 0 & 1 & 3 & 5 \\\\ 0 & 0 & 2 & 4 \\end{array}\\right]$.",
+            "$\\frac{1}{2}R_3$: $\\left[\\begin{array}{ccc|c} 1 & -2 & 3 & 9 \\\\ 0 & 1 & 3 & 5 \\\\ 0 & 0 & 1 & 2 \\end{array}\\right]$ (row-echelon form)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Back-substitution from matrix",
+          "prompt": "Now solve the system from the row-echelon matrix.",
+          "peerPrompt": "Discuss: What does the third row tell you? Then work upward to find y and x.",
+          "minLength": 2,
+          "steps": [
+            "Third row: $z = 2$.",
+            "Second row: $y + 3(2) = 5 \\to y = -1$.",
+            "First row: $x - 2(-1) + 3(2) = 9 \\to x = 1$.",
+            "Solution: $(1, -1, 2)$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick Gaussian Elimination",
+          "prompt": "Put the system $x + y + z = 6$, $2x - y + z = 3$, $3x + y - z = 2$ into row-echelon form (first few steps).",
+          "steps": [
+            "Augmented matrix: $\\left[\\begin{array}{ccc|c} 1 & 1 & 1 & 6 \\\\ 2 & -1 & 1 & 3 \\\\ 3 & 1 & -1 & 2 \\end{array}\\right]$.",
+            "$-2R_1+R_2 \\to R_2$: $\\left[\\begin{array}{ccc|c} 1 & 1 & 1 & 6 \\\\ 0 & -3 & -1 & -9 \\\\ 3 & 1 & -1 & 2 \\end{array}\\right]$.",
+            "$-3R_1+R_3 \\to R_3$: $\\left[\\begin{array}{ccc|c} 1 & 1 & 1 & 6 \\\\ 0 & -3 & -1 & -9 \\\\ 0 & -2 & -4 & -16 \\end{array}\\right]$.",
+            "(Continue: multiply row2 by -1/3, etc.)"
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't alter the column order",
+        "body": "When performing row operations, only change rows, not columns. Swapping columns would mess up the variable correspondence."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "In row-echelon form, the first nonzero entry in each row is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1",
+                "one"
+              ]
+            }
+          ],
+          "hints": [
+            "Called a leading 1.",
+            "It's the number after scaling the row."
+          ],
+          "feedbackIfWrong": "It's a leading 1."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "From the row-echelon matrix $\\begin{bmatrix} 1 & -2 & 3 & | & 9 \\\\ 0 & 1 & 3 & | & 5 \\\\ 0 & 0 & 1 & | & 2 \\end{bmatrix}$, what is $z$? (Enter a number)",
+          "answer": "2",
+          "hints": [
+            "Look at the last row.",
+            "The number in the constants column."
+          ],
+          "feedbackIfWrong": "$z = 2$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "After finding $z$, you substitute it into the row above to find ___.",
+          "blanks": [
+            {
+              "accept": [
+                "y"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the variable with the leading 1 in the second row.",
+            "The equation $y+3z=5$."
+          ],
+          "feedbackIfWrong": "You find y."
+        }
+      ]
+    },
+    {
+      "id": "reduced-row-echelon-form",
+      "title": "Reduced Row-Echelon Form (Gauss-Jordan)",
+      "teacherCues": [
+        "Show a matrix already in row-echelon form. Ask: Can we make the solution even more obvious? Use row operations to get zeros above the leading 1s as well.",
+        "Explain that reduced row-echelon form gives the solution directly without back-substitution."
+      ],
+      "discoveryHook": {
+        "scenario": "If row-echelon form gives you the solution step by step, reduced row-echelon form hands you the answer on a silver platter: the augmented matrix becomes the identity matrix next to the solution numbers. Each row directly reads 'x = ...'."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Reduced row-echelon form]] (RREF) adds one more condition to row-echelon form: each column that contains a leading 1 has zeros in every other position (above and below).",
+          "In RREF, the augmented matrix becomes $[I \\mid \\text{solution}]$, where $I$ is the identity matrix (if the system has a unique solution).",
+          "You can read the solution directly: each row gives the value of one variable."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "RREF Example",
+            "headers": [
+              "RREF Matrix",
+              "Solution"
+            ],
+            "rows": [
+              {
+                "0": "$\\left[\\begin{array}{ccc|c} 1 & 0 & 0 & 1 \\\\ 0 & 1 & 0 & -1 \\\\ 0 & 0 & 1 & 2 \\end{array}\\right]$",
+                "1": "$x=1, y=-1, z=2$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Gauss-Jordan Elimination",
+          "formula": "After reaching row-echelon form, use row operations to create zeros above leading 1s, working from right to left.",
+          "notes": [
+            "Start with the last column containing a leading 1 and eliminate upward.",
+            "The final matrix should have the identity part on the left if there is a unique solution."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – From row-echelon to RREF",
+          "prompt": "Continue from the row-echelon matrix $\\left[\\begin{array}{ccc|c} 1 & -2 & 3 & 9 \\\\ 0 & 1 & 3 & 5 \\\\ 0 & 0 & 1 & 2 \\end{array}\\right]$ to get RREF.",
+          "steps": [
+            "Eliminate above the leading 1 in column 3: $-3R_3+R_2 \\to R_2$: $\\left[\\begin{array}{ccc|c} 1 & -2 & 0 & 3 \\\\ 0 & 1 & 0 & -1 \\\\ 0 & 0 & 1 & 2 \\end{array}\\right]$.",
+            "Eliminate above in column 2: $2R_2+R_1 \\to R_1$: $\\left[\\begin{array}{ccc|c} 1 & 0 & 0 & 1 \\\\ 0 & 1 & 0 & -1 \\\\ 0 & 0 & 1 & 2 \\end{array}\\right]$.",
+            "Now RREF: $x=1, y=-1, z=2$ directly."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why is RREF useful?",
+          "prompt": "Explain to a partner: Once the matrix is in RREF, why don't we need to do back-substitution?",
+          "peerPrompt": "Look at the final matrix: what does each row tell you?",
+          "minLength": 2,
+          "steps": [
+            "Each row has exactly one variable's coefficient as 1 and the rest 0.",
+            "So the constant column directly gives the value of that variable.",
+            "No substitution needed."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Determine if RREF",
+          "prompt": "Is $\\begin{bmatrix} 1 & 0 & 0 & 3 \\\\ 0 & 1 & 2 & 4 \\\\ 0 & 0 & 0 & 0 \\end{bmatrix}$ in RREF?",
+          "steps": [
+            "Check row-echelon conditions: leading 1s, zeros below them. Yes.",
+            "Check zeros above leading 1s: column 1 has 0s above? No above, OK. Column 2: leading 1 in row2, column 2: there is a 0 in row1 above it? Row1 col2 is 0, ok. Row3 has no leading 1.",
+            "But column 3 has a 2 in row2 above the leading 1? Actually row2 col3 is 2 but there's no leading 1 in column 3. Condition: each column with a leading 1 has zeros in all other positions. Column 2 has leading 1, and row1 col2 is 0, row3 col2 is 0 – good. So it is in RREF."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Not all systems have a unique solution in RREF",
+        "body": "If a row becomes all zeros, or if a row of the form [0 0 ... 0 | c] appears, the system may have infinite solutions or no solution. RREF still applies but the left part may not be a full identity matrix."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "In reduced row-echelon form, every column that has a leading 1 has zeros in all ___ positions.",
+          "blanks": [
+            {
+              "accept": [
+                "other",
+                "above and below"
+              ]
+            }
+          ],
+          "hints": [
+            "Both above and below.",
+            "All except the leading 1 itself."
+          ],
+          "feedbackIfWrong": "All other positions in that column must be zero."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "From the RREF matrix $\\begin{bmatrix} 1 & 0 & 0 & | & 4 \\\\ 0 & 1 & 0 & | & -3 \\\\ 0 & 0 & 1 & | & 7 \\end{bmatrix}$, what is $y$? (Enter a number)",
+          "answer": "-3",
+          "hints": [
+            "Second row.",
+            "The constant in that row."
+          ],
+          "feedbackIfWrong": "$y = -3$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "The process of going beyond row-echelon to RREF is called ___-Jordan elimination.",
+          "blanks": [
+            {
+              "accept": [
+                "Gauss"
+              ]
+            }
+          ],
+          "hints": [
+            "The first name of the method.",
+            "Gauss-Jordan."
+          ],
+          "feedbackIfWrong": "Gauss-Jordan elimination."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-matrix-solve",
+      "title": "Blueprint Aid – Solve a System Using Matrices",
+      "teacherCues": [
+        "Pose: Use Gaussian elimination with matrices to solve $x + 2y = 5$, $3x - y = 1$.",
+        "Outline the blueprint: Understand (write augmented matrix), Solve (row operations to row-echelon, back-substitute), Conclude (state solution)."
+      ],
+      "discoveryHook": {
+        "scenario": "You are organizing two equations neatly into a matrix. By following a clear blueprint—write the augmented matrix, perform row operations to get a stair-step form, and then back-substitute—you can solve the system efficiently, just like a computer algorithm."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Write the augmented matrix: $\\begin{bmatrix} 1 & 2 & | & 5 \\\\ 3 & -1 & | & 1 \\end{bmatrix}$.",
+          "[[imp:Solve]]: Get leading 1 in row1 already. Eliminate below: $-3R_1 + R_2 \\to R_2$: $\\begin{bmatrix} 1 & 2 & 5 \\\\ 0 & -7 & -14 \\end{bmatrix}$. Multiply row2 by $-1/7$: $\\begin{bmatrix} 1 & 2 & 5 \\\\ 0 & 1 & 2 \\end{bmatrix}$. Now back-substitute: $y = 2$. Plug into row1: $x + 2(2) = 5 \\to x = 1$.",
+          "[[imp:Conclude]]: Solution: $(1, 2)$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint Steps",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Write augmented matrix from system."
+              },
+              {
+                "0": "Solve",
+                "1": "Use row operations to get row-echelon form, then back-substitute."
+              },
+              {
+                "0": "Conclude",
+                "1": "Write the solution as an ordered pair/triple."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Matrix Gaussian Elimination",
+          "formula": "Row operations: $R_2 - 3R_1 \\to R_2$, then $(-1/7)R_2$.",
+          "notes": [
+            "The goal is a triangular form with leading 1s.",
+            "Check solution in original equations."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – 2×2 system",
+          "prompt": "Solve $x + 2y = 5$, $3x - y = 1$ using the matrix method.",
+          "steps": [
+            "Write augmented matrix: $\\begin{bmatrix} 1 & 2 & 5 \\\\ 3 & -1 & 1 \\end{bmatrix}$.",
+            "$-3R_1 + R_2 \\to R_2$: $\\begin{bmatrix} 1 & 2 & 5 \\\\ 0 & -7 & -14 \\end{bmatrix}$.",
+            "$(-1/7)R_2$: $\\begin{bmatrix} 1 & 2 & 5 \\\\ 0 & 1 & 2 \\end{bmatrix}$.",
+            "Back-substitute: $y = 2$, then $x + 4 = 5 \\to x = 1$. Solution $(1,2)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Check with original equations",
+          "prompt": "Verify $(1,2)$ in both equations.",
+          "peerPrompt": "Plug $x=1, y=2$ into each original equation. Do they hold?",
+          "minLength": 2,
+          "steps": [
+            "First: $1+4=5$ ok. Second: $3-2=1$ ok."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Try another system",
+          "prompt": "Solve $2x + y = 4$, $x - y = 1$ using matrices.",
+          "steps": [
+            "Augmented matrix: $\\begin{bmatrix} 2 & 1 & 4 \\\\ 1 & -1 & 1 \\end{bmatrix}$.",
+            "Swap rows to get leading 1: $R_1 \\leftrightarrow R_2$: $\\begin{bmatrix} 1 & -1 & 1 \\\\ 2 & 1 & 4 \\end{bmatrix}$.",
+            "$-2R_1 + R_2 \\to R_2$: $\\begin{bmatrix} 1 & -1 & 1 \\\\ 0 & 3 & 2 \\end{bmatrix}$.",
+            "$(1/3)R_2$: $\\begin{bmatrix} 1 & -1 & 1 \\\\ 0 & 1 & 2/3 \\end{bmatrix}$.",
+            "Back-substitute: $y = 2/3$, $x - 2/3 = 1 \\to x = 5/3$. Solution $(5/3, 2/3)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Swap if needed",
+        "body": "If the top-left entry is 0, swap rows to bring a nonzero entry to that position. Otherwise you can't create a leading 1 easily."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "After writing the augmented matrix, the first step is usually to get a leading 1 in the ___ corner.",
+          "blanks": [
+            {
+              "accept": [
+                "top-left",
+                "upper left",
+                "top left"
+              ]
+            }
+          ],
+          "hints": [
+            "Position (1,1).",
+            "The first row, first column."
+          ],
+          "feedbackIfWrong": "The top-left corner."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "In the blueprint's solution, what is the value of $y$? (Enter a number)",
+          "answer": "2",
+          "hints": [
+            "From row2 after scaling.",
+            "The second variable's value."
+          ],
+          "feedbackIfWrong": "$y = 2$."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The final step after reaching row-echelon form is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "back-substitution",
+                "back substitute"
+              ]
+            }
+          ],
+          "hints": [
+            "Working from bottom to top.",
+            "Substituting values back into earlier equations."
+          ],
+          "feedbackIfWrong": "Back-substitution."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A chemist mixes three solutions. The system is $x + y + z = 10$, $2x - y + z = 5$, $x + 2y - z = 8$. Write the augmented matrix, reduce to row-echelon form, and solve.",
+        "type": "short-answer",
+        "answer": "(3, 2, 5)",
+        "hints": [
+          "Write the 3×4 augmented matrix.",
+          "Eliminate x from rows 2 and 3, then eliminate y from row3."
+        ],
+        "feedbackIfWrong": "The solution is $(3, 2, 5)$."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

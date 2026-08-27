@@ -1,0 +1,738 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-2-7-nonlinear-inequalities",
+  "title": "Nonlinear Inequalities",
+  "standards": [
+    "HSA.REI.B.3",
+    "HSA.REI.D.10"
+  ],
+  "blocks": [
+    {
+      "id": "polynomial-inequalities-intro",
+      "title": "Polynomial Inequalities and Key Numbers",
+      "teacherCues": [
+        "Write $x^2 - 2x - 3 < 0$ on the board and ask: Where can a parabola change sign?",
+        "Sketch a number line with zeros at $-1$ and $3$; label test intervals and ask: Why do we only test one point per interval?"
+      ],
+      "discoveryHook": {
+        "scenario": "A model rocket's height $h$ (in feet) after $t$ seconds is $h(t) = -16t^2 + 160t$. To find when the rocket is above 300 feet, you need to solve the inequality $-16t^2 + 160t > 300$. Nonlinear inequalities let you answer 'when' something is greater—perfect for planning a perfect launch!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:polynomial inequality]] compares a polynomial to zero (or another expression).",
+          "A polynomial can only [[imp:change sign]] at its real zeros—the $x$-values that make it zero.",
+          "These zeros are the [[kw:key numbers]] of the inequality.",
+          "Key numbers split the real line into [[kw:test intervals]] where the polynomial is always positive or always negative.",
+          "To solve: (1) write in general form with zero on one side, (2) find key numbers, (3) create test intervals, (4) test one point per interval."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Key Numbers and Test Intervals",
+            "headers": [
+              "Factor form",
+              "Key numbers",
+              "Test intervals"
+            ],
+            "rows": [
+              {
+                "0": "$ (x+1)(x-3) $",
+                "1": "-1, 3",
+                "2": "$ ( -\\infty, -1 ) $, $ ( -1, 3 ) $, $ ( 3, \\infty ) $"
+              },
+              {
+                "0": "$ (x+2)(x-3) $",
+                "1": "-2, 3",
+                "2": "$ ( -\\infty, -2 ) $, $ ( -2, 3 ) $, $ ( 3, \\infty ) $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "General Polynomial Inequality",
+          "formula": "$$ P(x) \\triangleleft 0 $$",
+          "notes": [
+            "$P(x)$ is a polynomial; $\\triangleleft$ stands for $<$, $\\le$, $>$, or $\\ge$.",
+            "Find real zeros of $P(x)$; they are the key numbers.",
+            "Use key numbers to form test intervals.",
+            "Test one value per interval; the sign there applies to the whole interval."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Solving a Quadratic Inequality",
+          "prompt": "Solve $x^2 - x - 6 < 0$ and graph the solution set.",
+          "steps": [
+            "Write in general form: $x^2 - x - 6 < 0$ (already done).",
+            "Factor: $(x+2)(x-3) < 0$. Key numbers: $-2$ and $3$.",
+            "Test interval $(-\\infty, -2)$ with $x=-3$: $(-1)(-6)>0$ → positive.",
+            "Test interval $(-2, 3)$ with $x=0$: $(2)(-3)<0$ → negative.",
+            "Test interval $(3, \\infty)$ with $x=4$: $(6)(1)>0$ → positive.",
+            "Inequality $<0$ holds where negative: $(-2, 3)$. Endpoints not included."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — One Test Point Suffices",
+          "prompt": "Explain why testing $x = 0$ in $(-2,3)$ guarantees $x^2 - x - 6 < 0$ for every number in that interval.",
+          "peerPrompt": "Without looking at your notes...\n\nExplain to a partner: How does the fact that a polynomial has no breaks or asymptotes guarantee that its sign cannot change inside an interval that contains no zero?",
+          "minLength": 8,
+          "steps": [
+            "Polynomials are continuous—no jumps or gaps.",
+            "The only places a polynomial can touch or cross the $x$-axis are at its zeros.",
+            "Inside $(-2,3)$ there are no zeros, so the graph stays entirely above or entirely below the axis.",
+            "Testing one point reveals which side it's on for the whole interval."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Practice Inequality",
+          "prompt": "Solve $2x^2 - 5x - 3 > 0$.",
+          "steps": [
+            "Factor: $(2x+1)(x-3) > 0$. Key numbers: $-\\frac{1}{2}$ and $3$.",
+            "Test $(-\\infty, -\\frac12)$ with $x=-1$: $(-1)(-4)>0$ → positive.",
+            "Test $(-\\frac12, 3)$ with $x=0$: $(1)(-3)<0$ → negative.",
+            "Test $(3, \\infty)$ with $x=4$: $(9)(1)>0$ → positive.",
+            "Inequality $>0$ holds where positive: $(-\\infty, -\\frac12) \\cup (3, \\infty)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Forget General Form!",
+        "body": "Always rearrange the inequality so that one side is [[imp:zero]] before factoring. For instance, $2x^2 + 3x > 5$ must first be rewritten as $2x^2 + 3x - 5 > 0$."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "prompt": "The $x$-values that make a polynomial equal to zero are called the ___ numbers of the inequality.",
+          "blanks": [
+            {
+              "accept": [
+                "key",
+                "Key"
+              ]
+            }
+          ],
+          "hints": [
+            "They are the 'critical' points that divide the number line.",
+            "They are the zeros of the polynomial."
+          ],
+          "feedbackIfWrong": "The zeros that split the number line are the key numbers."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "If a cubic polynomial has three distinct real zeros, how many test intervals are created?",
+          "answers": [
+            "4",
+            "four"
+          ],
+          "hints": [
+            "Think of three fence posts.",
+            "Three zeros divide the line into four regions."
+          ],
+          "feedbackIfWrong": "With $n$ distinct zeros, you get $n+1$ test intervals."
+        },
+        {
+          "id": "q1-3",
+          "type": "short-answer",
+          "prompt": "For an inequality symbol $\\ge$, should endpoint key numbers be included in the solution set? Answer 'included' or 'excluded'.",
+          "answers": [
+            "included",
+            "Included"
+          ],
+          "hints": [
+            "'Greater than or equal to' signals inclusion.",
+            "Think of brackets versus parentheses."
+          ],
+          "feedbackIfWrong": "Symbols with 'or equal to' mean the endpoints are included."
+        }
+      ]
+    },
+    {
+      "id": "solving-polynomial-inequality",
+      "title": "Solving a Polynomial Inequality – Full Process",
+      "teacherCues": [
+        "Display $2x^3 - 3x^2 - 32x > -48$ and ask: How do we handle a cubic that isn't set to zero?",
+        "Use colored chalk to mark key numbers on a number line and label each test interval with its sign."
+      ],
+      "discoveryHook": {
+        "scenario": "When designing a roller coaster support arch, engineers must ensure the stress polynomial never exceeds a critical value. Solving a cubic inequality with multiple peaks requires the same careful sign‑chart method you'll master now!"
+      },
+      "concept": {
+        "explanation": [
+          "For higher-degree polynomial inequalities, the process is identical: [[imp:general form first]], then factor completely.",
+          "The inequality $2x^3 - 3x^2 - 32x > -48$ becomes $2x^3 - 3x^2 - 32x + 48 > 0$.",
+          "Factor: $(x-4)(x+4)(2x-3) > 0$. Key numbers: $-4$, $\\frac{3}{2}$, $4$.",
+          "The line is divided into four intervals. Test one convenient value (like $x=0$) in the factored form to determine signs.",
+          "Combine the positive intervals into the solution set."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Cubic Inequality Sign Chart Setup",
+            "headers": [
+              "Factor form",
+              "Key numbers",
+              "Test intervals"
+            ],
+            "rows": [
+              {
+                "0": "$ (x-4)(x+4)(2x-3) $",
+                "1": "-4, 3/2, 4",
+                "2": "$ ( -\\infty, -4 ) $, $ ( -4, \\frac{3}{2} ) $, $ ( \\frac{3}{2}, 4 ) $, $ ( 4, \\infty ) $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Solving Polynomial Inequalities",
+          "formula": "$$ P(x) \\triangleleft 0 \\quad\\Rightarrow\\quad \\text{Find zeros of } P(x) $$",
+          "notes": [
+            "1. Write in general form: $P(x) < 0$ or $>$, etc.",
+            "2. Factor $P(x)$ completely.",
+            "3. Set each factor $=0$ to find key numbers.",
+            "4. Arrange key numbers to form test intervals.",
+            "5. Test one $x$ per interval; record sign.",
+            "6. Solution intervals are those that satisfy the original inequality."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Solving a Cubic Inequality",
+          "prompt": "Solve $2x^3 - 3x^2 - 32x > -48$ and graph the solution.",
+          "steps": [
+            "Add $48$ to both sides: $2x^3 - 3x^2 - 32x + 48 > 0$.",
+            "Factor by grouping: $(x^2-16)(2x-3) = (x-4)(x+4)(2x-3)$.",
+            "Key numbers: $-4$, $\\frac{3}{2}$, $4$.",
+            "Test $(-\\infty, -4)$ with $x=-5$: $(-)(-)(-) = -$ → negative.",
+            "Test $(-4, \\frac{3}{2})$ with $x=0$: $(-)(+)(-) = +$ → positive.",
+            "Test $(\\frac{3}{2}, 4)$ with $x=2$: $(-)(+)(+) = -$ → negative.",
+            "Test $(4, \\infty)$ with $x=5$: $(+)(+)(+) = +$ → positive.",
+            "Inequality $>0$ holds where positive: $(-4, \\frac{3}{2}) \\cup (4, \\infty)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Factoring Makes Signs Easy",
+          "prompt": "Explain why testing $x = 0$ in the factored form $(x-4)(x+4)(2x-3)$ instantly tells you the sign of the entire interval $(-4,\\frac32)$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does plugging $x = 0$ into each separate factor give you the overall sign without needing to calculate the big polynomial number?",
+          "minLength": 8,
+          "steps": [
+            "Plug $0$ into each factor: $(0-4)=-4$ (−), $(0+4)=4$ (+), $(2\\cdot0-3)=-3$ (−).",
+            "Multiply the signs: $(-) \\times (+) \\times (-) = (+)$.",
+            "No zero inside the interval, so each factor's sign remains unchanged.",
+            "Therefore the product stays positive for the whole interval."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Negative Leading Coefficient",
+          "prompt": "Solve $-x^2 + 5x - 4 \\ge 0$.",
+          "steps": [
+            "Multiply by $-1$ (reverse inequality): $x^2 - 5x + 4 \\le 0$.",
+            "Factor: $(x-1)(x-4) \\le 0$. Key numbers: $1, 4$.",
+            "Test $(-\\infty,1)$ with $x=0$: $(-)(-)>0$ → positive.",
+            "Test $(1,4)$ with $x=2$: $(+)(-)<0$ → negative.",
+            "Test $(4,\\infty)$ with $x=5$: $(+)(+)>0$ → positive.",
+            "We need $\\le 0$, satisfied on $[1,4]$ (include endpoints)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Multiplying by Negative One",
+        "body": "When you multiply both sides of an inequality by a negative number, [[imp:the inequality symbol must be reversed]]. For example, $-x^2 + 5x - 4 \\ge 0$ becomes $x^2 - 5x + 4 \\le 0$ after multiplying by $-1$."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "prompt": "For $2x^3 - 3x^2 - 32x + 48 > 0$, one of the key numbers is $x = \\frac{3}{2}$, also written as ___ (as a decimal).",
+          "blanks": [
+            {
+              "accept": [
+                "1.5"
+              ]
+            }
+          ],
+          "hints": [
+            "Divide 3 by 2.",
+            "One and a half."
+          ],
+          "feedbackIfWrong": "$\\frac{3}{2}$ equals $1.5$."
+        },
+        {
+          "id": "q2-2",
+          "type": "short-answer",
+          "prompt": "In the cubic example, how many distinct test intervals are created?",
+          "answers": [
+            "4",
+            "four"
+          ],
+          "hints": [
+            "There are three key numbers.",
+            "Three fence posts make four fields."
+          ],
+          "feedbackIfWrong": "Three distinct zeros divide the line into four intervals."
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "prompt": "When you multiply both sides of an inequality by $-1$, what must you do to the inequality symbol?",
+          "answers": [
+            "reverse",
+            "flip",
+            "Reverse",
+            "Flip"
+          ],
+          "hints": [
+            "Think of the mirror effect on a number line.",
+            "Greater becomes smaller and vice versa."
+          ],
+          "feedbackIfWrong": "Multiplying by a negative reverses the inequality symbol."
+        }
+      ]
+    },
+    {
+      "id": "rational-inequalities",
+      "title": "Rational Inequalities",
+      "teacherCues": [
+        "Write $\\frac{x-2}{x+3} \\ge 0$ and ask: Besides the numerator's zero, which $x$-value must we pay special attention to?",
+        "Demonstrate writing $\\frac{2x-7}{x-5} \\le 3$ in general form by subtracting $3$ and combining fractions."
+      ],
+      "discoveryHook": {
+        "scenario": "A new shipping cost model gives cost per item as $C(x) = \\frac{2000 + 8x}{x}$. To keep the average cost under \\$30, you must solve $\\frac{2000 + 8x}{x} \\le 30$. Rational inequalities appear whenever a rate, density, or efficiency formula is involved."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:rational inequality]] involves a rational expression compared to zero.",
+          "Key numbers now include [[imp:zeros of the numerator]] and [[imp:undefined values]] (zeros of the denominator).",
+          "Approach: (1) write in general form with zero on the right; (2) combine into a single fraction; (3) find key numbers from numerator and denominator; (4) create test intervals and test the sign of the fraction.",
+          "Important: The fraction can change sign at its undefined points even though the expression doesn't equal zero there.",
+          "Always pay attention to the inequality symbol when deciding whether to include endpoints—denominator zeros are never included."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Rational Inequality Setup",
+            "headers": [
+              "Expression",
+              "Key numbers",
+              "Test intervals"
+            ],
+            "rows": [
+              {
+                "0": "$ \\frac{-x+8}{x-5} \\le 0 $",
+                "1": "8, 5",
+                "2": "$ ( -\\infty, 5 ), ( 5, 8 ), ( 8, \\infty ) $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Solving Rational Inequalities",
+          "formula": "$$ \\frac{P(x)}{Q(x)} \\triangleleft 0 $$",
+          "notes": [
+            "1. Move all terms to one side to obtain $\\frac{P(x)}{Q(x)} \\triangleleft 0$.",
+            "2. Combine fractions if necessary.",
+            "3. Find key numbers: solve $P(x)=0$ and $Q(x)=0$.",
+            "4. Place key numbers on a number line; they are interval endpoints.",
+            "5. Test one $x$ per interval; the sign of the fraction is constant in each interval.",
+            "6. Numerator zeros can be included if inequality allows equality; denominator zeros are always excluded."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Solving a Rational Inequality",
+          "prompt": "Solve $\\frac{2x-7}{x-5} \\le 3$ and graph the solution set.",
+          "steps": [
+            "Write in general form: $\\frac{2x-7}{x-5} - 3 \\le 0$.",
+            "Combine: $\\frac{2x-7 - 3x + 15}{x-5} = \\frac{-x+8}{x-5} \\le 0$.",
+            "Key numbers: $x=8$ (numerator zero), $x=5$ (denominator zero).",
+            "Test $(-\\infty,5)$ with $x=4$: $\\frac{4}{-1}<0$ → negative.",
+            "Test $(5,8)$ with $x=6$: $\\frac{2}{1}>0$ → positive.",
+            "Test $(8,\\infty)$ with $x=9$: $\\frac{-1}{4}<0$ → negative.",
+            "$\\le 0$ satisfied on $(-\\infty,5)$ and $(8,\\infty)$. Include $x=8$ (numerator zero), exclude $x=5$ (undefined). Solution: $(-\\infty,5) \\cup [8,\\infty)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Why Not Cross Multiply?",
+          "prompt": "Explain why you cannot simply multiply both sides of $\\frac{2x-7}{x-5} \\le 3$ by $(x-5)$ to clear the denominator.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What hidden danger arises when you multiply an inequality by an expression that might be negative?",
+          "minLength": 8,
+          "steps": [
+            "The sign of $(x-5)$ changes depending on whether $x>5$ or $x<5$.",
+            "Multiplying by a negative value would reverse the inequality, but we don't know the sign ahead of time.",
+            "Bringing all terms to one side and creating a single fraction avoids this ambiguity.",
+            "The general-form method works regardless of the variable's sign."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Practice Rational Inequality",
+          "prompt": "Solve $\\frac{x-2}{x+3} \\ge 0$.",
+          "steps": [
+            "Already in general form. Key numbers: $x=2$ (numerator), $x=-3$ (denominator).",
+            "Test $(-\\infty,-3)$ with $x=-4$: $\\frac{-6}{-1}>0$ → positive.",
+            "Test $(-3,2)$ with $x=0$: $\\frac{-2}{3}<0$ → negative.",
+            "Test $(2,\\infty)$ with $x=3$: $\\frac{1}{6}>0$ → positive.",
+            "We need $\\ge 0$: satisfied on $(-\\infty,-3)$ and $(2,\\infty)$. Include $x=2$, exclude $x=-3$. Solution: $(-\\infty,-3) \\cup [2,\\infty)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Denominator Zeros = No‑Go",
+        "body": "Even if the inequality is $\\le$ or $\\ge$, an endpoint that makes the denominator zero [[imp:can never be included]] in the solution. The expression is undefined, so a bracket is always wrong at such points."
+      },
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "fill-blank",
+          "prompt": "The key numbers of a rational inequality come from the zeros of the numerator and the zeros of the ___.",
+          "blanks": [
+            {
+              "accept": [
+                "denominator",
+                "Denominator"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the bottom part of a fraction.",
+            "The expression is undefined there."
+          ],
+          "feedbackIfWrong": "The undefined values come from the denominator."
+        },
+        {
+          "id": "q3-2",
+          "type": "short-answer",
+          "prompt": "In the solution $(-\\infty,5) \\cup [8,\\infty)$, why is $8$ included but $5$ excluded? Answer with a single word: 'zero' or 'undefined'.",
+          "answers": [
+            "zero",
+            "undefined"
+          ],
+          "hints": [
+            "Does the inequality become $0\\le0$ at $x=8$ or does it blow up?",
+            "At $x=5$, the denominator is zero."
+          ],
+          "feedbackIfWrong": "$x=5$ makes the denominator zero (undefined, excluded); $x=8$ makes the numerator zero (satisfies $0\\le0$, included)."
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "When writing a rational inequality in general form, you must have zero on which side?",
+          "answers": [
+            "right",
+            "Right"
+          ],
+          "hints": [
+            "Think of the pattern $\\frac{P(x)}{Q(x)} \\le 0$.",
+            "All terms are brought to the left."
+          ],
+          "feedbackIfWrong": "General form requires zero on the right side."
+        }
+      ]
+    },
+    {
+      "id": "unusual-solution-sets",
+      "title": "Unusual Solution Sets",
+      "teacherCues": [
+        "Pose: Solve $x^2 + 2x + 4 > 0$. Then ask students to describe what makes the solution 'unusual'.",
+        "Display four possible outcomes: all real numbers, a single number, empty set, all except one point. Ask students to match each graph to a solution type."
+      ],
+      "discoveryHook": {
+        "scenario": "Not every inequality splits neatly into two intervals! Sometimes the answer is 'always,' sometimes 'never,' and sometimes a single magic number. Recognizing these [[kw:unusual solution sets]] saves time hunting for extra intervals."
+      },
+      "concept": {
+        "explanation": [
+          "1. **Always positive/negative**: If a quadratic has no real zeros and opens upward, $f(x) > 0$ for all real $x$. Example: $x^2 + 2x + 4 > 0$ → $(-\\infty,\\infty)$.",
+          "2. **Single‑point solution**: A perfect square like $x^2 + 2x + 1 \\le 0$ is only true at the vertex $x=-1$ → $\\{-1\\}$.",
+          "3. **Empty set**: $x^2 + 3x + 5 < 0$ has no solution because the minimum is positive → $\\varnothing$.",
+          "4. **All except one point**: $x^2 - 4x + 4 > 0$ is $(x-2)^2 > 0$; true for every $x$ except $x=2$ → $(-\\infty,2)\\cup(2,\\infty)$.",
+          "The discriminant $\\Delta$ $=b^2 - 4ac$ quickly predicts these cases."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Understanding the Discriminant",
+            "headers": [
+              "Condition",
+              "Zeros",
+              "Meaning for inequalities"
+            ],
+            "rows": [
+              {
+                "0": "$ \\Delta < 0 $",
+                "1": "No real zeros",
+                "2": "Polynomial never changes sign; always positive if $ a > 0 $, always negative if $ a < 0 $"
+              },
+              {
+                "0": "$ \\Delta = 0 $",
+                "1": "One double root",
+                "2": "Polynomial touches zero; it is $ \\ge 0 $ or $ \\le 0 $ everywhere"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Discriminant Check",
+          "formula": "$ \\Delta $ = $b^2 - 4ac$ ",
+          "notes": [
+            "Use this to quickly predict the solution set type.",
+            "If $\\Delta < 0$, the sign of the quadratic matches the sign of $a$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Always Positive",
+          "prompt": "Solve $x^2 + 2x + 4 > 0$.",
+          "steps": [
+            "Calculate $\\Delta = 2^2 - 4(1)(4) = 4 - 16 = -12 < 0$.",
+            "No real zeros; parabola opens upward ($a=1>0$).",
+            "The graph stays entirely above the $x$-axis.",
+            "So $x^2+2x+4>0$ is true for every real $x$.",
+            "Solution: $(-\\infty,\\infty)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Exactly One Point Works",
+          "prompt": "Explain why $x^2 + 2x + 1 \\le 0$ has only one solution while $x^2 + 2x + 1 \\ge 0$ has infinitely many.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does the perfect‑square shape create a single‑number solution when the inequality uses $\\le$?",
+          "minLength": 8,
+          "steps": [
+            "Factor: $(x+1)^2$. A perfect square is never negative.",
+            "For $\\le 0$, the only chance is when $(x+1)^2 = 0$, i.e., $x=-1$.",
+            "For $\\ge 0$, the square is always $\\ge 0$, giving $(-\\infty,\\infty)$.",
+            "The vertex just 'kisses' zero, creating the boundary case."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — All Except One Point",
+          "prompt": "Solve $x^2 - 4x + 4 > 0$.",
+          "steps": [
+            "Write as $(x-2)^2 > 0$.",
+            "The square is positive except when it equals zero at $x=2$.",
+            "Therefore the inequality is satisfied for all real numbers except $2$.",
+            "Solution: $(-\\infty,2) \\cup (2,\\infty)$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Empty Set vs. Always True",
+        "body": "A parabola that never touches the $x$-axis and opens upward makes $f(x) < 0$ [[imp:impossible]] (empty set), but $f(x) > 0$ is [[imp:always true]] (all reals). Pay attention to the inequality direction and the sign of $a$."
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "fill-blank",
+          "prompt": "If $x^2 + 2x + 4 > 0$ is true for every real number, we say the solution set is ___ real numbers.",
+          "blanks": [
+            {
+              "accept": [
+                "all",
+                "All"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the opposite of 'no' real numbers.",
+            "The entire number line."
+          ],
+          "feedbackIfWrong": "When an inequality holds for every $x$, the solution is 'all real numbers'."
+        },
+        {
+          "id": "q4-2",
+          "type": "short-answer",
+          "prompt": "The solution set of $x^2 + 2x + 1 \\le 0$ contains one number. Give that number.",
+          "answers": [
+            "-1",
+            "−1"
+          ],
+          "hints": [
+            "It satisfies $(x+1)^2 = 0$.",
+            "What makes a perfect square zero?"
+          ],
+          "feedbackIfWrong": "$(x+1)^2 \\le 0$ forces $x = -1$."
+        },
+        {
+          "id": "q4-3",
+          "type": "short-answer",
+          "prompt": "What is the solution set of $x^2 + 3x + 5 < 0$? Answer 'empty' or 'none'.",
+          "answers": [
+            "empty",
+            "none",
+            "Empty",
+            "None"
+          ],
+          "hints": [
+            "Check if the quadratic ever dips below the $x$-axis.",
+            "The discriminant is negative."
+          ],
+          "feedbackIfWrong": "Since the parabola is always positive, $<0$ has no solutions — the empty set."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid",
+      "title": "Blueprint Aid — Understand → Solve → Conclude",
+      "teacherCues": [
+        "Post the three‑phase blueprint on the board and refer to it each time you model a solution.",
+        "Ask students to label every step of a worked example as either 'U', 'S', or 'C'."
+      ],
+      "discoveryHook": {
+        "scenario": "A systematic blueprint turns a messy inequality into a manageable checklist. When you're under pressure on a test, the Understand → Solve → Conclude framework keeps your work organized and error‑free."
+      },
+      "concept": {
+        "explanation": [
+          "**Understand**: Identify the type of inequality (polynomial/rational), write it in general form, factor, and find all key numbers.",
+          "**Solve**: Set up test intervals on a number line using the key numbers. Test one point per interval and determine the sign.",
+          "**Conclude**: Interpret the inequality symbol to decide whether each interval is open or closed. Combine intervals into a solution set.",
+          "This blueprint applies to every nonlinear inequality in this chapter."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "The Blueprint Steps",
+            "headers": [
+              "Phase",
+              "Actions"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "General form, factor, key numbers"
+              },
+              {
+                "0": "Solve",
+                "1": "Test intervals, sign chart, select correct intervals"
+              },
+              {
+                "0": "Conclude",
+                "1": "Apply inequality symbol, write solution"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Understand → Solve → Conclude",
+          "formula": "$$ \\text{U} \\rightarrow \\text{S} \\rightarrow \\text{C} $$",
+          "notes": [
+            "U: $P(x) \\triangleleft 0$ → factor → key numbers.",
+            "S: Number line → test points → sign chart.",
+            "C: Match inequality to sign; include/exclude endpoints → final answer."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Blueprint Example — Rational Inequality",
+          "prompt": "Use Understand‑Solve‑Conclude to solve $\\frac{x+1}{x-2} \\ge 0$.",
+          "steps": [
+            "**Understand**: Already in general form. Key numbers: $x=-1$ (numerator zero), $x=2$ (denominator zero).",
+            "**Solve**: Intervals: $(-\\infty,-1]$, $[-1,2]$, $[2,\\infty)$ — place open circle at $2$.",
+            "Test $x=-2$: $\\frac{-1}{-4}>0$; $x=0$: $\\frac{1}{-2}<0$; $x=3$: $\\frac{4}{1}>0$.",
+            "**Conclude**: $\\ge 0$ holds on $(-\\infty,-1]$ and $(2,\\infty)$. Include $-1$, exclude $2$. Solution: $(-\\infty,-1] \\cup (2,\\infty)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Blueprint Peer Discussion",
+          "prompt": "Peer asks: 'Why does the Solve phase require testing only one point per interval?' Use the blueprint to justify your answer.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does the continuity of polynomials guarantee that the sign found at the test point represents the entire interval?",
+          "minLength": 8,
+          "steps": [
+            "Because the expression is continuous on each test interval, it cannot jump from positive to negative without crossing zero.",
+            "Key numbers are the only places where sign could change.",
+            "Since the interval contains no key numbers inside, the sign found at any single point must be consistent throughout.",
+            "Thus testing one value is sufficient for the Solve phase."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Blueprint Practice — Polynomial",
+          "prompt": "Use the blueprint to solve $x^3 - 4x \\le 0$.",
+          "steps": [
+            "**Understand**: General form $x^3-4x \\le 0$. Factor: $x(x-2)(x+2) \\le 0$. Key numbers: $-2, 0, 2$.",
+            "**Solve**: Intervals: $(-\\infty,-2]$, $[-2,0]$, $[0,2]$, $[2,\\infty)$. Test $x=-3$: $(-)(-)(-)=-$; $x=-1$: $(-)(-)(+)=+$; $x=1$: $(+)(-)(+)=-$; $x=3$: $(+)(+)(+)=+$.",
+            "**Conclude**: $\\le 0$ demands negative or zero. Negative intervals: $(-\\infty,-2]$ and $[0,2]$. Include endpoints. Solution: $(-\\infty,-2] \\cup [0,2]$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Endpoints in the Conclude Phase",
+        "body": "A common mistake is to automatically use brackets for all intervals from the sign chart. Always ask: [[imp:Does the original inequality allow equality?]] And for rational inequalities, [[imp:is the endpoint undefined?]] If yes, it must be an open boundary."
+      },
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "fill-blank",
+          "prompt": "The first phase of the blueprint, 'Understand,' requires writing the inequality in ___ form.",
+          "blanks": [
+            {
+              "accept": [
+                "general",
+                "General"
+              ]
+            }
+          ],
+          "hints": [
+            "It has zero on one side.",
+            "It's the starting point before factoring."
+          ],
+          "feedbackIfWrong": "We must write the inequality in general form (zero on one side)."
+        },
+        {
+          "id": "q5-2",
+          "type": "short-answer",
+          "prompt": "Which blueprint phase involves creating a sign chart? Answer with one word.",
+          "answers": [
+            "solve",
+            "Solve"
+          ],
+          "hints": [
+            "It follows 'Understand'.",
+            "It's where you test points."
+          ],
+          "feedbackIfWrong": "The Solve phase is where we draw the sign chart."
+        },
+        {
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "In the final 'Conclude' phase, you must decide whether to include endpoints based on the inequality symbol and the domain. What punctuation symbol is used to separate the two intervals in a union?",
+          "answers": [
+            "comma",
+            ","
+          ],
+          "hints": [
+            "It looks like a short pause.",
+            "It appears inside the union symbol 'U' when writing set notation."
+          ],
+          "feedbackIfWrong": "A comma separates intervals when writing the union, like $(-\\infty,2)\\cup(2,\\infty)$."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

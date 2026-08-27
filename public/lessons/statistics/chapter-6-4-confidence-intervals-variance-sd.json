@@ -1,0 +1,778 @@
+{
+  "blocks": [
+    {
+      "confusionCorner": {
+        "body": "The chi‑square method for variance confidence intervals requires that the population be [[imp:normally distributed]]. If the data are heavily skewed, the confidence interval may not be accurate. Always check for approximate normality before applying this method.",
+        "title": "Normality Is Critical"
+      },
+      "teacherCues": [
+        "Ask: 'If we want to estimate the spread of a process, which parameters do we target?' (variance and standard deviation).",
+        "Draw a chi‑square curve for d.f. = 5 and d.f. = 15. Ask: 'Which one is more skewed? What happens as d.f. increases?'"
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:chi‑square distribution]] ($\\chi^2$) is used to construct confidence intervals for a population variance $\\sigma^2$ and standard deviation $\\sigma$ when the population is [[imp:normally distributed]].",
+          "The point estimate for $\\sigma^2$ is the sample variance $s^2$, and for $\\sigma$ it is the sample standard deviation $s$.",
+          "The chi‑square distribution is a family of curves, each determined by its [[kw:degrees of freedom]]: $d.f. = n - 1$.",
+          "Key properties: (1) All chi‑square values are $\\ge 0$. (2) The distribution is [[imp:positively skewed]] (right‑skewed), especially for small d.f. (3) As d.f. increases, the distribution becomes more symmetric and approaches a normal shape. (4) The total area under any chi‑square curve is 1."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$s^2$",
+              "tone": "core",
+              "meaning": "sample variance"
+            },
+            {
+              "symbol": "$\\sigma^2$",
+              "tone": "core",
+              "meaning": "population variance"
+            }
+          ],
+          "formula": "$$ \\chi^2 = \\frac{(n-1)s^2}{\\sigma^2} $$",
+          "title": "Chi‑Square Test Statistic"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Property",
+              "Description"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Properties of the Chi‑Square Distribution",
+            "rows": [
+              {
+                "0": "Values",
+                "1": "Always $\\ge 0$"
+              },
+              {
+                "0": "Shape",
+                "1": "Positively skewed (right‑skewed); becomes more symmetric as d.f. increases"
+              },
+              {
+                "0": "Degrees of freedom",
+                "1": "$d.f. = n - 1$ determines the curve"
+              },
+              {
+                "0": "Total area",
+                "1": "1"
+              }
+            ]
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "In manufacturing, variation can be just as important as the average. If the lengths of bolts vary too much, some won't fit. The chi‑square distribution allows us to build confidence intervals for variance and standard deviation—giving us a way to measure and control consistency."
+      },
+      "examples": [
+        {
+          "prompt": "A random sample of 20 bolts has a sample standard deviation of 0.5 inch. If we want to build a confidence interval for the population variance, how many degrees of freedom will the chi‑square distribution have?",
+          "title": "Example A – Degrees of Freedom",
+          "steps": [
+            "Degrees of freedom for variance estimation: $d.f. = n - 1$.",
+            "Here $n = 20$, so $d.f. = 19$.",
+            "We will use the chi‑square distribution with 19 degrees of freedom."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "With small $n$, the sample variance $s^2$ varies a lot, so the distribution of $(n-1)s^2/\\sigma^2$ is spread out and skewed.",
+            "As $n$ increases, the sample variance becomes a more reliable estimator, and the chi‑square distribution approaches a normal shape.",
+            "In fact, for large d.f., the chi‑square distribution is approximately normal with mean $d.f.$ and variance $2(d.f.)$."
+          ],
+          "prompt": "Explain to a partner why the chi‑square distribution is right‑skewed for small samples but becomes more symmetric as the sample size increases.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: What happens to the shape of the chi‑square distribution as $n$ gets larger? Why does this make sense?",
+          "minLength": 2,
+          "title": "Example B – Shape and d.f."
+        },
+        {
+          "title": "Example C – When to Use Chi‑Square",
+          "prompt": "A quality engineer wants to estimate the variance of the fill volume in a bottling process. The volumes are normally distributed. Can she use a chi‑square distribution?",
+          "role": "independent",
+          "steps": [
+            "Yes, because the population is normal and the goal is to estimate $\\sigma^2$.",
+            "The chi‑square distribution is appropriate when the population is normally distributed and we are constructing a confidence interval for the variance or standard deviation.",
+            "If the population were not normal, the chi‑square method would not be valid."
+          ]
+        }
+      ],
+      "id": "chi-square-distribution",
+      "title": "The Chi‑Square Distribution",
+      "questions": [
+        {
+          "feedbackIfWrong": "The chi‑square distribution is used for variance and standard deviation.",
+          "blanks": [
+            {
+              "accept": [
+                "variance",
+                "Variance"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "id": "q1-1",
+          "hints": [
+            "It's the square of the standard deviation.",
+            "Denoted by $\\sigma^2$."
+          ],
+          "prompt": "The chi‑square distribution is used to construct confidence intervals for the population ___ and standard deviation."
+        },
+        {
+          "prompt": "For a sample of size $n=25$, what are the degrees of freedom for the chi‑square distribution?",
+          "hints": [
+            "$d.f. = n - 1$.",
+            "$25 - 1 = ?$"
+          ],
+          "id": "q1-2",
+          "answer": "24",
+          "feedbackIfWrong": "$d.f. = 24$.",
+          "type": "short-answer",
+          "answers": [
+            "24",
+            "twenty-four"
+          ]
+        },
+        {
+          "answers": [
+            "False",
+            "false"
+          ],
+          "id": "q1-3",
+          "prompt": "True or False: The chi‑square distribution can take negative values.",
+          "hints": [
+            "Look at the graph of the chi‑square distribution.",
+            "It starts at 0 and goes to the right."
+          ],
+          "answer": "False",
+          "type": "short-answer",
+          "feedbackIfWrong": "False. All chi‑square values are ≥ 0."
+        }
+      ]
+    },
+    {
+      "id": "critical-values-chi-square",
+      "examples": [
+        {
+          "prompt": "Find the critical values for a 95% confidence interval with $n=18$.",
+          "role": "guided",
+          "title": "Example A – Finding $\\chi^2_R$ and $\\chi^2_L$",
+          "steps": [
+            "$d.f. = 18 - 1 = 17$.",
+            "Right‑tail area for $\\chi^2_R$: $(1-0.95)/2 = 0.025$.",
+            "From Table 6, with d.f.=17 and area 0.025, $\\chi^2_R = 30.191$.",
+            "Right‑tail area for $\\chi^2_L$: $(1+0.95)/2 = 0.975$. From table, $\\chi^2_L = 7.564$."
+          ]
+        },
+        {
+          "prompt": "Show how to use Google Sheets to find the critical values for a 90% confidence interval with $n=30$.",
+          "steps": [
+            "$d.f. = 29$. For $\\chi^2_R$: right‑tail area = $(1-0.90)/2 = 0.05$. Formula: `=CHISQ.INV.RT(0.05, 29)` → about 42.557.",
+            "For $\\chi^2_L$: right‑tail area = $(1+0.90)/2 = 0.95$. Formula: `=CHISQ.INV.RT(0.95, 29)` → about 17.708.",
+            "The two functions return the values that cut off the specified right‑tail areas, exactly matching the table."
+          ],
+          "role": "peer-explain",
+          "minLength": 2,
+          "title": "Example B – Using Google Sheets",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why do we use CHISQ.INV.RT with different probabilities for the two critical values?"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Your Turn",
+          "prompt": "For a 99% confidence interval with $n=15$, find the two critical values using Google Sheets.",
+          "steps": [
+            "$d.f. = 14$. Right‑tail areas: $0.005$ and $0.995$.",
+            "$\\chi^2_R$: `=CHISQ.INV.RT(0.005, 14)` → about 31.319.",
+            "$\\chi^2_L$: `=CHISQ.INV.RT(0.995, 14)` → about 4.075."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Unlike z and t, the chi‑square distribution is not symmetric, so a confidence interval requires two different critical values. We find them from a table or using Google Sheets functions."
+      },
+      "title": "Finding Critical Values of $\\chi^2$",
+      "confusionCorner": {
+        "title": "Which Area for Which Critical Value?",
+        "body": "The area to the right of $\\chi^2_R$ is the small tail area $(1-c)/2$; the area to the right of $\\chi^2_L$ is the large area $(1+c)/2$. [[imp:Always double‑check that $\\chi^2_R > \\chi^2_L$; if they're reversed, you've swapped the areas.]]"
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "feedbackIfWrong": "The right‑tail area for $\\chi^2_R$ is 0.025.",
+          "blanks": [
+            {
+              "accept": [
+                "0.025",
+                "2.5%",
+                ".025"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "hints": [
+            "It's $(1-c)/2$.",
+            "$(1-0.95)/2 = ?$"
+          ],
+          "prompt": "For a 95% confidence interval, the area to the right of $\\chi^2_R$ is ___."
+        },
+        {
+          "id": "q2-2",
+          "prompt": "In Google Sheets, which function returns the chi‑square value with a given right‑tail probability? (Write the function name, e.g., CHISQ.INV.RT)",
+          "answers": [
+            "CHISQ.INV.RT",
+            "chisq.inv.rt"
+          ],
+          "hints": [
+            "It's the inverse of the chi‑square distribution for a right‑tail probability.",
+            "Starts with CHISQ."
+          ],
+          "answer": "CHISQ.INV.RT",
+          "feedbackIfWrong": "=CHISQ.INV.RT(probability, deg_freedom) returns the critical value.",
+          "type": "short-answer"
+        },
+        {
+          "answers": [
+            "7.564"
+          ],
+          "id": "q2-3",
+          "feedbackIfWrong": "$\\chi^2_L = 7.564$.",
+          "type": "short-answer",
+          "answer": "7.564",
+          "hints": [
+            "Look in the chi‑square table at d.f.=17 and right‑tail area 0.975.",
+            "The value is about 7.564."
+          ],
+          "prompt": "For $n=18$ (d.f.=17) and 95% confidence, what is $\\chi^2_L$? (From table, e.g., 7.564)"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Google Sheets for Chi‑Square Critical Values",
+          "formula": "$$ \\chi^2_R = \\text{CHISQ.INV.RT}\\left(\\frac{1-c}{2},\\; d.f.\\right) $$ $$ \\chi^2_L = \\text{CHISQ.INV.RT}\\left(\\frac{1+c}{2},\\; d.f.\\right) $$",
+          "legend": [
+            {
+              "symbol": "$d.f.$",
+              "meaning": "degrees of freedom = $n-1$",
+              "tone": "core"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$\\chi^2_R$",
+                "1": "$\\frac{1-0.95}{2} = 0.025$",
+                "2": "30.191"
+              },
+              {
+                "0": "$\\chi^2_L$",
+                "1": "$\\frac{1+0.95}{2} = 0.975$",
+                "2": "7.564"
+              }
+            ],
+            "headers": [
+              "Critical Value",
+              "Right‑Tail Area",
+              "Value from Table"
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Critical Values for $n=18$ (d.f.=17) and $c=0.95$"
+          }
+        ],
+        "explanation": [
+          "For a given confidence level $c$, there are two critical values: $\\chi^2_R$ (right‑tail critical value) and $\\chi^2_L$ (left‑tail critical value).",
+          "The area to the right of $\\chi^2_R$ is $\\frac{1-c}{2}$, and the area to the right of $\\chi^2_L$ is $\\frac{1+c}{2}$.",
+          "These values are found in the chi‑square distribution table (Table 6) using $d.f. = n-1$ and the appropriate right‑tail areas.",
+          "In Google Sheets: use `=CHISQ.INV.RT(probability, deg_freedom)` to find the value with a given right‑tail area. For $\\chi^2_R$: `=CHISQ.INV.RT((1-c)/2, d.f.)`. For $\\chi^2_L$: `=CHISQ.INV.RT((1+c)/2, d.f.)`."
+        ]
+      },
+      "teacherCues": [
+        "Display a chi‑square table. Show that there are two critical values: $\\chi^2_L$ and $\\chi^2_R$.",
+        "Ask: 'For a 95% CI with n=18, what are the two areas to the right of the critical values?' (0.975 and 0.025)"
+      ]
+    },
+    {
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "variance",
+                "Variance"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The point estimate for $\\sigma^2$ is the sample variance $s^2$.",
+          "id": "q3-1",
+          "hints": [
+            "It's the square of the sample standard deviation.",
+            "Denoted by $s^2$."
+          ],
+          "prompt": "The confidence interval for the population variance uses the sample ___ $s^2$ as the point estimate."
+        },
+        {
+          "answer": "0.89",
+          "prompt": "For $n=30$, $s=1.20$, and 99% confidence, what is the left endpoint of the 99% CI for $\\sigma$? (Round to two decimals from Example A.)",
+          "answers": [
+            "0.89",
+            ".89"
+          ],
+          "id": "q3-2",
+          "type": "short-answer",
+          "hints": [
+            "Take the square root of the lower bound for $\\sigma^2$.",
+            "From the example, lower bound for $\\sigma^2$ was about 0.80."
+          ],
+          "feedbackIfWrong": "$\\sqrt{0.80} \\approx 0.89$ mg."
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The interval is not symmetric because the chi‑square distribution is skewed (right‑skewed).",
+          "answer": "skewed",
+          "id": "q3-3",
+          "hints": [
+            "Look at the shape of the chi‑square distribution.",
+            "It is not bell‑shaped and symmetric like z or t."
+          ],
+          "answers": [
+            "skewed",
+            "right-skewed",
+            "not symmetric",
+            "positively skewed"
+          ],
+          "prompt": "Why is the confidence interval for $\\sigma^2$ not symmetric around $s^2$? (Answer: because the chi‑square distribution is ___)"
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "You randomly select and weigh 30 samples of an allergy medicine. The sample standard deviation is $s=1.20$ mg. Assume the weights are normally distributed. Construct 99% confidence intervals for $\\sigma^2$ and $\\sigma$.",
+          "title": "Example A – Allergy Medicine",
+          "steps": [
+            "$n=30$, $s=1.20$, so $s^2=1.44$. $d.f.=29$. 99% confidence → $c=0.99$.",
+            "Right‑tail areas: $(1-0.99)/2=0.005$ and $(1+0.99)/2=0.995$.",
+            "From Table 6: $\\chi^2_R = 52.336$, $\\chi^2_L = 13.121$.",
+            "For $\\sigma^2$: $\\frac{29 \\times 1.44}{52.336} \\approx 0.80$ and $\\frac{29 \\times 1.44}{13.121} \\approx 3.18$. So $0.80 < \\sigma^2 < 3.18$.",
+            "For $\\sigma$: $\\sqrt{0.80} \\approx 0.89$ and $\\sqrt{3.18} \\approx 1.78$. So $0.89 < \\sigma < 1.78$ mg.",
+            "We are 99% confident the population variance is between 0.80 and 3.18, and the standard deviation is between 0.89 and 1.78 mg."
+          ],
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Dividing by a larger number makes the fraction smaller.",
+            "Since $\\chi^2_R > \\chi^2_L$, the term $(n-1)s^2/\\chi^2_R$ gives the lower (smaller) bound.",
+            "The term $(n-1)s^2/\\chi^2_L$ gives the upper (larger) bound.",
+            "This correctly places the confidence interval with the larger spread on the right, reflecting the chi‑square skewness."
+          ],
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If we put the larger value in the denominator, does the fraction become larger or smaller? What does that do to the lower bound?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "Explain to a partner why the larger critical value $\\chi^2_R$ appears in the denominator of the lower bound.",
+          "title": "Example B – Why Larger $\\chi^2$ in Lower Bound?"
+        },
+        {
+          "steps": [
+            "$d.f.=19$. Right‑tail areas: $0.025$ and $0.975$.",
+            "$\\chi^2_R$: `=CHISQ.INV.RT(0.025, 19)` → about 32.852. $\\chi^2_L$: `=CHISQ.INV.RT(0.975, 19)` → about 8.907.",
+            "Lower bound for $\\sigma^2$: `=(19*25)/32.852` ≈ 14.46. Upper bound: `=(19*25)/8.907` ≈ 53.33.",
+            "Square roots: $\\sqrt{14.46} \\approx 3.80$, $\\sqrt{53.33} \\approx 7.30$. So $3.80 < \\sigma < 7.30$."
+          ],
+          "prompt": "Use Google Sheets to construct a 95% CI for $\\sigma$ given $n=20$, $s=5.0$, and normal population.",
+          "title": "Example C – Google Sheets Construction",
+          "role": "independent"
+        }
+      ],
+      "title": "Confidence Intervals for $\\sigma^2$ and $\\sigma$",
+      "confusionCorner": {
+        "body": "A common mistake is to put $\\chi^2_L$ in the denominator of the lower bound and $\\chi^2_R$ in the upper bound. That would reverse the interval. [[imp:Remember: larger critical value → smaller fraction → lower bound; smaller critical value → larger fraction → upper bound.]]",
+        "title": "Order of Critical Values"
+      },
+      "id": "confidence-intervals-variance-sd",
+      "discoveryHook": {
+        "scenario": "Now we can use the critical values to build an interval for the population variance. The formula places the larger critical value in the denominator of the lower bound and the smaller critical value in the denominator of the upper bound—making the interval wider on the right, reflecting the skewness of the chi‑square distribution."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\frac{(n-1)s^2}{\\chi^2_R} < \\sigma^2 < \\frac{(n-1)s^2}{\\chi^2_L}$$ $$\\sqrt{\\frac{(n-1)s^2}{\\chi^2_R}} < \\sigma < \\sqrt{\\frac{(n-1)s^2}{\\chi^2_L}}$$",
+          "legend": [
+            {
+              "meaning": "right‑ and left‑tail critical values from chi‑square table",
+              "symbol": "$\\chi^2_R$, $\\chi^2_L$",
+              "tone": "core"
+            }
+          ],
+          "title": "Confidence Interval for $\\sigma^2$ and $\\sigma$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "$\\sigma^2$",
+                "1": "$\\frac{29 \\times 1.44}{52.336} \\approx 0.80$",
+                "2": "$\\frac{29 \\times 1.44}{13.121} \\approx 3.18$"
+              },
+              {
+                "0": "$\\sigma$",
+                "1": "$\\sqrt{0.80} \\approx 0.89$ mg",
+                "2": "$\\sqrt{3.18} \\approx 1.78$ mg"
+              }
+            ],
+            "title": "99% Confidence Intervals for Allergy Medicine Weights ($n=30$, $s=1.20$)",
+            "headers": [
+              "Parameter",
+              "Lower Bound",
+              "Upper Bound"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "A [[kw:c-confidence interval for the population variance $\\sigma^2$]] is: $$\\frac{(n-1)s^2}{\\chi^2_R} < \\sigma^2 < \\frac{(n-1)s^2}{\\chi^2_L}$$",
+          "The confidence interval for the population standard deviation $\\sigma$ is obtained by taking the square root of each endpoint: $$\\sqrt{\\frac{(n-1)s^2}{\\chi^2_R}} < \\sigma < \\sqrt{\\frac{(n-1)s^2}{\\chi^2_L}}$$",
+          "Note that the [[imp:larger]] critical value $\\chi^2_R$ appears in the denominator of the lower bound, and the [[imp:smaller]] critical value $\\chi^2_L$ appears in the denominator of the upper bound. This is because variance is inversely related to the chi‑square statistic.",
+          "The interval is not symmetric around $s^2$ because the chi‑square distribution is skewed."
+        ]
+      },
+      "teacherCues": [
+        "Write the formulas on the board: $\\frac{(n-1)s^2}{\\chi^2_R} < \\sigma^2 < \\frac{(n-1)s^2}{\\chi^2_L}$. Then take square roots for $\\sigma$.",
+        "Walk through Example 2 with the allergy medicine (n=30, s=1.20, 99% CI)."
+      ]
+    },
+    {
+      "concept": {
+        "explanation": [
+          "Confidence intervals for $\\sigma$ are used to assess whether the variability of a process meets specifications.",
+          "If the entire confidence interval for $\\sigma$ lies below a specified maximum allowable standard deviation, we can be confident the process is consistent enough.",
+          "If the upper bound of the interval exceeds the limit, the process may need adjustment.",
+          "As with other confidence intervals, the interpretation is: 'We are $c$% confident that the true population standard deviation lies between the lower and upper bounds.'"
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "subtle",
+              "symbol": "Caution",
+              "meaning": "This is a simplified rule; formal hypothesis tests (Chapter 7) provide more rigorous decisions."
+            }
+          ],
+          "formula": "$$ \\text{If upper bound of CI for } \\sigma \\le \\text{ allowable maximum, process is acceptable.} $$",
+          "title": "Decision Rule for Variance/Standard Deviation"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Example: Vitamin Tablet Weights ($n=14$, 90% CI)",
+            "variant": "colorful",
+            "headers": [
+              "Statistic",
+              "Value"
+            ],
+            "rows": [
+              {
+                "0": "Sample standard deviation $s$",
+                "1": "0.009 mg (approx)"
+              },
+              {
+                "0": "90% CI for $\\sigma$",
+                "1": "(0.007, 0.014) mg — entirely below 0.015"
+              },
+              {
+                "0": "Conclusion",
+                "1": "With 90% confidence, the true standard deviation is below 0.015 mg; the process meets the specification."
+              }
+            ]
+          }
+        ]
+      },
+      "id": "applications-interpretation",
+      "discoveryHook": {
+        "scenario": "A manufacturer claims their vitamin tablets have a standard deviation of at most 0.015 mg. A 90% CI for $\\sigma$ from a sample of 14 tablets is (0.008, 0.022). Because the upper bound exceeds 0.015, we cannot be confident the variation is within the acceptable limit. This type of analysis drives quality improvements."
+      },
+      "teacherCues": [
+        "Ask: 'If a company requires the standard deviation of fill weights to be less than 0.5 oz, and a 95% CI for $\\sigma$ is (0.3, 0.6), is the requirement met?' (not necessarily, because the upper bound exceeds 0.5).",
+        "Discuss how confidence intervals for $\\sigma$ are used in quality control."
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "variability",
+                "spread",
+                "consistency"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The process meets the variability (or spread) specification.",
+          "id": "q4-1",
+          "type": "fill-blank",
+          "hints": [
+            "It's about the spread of the process.",
+            "The specification limits the standard deviation."
+          ],
+          "prompt": "If the upper bound of a confidence interval for $\\sigma$ is below the maximum allowable limit, the process is likely meeting the ___ specification."
+        },
+        {
+          "answers": [
+            "Yes",
+            "yes"
+          ],
+          "answer": "Yes",
+          "id": "q4-2",
+          "feedbackIfWrong": "Yes, 1.0 is inside the interval, so it is a plausible value for $\\sigma$.",
+          "prompt": "A 95% CI for $\\sigma$ is (0.5, 1.2). Is it possible that $\\sigma = 1.0$? (Yes or No)",
+          "type": "short-answer",
+          "hints": [
+            "1.0 lies between 0.5 and 1.2.",
+            "The interval contains that value."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Take the square root of each bound.",
+            "$\\sqrt{4}=2$, $\\sqrt{16}=4$."
+          ],
+          "answer": "(2, 4)",
+          "answers": [
+            "(2, 4)",
+            "2 to 4",
+            "2 < σ < 4"
+          ],
+          "prompt": "If the confidence interval for $\\sigma^2$ is (4, 16), what is the confidence interval for $\\sigma$? (Write as (lower, upper).)",
+          "id": "q4-3",
+          "feedbackIfWrong": "The CI for $\\sigma$ is $(\\sqrt{4}, \\sqrt{16}) = (2, 4)$."
+        }
+      ],
+      "confusionCorner": {
+        "body": "Just like with means and proportions, if two confidence intervals for standard deviations do not overlap, it suggests the populations have different variability. However, a formal hypothesis test (F‑test) is the proper method for comparing two variances.",
+        "title": "Overlap Rule Applies to Variances Too"
+      },
+      "title": "Applications and Interpretation",
+      "examples": [
+        {
+          "steps": [
+            "The upper bound of the CI is 0.348 oz.",
+            "Since 0.348 > 0.30, the interval includes values above the allowable maximum.",
+            "We cannot be 95% confident that $\\sigma$ is below 0.3 oz.",
+            "The process may need improvement to reduce variability."
+          ],
+          "role": "guided",
+          "title": "Example A – Meeting a Specification",
+          "prompt": "A bottling company requires the standard deviation of fill volumes to be less than 0.3 oz. A random sample of 25 bottles gives $s=0.25$ oz. A 95% CI for $\\sigma$ is (0.195, 0.348). Does the process meet the requirement?"
+        },
+        {
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Does this mean there is a 99% chance that $\\sigma$ is in this interval? Why or why not?",
+          "role": "peer-explain",
+          "title": "Example B – Interpreting the CI",
+          "prompt": "Explain to a partner what it means when we say 'We are 99% confident that $0.89 < \\sigma < 1.78$ mg' for the allergy medicine.",
+          "steps": [
+            "It means that if we repeated the sampling process many times and computed a 99% CI each time, about 99% of those intervals would contain the true $\\sigma$.",
+            "We do not say 'there is a 99% chance' because $\\sigma$ is fixed; it's either in the interval or not.",
+            "We are confident in the method, not in the particular interval."
+          ],
+          "minLength": 2
+        },
+        {
+          "title": "Example C – Comparing Two CIs",
+          "prompt": "Two independent samples give 95% CIs for $\\sigma$: Sample A: (1.2, 2.8); Sample B: (3.5, 6.1). Do they suggest the populations have the same variability?",
+          "steps": [
+            "The intervals do not overlap (2.8 < 3.5).",
+            "This suggests the population standard deviations are likely different.",
+            "As with means and proportions, non‑overlapping intervals indicate a likely difference."
+          ],
+          "role": "independent"
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Project a problem: 'A sample of 22 waiting times has $s=3.6$ minutes. Construct a 98% CI for $\\sigma$.' Walk through Understand‑Solve‑Conclude.",
+        "Emphasize checking normality and correctly placing the critical values."
+      ],
+      "discoveryHook": {
+        "scenario": "Chi‑square confidence intervals follow a distinct blueprint because of the two different critical values and their placement. By systematically working through Understand‑Solve‑Conclude, you can avoid the common mistake of swapping the critical values."
+      },
+      "title": "Blueprint Aid: Solving Chi‑Square Confidence Interval Problems",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{Normal population?} \\;\\xrightarrow{d.f.=n-1}\\; \\chi^2_R, \\chi^2_L \\;\\xrightarrow{} \\; \\frac{(n-1)s^2}{\\chi^2_R} < \\sigma^2 < \\frac{(n-1)s^2}{\\chi^2_L} $$",
+          "title": "Chi‑Square Confidence Interval Blueprint",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "Critical placement",
+              "meaning": "$\\chi^2_R$ (larger) in lower bound denominator; $\\chi^2_L$ (smaller) in upper bound denominator."
+            }
+          ]
+        },
+        "explanation": [
+          "Blueprint steps: [[imp:Understand → Solve → Conclude]].",
+          "1. [[kw:Understand]]: Verify the population is normally distributed. Identify $n$, $s$ (or $s^2$), and confidence level $c$. Determine $d.f. = n-1$.",
+          "2. [[kw:Solve]]: Find the right‑tail areas: $(1-c)/2$ and $(1+c)/2$. Use the chi‑square table or `=CHISQ.INV.RT` to get $\\chi^2_R$ and $\\chi^2_L$. Compute the lower bound: $(n-1)s^2 / \\chi^2_R$, and upper bound: $(n-1)s^2 / \\chi^2_L$. For $\\sigma$, take square roots.",
+          "3. [[kw:Conclude]]: State the confidence interval for $\\sigma^2$ and/or $\\sigma$. Interpret: 'We are $c$% confident that the true population variance is between … and …'. Check if the interval meets any specification limits."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Details"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Assume normal. $n=22$, $s=3.6$, $c=0.98$, $d.f.=21$.",
+                "2": ""
+              },
+              {
+                "0": "Solve – Critical Values",
+                "1": "Right‑tail areas: 0.01 and 0.99.",
+                "2": "$\\chi^2_R = 38.932$, $\\chi^2_L = 8.897$ (from table)."
+              },
+              {
+                "0": "Solve – Interval for $\\sigma^2$",
+                "1": "$\\frac{21 \\times 12.96}{38.932} \\approx 6.99$ and $\\frac{21 \\times 12.96}{8.897} \\approx 30.58$",
+                "2": "$6.99 < \\sigma^2 < 30.58$"
+              },
+              {
+                "0": "Solve – Interval for $\\sigma$",
+                "1": "$\\sqrt{6.99} \\approx 2.64$ and $\\sqrt{30.58} \\approx 5.53$",
+                "2": "$2.64 < \\sigma < 5.53$ min"
+              },
+              {
+                "0": "Conclude",
+                "1": "We are 98% confident that the true standard deviation of waiting times is between 2.64 and 5.53 minutes.",
+                "2": ""
+              }
+            ],
+            "type": "table",
+            "title": "Blueprint for Waiting Times ($n=22$, $s=3.6$, 98% CI)"
+          }
+        ]
+      },
+      "id": "blueprint-chi-square",
+      "confusionCorner": {
+        "body": "If you accidentally swap the critical values, the lower bound will be larger than the upper bound. [[imp:Always verify that $\\chi^2_R$ is the larger value and $\\chi^2_L$ is the smaller.]]",
+        "title": "Double‑Check $\\chi^2_R > \\chi^2_L$"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Understand: $n=18$, $s=0.29$, $s^2=0.0841$, $d.f.=17$, $c=0.99$.",
+            "Solve: Right‑tail areas 0.005 and 0.995. $\\chi^2_R = 35.718$, $\\chi^2_L = 5.697$ (from table or Sheets).",
+            "Lower bound for $\\sigma^2$: $(17 \\times 0.0841)/35.718 \\approx 0.0400$. Upper: $(17 \\times 0.0841)/5.697 \\approx 0.251$.",
+            "Lower bound for $\\sigma$: $\\sqrt{0.0400} \\approx 0.20$ hr. Upper: $\\sqrt{0.251} \\approx 0.50$ hr.",
+            "Conclude: We are 99% confident the true standard deviation of reserve capacities is between 0.20 and 0.50 hour."
+          ],
+          "prompt": "The reserve capacities (in hours) of 18 car batteries have $s=0.29$ hr. Assume normal. Construct a 99% CI for $\\sigma$.",
+          "title": "Example A – Blueprint for Car Batteries"
+        },
+        {
+          "steps": [
+            "$d.f.=50$. Right‑tail areas: $(1-0.80)/2=0.10$ and $(1+0.80)/2=0.90$.",
+            "$\\chi^2_R$: `=CHISQ.INV.RT(0.10, 50)` → about 63.167. $\\chi^2_L$: `=CHISQ.INV.RT(0.90, 50)` → about 39.335.",
+            "Lower: `=(50*1225)/63.167` ≈ 970. Upper: `=(50*1225)/39.335` ≈ 1557.",
+            "80% CI for $\\sigma^2$ is about (970, 1557)."
+          ],
+          "prompt": "Use Google Sheets to construct an 80% CI for $\\sigma^2$ with $n=51$, $s=35$.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "title": "Example B – Google Sheets Blueprint",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: How do you use CHISQ.INV.RT to get both critical values in one step each?"
+        },
+        {
+          "prompt": "A process requires $\\sigma \\le 2.0$. A 90% CI for $\\sigma$ from $n=30$ is (1.5, 2.3). Is the requirement met?",
+          "role": "independent",
+          "title": "Example C – Checking Specification",
+          "steps": [
+            "Understand: The upper bound of the CI is 2.3, which exceeds 2.0.",
+            "Thus, we cannot be 90% confident that $\\sigma \\le 2.0$.",
+            "The process may need improvement to reduce variation."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "Before constructing a chi‑square confidence interval, you must verify that the population is approximately ___ distributed.",
+          "hints": [
+            "This is a key condition for the chi‑square method.",
+            "It's the bell‑shaped distribution."
+          ],
+          "id": "q5-1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "normally",
+                "normal",
+                "Normally",
+                "Normal"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The population must be approximately normally distributed."
+        },
+        {
+          "answers": [
+            "χ²_L",
+            "chi-square L",
+            "the smaller one",
+            "χ_L^2"
+          ],
+          "id": "q5-2",
+          "type": "short-answer",
+          "answer": "$\\chi^2_L$",
+          "hints": [
+            "The upper bound is larger; to get a larger fraction, divide by a smaller number.",
+            "$\\chi^2_L$ is the smaller critical value."
+          ],
+          "prompt": "In the blueprint, after finding $\\chi^2_R$ and $\\chi^2_L$, which one goes in the denominator of the upper bound?",
+          "feedbackIfWrong": "$\\chi^2_L$ (the smaller critical value) goes in the denominator of the upper bound."
+        },
+        {
+          "answer": "No",
+          "answers": [
+            "No",
+            "no",
+            "cannot"
+          ],
+          "type": "short-answer",
+          "prompt": "A 95% CI for $\\sigma^2$ is (2.5, 9.0). What is the point estimate $s^2$? (The point estimate is not necessarily the midpoint; answer: we don't know from the interval alone. But from the sample, $s^2$ is the point estimate. The question is tricky: we cannot find $s^2$ from the CI without $n$ and critical values. So rephrase: 'Can you find $s^2$ just from the CI?')",
+          "id": "q5-3",
+          "feedbackIfWrong": "No, the confidence interval for $\\sigma^2$ is not symmetric, so $s^2$ is not simply the midpoint.",
+          "hints": [
+            "The CI is not symmetric around $s^2$.",
+            "We would need the sample size and critical values to recover $s^2$."
+          ]
+        }
+      ]
+    }
+  ],
+  "title": "Confidence Intervals for Variance and Standard Deviation",
+  "type": "interactive-lesson",
+  "standards": [
+    "HSS.IC.B.4",
+    "HSS.IC.B.5"
+  ],
+  "presenterNotes": [
+    "Block 1: Emphasize the shape of the chi‑square distribution and the normality assumption. Use visual comparisons of different d.f.",
+    "Block 2: Practice finding critical values from the table. The Google Sheets functions CHISQ.INV.RT make this easier. Highlight that we need two values.",
+    "Block 3: Walk through the construction carefully. The placement of $\\chi^2_R$ and $\\chi^2_L$ is crucial. Use the allergy medicine example to show the full process.",
+    "Block 4: Connect to quality control. Interpreting whether a specification is met gives real‑world motivation.",
+    "Block 5: The blueprint provides a structured approach. Emphasize checking normality and verifying that $\\chi^2_R > \\chi^2_L$."
+  ],
+  "schemaVersion": 2,
+  "id": "chapter-6-4-confidence-intervals-variance-sd",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

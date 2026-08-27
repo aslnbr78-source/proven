@@ -1,0 +1,834 @@
+{
+  "schemaVersion": 2,
+  "title": "U.S. Rule—Making Partial Note Payments before Due Date",
+  "id": "ch10-lu10-3",
+  "blocks": [
+    {
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "The cost of borrowing.",
+            "Not principal."
+          ],
+          "feedbackIfWrong": "interest.",
+          "blanks": [
+            {
+              "accept": [
+                "interest"
+              ]
+            }
+          ],
+          "prompt": "Under the U.S. Rule, a payment is applied first to ___.",
+          "id": "b1q1"
+        },
+        {
+          "id": "b1q2",
+          "type": "short-answer",
+          "hints": [
+            "I = 5,000 × 0.08 × 3/12.",
+            "5,000 × 0.08 × 0.25 = ?"
+          ],
+          "prompt": "Loan $5,000 at 8%. After 3 months, borrower pays $1,000. Interest accrued? (number only, no $)",
+          "feedbackIfWrong": "100.",
+          "answers": [
+            "100",
+            "100.00"
+          ]
+        },
+        {
+          "id": "b1q3",
+          "hints": [
+            "Payment – Interest.",
+            "1,000 – 100 = ?"
+          ],
+          "feedbackIfWrong": "900.",
+          "prompt": "If interest is $100 and payment is $1,000, how much reduces principal? (number only, no $)",
+          "type": "short-answer",
+          "answers": [
+            "900"
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'If you make a partial payment on a loan before maturity, should it reduce principal immediately?'",
+        "Explain that under the U.S. Rule, interest is paid first."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "U.S. Rule Payment Application",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Calculate interest to date",
+                "2": "I = 40,000 × 0.04 × 2/12 = $266.67"
+              },
+              {
+                "0": "2",
+                "1": "Subtract interest from payment",
+                "2": "$15,000 – $266.67 = $14,733.33"
+              },
+              {
+                "0": "3",
+                "1": "Reduce principal by remainder",
+                "2": "New Principal = $40,000 – $14,733.33 = $25,266.67"
+              },
+              {
+                "0": "4",
+                "1": "Continue interest on new balance",
+                "2": "Next period interest based on $25,266.67"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action",
+              "Example (P=$40,000, R=4%, 2 months, $15,000 payment)"
+            ],
+            "caption": "Interest is always settled first; only leftover reduces principal."
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Time (T) is the period from the last payment (or loan date) to the current payment date.",
+            "If payment is less than accrued interest, principal is not reduced (unusual)."
+          ],
+          "title": "U.S. Rule – Interest Calculation",
+          "formula": "$$I = P \\times R \\times T$$ $$\\text{Principal Reduction} = \\text{Payment} - I$$ $$\\text{New Principal} = \\text{Old Principal} - \\text{Principal Reduction}$$"
+        },
+        "explanation": [
+          "[[kw:U.S. Rule]] is a method that allows partial payments on a simple interest loan before the due date.",
+          "Each payment is applied first to the interest accrued since the last payment (or the loan date), and the rest reduces the principal.",
+          "The interest is calculated using the simple interest formula $$I = P \\times R \\times T$$ on the current principal for the time elapsed.",
+          "After the payment, a new principal balance is computed, and interest continues on that new balance.",
+          "[[imp:Interest is always paid before principal is reduced.]]"
+        ]
+      },
+      "confusionCorner": {
+        "body": "If the payment is less than the accrued interest, the unpaid interest is not added to principal—it remains a separate liability. [[imp:Partial payment must exceed interest to reduce principal.]]",
+        "title": "Watch out!"
+      },
+      "examples": [
+        {
+          "prompt": "A $10,000 loan at 6% simple interest. After 3 months, borrower pays $4,000. Find new principal.",
+          "title": "A – First partial payment",
+          "role": "guided",
+          "steps": [
+            "Interest for 3 months: I = 10,000 × 0.06 × 3/12 = $150.",
+            "Principal reduction = $4,000 – $150 = $3,850.",
+            "New Principal = $10,000 – $3,850 = $6,150."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Interest is the cost of using the money over time.",
+            "Lenders require interest to be current before accepting any principal reduction.",
+            "Otherwise, the lender would lose interest earnings on the outstanding balance."
+          ],
+          "minLength": 2,
+          "title": "B – Why interest first?",
+          "prompt": "Explain why under the U.S. Rule interest must be paid before principal can be reduced.",
+          "peerPrompt": "Think about what a borrower is paying for."
+        },
+        {
+          "steps": [
+            "Interest = 6,150 × 0.06 × 4/12 = $123.00.",
+            "Principal reduction = $3,000 – $123.00 = $2,877.00.",
+            "New principal = $6,150 – $2,877.00 = $3,273.00."
+          ],
+          "prompt": "Continuing from Example A: After another 4 months, the borrower pays $3,000 on the $6,150 balance. Find new principal.",
+          "role": "independent",
+          "title": "C – Second payment"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Hope Slater borrowed $40,000 at 4% for 6 months. After 2 months, she pays $15,000. Under the [[kw:U.S. Rule]], this payment first covers the accrued interest for those 2 months ($266.67), and the remainder ($14,733.33) reduces the principal. The new principal balance becomes $25,266.67, and interest continues on that reduced amount."
+      },
+      "id": "us-rule-concept",
+      "title": "1. The U.S. Rule Concept",
+      "challengeCorner": {
+        "optional": true,
+        "type": "short-answer",
+        "prompt": "A $20,000 loan at 5%. After 4 months, borrower pays $5,000. Find new principal.",
+        "answers": [
+          "15333.33",
+          "15,333.33"
+        ],
+        "hints": [
+          "I = 20,000 × 0.05 × 4/12 = $333.33.",
+          "New P = 20,000 – (5,000 – 333.33) = $15,333.33."
+        ]
+      }
+    },
+    {
+      "examples": [
+        {
+          "title": "A – Two payments",
+          "steps": [
+            "First: I1 = 8,000 × 0.10 × 60/360 = $133.33; Principal Reduction = 3,000 – 133.33 = $2,866.67; New P = 8,000 – 2,866.67 = $5,133.33.",
+            "Second: I2 = 5,133.33 × 0.10 × 90/360 = $128.33; Reduction = 4,000 – 128.33 = $3,871.67; New P = 5,133.33 – 3,871.67 = $1,261.66."
+          ],
+          "prompt": "A $8,000 loan at 10% ordinary interest. First payment of $3,000 after 60 days. Find new principal. Then second payment of $4,000 after another 90 days. Find principal after second payment.",
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "prompt": "Explain why it's critical to recalculate interest on the new principal each period.",
+          "peerPrompt": "Think about what would happen if interest were always computed on the original principal.",
+          "steps": [
+            "If interest were always computed on the original principal, the borrower would pay more interest than actually owed after principal reductions.",
+            "The U.S. Rule ensures interest is computed only on the outstanding balance.",
+            "This is fairer to the borrower and reflects the actual cost of borrowing."
+          ],
+          "title": "B – Importance of updating principal",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "prompt": "Continuing from A: After another 30 days, the borrower wants to pay off the loan. Find the final payment.",
+          "steps": [
+            "Current principal = $1,261.66. Interest = 1,261.66 × 0.10 × 30/360 = $10.51 (rounded).",
+            "Final payment = Principal + Interest = $1,261.66 + $10.51 = $1,272.17.",
+            "Payoff amount is $1,272.17."
+          ],
+          "title": "C – Final payment"
+        }
+      ],
+      "title": "2. Multiple Partial Payments",
+      "discoveryHook": {
+        "scenario": "A business borrower makes several partial payments on a $50,000 loan at 6%. After each payment, the remaining principal decreases, and interest for the next period is computed on the reduced balance. This step‑by‑step process continues until the loan is paid off."
+      },
+      "questions": [
+        {
+          "prompt": "After a partial payment, interest for the next period is calculated on the ___ principal.",
+          "blanks": [
+            {
+              "accept": [
+                "new",
+                "reduced",
+                "remaining"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the updated balance.",
+            "Not the original amount."
+          ],
+          "id": "b2q1",
+          "type": "fill-blank",
+          "feedbackIfWrong": "new (or reduced/remaining)."
+        },
+        {
+          "feedbackIfWrong": "180.00.",
+          "answers": [
+            "180.00",
+            "180"
+          ],
+          "prompt": "Principal $12,000, rate 6%, 90 days ordinary. Interest? (two decimals, no $)",
+          "hints": [
+            "I = 12,000 × 0.06 × 90/360.",
+            "12,000 × 0.06 × 0.25 = ?"
+          ],
+          "type": "short-answer",
+          "id": "b2q2"
+        },
+        {
+          "feedbackIfWrong": "4,850.",
+          "hints": [
+            "Payment – Interest.",
+            "5,000 – 150 = ?"
+          ],
+          "answers": [
+            "4850",
+            "4,850"
+          ],
+          "id": "b2q3",
+          "type": "short-answer",
+          "prompt": "Payment $5,000, interest $150. How much principal is reduced? (number only, no $)"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "U.S. Rule Schedule Example",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Jan 1 (loan)",
+                "1": "$50,000",
+                "2": "",
+                "3": "",
+                "4": "",
+                "5": "$50,000"
+              },
+              {
+                "0": "Mar 1 (2 mo)",
+                "1": "$50,000",
+                "2": "$20,000",
+                "3": "$500",
+                "4": "$19,500",
+                "5": "$30,500"
+              },
+              {
+                "0": "Jun 1 (3 mo)",
+                "1": "$30,500",
+                "2": "$15,000",
+                "3": "$457.50",
+                "4": "$14,542.50",
+                "5": "$15,957.50"
+              },
+              {
+                "0": "Sep 1 (3 mo)",
+                "1": "$15,957.50",
+                "2": "$16,000*",
+                "3": "$239.36",
+                "4": "$15,760.64",
+                "5": "$196.86 (close)"
+              }
+            ],
+            "type": "table",
+            "caption": "*Final payment includes remaining principal plus last interest. Schedule shows interest at 6% p.a.",
+            "headers": [
+              "Date",
+              "Principal Before",
+              "Payment",
+              "Interest",
+              "Principal Reduction",
+              "New Principal"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Use ordinary interest (360 days) unless otherwise stated.",
+            "Final payment = Remaining principal + interest since last payment."
+          ],
+          "title": "U.S. Rule Step‑by‑Step",
+          "formula": "$$\\text{For each payment:}$$ $$I = \\text{Current Principal} \\times R \\times \\frac{\\text{Days since last payment}}{360 \\text{ (or 365)}}$$ $$\\text{Principal Reduction} = \\text{Payment} - I$$ $$\\text{New Principal} = \\text{Old Principal} - \\text{Principal Reduction}$$"
+        },
+        "explanation": [
+          "When there are multiple partial payments, apply the U.S. Rule sequentially.",
+          "For each payment: calculate interest on the current principal from the date of the last payment to the current payment date, subtract interest from payment, reduce principal.",
+          "The new principal becomes the base for the next period's interest calculation.",
+          "This is repeated until the final payment, which may be for the remaining principal plus final interest.",
+          "[[imp:Keep a schedule; do not skip steps.]]"
+        ]
+      },
+      "teacherCues": [
+        "Show a timeline with multiple payments.",
+        "Emphasize that after each payment, principal is reset and interest is calculated on the new balance."
+      ],
+      "challengeCorner": {
+        "prompt": "A $15,000 loan at 9% ordinary. Payments: $5,000 after 30 days, $6,000 after another 60 days. Find principal after second payment.",
+        "hints": [
+          "I1 = 15,000×0.09×30/360 = 112.50; New P after 1st = 15,000 - (5,000-112.50) = 10,112.50.",
+          "I2 = 10,112.50×0.09×60/360 ≈ 151.69; New P = 10,112.50 - (6,000-151.69) = 4,264.19."
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "answers": [
+          "4264.19"
+        ]
+      },
+      "id": "us-rule-multiple",
+      "confusionCorner": {
+        "body": "Always use the correct day count between payments. [[imp:If the problem states exact interest, use 365 days; if ordinary, use 360 days.]]",
+        "title": "Watch out!"
+      }
+    },
+    {
+      "teacherCues": [
+        "Use day‑of‑year or manual counting to find exact days between payments.",
+        "Apply ordinary or exact interest as specified."
+      ],
+      "title": "3. U.S. Rule with Specific Dates",
+      "examples": [
+        {
+          "title": "A – Date‑based first payment",
+          "steps": [
+            "Days: Apr 10‑30=20, May=31, Jun 1‑20=20 → total 71 days.",
+            "Interest = 10,000 × 0.08 × 71/360 = $157.78 (rounded).",
+            "Principal reduction = 4,000 – 157.78 = $3,842.22; New P = 10,000 – 3,842.22 = $6,157.78."
+          ],
+          "role": "guided",
+          "prompt": "A $10,000 note dated April 10 at 8% ordinary interest. A partial payment of $4,000 is made on June 20. Calculate the new principal."
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Counting days correctly",
+          "steps": [
+            "Interest begins accruing the day after the loan is made (the borrower has the money).",
+            "Excluding the start date means you count only complete days the money is in use.",
+            "Including it would overcharge interest for a fractional day."
+          ],
+          "minLength": 2,
+          "prompt": "Why is it important to exclude the start date when counting days?",
+          "peerPrompt": "Think about whether interest accrues on the day the loan is made."
+        },
+        {
+          "steps": [
+            "Days from Jun 20 to Sep 5: Jun 20‑30=10, Jul=31, Aug=31, Sep 1‑5=5 → 77 days.",
+            "I2 = 6,157.78 × 0.08 × 77/360 ≈ $105.37.",
+            "Reduction = 3,000 – 105.37 = $2,894.63; New P = 6,157.78 – 2,894.63 = $3,263.15."
+          ],
+          "role": "independent",
+          "title": "C – Second payment with dates",
+          "prompt": "Continuing A: Second payment of $3,000 on September 5. Find new principal."
+        }
+      ],
+      "id": "us-rule-days",
+      "challengeCorner": {
+        "prompt": "Note dated February 20 (non‑leap) for $12,000 at 9% ordinary. Payment of $5,500 on May 10. Find new principal.",
+        "hints": [
+          "Days: Feb 20‑28=8, Mar=31, Apr=30, May 1‑10=10 → 79 days.",
+          "I = 12,000×0.09×79/360 = 237.00; New P = 12,000 - (5,500-237) = 6,737.00."
+        ],
+        "type": "short-answer",
+        "answers": [
+          "6737.00"
+        ],
+        "optional": true
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "When a payment date falls on a weekend or holiday, the business day rule may apply, but for our calculations, treat the date as given. [[imp:Always use the exact dates provided.]]"
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Exact Days} = \\text{End Date Day Number} - \\text{Start Date Day Number}$$ $$I = P \\times R \\times \\frac{\\text{Exact Days}}{360 \\text{ (or 365)}}$$",
+          "notes": [
+            "Day numbers from year‑of‑day table; exclude start date.",
+            "Use same denominator (360/365) for all interest calculations within a problem unless told otherwise."
+          ],
+          "title": "U.S. Rule with Dates"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Date‑Based U.S. Rule Example",
+            "headers": [
+              "Date",
+              "Days Elapsed",
+              "Principal",
+              "Payment",
+              "Interest",
+              "Principal Reduction",
+              "New Principal"
+            ],
+            "rows": [
+              {
+                "0": "Mar 1",
+                "1": "—",
+                "2": "$6,000",
+                "3": "",
+                "4": "",
+                "5": "",
+                "6": "$6,000"
+              },
+              {
+                "0": "May 1",
+                "1": "61 days",
+                "2": "$6,000",
+                "3": "$2,500",
+                "4": "$71.17",
+                "5": "$2,428.83",
+                "6": "$3,571.17"
+              }
+            ],
+            "type": "table",
+            "caption": "Interest = 6,000 × 0.07 × 61/360 = $71.17 (ordinary)."
+          }
+        ],
+        "explanation": [
+          "When loan and payment dates are given, count the exact number of days between them, excluding the start date and including the payment date.",
+          "Then use the simple interest formula with the appropriate denominator (360 for ordinary, 365 for exact).",
+          "Apply the U.S. Rule as before: interest first, then principal reduction.",
+          "Continue for subsequent payments, counting days from the previous payment date.",
+          "[[imp:Days count is critical; double‑check using a day‑of‑year table or manual month‑by‑month count.]]"
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "A note dated March 1 for $6,000 at 7% ordinary interest receives a partial payment of $2,500 on May 1. Counting days: March 1 to May 1 = 61 days (Mar 30, Apr 30, May 1? Actually: Mar 1‑31 = 30 days, Apr 1‑30 = 30 days, May 1 = 1 day? Wait, March 1 to May 1: remaining March = 31-1=30? But start date not counted. So Mar 2-31: 30, Apr:30, May 1:1 = 61 days. Then compute interest and new principal."
+      },
+      "questions": [
+        {
+          "prompt": "Days between dates are counted excluding the start date and including the ___ date.",
+          "id": "b3q1",
+          "blanks": [
+            {
+              "accept": [
+                "due",
+                "payment",
+                "end"
+              ]
+            }
+          ],
+          "hints": [
+            "The date the payment is made.",
+            "Opposite of start."
+          ],
+          "feedbackIfWrong": "due/payment/end.",
+          "type": "fill-blank"
+        },
+        {
+          "id": "b3q2",
+          "prompt": "From Jan 15 to March 15 (non‑leap), how many exact days? (number only)",
+          "feedbackIfWrong": "59.",
+          "hints": [
+            "Jan 15‑31=16, Feb=28, Mar 1‑15=15 → total 59.",
+            "Or day 74 – day 15 = 59."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "59"
+          ]
+        },
+        {
+          "id": "b3q3",
+          "hints": [
+            "5,000 × 0.06 × 45/360.",
+            "5,000 × 0.06 × 0.125 = ?"
+          ],
+          "prompt": "Loan $5,000 at 6% ordinary, 45 days. Interest? (two decimals, no $)",
+          "answers": [
+            "37.50"
+          ],
+          "feedbackIfWrong": "37.50.",
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "id": "us-rule-final",
+      "confusionCorner": {
+        "body": "Don't forget to add the last interest to the final payment. [[imp:The final payment is not just the remaining principal—it must include interest for the period since the last payment.]]",
+        "title": "Watch out!"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Since no partial payments, interest = 3,000 × 0.05 × 1 = $150.",
+            "Final payment = $3,000 + $150 = $3,150.",
+            "This is just maturity value."
+          ],
+          "title": "A – Single final payment",
+          "prompt": "A $3,000 loan at 5% ordinary. No payments until maturity, which is 1 year later. Find final payment."
+        },
+        {
+          "prompt": "Why should total principal reductions equal the original principal?",
+          "role": "peer-explain",
+          "steps": [
+            "Each principal reduction reduces the loan balance.",
+            "Summing all principal reductions should exactly equal the original amount borrowed.",
+            "Total payments = sum of principal reductions + sum of interest payments."
+          ],
+          "title": "B – Checking the totals",
+          "minLength": 2,
+          "peerPrompt": "Think about the accounting of the loan."
+        },
+        {
+          "prompt": "After two partial payments, the remaining principal is $2,000 on a 6% ordinary loan. The last payment is made 30 days later. Find final payment.",
+          "role": "independent",
+          "steps": [
+            "Interest = 2,000 × 0.06 × 30/360 = $10.00.",
+            "Final payment = $2,000 + $10.00 = $2,010.00."
+          ],
+          "title": "C – Final payment after partials"
+        }
+      ],
+      "challengeCorner": {
+        "type": "short-answer",
+        "optional": true,
+        "hints": [
+          "First: I1=25,000×0.07×2/12=291.67; new P=25,000-(10,000-291.67)=15,291.67. Second: I2=15,291.67×0.07×3/12=267.60; new P=15,291.67-(8,000-267.60)=7,559.27.",
+          "Final: I3=7,559.27×0.07×1/12≈44.10; final = 7,559.27+44.10 = 7,603.37."
+        ],
+        "answers": [
+          "7603.37"
+        ],
+        "prompt": "A $25,000 loan at 7% ordinary. Payments: $10,000 after 2 months, $8,000 after another 3 months, and final payment after 1 more month. Find final payment."
+      },
+      "teacherCues": [
+        "The final payment settles the remaining principal plus the last interest accrued.",
+        "Show that the sum of all payments equals the original principal plus total interest."
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "interest.",
+          "blanks": [
+            {
+              "accept": [
+                "interest"
+              ]
+            }
+          ],
+          "id": "b4q1",
+          "prompt": "The final payment equals the remaining principal plus the ___ for the last period.",
+          "hints": [
+            "The cost of borrowing.",
+            "Not principal."
+          ]
+        },
+        {
+          "id": "b4q2",
+          "answers": [
+            "500.83"
+          ],
+          "type": "short-answer",
+          "prompt": "Remaining principal $500, rate 6% ordinary, 10 days. Final payment? (two decimals, no $)",
+          "hints": [
+            "Interest = 500 × 0.06 × 10/360 ≈ 0.83.",
+            "500 + 0.83 = ?"
+          ],
+          "feedbackIfWrong": "500.83."
+        },
+        {
+          "type": "short-answer",
+          "prompt": "If total principal reductions sum to $8,000, what was the original loan amount? (number only, no $)",
+          "hints": [
+            "Sum of principal reductions equals original principal.",
+            "No math needed."
+          ],
+          "id": "b4q3",
+          "feedbackIfWrong": "8,000.",
+          "answers": [
+            "8000",
+            "8,000"
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "After several partial payments, the remaining principal is small. The borrower makes one last payment that includes that remaining principal and the interest accrued since the last payment. This final payment closes the loan."
+      },
+      "concept": {
+        "explanation": [
+          "The last payment under the U.S. Rule must cover any remaining principal and the interest accrued from the last payment date to the payoff date.",
+          "Final Payment = Remaining Principal + Interest on that principal for the time since last payment.",
+          "If the final payment is made exactly at maturity, it's just the remaining principal (no further interest).",
+          "This ensures the loan is fully paid off with no residual balance.",
+          "[[imp:Check that the final payment when added to all previous principal reductions equals the original principal.]]"
+        ],
+        "formulaCard": {
+          "title": "Final Payment Calculation",
+          "notes": [
+            "If the final payment is made exactly at maturity, no extra interest is due beyond the last period's interest.",
+            "If the final payment is late, additional interest may be calculated."
+          ],
+          "formula": "$$\\text{Final Payment} = \\text{Remaining Principal} + I_{\\text{last period}}$$ $$I_{\\text{last period}} = \\text{Remaining Principal} \\times R \\times \\frac{\\text{Days since last payment}}{360 \\text{ (or 365)}}$$"
+        },
+        "visuals": [
+          {
+            "title": "Loan Payoff Summary",
+            "caption": "Total payments = Original principal + Total interest.",
+            "headers": [
+              "Payment #",
+              "Payment Amount",
+              "Interest Paid",
+              "Principal Reduced"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$4,000",
+                "2": "$150",
+                "3": "$3,850"
+              },
+              {
+                "0": "2",
+                "1": "$3,000",
+                "2": "$123",
+                "3": "$2,877"
+              },
+              {
+                "0": "3 (final)",
+                "1": "$1,272.17",
+                "2": "$10.51",
+                "3": "$1,261.66"
+              },
+              {
+                "0": "Totals",
+                "1": "$8,272.17",
+                "2": "$283.51",
+                "3": "$8,000"
+              }
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "title": "4. Final Payment and Payoff"
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "Days May 5‑Jul 20: May 5‑31=26, Jun=30, Jul 1‑20=20 → 76 days. I=12,000×0.09×76/360=228. New P=12,000–(5,000-228)=7,228.",
+            "Final: 90 days after Jul 20. I=7,228×0.09×90/360=162.63. Final payment=7,228+162.63=$7,390.63."
+          ],
+          "title": "A – Full blueprint with dates",
+          "role": "guided",
+          "prompt": "A $12,000 note dated May 5 at 9% ordinary. Payment $5,000 on July 20. Find new principal. No further payments until maturity, 90 days later. Find final payment."
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Think about missing a step or miscalculating days.",
+          "steps": [
+            "The 'Understand' step forces you to record all dates and amounts.",
+            "Using a schedule ensures you don't skip a payment or miscompute days.",
+            "The 'Conclude' step lets you verify consistency between total payments and original principal plus interest."
+          ],
+          "prompt": "Explain how the blueprint helps avoid mistakes in U.S. Rule problems.",
+          "title": "B – Blueprint prevents errors"
+        },
+        {
+          "prompt": "A $6,000 note at 7% ordinary, dated March 10. Payment $2,500 on May 5. Find new principal and final payment if the note matures 120 days after May 5.",
+          "title": "C – Practice",
+          "steps": [
+            "Days Mar 10‑May 5: Mar 10‑31=21, Apr=30, May 1‑5=5 → 56 days. I=6,000×0.07×56/360=65.33. New P=6,000–(2,500-65.33)=3,565.33.",
+            "Final I=3,565.33×0.07×120/360=83.19. Final payment=3,565.33+83.19=$3,648.52."
+          ],
+          "role": "independent"
+        }
+      ],
+      "title": "5. Blueprint Aid for U.S. Rule Problems",
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude for U.S. Rule.",
+        "Walk through a multi‑payment problem with dates."
+      ],
+      "questions": [
+        {
+          "hints": [
+            "The action step.",
+            "Between U and C."
+          ],
+          "feedbackIfWrong": "solve.",
+          "prompt": "The U.S. Rule blueprint uses the three steps: Understand, ___, Conclude.",
+          "blanks": [
+            {
+              "accept": [
+                "solve"
+              ]
+            }
+          ],
+          "id": "b5q1",
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "6050",
+            "6,050"
+          ],
+          "feedbackIfWrong": "6,050.",
+          "hints": [
+            "I = 10,000 × 0.06 × 30/360 = 50.",
+            "New P = 10,000 – (4,000 – 50) = 6,050."
+          ],
+          "prompt": "Loan $10,000 at 6% ordinary. First payment after 30 days: $4,000. Find new principal. (number only, no $)",
+          "id": "b5q2",
+          "type": "short-answer"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "I = 3,000 × 0.08 × 45/360 = 30.",
+            "Final = 3,000 + 30 = 3,030."
+          ],
+          "id": "b5q3",
+          "prompt": "After second payment, remaining principal is $3,000. Rate 8% ordinary, 45 days until final payment. Final payment amount? (number only, no $)",
+          "feedbackIfWrong": "3,030.",
+          "answers": [
+            "3030",
+            "3,030"
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A note for $9,000 dated April 1 at 8% ordinary interest receives two partial payments: $4,000 on June 15 and $3,000 on August 20. The blueprint organizes the count of days, interest calculations, and principal reductions."
+      },
+      "id": "blueprint-us-rule",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Keep a schedule with dates, days, interest, and principal.",
+            "Final payment = remaining P + last interest."
+          ],
+          "title": "U.S. Rule Blueprint",
+          "formula": "$$\\text{For each payment: } I = \\text{Current P} \\times R \\times \\frac{\\text{Days}}{360 \\text{ (or 365)}}$$ $$\\text{Reduction} = \\text{Payment} - I$$ $$\\text{New P} = \\text{Old P} - \\text{Reduction}$$"
+        },
+        "explanation": [
+          "Apply the three‑step blueprint to U.S. Rule problems:",
+          "1. Understand: identify original principal, rate, ordinary/exact, loan date, payment dates and amounts.",
+          "2. Solve: for each payment, count days from previous payment (or loan date), calculate interest, reduce principal, repeat.",
+          "3. Conclude: verify that the sum of principal reductions equals the original principal and that the final payment is consistent.",
+          "A table or schedule helps keep track."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Detail",
+              "Calculation"
+            ],
+            "caption": "At the end, a final payment of $2,225.47 plus interest for the remaining period would settle the loan.",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "P=9,000, R=0.08, Ordinary, Dates: Apr 1, Jun 15, Aug 20. Payments: $4,000, $3,000.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – 1st",
+                "1": "Days: Apr 1‑30=29, May=31, Jun 1‑15=15 → 75 days. I=9,000×0.08×75/360=150. New P=9,000–(4,000-150)=5,150.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – 2nd",
+                "1": "Days: Jun 15‑30=15, Jul=31, Aug 1‑20=20 → 66 days. I=5,150×0.08×66/360≈75.47. New P=5,150–(3,000-75.47)=2,225.47.",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Remaining principal $2,225.47. Total principal reduced = $6,774.53; original P=9,000.",
+                "2": ""
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint: $9,000, 8% ordinary, Apr 1 to Jun 15 & Aug 20"
+          }
+        ]
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "prompt": "A $20,000 note at 7% ordinary, dated January 10. Payments: $8,000 on March 20, $7,000 on June 5. Find the principal remaining after the second payment.",
+        "optional": true,
+        "hints": [
+          "Days Jan 10-Mar 20 = 69 days. I = 20,000×0.07×69/360 = 268.33. New P = 20,000 - (8,000-268.33) = 12,268.33.",
+          "Days Mar 20-Jun 5 = 77 days. I = 12,268.33×0.07×77/360 = 183.68. New P = 12,268.33 - (7,000-183.68) = 5,452.01."
+        ],
+        "answers": [
+          "5452.01"
+        ]
+      },
+      "confusionCorner": {
+        "body": "Be meticulous with day counting. [[imp:Double‑check your day count using both manual month‑by‑month and day‑of‑year table methods.]]",
+        "title": "Watch out!"
+      }
+    }
+  ],
+  "standards": [
+    "BUSMATH.10.3"
+  ],
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

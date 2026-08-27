@@ -1,0 +1,806 @@
+{
+  "blocks": [
+    {
+      "challengeCorner": {
+        "prompt": "A loan at 7.5% for 8 months produced $250 interest. Find the principal.",
+        "type": "short-answer",
+        "answers": [
+          "5000",
+          "5,000"
+        ],
+        "optional": true,
+        "hints": [
+          "T=8/12=2/3≈0.6667.",
+          "250 ÷ (0.075 × 2/3) = 250 ÷ 0.05 = 5,000."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't forget to convert time to years. [[imp:If time is in months, divide by 12; if days, divide by 360 (ordinary) or 365 (exact).]]"
+      },
+      "id": "solve-for-principal",
+      "discoveryHook": {
+        "scenario": "Hope Slater knows she paid $800 interest for a 6‑month loan at 4%. She wants to find out how much she borrowed. Using the formula P = I ÷ (R × T), she calculates P = $800 ÷ (0.04 × 0.5) = $40,000. So the principal was $40,000."
+      },
+      "teacherCues": [
+        "Write the interest formula on the board and ask: 'If you know the interest, rate, and time, how do you find the principal?'",
+        "Rearrange I = P × R × T to P = I ÷ (R × T)."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A 6‑month loan at 6% cost $240 in interest. What was the principal?",
+          "steps": [
+            "Convert: R = 0.06, T = 6/12 = 0.5.",
+            "P = $240 ÷ (0.06 × 0.5) = $240 ÷ 0.03 = $8,000.",
+            "The loan principal was $8,000."
+          ],
+          "title": "A – Find principal given interest, rate, months"
+        },
+        {
+          "title": "B – Why divide?",
+          "prompt": "Explain why we divide interest by (R × T) to find principal.",
+          "steps": [
+            "Because I = P × R × T, to isolate P, divide both sides by (R × T).",
+            "So P = I ÷ (R × T).",
+            "This gives the original amount borrowed."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Think about the original formula: I = P × R × T.",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "prompt": "A bank collected $45 ordinary interest on a 60‑day loan at 9%. Find the principal.",
+          "steps": [
+            "T = 60/360 = 1/6 ≈ 0.1666667.",
+            "P = $45 ÷ (0.09 × 60/360) = $45 ÷ (0.09 × 1/6) = $45 ÷ 0.015 = $3,000."
+          ],
+          "title": "C – Ordinary interest principal"
+        }
+      ],
+      "title": "1. Solving for Principal (P)",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "caption": "$P = \\frac{I}{R \\times T}$; always check time units.",
+            "title": "Finding Principal Examples",
+            "headers": [
+              "Interest (I)",
+              "Rate (R)",
+              "Time (T)",
+              "Principal (P)"
+            ],
+            "rows": [
+              {
+                "0": "$150",
+                "1": "5%",
+                "2": "1 year",
+                "3": "$3,000"
+              },
+              {
+                "0": "$200",
+                "1": "8%",
+                "2": "6 months",
+                "3": "$5,000"
+              },
+              {
+                "0": "$60",
+                "1": "3%",
+                "2": "90/360 (ordinary)",
+                "3": "$8,000"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "When the interest amount, rate, and time are known, we can find the principal by rearranging the simple interest formula.",
+          "From $I = P \\times R \\times T$, solve for $P$: $$P = \\frac{I}{R \\times T}$$.",
+          "Make sure $R$ is in decimal form and $T$ is in years.",
+          "This is useful when you know the interest cost and want to determine the original loan amount.",
+          "[[imp:Always convert the rate to decimal and time to years before substituting into the formula.]]"
+        ],
+        "formulaCard": {
+          "notes": [
+            "$R$ = annual interest rate (decimal).",
+            "$T$ = time in years; months ÷ 12, days ÷ 360 or 365."
+          ],
+          "title": "Solve for Principal",
+          "formula": "$$P = \\frac{I}{R \\times T}$$"
+        }
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "b1q1",
+          "hints": [
+            "The third factor.",
+            "Measured in years."
+          ],
+          "feedbackIfWrong": "time (T).",
+          "blanks": [
+            {
+              "accept": [
+                "time",
+                "T"
+              ]
+            }
+          ],
+          "prompt": "Principal = Interest ÷ (Rate × ___)."
+        },
+        {
+          "id": "b1q2",
+          "feedbackIfWrong": "12,000.",
+          "hints": [
+            "T = 3/12 = 0.25.",
+            "120 ÷ (0.04 × 0.25) = 120 ÷ 0.01 = ?"
+          ],
+          "prompt": "Interest $120, rate 4%, time 3 months. Find principal. (number only, no $)",
+          "type": "short-answer",
+          "answers": [
+            "12000",
+            "12,000"
+          ]
+        },
+        {
+          "prompt": "Interest $90, rate 6%, time 60 days (ordinary). Principal? (number only, no $)",
+          "feedbackIfWrong": "9,000.",
+          "hints": [
+            "T = 60/360 = 1/6.",
+            "90 ÷ (0.06 × 1/6) = 90 ÷ 0.01 = ?"
+          ],
+          "type": "short-answer",
+          "id": "b1q3",
+          "answers": [
+            "9000",
+            "9,000"
+          ]
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Hope knows she borrowed $40,000 for 6 months and paid $800 interest. What annual interest rate did the bank charge? R = $800 ÷ ($40,000 × 0.5) = 0.04 → 4%. The rate is 4% per year."
+      },
+      "id": "solve-for-rate",
+      "title": "2. Solving for Rate (R)",
+      "examples": [
+        {
+          "prompt": "A $2,000 loan for 3 months cost $30 interest. What annual rate was charged?",
+          "role": "guided",
+          "steps": [
+            "T = 3/12 = 0.25.",
+            "R = $30 ÷ ($2,000 × 0.25) = $30 ÷ $500 = 0.06.",
+            "Annual rate = 6%."
+          ],
+          "title": "A – Find the rate"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "The formula $R = I/(P×T)$ gives a decimal fraction, e.g., 0.06.",
+            "Interest rates are expressed as percents (per 100).",
+            "So 0.06 × 100 = 6% per year."
+          ],
+          "title": "B – Rate as percent",
+          "prompt": "Explain why you must multiply the decimal rate by 100.",
+          "peerPrompt": "Think about what the formula gives you versus what we call an interest rate.",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "prompt": "A 90‑day loan of $4,500 cost $67.50 interest (ordinary). Find the annual rate.",
+          "steps": [
+            "T = 90/360 = 0.25.",
+            "R = $67.50 ÷ ($4,500 × 0.25) = $67.50 ÷ $1,125 = 0.06.",
+            "Annual rate = 6%."
+          ],
+          "title": "C – Ordinary rate"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "If the principal, interest, and time are known, the annual rate can be found.",
+          "From $I = P \\times R \\times T$, solve for $R$: $$R = \\frac{I}{P \\times T}$$.",
+          "The result is a decimal; multiply by 100 to express as a percent.",
+          "This is useful for comparing loan costs or verifying the rate charged.",
+          "[[imp:Always convert the final decimal to a percent by multiplying by 100 and adding a % sign.]]"
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Principal",
+              "Interest",
+              "Time",
+              "Rate (Annual %)"
+            ],
+            "caption": "$R = \\frac{I}{P \\times T}$, then × 100 for %.",
+            "variant": "colorful",
+            "type": "table",
+            "title": "Finding Rate Examples",
+            "rows": [
+              {
+                "0": "$5,000",
+                "1": "$200",
+                "2": "1 year",
+                "3": "4%"
+              },
+              {
+                "0": "$10,000",
+                "1": "$300",
+                "2": "6 months",
+                "3": "6%"
+              },
+              {
+                "0": "$8,000",
+                "1": "$80",
+                "2": "60 days (ordinary)",
+                "3": "6%"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$R = \\frac{I}{P \\times T}$$",
+          "title": "Solve for Rate",
+          "notes": [
+            "Result is a decimal; multiply by 100 to get the annual percentage rate.",
+            "Time must be in years."
+          ]
+        }
+      },
+      "questions": [
+        {
+          "id": "b2q1",
+          "hints": [
+            "The third factor.",
+            "Measured in years."
+          ],
+          "type": "fill-blank",
+          "prompt": "Rate = Interest ÷ (Principal × ___).",
+          "blanks": [
+            {
+              "accept": [
+                "time",
+                "T"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "time (T)."
+        },
+        {
+          "prompt": "Principal $10,000, interest $500, time 1 year. Find annual rate. (just number, no % sign)",
+          "feedbackIfWrong": "5.",
+          "hints": [
+            "R = 500 ÷ (10,000 × 1) = 0.05 → 5%.",
+            "0.05 × 100 = ?"
+          ],
+          "id": "b2q2",
+          "answers": [
+            "5"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "type": "short-answer",
+          "id": "b2q3",
+          "feedbackIfWrong": "6.",
+          "answers": [
+            "6"
+          ],
+          "hints": [
+            "T = 0.5; R = 180 ÷ (6,000 × 0.5) = 180 ÷ 3,000 = 0.06.",
+            "0.06 × 100 = 6."
+          ],
+          "prompt": "Principal $6,000, interest $180, time 6 months. Annual rate? (number only, no % sign)"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't forget to multiply the decimal result by 100 to convert to a percent. [[imp:0.06 is 6%, not 0.06%.]]"
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "hints": [
+          "T = 120/360 = 1/3.",
+          "R = 150 ÷ (7,500 × 1/3) = 150 ÷ 2,500 = 0.06 → 6%."
+        ],
+        "prompt": "A 120‑day loan (ordinary) of $7,500 cost $150 interest. Find the annual rate.",
+        "optional": true,
+        "answers": [
+          "6",
+          "6.00"
+        ]
+      },
+      "teacherCues": [
+        "Rearrange I = P × R × T to R = I ÷ (P × T).",
+        "Remind students to convert the decimal result back to a percent."
+      ]
+    },
+    {
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The formula gives time in years. [[imp:Always convert to months (×12) or days (×360 for ordinary, ×365 for exact) as the problem requires.]]"
+      },
+      "challengeCorner": {
+        "answers": [
+          "120"
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "hints": [
+          "T = 320 ÷ (12,000 × 0.08) = 320 ÷ 960 = 1/3 year.",
+          "Days = (1/3) × 360 = 120."
+        ],
+        "prompt": "A $12,000 loan at 8% ordinary interest generated $320 interest. Find the number of days."
+      },
+      "examples": [
+        {
+          "prompt": "A $4,000 loan at 5% cost $100 interest. How many months was the loan?",
+          "role": "guided",
+          "steps": [
+            "T = $100 ÷ ($4,000 × 0.05) = $100 ÷ $200 = 0.5 years.",
+            "Months = 0.5 × 12 = 6 months."
+          ],
+          "title": "A – Find time in months"
+        },
+        {
+          "title": "B – Converting years to days",
+          "steps": [
+            "If T = 0.25 years, multiply by 360 to get days: 0.25 × 360 = 90 days.",
+            "For exact interest, multiply by 365.",
+            "The method depends on the context given in the problem."
+          ],
+          "peerPrompt": "Recall ordinary interest uses 360 days per year.",
+          "prompt": "Explain how to convert the decimal year result into days for ordinary interest.",
+          "role": "peer-explain",
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "T = $45 ÷ ($2,000 × 0.09) = $45 ÷ $180 = 0.25 years.",
+            "Days = 0.25 × 360 = 90 days."
+          ],
+          "title": "C – Days (ordinary)",
+          "role": "independent",
+          "prompt": "A $2,000 loan at 9% ordinary interest cost $45. How many days was the loan?"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Hope paid $800 interest on a $40,000 loan at 4%. How long did she have the money? T = $800 ÷ ($40,000 × 0.04) = 0.5 years → 6 months. The time period was 6 months."
+      },
+      "questions": [
+        {
+          "hints": [
+            "The annual percent as decimal.",
+            "Not time."
+          ],
+          "id": "b3q1",
+          "prompt": "Time (in years) = Interest ÷ (Principal × ___).",
+          "blanks": [
+            {
+              "accept": [
+                "rate",
+                "R"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "rate (R).",
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "1",
+            "1.0"
+          ],
+          "feedbackIfWrong": "1.",
+          "type": "short-answer",
+          "hints": [
+            "T = 250 ÷ (5,000 × 0.05) = 250 ÷ 250 = 1.",
+            "Result = 1 year."
+          ],
+          "id": "b3q2",
+          "prompt": "Principal $5,000, interest $250, rate 5%. Find time in years. (decimal, e.g., 0.5)"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "1 year × 12 months = 12.",
+            "Straight conversion."
+          ],
+          "feedbackIfWrong": "12.",
+          "id": "b3q3",
+          "answers": [
+            "12"
+          ],
+          "prompt": "Same numbers: $5,000, $250, 5%. How many months? (number only)"
+        }
+      ],
+      "teacherCues": [
+        "Rearrange to T = I ÷ (P × R).",
+        "Emphasize that the result will be in years; then convert to months or days as needed."
+      ],
+      "id": "solve-for-time",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$5,000",
+                "1": "6%",
+                "2": "$150",
+                "3": "0.5",
+                "4": "6 months"
+              },
+              {
+                "0": "$8,000",
+                "1": "9%",
+                "2": "$120",
+                "3": "1/6",
+                "4": "2 months"
+              },
+              {
+                "0": "$3,000",
+                "1": "6%",
+                "2": "$45 (ordinary)",
+                "3": "0.25",
+                "4": "90 days (360)"
+              }
+            ],
+            "title": "Finding Time Examples",
+            "type": "table",
+            "caption": "$T = \\frac{I}{P \\times R}$; then convert to desired unit.",
+            "headers": [
+              "Principal",
+              "Rate",
+              "Interest",
+              "Time (Years)",
+              "Time (Months/Days)"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$T = \\frac{I}{P \\times R}$$",
+          "notes": [
+            "Result is in years.",
+            "To get months, multiply by 12; to get days (ordinary), multiply by 360; (exact) multiply by 365."
+          ],
+          "title": "Solve for Time"
+        },
+        "explanation": [
+          "When principal, interest, and rate are known, we can find the time the loan was outstanding.",
+          "From $I = P \\times R \\times T$, solve for $T$: $$T = \\frac{I}{P \\times R}$$.",
+          "The result is in years. Multiply by 12 to get months, or by 360/365 to get days (depending on ordinary/exact).",
+          "This is useful for determining how long a loan lasted or when it will mature.",
+          "[[imp:$T$ is always expressed in years first, then converted.]]"
+        ]
+      },
+      "title": "3. Solving for Time (T)"
+    },
+    {
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "time",
+                "T"
+              ]
+            }
+          ],
+          "id": "b4q1",
+          "prompt": "To find principal, divide interest by (rate × ___).",
+          "hints": [
+            "The third factor.",
+            "In years."
+          ],
+          "feedbackIfWrong": "time (T)."
+        },
+        {
+          "id": "b4q2",
+          "prompt": "Principal $8,000, interest $480, time 1 year. Find rate. (number only, no % sign)",
+          "answers": [
+            "6"
+          ],
+          "hints": [
+            "R = 480 ÷ (8,000 × 1) = 0.06.",
+            "× 100 = 6."
+          ],
+          "feedbackIfWrong": "6.",
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "T = 75 ÷ (2,500 × 0.06) = 75 ÷ 150 = 0.5 yr.",
+            "0.5 × 12 = 6."
+          ],
+          "feedbackIfWrong": "6.",
+          "id": "b4q3",
+          "prompt": "Principal $2,500, rate 6%, interest $75. Find time in months. (number only)",
+          "answers": [
+            "6"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A business owner sees different pieces of loan information. Sometimes she knows the interest and rate but not the principal; other times she knows the principal and interest but not the time. Mastering the three rearrangements of $I = P \\times R \\times T$ lets her solve any simple interest puzzle."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "We know P, R, T; unknown is I. Use $I = P \\times R \\times T$.",
+            "T = 9/12 = 0.75; I = 3,000 × 0.07 × 0.75 = \\$157.50."
+          ],
+          "title": "A – Choose the correct formula",
+          "prompt": "A $3,000 loan at 7% for 9 months. Find interest."
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "Explain to a classmate how to decide whether to multiply or divide when solving for an unknown.",
+          "steps": [
+            "If you need I, multiply P, R, T.",
+            "If you need P, divide I by (R × T).",
+            "If you need R, divide I by (P × T).",
+            "If you need T, divide I by (P × R)."
+          ],
+          "title": "B – When to flip",
+          "peerPrompt": "Look at the original formula: $I = P \\times R \\times T$."
+        },
+        {
+          "role": "independent",
+          "prompt": "A loan cost $210 interest at 7% over 6 months. Find the principal.",
+          "steps": [
+            "Unknown is P. Use $P = I ÷ (R × T)$.",
+            "T = 6/12 = 0.5; P = 210 ÷ (0.07 × 0.5) = 210 ÷ 0.035 = \\$6,000."
+          ],
+          "title": "C – Identify and solve"
+        }
+      ],
+      "title": "4. Solving for Any Unknown Using the Formula",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "All $R$ values are annual rates in decimal; all $T$ values in years.",
+            "Convert $T$ from years to months/days as required."
+          ],
+          "title": "Simple Interest Unknowns",
+          "formula": "$$I = P \\times R \\times T$$ $$P = \\frac{I}{R \\times T}$$ $$R = \\frac{I}{P \\times T}$$ $$T = \\frac{I}{P \\times R}$$"
+        },
+        "explanation": [
+          "The simple interest formula can be rearranged to solve for any of the four variables: $I$, $P$, $R$, $T$.",
+          "Choose the correct form based on the knowns:",
+          "- Unknown $P$: $$P = \\frac{I}{R \\times T}$$.",
+          "- Unknown $R$: $$R = \\frac{I}{P \\times T}$$.",
+          "- Unknown $T$: $$T = \\frac{I}{P \\times R}$$.",
+          "Always ensure the units of time match the interest method (ordinary/exact) and express the final answer in the requested unit.",
+          "[[imp:Memorize the base formula $I = PRT$ — the others follow by simple algebra.]]"
+        ],
+        "visuals": [
+          {
+            "title": "All Three Rearrangements",
+            "variant": "colorful",
+            "caption": "Identify the unknown, then plug into the appropriate formula.",
+            "rows": [
+              {
+                "0": "Principal (P)",
+                "1": "$P = \\frac{I}{R \\times T}$",
+                "2": "I=$200, R=0.05, T=2 yrs → $2,000"
+              },
+              {
+                "0": "Rate (R)",
+                "1": "$R = \\frac{I}{P \\times T}$",
+                "2": "I=$300, P=$5,000, T=1 yr → 0.06 = 6%"
+              },
+              {
+                "0": "Time (T)",
+                "1": "$T = \\frac{I}{P \\times R}$",
+                "2": "I=$120, P=$3,000, R=0.08 → 0.5 yr = 6 mos"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Unknown",
+              "Formula",
+              "Example"
+            ]
+          }
+        ]
+      },
+      "teacherCues": [
+        "Present all three rearrangements side by side.",
+        "Practice identifying which variable is unknown and choosing the correct formula."
+      ],
+      "confusionCorner": {
+        "body": "Don't mix up which formula to use. [[imp:If you're solving for the interest, it's multiplication; for any of the other three, it's division.]]",
+        "title": "Watch out!"
+      },
+      "id": "mixed-unknowns",
+      "challengeCorner": {
+        "prompt": "An investment of $15,000 earned $450 interest at 4% simple interest. How many months was it invested?",
+        "answers": [
+          "9"
+        ],
+        "optional": true,
+        "hints": [
+          "T = 450 ÷ (15,000 × 0.04) = 450 ÷ 600 = 0.75 yr.",
+          "0.75 × 12 = 9 months."
+        ],
+        "type": "short-answer"
+      }
+    },
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "A $9,000 loan for 1 year resulted in $540 interest. Find the annual rate.",
+          "steps": [
+            "Understand: P=9,000, I=540, T=1, R=?",
+            "Solve: R = 540 ÷ (9,000 × 1) = 0.06 → 6%.",
+            "Conclude: Check: 9,000 × 0.06 × 1 = 540 ✓."
+          ],
+          "title": "A – Blueprint for unknown R"
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Avoiding formula mix‑ups",
+          "steps": [
+            "Writing down P, R, T, and I with labels forces you to see which one is missing.",
+            "Then you deliberately choose the formula that has that variable isolated.",
+            "It reduces the chance of accidentally multiplying when you should divide."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Think about the step where you list knowns and unknowns.",
+          "prompt": "How can the blueprint prevent you from using the wrong formula?"
+        },
+        {
+          "role": "independent",
+          "prompt": "A $4,500 loan at 8% ordinary interest cost $90. Find the time in days.",
+          "steps": [
+            "Understand: P=4,500, R=0.08, I=90, T=? (in years, then days).",
+            "Solve: T = 90 ÷ (4,500 × 0.08) = 90 ÷ 360 = 0.25 yr; days = 0.25 × 360 = 90 days.",
+            "Conclude: check: 4,500 × 0.08 × 90/360 = 4,500 × 0.08 × 0.25 = 90 ✓."
+          ],
+          "title": "C – Blueprint for days"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Blueprint for Unknowns",
+          "notes": [
+            "Write down the given numbers with labels.",
+            "Plug into the correct formula; don't mix up formulas."
+          ],
+          "formula": "$$\\text{Step 1: Identify knowns and unknown.}$$ $$\\text{Step 2: Choose } P = \\frac{I}{R \\times T}, R = \\frac{I}{P \\times T}, T = \\frac{I}{P \\times R}$$ $$\\text{Step 3: Check with } I = P \\times R \\times T$$"
+        },
+        "explanation": [
+          "Use the three‑step blueprint for any simple interest unknown problem:",
+          "1. Understand: list P, R, I, T as given; identify which one is missing.",
+          "2. Solve: select the correct formula ($P = I/(R×T)$, $R = I/(P×T)$, or $T = I/(P×R)$) and compute.",
+          "3. Conclude: verify your answer by substituting it back into $I = P \\times R \\times T$ to ensure consistency.",
+          "This structured approach eliminates guesswork."
+        ],
+        "visuals": [
+          {
+            "caption": "Always verify with the original formula.",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "I=750, R=0.06, T=10/12=5/6 yr, P=?",
+                "2": ""
+              },
+              {
+                "0": "2. Solve",
+                "1": "P = 750 ÷ (0.06 × 5/6) = 750 ÷ 0.05 = 15,000",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Check: 15,000 × 0.06 × 5/6 = 750 ✓",
+                "2": "Principal = $15,000"
+              }
+            ],
+            "title": "Blueprint Example: P unknown, I=$750, R=6%, T=10 months",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "id": "blueprint-unknown",
+      "challengeCorner": {
+        "type": "short-answer",
+        "optional": true,
+        "answers": [
+          "9",
+          "9.00"
+        ],
+        "prompt": "A bank charged $337.50 ordinary interest on a 90‑day loan of $15,000. What annual rate did it charge?",
+        "hints": [
+          "T = 90/360 = 0.25.",
+          "R = 337.50 ÷ (15,000 × 0.25) = 337.50 ÷ 3,750 = 0.09 → 9%."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "If time is asked in days, remember to multiply the decimal year by 360 (ordinary) or 365 (exact). [[imp:Don't leave the answer as a decimal year if the problem asks for months or days.]]"
+      },
+      "discoveryHook": {
+        "scenario": "A contractor knows he paid $750 interest on a loan at 6% for 10 months. Using the blueprint, he determines the loan amount was $15,000. The blueprint keeps him from grabbing the wrong formula."
+      },
+      "questions": [
+        {
+          "id": "b5q1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "prompt": "In the blueprint, the first step is to ___ the problem.",
+          "feedbackIfWrong": "understand.",
+          "hints": [
+            "Identify known and unknown.",
+            "The U step."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "id": "b5q2",
+          "answers": [
+            "2000",
+            "2,000"
+          ],
+          "hints": [
+            "I = P × R × T.",
+            "20,000 × 0.05 × 2 = ?"
+          ],
+          "feedbackIfWrong": "2,000.",
+          "prompt": "A loan of $20,000 at 5% for 2 years generated how much interest? (number only, no $)"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "1",
+            "1.0"
+          ],
+          "id": "b5q3",
+          "prompt": "Interest $160, rate 4%, principal $4,000. Find time in years. (decimal, e.g., 0.5)",
+          "hints": [
+            "T = 160 ÷ (4,000 × 0.04) = 160 ÷ 160 = 1.",
+            "Result is already in years."
+          ],
+          "feedbackIfWrong": "1."
+        }
+      ],
+      "title": "5. Blueprint Aid for Unknown Problems",
+      "teacherCues": [
+        "Use the blueprint Understand → Solve → Conclude for problems asking for an unknown.",
+        "Emphasize identifying what is given and what is missing."
+      ]
+    }
+  ],
+  "id": "ch10-lu10-2",
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "title": "Finding Unknown in Simple Interest Formula",
+  "standards": [
+    "BUSMATH.10.2"
+  ],
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

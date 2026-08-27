@@ -1,0 +1,664 @@
+{
+  "type": "interactive-lesson",
+  "id": "10-9-polar-conics",
+  "title": "Polar Equations of Conics",
+  "blocks": [
+    {
+      "id": "alt-def-polar-form",
+      "title": "Alternative Definition & Polar Equations",
+      "teacherCues": [
+        "Write $ \\frac{PF}{PQ} = e $ on the board. Ask: 'How does this single ratio define all conics?'",
+        "Draw a focus at the pole and a vertical directrix. Label $r$, $\\theta$, and the directrix distance $p$."
+      ],
+      "discoveryHook": {
+        "scenario": "When a comet swings by the Sun, we place the Sun at a focus and use polar coordinates to describe the orbit. The same polar equation $ r = \\frac{ep}{1 + e \\cos \\theta} $ models elliptical, parabolic, and hyperbolic trajectories."
+      },
+      "concept": {
+        "explanation": [
+          "A conic can be defined by a focus $ F $ and a directrix line: a point $ P $ satisfies $ \\frac{PF}{\\text{dist}(P,\\text{directrix})} = e $, where $ e $ is the [[kw:eccentricity]].",
+          "$ e < 1 $ $ \\Rightarrow $ ellipse; $ e = 1 $ $ \\Rightarrow $ parabola; $ e > 1 $ $ \\Rightarrow $ hyperbola.",
+          "With focus at the pole and directrix vertical or horizontal, the polar equation takes the form $$ r = \\frac{ep}{1 \\pm e \\cos \\theta} \\quad \\text{or} \\quad r = \\frac{ep}{1 \\pm e \\sin \\theta} $$",
+          "$ p $ is the distance from the focus (pole) to the directrix. The $ \\pm $ sign depends on the directrix location relative to the pole."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Polar Conic Forms",
+            "headers": [
+              "Directrix",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "Vertical, right of pole",
+                "1": "$ r = \\frac{ep}{1 + e \\cos \\theta} $"
+              },
+              {
+                "0": "Vertical, left of pole",
+                "1": "$ r = \\frac{ep}{1 - e \\cos \\theta} $"
+              },
+              {
+                "0": "Horizontal, above pole",
+                "1": "$ r = \\frac{ep}{1 + e \\sin \\theta} $"
+              },
+              {
+                "0": "Horizontal, below pole",
+                "1": "$ r = \\frac{ep}{1 - e \\sin \\theta} $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "General Polar Equation of a Conic",
+          "formula": "$$ r = \\frac{ep}{1 \\pm e \\cos \\theta} \\;\\text{or}\\; r = \\frac{ep}{1 \\pm e \\sin \\theta} $$",
+          "notes": [
+            "Focus at the pole.",
+            "$ e > 0 $ is eccentricity, $ p > 0 $ is focus‑directrix distance.",
+            "Sign indicates directrix side."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Form Identification",
+          "prompt": "What kind of directrix does $ r = \\frac{6}{1 - 2 \\cos \\theta} $ have?",
+          "steps": [
+            "The form is $ r = \\frac{ep}{1 - e \\cos \\theta} $ with $ e=2 $, $ ep=6 \\Rightarrow p=3 $.",
+            "The minus sign and cosine indicate a vertical directrix to the left of the pole.",
+            "Since $ e=2>1 $, it is a hyperbola."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Meaning of p",
+          "prompt": "If $ r = \\frac{8}{1 + \\sin \\theta} $, what is $ e $ and $ p $? Describe the directrix.",
+          "peerPrompt": "Discuss with a partner: 'Why is the directrix horizontal? How far is it from the pole?'",
+          "minLength": 2,
+          "steps": [
+            "Compare with $ r = \\frac{ep}{1 + e \\sin \\theta} $: $ e=1 $, $ ep=8 \\Rightarrow p=8 $.",
+            "The directrix is horizontal (sine), and the plus sign means it is above the pole.",
+            "Because $ e=1 $, this conic is a parabola."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Your turn",
+          "prompt": "Identify the directrix orientation for $ r = \\frac{10}{1 + 0.5 \\cos \\theta} $.",
+          "steps": [
+            "Cosine form, plus sign → vertical directrix to the right of the pole.",
+            "Eccentricity $ e=0.5 < 1 $ → ellipse."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sign confusion",
+        "body": "The $ \\pm $ in the denominator is the opposite of the directrix position. $ 1 + e\\cos\\theta $ means directrix is to the right; $ 1 - e\\cos\\theta $ means left."
+      },
+      "questions": [
+        {
+          "id": "q-alt-1",
+          "type": "fill-blank",
+          "prompt": "In the polar equation $ r = \\frac{ep}{1 \\pm e \\cos \\theta} $, the focus is at the ___.",
+          "blanks": [
+            {
+              "accept": [
+                "pole"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the origin of the polar system.",
+            "The fixed point."
+          ],
+          "feedbackIfWrong": "pole."
+        },
+        {
+          "id": "q-alt-2",
+          "type": "short-answer",
+          "prompt": "If $ e = 1 $ in the polar equation, the conic is a ___.",
+          "answer": "parabola",
+          "hints": [
+            "It's the middle eccentricity value.",
+            "Only one focus used in polar."
+          ],
+          "feedbackIfWrong": "parabola."
+        },
+        {
+          "id": "q-alt-3",
+          "type": "short-answer",
+          "prompt": "What does $ p $ represent in the polar equation of a conic? (one word)",
+          "answer": "distance",
+          "hints": [
+            "It is the distance between two things.",
+            "Between focus and directrix."
+          ],
+          "feedbackIfWrong": "distance."
+        }
+      ]
+    },
+    {
+      "id": "identify-conic",
+      "title": "Identifying a Conic from Its Polar Equation",
+      "teacherCues": [
+        "Write $ r = \\frac{15}{3 - 2 \\cos \\theta} $ and ask: 'How do we find $ e $?'",
+        "Show dividing numerator and denominator by the constant term (the number without trig)."
+      ],
+      "discoveryHook": {
+        "scenario": "Given a mess like $ \\frac{32}{3 + 5 \\sin \\theta} $, you can quickly find the eccentricity and classify the conic without graphing—just a simple division."
+      },
+      "concept": {
+        "explanation": [
+          "To identify a conic from $ r = \\frac{\\text{constant}}{ \\text{number} \\pm \\text{coeff} \\cdot \\text{trig}} $:",
+          "1. Divide numerator and denominator by the constant term (the number without the trig function).",
+          "2. Rewrite as $ r = \\frac{ep}{1 \\pm e \\cos \\theta} $ (or sin).",
+          "3. The coefficient of $ \\cos \\theta $ (or $ \\sin \\theta $) is $ e $.",
+          "4. Classify: $ e<1 $ ellipse, $ e=1 $ parabola, $ e>1 $ hyperbola."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Example Conversion",
+            "headers": [
+              "Original",
+              "Step",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "$ r = \\frac{15}{3 - 2 \\cos \\theta} $",
+                "1": "Divide by 3",
+                "2": "$ r = \\frac{5}{1 - \\frac{2}{3} \\cos \\theta} $"
+              },
+              {
+                "0": "Now compare",
+                "1": "$ e = \\frac{2}{3} $, $ ep = 5 \\Rightarrow p = 7.5 $",
+                "2": "Ellipse"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Identify as ellipse",
+          "prompt": "Identify the conic $ r = \\frac{15}{3 - 2 \\cos \\theta} $.",
+          "steps": [
+            "Divide numerator and denominator by 3: $ r = \\frac{5}{1 - \\frac{2}{3} \\cos \\theta} $.",
+            "Here $ e = \\frac{2}{3} < 1 $, so it's an ellipse.",
+            "Also $ ep = 5 \\Rightarrow p = \\frac{5}{2/3} = 7.5 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Hyperbola from sin form",
+          "prompt": "What type of conic is $ r = \\frac{32}{3 + 5 \\sin \\theta} $?",
+          "peerPrompt": "With a partner: 'Divide by 3. What is e? Is it bigger than 1?'",
+          "minLength": 2,
+          "steps": [
+            "Divide by 3: $ r = \\frac{32/3}{1 + \\frac{5}{3} \\sin \\theta} $.",
+            "$ e = \\frac{5}{3} > 1 $ → hyperbola.",
+            "The directrix is horizontal ($ \\sin \\theta $)."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick classification",
+          "prompt": "Classify $ r = \\frac{8}{2 - 3 \\sin \\theta} $.",
+          "steps": [
+            "Divide by 2: $ r = \\frac{4}{1 - 1.5 \\sin \\theta} $.",
+            "$ e = 1.5 > 1 $ → hyperbola."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't forget to divide",
+        "body": "The denominator must be in the form $ 1 \\pm e \\cos \\theta $ or $ 1 \\pm e \\sin \\theta $. Always divide by the constant term first."
+      },
+      "questions": [
+        {
+          "id": "q-id-1",
+          "type": "fill-blank",
+          "prompt": "To rewrite $ r = \\frac{15}{3 - 2 \\cos \\theta} $ in the form $ r = \\frac{ep}{1 \\pm e \\cos \\theta} $, divide numerator and denominator by ___.",
+          "blanks": [
+            {
+              "accept": [
+                "3"
+              ]
+            }
+          ],
+          "hints": [
+            "The constant term in the denominator is 3.",
+            "Divide by that number."
+          ],
+          "feedbackIfWrong": "3."
+        },
+        {
+          "id": "q-id-2",
+          "type": "short-answer",
+          "prompt": "After rewriting, what is the eccentricity $ e $ for $ r = \\frac{15}{3 - 2 \\cos \\theta} $? (as a fraction)",
+          "answer": "2/3",
+          "hints": [
+            "The coefficient of cosθ after division.",
+            "Look at 5/(1 - (?) cosθ)."
+          ],
+          "feedbackIfWrong": "2/3."
+        },
+        {
+          "id": "q-id-3",
+          "type": "short-answer",
+          "prompt": "If $ e = 0.5 $, the conic is an ___.",
+          "answer": "ellipse",
+          "hints": [
+            "0.5 < 1.",
+            "Not a parabola or hyperbola."
+          ],
+          "feedbackIfWrong": "ellipse."
+        }
+      ]
+    },
+    {
+      "id": "sketch-conic-polar",
+      "title": "Sketching a Conic from Its Polar Equation",
+      "teacherCues": [
+        "Graph the hyperbola $ r = \\frac{32}{3 + 5 \\sin \\theta} $ by finding vertices at $ \\theta = \\pi/2 $ and $ 3\\pi/2 $.",
+        "Draw the directrix; show how to compute $ a $, $ b $, $ c $."
+      ],
+      "discoveryHook": {
+        "scenario": "With the polar equation, you can find key points—vertices, asymptotes—directly by plugging in special angles. No need to convert to rectangular."
+      },
+      "concept": {
+        "explanation": [
+          "To sketch a conic from $ r = \\frac{ep}{1 \\pm e \\cos \\theta} $ (or sin):",
+          "1. Identify orientation: $ \\cos \\theta $ → symmetric about polar axis (horizontal major axis for ellipse/hyperbola); $ \\sin \\theta $ → about $ \\theta = \\pi/2 $.",
+          "2. Find vertices by evaluating $ r $ at $ \\theta = 0, \\pi $ (for cos) or $ \\theta = \\pi/2, 3\\pi/2 $ (for sin). The two extreme $ r $ values (including negative r converted) give semi‑major axis length $ a $.",
+          "3. For ellipse, $ 2a = r_{\\text{max}} + r_{\\text{min}} $ (after converting negative r). For hyperbola, the transverse axis length is $ 2a = |r_{\\text{vertex1}} - r_{\\text{vertex2}}| $ (after interpreting negative r as opposite direction).",
+          "4. Find $ c = e a $, $ b $ from ellipse $ b^2 = a^2 - c^2 $ or hyperbola $ b^2 = c^2 - a^2 $.",
+          "5. Sketch directrix and curve, plot foci, asymptotes if hyperbola."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Example: $ r = \\frac{32}{3 + 5 \\sin \\theta} $ hyperbola",
+            "headers": [
+              "Step",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "Orientation",
+                "1": "Horizontal directrix, vertical transverse axis"
+              },
+              {
+                "0": "Vertices ($ \\theta=\\pi/2, 3\\pi/2 $)",
+                "1": "$ r = 4 $ and $ r = -16 $ (equivalent to $(16, \\pi/2)$)"
+              },
+              {
+                "0": "Transverse axis length",
+                "1": "$ 2a = 16 - 4 = 12 \\Rightarrow a=6 $"
+              },
+              {
+                "0": "Eccentricity",
+                "1": "$ e = 5/3 $, so $ c = e a = 10 $"
+              },
+              {
+                "0": "$ b $",
+                "1": "$ b^2 = c^2 - a^2 = 64 \\Rightarrow b=8 $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Ellipse/Hyperbola Parameters",
+          "formula": "$$ \\text{Ellipse: } b^2 = a^2(1 - e^2) $$ $$ \\text{Hyperbola: } b^2 = a^2(e^2 - 1) $$",
+          "notes": [
+            "$ 2a $ is the major/transverse axis length.",
+            "$ c = e a $."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Hyperbola sketch",
+          "prompt": "Sketch $ r = \\frac{32}{3 + 5 \\sin \\theta} $. Find vertices, axes.",
+          "steps": [
+            "Divide by 3: $ r = \\frac{32/3}{1 + \\frac{5}{3} \\sin \\theta} $, $ e=5/3 $, directrix horizontal above.",
+            "Vertices at $ \\theta = \\pi/2 $: $ r=4 $; $ \\theta = 3\\pi/2 $: $ r=-16 $ (equivalent to (16, \\pi/2)). So vertices (4,π/2) and (16,π/2). $ 2a = 12 \\Rightarrow a=6 $.",
+            "$ c = e a = 10 $; $ b = \\sqrt{c^2 - a^2} = 8 $. Asymptotes through center (8, π/2)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Ellipse example",
+          "prompt": "For $ r = \\frac{15}{3 - 2 \\cos \\theta} $, find the vertices and length of major axis.",
+          "peerPrompt": "With a partner: 'What θ gives max and min r? How do we get the major axis length?'",
+          "minLength": 2,
+          "steps": [
+            "Form: $ r = \\frac{5}{1 - \\frac{2}{3} \\cos \\theta} $. Max r when denom smallest: $ \\cos\\theta = 1 \\Rightarrow r = \\frac{5}{1 - 2/3} = 15 $ at $ \\theta=0 $.",
+            "Min r when denom largest: $ \\cos\\theta = -1 \\Rightarrow r = \\frac{5}{1 + 2/3} = 3 $ at $ \\theta=\\pi $.",
+            "Vertices: (15,0) and (3,π). Major axis length = 15 + 3 = 18, so $ a = 9 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick sketch",
+          "prompt": "Graph $ r = \\frac{3}{1 + \\sin \\theta} $ (parabola) by finding vertex and directrix.",
+          "steps": [
+            "$ e=1 $, $ p=3 $, horizontal directrix above. Vertex at $ \\theta = \\pi/2 $ gives $ r = 3/(1+1) = 1.5 $, so vertex at (1.5, π/2). Parabola opens downward."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Negative r vertices",
+        "body": "A negative $ r $ value means the vertex is in the opposite direction. Convert to an equivalent positive $ r $ by adding $ \\pi $ to $ \\theta $ to find the actual distance."
+      },
+      "questions": [
+        {
+          "id": "q-sketch-1",
+          "type": "fill-blank",
+          "prompt": "For a polar conic with $ \\sin \\theta $, the vertices are found by evaluating $ r $ at $ \\theta = \\pi/2 $ and $ \\theta = $ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "3π/2",
+                "3pi/2"
+              ]
+            }
+          ],
+          "hints": [
+            "The opposite direction on the vertical axis.",
+            "Directly opposite π/2."
+          ],
+          "feedbackIfWrong": "$ 3\\pi/2 $."
+        },
+        {
+          "id": "q-sketch-2",
+          "type": "short-answer",
+          "prompt": "For $ r = \\frac{5}{1 - \\frac{2}{3} \\cos \\theta} $, what is the maximum $ r $-value?",
+          "answer": "15",
+          "hints": [
+            "Denominator minimum when cosθ=1.",
+            "r = 5/(1 - 2/3)."
+          ],
+          "feedbackIfWrong": "15."
+        },
+        {
+          "id": "q-sketch-3",
+          "type": "short-answer",
+          "prompt": "In the hyperbola $ r = \\frac{32}{3 + 5 \\sin \\theta} $, $ a = 6 $. What is $ c $?",
+          "answer": "10",
+          "hints": [
+            "e = 5/3.",
+            "c = e a = (5/3)*6."
+          ],
+          "feedbackIfWrong": "10."
+        }
+      ]
+    },
+    {
+      "id": "find-polar-eq",
+      "title": "Finding a Polar Equation of a Conic",
+      "teacherCues": [
+        "Ask: 'If we know the shape, eccentricity, and directrix, how do we write r?'",
+        "Show four cases with signs depending on directrix position relative to pole."
+      ],
+      "discoveryHook": {
+        "scenario": "Given the orbit of a planet (ellipse with sun at a focus) and its eccentricity, we can write the polar equation directly, enabling predictions of position at any angle."
+      },
+      "concept": {
+        "explanation": [
+          "To find a polar equation, you need: eccentricity $ e $, distance $ p $ (focus to directrix), and directrix orientation.",
+          "1. Determine the directrix side relative to the pole: right/left for cos, above/below for sin.",
+          "2. Choose the sign: $ + $ if directrix is to the right (cos) or above (sin); $ - $ if left (cos) or below (sin).",
+          "3. Write $ r = \\frac{ep}{1 \\pm e \\cos \\theta} $ or $ r = \\frac{ep}{1 \\pm e \\sin \\theta} $.",
+          "4. Substitute $ e $ and $ p $."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Directrix ↔ Equation Sign",
+            "headers": [
+              "Directrix location",
+              "Polar equation"
+            ],
+            "rows": [
+              {
+                "0": "Right of pole",
+                "1": "$ r = \\frac{ep}{1 + e \\cos \\theta} $"
+              },
+              {
+                "0": "Left of pole",
+                "1": "$ r = \\frac{ep}{1 - e \\cos \\theta} $"
+              },
+              {
+                "0": "Above pole",
+                "1": "$ r = \\frac{ep}{1 + e \\sin \\theta} $"
+              },
+              {
+                "0": "Below pole",
+                "1": "$ r = \\frac{ep}{1 - e \\sin \\theta} $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Parabola Example",
+          "formula": "$$ r = \\frac{p}{1 \\pm \\cos \\theta} \\;\\text{or}\\; r = \\frac{p}{1 \\pm \\sin \\theta} $$",
+          "notes": [
+            "For parabola, $ e = 1 $.",
+            "$ p $ is distance from focus to directrix."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Parabola with given directrix",
+          "prompt": "Find a polar equation of the parabola with focus at the pole and directrix $ y = 3 $.",
+          "steps": [
+            "Directrix is horizontal, above the pole → use $ + $ sine form.",
+            "Eccentricity $ e = 1 $, distance $ p = 3 $.",
+            "Equation: $ r = \\frac{1 \\cdot 3}{1 + 1 \\cdot \\sin \\theta} = \\frac{3}{1 + \\sin \\theta} $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Ellipse with vertical directrix",
+          "prompt": "An ellipse has $ e = 0.5 $, one focus at the pole, and corresponding directrix $ x = 4 $. Find its polar equation.",
+          "peerPrompt": "Discuss: 'Which sign do we use? Why?'",
+          "minLength": 2,
+          "steps": [
+            "Directrix is vertical, $ x=4 $ → to the right of pole (positive x). Use $ + $ cosine.",
+            "$ p = 4 $, $ e = 0.5 $.",
+            "$ r = \\frac{0.5 \\cdot 4}{1 + 0.5 \\cos \\theta} = \\frac{2}{1 + 0.5 \\cos \\theta} $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Hyperbola from eccentricity",
+          "prompt": "Write the polar equation of a hyperbola with $ e = 2 $, focus at pole, directrix $ y = -2 $.",
+          "steps": [
+            "Directrix horizontal, below pole → use $ - $ sine.",
+            "$ p = 2 $ (distance, absolute), $ e = 2 $.",
+            "$ r = \\frac{2 \\cdot 2}{1 - 2 \\sin \\theta} = \\frac{4}{1 - 2 \\sin \\theta} $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Sign and directrix side",
+        "body": "[[imp:If directrix is $ x = d $ with $ d > 0 $ (right), use $ + $ in denominator; if $ x = -d $ (left), use $ - $. Same for $ y $]]."
+      },
+      "questions": [
+        {
+          "id": "q-find-1",
+          "type": "fill-blank",
+          "prompt": "For a directrix to the left of the pole, the polar equation uses the sign ___ in the denominator.",
+          "blanks": [
+            {
+              "accept": [
+                "minus",
+                "-"
+              ]
+            }
+          ],
+          "hints": [
+            "Think of the example: x = -2.",
+            "Subtraction."
+          ],
+          "feedbackIfWrong": "minus (or -)."
+        },
+        {
+          "id": "q-find-2",
+          "type": "short-answer",
+          "prompt": "Write a polar equation of the parabola with directrix $ x = -1 $.",
+          "answer": "r = 1/(1 - cos θ)",
+          "hints": [
+            "e=1, p=1, vertical left.",
+            "Use minus cosine."
+          ],
+          "feedbackIfWrong": "$ r = \\frac{1}{1 - \\cos \\theta} $."
+        },
+        {
+          "id": "q-find-3",
+          "type": "short-answer",
+          "prompt": "If $ e = 0.8 $ and $ p = 5 $, with directrix above the pole, the numerator of the polar equation is ___.",
+          "answer": "4",
+          "hints": [
+            "ep = 0.8 * 5.",
+            "Multiply."
+          ],
+          "feedbackIfWrong": "4."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-polar-conics",
+      "title": "Blueprint Aid: Polar Conics Problem Solving",
+      "teacherCues": [
+        "Write Understand → Solve → Conclude. Ask: 'Are we given an equation to identify, or data to build an equation?'",
+        "Use flowchart: equation → divide → get e → classify; data → choose form → plug in."
+      ],
+      "discoveryHook": {
+        "scenario": "From Halley's comet's eccentricity and major axis length to the polar equation of its orbit, this blueprint guides you through the steps."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Understand]]: Identify what is given: a polar equation, or eccentricity and directrix. Determine the goal: classify and sketch, or write the equation.",
+          "[[kw:Solve]]: If given equation, divide to get $ e $ and $ p $, classify, find vertices, axes. If given data, select the correct form (cos/sin, sign) and plug in.",
+          "[[kw:Conclude]]: Present the classification, a sketch, or the polar equation. For orbits, give the closest distance (perigee) by evaluating $ r $ at the appropriate angle."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Blueprint Workflow",
+            "headers": [
+              "Task",
+              "Method"
+            ],
+            "rows": [
+              {
+                "0": "Classify $ r = \\frac{...}{...} $",
+                "1": "Divide by constant, identify $ e $"
+              },
+              {
+                "0": "Sketch conic",
+                "1": "Find vertices, axes, foci, directrix"
+              },
+              {
+                "0": "Write polar eq. from data",
+                "1": "Determine orientation, sign, $ ep $"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example 1: Halley's Comet",
+          "prompt": "Halley's comet has $ e = 0.967 $ and major axis length $ 35.88 $ AU. Find polar equation and closest approach to the sun.",
+          "steps": [
+            "Understand: Orbit is ellipse with sun at one focus (pole). Use vertical major axis (sine), directrix above → $ + $.",
+            "Solve: $ 2a = 35.88 \\Rightarrow a = 17.94 $. Then $ ep = a(1-e^2) = 17.94(1 - 0.967^2) \\approx 1.164 $. Equation: $ r = \\frac{1.164}{1 + 0.967 \\sin \\theta} $.",
+            "Closest (perihelion) at $ \\theta = \\pi/2 $: $ r = 1.164/(1+0.967) \\approx 0.59 $ AU."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example 2: Find equation from description",
+          "prompt": "A hyperbola has eccentricity 2 and directrix $ y = 1 $. Find its polar equation.",
+          "peerPrompt": "With a partner: 'What sign? Cosine or sine?'",
+          "minLength": 2,
+          "steps": [
+            "Understand: directrix horizontal, above pole → sine, plus sign.",
+            "Solve: $ p = 1 $, $ e = 2 $ → $ r = \\frac{2 \\cdot 1}{1 + 2 \\sin \\theta} = \\frac{2}{1 + 2 \\sin \\theta} $.",
+            "Conclude: Equation written."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Your Turn",
+          "prompt": "Classify and sketch $ r = \\frac{6}{1 - \\cos \\theta} $.",
+          "steps": [
+            "Understand: $ e=1 $, $ ep=6 \\Rightarrow p=6 $, directrix vertical left. Parabola.",
+            "Solve: Vertex at $ \\theta = \\pi $ gives $ r = 6/(1-(-1)) = 3 $, so vertex (3,π). Opens to the right? Actually with minus cos, directrix left, parabola opens right.",
+            "Conclude: Sketch a parabola opening right, vertex at (3,π) (which is point (-3,0) in rectangular)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Orbit distances",
+        "body": "For ellipses, apogee (farthest) and perigee (closest) correspond to vertices. Compute them from $ r $ at $ \\theta = 0 $ or $ \\pi $ (horizontal) or $ \\pi/2 $, $ 3\\pi/2 $ (vertical)."
+      },
+      "questions": [
+        {
+          "id": "q-blue-1",
+          "type": "fill-blank",
+          "prompt": "The first step in the blueprint when given a polar equation is to divide by the constant term to put it in the form ___.",
+          "blanks": [
+            {
+              "accept": [
+                "r = ep/(1 ± e cos θ)",
+                "r = ep/(1 ± e sin θ)"
+              ]
+            }
+          ],
+          "hints": [
+            "Standard form with 1 in denominator.",
+            "Denominator like 1 ± e cosθ."
+          ],
+          "feedbackIfWrong": "Standard form, e.g., $ r = \\frac{ep}{1 \\pm e \\cos \\theta} $."
+        },
+        {
+          "id": "q-blue-2",
+          "type": "short-answer",
+          "prompt": "For Halley's comet equation $ r = \\frac{1.164}{1 + 0.967 \\sin \\theta} $, the closest point to the sun occurs at $ \\theta = $ ___ (in radians).",
+          "answer": "π/2",
+          "hints": [
+            "Minimize denominator: sinθ = 1.",
+            "At that angle, r is smallest."
+          ],
+          "feedbackIfWrong": "$ \\pi/2 $."
+        },
+        {
+          "id": "q-blue-3",
+          "type": "short-answer",
+          "prompt": "If a conic has directrix $ x = -3 $, focus at pole, and $ e = 0.5 $, the polar equation has denominator $ 1 - 0.5 \\cos \\theta $. True or False?",
+          "answer": "true",
+          "hints": [
+            "Directrix left → minus sign.",
+            "Cosine for vertical directrix."
+          ],
+          "feedbackIfWrong": "True."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

@@ -1,0 +1,752 @@
+{
+  "presenterNotes": [
+    "Emphasize the difference between the two Wilcoxon tests: signed‑rank for paired data, rank sum for independent samples.",
+    "Students often confuse the two tests; use the flowchart in the blueprint block.",
+    "For the signed‑rank test, careful with ties: use average ranks. For the rank sum test, the normal approximation requires n₁,n₂ ≥ 10.",
+    "Google Sheets can rank data with =RANK.AVG, but the Wilcoxon procedures still require manual setup. Consider using add‑ons or manual steps."
+  ],
+  "blocks": [
+    {
+      "concept": {
+        "explanation": [
+          "The [[kw:Wilcoxon signed‑rank test]] is a nonparametric test for two dependent samples (paired data). It tests whether the population distributions are the same.",
+          "Unlike the sign test, it uses the [[imp:magnitude]] of the differences, not just their direction.",
+          "Step 1: Compute the difference $d = x_1 - x_2$ for each pair. Ignore pairs with $d = 0$.",
+          "Step 2: Find the [[imp:absolute value]] of each difference and rank them from smallest to largest (1 = smallest absolute difference).",
+          "Step 3: Assign each rank the sign of the original difference. These are called [[imp:signed ranks]].",
+          "Step 4: Sum the positive signed ranks and the negative signed ranks separately.",
+          "The test statistic $w_s$ is the [[imp:smaller]] of the absolute values of these two sums."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Old",
+              "New",
+              "Diff",
+              "|Diff|",
+              "Rank",
+              "Signed Rank"
+            ],
+            "variant": "colorful",
+            "title": "Golf Score Differences (Old − New)",
+            "rows": [
+              {
+                "0": "89",
+                "1": "83",
+                "2": "6",
+                "3": "6",
+                "4": "8",
+                "5": "+8"
+              },
+              {
+                "0": "84",
+                "1": "83",
+                "2": "1",
+                "3": "1",
+                "4": "1",
+                "5": "+1"
+              },
+              {
+                "0": "96",
+                "1": "92",
+                "2": "4",
+                "3": "4",
+                "4": "5.5",
+                "5": "+5.5"
+              },
+              {
+                "0": "74",
+                "1": "76",
+                "2": "−2",
+                "3": "2",
+                "4": "2.5",
+                "5": "−2.5"
+              },
+              {
+                "0": "91",
+                "1": "91",
+                "2": "0",
+                "3": "—",
+                "4": "—",
+                "5": "—"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ w_s = \\min\\left( \\left| \\sum \\text{positive signed ranks} \\right|, \\left| \\sum \\text{negative signed ranks} \\right| \\right) $$",
+          "title": "Wilcoxon Signed‑Rank Test Statistic",
+          "notes": [
+            "Ties in absolute difference: assign average rank.",
+            "Ignore zero differences.",
+            "Critical values from Table 9 (n ≤ 30).",
+            "Smaller $w_s$ suggests a difference between populations."
+          ]
+        }
+      },
+      "confusionCorner": {
+        "title": "Signed Ranks Carry the Sign",
+        "body": "After ranking the absolute differences, attach the sign of the original difference to each rank. The sum of positive signed ranks and sum of negative signed ranks are computed separately. [[imp:Never mix signs when summing.]]"
+      },
+      "questions": [
+        {
+          "answer": "paired",
+          "type": "short-answer",
+          "prompt": "The Wilcoxon signed‑rank test is used for ___ samples. (independent or paired)",
+          "feedbackIfWrong": "It is used for paired (dependent) samples.",
+          "hints": [
+            "It's the alternative to the paired t‑test.",
+            "Data are dependent."
+          ],
+          "id": "q11-2-1"
+        },
+        {
+          "type": "fill-blank",
+          "prompt": "In the signed‑rank test, we first take the ___ value of each difference before ranking.",
+          "hints": [
+            "It makes all differences positive for ranking.",
+            "Denoted by vertical bars."
+          ],
+          "id": "q11-2-2",
+          "feedbackIfWrong": "We use the absolute value of each difference.",
+          "blanks": [
+            {
+              "accept": [
+                "absolute"
+              ]
+            }
+          ]
+        },
+        {
+          "answer": "signed",
+          "prompt": "The test statistic $w_s$ is the smaller of the absolute sums of the positive and negative ___ ranks.",
+          "type": "short-answer",
+          "id": "q11-2-3",
+          "hints": [
+            "These ranks carry the sign of the original difference.",
+            "Not just the raw ranks."
+          ],
+          "feedbackIfWrong": "The test statistic uses signed ranks."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example A – Ranking Differences",
+          "role": "guided",
+          "steps": [
+            "Absolute values: 3, 2, 5, 1. Sorted: 1, 2, 3, 5.",
+            "Ranks: |−1|=1 → rank 1; |−2|=2 → rank 2; |3|=3 → rank 3; |5|=5 → rank 4.",
+            "Signed ranks: −1 (rank 1), −2 (rank 2), +3 (rank 3), +5 (rank 4).",
+            "Positive sum = 3+4 = 7; negative sum = 1+2 = 3. $w_s$ = min(7,3) = 3."
+          ],
+          "prompt": "Differences: 3, −2, 5, −1. Compute absolute values, ranks, and signed ranks."
+        },
+        {
+          "prompt": "Two differences have absolute value 4. Explain how to rank them.",
+          "steps": [
+            "If the two values tie for the 5th and 6th smallest, assign both the average rank (5+6)/2 = 5.5.",
+            "This ensures the sum of ranks remains correct.",
+            "The next difference gets rank 7."
+          ],
+          "title": "Example B – Handling Ties",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nDiscuss: If two differences are tied in absolute value, what rank should each receive? Why is the average used?",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Positive signed ranks sum to 38.5, negative sum to −6.5. Find $w_s$.",
+          "role": "independent",
+          "title": "Example C – Finding the Test Statistic",
+          "steps": [
+            "Absolute values: |38.5| = 38.5, |−6.5| = 6.5.",
+            "Smaller is 6.5.",
+            "Thus $w_s = 6.5$."
+          ]
+        }
+      ],
+      "title": "The Wilcoxon Signed‑Rank Test (Paired Data)",
+      "teacherCues": [
+        "Write on the board: Sign test vs. Wilcoxon. Sign test ignores size of difference; Wilcoxon uses magnitude.",
+        "Show a table with before/after scores and demonstrate computing difference, absolute value, rank, and signed rank."
+      ],
+      "id": "wilcoxon-signed-rank-intro",
+      "discoveryHook": {
+        "scenario": "The sign test only cares if you improved or not. The Wilcoxon signed‑rank test also cares how much you improved. A big improvement counts more than a tiny one. That makes it more powerful at detecting real differences."
+      }
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "title": "Portion of Table 9 (Wilcoxon Signed‑Rank Critical Values)",
+            "type": "table",
+            "headers": [
+              "n",
+              "α = 0.05 (one‑tailed)",
+              "α = 0.025 (one‑tailed)",
+              "α = 0.05 (two‑tailed)"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "8",
+                "1": "6",
+                "2": "4",
+                "3": "4"
+              },
+              {
+                "0": "9",
+                "1": "8",
+                "2": "6",
+                "3": "6"
+              },
+              {
+                "0": "10",
+                "1": "11",
+                "2": "8",
+                "3": "8"
+              },
+              {
+                "0": "12",
+                "1": "17",
+                "2": "13",
+                "3": "13"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "$w_s$ = smaller absolute sum of signed ranks.",
+            "Use Table 9 for $n \\le 30$.",
+            "For $n > 30$, use normal approximation (not covered in this section)."
+          ],
+          "formula": "$$ \\text{Reject } H_0 \\text{ if } w_s \\le \\text{critical value} $$",
+          "title": "Decision Rule (Signed‑Rank Test)"
+        },
+        "explanation": [
+          "Use [[kw:Table 9]] in Appendix B to find the critical value for the Wilcoxon signed‑rank test.",
+          "The sample size $n$ is the number of pairs with a non‑zero difference.",
+          "If $w_s$ is [[imp:less than or equal to]] the critical value, reject $H_0$.",
+          "For a one‑tailed test, use the one‑tailed critical values; for a two‑tailed test, use the two‑tailed values.",
+          "Example: In the golf data, $n = 9$, one‑tailed $\\alpha = 0.05$, critical value = 8. $w_s = 6.5 \\le 8$, so reject $H_0$."
+        ]
+      },
+      "confusionCorner": {
+        "body": "Table 9 provides both one‑tailed and two‑tailed critical values. Make sure to use the correct column. For a one‑tailed test at α=0.05, use the '0.05 (one‑tailed)' column. For a two‑tailed test at α=0.05, use the '0.05 (two‑tailed)' column.",
+        "title": "One‑Tailed vs. Two‑Tailed Critical Values"
+      },
+      "id": "wilcoxon-signed-rank-decision",
+      "teacherCues": [
+        "Show Table 9 (Critical Values for Wilcoxon Signed‑Rank Test). Explain how to find critical value for given n and α (one‑tailed or two‑tailed).",
+        "Emphasize: Reject H₀ if $w_s$ ≤ critical value."
+      ],
+      "examples": [
+        {
+          "title": "Example A – Finding Critical Value",
+          "prompt": "For n = 10, α = 0.05 (one‑tailed), find the critical value from Table 9.",
+          "steps": [
+            "Look at row n = 10 in Table 9.",
+            "Find column for one‑tailed α = 0.05.",
+            "The critical value is 11.",
+            "Reject H₀ if $w_s \\le 11$."
+          ],
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Why Smaller $w_s$ Means Reject",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nDiscuss: If the treatment has no effect, positive and negative ranks should be balanced. What would cause one sum to be very small?",
+          "role": "peer-explain",
+          "prompt": "Explain why a small $w_s$ suggests the populations are different.",
+          "steps": [
+            "If the treatment has no effect, the positive and negative ranks should be roughly equal.",
+            "If one sum is very small, it means most differences have the same sign, suggesting a shift.",
+            "Thus, a small $w_s$ provides evidence that the populations differ."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Make a Decision",
+          "prompt": "n = 8, $w_s = 5$, two‑tailed α = 0.05, critical value from Table 9 is 4. Decision?",
+          "steps": [
+            "Compare $w_s = 5$ to critical value 4.",
+            "5 ≤ 4? No.",
+            "Fail to reject H₀."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "answer": "8",
+          "id": "q11-2-4",
+          "feedbackIfWrong": "The critical value is 8.",
+          "prompt": "For the signed‑rank test with n=9, α=0.05 (one‑tailed), the critical value from Table 9 is ___.",
+          "type": "short-answer",
+          "hints": [
+            "Look at Table 9 row n=9.",
+            "One‑tailed 0.05 column."
+          ]
+        },
+        {
+          "feedbackIfWrong": "Reject H₀ if $w_s$ ≤ critical value.",
+          "prompt": "If $w_s$ is less than or equal to the critical value, we ___ the null hypothesis.",
+          "type": "fill-blank",
+          "id": "q11-2-5",
+          "hints": [
+            "It means the ranks are unbalanced.",
+            "We conclude a significant difference."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "reject"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "In the golf example, the null hypothesis stated the new design does not lower scores. The alternative (claim) said it does. After rejecting H₀, what can you conclude? (Answer: scores were lowered)",
+          "id": "q11-2-6",
+          "hints": [
+            "The claim was that scores decreased.",
+            "Rejecting H₀ supports the claim."
+          ],
+          "answer": "lowered",
+          "feedbackIfWrong": "We can conclude the new design lowered scores.",
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Once we have $w_s$, we compare it to a critical value from Table 9. The smaller $w_s$ is, the more unbalanced the positive and negative ranks are, indicating a shift in the data."
+      },
+      "title": "Decision Rule for the Signed‑Rank Test"
+    },
+    {
+      "teacherCues": [
+        "Contrast with signed‑rank: this is for independent samples.",
+        "Show how to combine two independent samples, rank all data together, then sum the ranks for the smaller group."
+      ],
+      "examples": [
+        {
+          "prompt": "Smaller sample (n₁=3): values 5, 8, 12. Larger sample (n₂=4): values 3, 7, 10, 15. Combine and rank all 7 values. Then find R for the smaller sample.",
+          "title": "Example A – Computing R",
+          "role": "guided",
+          "steps": [
+            "Sorted: 3(1), 5(2), 7(3), 8(4), 10(5), 12(6), 15(7).",
+            "Smaller sample values: 5 (rank 2), 8 (rank 4), 12 (rank 6).",
+            "$R = 2 + 4 + 6 = 12$."
+          ]
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nDiscuss: Does it matter which sample we use? Why is it convenient to use the smaller one?",
+          "title": "Example B – Why Use Smaller Sample for R?",
+          "role": "peer-explain",
+          "prompt": "Explain to a partner why we sum the ranks for the smaller sample.",
+          "steps": [
+            "The formulas for $\\mu_R$ and $\\sigma_R$ are based on $n_1$ being the smaller size.",
+            "If we used the larger sample, the formulas would need to be adjusted.",
+            "Using the smaller sample simplifies calculation and standardizes the test."
+          ]
+        },
+        {
+          "role": "independent",
+          "prompt": "$n_1=10$, $n_2=12$, $R=138$. Find $\\mu_R$, $\\sigma_R$, and $z$.",
+          "steps": [
+            "$\\mu_R = 10(10+12+1)/2 = 10(23)/2 = 115$.",
+            "$\\sigma_R = \\sqrt{10 \\cdot 12 \\cdot 23 / 12} = \\sqrt{230} \\approx 15.17$.",
+            "$z = (138 - 115)/15.17 \\approx 1.52$."
+          ],
+          "title": "Example C – Calculating z"
+        }
+      ],
+      "id": "wilcoxon-rank-sum-intro",
+      "title": "The Wilcoxon Rank Sum Test (Independent Samples)",
+      "discoveryHook": {
+        "scenario": "When you have two independent groups and can't assume normality, the Wilcoxon rank sum test (also called Mann‑Whitney U) compares their distributions. It ranks all the data together and checks if one group tends to have higher or lower values."
+      },
+      "confusionCorner": {
+        "body": "[[imp:Wilcoxon signed‑rank]] = paired data (dependent). [[imp:Wilcoxon rank sum]] = independent samples. Don't confuse them! The names sound similar, but the designs are different.",
+        "title": "Rank Sum vs. Signed Rank"
+      },
+      "concept": {
+        "formulaCard": {
+          "title": "Wilcoxon Rank Sum Test Statistic",
+          "formula": "$$ z = \\frac{R - \\mu_R}{\\sigma_R} $$ $$ \\mu_R = \\frac{n_1(n_1 + n_2 + 1)}{2} $$ $$ \\sigma_R = \\sqrt{\\frac{n_1 n_2 (n_1 + n_2 + 1)}{12}} $$",
+          "notes": [
+            "$n_1$ = smaller sample size, $n_2$ = larger sample size.",
+            "$R$ = sum of ranks for the smaller sample.",
+            "Ties: assign average rank.",
+            "Use standard normal table for critical values."
+          ]
+        },
+        "explanation": [
+          "The [[kw:Wilcoxon rank sum test]] is a nonparametric test for two [[imp:independent]] samples. It tests whether the two populations have the same distribution.",
+          "Requirement: both sample sizes must be at least 10.",
+          "Step 1: Combine the data from both samples and sort from smallest to largest. Assign ranks from 1 to $N$ (total observations).",
+          "Step 2: Let $n_1$ be the size of the [[imp:smaller]] sample, $n_2$ the larger. Sum the ranks for the smaller sample; this sum is $R$.",
+          "Step 3: The test statistic is a z‑score: $$z = \\frac{R - \\mu_R}{\\sigma_R}$$ where $\\mu_R = \\frac{n_1(n_1 + n_2 + 1)}{2}$ and $\\sigma_R = \\sqrt{\\frac{n_1 n_2 (n_1 + n_2 + 1)}{12}}$.",
+          "Step 4: Compare $z$ to standard normal critical values. Reject $H_0$ if $z$ is in the rejection region."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Earnings Data (Male = 10, Female = 12)",
+            "headers": [
+              "Data",
+              "Sample",
+              "Rank"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "77",
+                "1": "F",
+                "2": "1"
+              },
+              {
+                "0": "78",
+                "1": "M",
+                "2": "2"
+              },
+              {
+                "0": "84",
+                "1": "F",
+                "2": "3"
+              },
+              {
+                "0": "85",
+                "1": "F",
+                "2": "4"
+              },
+              {
+                "0": "86",
+                "1": "M",
+                "2": "5.5"
+              },
+              {
+                "0": "86",
+                "1": "F",
+                "2": "5.5"
+              }
+            ]
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "The Wilcoxon rank sum test is used for ___ samples. (independent or paired)",
+          "hints": [
+            "It's the alternative to the two‑sample t‑test.",
+            "Data come from two separate groups."
+          ],
+          "type": "short-answer",
+          "answer": "independent",
+          "feedbackIfWrong": "It is used for independent samples.",
+          "id": "q11-2-7"
+        },
+        {
+          "feedbackIfWrong": "We assign ranks to the combined data.",
+          "id": "q11-2-8",
+          "prompt": "In the rank sum test, we combine both samples, sort the data, and assign ___ to all values.",
+          "type": "fill-blank",
+          "hints": [
+            "1 for the smallest, 2 for the next, etc.",
+            "Used to compute R."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "ranks"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q11-2-9",
+          "feedbackIfWrong": "The test statistic is a z‑score.",
+          "hints": [
+            "It is a z‑score.",
+            "We compare it to standard normal critical values."
+          ],
+          "prompt": "The test statistic for the rank sum test follows which distribution? (z, t, or χ²)",
+          "answer": "z",
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Show how to find critical z values for given α (one‑tailed or two‑tailed).",
+        "Walk through the male/female earnings example: z=1.52, two‑tailed α=0.10, critical ±1.645. Fail to reject."
+      ],
+      "confusionCorner": {
+        "title": "One‑Tailed vs. Two‑Tailed Critical z",
+        "body": "For a two‑tailed test at α=0.05, use z = ±1.96. For a one‑tailed test at the same α, use z = 1.645 (right) or -1.645 (left). [[imp:Make sure to use the correct critical value for your test type.]]"
+      },
+      "discoveryHook": {
+        "scenario": "After computing z, we compare it to standard normal critical values. In the earnings example, z was 1.52, which is not extreme enough to reject the null hypothesis of no difference between male and female earnings."
+      },
+      "examples": [
+        {
+          "prompt": "z = -2.1, α = 0.05 two‑tailed, critical values ±1.96. Decision?",
+          "role": "guided",
+          "steps": [
+            "Compare |z| = 2.1 to 1.96.",
+            "2.1 > 1.96, so z is in the rejection region.",
+            "Reject H₀."
+          ],
+          "title": "Example A – Two‑Tailed Decision"
+        },
+        {
+          "prompt": "In the earnings example, we failed to reject H₀. Does this mean male and female earnings are equal?",
+          "minLength": 2,
+          "steps": [
+            "Failing to reject means the sample didn't provide strong enough evidence of a difference.",
+            "It does not prove the populations are identical; a smaller difference might exist.",
+            "Larger samples might detect a smaller difference."
+          ],
+          "peerPrompt": "Without looking back...\n\nDiscuss: What does 'fail to reject' mean? Could there still be a difference that we didn't detect?",
+          "role": "peer-explain",
+          "title": "Example B – Interpreting Fail to Reject"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Compare z = 2.8 to 2.33.",
+            "2.8 > 2.33, so reject H₀.",
+            "There is evidence that the first population tends to have larger values."
+          ],
+          "title": "Example C – Right‑Tailed Test",
+          "prompt": "z = 2.8, α = 0.01 right‑tailed, critical value 2.33. Decision?"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q11-2-10",
+          "type": "short-answer",
+          "answer": "±1.96",
+          "feedbackIfWrong": "The critical values are ±1.96.",
+          "hints": [
+            "From the standard normal table.",
+            "Each tail has area 0.025."
+          ],
+          "prompt": "What are the critical z‑values for a two‑tailed test at α = 0.05? (Answer like ±1.96)"
+        },
+        {
+          "prompt": "If z = 2.3 for a right‑tailed test with critical value 1.645, we ___ the null hypothesis.",
+          "feedbackIfWrong": "Reject H₀ because 2.3 > 1.645.",
+          "hints": [
+            "2.3 is greater than 1.645.",
+            "We conclude a significant difference."
+          ],
+          "id": "q11-2-11",
+          "blanks": [
+            {
+              "accept": [
+                "reject"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "answer": "10",
+          "prompt": "For the Wilcoxon rank sum test, both sample sizes must be at least ___.",
+          "hints": [
+            "This ensures the normal approximation works.",
+            "A two‑digit number."
+          ],
+          "feedbackIfWrong": "Both sample sizes must be at least 10.",
+          "id": "q11-2-12"
+        }
+      ],
+      "title": "Decision Rule for the Rank Sum Test",
+      "id": "rank-sum-decision",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\alpha = 0.10: z = \\pm 1.645 \\text{ (two‑tailed)}, 1.28 \\text{ (right)} $$ $$ \\alpha = 0.05: z = \\pm 1.96 \\text{ (two‑tailed)}, 1.645 \\text{ (right)} $$ $$ \\alpha = 0.01: z = \\pm 2.575 \\text{ (two‑tailed)}, 2.33 \\text{ (right)} $$",
+          "title": "Common Critical z‑Values",
+          "notes": [
+            "Use Table 4 (Standard Normal) for other α.",
+            "Left‑tailed: use negative of right‑tailed value."
+          ]
+        },
+        "explanation": [
+          "The test statistic $z$ follows a standard normal distribution when both sample sizes are at least 10.",
+          "For a [[imp:two‑tailed test]], reject $H_0$ if $z \\le -z_{\\alpha/2}$ or $z \\ge z_{\\alpha/2}$.",
+          "For a [[imp:right‑tailed test]], reject if $z \\ge z_\\alpha$.",
+          "For a [[imp:left‑tailed test]], reject if $z \\le -z_\\alpha$.",
+          "Example: In the earnings test, $z = 1.52$, two‑tailed $\\alpha = 0.10$, critical values $\\pm 1.645$. Since $1.52 < 1.645$, we fail to reject $H_0$."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Test Type",
+              "Rejection Region"
+            ],
+            "rows": [
+              {
+                "0": "Two‑tailed",
+                "1": "$z \\le -z_{\\alpha/2}$ or $z \\ge z_{\\alpha/2}$"
+              },
+              {
+                "0": "Right‑tailed",
+                "1": "$z \\ge z_\\alpha$"
+              },
+              {
+                "0": "Left‑tailed",
+                "1": "$z \\le -z_\\alpha$"
+              }
+            ],
+            "title": "Rejection Regions for Rank Sum Test",
+            "variant": "colorful",
+            "type": "table"
+          }
+        ]
+      }
+    },
+    {
+      "concept": {
+        "explanation": [
+          "**Understand**: Identify the design—paired or independent? State hypotheses. Check sample size requirements.",
+          "**Solve**: For signed‑rank: compute differences, absolute values, ranks, signed ranks, $w_s$, compare to Table 9. For rank sum: combine data, rank, sum ranks for smaller group, compute $z$, compare to z‑table.",
+          "**Conclude**: Reject or fail to reject $H_0$. Interpret in context.",
+          "Remember: Wilcoxon tests are less powerful than t‑tests when normality holds, but are safer when it doesn't."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Design",
+              "Parametric Test",
+              "Nonparametric Test"
+            ],
+            "rows": [
+              {
+                "0": "Paired (dependent)",
+                "1": "Paired t‑test",
+                "2": "Wilcoxon signed‑rank"
+              },
+              {
+                "0": "Independent (two groups)",
+                "1": "Two‑sample t‑test",
+                "2": "Wilcoxon rank sum"
+              },
+              {
+                "0": "Independent (≥3 groups)",
+                "1": "One‑way ANOVA",
+                "2": "Kruskal‑Wallis (not covered)"
+              }
+            ],
+            "type": "table",
+            "title": "Which Test Should I Use?"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "It is the Wilcoxon signed‑rank test.",
+          "prompt": "For paired data, the nonparametric alternative to the paired t‑test is the Wilcoxon ___-rank test.",
+          "hints": [
+            "It uses signed ranks.",
+            "The word is 'signed'."
+          ],
+          "answer": "signed",
+          "type": "short-answer",
+          "id": "q11-2-13"
+        },
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "rank"
+              ]
+            }
+          ],
+          "id": "q11-2-14",
+          "hints": [
+            "It sums the ranks for the smaller sample.",
+            "The word is 'rank'."
+          ],
+          "feedbackIfWrong": "It is the Wilcoxon rank sum test.",
+          "prompt": "For two independent samples, the nonparametric test is the Wilcoxon ___ sum test."
+        },
+        {
+          "feedbackIfWrong": "No, both sample sizes must be at least 10.",
+          "hints": [
+            "Both sample sizes must be at least 10.",
+            "8 is less than 10."
+          ],
+          "id": "q11-2-15",
+          "type": "short-answer",
+          "prompt": "If both sample sizes are 8 for a rank sum test, can you use the normal approximation? (yes or no)",
+          "answer": "no"
+        }
+      ],
+      "title": "Blueprint Aid: Choosing and Performing the Right Wilcoxon Test",
+      "discoveryHook": {
+        "scenario": "When normality is violated, we need to pick the right nonparametric test. For paired data (before/after), use Wilcoxon signed‑rank. For independent groups (men vs. women), use Wilcoxon rank sum. Let's practice both with the Understand–Solve–Conclude framework."
+      },
+      "examples": [
+        {
+          "title": "Example A – Understand: Identify the Test",
+          "steps": [
+            "The data are paired (same drivers before and after).",
+            "Normality is violated, so we use the nonparametric alternative.",
+            "Correct test: Wilcoxon signed‑rank test."
+          ],
+          "prompt": "A study compares reaction times of 15 drivers before and after drinking coffee. Data are not normal. Which test?",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nWork with a partner: $\\mu_R = 12(12+12+1)/2 = 12(25)/2 = 150$. $\\sigma_R = \\sqrt{12 \\cdot 12 \\cdot 25 / 12} = \\sqrt{300} \\approx 17.32$. Then $z = (168-150)/17.32$.",
+          "minLength": 2,
+          "prompt": "Company A (n₁=12) vs. Company B (n₂=12) claim amounts. Combined ranks for A sum to 168. Compute $\\mu_R$, $\\sigma_R$, $z$.",
+          "title": "Example B – Solve: Rank Sum Test",
+          "steps": [
+            "$\\mu_R = 12 \\times 25 / 2 = 150$.",
+            "$\\sigma_R = \\sqrt{12 \\cdot 12 \\cdot 25 / 12} = \\sqrt{300} \\approx 17.32$.",
+            "$z = (168 - 150)/17.32 \\approx 1.04$."
+          ]
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "1.04 < 1.96, so not in rejection region.",
+            "Fail to reject H₀.",
+            "No significant difference in claims between the two companies."
+          ],
+          "title": "Example C – Conclude",
+          "prompt": "From Example B, z = 1.04, two‑tailed α=0.05, critical ±1.96. Conclusion?"
+        }
+      ],
+      "teacherCues": [
+        "Draw a decision flowchart on the board: Paired data? → Signed‑rank. Independent? → Rank sum. Both require non‑normal data.",
+        "Walk through a combined example: first paired, then independent, using Understand‑Solve‑Conclude."
+      ],
+      "id": "blueprint-wilcoxon",
+      "confusionCorner": {
+        "title": "Don't Mix Up Signed‑Rank and Rank Sum",
+        "body": "Signed‑rank uses within‑pair differences and Table 9. Rank sum combines independent samples into one ranking and uses a z‑test. [[imp:Always check the study design before choosing the test.]]"
+      }
+    }
+  ],
+  "type": "interactive-lesson",
+  "title": "The Wilcoxon Tests",
+  "standards": [
+    "HSS.IC.B.4",
+    "HSS.IC.B.5"
+  ],
+  "id": "section-11-2-wilcoxon-tests",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

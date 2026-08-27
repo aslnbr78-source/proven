@@ -1,0 +1,726 @@
+{
+  "standards": [
+    "HSS.CP.A.4",
+    "HSS.CP.A.5",
+    "HSS.CP.B.6"
+  ],
+  "schemaVersion": 2,
+  "id": "chapter-10-3-two-way-tables-and-probability",
+  "presenterNotes": [
+    "Have students physically move around to create live two-way tables (e.g., left-handed vs. likes pizza).",
+    "When introducing conditional relative frequencies, emphasize the 'given' phrase and how it narrows the focus to a row or column.",
+    "The independence check using tables is a direct application of 10.2; link back to that lesson."
+  ],
+  "title": "Two-Way Tables and Probability",
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "id": "two-way-tables-joint-marginal",
+      "concept": {
+        "explanation": [
+          "A [[kw:two-way table]] (or contingency table) shows data that fits into two categories – one category forms the rows, the other the columns.",
+          "Each inside number is a [[kw:joint frequency]] – it counts how many individuals fall into both that row and column.",
+          "The totals along the bottom and right side are called [[kw:marginal frequencies]] – they sum up a whole row or column.",
+          "The grand total (bottom right corner) equals the total number of observations.",
+          "To complete a table, start by filling known joint frequencies, then subtract from marginal totals to find missing values."
+        ],
+        "visuals": [
+          {
+            "title": "Example: Music & Language Survey (80 Students)",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Speaks Foreign Language",
+                "1": "25",
+                "2": "9",
+                "3": "34"
+              },
+              {
+                "0": "Does Not Speak Foreign Language",
+                "1": "16",
+                "2": "30",
+                "3": "46"
+              },
+              {
+                "0": "Total",
+                "1": "41",
+                "2": "39",
+                "3": "80"
+              }
+            ],
+            "headers": [
+              "",
+              "Plays Instrument",
+              "Does Not Play Instrument",
+              "Total"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Joint frequency: count inside cells} $$ $$ \\text{Marginal frequency: row or column sum} $$ $$ \\text{Grand total: sum of all cells} $$",
+          "notes": [
+            "Joint = intersection of two categories.",
+            "Marginal = totals, found in the 'margins'.",
+            "All marginal totals must sum to the grand total."
+          ],
+          "title": "Two-Way Table Terminology"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "You survey your classmates: Do you play an instrument? Do you speak a foreign language? A two‑way table lets you organize the answers so you can see connections – like how many musicians are also bilingual – at a single glance!"
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "joint",
+                "Joint"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Inside cells are joint frequencies – they count the intersection of two categories.",
+          "prompt": "In a two-way table, the numbers inside the cells are called ___ frequencies.",
+          "hints": [
+            "Starts with 'j'.",
+            "They show 'and' situations, like 'plays instrument and speaks a language'."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "prompt": "What word describes the row and column totals in a two-way table? (Hint: they're in the margins.)",
+          "id": "q1-2",
+          "answer": "marginal",
+          "feedbackIfWrong": "Row and column totals are called marginal frequencies.",
+          "hints": [
+            "Starts with 'm'.",
+            "These frequencies are found on the edges of the table."
+          ]
+        },
+        {
+          "hints": [
+            "Add the two joint frequencies for 'plays instrument' row.",
+            "25 + 16 = ?"
+          ],
+          "feedbackIfWrong": "25 + 16 = 41, so 41 students play an instrument.",
+          "answer": "41",
+          "type": "short-answer",
+          "id": "q1-3",
+          "prompt": "If 25 students play an instrument and speak a foreign language, and 16 play an instrument but do not speak a foreign language, how many total students play an instrument?"
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Place given joint frequencies: Junior Yes = 42, Senior Yes = 77.",
+            "Find Junior No = 106 – 42 = 64. Senior No = 114 – 77 = 37.",
+            "Row totals: Juniors 106, Seniors 114. Column totals: Yes = 42+77 = 119, No = 64+37 = 101.",
+            "Grand total: 106+114 = 119+101 = 220. Table is complete."
+          ],
+          "title": "Example A – Completing a Two-Way Table",
+          "prompt": "106 juniors and 114 seniors were asked if they will attend a concert. 42 juniors said yes. 77 seniors said yes. Complete the two-way table and find all marginal frequencies."
+        },
+        {
+          "minLength": 2,
+          "prompt": "In the concert survey table, what does the marginal frequency 119 represent?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why are the row totals 106 and 114 equal to the sum of the joint frequencies in those rows? What would the column totals tell you?",
+          "title": "Example B – Interpreting Marginal Frequencies",
+          "role": "peer-explain",
+          "steps": [
+            "119 is in the 'Yes' column total row.",
+            "It is the sum of all students who said yes (42 juniors + 77 seniors).",
+            "It answers: 'How many students are attending?' without regard to class.",
+            "Similarly, column totals summarize a single category across all rows."
+          ]
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Boys in favor = 61 → boys against = 96-61 = 35.",
+            "Girls against = 17 → girls in favor = 88-17 = 71.",
+            "Table: rows Boys/Girls, columns Favor/Against. Joint: (61,35) and (71,17).",
+            "Marginals: Boys 96, Girls 88; Favor 61+71=132, Against 35+17=52; Grand total 184."
+          ],
+          "prompt": "Survey: 96 boys, 88 girls about community garden. 61 boys in favor, 17 girls against. Organize into a two-way table and give the marginal frequencies.",
+          "title": "Example C – Building from Scratch"
+        }
+      ],
+      "title": "Two-Way Tables and Marginal Frequencies",
+      "confusionCorner": {
+        "body": "Joint frequencies are the 'and' counts (e.g., girl AND in favor). Marginals are the 'just one category' counts. [[imp:Don't double-count!]] Each person appears in exactly one joint cell.",
+        "title": "Joint vs. Marginal"
+      },
+      "teacherCues": [
+        "Draw a blank two-way table on the board. Ask: What two categories could we use for our class? (e.g., left/right handed, likes pizza/not).",
+        "Explain the terms joint frequency (inside the table) and marginal frequency (totals on edges)."
+      ]
+    },
+    {
+      "examples": [
+        {
+          "prompt": "Use the concert survey counts to make a relative frequency table. Interpret the joint relative frequency for 'Senior and Attending'.",
+          "title": "Example A – Converting Counts to Proportions",
+          "steps": [
+            "Grand total = 220.",
+            "Senior & Attending count = 77 → relative freq = 77/220 = 0.35.",
+            "Fill all cells by dividing by 220. Row/column totals also become relative.",
+            "Interpretation: 35% of all surveyed students are seniors who plan to attend."
+          ],
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Interpreting Marginal Relative Frequencies",
+          "steps": [
+            "0.459 is the proportion of all students who are not attending, regardless of class.",
+            "The two column marginal relative frequencies (Attending + Not Attending) = 0.541 + 0.459 = 1.",
+            "0.541 is the proportion attending.",
+            "So, about 45.9% are not going, 54.1% are going."
+          ],
+          "role": "peer-explain",
+          "prompt": "In the table, the marginal relative frequency for 'Not Attending' is 0.459. What does this mean?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the marginal relative frequency for 'Attending' plus 'Not Attending' equal 1? What does 0.541 represent?",
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "Grand total = 184. P(girl and yes) = 71/184 ≈ 0.386.",
+            "Complete table: each joint divided by 184. Marginals sum to 1.",
+            "Answers will be proportions, e.g., girls total = 88/184 ≈ 0.478."
+          ],
+          "role": "independent",
+          "title": "Example C – Creating from a Table",
+          "prompt": "From the garden survey (61 boys yes, 35 boys no; 71 girls yes, 17 girls no; total 184), make a joint/marginal relative frequency table. What is P(girl and yes)?"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "A [[kw:joint relative frequency]] is a joint frequency divided by the grand total – it tells what fraction of the whole group falls into that cell.",
+          "A [[kw:marginal relative frequency]] is a row or column total divided by the grand total – it gives the overall proportion for one category alone.",
+          "All joint relative frequencies sum to 1 (or 100%).",
+          "Relative frequencies can be written as fractions, decimals, or percents."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "",
+              "Attending",
+              "Not Attending",
+              "Total"
+            ],
+            "title": "Concert Survey – Joint/Marginal Relative Frequencies",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Junior",
+                "1": "$ \\frac{42}{220} \\approx 0.191 $",
+                "2": "$ \\frac{64}{220} \\approx 0.291 $",
+                "3": "0.482"
+              },
+              {
+                "0": "Senior",
+                "1": "$ \\frac{77}{220} = 0.35 $",
+                "2": "$ \\frac{37}{220} \\approx 0.168 $",
+                "3": "0.518"
+              },
+              {
+                "0": "Total",
+                "1": "0.541",
+                "2": "0.459",
+                "3": "1"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Joint Relative Freq.} = \\frac{\\text{Joint Freq.}}{\\text{Grand Total}} $$ $$ \\text{Marginal Relative Freq.} = \\frac{\\text{Marginal Freq.}}{\\text{Grand Total}} $$",
+          "notes": [
+            "Each joint relative frequency is a probability estimate for that specific combination.",
+            "The grand total becomes 1 in the relative frequency table."
+          ],
+          "title": "Calculating Relative Frequencies"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "Raw counts can be hard to compare. If you turn each number into a proportion of the whole, you instantly see what percentage of students are juniors who are attending – that's a joint relative frequency!"
+      },
+      "id": "relative-frequencies",
+      "confusionCorner": {
+        "body": "Joint relative frequencies always use the grand total. [[imp:If you want 'among those in a row', you need conditional relative frequency, not joint relative frequency.]]",
+        "title": "Don't Divide by Row/Column Total Here"
+      },
+      "title": "Joint and Marginal Relative Frequencies",
+      "teacherCues": [
+        "Take the concert table and divide every number by the grand total (220). Write the new decimals in the same cells.",
+        "Point out: The marginal relative frequencies now sum to 1.0."
+      ],
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "hints": [
+            "It's the overall total, not a row or column total.",
+            "Starts with 'g'."
+          ],
+          "feedbackIfWrong": "Relative frequencies are based on the grand total (overall number of observations).",
+          "prompt": "A relative frequency is found by dividing a frequency by the ___ total.",
+          "blanks": [
+            {
+              "accept": [
+                "grand",
+                "Grand"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "25/80 = 0.3125.",
+          "hints": [
+            "Divide 25 by 80.",
+            "25 ÷ 80 = ?"
+          ],
+          "id": "q2-2",
+          "type": "short-answer",
+          "answer": "0.3125",
+          "prompt": "If 25 out of 80 students both play an instrument and speak a foreign language, what is the joint relative frequency as a decimal?"
+        },
+        {
+          "feedbackIfWrong": "All joint relative frequencies add to 1 (or 100%).",
+          "type": "short-answer",
+          "hints": [
+            "The sum of all proportions must equal the whole.",
+            "Think 100% as a decimal."
+          ],
+          "prompt": "What must all joint relative frequencies in a two-way table add up to?",
+          "answer": "1",
+          "id": "q2-3"
+        }
+      ]
+    },
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "From the concert relative frequencies, find the conditional relative frequency that a senior is not attending.",
+          "steps": [
+            "Joint relative freq. (Senior & Not Attending) = 0.168.",
+            "Row marginal for Senior = 0.518.",
+            "Conditional = 0.168 / 0.518 ≈ 0.324.",
+            "Interpret: About 32.4% of seniors are not attending."
+          ],
+          "title": "Example A – Condition on Rows"
+        },
+        {
+          "minLength": 2,
+          "steps": [
+            "For column 'Attending': marginal relative freq = 0.541. Junior joint = 0.191 → 0.191/0.541 ≈ 0.353. Senior joint = 0.35/0.541 ≈ 0.647.",
+            "For column 'Not Attending': marginal = 0.459. Junior = 0.291/0.459 ≈ 0.634, Senior = 0.168/0.459 ≈ 0.366.",
+            "Interpretation: Among those attending, about 35.3% are juniors and 64.7% are seniors."
+          ],
+          "prompt": "Create a conditional relative frequency table based on column totals (Attending / Not Attending) for the concert survey.",
+          "title": "Example B – Condition on Columns",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you know which marginal to use as denominator? If you condition on 'Attending', what does the resulting number for juniors represent?"
+        },
+        {
+          "prompt": "A bag has 4 red and 6 blue marbles. You draw twice with replacement. The two-way table for 'first draw' vs 'second draw' color is not useful, but for practice: In a survey of 100 people, 30 are left-handed, 20 of those wear glasses. 70 are right-handed, 35 wear glasses. Find P(glasses | left-handed).",
+          "role": "independent",
+          "steps": [
+            "Table: rows handedness, columns glasses. Joint: left & glasses = 20, left & no glasses = 10, right & glasses = 35, right & no glasses = 35.",
+            "P(glasses | left) = (number left & glasses) / (total left) = 20/30 = 2/3 ≈ 0.667.",
+            "This is a conditional probability directly from counts."
+          ],
+          "title": "Example C – Conditional from Counts Directly"
+        }
+      ],
+      "teacherCues": [
+        "From the concert table, ask: 'Among juniors, what proportion are attending?'",
+        "Write the formula: divide the joint relative frequency by the marginal relative frequency of that row."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Junior",
+                "1": "$ \\frac{0.191}{0.482} \\approx 0.396 $",
+                "2": "$ \\frac{0.291}{0.482} \\approx 0.604 $",
+                "3": "1.000"
+              },
+              {
+                "0": "Senior",
+                "1": "$ \\frac{0.35}{0.518} \\approx 0.676 $",
+                "2": "$ \\frac{0.168}{0.518} \\approx 0.324 $",
+                "3": "1.000"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "",
+              "Attending",
+              "Not Attending",
+              "Total"
+            ],
+            "title": "Concert Survey – Conditional Relative Frequencies by Row (Class)"
+          }
+        ],
+        "explanation": [
+          "A [[kw:conditional relative frequency]] is the ratio of a joint relative frequency to the marginal relative frequency of the given condition (row or column).",
+          "It answers: 'Given that the individual is in this row/column, what is the chance they are in that column/row?'",
+          "Formula based on row totals: $$ \\text{Cond. Rel. Freq.} = \\frac{\\text{Joint Relative Freq.}}{\\text{Row Marginal Relative Freq.}} $$",
+          "You can also condition on columns.",
+          "These are essentially estimates of conditional probabilities."
+        ],
+        "formulaCard": {
+          "title": "Conditional Relative Frequency (Row-Based)",
+          "notes": [
+            "The denominator is the 'given' group's relative size.",
+            "Row conditional frequencies sum to 1 across the row.",
+            "Similarly, for columns, divide by column marginal relative frequency."
+          ],
+          "formula": "$$ \\text{Cond. Rel. Freq.} = \\frac{\\text{Joint Relative Freq.}}{\\text{Row Marginal Relative Freq.}} $$"
+        }
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "prompt": "In a two-way table, to find the conditional relative frequency for a cell given its row, you divide by which total?",
+          "answer": "row",
+          "feedbackIfWrong": "You divide by the row total when conditioning on a row.",
+          "hints": [
+            "The 'given' group determines the denominator.",
+            "If given a row category, use the total for that ___."
+          ],
+          "id": "q3-1"
+        },
+        {
+          "type": "fill-blank",
+          "prompt": "The conditional relative frequency of A given B is estimated by dividing the joint relative frequency of A and B by the ___ relative frequency of B.",
+          "hints": [
+            "Starts with 'm'.",
+            "It's the total proportion for the 'given' category."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "marginal",
+                "Marginal"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Conditional relative frequency = joint / marginal of the condition.",
+          "id": "q3-2"
+        },
+        {
+          "id": "q3-3",
+          "type": "short-answer",
+          "prompt": "If 25 out of 34 students who speak a language also play an instrument, what is the conditional relative frequency that a language speaker plays an instrument? Answer as a decimal rounded to 3 places.",
+          "feedbackIfWrong": "25/34 ≈ 0.735.",
+          "answer": "0.735",
+          "hints": [
+            "Condition on 'speaks a language'. Total language speakers = 34.",
+            "Divide 25 by 34."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "If you only care about the juniors, the whole table isn't as useful. Conditional relative frequencies let you zoom in on one row or column and see the distribution inside that group – like finding the percentage of juniors who plan to attend."
+      },
+      "id": "conditional-relative-frequencies",
+      "title": "Conditional Relative Frequencies",
+      "confusionCorner": {
+        "title": "Which Total to Use?",
+        "body": "If the condition is a row (like 'given junior'), divide by the row total. If it's a column (like 'given attending'), divide by the column total. [[imp:Always match the denominator to the 'given' group.]]"
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Don't Confuse Relative Frequency with Probability",
+        "body": "In a sample, relative frequencies estimate the true probabilities. When checking independence, use the relative frequencies from the sample and acknowledge they are estimates. [[imp:Small differences may not prove dependence; but large differences do.]]"
+      },
+      "questions": [
+        {
+          "id": "q4-1",
+          "prompt": "If P(A|B) = 0.3 and P(A) = 0.3, are A and B independent? Answer 'yes' or 'no'.",
+          "answer": "yes",
+          "type": "short-answer",
+          "hints": [
+            "Independence means the condition doesn't change the probability.",
+            "If P(A|B) equals P(A), events are independent."
+          ],
+          "feedbackIfWrong": "If P(A|B) = P(A), the events are independent, so yes."
+        },
+        {
+          "prompt": "To check independence from a two-way table, you can compare a conditional relative frequency to a ___ relative frequency.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "marginal",
+                "Marginal"
+              ]
+            }
+          ],
+          "hints": [
+            "Starts with 'm'.",
+            "This type of frequency is the overall proportion for one category."
+          ],
+          "id": "q4-2",
+          "feedbackIfWrong": "You compare the conditional relative frequency to the marginal relative frequency."
+        },
+        {
+          "feedbackIfWrong": "0.27 / 0.30 = 0.90.",
+          "type": "short-answer",
+          "hints": [
+            "Divide joint P(yes & Santa Monica)=0.27 by marginal P(Santa Monica)=0.30.",
+            "0.27 / 0.30 = ?"
+          ],
+          "prompt": "In the satellite TV table, what is P(yes | Santa Monica)? Answer as a decimal rounded to 2 places.",
+          "answer": "0.90",
+          "id": "q4-3"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{If } P(B \\mid A) \\approx P(B) \\text{, then A and B are independent.} $$",
+          "title": "Independence Check from Table",
+          "notes": [
+            "Use conditional probabilities based on row/column totals.",
+            "Alternatively, check if joint probability equals product of marginals.",
+            "In tables, these are the theoretical probabilities estimated by relative frequencies."
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Satellite TV Survey (Joint Relative Frequencies)",
+            "variant": "colorful",
+            "headers": [
+              "",
+              "Glendale",
+              "Santa Monica",
+              "Long Beach",
+              "Total"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Yes (recommend)",
+                "1": "0.29",
+                "2": "0.27",
+                "3": "0.32",
+                "4": "0.88"
+              },
+              {
+                "0": "No (not recommend)",
+                "1": "0.05",
+                "2": "0.03",
+                "3": "0.04",
+                "4": "0.12"
+              },
+              {
+                "0": "Total",
+                "1": "0.34",
+                "2": "0.30",
+                "3": "0.36",
+                "4": "1"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "From a two-way table of relative frequencies, you can compute [[kw:conditional probabilities]] directly: $ P(B \\mid A) = \\frac{P(A \\text{ and } B)}{P(A)} $.",
+          "To test independence of two events, check if $ P(B \\mid A) = P(B) $, or equivalently, $ P(A \\text{ and } B) = P(A) \\cdot P(B) $.",
+          "When using a table, compare a conditional relative frequency to the corresponding marginal relative frequency; if they are equal (or very close), events are independent.",
+          "Real-world data often shows small differences due to sampling variability, but we look for approximate equality."
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "Using the satellite TV table, determine if 'recommending' and 'living in Long Beach' are independent.",
+          "role": "guided",
+          "steps": [
+            "P(Long Beach) = 0.36 (marginal).",
+            "P(Long Beach | yes) = P(yes & Long Beach)/P(yes) = 0.32 / 0.88 ≈ 0.3636.",
+            "Compare: 0.36 ≈ 0.3636, they are very close.",
+            "Because P(Long Beach) ≈ P(Long Beach | yes), the events are essentially independent."
+          ],
+          "title": "Example A – Testing Independence"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Check if recommending and living in Glendale are independent using the same table.",
+          "minLength": 2,
+          "steps": [
+            "P(Glendale) = 0.34.",
+            "P(Glendale | no) = P(no & Glendale)/P(no) = 0.05 / 0.12 ≈ 0.4167.",
+            "0.34 ≠ 0.4167, so there's a clear difference.",
+            "Thus, recommending and living in Glendale appear dependent (the no group has a higher Glendale proportion)."
+          ],
+          "title": "Example B – Which City Shows Dependence?",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you know which conditional probability to compare? If the events are independent, what should you expect?"
+        },
+        {
+          "prompt": "Endangered species table: Mammals 70 endangered, 16 threatened; Birds 80 endangered, 16 threatened; Other 318 endangered, 142 threatened. Is being a mammal independent of being endangered? Check P(endangered | mammal) vs. P(endangered).",
+          "title": "Example C – Mammal Endangerment",
+          "role": "independent",
+          "steps": [
+            "Total endangered = 70+80+318 = 468. Total species = sum all = 70+16+80+16+318+142 = 642.",
+            "P(endangered) = 468/642 ≈ 0.729. P(endangered | mammal) = 70/(70+16) = 70/86 ≈ 0.814.",
+            "0.729 ≠ 0.814, so they are not independent. Mammals have a higher rate of endangerment."
+          ]
+        }
+      ],
+      "title": "Conditional Probability & Independence from Tables",
+      "discoveryHook": {
+        "scenario": "A satellite TV company surveys customers in three cities. The two-way table shows who would recommend them. Can we tell if recommending and city are independent? By comparing a conditional probability with a marginal probability, we can!"
+      },
+      "teacherCues": [
+        "Refer back to 10.2 independence test: P(A|B)=P(A). Show how to get those probabilities from a two-way table.",
+        "Use a table of joint relative frequencies to check independence."
+      ],
+      "id": "conditional-probability-independence"
+    },
+    {
+      "confusionCorner": {
+        "title": "Conditioning on the Wrong Total",
+        "body": "If the question is 'among those who play an instrument, what is the probability...', you must divide by the number who play an instrument, not the grand total. [[imp:Always check what group you're focusing on.]]"
+      },
+      "teacherCues": [
+        "Model the blueprint steps for a real-world question: 'What is the probability a student who plays an instrument also speaks a foreign language?'",
+        "Remind students: always identify the 'given' group, then use the correct marginal total."
+      ],
+      "examples": [
+        {
+          "prompt": "In the music/language survey (80 students, 25 play instrument & speak language, 41 play instrument). Find P(speaks language | plays instrument).",
+          "role": "guided",
+          "steps": [
+            "Understand: Given 'plays instrument', find probability of 'speaks language'.",
+            "Solve: P(speaks language | plays instrument) = (plays & speaks) / (total plays instrument) = 25/41.",
+            "Compute: 25/41 ≈ 0.6098.",
+            "Conclude: About 61% of instrumentalists also speak a foreign language."
+          ],
+          "title": "Example A – From Survey to Probability"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Are 'plays an instrument' and 'speaks a foreign language' independent? Use the table: 80 students, 41 play, 34 speak, 25 both.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you use the numbers to test independence? What two numbers must you compare?",
+          "minLength": 2,
+          "steps": [
+            "Understand: We need to see if P(speaks | plays) equals P(speaks).",
+            "Solve: P(speaks) = 34/80 = 0.425. P(speaks | plays) = 25/41 ≈ 0.61.",
+            "Since 0.425 ≠ 0.61, they are not independent.",
+            "Conclude: Instrumentalists are more likely to speak a language than the general student body."
+          ],
+          "title": "Example B – Independence Question"
+        },
+        {
+          "role": "independent",
+          "prompt": "A student tried three routes to school and recorded on-time/late. On Route A: 18 on time, 5 late. Route B: 15 on time, 4 late. Route C: 22 on time, 6 late. Which route gives the highest probability of being on time?",
+          "steps": [
+            "Understand: P(on time | route).",
+            "Solve: A: 18/23≈0.783, B: 15/19≈0.789, C: 22/28≈0.786.",
+            "Conclude: Route B has the highest conditional probability, so it's the best choice based on this data."
+          ],
+          "title": "Example C – Best Route to School"
+        }
+      ],
+      "id": "blueprint-two-way-tables",
+      "questions": [
+        {
+          "feedbackIfWrong": "The first step is Understand the problem and identify the event and condition.",
+          "type": "short-answer",
+          "hints": [
+            "It starts with 'U'.",
+            "You define events and conditions in this step."
+          ],
+          "prompt": "In the blueprint, what is the first step? (Answer: Understand, Solve, or Conclude?)",
+          "id": "q5-1",
+          "answer": "Understand"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "marginal",
+                "Marginal"
+              ]
+            }
+          ],
+          "prompt": "To find P(A|B) from a two-way table, divide the joint frequency of A and B by the ___ frequency of B.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the total for the 'given' group.",
+            "Starts with 'm'."
+          ],
+          "feedbackIfWrong": "You divide by the marginal frequency of the condition (B).",
+          "id": "q5-2"
+        },
+        {
+          "feedbackIfWrong": "18/23 ≈ 0.78.",
+          "id": "q5-3",
+          "hints": [
+            "Route A: 18 on time, 5 late, total 23.",
+            "18 divided by 23 ≈ ?"
+          ],
+          "answer": "0.78",
+          "prompt": "From the route example, what is P(on time | Route A) as a decimal rounded to 2 places?",
+          "type": "short-answer"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "1. [[imp:Understand]]: Identify the two categories and the specific event. Is it a joint probability (and) or a conditional probability (given)?",
+          "2. [[imp:Solve]]: Locate the needed frequencies – joint, marginal, or conditional. Use the appropriate formula: P(A and B) = joint freq / grand total; P(B|A) = joint freq of A&B / marginal freq of A.",
+          "3. [[imp:Conclude]]: State the probability in context, and if asked, check for independence by comparing with the relevant marginal."
+        ],
+        "visuals": [
+          {
+            "title": "Blueprint Flow for Two-Way Table Problems",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Define the events and identify the 'given' condition (if any)."
+              },
+              {
+                "0": "Solve",
+                "1": "Gather joint and marginal frequencies; compute probability."
+              },
+              {
+                "0": "Conclude",
+                "1": "Write the answer as a fraction, decimal, or percent. Interpret."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ P(A \\text{ and } B) = \\frac{\\text{Joint Freq.}}{\\text{Grand Total}} $$ $$ P(B \\mid A) = \\frac{\\text{Joint Freq.}}{\\text{Marginal Freq. of A}} $$",
+          "notes": [
+            "Conditional probability denominator is the total of the 'given' group.",
+            "For independence, check if P(B|A) ≈ P(B)."
+          ],
+          "title": "Blueprint Formulas"
+        }
+      },
+      "title": "Blueprint Aid – Solving Problems with Two-Way Tables",
+      "discoveryHook": {
+        "scenario": "Two-way tables are powerful, but to answer a question correctly you need a clear path: understand what's given, find the right numbers, and compute. The Probability Blueprint works here too!"
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

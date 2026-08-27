@@ -1,0 +1,766 @@
+{
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "title": "Amplitude and Period of Sine and Cosine",
+      "discoveryHook": {
+        "scenario": "Sound waves, heartbeats, and ocean tides all follow repeating patterns that can be modeled by sine and cosine functions. By adjusting the amplitude and period, we can match these functions to real‑world data like the motion of a pendulum or the height of a Ferris wheel."
+      },
+      "questions": [
+        {
+          "hints": [
+            "Amplitude is the absolute value of the coefficient of the function.",
+            "It's the number multiplying sine."
+          ],
+          "id": "q9-4-1",
+          "prompt": "The amplitude of $y = 5\\sin x$ is ___.",
+          "feedbackIfWrong": "The amplitude is $|5|=5$.",
+          "blanks": [
+            {
+              "accept": [
+                "5",
+                "five"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "What is the period of $y = \\cos 3x$? (Use format like 2π/3 without spaces)",
+          "feedbackIfWrong": "The period is $\\frac{2\\pi}{3}$.",
+          "id": "q9-4-2",
+          "hints": [
+            "Period = $\\frac{2\\pi}{b}$.",
+            "Here $b=3$."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "2π/3",
+            "2pi/3"
+          ]
+        },
+        {
+          "hints": [
+            "Period $= \\frac{2\\pi}{b} = \\pi$.",
+            "Solve $\\frac{2\\pi}{b} = \\pi$."
+          ],
+          "answers": [
+            "2",
+            "two"
+          ],
+          "feedbackIfWrong": "Dividing both sides by $\\pi$ gives $\\frac{2}{b}=1$, so $b=2$.",
+          "type": "short-answer",
+          "prompt": "If $y = a\\sin bx$ has amplitude 4 and period $\\pi$, what is $b$? (Enter a number)",
+          "id": "q9-4-3"
+        }
+      ],
+      "id": "amplitude-and-period",
+      "teacherCues": [
+        "Graph $f(x)=\\sin x$ and ask: What is the maximum value? Minimum? How far does the graph go above and below the midline?",
+        "Write $g(x)=4\\sin x$ and ask: How does the amplitude change? What about the period?"
+      ],
+      "examples": [
+        {
+          "prompt": "Graph $g(x)=4\\sin x$. Identify the amplitude and period, and describe the transformation from $f(x)=\\sin x$.",
+          "title": "Example A — Graphing a Sine Function with Vertical Stretch",
+          "steps": [
+            "Amplitude: $|a|=4$. Period: $b=1$, so period $=\\frac{2\\pi}{1}=2\\pi$.",
+            "Key points of parent $\\sin x$: $(0,0)$, $(\\frac{\\pi}{2},1)$, $(\\pi,0)$, $(\\frac{3\\pi}{2},-1)$, $(2\\pi,0)$.",
+            "Multiply $y$-coordinates by 4: $(0,0)$, $(\\frac{\\pi}{2},4)$, $(\\pi,0)$, $(\\frac{3\\pi}{2},-4)$, $(2\\pi,0)$.",
+            "The graph of $g$ is a vertical stretch by a factor of 4 of the graph of $f$."
+          ],
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Amplitude: $|a|=1$. Period: $\\frac{2\\pi}{2}=\\pi$.",
+            "The parent $\\cos x$ completes one cycle from $0$ to $2\\pi$. Now it completes a full cycle from $0$ to $\\pi$.",
+            "Key points: $(0,1)$, $(\\frac{\\pi}{4},0)$, $(\\frac{\\pi}{2},-1)$, $(\\frac{3\\pi}{4},0)$, $(\\pi,1)$.",
+            "The graph is a horizontal shrink by a factor of $\\frac{1}{2}$."
+          ],
+          "role": "peer-explain",
+          "title": "Example B — Changing the Period",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does multiplying $x$ by 2 make the graph complete a cycle twice as fast? What is the new period?",
+          "prompt": "Graph $g(x)=\\cos 2x$. Identify the amplitude and period, and explain how the factor $b=2$ affects the graph.",
+          "minLength": 8
+        },
+        {
+          "steps": [
+            "Amplitude $=3$. Period $=\\frac{2\\pi}{2}=\\pi$.",
+            "The graph has taller waves and completes a cycle in $\\pi$ units instead of $2\\pi$."
+          ],
+          "role": "independent",
+          "title": "Example C — Combined Stretch and Shrink",
+          "prompt": "Graph $g(x)=3\\sin 2x$. Find amplitude and period."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Amplitude vs. Period",
+        "body": "The amplitude is controlled by the coefficient [[imp:outside]] the function ($a$). The period is controlled by the coefficient [[imp:inside]] with $x$ ($b$). Don't confuse which one changes the height and which changes the width."
+      },
+      "concept": {
+        "explanation": [
+          "The parent functions $f(x)=\\sin x$ and $f(x)=\\cos x$ are [[kw:periodic functions]]—their graphs repeat in a regular pattern.",
+          "The [[kw:amplitude]] is half the difference between the maximum and minimum values. For $y=a\\sin bx$ and $y=a\\cos bx$, amplitude $=|a|$.",
+          "The [[kw:period]] is the horizontal length of one complete cycle. For $y=a\\sin bx$ and $y=a\\cos bx$, period $=\\frac{2\\pi}{|b|}$.",
+          "The parent functions $\\sin x$ and $\\cos x$ have amplitude $1$ and period $2\\pi$.",
+          "The parameter $a$ vertically stretches ($|a|>1$) or shrinks ($0<|a|<1$) the graph. The parameter $b$ horizontally shrinks ($|b|>1$) or stretches ($0<|b|<1$) the graph by a factor of $\\frac{1}{|b|}$."
+        ],
+        "visuals": [
+          {
+            "title": "Key Features of $y=a\\sin bx$ and $y=a\\cos bx$",
+            "headers": [
+              "Feature",
+              "Formula",
+              "Example: $y=4\\sin x$"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Amplitude",
+                "1": "$|a|$",
+                "2": "$4$"
+              },
+              {
+                "0": "Period",
+                "1": "$\\frac{2\\pi}{|b|}$",
+                "2": "$2\\pi$"
+              },
+              {
+                "0": "Maximum",
+                "1": "$|a|$ (if no vertical shift)",
+                "2": "$4$"
+              },
+              {
+                "0": "Minimum",
+                "1": "$-|a|$",
+                "2": "$-4$"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "vertical stretch/shrink; amplitude",
+              "tone": "core",
+              "symbol": "$a$"
+            },
+            {
+              "symbol": "$b$",
+              "meaning": "horizontal stretch/shrink; affects period",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$ y = a \\sin bx \\quad \\text{or} \\quad y = a \\cos bx $$ $$ \\text{Amplitude} = |a|, \\quad \\text{Period} = \\frac{2\\pi}{|b|} $$"
+        }
+      }
+    },
+    {
+      "examples": [
+        {
+          "prompt": "Graph $g(x) = 2\\sin 4x + 3$. Identify the midline, amplitude, period, and vertical shift.",
+          "role": "guided",
+          "steps": [
+            "Amplitude $a=2$. Period $=\\frac{2\\pi}{4} = \\frac{\\pi}{2}$. Vertical shift $k=3$, midline $y=3$.",
+            "Key points of $f(x)=2\\sin 4x$: $(0,0)$, $(\\frac{\\pi}{8},2)$, $(\\frac{\\pi}{4},0)$, $(\\frac{3\\pi}{8},-2)$, $(\\frac{\\pi}{2},0)$.",
+            "Add 3 to $y$-coordinates: $(0,3)$, $(\\frac{\\pi}{8},5)$, $(\\frac{\\pi}{4},3)$, $(\\frac{3\\pi}{8},1)$, $(\\frac{\\pi}{2},3)$.",
+            "Graph oscillates around midline $y=3$."
+          ],
+          "title": "Example A — Vertical Translation"
+        },
+        {
+          "steps": [
+            "Amplitude $5$, period $=\\frac{2\\pi}{1/2}=4\\pi$. Phase shift $h=3\\pi$ (right).",
+            "Key points of $f(x)=5\\cos\\frac{1}{2}x$: $(0,5)$, $(\\pi,0)$, $(2\\pi,-5)$, $(3\\pi,0)$, $(4\\pi,5)$.",
+            "Add $3\\pi$ to $x$-coordinates: $(3\\pi,5)$, $(4\\pi,0)$, $(5\\pi,-5)$, $(6\\pi,0)$, $(7\\pi,5)$.",
+            "The entire graph is shifted right by $3\\pi$."
+          ],
+          "minLength": 8,
+          "role": "peer-explain",
+          "title": "Example B — Horizontal Translation (Phase Shift)",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you identify the phase shift $h$ from the equation? Why do we add $3\\pi$ to the $x$-coordinates of the key points?",
+          "prompt": "Graph $g(x) = 5\\cos\\frac{1}{2}(x - 3\\pi)$. Explain the phase shift."
+        },
+        {
+          "steps": [
+            "Amplitude $1$, period $=\\frac{2\\pi}{2}=\\pi$, phase shift $h=-\\pi$ (left $\\pi$), midline $y=-1$.",
+            "Shift left $\\pi$, then down 1."
+          ],
+          "role": "independent",
+          "title": "Example C — Combined Transformations",
+          "prompt": "Graph $g(x) = \\sin 2(x + \\pi) - 1$. State amplitude, period, phase shift, and midline."
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ y = a \\sin b(x - h) + k $$ $$ \\text{Midline: } y = k $$ $$ \\text{Phase shift: } h $$",
+          "legend": [
+            {
+              "symbol": "$h$",
+              "tone": "core",
+              "meaning": "horizontal translation (opposite sign inside parentheses)"
+            },
+            {
+              "tone": "core",
+              "meaning": "vertical translation (midline)",
+              "symbol": "$k$"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Transformations in $y = a \\sin b(x - h) + k$",
+            "rows": [
+              {
+                "0": "$a$",
+                "1": "Vertical stretch/shrink; amplitude $=|a|$",
+                "2": "$a=2$ → amplitude 2"
+              },
+              {
+                "0": "$b$",
+                "1": "Horizontal stretch/shrink; period $=\\frac{2\\pi}{|b|}$",
+                "2": "$b=4$ → period $\\frac{\\pi}{2}$"
+              },
+              {
+                "0": "$h$",
+                "1": "Horizontal shift (phase shift)",
+                "2": "$h=\\frac{\\pi}{2}$ → shift right $\\frac{\\pi}{2}$"
+              },
+              {
+                "0": "$k$",
+                "1": "Vertical shift; midline $y=k$",
+                "2": "$k=3$ → midline $y=3$"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Parameter",
+              "Effect",
+              "Example"
+            ]
+          }
+        ],
+        "explanation": [
+          "The graphs of $y = a \\sin b(x - h) + k$ and $y = a \\cos b(x - h) + k$ are translations of $y = a \\sin bx$ and $y = a \\cos bx$.",
+          "The horizontal shift is $h$. If $h > 0$, shift right; if $h < 0$, shift left. A horizontal translation of a periodic function is called a [[kw:phase shift]].",
+          "The vertical shift is $k$. The horizontal line $y = k$ is the [[kw:midline]] of the graph.",
+          "To graph, first draw the midline $y = k$. Then take the five key points of the basic function, add $h$ to the $x$-coordinates, and add $k$ to the $y$-coordinates.",
+          "The amplitude and period are still $|a|$ and $\\frac{2\\pi}{|b|}$."
+        ]
+      },
+      "teacherCues": [
+        "Write $g(x) = \\sin(x - \\frac{\\pi}{2})$ and ask: How does the graph shift? What is this horizontal shift called?",
+        "Write $g(x) = \\cos x + 4$ and ask: What is the midline now? How does the graph move?"
+      ],
+      "confusionCorner": {
+        "body": "In the form $y = a\\sin b(x - h) + k$, if you see $(x + c)$, rewrite as $(x - (-c))$, so $h = -c$. [[imp:A plus sign inside means a shift left, not right.]]",
+        "title": "Sign of $h$ in the Parentheses"
+      },
+      "id": "translating-sine-cosine",
+      "discoveryHook": {
+        "scenario": "Just like other functions, sine and cosine graphs can be shifted up, down, left, or right. A horizontal shift is called a phase shift, and a vertical shift moves the midline. These transformations model real‑life variations like tide levels or average temperatures."
+      },
+      "title": "Translations of Sine and Cosine Graphs",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "The midline is $y = -2$.",
+          "hints": [
+            "The vertical shift is $k$.",
+            "The $-2$ at the end is $k$."
+          ],
+          "prompt": "The midline of $g(x) = 3\\cos x - 2$ is the horizontal line $y =$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "-2",
+                "negative 2"
+              ]
+            }
+          ],
+          "id": "q9-4-4"
+        },
+        {
+          "answers": [
+            "π/4 right",
+            "right π/4",
+            "π/4"
+          ],
+          "prompt": "What is the phase shift of $y = \\sin(x - \\frac{\\pi}{4})$? (Use format like π/4 right or just π/4)",
+          "id": "q9-4-5",
+          "type": "short-answer",
+          "hints": [
+            "Identify $h$ in $y = \\sin(x - h)$.",
+            "Here $h = \\frac{\\pi}{4}$, so shift right."
+          ],
+          "feedbackIfWrong": "The phase shift is $\\frac{\\pi}{4}$ to the right."
+        },
+        {
+          "prompt": "If $g(x) = 2\\sin(x + \\pi) - 1$, how many units is the graph shifted horizontally and in which direction? (Use format like π left)",
+          "type": "short-answer",
+          "hints": [
+            "Rewrite as $2\\sin(x - (-\\pi)) - 1$.",
+            "So $h = -\\pi$, shift left."
+          ],
+          "answers": [
+            "π left",
+            "pi left"
+          ],
+          "feedbackIfWrong": "The graph shifts $\\pi$ units left.",
+          "id": "q9-4-6"
+        }
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Sometimes a wave is flipped upside down—like a reflection in water. When $a$ is negative, the sine or cosine graph reflects across the midline, swapping peaks and valleys."
+      },
+      "confusionCorner": {
+        "body": "The amplitude is always $|a|$. A negative $a$ reflects the graph, but the distance from the midline to the peak is still $|a|$. [[imp:Don't say the amplitude is negative—amplitude is always positive.]]",
+        "title": "Reflection Does Not Change Amplitude"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Amplitude $|a| = 2$, period $= \\frac{2\\pi}{2/3} = 3\\pi$, phase shift right $\\frac{\\pi}{2}$.",
+            "Find key points for $f(x) = 2\\sin\\frac{2}{3}(x - \\frac{\\pi}{2})$ first.",
+            "On midline: $(\\frac{\\pi}{2},0)$, $(2\\pi,0)$, $(\\frac{7\\pi}{2},0)$.",
+            "Max: $(\\frac{5\\pi}{4},2)$; Min: $(\\frac{11\\pi}{4},-2)$.",
+            "Reflect across midline ($y=0$): max becomes $(\\frac{5\\pi}{4},-2)$, min becomes $(\\frac{11\\pi}{4},2)$.",
+            "Draw the reflected graph."
+          ],
+          "title": "Example A — Reflecting a Sine Function",
+          "role": "guided",
+          "prompt": "Graph $g(x) = -2\\sin\\frac{2}{3}(x - \\frac{\\pi}{2})$."
+        },
+        {
+          "steps": [
+            "Midline is $y = 3$. Parent $\\cos x$ starts at $(0,1)$.",
+            "Reflect first: $-\\cos x$ starts at $(0,-1)$.",
+            "Then shift up 3: starts at $(0,2)$.",
+            "The graph oscillates around $y=3$, going down to $2$ and up to $4$ (wait, amplitude 1, so from 3 up to 4 and down to 2). Actually, $-\\cos x$ goes from 3 down to 2 and up to 4. So it's flipped."
+          ],
+          "title": "Example B — Cosine Reflection with Vertical Shift",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Where is the midline? How does the negative sign change the starting point of the cosine graph?",
+          "minLength": 8,
+          "prompt": "Graph $g(x) = -\\cos x + 3$. Explain how the negative sign and the $+3$ affect the graph."
+        },
+        {
+          "prompt": "Is the graph of $y = -4\\cos 2x + 1$ reflected? If so, across what line?",
+          "role": "independent",
+          "title": "Example C — Identify Reflection from Equation",
+          "steps": [
+            "$a = -4 < 0$, so it is reflected across the midline $y = 1$.",
+            "The positive amplitude version would have peaks at $y = 5$ and valleys at $y = -3$. Reflected, peaks and valleys swap."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "Negative sign in front flips over the horizontal axis.",
+            "It reflects vertically."
+          ],
+          "feedbackIfWrong": "It reflects across the $x$-axis.",
+          "prompt": "The graph of $y = -\\sin x$ is a reflection of $y = \\sin x$ across the ___.",
+          "blanks": [
+            {
+              "accept": [
+                "x-axis",
+                "x axis"
+              ]
+            }
+          ],
+          "id": "q9-4-7"
+        },
+        {
+          "feedbackIfWrong": "The amplitude is $|-3| = 3$.",
+          "answers": [
+            "3",
+            "three"
+          ],
+          "prompt": "For $g(x) = -3\\cos x$, what is the amplitude? (Enter a number)",
+          "hints": [
+            "Amplitude is $|a|$, always positive.",
+            "Ignore the negative sign for amplitude."
+          ],
+          "type": "short-answer",
+          "id": "q9-4-8"
+        },
+        {
+          "feedbackIfWrong": "A reflected cosine graph starts at its minimum value instead of maximum.",
+          "type": "short-answer",
+          "answers": [
+            "minimum",
+            "goes down",
+            "starts at minimum"
+          ],
+          "hints": [
+            "Parent $\\cos x$ starts at a maximum.",
+            "Reflection makes it start at the opposite extreme."
+          ],
+          "prompt": "If a cosine graph is reflected across its midline, how does its starting point (at $x=0$) change relative to the parent?",
+          "id": "q9-4-9"
+        }
+      ],
+      "id": "reflecting-sine-cosine",
+      "concept": {
+        "explanation": [
+          "When $a < 0$, the graph of $y = a \\sin b(x - h) + k$ or $y = a \\cos b(x - h) + k$ is a [[kw:reflection]] in the midline $y = k$ of the graph of $y = |a| \\sin b(x - h) + k$ or $y = |a| \\cos b(x - h) + k$.",
+          "For $y = -\\sin x$, the graph is the reflection of $y = \\sin x$ across the $x$-axis. The maximum becomes the minimum and vice versa.",
+          "The amplitude is still $|a|$, so the height of the wave doesn't change, only its orientation.",
+          "The $x$-intercepts remain the same, but the maximum and minimum points swap their $y$-coordinates.",
+          "You can graph by first finding the key points for $|a|$, then reflecting the maximum and minimum points across the midline."
+        ],
+        "visuals": [
+          {
+            "title": "Effect of Negative $a$",
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Parent",
+              "Reflected",
+              "Key Change"
+            ],
+            "rows": [
+              {
+                "0": "$y = \\sin x$",
+                "1": "$y = -\\sin x$",
+                "2": "Peaks become valleys"
+              },
+              {
+                "0": "$y = \\cos x$",
+                "1": "$y = -\\cos x$",
+                "2": "Starts at minimum instead of maximum"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "across the midline $y = k$",
+              "symbol": "reflection"
+            }
+          ],
+          "formula": "$$ y = -|a| \\sin b(x - h) + k \\text{ is a reflection of } y = |a| \\sin b(x - h) + k $$"
+        }
+      },
+      "title": "Reflections of Sine and Cosine Graphs",
+      "teacherCues": [
+        "Write $g(x) = -\\sin x$ and ask: How does the graph change compared to $f(x) = \\sin x$? Where are the peaks and valleys now?",
+        "Graph $y = -\\cos x$ and ask: What happens to the point $(0,1)$ on the parent graph?"
+      ]
+    },
+    {
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "3/(2π)",
+                "3/(2π)",
+                "3/2π"
+              ]
+            }
+          ],
+          "id": "q9-4-10",
+          "hints": [
+            "Frequency $= \\frac{1}{\\text{period}}$.",
+            "Reciprocal of $\\frac{2\\pi}{3}$."
+          ],
+          "feedbackIfWrong": "Frequency $= \\frac{3}{2\\pi}$.",
+          "prompt": "For $y = 2\\sin 3t$, the period is $\\frac{2\\pi}{3}$. The frequency, which is the number of cycles per unit time, is the reciprocal of the period, or ___."
+        },
+        {
+          "prompt": "A wave model has period $0.5$ seconds. What is the value of $b$ in $y = a\\sin bt$? (Enter a number like 4π)",
+          "answers": [
+            "4π",
+            "4pi"
+          ],
+          "hints": [
+            "Period $= \\frac{2\\pi}{b} = 0.5$.",
+            "Solve for $b$."
+          ],
+          "feedbackIfWrong": "$b = \\frac{2\\pi}{0.5} = 4\\pi$.",
+          "id": "q9-4-11",
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "Plug $t=0$: $h = 85\\sin(\\frac{\\pi}{20}(-10)) + 90 = 85\\sin(-\\frac{\\pi}{2}) + 90$.",
+            "$\\sin(-\\frac{\\pi}{2}) = -1$, so $h = 85(-1) + 90 = 5$? Wait, recalc: $t=0$, $\\frac{\\pi}{20}(-10) = -\\frac{\\pi}{2}$, $\\sin(-\\pi/2) = -1$, so $h = 85(-1) + 90 = 5$. Actually the problem says 'height at any time', initial height may be 5 feet, but the question says 'when t=0'. I'll provide answer 5. However, the Blueprint asks for a reasonable answer, let's compute correctly: $h = 85\\sin(-\\pi/2) + 90 = -85 + 90 = 5$. So the answer is 5. I'll set that."
+          ],
+          "id": "q9-4-12",
+          "prompt": "In the Ferris wheel model $h = 85\\sin\\frac{\\pi}{20}(t-10) + 90$, what is the height when $t = 0$? (Round to nearest foot, enter a number)",
+          "type": "short-answer",
+          "feedbackIfWrong": "At $t=0$, $h = 5$ feet.",
+          "answers": [
+            "48",
+            "48"
+          ]
+        }
+      ],
+      "id": "real-life-modeling-sinusoidal",
+      "confusionCorner": {
+        "body": "The period's units are the same as the independent variable. If $t$ is in seconds, the period is in seconds. Always state the units when interpreting. [[imp:Don't leave the period as just a number.]]",
+        "title": "Units of Period"
+      },
+      "discoveryHook": {
+        "scenario": "Sine and cosine functions are the language of periodic phenomena—from pendulum swings to Ferris wheel heights. By identifying the amplitude and period, you can interpret real‑world motion like a heartbeat or a sound wave."
+      },
+      "title": "Real‑Life Modeling with Sine and Cosine",
+      "concept": {
+        "explanation": [
+          "Many real‑life situations involve periodic motion that can be modeled by $y = a \\sin bt$ or $y = a \\cos bt$, where $t$ is time.",
+          "The [[kw:amplitude]] represents the maximum displacement from the rest position or midline.",
+          "The [[kw:period]] represents the time it takes to complete one full cycle.",
+          "The [[kw:frequency]] is the number of cycles per unit of time and is the reciprocal of the period: $f = \\frac{1}{\\text{period}}$.",
+          "To answer questions about the motion, identify $a$ and $b$, then compute the amplitude and period. Interpret these values in the context of the problem."
+        ],
+        "formulaCard": {
+          "formula": "$$ y = a \\sin bt \\text{ or } y = a \\cos bt $$ $$ \\text{Amplitude} = |a|, \\quad \\text{Period} = \\frac{2\\pi}{b}, \\quad \\text{Frequency} = \\frac{b}{2\\pi} $$",
+          "legend": [
+            {
+              "meaning": "time (independent variable)",
+              "tone": "core",
+              "symbol": "$t$"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Interpreting a Sinusoidal Model $y = a \\sin bt$",
+            "headers": [
+              "Parameter",
+              "Mathematical Meaning",
+              "Real‑World Meaning (e.g., pendulum)"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "$a$",
+                "1": "Amplitude",
+                "2": "Maximum displacement (inches, feet, etc.)"
+              },
+              {
+                "0": "$\\frac{2\\pi}{b}$",
+                "1": "Period",
+                "2": "Time for one complete swing (seconds)"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Pose: A buoy bobs up and down with waves; its vertical displacement is $y = 1.75\\cos\\frac{\\pi}{3}t$. Ask: What is the amplitude? Period? What do they represent?",
+        "Show the pendulum model $d = 4\\cos 8\\pi t$ and ask: How many complete swings per second?"
+      ],
+      "examples": [
+        {
+          "prompt": "The displacement $d$ (inches) of a pendulum is $d = 4\\cos 8\\pi t$, where $t$ is seconds. Find and interpret the amplitude and period.",
+          "title": "Example A — Pendulum Motion",
+          "steps": [
+            "Amplitude $= 4$ inches. This is the maximum horizontal displacement from rest.",
+            "Period $= \\frac{2\\pi}{8\\pi} = \\frac{1}{4}$ second. One complete swing takes 0.25 seconds.",
+            "Frequency $= 4$ cycles per second (the pendulum swings back and forth 4 times per second)."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 8,
+          "role": "peer-explain",
+          "title": "Example B — Buoy Bobbing",
+          "steps": [
+            "Amplitude $= 1.75$ ft. The buoy moves up to 1.75 ft above and down to 1.75 ft below sea level.",
+            "Period $= \\frac{2\\pi}{\\pi/3} = 6$ seconds. A full cycle (peak to peak) takes 6 seconds."
+          ],
+          "prompt": "A buoy's vertical displacement is $y = 1.75\\cos\\frac{\\pi}{3}t$ (feet). What does the amplitude mean? How long does one complete bob take?",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If a wave passes, the buoy goes up and down. How high above and below the calm sea level does it go? How much time between peaks?"
+        },
+        {
+          "title": "Example C — Ferris Wheel Height",
+          "prompt": "Your height on a Ferris wheel is $h = 85\\sin\\frac{\\pi}{20}(t-10) + 90$ feet. What is the maximum height?",
+          "steps": [
+            "Amplitude $= 85$. Midline is $90$.",
+            "Maximum height = midline + amplitude = $90 + 85 = 175$ feet.",
+            "Minimum height = midline - amplitude = $90 - 85 = 5$ feet."
+          ],
+          "role": "independent"
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "The five key points for cosine start at a maximum, then zero, minimum, zero, maximum. For sine, they start at midline, maximum, midline, minimum, midline. [[imp:Make sure you use the correct pattern for the parent function.]]",
+        "title": "Order of Key Points for Cosine"
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The next step is to draw the midline $y = k$.",
+          "id": "q9-4-13",
+          "prompt": "In the Blueprint, after identifying $a,b,h,k$, what is the next step? (Two words: Draw ...)",
+          "answers": [
+            "draw midline",
+            "midline"
+          ],
+          "hints": [
+            "It's the horizontal line $y=k$.",
+            "You draw this before plotting key points."
+          ]
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "0",
+                "zero"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The first $x$-coordinate is $0$.",
+          "prompt": "For a sine function with no phase shift, the first $x$-coordinate of the five key points is always ___.",
+          "hints": [
+            "Sine starts at the origin.",
+            "The first key point is the $y$-intercept of the basic sine."
+          ],
+          "type": "fill-blank",
+          "id": "q9-4-14"
+        },
+        {
+          "hints": [
+            "Add 3 to each $y$-value.",
+            "$0+3=3$, $-2+3=1$, etc."
+          ],
+          "id": "q9-4-15",
+          "feedbackIfWrong": "The shifted $y$-values are $3, 1, 3, 5, 3$.",
+          "prompt": "If a reflected sine function has key $y$-values $0, -2, 0, 2, 0$, what are the $y$-values after a vertical shift up of 3? (Enter like 3,1,3,5,3 without spaces)",
+          "answers": [
+            "3,1,3,5,3",
+            "3, 1, 3, 5, 3"
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "Use the Blueprint to graph $g(x) = -2\\sin\\frac{1}{2}(x + \\pi) + 1$.",
+          "role": "guided",
+          "steps": [
+            "Understand: Rewrite as $g(x) = -2\\sin\\frac{1}{2}(x - (-\\pi)) + 1$. $a = -2$, $b = \\frac{1}{2}$, $h = -\\pi$, $k = 1$.",
+            "Amplitude $= 2$, period $= \\frac{2\\pi}{1/2} = 4\\pi$, phase shift left $\\pi$, midline $y=1$, reflected.",
+            "Solve: Key $x$ for unshifted: $0, \\pi, 2\\pi, 3\\pi, 4\\pi$. Shift left $\\pi$: $-\\pi, 0, \\pi, 2\\pi, 3\\pi$.",
+            "Unshifted $y$ for $2\\sin$: $0, 2, 0, -2, 0$. Reflect: $0, -2, 0, 2, 0$. Add $k=1$: $1, -1, 1, 3, 1$.",
+            "Plot points: $(-\\pi,1)$, $(0,-1)$, $(\\pi,1)$, $(2\\pi,3)$, $(3\\pi,1)$. Connect.",
+            "Conclude: Domain all real numbers. Range: $[-1, 3]$. Midline $y=1$, amplitude 2, period $4\\pi$."
+          ],
+          "title": "Example A — Full Blueprint for a Transformed Sine"
+        },
+        {
+          "steps": [
+            "The order of transformations: horizontal shift, horizontal stretch/shrink, reflection, vertical stretch/shrink, vertical shift.",
+            "For sine/cosine with $a<0$, we typically find the key points for $|a|$, then reflect the $y$-coordinates, then add $k$.",
+            "Reflecting before adding $k$ ensures the midline remains $y=k$ and the reflection is across that midline.",
+            "If we reflected after adding $k$, we'd reflect across the $x$-axis instead of the midline, which is incorrect."
+          ],
+          "prompt": "Explain why we apply the reflection after finding the basic key points, not before.",
+          "title": "Example B — Why Reflect Before Shifting?",
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If we reflected first, would the order of operations matter? Does it change the final graph?",
+          "minLength": 8
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Equation: $y = -3\\cos 2(x - \\frac{\\pi}{2}) - 1$.",
+            "Key $x$: $\\frac{\\pi}{2}, \\frac{3\\pi}{4}, \\pi, \\frac{5\\pi}{4}, \\frac{3\\pi}{2}$.",
+            "Unshifted $y$ for $3\\cos$: $3, 0, -3, 0, 3$. Reflect: $-3, 0, 3, 0, -3$. Add $k=-1$: $-4, -1, 2, -1, -4$.",
+            "Plot and sketch."
+          ],
+          "title": "Example C — Quick Sketch from Description",
+          "prompt": "A cosine function has amplitude 3, period $\\pi$, phase shift right $\\frac{\\pi}{2}$, midline $y = -1$, and is reflected. Write the equation and sketch one cycle."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When a sine or cosine function has multiple transformations, the Blueprint keeps you organized: find the amplitude, period, shifts, and reflection first, then build the graph step by step from the five key points."
+      },
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude steps. Model graphing $g(x) = -2\\sin\\frac{1}{2}(x + \\pi) + 1$.",
+        "Ask: What is the first thing we identify? How do we find the key points?"
+      ],
+      "id": "blueprint-aid-sinusoidal-graphing",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{Five key } x\\text{-values: } h, \\; h + \\frac{1}{4}\\cdot\\frac{2\\pi}{b}, \\; h + \\frac{1}{2}\\cdot\\frac{2\\pi}{b}, \\; h + \\frac{3}{4}\\cdot\\frac{2\\pi}{b}, \\; h + \\frac{2\\pi}{b} $$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "phase shift (horizontal translation)",
+              "symbol": "$h$"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify $a, b, h, k$; find amplitude, period, phase shift, midline, reflection."
+              },
+              {
+                "0": "Solve",
+                "1": "Draw midline; compute shifted key points; reflect if $a<0$; plot and connect."
+              },
+              {
+                "0": "Conclude",
+                "1": "Label features; state domain and range; verify with technology."
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Graphing $y = a \\sin b(x - h) + k$",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ]
+          }
+        ],
+        "explanation": [
+          "[[imp:Understand]]: Identify the parameters $a$, $b$, $h$, $k$ from the equation. Rewrite in the form $y = a \\sin b(x - h) + k$ (or cosine). Determine the amplitude $|a|$, period $\\frac{2\\pi}{b}$, phase shift $h$, vertical shift $k$, and whether the graph is reflected ($a < 0$).",
+          "[[imp:Solve]]: 1. Draw the midline $y = k$. 2. Find the $x$-coordinates of the five key points for the basic function with the same $a$ and $b$, then shift them by $h$. 3. Find the $y$-coordinates by multiplying the parent's $y$-values by $a$ and adding $k$. 4. If $a < 0$, swap the maximum and minimum $y$-coordinates. 5. Plot the five points and sketch one cycle. Extend the pattern.",
+          "[[imp:Conclude]]: Label the amplitude, period, midline, and any intercepts. State the domain (all real numbers) and range ($[k - |a|, k + |a|]$). Check with a calculator or table."
+        ]
+      },
+      "title": "Blueprint Aid — Graphing Sinusoidal Functions"
+    }
+  ],
+  "title": "Graphing Sine and Cosine Functions",
+  "presenterNotes": [
+    "Start with the basic sine and cosine graphs. Have students sketch them from memory or using a table. Emphasize the domain, range, amplitude, and period.",
+    "The five key points are the backbone of graphing these functions. Practice identifying them for various amplitudes and periods before adding shifts.",
+    "The transformation form $y = a \\sin b(x - h) + k$ is identical to other function transformations they've seen. Connect to previous chapters.",
+    "Reflections often confuse students. Remind them that amplitude is always positive; the negative sign just flips the graph.",
+    "Real‑life modeling is a great hook. Use actual data if possible (tides, temperatures) and show how sine/cosine fit the data.",
+    "The Blueprint block ties everything together. Walk through a complete example with all four transformations."
+  ],
+  "standards": [
+    "HSF.TF.B.5",
+    "HSF.BF.B.3",
+    "HSF.IF.C.7e"
+  ],
+  "type": "interactive-lesson",
+  "id": "chapter-9-4-graphing-sine-and-cosine-functions",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

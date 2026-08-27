@@ -1,0 +1,829 @@
+{
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "teacherCues": [
+        "Ask: 'If you want to know the typical daily sales for this week, how would you calculate it?'",
+        "Write the formula: Mean = Sum of values / Number of values."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Mean = Total sales ÷ Number of days.",
+            "rows": [
+              {
+                "0": "Sunday",
+                "1": "$400"
+              },
+              {
+                "0": "Monday",
+                "1": "$100"
+              },
+              {
+                "0": "Tuesday",
+                "1": "$68"
+              },
+              {
+                "0": "Wednesday",
+                "1": "$115"
+              },
+              {
+                "0": "Thursday",
+                "1": "$120"
+              },
+              {
+                "0": "Friday",
+                "1": "$68"
+              },
+              {
+                "0": "Saturday",
+                "1": "$180"
+              },
+              {
+                "0": "Total",
+                "1": "$1,051"
+              },
+              {
+                "0": "Mean",
+                "1": "$1,051 ÷ 7 ≈ $150.14"
+              }
+            ],
+            "title": "Bill's Sport Shop Weekly Sales",
+            "type": "table",
+            "headers": [
+              "Day",
+              "Sales"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Mean} = \\frac{\\text{Sum of all values}}{\\text{Number of values}}$$",
+          "notes": [
+            "Use when you want a quick summary of typical value.",
+            "Can be skewed by unusually high or low numbers."
+          ],
+          "title": "Mean Formula"
+        },
+        "explanation": [
+          "The [[kw:mean]] (or arithmetic average) is the sum of all values divided by the number of values.",
+          "Formula: $$\\text{Mean} = \\frac{\\sum x}{n}$$ where $\\sum x$ is the total and $n$ is the count.",
+          "It is the most common measure of central tendency.",
+          "[[imp:The mean is sensitive to extremely high or low values, which can distort it.]]"
+        ]
+      },
+      "title": "1. The Mean (Arithmetic Average)",
+      "examples": [
+        {
+          "prompt": "Find the mean of these five test scores: 82, 90, 75, 88, 85.",
+          "role": "guided",
+          "title": "A – Compute the mean",
+          "steps": [
+            "Sum = 82 + 90 + 75 + 88 + 85 = 420.",
+            "Number of scores = 5.",
+            "Mean = 420 ÷ 5 = 84."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Think about what happens when one number is extremely high or low.",
+          "steps": [
+            "The mean balances all the numbers, so it represents the center when values are fairly close.",
+            "But if one value is extremely high (like a mansion home price in a neighborhood of modest homes), the mean will be pulled upward and may not represent most of the data.",
+            "In that case, we use the median instead."
+          ],
+          "prompt": "Explain to a classmate why the mean is a good summary for a data set without extreme values.",
+          "title": "B – Why use the mean?"
+        },
+        {
+          "prompt": "The monthly rents for five apartments are $900, $950, $1,000, $1,100, and $1,250. Find the mean rent.",
+          "title": "C – Practice mean",
+          "role": "independent",
+          "steps": [
+            "Sum = 900 + 950 + 1,000 + 1,100 + 1,250 = $5,200.",
+            "Mean = $5,200 ÷ 5 = $1,040.",
+            "The average rent is $1,040."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "number (or count).",
+          "blanks": [
+            {
+              "accept": [
+                "number",
+                "count"
+              ]
+            }
+          ],
+          "prompt": "The mean is the sum of all values divided by the ___ of values.",
+          "hints": [
+            "How many numbers there are.",
+            "Denominator."
+          ],
+          "type": "fill-blank",
+          "id": "b1q1"
+        },
+        {
+          "hints": [
+            "Sum = 150.",
+            "150 ÷ 5 = ?"
+          ],
+          "answers": [
+            "30"
+          ],
+          "feedbackIfWrong": "30.",
+          "id": "b1q2",
+          "type": "short-answer",
+          "prompt": "Find the mean of 10, 20, 30, 40, 50. (number only)"
+        },
+        {
+          "feedbackIfWrong": "100.",
+          "type": "short-answer",
+          "answers": [
+            "100"
+          ],
+          "id": "b1q3",
+          "prompt": "If the mean of four numbers is 25, what is their total sum? (number only)",
+          "hints": [
+            "Sum = Mean × Count.",
+            "25 × 4 = ?"
+          ]
+        }
+      ],
+      "challengeCorner": {
+        "hints": [
+          "Total sum = 62 × 7 = 434.",
+          "Sum of six known = 50+60+70+80+90+100 = 450. Missing = 434 – 450 = –16."
+        ],
+        "prompt": "The mean of seven numbers is 62. Six of the numbers are 50, 60, 70, 80, 90, and 100. Find the missing seventh number.",
+        "optional": true,
+        "answers": [
+          "-16"
+        ],
+        "type": "short-answer"
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The mean is not always a typical value. [[imp:If the data has extreme outliers, the mean can be misleading.]]"
+      },
+      "discoveryHook": {
+        "scenario": "Bill's Sport Shop had daily sales of $400, $100, $68, $115, $120, $68, and $180 over one week. The accountant tells Bill the average daily sale was $150.14. That's the [[kw:mean]], a single number that represents the center of the data."
+      },
+      "id": "mean"
+    },
+    {
+      "teacherCues": [
+        "Ask: 'If some sales occur on multiple days, how do we find the average sales per day?'",
+        "Show the weighted mean formula and how GPA is calculated."
+      ],
+      "title": "2. Weighted Mean and GPA",
+      "examples": [
+        {
+          "steps": [
+            "Points: A=4×4=16; B=3×3=9; B=3×3=9; C=2×3=6; B=3×3=9. Total points = 49.",
+            "Total credits = 4+3+3+3+3 = 16.",
+            "GPA = 49 ÷ 16 ≈ 3.06."
+          ],
+          "title": "A – Compute weighted mean",
+          "role": "guided",
+          "prompt": "A student earned the following grades: A (4 credits), B (3 credits), B (3 credits), C (3 credits), B (3 credits). Compute GPA."
+        },
+        {
+          "peerPrompt": "Think about the impact of a 4‑credit course vs. a 1‑credit course.",
+          "role": "peer-explain",
+          "title": "B – Why weighted?",
+          "minLength": 2,
+          "prompt": "Explain why GPA is a weighted mean rather than a simple average of grade points.",
+          "steps": [
+            "Courses with more credits have a greater impact on your GPA.",
+            "If we didn't weight, a 1‑credit A would count the same as a 4‑credit A, which would be unfair.",
+            "Weighting by credits ensures each course contributes proportionally."
+          ]
+        },
+        {
+          "steps": [
+            "Products: 5×2=10; 3×5=15; 2×10=20; sum = 45.",
+            "Total trips = 5+3+2 = 10.",
+            "Weighted mean = 45 ÷ 10 = 4.5 miles."
+          ],
+          "title": "C – Weighted mean with frequencies",
+          "role": "independent",
+          "prompt": "A delivery driver made 10 trips: 5 of 2 miles, 3 of 5 miles, and 2 of 10 miles. Find the weighted mean distance per trip."
+        }
+      ],
+      "questions": [
+        {
+          "hints": [
+            "How often it occurs.",
+            "The multiplier."
+          ],
+          "id": "b2q1",
+          "prompt": "Weighted mean = Sum of (value × ___) ÷ Sum of frequencies.",
+          "blanks": [
+            {
+              "accept": [
+                "frequency",
+                "weight"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "frequency (or weight)."
+        },
+        {
+          "prompt": "Two products: Product A price $10, sold 30 units; Product B price $20, sold 10 units. Find the weighted mean price. (one decimal, no $)",
+          "feedbackIfWrong": "12.5.",
+          "id": "b2q2",
+          "hints": [
+            "(10×30)+(20×10) = 300+200 = 500.",
+            "500 ÷ (30+10) = 500 ÷ 40 = 12.5."
+          ],
+          "answers": [
+            "12.5"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "prompt": "GPA = (Grade points × Credits) total ÷ total ___.",
+          "feedbackIfWrong": "credits.",
+          "answers": [
+            "credits"
+          ],
+          "type": "short-answer",
+          "id": "b2q3",
+          "hints": [
+            "The denominator.",
+            "Not grade points."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "During the week, Bill's Sport Shop had sales of $400 on two days, $100 on three days, and $80 on two days. To account for the different frequencies, we use a [[kw:weighted mean]]: (2×$400 + 3×$100 + 2×$80) ÷ 7 = $180. This gives more weight to the values that occur more often."
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The weighted mean is not the same as a simple mean of the values. [[imp:You must multiply each value by its frequency (or weight) before summing.]]"
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "hints": [
+          "Points: 4×3=12; 3×4=12; 2×3=6; 4×2=8; sum=38.",
+          "Credits=3+4+3+2=12; GPA=38/12≈3.17? Let's recompute: 12+12+6+8=38, 12 credits, 38/12=3.1667, round to 3.17. I'll set answer 3.17."
+        ],
+        "answers": [
+          "3.25"
+        ],
+        "prompt": "A student has grades: A (3 credits), B (4 credits), C (3 credits), A (2 credits). Calculate GPA to two decimals.",
+        "optional": true
+      },
+      "concept": {
+        "formulaCard": {
+          "title": "Weighted Mean and GPA",
+          "notes": [
+            "Grade points: A = 4, B = 3, C = 2, D = 1, F = 0.",
+            "Weights are frequencies or credit hours."
+          ],
+          "formula": "$$\\text{Weighted Mean} = \\frac{\\sum (x_i \\times f_i)}{\\sum f_i}$$ $$\\text{GPA} = \\frac{\\sum (\\text{Grade Points} \\times \\text{Credits})}{\\sum \\text{Credits}}$$"
+        },
+        "explanation": [
+          "The [[kw:weighted mean]] multiplies each value by its frequency (how many times it occurs) and then divides by the total of the frequencies.",
+          "Formula: $$\\text{Weighted Mean} = \\frac{\\sum (\\text{Value} \\times \\text{Frequency})}{\\sum \\text{Frequency}}$$",
+          "Your [[kw:grade point average (GPA)]] is a weighted mean: each grade point (A=4, B=3, etc.) is weighted by the number of credit hours.",
+          "$$\\text{GPA} = \\frac{\\sum (\\text{Grade Points} \\times \\text{Credits})}{\\sum \\text{Credits}}$$",
+          "[[imp:Weighted means are used when some data points are more important or occur more frequently.]]"
+        ],
+        "visuals": [
+          {
+            "caption": "Each value is multiplied by how often it occurs.",
+            "headers": [
+              "Sales Value",
+              "Frequency",
+              "Product (Value × Frequency)"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "$400",
+                "1": "2",
+                "2": "$800"
+              },
+              {
+                "0": "$100",
+                "1": "3",
+                "2": "$300"
+              },
+              {
+                "0": "$80",
+                "1": "2",
+                "2": "$160"
+              },
+              {
+                "0": "Total",
+                "1": "7 (sum of frequencies)",
+                "2": "$1,260 (sum of products)"
+              },
+              {
+                "0": "Weighted Mean",
+                "1": "",
+                "2": "$1,260 ÷ 7 = $180"
+              }
+            ],
+            "title": "Weighted Mean Sales Calculation",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "id": "weighted-mean"
+    },
+    {
+      "teacherCues": [
+        "Ask: 'What if one employee earns a very high salary? Does the mean still represent a typical salary?'",
+        "Explain that the median is the middle value and is not affected by extremes."
+      ],
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "middle",
+                "center"
+              ]
+            }
+          ],
+          "prompt": "The median is the ___ value when the data are ordered.",
+          "feedbackIfWrong": "middle.",
+          "type": "fill-blank",
+          "id": "b3q1",
+          "hints": [
+            "Not the average.",
+            "Half are above, half below."
+          ]
+        },
+        {
+          "feedbackIfWrong": "25.",
+          "hints": [
+            "Ordered list.",
+            "5 numbers, the third is the median."
+          ],
+          "prompt": "Find the median of 12, 18, 25, 30, 45. (number only)",
+          "type": "short-answer",
+          "id": "b3q2",
+          "answers": [
+            "25"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "id": "b3q3",
+          "hints": [
+            "Not the sum.",
+            "The mean of the two."
+          ],
+          "prompt": "In an even‑numbered data set, the median is the ___ of the two middle numbers. (word)",
+          "answers": [
+            "average"
+          ],
+          "feedbackIfWrong": "average."
+        }
+      ],
+      "challengeCorner": {
+        "type": "short-answer",
+        "optional": true,
+        "prompt": "The hourly wages of seven employees are: $8, $10, $12, $12, $15, $18, $50. Find the mean and the median. Which is more representative?",
+        "hints": [
+          "Sum=125, mean≈17.86. Median is the 4th value = 12.",
+          "The $50 wage distorts the mean; median is more typical."
+        ],
+        "answers": [
+          "mean 17.86, median 12, median"
+        ]
+      },
+      "title": "3. The Median",
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The median is not the same as the mean unless the data is perfectly symmetric. [[imp:In a symmetric distribution, mean = median.]]"
+      },
+      "id": "median",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Finding the Median (Odd Number of Values)",
+            "rows": [
+              {
+                "0": "Original list",
+                "1": "$27,000; $32,000; $40,000; $67,000; $95,000"
+              },
+              {
+                "0": "1. Order from smallest to largest",
+                "1": "Already ordered"
+              },
+              {
+                "0": "2. Find middle",
+                "1": "5 values → middle is the 3rd value"
+              },
+              {
+                "0": "Median",
+                "1": "$40,000"
+              }
+            ],
+            "headers": [
+              "Step",
+              "Data"
+            ],
+            "type": "table",
+            "caption": "With an even count, average the two middle values."
+          }
+        ],
+        "explanation": [
+          "The [[kw:median]] is the middle value in an ordered list of numbers.",
+          "If the list has an odd number of values, the median is the middle one.",
+          "If the list has an even number of values, the median is the average of the two middle values.",
+          "The median is not affected by extremely high or low values, making it a better measure for skewed data.",
+          "[[imp:Half the values are below the median and half are above.]]"
+        ],
+        "formulaCard": {
+          "title": "Median Steps",
+          "notes": [
+            "Median is resistant to outliers.",
+            "Use when the data has extreme values that distort the mean."
+          ],
+          "formula": "$$\\text{Step 1: Order the values from smallest to largest.}$$ $$\\text{Step 2: If odd count, middle value. If even count, average the two middle values.}$$"
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Find the median of these sales: $68, $100, $115, $120, $180, $400, $68? Wait, that's 7 numbers. Order them: $68, $68, $100, $115, $120, $180, $400. The median is the 4th value.",
+          "title": "A – Find median (odd count)",
+          "role": "guided",
+          "steps": [
+            "Order: $68, $68, $100, $115, $120, $180, $400.",
+            "n = 7 → middle is the 4th value.",
+            "Median = $115."
+          ]
+        },
+        {
+          "prompt": "Explain why real estate agents report the median home price rather than the mean.",
+          "title": "B – When to use median",
+          "steps": [
+            "A few very expensive homes can pull the mean upward, making it seem like all homes are expensive.",
+            "The median is not affected by those extremes; it shows the price of the 'middle' home.",
+            "So the median gives a better idea of what a typical buyer would pay."
+          ],
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Think about what a few luxury homes do to the mean."
+        },
+        {
+          "prompt": "Find the median of the numbers 15, 22, 30, 35, 40, 50.",
+          "title": "C – Median (even count)",
+          "steps": [
+            "Already ordered. n = 6 (even).",
+            "Two middle numbers: 30 and 35.",
+            "Median = (30 + 35) ÷ 2 = 32.5."
+          ],
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Rusty's Clothing Shop has five employees with salaries: $27,000, $32,000, $40,000, $67,000, and $95,000. The mean is $52,200, but three of the five employees earn less than that. The [[kw:median]] salary of $40,000 better represents the typical salary because it isn't pulled up by Alice's $95,000."
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "A data set can have multiple modes. [[imp:If two scores both appear three times and others less, the data is bimodal.]]"
+      },
+      "discoveryHook": {
+        "scenario": "In Bill's Sport Shop sales ($400, $100, $68, $115, $120, $68, $180), the sale amount $68 appears twice, more than any other. The [[kw:mode]] is $68. The mode tells us the most common value—useful for inventory decisions."
+      },
+      "challengeCorner": {
+        "optional": true,
+        "answers": [
+          "20"
+        ],
+        "prompt": "The ages of a group are 20, 22, 20, 25, 22, 20, 30, 25, 25, 20. Find the mode(s).",
+        "hints": [
+          "Count: 20 appears four times, 25 three times, 22 twice, 30 once.",
+          "Mode is 20."
+        ],
+        "type": "short-answer"
+      },
+      "title": "4. The Mode",
+      "questions": [
+        {
+          "hints": [
+            "It's about frequency.",
+            "Not the middle or average."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "often",
+                "frequently"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "often (or frequently).",
+          "id": "b4q1",
+          "prompt": "The mode is the value that appears most ___ in a data set."
+        },
+        {
+          "id": "b4q2",
+          "answers": [
+            "10"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "Count: $10 appears three times.",
+            "It's the most frequent."
+          ],
+          "feedbackIfWrong": "10.",
+          "prompt": "Find the mode of: $10, $20, $10, $30, $20, $10. (number only)"
+        },
+        {
+          "type": "short-answer",
+          "prompt": "If data has two values that both appear three times, the data is ___ (word).",
+          "id": "b4q3",
+          "feedbackIfWrong": "bimodal.",
+          "answers": [
+            "bimodal"
+          ],
+          "hints": [
+            "Two modes.",
+            "Prefix 'bi'."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'Which sale amount appeared most often this week?'",
+        "Define the mode as the most frequent value."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "title": "Finding the Mode",
+            "caption": "Mode = $68 because it appears twice.",
+            "headers": [
+              "Value",
+              "Frequency"
+            ],
+            "rows": [
+              {
+                "0": "$68",
+                "1": "2 (most frequent)"
+              },
+              {
+                "0": "$100",
+                "1": "1"
+              },
+              {
+                "0": "$115",
+                "1": "1"
+              },
+              {
+                "0": "$120",
+                "1": "1"
+              },
+              {
+                "0": "$180",
+                "1": "1"
+              },
+              {
+                "0": "$400",
+                "1": "1"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "title": "Mode Definition",
+          "formula": "$$\\text{Mode} = \\text{The value with the highest frequency.}$$",
+          "notes": [
+            "If two values tie for highest frequency, both are modes (bimodal).",
+            "If no value repeats, there is no mode."
+          ]
+        },
+        "explanation": [
+          "The [[kw:mode]] is the value that occurs most often in a data set.",
+          "There can be one mode, more than one mode (bimodal, multimodal), or no mode if all values are different.",
+          "The mode is not affected by extreme values and can be used with non‑numeric data (e.g., most popular color).",
+          "[[imp:The mode shows the most frequent occurrence, not necessarily the center.]]"
+        ]
+      },
+      "examples": [
+        {
+          "prompt": "Find the mode of the following test scores: 70, 85, 90, 85, 75, 70, 85.",
+          "title": "A – Find the mode",
+          "steps": [
+            "Count frequencies: 70 appears twice, 85 appears three times, 75 once, 90 once.",
+            "The mode is 85 (highest frequency)."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "The mode tells the most frequently sold size, so the manager knows which sizes to order most.",
+            "The mean size might not correspond to any actual foot size and could lead to overstocking uncommon sizes.",
+            "For categorical or discrete data, mode is often the most useful."
+          ],
+          "title": "B – When is mode useful?",
+          "peerPrompt": "Think about which sizes to stock.",
+          "prompt": "Explain why a shoe store manager might care more about the mode shoe size than the mean."
+        },
+        {
+          "steps": [
+            "Each number appears exactly once.",
+            "No value repeats, so there is no mode."
+          ],
+          "role": "independent",
+          "title": "C – No mode",
+          "prompt": "Do the numbers 5, 10, 15, 20, 25 have a mode?"
+        }
+      ],
+      "id": "mode"
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "Mean = (55+60+65+70+75+80+95) ÷ 7 ≈ 71.4.",
+            "Median = 70 (4th value).",
+            "Mode: none (all unique).",
+            "Median 70 is best because the 95 pulls the mean up slightly."
+          ],
+          "title": "A – Full blueprint",
+          "role": "guided",
+          "prompt": "Test scores: 55, 60, 65, 70, 75, 80, 95. Compute mean, median, mode, and decide which best represents the class performance."
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Think about data with one very large or very small number.",
+          "steps": [
+            "The mean is affected by every value, so extreme numbers can shift it away from the majority.",
+            "The median only depends on order, so it stays centered among the typical values.",
+            "In skewed distributions, the median is more representative."
+          ],
+          "title": "B – Why not always mean?",
+          "prompt": "Explain why the mean is not always the best measure of center."
+        },
+        {
+          "prompt": "A shoe store sold sizes: 7, 7, 8, 8, 8, 9, 9, 10, 10, 11. Which measure is most useful for reordering stock?",
+          "steps": [
+            "Mode = 8 (most frequent).",
+            "The store should order more size 8 because it's the most popular.",
+            "The mean or median size wouldn't help decide quantities."
+          ],
+          "title": "C – Choose the measure",
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Mean: } \\text{No extreme values, symmetric data.}$$ $$\\text{Median: } \\text{Data has outliers or is skewed.}$$ $$\\text{Mode: } \\text{Most common category or value needed.}$$",
+          "notes": [
+            "Always compute all three to compare before deciding.",
+            "The median is often the best for income, home prices, and other skewed data."
+          ],
+          "title": "When to Use Each Measure"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "List all values, check for outliers.",
+                "2": "Salaries: 18 between $30k‑$50k, 2 at $200k."
+              },
+              {
+                "0": "2. Solve – Mean",
+                "1": "Sum / count",
+                "2": "$1,200,000 / 20 = $60,000"
+              },
+              {
+                "0": "2. Solve – Median",
+                "1": "Middle value",
+                "2": "$42,000 (typical)"
+              },
+              {
+                "0": "2. Solve – Mode",
+                "1": "Most frequent",
+                "2": "$40,000"
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Median best represents the typical salary because mean is skewed by executives.",
+                "2": ""
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "caption": "The median gives a better picture of what most employees earn.",
+            "title": "Blueprint: Which Measure to Use?",
+            "headers": [
+              "Step",
+              "Action",
+              "Example"
+            ]
+          }
+        ],
+        "explanation": [
+          "Apply the blueprint to descriptive statistics:",
+          "1. Understand: list all data values, note any extreme outliers, and determine what 'typical' means in context.",
+          "2. Solve: compute the mean, median, and mode. Compare them.",
+          "3. Conclude: choose the measure that best represents the data without distortion. For skewed data, median; for frequent values, mode; for symmetric, mean.",
+          "This systematic approach ensures you don't blindly use the mean when another measure is more appropriate."
+        ]
+      },
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that asks for the best measure of center."
+      ],
+      "challengeCorner": {
+        "hints": [
+          "Sum = 45+48+50+50+52+55+55+55+60+200 = 670; mean=67.",
+          "Median: even count, avg of 52 and 55 = 53.5. Mode=55. The 200 holiday makes mean too high; median is best."
+        ],
+        "optional": true,
+        "answers": [
+          "mean 67, median 53.5, mode 55, median"
+        ],
+        "type": "short-answer",
+        "prompt": "A restaurant's daily customer counts for 10 days: 45, 48, 50, 50, 52, 55, 55, 55, 60, 200 (holiday). Compute mean, median, mode. Which measure is most typical?"
+      },
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "No single measure is always best. [[imp:Consider the data's shape and what you want to know before choosing.]]"
+      },
+      "questions": [
+        {
+          "prompt": "The first step of the blueprint is to ___ the data.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "id": "b5q1",
+          "feedbackIfWrong": "understand.",
+          "hints": [
+            "Identify knowns.",
+            "U in U‑S‑C."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "id": "b5q2",
+          "type": "short-answer",
+          "hints": [
+            "Not affected by extremes.",
+            "Middle value."
+          ],
+          "prompt": "For income data with a few very high earners, the ___ is a better measure than the mean. (word)",
+          "feedbackIfWrong": "median.",
+          "answers": [
+            "median"
+          ]
+        },
+        {
+          "id": "b5q3",
+          "prompt": "When all values are unique and you want to know the most frequent, you use the ___ (word).",
+          "answers": [
+            "mode"
+          ],
+          "feedbackIfWrong": "mode.",
+          "hints": [
+            "Most common.",
+            "Highest frequency."
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "id": "blueprint-statistics",
+      "title": "5. Blueprint Aid for Choosing Mean, Median, or Mode",
+      "discoveryHook": {
+        "scenario": "A business owner wants to describe the typical salary in her company of 20 employees, where 2 executives earn very high salaries. Should she use the mean, median, or mode? The blueprint helps decide."
+      }
+    }
+  ],
+  "schemaVersion": 2,
+  "title": "Mean, Median, and Mode",
+  "standards": [
+    "BUSMATH.22.1"
+  ],
+  "id": "ch22-lu22-1",
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}

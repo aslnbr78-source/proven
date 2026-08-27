@@ -1,0 +1,656 @@
+{
+  "type": "interactive-lesson",
+  "id": "10-8-graphs-polar",
+  "title": "Graphs of Polar Equations",
+  "blocks": [
+    {
+      "id": "point-plotting",
+      "title": "Graphing Polar Equations by Point Plotting",
+      "teacherCues": [
+        "Set up a table with columns θ, r. Ask: 'How do we find r for each θ?'",
+        "Plot points on polar graph paper, then connect them smoothly."
+      ],
+      "discoveryHook": {
+        "scenario": "A microphone's sensitivity pattern can be described by a polar equation r = 4 sin θ. Plotting points reveals the cardioid‑like shape and helps engineers visualize sound pickup."
+      },
+      "concept": {
+        "explanation": [
+          "The basic method to graph a polar equation $ r = f(\\theta) $ is [[kw:point plotting]]: choose $ \\theta $ values, compute $ r $, and plot $ (r,\\theta) $.",
+          "Use a table of values for $ \\theta $ from $ 0 $ to $ 2\\pi $ (or less if periodic).",
+          "Connect points in order of increasing $ \\theta $; note that negative $ r $ values plot opposite the ray.",
+          "Example: $ r = 4 \\sin \\theta $ yields a circle of radius $ 2 $ centered at $ (0,2) $ in rectangular coordinates."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Point Plotting for $ r = 4 \\sin \\theta $",
+            "headers": [
+              "$ \\theta $",
+              "0",
+              "$ \\frac{\\pi}{6} $",
+              "$ \\frac{\\pi}{3} $",
+              "$ \\frac{\\pi}{2} $",
+              "$ \\frac{2\\pi}{3} $",
+              "$ \\frac{5\\pi}{6} $",
+              "$ \\pi $"
+            ],
+            "rows": [
+              {
+                "0": "$ r $",
+                "1": "0",
+                "2": "2",
+                "3": "$ 2\\sqrt{3} $",
+                "4": "4",
+                "5": "$ 2\\sqrt{3} $",
+                "6": "2",
+                "7": "0"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Graphing by Point Plotting",
+          "formula": "$$ r = f(\\theta) $$",
+          "notes": [
+            "Create table for $ \\theta $ in $ [0, 2\\pi) $.",
+            "Plot $ (r,\\theta) $, connect smoothly."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Circle from sine",
+          "prompt": "Sketch $ r = 4 \\sin \\theta $ by point plotting.",
+          "steps": [
+            "Make table: $ \\theta=0 \\Rightarrow r=0 $; $ \\theta=\\pi/2 \\Rightarrow r=4 $; $ \\theta=\\pi \\Rightarrow r=0 $.",
+            "Plot points and connect: the curve is a circle passing through the pole, symmetric about $ \\theta=\\pi/2 $.",
+            "Converting to rectangular confirms $ x^2 + (y-2)^2 = 4 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Cosine circle",
+          "prompt": "Graph $ r = 6 \\cos \\theta $. What shape do you expect?",
+          "peerPrompt": "Discuss with a partner: 'How does the table differ from the sine case? Where is the maximum r?'",
+          "minLength": 2,
+          "steps": [
+            "$ \\theta=0 \\Rightarrow r=6 $; $ \\theta=\\pi/2 \\Rightarrow r=0 $; $ \\theta=\\pi \\Rightarrow r=-6 $, which gives the same point as $ (6,0) $.",
+            "The graph is a circle of radius 3 centered at $ (3,0) $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Simple line",
+          "prompt": "Sketch $ r = \\sec \\theta $ for $ -\\pi/2 < \\theta < \\pi/2 $.",
+          "steps": [
+            "Recall $ r \\cos \\theta = 1 \\Rightarrow x = 1 $, a vertical line.",
+            "Point plot confirms: as $ \\theta $ approaches $ \\pm \\pi/2 $, $ r \\to \\pm \\infty $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Negative r values",
+        "body": "A negative $ r $ means plot the point in the opposite direction of the ray at angle $ \\theta $. The curve may loop back through the pole."
+      },
+      "questions": [
+        {
+          "id": "q-pp-1",
+          "type": "fill-blank",
+          "prompt": "To graph a polar equation by point plotting, first create a table of values for ___ and compute $ r $.",
+          "blanks": [
+            {
+              "accept": [
+                "θ",
+                "theta"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the independent variable.",
+            "The angle."
+          ],
+          "feedbackIfWrong": "$ \\theta $."
+        },
+        {
+          "id": "q-pp-2",
+          "type": "short-answer",
+          "prompt": "The graph of $ r = a \\sin \\theta $ is a circle passing through the pole. What is its diameter?",
+          "answer": "|a|",
+          "hints": [
+            "Compare with $ r = 4 \\sin \\theta $ having diameter 4.",
+            "The maximum r is |a|."
+          ],
+          "feedbackIfWrong": "$ |a| $."
+        },
+        {
+          "id": "q-pp-3",
+          "type": "short-answer",
+          "prompt": "What is the shape of $ r = a \\cos \\theta $?",
+          "answer": "circle",
+          "hints": [
+            "Similar to the sine version but rotated.",
+            "It's a circle touching the pole."
+          ],
+          "feedbackIfWrong": "circle."
+        }
+      ]
+    },
+    {
+      "id": "symmetry",
+      "title": "Symmetry in Polar Graphs",
+      "teacherCues": [
+        "Write three symmetry tests on the board. Ask: 'Why is symmetry helpful?'",
+        "Show an example: replacing θ with −θ tests symmetry about the polar axis."
+      ],
+      "discoveryHook": {
+        "scenario": "Many polar graphs are symmetric, which means you only need to plot half the points and then reflect. This saves time and reveals the curve's elegance."
+      },
+      "concept": {
+        "explanation": [
+          "A polar graph is [[kw:symmetric]] if certain replacements leave the equation unchanged.",
+          "1. Symmetry about the line $ \\theta = \\frac{\\pi}{2} $: replace $ (r,\\theta) $ with $ (r,\\pi-\\theta) $ or $ (-r,-\\theta) $.",
+          "2. Symmetry about the polar axis (horizontal): replace $ (r,\\theta) $ with $ (r,-\\theta) $ or $ (-r,\\pi-\\theta) $.",
+          "3. Symmetry about the pole (origin): replace $ (r,\\theta) $ with $ (r,\\pi+\\theta) $ or $ (-r,\\theta) $.",
+          "Quick rule: $ r = f(\\sin\\theta) $ is symmetric about $ \\theta = \\pi/2 $; $ r = g(\\cos\\theta) $ is symmetric about the polar axis."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Symmetry Tests",
+            "headers": [
+              "Symmetry with respect to",
+              "Replace (r,θ) with"
+            ],
+            "rows": [
+              {
+                "0": "Line $ \\theta = \\pi/2 $ (y‑axis)",
+                "1": "$ (r, \\pi-\\theta) $ or $ (-r, -\\theta) $"
+              },
+              {
+                "0": "Polar axis (x‑axis)",
+                "1": "$ (r, -\\theta) $ or $ (-r, \\pi-\\theta) $"
+              },
+              {
+                "0": "Pole (origin)",
+                "1": "$ (r, \\pi+\\theta) $ or $ (-r, \\theta) $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Quick Symmetry",
+          "formula": "$$ r = f(\\sin\\theta) \\Rightarrow \\text{sym. about } \\theta = \\frac{\\pi}{2} $$ $$ r = g(\\cos\\theta) \\Rightarrow \\text{sym. about polar axis} $$",
+          "notes": [
+            "These are sufficient but not necessary; a graph can have symmetry without satisfying these tests."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Testing for symmetry",
+          "prompt": "Test $ r = 3 + 2 \\cos \\theta $ for symmetry about the polar axis.",
+          "steps": [
+            "Replace $ \\theta $ with $ -\\theta $: $ r = 3 + 2 \\cos(-\\theta) = 3 + 2 \\cos \\theta $ (even function).",
+            "Equation unchanged → symmetric about polar axis."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Using symmetry to reduce work",
+          "prompt": "If a graph is symmetric about $ \\theta = \\pi/2 $, how many points do you need to compute?",
+          "peerPrompt": "Work with a partner: 'If you have values from $ 0 $ to $ \\pi/2 $, how do you get the rest?'",
+          "minLength": 2,
+          "steps": [
+            "Only compute for $ \\theta \\in [0, \\pi/2] $ (or appropriately).",
+            "Reflect points across the line $ \\theta = \\pi/2 $ to get the other half."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Symmetry about pole",
+          "prompt": "Test $ r = \\sin 2\\theta $ for pole symmetry.",
+          "steps": [
+            "Replace $ r $ with $ -r $: $ -r = \\sin 2\\theta \\Rightarrow r = -\\sin 2\\theta $, not same.",
+            "Replace $ \\theta $ with $ \\pi+\\theta $: $ r = \\sin(2(\\pi+\\theta)) = \\sin(2\\pi+2\\theta) = \\sin 2\\theta $, unchanged. So symmetric about pole."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Tests are not exhaustive",
+        "body": "A curve may be symmetric even if the equation fails the test, e.g., $ r = \\theta + 2\\pi $ is symmetric about $ \\theta = \\pi/2 $ but the test fails."
+      },
+      "questions": [
+        {
+          "id": "q-sym-1",
+          "type": "fill-blank",
+          "prompt": "To test symmetry about the polar axis, replace $ \\theta $ with ___.",
+          "blanks": [
+            {
+              "accept": [
+                "−θ",
+                "-θ"
+              ]
+            }
+          ],
+          "hints": [
+            "Reflecting across the horizontal axis.",
+            "The angle becomes negative."
+          ],
+          "feedbackIfWrong": "$ -\\theta $."
+        },
+        {
+          "id": "q-sym-2",
+          "type": "short-answer",
+          "prompt": "The equation $ r = 4 \\sin \\theta $ is symmetric about which line? (Give the angle)",
+          "answer": "θ = π/2",
+          "hints": [
+            "It's a function of sin only.",
+            "Quick test: sin(π−θ)=sinθ."
+          ],
+          "feedbackIfWrong": "$ \\theta = \\pi/2 $."
+        },
+        {
+          "id": "q-sym-3",
+          "type": "short-answer",
+          "prompt": "If replacing $(r,\\theta)$ with $(-r,\\theta)$ yields the same equation, the graph is symmetric about the ___.",
+          "answer": "pole",
+          "hints": [
+            "Negating r without changing θ reflects through the origin.",
+            "This is symmetry about the pole."
+          ],
+          "feedbackIfWrong": "pole."
+        }
+      ]
+    },
+    {
+      "id": "zeros-maxima",
+      "title": "Zeros and Maximum |r| Values",
+      "teacherCues": [
+        "Ask: 'Where does the graph cross the pole?' and 'Where is the farthest point?'",
+        "Show that solving $ r=0 $ gives angles where the curve hits the pole."
+      ],
+      "discoveryHook": {
+        "scenario": "Knowing where a polar curve reaches the pole (r=0) and its maximum distance helps you draw an accurate sketch without dozens of plotted points."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Zeros of r]]: set $ r = 0 $ and solve for $ \\theta $. These give points where the graph passes through the pole.",
+          "[[kw:Maximum $|r|$]]: find $ \\theta $ where $ f(\\theta) $ is maximum (absolute). This indicates the farthest petal or loop from the pole.",
+          "Combine with symmetry to quickly sketch the overall shape."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Example: $ r = 1 - 2 \\cos \\theta $",
+            "headers": [
+              "Feature",
+              "Value",
+              "Point"
+            ],
+            "rows": [
+              {
+                "0": "Zeros",
+                "1": "$ \\theta = \\pm \\pi/3 $",
+                "2": "Pole"
+              },
+              {
+                "0": "Max $|r|$",
+                "1": "$ \\theta = \\pi $, $ r = 3 $",
+                "2": "Farthest point"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find zeros and max for limaçon",
+          "prompt": "For $ r = 1 - 2 \\cos \\theta $, find zeros and max $ |r| $.",
+          "steps": [
+            "Zeros: $ 1 - 2 \\cos \\theta = 0 \\Rightarrow \\cos \\theta = 1/2 \\Rightarrow \\theta = \\pm \\pi/3 $.",
+            "Max $ |r| $: $ \\cos \\theta = -1 $ at $ \\theta = \\pi $ gives $ r = 3 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Rose curve zeros",
+          "prompt": "Where does $ r = 2 \\cos 3\\theta $ have zeros?",
+          "peerPrompt": "Discuss with partner: 'Solve for $ \\theta $ with $ \\cos 3\\theta = 0 $.'",
+          "minLength": 2,
+          "steps": [
+            "$ \\cos 3\\theta = 0 \\Rightarrow 3\\theta = \\pi/2 + k\\pi $ → $ \\theta = \\pi/6 + k\\pi/3 $.",
+            "Within $ [0, \\pi) $, zeros at $ \\pi/6, \\pi/2, 5\\pi/6 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Maximum for cardioid",
+          "prompt": "Find max $ |r| $ for $ r = 1 + \\sin \\theta $.",
+          "steps": [
+            "Max of $ \\sin\\theta $ is 1 at $ \\theta = \\pi/2 $ → $ r = 2 $.",
+            "So farthest point is at $ \\theta = \\pi/2 $, $ r=2 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Zero vs. pole",
+        "body": "The condition $ r=0 $ identifies angles where the curve touches or crosses the pole, which may be multiple angles."
+      },
+      "questions": [
+        {
+          "id": "q-zeros-1",
+          "type": "fill-blank",
+          "prompt": "To find where a polar curve passes through the pole, set $ r = $ ___ and solve for $ \\theta $.",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "The pole corresponds to distance zero.",
+            "Set the equation to zero."
+          ],
+          "feedbackIfWrong": "0."
+        },
+        {
+          "id": "q-zeros-2",
+          "type": "short-answer",
+          "prompt": "For $ r = 1 - 2 \\cos \\theta $, the pole is reached at $ \\theta = \\pm \\pi/3 $. How many times does the curve cross the pole in $ [0, 2\\pi) $?",
+          "answer": "2",
+          "hints": [
+            "At $ \\pi/3 $ and $ 5\\pi/3 $.",
+            "Two solutions in $ [0,2\\pi) $."
+          ],
+          "feedbackIfWrong": "2."
+        },
+        {
+          "id": "q-zeros-3",
+          "type": "short-answer",
+          "prompt": "For $ r = 2 \\cos 3\\theta $, the maximum value of $ |r| $ is ___.",
+          "answer": "2",
+          "hints": [
+            "The coefficient in front of cosine.",
+            "Maximum of cosine is 1."
+          ],
+          "feedbackIfWrong": "2."
+        }
+      ]
+    },
+    {
+      "id": "special-graphs",
+      "title": "Special Polar Graphs",
+      "teacherCues": [
+        "Draw examples of limaçons, rose curves, and lemniscates. Ask students to note number of petals or loops.",
+        "Write general forms: r = a ± b cos θ, r = a cos nθ, r² = a² cos 2θ."
+      ],
+      "discoveryHook": {
+        "scenario": "Many natural patterns—like flower petals (rose curves) and heart-shaped curves (cardioids)—are beautifully described by simple polar equations."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Limaçons]]: $ r = a \\pm b \\cos \\theta $ or $ r = a \\pm b \\sin \\theta $. Shape depends on $ a/b $: inner loop if $ a<b $, cardioid if $ a=b $, dimpled if $ 1 < a/b < 2 $, convex if $ a/b \\ge 2 $.",
+          "[[kw:Rose curves]]: $ r = a \\cos n\\theta $ or $ r = a \\sin n\\theta $. Number of petals: $ n $ if $ n $ is odd, $ 2n $ if $ n $ is even ($ n \\ge 2 $).",
+          "[[kw:Lemniscates]]: $ r^2 = a^2 \\cos 2\\theta $ or $ r^2 = a^2 \\sin 2\\theta $. Figure-eight shape; domain restricts angles where $ \\cos 2\\theta \\ge 0 $ (or $ \\sin 2\\theta \\ge 0 $).",
+          "Circles: $ r = a \\cos \\theta $, $ r = a \\sin \\theta $ (diameter $ |a| $, passing through pole)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Special Polar Graph Identification",
+            "headers": [
+              "Equation form",
+              "Graph Type",
+              "Key Feature"
+            ],
+            "rows": [
+              {
+                "0": "$ r = a \\pm b \\cos\\theta $ (or sin)",
+                "1": "Limaçon",
+                "2": "Inner loop if $ a<b $"
+              },
+              {
+                "0": "$ r = a \\cos n\\theta $ (or sin)",
+                "1": "Rose",
+                "2": "$ n $ petals (odd) or $ 2n $ (even)"
+              },
+              {
+                "0": "$ r^2 = a^2 \\cos 2\\theta $ (or sin)",
+                "1": "Lemniscate",
+                "2": "Figure eight"
+              },
+              {
+                "0": "$ r = a \\cos\\theta $ or $ r = a \\sin\\theta $",
+                "1": "Circle",
+                "2": "Diameter $ |a| $"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Limaçon with inner loop",
+          "prompt": "Sketch $ r = 1 - 2 \\cos \\theta $. Identify type.",
+          "steps": [
+            "Compare to $ r = a - b \\cos \\theta $: $ a=1, b=2 $, so $ a/b = 0.5 < 1 $ → inner loop.",
+            "Zeros: $ \\theta = \\pm \\pi/3 $. Max $ r = 3 $ at $ \\theta = \\pi $.",
+            "Symmetry about polar axis. Sketch inner loop and outer loop."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Rose curve petals",
+          "prompt": "How many petals does $ r = 2 \\cos 3\\theta $ have? Sketch.",
+          "peerPrompt": "With a partner: 'Why are there only 3 petals when cosine would suggest more?'",
+          "minLength": 2,
+          "steps": [
+            "$ n=3 $ is odd → 3 petals.",
+            "Zeros at $ \\pi/6, \\pi/2, 5\\pi/6 $; max $ r=2 $ at $ \\theta=0,\\pi/3,2\\pi/3 $.",
+            "Trace from $ 0 $ to $ \\pi $ completes all petals."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Lemniscate",
+          "prompt": "Sketch $ r^2 = 9 \\sin 2\\theta $. Identify type.",
+          "steps": [
+            "Lemniscate with $ a=3 $.",
+            "Domain: $ \\sin 2\\theta \\ge 0 \\Rightarrow 0 \\le \\theta \\le \\pi/2 $ and $ \\pi \\le \\theta \\le 3\\pi/2 $.",
+            "Max $ |r|=3 $ at $ \\theta = \\pi/4 $. Symmetry about pole."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Petals count",
+        "body": "Odd $ n $ in rose curves yields $ n $ petals; even $ n $ yields $ 2n $ petals. Check the equation type (cos or sin) to orient the first petal."
+      },
+      "questions": [
+        {
+          "id": "q-spec-1",
+          "type": "fill-blank",
+          "prompt": "A polar equation of the form $ r = a \\pm b \\cos \\theta $ or $ r = a \\pm b \\sin \\theta $ is called a ___.",
+          "blanks": [
+            {
+              "accept": [
+                "limaçon",
+                "limacon"
+              ]
+            }
+          ],
+          "hints": [
+            "It can have an inner loop or dimple.",
+            "The name is French for snail."
+          ],
+          "feedbackIfWrong": "limaçon."
+        },
+        {
+          "id": "q-spec-2",
+          "type": "short-answer",
+          "prompt": "How many petals does $ r = \\sin 4\\theta $ have?",
+          "answer": "8",
+          "hints": [
+            "n=4 is even.",
+            "Number of petals = 2n."
+          ],
+          "feedbackIfWrong": "8."
+        },
+        {
+          "id": "q-spec-3",
+          "type": "short-answer",
+          "prompt": "What is the diameter of the circle $ r = 6 \\cos \\theta $?",
+          "answer": "6",
+          "hints": [
+            "Compare with standard circle $ r = a \\cos \\theta $.",
+            "Diameter = |a|."
+          ],
+          "feedbackIfWrong": "6."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-polar-graphs",
+      "title": "Blueprint Aid: Sketching Polar Graphs",
+      "teacherCues": [
+        "Draw flowchart: Identify type → test symmetry → find zeros/max → plot key points → sketch.",
+        "Emphasize using symmetry and special graph knowledge to reduce work."
+      ],
+      "discoveryHook": {
+        "scenario": "A systematic blueprint for polar sketching ensures you never miss a loop or petal. Understand the equation type, solve for key values, and then conclude the final shape."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Understand]]: Recognize the equation form (limaçon, rose, lemniscate, circle) and coefficients. Determine the expected number of loops/petals.",
+          "[[kw:Solve]]: Apply symmetry tests to reduce the plotting interval. Find zeros of $ r $ and maximum $ |r| $ values. Compute a few strategic points.",
+          "[[kw:Conclude]]: Sketch the graph, mark pole crossings, farthest points, and use symmetry to complete. Label the graph with its type."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Step‑by‑Step Blueprint",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Classify the equation type"
+              },
+              {
+                "0": "2",
+                "1": "Test symmetry (quick test if possible)"
+              },
+              {
+                "0": "3",
+                "1": "Find $ \\theta $ such that $ r=0 $ (pole crossings)"
+              },
+              {
+                "0": "4",
+                "1": "Find maximum $ |r| $ and where it occurs"
+              },
+              {
+                "0": "5",
+                "1": "Plot a few points in the reduced domain"
+              },
+              {
+                "0": "6",
+                "1": "Complete the sketch using symmetry"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Blueprint Example: Limaçon",
+          "prompt": "Sketch $ r = 3 + 2 \\cos \\theta $ using the blueprint.",
+          "steps": [
+            "Understand: Limaçon ($ a=3, b=2 $). $ a/b = 1.5 $ → dimpled, no inner loop.",
+            "Solve: Symmetry about polar axis (cos). Zeros: none ($ r > 0 $ always). Max $ r=5 $ at $ \\theta=0 $, min $ r=1 $ at $ \\theta=\\pi $.",
+            "Conclude: Sketch dimpled shape opening right."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Blueprint Example: Rose",
+          "prompt": "Sketch $ r = 3 \\cos 2\\theta $ using the blueprint.",
+          "peerPrompt": "Work with a partner: 'How many petals? Why should we only plot from 0 to π?'",
+          "minLength": 2,
+          "steps": [
+            "Understand: Rose, $ n=2 $ (even) → 4 petals. Symmetric about polar axis and $ \\theta=\\pi/2 $.",
+            "Solve: Max $ r=3 $ at $ \\theta=0,\\pi/2,\\pi,3\\pi/2 $. Zeros at $ \\theta=\\pi/4,3\\pi/4,5\\pi/4,7\\pi/4 $.",
+            "Conclude: Draw 4 petals along axes."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Your Turn: Lemniscate",
+          "prompt": "Sketch $ r^2 = 16 \\cos 2\\theta $.",
+          "steps": [
+            "Understand: Lemniscate, $ a=4 $. Domain: $ \\cos 2\\theta \\ge 0 $.",
+            "Solve: Max $ r=4 $ at $ \\theta=0,\\pi $. Zeros at $ \\theta=\\pi/4,3\\pi/4 $.",
+            "Conclude: Figure‑eight with loops along polar axis."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Domain restrictions",
+        "body": "For lemniscates, you must restrict $ \\theta $ to intervals where the right side is non‑negative. Otherwise there are no real solutions."
+      },
+      "questions": [
+        {
+          "id": "q-blue-1",
+          "type": "fill-blank",
+          "prompt": "The blueprint step after understanding the equation type is to test for ___.",
+          "blanks": [
+            {
+              "accept": [
+                "symmetry"
+              ]
+            }
+          ],
+          "hints": [
+            "It helps reduce the plotting work.",
+            "Check if the curve reflects about an axis."
+          ],
+          "feedbackIfWrong": "symmetry."
+        },
+        {
+          "id": "q-blue-2",
+          "type": "short-answer",
+          "prompt": "For a rose curve $ r = \\sin 5\\theta $, how many petals are there?",
+          "answer": "5",
+          "hints": [
+            "n=5 is odd.",
+            "Number of petals = n."
+          ],
+          "feedbackIfWrong": "5."
+        },
+        {
+          "id": "q-blue-3",
+          "type": "short-answer",
+          "prompt": "To find where a limaçon crosses the pole, you set the equation equal to ___.",
+          "answer": "0",
+          "hints": [
+            "Pole corresponds to r=0.",
+            "Solve for θ."
+          ],
+          "feedbackIfWrong": "0."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

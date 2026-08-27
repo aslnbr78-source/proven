@@ -1,0 +1,718 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "chapter-4-1-radian-degree",
+  "title": "Radian and Degree Measure",
+  "standards": [
+    "HSF.TF.A.1",
+    "HSF.TF.A.2"
+  ],
+  "blocks": [
+    {
+      "id": "angles-standard-position",
+      "title": "Angles and Standard Position",
+      "teacherCues": [
+        "Draw a ray on the positive x‑axis, then rotate it counterclockwise. Ask: Where does the angle start? Where does it end?",
+        "Point to the origin and ask: Why do we call this the vertex? What is the role of the initial and terminal sides?"
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine a lighthouse beam sweeping across the sea. The beam starts pointing due east and rotates to the north. That rotation is an angle! In trigonometry, we set a starting line (initial side) and measure how far the beam turns to its final position (terminal side)."
+      },
+      "concept": {
+        "explanation": [
+          "An [[kw:angle]] is formed by rotating a ray about its endpoint, called the [[kw:vertex]].",
+          "The starting position is the [[kw:initial side]]; the ending position after rotation is the [[kw:terminal side]].",
+          "An angle in [[kw:standard position]] has its vertex at the origin and its initial side along the positive $ x $-axis.",
+          "Rotation [[imp:counterclockwise]] produces [[imp:positive]] angles; [[imp:clockwise]] produces [[imp:negative]] angles.",
+          "Greek letters like $ \\alpha $, $ \\beta $, $ \\theta $ (theta) often label angles."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Angle Orientation and Sign",
+            "headers": [
+              "Direction of Rotation",
+              "Sign of Angle",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "Counterclockwise",
+                "1": "Positive",
+                "2": "$ \\theta = 45° $"
+              },
+              {
+                "0": "Clockwise",
+                "1": "Negative",
+                "2": "$ \\theta = -45° $"
+              }
+            ],
+            "caption": "Rotation direction determines the sign of the angle."
+          }
+        ],
+        "formulaCard": {
+          "title": "Standard Position Angle",
+          "formula": "$$ \\text{Angle} = \\theta \\quad \\text{(in degrees or radians)} $$",
+          "notes": [
+            "Vertex: $ (0,0) $",
+            "Initial side: positive $ x $-axis",
+            "Terminal side: where the rotation ends",
+            "Positive: counterclockwise, Negative: clockwise"
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Sketching an Angle in Standard Position",
+          "prompt": "Sketch the angle $ \\theta = 135° $ in standard position.",
+          "steps": [
+            "Start with the positive $ x $-axis as the initial side.",
+            "Rotate counterclockwise because the angle is positive.",
+            "135° is 90° + 45°, so the terminal side lies in Quadrant II.",
+            "Draw an arrow from the initial side to the terminal side, marking $ 135° $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Negative Angle",
+          "prompt": "How would you sketch $ \\theta = -60° $?",
+          "peerPrompt": "Explain to a partner: Why does a negative angle rotate clockwise? Where does the terminal side end?",
+          "minLength": 2,
+          "steps": [
+            "Start on positive $ x $-axis.",
+            "Rotate clockwise 60°.",
+            "The terminal side will be in Quadrant IV.",
+            "Label the angle as $ -60° $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Determining the Quadrant",
+          "prompt": "State the quadrant in which the terminal side of $ \\theta = -210° $ lies.",
+          "steps": [
+            "Add $ 360° $ to get a coterminal positive angle: $ -210° + 360° = 150° $.",
+            "150° is between 90° and 180°, so Quadrant II."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Which Way Do I Turn?",
+        "body": "Remember: a positive angle goes [[imp:counterclockwise]]. Think of tightening a screw – lefty‑loosey (counterclockwise) is positive. A negative angle goes [[imp:clockwise]] – righty‑tighty."
+      },
+      "questions": [
+        {
+          "id": "q4-1-1",
+          "type": "fill-blank",
+          "prompt": "In standard position, the initial side of an angle lies along the positive ___- axis.",
+          "blanks": [
+            {
+              "accept": [
+                "x"
+              ]
+            }
+          ],
+          "hints": [
+            "It is the horizontal axis.",
+            "Think of the starting position in a coordinate plane."
+          ],
+          "feedbackIfWrong": "The initial side is on the positive x-axis."
+        },
+        {
+          "id": "q4-1-2",
+          "type": "short-answer",
+          "prompt": "If an angle is formed by a clockwise rotation, is it positive or negative?",
+          "answer": "negative",
+          "hints": [
+            "Clockwise is like the hands of a clock moving from 12 to 1.",
+            "Counterclockwise is positive."
+          ],
+          "feedbackIfWrong": "Clockwise rotation yields a negative angle."
+        },
+        {
+          "id": "q4-1-3",
+          "type": "short-answer",
+          "prompt": "What is the sign of an angle that rotates counterclockwise?",
+          "answer": "positive",
+          "hints": [
+            "Think of opening a jar lid: left (counterclockwise) is positive.",
+            "It's the opposite of clockwise."
+          ],
+          "feedbackIfWrong": "Counterclockwise rotation gives a positive angle."
+        }
+      ]
+    },
+    {
+      "id": "radian-measure",
+      "title": "Radian Measure",
+      "teacherCues": [
+        "Draw a circle with radius r. Mark an arc length equal to r. Ask: What is the angle subtended? That's one radian.",
+        "Ask: How many radius lengths wrap around the whole circle? (Answer: $ 2 \\pi $, about 6.28)."
+      ],
+      "discoveryHook": {
+        "scenario": "A tire rolls without slipping. As it turns, the distance it travels along the ground equals the arc length along its rim. If the tire rotates through 1 radian, it moves forward exactly one radius length. Radians connect rotation directly to distance – that's why calculus loves them!"
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:radian]] is the measure of a central angle $ \\theta $ that intercepts an arc $ s $ equal to the radius $ r $.",
+          "The radian measure formula: $$ \\theta = \\frac{s}{r} $$ where $ \\theta $ is in radians.",
+          "One full revolution (360°) corresponds to an arc length equal to the circumference $ s = 2\\pi r $, so the angle in radians is $ \\theta = \\frac{2\\pi r}{r} = 2\\pi $.",
+          "Thus, $ 2\\pi $ radians = 360°.",
+          "Common radian fractions: $ \\frac{\\pi}{6} $ (30°), $ \\frac{\\pi}{4} $ (45°), $ \\frac{\\pi}{3} $ (60°), $ \\frac{\\pi}{2} $ (90°), $ \\pi $ (180°)."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Frequently Used Radian Measures",
+            "headers": [
+              "Degrees",
+              "Radians",
+              "Fraction of $ 2\\pi $"
+            ],
+            "rows": [
+              {
+                "0": "30°",
+                "1": "$ \\frac{\\pi}{6} $",
+                "2": "$ \\frac{1}{12} $"
+              },
+              {
+                "0": "45°",
+                "1": "$ \\frac{\\pi}{4} $",
+                "2": "$ \\frac{1}{8} $"
+              },
+              {
+                "0": "60°",
+                "1": "$ \\frac{\\pi}{3} $",
+                "2": "$ \\frac{1}{6} $"
+              },
+              {
+                "0": "90°",
+                "1": "$ \\frac{\\pi}{2} $",
+                "2": "$ \\frac{1}{4} $"
+              },
+              {
+                "0": "180°",
+                "1": "$ \\pi $",
+                "2": "$ \\frac{1}{2} $"
+              },
+              {
+                "0": "360°",
+                "1": "$ 2\\pi $",
+                "2": "1"
+              }
+            ],
+            "caption": "Memorize these common radian–degree equivalences."
+          }
+        ],
+        "formulaCard": {
+          "title": "Definition of a Radian",
+          "formula": "$$ \\theta = \\frac{s}{r} $$",
+          "notes": [
+            "$ s $ = arc length, $ r $ = radius",
+            "When $ s = r $, $ \\theta = 1 $ radian",
+            "Radian measure is unitless (a real number).",
+            "$ 2\\pi $ rad = 360°"
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Finding Radian Measure",
+          "prompt": "A circle has radius 5 cm. Find the radian measure of a central angle that intercepts an arc of 15 cm.",
+          "steps": [
+            "Use $ \\theta = \\frac{s}{r} $.",
+            "Substitute $ s = 15 $, $ r = 5 $: $ \\theta = \\frac{15}{5} = 3 $.",
+            "The angle measures 3 radians."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Arc Length from Radians",
+          "prompt": "If $ \\theta = 1.5 $ rad and $ r = 4 $ in., find the arc length.",
+          "peerPrompt": "Explain to a partner: How do you rearrange the radian formula to solve for arc length?",
+          "minLength": 2,
+          "steps": [
+            "From $ \\theta = \\frac{s}{r} $, multiply both sides by $ r $: $ s = r\\theta $.",
+            "Plug in: $ s = 4 \\times 1.5 = 6 $.",
+            "The arc length is 6 inches."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Identifying Quadrants",
+          "prompt": "In which quadrant does the terminal side of an angle of 5 radians lie?",
+          "steps": [
+            "Approximate radians: $ \\pi \\approx 3.14 $, $ \\frac{3\\pi}{2} \\approx 4.71 $, $ 2\\pi \\approx 6.28 $.",
+            "5 rad is between $ \\frac{3\\pi}{2} $ (4.71) and $ 2\\pi $ (6.28).",
+            "Therefore, Quadrant IV."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Radians Are Not Arbitrary!",
+        "body": "You might think 'radians' is just another number, but it’s a direct measure of how far around the circle you’ve rotated. One radian ≈ 57.3°. Use the proportion $ \\frac{\\theta}{2\\pi} = \\frac{\\text{arc length}}{\\text{circumference}} $ to see the relationship."
+      },
+      "questions": [
+        {
+          "id": "q4-2-1",
+          "type": "fill-blank",
+          "prompt": "One full revolution of a circle equals ___ radians.",
+          "blanks": [
+            {
+              "accept": [
+                "2pi"
+              ]
+            }
+          ],
+          "hints": [
+            "The circumference of a circle is $ 2\\pi r $.",
+            "The angle in radians is $ s/r $."
+          ],
+          "feedbackIfWrong": "One full revolution is $ 2\\pi $ radians."
+        },
+        {
+          "id": "q4-2-2",
+          "type": "short-answer",
+          "prompt": "How many radians are in half a revolution? (Answer using 'pi'.)",
+          "answer": "pi",
+          "hints": [
+            "Half of $ 2\\pi $.",
+            "180° equivalent."
+          ],
+          "feedbackIfWrong": "Half a revolution is $ \\pi $ radians."
+        },
+        {
+          "id": "q4-2-3",
+          "type": "short-answer",
+          "prompt": "What radian measure corresponds to a 90° angle? (Use 'pi' and write like 'pi/2'.)",
+          "answer": "pi/2",
+          "hints": [
+            "90° is one quarter of 360°.",
+            "$ \\frac{2\\pi}{4} = ? $"
+          ],
+          "feedbackIfWrong": "90° = $ \\frac{\\pi}{2} $ radians."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A central angle of 2.5 radians subtends an arc length of 10 meters. What is the radius of the circle? (give number only)",
+        "type": "short-answer",
+        "answers": [
+          "4"
+        ],
+        "hints": [
+          "Use $ s = r\\theta $ and solve for $ r $.",
+          "Divide arc length by the angle in radians."
+        ],
+        "feedbackIfWrong": "$ r = s/\\theta = 10/2.5 = 4 $ meters."
+      }
+    },
+    {
+      "id": "degree-measure-conversions",
+      "title": "Degree Measure and Conversions",
+      "teacherCues": [
+        "Write $ 180° = \\pi $ rad on the board. Ask: If we divide both sides by 180°, what do we get? (1° = $ \\pi/180 $ rad)",
+        "Now ask: If we divide both sides by $ \\pi $, what do we get? (1 rad = $ 180°/\\pi $)"
+      ],
+      "discoveryHook": {
+        "scenario": "You're using a GPS navigation device. It reports your direction in degrees, but the software behind it uses radians for trigonometric calculations. The ability to convert seamlessly between degrees and radians is what allows the device to give you accurate turn‑by‑turn directions!"
+      },
+      "concept": {
+        "explanation": [
+          "Degrees and radians are related by the fundamental equation: $$ 180° = \\pi \\text{ rad} $$",
+          "To convert degrees to radians, multiply by $ \\frac{\\pi \\text{ rad}}{180°} $.",
+          "To convert radians to degrees, multiply by $ \\frac{180°}{\\pi \\text{ rad}} $.",
+          "If no unit is given, [[imp:radian measure is assumed]] (e.g., $ \\theta = 2 $ means 2 radians).",
+          "For decimal degrees, calculators are convenient; historically, minutes (′) and seconds (″) were used: $ 1′ = \\frac{1}{60}° $, $ 1″ = \\frac{1}{3600}° $."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Conversion Rules at a Glance",
+            "headers": [
+              "From",
+              "To",
+              "Multiply by"
+            ],
+            "rows": [
+              {
+                "0": "Degrees",
+                "1": "Radians",
+                "2": "$ \\frac{\\pi \\text{ rad}}{180°} $"
+              },
+              {
+                "0": "Radians",
+                "1": "Degrees",
+                "2": "$ \\frac{180°}{\\pi \\text{ rad}} $"
+              }
+            ],
+            "caption": "Always include the units to cancel correctly."
+          }
+        ],
+        "formulaCard": {
+          "title": "Core Conversion Equivalence",
+          "formula": "$$ 180° = \\pi \\text{ rad} $$",
+          "notes": [
+            "360° = $ 2\\pi $ rad",
+            "1° ≈ 0.0174533 rad",
+            "1 rad ≈ 57.2958°"
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Degrees to Radians",
+          "prompt": "Convert 135° to radians exactly (as a multiple of $ \\pi $).",
+          "steps": [
+            "Write the conversion factor: multiply by $ \\frac{\\pi \\text{ rad}}{180°} $.",
+            "$ 135° \\times \\frac{\\pi}{180°} = \\frac{135}{180}\\pi $.",
+            "Simplify: $ \\frac{135}{180} = \\frac{3}{4} $.",
+            "Result: $ \\frac{3\\pi}{4} $ radians."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Radians to Degrees (Exact)",
+          "prompt": "Convert $ \\frac{5\\pi}{6} $ radians to degrees.",
+          "peerPrompt": "Explain to a partner: Why do we use the factor $ \\frac{180°}{\\pi \\text{ rad}} $ and how do the units cancel?",
+          "minLength": 2,
+          "steps": [
+            "Multiply by $ \\frac{180°}{\\pi \\text{ rad}} $: $ \\frac{5\\pi}{6} \\times \\frac{180°}{\\pi} $.",
+            "Cancel $ \\pi $: $ \\frac{5}{6} \\times 180° $.",
+            "Compute: $ 5 \\times 30° = 150° $.",
+            "Answer: 150°."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Approximate Conversion",
+          "prompt": "Convert 2 radians to degrees (to two decimal places).",
+          "steps": [
+            "Multiply by $ \\frac{180°}{\\pi} $: $ 2 \\times \\frac{180°}{\\pi} $.",
+            "Calculate: $ 360°/\\pi \\approx 360°/3.14159 \\approx 114.59° $.",
+            "So, 2 rad ≈ 114.59°."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "When to Keep $ \\pi $?",
+        "body": "In exact answers, keep $ \\pi $ in the radians. For example, 60° = $ \\frac{\\pi}{3} $ rad (exact). If a problem asks for decimal approximation, then use $ \\pi \\approx 3.14 $ or a calculator. Examiners love the exact form!"
+      },
+      "questions": [
+        {
+          "id": "q4-3-1",
+          "type": "short-answer",
+          "prompt": "If 1 rad = how many degrees (whole number)?",
+          "answer": "57",
+          "hints": [
+            "Recall $ 1 \\text{ rad} \\approx 57.3° $.",
+            "It's the integer part of 180°/π."
+          ],
+          "feedbackIfWrong": "Approximately 57°."
+        },
+        {
+          "id": "q4-3-2",
+          "type": "fill-blank",
+          "prompt": "To convert from degrees to radians, multiply by ___.",
+          "blanks": [
+            {
+              "accept": [
+                "pi/180"
+              ]
+            }
+          ],
+          "hints": [
+            "The conversion factor has π in the numerator.",
+            "$ 180° = \\pi $ rad, so divide both sides by 180°."
+          ],
+          "feedbackIfWrong": "Multiply degrees by $ \\frac{\\pi}{180} $ to get radians."
+        },
+        {
+          "id": "q4-3-3",
+          "type": "short-answer",
+          "prompt": "How many radians are in 360°? (Use 'pi' and write like '2pi'.)",
+          "answer": "2pi",
+          "hints": [
+            "$ 180° = \\pi $ rad, so double it.",
+            "Full circle."
+          ],
+          "feedbackIfWrong": "360° = $ 2\\pi $ radians."
+        }
+      ]
+    },
+    {
+      "id": "complementary-supplementary-coterminal",
+      "title": "Complementary, Supplementary, and Coterminal Angles",
+      "teacherCues": [
+        "Ask: If two angles share the same initial and terminal sides, what do we call them? (coterminal). Write $ \\frac{\\pi}{6} $ and $ \\frac{13\\pi}{6} $ as an example.",
+        "Draw a right angle split into two complementary angles: ask what they sum to. Then draw a straight angle for supplementary."
+      ],
+      "discoveryHook": {
+        "scenario": "The hands of a clock create angles throughout the day. At 3:00, the hands are at 90°. At 3:15, the minute hand moved 90° more, but the same angle could be described by a negative rotation or a rotation beyond 360°. Coterminal angles let us describe those over‑lapping positions simply."
+      },
+      "concept": {
+        "explanation": [
+          "Two angles are [[kw:coterminal]] if they share the same initial and terminal sides. To find coterminal angles, add or subtract $ 2\\pi $ (or 360°).",
+          "Two positive angles are [[kw:complementary]] if their sum is $ \\frac{\\pi}{2} $ (90°).",
+          "Two positive angles are [[kw:supplementary]] if their sum is $ \\pi $ (180°).",
+          "For radian complements: $ \\alpha + \\beta = \\frac{\\pi}{2} $. Supplements: $ \\alpha + \\beta = \\pi $.",
+          "An angle and its complement or supplement must be positive, so some angles (e.g., $ \\frac{4\\pi}{5} $) have no complement because it exceeds $ \\frac{\\pi}{2} $."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Coterminal Angle Rules",
+            "headers": [
+              "Given Angle $ \\theta $",
+              "Positive Coterminal",
+              "Negative Coterminal"
+            ],
+            "rows": [
+              {
+                "0": "$ \\frac{\\pi}{6} $",
+                "1": "$ \\frac{13\\pi}{6} $ (add $ 2\\pi $)",
+                "2": "$ -\\frac{11\\pi}{6} $ (subtract $ 2\\pi $)"
+              },
+              {
+                "0": "$ -\\frac{2\\pi}{3} $",
+                "1": "$ \\frac{4\\pi}{3} $ (add $ 2\\pi $)",
+                "2": "$ -\\frac{8\\pi}{3} $ (subtract $ 2\\pi $)"
+              }
+            ],
+            "caption": "Add or subtract multiples of $ 2\\pi $ to get coterminal angles."
+          }
+        ],
+        "formulaCard": {
+          "title": "Key Angle Relationships",
+          "formula": "$$ \\text{Coterminal: } \\theta + 2\\pi n, \\ n \\in \\mathbb{Z} $$",
+          "notes": [
+            "Complementary: $ \\alpha + \\beta = \\frac{\\pi}{2} $",
+            "Supplementary: $ \\alpha + \\beta = \\pi $",
+            "Coterminal: add/subtract $ 2\\pi $ (rad) or 360° (deg)."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Finding a Coterminal Angle",
+          "prompt": "Find a positive coterminal angle for $ \\theta = \\frac{\\pi}{4} $ and a negative coterminal angle.",
+          "steps": [
+            "Add $ 2\\pi $: $ \\frac{\\pi}{4} + 2\\pi = \\frac{\\pi}{4} + \\frac{8\\pi}{4} = \\frac{9\\pi}{4} $ (positive coterminal).",
+            "Subtract $ 2\\pi $: $ \\frac{\\pi}{4} - 2\\pi = \\frac{\\pi}{4} - \\frac{8\\pi}{4} = -\\frac{7\\pi}{4} $ (negative coterminal)."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Complement and Supplement",
+          "prompt": "Find the complement and supplement of $ \\frac{2\\pi}{5} $.",
+          "peerPrompt": "Talk to your partner: Why can we find a complement for $ \\frac{2\\pi}{5} $ but not for $ \\frac{4\\pi}{5} $?",
+          "minLength": 2,
+          "steps": [
+            "Complement: $ \\frac{\\pi}{2} - \\frac{2\\pi}{5} = \\frac{5\\pi}{10} - \\frac{4\\pi}{10} = \\frac{\\pi}{10} $.",
+            "Supplement: $ \\pi - \\frac{2\\pi}{5} = \\frac{5\\pi}{5} - \\frac{2\\pi}{5} = \\frac{3\\pi}{5} $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — No Complement?",
+          "prompt": "Does $ \\frac{5\\pi}{6} $ have a complement? If so, find it; if not, explain why.",
+          "steps": [
+            "For a complement, we need $ \\beta = \\frac{\\pi}{2} - \\frac{5\\pi}{6} $.",
+            "Compute: $ \\frac{\\pi}{2} - \\frac{5\\pi}{6} = \\frac{3\\pi}{6} - \\frac{5\\pi}{6} = -\\frac{2\\pi}{6} = -\\frac{\\pi}{3} $.",
+            "A complement must be positive; $ -\\frac{\\pi}{3} $ is negative, so there is no complement."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Complements vs. Supplements",
+        "body": "Don't mix them up! [[imp:Complementary]] angles add to $ 90° $ ( $ \\frac{\\pi}{2} $ rad), while [[imp:supplementary]] angles add to $ 180° $ ( $ \\pi $ rad). Also, complements must be positive; if the angle is already greater than $ 90° $, it has no complement."
+      },
+      "questions": [
+        {
+          "id": "q4-4-1",
+          "type": "short-answer",
+          "prompt": "What is a coterminal angle to $ \\frac{\\pi}{3} $ (positive, one answer, in terms of pi)?",
+          "answer": "7pi/3",
+          "hints": [
+            "Add $ 2\\pi $ to $ \\frac{\\pi}{3} $.",
+            "$ 2\\pi = \\frac{6\\pi}{3} $."
+          ],
+          "feedbackIfWrong": "$ \\frac{\\pi}{3} + 2\\pi = \\frac{7\\pi}{3} $."
+        },
+        {
+          "id": "q4-4-2",
+          "type": "fill-blank",
+          "prompt": "Complementary angles sum to ___ radians.",
+          "blanks": [
+            {
+              "accept": [
+                "pi/2"
+              ]
+            }
+          ],
+          "hints": [
+            "Think of a right angle.",
+            "Half of $ \\pi $."
+          ],
+          "feedbackIfWrong": "Complementary angles sum to $ \\frac{\\pi}{2} $."
+        },
+        {
+          "id": "q4-4-3",
+          "type": "short-answer",
+          "prompt": "What is the supplement of 60°? (Answer in degrees, just the number.)",
+          "answer": "120",
+          "hints": [
+            "Supplement means they sum to 180°.",
+            "180 – 60."
+          ],
+          "feedbackIfWrong": "60° + supplement = 180°, so supplement = 120°."
+        }
+      ]
+    },
+    {
+      "id": "arc-length-blueprint",
+      "title": "Arc Length — Understand → Solve → Conclude",
+      "teacherCues": [
+        "Show a pizza slice and ask: If we know the radius and the angle, how do we find the length of the crust?",
+        "Emphasize: The formula $ s = r\\theta $ only works when $ \\theta $ is in radians. Always convert degrees to radians first if necessary."
+      ],
+      "discoveryHook": {
+        "scenario": "A bicycle wheel has a radius of 14 inches. If it rotates through an angle of 3 radians, how far does the bike travel along the ground? Since the tire doesn't slip, the distance equals the arc length that touched the ground. That's a direct application of $ s = r\\theta $!"
+      },
+      "concept": {
+        "explanation": [
+          "The arc length $ s $ of a circle of radius $ r $ intercepted by a central angle $ \\theta $ (in radians) is given by: $$ s = r\\theta $$",
+          "If $ r=1 $, arc length equals the radian measure of the angle.",
+          "If the angle is given in degrees, first convert to radians: $ \\theta_{\\text{rad}} = \\theta_{\\text{deg}} \\times \\frac{\\pi}{180} $.",
+          "Arc length directly relates to distance traveled on a circular path."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Blueprint for Arc Length Problems",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify $ r $, $ \\theta $ (convert to radians if needed), and what is being asked."
+              },
+              {
+                "0": "Solve",
+                "1": "Plug into $ s = r\\theta $ and simplify."
+              },
+              {
+                "0": "Conclude",
+                "1": "State the arc length with correct units."
+              }
+            ],
+            "caption": "Follow this three‑step plan every time."
+          }
+        ],
+        "formulaCard": {
+          "title": "Arc Length Formula",
+          "formula": "$$ s = r\\theta $$",
+          "notes": [
+            "$ \\theta $ MUST be in radians.",
+            "$ s $ has the same unit as $ r $.",
+            "If $ \\theta $ in degrees, convert first.",
+            "Derived from $ \\theta = s/r $"
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A — Arc Length with Radians",
+          "prompt": "Find the arc length intercepted by a central angle of $ 2.5 $ rad in a circle of radius 4 cm.",
+          "steps": [
+            "Understand: $ r = 4 $ cm, $ \\theta = 2.5 $ rad (already in radians).",
+            "Solve: $ s = r\\theta = 4 \\times 2.5 = 10 $ cm.",
+            "Conclude: The arc length is 10 cm."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "Example B — Converting Degrees First",
+          "prompt": "Find the arc length for a circle of radius 10 in. with a central angle of 150°.",
+          "peerPrompt": "Explain to a partner: Why must we convert 150° to radians before using $ s = r\\theta $? What would happen if we forgot?",
+          "minLength": 2,
+          "steps": [
+            "Understand: $ r = 10 $ in., $ \\theta = 150° $.",
+            "Convert to radians: $ 150° \\times \\frac{\\pi}{180°} = \\frac{5\\pi}{6} $ rad.",
+            "Solve: $ s = r\\theta = 10 \\times \\frac{5\\pi}{6} = \\frac{50\\pi}{6} = \\frac{25\\pi}{3} \\approx 26.18 $ in.",
+            "Conclude: The arc length is $ \\frac{25\\pi}{3} $ inches exactly, or about 26.18 inches."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C — Real‑World Bicycle",
+          "prompt": "A bicycle wheel (radius 14 in.) turns through an angle of 3 radians. How far does the bicycle travel?",
+          "steps": [
+            "Understand: $ r = 14 $ in., $ \\theta = 3 $ rad.",
+            "Solve: $ s = 14 \\times 3 = 42 $ in.",
+            "Conclude: The bicycle moves 42 inches (or 3.5 feet)."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Degrees in, Garbage Out",
+        "body": "The arc length formula $ s = r\\theta $ was derived from the definition of radian measure. If $ \\theta $ is in degrees, the relationship is not $ s = r\\theta $ but $ s = \\frac{\\pi r \\theta}{180} $. So [[imp:always convert to radians]] unless you like wrong answers."
+      },
+      "questions": [
+        {
+          "id": "q4-5-1",
+          "type": "fill-blank",
+          "prompt": "The formula $ s = r\\theta $ gives the arc length when $ \\theta $ is measured in ___.",
+          "blanks": [
+            {
+              "accept": [
+                "radians"
+              ]
+            }
+          ],
+          "hints": [
+            "Not degrees.",
+            "The unitless ratio."
+          ],
+          "feedbackIfWrong": "Arc length formula uses radian measure."
+        },
+        {
+          "id": "q4-5-2",
+          "type": "short-answer",
+          "prompt": "A circle of radius 3 m has a central angle of 2 rad. Find the arc length. (Number only.)",
+          "answer": "6",
+          "hints": [
+            "Multiply radius by angle.",
+            "$ 3 \\times 2 $"
+          ],
+          "feedbackIfWrong": "$ s = 3 \\times 2 = 6 $ meters."
+        },
+        {
+          "id": "q4-5-3",
+          "type": "short-answer",
+          "prompt": "If an arc length of 12 cm is intercepted by a central angle of 3 rad, what is the radius? (Number only.)",
+          "answer": "4",
+          "hints": [
+            "Rearrange $ s = r\\theta $ to $ r = s/\\theta $.",
+            "$ 12/3 $"
+          ],
+          "feedbackIfWrong": "Radius = $ s/\\theta = 12/3 = 4 $ cm."
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

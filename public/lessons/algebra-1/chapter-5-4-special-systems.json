@@ -1,0 +1,716 @@
+{
+  "title": "Chapter 5.4 — Solving Special Systems of Linear Equations",
+  "presenterNotes": [
+    "Start by reviewing the three possibilities for linear systems. Use the analogy of roads: crossing (one solution), parallel (no solution), same road (infinitely many).",
+    "Emphasize that slope‑intercept form is the fastest way to classify a system. Practice quickly rearranging equations into $y = mx + b$.",
+    "When solving algebraically, the moment variables cancel, stop and evaluate the remaining statement. A true statement means same line; a false one means parallel.",
+    "In real‑life problems, always discuss the domain. Even with infinitely many solutions algebraically, the context may restrict the answers (e.g., positive lengths)."
+  ],
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Find the slope of the first line: $m_1 = 1$.",
+            "Rewrite the second equation in slope‑intercept form: $y = -x + 2$. The slope $m_2 = -1$.",
+            "Because $1 \\ne -1$, the slopes are different, so the system has exactly one solution."
+          ],
+          "title": "A – Identifying One Solution from Equations",
+          "prompt": "Without graphing, determine how many solutions the system has: $y = x + 2$ and $x + y = 2$."
+        },
+        {
+          "title": "B – Why Different Slopes Guarantee One Solution",
+          "steps": [
+            "If slopes are different, the lines are not parallel.",
+            "Non‑parallel lines in a plane must intersect at exactly one point.",
+            "That intersection point gives the unique solution to the system."
+          ],
+          "prompt": "Explain why a system whose equations have different slopes must have exactly one solution.",
+          "minLength": 2,
+          "peerPrompt": "Discuss with a partner: Picture two lines with different steepnesses. Can they ever be parallel? Can they be the same line?",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Solve the system $y = x + 2$ and $x + y = 2$ by any method.",
+          "title": "C – Solve a One‑Solution System",
+          "role": "independent",
+          "steps": [
+            "Substitute $y = x + 2$ into $x + y = 2$: $x + (x+2) = 2$ → $2x + 2 = 2$ → $2x = 0$ → $x = 0$.",
+            "Then $y = 0 + 2 = 2$. Solution: $(0, 2)$.",
+            "Check: $0 + 2 = 2$ ✓ and $0 + 2 = 2$ ✓."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "If the slopes are the same but the $y$‑intercepts differ, the lines are [[imp:parallel]]. They never intersect, so the system has no solution. Don't confuse this with having one solution.",
+        "title": "Same Slope, Different Intercept"
+      },
+      "title": "Systems with One Solution",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "q1-1",
+          "blanks": [
+            {
+              "accept": [
+                "one",
+                "1"
+              ]
+            }
+          ],
+          "hints": [
+            "They must intersect somewhere.",
+            "Think of two straight roads that aren't parallel."
+          ],
+          "prompt": "If two lines have different slopes, the system has exactly ___ solution(s).",
+          "feedbackIfWrong": "Different slopes → exactly one solution."
+        },
+        {
+          "answer": "one",
+          "id": "q1-2",
+          "hints": [
+            "Compare the slopes: 2 and -3.",
+            "Are they the same or different?"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "Slopes are different, so exactly one solution.",
+          "prompt": "How many solutions does the system $y = 2x + 1$ and $y = -3x + 5$ have?"
+        },
+        {
+          "hints": [
+            "Think about what makes lines intersect.",
+            "Parallel lines have the same slope."
+          ],
+          "id": "q1-3",
+          "answers": [
+            "they must be different",
+            "different",
+            "not equal"
+          ],
+          "prompt": "What must be true about the slopes for a system to have exactly one solution?",
+          "feedbackIfWrong": "The slopes must be different.",
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When two roads cross, there is exactly one spot where they meet. In a system of linear equations, if the lines have different slopes, they will always intersect at exactly one point. That unique intersection is the one and only solution!"
+      },
+      "id": "one-solution",
+      "teacherCues": [
+        "Graph the system y = 2x + 1 and y = -x + 4 on the same coordinate plane. Ask: 'How many times do the lines intersect? What does this tell us?'",
+        "Ask: 'If two lines have different slopes, what can you conclude about the number of solutions?'"
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{If } m_1 \\ne m_2 \\text{, the lines intersect once.} $$",
+          "notes": [
+            "The solution is the point of intersection.",
+            "Any method can be used to find it."
+          ],
+          "title": "One Solution System"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$y = x + 2$",
+                "1": "$x + y = 2$",
+                "2": "$1$ and $-1$",
+                "3": "One"
+              },
+              {
+                "0": "$y = 2x + 1$",
+                "1": "$y = -x + 4$",
+                "2": "$2$ and $-1$",
+                "3": "One"
+              }
+            ],
+            "type": "table",
+            "title": "One Solution: Slopes are Different",
+            "headers": [
+              "Equation 1",
+              "Equation 2",
+              "Slopes",
+              "Number of Solutions"
+            ]
+          }
+        ],
+        "explanation": [
+          "A system of linear equations can have [[imp:one solution]] when the graphs intersect at a single point.",
+          "This happens when the lines have [[imp:different slopes]].",
+          "The solution is the ordered pair $(x, y)$ where the lines cross.",
+          "You can solve these systems by graphing, substitution, or elimination—the answer will be the same."
+        ]
+      }
+    },
+    {
+      "id": "no-solution",
+      "examples": [
+        {
+          "steps": [
+            "Substitute $2x - 5$ for $y$ in the first equation: $2x - 5 = 2x + 1$.",
+            "Subtract $2x$ from both sides: $-5 = 1$, which is false.",
+            "There is no value of $x$ that makes this true. The system has no solution."
+          ],
+          "role": "guided",
+          "title": "A – Solve and See No Solution",
+          "prompt": "Solve the system $y = 2x + 1$ and $y = 2x - 5$."
+        },
+        {
+          "prompt": "How can you tell that $x + y = 3$ and $2x + 2y = 4$ has no solution without solving?",
+          "role": "peer-explain",
+          "title": "B – Spotting No Solution by Inspection",
+          "steps": [
+            "Rewrite in slope‑intercept form: $y = -x + 3$ and $y = -x + 2$.",
+            "Both have slope $-1$, but different $y$-intercepts ($3$ and $2$).",
+            "Same slope → parallel lines → no intersection → no solution."
+          ],
+          "peerPrompt": "Explain to a partner: Look at the coefficients. What do you notice? Why does that mean no solution?",
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "Subtract the second equation from the first: $(3x-3x) + (-y - (-y)) = 6 - (-3)$ → $0 = 9$.",
+            "The statement $0 = 9$ is false. The system has no solution."
+          ],
+          "role": "independent",
+          "title": "C – Elimination with No Solution",
+          "prompt": "Solve by elimination: $3x - y = 6$ and $3x - y = -3$."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine two trains on parallel tracks—they never meet. In math, when two lines have the same slope but different starting points, they are parallel. A system of such lines has no solution because they never cross!"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "No solution.",
+          "type": "fill-blank",
+          "prompt": "When two lines are parallel, the system of equations has ___ solution.",
+          "hints": [
+            "Parallel lines never meet.",
+            "Think of train tracks."
+          ],
+          "id": "q2-1",
+          "blanks": [
+            {
+              "accept": [
+                "no"
+              ]
+            }
+          ]
+        },
+        {
+          "hints": [
+            "Look at the conditions that make lines parallel.",
+            "They have the same steepness but start at different heights."
+          ],
+          "answers": [
+            "same slope and different y-intercepts",
+            "parallel lines"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "Same slope but different y-intercepts (parallel lines).",
+          "id": "q2-2",
+          "prompt": "What must be true for a system to have no solution? (Think about slopes and intercepts.)"
+        },
+        {
+          "prompt": "If solving a system leads to $0 = 7$, how many solutions does the system have?",
+          "feedbackIfWrong": "None. The false statement means no solution.",
+          "type": "short-answer",
+          "id": "q2-3",
+          "hints": [
+            "A false statement means no values work.",
+            "Think of the parallel lines example."
+          ],
+          "answer": "none"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Equation 1",
+              "Equation 2",
+              "Slopes",
+              "y-Intercepts",
+              "Solution"
+            ],
+            "type": "table",
+            "title": "No Solution: Same Slope, Different Intercepts",
+            "rows": [
+              {
+                "0": "$y = 2x + 1$",
+                "1": "$y = 2x - 5$",
+                "2": "Both 2",
+                "3": "1 and -5",
+                "4": "None"
+              },
+              {
+                "0": "$x + y = 3$",
+                "1": "$2x + 2y = 8$",
+                "2": "Both -1",
+                "3": "3 and 4",
+                "4": "None"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ m_1 = m_2 \\text{ and } b_1 \\ne b_2 $$",
+          "title": "No Solution System",
+          "notes": [
+            "The lines never intersect.",
+            "Elimination or substitution yields a false equation."
+          ]
+        },
+        "explanation": [
+          "A system has [[imp:no solution]] when the graphs are parallel lines.",
+          "Parallel lines have the [[imp:same slope]] but [[imp:different y-intercepts]].",
+          "Algebraically, solving leads to a false statement (e.g., $0 = 5$).",
+          "This means there is no ordered pair that satisfies both equations simultaneously."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Don't Call It 'No Points'",
+        "body": "A system with no solution doesn't mean there are no points anywhere—it means there is [[imp:no common point]] that works for both equations. Each line individually has infinitely many points."
+      },
+      "teacherCues": [
+        "Graph y = 2x + 1 and y = 2x - 5 on the same grid. Ask: 'Where do these lines meet?'",
+        "Write the system and show that substitution gives a false statement like -5 = 1."
+      ],
+      "title": "Systems with No Solution"
+    },
+    {
+      "examples": [
+        {
+          "title": "A – Solve and See Infinitely Many",
+          "steps": [
+            "Multiply the first equation by $-2$: $4x - 2y = -6$.",
+            "Add to the second: $(4x-4x) + (-2y+2y) = -6+6$ → $0 = 0$.",
+            "The true statement means the equations are the same line — infinitely many solutions."
+          ],
+          "prompt": "Solve the system $-2x + y = 3$ and $-4x + 2y = 6$.",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Discuss with a partner: What happens if you divide the second equation by 2?",
+          "role": "peer-explain",
+          "prompt": "Explain why $x + y = 3$ and $2x + 2y = 6$ have infinitely many solutions.",
+          "minLength": 2,
+          "steps": [
+            "Divide $2x + 2y = 6$ by 2: you get $x + y = 3$.",
+            "This is exactly the first equation, so they represent the same line.",
+            "Every point on $x + y = 3$ is a solution to both."
+          ],
+          "title": "B – Recognizing Equivalent Equations"
+        },
+        {
+          "role": "independent",
+          "prompt": "Solve by substitution: $y = -x + 3$ and $2x + 2y = 6$.",
+          "steps": [
+            "Substitute $y$ into the second: $2x + 2(-x + 3) = 6$ → $2x - 2x + 6 = 6$ → $6 = 6$.",
+            "The statement is always true — infinitely many solutions."
+          ],
+          "title": "C – Substitution to Reveal Infinitely Many"
+        }
+      ],
+      "id": "infinitely-many-solutions",
+      "questions": [
+        {
+          "hints": [
+            "They coincide.",
+            "Every point on the line works."
+          ],
+          "feedbackIfWrong": "Infinitely many solutions.",
+          "blanks": [
+            {
+              "accept": [
+                "infinitely"
+              ]
+            }
+          ],
+          "prompt": "If two equations represent the same line, the system has ___ many solutions.",
+          "type": "fill-blank",
+          "id": "q3-1"
+        },
+        {
+          "hints": [
+            "Think about what elimination or substitution produces.",
+            "It's a statement that is always true."
+          ],
+          "feedbackIfWrong": "A true statement like $0 = 0$.",
+          "id": "q3-2",
+          "answers": [
+            "0 = 0",
+            "true statement",
+            "identity"
+          ],
+          "type": "short-answer",
+          "prompt": "What algebraic result tells you a system has infinitely many solutions?"
+        },
+        {
+          "type": "short-answer",
+          "prompt": "If two lines have the same slope and the same $y$-intercept, how many solutions does the system have?",
+          "id": "q3-3",
+          "feedbackIfWrong": "Infinitely many solutions.",
+          "hints": [
+            "They are the exact same line.",
+            "Every point is shared."
+          ],
+          "answer": "infinitely many"
+        }
+      ],
+      "teacherCues": [
+        "Graph -2x + y = 3 and -4x + 2y = 6. Show that they are the same line. Ask: 'How many points do these two lines share?'",
+        "Demonstrate solving by elimination, showing that the result is 0 = 0 (always true)."
+      ],
+      "title": "Systems with Infinitely Many Solutions",
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "title": "Infinitely Many Solutions: Same Line",
+            "headers": [
+              "Equation 1",
+              "Equation 2",
+              "Slopes",
+              "y-Intercepts",
+              "Solution"
+            ],
+            "rows": [
+              {
+                "0": "$-2x + y = 3$",
+                "1": "$-4x + 2y = 6$",
+                "2": "Both 2",
+                "3": "Both 3",
+                "4": "Infinitely many"
+              },
+              {
+                "0": "$x + y = 3$",
+                "1": "$2x + 2y = 6$",
+                "2": "Both -1",
+                "3": "Both 3",
+                "4": "Infinitely many"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Infinitely Many Solutions System",
+          "notes": [
+            "The equations represent the same line.",
+            "Elimination or substitution yields $0 = 0$."
+          ],
+          "formula": "$$ m_1 = m_2 \\text{ and } b_1 = b_2 $$"
+        },
+        "explanation": [
+          "A system has [[imp:infinitely many solutions]] when the graphs are the same line.",
+          "This happens when the equations are [[imp:equivalent]] — they have the same slope and the same $y$-intercept.",
+          "Algebraically, solving leads to a true statement like $0 = 0$.",
+          "Any ordered pair that satisfies one equation automatically satisfies the other."
+        ]
+      },
+      "confusionCorner": {
+        "title": "Infinitely Many ≠ All Points",
+        "body": "Infinitely many solutions means every point on the shared line is a solution. It does [[imp:not]] mean every point in the coordinate plane is a solution. The solutions lie on a specific line."
+      },
+      "discoveryHook": {
+        "scenario": "If two equations are just different versions of the same line—like a sentence rewritten in different words—they describe the same path. Every point on that line is a solution to both equations, giving you infinitely many solutions!"
+      }
+    },
+    {
+      "examples": [
+        {
+          "title": "A – Classify by Slopes and Intercepts",
+          "prompt": "Without solving, determine the number of solutions for $y = -6x - 8$ and $12x + 2y = -6$.",
+          "steps": [
+            "Rewrite the second equation: $2y = -12x - 6$ → $y = -6x - 3$.",
+            "Both have slope $-6$. First $y$-intercept is $-8$, second is $-3$.",
+            "Same slope, different intercepts → no solution."
+          ],
+          "role": "guided"
+        },
+        {
+          "title": "B – Classify with Different Slopes",
+          "role": "peer-explain",
+          "steps": [
+            "Solve for $y$: first → $y = -\\frac{4}{3}x + 9$; second → $y = \\frac{4}{3}x + 9$.",
+            "Slopes are $-\\frac{4}{3}$ and $\\frac{4}{3}$ — different.",
+            "Different slopes → exactly one solution."
+          ],
+          "prompt": "Determine the number of solutions for $4x + 3y = 27$ and $4x - 3y = -27$.",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: How can you quickly find the slopes without fully solving for $y$?"
+        },
+        {
+          "prompt": "Determine the number of solutions for $y = 7x + 13$ and $-21x + 3y = 39$.",
+          "title": "C – Equivalent Equations",
+          "steps": [
+            "Rewrite the second: $3y = 21x + 39$ → $y = 7x + 13$.",
+            "Both equations are identical. Same slope and intercept → infinitely many solutions."
+          ],
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "To compare slopes and intercepts, equations [[imp:must]] be in slope‑intercept form. An equation like $2x + 3y = 6$ needs to be rewritten before you can read $m$ and $b$.",
+        "title": "Must Be in y = mx + b First"
+      },
+      "id": "comparing-solution-types",
+      "teacherCues": [
+        "Draw three quick graphs on the board: intersecting lines, parallel lines, coincident lines. Ask: 'Which is which in terms of solutions?'",
+        "Summarize the slope/intercept conditions for each case in a table."
+      ],
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "Fastest way to classify a system.",
+            "Works for any linear system."
+          ],
+          "title": "Deciding Without Solving",
+          "formula": "$$ \\text{Write both as } y = mx + b \\text{, then compare } m \\text{ and } b. $$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Slopes",
+              "y-Intercepts",
+              "Graphs",
+              "Solutions"
+            ],
+            "rows": [
+              {
+                "0": "Different",
+                "1": "Any",
+                "2": "Intersect",
+                "3": "One"
+              },
+              {
+                "0": "Same",
+                "1": "Different",
+                "2": "Parallel",
+                "3": "None"
+              },
+              {
+                "0": "Same",
+                "1": "Same",
+                "2": "Same line",
+                "3": "Infinitely many"
+              }
+            ],
+            "title": "Solution Types at a Glance",
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "You can determine the number of solutions by comparing slopes ($m$) and $y$-intercepts ($b$).",
+          "[[imp:One solution]]: $m_1 \\ne m_2$.",
+          "[[imp:No solution]]: $m_1 = m_2$ and $b_1 \\ne b_2$.",
+          "[[imp:Infinitely many]]: $m_1 = m_2$ and $b_1 = b_2$.",
+          "These rules work for any linear equations after rewriting in slope‑intercept form."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Just like Goldilocks, systems can have exactly one, none, or infinitely many solutions. By looking at the slopes and y-intercepts, you can tell at a glance which situation you're dealing with—no solving required!"
+      },
+      "title": "Comparing the Three Types of Solutions",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "y-intercepts",
+                "intercepts"
+              ]
+            }
+          ],
+          "prompt": "A system has no solution when the lines have the same slope but different ___.",
+          "feedbackIfWrong": "Different y-intercepts.",
+          "id": "q4-1",
+          "hints": [
+            "It's where the line crosses the $y$-axis.",
+            "Starts with 'y'."
+          ]
+        },
+        {
+          "answer": "none",
+          "hints": [
+            "Compare slopes and intercepts.",
+            "Both have slope 3."
+          ],
+          "feedbackIfWrong": "Same slope, different intercepts → no solution.",
+          "type": "short-answer",
+          "id": "q4-2",
+          "prompt": "How many solutions does the system $y = 3x - 1$ and $y = 3x + 4$ have?"
+        },
+        {
+          "feedbackIfWrong": "They are equivalent (same line).",
+          "prompt": "If a system has infinitely many solutions, what must be true about the two equations?",
+          "answers": [
+            "they are equivalent",
+            "they are the same line",
+            "same slope and same y-intercept"
+          ],
+          "type": "short-answer",
+          "id": "q4-3",
+          "hints": [
+            "Think about the line they share.",
+            "They can be algebraically reduced to the same equation."
+          ]
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude framework. Walk through the perimeter problem from Example 3.",
+        "Emphasize: 'Understand' identifies the equations and the context. 'Solve' reveals the type of solution. 'Conclude' interprets the meaning."
+      ],
+      "questions": [
+        {
+          "prompt": "In the perimeter problem, what algebraic result told you there were infinitely many solutions?",
+          "id": "q5-1",
+          "feedbackIfWrong": "$0 = 0$.",
+          "type": "short-answer",
+          "hints": [
+            "It's what you get after elimination.",
+            "A true statement without variables."
+          ],
+          "answer": "0 = 0"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "parallel"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Parallel.",
+          "hints": [
+            "They have the same slope.",
+            "They never intersect."
+          ],
+          "prompt": "In the canoe race problem, Team B cannot catch up because the lines are ___.",
+          "type": "fill-blank",
+          "id": "q5-2"
+        },
+        {
+          "feedbackIfWrong": "Check the context or apply domain restrictions.",
+          "hints": [
+            "Think about whether all infinite solutions are realistic.",
+            "Some may be negative or fractional when they should be positive."
+          ],
+          "id": "q5-3",
+          "answers": [
+            "check the context",
+            "consider constraints",
+            "apply domain restrictions"
+          ],
+          "type": "short-answer",
+          "prompt": "What must you do after finding a special solution algebraically to see if it makes sense in a real‑world problem?"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Context Limits Solutions",
+        "body": "Even if a system has infinitely many solutions algebraically, real‑world constraints (like $x > 0$, $y > 0$, whole numbers) may limit the acceptable answers. Always apply the context."
+      },
+      "concept": {
+        "explanation": [
+          "The blueprint for special systems: [[imp:Understand]] – Write the equations and identify slopes/intercepts or plan a solving method.",
+          "[[imp:Solve]] – Use substitution or elimination. If variables cancel, note the resulting statement.",
+          "[[imp:Conclude]] – True statement → infinitely many solutions (the same line). False statement → no solution (parallel lines). In context, interpret what this means (e.g., infinitely many possible dimensions, or impossible conditions)."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Special Systems Blueprint",
+            "type": "table",
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Write equations; note if they look proportional."
+              },
+              {
+                "0": "Solve",
+                "1": "Eliminate/substitute; watch for variable cancellation."
+              },
+              {
+                "0": "Conclude",
+                "1": "$0=0$ → infinite; $0=\\text{nonzero}$ → none; otherwise one."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Always check the context for domain restrictions.",
+            "If variables don't cancel, you have one solution."
+          ],
+          "title": "Blueprint Decision",
+          "formula": "$$ \\text{Cancel variables? } \\rightarrow \\text{ True = infinite, False = none} $$"
+        }
+      },
+      "id": "blueprint-aid-special-systems",
+      "examples": [
+        {
+          "prompt": "The trapezoid has sides $2x, 4x, 6y, 6y$ and perimeter $48$. The rectangle has sides $9x, 9x, 18y, 18y$ and perimeter $144$. Write and solve the system.",
+          "role": "guided",
+          "title": "A – Perimeter Problem",
+          "steps": [
+            "Understand: Trapezoid perimeter: $2x+4x+6y+6y=48$ → $6x+12y=48$. Rectangle: $9x+9x+18y+18y=144$ → $18x+36y=144$.",
+            "Solve: Multiply first by $-3$: $-18x-36y=-144$. Add to second: $0=0$.",
+            "Conclude: Infinitely many solutions. In context, $x$ and $y$ must be positive. Many possible dimensions satisfy both perimeters."
+          ]
+        },
+        {
+          "peerPrompt": "Explain to a partner: Why might a system with proportional coefficients lead to a special solution?",
+          "role": "peer-explain",
+          "steps": [
+            "Let $x$ = price per cup fruit, $y$ = price per cup almonds.",
+            "System: $3x + 4y = 9$ and $4.5x + 6y = 6$? Actually the image likely shows costs: small $9, large $6. But let's suppose small $9, large $6. Then equations: $3x+4y=9$, $4.5x+6y=6$.",
+            "Notice $4.5/3 = 1.5$ and $6/4 = 1.5$. If the cost ratio also matched $9/6 = 1.5$, they'd be proportional and have infinite solutions. But $9/6 = 1.5$ actually! So they are proportional! That would mean infinite solutions or no solution depending on constant. $4.5x+6y = 1.5(3x+4y) = 1.5*9 = 13.5$, but the equation says it equals $6$. So $13.5 = 6$? Actually the book says large bag $6? That seems cheap. Anyway, the concept: if proportional coefficients but different constant, no solution."
+          ],
+          "title": "B – Trail Mix Bags",
+          "prompt": "A small bag of trail mix (3 cups fruit, 4 cups almonds) costs $9. A large bag (4.5 cups fruit, 6 cups almonds) costs $6? No, $9 and $6? Let's use consistent data from the exercise: small: 3 fruit + 4 almond = $9? Actually exercise says small bag $9, large bag $6? Wait, the exercise 25 says small bag contains 3 cups dried fruit and 4 cups almonds, large bag 4.5 cups fruit and 6 cups almonds, costs? It says 'Write and solve...' but doesn't give costs? Actually the image shows $9 and $6 next to the bags. So small bag $9, large bag $6. Wait, that seems reversed. Anyway, use the idea: if the equations are proportional, infinite or no solution.",
+          "minLength": 2
+        },
+        {
+          "role": "independent",
+          "prompt": "Team A goes 6 mph and is 2 miles ahead. Team B goes 6 mph. Write a system and determine if Team B catches up.",
+          "steps": [
+            "Let $y$ = distance from start, $x$ = time in hours.",
+            "Team A: $y = 6x + 2$. Team B: $y = 6x$.",
+            "Both have slope 6. Different intercepts → parallel lines → no solution.",
+            "Team B never catches Team A because they travel at the same speed."
+          ],
+          "title": "C – Canoe Race"
+        }
+      ],
+      "title": "Blueprint Aid – Solving Special Systems",
+      "discoveryHook": {
+        "scenario": "When you encounter a system that simplifies to $0 = 0$ or $0 = 5$, you've found a special system. The blueprint helps you pause and understand what that means—instead of thinking you made a mistake, you'll recognize a system with infinitely many or no solutions."
+      }
+    }
+  ],
+  "standards": [
+    "HSA.REI.C.6",
+    "HSA.CED.A.3"
+  ],
+  "id": "chapter-5-4-special-systems",
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

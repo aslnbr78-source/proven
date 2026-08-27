@@ -1,0 +1,250 @@
+{
+  "cards": [
+    {
+      "front": "When should you use a [[kw:t‑test]] for a mean instead of a z‑test?",
+      "back": [
+        "When the population standard deviation $\\sigma$ is [[imp:unknown]] and the sample size is small ($n < 30$).",
+        "The population must be approximately normally distributed.",
+        "The t‑test uses the sample standard deviation $s$ and has $d.f. = n-1$."
+      ]
+    },
+    {
+      "back": [
+        "$$t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}}$$",
+        "$\\mu_0$ is the hypothesized mean from $H_0$.",
+        "Degrees of freedom: $d.f. = n-1$."
+      ],
+      "front": "Give the formula for the [[kw:t‑test statistic]]."
+    },
+    {
+      "back": [
+        "Use the t‑table with $d.f. = n-1$ and the 'One Tail, $\\alpha$' column.",
+        "The critical value is [[imp:negative]].",
+        "Example: $\\alpha=0.05, n=21 \\rightarrow d.f.=20, t_0 = -1.725$.",
+        "Google Sheets: `=T.INV(0.05, 20)` returns about -1.7247."
+      ],
+      "front": "How do you find the critical value $t_0$ for a [[kw:left‑tailed t‑test]]?"
+    },
+    {
+      "back": [
+        "Use the t‑table with the 'Two Tails, $\\alpha$' column.",
+        "The critical values are $\\pm t_0$.",
+        "Example: $\\alpha=0.10, n=26 \\rightarrow d.f.=25, \\pm t_0 = \\pm 1.708$.",
+        "Google Sheets: `=T.INV.2T(0.10, 25)` returns about 1.708."
+      ],
+      "front": "How do you find the critical values for a [[kw:two‑tailed t‑test]]?"
+    },
+    {
+      "front": "A used car dealer claims $\\mu \\ge \\$20,500$. Sample: $n=14$, $\\bar{x}=\\$19,850$, $s=\\$1084$, $\\alpha=0.05$ (normal). Test the claim.",
+      "back": [
+        "$H_0: \\mu \\ge 20500$, $H_a: \\mu < 20500$ (left‑tailed).",
+        "$d.f.=13$, $t_0 = -1.771$. $t = \\frac{19850-20500}{1084/\\sqrt{14}} \\approx -2.244$.",
+        "$-2.244 < -1.771$ → [[imp:reject $H_0$]]. Enough evidence to reject the dealer's claim."
+      ]
+    },
+    {
+      "back": [
+        "Use `=T.DIST(t, d.f., TRUE)`.",
+        "This returns the cumulative area to the [[imp:left]] of the t statistic.",
+        "Example: `=T.DIST(-2.244, 13, TRUE)` gives the P‑value."
+      ],
+      "front": "In Google Sheets, how do you find the P‑value for a [[kw:left‑tailed t‑test]]?"
+    },
+    {
+      "front": "In Google Sheets, how do you find the P‑value for a [[kw:right‑tailed t‑test]]?",
+      "back": [
+        "Use `=T.DIST.RT(t, d.f.)`.",
+        "This returns the area to the [[imp:right]] directly — no subtraction needed.",
+        "Example: `=T.DIST.RT(2.116, 6)`."
+      ]
+    },
+    {
+      "front": "In Google Sheets, how do you find the P‑value for a [[kw:two‑tailed t‑test]]?",
+      "back": [
+        "Use `=T.DIST.2T(ABS(t), d.f.)`.",
+        "This automatically doubles the tail area.",
+        "Example: `=T.DIST.2T(2.63, 19)` returns the two‑tailed P‑value."
+      ]
+    },
+    {
+      "front": "A medical board claims $\\mu > 60$ hours. Sample: $n=7$, $\\bar{x}=70$, $s=12.5$, $\\alpha=0.01$ (normal). Test the claim (P‑value method).",
+      "back": [
+        "$H_0: \\mu \\le 60$, $H_a: \\mu > 60$ (right‑tailed).",
+        "$t = \\frac{70-60}{12.5/\\sqrt{7}} \\approx 2.116$, $d.f.=6$.",
+        "P‑value = `=T.DIST.RT(2.116, 6)` ≈ 0.039. $0.039 > 0.01$ → [[imp:fail to reject $H_0$]]."
+      ]
+    },
+    {
+      "back": [
+        "The population must be [[imp:approximately normally distributed]].",
+        "If the population is heavily skewed and the sample is small, the t‑test is not valid.",
+        "Check normality with a histogram or normal probability plot."
+      ],
+      "front": "What assumption is required to use a [[kw:t‑test]] when $n < 30$?"
+    },
+    {
+      "front": "How does the t critical value compare to the z critical value for the same $\\alpha$?",
+      "back": [
+        "The t critical value is [[imp:larger]] (farther from zero).",
+        "Because the t‑distribution has thicker tails, you must go further out to capture the same tail area.",
+        "As $d.f.$ increase, the t critical values approach the z values."
+      ]
+    },
+    {
+      "back": [
+        "Two‑tailed: $H_0: \\mu = 6.8$, $H_a: \\mu \\neq 6.8$. $d.f.=18$, $\\pm t_0 = \\pm 2.101$.",
+        "$t = \\frac{6.7-6.8}{0.24/\\sqrt{19}} \\approx -1.816$.",
+        "$-1.816$ is not in the rejection region → [[imp:fail to reject $H_0$]]."
+      ],
+      "front": "A company claims $\\mu = 6.8$ pH. Sample: $n=19$, $\\bar{x}=6.7$, $s=0.24$, $\\alpha=0.05$ (normal). What is the decision using critical values?"
+    },
+    {
+      "back": [
+        "The sample must be large enough: $np \\ge 5$ and $nq \\ge 5$, where $p$ is the hypothesized proportion from $H_0$.",
+        "This ensures the sampling distribution of $\\hat{p}$ is approximately normal."
+      ],
+      "front": "What conditions are needed for a [[kw:z‑test for a proportion]]?"
+    },
+    {
+      "front": "Give the formula for the [[kw:z‑test statistic for a proportion]].",
+      "back": [
+        "$$z = \\frac{\\hat{p} - p}{\\sqrt{\\frac{pq}{n}}}$$",
+        "$\\hat{p}$ is the sample proportion ($x/n$).",
+        "[[imp:Use $p$ and $q$ from the null hypothesis $H_0$, not from the sample.]]"
+      ]
+    },
+    {
+      "back": [
+        "$H_0: p \\ge 0.50$, so $p = 0.50$, $q = 0.50$.",
+        "$\\hat{p} = 0.39$, $n = 100$.",
+        "$$z = \\frac{0.39 - 0.50}{\\sqrt{(0.50)(0.50)/100}} = \\frac{-0.11}{0.05} = -2.20$$"
+      ],
+      "front": "A researcher claims less than 50% of adults have wireless Internet on a laptop. Sample of 100 shows 39%. Compute z."
+    },
+    {
+      "front": "Why do we use $p$ from $H_0$ in the standard error for a proportion test, not $\\hat{p}$?",
+      "back": [
+        "The test is performed under the assumption that $H_0$ is true.",
+        "The standard error $\\sqrt{pq/n}$ must reflect the [[imp:hypothesized $p$]], not the observed $\\hat{p}$."
+      ]
+    },
+    {
+      "front": "For a left‑tailed proportion test at $\\alpha = 0.01$, what is the critical value and rejection region?",
+      "back": [
+        "The critical value $z_0$ has area $0.01$ to its left → $z_0 \\approx -2.33$.",
+        "Rejection region: $z < -2.33$.",
+        "Google Sheets: `=NORM.S.INV(0.01)` returns about -2.326."
+      ]
+    },
+    {
+      "front": "A left‑tailed proportion test gives $z = -2.20$. The area to the left is 0.0139. Should you reject $H_0$ at $\\alpha = 0.01$?",
+      "back": [
+        "No, because the P‑value = 0.0139 > 0.01.",
+        "Also, $z = -2.20 > -2.33$, so it's not in the rejection region.",
+        "We [[imp:fail to reject $H_0$]]."
+      ]
+    },
+    {
+      "back": [
+        "Claim $p = 0.25$ is $H_0$. $H_a: p \\neq 0.25$.",
+        "This is a [[kw:two‑tailed test]].",
+        "The rejection regions are in both tails."
+      ],
+      "front": "A claim states exactly 25% of graduates think college isn't worth it. Sample of 200 shows 21%. Write $H_0$ and $H_a$, and identify the test type."
+    },
+    {
+      "front": "For a two‑tailed proportion test at $\\alpha = 0.10$, what are the critical values?",
+      "back": [
+        "Each tail has area $\\alpha/2 = 0.05$.",
+        "Critical values are $\\pm z_0 = \\pm 1.645$.",
+        "Rejection region: $z < -1.645$ or $z > 1.645$."
+      ]
+    },
+    {
+      "back": [
+        "Two‑tailed P‑value = $2 \\times 0.0951 = 0.1902$.",
+        "$0.1902 > 0.10$ → [[imp:fail to reject $H_0$]].",
+        "The difference between 21% and 25% is not statistically significant at the 10% level."
+      ],
+      "front": "A two‑tailed proportion test gives $z = -1.31$. The area to the left of -1.31 is 0.0951. Find the P‑value and decide at $\\alpha = 0.10$."
+    },
+    {
+      "front": "How do you find the P‑value for a [[kw:right‑tailed proportion test]]?",
+      "back": [
+        "P‑value = area to the [[imp:right]] of the test statistic.",
+        "Google Sheets: `=1 - NORM.S.DIST(z, TRUE)`.",
+        "Example: If $z = 1.85$, P‑value ≈ 0.0322."
+      ]
+    },
+    {
+      "front": "How do you find the P‑value for a [[kw:two‑tailed proportion test]] in Google Sheets?",
+      "back": [
+        "`=2 * (1 - NORM.S.DIST(ABS(z), TRUE))`",
+        "This doubles the area in the tail beyond the observed $|z|$."
+      ]
+    },
+    {
+      "front": "A humane society claims less than 35% of households own a dog. Sample of 400 shows 39% own a dog. At $\\alpha=0.05$, what is the conclusion?",
+      "back": [
+        "Claim $p < 0.35$ is $H_a$. $H_0: p \\ge 0.35$.",
+        "Sample proportion $0.39 > 0.35$, so it contradicts the claim immediately.",
+        "$z \\approx 1.68$. P‑value is large → [[imp:fail to reject $H_0$]]. No evidence to support the claim."
+      ]
+    },
+    {
+      "front": "A researcher claims less than 25% of adults smoke. Sample of 200 has 18.5% smokers. $z = -2.40$. Find the P‑value and decide at $\\alpha = 0.05$.",
+      "back": [
+        "Left‑tailed P‑value = area left of $z = -2.40$ ≈ 0.0082.",
+        "$0.0082 \\le 0.05$ → [[imp:reject $H_0$]].",
+        "There is enough evidence to support the claim that less than 25% smoke."
+      ]
+    },
+    {
+      "front": "What is the decision rule for a hypothesis test using a [[kw:P‑value]]?",
+      "back": [
+        "If P‑value $\\le \\alpha$ → reject $H_0$.",
+        "If P‑value $> \\alpha$ → fail to reject $H_0$.",
+        "The smaller the P‑value, the stronger the evidence against $H_0$."
+      ]
+    },
+    {
+      "front": "A candidate claims at least 60% of voters support her. You want to test if support is actually lower. Write the hypotheses.",
+      "back": [
+        "Claim 'at least 60%' is $H_0: p \\ge 0.60$.",
+        "You suspect lower, so $H_a: p < 0.60$.",
+        "This is a [[kw:left‑tailed test]]."
+      ]
+    },
+    {
+      "back": [
+        "Yes, 0.003 ≤ 0.05.",
+        "Very small P‑value indicates strong evidence against $H_0$.",
+        "Reject $H_0$."
+      ],
+      "front": "If a t‑test gives a P‑value of 0.003 with $\\alpha = 0.05$, should you reject $H_0$? (Yes or No)"
+    },
+    {
+      "front": "A sample of 250 has $\\hat{p}=0.36$. The hypothesized proportion is $p=0.30$. Compute the z statistic for a proportion test. (Round to two decimals.)",
+      "back": [
+        "$z = \\frac{0.36 - 0.30}{\\sqrt{(0.30)(0.70)/250}}$.",
+        "Denominator ≈ 0.02898; $0.06 / 0.02898 \\approx 2.07$.",
+        "z = 2.07."
+      ]
+    },
+    {
+      "back": [
+        "The t‑distribution has [[imp:thicker tails]] than the standard normal.",
+        "To capture the same tail area ($\\alpha$), you must go farther into the tail.",
+        "This reflects the extra uncertainty of using $s$ instead of $\\sigma$."
+      ],
+      "front": "In a t‑test, why are the critical values larger (farther from zero) than z critical values?"
+    }
+  ],
+  "title": "Chapters 7.3 & 7.4 Review",
+  "id": "consolidated-7-3-7-4-flashcards",
+  "type": "flashcard",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

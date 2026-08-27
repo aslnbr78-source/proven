@@ -1,0 +1,131 @@
+{
+  "type": "flashcard",
+  "id": "chapter-7-5-flashcards",
+  "title": "Hypothesis Testing for Variance and Standard Deviation",
+  "cards": [
+    {
+      "back": [
+        "To test a claim about a population variance $\\sigma^2$ or standard deviation $\\sigma$.",
+        "The population must be [[imp:normally distributed]].",
+        "The test statistic follows a chi‑square distribution with $d.f. = n-1$."
+      ],
+      "front": "When is a [[kw:chi‑square test]] used in hypothesis testing?"
+    },
+    {
+      "back": [
+        "$$\\chi^2 = \\frac{(n-1)s^2}{\\sigma^2_0}$$",
+        "$s^2$ is the sample variance, $\\sigma^2_0$ is the hypothesized variance from $H_0$.",
+        "If testing a standard deviation, square both $s$ and $\\sigma_0$ first."
+      ],
+      "front": "Give the formula for the [[kw:chi‑square test statistic]] for a variance."
+    },
+    {
+      "front": "How do you find the critical value for a [[kw:right‑tailed]] chi‑square test?",
+      "back": [
+        "Use the chi‑square table with $d.f. = n-1$ and area $\\alpha$ in the right tail.",
+        "In Google Sheets: `=CHISQ.INV.RT(α, d.f.)`.",
+        "Example: $\\alpha=0.10$, $n=26$ → $d.f.=25$, critical value = 34.382."
+      ]
+    },
+    {
+      "back": [
+        "The area to the left of the critical value is $\\alpha$, so the area to the right is $1-\\alpha$.",
+        "In Google Sheets: `=CHISQ.INV(α, d.f.)`.",
+        "Example: $\\alpha=0.01$, $n=11$ → $d.f.=10$, critical value = 2.558."
+      ],
+      "front": "How do you find the critical value for a [[kw:left‑tailed]] chi‑square test?"
+    },
+    {
+      "back": [
+        "Two critical values: $\\chi^2_L$ (area to left = $\\alpha/2$) and $\\chi^2_R$ (area to right = $\\alpha/2$).",
+        "Google Sheets: `=CHISQ.INV(α/2, d.f.)` and `=CHISQ.INV.RT(α/2, d.f.)`.",
+        "[[imp:They are not opposites]] because the chi‑square distribution is skewed."
+      ],
+      "front": "How do you find the critical values for a [[kw:two‑tailed]] chi‑square test?"
+    },
+    {
+      "front": "A dairy company claims $\\sigma^2 \\le 0.25$. A sample of 41 containers has $s^2 = 0.27$. Test at $\\alpha=0.05$ (normal population).",
+      "back": [
+        "$H_0: \\sigma^2 \\le 0.25$ (claim), $H_a: \\sigma^2 > 0.25$. Right‑tailed.",
+        "$d.f.=40$, critical value = 55.758. $\\chi^2 = \\frac{40 \\times 0.27}{0.25} = 43.2$.",
+        "$43.2 < 55.758$ → [[imp:fail to reject $H_0$]]. Not enough evidence to reject the claim."
+      ]
+    },
+    {
+      "back": [
+        "$H_0: \\sigma \\ge 1.4$, $H_a: \\sigma < 1.4$ (claim). Left‑tailed.",
+        "$d.f.=24$, critical value = 15.659. $\\chi^2 = \\frac{24 \\times 1.1^2}{1.4^2} = \\frac{24 \\times 1.21}{1.96} \\approx 14.816$.",
+        "$14.816 < 15.659$ → [[imp:reject $H_0$]]. Enough evidence to support the claim."
+      ],
+      "front": "A company claims $\\sigma < 1.4$ minutes for call transfers. A sample of 25 calls has $s=1.1$ min. Test at $\\alpha=0.10$ (normal)."
+    },
+    {
+      "back": [
+        "Right‑tailed P‑value = area to the right of the test statistic.",
+        "Google Sheets: `=CHISQ.DIST.RT(43.2, 40)` returns about 0.336.",
+        "Since $0.336 > 0.05$, fail to reject $H_0$."
+      ],
+      "front": "Find the P‑value for a right‑tailed chi‑square test with $\\chi^2 = 43.2$ and $d.f. = 40$."
+    },
+    {
+      "back": [
+        "Left‑tailed P‑value = area to the left of the test statistic.",
+        "Google Sheets: `=CHISQ.DIST(14.816, 24, TRUE)` returns about 0.063.",
+        "If $\\alpha = 0.10$, reject $H_0$ because $0.063 \\le 0.10$."
+      ],
+      "front": "Find the P‑value for a left‑tailed chi‑square test with $\\chi^2 = 14.816$ and $d.f. = 24$."
+    },
+    {
+      "back": [
+        "Because the distribution is skewed, you find the left‑tail and right‑tail areas, then double the [[imp:smaller]] of the two.",
+        "Left area = `=CHISQ.DIST(χ², d.f., TRUE)`. Right area = `=CHISQ.DIST.RT(χ², d.f.)`.",
+        "P‑value = $2 \\times \\min(\\text{left area, right area})$."
+      ],
+      "front": "How do you find the two‑tailed P‑value for a chi‑square test?"
+    },
+    {
+      "back": [
+        "The chi‑square test is [[imp:not robust]] to departures from normality.",
+        "If the population is skewed, the actual Type I error rate can be very different from $\\alpha$.",
+        "Always check for approximate normality before using this test."
+      ],
+      "front": "Why is the normality assumption critical for a chi‑square test of a variance?"
+    },
+    {
+      "back": [
+        "$H_0: \\sigma^2 = 15.9$ (claim), $H_a: \\sigma^2 \\neq 15.9$. Two‑tailed.",
+        "$d.f.=14$, critical values: $\\chi^2_L = 5.629$, $\\chi^2_R = 26.119$.",
+        "$\\chi^2 = \\frac{14 \\times 21.8}{15.9} \\approx 19.195$. Not in rejection region → [[imp:fail to reject $H_0$]]."
+      ],
+      "front": "A manufacturer claims $\\sigma^2 = 15.9$. A sample of 15 has $s^2 = 21.8$. Test at $\\alpha=0.05$ (normal)."
+    },
+    {
+      "front": "A weather service claims $\\sigma \\le 25$ fatalities per year. A sample of 28 years has $s = 31$. Test at $\\alpha=0.10$ (normal).",
+      "back": [
+        "$H_0: \\sigma \\le 25$ (claim), $H_a: \\sigma > 25$. Right‑tailed.",
+        "$d.f.=27$, critical value = 36.741. $\\chi^2 = \\frac{27 \\times 31^2}{25^2} \\approx 41.53$.",
+        "$41.53 > 36.741$ → [[imp:reject $H_0$]]. Enough evidence to reject the claim."
+      ]
+    },
+    {
+      "front": "What are the degrees of freedom for a chi‑square test on a sample of size $n$?",
+      "back": [
+        "$$d.f. = n - 1$$",
+        "Example: $n=20$ → $d.f. = 19$.",
+        "Same as for a t‑test and confidence interval for variance."
+      ]
+    },
+    {
+      "front": "In Google Sheets, what formula gives the critical value for a right‑tailed chi‑square test with $\\alpha = 0.05$ and $n = 20$?",
+      "back": [
+        "$d.f. = 19$.",
+        "`=CHISQ.INV.RT(0.05, 19)` returns about 30.144.",
+        "This is the cutoff; reject $H_0$ if $\\chi^2 > 30.144$."
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

@@ -1,0 +1,730 @@
+{
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "id": "independent-events",
+      "teacherCues": [
+        "Flip a coin and roll a die. Ask: Does the coin flip affect the die roll?",
+        "Write the product rule on the board: P(A and B) = P(A)·P(B)."
+      ],
+      "examples": [
+        {
+          "title": "Example A – Spinner Twice",
+          "steps": [
+            "Define events: A = '5 on first spin', B = 'greater than 3 on second spin'. Both spins are independent.",
+            "P(A) = 1/8 (only one section is 5).",
+            "P(B) = 5/8 (sections 4,5,6,7,8 are >3).",
+            "Multiply: P(A and B) = (1/8)·(5/8) = 5/64 ≈ 0.078."
+          ],
+          "prompt": "You spin a fair 8‑section spinner twice. Find P(5 on first spin and number > 3 on second spin).",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Yes – guessing on Q2 is not influenced by Q1. Sample space: {CC, CI, IC, II}.",
+            "P(correct on Q1) = 1/2, P(correct on Q2) = 1/2.",
+            "P(both correct) = (1/2)·(1/2) = 1/4.",
+            "If you saw the answer, the events would still be independent because your random guess on Q2 is still just 1/2, but if you learned from it, it wouldn't be random."
+          ],
+          "title": "Example B – True‑False Quiz",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does guessing on one question not affect the next? How would the calculation change if you could see the answer to Q1?",
+          "role": "peer-explain",
+          "prompt": "A student randomly guesses on two true‑false questions. Are getting Q1 correct and Q2 correct independent? Find the probability both are correct."
+        },
+        {
+          "steps": [
+            "Events are independent. P(first die=4) = 1/6.",
+            "P(second die even) = 3/6 = 1/2.",
+            "Multiply: (1/6)·(1/2) = 1/12 ≈ 0.0833.",
+            "So the probability is 1/12."
+          ],
+          "role": "independent",
+          "prompt": "Two fair dice are rolled. What is P(first die = 4 and second die = even)?",
+          "title": "Example C – Rolling Two Dice"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "Two events are [[kw:independent events]] if the occurrence of one does not change the probability of the other.",
+          "For independent events, the probability that both A and B happen is: $$ P(A \\text{ and } B) = P(A) \\cdot P(B) $$",
+          "This extends to three or more events: $$ P(A \\text{ and } B \\text{ and } C) = P(A) \\cdot P(B) \\cdot P(C) $$",
+          "Common examples: spinning a spinner twice, flipping a coin multiple times, rolling dice."
+        ],
+        "visuals": [
+          {
+            "title": "Independent vs. Dependent – Quick Check",
+            "headers": [
+              "Situation",
+              "Independent?",
+              "Reason"
+            ],
+            "rows": [
+              {
+                "0": "Rolling two dice",
+                "1": "Yes",
+                "2": "Each die result is unaffected by the other."
+              },
+              {
+                "0": "Drawing two cards with replacement",
+                "1": "Yes",
+                "2": "The first card is put back, so the deck is the same."
+              },
+              {
+                "0": "Flipping a coin and spinning a spinner",
+                "1": "Yes",
+                "2": "No connection between the two actions."
+              },
+              {
+                "0": "Choosing a granola bar, eating it, then choosing another",
+                "1": "No",
+                "2": "First choice changes what's left."
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ P(A \\text{ and } B) = P(A) \\cdot P(B) $$",
+          "notes": [
+            "Only applies when A and B are independent.",
+            "To check independence, verify: $ P(A \\text{ and } B) = P(A) \\cdot P(B) $."
+          ],
+          "title": "Probability of Independent Events"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "Imagine you flip a coin and then roll a die. The coin doesn’t ‘tell’ the die what to show. When one result has no effect on the other, the events are independent – and finding the probability that both happen is as simple as multiplying!"
+      },
+      "confusionCorner": {
+        "body": "A common error is to add probabilities for 'and' events: P(A and B) = P(A) + P(B). This is wrong. [[imp:'And' means multiply]] for independent events. 'Or' often involves addition, but we'll cover that later.",
+        "title": "Don't Add Instead of Multiply"
+      },
+      "questions": [
+        {
+          "prompt": "What is the probability of getting heads on a coin flip and rolling a 6 on a fair die? Answer as a simplified fraction a/b.",
+          "feedbackIfWrong": "P(heads) = 1/2, P(6) = 1/6, multiply to get 1/12.",
+          "answer": "1/12",
+          "id": "q1-1",
+          "type": "short-answer",
+          "hints": [
+            "Coin probability = 1/2, die probability = 1/6.",
+            "Multiply: (1/2)·(1/6)."
+          ]
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "independent",
+                "Independent"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "Two events are called ___ if the occurrence of one does not affect the probability of the other.",
+          "id": "q1-2",
+          "feedbackIfWrong": "Events that don't influence each other are independent events.",
+          "hints": [
+            "Starts with 'i'.",
+            "The product rule P(A and B)=P(A)·P(B) works for these events."
+          ]
+        },
+        {
+          "feedbackIfWrong": "For independent events, multiply: 0.3·0.5 = 0.15.",
+          "type": "short-answer",
+          "prompt": "If P(A)=0.3 and P(B)=0.5 and A and B are independent, what is P(A and B)? Answer as a decimal.",
+          "answer": "0.15",
+          "id": "q1-3",
+          "hints": [
+            "Multiply the probabilities.",
+            "0.3 times 0.5."
+          ]
+        }
+      ],
+      "title": "Independent Events"
+    },
+    {
+      "teacherCues": [
+        "Take a deck of cards. Draw two cards without replacement. Ask: Did the first draw change the probability for the second?",
+        "Write the formula: P(A and B) = P(A)·P(B|A)."
+      ],
+      "examples": [
+        {
+          "title": "Example A – Draw Two $100 Bills",
+          "role": "guided",
+          "prompt": "A bag has 20 $1 bills and 5 $100 bills. You draw two bills without replacement. Find P(both are $100).",
+          "steps": [
+            "P(first is $100) = 5/25 = 1/5.",
+            "Given the first is $100, 4 of the remaining 24 are $100. So P(second is $100 | first is $100) = 4/24 = 1/6.",
+            "Multiply: (1/5)·(1/6) = 1/30 ≈ 0.033.",
+            "So there is about a 3.3% chance of drawing two $100 bills."
+          ]
+        },
+        {
+          "title": "Example B – Choosing Students",
+          "steps": [
+            "Sample space: 12 ordered pairs (B,G1; G1,B; etc.). P(girl first) = 9/12 = 3/4.",
+            "P(girl second) = 9/12 = 3/4.",
+            "P(girl first and girl second) = 6/12 = 1/2.",
+            "Because (3/4)·(3/4) ≠ 1/2, the events are dependent."
+          ],
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does removing the first student change the probability of the second being a girl? Would it change if there were many girls?",
+          "prompt": "A group has 1 boy and 3 girls. Two different students are randomly selected: speaker then recorder. Are the events 'girl first' and 'girl second' independent? Find P(girl first and girl second)."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "P(first heart) = 13/52 = 1/4.",
+            "Given first is a heart, 12 hearts remain out of 51 cards: P(second heart | first heart) = 12/51.",
+            "Multiply: (13/52)·(12/51) = (1/4)·(12/51) = 12/204 = 1/17 ≈ 0.059.",
+            "So the probability is about 5.9%."
+          ],
+          "prompt": "You draw two cards from a standard 52-card deck without replacement. Find P(both are hearts).",
+          "title": "Example C – Drawing Cards Without Replacement"
+        }
+      ],
+      "title": "Dependent Events",
+      "discoveryHook": {
+        "scenario": "Imagine drawing two names from a hat without putting the first one back. The second pick depends on who was chosen first. For dependent events like these, the probability changes after each step, and we need a new rule!"
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ P(A \\text{ and } B) = P(A) \\cdot P(B \\mid A) $$",
+          "notes": [
+            "$ P(B \\mid A) $ means 'probability of B given that A has occurred'.",
+            "You adjust the denominator and favorable counts based on the first event's outcome."
+          ],
+          "title": "Probability of Dependent Events"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Dependent Events: Before and After",
+            "type": "table",
+            "headers": [
+              "First Event",
+              "Probability",
+              "Second Event (given first happened)",
+              "Conditional Probability"
+            ],
+            "rows": [
+              {
+                "0": "Draw a $100 bill from a bag of 25 (5 are $100)",
+                "1": "$ \\frac{5}{25} $",
+                "2": "Draw another $100 bill (after first removed)",
+                "3": "$ \\frac{4}{24} $"
+              },
+              {
+                "0": "Select a girl from 4 students (3 girls)",
+                "1": "$ \\frac{3}{4} $",
+                "2": "Select another girl (no replacement)",
+                "3": "$ \\frac{2}{3} $"
+              },
+              {
+                "0": "Draw a heart from a deck of 52 cards",
+                "1": "$ \\frac{13}{52} $",
+                "2": "Draw another heart (without replacement)",
+                "3": "$ \\frac{12}{51} $"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "Two events are [[kw:dependent events]] if the occurrence of one affects the probability of the other.",
+          "For dependent events, the probability that both A and B happen is: $$ P(A \\text{ and } B) = P(A) \\cdot P(B \\mid A) $$",
+          "The notation $ P(B \\mid A) $ is read 'the [[kw:conditional probability]] of B given A' – it means the probability that B occurs, assuming A has already occurred.",
+          "This formula can be extended: $ P(A \\text{ and } B \\text{ and } C) = P(A) \\cdot P(B \\mid A) \\cdot P(C \\mid A \\text{ and } B) $."
+        ]
+      },
+      "confusionCorner": {
+        "title": "P(A and B) = P(A)·P(B) is ONLY for Independent",
+        "body": "Many students use the multiplication rule even when events are dependent. Always check: does the first event change the sample space or probabilities? If yes, you need the conditional probability!"
+      },
+      "id": "dependent-events",
+      "questions": [
+        {
+          "id": "q2-1",
+          "feedbackIfWrong": "P(first red) = 4/10 = 2/5.",
+          "type": "short-answer",
+          "hints": [
+            "There are 4 red out of 10 total.",
+            "Simplify 4/10."
+          ],
+          "prompt": "A bag has 4 red and 6 blue marbles. Two marbles are drawn without replacement. What is P(first red)? Answer as a simplified fraction a/b.",
+          "answer": "2/5"
+        },
+        {
+          "hints": [
+            "One red is gone, so 3 red remain out of 9 marbles.",
+            "That's 3/9 simplified."
+          ],
+          "feedbackIfWrong": "After removing one red, 3 red out of 9 total = 3/9 = 1/3.",
+          "id": "q2-2",
+          "answer": "1/3",
+          "prompt": "In the same bag (4 red, 6 blue), after drawing one red marble without replacement, what is P(second red | first red)? Answer as a simplified fraction a/b.",
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "The vertical bar is 'given'.",
+            "It's the event that already happened."
+          ],
+          "prompt": "The notation P(B|A) is read as the 'conditional probability of B given ___'.",
+          "blanks": [
+            {
+              "accept": [
+                "A",
+                "a"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "P(B|A) means the probability of B given that A has occurred.",
+          "id": "q2-3"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "feedbackIfWrong": "The bar is read as 'given', so P(B|A) is the probability of B given A.",
+          "id": "q3-1",
+          "hints": [
+            "It's a 5-letter word.",
+            "The vertical bar '|' symbolizes this word."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "given",
+                "Given"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "P(B|A) is read as the 'conditional probability of B ___ A'."
+        },
+        {
+          "id": "q3-2",
+          "prompt": "If P(A)=0.4 and P(A and B)=0.1, what is P(B|A)? Answer as a decimal.",
+          "type": "short-answer",
+          "answer": "0.25",
+          "hints": [
+            "Use P(B|A) = P(A and B) / P(A).",
+            "Divide 0.1 by 0.4."
+          ],
+          "feedbackIfWrong": "P(B|A) = 0.1 / 0.4 = 0.25."
+        },
+        {
+          "hints": [
+            "Look at the Defective row: 36 failed out of 39 defective.",
+            "Simplify 36/39."
+          ],
+          "id": "q3-3",
+          "feedbackIfWrong": "36 out of 39 defective parts failed, so P(fail|defective) = 36/39 = 12/13.",
+          "answer": "12/13",
+          "type": "short-answer",
+          "prompt": "From the quality-control table, what is P(fail | defective)? Answer as a simplified fraction a/b."
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ P(B \\mid A) = \\frac{P(A \\text{ and } B)}{P(A)} $$",
+          "notes": [
+            "You can also read it as: number of outcomes in both A and B divided by number of outcomes in A.",
+            "Use this when you know the joint and marginal probabilities."
+          ],
+          "title": "Conditional Probability Formula"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Defective",
+                "1": "3",
+                "2": "36",
+                "3": "39"
+              },
+              {
+                "0": "Non-defective",
+                "1": "450",
+                "2": "11",
+                "3": "461"
+              },
+              {
+                "0": "Total",
+                "1": "453",
+                "2": "47",
+                "3": "500"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "",
+              "Pass",
+              "Fail",
+              "Total"
+            ],
+            "variant": "colorful",
+            "title": "Quality-Control Inspection Results"
+          }
+        ],
+        "explanation": [
+          "[[kw:Conditional probability]] $ P(B \\mid A) $ is the probability that event B occurs given that event A has already occurred.",
+          "From a table, you restrict attention to the row or column where A happened, then compute the fraction of those that are also B.",
+          "Formula: $$ P(B \\mid A) = \\frac{P(A \\text{ and } B)}{P(A)} $$",
+          "This formula works for both independent and dependent events (if independent, $ P(B \\mid A) = P(B) $)."
+        ]
+      },
+      "title": "Conditional Probability from Tables and Formulas",
+      "teacherCues": [
+        "Display a 2×2 table like the quality-control example. Ask: How do you find P(pass | defective)?",
+        "Derive the formula: P(B|A) = P(A and B)/P(A)."
+      ],
+      "examples": [
+        {
+          "prompt": "Using the table above, find P(pass | defective) and P(fail | non-defective).",
+          "title": "Example A – Defective Parts",
+          "role": "guided",
+          "steps": [
+            "P(pass | defective): look only at the 'Defective' row. 3 passed out of 39 total defective.",
+            "So P(pass | defective) = 3/39 = 1/13 ≈ 0.077.",
+            "P(fail | non-defective): focus on 'Non-defective' row. 11 failed out of 461 non-defective.",
+            "P(fail | non-defective) = 11/461 ≈ 0.024."
+          ]
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How does the formula P(B|A) = P(A and B)/P(A) make sense in everyday language? Think about 'out of those who…'",
+          "prompt": "At a school, 60% of students buy lunch, and 10% buy both lunch and dessert. What is the probability that a student who buys lunch also buys dessert?",
+          "minLength": 2,
+          "title": "Example B – Lunch and Dessert",
+          "steps": [
+            "We want P(dessert | lunch). Given: P(lunch) = 0.6, P(lunch and dessert) = 0.1.",
+            "Use the formula: P(B|A) = P(A and B)/P(A).",
+            "Plug in: 0.1 / 0.6 = 1/6 ≈ 0.167.",
+            "So about 16.7% of lunch buyers also buy dessert."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C – Coffee and Bagel",
+          "steps": [
+            "Given P(coffee)=0.80, P(coffee and bagel)=0.15.",
+            "P(bagel | coffee) = P(coffee and bagel) / P(coffee).",
+            "= 0.15 / 0.80 = 15/80 = 3/16 = 0.1875.",
+            "So 18.75% of coffee drinkers also get a bagel."
+          ],
+          "prompt": "80% of coffee shop customers order coffee, and 15% order both coffee and a bagel. Find P(bagel | coffee).",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A company inspects parts, and some defective ones slip through. Using a table of inspection results, we can find the probability that a defective part passes the check. This 'given that' idea is called conditional probability – and it helps us make smart decisions from data!"
+      },
+      "id": "conditional-probability",
+      "confusionCorner": {
+        "title": "The 'Given' Trap",
+        "body": "When you see 'given that', don't divide by the total of the whole table. Instead, divide by the total of only the given category. [[imp:Conditional probability narrows your focus.]]"
+      }
+    },
+    {
+      "id": "comparing-with-and-without-replacement",
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "short-answer",
+          "prompt": "If a bag has 5 red and 5 blue marbles, and you draw two marbles with replacement, what is P(both red)? Answer as a simplified fraction a/b.",
+          "answer": "1/4",
+          "feedbackIfWrong": "P(red) = 5/10 = 1/2, so (1/2)^2 = 1/4.",
+          "hints": [
+            "With replacement, each draw is independent, P(red)=1/2.",
+            "Multiply (1/2)·(1/2)."
+          ]
+        },
+        {
+          "hints": [
+            "First: 5/10 = 1/2. Second: given first red, 4 red left out of 9.",
+            "Multiply (1/2)·(4/9)."
+          ],
+          "answer": "2/9",
+          "id": "q4-2",
+          "type": "short-answer",
+          "feedbackIfWrong": "(5/10)·(4/9) = 20/90 = 2/9.",
+          "prompt": "In the same bag, draw two marbles without replacement. What is P(both red)? Answer as a simplified fraction a/b."
+        },
+        {
+          "hints": [
+            "Not independent.",
+            "Starts with 'd'."
+          ],
+          "feedbackIfWrong": "When the sample space shrinks, events are dependent.",
+          "id": "q4-3",
+          "prompt": "Drawing without replacement makes events ___, because the first draw changes the sample space for the second.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "dependent",
+                "Dependent"
+              ]
+            }
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "A bag has 9 red, 4 blue, 7 yellow marbles. You pick three marbles with replacement. Find P(all three are red).",
+          "steps": [
+            "P(red) each pick = 9/20.",
+            "With replacement, events are independent: (9/20)^3 = 729/8000.",
+            "Simplify: 729/8000 ≈ 0.0911.",
+            "So about a 9.1% chance."
+          ],
+          "role": "guided",
+          "title": "Example A – Marbles with Replacement"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the probability drop faster when you don't replace the marbles? Would it drop even faster if the bag had only 5 red and 15 others?",
+          "title": "Example B – Marbles without Replacement",
+          "steps": [
+            "P(first red)=9/20, P(second red | first red)=8/19, P(third red | first two red)=7/18.",
+            "Multiply: (9/20)·(8/19)·(7/18) = 504/6840 ≈ 0.0737.",
+            "Without replacement gives a lower probability (about 7.4% vs 9.1%).",
+            "This makes sense: removing a red reduces the pool of reds."
+          ],
+          "minLength": 2,
+          "prompt": "From the same bag, pick three marbles without replacement. Find P(all three are red). Compare with the previous result.",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "You draw three cards from a standard deck. Find P(all three are face cards) (a) with replacement, (b) without replacement. Compare.",
+          "title": "Example C – Face Cards",
+          "role": "independent",
+          "steps": [
+            "There are 12 face cards out of 52. P(face) = 12/52 = 3/13.",
+            "(a) With replacement: (3/13)^3 = 27/2197 ≈ 0.0123.",
+            "(b) Without: (12/52)·(11/51)·(10/50) = 1320/132600 = 11/1105 ≈ 0.0100.",
+            "Ratio: 0.0123 / 0.0100 ≈ 1.23, so with replacement is about 1.23 times more likely."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Mix Up 'With' and 'Without'",
+        "body": "A common mistake is to use the independent rule (P^n) when the problem says 'without replacement'. Always read carefully: if the item is set aside or not returned, the events are dependent!"
+      },
+      "concept": {
+        "explanation": [
+          "When you [[imp:replace]] the item before the next draw, events are independent – the probabilities stay the same each time.",
+          "When you [[imp:do not replace]] the item, events are dependent – the sample space shrinks, changing probabilities.",
+          "To compare: compute both probabilities and find the ratio. Often the no-replacement probability is slightly lower.",
+          "Example: 3 hearts from a deck – with replacement: $ (\\frac{13}{52})^3 = \\frac{1}{64} \\approx 0.0156 $. Without: $ \\frac{13}{52} \\cdot \\frac{12}{51} \\cdot \\frac{11}{50} = \\frac{11}{850} \\approx 0.0129 $."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Method",
+              "Calculation",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "With replacement",
+                "1": "$ (\\frac{13}{52})^3 = \\frac{1}{64} $",
+                "2": "≈ 0.0156"
+              },
+              {
+                "0": "Without replacement",
+                "1": "$ \\frac{13}{52} \\cdot \\frac{12}{51} \\cdot \\frac{11}{50} = \\frac{11}{850} $",
+                "2": "≈ 0.0129"
+              },
+              {
+                "0": "Ratio (with/without)",
+                "1": "0.0156 / 0.0129",
+                "2": "≈ 1.21"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "Probability of 3 Hearts: With vs. Without Replacement"
+          }
+        ],
+        "formulaCard": {
+          "title": "Key Comparison",
+          "notes": [
+            "Without replacement: multiply decreasing fractions.",
+            "The difference becomes larger when the sample size is small."
+          ],
+          "formula": "$$ \\text{With replacement (independent): } P = [P(\\text{event})]^n $$"
+        }
+      },
+      "title": "With vs. Without Replacement",
+      "discoveryHook": {
+        "scenario": "You’re playing a card game. Drawing three hearts in a row is hard, but is it harder when you put cards back or when you don't? Comparing probabilities with and without replacement shows why poker hands are rarer than coin flips!"
+      },
+      "teacherCues": [
+        "Hold up a deck of cards. Draw three cards, showing replacement vs. no replacement.",
+        "Calculate P(3 hearts) both ways and highlight the difference."
+      ]
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "Understand: Spins are independent (the wheel doesn't change). Event A: first spin > $500. Event B: second spin = Bankrupt.",
+            "Solve: Count sections. Suppose total = 8, >500 sections = 3 (maybe $1000, $1500, etc.), Bankrupt = 1. P(A)=3/8, P(B)=1/8. Multiply: (3/8)·(1/8)=3/64.",
+            "Conclude: The probability is 3/64 ≈ 0.047, so about 4.7%."
+          ],
+          "role": "guided",
+          "title": "Example A – Two Spins on a Money Wheel",
+          "prompt": "A wheel has sections: $500 (2 sections), $1000 (1 section), Bankrupt (1 section), etc. Spin twice. Find P(more than $500 on first spin and bankrupt on second)."
+        },
+        {
+          "prompt": "Find P(first card is a heart and second card is a club) without replacement from a standard deck.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we multiply the probability of the first heart by the conditional probability of a club given first heart? How does the denominator change?",
+          "steps": [
+            "Understand: No replacement → dependent. A: first heart (13/52). B: second club given first heart.",
+            "Solve: P(A)=13/52=1/4. After drawing a heart, there are 51 cards left, and all 13 clubs are still there. So P(B|A)=13/51.",
+            "P(heart then club) = (1/4)·(13/51) = 13/204 ≈ 0.0637.",
+            "Conclude: About 6.4%."
+          ],
+          "title": "Example B – Drawing Two Cards Without Replacement"
+        },
+        {
+          "steps": [
+            "Understand: No replacement → dependent. A: first consonant (56/100). B: second vowel | first consonant.",
+            "Solve: P(A)=56/100=0.56. After drawing a consonant, 99 tiles left, vowels still 42. So P(B|A)=42/99=14/33.",
+            "Multiply: (56/100)·(42/99) = (14/25)·(14/33) = 196/825 ≈ 0.2376.",
+            "Conclude: About 23.8% chance."
+          ],
+          "role": "independent",
+          "title": "Example C – Three Tiles from a Scabble Bag",
+          "prompt": "A Scrabble bag has 100 tiles (98 letters, 2 blanks). You draw two tiles without replacement. Find P(first is a consonant and second is a vowel). Use the tile distribution: 56 consonants, 42 vowels (just an example)."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "In the Understand step of the blueprint, what do you check to decide between independent and dependent rules? Answer one word.",
+          "type": "short-answer",
+          "answer": "replacement",
+          "id": "q5-1",
+          "feedbackIfWrong": "You check if there is replacement (or if the events change the sample space).",
+          "hints": [
+            "It's what you do with the item after the first draw.",
+            "Starts with 'r'."
+          ]
+        },
+        {
+          "hints": [
+            "The second stage of Understand-Solve-Conclude.",
+            "Starts with 'S'."
+          ],
+          "feedbackIfWrong": "Multiplying probabilities is part of the Solve step.",
+          "id": "q5-2",
+          "type": "fill-blank",
+          "prompt": "For dependent events, you use P(A and B) = P(A) times P(B|A). This is the ___ step of the blueprint.",
+          "blanks": [
+            {
+              "accept": [
+                "Solve",
+                "solve"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "If a problem says 'you pick two marbles without replacement', are the events independent or dependent? Answer one word.",
+          "answer": "dependent",
+          "id": "q5-3",
+          "hints": [
+            "Not independent.",
+            "Starts with 'd'."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "Without replacement means the sample space changes, so the events are dependent."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check Replacement First!",
+        "body": "Many problems describe 'you randomly select, set it aside, and select again' – that's without replacement, so use conditional probabilities. [[imp:Look for the phrase 'without replacement' or 'set aside' to trigger dependent events.]]"
+      },
+      "concept": {
+        "explanation": [
+          "Probability Blueprint (Understand → Solve → Conclude):",
+          "1. [[imp:Understand]] – Is the experiment with or without replacement? Are events independent or dependent? Define events and sample spaces.",
+          "2. [[imp:Solve]] – For independent events, multiply individual probabilities. For dependent, use conditional probabilities: P(A and B) = P(A)·P(B|A).",
+          "3. [[imp:Conclude]] – State the probability in context and interpret."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Are the events independent? (Is the sample space unchanged after each trial?)"
+              },
+              {
+                "0": "Solve – Independent",
+                "1": "If yes, P(A and B) = P(A)·P(B)."
+              },
+              {
+                "0": "Solve – Dependent",
+                "1": "If no, P(A and B) = P(A)·P(B|A). Adjust denominators."
+              },
+              {
+                "0": "Conclude",
+                "1": "Simplify the fraction, convert to decimal/percent if needed, and answer the question."
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Step",
+              "Question to Ask"
+            ],
+            "title": "Blueprint Flow for 'And' Probability",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Independent?} \\begin{cases} \\text{Yes: } P(A) \\cdot P(B) \\\\ \\text{No: } P(A) \\cdot P(B \\mid A) \\end{cases} $$",
+          "notes": [
+            "Always check if draws are with or without replacement.",
+            "For three events, extend the same logic."
+          ],
+          "title": "Blueprint Decision Tree"
+        }
+      },
+      "title": "Blueprint Aid – Independent & Dependent Probability",
+      "id": "blueprint-independent-dependent",
+      "discoveryHook": {
+        "scenario": "You’re asked to find the probability of drawing two aces from a deck. Do you replace the card or not? The blueprint helps you decide which rule to use, so you never multiply the wrong numbers!"
+      },
+      "teacherCues": [
+        "Walk through the blueprint steps with the first example.",
+        "Emphasize: Identify replacement/independence before doing any multiplication."
+      ]
+    }
+  ],
+  "type": "interactive-lesson",
+  "id": "chapter-10-2-independent-dependent-events",
+  "title": "Independent and Dependent Events",
+  "presenterNotes": [
+    "Use physical props (coins, cards, marbles) to demonstrate independence vs. dependence. Have students calculate probabilities both ways and compare.",
+    "Reinforce the 'given that' language by asking conditional probability questions about the classroom (e.g., P(wearing glasses | boy)).",
+    "The Blueprint Aid block ties everything together; emphasize the decision tree for independent vs. dependent before multiplying."
+  ],
+  "standards": [
+    "HSS.CP.A.2",
+    "HSS.CP.A.3",
+    "HSS.CP.A.5",
+    "HSS.CP.B.6"
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

@@ -1,0 +1,781 @@
+{
+  "presenterNotes": [
+    "Emphasize that these formulas are not optional; they must be memorized. Use mnemonics like 'sine sum = sine cosine, cosine sine'.",
+    "When evaluating with given values, always sketch the right triangles or use the Pythagorean identity with quadrant signs.",
+    "For simplifying, point out the periodic properties that emerge: $\\sin(x+2\\pi) = \\sin x$, $\\tan(x+\\pi) = \\tan x$.",
+    "The equation solving and real-life applications show the power of these formulas beyond just evaluation.",
+    "The Blueprint block ties together the full problem-solving approach."
+  ],
+  "schemaVersion": 2,
+  "type": "interactive-lesson",
+  "title": "Using Sum and Difference Formulas",
+  "id": "chapter-9-8-sum-and-difference-formulas",
+  "blocks": [
+    {
+      "title": "Sum and Difference Formulas",
+      "discoveryHook": {
+        "scenario": "You know exact trig values for 30°, 45°, and 60°. But what about 15° or 75°? The sum and difference formulas let you combine known angles to find exact values for new angles—like a recipe for trigonometry."
+      },
+      "confusionCorner": {
+        "title": "$\\sin(a+b) \\neq \\sin a + \\sin b$",
+        "body": "The sum formulas involve products of functions, not simple addition. Always use the correct formula. [[imp:Never distribute sine or cosine over a sum.]]"
+      },
+      "id": "sum-difference-formulas-intro",
+      "teacherCues": [
+        "Write $\\sin(45° + 30°)$ and ask: Does this equal $\\sin 45° + \\sin 30°$? Test with a calculator.",
+        "Display the sum and difference formulas for sine, cosine, and tangent. Ask: How can we use these to find $\\sin 15°$?"
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "q9-8-1",
+          "blanks": [
+            {
+              "accept": [
+                "sin"
+              ]
+            }
+          ],
+          "prompt": "The difference formula for cosine is $\\cos(a-b) = \\cos a \\cos b + \\sin a$ ___ $b$.",
+          "feedbackIfWrong": "The missing function is $\\sin b$.",
+          "hints": [
+            "The second term is a product of sines.",
+            "The formula is $\\cos(a-b) = \\cos a \\cos b + \\sin a \\sin b$."
+          ]
+        },
+        {
+          "feedbackIfWrong": "Possible answers: 60° - 45° or 45° - 30°.",
+          "answers": [
+            "60-45",
+            "45-30"
+          ],
+          "id": "q9-8-2",
+          "hints": [
+            "Use special angles 30°, 45°, 60°.",
+            "15° = 60° - 45° or 45° - 30°."
+          ],
+          "prompt": "What two angles can be used in a difference formula to evaluate $\\sin 15°$? (Enter like 60-45)",
+          "type": "short-answer"
+        },
+        {
+          "type": "short-answer",
+          "id": "q9-8-3",
+          "answers": [
+            "True",
+            "true"
+          ],
+          "feedbackIfWrong": "True. The difference formula has $1 + \\tan a \\tan b$ in the denominator.",
+          "prompt": "In the tangent sum formula $\\tan(a+b) = \\frac{\\tan a + \\tan b}{1 - \\tan a \\tan b}$, the denominator is $1 - \\tan a \\tan b$. For the difference formula, the denominator is $1 + \\tan a \\tan b$. (True/False)",
+          "hints": [
+            "The difference formula has a plus sign in denominator.",
+            "The formula is $\\tan(a-b) = \\frac{\\tan a - \\tan b}{1 + \\tan a \\tan b}$."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:sum and difference formulas]] express trigonometric functions of sums or differences of angles in terms of functions of the individual angles.",
+          "[[imp:Sum Formulas:]] $$\\sin(a+b) = \\sin a \\cos b + \\cos a \\sin b$$ $$\\cos(a+b) = \\cos a \\cos b - \\sin a \\sin b$$ $$\\tan(a+b) = \\frac{\\tan a + \\tan b}{1 - \\tan a \\tan b}$$",
+          "[[imp:Difference Formulas:]] $$\\sin(a-b) = \\sin a \\cos b - \\cos a \\sin b$$ $$\\cos(a-b) = \\cos a \\cos b + \\sin a \\sin b$$ $$\\tan(a-b) = \\frac{\\tan a - \\tan b}{1 + \\tan a \\tan b}$$",
+          "These formulas allow exact evaluation of angles that are sums or differences of special angles (30°, 45°, 60°).",
+          "They can also be used to simplify expressions and solve equations."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Function",
+              "Sum Formula",
+              "Difference Formula"
+            ],
+            "title": "Sum and Difference Formulas",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Sine",
+                "1": "$\\sin(a+b) = \\sin a \\cos b + \\cos a \\sin b$",
+                "2": "$\\sin(a-b) = \\sin a \\cos b - \\cos a \\sin b$"
+              },
+              {
+                "0": "Cosine",
+                "1": "$\\cos(a+b) = \\cos a \\cos b - \\sin a \\sin b$",
+                "2": "$\\cos(a-b) = \\cos a \\cos b + \\sin a \\sin b$"
+              },
+              {
+                "0": "Tangent",
+                "1": "$\\tan(a+b) = \\frac{\\tan a + \\tan b}{1 - \\tan a \\tan b}$",
+                "2": "$\\tan(a-b) = \\frac{\\tan a - \\tan b}{1 + \\tan a \\tan b}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$a, b$",
+              "meaning": "angle measures (degrees or radians)"
+            },
+            {
+              "symbol": "$\\pm$",
+              "meaning": "top sign for sum, bottom for difference",
+              "tone": "subtle"
+            }
+          ],
+          "formula": "$$\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b$$ $$\\cos(a \\pm b) = \\cos a \\cos b \\mp \\sin a \\sin b$$"
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Find the exact value of $\\sin 15°$ using a difference formula.",
+          "title": "Example A — Evaluate $\\sin 15°$",
+          "role": "guided",
+          "steps": [
+            "Write $15° = 60° - 45°$, two known angles.",
+            "Apply the sine difference formula: $\\sin(60° - 45°) = \\sin 60° \\cos 45° - \\cos 60° \\sin 45°$.",
+            "Substitute exact values: $\\frac{\\sqrt{3}}{2} \\cdot \\frac{\\sqrt{2}}{2} - \\frac{1}{2} \\cdot \\frac{\\sqrt{2}}{2}$.",
+            "Simplify: $\\frac{\\sqrt{6}}{4} - \\frac{\\sqrt{2}}{4} = \\frac{\\sqrt{6} - \\sqrt{2}}{4}$."
+          ]
+        },
+        {
+          "minLength": 8,
+          "role": "peer-explain",
+          "title": "Example B — Evaluate $\\tan \\frac{7\\pi}{12}$",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How can you write $\\frac{7\\pi}{12}$ as a sum of two familiar angles? Then apply the tangent sum formula.",
+          "steps": [
+            "Write $\\frac{7\\pi}{12} = \\frac{\\pi}{3} + \\frac{\\pi}{4}$.",
+            "Use tangent sum formula: $\\tan(\\frac{\\pi}{3} + \\frac{\\pi}{4}) = \\frac{\\tan \\frac{\\pi}{3} + \\tan \\frac{\\pi}{4}}{1 - \\tan \\frac{\\pi}{3} \\tan \\frac{\\pi}{4}}$.",
+            "Substitute: $\\frac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} = \\frac{1 + \\sqrt{3}}{1 - \\sqrt{3}}$.",
+            "Rationalize denominator: $\\frac{(1+\\sqrt{3})^2}{1-3} = \\frac{4+2\\sqrt{3}}{-2} = -2 - \\sqrt{3}$."
+          ],
+          "prompt": "Find the exact value of $\\tan \\frac{7\\pi}{12}$ using a sum formula."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Write $105° = 60° + 45°$.",
+            "$\\cos(60°+45°) = \\cos 60° \\cos 45° - \\sin 60° \\sin 45°$.",
+            "Substitute: $\\frac{1}{2} \\cdot \\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{3}}{2} \\cdot \\frac{\\sqrt{2}}{2} = \\frac{\\sqrt{2} - \\sqrt{6}}{4}$."
+          ],
+          "title": "Example C — Evaluate $\\cos 105°$",
+          "prompt": "Use a sum formula to find the exact value of $\\cos 105°$."
+        }
+      ]
+    },
+    {
+      "title": "Evaluating Sums and Differences Given Partial Information",
+      "concept": {
+        "explanation": [
+          "To evaluate $\\sin(a+b)$, $\\cos(a-b)$, etc., when only partial information about $a$ and $b$ is given, follow these steps:",
+          "Step 1: Use the Pythagorean identity $\\sin^2 \\theta + \\cos^2 \\theta = 1$ to find the missing sine or cosine of each angle.",
+          "Step 2: Determine the sign of the missing function based on the given quadrant.",
+          "Step 3: Substitute all known values into the appropriate sum or difference formula.",
+          "Step 4: Simplify to obtain the exact value."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "I",
+                "1": "+",
+                "2": "+",
+                "3": "+"
+              },
+              {
+                "0": "II",
+                "1": "+",
+                "2": "−",
+                "3": "−"
+              },
+              {
+                "0": "III",
+                "1": "−",
+                "2": "−",
+                "3": "+"
+              },
+              {
+                "0": "IV",
+                "1": "−",
+                "2": "+",
+                "3": "−"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Quadrant",
+              "$\\sin \\theta$",
+              "$\\cos \\theta$",
+              "$\\tan \\theta$"
+            ],
+            "variant": "colorful",
+            "title": "Signs of Sine and Cosine by Quadrant"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\sin^2 \\theta + \\cos^2 \\theta = 1$$",
+          "legend": [
+            {
+              "meaning": "given angle",
+              "tone": "core",
+              "symbol": "$\\theta$"
+            },
+            {
+              "symbol": "±",
+              "tone": "subtle",
+              "meaning": "sign depends on quadrant"
+            }
+          ]
+        }
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "negative"
+              ]
+            }
+          ],
+          "id": "q9-8-4",
+          "prompt": "If $\\sin a = \\frac{12}{13}$ and $a$ is in Quadrant II, then $\\cos a$ is ___ (positive/negative).",
+          "feedbackIfWrong": "In Quadrant II, cosine is negative.",
+          "hints": [
+            "In Quadrant II, $x$ is negative so cosine is negative.",
+            "Cosine is the $x$-coordinate."
+          ]
+        },
+        {
+          "answers": [
+            "-12/13",
+            "-12/13"
+          ],
+          "type": "short-answer",
+          "prompt": "Given $\\cos a = -\\frac{5}{13}$ with $a$ in Quadrant III, find $\\sin a$. (Enter a fraction like -12/13)",
+          "feedbackIfWrong": "$\\sin a = -\\frac{12}{13}$.",
+          "id": "q9-8-5",
+          "hints": [
+            "$\\sin^2 a = 1 - \\cos^2 a = 1 - 25/169 = 144/169$.",
+            "In QIII, sine is negative."
+          ]
+        },
+        {
+          "answers": [
+            "Pythagorean",
+            "pythagorean"
+          ],
+          "hints": [
+            "It relates $\\sin^2$ and $\\cos^2$.",
+            "It's $\\sin^2 \\theta + \\cos^2 \\theta = 1$."
+          ],
+          "prompt": "Which identity is used to find $\\cos b$ given $\\sin b$ and the quadrant? (Pythagorean, reciprocal, or quotient?)",
+          "feedbackIfWrong": "The Pythagorean identity $\\sin^2 \\theta + \\cos^2 \\theta = 1$.",
+          "type": "short-answer",
+          "id": "q9-8-6"
+        }
+      ],
+      "confusionCorner": {
+        "body": "When using $\\sin^2 \\theta + \\cos^2 \\theta = 1$, you get $\\sin \\theta = \\pm \\sqrt{1 - \\cos^2 \\theta}$. [[imp:Always check the quadrant to determine the correct sign.]]",
+        "title": "Don't Forget the Quadrant Sign"
+      },
+      "teacherCues": [
+        "Given $\\cos a = -\\frac{4}{5}$ with $a$ in Quadrant III, ask: How can we find $\\sin a$?",
+        "Then given $\\sin b = \\frac{5}{13}$ with $b$ in Quadrant I, ask: How can we find $\\cos b$? Finally, how do we find $\\cos(a-b)$?"
+      ],
+      "examples": [
+        {
+          "steps": [
+            "Find $\\sin a$: $a$ in QIII, $\\sin a = -\\sqrt{1 - (-4/5)^2} = -\\frac{3}{5}$.",
+            "Find $\\cos b$: $b$ in QI, $\\cos b = \\sqrt{1 - (5/13)^2} = \\frac{12}{13}$.",
+            "Use $\\cos(a-b) = \\cos a \\cos b + \\sin a \\sin b$.",
+            "Substitute: $(-\\frac{4}{5})(\\frac{12}{13}) + (-\\frac{3}{5})(\\frac{5}{13}) = -\\frac{48}{65} - \\frac{15}{65} = -\\frac{63}{65}$."
+          ],
+          "role": "guided",
+          "prompt": "Given $\\cos a = -\\frac{4}{5}$ ($\\pi < a < \\frac{3\\pi}{2}$) and $\\sin b = \\frac{5}{13}$ ($0 < b < \\frac{\\pi}{2}$), find $\\cos(a-b)$.",
+          "title": "Example A — Find $\\cos(a-b)$"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Given $\\sin a = \\frac{8}{17}$ ($0 < a < \\frac{\\pi}{2}$) and $\\cos b = -\\frac{24}{25}$ ($\\pi < b < \\frac{3\\pi}{2}$), find $\\sin(a+b)$.",
+          "steps": [
+            "Find $\\cos a$: $a$ in QI, $\\cos a = \\sqrt{1 - (8/17)^2} = \\frac{15}{17}$.",
+            "Find $\\sin b$: $b$ in QIII, $\\sin b = -\\sqrt{1 - (-24/25)^2} = -\\frac{7}{25}$.",
+            "Use $\\sin(a+b) = \\sin a \\cos b + \\cos a \\sin b$.",
+            "Substitute: $(\\frac{8}{17})(-\\frac{24}{25}) + (\\frac{15}{17})(-\\frac{7}{25}) = -\\frac{192}{425} - \\frac{105}{425} = -\\frac{297}{425}$."
+          ],
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you find $\\cos a$ and $\\sin b$? Then how do you set up the sum formula for sine?",
+          "title": "Example B — Find $\\sin(a+b)$",
+          "minLength": 8
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Find $\\sin a = \\frac{3}{5}$, $\\tan a = \\frac{3}{4}$. Find $\\cos b = \\frac{8}{17}$, $\\tan b = -\\frac{15}{8}$.",
+            "Use $\\tan(a+b) = \\frac{\\tan a + \\tan b}{1 - \\tan a \\tan b} = \\frac{3/4 + (-15/8)}{1 - (3/4)(-15/8)}$.",
+            "Simplify: $\\frac{6/8 - 15/8}{1 + 45/32} = \\frac{-9/8}{77/32} = -\\frac{9}{8} \\cdot \\frac{32}{77} = -\\frac{36}{77}$."
+          ],
+          "title": "Example C — Find $\\tan(a+b)$",
+          "prompt": "Given $\\cos a = \\frac{4}{5}$ ($0 < a < \\frac{\\pi}{2}$) and $\\sin b = -\\frac{15}{17}$ ($\\frac{3\\pi}{2} < b < 2\\pi$), find $\\tan(a+b)$."
+        }
+      ],
+      "id": "evaluating-with-given-values",
+      "discoveryHook": {
+        "scenario": "You don't always know both angles completely—sometimes you only know their sines or cosines and which quadrant they're in. Using Pythagorean identities, you can find the missing pieces and then plug into the sum/difference formulas."
+      }
+    },
+    {
+      "title": "Simplifying Trigonometric Expressions Using Sum and Difference Formulas",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\cos(x+\\pi) = \\cos x \\cos \\pi - \\sin x \\sin \\pi = -\\cos x$$",
+          "legend": [
+            {
+              "symbol": "$\\cos \\pi = -1$",
+              "tone": "core",
+              "meaning": "evaluate constant trig values"
+            },
+            {
+              "tone": "subtle",
+              "meaning": "sin of $\\pi$ is zero",
+              "symbol": "$\\sin \\pi = 0$"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Expression",
+              "Simplified Form"
+            ],
+            "variant": "colorful",
+            "title": "Common Simplifications",
+            "rows": [
+              {
+                "0": "$\\sin(x+\\pi)$",
+                "1": "$-\\sin x$"
+              },
+              {
+                "0": "$\\cos(x+\\pi)$",
+                "1": "$-\\cos x$"
+              },
+              {
+                "0": "$\\sin(x+\\frac{\\pi}{2})$",
+                "1": "$\\cos x$"
+              },
+              {
+                "0": "$\\cos(x-\\frac{\\pi}{2})$",
+                "1": "$\\sin x$"
+              },
+              {
+                "0": "$\\tan(x+\\pi)$",
+                "1": "$\\tan x$"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "To simplify an expression like $\\sin(x \\pm \\pi)$ or $\\cos(x \\pm \\frac{\\pi}{2})$, apply the corresponding sum or difference formula, then evaluate the trigonometric functions at the constant angle.",
+          "Common results: $\\sin(x+\\pi) = -\\sin x$, $\\cos(x+\\pi) = -\\cos x$, $\\sin(x+\\frac{\\pi}{2}) = \\cos x$, $\\cos(x-\\frac{\\pi}{2}) = \\sin x$.",
+          "For tangent, $\\tan(x+\\pi) = \\tan x$ (period is $\\pi$). $\\tan(x-\\pi) = \\tan x$ as well.",
+          "These simplifications are useful in calculus, physics, and solving equations.",
+          "You can also simplify expressions involving multiples of $2\\pi$: $\\sin(x+2\\pi) = \\sin x$, $\\cos(x+2\\pi) = \\cos x$."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Some messy trigonometric expressions collapse into simple forms when you apply sum or difference formulas. Recognizing $\\cos(x+\\pi)$ as $-\\cos x$ reveals that shifting a cosine graph by $\\pi$ flips it vertically."
+      },
+      "teacherCues": [
+        "Write $\\cos(x + \\pi)$ and ask: How can we expand this using a sum formula? What is $\\cos \\pi$? $\\sin \\pi$?",
+        "Show that it simplifies to $-\\cos x$. Ask: What does this tell us about the graph of $\\cos x$ shifted left by $\\pi$?"
+      ],
+      "confusionCorner": {
+        "body": "For cosine sum, the formula is $\\cos(a+b) = \\cos a \\cos b - \\sin a \\sin b$. Notice the [[imp:minus sign]] in the middle, unlike sine's plus. Mixing up the signs between sine and cosine sum formulas is a common mistake.",
+        "title": "Sign Errors with Cosine Sum"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Apply the cosine sum formula: $\\cos(x+\\pi) = \\cos x \\cos \\pi - \\sin x \\sin \\pi$.",
+            "Evaluate: $\\cos \\pi = -1$, $\\sin \\pi = 0$.",
+            "Simplify: $\\cos x \\cdot (-1) - \\sin x \\cdot 0 = -\\cos x$.",
+            "So $\\cos(x+\\pi) = -\\cos x$."
+          ],
+          "prompt": "Simplify $\\cos(x+\\pi)$.",
+          "title": "Example A — Simplify $\\cos(x+\\pi)$",
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "Apply formula: $\\sin(x-\\frac{3\\pi}{2}) = \\sin x \\cos \\frac{3\\pi}{2} - \\cos x \\sin \\frac{3\\pi}{2}$.",
+            "Evaluate: $\\cos \\frac{3\\pi}{2} = 0$, $\\sin \\frac{3\\pi}{2} = -1$.",
+            "Simplify: $\\sin x \\cdot 0 - \\cos x \\cdot (-1) = \\cos x$."
+          ],
+          "title": "Example B — Simplify $\\sin(x-\\frac{3\\pi}{2})$",
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Use the difference formula for sine. What are $\\sin \\frac{3\\pi}{2}$ and $\\cos \\frac{3\\pi}{2}$?",
+          "prompt": "Simplify $\\sin(x-\\frac{3\\pi}{2})$."
+        },
+        {
+          "title": "Example C — Simplify $\\tan(x-\\pi)$",
+          "steps": [
+            "Use $\\tan(x-\\pi) = \\frac{\\tan x - \\tan \\pi}{1 + \\tan x \\tan \\pi}$.",
+            "Since $\\tan \\pi = 0$, this becomes $\\frac{\\tan x - 0}{1 + 0} = \\tan x$.",
+            "So $\\tan(x-\\pi) = \\tan x$ (tangent has period $\\pi$)."
+          ],
+          "role": "independent",
+          "prompt": "Simplify $\\tan(x-\\pi)$."
+        }
+      ],
+      "id": "simplifying-expressions-sum-diff",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "q9-8-7",
+          "feedbackIfWrong": "$\\sin(x+\\pi) = -\\sin x$.",
+          "blanks": [
+            {
+              "accept": [
+                "-sin x",
+                "-sinx",
+                "-\\sin x"
+              ]
+            }
+          ],
+          "hints": [
+            "Apply sum formula, $\\sin \\pi = 0$, $\\cos \\pi = -1$.",
+            "$\\sin(x+\\pi) = \\sin x \\cos \\pi + \\cos x \\sin \\pi$."
+          ],
+          "prompt": "The simplified form of $\\sin(x+\\pi)$ is ___."
+        },
+        {
+          "answers": [
+            "cos x",
+            "cosx"
+          ],
+          "hints": [
+            "$\\cos 2\\pi = 1$, $\\sin 2\\pi = 0$.",
+            "Adding $2\\pi$ doesn't change cosine."
+          ],
+          "feedbackIfWrong": "$\\cos(x+2\\pi) = \\cos x$.",
+          "id": "q9-8-8",
+          "prompt": "What is $\\cos(x+2\\pi)$ simplified? (Enter like cos x)",
+          "type": "short-answer"
+        },
+        {
+          "id": "q9-8-9",
+          "feedbackIfWrong": "True. Tangent has a period of $\\pi$.",
+          "answers": [
+            "True",
+            "true"
+          ],
+          "prompt": "True or False: $\\tan(x+\\pi) = \\tan x$.",
+          "type": "short-answer",
+          "hints": [
+            "Tangent has period $\\pi$.",
+            "The tangent sum formula yields $\\tan x$."
+          ]
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "title": "Don't Drop the Coefficients",
+        "body": "When expanding, keep track of the coefficients. In Example A, the $\\cos \\frac{\\pi}{3}$ terms added to $\\sin x$, not $2\\sin x$? Wait, they did: $2\\sin x \\cos\\frac{\\pi}{3} = \\sin x$. Always simplify correctly. [[imp:Check your arithmetic with the trig values.]]"
+      },
+      "teacherCues": [
+        "Write $\\sin(x+\\frac{\\pi}{3}) + \\sin(x-\\frac{\\pi}{3}) = 1$. Ask: How can we expand these using sum/difference formulas?",
+        "Show the index of refraction formula and ask: How could a sum formula help rewrite this for a specific angle?"
+      ],
+      "discoveryHook": {
+        "scenario": "Sum and difference formulas aren't just for evaluating angles—they help solve trigonometric equations and simplify real‑world formulas like the index of refraction used in optics and photography."
+      },
+      "title": "Solving Equations and Rewriting Real‑Life Formulas",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$\\text{Expand, cancel, solve.}$$",
+          "legend": [
+            {
+              "symbol": "interval",
+              "tone": "core",
+              "meaning": "domain restriction for $x$"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "variant": "colorful",
+            "title": "Equation Solving Steps",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "Expand using sum/difference formulas."
+              },
+              {
+                "0": "2",
+                "1": "Combine like terms; simplify using exact values."
+              },
+              {
+                "0": "3",
+                "1": "Solve the resulting trigonometric equation (e.g., $\\sin x = c$)."
+              },
+              {
+                "0": "4",
+                "1": "Find all solutions in the given interval."
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "To solve a trigonometric equation involving sums/differences, expand using the appropriate formulas, simplify, and then solve the resulting equation.",
+          "Often, terms cancel leaving a simple equation like $\\sin x = 1$.",
+          "When rewriting a formula, substitute the given angle, apply the sum/difference formula, and simplify the resulting expression.",
+          "These techniques are used in physics (wave interference), optics (refraction), and engineering."
+        ]
+      },
+      "examples": [
+        {
+          "steps": [
+            "Expand both terms using sum/difference formulas.",
+            "First: $\\sin x \\cos \\frac{\\pi}{3} + \\cos x \\sin \\frac{\\pi}{3}$. Second: $\\sin x \\cos \\frac{\\pi}{3} - \\cos x \\sin \\frac{\\pi}{3}$.",
+            "Add them: $2\\sin x \\cos \\frac{\\pi}{3} = 2\\sin x \\cdot \\frac{1}{2} = \\sin x$.",
+            "So $\\sin x = 1$. In $[0, 2\\pi)$, the solution is $x = \\frac{\\pi}{2}$."
+          ],
+          "role": "guided",
+          "prompt": "Solve for $0 \\le x < 2\\pi$: $\\sin(x+\\frac{\\pi}{3}) + \\sin(x-\\frac{\\pi}{3}) = 1$.",
+          "title": "Example A — Solve $\\sin(x+\\frac{\\pi}{3}) + \\sin(x-\\frac{\\pi}{3}) = 1$"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Use the cosine sum and difference formulas to expand each term when $t=1$. What cancels?",
+          "minLength": 8,
+          "title": "Example B — Standing Wave Interference",
+          "steps": [
+            "When $t=1$, the arguments become $\\cos(\\frac{2\\pi}{3} - \\frac{2\\pi x}{5})$ and $\\cos(\\frac{2\\pi}{3} + \\frac{2\\pi x}{5})$.",
+            "Use cosine difference and sum formulas, respectively.",
+            "Sum: $[\\cos\\frac{2\\pi}{3}\\cos\\frac{2\\pi x}{5} + \\sin\\frac{2\\pi}{3}\\sin\\frac{2\\pi x}{5}] + [\\cos\\frac{2\\pi}{3}\\cos\\frac{2\\pi x}{5} - \\sin\\frac{2\\pi}{3}\\sin\\frac{2\\pi x}{5}]$.",
+            "The sine terms cancel, leaving $2\\cos\\frac{2\\pi}{3}\\cos\\frac{2\\pi x}{5} = 2(-\\frac{1}{2})\\cos\\frac{2\\pi x}{5} = -A\\cos\\frac{2\\pi x}{5}$."
+          ],
+          "prompt": "Show that $y = A\\cos(\\frac{2\\pi}{3}t - \\frac{2\\pi}{5}x) + A\\cos(\\frac{2\\pi}{3}t + \\frac{2\\pi}{5}x)$ simplifies to $y = -A\\cos\\frac{2\\pi x}{5}$ when $t=1$.",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Solve for $0 \\le x < 2\\pi$: $\\sin(\\frac{\\pi}{4} - x) - \\sin(x + \\frac{\\pi}{4}) = 1$.",
+          "title": "Example C — Solve $\\sin(\\frac{\\pi}{4} - x) - \\sin(x + \\frac{\\pi}{4}) = 1$",
+          "steps": [
+            "Expand first term (difference formula), second term (sum formula).",
+            "Subtract: $[\\sin\\frac{\\pi}{4}\\cos x - \\cos\\frac{\\pi}{4}\\sin x] - [\\sin x \\cos\\frac{\\pi}{4} + \\cos x \\sin\\frac{\\pi}{4}]$.",
+            "Simplify using $\\sin\\frac{\\pi}{4} = \\cos\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}$: cancels to $-\\sqrt{2}\\sin x = 1$.",
+            "So $\\sin x = -\\frac{1}{\\sqrt{2}} = -\\frac{\\sqrt{2}}{2}$, giving $x = \\frac{5\\pi}{4}, \\frac{7\\pi}{4}$."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "solving-equations-real-life",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "1",
+                "one"
+              ]
+            }
+          ],
+          "prompt": "In Example A, the equation $\\sin(x+\\frac{\\pi}{3}) + \\sin(x-\\frac{\\pi}{3}) = 1$ simplified to $\\sin x =$ ___.",
+          "feedbackIfWrong": "The equation simplified to $\\sin x = 1$.",
+          "id": "q9-8-10",
+          "type": "fill-blank",
+          "hints": [
+            "The terms with $\\cos x$ canceled.",
+            "$2\\sin x \\cos\\frac{\\pi}{3} = \\sin x$."
+          ]
+        },
+        {
+          "answers": [
+            "no solution",
+            "none"
+          ],
+          "hints": [
+            "Expand both terms; the $\\cos x$ terms cancel, leaving $-\\sin x$ term.",
+            "$-\\sqrt{3}\\sin x = 1$ → $\\sin x = -1/\\sqrt{3}$, which has solutions? Actually $-\\sqrt{3}\\sin x = 1$? Wait, $\\cos(x+\\pi/6) - \\cos(x-\\pi/6) = -2\\sin x \\sin(\\pi/6) = -\\sin x$. So $-\\sin x = 1$ → $\\sin x = -1$ → $x = 3\\pi/2$. I need to ensure the question has a solution. Let's test: $\\cos(x+\\pi/6) - \\cos(x-\\pi/6) = (\\cos x \\cos\\pi/6 - \\sin x \\sin\\pi/6) - (\\cos x \\cos\\pi/6 + \\sin x \\sin\\pi/6) = -2\\sin x \\sin\\pi/6 = -\\sin x$. So equation $-\\sin x = 1$ → $\\sin x = -1$ → $x = 3\\pi/2$. So there is a solution. I'll use that."
+          ],
+          "prompt": "Solve $\\cos(x+\\frac{\\pi}{6}) - \\cos(x-\\frac{\\pi}{6}) = 1$ for $0 \\le x < 2\\pi$. What is the value of $x$? (Enter like π/2 or 5π/4, or 'no solution')",
+          "type": "short-answer",
+          "feedbackIfWrong": "$x = \\frac{3\\pi}{2}$.",
+          "id": "q9-8-11"
+        },
+        {
+          "feedbackIfWrong": "$\\cos\\frac{2\\pi}{3} = -\\frac{1}{2}$.",
+          "hints": [
+            "$\\frac{2\\pi}{3} = 120°$.",
+            "Cosine of 120° is negative."
+          ],
+          "id": "q9-8-12",
+          "type": "short-answer",
+          "prompt": "In the standing wave example, what constant value did $\\cos\\frac{2\\pi}{3}$ simplify to? (Enter a number like -1/2)",
+          "answers": [
+            "-1/2",
+            "-0.5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-sum-difference",
+      "confusionCorner": {
+        "title": "Mixing Sine and Cosine Sum Formulas",
+        "body": "The sine sum formula uses $+$ between the terms: $\\sin a \\cos b + \\cos a \\sin b$. The cosine sum formula uses $-$: $\\cos a \\cos b - \\sin a \\sin b$. [[imp:Don't swap the signs.]]"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Use the Pythagorean identity to find the missing sine or cosine.",
+          "prompt": "In the Blueprint, after identifying the goal and given info, what is the next step if you need missing trig values? (Answer: use Pythagorean identity)",
+          "type": "short-answer",
+          "hints": [
+            "You have one function and need the other.",
+            "$\\sin^2 + \\cos^2 = 1$."
+          ],
+          "id": "q9-8-13",
+          "answers": [
+            "Pythagorean identity",
+            "use Pythagorean identity"
+          ]
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "±",
+                "plus or minus",
+                "+ or -"
+              ]
+            }
+          ],
+          "prompt": "When evaluating $\\sin(a+b)$, the formula is $\\sin a \\cos b + \\cos a \\sin b$. For $\\sin(a-b)$, the formula is $\\sin a \\cos b - \\cos a \\sin b$. The sign in the middle changes, but the order of terms is always $\\sin a \\cos b$ ___ $\\cos a \\sin b$.",
+          "type": "fill-blank",
+          "hints": [
+            "It's the combination of the two operations.",
+            "The top sign is for sum, bottom for difference."
+          ],
+          "feedbackIfWrong": "The sign between the terms is $\\pm$ (plus or minus).",
+          "id": "q9-8-14"
+        },
+        {
+          "feedbackIfWrong": "$\\cos a = \\frac{4}{5}$.",
+          "id": "q9-8-15",
+          "hints": [
+            "$\\sin a = 3/5$, $a$ in QI.",
+            "$\\cos a = \\sqrt{1 - 9/25}$."
+          ],
+          "type": "short-answer",
+          "answers": [
+            "4/5",
+            "4/5"
+          ],
+          "prompt": "In Example A, what was the value of $\\cos a$? (Enter a fraction like 4/5)"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Identify the goal (evaluate an expression, simplify, or solve an equation). Note the given angle(s) or function values and their quadrants.",
+          "[[imp:Solve]]: 1. If needed, find missing sine/cosine values using the Pythagorean identity and quadrant signs. 2. Choose the appropriate sum or difference formula. 3. Substitute the known values and simplify. 4. If solving an equation, combine like terms and solve for the variable within the given interval.",
+          "[[imp:Conclude]]: State the exact value or solution(s). For real‑life formulas, present the rewritten form. Check that signs and quadrant information are consistent."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify what to find; note given angles/values and quadrants."
+              },
+              {
+                "0": "Solve",
+                "1": "Find missing trig values; pick and apply sum/difference formula; simplify."
+              },
+              {
+                "0": "Conclude",
+                "1": "State exact result; verify sign and quadrant consistency."
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "title": "Blueprint for Sum and Difference Problems"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b$$ $$\\cos(a \\pm b) = \\cos a \\cos b \\mp \\sin a \\sin b$$",
+          "legend": [
+            {
+              "symbol": "$a, b$",
+              "tone": "core",
+              "meaning": "angle measures or variables"
+            }
+          ]
+        }
+      },
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude steps. Model a complete problem: 'Given $\\sin a = \\frac{3}{5}$ (QI) and $\\cos b = \\frac{12}{13}$ (QI), find $\\sin(a+b)$.'",
+        "Ask: What do we need to find first? Which formula do we use?"
+      ],
+      "title": "Blueprint Aid — Tackling Sum and Difference Problems",
+      "examples": [
+        {
+          "prompt": "Given $\\sin a = \\frac{3}{5}$ with $0 < a < \\frac{\\pi}{2}$ and $\\cos b = \\frac{12}{13}$ with $0 < b < \\frac{\\pi}{2}$, find $\\sin(a+b)$.",
+          "role": "guided",
+          "steps": [
+            "Understand: Need $\\sin(a+b)$. Both angles in QI, so all functions positive. Need $\\cos a$ and $\\sin b$.",
+            "Solve: $\\cos a = \\sqrt{1 - (3/5)^2} = \\frac{4}{5}$; $\\sin b = \\sqrt{1 - (12/13)^2} = \\frac{5}{13}$.",
+            "Use $\\sin(a+b) = \\sin a \\cos b + \\cos a \\sin b$.",
+            "Substitute: $(\\frac{3}{5})(\\frac{12}{13}) + (\\frac{4}{5})(\\frac{5}{13}) = \\frac{36}{65} + \\frac{20}{65} = \\frac{56}{65}$.",
+            "Conclude: $\\sin(a+b) = \\frac{56}{65}$."
+          ],
+          "title": "Example A — Evaluate $\\sin(a+b)$ Given Partial Info"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Compute $\\sin a + \\sin b$ and compare to the actual $\\sin(a+b)$ found using the formula. Are they equal?",
+          "title": "Example B — Why Not Just Add the Angles?",
+          "steps": [
+            "$\\sin a = \\frac{3}{5}$, $\\sin b = \\frac{5}{13}$. Their sum is $\\frac{3}{5} + \\frac{5}{13} = \\frac{39}{65} + \\frac{25}{65} = \\frac{64}{65}$.",
+            "But the true $\\sin(a+b) = \\frac{56}{65}$, which is different.",
+            "This demonstrates that sine does not distribute over addition. You must use the sum formula."
+          ],
+          "role": "peer-explain",
+          "prompt": "Explain why $\\sin(a+b) \\neq \\sin a + \\sin b$ using the values from Example A.",
+          "minLength": 8
+        },
+        {
+          "prompt": "Given $\\cos a = \\frac{4}{5}$ (QI) and $\\sin b = \\frac{5}{13}$ (QI), find $\\cos(a-b)$.",
+          "role": "independent",
+          "title": "Example C — Solve a Difference Equation",
+          "steps": [
+            "Find $\\sin a = \\frac{3}{5}$, $\\cos b = \\frac{12}{13}$.",
+            "Use $\\cos(a-b) = \\cos a \\cos b + \\sin a \\sin b$.",
+            "Substitute: $(\\frac{4}{5})(\\frac{12}{13}) + (\\frac{3}{5})(\\frac{5}{13}) = \\frac{48}{65} + \\frac{15}{65} = \\frac{63}{65}$.",
+            "So $\\cos(a-b) = \\frac{63}{65}$."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When facing a sum or difference problem, the Blueprint keeps you on track: understand what's given and what's needed, find missing pieces using identities, apply the correct formula, and simplify."
+      }
+    }
+  ],
+  "standards": [
+    "HSF.TF.C.9",
+    "HSF.TF.B.5"
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

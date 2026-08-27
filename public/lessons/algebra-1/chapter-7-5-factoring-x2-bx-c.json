@@ -1,0 +1,724 @@
+{
+  "id": "chapter-7-5-factoring-x2-bx-c",
+  "blocks": [
+    {
+      "confusionCorner": {
+        "title": "Order Doesn't Matter",
+        "body": "$(x+2)(x+8)$ and $(x+8)(x+2)$ are the same factorization. The order of the binomials doesn't affect the product. Just get the two numbers right."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Identify $b=10$, $c=16$. Since $c>0$ and $b>0$, both factors are positive.",
+            "List factor pairs of 16: (1,16), (2,8), (4,4).",
+            "Find pair with sum 10: $2+8=10$.",
+            "Write as $(x+2)(x+8)$."
+          ],
+          "prompt": "Factor $x^2 + 10x + 16$.",
+          "title": "Example A — Basic Positive"
+        },
+        {
+          "prompt": "Factor $x^2 + 9x + 8$.",
+          "steps": [
+            "$b=9$, $c=8$. Both positive → $p,q$ positive.",
+            "Factors of 8: (1,8) sum=9, (2,4) sum=6.",
+            "The pair (1,8) gives sum 9. So $(x+1)(x+8)$."
+          ],
+          "title": "Example B — Find the Pair",
+          "peerPrompt": "Explain to a partner: How do you know the signs of $p$ and $q$ before you even start listing factors? What does the sign of $b$ tell you?",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "title": "Example C — Practice",
+          "steps": [
+            "Factors of 6: (1,6) sum=7, (2,3) sum=5.",
+            "Use 1 and 6: $(x+1)(x+6)$."
+          ],
+          "prompt": "Factor $x^2 + 7x + 6$.",
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Imagine you're laying tiles to form a rectangle. The area is x² + 10x + 16. If you can find the length and width that multiply to this area, you've just factored the trinomial! Factoring is simply reverse multiplication."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ x^2 + bx + c = (x + p)(x + q) $$ where $p+q=b$ and $pq=c$, $p,q>0$.",
+          "title": "Factoring x² + bx + c (c > 0, b > 0)",
+          "notes": [
+            "Both $p$ and $q$ are positive.",
+            "Example: $x^2+7x+6$ → factors of 6 that sum to 7: 1 and 6 → $(x+1)(x+6)$."
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Factoring x² + 10x + 16",
+            "rows": [
+              {
+                "0": "1, 16",
+                "1": "17"
+              },
+              {
+                "0": "2, 8",
+                "1": "10 ← matches b"
+              },
+              {
+                "0": "4, 4",
+                "1": "8"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Factors of 16",
+              "Sum of Factors"
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "[[kw:Factoring]] a trinomial means writing it as a product of two binomials.",
+          "For $x^2 + bx + c$, we look for two numbers $p$ and $q$ such that: $$ p + q = b \\quad\\text{and}\\quad pq = c $$",
+          "Then $x^2 + bx + c = (x + p)(x + q)$.",
+          "When $c$ is [[imp:positive]] and $b$ is positive, $p$ and $q$ must both be [[imp:positive]] (same sign as $b$).",
+          "List factor pairs of $c$ and find the one whose sum equals $b$."
+        ]
+      },
+      "title": "Factoring x² + bx + c (c Positive, b Positive)",
+      "id": "factoring-c-positive-b-positive",
+      "teacherCues": [
+        "Draw a rectangle model: length (x+p), width (x+q). Show that the area is x² + (p+q)x + pq.",
+        "Write x²+10x+16 on the board. Ask: 'What two numbers multiply to 16 and add to 10?'"
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "It's the constant term.",
+            "It's the last term in the trinomial."
+          ],
+          "id": "q1-1",
+          "blanks": [
+            {
+              "accept": [
+                "c"
+              ]
+            }
+          ],
+          "prompt": "To factor $x^2 + bx + c$, find two numbers that multiply to ___ and add to $b$.",
+          "feedbackIfWrong": "The two numbers must multiply to $c$."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "prompt": "Factor $x^2 + 8x + 7$. What is the smaller constant in the binomials?",
+          "feedbackIfWrong": "The factorization is $(x+1)(x+7)$, so the smaller constant is 1.",
+          "answers": [
+            "1",
+            "one"
+          ],
+          "hints": [
+            "Find two numbers that multiply to 7 and add to 8.",
+            "The numbers are 1 and 7."
+          ]
+        },
+        {
+          "hints": [
+            "List factors of 30 that add to 11: (5,6).",
+            "The larger is 6."
+          ],
+          "answers": [
+            "6",
+            "six"
+          ],
+          "prompt": "In $x^2 + 11x + 30$, the two factors are positive. What is the larger factor of 30 that sums to 11?",
+          "id": "q1-3",
+          "feedbackIfWrong": "The pair is 5 and 6, larger is 6.",
+          "type": "short-answer"
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Write x² - 8x + 12 on the board. Ask: 'c is positive, so what sign must p and q share?'",
+        "Point out that since b is negative, both p and q must be negative."
+      ],
+      "confusionCorner": {
+        "title": "Sign Slip",
+        "body": "Don't write $(x+2)(x+6)$ when it should be $(x-2)(x-6)$. Check by FOIL: $(x-2)(x-6)=x^2-8x+12$ has a negative middle term, matching $b=-8$."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "$c=12$ positive, $b=-8$ negative → both $p,q$ negative.",
+            "List negative factor pairs of 12: (−1,−12) sum=−13; (−2,−6) sum=−8; (−3,−4) sum=−7.",
+            "The pair (−2,−6) works. Write as $(x-2)(x-6)$."
+          ],
+          "title": "Example A — Both Negative",
+          "prompt": "Factor $x^2 - 8x + 12$."
+        },
+        {
+          "title": "Example B — Check the Sum",
+          "role": "peer-explain",
+          "steps": [
+            "$b=-5$, so both numbers negative. Factors of 4: −1,−4 sum=−5. Bingo.",
+            "So $(x-1)(x-4)$."
+          ],
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: Why can't we use positive 1 and 4 here? What must the signs be to get a negative middle term?",
+          "prompt": "Factor $x^2 - 5x + 4$."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "$b=-5$, $c=4$ → need negative factors. −1,−4 sum −5.",
+            "So $(v-1)(v-4)$."
+          ],
+          "prompt": "Factor $v^2 - 5v + 4$.",
+          "title": "Example C — Practice"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "When $c$ is positive but $b$ is negative, $p$ and $q$ must both be [[imp:negative]].",
+          "Why? Negative × negative = positive (matching $c>0$). Negative + negative = negative (matching $b<0$).",
+          "The process is the same: list factor pairs of $c$ (as positive numbers) and then make them negative, checking if their sum equals $b$.",
+          "Example: $x^2 - 8x + 12$ → factors of 12: (−1,−12) sum −13; (−2,−6) sum −8; (−3,−4) sum −7. So $(x-2)(x-6)$."
+        ],
+        "formulaCard": {
+          "formula": "$$ x^2 - bx + c = (x - p)(x - q) $$ where $p+q=b$ (positive sum) and $pq=c$.",
+          "notes": [
+            "Both $p$ and $q$ are negative.",
+            "Example: $x^2-5v+4$ → factors of 4: −1,−4 sum −5 → $(x-1)(x-4)$."
+          ],
+          "title": "Factoring x² + bx + c (c > 0, b < 0)"
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "−1, −12",
+                "1": "−13"
+              },
+              {
+                "0": "−2, −6",
+                "1": "−8 ← matches b"
+              },
+              {
+                "0": "−3, −4",
+                "1": "−7"
+              }
+            ],
+            "headers": [
+              "Negative Factors of 12",
+              "Sum of Factors"
+            ],
+            "title": "Factoring x² - 8x + 12"
+          }
+        ]
+      },
+      "id": "factoring-c-positive-b-negative",
+      "title": "Factoring x² + bx + c (c Positive, b Negative)",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "q2-1",
+          "feedbackIfWrong": "Both factors must be negative.",
+          "prompt": "When $c$ is positive and $b$ is negative, both $p$ and $q$ must be ___.",
+          "blanks": [
+            {
+              "accept": [
+                "negative",
+                "Negative"
+              ]
+            }
+          ],
+          "hints": [
+            "Think: what sign times what sign gives positive?",
+            "What sign plus what sign gives negative?"
+          ]
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "-2",
+            "negative 2"
+          ],
+          "prompt": "Factor $d^2 - 5d + 6$. What is the constant term of the first binomial? (e.g., for (x-2), answer -2)",
+          "id": "q2-2",
+          "feedbackIfWrong": "The factors are $(d-2)(d-3)$; constant -2 or -3.",
+          "hints": [
+            "Factors of 6 that add to −5: −2 and −3.",
+            "The first binomial could be $(d-2)$."
+          ]
+        },
+        {
+          "prompt": "In $x^2 - 13x + 22$, one factor is $(x-2)$. What is the other? (Type just the constant, e.g., -5)",
+          "hints": [
+            "Factors of 22 that sum to −13: −2 and −11.",
+            "The other binomial is $(x-11)$."
+          ],
+          "answers": [
+            "-11",
+            "negative 11"
+          ],
+          "id": "q2-3",
+          "feedbackIfWrong": "The other factor is $(x-11)$, constant is -11.",
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "What if the middle term is negative? Like x² - 8x + 12. The constant is still positive, so both factors have the same sign — but this time, they're both negative! Two negatives multiply to positive, but add to negative."
+      }
+    },
+    {
+      "teacherCues": [
+        "Write x² + 4x - 21 on the board. Circle the -21. Ask: 'If c is negative, what can you say about the signs of p and q?'",
+        "Guide them: The product is negative, so one positive, one negative. The sum b tells which has the larger absolute value."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "$c=-21$ → one positive, one negative. $b=4$ positive → larger absolute value positive.",
+            "Factor pairs of 21: (1,21), (3,7).",
+            "Try signs: +7 and −3 → sum = 4. Works!",
+            "So $(x-3)(x+7)$."
+          ],
+          "prompt": "Factor $x^2 + 4x - 21$.",
+          "title": "Example A — b Positive, c Negative"
+        },
+        {
+          "title": "Example B — b Negative, c Negative",
+          "steps": [
+            "$c=-20$, $b=-1$ negative → larger absolute value gets negative sign.",
+            "Factors of 20: (4,5). Try −5 and +4 → sum −1. Works.",
+            "So $(x+4)(x-5)$."
+          ],
+          "prompt": "Factor $x^2 - x - 20$.",
+          "minLength": 2,
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: How do you decide which number gets the negative sign? What does the sign of $b$ tell you about the larger number?"
+        },
+        {
+          "steps": [
+            "Factors of 4: (1,4). $b=3$ positive → larger positive: +4, −1 → sum 3.",
+            "So $(x-1)(x+4)$."
+          ],
+          "title": "Example C — Practice",
+          "role": "independent",
+          "prompt": "Factor $x^2 + 3x - 4$."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch the Signs in the Binomials",
+        "body": "If the factors are +7 and −3, the binomials are $(x-3)(x+7)$, not $(x+7)(x-3)$ – both are correct. The key is that the constants inside the parentheses are the signed numbers $p$ and $q$."
+      },
+      "title": "Factoring x² + bx + c (c Negative)",
+      "questions": [
+        {
+          "feedbackIfWrong": "They must have different signs.",
+          "hints": [
+            "Positive × negative = negative.",
+            "They cannot be the same."
+          ],
+          "type": "fill-blank",
+          "id": "q3-1",
+          "blanks": [
+            {
+              "accept": [
+                "different",
+                "opposite"
+              ]
+            }
+          ],
+          "prompt": "When $c$ is negative, the two numbers $p$ and $q$ must have ___ signs."
+        },
+        {
+          "prompt": "Factor $n^2 + 4n - 12$. What is the positive constant in the binomials?",
+          "feedbackIfWrong": "The factorization is $(n-2)(n+6)$, positive constant 6.",
+          "hints": [
+            "Factors of 12: (2,6) with signs +6, −2 sum 4.",
+            "The positive factor is 6."
+          ],
+          "id": "q3-2",
+          "answers": [
+            "6",
+            "six"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "answers": [
+            "-7",
+            "negative 7"
+          ],
+          "type": "short-answer",
+          "prompt": "In $m^2 - 6m - 7$, one factor is $(m+1)$. What is the other? (Type the constant, e.g., -5)",
+          "feedbackIfWrong": "The factorization is $(m+1)(m-7)$, constant -7.",
+          "hints": [
+            "Factors of 7: 1 and 7. $b=-6$ → larger negative: −7, +1.",
+            "The other binomial is $(m-7)$."
+          ],
+          "id": "q3-3"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ x^2 + bx + c = (x + p)(x - q) $$ where $p$ and $q$ have opposite signs, $|p|>|q|$ if $b>0$.",
+          "notes": [
+            "One factor positive, one negative.",
+            "The sum $p+q$ equals $b$.",
+            "Example: $x^2+2x-15$ → factors of 15: 5 and 3 with signs +5,−3 → $(x+5)(x-3)$."
+          ],
+          "title": "Factoring x² + bx + c (c < 0)"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Factoring x² + 4x - 21",
+            "headers": [
+              "Factors of 21",
+              "Signed Factors",
+              "Sum"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1, 21",
+                "1": "+21, −1",
+                "2": "20"
+              },
+              {
+                "0": "1, 21",
+                "1": "−21, +1",
+                "2": "−20"
+              },
+              {
+                "0": "3, 7",
+                "1": "+7, −3",
+                "2": "4 ← matches b"
+              },
+              {
+                "0": "3, 7",
+                "1": "−7, +3",
+                "2": "−4"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "When $c$ is negative, $p$ and $q$ must have [[imp:different signs]] — one positive, one negative.",
+          "Their sum equals $b$. The sign of $b$ tells you which number has the larger absolute value.",
+          "List factor pairs of $|c|$ and assign signs so that the larger number's sign matches $b$.",
+          "Example: $x^2 + 4x - 21$ → factors of 21: (1,21), (3,7). $b=4$ positive, so the larger factor gets the positive sign, smaller negative: +7, −3 → sum 4. So $(x-3)(x+7)$."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "When the constant term is negative, the two mystery numbers have opposite signs — like one friend pulling forward and the other pulling backward. The sum (b) tells you who is stronger!"
+      },
+      "id": "factoring-c-negative"
+    },
+    {
+      "questions": [
+        {
+          "feedbackIfWrong": "You must factor the trinomial.",
+          "blanks": [
+            {
+              "accept": [
+                "factor",
+                "Factor"
+              ]
+            }
+          ],
+          "hints": [
+            "Write as $(x+p)(x+q)$.",
+            "The step after setting = 0."
+          ],
+          "type": "fill-blank",
+          "prompt": "To solve $x^2+bx+c=0$, first ___ the trinomial, then use the Zero-Product Property.",
+          "id": "q4-1"
+        },
+        {
+          "hints": [
+            "Factors: $(m+1)(m+2)=0$.",
+            "Roots are -1 and -2; smaller is -2."
+          ],
+          "feedbackIfWrong": "Roots are -1 and -2; smaller is -2.",
+          "prompt": "Solve $m^2+3m+2=0$. What is the smaller root?",
+          "id": "q4-2",
+          "answers": [
+            "-2",
+            "negative 2"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "The positive root is $x=2$.",
+          "id": "q4-3",
+          "type": "short-answer",
+          "hints": [
+            "The other factor is $(x-2)$.",
+            "Set $x-2=0$."
+          ],
+          "prompt": "After factoring $x^2+5x-14=0$, one factor is $(x+7)$. What is the positive root?",
+          "answers": [
+            "2",
+            "two"
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "body": "Roots are the negatives of the constants in the factors. For $(x+5)(x-2)=0$, roots are $-5$ and $+2$. Don't accidentally write the constants themselves as the solutions.",
+        "title": "Double-Check the Signs"
+      },
+      "title": "Solving x² + bx + c = 0 by Factoring",
+      "teacherCues": [
+        "Write x² + 3x + 2 = 0. Factor first: (x+1)(x+2)=0. Then set each factor to zero — connection to 7.4!",
+        "Emphasize: Factoring turns a trinomial equation into a product=0 form, unlocking the Zero-Product Property."
+      ],
+      "discoveryHook": {
+        "scenario": "You already know how to solve equations in factored form using the Zero-Product Property. Now you can factor trinomials, you can solve a whole new class of equations! Factor first, then set each factor to zero — easy."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ x^2 + bx + c = 0 \\quad\\Rightarrow\\quad (x+p)(x+q) = 0 \\quad\\Rightarrow\\quad x=-p \\text{ or } x=-q $$",
+          "title": "Solving x² + bx + c = 0",
+          "notes": [
+            "Step 1: Set = 0. Step 2: Factor. Step 3: Zero-Product Property.",
+            "Roots are the negatives of the constants in the binomials."
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Equation",
+              "Factored Form",
+              "Roots"
+            ],
+            "rows": [
+              {
+                "0": "$m^2+3m+2=0$",
+                "1": "$(m+1)(m+2)=0$",
+                "2": "$m=-1, -2$"
+              },
+              {
+                "0": "$x^2+5x-14=0$",
+                "1": "$(x+7)(x-2)=0$",
+                "2": "$x=-7, 2$"
+              },
+              {
+                "0": "$n^2-5n=24$",
+                "1": "$n^2-5n-24=0 \\to (n-8)(n+3)=0$",
+                "2": "$n=8, -3$"
+              }
+            ],
+            "title": "Solving by Factoring",
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "To solve $x^2 + bx + c = 0$, first [[imp:factor the left side]] into $(x+p)(x+q)$.",
+          "Then apply the Zero-Product Property: $x+p=0$ or $x+q=0$ → $x=-p$, $x=-q$.",
+          "Always check that the equation is set equal to 0 before factoring.",
+          "Some equations may require rearranging terms to standard form first."
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Solve $m^2 + 3m + 2 = 0$.",
+          "steps": [
+            "Factor: find numbers that multiply to 2 and add to 3 → 1 and 2.",
+            "Write: $(m+1)(m+2)=0$.",
+            "Set each factor = 0: $m+1=0$ → $m=-1$; $m+2=0$ → $m=-2$.",
+            "Roots: $m=-1$, $m=-2$."
+          ],
+          "title": "Example A — Solve by Factoring"
+        },
+        {
+          "minLength": 2,
+          "prompt": "Solve $n^2 - 5n = 24$.",
+          "title": "Example B — Equation Not = 0",
+          "steps": [
+            "Rewrite: $n^2 - 5n - 24 = 0$.",
+            "Factor: numbers that multiply to -24 and sum -5 → -8 and +3.",
+            "$(n-8)(n+3)=0$ → $n=8$ or $n=-3$."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why can't we factor $n^2-5n$ directly? What must we do first? How does this connect to the Zero-Product Property?"
+        },
+        {
+          "title": "Example C — Practice",
+          "role": "independent",
+          "steps": [
+            "Factor: numbers multiplying to -26, sum 11 → +13, -2.",
+            "$(v+13)(v-2)=0$ → $v=-13$ or $v=2$."
+          ],
+          "prompt": "Solve $v^2 + 11v - 26 = 0$."
+        }
+      ],
+      "id": "solving-equations-by-factoring"
+    },
+    {
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "factoring",
+                "factor"
+              ]
+            }
+          ],
+          "hints": [
+            "Write as a product of binomials.",
+            "The method from this chapter."
+          ],
+          "prompt": "In the pumpkin patch problem, after expanding and setting the equation to 0, we solve by ___ the trinomial.",
+          "feedbackIfWrong": "We factor the trinomial to solve.",
+          "id": "q5-1",
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "Which $s$ makes both dimensions positive?",
+            "$s=10$ gives negative lengths."
+          ],
+          "answers": [
+            "60",
+            "sixty"
+          ],
+          "id": "q5-2",
+          "feedbackIfWrong": "The correct side length is $s=60$ meters.",
+          "prompt": "In the equation $(s-30)(s-40)=600$, after factoring we get $(s-10)(s-60)=0$. What is the correct $s$?",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "Width = $60-40 = 20$ meters.",
+          "answers": [
+            "20",
+            "twenty"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "Width = $s-40$.",
+            "60 minus 40."
+          ],
+          "id": "q5-3",
+          "prompt": "If the pumpkin patch area is 600 m² and $s=60$, what is the width of the patch? ($s-40$)"
+        }
+      ],
+      "teacherCues": [
+        "Draw a square plot with a smaller rectangle cut out for a pumpkin patch. Label sides s, and the patch dimensions s-30 and s-40.",
+        "Show the equation: (s-30)(s-40) = 600. Expand, get 0 on one side, factor, solve."
+      ],
+      "title": "Blueprint Aid: Factoring to Find Unknown Length",
+      "id": "blueprint-real-life-factoring",
+      "discoveryHook": {
+        "scenario": "A farmer's pumpkin patch is a rectangle cut from a larger square field. The patch area is 600 m², and the distances from the patch to the field edges are 30 m and 40 m. What's the size of the whole square field? Factoring the quadratic equation reveals the answer!"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Step",
+              "Work"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Square side $s$; patch length $s-30$, width $s-40$; area 600 m²."
+              },
+              {
+                "0": "Equation",
+                "1": "$(s-30)(s-40)=600$"
+              },
+              {
+                "0": "Expand & Set =0",
+                "1": "$s^2-70s+1200=600$ → $s^2-70s+600=0$"
+              },
+              {
+                "0": "Factor",
+                "1": "$(s-10)(s-60)=0$"
+              },
+              {
+                "0": "Solve & Interpret",
+                "1": "$s=10$ or $s=60$; $s=60$ is valid. Area $=60^2=3600$ m²."
+              }
+            ],
+            "title": "Blueprint: Pumpkin Patch Problem",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ (s-a)(s-b) = A \\quad\\Rightarrow\\quad s^2 - (a+b)s + ab - A = 0 $$",
+          "title": "Solving a Quadratic from a Geometric Model",
+          "notes": [
+            "Expand the product, subtract $A$, factor the resulting trinomial.",
+            "Reject solutions that make dimensions negative."
+          ]
+        },
+        "explanation": [
+          "Real-life problems often lead to quadratic equations that can be solved by factoring.",
+          "Step 1: Model the situation with an equation. The area of the rectangle is $(s-30)(s-40) = 600$.",
+          "Step 2: Expand and set equal to 0: $s^2 - 70s + 1200 = 600$ → $s^2 - 70s + 600 = 0$.",
+          "Step 3: Factor the trinomial: $(s-10)(s-60) = 0$.",
+          "Step 4: Use Zero-Product Property: $s=10$ or $s=60$. Reject $s=10$ (sides would be negative). So $s=60$ m, area of square = 3600 m²."
+        ]
+      },
+      "confusionCorner": {
+        "body": "Always check if the solution makes sense in context. A side length must be positive, and dimensions like $s-30$ must be positive. If $s=10$, then $s-30=-20$, impossible.",
+        "title": "Reject Impossible Solutions"
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Pumpkin patch area 600 m², distances 30 m and 40 m. Find the area of the square plot.",
+          "steps": [
+            "Set $s$ = side of square. Patch length $=s-30$, width $=s-40$. Area $= (s-30)(s-40)=600$.",
+            "Expand: $s^2 -70s +1200 = 600$ → $s^2 -70s +600 =0$.",
+            "Factor: $(s-10)(s-60)=0$ → $s=10$ (reject) or $s=60$.",
+            "Area = $60^2 = 3600$ m²."
+          ],
+          "title": "Example A — Original Problem"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: Why do we reject one solution? How can you tell which root makes sense in the real world?",
+          "role": "peer-explain",
+          "title": "Example B — What If Area Changes?",
+          "steps": [
+            "Equation: $(s-30)(s-40)=200$ → $s^2-70s+1200=200$ → $s^2-70s+1000=0$.",
+            "Factor: find factors of 1000 that sum to 70 → 20 and 50. $(s-20)(s-50)=0$.",
+            "$s=20$ (reject, dimensions negative) or $s=50$. Area $=2500$ m²."
+          ],
+          "prompt": "If the pumpkin patch area is 200 m² instead, what is the square plot area?"
+        },
+        {
+          "title": "Example C — New Distances",
+          "role": "independent",
+          "steps": [
+            "$(s-10)(s-20)=400$ → $s^2-30s+200=400$ → $s^2-30s-200=0$.",
+            "Factor: numbers multiplying to -200, sum -30: -40 and +5 → $(s-40)(s+5)=0$.",
+            "$s=40$ (valid), area $=1600$ m²."
+          ],
+          "prompt": "If the patch is 400 m² and distances are 10 m and 20 m, find the square area."
+        }
+      ]
+    }
+  ],
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "title": "Chapter 7.5 — Factoring x² + bx + c",
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

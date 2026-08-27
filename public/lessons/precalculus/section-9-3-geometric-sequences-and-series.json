@@ -1,0 +1,716 @@
+{
+  "title": "Geometric Sequences and Series",
+  "id": "section-9-3-geometric-sequences-and-series",
+  "blocks": [
+    {
+      "id": "intro-geometric-sequences",
+      "confusionCorner": {
+        "body": "In a geometric sequence, you multiply by $r$ to get the next term. In an arithmetic sequence, you add $d$. Don't confuse them.",
+        "title": "Geometric vs. Arithmetic"
+      },
+      "teacherCues": [
+        "Write the terms $2, 6, 18, 54, \\dots$ and ask: What are the ratios between consecutive terms? ($3$).",
+        "Define geometric sequence: a sequence where each term after the first is found by multiplying the previous term by a constant $r$, called the common ratio."
+      ],
+      "concept": {
+        "explanation": [
+          "A [[kw:geometric sequence]] has a constant ratio $r$ between consecutive terms: $\\frac{a_{n+1}}{a_n} = r$ for all $n$.",
+          "The $n$th term is given by $a_n = a_1 \\cdot r^{\\,n-1}$, where $a_1$ is the first term and $r$ is the common ratio.",
+          "To find $r$, divide any term (after the first) by the preceding term.",
+          "Geometric sequences behave like exponential functions; they grow (if $|r|>1$) or decay (if $0<|r|<1$)."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Examples of Geometric Sequences",
+            "headers": [
+              "Sequence",
+              "$a_1$",
+              "Common Ratio $r$",
+              "$a_n$ Formula"
+            ],
+            "rows": [
+              {
+                "0": "$2, 4, 8, 16, \\dots$",
+                "1": "$2$",
+                "2": "$2$",
+                "3": "$2 \\cdot 2^{n-1} = 2^n$"
+              },
+              {
+                "0": "$12, 36, 108, 324, \\dots$",
+                "1": "$12$",
+                "2": "$3$",
+                "3": "$4 \\cdot 3^n$ (since $a_1=12=4\\cdot3$)"
+              },
+              {
+                "0": "$-\\frac13, \\frac19, -\\frac1{27}, \\dots$",
+                "1": "$-\\frac13$",
+                "2": "$-\\frac13$",
+                "3": "$(-\\frac13)^n$"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$a_n = a_1 \\cdot r^{\\,n-1}$$",
+          "notes": [
+            "$a_1$ is the first term; $r$ is the common ratio.",
+            "The exponent is $n-1$, not $n$."
+          ],
+          "title": "$n$th Term of a Geometric Sequence"
+        }
+      },
+      "examples": [
+        {
+          "title": "A – Find the common ratio",
+          "steps": [
+            "Divide the second term by the first: $15 / 5 = 3$.",
+            "Check with the next pair: $45 / 15 = 3$, $135 / 45 = 3$.",
+            "The common ratio is $r = 3$."
+          ],
+          "role": "guided",
+          "prompt": "Determine the common ratio of the sequence $5, 15, 45, 135, \\dots$."
+        },
+        {
+          "steps": [
+            "$a_1 = 3$.",
+            "$a_2 = 3 \\cdot 2 = 6$.",
+            "$a_3 = 6 \\cdot 2 = 12$.",
+            "$a_4 = 12 \\cdot 2 = 24$."
+          ],
+          "role": "peer-explain",
+          "title": "B – Write the first four terms",
+          "minLength": 2,
+          "peerPrompt": "Explain to your partner: How do you get from the first term to the second? Then continue the pattern.",
+          "prompt": "Write the first four terms of the geometric sequence with $a_1 = 3$ and $r = 2$."
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Ratios: $4/2 = 2$, $6/4 = 1.5$, $8/6 \\approx 1.33$.",
+            "Ratios are not constant, so it is not geometric – it's arithmetic."
+          ],
+          "prompt": "Is the sequence $2, 4, 6, 8, \\dots$ geometric?",
+          "title": "C – Is it geometric?"
+        }
+      ],
+      "questions": [
+        {
+          "hints": [
+            "It's the letter after $q$.",
+            "Common ratio."
+          ],
+          "id": "q1",
+          "feedbackIfWrong": "It is $r$.",
+          "blanks": [
+            {
+              "accept": [
+                "r"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "In a geometric sequence, the constant ratio between consecutive terms is denoted by ___."
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "$a_2 = 2 \\cdot 5 = 10$.",
+            "$a_3 = 10 \\cdot 5 = 50$."
+          ],
+          "id": "q2",
+          "answer": "50",
+          "feedbackIfWrong": "$a_3 = 2 \\cdot 5^2 = 50$.",
+          "prompt": "If $a_1 = 2$ and $r = 5$, what is $a_3$? (Enter a number)"
+        },
+        {
+          "feedbackIfWrong": "It is $n-1$.",
+          "hints": [
+            "One less than $n$.",
+            "The exponent is $n-1$."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "n-1"
+              ]
+            }
+          ],
+          "id": "q3",
+          "prompt": "The $n$th term formula for a geometric sequence is $a_n = a_1 \\cdot r^{___}$."
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A chain email asks you to forward it to 5 people. If each person does the same, the number of people reached each round forms a geometric sequence: 1, 5, 25, 125, … . Geometric sequences model exponential growth."
+      },
+      "title": "Introduction to Geometric Sequences"
+    },
+    {
+      "questions": [
+        {
+          "feedbackIfWrong": "The root index is $7 - 3 = 4$.",
+          "type": "fill-blank",
+          "prompt": "To find the common ratio $r$ when you know $a_3$ and $a_7$, compute $r = \\sqrt[4]{a_7 / a_3}$. The index of the root is ___.",
+          "hints": [
+            "Subtract the indices: $7 - 3 = 4$.",
+            "The difference in term numbers."
+          ],
+          "id": "q4",
+          "blanks": [
+            {
+              "accept": [
+                "4"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "$a_{12} = 4 \\cdot 5^{11} = 195,312,500$.",
+          "id": "q5",
+          "prompt": "For the sequence $4, 20, 100, \\dots$, what is the 12th term? (Enter a number)",
+          "hints": [
+            "$a_1 = 4$, $r = 5$, so $a_{12} = 4 \\cdot 5^{11}$.",
+            "$5^{11} = 48,828,125$, times 4 = 195,312,500."
+          ],
+          "answer": "195312500"
+        },
+        {
+          "id": "q6",
+          "blanks": [
+            {
+              "accept": [
+                "n-1"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "It is $n-1$.",
+          "type": "fill-blank",
+          "prompt": "The formula for the $n$th term of a geometric sequence is $a_n = a_1 \\cdot r^{___}$.",
+          "hints": [
+            "One less than $n$.",
+            "The exponent is $n-1$."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Knowing just two terms of a geometric sequence, you can find any other term—like knowing two points on an exponential curve lets you find the whole curve."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Example: $a_4 = 125$, $a_{10} = \\frac{125}{64}$",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Find $r$",
+                "1": "$r = \\sqrt[6]{\\frac{125/64}{125}} = \\sqrt[6]{\\frac{1}{64}} = \\frac12$"
+              },
+              {
+                "0": "Find $a_{14}$",
+                "1": "$a_{14} = a_{10} \\cdot r^4 = \\frac{125}{64} \\cdot (\\frac12)^4 = \\frac{125}{1024}$"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Step",
+              "Calculation"
+            ]
+          }
+        ],
+        "explanation": [
+          "Use $a_n = a_1 r^{n-1}$ to find any term if you know $a_1$ and $r$.",
+          "If you know two terms $a_m$ and $a_k$ (with $k > m$), then $r = \\sqrt[k-m]{a_k / a_m}$.",
+          "Then use $a_1 = a_m / r^{m-1}$ to find the first term."
+        ],
+        "formulaCard": {
+          "formula": "$$r = \\sqrt[k-m]{\\frac{a_k}{a_m}}$$",
+          "notes": [
+            "$k$ and $m$ are term indices ($k > m$).",
+            "Then use $a_1 = a_m / r^{m-1}$ if needed."
+          ],
+          "title": "Finding $r$ from Two Terms"
+        }
+      },
+      "id": "finding-nth-term",
+      "confusionCorner": {
+        "title": "Exponent for $r$",
+        "body": "When finding $r$ from two terms, the exponent is the difference in their indices: $k - m$. Not $k - m - 1$."
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "$a_1 = 5$, $r = 15/5 = 3$.",
+            "$a_n = 5 \\cdot 3^{n-1}$.",
+            "$a_{12} = 5 \\cdot 3^{11} = 5 \\cdot 177147 = 885,735$."
+          ],
+          "title": "A – Find $a_n$ formula",
+          "prompt": "Find a formula for the $n$th term of $5, 15, 45, \\dots$ and then find the 12th term."
+        },
+        {
+          "title": "B – Find $r$ from two terms",
+          "prompt": "The second term is $6$ and the fifth term is $\\frac{81}{4}$. Find the common ratio $r$.",
+          "peerPrompt": "Explain to your partner: How many terms apart are they? ($5-2=3$). Then set up $a_5 = a_2 \\cdot r^3$ and solve for $r$.",
+          "role": "peer-explain",
+          "steps": [
+            "$a_5 = a_2 \\cdot r^{5-2} = a_2 \\cdot r^3$.",
+            "$\\frac{81}{4} = 6 \\cdot r^3 \\to r^3 = \\frac{81}{24} = \\frac{27}{8}$.",
+            "$r = \\sqrt[3]{\\frac{27}{8}} = \\frac{3}{2}$."
+          ],
+          "minLength": 2
+        },
+        {
+          "title": "C – Find a specific term",
+          "steps": [
+            "$r = \\sqrt[6]{\\frac{125/64}{125}} = \\sqrt[6]{\\frac1{64}} = \\frac12$.",
+            "$a_{14} = a_{10} \\cdot r^{4} = \\frac{125}{64} \\cdot \\left(\\frac12\\right)^4 = \\frac{125}{1024}$."
+          ],
+          "prompt": "For the sequence with $a_4 = 125$ and $a_{10} = \\frac{125}{64}$, find the 14th term.",
+          "role": "independent"
+        }
+      ],
+      "title": "Finding the $n$th Term",
+      "teacherCues": [
+        "Write $a_n = a_1 r^{n-1}$. If $a_1 = 5$ and $r = 3$, ask: What is the formula for $a_n$? Find $a_{12}$.",
+        "Show how to find $r$ when given two non‑consecutive terms, using $a_k = a_m r^{k-m}$."
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "A bank compounds interest monthly. The total balance after a series of deposits is the sum of a finite geometric sequence—the formula saves you from adding dozens of numbers individually."
+      },
+      "id": "sum-finite-geometric",
+      "teacherCues": [
+        "Write $S_n = a_1 \\frac{1 - r^n}{1 - r}$. Explain that this is the sum of the first $n$ terms.",
+        "Show an example: find the sum of $2 + 6 + 18 + \\dots$ up to $6$ terms."
+      ],
+      "confusionCorner": {
+        "title": "Don't forget the exponent",
+        "body": "The formula uses $r^n$, not $r^{n-1}$. The power $n$ matches the number of terms."
+      },
+      "title": "Sum of a Finite Geometric Sequence",
+      "questions": [
+        {
+          "prompt": "The sum formula for a finite geometric sequence is $S_n = a_1 \\cdot \\frac{1 - r^{___}}{1 - r}$.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "n"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The exponent is $n$.",
+          "id": "q7",
+          "hints": [
+            "It's the number of terms.",
+            "The exponent matches $n$."
+          ]
+        },
+        {
+          "answer": "31",
+          "hints": [
+            "$a_1=1$, $r=2$, $n=5$.",
+            "$S_5 = \\frac{1-32}{-1}=31$."
+          ],
+          "prompt": "Find the sum $1 + 2 + 4 + 8 + 16$. (Enter a number)",
+          "id": "q8",
+          "type": "short-answer",
+          "feedbackIfWrong": "The sum is $31$."
+        },
+        {
+          "hints": [
+            "Each term is the same as the first.",
+            "It's the first term."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "a_1",
+                "a1"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "If $r = 1$, the geometric sequence is constant, and the sum of $n$ terms is $n \\cdot$ ___.",
+          "feedbackIfWrong": "It is $n \\cdot a_1$.",
+          "id": "q9"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The sum of the first $n$ terms of a geometric sequence with $r \\neq 1$ is $$S_n = a_1 \\cdot \\frac{1 - r^n}{1 - r}.$$",
+          "This formula works because multiplying the sum by $r$ and subtracting cancels almost all terms.",
+          "If $r = 1$, the sequence is constant, and $S_n = n \\cdot a_1$."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Calculation"
+            ],
+            "title": "Example: Sum of $2+6+18+54+162+486$ ($a_1=2, r=3, n=6$)",
+            "rows": [
+              {
+                "0": "Plug in",
+                "1": "$S_6 = 2 \\cdot \\frac{1 - 3^6}{1 - 3}$"
+              },
+              {
+                "0": "$3^6$",
+                "1": "$729$"
+              },
+              {
+                "0": "Numerator",
+                "1": "$1 - 729 = -728$"
+              },
+              {
+                "0": "Denominator",
+                "1": "$1 - 3 = -2$"
+              },
+              {
+                "0": "Result",
+                "1": "$2 \\cdot \\frac{-728}{-2} = 2 \\cdot 364 = 728$"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "title": "Sum of Finite Geometric Sequence",
+          "formula": "$$S_n = a_1 \\cdot \\frac{1 - r^n}{1 - r}, \\quad r \\neq 1$$",
+          "notes": [
+            "Works for any $r$ except $1$.",
+            "The sum is of the form $a_1 + a_1 r + \\cdots + a_1 r^{n-1}$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Find the sum of the first 6 terms of the sequence $2, 6, 18, 54, \\dots$.",
+          "steps": [
+            "$a_1 = 2$, $r = 3$, $n = 6$.",
+            "$S_6 = 2 \\cdot \\frac{1 - 3^6}{1 - 3} = 2 \\cdot \\frac{1 - 729}{-2} = 2 \\cdot \\frac{-728}{-2} = 2 \\cdot 364 = 728$."
+          ],
+          "title": "A – Sum of first 6 terms",
+          "role": "guided"
+        },
+        {
+          "title": "B – Sum with decimal ratio",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Find $\\sum_{i=1}^{12} 4(0.3)^{i-1}$.",
+          "steps": [
+            "$S_{12} = 4 \\cdot \\frac{1 - (0.3)^{12}}{1 - 0.3}$.",
+            "$(0.3)^{12} \\approx 5.314 \\times 10^{-7}$, so numerator $\\approx 1$.",
+            "$S_{12} \\approx 4 \\cdot \\frac{1}{0.7} \\approx 5.714$."
+          ],
+          "peerPrompt": "Identify $a_1=4$, $r=0.3$, $n=12$. Work with your partner to plug into the formula and use a calculator for $0.3^{12}$."
+        },
+        {
+          "role": "independent",
+          "prompt": "Find the sum of the first 5 terms of the sequence with $a_1 = 1$, $r = 2$.",
+          "steps": [
+            "$S_5 = 1 \\cdot \\frac{1 - 2^5}{1 - 2} = \\frac{1 - 32}{-1} = 31$."
+          ],
+          "title": "C – Sum of $1 + 2 + 4 + 8 + 16$"
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "title": "Condition $|r| < 1$ is required",
+        "body": "Always check the absolute value of $r$ before applying the sum formula. If $|r| \\ge 1$, the formula gives a nonsense answer."
+      },
+      "id": "infinite-geometric-series",
+      "title": "Infinite Geometric Series",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Find the sum of the infinite geometric series $5 + 5(0.5) + 5(0.5)^2 + \\dots$.",
+          "steps": [
+            "Here $a_1 = 5$, $r = 0.5$, $|r|<1$.",
+            "Sum $S = \\frac{5}{1 - 0.5} = \\frac{5}{0.5} = 10$."
+          ],
+          "title": "A – Find the sum"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Explain to your partner: $0.333\\dots = \\frac{3}{10} + \\frac{3}{100} + \\frac{3}{1000} + \\dots$. What are $a_1$ and $r$? Then apply the formula.",
+          "steps": [
+            "$a_1 = \\frac{3}{10}$, $r = \\frac{1}{10}$.",
+            "Sum $S = \\frac{3/10}{1 - 1/10} = \\frac{3/10}{9/10} = \\frac{3}{9} = \\frac13$."
+          ],
+          "role": "peer-explain",
+          "prompt": "Write $0.\\overline{3} = 0.333\\dots$ as a fraction using an infinite geometric series.",
+          "title": "B – Repeating decimal to fraction"
+        },
+        {
+          "title": "C – Does it converge?",
+          "steps": [
+            "$r = 2$, $|r| = 2 \\not< 1$, so the series diverges (no finite sum)."
+          ],
+          "prompt": "Does the infinite series $1 + 2 + 4 + 8 + \\dots$ have a sum? Explain.",
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Write the sum $1 + \\frac12 + \\frac14 + \\frac18 + \\dots$. Ask: Can we add infinitely many numbers and get a finite answer?",
+        "Explain that when $|r| < 1$, the infinite sum converges to $S = \\frac{a_1}{1 - r}$."
+      ],
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "An infinite geometric series has a sum only when $|r|$ is ___ than $1$.",
+          "feedbackIfWrong": "It must be less than $1$.",
+          "hints": [
+            "The common ratio must be between $-1$ and $1$.",
+            "Smaller."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "less"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "The sum is $16$.",
+          "id": "q11",
+          "answer": "16",
+          "type": "short-answer",
+          "prompt": "Find the sum of the infinite geometric series $8 + 4 + 2 + 1 + \\dots$. (Enter a number)",
+          "hints": [
+            "$a_1 = 8$, $r = 1/2$.",
+            "$S = \\frac{8}{1 - 1/2} = 16$."
+          ]
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "feedbackIfWrong": "It is $r$.",
+          "prompt": "The formula for the sum of an infinite geometric series is $S = \\frac{a_1}{1 - ___}$.",
+          "hints": [
+            "It's the common ratio.",
+            "Denoted by $r$."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "r"
+              ]
+            }
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "An [[kw:infinite geometric series]] has a sum only when $|r| < 1$: $$S = \\sum_{i=0}^{\\infty} a_1 r^i = \\frac{a_1}{1 - r}.$$",
+          "If $|r| \\ge 1$, the terms do not approach zero and the series has no finite sum (diverges).",
+          "The sum formula comes from letting $n \\to \\infty$ in the finite sum formula; $r^n \\to 0$ when $|r| < 1$."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "title": "Examples of Infinite Geometric Series",
+            "rows": [
+              {
+                "0": "$4 + 4(0.6) + 4(0.6)^2 + \\dots$",
+                "1": "$4$",
+                "2": "$0.6$",
+                "3": "Yes",
+                "4": "$\\frac{4}{1-0.6} = 10$"
+              },
+              {
+                "0": "$3 + 0.3 + 0.03 + \\dots$",
+                "1": "$3$",
+                "2": "$0.1$",
+                "3": "Yes",
+                "4": "$\\frac{3}{1-0.1} = \\frac{10}{3}$"
+              },
+              {
+                "0": "$1 + 2 + 4 + 8 + \\dots$",
+                "1": "$1$",
+                "2": "$2$",
+                "3": "No",
+                "4": "No sum (diverges)"
+              }
+            ],
+            "headers": [
+              "Series",
+              "$a_1$",
+              "$r$",
+              "$|r|<1$?",
+              "Sum"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Sum of an Infinite Geometric Series",
+          "notes": [
+            "Only works when the common ratio is between $-1$ and $1$ (exclusive).",
+            "If $|r| \\ge 1$, the series has no finite sum."
+          ],
+          "formula": "$$S = \\frac{a_1}{1 - r}, \\quad |r| < 1$$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "Zeno's paradox: to walk across a room, you go half the distance, then half of what remains, and so on. The total distance is finite—the sum of an infinite geometric series."
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "First term of the sum",
+        "body": "When summing the future values, the sequence starts with the last deposit's value because the sum formula expects the first term to be $a_1$. Here $a_1$ is the value of the deposit that earns interest for the shortest time (1 month)."
+      },
+      "questions": [
+        {
+          "hints": [
+            "Monthly interest rate $0.03/12 = 0.0025$.",
+            "Add 1."
+          ],
+          "id": "q13",
+          "feedbackIfWrong": "The common ratio is $1.0025$.",
+          "blanks": [
+            {
+              "accept": [
+                "1.0025"
+              ]
+            }
+          ],
+          "prompt": "In the annuity example, the common ratio of the geometric sequence is $1 + \\frac{0.03}{12} =$ ___.",
+          "type": "fill-blank"
+        },
+        {
+          "answer": "24",
+          "hints": [
+            "Monthly deposits for 2 years.",
+            "$2 \\times 12 = 24$."
+          ],
+          "prompt": "How many deposits are made in 2 years? (Enter a number)",
+          "feedbackIfWrong": "There are $24$ deposits.",
+          "id": "q14",
+          "type": "short-answer"
+        },
+        {
+          "blanks": [
+            {
+              "accept": [
+                "geometric"
+              ]
+            }
+          ],
+          "hints": [
+            "Type of sequence with a common ratio.",
+            "Not arithmetic."
+          ],
+          "id": "q15",
+          "prompt": "The sum of the future values of the deposits is found using the formula for the sum of a finite ___ sequence.",
+          "feedbackIfWrong": "It is a geometric sequence.",
+          "type": "fill-blank"
+        }
+      ],
+      "examples": [
+        {
+          "title": "A – Identify the sequence",
+          "steps": [
+            "First deposit after 24 months: $50(1.0025)^{24}$.",
+            "Second deposit after 23 months: $50(1.0025)^{23}$.",
+            "Third deposit after 22 months: $50(1.0025)^{22}$."
+          ],
+          "prompt": "List the first three terms of the future value sequence for the deposits.",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "$S_{24} = 50(1.0025) \\cdot \\frac{1 - (1.0025)^{24}}{1 - 1.0025}$.",
+            "Compute $(1.0025)^{24} \\approx 1.0616$, numerator $1 - 1.0616 = -0.0616$, denominator $-0.0025$.",
+            "$S_{24} = 50(1.0025) \\cdot \\frac{-0.0616}{-0.0025} \\approx 1235$ (rounded)."
+          ],
+          "role": "peer-explain",
+          "prompt": "Use the finite geometric sum formula to find the total balance.",
+          "minLength": 2,
+          "title": "B – Apply the sum formula",
+          "peerPrompt": "Identify $a_1 = 50(1.0025)$, $r = 1.0025$, $n = 24$. Work with your partner to compute the sum using a calculator."
+        },
+        {
+          "steps": [
+            "The total amount in the account after 2 years, including all deposits and interest."
+          ],
+          "role": "independent",
+          "prompt": "What does the sum $S_{24}$ represent?",
+          "title": "C – Interpret"
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "24",
+                "2": "$50(1.0025)^{24}$"
+              },
+              {
+                "0": "2",
+                "1": "23",
+                "2": "$50(1.0025)^{23}$"
+              },
+              {
+                "0": "...",
+                "1": "...",
+                "2": "..."
+              },
+              {
+                "0": "24",
+                "1": "1",
+                "2": "$50(1.0025)$"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Annuity Calculation",
+            "headers": [
+              "Deposit Month",
+              "Months of Interest",
+              "Future Value"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$S_{24} = 50(1.0025) \\cdot \\frac{1 - (1.0025)^{24}}{1 - 1.0025}$$",
+          "notes": [
+            "$a_1$ is the last deposit's future value ($50(1.0025)$), and $r = 1.0025$, $n=24$.",
+            "Always check that $r > 1$ is fine; the formula works for any $r \\neq 1$."
+          ],
+          "title": "Sum of Geometric Series for Annuity"
+        },
+        "explanation": [
+          "[[imp:Understand]]: Each deposit grows with compound interest. The first deposit after 24 months becomes $A_{24} = 50(1.0025)^{24}$, the second becomes $50(1.0025)^{23}$, and so on. The last deposit earns interest for only 1 month: $50(1.0025)$.",
+          "[[imp:Solve]]: The balances form a geometric sequence with $a_1 = 50(1.0025)$, $r = 1.0025$, and $n = 24$. Use $S_n = a_1 \\frac{1 - r^n}{1 - r}$.",
+          "[[imp:Conclude]]: Plug in to get the total balance."
+        ]
+      },
+      "teacherCues": [
+        "Pose: An investor deposits \\$50 at the start of each month into an account with 3% annual interest compounded monthly. Find the balance after 2 years (24 deposits).",
+        "Explain that the first deposit earns interest for 24 months, the second for 23, etc., forming a geometric sequence of future values."
+      ],
+      "title": "Blueprint Aid – Increasing Annuity",
+      "discoveryHook": {
+        "scenario": "Saving a little each month can grow significantly due to compound interest. The total after a few years is the sum of a geometric sequence, which you can compute with the sum formula."
+      },
+      "id": "blueprint-aid-application"
+    }
+  ],
+  "type": "interactive-lesson",
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

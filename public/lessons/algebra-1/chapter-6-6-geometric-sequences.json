@@ -1,0 +1,710 @@
+{
+  "schemaVersion": 2,
+  "presenterNotes": [
+    "Start with a simple doubling sequence to introduce the common ratio. Students often confuse geometric with arithmetic; emphasize multiply vs. add.",
+    "The formula $ a_n = a_1 \\cdot r^{n-1} $ is the cornerstone. Relate it to exponential functions $ y = ab^x $.",
+    "Graphing geometric sequences visually shows the difference from arithmetic sequences. The exponential curve is memorable.",
+    "Real-life applications like paper folding and population growth make the concept tangible. Highlight how quickly exponential growth escalates."
+  ],
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "Imagine a chain letter where each person sends it to 3 people. Starting with 2 people, after each round the number multiplies: 2, 6, 18, 54... This explosive growth is the hallmark of a geometric sequence, where you multiply by a constant ratio instead of adding a constant difference."
+      },
+      "examples": [
+        {
+          "title": "A – Finding the Common Ratio",
+          "steps": [
+            "Divide the second term by the first: $ \\frac{15}{5} = 3 $.",
+            "Check the next pair: $ \\frac{45}{15} = 3 $, $ \\frac{135}{45} = 3 $.",
+            "The ratio is constant, so it is geometric. The common ratio is $ r = 3 $."
+          ],
+          "role": "guided",
+          "prompt": "Determine whether the sequence is geometric. If so, find the common ratio. $ 5, 15, 45, 135, \\dots $"
+        },
+        {
+          "prompt": "Is the sequence $ 2, 4, 12, 48, \\dots $ geometric?",
+          "minLength": 2,
+          "title": "B – Identifying a Non-Geometric Sequence",
+          "role": "peer-explain",
+          "steps": [
+            "Ratios: $ \\frac{4}{2} = 2 $, $ \\frac{12}{4} = 3 $, $ \\frac{48}{12} = 4 $.",
+            "The ratios are not constant, so the sequence is not geometric."
+          ],
+          "peerPrompt": "Explain to a partner: Why does this sequence fail the geometric test? What are the ratios?"
+        },
+        {
+          "role": "independent",
+          "prompt": "Write the next two terms of the geometric sequence $ 64, 32, 16, 8, \\dots $.",
+          "title": "C – Extending a Geometric Sequence",
+          "steps": [
+            "Find the common ratio: $ r = \\frac{32}{64} = 0.5 $.",
+            "Multiply the last term by 0.5: $ 8 \\times 0.5 = 4 $.",
+            "Multiply again: $ 4 \\times 0.5 = 2 $. Next two terms are 4 and 2."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "A [[kw:geometric sequence]] is an ordered list of numbers in which the ratio between consecutive terms is constant. This constant is called the [[kw:common ratio]], denoted by $ r $.",
+          "To find the common ratio, divide any term by the previous term: $ r = \\frac{a_{n}}{a_{n-1}} $.",
+          "If $ r > 1 $, the sequence grows; if $ 0 < r < 1 $, the sequence shrinks; if $ r < 0 $, the terms alternate signs.",
+          "To extend a geometric sequence, [[imp:multiply]] the last term by the common ratio.",
+          "Geometric sequences model repeated multiplication, such as population doubling or radioactive decay."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Sequence",
+              "Common Ratio $ r $",
+              "Type"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "$ 2, 6, 18, 54, \\dots $",
+                "1": "$ 3 $",
+                "2": "Growth ($ r > 1 $)"
+              },
+              {
+                "0": "$ 100, 50, 25, 12.5, \\dots $",
+                "1": "$ 0.5 $",
+                "2": "Decay ($ 0 < r < 1 $)"
+              },
+              {
+                "0": "$ 1, -2, 4, -8, \\dots $",
+                "1": "$ -2 $",
+                "2": "Alternating ($ r < 0 $)"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Examples of Geometric Sequences"
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "$ r $ is the factor multiplied to get from one term to the next.",
+            "If the ratio is constant, the sequence is geometric."
+          ],
+          "title": "Common Ratio",
+          "formula": "$$ r = \\frac{a_{n}}{a_{n-1}} $$"
+        }
+      },
+      "id": "identifying-and-extending-geometric-sequences",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "common"
+              ]
+            }
+          ],
+          "hints": [
+            "It starts with 'c'.",
+            "It is found by dividing a term by the previous term."
+          ],
+          "prompt": "In a geometric sequence, the constant factor between consecutive terms is called the ___ ratio.",
+          "id": "q1-1",
+          "feedbackIfWrong": "It's called the common ratio.",
+          "type": "fill-blank"
+        },
+        {
+          "id": "q1-2",
+          "hints": [
+            "Divide the second term by the first: $ 12/3 $.",
+            "Check: $ 48/12 $ gives the same number."
+          ],
+          "type": "short-answer",
+          "prompt": "What is the common ratio of the geometric sequence $ 3, 12, 48, 192, \\dots $?",
+          "feedbackIfWrong": "The common ratio is 4.",
+          "answer": "4"
+        },
+        {
+          "answer": "1",
+          "hints": [
+            "Find the ratio: $ 100/1000 = 0.1 $.",
+            "Multiply the last term by 0.1."
+          ],
+          "id": "q1-3",
+          "type": "short-answer",
+          "feedbackIfWrong": "$ 10 \\times 0.1 = 1 $.",
+          "prompt": "Write the next term of the geometric sequence $ 1000, 100, 10, \\dots $."
+        }
+      ],
+      "title": "Identifying and Extending Geometric Sequences",
+      "teacherCues": [
+        "Write the sequence 2, 6, 18, 54, ... and ask: 'What number is multiplied each time to get the next term?'",
+        "Contrast with an arithmetic sequence: 'How is this different from adding a constant?'"
+      ],
+      "confusionCorner": {
+        "body": "In an arithmetic sequence, you [[imp:add]] a constant difference. In a geometric sequence, you [[imp:multiply]] by a constant ratio. Check whether the change is additive or multiplicative to classify correctly.",
+        "title": "Geometric vs. Arithmetic"
+      }
+    },
+    {
+      "teacherCues": [
+        "Write the formula $ a_n = a_1 \\cdot r^{n-1} $ on the board. Ask: 'How is this similar to the arithmetic sequence formula? How is it different?'",
+        "Emphasize that the position is in the exponent, just like exponential functions."
+      ],
+      "confusionCorner": {
+        "title": "Exponent is n-1, Not n",
+        "body": "The formula uses $ r^{n-1} $ because the first term ($ n=1 $) has zero factors of $ r $. At $ n=1 $, $ r^{0} = 1 $, so $ a_1 = a_1 $, which is correct. Using $ r^n $ would shift the sequence."
+      },
+      "examples": [
+        {
+          "prompt": "Write an equation for the nth term of $ 2, 6, 18, 54, \\dots $ and find $ a_{10} $.",
+          "role": "guided",
+          "steps": [
+            "Identify $ a_1 = 2 $, $ r = 6/2 = 3 $.",
+            "Substitute: $ a_n = 2 \\cdot 3^{n-1} $.",
+            "Find $ a_{10} $: $ a_{10} = 2 \\cdot 3^{9} = 2 \\cdot 19{,}683 = 39{,}366 $."
+          ],
+          "title": "A – Write and Use the nth Term Formula"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "steps": [
+            "$ a_1 = 100 $, $ r = 50/100 = 0.5 $.",
+            "Formula: $ a_n = 100 \\cdot (0.5)^{n-1} $.",
+            "$ a_7 = 100 \\cdot (0.5)^6 = 100 \\cdot 0.015625 = 1.5625 $."
+          ],
+          "title": "B – Sequence with Fractional Ratio",
+          "prompt": "Write an equation for $ 100, 50, 25, 12.5, \\dots $ and find $ a_7 $.",
+          "peerPrompt": "Explain to a partner: Why does the sequence decrease, and how does the formula reflect that?"
+        },
+        {
+          "prompt": "A geometric sequence has $ a_1 = -4 $ and $ r = 2 $. Find $ a_6 $.",
+          "steps": [
+            "Formula: $ a_n = -4 \\cdot 2^{n-1} $.",
+            "$ a_6 = -4 \\cdot 2^{5} = -4 \\cdot 32 = -128 $."
+          ],
+          "role": "independent",
+          "title": "C – Finding a Term from a Given Position"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A geometric sequence is an exponential function in disguise! The nth term formula $ a_n = a_1 \\cdot r^{n-1} $ has the variable in the exponent. Once you know the first term and common ratio, you can jump to any term—no need to list all the ones before it."
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "prompt": "The formula for the nth term of a geometric sequence is $ a_n = a_1 \\cdot r^{n-1} $, where $ r $ is the ___ ratio.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "common"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The common ratio.",
+          "hints": [
+            "It's the constant multiplier.",
+            "It starts with 'c'."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "answer": "a_n = 5 * 3^{n-1}",
+          "feedbackIfWrong": "$ a_n = 5 \\cdot 3^{n-1} $.",
+          "hints": [
+            "First term is 5, common ratio is 3.",
+            "Use the form $ a_n = a_1 \\cdot r^{n-1} $."
+          ],
+          "id": "q2-2",
+          "prompt": "Write the equation for the nth term of the geometric sequence $ 5, 15, 45, \\dots $."
+        },
+        {
+          "answer": "0.5",
+          "type": "short-answer",
+          "hints": [
+            "Use $ a_n = 8 \\cdot (0.5)^{n-1} $.",
+            "For $ n=5 $, exponent is 4: $ 8 \\cdot 0.5^4 = 8 \\cdot 0.0625 $."
+          ],
+          "feedbackIfWrong": "$ 8 \\times 0.0625 = 0.5 $.",
+          "id": "q2-3",
+          "prompt": "For the geometric sequence with $ a_1 = 8 $ and $ r = 0.5 $, find $ a_5 $."
+        }
+      ],
+      "id": "writing-equations-for-geometric-sequences",
+      "title": "Writing Equations for Geometric Sequences",
+      "concept": {
+        "explanation": [
+          "The [[kw:nth term]] of a geometric sequence with first term $ a_1 $ and common ratio $ r $ is given by: $$ a_n = a_1 \\cdot r^{n-1} $$",
+          "This formula is similar to the exponential function $ y = a \\cdot b^x $, where the exponent is $ n-1 $ instead of $ x $.",
+          "To write the equation, identify $ a_1 $ (the first term) and $ r $ (the common ratio).",
+          "You can use this formula to find any term, including those beyond the given list.",
+          "When $ r > 1 $, the sequence grows; when $ 0 < r < 1 $, it decays."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "First term $ a_1 $",
+                "1": "2"
+              },
+              {
+                "0": "Common ratio $ r $",
+                "1": "3"
+              },
+              {
+                "0": "Formula",
+                "1": "$ a_n = 2 \\cdot 3^{n-1} $"
+              },
+              {
+                "0": "4th term",
+                "1": "$ a_4 = 2 \\cdot 3^{3} = 54 $"
+              },
+              {
+                "0": "10th term",
+                "1": "$ a_{10} = 2 \\cdot 3^{9} = 39{,}366 $"
+              }
+            ],
+            "headers": [
+              "Component",
+              "Value"
+            ],
+            "variant": "colorful",
+            "title": "Example: Sequence $ 2, 6, 18, 54, \\dots $",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ a_n = a_1 \\cdot r^{n-1} $$",
+          "notes": [
+            "$ a_1 $ = first term, $ r $ = common ratio, $ n $ = position.",
+            "Function form: $ f(n) = a_1 \\cdot r^{n-1} $ with domain $ n = 1, 2, 3, \\dots $"
+          ],
+          "title": "Equation for a Geometric Sequence"
+        }
+      }
+    },
+    {
+      "teacherCues": [
+        "Plot the points $ (1, 2), (2, 6), (3, 18), (4, 54) $. Ask: 'Do these points form a straight line? What shape do they suggest?'",
+        "Contrast with arithmetic sequences (linear) — geometric sequences are exponential curves."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Graph the geometric sequence $ 2, 6, 18, 54, \\dots $.",
+          "steps": [
+            "Make a table: $ (1,2), (2,6), (3,18), (4,54) $.",
+            "Plot the points — they curve sharply upward.",
+            "This shape indicates exponential growth ($ r=3 > 1 $)."
+          ],
+          "title": "A – Graphing a Growth Sequence"
+        },
+        {
+          "title": "B – Identifying Sequence Type from a Graph",
+          "peerPrompt": "Explain to a partner: How does the shape of the graph tell you it's geometric and not arithmetic?",
+          "steps": [
+            "If it were arithmetic, points would lie on a straight line.",
+            "These points curve, getting closer to the x-axis — exponential decay.",
+            "It is geometric with $ r = 0.5 $."
+          ],
+          "prompt": "A graph shows points $ (1, 16), (2, 8), (3, 4), (4, 2) $. Is this arithmetic or geometric?",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "title": "C – Writing from a Graph",
+          "steps": [
+            "$ a_1 = 5 $. Ratio: $ 15/5 = 3 $, constant.",
+            "Equation: $ a_n = 5 \\cdot 3^{n-1} $."
+          ],
+          "prompt": "A graph shows $ (1, 5), (2, 15), (3, 45), (4, 135) $. Write the equation of the sequence.",
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "An arithmetic sequence graph is a [[imp:straight line]]. A geometric sequence graph is an [[imp:exponential curve]]. This is a quick visual check to distinguish them.",
+        "title": "Arithmetic Graph vs. Geometric Graph"
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{Plot } (n, a_n) \\text{ for } n = 1, 2, 3, \\dots $$",
+          "title": "Graph of a Geometric Sequence",
+          "notes": [
+            "The graph is discrete (dots only).",
+            "The points follow an exponential curve."
+          ]
+        },
+        "explanation": [
+          "To graph a geometric sequence, plot the ordered pairs $ (n, a_n) $.",
+          "The points lie on an [[imp:exponential curve]], not a straight line.",
+          "If $ r > 1 $, the graph curves upward (exponential growth). If $ 0 < r < 1 $, it curves downward (exponential decay).",
+          "The domain is the set of positive integers, so the graph consists of [[imp:discrete points]].",
+          "The shape of the graph reveals the type of growth or decay."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1",
+                "1": "2",
+                "2": "$ (1, 2) $"
+              },
+              {
+                "0": "2",
+                "1": "6",
+                "2": "$ (2, 6) $"
+              },
+              {
+                "0": "3",
+                "1": "18",
+                "2": "$ (3, 18) $"
+              },
+              {
+                "0": "4",
+                "1": "54",
+                "2": "$ (4, 54) $"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Graph of $ 2, 6, 18, 54, \\dots $",
+            "type": "table",
+            "headers": [
+              "Position $ n $",
+              "Term $ a_n $",
+              "Point"
+            ]
+          }
+        ]
+      },
+      "id": "graphing-geometric-sequences",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "discrete"
+              ]
+            }
+          ],
+          "hints": [
+            "The domain is positive integers.",
+            "Not a continuous line."
+          ],
+          "type": "fill-blank",
+          "prompt": "The graph of a geometric sequence consists of ___ points that lie on an exponential curve.",
+          "id": "q3-1",
+          "feedbackIfWrong": "Discrete points."
+        },
+        {
+          "answer": "straight line",
+          "type": "short-answer",
+          "hints": [
+            "Think of the constant difference.",
+            "Arithmetic sequences are linear."
+          ],
+          "id": "q3-2",
+          "feedbackIfWrong": "A straight line.",
+          "prompt": "Does the graph of an arithmetic sequence form a straight line or a curve?"
+        },
+        {
+          "type": "short-answer",
+          "answer": "greater than 1",
+          "feedbackIfWrong": "Greater than 1.",
+          "id": "q3-3",
+          "hints": [
+            "Upward curve means values are multiplying.",
+            "Growth means $ r > 1 $."
+          ],
+          "prompt": "If the points on a graph are curving upward, is the common ratio greater than 1 or between 0 and 1?"
+        }
+      ],
+      "title": "Graphing Geometric Sequences",
+      "discoveryHook": {
+        "scenario": "When you graph a geometric sequence, the points curve upward (or downward) instead of forming a straight line. This curve is the signature of exponential growth or decay. The graph shows you visually how quickly the numbers multiply—or shrink!"
+      }
+    },
+    {
+      "id": "real-life-geometric-sequences",
+      "concept": {
+        "formulaCard": {
+          "title": "Geometric Model",
+          "notes": [
+            "$ a_1 $ = starting amount.",
+            "$ r $ = growth/decay factor per period."
+          ],
+          "formula": "$$ a_n = a_1 \\cdot r^{n-1} $$"
+        },
+        "explanation": [
+          "Real-world situations with repeated multiplication can be modeled by geometric sequences.",
+          "The first term $ a_1 $ is the [[imp:initial value]]. The common ratio $ r $ is the [[imp:multiplier]] per step.",
+          "Use the formula $ a_n = a_1 \\cdot r^{n-1} $ to find values at specific steps.",
+          "When $ r > 1 $, the quantity grows; when $ 0 < r < 1 $, it decays.",
+          "Exponential growth is much faster than linear growth—small changes in $ r $ lead to huge differences over time."
+        ],
+        "visuals": [
+          {
+            "title": "Paper Folding: Initial Thickness 0.1 mm, $ r = 2 $",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1 (first fold)",
+                "1": "$ 0.1 \\times 2 = 0.2 $"
+              },
+              {
+                "0": "2",
+                "1": "$ 0.4 $"
+              },
+              {
+                "0": "3",
+                "1": "$ 0.8 $"
+              },
+              {
+                "0": "10",
+                "1": "$ 0.1 \\cdot 2^{9} = 51.2 \\text{ mm} $"
+              }
+            ],
+            "headers": [
+              "Fold Number $ n $",
+              "Thickness (mm)"
+            ],
+            "type": "table"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "A bacteria culture doubles every hour. If there are 10 bacteria initially ($ a_1 = 10 $), how many after 4 hours?",
+          "type": "short-answer",
+          "hints": [
+            "Use $ a_n = 10 \\cdot 2^{n-1} $ with $ n=4 $.",
+            "$ 10 \\cdot 2^3 = 10 \\cdot 8 $."
+          ],
+          "feedbackIfWrong": "80 bacteria.",
+          "answer": "80",
+          "id": "q4-1"
+        },
+        {
+          "hints": [
+            "The terms get smaller.",
+            "Opposite of growth."
+          ],
+          "id": "q4-2",
+          "blanks": [
+            {
+              "accept": [
+                "decay"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "prompt": "In a geometric sequence, if the common ratio is between 0 and 1, the sequence represents exponential ___.",
+          "feedbackIfWrong": "Exponential decay."
+        },
+        {
+          "id": "q4-3",
+          "prompt": "A car's value is $20,000. It loses 20% of its value each year. What is the common ratio for the geometric sequence of its value?",
+          "feedbackIfWrong": "The common ratio is 0.8.",
+          "type": "short-answer",
+          "hints": [
+            "It keeps 80% of its value.",
+            "$ 1 - 0.20 = ? $"
+          ],
+          "answer": "0.8"
+        }
+      ],
+      "teacherCues": [
+        "Pose the paper folding problem: '0.1 mm thick, folded in half. How thick after 10 folds?'",
+        "Pose a population doubling problem: '30 mice, double each year. When will there be 960?'"
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Initial $ a_1 = 0.1 $ mm, $ r = 2 $.",
+            "Formula: $ a_n = 0.1 \\cdot 2^{n-1} $.",
+            "After 10 folds ($ n=10 $): $ a_{10} = 0.1 \\cdot 2^9 = 0.1 \\cdot 512 = 51.2 $ mm."
+          ],
+          "title": "A – Paper Folding",
+          "prompt": "A sheet of paper is 0.1 mm thick. Each fold doubles the thickness. How thick after 10 folds?"
+        },
+        {
+          "minLength": 2,
+          "prompt": "30 mice double each year. When will there be 960 mice?",
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why did we set $ a_n = 960 $ and solve for $ n $?",
+          "title": "B – Population Growth",
+          "steps": [
+            "Sequence: $ a_1 = 30 $, $ r = 2 $. Formula: $ a_n = 30 \\cdot 2^{n-1} $.",
+            "Set $ 30 \\cdot 2^{n-1} = 960 $ → $ 2^{n-1} = 32 $ → $ n-1 = 5 $ → $ n = 6 $.",
+            "There will be 960 mice in year 6."
+          ]
+        },
+        {
+          "title": "C – Basketball Tournament",
+          "role": "independent",
+          "steps": [
+            "$ a_1 = 128 $, $ r = 0.5 $. Formula: $ a_n = 128 \\cdot (0.5)^{n-1} $.",
+            "Set $ 128 \\cdot (0.5)^{n-1} = 16 $ → $ (0.5)^{n-1} = 0.125 = (0.5)^3 $.",
+            "$ n-1 = 3 $ → $ n = 4 $. After round 4."
+          ],
+          "prompt": "A tournament starts with 128 teams. Half are eliminated each round. After which round are 16 teams left?"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A piece of paper folded in half repeatedly becomes incredibly thick—after about 42 folds, it would reach the moon! This is the power of geometric growth. Populations, investments, and radioactive decay all follow geometric patterns."
+      },
+      "title": "Real-Life Applications of Geometric Sequences",
+      "confusionCorner": {
+        "body": "If a quantity starts at time zero, sometimes $ a_1 $ represents the value after the first time period, not the initial amount. Read the problem carefully to determine what $ n=1 $ corresponds to.",
+        "title": "First Term vs. Starting Value"
+      }
+    },
+    {
+      "id": "blueprint-aid-geometric-sequences",
+      "discoveryHook": {
+        "scenario": "Geometric sequences are everywhere—from savings accounts to chain letters. The Understand → Solve → Conclude blueprint helps you extract the first term and common ratio, write the formula, and answer the question. It's your systematic approach to mastering geometric patterns!"
+      },
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude framework. Use the paper folding problem.",
+        "Emphasize: 'Understand' identifies the first term and common ratio. 'Solve' writes the formula and computes. 'Conclude' interprets the result."
+      ],
+      "concept": {
+        "explanation": [
+          "The blueprint for geometric sequences: [[imp:Understand]] – Identify the first term $ a_1 $ and the common ratio $ r $. Determine if the sequence is growing or decaying.",
+          "[[imp:Solve]] – Write the formula $ a_n = a_1 \\cdot r^{n-1} $. Use it to find a specific term or to solve for $ n $ given a term value.",
+          "[[imp:Conclude]] – State the answer with units if applicable. Check that the answer is reasonable (e.g., population can't be negative, paper thickness makes sense)."
+        ],
+        "formulaCard": {
+          "notes": [
+            "Identify $ a_1 $ and $ r $ from the problem.",
+            "Use the formula to answer the question."
+          ],
+          "title": "Blueprint Formula",
+          "formula": "$$ a_n = a_1 \\cdot r^{n-1} $$"
+        },
+        "visuals": [
+          {
+            "title": "Blueprint Example: Paper Folding",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Initial thickness $ a_1 = 0.1 $ mm, $ r = 2 $.",
+                "2": ""
+              },
+              {
+                "0": "Solve",
+                "1": "Formula: $ a_n = 0.1 \\cdot 2^{n-1} $. For 15 folds, $ n = 15 $.",
+                "2": "$ a_{15} = 0.1 \\cdot 2^{14} = 1638.4 $ mm"
+              },
+              {
+                "0": "Conclude",
+                "1": "About 1.64 meters thick — taller than a person!",
+                "2": ""
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Phase",
+              "Action",
+              "Result"
+            ]
+          }
+        ]
+      },
+      "title": "Blueprint Aid – Working with Geometric Sequences",
+      "examples": [
+        {
+          "steps": [
+            "Understand: $ a_1 = 0.1 $ mm, $ r = 2 $.",
+            "Solve: $ a_n = 0.1 \\cdot 2^{n-1} $. For $ n=15 $: $ a_{15} = 0.1 \\cdot 2^{14} = 1638.4 $ mm.",
+            "Conclude: About 1.64 meters — taller than most people!"
+          ],
+          "role": "guided",
+          "title": "A – Full Blueprint: Paper Folding",
+          "prompt": "Use the blueprint: paper is 0.1 mm thick, doubles each fold. How thick after 15 folds?"
+        },
+        {
+          "prompt": "A geometric sequence has $ a_1 = 5 $ and $ r = 3 $. Which term equals 3645?",
+          "peerPrompt": "Explain to a partner: How did you solve $ 5 \\cdot 3^{n-1} = 3645 $ for $ n $?",
+          "steps": [
+            "Understand: Need $ n $ such that $ a_n = 3645 $.",
+            "Solve: $ 5 \\cdot 3^{n-1} = 3645 $ → $ 3^{n-1} = 729 = 3^6 $ → $ n-1 = 6 $ → $ n = 7 $.",
+            "Conclude: The 7th term is 3645."
+          ],
+          "role": "peer-explain",
+          "title": "B – Blueprint for Finding n",
+          "minLength": 2
+        },
+        {
+          "prompt": "A tournament starts with 128 teams and halves each round. After which round are 8 teams left?",
+          "title": "C – Real-Life Blueprint",
+          "steps": [
+            "Understand: $ a_1 = 128 $, $ r = 0.5 $.",
+            "Solve: $ 128 \\cdot (0.5)^{n-1} = 8 $ → $ (0.5)^{n-1} = 0.0625 = (0.5)^4 $ → $ n-1 = 4 $ → $ n = 5 $.",
+            "Conclude: After round 5."
+          ],
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "In the blueprint, what two values must you identify to write the formula?",
+          "type": "short-answer",
+          "feedbackIfWrong": "The first term $ a_1 $ and the common ratio $ r $.",
+          "answers": [
+            "a1 and r",
+            "first term and common ratio"
+          ],
+          "id": "q5-1",
+          "hints": [
+            "One is the starting number, the other is the multiplier.",
+            "They are the parameters in $ a_n = a_1 \\cdot r^{n-1} $."
+          ]
+        },
+        {
+          "hints": [
+            "It means plugging in a number.",
+            "Starts with 's'."
+          ],
+          "id": "q5-2",
+          "blanks": [
+            {
+              "accept": [
+                "substituting"
+              ]
+            }
+          ],
+          "prompt": "After writing the formula, the Solve phase involves ___ the value of $ n $ or evaluating the expression.",
+          "feedbackIfWrong": "Substituting the value of $ n $.",
+          "type": "fill-blank"
+        },
+        {
+          "hints": [
+            "$ a_n = 3 \\cdot 4^{n-1} $.",
+            "For $ n=4 $, $ 3 \\cdot 4^3 = 3 \\cdot 64 $."
+          ],
+          "prompt": "A geometric sequence has $ a_1 = 3 $ and $ r = 4 $. Find $ a_4 $.",
+          "answer": "192",
+          "id": "q5-3",
+          "feedbackIfWrong": "$ 3 \\times 64 = 192 $.",
+          "type": "short-answer"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Solving for n with Logarithms",
+        "body": "If the equation doesn't simplify to the same base (e.g., $ 2^{n-1} = 50 $), you'll need logarithms. For now, most problems are designed so you can recognize powers, like $ 32 = 2^5 $."
+      }
+    }
+  ],
+  "title": "Chapter 6.6 — Geometric Sequences",
+  "type": "interactive-lesson",
+  "standards": [
+    "HSF.IF.A.3",
+    "HSF.LE.A.2",
+    "HSF.BF.A.2"
+  ],
+  "id": "chapter-6-6-geometric-sequences",
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

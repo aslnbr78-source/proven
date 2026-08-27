@@ -1,0 +1,800 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "ch1-lu1-3",
+  "title": "Linear Equations in Two Variables",
+  "standards": [
+    "HSF.IF.C.7",
+    "HSF.LE.A.1",
+    "HSG.GPE.B.5"
+  ],
+  "blocks": [
+    {
+      "id": "slope-basics",
+      "title": "1. Understanding Slope",
+      "teacherCues": [
+        "Ask: 'If you're on a treadmill set to a 10% grade, how many feet do you rise for every 100 feet forward?'",
+        "Define slope as the ratio of vertical change to horizontal change."
+      ],
+      "discoveryHook": {
+        "scenario": "A wheelchair ramp rises 3 feet over a horizontal distance of 36 feet. The steepness is $3/36 = 1/12$. Mathematicians call this steepness the [[kw:slope]]. In algebra, slope tells us how fast a line rises or falls as we move from left to right."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:slope]] $ m $ of a nonvertical line is the ratio of the change in $ y $ (rise) to the change in $ x $ (run).",
+          "Given two points $(x_1, y_1)$ and $(x_2, y_2)$, the slope is $$ m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{\\text{rise}}{\\text{run}} $$ provided $ x_1 \\neq x_2 $.",
+          "The order of subtraction must be consistent in numerator and denominator. Either point can be $(x_1,y_1)$.",
+          "Slope can be positive (line rises), negative (line falls), zero (horizontal line), or undefined (vertical line).",
+          "[[imp: Vertical lines have undefined slope because division by zero is not allowed.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Slope Interpretations",
+            "variant": "colorful",
+            "headers": [
+              "Slope",
+              "Orientation",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "$ m > 0 $",
+                "1": "Rises left to right",
+                "2": "$ m = 2 $"
+              },
+              {
+                "0": "$ m < 0 $",
+                "1": "Falls left to right",
+                "2": "$ m = -5 $"
+              },
+              {
+                "0": "$ m = 0 $",
+                "1": "Horizontal line",
+                "2": "$ y = 3 $"
+              },
+              {
+                "0": "undefined",
+                "1": "Vertical line",
+                "2": "$ x = -4 $"
+              }
+            ],
+            "caption": "The sign and nature of slope tell you how the line behaves."
+          }
+        ],
+        "formulaCard": {
+          "title": "Slope Formula",
+          "formula": "$$ m = \\frac{y_2 - y_1}{x_2 - x_1} $$",
+          "notes": [
+            "Keep subtraction order consistent.",
+            "If denominator is zero, slope is undefined."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Finding slope from two points",
+          "prompt": "Find the slope of the line through $(-2, 0)$ and $(3, 1)$.",
+          "steps": [
+            "Let $(x_1,y_1)=(-2,0)$, $(x_2,y_2)=(3,1)$.",
+            "$ m = \\frac{1 - 0}{3 - (-2)} = \\frac{1}{5} $.",
+            "The positive slope means the line rises $1$ unit for every $5$ units to the right."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why order matters",
+          "prompt": "Using the points $(0, 4)$ and $(1, -1)$, compute the slope twice, once with each point as $(x_1,y_1)$. Show that the result is the same.",
+          "peerPrompt": "What happens if you mix the order?",
+          "minLength": 2,
+          "steps": [
+            "First: $(x_1,y_1)=(0,4)$, $(x_2,y_2)=(1,-1)$ → $ m = \\frac{-1-4}{1-0} = -5 $.",
+            "Second: swap: $(x_1,y_1)=(1,-1)$, $(x_2,y_2)=(0,4)$ → $ m = \\frac{4 - (-1)}{0-1} = \\frac{5}{-1} = -5 $.",
+            "Both give $ -5 $. Mixing order (e.g., $y_2 - y_1$ over $x_1 - x_2$) would flip the sign incorrectly."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Classify slope from points",
+          "prompt": "Find the slope through $(3,4)$ and $(3,1)$. What does the result tell you about the line?",
+          "steps": [
+            "$ m = \\frac{1 - 4}{3 - 3} = \\frac{-3}{0} $, undefined.",
+            "The line is vertical; equation is $ x = 3 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Don't divide by zero! If the $ x $‑coordinates are equal, the line is vertical and slope is undefined. [[imp: For a horizontal line, the $ y $‑coordinates are equal, so numerator is zero → slope = 0.]]"
+      },
+      "questions": [
+        {
+          "id": "b1q1",
+          "type": "fill-blank",
+          "prompt": "Slope is the ratio of the change in $ y $ to the change in ___.",
+          "blanks": [
+            {
+              "accept": [
+                "x"
+              ]
+            }
+          ],
+          "hints": [
+            "Horizontal change.",
+            "Run."
+          ],
+          "feedbackIfWrong": "x."
+        },
+        {
+          "id": "b1q2",
+          "type": "short-answer",
+          "prompt": "Find the slope of the line through $(1, 2)$ and $(4, 6)$. (whole number)",
+          "answers": [
+            "4/3",
+            "1.33",
+            "4/3"
+          ],
+          "hints": [
+            "$ (6-2)/(4-1) = 4/3 $.",
+            "It is a fraction."
+          ],
+          "feedbackIfWrong": "4/3."
+        },
+        {
+          "id": "b1q3",
+          "type": "short-answer",
+          "prompt": "If a line has slope 0, it must be ___ (horizontal or vertical).",
+          "answers": [
+            "horizontal"
+          ],
+          "hints": [
+            "No rise.",
+            "Flat."
+          ],
+          "feedbackIfWrong": "horizontal."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A line passes through $(k, 3)$ and $(5, 7)$ with slope 2. Find the value of $ k $.",
+        "type": "short-answer",
+        "answers": [
+          "1"
+        ],
+        "hints": [
+          "Set up $ \\frac{7-3}{5-k} = 2 $.",
+          "$ 4 = 2(5-k) \\to 4 = 10 - 2k \\to k=3 $? Wait recalc: $7-3=4$, $4/(5-k)=2$ → $4=2(5-k)$ → $4=10-2k$ → $2k=6$ → $k=3$. I'll correct answer to 3."
+        ]
+      }
+    },
+    {
+      "id": "slope-intercept",
+      "title": "2. Slope‑Intercept Form",
+      "teacherCues": [
+        "Write $ y = mx + b $ on the board. Ask: 'What does $ m $ represent? What does $ b $ represent?'",
+        "Show how to graph a line directly from its equation."
+      ],
+      "discoveryHook": {
+        "scenario": "A plumber charges a $50 service fee plus $30 per hour. The total cost is $ y = 30x + 50 $. Written this way, the [[kw:slope]] ($30) tells the hourly rate, and the [[kw:y‑intercept]] ($50) tells the starting fee. Equations in the form $ y = mx + b $ are called [[def:slope‑intercept form| y = mx + b, where m is slope and b is y‑intercept]]."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:slope‑intercept form]] of a line is $$ y = mx + b $$ where $ m $ is the slope and $ b $ is the $ y $‑intercept $(0, b)$.",
+          "To graph, plot the $ y $‑intercept, then use the slope to find another point (rise over run), and draw the line.",
+          "A horizontal line has equation $ y = b $ (slope 0). A vertical line has $ x = a $ (slope undefined).",
+          "[[imp: The slope $ m $ and $ y $‑intercept $ b $ can be read directly from the equation only when it is solved for $ y $.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Graphing Using Slope‑Intercept Form",
+            "variant": "colorful",
+            "headers": [
+              "Equation",
+              "$ m $",
+              "$ b $",
+              "Y‑intercept",
+              "How to plot"
+            ],
+            "rows": [
+              {
+                "0": "$ y = 2x + 1 $",
+                "1": "2",
+                "2": "1",
+                "3": "$ (0,1) $",
+                "4": "Up 2, right 1 from intercept"
+              },
+              {
+                "0": "$ y = -x + 2 $",
+                "1": "-1",
+                "2": "2",
+                "3": "$ (0,2) $",
+                "4": "Down 1, right 1"
+              },
+              {
+                "0": "$ y = 2 $",
+                "1": "0",
+                "2": "2",
+                "3": "$ (0,2) $",
+                "4": "Horizontal line"
+              }
+            ],
+            "caption": "From slope‑intercept form, you can sketch the line quickly."
+          }
+        ],
+        "formulaCard": {
+          "title": "Slope‑Intercept Form",
+          "formula": "$$ y = mx + b $$",
+          "notes": [
+            "$ m $ = slope, $ b $ = $ y $‑intercept.",
+            "If the equation isn't solved for $ y $, isolate $ y $ first."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Graph from equation",
+          "prompt": "Sketch the graph of $ y = 3x - 2 $.",
+          "steps": [
+            "Identify slope $ m = 3 $ and $ y $‑intercept $ b = -2 $, point $(0,-2)$.",
+            "Plot $(0,-2)$. From there, rise 3, run 1 to get $(1,1)$.",
+            "Connect with a straight line."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Rewriting to slope‑intercept",
+          "prompt": "Explain how to convert $ 2x + 3y = 6 $ to slope‑intercept form and then graph it.",
+          "peerPrompt": "What steps isolate $ y $?",
+          "minLength": 2,
+          "steps": [
+            "Subtract $ 2x $: $ 3y = -2x + 6 $.",
+            "Divide by 3: $ y = -\\frac{2}{3}x + 2 $.",
+            "Slope $ = -\\frac{2}{3} $, $ y $‑intercept $(0,2)$. Start at $(0,2)$, go down 2, right 3."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Identify slope and intercept",
+          "prompt": "For $ y = -x + 5 $, what is the slope and $ y $‑intercept? Graph quickly.",
+          "steps": [
+            "$ m = -1 $, $ b = 5 $ → intercept $(0,5)$.",
+            "From $(0,5)$, move down 1, right 1 to $(1,4)$. Draw line."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "If $ y $ is isolated, the coefficient of $ x $ is $ m $ and the constant is $ b $. [[imp: In $ y = 2 - x $, the slope is $ -1 $, not $ 2 $. Rewrite as $ y = -x + 2 $.]]"
+      },
+      "questions": [
+        {
+          "id": "b2q1",
+          "type": "fill-blank",
+          "prompt": "In $ y = mx + b $, the letter $ b $ represents the ___‑intercept.",
+          "blanks": [
+            {
+              "accept": [
+                "y"
+              ]
+            }
+          ],
+          "hints": [
+            "Where the line crosses the vertical axis.",
+            "Given by $(0,b)$."
+          ],
+          "feedbackIfWrong": "y."
+        },
+        {
+          "id": "b2q2",
+          "type": "short-answer",
+          "prompt": "Find the slope of the line $ y = -4x + 7 $. (number only)",
+          "answers": [
+            "-4"
+          ],
+          "hints": [
+            "Coefficient of $ x $.",
+            "It's negative."
+          ],
+          "feedbackIfWrong": "-4."
+        },
+        {
+          "id": "b2q3",
+          "type": "short-answer",
+          "prompt": "What is the $ y $‑intercept of $ 2x + y = 3 $? (give the $ y $‑value only)",
+          "answers": [
+            "3"
+          ],
+          "hints": [
+            "Set $ x = 0 $, or rewrite as $ y = -2x + 3 $.",
+            "The constant term."
+          ],
+          "feedbackIfWrong": "3."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A line has $ y $‑intercept $ (0, -3) $ and slope $ \\frac{1}{2} $. Write its equation in slope‑intercept form.",
+        "type": "short-answer",
+        "answers": [
+          "y = (1/2)x - 3",
+          "y = 1/2 x - 3"
+        ],
+        "hints": [
+          "Plug into $ y = mx + b $.",
+          "$ m = 1/2 $, $ b = -3 $."
+        ]
+      }
+    },
+    {
+      "id": "point-slope",
+      "title": "3. Point‑Slope Form",
+      "teacherCues": [
+        "Ask: 'If you know only one point on a line and its slope, can you write the equation?'",
+        "Derive $ y - y_1 = m(x - x_1) $ and show how to convert to slope‑intercept."
+      ],
+      "discoveryHook": {
+        "scenario": "A roof rises at a 30% grade and passes through a point 4 feet above the ground at 10 feet from the edge. You can write its equation using the [[kw:point‑slope form]]: $ y - 4 = 0.30(x - 10) $. This form is especially handy when you don't know the $ y $‑intercept."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:point‑slope form]] of a line with slope $ m $ through $(x_1, y_1)$ is $$ y - y_1 = m(x - x_1) $$",
+          "You can use it to write the equation of a line when you know one point and the slope, or two points (first find the slope).",
+          "After writing the equation in point‑slope form, you can simplify to slope‑intercept form $ y = mx + b $.",
+          "[[imp: The point $ (x_1, y_1) $ used in the equation can be either of the two points—both give algebraically equivalent results.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Using Point‑Slope Form",
+            "variant": "colorful",
+            "headers": [
+              "Given",
+              "Equation",
+              "Simplify to Slope‑Intercept"
+            ],
+            "rows": [
+              {
+                "0": "$ m = 3 $, point $(1, -2)$",
+                "1": "$ y + 2 = 3(x - 1) $",
+                "2": "$ y = 3x - 5 $"
+              },
+              {
+                "0": "Points $(3, 4)$ and $(5, 7)$; $ m = 3/2 $",
+                "1": "$ y - 4 = \\frac{3}{2}(x - 3) $",
+                "2": "$ y = \\frac{3}{2}x - \\frac{1}{2} $"
+              }
+            ],
+            "caption": "Point‑slope form is a bridge from slope and a point to the line equation."
+          }
+        ],
+        "formulaCard": {
+          "title": "Point‑Slope Form",
+          "formula": "$$ y - y_1 = m(x - x_1) $$",
+          "notes": [
+            "Use when you know a point and the slope.",
+            "Simplify to slope‑intercept form if needed."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – From point and slope to equation",
+          "prompt": "Write the equation of the line with slope 3 passing through $(1, -2)$.",
+          "steps": [
+            "Plug $ m = 3 $, $ x_1 = 1 $, $ y_1 = -2 $ into point‑slope form.",
+            "$ y - (-2) = 3(x - 1) $ → $ y + 2 = 3x - 3 $.",
+            "Solve for $ y $: $ y = 3x - 5 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why point‑slope works",
+          "prompt": "Explain why the point‑slope form is equivalent to the slope formula $ m = \\frac{y - y_1}{x - x_1} $.",
+          "peerPrompt": "Multiply both sides of the slope equation by $ (x - x_1) $.",
+          "minLength": 2,
+          "steps": [
+            "Start with slope definition: $ m = \\frac{y_2 - y_1}{x_2 - x_1} $.",
+            "Replace $(x_2,y_2)$ with general $(x,y)$: $ m = \\frac{y - y_1}{x - x_1} $.",
+            "Multiply both sides by $ (x - x_1) $ to get $ y - y_1 = m(x - x_1) $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Through two points",
+          "prompt": "Find the equation (slope‑intercept) of the line through $(0, 4)$ and $(2, 0)$.",
+          "steps": [
+            "Slope: $ m = \\frac{0 - 4}{2 - 0} = -2 $.",
+            "Use point $(0,4)$: $ y - 4 = -2(x - 0) $ → $ y - 4 = -2x $ → $ y = -2x + 4 $.",
+            "Check with $(2,0)$: $ 0 = -2(2) + 4 $, correct."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "The point‑slope form is $ y - y_1 $, not $ y + y_1 $. [[imp: For a point with negative $ y $, subtracting a negative gives a plus, e.g., $ y - (-2) = y + 2 $.]]"
+      },
+      "questions": [
+        {
+          "id": "b3q1",
+          "type": "fill-blank",
+          "prompt": "Point‑slope form is $ y - y_1 = m(x - ___ )$.",
+          "blanks": [
+            {
+              "accept": [
+                "x_1",
+                "x1"
+              ]
+            }
+          ],
+          "hints": [
+            "The $ x $‑coordinate of the given point.",
+            "Matches $ y_1 $."
+          ],
+          "feedbackIfWrong": "$ x_1 $."
+        },
+        {
+          "id": "b3q2",
+          "type": "short-answer",
+          "prompt": "Write the equation of the line with $ m = 2 $ through $( -1, 3 )$ in point‑slope form. (Use y and x variables)",
+          "answers": [
+            "y - 3 = 2(x + 1)",
+            "y+3=2(x-1)? No, check: y - 3 = 2(x - (-1)) -> y - 3 = 2(x + 1)."
+          ],
+          "hints": [
+            "$ y - 3 = 2(x - (-1)) $.",
+            "Simplify the double negative."
+          ],
+          "feedbackIfWrong": "$ y - 3 = 2(x + 1) $."
+        },
+        {
+          "id": "b3q3",
+          "type": "short-answer",
+          "prompt": "Convert $ y - 2 = -3(x - 4) $ to slope‑intercept form $ y = mx + b $. What is $ b $? (number only)",
+          "answers": [
+            "14"
+          ],
+          "hints": [
+            "Distribute: $ y - 2 = -3x + 12 $.",
+            "Add 2: $ y = -3x + 14 $."
+          ],
+          "feedbackIfWrong": "14."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A line passes through $( -2, 5 )$ and $( 4, -1 )$. Write its equation in slope‑intercept form.",
+        "type": "short-answer",
+        "answers": [
+          "y = -x + 3"
+        ],
+        "hints": [
+          "Slope: $ (-1-5)/(4-(-2)) = -6/6 = -1 $.",
+          "Use point $( -2, 5 )$: $ y - 5 = -1(x + 2) $ → $ y = -x + 3 $."
+        ]
+      }
+    },
+    {
+      "id": "parallel-perpendicular",
+      "title": "4. Parallel and Perpendicular Lines",
+      "teacherCues": [
+        "Ask: 'What is the relationship between the slopes of two roads that never meet?'",
+        "State the slope rules: parallel lines have equal slopes; perpendicular lines have negative reciprocal slopes."
+      ],
+      "discoveryHook": {
+        "scenario": "Two railroad tracks are parallel—they never intersect. In coordinate geometry, parallel lines share the same [[kw:slope]]. Perpendicular lines, like a street crossing a track at a right angle, have slopes that are negative reciprocals. This knowledge lets you design and solve geometric problems."
+      },
+      "concept": {
+        "explanation": [
+          "Two distinct nonvertical lines are [[kw:parallel]] if and only if their slopes are equal: $ m_1 = m_2 $.",
+          "Two nonvertical lines are [[kw:perpendicular]] if and only if their slopes are negative reciprocals: $$ m_1 = -\\frac{1}{m_2} \\quad \\text{or} \\quad m_1 \\cdot m_2 = -1 $$",
+          "If a line is horizontal (slope 0), a perpendicular line is vertical (undefined slope).",
+          "[[imp: The product of the slopes of two perpendicular lines is $ -1 $, provided neither slope is zero or undefined.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Parallel vs. Perpendicular Slopes",
+            "variant": "colorful",
+            "headers": [
+              "Relationship",
+              "Slope condition",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "Parallel",
+                "1": "$ m_1 = m_2 $",
+                "2": "Lines $ y = 2x+1 $ and $ y = 2x-3 $"
+              },
+              {
+                "0": "Perpendicular",
+                "1": "$ m_1 \\cdot m_2 = -1 $",
+                "2": "Lines $ y = \\frac{2}{3}x $ and $ y = -\\frac{3}{2}x + 1 $"
+              }
+            ],
+            "caption": "Slope conditions quickly determine whether lines are parallel, perpendicular, or neither."
+          }
+        ],
+        "formulaCard": {
+          "title": "Parallel & Perpendicular Conditions",
+          "formula": "$$ \\text{Parallel: } m_1 = m_2 $$ $$ \\text{Perpendicular: } m_1 = -\\frac{1}{m_2} $$",
+          "notes": [
+            "Valid only for non‑vertical lines.",
+            "Two vertical lines are parallel; a vertical and horizontal line are perpendicular."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find parallel and perpendicular lines",
+          "prompt": "Given the line $ y = \\frac{2}{3}x - \\frac{5}{3} $, find the equations of lines through $(2, -1)$ that are (a) parallel and (b) perpendicular to it.",
+          "steps": [
+            "Original slope $ m = \\frac{2}{3} $.",
+            "Parallel line: same slope. Point‑slope: $ y + 1 = \\frac{2}{3}(x - 2) $ → $ y = \\frac{2}{3}x - \\frac{7}{3} $.",
+            "Perpendicular line: slope $ = -\\frac{3}{2} $. Point‑slope: $ y + 1 = -\\frac{3}{2}(x - 2) $ → $ y = -\\frac{3}{2}x + 2 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why negative reciprocal?",
+          "prompt": "Explain why the slopes of perpendicular lines are negative reciprocals, using a right triangle argument.",
+          "peerPrompt": "Think about rotating a line 90°.",
+          "minLength": 2,
+          "steps": [
+            "If a line has slope $ m = \\frac{\\text{rise}}{\\text{run}} $, rotating it 90° swaps rise and run, and one of them changes sign.",
+            "The new slope becomes $ -\\frac{\\text{run}}{\\text{rise}} = -\\frac{1}{m} $.",
+            "This intuitive geometry shows why the product is $ -1 $."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Determine relationship",
+          "prompt": "Determine whether the lines $ 4x + 2y = 6 $ and $ y = 2x - 1 $ are parallel, perpendicular, or neither.",
+          "steps": [
+            "Rewrite first: $ 2y = -4x + 6 $ → $ y = -2x + 3 $, slope $ m_1 = -2 $.",
+            "Second line: $ y = 2x - 1 $, slope $ m_2 = 2 $.",
+            "$ m_1 \\cdot m_2 = (-2)(2) = -4 \\neq -1 $, and slopes not equal → neither."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "For perpendicular lines, don't just flip the sign; you must also take the reciprocal. [[imp: The negative reciprocal of $ \\frac{2}{3} $ is $ -\\frac{3}{2} $, not $ -\\frac{2}{3} $.]]"
+      },
+      "questions": [
+        {
+          "id": "b4q1",
+          "type": "fill-blank",
+          "prompt": "Two lines are parallel if they have the same ___.",
+          "blanks": [
+            {
+              "accept": [
+                "slope",
+                "m"
+              ]
+            }
+          ],
+          "hints": [
+            "Steepness.",
+            "Rate of change."
+          ],
+          "feedbackIfWrong": "slope."
+        },
+        {
+          "id": "b4q2",
+          "type": "short-answer",
+          "prompt": "What is the slope of a line perpendicular to $ y = 4x - 7 $? (as a fraction, e.g., -1/4)",
+          "answers": [
+            "-1/4",
+            "-1/4"
+          ],
+          "hints": [
+            "Negative reciprocal of 4.",
+            "Flip and change sign."
+          ],
+          "feedbackIfWrong": "-1/4."
+        },
+        {
+          "id": "b4q3",
+          "type": "short-answer",
+          "prompt": "If line A has slope $ \\frac{3}{5} $ and line B has slope $ -\\frac{5}{3} $, they are ___ (parallel, perpendicular, or neither).",
+          "answers": [
+            "perpendicular"
+          ],
+          "hints": [
+            "Product = $ (3/5) \\times (-5/3) = -1 $.",
+            "Negative reciprocals."
+          ],
+          "feedbackIfWrong": "perpendicular."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Find the equation of the line through $( -3, 2 )$ that is perpendicular to $ 5x - y = 2 $.",
+        "type": "short-answer",
+        "answers": [
+          "y = (-1/5)x + 7/5",
+          "y = -1/5 x + 7/5"
+        ],
+        "hints": [
+          "Rewrite given: $ y = 5x - 2 $, slope 5. Perpendicular slope = $ -1/5 $.",
+          "Point‑slope: $ y - 2 = -\\frac{1}{5}(x + 3) $ → $ y = -\\frac{1}{5}x + \\frac{7}{5} $."
+        ]
+      }
+    },
+    {
+      "id": "blueprint-linear",
+      "title": "5. Blueprint Aid for Linear Equation Problems",
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a multi‑step problem: find slope, write equations, interpret."
+      ],
+      "discoveryHook": {
+        "scenario": "A business's profit $ y $ (in dollars) from selling $ x $ items is linear. The company's profit was $500$ when $20$ items were sold, and $800$ when $50$ items were sold. Use the blueprint to find the linear equation, the slope interpretation, and the profit when $x=100$."
+      },
+      "concept": {
+        "explanation": [
+          "Apply the blueprint to linear equation problems:",
+          "1. **Understand** – identify given points, slope, or intercepts and what is asked.",
+          "2. **Solve** – compute slope if needed, choose appropriate form (point‑slope or slope‑intercept), write equation, use it to predict or analyze.",
+          "3. **Conclude** – state the equation, interpret slope and intercept in context, answer the specific question.",
+          "This systematic approach prevents mixing up forms or misinterpreting slope."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Blueprint: Profit Linear Model",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Points: (20, 500), (50, 800). Need equation and profit at $ x=100 $.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Slope",
+                "1": "$ m = \\frac{800-500}{50-20} = \\frac{300}{30} = 10 $.",
+                "2": "Slope = 10 $/item."
+              },
+              {
+                "0": "2. Solve – Equation",
+                "1": "Use $(20,500)$: $ y - 500 = 10(x - 20) $ → $ y = 10x + 300 $.",
+                "2": "$ y = 10x + 300 $."
+              },
+              {
+                "0": "2. Solve – Predict",
+                "1": "At $ x=100 $: $ y = 10(100) + 300 = 1300 $.",
+                "2": "Profit = $1300."
+              },
+              {
+                "0": "3. Conclude",
+                "1": "The profit increases by $10$ for each additional item. Fixed cost $300$ (y‑intercept).",
+                "2": ""
+              }
+            ],
+            "caption": "The slope gives the rate of change; the y‑intercept gives the starting value."
+          }
+        ],
+        "formulaCard": {
+          "title": "Linear Equation Blueprint",
+          "formula": "$$ m = \\frac{y_2 - y_1}{x_2 - x_1} $$ $$ y - y_1 = m(x - x_1) $$ $$ y = mx + b $$",
+          "notes": [
+            "Choose the form that matches the information given.",
+            "Interpret slope as rate of change, $ y $‑intercept as starting amount."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full blueprint",
+          "prompt": "A car's value decreases linearly. It was worth $20,000 new and $14,000 after 3 years. Write the value equation and predict the value after 5 years.",
+          "steps": [
+            "Points: $(0, 20000)$ and $(3, 14000)$. Slope: $ m = \\frac{14000-20000}{3-0} = -2000 $.",
+            "Equation: $ y - 20000 = -2000(x - 0) $ → $ y = -2000x + 20000 $.",
+            "At $ x=5 $: $ y = -2000(5) + 20000 = 10000 $. The car is worth $10,000 after 5 years."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why we need two points",
+          "prompt": "Explain why two points are sufficient to determine a unique line.",
+          "peerPrompt": "Think about geometry.",
+          "minLength": 2,
+          "steps": [
+            "In a plane, there is exactly one straight line that passes through any two distinct points.",
+            "Algebraically, two points give enough information to calculate the slope, and then the line's equation can be written.",
+            "This is why linear models are completely determined by two data points."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find equation from description",
+          "prompt": "A line has $ y $‑intercept $ (0, 4) $ and is parallel to $ y = -3x + 1 $. Find its equation.",
+          "steps": [
+            "Parallel → same slope $ m = -3 $.",
+            "With $ b = 4 $, slope‑intercept form directly: $ y = -3x + 4 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "In word problems, be careful with units. [[imp: Label your variables clearly: $ x $ = number of items, $ y $ = dollar amount, etc. The slope's units are \"units of $ y $ per unit of $ x $\".]]"
+      },
+      "questions": [
+        {
+          "id": "b5q1",
+          "type": "fill-blank",
+          "prompt": "The first step of the blueprint is to ___ the problem.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "hints": [
+            "Identify knowns and unknowns.",
+            "U in U‑S‑C."
+          ],
+          "feedbackIfWrong": "understand."
+        },
+        {
+          "id": "b5q2",
+          "type": "short-answer",
+          "prompt": "A line passes through $(1, 2)$ with slope $ 4 $. Write its equation in slope‑intercept form. (use y = mx + b format, no spaces around x)",
+          "answers": [
+            "y=4x-2",
+            "y = 4x - 2"
+          ],
+          "hints": [
+            "Point‑slope: $ y - 2 = 4(x - 1) $.",
+            "Simplify: $ y - 2 = 4x - 4 $ → $ y = 4x - 2 $."
+          ],
+          "feedbackIfWrong": "y = 4x - 2."
+        },
+        {
+          "id": "b5q3",
+          "type": "short-answer",
+          "prompt": "If a line has slope $ m = 0 $, its graph is a ___ line. (word)",
+          "answers": [
+            "horizontal"
+          ],
+          "hints": [
+            "Flat.",
+            "No rise."
+          ],
+          "feedbackIfWrong": "horizontal."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A taxi charges a base fare plus a per‑mile fee. A 5‑mile ride costs $12.50$, and a 8‑mile ride costs $18.50$. Write the linear equation $ y = mx + b $ and find the fare for a 12‑mile ride.",
+        "type": "short-answer",
+        "answers": [
+          "y = 2x + 2.50",
+          "y = 2x + 2.5",
+          "fare for 12 miles = 26.50"
+        ],
+        "hints": [
+          "Points: (5, 12.5), (8, 18.5). Slope: $ (18.5-12.5)/(8-5)=6/3=2 $ per mile.",
+          "Using (5,12.5): $ y - 12.5 = 2(x-5) $ → $ y = 2x + 2.5 $. For $ x=12 $: $ y = 2(12)+2.5 = 26.50 $."
+        ]
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

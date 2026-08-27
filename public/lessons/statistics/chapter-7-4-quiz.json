@@ -1,0 +1,266 @@
+{
+  "id": "chapter-7-4-quiz",
+  "title": "Hypothesis Testing for Proportions",
+  "questions": [
+    {
+      "type": "multiple-choice",
+      "correctIndex": 1,
+      "prompt": "Which condition must be met to use a normal distribution for a hypothesis test about a population proportion?",
+      "options": [
+        "n ≥ 30",
+        "np ≥ 5 and nq ≥ 5",
+        "p ≥ 0.5",
+        "The sample proportion p̂ must be exactly equal to the hypothesized proportion."
+      ],
+      "hints": [
+        "It's the same condition as for confidence intervals for proportions.",
+        "Both the expected number of successes and failures must be at least 5."
+      ],
+      "id": "q1",
+      "feedbackIfWrong": "The normal approximation to the binomial requires np ≥ 5 and nq ≥ 5."
+    },
+    {
+      "prompt": "The z-test statistic for a proportion is $z = \\frac{\\hat{p} - p}{\\sqrt{pq/n}}$. The value of $p$ in the denominator comes from the ___ hypothesis.",
+      "hints": [
+        "It is the hypothesized proportion we assume true when conducting the test.",
+        "Not the sample proportion."
+      ],
+      "type": "fill-blank",
+      "blanks": [
+        {
+          "accept": [
+            "null",
+            "Null",
+            "H0",
+            "$H_0$"
+          ]
+        }
+      ],
+      "feedbackIfWrong": "The denominator uses the hypothesized proportion from the null hypothesis $H_0$.",
+      "id": "q2"
+    },
+    {
+      "answer": "0.36",
+      "prompt": "A claim states that less than 40% of voters support a candidate. In a random sample of 200 voters, 72 support the candidate. What is the sample proportion $\\hat{p}$? (Give decimal.)",
+      "answers": [
+        "0.36",
+        ".36",
+        "36%"
+      ],
+      "feedbackIfWrong": "$\\hat{p} = 72/200 = 0.36$.",
+      "type": "short-answer",
+      "hints": [
+        "$\\hat{p} = x / n$.",
+        "72 / 200 = ?"
+      ],
+      "id": "q3"
+    },
+    {
+      "feedbackIfWrong": "An alternative hypothesis with ≠ indicates a two‑tailed test.",
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "A hypothesis test for a proportion uses $H_0: p = 0.25$ and $H_a: p \\neq 0.25$. What type of test is this?",
+      "options": [
+        "Left‑tailed",
+        "Right‑tailed",
+        "Two‑tailed",
+        "Cannot be determined"
+      ],
+      "correctIndex": 2,
+      "hints": [
+        "Look at the alternative hypothesis.",
+        "≠ means we are looking for a difference in either direction."
+      ]
+    },
+    {
+      "answers": [
+        "±1.645",
+        "+/-1.645",
+        "-1.645 and 1.645"
+      ],
+      "id": "q5",
+      "feedbackIfWrong": "The critical values are $\\pm 1.645$.",
+      "answer": "±1.645",
+      "type": "short-answer",
+      "hints": [
+        "Each tail has area $\\alpha/2 = 0.05$.",
+        "The z-score with area 0.05 to the right is 1.645."
+      ],
+      "prompt": "For a two‑tailed proportion test with $\\alpha = 0.10$, what are the critical values? (e.g., ±1.645)"
+    },
+    {
+      "feedbackIfWrong": "$z = -0.11 / 0.05 = -2.20$.",
+      "hints": [
+        "$z = (0.39 - 0.50) / \\sqrt{(0.50)(0.50)/100}$.",
+        "Denominator is 0.05; numerator is -0.11."
+      ],
+      "type": "multiple-choice",
+      "options": [
+        "-2.20",
+        "-2.50",
+        "-1.96",
+        "-1.65"
+      ],
+      "prompt": "A sample of 100 has $\\hat{p}=0.39$. The hypothesized proportion is $p=0.50$. What is the test statistic $z$?",
+      "id": "q6",
+      "correctIndex": 0
+    },
+    {
+      "id": "q7",
+      "feedbackIfWrong": "Reject $H_0$ when P‑value ≤ α.",
+      "prompt": "If the P‑value is less than or equal to the significance level $\\alpha$, we ___ the null hypothesis.",
+      "type": "fill-blank",
+      "hints": [
+        "It means the sample result is too unusual under $H_0$.",
+        "Opposite of 'fail to reject'."
+      ],
+      "blanks": [
+        {
+          "accept": [
+            "reject",
+            "Reject"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "type": "short-answer",
+      "answer": "=1 - NORM.S.DIST(1.85, TRUE)",
+      "hints": [
+        "First get the left‑tail area, then subtract from 1.",
+        "Use NORM.S.DIST for the standard normal distribution."
+      ],
+      "prompt": "In Google Sheets, what formula gives the P‑value for a right‑tailed proportion test with $z = 1.85$?",
+      "answers": [
+        "=1-NORM.S.DIST(1.85,TRUE)",
+        "=1 - NORM.S.DIST(1.85, TRUE)"
+      ],
+      "feedbackIfWrong": "=1 - NORM.S.DIST(1.85, TRUE)."
+    },
+    {
+      "id": "q9",
+      "prompt": "A left‑tailed test gives $z = -2.20$ with P‑value = 0.0139. Using $\\alpha = 0.01$, what is the decision?",
+      "feedbackIfWrong": "Since 0.0139 > 0.01, we fail to reject $H_0$.",
+      "correctIndex": 1,
+      "hints": [
+        "Compare 0.0139 to 0.01.",
+        "0.0139 > 0.01."
+      ],
+      "type": "multiple-choice",
+      "options": [
+        "Reject $H_0$",
+        "Fail to reject $H_0$",
+        "Accept $H_0$",
+        "Increase the sample size"
+      ]
+    },
+    {
+      "id": "q10",
+      "blanks": [
+        {
+          "accept": [
+            "twice",
+            "double",
+            "two times"
+          ]
+        }
+      ],
+      "feedbackIfWrong": "The P‑value for a two‑tailed test is twice the area in one tail.",
+      "type": "fill-blank",
+      "hints": [
+        "You multiply the one‑tail area by 2.",
+        "Because evidence against $H_0$ can be in either tail."
+      ],
+      "prompt": "In a two‑tailed test, the P‑value is ___ the area in one tail."
+    },
+    {
+      "prompt": "A claim states $p < 0.35$ (claim is $H_a$). The P‑value is 0.008, and $\\alpha = 0.05$. Is there enough evidence to support the claim? (Yes or No)",
+      "hints": [
+        "P‑value = 0.008 ≤ 0.05.",
+        "We reject $H_0$, which supports the claim."
+      ],
+      "answer": "Yes",
+      "id": "q11",
+      "type": "short-answer",
+      "feedbackIfWrong": "Yes, there is enough evidence to support the claim.",
+      "answers": [
+        "Yes",
+        "yes"
+      ]
+    },
+    {
+      "feedbackIfWrong": "The null should be the equality statement $p \\ge 0.60$, and the alternative $p < 0.60$.",
+      "hints": [
+        "'At least' means ≥, which contains equality.",
+        "You suspect lower, so the alternative is <."
+      ],
+      "type": "multiple-choice",
+      "prompt": "A candidate claims at least 60% of voters support her. You want to test if support is actually lower. What are the hypotheses?",
+      "id": "q12",
+      "correctIndex": 1,
+      "options": [
+        "$H_0: p = 0.60$, $H_a: p \\neq 0.60$",
+        "$H_0: p \\ge 0.60$, $H_a: p < 0.60$",
+        "$H_0: p \\le 0.60$, $H_a: p > 0.60$",
+        "$H_0: p < 0.60$, $H_a: p \\ge 0.60$"
+      ]
+    },
+    {
+      "prompt": "If the null hypothesis is $H_0: p = 0.30$ and the alternative is $H_a: p \\neq 0.30$, the test is ___‑tailed.",
+      "feedbackIfWrong": "A ≠ alternative means a two‑tailed test.",
+      "id": "q13",
+      "type": "fill-blank",
+      "hints": [
+        "The alternative contains ≠.",
+        "It's not left or right."
+      ],
+      "blanks": [
+        {
+          "accept": [
+            "two",
+            "Two",
+            "2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q14",
+      "answers": [
+        "2.07",
+        "2.07"
+      ],
+      "hints": [
+        "$z = (0.36 - 0.30) / \\sqrt{(0.30)(0.70)/250}$.",
+        "Denominator ≈ 0.02898; 0.06 / 0.02898 ≈ ?"
+      ],
+      "feedbackIfWrong": "$z = 0.06 / 0.02898 \\approx 2.07$.",
+      "prompt": "A sample of 250 has $\\hat{p}=0.36$. The hypothesized proportion is $p=0.30$. Compute the z statistic. (Round to two decimals.)",
+      "type": "short-answer",
+      "answer": "2.07"
+    },
+    {
+      "type": "multiple-choice",
+      "hints": [
+        "P‑value is about the probability of the data, not the hypothesis.",
+        "It measures how surprising the data are under $H_0$."
+      ],
+      "options": [
+        "There is a 3% chance the null hypothesis is true.",
+        "If the null hypothesis is true, the probability of obtaining a sample result as extreme as the one observed is 3%.",
+        "The sample proportion is exactly 3% different from the hypothesized proportion.",
+        "We should fail to reject the null hypothesis at any significance level."
+      ],
+      "feedbackIfWrong": "A P‑value of 0.03 means: assuming $H_0$ is true, the chance of seeing a result this extreme is 3%.",
+      "prompt": "A P‑value of 0.03 means:",
+      "id": "q15",
+      "correctIndex": 1
+    }
+  ],
+  "type": "quiz",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

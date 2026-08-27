@@ -1,0 +1,720 @@
+{
+  "title": "Linear Regression",
+  "type": "interactive-lesson",
+  "standards": [
+    "HSS.ID.B.6a",
+    "HSS.ID.C.7",
+    "HSS.ID.C.8"
+  ],
+  "blocks": [
+    {
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "regression",
+                "least-squares",
+                "best-fit"
+              ]
+            }
+          ],
+          "hints": [
+            "It's also known as the line of best fit.",
+            "The method is 'least squares'."
+          ],
+          "feedbackIfWrong": "It is the regression line, also called the least‑squares line.",
+          "id": "q9-2-1",
+          "prompt": "The line that minimizes the sum of squared residuals is called the ___ line.",
+          "type": "fill-blank"
+        },
+        {
+          "answer": "0",
+          "type": "short-answer",
+          "feedbackIfWrong": "If the point is on the line, observed y equals predicted y, so the residual is 0.",
+          "prompt": "If a data point lies exactly on the regression line, what is its residual?",
+          "hints": [
+            "Residual = observed y - predicted y.",
+            "If they are equal, the difference is this number."
+          ],
+          "id": "q9-2-2"
+        },
+        {
+          "id": "q9-2-3",
+          "answer": "m",
+          "prompt": "In the regression equation $\\hat{y} = mx + b$, which letter represents the slope?",
+          "hints": [
+            "It is the coefficient of x.",
+            "Not b, which is the intercept."
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "The slope is denoted by $m$."
+        }
+      ],
+      "id": "regression-line-intro",
+      "discoveryHook": {
+        "scenario": "Imagine you have a scatter plot of hours studied vs. test score. You could draw many lines through the points, but which one best predicts scores? The regression line is the unique line that makes the sum of the squared vertical distances (residuals) as small as possible."
+      },
+      "teacherCues": [
+        "Show a scatter plot with a line drawn through the points. Ask: Which line is the 'best'? What should 'best' mean?",
+        "Introduce residuals: vertical distances from points to the line. The regression line minimizes the sum of squared residuals."
+      ],
+      "concept": {
+        "explanation": [
+          "A [[kw:regression line]] (or [[kw:line of best fit]]) is the straight line that best models the relationship between two quantitative variables when the correlation is significant.",
+          "For a given x, the [[kw:residual]] is the difference between the observed y and the predicted y: $$d = y - \\hat{y}$$",
+          "The regression line is the line that minimizes the sum of the squared residuals, $$\\Sigma d^2$$. This is called the [[kw:least-squares criterion]].",
+          "The equation of the regression line is written as $$\\hat{y} = mx + b$$ where $m$ is the slope and $b$ is the y-intercept."
+        ],
+        "formulaCard": {
+          "formula": "$$ \\hat{y} = mx + b $$",
+          "title": "Regression Line Equation",
+          "notes": [
+            "Use only when correlation is significant.",
+            "The line passes through $(\\bar{x}, \\bar{y})$.",
+            "Slope and intercept are computed from the data."
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Components of a Regression Line",
+            "type": "table",
+            "rows": [
+              {
+                "0": "$\\hat{y}$",
+                "1": "Predicted y",
+                "2": "The y-value on the line for a given x"
+              },
+              {
+                "0": "$m$",
+                "1": "Slope",
+                "2": "Change in $\\hat{y}$ for a one-unit increase in x"
+              },
+              {
+                "0": "$b$",
+                "1": "y-intercept",
+                "2": "Predicted y when x = 0 (may not be meaningful)"
+              },
+              {
+                "0": "$d = y - \\hat{y}$",
+                "1": "Residual",
+                "2": "Observed y minus predicted y"
+              }
+            ],
+            "headers": [
+              "Symbol",
+              "Name",
+              "Meaning"
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "Residual vs. Error",
+        "body": "A residual is the difference between an observed y and the predicted y from the sample regression line. It is not the same as the true error term in the population model. [[imp:Residuals are observed; errors are theoretical.]]"
+      },
+      "title": "The Regression Line (Line of Best Fit)",
+      "examples": [
+        {
+          "prompt": "For a student who studied 5 hours, the regression equation $\\hat{y} = 10x + 50$ predicts a score of 100. The actual score is 92. Find and interpret the residual.",
+          "role": "guided",
+          "steps": [
+            "Predicted $\\hat{y} = 10(5) + 50 = 100$.",
+            "Residual $d = y - \\hat{y} = 92 - 100 = -8$.",
+            "The negative residual means the actual score is 8 points below the predicted score. The point lies below the regression line."
+          ],
+          "title": "Example A – Interpreting Residuals"
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "Explain to a partner why we square the residuals before summing them instead of just adding the residuals.",
+          "steps": [
+            "Raw residuals can be positive or negative, so they might cancel out.",
+            "Squaring makes all residuals non‑negative and penalizes larger deviations more heavily.",
+            "The least‑squares method finds the line that makes the sum of squared residuals as small as possible."
+          ],
+          "peerPrompt": "Without looking back...\n\nWhat would happen if we added raw residuals? Why might squaring be better?",
+          "title": "Example B – Why Minimize Squares?"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Is the Line Always Meaningful?",
+          "prompt": "A regression line for age (x) and height (y) of children gives $\\hat{y} = 2.5x + 30$. Predict the height of a 40‑year‑old using this line. Is it appropriate?",
+          "steps": [
+            "Plug in x = 40: $\\hat{y} = 2.5(40) + 30 = 130$ inches.",
+            "But the original data were for children, not adults.",
+            "Prediction far outside the range of x is [[imp:extrapolation]] and is not reliable. The relationship may not hold for adults."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Finding the Equation of a Regression Line",
+      "discoveryHook": {
+        "scenario": "You already have the sums Σx, Σy, Σxy, Σx² from computing r. Now you can use them to find the actual line that best fits the data. Just two formulas give you the slope and intercept!"
+      },
+      "teacherCues": [
+        "Write the formulas for slope m and intercept b on the board: m = (nΣxy - Σx Σy) / (nΣx² - (Σx)²), b = ȳ - m x̄.",
+        "Demonstrate using the GDP and CO2 data from Section 9.1."
+      ],
+      "id": "finding-regression-equation",
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "Sum",
+              "Value"
+            ],
+            "rows": [
+              {
+                "0": "$n$",
+                "1": "10"
+              },
+              {
+                "0": "$\\Sigma x$",
+                "1": "23.1"
+              },
+              {
+                "0": "$\\Sigma y$",
+                "1": "5554"
+              },
+              {
+                "0": "$\\Sigma xy$",
+                "1": "15,573.71"
+              },
+              {
+                "0": "$\\Sigma x^2$",
+                "1": "67.35"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "title": "GDP and CO2 Emission Data (n=10)"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ m = \\frac{n\\Sigma xy - (\\Sigma x)(\\Sigma y)}{n\\Sigma x^2 - (\\Sigma x)^2} $$ $$ b = \\frac{\\Sigma y}{n} - m\\frac{\\Sigma x}{n} $$",
+          "notes": [
+            "Round $m$ and $b$ to three decimal places.",
+            "Use technology for accurate results.",
+            "$b$ may not be meaningful if x = 0 is far from the data."
+          ],
+          "title": "Slope and Intercept Formulas"
+        },
+        "explanation": [
+          "The [[kw:slope]] $m$ of the regression line is calculated as $$m = \\frac{n\\Sigma xy - (\\Sigma x)(\\Sigma y)}{n\\Sigma x^2 - (\\Sigma x)^2}$$",
+          "The [[kw:y-intercept]] $b$ is calculated as $$b = \\bar{y} - m\\bar{x} = \\frac{\\Sigma y}{n} - m\\frac{\\Sigma x}{n}$$",
+          "Both can be computed from the five sums: $n$, $\\Sigma x$, $\\Sigma y$, $\\Sigma xy$, $\\Sigma x^2$. You do not need $\\Sigma y^2$ for the line.",
+          "The regression line always passes through the point $(\\bar{x}, \\bar{y})$, the means of the two variables."
+        ]
+      },
+      "questions": [
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "The slope is approximately 196.2.",
+          "answer": "196.2",
+          "hints": [
+            "It is the value of m computed in Example A.",
+            "Look at the calculation: 196.152 rounded to one decimal."
+          ],
+          "id": "q9-2-4",
+          "prompt": "What is the slope of the regression line for the GDP data? (Round to one decimal: 196.2)"
+        },
+        {
+          "id": "q9-2-5",
+          "blanks": [
+            {
+              "accept": [
+                "ȳ",
+                "y-bar",
+                "mean of y",
+                "\\bar{y}"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The line passes through $(\\bar{x}, \\bar{y})$.",
+          "type": "fill-blank",
+          "hints": [
+            "It is the mean of the response variable.",
+            "The pair is the means of x and y."
+          ],
+          "prompt": "The point that all least‑squares regression lines pass through is $(\\bar{x},$ ___$)$."
+        },
+        {
+          "feedbackIfWrong": "$b = \\bar{y} - m\\bar{x}$.",
+          "answer": "x̄",
+          "prompt": "The formula for the y-intercept of a regression line is $b = \\bar{y} - m$ ___.",
+          "type": "short-answer",
+          "id": "q9-2-6",
+          "hints": [
+            "Multiply the slope by the mean of x.",
+            "It is the symbol for the mean of the explanatory variable."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Computing m and b for GDP/CO2",
+          "prompt": "Using the sums given, find the regression equation for predicting CO2 emissions from GDP.",
+          "steps": [
+            "Compute slope: $m = \\frac{10(15,573.71) - (23.1)(5554)}{10(67.35) - 23.1^2} = \\frac{155,737.1 - 128,297.4}{673.5 - 533.61} = \\frac{27,439.7}{139.89} \\approx 196.152$.",
+            "Compute means: $\\bar{x} = 23.1/10 = 2.31$, $\\bar{y} = 5554/10 = 555.4$.",
+            "Compute intercept: $b = 555.4 - 196.152(2.31) \\approx 102.289$.",
+            "Equation: $\\hat{y} = 196.152x + 102.289$."
+          ]
+        },
+        {
+          "title": "Example B – Interpreting Slope",
+          "prompt": "What does the slope 196.152 tell you in the context of GDP and CO2 emissions?",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: If GDP increases by 1 trillion dollars, how much do we expect CO2 emissions to change?",
+          "role": "peer-explain",
+          "steps": [
+            "Slope is the change in predicted y per unit increase in x.",
+            "For each additional trillion dollars of GDP, CO2 emissions are predicted to increase by about 196.15 million metric tons.",
+            "This interpretation is valid only within the range of the data (0.9 to 4.9 trillion dollars)."
+          ],
+          "minLength": 2
+        },
+        {
+          "steps": [
+            "Plug $\\bar{x} = 2.31$ into the equation: $\\hat{y} = 196.152(2.31) + 102.289 \\approx 555.4$.",
+            "Since $\\hat{y} = \\bar{y}$, the point $(\\bar{x}, \\bar{y})$ lies on the line.",
+            "This is a property of every least‑squares regression line."
+          ],
+          "title": "Example C – The Point (x̄, ȳ)",
+          "role": "independent",
+          "prompt": "Verify that the regression line for the GDP data passes through (2.31, 555.4)."
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't Swap x and y!",
+        "body": "The regression of y on x (y predicted from x) is different from the regression of x on y. Swapping variables changes the line. [[imp:Always use the explanatory variable as x and the response variable as y.]]"
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Extrapolation vs. Interpolation",
+        "body": "[[kw:Interpolation]] is predicting within the range of the data—this is safe. [[kw:Extrapolation]] is predicting outside that range—risky! [[imp:Always check the minimum and maximum x-values before making a prediction.]]"
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "$12.5(3) + 33.7 = 37.5 + 33.7 = 71.2$.",
+          "answer": "71.2",
+          "prompt": "Using the equation $\\hat{y} = 12.5x + 33.7$, what is the predicted y for x = 3? (Round to one decimal: 71.2)",
+          "id": "q9-2-7",
+          "type": "short-answer",
+          "hints": [
+            "Multiply 12.5 by 3, then add 33.7.",
+            "$12.5(3) = 37.5$, plus 33.7."
+          ]
+        },
+        {
+          "id": "q9-2-8",
+          "blanks": [
+            {
+              "accept": [
+                "extrapolation",
+                "extrapolating"
+              ]
+            }
+          ],
+          "hints": [
+            "It starts with 'extra'.",
+            "It is the opposite of interpolation."
+          ],
+          "type": "fill-blank",
+          "prompt": "Predicting a value outside the range of the original data is called ___.",
+          "feedbackIfWrong": "Predicting outside the data range is called extrapolation."
+        },
+        {
+          "id": "q9-2-9",
+          "hints": [
+            "It is the mean of the y-values.",
+            "Denoted by $\\bar{y}$."
+          ],
+          "feedbackIfWrong": "If r is not significant, use $\\bar{y}$ as the prediction.",
+          "type": "short-answer",
+          "prompt": "If the correlation is not significant, what is the best predicted y-value for any x? (Give the symbol: y-bar)",
+          "answer": "y-bar"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "title": "Prediction Formula",
+          "formula": "$$ \\hat{y} = mx + b $$",
+          "notes": [
+            "Check that x is within the original data range.",
+            "Round predictions to a reasonable number of decimal places.",
+            "If r is not significant, use $\\bar{y}$ instead of the regression line."
+          ]
+        },
+        "explanation": [
+          "If there is a significant linear correlation, you can use the regression equation $\\hat{y} = mx + b$ to [[kw:predict]] the value of y for a given x.",
+          "Simply substitute the x-value into the equation and compute $\\hat{y}$.",
+          "[[imp:Only predict for x-values within (or close to) the range of the original data.]] Predicting far outside this range is called [[kw:extrapolation]] and may be unreliable.",
+          "If the correlation is not significant, the best predicted y-value for any x is just $\\bar{y}$, the mean of the y-values."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "1.2",
+                "1": "$196.152(1.2) + 102.289 = 337.671$"
+              },
+              {
+                "0": "2.0",
+                "1": "$196.152(2.0) + 102.289 = 494.593$"
+              },
+              {
+                "0": "2.5",
+                "1": "$196.152(2.5) + 102.289 = 592.669$"
+              }
+            ],
+            "title": "Predictions for CO2 Emissions (GDP in trillions)",
+            "type": "table",
+            "headers": [
+              "GDP (x)",
+              "Predicted CO2 (ŷ)"
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Stress that predictions are only valid if the correlation is significant and within the range of the original data.",
+        "Show how to plug in x and compute ŷ."
+      ],
+      "id": "predicting-with-regression",
+      "examples": [
+        {
+          "title": "Example A – Making a Prediction",
+          "prompt": "Using the Old Faithful regression $\\hat{y} = 12.481x + 33.683$, predict the time until the next eruption after a 2-minute eruption.",
+          "steps": [
+            "Substitute x = 2: $\\hat{y} = 12.481(2) + 33.683 = 24.962 + 33.683 = 58.645$.",
+            "Interpretation: We predict a wait of about 58.6 minutes until the next eruption.",
+            "This prediction is meaningful because x = 2 is within the range of the original durations."
+          ],
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: The original eruption durations ranged from about 1.8 to 4.6 minutes. What might happen if we predict for 10 minutes?",
+          "steps": [
+            "The x-value 10 is far outside the range 1.8–4.6 minutes.",
+            "This is extrapolation; the relationship may not be linear beyond the observed data.",
+            "The prediction could be completely wrong, so we should not make it."
+          ],
+          "prompt": "Would it be appropriate to use the Old Faithful equation to predict the wait time after an eruption lasting 10 minutes?",
+          "title": "Example B – Dangerous Extrapolation",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Since the correlation is not significant, the regression line should not be used for prediction.",
+            "The best predicted y-value is $\\bar{y} = 30$, regardless of x.",
+            "Using the line would give $\\hat{y} = 70$, which is unreliable."
+          ],
+          "prompt": "A regression line for a data set with r = 0.12 (not significant) is $\\hat{y} = 5x + 20$. The mean y-value is 30. Predict y when x = 10.",
+          "title": "Example C – When r Is Not Significant",
+          "role": "independent"
+        }
+      ],
+      "title": "Predicting y-Values Using the Regression Equation",
+      "discoveryHook": {
+        "scenario": "With the regression equation, you can forecast future outcomes. For example, if GDP is 2.5 trillion dollars, what CO2 emissions do we predict? Just plug 2.5 into the equation and get your answer."
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "You can use Google Sheets to instantly compute the regression line and correlation without any manual sums. Just type two functions, and you have the slope and intercept!"
+      },
+      "id": "google-sheets-regression",
+      "confusionCorner": {
+        "body": "Always put the y-values first: `SLOPE(y_range, x_range)`. If you swap them, you'll get the wrong slope. [[imp:Remember Y first, then X.]]",
+        "title": "Order Matters in Sheets Functions"
+      },
+      "teacherCues": [
+        "Open a Google Sheet and enter x in column A, y in column B.",
+        "Demonstrate the SLOPE, INTERCEPT, and CORREL functions with a simple dataset."
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "The function is CORREL.",
+          "type": "fill-blank",
+          "prompt": "In Google Sheets, the function to compute the correlation coefficient is ___.",
+          "id": "q9-2-10",
+          "hints": [
+            "It starts with 'CORR'.",
+            "It is short for correlation."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "CORREL",
+                "=CORREL",
+                "correl"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "The function is INTERCEPT.",
+          "answer": "INTERCEPT",
+          "type": "short-answer",
+          "id": "q9-2-11",
+          "hints": [
+            "It begins with 'I'.",
+            "The full syntax is INTERCEPT(y_range, x_range)."
+          ],
+          "prompt": "What Google Sheets function gives the y-intercept of a regression line? (Just the function name, no equals sign: INTERCEPT)"
+        },
+        {
+          "feedbackIfWrong": "The function is FORECAST.",
+          "answer": "FORECAST",
+          "prompt": "To predict y for a new x using a regression line in Google Sheets, you can use the ___ function. (Function name: FORECAST)",
+          "type": "short-answer",
+          "hints": [
+            "It starts with 'F'.",
+            "It takes three arguments: x, known_y, known_x."
+          ],
+          "id": "q9-2-12"
+        }
+      ],
+      "title": "Finding Regression with Google Sheets",
+      "concept": {
+        "visuals": [
+          {
+            "title": "Google Sheets Functions for Regression",
+            "rows": [
+              {
+                "0": "`=SLOPE(B2:B11, A2:A11)`",
+                "1": "Slope $m$",
+                "2": "$196.152$"
+              },
+              {
+                "0": "`=INTERCEPT(B2:B11, A2:A11)`",
+                "1": "y-intercept $b$",
+                "2": "$102.289$"
+              },
+              {
+                "0": "`=CORREL(B2:B11, A2:A11)`",
+                "1": "Correlation $r$",
+                "2": "$0.882$"
+              },
+              {
+                "0": "`=FORECAST(x, B2:B11, A2:A11)`",
+                "1": "Predicted y for a given x",
+                "2": "Plug in any x"
+              }
+            ],
+            "type": "table",
+            "headers": [
+              "Function",
+              "What It Returns",
+              "Example"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "[[kw:Google Sheets]] can compute the slope and intercept of the least‑squares regression line directly.",
+          "Use the function `=SLOPE(known_y, known_x)` to get the slope $m$.",
+          "Use `=INTERCEPT(known_y, known_x)` to get the y-intercept $b$.",
+          "To find the correlation coefficient, use `=CORREL(known_y, known_x)`.",
+          "Always plot the data first (Insert → Chart → Scatter chart) to check for linearity before fitting a line."
+        ],
+        "formulaCard": {
+          "title": "Google Sheets Syntax",
+          "formula": "$$ \\text{Slope: } =\\text{SLOPE}(y\\_range, x\\_range) $$ $$ \\text{Intercept: } =\\text{INTERCEPT}(y\\_range, x\\_range) $$ $$ \\text{Correlation: } =\\text{CORREL}(y\\_range, x\\_range) $$",
+          "notes": [
+            "The first argument is always the y-values, then the x-values.",
+            "Make sure both ranges have the same number of rows.",
+            "Use `=FORECAST` to predict a y for a single x."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "steps": [
+            "In an empty cell, type `=SLOPE(B2:B15, A2:A15)`.",
+            "Press Enter. The value returned is the slope $m$.",
+            "Similarly, `=INTERCEPT(B2:B15, A2:A15)` gives the y-intercept $b$."
+          ],
+          "prompt": "You have years of experience (x) in A2:A15 and salary (y) in B2:B15. What formula gives the slope?",
+          "title": "Example A – Using SLOPE and INTERCEPT",
+          "role": "guided"
+        },
+        {
+          "minLength": 2,
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: The FORECAST function needs three arguments: the x-value you're predicting for, the y-range, and the x-range. What would the formula look like?",
+          "title": "Example B – Making a Prediction with FORECAST",
+          "role": "peer-explain",
+          "prompt": "How can you use Google Sheets to predict the salary for a nurse with 12 years of experience?",
+          "steps": [
+            "The function is `=FORECAST(12, B2:B15, A2:A15)`.",
+            "It will return the predicted y-value using the regression line fitted to the data in A2:A15 and B2:B15.",
+            "This saves you from manually computing $\\hat{y} = mx + b$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Checking Significance with CORREL",
+          "prompt": "You get r = 0.35 from `=CORREL(B2:B21, A2:A21)`. With n=20, the critical value from Table 11 at α=0.05 is 0.444. Is the correlation significant?",
+          "steps": [
+            "Compare |r| = 0.35 to the critical value 0.444.",
+            "Since 0.35 < 0.444, the correlation is not significant.",
+            "Do not use the regression line for prediction; instead, use $\\bar{y}$."
+          ]
+        }
+      ]
+    },
+    {
+      "concept": {
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Years, x",
+              "Salary (thousands), y"
+            ],
+            "title": "Nurses Data (Partial)",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "0.5",
+                "1": "40.2"
+              },
+              {
+                "0": "2",
+                "1": "42.9"
+              },
+              {
+                "0": "4",
+                "1": "45.1"
+              },
+              {
+                "0": "7",
+                "1": "50.2"
+              },
+              {
+                "0": "10",
+                "1": "54.0"
+              },
+              {
+                "0": "15",
+                "1": "? (predict)"
+              }
+            ]
+          }
+        ],
+        "explanation": [
+          "**Understand**: We want to predict salary (y) from years of experience (x). We have n=14 pairs. First, check that the correlation is significant.",
+          "**Solve**: Use Google Sheets to find the regression line. The output gives: $\\hat{y} = 1.234x + 40.567$. The correlation is $r = 0.89$, significant at $\\alpha = 0.01$.",
+          "**Conclude**: For a nurse with 10 years of experience, predicted salary is $1.234(10) + 40.567 = 52.907$ thousand dollars. This prediction is valid because x=10 is within the data range (0.5 to 25 years)."
+        ]
+      },
+      "title": "Blueprint Aid: Full Regression Analysis",
+      "id": "blueprint-regression-application",
+      "examples": [
+        {
+          "title": "Example A – Understand the Problem",
+          "prompt": "Identify the explanatory and response variables. State the regression equation from Google Sheets: $\\hat{y} = 1.23x + 40.6$.",
+          "steps": [
+            "Explanatory x: years of experience.",
+            "Response y: annual salary.",
+            "The equation gives predicted salary for any years of experience within the observed range."
+          ],
+          "role": "guided"
+        },
+        {
+          "title": "Example B – Solve: Make a Prediction",
+          "peerPrompt": "Without looking back...\n\nDiscuss: The data range is 0.5 to 25 years. Is 20 within that range? What could happen if we predicted for 50 years?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "steps": [
+            "Plug x=20: $\\hat{y} = 1.23(20) + 40.6 = 24.6 + 40.6 = 65.2$ thousand dollars.",
+            "Since 20 is within the range 0.5–25, the prediction is an interpolation and is meaningful.",
+            "For 50 years, we would be extrapolating and should not trust the result."
+          ],
+          "prompt": "Predict the salary for a nurse with 20 years of experience. Is this valid?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "The slope is the predicted increase in salary per additional year of experience.",
+            "For each additional year, a nurse's salary is predicted to increase by about 1.23 thousand dollars ($1,230).",
+            "This interpretation assumes the linear trend continues within the observed range."
+          ],
+          "prompt": "What does the slope 1.23 mean in context?",
+          "title": "Example C – Conclude: Interpret Slope"
+        }
+      ],
+      "teacherCues": [
+        "Walk students through a complete example: Nurses' experience vs. salary.",
+        "Use Understand–Solve–Conclude: state the goal, compute the line, make a prediction, interpret."
+      ],
+      "questions": [
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "$1.23(5) + 40.6 = 6.15 + 40.6 = 46.75$, rounded to 46.8.",
+          "hints": [
+            "Multiply 1.23 by 5, then add 40.6.",
+            "Round to one decimal place."
+          ],
+          "answer": "46.8",
+          "prompt": "For the nurses data, the regression equation is $\\hat{y} = 1.23x + 40.6$. Predict the salary for a nurse with 5 years of experience. (Compute: 1.23*5+40.6 = 46.75, answer 46.8 rounded to one decimal)",
+          "id": "q9-2-13"
+        },
+        {
+          "type": "fill-blank",
+          "prompt": "If a prediction is made for an x-value outside the range of the data, we call this an ___.",
+          "id": "q9-2-14",
+          "feedbackIfWrong": "Predicting outside the data range is extrapolation.",
+          "hints": [
+            "It starts with 'extra'.",
+            "It is unreliable."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "extrapolation"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "At the mean of x, the predicted y equals the mean of y, so 53.5.",
+          "answer": "53.5",
+          "type": "short-answer",
+          "id": "q9-2-15",
+          "hints": [
+            "The line always passes through the means.",
+            "So at x = x̄, ŷ = ȳ."
+          ],
+          "prompt": "The regression line for the nurses data passes through (x̄, ȳ). If x̄ = 10.5 years and ȳ = 53.5 thousand dollars, what is the predicted salary at x = 10.5? (Enter a number: 53.5)"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A salary analyst wants to predict the annual salary of a registered nurse based on years of experience. The data for 14 nurses are given. Let's perform a complete regression analysis using the Understand–Solve–Conclude framework."
+      },
+      "confusionCorner": {
+        "title": "Correlation Must Be Significant!",
+        "body": "Before using the regression line for prediction, always test the correlation coefficient. If $r$ is not significantly different from 0, the line is not useful for prediction. In that case, the best prediction is $\\bar{y}$."
+      }
+    }
+  ],
+  "presenterNotes": [
+    "Students often confuse the slope and intercept formulas. Emphasize that m is computed first, then b uses m.",
+    "Stress the importance of checking the correlation significance before using the regression line for prediction.",
+    "Show Google Sheets live: type SLOPE and INTERCEPT; let students see the equation appear instantly."
+  ],
+  "schemaVersion": 2,
+  "id": "section-9-2-linear-regression",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

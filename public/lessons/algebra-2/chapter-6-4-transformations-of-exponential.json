@@ -1,0 +1,826 @@
+{
+  "type": "interactive-lesson",
+  "standards": [
+    "HSF.BF.B.3",
+    "HSF.IF.C.7e",
+    "HSF.LE.A.2"
+  ],
+  "schemaVersion": 2,
+  "id": "chapter-6-4-transformations-of-exponential",
+  "presenterNotes": [
+    "Remind students that the transformation rules are identical to what they've used before; only the asymptotes are new.",
+    "For exponential functions, the horizontal asymptote shifts with vertical translations ($k$). For logarithmic functions, the vertical asymptote shifts with horizontal translations ($h$).",
+    "When writing transformed functions, emphasize the order of operations: horizontal changes inside, then vertical changes outside.",
+    "The Blueprint block pulls everything together; use it as a summary. Show how to identify $a$, $h$, $k$ even when the function isn't in perfect form (e.g., $\\log(2x-6)$ requires factoring)."
+  ],
+  "blocks": [
+    {
+      "confusionCorner": {
+        "title": "Horizontal Shift: Opposite Sign",
+        "body": "In $b^{x-h}$, if you see $x+3$, that's $x - (-3)$, so $h = -3$, shifting the graph [[imp:left]] by 3. The sign inside is always opposite to the direction of the shift."
+      },
+      "concept": {
+        "explanation": [
+          "You can transform the graph of an exponential function $f(x)=b^x$ using the same transformations you already know.",
+          "[[kw:Horizontal translation]]: $f(x-h)$ shifts the graph right by $h$ (left if $h<0$). The $y$-asymptote does NOT shift horizontally, but the graph's position does.",
+          "[[kw:Vertical translation]]: $f(x)+k$ shifts the graph up by $k$ (down if $k<0$). The horizontal asymptote shifts to $y=k$.",
+          "[[kw:Reflection]]: $-f(x)$ reflects over the $x$-axis; $f(-x)$ reflects over the $y$-axis.",
+          "[[kw:Stretch/Shrink]]: $a \\cdot f(x)$ vertically stretches (if $|a|>1$) or shrinks (if $0<|a|<1$). $f(bx)$ horizontally shrinks (if $|b|>1$) or stretches (if $0<|b|<1$).",
+          "The general transformation form is $g(x) = a \\cdot b^{c(x-h)} + k$, often written as $g(x) = a \\cdot b^{x-h} + k$ when $c=1$."
+        ],
+        "formulaCard": {
+          "formula": "$$ g(x) = a \\cdot b^{x-h} + k $$",
+          "legend": [
+            {
+              "symbol": "$h$",
+              "tone": "core",
+              "meaning": "horizontal shift (opposite sign inside exponent)"
+            },
+            {
+              "symbol": "$k$",
+              "meaning": "vertical shift (shifts asymptote to $y=k$)",
+              "tone": "core"
+            },
+            {
+              "symbol": "$a$",
+              "tone": "subtle",
+              "meaning": "vertical stretch/shrink and reflection over $x$-axis"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Horizontal shift",
+                "1": "$f(x-h)$",
+                "2": "$g(x)=4^{x-3}$ — 3 units right"
+              },
+              {
+                "0": "Vertical shift",
+                "1": "$f(x)+k$",
+                "2": "$g(x)=4^x+5$ — 5 units up"
+              },
+              {
+                "0": "Reflect over $y$",
+                "1": "$f(-x)$",
+                "2": "$g(x)=4^{-x}$"
+              },
+              {
+                "0": "Reflect over $x$",
+                "1": "$-f(x)$",
+                "2": "$g(x)=-4^x$"
+              },
+              {
+                "0": "Vertical stretch",
+                "1": "$a \\cdot f(x), a>1$",
+                "2": "$g(x)=3 \\cdot 4^x$ — stretched by 3"
+              },
+              {
+                "0": "Horizontal shrink",
+                "1": "$f(bx), b>1$",
+                "2": "$g(x)=4^{2x}$ — shrunk by $1/2$"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Transformation",
+              "Notation",
+              "Example on $f(x)=4^x$"
+            ],
+            "title": "Transformations of $f(x) = b^x$"
+          }
+        ]
+      },
+      "title": "Transforming Exponential Functions",
+      "teacherCues": [
+        "Write $f(x)=4^x$ on the board. Ask: How can we shift this graph 3 units right? What about reflecting over the $x$-axis?",
+        "Graph $f(x)=e^x$ and then $g(x)=e^{x+3}+2$. Point out that the horizontal translation is opposite to the sign inside the exponent."
+      ],
+      "examples": [
+        {
+          "prompt": "Describe the transformation of $f(x)=\\left(\\frac{1}{2}\\right)^x$ represented by $g(x)=\\left(\\frac{1}{2}\\right)^x - 4$. Then graph both.",
+          "role": "guided",
+          "steps": [
+            "Compare to $f(x)+k$: here $k = -4$.",
+            "So the graph of $g$ is a vertical translation 4 units down of the graph of $f$.",
+            "The horizontal asymptote shifts from $y=0$ to $y=-4$.",
+            "The range of $g$ is $y > -4$."
+          ],
+          "title": "Example A — Translating an Exponential Function"
+        },
+        {
+          "prompt": "Describe the transformation of $f(x)=e^x$ represented by $g(x)=e^{x+3}+2$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does $x+3$ inside the exponent shift the graph left, not right? What does the $+2$ outside do to the asymptote?",
+          "minLength": 8,
+          "title": "Example B — Translating a Natural Base Function",
+          "steps": [
+            "Rewrite as $g(x)=e^{x-(-3)}+2$, so $h=-3$ and $k=2$.",
+            "The graph shifts 3 units left (because $h=-3$) and 2 units up.",
+            "The horizontal asymptote shifts from $y=0$ to $y=2$.",
+            "The range becomes $y > 2$."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "Compare to $a \\cdot f(x)$: $a = -\\frac{1}{8}$.",
+            "Negative sign: reflection over the $x$-axis.",
+            "$|a| = \\frac{1}{8} < 1$: vertical shrink by a factor of $\\frac{1}{8}$.",
+            "The graph is flipped upside down and compressed vertically."
+          ],
+          "prompt": "Describe the transformation of $f(x)=e^{-x}$ represented by $g(x)=-\\frac{1}{8}e^{-x}$.",
+          "title": "Example C — Reflection and Vertical Shrink"
+        }
+      ],
+      "id": "transforming-exponential-functions",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "3",
+                "three"
+              ]
+            }
+          ],
+          "prompt": "For $g(x) = 2^{x} + 3$, the horizontal asymptote is $y =$ ___.",
+          "feedbackIfWrong": "The $+3$ shifts the asymptote from $y=0$ to $y=3$.",
+          "id": "q6-4-1",
+          "hints": [
+            "The vertical shift moves the asymptote.",
+            "The parent function has asymptote $y=0$, now add 3."
+          ]
+        },
+        {
+          "id": "q6-4-2",
+          "feedbackIfWrong": "The graph shifts 2 units right.",
+          "answers": [
+            "right 2",
+            "right 2 units"
+          ],
+          "hints": [
+            "Look at the exponent: $x-2$ means $h=2$.",
+            "Positive $h$ shifts right."
+          ],
+          "type": "short-answer",
+          "prompt": "How many units does $g(x)=4^{x-2}$ shift the parent $f(x)=4^x$? (Left/Right and number)"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "Negative is outside the function.",
+            "All $y$-values become their opposites."
+          ],
+          "feedbackIfWrong": "Reflection over the $x$-axis.",
+          "prompt": "What transformation does the negative sign cause in $g(x) = -e^x$? (Reflection over which axis: x or y)",
+          "answers": [
+            "x"
+          ],
+          "id": "q6-4-3"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "The same transformation rules you've mastered for other functions apply perfectly to exponential and logarithmic graphs. Whether shifting a population growth model or reflecting a radioactive decay curve, the general form $a \\cdot f(b(x-h)) + k$ is your toolkit."
+      }
+    },
+    {
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "3",
+                "three"
+              ]
+            }
+          ],
+          "prompt": "The vertical asymptote of $g(x) = \\ln(x-3)$ is $x =$ ___.",
+          "id": "q6-4-4",
+          "feedbackIfWrong": "The asymptote shifts to $x=3$.",
+          "hints": [
+            "Look at the horizontal shift.",
+            "$x-3$ means shift right 3."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "x > -4",
+            "x > -4",
+            "(-4, ∞)"
+          ],
+          "id": "q6-4-5",
+          "hints": [
+            "Set the argument greater than 0.",
+            "$x+4 > 0$."
+          ],
+          "prompt": "What is the domain of $g(x) = \\log(x+4)$? (Use x > ... or similar)",
+          "type": "short-answer",
+          "feedbackIfWrong": "The domain is $x > -4$."
+        },
+        {
+          "hints": [
+            "It multiplies the whole output.",
+            "Values of $y$ are doubled."
+          ],
+          "prompt": "What transformation does the 2 represent in $g(x) = 2\\ln x$? (Stretch/Shrink and direction)",
+          "id": "q6-4-6",
+          "answers": [
+            "vertical stretch",
+            "stretch by 2"
+          ],
+          "feedbackIfWrong": "It's a vertical stretch by a factor of 2.",
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Just like exponential graphs, logarithmic graphs obey the same transformation rules. Shifting a log graph left or right changes its vertical asymptote, and vertical stretches alter how quickly it rises—essential for modeling sound intensity, pH, and earthquake magnitudes."
+      },
+      "teacherCues": [
+        "Write $f(x)=\\log x$ and ask: How would the graph change if we did $g(x)=\\log(x-4)$? What about $g(x)=\\log(-x)$?",
+        "Graph $f(x)=\\log_{1/2}x$ and $g(x)=2\\log_{1/2}(x+4)$. Point out the horizontal shift and vertical stretch."
+      ],
+      "id": "transforming-logarithmic-functions",
+      "title": "Transforming Logarithmic Functions",
+      "confusionCorner": {
+        "title": "Asymptote Moves with Horizontal Shift",
+        "body": "For $\\log_b(x-h)$, the vertical asymptote moves to $x=h$. The domain becomes $x > h$ (if $b>1$ and no reflection). [[imp:Don't forget to update the domain!]]"
+      },
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "horizontal shift (asymptote shifts to $x=h$)",
+              "symbol": "$h$"
+            },
+            {
+              "tone": "core",
+              "symbol": "$k$",
+              "meaning": "vertical shift"
+            },
+            {
+              "symbol": "$a$",
+              "tone": "subtle",
+              "meaning": "vertical stretch/shrink and reflection"
+            }
+          ],
+          "formula": "$$ g(x) = a \\cdot \\log_b(x-h) + k $$"
+        },
+        "explanation": [
+          "Logarithmic functions $f(x)=\\log_b x$ can be transformed using $g(x)=a \\cdot \\log_b(x-h) + k$.",
+          "[[kw:Horizontal translation]]: $f(x-h)$ shifts the vertical asymptote to $x=h$ and the graph right (if $h>0$) or left (if $h<0$).",
+          "[[kw:Vertical translation]]: $f(x)+k$ shifts the graph up or down. The vertical asymptote is unchanged.",
+          "[[kw:Reflection]]: $-f(x)$ reflects over the $x$-axis; $f(-x)$ reflects over the $y$-axis, and the domain changes to $x<0$.",
+          "[[kw:Vertical stretch/shrink]]: $a \\cdot f(x)$ stretches if $|a|>1$, shrinks if $0<|a|<1$.",
+          "[[kw:Horizontal stretch/shrink]]: $f(bx)$ shrinks if $|b|>1$, stretches if $0<|b|<1$, and also affects the domain boundary."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Transformation",
+              "Notation",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "Horizontal shift",
+                "1": "$f(x-h)$",
+                "2": "$g(x)=\\log(x-4)$ — 4 units right, asymptote $x=4$"
+              },
+              {
+                "0": "Vertical shift",
+                "1": "$f(x)+k$",
+                "2": "$g(x)=\\log x + 3$ — 3 units up"
+              },
+              {
+                "0": "Reflect over $y$",
+                "1": "$f(-x)$",
+                "2": "$g(x)=\\log(-x)$ — domain $x<0$"
+              },
+              {
+                "0": "Reflect over $x$",
+                "1": "$-f(x)$",
+                "2": "$g(x)=-\\log x$"
+              },
+              {
+                "0": "Vertical stretch",
+                "1": "$a \\cdot f(x), a>1$",
+                "2": "$g(x)=5\\log x$ — stretched by 5"
+              },
+              {
+                "0": "Horizontal shrink",
+                "1": "$f(bx), b>1$",
+                "2": "$g(x)=\\log(4x)$ — shrunk by $1/4$"
+              }
+            ],
+            "title": "Transformations of $f(x) = \\log x$"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "steps": [
+            "Compare to $f(ax)$: $a = -\\frac{1}{2}$.",
+            "Negative sign: reflection over the $y$-axis. Domain changes to $x<0$.",
+            "$|a|=\\frac{1}{2}<1$: horizontal stretch by a factor of 2.",
+            "The vertical asymptote remains $x=0$ (but now graph is on left side)."
+          ],
+          "role": "guided",
+          "title": "Example A — Reflection and Horizontal Stretch of Log",
+          "prompt": "Describe the transformation of $f(x)=\\log x$ represented by $g(x)=\\log(-\\frac{1}{2}x)$."
+        },
+        {
+          "minLength": 8,
+          "title": "Example B — Vertical Stretch and Horizontal Translation",
+          "steps": [
+            "Rewrite as $g(x)=2\\log_{1/2}(x-(-4))$, so $h=-4$, $a=2$.",
+            "Horizontal translation 4 units left (asymptote shifts to $x=-4$).",
+            "Vertical stretch by a factor of 2.",
+            "Domain becomes $x > -4$."
+          ],
+          "role": "peer-explain",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: How do you identify $h$ and $a$? What happens to the vertical asymptote?",
+          "prompt": "Describe the transformation of $f(x)=\\log_{1/2}x$ represented by $g(x)=2\\log_{1/2}(x+4)$."
+        },
+        {
+          "title": "Example C — Identifying Transformations from a Graph",
+          "steps": [
+            "$x+2 = x-(-2)$, so $h=-2$.",
+            "The graph shifts 2 units left.",
+            "The vertical asymptote shifts from $x=0$ to $x=-2$.",
+            "Domain: $x > -2$."
+          ],
+          "prompt": "The graph of $g(x)=\\ln(x+2)$ is a transformation of $f(x)=\\ln x$. Describe it.",
+          "role": "independent"
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "hints": [
+            "Inside the exponent.",
+            "Subtract 2 from $x$."
+          ],
+          "prompt": "To shift $f(x)=3^x$ right by 2, you replace $x$ with ___.",
+          "id": "q6-4-7",
+          "feedbackIfWrong": "Replace $x$ with $x-2$ to shift right.",
+          "type": "short-answer",
+          "answers": [
+            "x-2"
+          ]
+        },
+        {
+          "hints": [
+            "Reflection over the $y$-axis changes $x$ to its opposite.",
+            "Replace $x$ with $-x$."
+          ],
+          "prompt": "The rule for $g$ after reflecting $f(x)=e^x$ over the $y$-axis is $g(x) = e^{___}$.",
+          "id": "q6-4-8",
+          "blanks": [
+            {
+              "accept": [
+                "-x"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The function becomes $e^{-x}$.",
+          "type": "fill-blank"
+        },
+        {
+          "id": "q6-4-9",
+          "prompt": "Write the rule for $g$ if $f(x)=2^x$ is vertically stretched by 3 and shifted down 1. (Use format 3*2^x - 1)",
+          "hints": [
+            "Multiply the output by 3, then subtract 1.",
+            "Apply vertical transformations outside the function."
+          ],
+          "answers": [
+            "3*2^x - 1",
+            "3(2^x)-1"
+          ],
+          "feedbackIfWrong": "$g(x) = 3 \\cdot 2^x - 1$.",
+          "type": "short-answer"
+        }
+      ],
+      "title": "Writing Transformed Exponential Functions",
+      "confusionCorner": {
+        "body": "When combining a horizontal stretch and a horizontal shift, apply the stretch/shrink first, then the shift, unless the function is written in factored form. Example: $2^{3(x-5)}$ means shrink by $1/3$, then shift right 5. [[imp:Factor inside the exponent to see the correct order.]]",
+        "title": "Order Matters for Horizontal Transformations"
+      },
+      "discoveryHook": {
+        "scenario": "Instead of just graphing, you can build the equation directly from a description of transformations. This allows you to create models that fit real-world data, like shifting a growth curve to match a population's starting point."
+      },
+      "teacherCues": [
+        "Ask: If I know the transformation steps, how do I write the equation?",
+        "Work through 'reflect over $x$-axis, then translate 4 units right' for $f(x)=2^x$."
+      ],
+      "id": "writing-transformed-exponential-functions",
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ g(x) = a \\cdot b^{x-h} + k $$",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$a$",
+              "meaning": "vertical stretch/reflection"
+            },
+            {
+              "tone": "core",
+              "meaning": "horizontal shift",
+              "symbol": "$h$"
+            },
+            {
+              "meaning": "vertical shift",
+              "symbol": "$k$",
+              "tone": "core"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "rows": [
+              {
+                "0": "Start with $f(x)$",
+                "1": "$f(x) = 2^x$"
+              },
+              {
+                "0": "Reflect over $x$-axis",
+                "1": "$h(x) = -f(x) = -2^x$"
+              },
+              {
+                "0": "Then shift right 4",
+                "1": "$g(x) = h(x-4) = -2^{x-4}$"
+              },
+              {
+                "0": "Final",
+                "1": "$g(x) = -2^{x-4}$"
+              }
+            ],
+            "title": "Building Exponential Transformations",
+            "headers": [
+              "Desired Transformation",
+              "How to Write It"
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "To write a transformed exponential function, start with the parent function $f(x)=b^x$ (or $e^x$).",
+          "Apply transformations step by step, in the correct order: horizontal shifts/stretches/reflections first, then vertical shifts/stretches/reflections.",
+          "For each transformation, modify the function:",
+          "  - Horizontal shift right by $h$: replace $x$ with $x-h$.",
+          "  - Reflection over $x$-axis: multiply by $-1$ (outside).",
+          "  - Reflection over $y$-axis: replace $x$ with $-x$.",
+          "  - Vertical stretch by $a$: multiply the whole function by $a$.",
+          "  - Vertical shift by $k$: add $k$ to the output.",
+          "Write the final function and check by graphing."
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example A — Reflection and Translation of $2^x$",
+          "steps": [
+            "Reflection: $h(x) = -f(x) = -2^x$.",
+            "Translation right 4: $g(x) = h(x-4) = -2^{x-4}$.",
+            "Final rule: $g(x) = -2^{x-4}$."
+          ],
+          "role": "guided",
+          "prompt": "The graph of $g$ is a reflection in the $x$-axis followed by a translation 4 units right of $f(x)=2^x$. Write a rule for $g$."
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Write a rule for $g$ if $f(x)=e^{-x}$ is horizontally stretched by a factor of 3, then shifted 2 units up.",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: When stretching horizontally by 3, do you multiply or divide $x$? Why?",
+          "steps": [
+            "Horizontal stretch by 3: replace $x$ with $\\frac{x}{3}$: $h(x) = e^{-x/3}$.",
+            "Vertical shift up 2: add 2: $g(x) = e^{-x/3} + 2$.",
+            "Final: $g(x) = e^{-x/3} + 2$."
+          ],
+          "title": "Example B — Horizontal Stretch and Vertical Shift",
+          "minLength": 8
+        },
+        {
+          "prompt": "Write a rule for $g$: horizontal shrink by $1/2$, then translation 5 units up, of $f(x)=e^x$.",
+          "title": "Example C — Multiple Transformations on $e^x$",
+          "role": "independent",
+          "steps": [
+            "Horizontal shrink by $1/2$: multiply $x$ by 2: $h(x)=e^{2x}$.",
+            "Shift up 5: $g(x) = e^{2x} + 5$.",
+            "Final: $g(x) = e^{2x} + 5$."
+          ]
+        }
+      ]
+    },
+    {
+      "teacherCues": [
+        "Ask: How would we write the equation for a log function shifted 3 units left and 2 units up?",
+        "Model the example: $f(x)=\\log_{1/3} x$, translated 2 units up, then vertically stretched by 2."
+      ],
+      "id": "writing-transformed-logarithmic-functions",
+      "title": "Writing Transformed Logarithmic Functions",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "The graph of $g$ is a translation 2 units up, followed by a vertical stretch by 2, of $f(x)=\\log_{1/3}x$. Write a rule for $g$.",
+          "steps": [
+            "Translate up 2: $h(x) = \\log_{1/3}x + 2$.",
+            "Vertical stretch by 2: $g(x) = 2 \\cdot h(x) = 2(\\log_{1/3}x + 2)$.",
+            "Simplify: $g(x) = 2\\log_{1/3}x + 4$."
+          ],
+          "title": "Example A — Translation and Vertical Stretch"
+        },
+        {
+          "title": "Example B — Reflection and Horizontal Translation",
+          "steps": [
+            "Reflect over $y$-axis: $h(x) = \\log(-x)$.",
+            "Translate left 4: replace $x$ with $x+4$ in $h$: $g(x) = \\log(-(x+4)) = \\log(-x-4)$.",
+            "Final: $g(x) = \\log(-x-4)$."
+          ],
+          "role": "peer-explain",
+          "prompt": "Write a rule for $g$ if $f(x)=\\log x$ is reflected in the $y$-axis, then translated 4 units left.",
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Why does the reflection come before the translation? What would happen if we reversed the order?"
+        },
+        {
+          "title": "Example C — Combined Transformations",
+          "steps": [
+            "Shift right 3: replace $x$ with $x-3$: $h(x) = \\ln(x-3)$.",
+            "Reflect over $x$-axis: $k(x) = -\\ln(x-3)$.",
+            "Shift up 1: $g(x) = -\\ln(x-3) + 1$."
+          ],
+          "role": "independent",
+          "prompt": "Write a rule for $g$: $f(x)=\\ln x$ is shifted right 3, reflected over $x$-axis, and shifted up 1."
+        }
+      ],
+      "confusionCorner": {
+        "body": "When combining a horizontal reflection and a horizontal translation, apply the reflection first, then the translation. For example, reflect $\\log x$ over $y$-axis to get $\\log(-x)$, then translate left 4: $\\log(-(x+4))$. [[imp:Parentheses are crucial.]]",
+        "title": "Reflection Then Translation"
+      },
+      "questions": [
+        {
+          "answers": [
+            "x+5"
+          ],
+          "prompt": "To shift $f(x)=\\log_2 x$ left by 5, you replace $x$ with ___.",
+          "type": "short-answer",
+          "id": "q6-4-10",
+          "hints": [
+            "Inside the logarithm.",
+            "Left shift means add to $x$."
+          ],
+          "feedbackIfWrong": "Replace $x$ with $x+5$ to shift left 5."
+        },
+        {
+          "feedbackIfWrong": "$g(x) = 3 \\ln x$.",
+          "blanks": [
+            {
+              "accept": [
+                "ln x",
+                "\\ln x"
+              ]
+            }
+          ],
+          "id": "q6-4-11",
+          "prompt": "A vertical stretch by a factor of 3 of $f(x)=\\ln x$ is written as $g(x) = 3 \\cdot$ ___.",
+          "hints": [
+            "It multiplies the output.",
+            "Keep the argument unchanged."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "answers": [
+            "-log x + 2",
+            "-\\log x + 2"
+          ],
+          "feedbackIfWrong": "$g(x) = -\\log x + 2$.",
+          "prompt": "Write the rule for $g$ if $f(x)=\\log x$ is reflected over the $x$-axis and then shifted up 2. (Use format -log x + 2)",
+          "id": "q6-4-12",
+          "hints": [
+            "Reflection over $x$-axis: multiply by -1.",
+            "Then add 2 outside."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "To write a transformed logarithmic function, start with $f(x)=\\log_b x$ (or $\\ln x$).",
+          "Apply transformations in order: horizontal changes inside the argument, then vertical changes outside.",
+          "For a horizontal shift right by $h$, replace $x$ with $x-h$: $\\log_b(x-h)$.",
+          "For a vertical stretch by $a$, multiply the whole function: $a \\cdot \\log_b x$.",
+          "For a vertical shift up by $k$, add $k$ outside: $\\log_b x + k$.",
+          "Combine: $g(x) = a \\cdot \\log_b(x-h) + k$."
+        ],
+        "formulaCard": {
+          "formula": "$$ g(x) = a \\cdot \\log_b(x-h) + k $$",
+          "legend": [
+            {
+              "symbol": "$h$",
+              "meaning": "horizontal shift",
+              "tone": "core"
+            },
+            {
+              "meaning": "vertical shift",
+              "tone": "core",
+              "symbol": "$k$"
+            },
+            {
+              "meaning": "vertical stretch/reflection",
+              "symbol": "$a$",
+              "tone": "subtle"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Building Logarithmic Transformations",
+            "rows": [
+              {
+                "0": "Start",
+                "1": "$f(x) = \\log_{1/3} x$"
+              },
+              {
+                "0": "Translate up 2",
+                "1": "$h(x) = \\log_{1/3} x + 2$"
+              },
+              {
+                "0": "Vertical stretch by 2",
+                "1": "$g(x) = 2(\\log_{1/3} x + 2) = 2\\log_{1/3} x + 4$"
+              }
+            ],
+            "headers": [
+              "Step",
+              "Function"
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "When you're designing a sound system or measuring acidity, you often need to shift or stretch the basic logarithmic model. Writing transformed log functions allows you to customize these models precisely."
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Asymptote and Domain Are Linked",
+        "body": "For logarithmic functions, the vertical asymptote is the boundary of the domain. If the argument is $x-h$, the asymptote is $x=h$ and domain is $x > h$ (assuming $b>1$ and no reflection over $y$-axis). [[imp:Always set the argument > 0 to find domain.]]"
+      },
+      "examples": [
+        {
+          "title": "Example A — Full Analysis of $g(x) = -2^{x-3} + 1$",
+          "steps": [
+            "Understand: $a=-1$, $h=3$, $k=1$. Parent $f(x)=2^x$.",
+            "Solve: Shift right 3, reflect over $x$-axis, shift up 1.",
+            "Asymptote: $y=1$ (shifted up from $y=0$). Domain: all real numbers. Range: $y < 1$ (because reflected down, so now approaches 1 from below).",
+            "Conclude: Graph starts low on left, rises toward $y=1$ but never reaches it, passes through shifted points."
+          ],
+          "prompt": "Describe all transformations of $f(x)=2^x$ to obtain $g(x) = -2^{x-3} + 1$. State the asymptote, domain, and range of $g$.",
+          "role": "guided"
+        },
+        {
+          "prompt": "Analyze $g(x) = 2\\ln(x+4)$: transformations, asymptote, domain, range.",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: What does the $+4$ inside the log do? How does the 2 affect the graph? What happens to the vertical asymptote?",
+          "minLength": 8,
+          "title": "Example B — Log Function with Horizontal Translation and Stretch",
+          "role": "peer-explain",
+          "steps": [
+            "Parent: $\\ln x$. $h=-4$, $a=2$, $k=0$.",
+            "Shift left 4; vertical stretch by 2.",
+            "Asymptote: $x=-4$. Domain: $x > -4$. Range: all real numbers.",
+            "The point $(1,0)$ on parent moves to $(-3,0)$."
+          ]
+        },
+        {
+          "role": "independent",
+          "prompt": "Find the domain and vertical asymptote of $g(x) = \\log(2x-6)$.",
+          "steps": [
+            "Factor: $\\log(2(x-3))$.",
+            "Argument must be $>0$: $2(x-3) > 0 \\Rightarrow x > 3$.",
+            "Vertical asymptote: $x = 3$. Domain: $x > 3$."
+          ],
+          "title": "Example C — Domain and Asymptote from Equation"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When you encounter a complex-looking exponential or logarithmic function, the Blueprint helps you break it down into individual transformations, identify the new asymptotes and domain, and sketch the graph confidently."
+      },
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "parent exponential or logarithmic function",
+              "tone": "core",
+              "symbol": "$f$"
+            },
+            {
+              "symbol": "$a,b,h,k$",
+              "meaning": "transformation parameters",
+              "tone": "subtle"
+            }
+          ],
+          "formula": "$$ g(x) = a \\cdot f(b(x-h)) + k $$"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "title": "Blueprint for Graphing Transformed Exponential/Log Functions",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify parent, parameters $a,b,h,k$."
+              },
+              {
+                "0": "Solve",
+                "1": "List transformations in order; find new asymptote, domain, range."
+              },
+              {
+                "0": "Conclude",
+                "1": "Sketch graph; state domain, range, asymptote."
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "[[imp:Understand]]: Identify the parent function (exponential or logarithmic). Write the given function in the transformation form $g(x) = a \\cdot f(b(x-h)) + k$. Extract $a$, $b$, $h$, $k$.",
+          "[[imp:Solve]]: List the transformations in order: 1) horizontal shift ($h$), 2) horizontal stretch/shrink and reflection ($b$), 3) vertical stretch/shrink and reflection ($a$), 4) vertical shift ($k$). Determine the new asymptote and domain/range.",
+          "[[imp:Conclude]]: Sketch the graph using the transformed key points. State the domain, range, and asymptote equation. Verify with a calculator if possible."
+        ]
+      },
+      "id": "blueprint-aid-transformations-exponential-log",
+      "title": "Blueprint Aid — Transforming Exponential and Logarithmic Graphs",
+      "questions": [
+        {
+          "id": "q6-4-13",
+          "prompt": "What is the horizontal asymptote of $g(x) = e^{x} - 3$? (Give equation like y = -3)",
+          "hints": [
+            "The vertical shift moves the asymptote.",
+            "Parent has $y=0$, now subtract 3."
+          ],
+          "answers": [
+            "y = -3",
+            "y=-3"
+          ],
+          "feedbackIfWrong": "The asymptote is $y = -3$.",
+          "type": "short-answer"
+        },
+        {
+          "id": "q6-4-14",
+          "type": "fill-blank",
+          "hints": [
+            "Set the argument equal to 0? No, set argument = 0 gives the asymptote.",
+            "$x+2=0 \\rightarrow x=-2$."
+          ],
+          "prompt": "For $g(x) = \\ln(x+2)$, the vertical asymptote is $x =$ ___.",
+          "feedbackIfWrong": "The vertical asymptote is $x = -2$.",
+          "blanks": [
+            {
+              "accept": [
+                "-2",
+                "negative 2"
+              ]
+            }
+          ]
+        },
+        {
+          "answers": [
+            "x > 4",
+            "x > 4",
+            "(4, ∞)"
+          ],
+          "feedbackIfWrong": "Domain: $x > 4$.",
+          "prompt": "What is the domain of $g(x) = \\log_3(x-4)$? (Use x > ... or similar)",
+          "id": "q6-4-15",
+          "type": "short-answer",
+          "hints": [
+            "Argument must be positive.",
+            "$x-4 > 0$."
+          ]
+        }
+      ],
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude steps. Model a full transformation problem: Start with $f(x)=e^x$, describe $g(x)= -e^{x+3} - 2$.",
+        "Ask: What are the asymptote, domain, and range of $g$?"
+      ]
+    }
+  ],
+  "title": "Transformations of Exponentials",
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

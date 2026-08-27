@@ -1,0 +1,708 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-8-2-operations-with-matrices",
+  "title": "Operations with Matrices",
+  "blocks": [
+    {
+      "id": "equality-of-matrices",
+      "title": "Equality of Matrices",
+      "teacherCues": [
+        "Write two 2×2 matrices A and B. Ask: When are they equal? (Same dimensions and all corresponding entries equal).",
+        "Give an equation with variables: [a b; c d] = [2 -1; -3 0]. Ask students to read off the values."
+      ],
+      "discoveryHook": {
+        "scenario": "Two tables of data are considered identical if every cell matches exactly. In matrix algebra, equality means every entry in the same position must be the same number."
+      },
+      "concept": {
+        "explanation": [
+          "Two matrices are [[kw:equal]] if they have the same dimensions (same number of rows and columns) and all corresponding entries are equal.",
+          "For example, $\\begin{bmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{bmatrix} = \\begin{bmatrix} 2 & -1 \\\\ -3 & 0 \\end{bmatrix}$ means $a_{11}=2, a_{12}=-1, a_{21}=-3, a_{22}=0$.",
+          "If dimensions differ, the matrices cannot be equal.",
+          "This is the foundation for solving matrix equations where unknown entries appear."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Equality of 2×2 Matrices",
+            "headers": [
+              "Left Entry",
+              "Right Entry",
+              "Value"
+            ],
+            "rows": [
+              {
+                "0": "$a_{11}$",
+                "1": "$2$",
+                "2": "2"
+              },
+              {
+                "0": "$a_{12}$",
+                "1": "$-1$",
+                "2": "-1"
+              },
+              {
+                "0": "$a_{21}$",
+                "1": "$-3$",
+                "2": "-3"
+              },
+              {
+                "0": "$a_{22}$",
+                "1": "$0$",
+                "2": "0"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Equality Condition",
+          "formula": "$A = B$ means $a_{ij} = b_{ij}$ for all $i, j$, provided $A$ and $B$ have the same dimension.",
+          "notes": [
+            "Check dimensions first.",
+            "Then set each entry equal."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Read off entries",
+          "prompt": "Solve for $a_{11}, a_{12}, a_{21}, a_{22}$ in $\\begin{bmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{bmatrix} = \\begin{bmatrix} 6 & 3 \\\\ -2 & 4 \\end{bmatrix}$.",
+          "steps": [
+            "The matrices have the same dimension (2×2).",
+            "Set corresponding entries equal: $a_{11}=6$, $a_{12}=3$, $a_{21}=-2$, $a_{22}=4$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Check equality",
+          "prompt": "Explain why $\\begin{bmatrix} 2 & 0 \\\\ 1 & 4 \\end{bmatrix}$ and $\\begin{bmatrix} 2 & 0 & 0 \\\\ 1 & 4 & 0 \\end{bmatrix}$ are not equal.",
+          "peerPrompt": "Compare dimensions. Do they match? Then check entries.",
+          "minLength": 2,
+          "steps": [
+            "The first is 2×2, the second is 2×3.",
+            "Because dimensions differ, they are not equal.",
+            "Even if some entries match, equality requires the same number of rows and columns."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick equality",
+          "prompt": "Is $\\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix}$ equal to $\\begin{bmatrix} 4 & 2 \\end{bmatrix}$?",
+          "steps": [
+            "First is 2×1 (column), second is 1×2 (row).",
+            "Dimensions differ → not equal."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Dimension mismatch",
+        "body": "Always check dimensions first. Two matrices with different sizes cannot be equal, regardless of entries."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "Two matrices are equal if they have the same dimensions and all ___ entries are equal.",
+          "blanks": [
+            {
+              "accept": [
+                "corresponding"
+              ]
+            }
+          ],
+          "hints": [
+            "Matching positions.",
+            "Same row and column."
+          ],
+          "feedbackIfWrong": "Corresponding entries must be equal."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "In the equality $\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ -2 \\end{bmatrix}$, what is $x$? (Enter a number)",
+          "answer": "5",
+          "hints": [
+            "First row, first column.",
+            "Top entry."
+          ],
+          "feedbackIfWrong": "$x = 5$."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "If two matrices have different dimensions, they ___ be equal.",
+          "blanks": [
+            {
+              "accept": [
+                "cannot"
+              ]
+            }
+          ],
+          "hints": [
+            "It's impossible.",
+            "They must have the same shape."
+          ],
+          "feedbackIfWrong": "They cannot be equal."
+        }
+      ]
+    },
+    {
+      "id": "addition-scalar-multiplication",
+      "title": "Matrix Addition and Scalar Multiplication",
+      "teacherCues": [
+        "Write two 2×2 matrices. Show adding them by adding corresponding entries. Stress that dimensions must match.",
+        "Multiply a matrix by 2: multiply each entry. Then show subtraction as adding the negative."
+      ],
+      "discoveryHook": {
+        "scenario": "Adding matrices is like combining two inventory sheets: you add the numbers in each cell to get totals. Scalar multiplication is like applying a percent increase to every item."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Matrix addition]]: add matrices of the same dimension by adding corresponding entries: $(A+B)_{ij} = a_{ij} + b_{ij}$.",
+          "[[kw:Scalar multiplication]]: multiply each entry of the matrix by the scalar: $(cA)_{ij} = c \\cdot a_{ij}$.",
+          "Subtraction $A - B$ means $A + (-1)B$.",
+          "The [[kw:zero matrix]] $O$ (all zeros) acts as the additive identity: $A + O = A$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Addition Example",
+            "headers": [
+              "A",
+              "B",
+              "A+B"
+            ],
+            "rows": [
+              {
+                "0": "$\\begin{bmatrix} -1 & 2 \\\\ 0 & 1 \\end{bmatrix}$",
+                "1": "$\\begin{bmatrix} 1 & 3 \\\\ -1 & 2 \\end{bmatrix}$",
+                "2": "$\\begin{bmatrix} 0 & 5 \\\\ -1 & 3 \\end{bmatrix}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Addition and Scalar Multiplication",
+          "formula": "$(A+B)_{ij} = a_{ij} + b_{ij}$ ; $(cA)_{ij} = c \\cdot a_{ij}$",
+          "notes": [
+            "Addition only defined for matrices of the same dimension.",
+            "Scalar multiplication always defined."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Add two matrices",
+          "prompt": "Find $\\begin{bmatrix} 4 & -1 \\\\ 2 & -3 \\end{bmatrix} + \\begin{bmatrix} 2 & 0 \\\\ -1 & 6 \\end{bmatrix}$.",
+          "steps": [
+            "Add corresponding entries: $4+2=6$, $-1+0=-1$, $2+(-1)=1$, $-3+6=3$.",
+            "Result: $\\begin{bmatrix} 6 & -1 \\\\ 1 & 3 \\end{bmatrix}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Scalar multiplication",
+          "prompt": "Multiply $\\begin{bmatrix} 2 & 1 \\\\ 0 & -3 \\end{bmatrix}$ by 3.",
+          "peerPrompt": "Tell your partner: What do you do to each entry? Then compute together.",
+          "minLength": 2,
+          "steps": [
+            "Multiply every entry by 3: $3\\cdot2=6$, $3\\cdot1=3$, $3\\cdot0=0$, $3\\cdot(-3)=-9$.",
+            "Result: $\\begin{bmatrix} 6 & 3 \\\\ 0 & -9 \\end{bmatrix}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Combine operations",
+          "prompt": "Compute $2A - B$ for $A = \\begin{bmatrix} 1 & 0 \\\\ -2 & 3 \\end{bmatrix}$, $B = \\begin{bmatrix} 0 & 4 \\\\ 1 & -1 \\end{bmatrix}$.",
+          "steps": [
+            "First $2A = \\begin{bmatrix} 2 & 0 \\\\ -4 & 6 \\end{bmatrix}$.",
+            "Then $2A - B = 2A + (-B)$ where $-B = \\begin{bmatrix} 0 & -4 \\\\ -1 & 1 \\end{bmatrix}$.",
+            "Add: $\\begin{bmatrix} 2+0 & 0+(-4) \\\\ -4+(-1) & 6+1 \\end{bmatrix} = \\begin{bmatrix} 2 & -4 \\\\ -5 & 7 \\end{bmatrix}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Mismatched dimensions",
+        "body": "You can only add or subtract matrices that have the same number of rows and columns. If dimensions differ, the operation is undefined."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "To add two matrices, you add their ___ entries.",
+          "blanks": [
+            {
+              "accept": [
+                "corresponding"
+              ]
+            }
+          ],
+          "hints": [
+            "Matching positions.",
+            "Row 1 col 1 with row 1 col 1."
+          ],
+          "feedbackIfWrong": "Corresponding entries."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "What is the result of $\\begin{bmatrix} 3 & 1 \\\\ 0 & -2 \\end{bmatrix} + \\begin{bmatrix} -1 & 2 \\\\ 4 & 0 \\end{bmatrix}$? (Enter the entry in row 2, column 2)",
+          "answer": "-2",
+          "hints": [
+            "Add -2 and 0.",
+            "Bottom-right entry."
+          ],
+          "feedbackIfWrong": "The entry is -2."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "The matrix with all entries equal to zero is called the ___ matrix.",
+          "blanks": [
+            {
+              "accept": [
+                "zero"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the additive identity.",
+            "Stands for 'O'."
+          ],
+          "feedbackIfWrong": "Zero matrix."
+        }
+      ]
+    },
+    {
+      "id": "matrix-multiplication",
+      "title": "Matrix Multiplication",
+      "teacherCues": [
+        "Write a 2×3 matrix A and a 3×2 matrix B. Show that the product AB is 2×2, and show how to compute one entry using dot product of row of A and column of B.",
+        "Emphasize: # columns of A must equal # rows of B. The product dimension is rows of A × columns of B."
+      ],
+      "discoveryHook": {
+        "scenario": "Matrix multiplication combines information from rows of the first matrix with columns of the second—like multiplying a recipe's ingredient list by a price list to get the total cost of each dish."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Matrix multiplication]] $AB$ is defined only when the number of columns of $A$ equals the number of rows of $B$.",
+          "The entry in row $i$, column $j$ of $AB$ is the dot product of row $i$ of $A$ and column $j$ of $B$: $c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \\cdots + a_{in}b_{nj}$.",
+          "The dimensions: $(m \\times n) \\times (n \\times p) = (m \\times p)$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Multiplying a 2×2 by a 2×1",
+            "headers": [
+              "A",
+              "B",
+              "AB"
+            ],
+            "rows": [
+              {
+                "0": "$\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$",
+                "1": "$\\begin{bmatrix} 5 \\\\ 6 \\end{bmatrix}$",
+                "2": "$\\begin{bmatrix} 1\\cdot5 + 2\\cdot6 = 17 \\\\ 3\\cdot5 + 4\\cdot6 = 39 \\end{bmatrix}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Multiplication Rule",
+          "formula": "$$(AB)_{ij} = \\sum_{k=1}^{n} a_{ik} b_{kj}$$",
+          "notes": [
+            "Inner dimensions must match: $(m\\times n) \\cdot (n\\times p)$.",
+            "The result is $m \\times p$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Multiply a 2×2 and a 2×1",
+          "prompt": "Find $\\begin{bmatrix} 2 & 3 \\\\ 1 & -1 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 5 \\end{bmatrix}$.",
+          "steps": [
+            "First entry: $2\\cdot4 + 3\\cdot5 = 8 + 15 = 23$.",
+            "Second entry: $1\\cdot4 + (-1)\\cdot5 = 4 - 5 = -1$.",
+            "Result: $\\begin{bmatrix} 23 \\\\ -1 \\end{bmatrix}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Dimension check",
+          "prompt": "Does the product $A_{2\\times 3} \\cdot B_{3\\times 4}$ exist? If so, what is the dimension?",
+          "peerPrompt": "Check inner dimensions (columns of A = rows of B). Then the outer dimensions give the result size.",
+          "minLength": 2,
+          "steps": [
+            "A is 2×3, B is 3×4. Inner: 3=3 → defined.",
+            "Outer: 2 and 4 → result is 2×4."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Multiply two 2×2 matrices",
+          "prompt": "Compute $\\begin{bmatrix} 1 & 0 \\\\ -2 & 3 \\end{bmatrix} \\begin{bmatrix} 2 & 1 \\\\ 0 & 4 \\end{bmatrix}$.",
+          "steps": [
+            "Row1×Col1: $1\\cdot2 + 0\\cdot0 = 2$. Row1×Col2: $1\\cdot1 + 0\\cdot4 = 1$.",
+            "Row2×Col1: $-2\\cdot2 + 3\\cdot0 = -4$. Row2×Col2: $-2\\cdot1 + 3\\cdot4 = 10$.",
+            "Product: $\\begin{bmatrix} 2 & 1 \\\\ -4 & 10 \\end{bmatrix}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Order matters",
+        "body": "Matrix multiplication is generally not commutative: $AB \\neq BA$. Even if both products exist, they are usually different."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "For the product $AB$ to be defined, the number of ___ of $A$ must equal the number of rows of $B$.",
+          "blanks": [
+            {
+              "accept": [
+                "columns"
+              ]
+            }
+          ],
+          "hints": [
+            "Inner dimensions.",
+            "Not rows."
+          ],
+          "feedbackIfWrong": "Columns of A must equal rows of B."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "If $A$ is $2\\times 3$ and $B$ is $3\\times 5$, what is the dimension of $AB$? (Enter as 2x5)",
+          "answer": "2x5",
+          "hints": [
+            "Outer dimensions.",
+            "Rows of A, columns of B."
+          ],
+          "feedbackIfWrong": "The product is $2\\times 5$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "The entry in row $i$, column $j$ of $AB$ is the dot product of row $i$ of $A$ and column ___ of $B$.",
+          "blanks": [
+            {
+              "accept": [
+                "j"
+              ]
+            }
+          ],
+          "hints": [
+            "The column index.",
+            "The second coordinate."
+          ],
+          "feedbackIfWrong": "Column j."
+        }
+      ]
+    },
+    {
+      "id": "properties-solving-equations",
+      "title": "Properties and Solving Matrix Equations",
+      "teacherCues": [
+        "Write the equation $3X + A = B$. Ask: How would you solve for $X$? (Subtract A, then divide by 3).",
+        "Show that matrix algebra follows similar rules to real numbers, but careful: division is multiplication by scalar reciprocal."
+      ],
+      "discoveryHook": {
+        "scenario": "Just like solving $3x + 2 = 8$ for a number, you can solve $3X + A = B$ for a matrix $X$. The same algebra rules apply, but with matrices you add and multiply by scalars."
+      },
+      "concept": {
+        "explanation": [
+          "Matrix algebra mimics real number algebra for addition and scalar multiplication: $X + A = B \\implies X = B - A$.",
+          "For scalar multiple: $cX = B \\implies X = \\frac{1}{c}B$ (if $c \\neq 0$).",
+          "Be careful: there is no matrix division. Instead, multiply by the reciprocal scalar.",
+          "Use the properties: $c(A+B) = cA + cB$, $(c+d)A = cA + dA$, etc."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Solving $2X - A = B$",
+            "headers": [
+              "Step",
+              "Operation"
+            ],
+            "rows": [
+              {
+                "0": "$2X - A = B$",
+                "1": "Add $A$ to both sides"
+              },
+              {
+                "0": "$2X = B + A$",
+                "1": "Multiply by $\\frac{1}{2}$"
+              },
+              {
+                "0": "$X = \\frac{1}{2}(B+A)$",
+                "1": "Substitute matrices and compute"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Matrix Equation Solving",
+          "formula": "Isolate $X$ using matrix addition/subtraction and scalar multiplication, just like ordinary algebra.",
+          "notes": [
+            "Add or subtract matrices from both sides.",
+            "Multiply both sides by the reciprocal scalar."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Solve $2X - A = B$",
+          "prompt": "Given $A = \\begin{bmatrix} 1 & 0 \\\\ -2 & 3 \\end{bmatrix}$, $B = \\begin{bmatrix} 5 & 2 \\\\ 1 & -1 \\end{bmatrix}$, find $X$.",
+          "steps": [
+            "Equation: $2X = B + A$.",
+            "$B + A = \\begin{bmatrix} 6 & 2 \\\\ -1 & 2 \\end{bmatrix}$.",
+            "$X = \\frac{1}{2}(B+A) = \\begin{bmatrix} 3 & 1 \\\\ -0.5 & 1 \\end{bmatrix}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Just isolate X",
+          "prompt": "Solve $X + 2A = 3B$ for $X$ (symbolically).",
+          "peerPrompt": "Discuss: What do you subtract? What do you multiply?",
+          "minLength": 2,
+          "steps": [
+            "$X = 3B - 2A$.",
+            "Then substitute given matrices if needed."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Quick solve",
+          "prompt": "If $3X = \\begin{bmatrix} 9 & -6 \\\\ 0 & 12 \\end{bmatrix}$, what is $X$?",
+          "steps": [
+            "Multiply by $\\frac{1}{3}$: $X = \\begin{bmatrix} 3 & -2 \\\\ 0 & 4 \\end{bmatrix}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "No matrix division",
+        "body": "You cannot 'divide' by a matrix. Instead, when solving $cX = B$, multiply by $\\frac{1}{c}$. For matrix multiplication equations like $AX = B$, solving involves inverse matrices (later)."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "To solve $5X = A$, multiply both sides by $\\frac{1}{5}$, which is the ___ of 5.",
+          "blanks": [
+            {
+              "accept": [
+                "reciprocal"
+              ]
+            }
+          ],
+          "hints": [
+            "The inverse under multiplication.",
+            "5 times what equals 1?"
+          ],
+          "feedbackIfWrong": "The reciprocal."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "If $2X + A = B$, then $X = \\frac{1}{2}(B - A)$. Suppose $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$, $B = \\begin{bmatrix} 5 & 6 \\\\ 7 & 8 \\end{bmatrix}$. Compute $B - A$ first. What is the entry in row 1, column 1 of $B - A$? (Enter a number)",
+          "answer": "4",
+          "hints": [
+            "5 - 1 = ?",
+            "Top-left corner."
+          ],
+          "feedbackIfWrong": "The entry is 4."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "Matrix addition is commutative, meaning $A + B = B +$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "A"
+              ]
+            }
+          ],
+          "hints": [
+            "The order doesn't matter.",
+            "Same as with real numbers."
+          ],
+          "feedbackIfWrong": "It equals $B + A$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-application",
+      "title": "Blueprint Aid – Application: Inventory Totals",
+      "teacherCues": [
+        "Pose: A store sells three products in two stores. Matrix A gives quantities sold on Monday, matrix B on Tuesday. Find total sales matrix $A+B$.",
+        "Then find the revenue matrix if each product has a price vector; multiply to get total revenue per store."
+      ],
+      "discoveryHook": {
+        "scenario": "A small business tracks daily sales as matrices. By adding Monday's and Tuesday's sales, they get the two-day total. Then multiplying by price gives revenue—matrix operations make this calculation fast and organized."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Let $A$ = sales matrix (rows = stores, columns = products). $B$ = Tuesday sales same format. Prices vector $P$ (column).",
+          "[[imp:Solve]]: Total sales = $A + B$. Total revenue per store = $(A+B)P$ (matrix multiplication).",
+          "[[imp:Conclude]]: The result is a column matrix showing revenue for each store."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Example Data",
+            "headers": [
+              "Store",
+              "Product1",
+              "Product2",
+              "Product3"
+            ],
+            "rows": [
+              {
+                "0": "Store 1 (Mon)",
+                "1": "10",
+                "2": "5",
+                "3": "8"
+              },
+              {
+                "0": "Store 2 (Mon)",
+                "1": "6",
+                "2": "12",
+                "3": "4"
+              },
+              {
+                "0": "Store 1 (Tue)",
+                "1": "7",
+                "2": "9",
+                "3": "6"
+              },
+              {
+                "0": "Store 2 (Tue)",
+                "1": "8",
+                "2": "5",
+                "3": "10"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Matrix Operations in Context",
+          "formula": "Total quantity matrix $T = A + B$. Revenue $R = T \\cdot P$, where $P$ is a column of prices.",
+          "notes": [
+            "Dimensions must align: $T$ (2×3), $P$ (3×1) → $R$ (2×1).",
+            "Each row of $R$ gives revenue for that store."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Compute total sales",
+          "prompt": "Given Monday $A = \\begin{bmatrix} 10 & 5 & 8 \\\\ 6 & 12 & 4 \\end{bmatrix}$, Tuesday $B = \\begin{bmatrix} 7 & 9 & 6 \\\\ 8 & 5 & 10 \\end{bmatrix}$, find total $T = A+B$.",
+          "steps": [
+            "Add corresponding entries: $10+7=17$, $5+9=14$, $8+6=14$, $6+8=14$, $12+5=17$, $4+10=14$.",
+            "Total sales matrix $T = \\begin{bmatrix} 17 & 14 & 14 \\\\ 14 & 17 & 14 \\end{bmatrix}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Find revenue",
+          "prompt": "Prices: product1 \\$10, product2 \\$20, product3 \\$15. Write price vector $P$ and compute $T \\cdot P$.",
+          "peerPrompt": "Set up $P = \\begin{bmatrix} 10 \\\\ 20 \\\\ 15 \\end{bmatrix}$. Work with partner to multiply $T$ by $P$ row by column.",
+          "minLength": 2,
+          "steps": [
+            "$P = \\begin{bmatrix} 10 \\\\ 20 \\\\ 15 \\end{bmatrix}$.",
+            "Row1 dot P: $17\\cdot10 + 14\\cdot20 + 14\\cdot15 = 170 + 280 + 210 = 660$.",
+            "Row2 dot P: $14\\cdot10 + 17\\cdot20 + 14\\cdot15 = 140 + 340 + 210 = 690$.",
+            "Revenue matrix $R = \\begin{bmatrix} 660 \\\\ 690 \\end{bmatrix}$. Store 1 \\$660, Store 2 \\$690."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Another price",
+          "prompt": "If prices changed to \\$8, \\$22, \\$12, find new revenue using the same $T$.",
+          "steps": [
+            "$P = \\begin{bmatrix} 8 \\\\ 22 \\\\ 12 \\end{bmatrix}$.",
+            "Store1: $17\\cdot8 + 14\\cdot22 + 14\\cdot12 = 136 + 308 + 168 = 612$.",
+            "Store2: $14\\cdot8 + 17\\cdot22 + 14\\cdot12 = 112 + 374 + 168 = 654$.",
+            "$R = \\begin{bmatrix} 612 \\\\ 654 \\end{bmatrix}$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Dimension check for multiplication",
+        "body": "When multiplying $T$ (2×3) by $P$ (3×1), inner dimensions (3=3) match, so it's defined. The result is 2×1."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "To find total sales from Monday and Tuesday matrices, we ___ them.",
+          "blanks": [
+            {
+              "accept": [
+                "add"
+              ]
+            }
+          ],
+          "hints": [
+            "Combine the corresponding entries.",
+            "The operation is addition."
+          ],
+          "feedbackIfWrong": "Add the matrices."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "In the example, what is the entry in row 1, column 2 of $T$ (total sales)? (Enter a number)",
+          "answer": "14",
+          "hints": [
+            "First store, second product.",
+            "5+9=14."
+          ],
+          "feedbackIfWrong": "The entry is 14."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "Multiplying the total sales matrix by the price vector gives the total ___ per store.",
+          "blanks": [
+            {
+              "accept": [
+                "revenue"
+              ]
+            }
+          ],
+          "hints": [
+            "Money earned.",
+            "It combines quantity and price."
+          ],
+          "feedbackIfWrong": "Revenue."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "On Wednesday, sales were half of Monday's. Write Wednesday sales matrix $C = \\frac{1}{2}A$. Then find total sales for all three days: $T = A + B + C$.",
+        "type": "short-answer",
+        "answer": "T = [[22, 16.5, 18], [17, 23, 16]]",
+        "hints": [
+          "Multiply each entry of A by 1/2.",
+          "Then add A, B, C entrywise."
+        ],
+        "feedbackIfWrong": "The three-day total sales matrix is [[22, 16.5, 18], [17, 23, 16]]."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

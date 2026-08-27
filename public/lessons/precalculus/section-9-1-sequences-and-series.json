@@ -1,0 +1,756 @@
+{
+  "type": "interactive-lesson",
+  "id": "section-9-1-sequences-and-series",
+  "title": "Sequences and Series",
+  "blocks": [
+    {
+      "id": "intro-sequences",
+      "title": "Introduction to Sequences",
+      "teacherCues": [
+        "Write $a_n = 3n - 2$. Ask: What are the first four terms? (Compute $n=1,2,3,4$.)",
+        "Show the pattern $1, 3, 5, 7, \\dots$ and ask: What is the apparent $n$th term? ($2n-1$)"
+      ],
+      "discoveryHook": {
+        "scenario": "A sequence is like a playlist — each song has a track number, and you can predict the next song if you know the pattern. Mathematically, sequences let you find any term without listing all previous ones."
+      },
+      "concept": {
+        "explanation": [
+          "An [[kw:infinite sequence]] is a function whose domain is the positive integers. The function values $a_1, a_2, a_3, \\dots$ are the terms.",
+          "To write terms, plug $n=1,2,3,\\dots$ into the formula for $a_n$.",
+          "To find an expression for the $n$th term, look for a pattern: arithmetic (constant difference), alternating signs ($(-1)^n$), or other patterns.",
+          "Sequences can be finite (stopping after a certain number of terms) or infinite."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Examples of Sequences",
+            "headers": [
+              "$n$",
+              "$a_n = 3n-2$",
+              "$a_n = \\frac{(-1)^n}{2n+1}$"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "$3(1)-2 = 1$",
+                "2": "$\\frac{-1}{3}$"
+              },
+              {
+                "0": "2",
+                "1": "$3(2)-2 = 4$",
+                "2": "$\\frac{1}{5}$"
+              },
+              {
+                "0": "3",
+                "1": "$3(3)-2 = 7$",
+                "2": "$\\frac{-1}{7}$"
+              },
+              {
+                "0": "4",
+                "1": "$3(4)-2 = 10$",
+                "2": "$\\frac{1}{9}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Sequence Notation",
+          "formula": "$a_n$ denotes the $n$th term. For example, $a_n = 3n-2$.",
+          "notes": [
+            "$n$ starts at $1$ (or sometimes $0$).",
+            "Plug in $n$ to get the term."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Evaluate terms",
+          "prompt": "Find the first four terms of $a_n = 2n+1$.",
+          "steps": [
+            "$n=1$: $a_1 = 2(1)+1 = 3$.",
+            "$n=2$: $a_2 = 2(2)+1 = 5$.",
+            "$n=3$: $a_3 = 2(3)+1 = 7$.",
+            "$n=4$: $a_4 = 2(4)+1 = 9$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Alternating signs",
+          "prompt": "Write the first four terms of $a_n = (-1)^n \\cdot \\frac{1}{2^n}$.",
+          "peerPrompt": "Explain to your partner: What happens to the sign when $n$ is even? When $n$ is odd? Compute the first four terms together.",
+          "minLength": 2,
+          "steps": [
+            "$n=1$: $(-1)^1 \\cdot \\frac{1}{2} = -\\frac12$.",
+            "$n=2$: $(-1)^2 \\cdot \\frac{1}{4} = +\\frac14$.",
+            "$n=3$: $(-1)^3 \\cdot \\frac{1}{8} = -\\frac18$.",
+            "$n=4$: $(-1)^4 \\cdot \\frac{1}{16} = +\\frac1{16}$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find the $n$th term",
+          "prompt": "What is the apparent $n$th term of the sequence $1, 5, 9, 13, \\dots$?",
+          "steps": [
+            "Notice each term increases by $4$. So pattern is $4n - 3$.",
+            "Check: $n=1$: $4(1)-3=1$; $n=2$: $4(2)-3=5$; matches.",
+            "So $a_n = 4n-3$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Don't confuse $a_n$ with $f(n)$",
+        "body": "Sequences use subscript notation. $a_3$ means the third term. It's just like a function: $a_n$ instead of $f(n)$."
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "type": "fill-blank",
+          "prompt": "The function values of a sequence are called ___.",
+          "blanks": [
+            {
+              "accept": [
+                "terms"
+              ]
+            }
+          ],
+          "hints": [
+            "They are the numbers in the list.",
+            "What do you call each element?"
+          ],
+          "feedbackIfWrong": "They are the terms of the sequence."
+        },
+        {
+          "id": "q2",
+          "type": "short-answer",
+          "prompt": "For $a_n = 2n+1$, what is the third term $a_3$? (Enter a number)",
+          "answer": "7",
+          "hints": [
+            "Plug $n=3$.",
+            "$2(3)+1 = 7$."
+          ],
+          "feedbackIfWrong": "$a_3 = 7$."
+        },
+        {
+          "id": "q3",
+          "type": "fill-blank",
+          "prompt": "A sequence whose terms alternate in sign can be written using $(-1)^n$ or $(-1)^{n+1}$ as a ___.",
+          "blanks": [
+            {
+              "accept": [
+                "factor"
+              ]
+            }
+          ],
+          "hints": [
+            "It multiplies the rest of the term.",
+            "It flips the sign each time."
+          ],
+          "feedbackIfWrong": "It is a factor that alternates the sign."
+        }
+      ]
+    },
+    {
+      "id": "recursive-sequences",
+      "title": "Recursive Sequences",
+      "teacherCues": [
+        "Write $a_1 = 3$, $a_k = 2a_{k-1} + 1$ for $k \\ge 2$. Ask: How do we find $a_2$? (use $a_1$).",
+        "Introduce the Fibonacci sequence: $a_0=1, a_1=1$, $a_k = a_{k-2}+a_{k-1}$."
+      ],
+      "discoveryHook": {
+        "scenario": "Some sequences are like a chain reaction: each new term is built from the previous ones. The famous Fibonacci sequence appears in flower petals, pinecones, and even rabbit populations."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:recursive sequence]] defines each term using one or more previous terms. You must be given the first term(s) to start.",
+          "For $a_k = 2a_{k-1}+1$ with $a_1=3$, we compute $a_2$ from $a_1$, then $a_3$ from $a_2$, etc.",
+          "The [[kw:Fibonacci sequence]] is a classic recursive sequence: $F_0=1, F_1=1$, and $F_k = F_{k-2}+F_{k-1}$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Recursive Example",
+            "headers": [
+              "Step",
+              "Formula",
+              "Value"
+            ],
+            "rows": [
+              {
+                "0": "$a_1$",
+                "1": "Given",
+                "2": "3"
+              },
+              {
+                "0": "$a_2$",
+                "1": "$2a_1+1$",
+                "2": "7"
+              },
+              {
+                "0": "$a_3$",
+                "1": "$2a_2+1$",
+                "2": "15"
+              },
+              {
+                "0": "$a_4$",
+                "1": "$2a_3+1$",
+                "2": "31"
+              },
+              {
+                "0": "$a_5$",
+                "1": "$2a_4+1$",
+                "2": "63"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Recursive Definition",
+          "formula": "$a_1 = 3$; $a_k = 2a_{k-1}+1$ for $k \\ge 2$.",
+          "notes": [
+            "First term must be given.",
+            "Use the previous term to get the next."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Apply recursion",
+          "prompt": "Given $a_1 = 6$, $a_{k+1} = a_k + 1$ for $k \\ge 1$, find the first five terms.",
+          "steps": [
+            "$a_1 = 6$.",
+            "$a_2 = a_1+1 = 7$.",
+            "$a_3 = a_2+1 = 8$.",
+            "$a_4 = a_3+1 = 9$.",
+            "$a_5 = a_4+1 = 10$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Fibonacci",
+          "prompt": "Write the first six terms of the Fibonacci sequence: $a_0=1$, $a_1=1$, $a_k = a_{k-2}+a_{k-1}$ for $k \\ge 2$.",
+          "peerPrompt": "Explain to your partner: How do you get $a_2$? (add $a_0$ and $a_1$). Then continue the pattern.",
+          "minLength": 2,
+          "steps": [
+            "$a_0=1$, $a_1=1$.",
+            "$a_2 = 1+1 = 2$.",
+            "$a_3 = 1+2 = 3$.",
+            "$a_4 = 2+3 = 5$.",
+            "$a_5 = 3+5 = 8$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Another recursion",
+          "prompt": "Given $a_0=1$, $a_1=3$, $a_k = a_{k-2}+a_{k-1}$ for $k \\ge 2$, find the first five terms (starting from $a_0$).",
+          "steps": [
+            "$a_0=1$, $a_1=3$.",
+            "$a_2 = 1+3 = 4$.",
+            "$a_3 = 3+4 = 7$.",
+            "$a_4 = 4+7 = 11$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Index shift",
+        "body": "Be careful: if the recurrence starts at $k=2$, then $a_2$ uses $a_1$ and $a_0$. Make sure you know the first given term(s)."
+      },
+      "questions": [
+        {
+          "id": "q4",
+          "type": "fill-blank",
+          "prompt": "In a recursive sequence, each term is defined using one or more ___ terms.",
+          "blanks": [
+            {
+              "accept": [
+                "previous"
+              ]
+            }
+          ],
+          "hints": [
+            "Terms that came before.",
+            "Not future terms."
+          ],
+          "feedbackIfWrong": "It uses previous terms."
+        },
+        {
+          "id": "q5",
+          "type": "short-answer",
+          "prompt": "For $a_1=6$, $a_{k+1}=a_k+1$, what is $a_3$? (Enter a number)",
+          "answer": "8",
+          "hints": [
+            "$a_2 = 7$, then $a_3 = a_2+1 = 8$.",
+            "Just add 1 each time."
+          ],
+          "feedbackIfWrong": "$a_3 = 8$."
+        },
+        {
+          "id": "q6",
+          "type": "fill-blank",
+          "prompt": "The Fibonacci sequence is defined by $a_k = a_{k-2} +$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "a_{k-1}",
+                "a_{k-1}"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the term just before $a_k$.",
+            "The previous term."
+          ],
+          "feedbackIfWrong": "It's $a_{k-2} + a_{k-1}$."
+        }
+      ]
+    },
+    {
+      "id": "factorials",
+      "title": "Factorial Notation",
+      "teacherCues": [
+        "Write $5! = 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1$. Ask: What is $0!$? (1).",
+        "Simplify $\\frac{n!}{(n-1)!}$ by expanding and canceling."
+      ],
+      "discoveryHook": {
+        "scenario": "Factorials grow incredibly fast — $10!$ is already over 3.6 million. They appear in counting problems, probability, and many sequence formulas."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:factorial]] of a positive integer $n$, written $n!$, is the product of all positive integers from $1$ to $n$: $n! = 1 \\cdot 2 \\cdot 3 \\cdots n$.",
+          "Special case: $0! = 1$.",
+          "Factorials can be simplified by canceling common factors: $\\frac{n!}{(n-1)!} = n$.",
+          "When fractions contain factorials, expand and divide out common terms."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Factorial Simplification",
+            "headers": [
+              "Expression",
+              "Expansion",
+              "Simplified"
+            ],
+            "rows": [
+              {
+                "0": "$\\frac{8!}{2!\\cdot6!}$",
+                "1": "$\\frac{1\\cdot2\\cdot3\\cdot4\\cdot5\\cdot6\\cdot7\\cdot8}{1\\cdot2 \\cdot 1\\cdot2\\cdot3\\cdot4\\cdot5\\cdot6}$",
+                "2": "$\\frac{7\\cdot8}{2} = 28$"
+              },
+              {
+                "0": "$\\frac{n!}{(n-1)!}$",
+                "1": "$\\frac{1\\cdot2\\cdots (n-1)\\cdot n}{1\\cdot2\\cdots (n-1)}$",
+                "2": "$n$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Factorial Definition",
+          "formula": "$n! = 1 \\cdot 2 \\cdot 3 \\cdots (n-1) \\cdot n$, $0! = 1$.",
+          "notes": [
+            "$n!$ grows very fast.",
+            "Cancel common factors before multiplying large numbers."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Simplify $\\frac{6!}{4!}$",
+          "prompt": "Simplify $\\frac{6!}{4!}$.",
+          "steps": [
+            "Expand: $6! = 6 \\cdot 5 \\cdot 4!$.",
+            "Cancel $4!$: $\\frac{6 \\cdot 5 \\cdot 4!}{4!} = 6 \\cdot 5 = 30$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Simplify with variables",
+          "prompt": "Simplify $\\frac{n!}{(n-2)!}$.",
+          "peerPrompt": "Explain to your partner: Expand $n!$ as $n(n-1)(n-2)!$, then cancel.",
+          "minLength": 2,
+          "steps": [
+            "$n! = n(n-1)(n-2)!$.",
+            "$\\frac{n(n-1)(n-2)!}{(n-2)!} = n(n-1) = n^2 - n$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Sequence with factorials",
+          "prompt": "Write the first three terms of $a_n = \\frac{2^n}{n!}$ (begin with $n=0$).",
+          "steps": [
+            "$n=0$: $a_0 = \\frac{2^0}{0!} = \\frac{1}{1} = 1$.",
+            "$n=1$: $a_1 = \\frac{2^1}{1!} = 2$.",
+            "$n=2$: $a_2 = \\frac{2^2}{2!} = \\frac{4}{2} = 2$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "$0!$ is $1$",
+        "body": "Don't forget that $0! = 1$. This definition makes formulas work for $n=0$."
+      },
+      "questions": [
+        {
+          "id": "q7",
+          "type": "fill-blank",
+          "prompt": "$5! = 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1 =$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "120"
+              ]
+            }
+          ],
+          "hints": [
+            "Multiply them.",
+            "$5\\times4=20$, $20\\times3=60$, $60\\times2=120$."
+          ],
+          "feedbackIfWrong": "$5! = 120$."
+        },
+        {
+          "id": "q8",
+          "type": "short-answer",
+          "prompt": "Simplify $\\frac{7!}{5!}$. (Enter a number)",
+          "answer": "42",
+          "hints": [
+            "$7! = 7\\cdot6\\cdot5!$.",
+            "Cancel $5!$, leaving $7\\cdot6 = 42$."
+          ],
+          "feedbackIfWrong": "$\\frac{7!}{5!} = 42$."
+        },
+        {
+          "id": "q9",
+          "type": "fill-blank",
+          "prompt": "By definition, $0!$ equals ___.",
+          "blanks": [
+            {
+              "accept": [
+                "1",
+                "one"
+              ]
+            }
+          ],
+          "hints": [
+            "It's a special case.",
+            "Not zero."
+          ],
+          "feedbackIfWrong": "$0! = 1$."
+        }
+      ]
+    },
+    {
+      "id": "summation-notation",
+      "title": "Summation Notation (Sigma Notation)",
+      "teacherCues": [
+        "Write $\\sum_{i=1}^{4} (2i+1)$. Show that it means $(2(1)+1)+(2(2)+1)+(2(3)+1)+(2(4)+1)$.",
+        "Explain properties: $\\sum c a_i = c \\sum a_i$, $\\sum (a_i+b_i) = \\sum a_i + \\sum b_i$."
+      ],
+      "discoveryHook": {
+        "scenario": "Summation (sigma) notation is a compact way to write the sum of many terms—like a quick order for a long grocery list. Instead of writing all items, you just give the formula and the range."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Summation notation]] uses the Greek letter sigma $\\Sigma$. $\\sum_{i=1}^{n} a_i$ means $a_1 + a_2 + \\cdots + a_n$.",
+          "$i$ is the index of summation, $1$ is the lower limit, $n$ is the upper limit.",
+          "Properties: $\\sum_{i=1}^{n} c = cn$; $\\sum c a_i = c \\sum a_i$; $\\sum (a_i \\pm b_i) = \\sum a_i \\pm \\sum b_i$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Summation Example",
+            "headers": [
+              "$i$",
+              "$2i+1$"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "$3$"
+              },
+              {
+                "0": "2",
+                "1": "$5$"
+              },
+              {
+                "0": "3",
+                "1": "$7$"
+              },
+              {
+                "0": "4",
+                "1": "$9$"
+              },
+              {
+                "0": "Sum",
+                "1": "$3+5+7+9 = 24$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Summation Notation",
+          "formula": "$$\\sum_{i=1}^{n} a_i = a_1 + a_2 + \\cdots + a_n$$",
+          "notes": [
+            "The index $i$ runs from the lower limit to the upper limit.",
+            "The sum of the first $n$ terms of a sequence is called the $n$th [[kw:partial sum]]."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Evaluate a sum",
+          "prompt": "Find $\\sum_{i=1}^{4} (2i+1)$.",
+          "steps": [
+            "List terms: $i=1: 3$, $i=2: 5$, $i=3: 7$, $i=4: 9$.",
+            "Add: $3+5+7+9 = 24$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Use properties",
+          "prompt": "Evaluate $\\sum_{k=1}^{5} 3k$ using the property $\\sum c a_i = c \\sum a_i$.",
+          "peerPrompt": "Explain to your partner: Pull out the 3, then find $\\sum_{k=1}^{5} k = 1+2+3+4+5 = 15$, then multiply by 3.",
+          "minLength": 2,
+          "steps": [
+            "$\\sum_{k=1}^{5} 3k = 3 \\sum_{k=1}^{5} k = 3(1+2+3+4+5) = 3(15) = 45$."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Write in sigma notation",
+          "prompt": "Write the sum $1+4+9+16+25$ using sigma notation.",
+          "steps": [
+            "Recognize the terms are squares: $1^2, 2^2, 3^2, 4^2, 5^2$.",
+            "So $\\sum_{i=1}^{5} i^2$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Limits don't have to start at 1",
+        "body": "The lower limit can be any integer, e.g., $\\sum_{k=3}^{6} k^2 = 9+16+25+36$."
+      },
+      "questions": [
+        {
+          "id": "q10",
+          "type": "fill-blank",
+          "prompt": "The Greek letter $\\Sigma$ is used to represent ___ notation.",
+          "blanks": [
+            {
+              "accept": [
+                "summation",
+                "sigma"
+              ]
+            }
+          ],
+          "hints": [
+            "It's called sigma notation.",
+            "It means to add up."
+          ],
+          "feedbackIfWrong": "It's summation (or sigma) notation."
+        },
+        {
+          "id": "q11",
+          "type": "short-answer",
+          "prompt": "Find $\\sum_{i=1}^{3} i^2$. (Enter a number)",
+          "answer": "14",
+          "hints": [
+            "$1^2 + 2^2 + 3^2 = 1+4+9$.",
+            "Sum is 14."
+          ],
+          "feedbackIfWrong": "The sum is $14$."
+        },
+        {
+          "id": "q12",
+          "type": "fill-blank",
+          "prompt": "$\\sum_{i=1}^{n} c = c \\cdot$ ___.",
+          "blanks": [
+            {
+              "accept": [
+                "n"
+              ]
+            }
+          ],
+          "hints": [
+            "Adding the constant $c$, $n$ times.",
+            "It's the number of terms."
+          ],
+          "feedbackIfWrong": "It equals $c \\cdot n$."
+        }
+      ]
+    },
+    {
+      "id": "blueprint-aid-application",
+      "title": "Blueprint Aid – Total Distance Walked",
+      "teacherCues": [
+        "Pose: You walk 2 miles the first day, and increase by 0.5 miles each day. Write a formula for the distance on day $n$, then find the total distance after 7 days using summation.",
+        "Outline: Understand (write sequence), Solve (find terms, sum using sigma), Conclude (interpret total)."
+      ],
+      "discoveryHook": {
+        "scenario": "Training for a marathon, you start with 2 miles and add half a mile each day. After a week, how far have you run in total? Sequences and summation give you the answer without adding 7 numbers manually."
+      },
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Let $a_n$ = distance on day $n$. $a_1 = 2$, and each day increases by $0.5$: $a_n = 2 + 0.5(n-1)$.",
+          "[[imp:Solve]]: Total distance in 7 days = $\\sum_{n=1}^{7} a_n = \\sum_{n=1}^{7} [2 + 0.5(n-1)]$.",
+          "Compute terms: $n=1:2$, $n=2:2.5$, $n=3:3$, $n=4:3.5$, $n=5:4$, $n=6:4.5$, $n=7:5$. Sum $= 24.5$ miles.",
+          "[[imp:Conclude]]: After one week, you will have walked a total of $24.5$ miles."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Daily Distances",
+            "headers": [
+              "Day $n$",
+              "Distance $a_n$"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "2.0"
+              },
+              {
+                "0": "2",
+                "1": "2.5"
+              },
+              {
+                "0": "3",
+                "1": "3.0"
+              },
+              {
+                "0": "4",
+                "1": "3.5"
+              },
+              {
+                "0": "5",
+                "1": "4.0"
+              },
+              {
+                "0": "6",
+                "1": "4.5"
+              },
+              {
+                "0": "7",
+                "1": "5.0"
+              },
+              {
+                "0": "Total",
+                "1": "24.5"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "title": "Arithmetic Sequence Sum",
+          "formula": "$a_n = a_1 + (n-1)d$; Sum $= \\sum_{i=1}^{n} a_i$.",
+          "notes": [
+            "Here $d$ is the common difference ($0.5$).",
+            "You can also use the formula for sum of arithmetic series."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Write the formula",
+          "prompt": "Write the explicit formula for the distance on day $n$ if you start with $2$ miles and increase by $0.5$ each day.",
+          "steps": [
+            "First term $a_1 = 2$, common difference $d = 0.5$.",
+            "Explicit formula: $a_n = a_1 + (n-1)d = 2 + 0.5(n-1)$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Compute total distance",
+          "prompt": "Find the total distance walked over 7 days using summation.",
+          "peerPrompt": "Set up $\\sum_{n=1}^{7} [2+0.5(n-1)]$. Work with your partner to list the 7 terms and add them.",
+          "minLength": 2,
+          "steps": [
+            "List: $2, 2.5, 3, 3.5, 4, 4.5, 5$.",
+            "Sum: $2+2.5=4.5$, $+3=7.5$, $+3.5=11$, $+4=15$, $+4.5=19.5$, $+5=24.5$.",
+            "Total = $24.5$ miles."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Different starting point",
+          "prompt": "If you start with $1.5$ miles and increase by $0.8$ miles each day, find the total distance after 5 days.",
+          "steps": [
+            "$a_n = 1.5 + 0.8(n-1)$. Terms: $1.5, 2.3, 3.1, 3.9, 4.7$.",
+            "Sum $= 1.5+2.3+3.1+3.9+4.7 = 15.5$ miles."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Check your index",
+        "body": "For $a_n = 2 + 0.5(n-1)$, when $n=1$, $a_1 = 2$ as desired. If you wrote $2+0.5n$, you'd get $2.5$ for day 1, which is wrong."
+      },
+      "questions": [
+        {
+          "id": "q13",
+          "type": "fill-blank",
+          "prompt": "In the walking example, the daily distance increases by a constant amount, so the sequence is ___.",
+          "blanks": [
+            {
+              "accept": [
+                "arithmetic"
+              ]
+            }
+          ],
+          "hints": [
+            "Adding the same number each step.",
+            "Starts with 'a'."
+          ],
+          "feedbackIfWrong": "It's an arithmetic sequence."
+        },
+        {
+          "id": "q14",
+          "type": "short-answer",
+          "prompt": "What is the distance on day 4 in the original problem? (Enter a number with one decimal)",
+          "answer": "3.5",
+          "hints": [
+            "Use $a_4 = 2 + 0.5(3) = 2 + 1.5 = 3.5$.",
+            "Or from the table."
+          ],
+          "feedbackIfWrong": "Day 4 distance is $3.5$ miles."
+        },
+        {
+          "id": "q15",
+          "type": "fill-blank",
+          "prompt": "The total distance over 7 days is found by taking the ___ of the distances from day 1 to day 7.",
+          "blanks": [
+            {
+              "accept": [
+                "sum"
+              ]
+            }
+          ],
+          "hints": [
+            "Add them all together.",
+            "Operation is addition."
+          ],
+          "feedbackIfWrong": "The sum of the distances."
+        }
+      ],
+      "challengeCorner": {
+        "prompt": "A staircase has 10 steps. The first step is 6 inches high, and each subsequent step is 0.5 inches taller than the previous one. Find the total height of the staircase (sum of step heights).",
+        "type": "short-answer",
+        "answer": "82.5 inches",
+        "hints": [
+          "Sequence: $a_n = 6 + 0.5(n-1)$. Sum from $n=1$ to $10$.",
+          "Use arithmetic series formula or list and add: $6, 6.5, 7, \\dots, 10.5$. Sum $= \\frac{10}{2}(6+10.5) = 5(16.5) = 82.5$."
+        ],
+        "feedbackIfWrong": "The total height is $82.5$ inches."
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

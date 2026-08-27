@@ -1,0 +1,764 @@
+{
+  "title": "Solving Logarithmic Equations",
+  "blocks": [
+    {
+      "confusionCorner": {
+        "title": "Don't Forget to Isolate!",
+        "body": "Before taking logarithms, always isolate the exponential expression. In $3e^{4x} + 9 = 15$, subtracting 9 and dividing by 3 gives $e^{4x} = 2$ first. [[imp:Isolating the power is step one.]]"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Situation",
+              "Method",
+              "Example"
+            ],
+            "rows": [
+              {
+                "0": "Same base possible",
+                "1": "Rewrite each side with the same base; set exponents equal.",
+                "2": "$4^{x} = 8 \\rightarrow 2^{2x} = 2^{3} \\rightarrow x = \\frac{3}{2}$"
+              },
+              {
+                "0": "Different bases",
+                "1": "Take $\\log$ or $\\ln$ of both sides; use Power Property.",
+                "2": "$2^x = 7 \\rightarrow \\ln(2^x) = \\ln 7 \\rightarrow x \\ln 2 = \\ln 7$"
+              }
+            ],
+            "title": "Strategies for Solving Exponential Equations"
+          }
+        ],
+        "explanation": [
+          "An [[kw:exponential equation]] has a variable in the exponent, like $3^{x+1} = 9$ or $2^x = 7$.",
+          "If both sides can be written as powers of the same base, use the [[kw:Property of Equality for Exponential Equations]]: if $b^x = b^y$, then $x = y$.",
+          "If the bases cannot be made the same, take the logarithm of both sides. You can use any base, but common ($\\log$) or natural ($\\ln$) are most practical.",
+          "After taking the log, use the Power Property to bring the exponent down: $\\log_b(a^x) = x \\log_b a$. Then solve for the variable.",
+          "Always check solutions in the original equation to ensure they are valid."
+        ],
+        "formulaCard": {
+          "formula": "$$ b^x = b^y \\iff x = y \\quad (b>0, b\\neq 1) $$ $$ a^x = c \\implies x \\log a = \\log c $$",
+          "legend": [
+            {
+              "symbol": "$b$",
+              "meaning": "positive base not equal to 1",
+              "tone": "core"
+            },
+            {
+              "tone": "subtle",
+              "symbol": "$x, y$",
+              "meaning": "exponents"
+            }
+          ]
+        }
+      },
+      "id": "solving-exponential-equations",
+      "title": "Solving Exponential Equations",
+      "examples": [
+        {
+          "steps": [
+            "Rewrite $100$ as $10^2$ and $\\frac{1}{10}$ as $10^{-1}$: $(10^2)^x = (10^{-1})^{x-3}$.",
+            "Simplify exponents: $10^{2x} = 10^{-x+3}$.",
+            "Since bases are equal, set exponents equal: $2x = -x + 3$.",
+            "Solve: $3x = 3 \\rightarrow x = 1$.",
+            "Check: $100^1 = 100$, $\\left(\\frac{1}{10}\\right)^{-2} = 100$. Correct."
+          ],
+          "role": "guided",
+          "prompt": "Solve $100^x = \\left( \\frac{1}{10} \\right)^{x-3}$.",
+          "title": "Example A — Same Base Strategy"
+        },
+        {
+          "minLength": 8,
+          "prompt": "Solve $2^x = 7$ by taking the natural logarithm of each side.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does taking $\\ln$ of both sides help? What property of logarithms allows us to bring the exponent down?",
+          "role": "peer-explain",
+          "title": "Example B — Taking Logarithms",
+          "steps": [
+            "Take $\\ln$ of both sides: $\\ln(2^x) = \\ln 7$.",
+            "Use Power Property: $x \\ln 2 = \\ln 7$.",
+            "Divide: $x = \\frac{\\ln 7}{\\ln 2} \\approx \\frac{1.9459}{0.6931} \\approx 2.807$.",
+            "Check graphically or with calculator: $2^{2.807} \\approx 7$."
+          ]
+        },
+        {
+          "steps": [
+            "Isolate the exponential term: $3e^{4x} = 6 \\rightarrow e^{4x} = 2$.",
+            "Take $\\ln$ of both sides: $\\ln e^{4x} = \\ln 2$.",
+            "Simplify using inverse property: $4x = \\ln 2$.",
+            "Divide by 4: $x = \\frac{\\ln 2}{4} \\approx 0.173$."
+          ],
+          "role": "independent",
+          "title": "Example C — Solving $3e^{4x} + 9 = 15$",
+          "prompt": "Solve $3e^{4x} + 9 = 15$."
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "The Property of Equality for Exponential Equations requires this condition.",
+            "Both sides are powers of 5."
+          ],
+          "feedbackIfWrong": "When bases are the same, exponents must be equal.",
+          "blanks": [
+            {
+              "accept": [
+                "same"
+              ]
+            }
+          ],
+          "id": "q6-6-1",
+          "prompt": "To solve $5^{2x} = 5^{x+3}$, you can set the exponents equal because the bases are the ___."
+        },
+        {
+          "prompt": "Solve $10^x = 1000$. What is $x$?",
+          "answers": [
+            "3",
+            "three"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "Rewrite 1000 as a power of 10.",
+            "$1000 = 10^3$."
+          ],
+          "id": "q6-6-2",
+          "feedbackIfWrong": "$10^x = 10^3$, so $x = 3$."
+        },
+        {
+          "prompt": "What logarithm property is used to rewrite $\\ln(2^x)$ as $x \\ln 2$?",
+          "answers": [
+            "Power Property",
+            "power property"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "It moves the exponent to the front.",
+            "The property that handles exponents inside a log."
+          ],
+          "feedbackIfWrong": "The Power Property of logarithms: $\\log_b(m^n) = n \\log_b m$.",
+          "id": "q6-6-3"
+        }
+      ],
+      "teacherCues": [
+        "Write $2^x = 7$ and ask: How can we solve for $x$ if we can't write both sides with the same base?",
+        "Show that taking the logarithm of both sides 'brings down' the exponent: $\\log 2^x = x \\log 2$."
+      ],
+      "discoveryHook": {
+        "scenario": "When an unknown is trapped in an exponent, logarithms are the key to freeing it. By taking the log of both sides, we can bring the exponent down and solve—just like using inverse operations."
+      }
+    },
+    {
+      "concept": {
+        "explanation": [
+          "A [[kw:logarithmic equation]] contains a logarithm of a variable expression, such as $\\log_3(x+2) = 5$.",
+          "If both sides are logs with the same base, use the [[kw:Property of Equality for Logarithmic Equations]]: if $\\log_b X = \\log_b Y$, then $X = Y$.",
+          "If the equation has a single logarithm equal to a number, rewrite in exponential form: $\\log_b u = v \\iff b^v = u$.",
+          "When there are multiple logs, condense them using the Product or Quotient Properties before exponentiating.",
+          "[[imp:Always check for extraneous solutions]]—the argument of each logarithm must be positive."
+        ],
+        "formulaCard": {
+          "formula": "$$ \\log_b u = v \\iff b^v = u $$ $$ \\log_b X = \\log_b Y \\iff X = Y $$",
+          "legend": [
+            {
+              "meaning": "argument (must be $>0$)",
+              "symbol": "$u$",
+              "tone": "core"
+            },
+            {
+              "meaning": "base ($b>0, b\\neq 1$)",
+              "tone": "core",
+              "symbol": "$b$"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Form",
+              "Method"
+            ],
+            "variant": "colorful",
+            "title": "Strategies for Logarithmic Equations",
+            "type": "table",
+            "rows": [
+              {
+                "0": "$\\log_b X = \\log_b Y$",
+                "1": "Set $X = Y$ and solve (check domain)."
+              },
+              {
+                "0": "$\\log_b u = v$",
+                "1": "Rewrite as $b^v = u$."
+              },
+              {
+                "0": "Multiple logs",
+                "1": "Condense into a single log, then rewrite in exponential form."
+              }
+            ]
+          }
+        ]
+      },
+      "teacherCues": [
+        "Write $\\log_2(x-1) = 3$ and ask: How can we rewrite this without the log?",
+        "Show that exponentiating both sides with base 2 gives $x-1 = 2^3$."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Solve $\\ln(4x-7) = \\ln(x+5)$.",
+          "steps": [
+            "Since natural logs are equal, arguments must be equal: $4x-7 = x+5$.",
+            "Solve: $3x = 12 \\rightarrow x = 4$.",
+            "Check domain: $4x-7 = 9 > 0$, $x+5 = 9 > 0$. Valid.",
+            "Solution: $x = 4$."
+          ],
+          "title": "Example A — Logs on Both Sides"
+        },
+        {
+          "title": "Example B — Log Equal to a Number",
+          "prompt": "Solve $\\log_2(5x-17) = 3$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: How do you rewrite this equation without a logarithm? What operation undoes a log base 2?",
+          "minLength": 8,
+          "steps": [
+            "Rewrite in exponential form: $5x-17 = 2^3$.",
+            "Simplify: $5x-17 = 8$.",
+            "Solve: $5x = 25 \\rightarrow x = 5$.",
+            "Check domain: $5x-17 = 8 > 0$. Valid."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Condense: $\\log[2x(x-5)] = 2$.",
+            "Rewrite in exponential form: $2x(x-5) = 10^2 = 100$.",
+            "Expand: $2x^2 - 10x - 100 = 0 \\rightarrow x^2 - 5x - 50 = 0$.",
+            "Factor: $(x-10)(x+5) = 0$, so $x = 10$ or $x = -5$.",
+            "Check: $x=10$ gives $\\log 20 + \\log 5 = 2$ ✓; $x=-5$ gives $\\log(-10)$, undefined ✗. Solution: $x=10$."
+          ],
+          "role": "independent",
+          "title": "Example C — Multiple Logs with Extraneous Check",
+          "prompt": "Solve $\\log 2x + \\log(x-5) = 2$."
+        }
+      ],
+      "title": "Solving Logarithmic Equations",
+      "id": "solving-logarithmic-equations",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "q6-6-4",
+          "hints": [
+            "The right side becomes the base raised to the power of the log.",
+            "$3^4 = 81$."
+          ],
+          "prompt": "To solve $\\log_3(x+2) = 4$, rewrite in exponential form as $x+2 = 3^{___}$.",
+          "blanks": [
+            {
+              "accept": [
+                "4",
+                "four"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Exponential form: $x+2 = 3^4 = 81$."
+        },
+        {
+          "feedbackIfWrong": "$2x = 1 \\rightarrow x = 0.5$.",
+          "type": "short-answer",
+          "answers": [
+            "0.5",
+            "1/2",
+            "0.5",
+            "1\\/2"
+          ],
+          "hints": [
+            "Rewrite as $2x = e^0$.",
+            "$e^0 = 1$."
+          ],
+          "prompt": "Solve $\\ln(2x) = 0$. What is $x$?",
+          "id": "q6-6-5"
+        },
+        {
+          "prompt": "When solving $\\log(x-2) = 3$, why must $x$ be greater than 2?",
+          "type": "short-answer",
+          "hints": [
+            "The argument of a logarithm must be positive.",
+            "Set $x-2 > 0$."
+          ],
+          "answers": [
+            "argument positive",
+            "domain"
+          ],
+          "feedbackIfWrong": "Because the argument $x-2$ must be positive, so $x > 2$.",
+          "id": "q6-6-6"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A log equation like $\\log_2(x-1) = 3$ asks '2 to what power gives $x-1$?' We can answer by exponentiating—raising 2 to both sides—instantly freeing the variable."
+      },
+      "confusionCorner": {
+        "title": "Extraneous Solutions Are Common",
+        "body": "When solving log equations, you must check every solution in the original equation. If any argument becomes zero or negative, the solution is [[imp:extraneous]] and must be discarded."
+      }
+    },
+    {
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Substitute: $100 = (212-70)e^{-0.046t} + 70$.",
+            "Simplify: $100 = 142e^{-0.046t} + 70$ → $30 = 142e^{-0.046t}$.",
+            "Divide by 142: $e^{-0.046t} = \\frac{30}{142} \\approx 0.211$.",
+            "Take $\\ln$: $-0.046t = \\ln 0.211 \\approx -1.556$.",
+            "Solve: $t \\approx \\frac{-1.556}{-0.046} \\approx 33.8$ minutes. Wait about 34 minutes."
+          ],
+          "title": "Example A — Cooling Stew",
+          "prompt": "A stew is taken off the stove at $212^\\circ$F. Room temperature is $70^\\circ$F, cooling rate $r=0.046$. How long to cool to $100^\\circ$F?"
+        },
+        {
+          "minLength": 8,
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: Look at the formula. If $T_R$ increases, does the difference $T_0 - T_R$ increase or decrease? How does that affect the cooling time?",
+          "title": "Example B — Adjusting Room Temperature",
+          "steps": [
+            "The cooling rate depends on the temperature difference $T_0 - T_R$.",
+            "If $T_R$ is higher (75 instead of 70), the difference is smaller (212-75 = 137 vs 142).",
+            "A smaller temperature difference means slower cooling, so it will take longer to reach 100°F.",
+            "This makes sense: a warm room cools food more slowly than a cold room."
+          ],
+          "role": "peer-explain",
+          "prompt": "If the room temperature is $75^\\circ$F instead of $70^\\circ$F, will the stew cool faster or slower? Explain using the formula."
+        },
+        {
+          "prompt": "An overheated car engine at $280^\\circ$F can be driven at $230^\\circ$F. Outside temp is $80^\\circ$F, cooling rate $r=0.0058$. Find the wait time.",
+          "title": "Example C — Car Engine Cooling",
+          "role": "independent",
+          "steps": [
+            "Model: $230 = (280-80)e^{-0.0058t} + 80$.",
+            "Simplify: $230 = 200e^{-0.0058t} + 80$ → $150 = 200e^{-0.0058t}$.",
+            "$e^{-0.0058t} = 0.75$. Take $\\ln$: $-0.0058t = \\ln 0.75 \\approx -0.2877$.",
+            "$t \\approx \\frac{-0.2877}{-0.0058} \\approx 49.6$ minutes."
+          ]
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "[[kw:Newton's Law of Cooling]] models the temperature $T$ of a cooling object: $$ T = (T_0 - T_R)e^{-rt} + T_R $$",
+          "$T_0$ = initial temperature, $T_R$ = surrounding room temperature, $r$ = cooling rate, $t$ = time.",
+          "To find the time $t$ to reach a certain temperature, substitute the known values and solve the resulting exponential equation.",
+          "Isolate the exponential term, then take the natural log of both sides. Use the inverse property $\\ln e^x = x$.",
+          "Interpret the result in context and check that it makes sense (time should be positive)."
+        ],
+        "visuals": [
+          {
+            "title": "Steps for Newton's Law of Cooling",
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              {
+                "0": "1",
+                "1": "Substitute known values for $T$, $T_0$, $T_R$, and $r$."
+              },
+              {
+                "0": "2",
+                "1": "Isolate the exponential term $e^{-rt}$."
+              },
+              {
+                "0": "3",
+                "1": "Take natural log of both sides."
+              },
+              {
+                "0": "4",
+                "1": "Solve for $t$ and interpret."
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$T_0$",
+              "tone": "core",
+              "meaning": "initial temperature"
+            },
+            {
+              "tone": "core",
+              "symbol": "$T_R$",
+              "meaning": "surrounding temperature"
+            },
+            {
+              "symbol": "$r$",
+              "tone": "subtle",
+              "meaning": "cooling rate (per minute)"
+            }
+          ],
+          "formula": "$$ T = (T_0 - T_R)e^{-rt} + T_R $$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "From forensic science to cooking, Newton's Law of Cooling models how objects cool over time. By solving the exponential equation, you can predict how long a hot dish needs to cool before serving."
+      },
+      "teacherCues": [
+        "Write Newton's Law of Cooling: $T = (T_0 - T_R)e^{-rt} + T_R$. Ask: What does each variable represent?",
+        "Show how solving for $t$ requires isolating the exponential and taking the natural log."
+      ],
+      "id": "newtons-law-of-cooling",
+      "questions": [
+        {
+          "hints": [
+            "It's what you often solve for.",
+            "Measured in minutes or seconds."
+          ],
+          "feedbackIfWrong": "$t$ is the time that has passed.",
+          "prompt": "In Newton's Law of Cooling, $T = (T_0 - T_R)e^{-rt} + T_R$, the variable $t$ represents ___.",
+          "id": "q6-6-7",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "time"
+              ]
+            }
+          ]
+        },
+        {
+          "feedbackIfWrong": "Take $\\ln$ of both sides: $-0.1t = \\ln 0.5$.",
+          "hints": [
+            "The inverse of $e^x$.",
+            "Apply natural log to both sides."
+          ],
+          "prompt": "If $e^{-0.1t} = 0.5$, what is the next step to solve for $t$? (Use ln)",
+          "id": "q6-6-8",
+          "answers": [
+            "take ln of both sides",
+            "ln both sides"
+          ],
+          "type": "short-answer"
+        },
+        {
+          "type": "short-answer",
+          "prompt": "In Example A, after simplifying we got $e^{-0.046t} \\approx 0.211$. What is the natural log of 0.211 approximately? (Round to three decimal places)",
+          "answers": [
+            "-1.556"
+          ],
+          "id": "q6-6-9",
+          "feedbackIfWrong": "$\\ln 0.211 \\approx -1.556$.",
+          "hints": [
+            "Use a calculator: LN(0.211).",
+            "It should be negative because 0.211 < 1."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Isolate the Exponential First",
+        "body": "Don't take the log before isolating $e^{-rt}$. You must have the exponential term alone on one side. [[imp:Solve for $e^{-rt} = \\text{number}$ first, then apply $\\ln$.]]"
+      },
+      "title": "Real-Life Applications: Newton's Law of Cooling"
+    },
+    {
+      "id": "solving-exponential-logarithmic-inequalities",
+      "concept": {
+        "explanation": [
+          "To solve an [[kw:exponential inequality]] like $b^x < c$, take the log of both sides. If $b > 1$, the inequality direction stays the same.",
+          "For a [[kw:logarithmic inequality]] like $\\log_b x < c$, exponentiate both sides. Again, if $b > 1$, the direction stays the same.",
+          "The domain of the variable must also be considered: for $\\log_b x$, $x > 0$.",
+          "Graphical methods are also effective: graph both sides and find the interval where one is above or below the other."
+        ],
+        "visuals": [
+          {
+            "title": "Solving Exponential and Logarithmic Inequalities",
+            "headers": [
+              "Type",
+              "Example",
+              "Method"
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "Exponential",
+                "1": "$3^x < 20$",
+                "2": "Take $\\log_3$ of both sides: $x < \\log_3 20 \\approx 2.727$"
+              },
+              {
+                "0": "Logarithmic",
+                "1": "$\\log x \\le 2$",
+                "2": "Exponentiate base 10: $x \\le 10^2 = 100$, with $x > 0$, so $0 < x \\le 100$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "meaning": "base greater than 1",
+              "tone": "core",
+              "symbol": "$b$"
+            }
+          ],
+          "formula": "$$ b^x < c \\iff x < \\log_b c \\quad (b>1) $$ $$ \\log_b x < c \\iff x < b^c \\text{ and } x > 0 \\quad (b>1) $$"
+        }
+      },
+      "confusionCorner": {
+        "body": "When solving a logarithmic inequality, always add the domain restriction $x > 0$ (or whatever makes the argument positive). [[imp:The solution set is the intersection of the algebraic solution and the domain.]]",
+        "title": "Domain is Crucial for Log Inequalities"
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "3",
+                "three"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "feedbackIfWrong": "$4^x > 4^3$, so $x > 3$.",
+          "prompt": "To solve $4^x > 64$, take $\\log_4$ of both sides, giving $x >$ ___.",
+          "id": "q6-6-10",
+          "hints": [
+            "Rewrite 64 as $4^3$.",
+            "$\\log_4 64 = 3$."
+          ]
+        },
+        {
+          "feedbackIfWrong": "$x \\ge e$ (approximately $x \\ge 2.718$).",
+          "id": "q6-6-11",
+          "prompt": "Solve $\\ln x \\ge 1$. What is the solution set? (Use x >= ... or similar)",
+          "hints": [
+            "Exponentiate both sides with base $e$.",
+            "$\\ln x \\ge 1$ means $x \\ge e^1 = e$."
+          ],
+          "answers": [
+            "x >= e",
+            "x \\ge e",
+            "x >="
+          ],
+          "type": "short-answer"
+        },
+        {
+          "id": "q6-6-12",
+          "answers": [
+            "x > 1",
+            "x-1 > 0"
+          ],
+          "feedbackIfWrong": "We need $x-1 > 0$, so $x > 1$.",
+          "prompt": "What additional restriction must you place on the solution of $\\log(x-1) < 2$?",
+          "hints": [
+            "The argument of a log must be positive.",
+            "$x-1 > 0$."
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "title": "Exponential and Logarithmic Inequalities",
+      "teacherCues": [
+        "Ask: How is solving $3^x < 20$ different from solving $3^x = 20$?",
+        "Write $\\log x \\le 2$ and show that exponentiating preserves the inequality because base 10 > 1."
+      ],
+      "discoveryHook": {
+        "scenario": "Inequalities involving exponents and logs appear in real-life constraints—like 'when will the balance exceed $1000?' The same properties apply, but you must consider the domain and the direction of the inequality."
+      },
+      "examples": [
+        {
+          "title": "Example A — Exponential Inequality",
+          "steps": [
+            "Take $\\log_3$ of both sides: $\\log_3(3^x) < \\log_3 20$.",
+            "Simplify: $x < \\log_3 20$.",
+            "Use Change-of-Base: $\\log_3 20 = \\frac{\\ln 20}{\\ln 3} \\approx 2.727$.",
+            "Solution: $x < 2.727$ (approximate)."
+          ],
+          "role": "guided",
+          "prompt": "Solve $3^x < 20$."
+        },
+        {
+          "minLength": 8,
+          "title": "Example B — Logarithmic Inequality",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we need to include $x > 0$ in the solution? What would happen if we forgot the domain?",
+          "steps": [
+            "Exponentiate with base 10: $10^{\\log x} \\le 10^2$ → $x \\le 100$.",
+            "Domain of $\\log x$ is $x > 0$.",
+            "Combine: $0 < x \\le 100$."
+          ],
+          "prompt": "Solve $\\log x \\le 2$.",
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Solve $e^x < 2$.",
+          "role": "independent",
+          "steps": [
+            "Take $\\ln$ of both sides: $\\ln(e^x) < \\ln 2$.",
+            "$x < \\ln 2 \\approx 0.693$.",
+            "No domain restriction for $e^x$, so solution is $x < 0.693$."
+          ],
+          "title": "Example C — Solve $e^x < 2$"
+        }
+      ]
+    },
+    {
+      "concept": {
+        "explanation": [
+          "[[imp:Understand]]: Identify the type of equation (exponential, logarithmic, or mixed). Note the base and determine the domain restrictions (arguments of logs must be > 0).",
+          "[[imp:Solve]]: Choose the appropriate method: rewrite with same base, take log/exponentiate, or condense/expand. Apply algebraic steps carefully.",
+          "[[imp:Conclude]]: State the solution(s). Check each solution in the original equation. Reject any extraneous solutions. Write the final answer clearly."
+        ],
+        "visuals": [
+          {
+            "title": "Blueprint for Exponential and Logarithmic Equations",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ],
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Classify equation; note domain restrictions; identify base."
+              },
+              {
+                "0": "Solve",
+                "1": "Use inverse operations: rewrite in exponential/log form, condense/expand, isolate variable."
+              },
+              {
+                "0": "Conclude",
+                "1": "Check all solutions; discard extraneous; state final answer."
+              }
+            ],
+            "variant": "colorful",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "check",
+              "meaning": "always verify domain"
+            }
+          ],
+          "formula": "$$ \\text{If } \\log_b u = v, \\text{ then } u = b^v $$ $$ \\text{If } b^x = b^y, \\text{ then } x = y $$"
+        }
+      },
+      "discoveryHook": {
+        "scenario": "When faced with a complex exponential or logarithmic equation, the Blueprint keeps you on track: understand the structure, apply the right strategy, and always verify your answers."
+      },
+      "questions": [
+        {
+          "answers": [
+            "x > 1/3",
+            "x > 0.333..."
+          ],
+          "prompt": "In Example A, what is the domain restriction for $\\log_2(3x-1)$? (Use x > ...)",
+          "hints": [
+            "Set $3x-1 > 0$.",
+            "Solve for $x$."
+          ],
+          "feedbackIfWrong": "We need $3x-1 > 0$, so $x > \\frac{1}{3}$.",
+          "type": "short-answer",
+          "id": "q6-6-13"
+        },
+        {
+          "hints": [
+            "The form becomes $u^2 - 3u + 2 = 0$.",
+            "Second-degree polynomial."
+          ],
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "quadratic"
+              ]
+            }
+          ],
+          "id": "q6-6-14",
+          "feedbackIfWrong": "It becomes a quadratic equation in $u$.",
+          "prompt": "When solving $e^{2x} - 3e^x + 2 = 0$, substituting $u = e^x$ turns it into a ___ equation."
+        },
+        {
+          "hints": [
+            "Plug $x=-5$ into $\\log 2x$.",
+            "$\\log(-10)$ is not defined."
+          ],
+          "answers": [
+            "negative argument",
+            "log of negative",
+            "undefined"
+          ],
+          "feedbackIfWrong": "Because it makes $2x$ negative, and the log of a negative number is undefined.",
+          "type": "short-answer",
+          "id": "q6-6-15",
+          "prompt": "Why is $x = -5$ extraneous in $\\log 2x + \\log(x-5) = 2$? (Answer: negative argument)"
+        }
+      ],
+      "confusionCorner": {
+        "title": "Quadratic in Disguise",
+        "body": "Equations like $e^{2x} - 3e^x + 2 = 0$ are quadratic in form. Substitute $u = e^x$, solve for $u$, then solve for $x$. [[imp:Look for patterns that allow substitution.]]"
+      },
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude steps. Model the full process for the equation $\\log_2(3x-1) = 4$.",
+        "Ask: What should we check before finalizing the solution?"
+      ],
+      "title": "Blueprint Aid — Solving Exponential and Logarithmic Equations",
+      "id": "blueprint-aid-solving-exp-log",
+      "examples": [
+        {
+          "steps": [
+            "Understand: Logarithmic equation, base 2. Domain: $3x-1 > 0 \\rightarrow x > \\frac{1}{3}$.",
+            "Solve: Rewrite in exponential form: $3x-1 = 2^4 = 16$. Then $3x = 17 \\rightarrow x = \\frac{17}{3} \\approx 5.667$.",
+            "Conclude: Check domain: $\\frac{17}{3} > \\frac{1}{3}$ ✓. Check original: $\\log_2(17-1) = \\log_2 16 = 4$ ✓. Solution: $x = \\frac{17}{3}$."
+          ],
+          "title": "Example A — Solve $\\log_2(3x-1) = 4$ (Blueprint)",
+          "role": "guided",
+          "prompt": "Solve $\\log_2(3x-1) = 4$ using the Blueprint."
+        },
+        {
+          "minLength": 8,
+          "prompt": "Explain why checking the domain is essential when solving $\\log(x-5) + \\log(x+2) = 1$.",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: After solving, you might get two candidate values. How does the domain help you eliminate invalid ones?",
+          "title": "Example B — Spotting Extraneous Solutions",
+          "steps": [
+            "Condense: $\\log[(x-5)(x+2)] = 1$ → $(x-5)(x+2) = 10^1 = 10$.",
+            "Solve quadratic: $x^2 -3x -10 = 10 \\rightarrow x^2 -3x -20 = 0$. Solutions: $x \\approx 6.62$ and $x \\approx -3.62$.",
+            "Check domain: $x-5 > 0 \\rightarrow x > 5$, and $x+2 > 0 \\rightarrow x > -2$. Intersection: $x > 5$.",
+            "So $x \\approx 6.62$ is valid; $x \\approx -3.62$ is extraneous."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "prompt": "Solve $e^{2x} - 3e^x + 2 = 0$. (Hint: Let $u = e^x$.)",
+          "role": "independent",
+          "steps": [
+            "Understand: This is quadratic in form. Substitute $u = e^x$: $u^2 - 3u + 2 = 0$.",
+            "Solve: Factor: $(u-1)(u-2) = 0$ → $u = 1$ or $u = 2$.",
+            "Back-substitute: $e^x = 1 \\rightarrow x = \\ln 1 = 0$; $e^x = 2 \\rightarrow x = \\ln 2 \\approx 0.693$.",
+            "Conclude: Both are valid (exponentials always positive). Solutions: $x = 0, \\ln 2$."
+          ],
+          "title": "Example C — Mixed Exponential Equation"
+        }
+      ]
+    }
+  ],
+  "id": "chapter-6-6-solving-exponential-and-logarithmic-equations",
+  "type": "interactive-lesson",
+  "standards": [
+    "HSA.REI.A.1",
+    "HSF.LE.A.4",
+    "HSF.BF.B.5",
+    "HSA.CED.A.1"
+  ],
+  "schemaVersion": 2,
+  "presenterNotes": [
+    "Emphasize isolating the exponential or log term before applying inverse operations. This is the most common mistake.",
+    "For Newton's Law of Cooling, walk through the algebra carefully; students often forget to subtract $T_R$ first.",
+    "When solving log equations, always write the domain restrictions before solving, and check solutions against them.",
+    "For inequalities, remind students that the direction of the inequality is preserved when base > 1. Graphical checks are helpful.",
+    "The Blueprint block ties everything together; use it to model a complete problem-solving approach."
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

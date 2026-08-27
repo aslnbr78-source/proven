@@ -1,0 +1,258 @@
+{
+  "title": "Hypothesis Testing for the Mean (Small Samples)",
+  "type": "quiz",
+  "id": "chapter-7-3-quiz",
+  "questions": [
+    {
+      "prompt": "When should you use a t‑test instead of a z‑test for a population mean?",
+      "hints": [
+        "The t‑test accounts for using the sample standard deviation instead of σ.",
+        "It is designed for situations where you don't know σ and the sample is too small for the CLT."
+      ],
+      "id": "q1",
+      "feedbackIfWrong": "The t‑test is used when σ is unknown and n < 30, provided the population is approximately normal.",
+      "type": "multiple-choice",
+      "options": [
+        "When the population standard deviation σ is known and the sample size is large.",
+        "When σ is unknown and the sample size is small (n < 30), with an approximately normal population.",
+        "When the sample mean is very large.",
+        "Whenever you have a random sample, regardless of size."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "blanks": [
+        {
+          "accept": [
+            "14",
+            "fourteen"
+          ]
+        }
+      ],
+      "id": "q2",
+      "hints": [
+        "Degrees of freedom = n – 1.",
+        "15 – 1 = ?"
+      ],
+      "feedbackIfWrong": "d.f. = 15 – 1 = 14.",
+      "prompt": "For a t‑test with a sample size of n = 15, the degrees of freedom are ___.",
+      "type": "fill-blank"
+    },
+    {
+      "hints": [
+        "d.f. = 20. Use the 'One Tail, α = 0.05' column in the t‑table.",
+        "The table gives 1.725; make it negative for left‑tailed."
+      ],
+      "type": "short-answer",
+      "answers": [
+        "-1.725",
+        "-1.725"
+      ],
+      "prompt": "Find the critical value t₀ for a left‑tailed test with α = 0.05 and n = 21. (Give the value with a negative sign, e.g., -1.725)",
+      "id": "q3",
+      "feedbackIfWrong": "t₀ = –1.725.",
+      "answer": "-1.725"
+    },
+    {
+      "hints": [
+        "d.f. = 25. Look in the 'Two Tails, α = 0.10' column.",
+        "The table gives a single positive number; the critical values are ± that number."
+      ],
+      "feedbackIfWrong": "With d.f. = 25 and α = 0.10 (two‑tailed), the critical values are ±1.708.",
+      "id": "q4",
+      "options": [
+        "±1.315",
+        "±1.708",
+        "±2.060",
+        "±2.485"
+      ],
+      "type": "multiple-choice",
+      "prompt": "For a two‑tailed t‑test with α = 0.10 and n = 26, what are the critical values?",
+      "correctIndex": 1
+    },
+    {
+      "type": "short-answer",
+      "answer": "1.98",
+      "feedbackIfWrong": "t ≈ 5 / 2.5298 ≈ 1.98.",
+      "hints": [
+        "t = (x̄ – μ₀) / (s / √n) = (50 – 45) / (8 / √10).",
+        "8/√10 ≈ 2.5298; 5 / 2.5298 ≈ ?"
+      ],
+      "id": "q5",
+      "prompt": "A sample of size 10 from a normal population has x̄ = 50 and s = 8. Compute the t statistic for testing H₀: μ = 45 vs. Hₐ: μ ≠ 45. (Round to two decimals.)",
+      "answers": [
+        "1.98",
+        "1.98"
+      ]
+    },
+    {
+      "correctIndex": 1,
+      "hints": [
+        "The function returns the area in the right tail directly.",
+        "No need to subtract from 1."
+      ],
+      "type": "multiple-choice",
+      "id": "q6",
+      "prompt": "Which Google Sheets formula gives the P‑value for a right‑tailed t‑test?",
+      "options": [
+        "=T.DIST(t, d.f., TRUE)",
+        "=T.DIST.RT(t, d.f.)",
+        "=T.DIST.2T(t, d.f.)",
+        "=T.INV(t, d.f.)"
+      ],
+      "feedbackIfWrong": "=T.DIST.RT(t, d.f.) gives the right‑tailed P‑value."
+    },
+    {
+      "type": "fill-blank",
+      "prompt": "In Google Sheets, to find the P‑value for a left‑tailed t‑test, you would use the function ___.",
+      "hints": [
+        "It returns the cumulative area to the left of t.",
+        "The last argument must be TRUE."
+      ],
+      "blanks": [
+        {
+          "accept": [
+            "T.DIST",
+            "t.dist",
+            "=T.DIST"
+          ]
+        }
+      ],
+      "feedbackIfWrong": "Use =T.DIST(t, d.f., TRUE) for left‑tailed P‑values.",
+      "id": "q7"
+    },
+    {
+      "id": "q8",
+      "prompt": "If a t‑test yields a P‑value of 0.017 and α = 0.10, should you reject H₀? (Yes or No)",
+      "hints": [
+        "Compare the P‑value to α.",
+        "0.017 ≤ 0.10."
+      ],
+      "answer": "Yes",
+      "type": "short-answer",
+      "answers": [
+        "Yes",
+        "yes"
+      ],
+      "feedbackIfWrong": "Yes, 0.017 ≤ 0.10, so reject H₀."
+    },
+    {
+      "options": [
+        "The population must be uniformly distributed.",
+        "The sample must contain at least 5 successes and 5 failures.",
+        "The population must be approximately normally distributed.",
+        "The population standard deviation must be known."
+      ],
+      "prompt": "Which assumption is required for a t‑test when the sample size is less than 30?",
+      "id": "q9",
+      "hints": [
+        "The t‑distribution relies on this shape for the population.",
+        "It's the same assumption needed for small‑sample confidence intervals with t."
+      ],
+      "feedbackIfWrong": "The population must be approximately normally distributed.",
+      "correctIndex": 2,
+      "type": "multiple-choice"
+    },
+    {
+      "feedbackIfWrong": "=T.DIST.2T(2.63, 19).",
+      "prompt": "A two‑tailed t‑test gives t = 2.63 with d.f. = 19. In Google Sheets, what formula would give the exact P‑value? (e.g., =T.DIST.2T(2.63,19))",
+      "id": "q10",
+      "hints": [
+        "Use T.DIST.2T for a two‑tailed test.",
+        "The function takes the absolute t value and degrees of freedom."
+      ],
+      "answer": "=T.DIST.2T(2.63,19)",
+      "type": "short-answer",
+      "answers": [
+        "=T.DIST.2T(2.63,19)",
+        "=T.DIST.2T(2.63, 19)"
+      ]
+    },
+    {
+      "correctIndex": 1,
+      "prompt": "Compared to the z critical value for the same α, the t critical value is:",
+      "options": [
+        "Smaller (closer to zero).",
+        "Larger (farther from zero).",
+        "Exactly the same.",
+        "Sometimes smaller, sometimes larger."
+      ],
+      "type": "multiple-choice",
+      "feedbackIfWrong": "The t critical value is larger because the t‑distribution is more spread out.",
+      "id": "q11",
+      "hints": [
+        "The t‑distribution has thicker tails.",
+        "You must go further out to capture the same tail area."
+      ]
+    },
+    {
+      "id": "q12",
+      "type": "fill-blank",
+      "blanks": [
+        {
+          "accept": [
+            "t",
+            "T"
+          ]
+        }
+      ],
+      "hints": [
+        "Small sample, no population standard deviation.",
+        "The test statistic follows a t‑distribution."
+      ],
+      "feedbackIfWrong": "Use the t‑test.",
+      "prompt": "If a sample of size 10 from a normal population has unknown σ, you should use the ___ test to test a claim about μ."
+    },
+    {
+      "hints": [
+        "Is -2.5 < -1.771?",
+        "More negative means further into the rejection region."
+      ],
+      "answers": [
+        "Yes",
+        "yes"
+      ],
+      "id": "q13",
+      "type": "short-answer",
+      "prompt": "A left‑tailed t‑test has t = -2.5 and critical value t₀ = -1.771. Should you reject H₀? (Yes or No)",
+      "feedbackIfWrong": "Yes, because -2.5 falls in the rejection region.",
+      "answer": "Yes"
+    },
+    {
+      "feedbackIfWrong": "Failing to reject H₀ means there is not enough evidence to reject the company's claim.",
+      "options": [
+        "The claim is definitely true.",
+        "There is enough evidence to reject the claim.",
+        "There is not enough evidence to reject the claim.",
+        "The sample proves the claim is false."
+      ],
+      "type": "multiple-choice",
+      "id": "q14",
+      "hints": [
+        "Failing to reject H₀ does not prove it true.",
+        "It means the evidence wasn't strong enough to contradict the claim."
+      ],
+      "correctIndex": 2,
+      "prompt": "A company claims the mean pH level is 6.8. A sample of 19 gives x̄ = 6.7, s = 0.24. Using α = 0.05, the null hypothesis is not rejected. What is the correct interpretation?"
+    },
+    {
+      "id": "q15",
+      "feedbackIfWrong": "Yes, reject H₀ because the P‑value is less than α.",
+      "answer": "Yes",
+      "prompt": "If a t‑test gives a P‑value of 0.003 with α = 0.05, should you reject H₀? (Yes or No)",
+      "answers": [
+        "Yes",
+        "yes"
+      ],
+      "hints": [
+        "0.003 ≤ 0.05.",
+        "Very small P‑value indicates strong evidence against H₀."
+      ],
+      "type": "short-answer"
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

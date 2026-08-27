@@ -1,0 +1,887 @@
+{
+  "presenterNotes": [
+    "Block 1 (Range): Keep it brief. Highlight that range is sensitive to outliers. Use the Corporation A vs B comparison to motivate the need for better measures.",
+    "Block 2 (Deviation, Variance, Population SD): Walk through the table step by step. Emphasize the unit difference between variance and standard deviation. The sum of deviations being zero is a crucial conceptual point.",
+    "Block 3 (Sample SD): Focus on the n-1 denominator. Mention that technology computes both s and σ; students need to know which one to select.",
+    "Block 4 (Empirical & Chebychev): Draw the bell curve and label the percentages. For Chebychev, stress that it's a minimum guarantee regardless of shape. The contrast between the two rules is key.",
+    "Block 5 (Blueprint/Grouped): This ties together the entire section. Demonstrate the grouped data table and show how it mirrors the ungrouped process. The open-ended class note is important for real-world applications."
+  ],
+  "blocks": [
+    {
+      "examples": [
+        {
+          "prompt": "Corporation A starting salaries (in $1000s): 41, 38, 39, 45, 47, 41, 44, 41, 37, 42. Find the range.",
+          "role": "guided",
+          "title": "Example A – Finding the Range",
+          "steps": [
+            "Order the data to easily identify min and max: 37, 38, 39, 41, 41, 41, 42, 44, 45, 47.",
+            "Minimum = $ 37 $, Maximum = $ 47 $.",
+            "Range = $ 47 - 37 = 10 $.",
+            "The starting salaries in Corporation A vary by $10,000."
+          ]
+        },
+        {
+          "minLength": 2,
+          "title": "Example B – Comparing Ranges",
+          "prompt": "Corporation B salaries: 40, 23, 41, 50, 49, 32, 41, 29, 52, 58. Compute the range and explain why it differs so much from Company A's.",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does Corporation B have a much larger range even though the mean salary is the same?",
+          "role": "peer-explain",
+          "steps": [
+            "Order B's salaries: 23, 29, 32, 40, 41, 41, 49, 50, 52, 58.",
+            "Min = $ 23 $, Max = $ 58 $, so Range = $ 35 $.",
+            "The range is larger because B's salaries extend much lower and higher than A's.",
+            "Range only reflects the extremes, not where most values cluster."
+          ]
+        },
+        {
+          "title": "Example C – Quick Range Calculation",
+          "prompt": "Find the range of the data set: 15, 22, 8, 19, 30, 12.",
+          "steps": [
+            "Max = $ 30 $, Min = $ 8 $.",
+            "Range = $ 30 - 8 = 22 $."
+          ],
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Two companies both offer a mean starting salary of $41,500. But Company A's salaries are tightly clustered between $37,000 and $47,000, while Company B's range from $23,000 to $58,000. The range instantly tells you which company has more variability in pay."
+      },
+      "confusionCorner": {
+        "title": "Large Range ≠ All Data Are Spread Out",
+        "body": "A single extreme outlier can produce a large range even if the rest of the data are tightly clustered. For a more complete picture of variation, we need measures that use [[imp:all data values]], like standard deviation."
+      },
+      "id": "range",
+      "title": "Range",
+      "teacherCues": [
+        "Show the two sets of starting salaries for Corporation A and B. Ask: 'Which company has more spread in salaries?'",
+        "Write on the board: Range = Max – Min. Emphasize that it's the simplest measure of variation."
+      ],
+      "questions": [
+        {
+          "feedbackIfWrong": "Range = Maximum – Minimum.",
+          "hints": [
+            "The two extremes.",
+            "The largest minus the smallest."
+          ],
+          "prompt": "The range is the difference between the ___ and ___ data entries.",
+          "type": "fill-blank",
+          "id": "q1-1",
+          "blanks": [
+            {
+              "accept": [
+                "maximum",
+                "max",
+                "largest"
+              ]
+            },
+            {
+              "accept": [
+                "minimum",
+                "min",
+                "smallest"
+              ]
+            }
+          ]
+        },
+        {
+          "hints": [
+            "Max = 15, Min = 3.",
+            "15 – 3 = ?"
+          ],
+          "id": "q1-2",
+          "answers": [
+            "12",
+            "twelve"
+          ],
+          "prompt": "What is the range of 5, 12, 3, 9, 15?",
+          "feedbackIfWrong": "Range = 15 – 3 = 12.",
+          "type": "short-answer",
+          "answer": "12"
+        },
+        {
+          "answers": [
+            "outliers",
+            "only uses two values",
+            "ignores most data"
+          ],
+          "feedbackIfWrong": "The range uses only the two extreme values, so outliers can distort it.",
+          "id": "q1-3",
+          "answer": "outliers",
+          "type": "short-answer",
+          "hints": [
+            "It is affected by extreme values.",
+            "It doesn't consider the middle of the data."
+          ],
+          "prompt": "Why is the range sometimes a misleading measure of variation?"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:range]] is the difference between the maximum and minimum data entries.",
+          "Formula: $ \\text{Range} = \\text{Max} - \\text{Min} $.",
+          "It is the simplest measure of variation, easy to compute.",
+          "However, the range uses only [[imp:two entries]] from the data set and ignores the rest.",
+          "Because it depends on extremes, a single outlier can dramatically inflate the range."
+        ],
+        "visuals": [
+          {
+            "title": "Range of Starting Salaries (in $1000s)",
+            "rows": [
+              {
+                "0": "A",
+                "1": "$ 37 $",
+                "2": "$ 47 $",
+                "3": "$ 10 $"
+              },
+              {
+                "0": "B",
+                "1": "$ 23 $",
+                "2": "$ 58 $",
+                "3": "$ 35 $"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Company",
+              "Min",
+              "Max",
+              "Range"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Range} = \\text{Maximum data entry} - \\text{Minimum data entry}$$",
+          "legend": [
+            {
+              "meaning": "largest and smallest values in the data set",
+              "symbol": "Max, Min",
+              "tone": "core"
+            }
+          ],
+          "title": "Range Formula"
+        }
+      }
+    },
+    {
+      "confusionCorner": {
+        "body": "Variance is in squared units (e.g., dollars²) — hard to interpret. Standard deviation is in the original units (dollars). [[imp:Always use standard deviation when talking about spread in context.]]",
+        "title": "Variance Units vs. Standard Deviation Units"
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "feedbackIfWrong": "The sum of deviations from the mean is always zero.",
+          "blanks": [
+            {
+              "accept": [
+                "zero",
+                "0"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the starting point for variance.",
+            "Deviations cancel each other out."
+          ],
+          "prompt": "The sum of all deviations from the mean in any data set is always ___.",
+          "type": "fill-blank"
+        },
+        {
+          "id": "q2-2",
+          "feedbackIfWrong": "The deviation is 8 – 5 = 3.",
+          "answer": "3",
+          "prompt": "For the data set 2, 4, 6, 8 with μ=5, what is the deviation of the value 8?",
+          "answers": [
+            "3",
+            "three"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "Deviation = x – μ.",
+            "8 – 5 = ?"
+          ]
+        },
+        {
+          "id": "q2-3",
+          "type": "short-answer",
+          "answers": [
+            "5",
+            "five"
+          ],
+          "feedbackIfWrong": "Standard deviation = √25 = 5.",
+          "answer": "5",
+          "hints": [
+            "Take the square root.",
+            "$ \\sqrt{25} $ = ?"
+          ],
+          "prompt": "If a population variance is 25, what is the population standard deviation?"
+        }
+      ],
+      "title": "Deviation, Variance, and Population Standard Deviation",
+      "id": "deviation-variance-sd-pop",
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$ N $",
+              "meaning": "population size"
+            },
+            {
+              "meaning": "population mean",
+              "symbol": "$ \\mu $",
+              "tone": "core"
+            }
+          ],
+          "formula": "$$\\sigma^2 = \\frac{\\sum (x - \\mu)^2}{N},\\qquad \\sigma = \\sqrt{\\sigma^2}$$",
+          "title": "Population Variance and Standard Deviation"
+        },
+        "explanation": [
+          "The [[kw:deviation]] of a data entry $ x $ from the population mean $ \\mu $ is $ x - \\mu $. The sum of all deviations is always zero.",
+          "To get a meaningful measure, we square each deviation, giving the [[kw:sum of squares]] $ SS_x = \\sum (x - \\mu)^2 $.",
+          "The [[kw:population variance]] $ \\sigma^2 $ is the average of the squared deviations: $ \\sigma^2 = \\frac{\\sum (x - \\mu)^2}{N} $.",
+          "The [[kw:population standard deviation]] $ \\sigma $ is the square root of the variance: $ \\sigma = \\sqrt{\\sigma^2} $.",
+          "Standard deviation is measured in the same units as the original data, making it easier to interpret than variance."
+        ],
+        "visuals": [
+          {
+            "title": "Calculating $ \\sigma $ for Corporation A ( μ = 41.5 )",
+            "headers": [
+              "$ x $",
+              "$ x - \\mu $",
+              "$ (x - \\mu)^2 $"
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$ 41 $",
+                "1": "$ -0.5 $",
+                "2": "$ 0.25 $"
+              },
+              {
+                "0": "$ 38 $",
+                "1": "$ -3.5 $",
+                "2": "$ 12.25 $"
+              },
+              {
+                "0": "$ 39 $",
+                "1": "$ -2.5 $",
+                "2": "$ 6.25 $"
+              },
+              {
+                "0": "$ 45 $",
+                "1": "$ 3.5 $",
+                "2": "$ 12.25 $"
+              },
+              {
+                "0": "$ 47 $",
+                "1": "$ 5.5 $",
+                "2": "$ 30.25 $"
+              },
+              {
+                "0": "$ 41 $",
+                "1": "$ -0.5 $",
+                "2": "$ 0.25 $"
+              },
+              {
+                "0": "$ 44 $",
+                "1": "$ 2.5 $",
+                "2": "$ 6.25 $"
+              },
+              {
+                "0": "$ 41 $",
+                "1": "$ -0.5 $",
+                "2": "$ 0.25 $"
+              },
+              {
+                "0": "$ 37 $",
+                "1": "$ -4.5 $",
+                "2": "$ 20.25 $"
+              },
+              {
+                "0": "$ 42 $",
+                "1": "$ 0.5 $",
+                "2": "$ 0.25 $"
+              },
+              {
+                "0": "Sum",
+                "1": "$ 0 $",
+                "2": "$ 88.5 $"
+              }
+            ]
+          }
+        ]
+      },
+      "teacherCues": [
+        "Calculate the deviation of each salary in Corporation A from the mean μ=41.5. Show that the sum of deviations is zero.",
+        "Square the deviations, sum them, and divide by N to get the variance. Take the square root to get standard deviation."
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Compute each deviation $ x - 41.5 $ and square it (see table).",
+            "Sum of squares $ SS_x = 88.5 $.",
+            "Population variance: $ \\sigma^2 = 88.5 / 10 = 8.85 $.",
+            "Standard deviation: $ \\sigma = \\sqrt{8.85} \\approx 3.0 $ (or $3,000)."
+          ],
+          "prompt": "Find the population standard deviation of Corporation A's starting salaries ( μ = 41.5 ).",
+          "title": "Example A – Population Standard Deviation"
+        },
+        {
+          "minLength": 2,
+          "title": "Example B – Why Square Deviations?",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If we simply averaged the deviations from the mean, what would the result always be? Why does squaring solve this?",
+          "prompt": "Explain to a partner why we square the deviations rather than just averaging the raw deviations.",
+          "steps": [
+            "The sum of deviations from the mean is always zero, so the average deviation would be zero.",
+            "Squaring makes all deviations positive, so they no longer cancel out.",
+            "The variance is the mean of these squared deviations.",
+            "Taking the square root of the variance returns us to the original units."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "title": "Example C – Computing for a Small Set",
+          "prompt": "Population data: 2, 4, 6, 8. Find μ, then compute σ² and σ.",
+          "steps": [
+            "Mean $ \\mu = (2+4+6+8)/4 = 5 $.",
+            "Deviations: $ -3, -1, 1, 3 $; squares: $ 9, 1, 1, 9 $.",
+            "Sum of squares = $ 20 $.",
+            "Variance $ \\sigma^2 = 20/4 = 5 $, $ \\sigma = \\sqrt{5} \\approx 2.24 $."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "The range only looks at extremes. To measure how all the data vary from the center, we compute each value's deviation from the mean. Because deviations sum to zero, we square them, average the squares (variance), and then take the square root to return to the original units — the standard deviation."
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "The 10 starting salaries are from only one branch. To use them to estimate variation for the entire corporation, we must use a slightly different formula — dividing by n – 1 instead of N. This correction gives a more accurate estimate of the true population variation."
+      },
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "n - 1",
+                "n-1",
+                "n minus 1"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Sample variance divides by n – 1.",
+          "type": "fill-blank",
+          "id": "q3-1",
+          "prompt": "The sample variance divides the sum of squares by ___.",
+          "hints": [
+            "It's one less than the sample size.",
+            "Often called degrees of freedom."
+          ]
+        },
+        {
+          "id": "q3-2",
+          "hints": [
+            "Divide by n – 1.",
+            "20 / 4 = ?"
+          ],
+          "type": "short-answer",
+          "feedbackIfWrong": "s² = 20 / (5 – 1) = 5.",
+          "answers": [
+            "5",
+            "five"
+          ],
+          "prompt": "A sample of size 5 has sum of squares 20. What is the sample variance?",
+          "answer": "5"
+        },
+        {
+          "id": "q3-3",
+          "feedbackIfWrong": "Dividing by n – 1 makes the sample variance an unbiased estimator of the population variance.",
+          "answer": "unbiased",
+          "answers": [
+            "unbiased",
+            "to correct bias",
+            "Bessel's correction"
+          ],
+          "hints": [
+            "It makes s² a better estimator of σ².",
+            "It corrects for underestimation."
+          ],
+          "type": "short-answer",
+          "prompt": "Why do we use n – 1 for sample variance?"
+        }
+      ],
+      "id": "sample-standard-deviation",
+      "confusionCorner": {
+        "body": "If your data represent an entire population (e.g., all students in your class), use N and σ. If they are a sample from a larger group (e.g., a survey of 100 voters), use n and s. [[imp:Technology often labels sample standard deviation as Sx or s.]]",
+        "title": "When to Use n vs. n – 1?"
+      },
+      "examples": [
+        {
+          "steps": [
+            "Sample variance: $ s^2 = 88.5 / (10 - 1) = 88.5 / 9 \\approx 9.83 $.",
+            "Sample standard deviation: $ s = \\sqrt{9.83} \\approx 3.1 $ (or $3,100).",
+            "Note: $ s $ is slightly larger than the population $ \\sigma = 3.0 $, reflecting the extra uncertainty."
+          ],
+          "prompt": "Treat the 10 Corporation A salaries as a sample. $ \\bar{x} = 41.5 $ and $ SS_x = 88.5 $. Find $ s $.",
+          "title": "Example A – Sample Standard Deviation",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: If you used n, would the sample variance tend to overestimate or underestimate the population variance?",
+          "title": "Example B – Why Divide by n – 1?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Explain to a partner why sample variance uses n – 1 rather than n.",
+          "steps": [
+            "Using n tends to underestimate the population variance because the sample mean minimizes deviations.",
+            "Dividing by n – 1 removes this bias, making s² an unbiased estimator of σ².",
+            "This adjustment is more important when the sample size is small."
+          ]
+        },
+        {
+          "steps": [
+            "Mean $ \\bar{x} = 14 $.",
+            "Deviations: $ -4, -2, 0, 2, 4 $; squares: $ 16, 4, 0, 4, 16 $.",
+            "Sum of squares $ SS_x = 40 $.",
+            "$ s^2 = 40 / (5 - 1) = 10 $, $ s = \\sqrt{10} \\approx 3.16 $."
+          ],
+          "title": "Example C – Compute s from Data",
+          "role": "independent",
+          "prompt": "Sample data: 10, 12, 14, 16, 18. Find the sample standard deviation."
+        }
+      ],
+      "teacherCues": [
+        "Ask: 'What if the 10 salaries are a sample from all branches, not the entire company? Does the formula change?'",
+        "Write the sample variance formula with n – 1 in the denominator and explain degrees of freedom."
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:sample variance]] $ s^2 $ and [[kw:sample standard deviation]] $ s $ are used when data are from a sample, not the entire population.",
+          "Sample variance: $ s^2 = \\frac{\\sum (x - \\bar{x})^2}{n - 1} $.",
+          "Sample standard deviation: $ s = \\sqrt{s^2} $.",
+          "Dividing by $ n - 1 $ (called [[kw:degrees of freedom]]) instead of $ n $ corrects the bias in estimating the population variance.",
+          "Technology (MINITAB, Excel, TI‑83/84) can compute both $ s $ and $ \\sigma $; choose $ s $ for a sample."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "title": "Population vs. Sample Formulas",
+            "headers": [
+              "Parameter",
+              "Population",
+              "Sample"
+            ],
+            "rows": [
+              {
+                "0": "Variance",
+                "1": "$ \\sigma^2 = \\frac{SS_x}{N} $",
+                "2": "$ s^2 = \\frac{SS_x}{n-1} $"
+              },
+              {
+                "0": "Standard deviation",
+                "1": "$ \\sigma = \\sqrt{\\sigma^2} $",
+                "2": "$ s = \\sqrt{s^2} $"
+              },
+              {
+                "0": "Mean",
+                "1": "$ \\mu $",
+                "2": "$ \\bar{x} $"
+              },
+              {
+                "0": "Size",
+                "1": "$ N $",
+                "2": "$ n $"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$s = \\sqrt{ \\frac{\\sum (x - \\bar{x})^2}{n - 1} }$$",
+          "legend": [
+            {
+              "meaning": "degrees of freedom; corrects for bias in estimating σ²",
+              "symbol": "$ n - 1 $",
+              "tone": "core"
+            }
+          ],
+          "title": "Sample Standard Deviation"
+        }
+      },
+      "title": "Sample Standard Deviation"
+    },
+    {
+      "title": "Interpreting Standard Deviation: Empirical Rule and Chebychev’s Theorem",
+      "discoveryHook": {
+        "scenario": "Knowing the standard deviation is powerful: for bell‑shaped data, it tells you exactly what percentage of values lie within 1, 2, or 3 standard deviations of the mean. Even if the shape is unknown, Chebychev’s Theorem provides a safety net — a minimum percentage that must fall within a given range."
+      },
+      "confusionCorner": {
+        "title": "Empirical Rule ≠ Guarantee",
+        "body": "The Empirical Rule gives approximate percentages that work well for bell‑shaped data, but they are not guaranteed for all data sets. [[imp:Chebychev’s Theorem provides a guarantee, but at the cost of being less precise.]]"
+      },
+      "teacherCues": [
+        "Draw a bell-shaped curve and label μ ± σ, μ ± 2σ, μ ± 3σ. Write 68%, 95%, 99.7% inside.",
+        "Now sketch a skewed distribution. Say: 'The Empirical Rule doesn't apply. Instead, we have a guaranteed minimum from Chebychev.'"
+      ],
+      "id": "empirical-chebychev",
+      "examples": [
+        {
+          "role": "guided",
+          "title": "Example A – Applying the Empirical Rule",
+          "prompt": "Heights of U.S. women (ages 20–29): $ \\bar{x} = 64.3 $ inches, $ s = 2.62 $ inches. Estimate the percentage between $ 59.06 $ and $ 64.3 $ inches.",
+          "steps": [
+            "$ 64.3 - 2(2.62) = 59.06 $, so the interval is from $ \\bar{x} - 2s $ to $ \\bar{x} $.",
+            "In a bell‑shaped distribution, 95% lie within 2 standard deviations. Half of that, 47.5%, lies between the mean and –2s.",
+            "Thus, about 47.5% of women are between 59.06 and 64.3 inches tall."
+          ]
+        },
+        {
+          "minLength": 2,
+          "title": "Example B – Chebychev vs. Empirical",
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: Why does Chebychev only guarantee 75% within 2s, while the Empirical Rule says 95%?",
+          "role": "peer-explain",
+          "prompt": "For the height data, the Empirical Rule says 95% are within 2s. What does Chebychev guarantee?",
+          "steps": [
+            "Chebychev’s Theorem: at least $ 1 - 1/2^2 = 0.75 $ (75%) within 2s, regardless of shape.",
+            "The Empirical Rule gives 95% because the height distribution is bell‑shaped, which is more specific.",
+            "Chebychev provides a conservative lower bound; the Empirical Rule gives an accurate percentage for symmetric bell‑shaped data."
+          ]
+        },
+        {
+          "steps": [
+            "The interval $ [40, 60] $ corresponds to $ \\mu \\pm 2\\sigma $ (since $ 50 \\pm 10 $).",
+            "Using $ k = 2 $: proportion $ \\geq 1 - 1/4 = 0.75 $.",
+            "At least 75% of the data lie within 40 and 60."
+          ],
+          "prompt": "A data set has $ \\mu = 50 $, $ \\sigma = 5 $. According to Chebychev, at least what percentage of data lie between 40 and 60?",
+          "title": "Example C – Using Chebychev for Any Data",
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q4-1",
+          "prompt": "According to the Empirical Rule, about ___% of data in a bell‑shaped distribution lie within one standard deviation of the mean.",
+          "feedbackIfWrong": "About 68% of data lie within one standard deviation.",
+          "blanks": [
+            {
+              "accept": [
+                "68",
+                "sixty-eight"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the first number in the 68–95–99.7 rule.",
+            "Roughly two‑thirds."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "3/4",
+            "0.75",
+            "75%",
+            "75 percent"
+          ],
+          "answer": "3/4",
+          "prompt": "For any data set, Chebychev says at least what fraction lies within 2 standard deviations of the mean?",
+          "id": "q4-2",
+          "feedbackIfWrong": "Chebychev: at least 1 – 1/4 = 3/4 (or 75%).",
+          "type": "short-answer",
+          "hints": [
+            "$ 1 - 1/2^2 $.",
+            "It's a decimal 0.75 or fraction 3/4."
+          ]
+        },
+        {
+          "id": "q4-3",
+          "answers": [
+            "Chebychev",
+            "chebychev",
+            "Chebychev's Theorem"
+          ],
+          "feedbackIfWrong": "For skewed or unknown shapes, use Chebychev's Theorem.",
+          "answer": "Chebychev",
+          "type": "short-answer",
+          "hints": [
+            "The Empirical Rule requires a bell shape.",
+            "Chebychev works for any shape."
+          ],
+          "prompt": "If a distribution is skewed, should you use the Empirical Rule or Chebychev's Theorem to describe spread?"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:Empirical Rule]] (68–95–99.7 rule) applies to distributions that are approximately symmetric and bell‑shaped.",
+          "About [[imp:68%]] of data within 1 standard deviation of the mean; about [[imp:95%]] within 2; about [[imp:99.7%]] within 3.",
+          "[[kw:Chebychev’s Theorem]] applies to [[imp:any]] data set, regardless of shape.",
+          "The proportion of data within $ k $ standard deviations of the mean is at least $ 1 - 1/k^2 $, for $ k > 1 $.",
+          "For $ k = 2 $, at least $ 75\\% $; for $ k = 3 $, at least $ 88.9\\% $."
+        ],
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "Empirical Rule",
+                "1": "Bell‑shaped distributions",
+                "2": "≈ 95%"
+              },
+              {
+                "0": "Chebychev’s Theorem",
+                "1": "All distributions",
+                "2": "≥ 75%"
+              }
+            ],
+            "title": "Empirical Rule vs. Chebychev’s Theorem (for μ ± 2σ)",
+            "headers": [
+              "Rule",
+              "Applies To",
+              "Percentage within 2σ"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Proportion within } k \\sigma \\geq 1 - \\frac{1}{k^2},\\; k > 1$$",
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "number of standard deviations from the mean",
+              "symbol": "$ k $"
+            }
+          ],
+          "title": "Chebychev’s Inequality"
+        }
+      }
+    },
+    {
+      "examples": [
+        {
+          "steps": [
+            "$ \\bar{x} = 91 / 50 = 1.8 $ children.",
+            "Sum of weighted squared deviations $ = 145.40 $.",
+            "$ s^2 = 145.40 / (50 - 1) = 145.40 / 49 \\approx 2.967 $.",
+            "$ s = \\sqrt{2.967} \\approx 1.7 $ children."
+          ],
+          "title": "Example A – Grouped Mean and Standard Deviation",
+          "prompt": "From the frequency distribution of children per household (table above), compute $ \\bar{x} $ and $ s $.",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Grouping loses the exact individual data values; we only know the class interval.",
+            "The midpoint serves as a representative value for all data in that class.",
+            "The calculated standard deviation is an approximation; the true value would require the raw data."
+          ],
+          "prompt": "Explain to a partner why we must use class midpoints when calculating the standard deviation from a frequency distribution.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Without looking back…\n\nExplain to a partner: What information is lost when data are grouped, and how does using the midpoint help?",
+          "title": "Example B – Why Midpoints?"
+        },
+        {
+          "prompt": "In a travel spending survey, the class '$ 500+ $' was represented by midpoint $ 599.5 $. What if we used $ 650 $ instead? How would the mean and standard deviation change?",
+          "role": "independent",
+          "title": "Example C – Effect of Changing Midpoint",
+          "steps": [
+            "A higher midpoint for the open‑ended class would increase the sum $ xf $, so the mean would increase.",
+            "The deviations for that class would change, and the sum of squared deviations would likely increase.",
+            "Thus, both the mean and standard deviation would be slightly larger."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "To approximate the mean for grouped data, we use the class ___ as the representative value.",
+          "id": "q5-1",
+          "hints": [
+            "It's the halfway point of the class.",
+            "Not class boundaries."
+          ],
+          "feedbackIfWrong": "Class midpoints are used to represent the data in each class.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "midpoint",
+                "midpoints",
+                "Midpoint",
+                "Midpoints"
+              ]
+            }
+          ]
+        },
+        {
+          "answers": [
+            "degrees of freedom",
+            "df",
+            "n minus 1"
+          ],
+          "feedbackIfWrong": "n – 1 is the degrees of freedom.",
+          "id": "q5-2",
+          "type": "short-answer",
+          "answer": "degrees of freedom",
+          "hints": [
+            "It's the same correction as in ungrouped sample variance.",
+            "It accounts for estimating one parameter (the mean)."
+          ],
+          "prompt": "In the grouped standard deviation formula for a sample, the denominator is n – 1. What is this value called?"
+        },
+        {
+          "feedbackIfWrong": "Because the exact data values are unknown and replaced by midpoints, the standard deviation is an approximation.",
+          "id": "q5-3",
+          "answer": "individual values are lost",
+          "prompt": "Why can we only approximate the standard deviation from a frequency distribution?",
+          "type": "short-answer",
+          "answers": [
+            "individual values are lost",
+            "raw data unavailable",
+            "we use midpoints"
+          ],
+          "hints": [
+            "We don't know the exact values within each class.",
+            "We substitute the midpoint for all values in the class."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "When data are presented as a frequency distribution instead of raw numbers, we can still estimate the standard deviation. The blueprint guides us: understand the grouped data, solve by treating midpoints as data values weighted by frequencies, and conclude with an interpretation of the variation."
+      },
+      "teacherCues": [
+        "Display a frequency table of children per household. Ask: 'Without the raw data, how can we find the standard deviation?'",
+        "Walk through the columns: midpoint x, frequency f, xf, (x – x̄), (x – x̄)², (x – x̄)²f."
+      ],
+      "confusionCorner": {
+        "title": "Open‑Ended Classes Require Assumptions",
+        "body": "For classes like '$ 500+ $', you must choose a midpoint. This choice affects your estimates. [[imp:Always note that grouped statistics are approximate and depend on the assumed midpoint.]]"
+      },
+      "id": "blueprint-grouped-variation",
+      "title": "Blueprint Aid: Standard Deviation for Grouped Data and Variation Summary",
+      "concept": {
+        "explanation": [
+          "For [[kw:grouped data]] (a frequency distribution), use class [[imp:midpoints]] $ x $ and frequencies $ f $.",
+          "Approximate the sample mean: $ \\bar{x} = \\frac{\\sum (x \\cdot f)}{n} $, where $ n = \\sum f $.",
+          "Approximate the sample standard deviation: $ s = \\sqrt{ \\frac{\\sum (x - \\bar{x})^2 \\cdot f}{n - 1} } $.",
+          "The process is analogous to ungrouped data but weights each midpoint by its frequency.",
+          "For open‑ended classes, choose a reasonable midpoint (e.g., 599.5 for '$ 500+ $'). This affects the estimates."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$ x $",
+              "tone": "core",
+              "meaning": "class midpoint"
+            },
+            {
+              "symbol": "$ f $",
+              "meaning": "class frequency",
+              "tone": "subtle"
+            }
+          ],
+          "title": "Grouped Standard Deviation (Sample)",
+          "formula": "$$\\bar{x} = \\frac{\\sum (x \\cdot f)}{n}, \\quad s = \\sqrt{\\frac{\\sum (x - \\bar{x})^2 f}{n - 1}}$$"
+        },
+        "visuals": [
+          {
+            "title": "Grouped Standard Deviation for Number of Children (n = 50)",
+            "type": "table",
+            "headers": [
+              "$ x $",
+              "$ f $",
+              "$ xf $",
+              "$ x - \\bar{x} $",
+              "$ (x - \\bar{x})^2 $",
+              "$ (x - \\bar{x})^2 f $"
+            ],
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$ 0 $",
+                "1": "$ 10 $",
+                "2": "$ 0 $",
+                "3": "$ -1.8 $",
+                "4": "$ 3.24 $",
+                "5": "$ 32.40 $"
+              },
+              {
+                "0": "$ 1 $",
+                "1": "$ 19 $",
+                "2": "$ 19 $",
+                "3": "$ -0.8 $",
+                "4": "$ 0.64 $",
+                "5": "$ 12.16 $"
+              },
+              {
+                "0": "$ 2 $",
+                "1": "$ 7 $",
+                "2": "$ 14 $",
+                "3": "$ 0.2 $",
+                "4": "$ 0.04 $",
+                "5": "$ 0.28 $"
+              },
+              {
+                "0": "$ 3 $",
+                "1": "$ 7 $",
+                "2": "$ 21 $",
+                "3": "$ 1.2 $",
+                "4": "$ 1.44 $",
+                "5": "$ 10.08 $"
+              },
+              {
+                "0": "$ 4 $",
+                "1": "$ 2 $",
+                "2": "$ 8 $",
+                "3": "$ 2.2 $",
+                "4": "$ 4.84 $",
+                "5": "$ 9.68 $"
+              },
+              {
+                "0": "$ 5 $",
+                "1": "$ 1 $",
+                "2": "$ 5 $",
+                "3": "$ 3.2 $",
+                "4": "$ 10.24 $",
+                "5": "$ 10.24 $"
+              },
+              {
+                "0": "$ 6 $",
+                "1": "$ 4 $",
+                "2": "$ 24 $",
+                "3": "$ 4.2 $",
+                "4": "$ 17.64 $",
+                "5": "$ 70.56 $"
+              },
+              {
+                "0": "Sum",
+                "1": "$ 50 $",
+                "2": "$ 91 $",
+                "3": "",
+                "4": "",
+                "5": "$ 145.40 $"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "schemaVersion": 2,
+  "standards": [
+    "HSS.ID.A.2",
+    "HSS.ID.A.3"
+  ],
+  "type": "interactive-lesson",
+  "id": "chapter-2-4-measures-of-variation",
+  "title": "Measures of Variation",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

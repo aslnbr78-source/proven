@@ -1,0 +1,171 @@
+{
+  "type": "flashcard",
+  "cards": [
+    {
+      "front": "What is a [[kw:multinomial experiment]]?",
+      "back": "A probability experiment with a fixed number of independent trials, each having more than two possible outcomes with fixed probabilities. The chi‑square goodness‑of‑fit test applies to such experiments."
+    },
+    {
+      "back": "A chi‑square test that checks whether a sample frequency distribution fits a claimed or expected distribution. $H_0$: the distribution fits; $H_a$: it does not.",
+      "front": "Define the [[kw:goodness‑of‑fit test]]."
+    },
+    {
+      "front": "How do you compute [[imp:expected frequencies]] in a goodness‑of‑fit test?",
+      "back": "$$E_i = n \\times p_i$$ where $n$ is the total sample size and $p_i$ is the claimed proportion for category $i$."
+    },
+    {
+      "front": "What is the test statistic for the chi‑square goodness‑of‑fit test?",
+      "back": "$$\\chi^2 = \\sum \\frac{(O - E)^2}{E}$$ summed over all categories. $O$ = observed frequency, $E$ = expected frequency."
+    },
+    {
+      "front": "How many degrees of freedom does the goodness‑of‑fit test have?",
+      "back": "$$df = k - 1$$ where $k$ is the number of categories."
+    },
+    {
+      "front": "What condition must expected frequencies satisfy for a chi‑square test?",
+      "back": "Each expected frequency must be at least 5. If any $E < 5$, combine categories until all expected counts are $\\ge 5$."
+    },
+    {
+      "front": "Is the goodness‑of‑fit test left‑tailed, right‑tailed, or two‑tailed?",
+      "back": "Always [[imp:right‑tailed]]. Large $\\chi^2$ values indicate a poor fit; small values mean close agreement, so we reject only for large $\\chi^2$."
+    },
+    {
+      "front": "When testing a [[kw:uniform distribution]], what is the expected frequency for each category?",
+      "back": "$$E = \\frac{n}{k}$$ where $n$ is the total sample size and $k$ is the number of categories. All expected frequencies are equal."
+    },
+    {
+      "front": "In a goodness‑of‑fit test with 6 categories and $\\alpha = 0.05$, the critical value is 11.071. If $\\chi^2 = 4.5$, what is the decision?",
+      "back": "Fail to reject $H_0$ because $4.5 < 11.071$. The observed distribution is consistent with the expected one."
+    },
+    {
+      "front": "What is a [[kw:contingency table]]?",
+      "back": "A table that displays the observed frequencies for two categorical variables. Rows represent one variable, columns the other. The intersection of a row and column is called a cell."
+    },
+    {
+      "front": "Define [[kw:marginal frequencies]] and [[kw:joint frequencies]].",
+      "back": "Marginal frequencies are the row and column totals. Joint frequencies are the observed counts inside the cells."
+    },
+    {
+      "front": "How is the expected frequency for a cell in a contingency table calculated?",
+      "back": "$$E = \\frac{(\\text{row total}) \\times (\\text{column total})}{n}$$ where $n$ is the grand total. This assumes the two variables are independent."
+    },
+    {
+      "back": "$H_0$: The two variables are independent. $H_a$: The two variables are dependent (associated). The test is always right‑tailed.",
+      "front": "What are the hypotheses for the chi‑square [[kw:independence test]]?"
+    },
+    {
+      "front": "What is the degrees of freedom for the chi‑square independence test?",
+      "back": "$$df = (r - 1)(c - 1)$$ where $r$ is the number of rows and $c$ is the number of columns."
+    },
+    {
+      "front": "What condition must expected frequencies satisfy in the independence test?",
+      "back": "Each expected cell frequency must be at least 5. If any $E < 5$, combine rows or columns if possible."
+    },
+    {
+      "front": "A 2×3 contingency table has how many degrees of freedom?",
+      "back": "$$df = (2-1)(3-1) = 1 \\times 2 = 2$$"
+    },
+    {
+      "back": "Reject $H_0$ because $32.63 > 13.277$. There is evidence that ice cream preference and gender are dependent (associated).",
+      "front": "In the ice cream and gender example, $\\chi^2 \\approx 32.63$, $df=4$, critical value 13.277 at $\\alpha=0.01$. Decision?"
+    },
+    {
+      "back": "The observed frequencies are close to the expected frequencies, providing no evidence against independence. You would fail to reject $H_0$.",
+      "front": "What does a small chi‑square value (close to 0) indicate in an independence test?"
+    },
+    {
+      "back": "Goodness‑of‑fit (10.1) compares one sample distribution to a claimed distribution. Independence (10.2) tests whether two categorical variables from one sample are associated.",
+      "front": "What is the difference between the goodness‑of‑fit test and the independence test?"
+    },
+    {
+      "back": "False. It shows an association, not causation. Additional studies are needed to establish cause and effect.",
+      "front": "True or False: A significant chi‑square independence test proves that one variable causes the other."
+    },
+    {
+      "front": "What is the [[kw:F‑distribution]] used for?",
+      "back": "It is used to compare two population variances and in analysis of variance (ANOVA). The ratio of two sample variances follows an F‑distribution under certain conditions."
+    },
+    {
+      "front": "List two key properties of the F‑distribution.",
+      "back": "1. Positively skewed (right‑skewed). 2. Values are always $\\ge 0$. 3. The curve depends on two degrees of freedom (numerator and denominator)."
+    },
+    {
+      "front": "What is the test statistic for the [[kw:two‑sample F‑test]]?",
+      "back": "$$F = \\frac{s_1^2}{s_2^2}$$ where $s_1^2$ and $s_2^2$ are the sample variances, and we always put the [[imp:larger sample variance in the numerator]] so $F \\ge 1$."
+    },
+    {
+      "front": "Why do we always put the larger sample variance in the numerator?",
+      "back": "To make $F \\ge 1$. Since F‑tables only give critical values $>1$, this ensures the test is right‑tailed and we can look up the critical value directly."
+    },
+    {
+      "back": "Numerator: $d.f._N = n_1 - 1$ (for the sample with larger variance). Denominator: $d.f._D = n_2 - 1$ (for the other sample).",
+      "front": "What are the degrees of freedom for the F‑test statistic?"
+    },
+    {
+      "back": "1. Random samples. 2. Independent samples. 3. Both populations normally distributed. The F‑test is sensitive to non‑normality.",
+      "front": "List the three conditions required for the two‑sample F‑test."
+    },
+    {
+      "front": "State a typical null hypothesis for an F‑test comparing two variances.",
+      "back": "$H_0: \\sigma_1^2 = \\sigma_2^2$ (or $\\le$, $\\ge$ depending on the claim). Often it is that the two population variances are equal."
+    },
+    {
+      "back": "Use the F‑table (Table 7) with the given $\\alpha$, numerator df, and denominator df. The critical value is at the intersection of the column and row.",
+      "front": "How do you find the critical F‑value for a [[imp:right‑tailed test]]?"
+    },
+    {
+      "back": "Use the $\\frac{1}{2}\\alpha$ table (e.g., for $\\alpha = 0.05$, use 0.025). Only the right‑tailed critical value is needed because the larger variance is in the numerator.",
+      "front": "How do you find the critical F‑value for a [[imp:two‑tailed test]]?"
+    },
+    {
+      "back": "Old variance is larger, so $F = 400/256 \\approx 1.56$. Numerator df = 9, denominator df = 20.",
+      "front": "A restaurant tests if a new system has lower variance ($n_1=10, s_1^2=400; n_2=21, s_2^2=256$). Compute F."
+    },
+    {
+      "back": "Fail to reject $H_0$ because $1.56 < 1.96$. Not enough evidence to say the new system has smaller variance.",
+      "front": "In the restaurant example, $\\alpha=0.10$, critical value $1.96$. Decision?"
+    },
+    {
+      "back": "Stock B has larger variance: $s_B^2 = 32.49$, $s_A^2 = 12.25$. $F = 32.49/12.25 \\approx 2.65$. Numerator df=30, denominator df=29.",
+      "front": "Stock A: n=30, s=3.5; Stock B: n=31, s=5.7. Test if variances differ (two‑tailed, $\\alpha=0.05$). Find F."
+    },
+    {
+      "back": "Reject $H_0$ because $2.65 > 2.09$. Variances are significantly different, so one stock is riskier.",
+      "front": "In the stock example, critical value from 0.025 table $\\approx 2.09$. Decision?"
+    },
+    {
+      "front": "What Google Sheets function gives the right‑tailed p‑value for an F‑statistic?",
+      "back": "`=F.DIST.RT(F, d.f.N, d.f.D)` returns the probability that F is greater than the computed value. For a two‑tailed test, double this p‑value."
+    },
+    {
+      "front": "What is [[kw:one‑way ANOVA]] used for?",
+      "back": "It compares the means of three or more populations (groups) to determine if at least one mean is different from the others. It analyzes variances to make this comparison."
+    },
+    {
+      "back": "$H_0: \\mu_1 = \\mu_2 = \\dots = \\mu_k$ (all population means are equal). $H_a$: At least one mean is different from the others.",
+      "front": "State the null and alternative hypotheses for one‑way ANOVA."
+    },
+    {
+      "back": "1. Each sample is randomly selected from a normal (approximately normal) population. 2. Samples are independent. 3. Populations have equal variances (homogeneity of variance).",
+      "front": "What are the conditions for one‑way ANOVA?"
+    },
+    {
+      "front": "What does [[kw:MSB]] (Mean Square Between) measure?",
+      "back": "It measures the variation between the sample means. A large MSB indicates the group means are far apart. $MSB = SSB / (k-1)$."
+    },
+    {
+      "back": "It measures the variation within the samples. It pools the sample variances to estimate the common population variance. $MSW = SSW / (N-k)$.",
+      "front": "What does [[kw:MSW]] (Mean Square Within) measure?"
+    },
+    {
+      "back": "$$F = \\frac{MSB}{MSW}$$ It follows an F‑distribution with $d.f._N = k-1$ and $d.f._D = N-k$.",
+      "front": "What is the test statistic for one‑way ANOVA?"
+    }
+  ],
+  "title": "Chapter 10: Review",
+  "id": "consolidated-flashcards-chapter-10",
+  "updatedAt": {
+    "_seconds": 1787773881,
+    "_nanoseconds": 948000000
+  }
+}

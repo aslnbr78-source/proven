@@ -1,0 +1,729 @@
+{
+  "title": "Chapter 6.4 — Exponential Growth and Decay",
+  "presenterNotes": [
+    "Start by contrasting linear growth (constant addition) with exponential growth (constant multiplier). Use a simple doubling example to show how quickly exponential growth outpaces linear growth.",
+    "Emphasize that the growth/decay factor is always 1 ± r, and that the base determines the type of function. A base >1 is growth, between 0 and 1 is decay.",
+    "When rewriting functions, remind students of the exponent properties they learned in Section 6.1. The goal is to get the function into the form y = a(base)^t to easily identify growth or decay.",
+    "For compound interest, stress that the formula is just an application of exponential growth where the rate per period is r/n and the number of periods is nt.",
+    "The monthly rate calculation is a powerful application of fractional exponents. Students often mistakenly divide by 12; show them why that's incorrect with a simple example."
+  ],
+  "id": "chapter-6-4-exponential-growth-and-decay",
+  "type": "interactive-lesson",
+  "standards": [
+    "HSF.LE.A.1",
+    "HSF.LE.A.2",
+    "HSF.IF.C.8b"
+  ],
+  "blocks": [
+    {
+      "id": "exponential-growth-functions",
+      "title": "Exponential Growth Functions",
+      "examples": [
+        {
+          "steps": [
+            "Identify $ a = 150{,}000 $, $ r = 0.08 $.",
+            "Write: $ y = 150{,}000(1 + 0.08)^t = 150{,}000(1.08)^t $.",
+            "Fifth year means $ t = 4 $ (since $ t=0 $ is first year).",
+            "Calculate: $ y = 150{,}000(1.08)^4 \\approx 204{,}073 $. About 204,000 people."
+          ],
+          "title": "A – Write and Use a Growth Function",
+          "role": "guided",
+          "prompt": "A festival has 150,000 attendees initially, growing 8% per year. Write the function and find attendance in the fifth year."
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why do we use $ t = 6 $ for the year 2016, not $ t = 2016 $?",
+          "prompt": "A website has 500,000 members in 2010 and grows 15% per year. Write the function and find members in 2016.",
+          "minLength": 2,
+          "steps": [
+            "$ a = 500{,}000 $, $ r = 0.15 $. Function: $ y = 500{,}000(1.15)^t $.",
+            "2016 is 6 years after 2010, so $ t = 6 $.",
+            "$ y = 500{,}000(1.15)^6 \\approx 1{,}156{,}000 \\approx 1{,}160{,}000 $."
+          ],
+          "title": "B – Website Membership"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "$ a = 10{,}000 $, $ r = 0.65 $. Function: $ y = 10{,}000(1.65)^t $.",
+            "After 3 years ($ t=3 $): $ y = 10{,}000(1.65)^3 \\approx 10{,}000(4.492) = 44{,}920 $.",
+            "Sales would be about $44,920."
+          ],
+          "prompt": "Sales of $10,000 increase by 65% each year. Write the function and find sales after 3 years.",
+          "title": "C – Sales Increase"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A music festival starts with 150,000 fans and grows by 8% each year. Next year, it's not just adding 8,000—it's 8% of the new, bigger crowd. Exponential growth means the amount added gets larger every year, like a snowball rolling downhill!"
+      },
+      "concept": {
+        "explanation": [
+          "An [[kw:exponential growth function]] has the form $ y = a(1 + r)^t $, where $ a > 0 $ is the initial amount, $ r > 0 $ is the growth rate (as a decimal), and $ t $ is time.",
+          "The factor $ 1 + r $ is the [[imp:growth factor]]. It is always greater than 1.",
+          "As $ t $ increases by 1, the quantity is [[imp:multiplied by the growth factor]].",
+          "To evaluate, substitute the time $ t $ into the function. Remember that $ t = 0 $ represents the starting time, not 1.",
+          "Exponential growth is much faster than linear growth because the increase itself increases over time."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Year (t)",
+              "Calculation",
+              "Attendance"
+            ],
+            "title": "Festival Attendance: $ y = 150{,}000(1.08)^t $",
+            "rows": [
+              {
+                "0": "0 (first year)",
+                "1": "$ 150{,}000 $",
+                "2": "150,000"
+              },
+              {
+                "0": "1",
+                "1": "$ 150{,}000 \\times 1.08 $",
+                "2": "162,000"
+              },
+              {
+                "0": "2",
+                "1": "$ 162{,}000 \\times 1.08 $",
+                "2": "174,960"
+              },
+              {
+                "0": "4 (fifth year)",
+                "1": "$ 150{,}000(1.08)^4 $",
+                "2": "≈ 204,073"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "title": "Exponential Growth Function",
+          "notes": [
+            "$ a $ = initial amount (at $ t = 0 $).",
+            "$ r $ = growth rate (decimal). $ 1 + r > 1 $.",
+            "$ t $ = time."
+          ],
+          "formula": "$$ y = a(1 + r)^t $$"
+        }
+      },
+      "teacherCues": [
+        "Write $ y = a(1 + r)^t $ on the board and ask: 'What does each variable represent?' (a = initial amount, r = growth rate, t = time).",
+        "Show a table where y multiplies by a constant >1. Ask: 'Is this growth or decay? How do you know?'"
+      ],
+      "confusionCorner": {
+        "title": "t = 0 is the Starting Point",
+        "body": "In growth problems, $ t = 0 $ represents the initial time. The first year after is $ t = 1 $, the fifth year is $ t = 4 $. Don't accidentally use $ t = 5 $ for the fifth year unless the problem defines $ t $ differently."
+      },
+      "questions": [
+        {
+          "id": "q1-1",
+          "prompt": "In the exponential growth function $ y = a(1 + r)^t $, the growth factor is $ 1 + r $, which is always greater than ___.",
+          "type": "fill-blank",
+          "hints": [
+            "Growth means the quantity increases.",
+            "The factor multiplies the previous amount."
+          ],
+          "feedbackIfWrong": "The growth factor $ 1 + r $ is always greater than 1.",
+          "blanks": [
+            {
+              "accept": [
+                "1",
+                "one"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "answer": "y = 210000(1.125)^t",
+          "feedbackIfWrong": "The function is $ y = 210{,}000(1.125)^t $.",
+          "prompt": "Write the growth function for a population of 210,000 that increases by 12.5% each year. (Use $ y = a(1+r)^t $ format, e.g., $ y = 210000(1.125)^t $)",
+          "hints": [
+            "Convert 12.5% to a decimal: 0.125.",
+            "The growth factor is $ 1 + 0.125 = 1.125 $."
+          ]
+        },
+        {
+          "prompt": "For $ y = 350(1 + 0.75)^t $, what is the initial amount $ a $?",
+          "feedbackIfWrong": "The initial amount $ a $ is 350.",
+          "hints": [
+            "It's the number in front of the parentheses.",
+            "It's the value when $ t = 0 $."
+          ],
+          "type": "short-answer",
+          "answer": "350",
+          "id": "q1-3"
+        }
+      ]
+    },
+    {
+      "title": "Exponential Decay Functions",
+      "confusionCorner": {
+        "body": "If something decreases by 12%, the decay factor is $ 1 - 0.12 = 0.88 $, not 0.12. Multiplying by 0.12 would immediately drop to 12% of the original. The factor 0.88 means [[imp:88% remains]] each year.",
+        "title": "Decay Factor = 1 - r, Not r"
+      },
+      "id": "exponential-decay-functions",
+      "examples": [
+        {
+          "title": "A – Write and Use a Decay Function",
+          "role": "guided",
+          "prompt": "A $21,500 car loses 12% of its value each year. Write the function and find the value after 6 years.",
+          "steps": [
+            "Identify $ a = 21{,}500 $, $ r = 0.12 $.",
+            "Write: $ y = 21{,}500(1 - 0.12)^t = 21{,}500(0.88)^t $.",
+            "For $ t = 6 $: $ y = 21{,}500(0.88)^6 \\approx 21{,}500(0.464) \\approx 9{,}985 $.",
+            "The car is worth about $9,985 after 6 years."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "A population of 100,000 decreases by 2% per year. Write the function and find the population after 3 years.",
+          "steps": [
+            "$ a = 100{,}000 $, $ r = 0.02 $. Function: $ y = 100{,}000(0.98)^t $.",
+            "After 3 years: $ y = 100{,}000(0.98)^3 \\approx 100{,}000(0.941) = 94{,}100 $."
+          ],
+          "title": "B – Population Decrease",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: Why is the decay factor 0.98 and not 0.02?"
+        },
+        {
+          "role": "independent",
+          "steps": [
+            "$ a = 900 $, $ r = 0.09 $. Function: $ y = 900(0.91)^t $.",
+            "After 5 years: $ y = 900(0.91)^5 \\approx 900(0.624) = 561.60 $.",
+            "The value is about $561.60."
+          ],
+          "prompt": "A $900 sound system decreases in value by 9% each year. Write the function and find the value after 5 years.",
+          "title": "C – Sound System Depreciation"
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "In the exponential decay function $ y = a(1 - r)^t $, the decay factor $ 1 - r $ is always between 0 and ___.",
+          "id": "q2-1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "1",
+                "one"
+              ]
+            }
+          ],
+          "hints": [
+            "It's less than 1 because it represents a portion remaining.",
+            "It's the factor that shrinks the quantity."
+          ],
+          "feedbackIfWrong": "The decay factor $ 1 - r $ is between 0 and 1."
+        },
+        {
+          "feedbackIfWrong": "The function is $ y = 100(0.905)^t $.",
+          "id": "q2-2",
+          "answer": "y = 100(0.905)^t",
+          "type": "short-answer",
+          "prompt": "Write the decay function for a stock valued at $100 that decreases by 9.5% each year. (Use $ y = a(1-r)^t $ format)",
+          "hints": [
+            "$ a = 100 $, $ r = 0.095 $.",
+            "Decay factor is $ 1 - 0.095 = 0.905 $."
+          ]
+        },
+        {
+          "feedbackIfWrong": "The decay factor is $ 1 - 0.6 = 0.4 $.",
+          "type": "short-answer",
+          "answer": "0.4",
+          "prompt": "For $ y = 575(1 - 0.6)^t $, what is the decay factor?",
+          "id": "q2-3",
+          "hints": [
+            "Compute $ 1 - 0.6 $.",
+            "The decay factor is inside the parentheses."
+          ]
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A new car loses 12% of its value every year. It's not losing the same dollar amount—it's losing a percentage of the shrinking value. So the drop gets smaller over time, like a melting ice cube. This is exponential decay, where the quantity decreases by a constant factor."
+      },
+      "concept": {
+        "explanation": [
+          "An [[kw:exponential decay function]] has the form $ y = a(1 - r)^t $, where $ a > 0 $, $ 0 < r < 1 $ is the decay rate, and $ t $ is time.",
+          "The factor $ 1 - r $ is the [[imp:decay factor]]. It is between 0 and 1.",
+          "As $ t $ increases by 1, the quantity is [[imp:multiplied by the decay factor]] (gets smaller).",
+          "Exponential decay is slower than linear decay because the amount subtracted decreases over time.",
+          "The function never reaches zero; it just gets closer and closer."
+        ],
+        "formulaCard": {
+          "notes": [
+            "$ a $ = initial amount.",
+            "$ r $ = decay rate (decimal). $ 0 < 1 - r < 1 $.",
+            "$ t $ = time."
+          ],
+          "title": "Exponential Decay Function",
+          "formula": "$$ y = a(1 - r)^t $$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "headers": [
+              "Year (t)",
+              "Calculation",
+              "Value"
+            ],
+            "rows": [
+              {
+                "0": "0",
+                "1": "$ 21{,}500 $",
+                "2": "$21,500"
+              },
+              {
+                "0": "1",
+                "1": "$ 21{,}500 \\times 0.88 $",
+                "2": "$18,920"
+              },
+              {
+                "0": "2",
+                "1": "$ 18{,}920 \\times 0.88 $",
+                "2": "$16,649.60"
+              },
+              {
+                "0": "6",
+                "1": "$ 21{,}500(0.88)^6 $",
+                "2": "≈ $9,985"
+              }
+            ],
+            "variant": "colorful",
+            "title": "Car Value: $ y = 21{,}500(0.88)^t $ (12% annual decay)"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Write $ y = a(1 - r)^t $ on the board. Ask: 'How is this different from the growth formula?'",
+        "Show a table where y multiplies by 1/3 each time. Ask: 'Is the factor greater or less than 1?'"
+      ]
+    },
+    {
+      "teacherCues": [
+        "Display two tables: one with y multiplying by 2, one with y multiplying by 1/3. Ask: 'Which is growth? Which is decay?'",
+        "Write $ y = 5(1.07)^t $ and $ f(t) = 0.2(0.98)^t $. Ask: 'How can you tell just by looking if it's growth or decay?'"
+      ],
+      "examples": [
+        {
+          "title": "A – Interpreting a Growth Function",
+          "prompt": "Is $ y = 5(1.07)^t $ growth or decay? Find the percent rate of change.",
+          "steps": [
+            "The base 1.07 is greater than 1 → exponential growth.",
+            "Set $ 1 + r = 1.07 $ → $ r = 0.07 $.",
+            "The percent rate of growth is 7%."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "The base 0.98 is between 0 and 1 → exponential decay.",
+            "Set $ 1 - r = 0.98 $ → $ r = 0.02 $.",
+            "The percent rate of decay is 2%."
+          ],
+          "peerPrompt": "Explain to a partner: Why is the rate 2% and not 98%?",
+          "title": "B – Interpreting a Decay Function",
+          "prompt": "Is $ f(t) = 0.2(0.98)^t $ growth or decay? Find the percent rate of change.",
+          "minLength": 2
+        },
+        {
+          "title": "C – Classify a Table",
+          "steps": [
+            "Find ratios: $ 16/64 = 0.25 $, $ 4/16 = 0.25 $, $ 1/4 = 0.25 $.",
+            "Ratio is constant and between 0 and 1 → exponential decay."
+          ],
+          "prompt": "x: 0,1,2,3; y: 64,16,4,1. Determine if growth, decay, or neither.",
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ \\text{Growth: } 1 + r = \\text{base} $$ $$ \\text{Decay: } 1 - r = \\text{base} $$",
+          "title": "Finding Percent Rate of Change",
+          "notes": [
+            "If base > 1, it's growth: $ r = \\text{base} - 1 $.",
+            "If 0 < base < 1, it's decay: $ r = 1 - \\text{base} $."
+          ]
+        },
+        "explanation": [
+          "In a table, find the ratio of consecutive $ y $-values. If the ratio is [[imp:constant and > 1]], it's exponential growth. If constant and [[imp:between 0 and 1]], it's exponential decay. If differences are constant, it's linear.",
+          "For a function $ y = a(1 \\pm r)^t $, look at the base: if $ 1 + r > 1 $, it's growth; if $ 1 - r < 1 $, it's decay.",
+          "To find the percent rate, set the factor equal to $ 1 + r $ or $ 1 - r $ and solve for $ r $.",
+          "Example: $ y = 5(1.07)^t $: base 1.07 > 1 → growth; $ 1 + r = 1.07 $ → $ r = 0.07 = 7\\% $.",
+          "Example: $ f(t) = 0.2(0.98)^t $: base 0.98 < 1 → decay; $ 1 - r = 0.98 $ → $ r = 0.02 = 2\\% $."
+        ],
+        "visuals": [
+          {
+            "title": "Identifying Growth vs. Decay from Tables",
+            "rows": [
+              {
+                "0": "0",
+                "1": "270",
+                "2": "5",
+                "3": "32"
+              },
+              {
+                "0": "1",
+                "1": "90",
+                "2": "10",
+                "3": "28"
+              },
+              {
+                "0": "2",
+                "1": "30",
+                "2": "20",
+                "3": "24"
+              },
+              {
+                "0": "3",
+                "1": "10",
+                "2": "40",
+                "3": "20"
+              },
+              {
+                "0": "Type",
+                "1": "Decay (×1/3)",
+                "2": "Growth (×2)",
+                "3": "Linear (difference -4)"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "x",
+              "y (Table A)",
+              "y (Table B)",
+              "y (Table C)"
+            ]
+          }
+        ]
+      },
+      "questions": [
+        {
+          "feedbackIfWrong": "Exponential growth.",
+          "type": "fill-blank",
+          "prompt": "If the base of an exponential function is greater than 1, the function represents exponential ___.",
+          "blanks": [
+            {
+              "accept": [
+                "growth"
+              ]
+            }
+          ],
+          "id": "q3-1",
+          "hints": [
+            "It's the opposite of decay.",
+            "The quantity increases over time."
+          ]
+        },
+        {
+          "answer": "20%",
+          "type": "short-answer",
+          "feedbackIfWrong": "The rate is 20%.",
+          "id": "q3-2",
+          "prompt": "What is the percent rate of growth for $ y = 25(1.2)^t $?",
+          "hints": [
+            "The base is 1.2, so $ 1 + r = 1.2 $.",
+            "Subtract 1: $ r = 0.2 $, then convert to percent."
+          ]
+        },
+        {
+          "hints": [
+            "Divide the second y by the first: $ 180/240 $.",
+            "Check: $ 135/180 $ gives the same."
+          ],
+          "answer": "0.75",
+          "feedbackIfWrong": "The constant ratio is 0.75.",
+          "prompt": "A table has y-values 240, 180, 135, 101.25. What is the constant ratio? (decimal, e.g., 0.75)",
+          "id": "q3-3",
+          "type": "short-answer"
+        }
+      ],
+      "id": "identifying-growth-decay",
+      "discoveryHook": {
+        "scenario": "You can spot growth or decay instantly: if the factor inside the parentheses is greater than 1, it's growth; if it's between 0 and 1, it's decay. The percent rate of change is just the distance from 1—above 1 is growth rate, below 1 is decay rate."
+      },
+      "title": "Identifying Growth and Decay from Tables and Functions",
+      "confusionCorner": {
+        "title": "Decay Rate is What's Lost, Not What Remains",
+        "body": "In $ y = 5(0.98)^t $, the base 0.98 means 98% remains each period. The decay rate $ r $ is the 2% that is lost. Do not confuse the base with the rate."
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Sometimes exponential functions are disguised with fractions in the exponent or extra terms. Using exponent properties, you can rewrite them into the clean form $ y = a(\\text{base})^t $ and instantly see whether they represent growth or decay—and find the rate!"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "$ y = 100(0.96)^{t/4} $",
+                "1": "Power of a Power",
+                "2": "$ y \\approx 100(0.99)^t $",
+                "3": "Decay"
+              },
+              {
+                "0": "$ f(t) = (1.1)^{t-3} $",
+                "1": "Quotient of Powers",
+                "2": "$ f(t) \\approx 0.75(1.1)^t $",
+                "3": "Growth"
+              },
+              {
+                "0": "$ f(t) = 3(1.02)^{10t} $",
+                "1": "Power of a Power",
+                "2": "$ f(t) = 3(1.02^{10})^t \\approx 3(1.22)^t $",
+                "3": "Growth"
+              }
+            ],
+            "variant": "colorful",
+            "headers": [
+              "Original",
+              "Property Used",
+              "Rewritten",
+              "Type"
+            ],
+            "title": "Rewriting Exponential Functions",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ (a^m)^n = a^{mn}, \\qquad a^{m+n} = a^m \\cdot a^n, \\qquad a^{m-n} = \\frac{a^m}{a^n} $$",
+          "notes": [
+            "Use Power of a Power to rewrite $ a^{t/c} = (a^{1/c})^t $.",
+            "Use Quotient/Product of Powers to separate constant terms."
+          ],
+          "title": "Key Exponent Properties"
+        },
+        "explanation": [
+          "Functions like $ y = a(b)^{t/c} $ or $ y = a(b)^{t+k} $ can be rewritten using exponent properties.",
+          "For $ y = a(b)^{t/c} $, use $ (b^{1/c})^t $ to find the effective base per unit time.",
+          "For $ y = a(b)^{t+k} $, rewrite as $ a \\cdot b^k \\cdot b^t $ to separate the constant factor from the exponential part.",
+          "After rewriting, the new base $ b_{\\text{eff}} $ tells you if it's growth ($ > 1 $) or decay ($ < 1 $)."
+        ]
+      },
+      "questions": [
+        {
+          "answer": "c",
+          "id": "q4-1",
+          "hints": [
+            "The denominator of the original exponent becomes the root index.",
+            "Look at the fraction in the exponent: $ t/c $."
+          ],
+          "prompt": "To rewrite $ a^{t/c} $ as an exponential function with exponent $ t $, you use the Power of a Power Property to get $ (a^{1/?})^t $. What should the denominator ? be?",
+          "type": "short-answer",
+          "feedbackIfWrong": "The denominator is $ c $, so the expression becomes $ (a^{1/c})^t $."
+        },
+        {
+          "answer": "1.69",
+          "type": "short-answer",
+          "hints": [
+            "Use Power of a Power: $ (1.06^{9})^t $.",
+            "Calculate $ 1.06^9 $."
+          ],
+          "id": "q4-2",
+          "feedbackIfWrong": "$ 1.06^9 \\approx 1.69 $, so $ y \\approx 2(1.69)^t $.",
+          "prompt": "Rewrite $ y = 2(1.06)^{9t} $ in the form $ y = a \\cdot b^t $. What is the approximate base $ b $? (Round to two decimal places)"
+        },
+        {
+          "hints": [
+            "The base is greater than 1.",
+            "Growth means the quantity increases."
+          ],
+          "prompt": "Does the rewritten function $ y = 2(1.69)^t $ represent growth or decay?",
+          "answer": "growth",
+          "type": "short-answer",
+          "feedbackIfWrong": "Growth, because the base 1.69 > 1.",
+          "id": "q4-3"
+        }
+      ],
+      "examples": [
+        {
+          "title": "A – Fraction in the Exponent",
+          "prompt": "Rewrite $ y = 100(0.96)^{t/4} $ to determine growth or decay.",
+          "steps": [
+            "Use Power of a Power: $ (0.96)^{t/4} = (0.96^{1/4})^t $.",
+            "Calculate $ 0.96^{1/4} \\approx 0.99 $.",
+            "Rewritten: $ y \\approx 100(0.99)^t $. Base < 1 → exponential decay."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "prompt": "Rewrite $ f(t) = (1.1)^{t-3} $ to determine growth or decay.",
+          "steps": [
+            "Use Quotient of Powers: $ (1.1)^{t-3} = \\frac{(1.1)^t}{(1.1)^3} $.",
+            "Calculate $ 1.1^3 = 1.331 $, so $ \\frac{1}{1.331} \\approx 0.75 $.",
+            "Rewritten: $ f(t) \\approx 0.75(1.1)^t $. Base > 1 → exponential growth."
+          ],
+          "title": "B – Exponent with Subtraction",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: Why does subtracting 3 in the exponent turn into multiplying by $ 1.1^{-3} $?"
+        },
+        {
+          "prompt": "Rewrite to identify growth or decay and find the effective annual rate.",
+          "title": "C – Rewrite $ f(t) = 5(0.82)^{t/5} $",
+          "role": "independent",
+          "steps": [
+            "$ f(t) = 5(0.82)^{t/5} = 5(0.82^{1/5})^t $.",
+            "Calculate $ 0.82^{1/5} \\approx 0.961 $. Base $ 0.961 < 1 $ → decay.",
+            "Effective annual rate: $ r = 1 - 0.961 = 0.039 = 3.9\\% $."
+          ]
+        }
+      ],
+      "title": "Rewriting Exponential Functions",
+      "teacherCues": [
+        "Write $ y = 100(0.96)^{t/4} $ and ask: 'Is this growth or decay? How can we rewrite it to see the base more clearly?'",
+        "Demonstrate using the Power of a Power Property: $ (0.96)^{t/4} = (0.96^{1/4})^t $."
+      ],
+      "confusionCorner": {
+        "body": "In $ y = 100(0.96)^{t/4} $, the exponent $ t/4 $ means the base 0.96 applies every 4 time units. The effective base per single time unit is $ 0.96^{1/4} $, which is different. Always compute the effective base for the time unit you need.",
+        "title": "Time Units Matter"
+      },
+      "id": "rewriting-exponential-functions"
+    },
+    {
+      "concept": {
+        "explanation": [
+          "[[kw:Compound interest]]: $ y = P(1 + \\frac{r}{n})^{nt} $, where $ P $ is principal, $ r $ is annual rate, $ n $ is compounds per year, $ t $ is years.",
+          "To find an equivalent monthly rate from an annual rate, use the fact that $ (1 + r_{\\text{annual}}) = (1 + r_{\\text{monthly}})^{12} $.",
+          "Solve for the monthly rate: $ r_{\\text{monthly}} = (1 + r_{\\text{annual}})^{1/12} - 1 $.",
+          "For decay, use $ 1 - r_{\\text{annual}} = (1 - r_{\\text{monthly}})^{12} $ and solve similarly.",
+          "Always check that the rewritten rate makes sense by multiplying the monthly rate by 12—it should be close to the annual rate."
+        ],
+        "formulaCard": {
+          "formula": "$$ y = P\\left(1 + \\frac{r}{n}\\right)^{nt} $$",
+          "title": "Compound Interest Formula",
+          "notes": [
+            "$ P $ = principal, $ r $ = annual interest rate, $ n $ = compounds per year, $ t $ = years.",
+            "For annual compounding, $ n = 1 $ and the formula simplifies to $ y = P(1 + r)^t $."
+          ]
+        },
+        "visuals": [
+          {
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$100 at 6% compounded monthly",
+                "1": "$ 100(1 + 0.06/12)^{12t} $",
+                "2": "$ 100(1.005)^{60} \\approx 134.89 $"
+              },
+              {
+                "0": "$500 at 9% compounded monthly",
+                "1": "$ 500(1 + 0.09/12)^{12t} $",
+                "2": "$ 500(1.0075)^{60} \\approx 780.89 $"
+              }
+            ],
+            "headers": [
+              "Scenario",
+              "Formula",
+              "Balance after 5 years"
+            ],
+            "title": "Compound Interest Examples",
+            "type": "table"
+          }
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "Money in a savings account doesn't just grow—it compounds! Interest is calculated on the interest already earned. The more often it compounds, the faster it grows. And for a depreciating car, you can even find the monthly rate from the annual rate by using fractional exponents."
+      },
+      "title": "Compound Interest and Real-Life Applications",
+      "examples": [
+        {
+          "prompt": "You deposit $100 at 6% annual interest compounded monthly. Write the function and find the balance after 5 years.",
+          "steps": [
+            "Use formula: $ y = 100(1 + 0.06/12)^{12t} = 100(1.005)^{12t} $.",
+            "After 5 years ($ t = 5 $): exponent $ 12 \\times 5 = 60 $.",
+            "$ y = 100(1.005)^{60} \\approx 100(1.3489) = 134.89 $.",
+            "Balance is about $134.89."
+          ],
+          "role": "guided",
+          "title": "A – Compound Interest"
+        },
+        {
+          "peerPrompt": "Explain to a partner: Why do we solve $ (1 - r_m)^{12} = 0.88 $ to find the monthly rate?",
+          "role": "peer-explain",
+          "minLength": 2,
+          "title": "B – Monthly Car Depreciation",
+          "steps": [
+            "Annual decay factor = $ 1 - 0.12 = 0.88 $.",
+            "If $ r_m $ is the monthly rate, then $ (1 - r_m)^{12} = 0.88 $.",
+            "Take the 12th root: $ 1 - r_m = 0.88^{1/12} \\approx 0.989 $.",
+            "$ r_m \\approx 0.011 = 1.1\\% $ per month."
+          ],
+          "prompt": "A car loses 12% of its value per year. Find the approximate monthly percent decrease."
+        },
+        {
+          "role": "independent",
+          "title": "C – City Population Monthly Growth",
+          "steps": [
+            "Annual growth factor = $ 1 + 0.055 = 1.055 $.",
+            "$ (1 + r_m)^{12} = 1.055 $ → $ 1 + r_m = 1.055^{1/12} \\approx 1.00447 $.",
+            "$ r_m \\approx 0.00447 = 0.447\\% $ per month.",
+            "Monthly increase is about 0.45%."
+          ],
+          "prompt": "A city's population of 25,000 grows 5.5% per year. Find the approximate monthly percent increase."
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "It could be monthly ($ n=12 $), quarterly ($ n=4 $), etc.",
+            "It starts with 'c'."
+          ],
+          "feedbackIfWrong": "$ n $ is the number of compounding periods per year.",
+          "blanks": [
+            {
+              "accept": [
+                "compounded"
+              ]
+            }
+          ],
+          "id": "q5-1",
+          "prompt": "In the compound interest formula $ y = P(1 + \\frac{r}{n})^{nt} $, the variable $ n $ represents the number of times interest is ___ per year."
+        },
+        {
+          "id": "q5-2",
+          "hints": [
+            "Semiannually means twice a year, so $ n = 2 $.",
+            "Plug $ P = 1400 $, $ r = 0.10 $, $ n = 2 $."
+          ],
+          "prompt": "Write the compound interest function for $1400 at 10% annual interest compounded semiannually. (Use $ y = P(1 + r/n)^{nt} $ format)",
+          "answer": "y = 1400(1 + 0.10/2)^{2t}",
+          "type": "short-answer",
+          "feedbackIfWrong": "The function is $ y = 1400(1 + 0.05)^{2t} $ or $ y = 1400(1.05)^{2t} $."
+        },
+        {
+          "feedbackIfWrong": "$ 0.91^{1/12} \\approx 0.992 $.",
+          "answer": "0.992",
+          "hints": [
+            "Annual decay factor = $ 1 - 0.09 = 0.91 $.",
+            "Monthly factor = $ 0.91^{1/12} $."
+          ],
+          "id": "q5-3",
+          "prompt": "A car loses 9% of its value per year. What is the approximate monthly decay factor? (Round to three decimal places, e.g., 0.992)",
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Write the compound interest formula $ y = P(1 + r/n)^{nt} $ and ask: 'What does each variable represent?'",
+        "Pose the car depreciation problem: $21,500 car loses 12% per year. Ask: 'How can we find the monthly percent decrease?'"
+      ],
+      "confusionCorner": {
+        "body": "Because of compounding, the monthly rate is not simply the annual rate divided by 12. You must use the 12th root. For 12% annual decay, $ 0.88^{1/12} $ gives the monthly factor, not $ 0.88/12 $.",
+        "title": "Monthly Rate ≠ Annual Rate ÷ 12"
+      },
+      "id": "compound-interest-and-real-life"
+    }
+  ],
+  "schemaVersion": 2,
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

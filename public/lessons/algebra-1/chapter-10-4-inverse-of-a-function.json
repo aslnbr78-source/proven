@@ -1,0 +1,767 @@
+{
+  "blocks": [
+    {
+      "teacherCues": [
+        "Write the ordered pairs (1,3), (2,5), (3,7). Ask: 'If I switch the x and y, what do I get? That's the inverse relation.'",
+        "Show a mapping diagram with inputs and outputs. Then swap the arrows. Ask: 'How does this change the domain and range?'"
+      ],
+      "discoveryHook": {
+        "scenario": "Every relation has a twin — its inverse — created by swapping inputs and outputs. If you know the original, the inverse is just a flip away. This simple switch is the key to unlocking inverse functions."
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "hints": [
+            "The first becomes second, the second becomes first.",
+            "It's like flipping the ordered pair."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "switch",
+                "swap",
+                "interchange"
+              ]
+            }
+          ],
+          "id": "q1-1",
+          "feedbackIfWrong": "Switch (or swap) the coordinates.",
+          "prompt": "To find the inverse of a relation given as a set of ordered pairs, ___ the x- and y-coordinates of each pair."
+        },
+        {
+          "id": "q1-2",
+          "type": "short-answer",
+          "feedbackIfWrong": "The inverse contains $(-8, 3)$.",
+          "hints": [
+            "Switch the numbers.",
+            "The original is (input, output)."
+          ],
+          "answers": [
+            "(-8,3)"
+          ],
+          "prompt": "If a relation contains $(3, -8)$, what ordered pair does its inverse contain? (Type without spaces, e.g., (-8,3))"
+        },
+        {
+          "prompt": "The domain of an inverse relation equals the ___ of the original relation. (Type one word)",
+          "feedbackIfWrong": "The domain of the inverse equals the range of the original.",
+          "answers": [
+            "range",
+            "Range"
+          ],
+          "hints": [
+            "Think about what happens when you swap x and y.",
+            "Inputs become outputs."
+          ],
+          "id": "q1-3",
+          "type": "short-answer"
+        }
+      ],
+      "confusionCorner": {
+        "body": "The inverse relation does NOT mean you take the opposite (negate) of the numbers. It means you [[imp:swap the positions]] of x and y. $(2,5)$ becomes $(5,2)$, not $(-2,-5)$.",
+        "title": "Inverse ≠ Opposite"
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ (a,b) \\text{ in original} \\quad\\rightarrow\\quad (b,a) \\text{ in inverse} $$",
+          "notes": [
+            "Domain of inverse = Range of original.",
+            "Range of inverse = Domain of original."
+          ],
+          "title": "Inverse Relation"
+        },
+        "visuals": [
+          {
+            "title": "Inverse of a Relation (Table)",
+            "rows": [
+              {
+                "0": "-4",
+                "1": "7",
+                "2": "→",
+                "3": "7",
+                "4": "-4"
+              },
+              {
+                "0": "-2",
+                "1": "4",
+                "2": "→",
+                "3": "4",
+                "4": "-2"
+              },
+              {
+                "0": "0",
+                "1": "1",
+                "2": "→",
+                "3": "1",
+                "4": "0"
+              },
+              {
+                "0": "2",
+                "1": "-2",
+                "2": "→",
+                "3": "-2",
+                "4": "2"
+              },
+              {
+                "0": "4",
+                "1": "-5",
+                "2": "→",
+                "3": "-5",
+                "4": "4"
+              }
+            ],
+            "headers": [
+              "Original Input",
+              "Original Output",
+              "→",
+              "Inverse Input",
+              "Inverse Output"
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "A [[kw:relation]] pairs inputs with outputs. The [[kw:inverse relation]] switches each input and output.",
+          "If the original contains $(a,b)$, the inverse contains $(b,a)$.",
+          "To find the inverse: **list** the ordered pairs with coordinates swapped, or **switch** the rows of a table.",
+          "Example: Original $(-4,7),(-2,4),(0,1),(2,-2),(4,-5)$ → Inverse $(7,-4),(4,-2),(1,0),(-2,2),(-5,4)$."
+        ]
+      },
+      "id": "inverse-relations",
+      "title": "Finding Inverses of Relations",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Switch the x and y of each pair.",
+            "Inverse: $(-4,-3),(0,-2),(4,-1),(8,0),(12,1)$."
+          ],
+          "prompt": "Find the inverse of $(-3,-4),(-2,0),(-1,4),(0,8),(1,12)$.",
+          "title": "Example A — Ordered Pairs"
+        },
+        {
+          "title": "Example B — Table",
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why does switching the rows work? How are the domain and range affected?",
+          "steps": [
+            "Swap the rows: New input = old output.",
+            "Inverse: Input $4,1,0,1,4$ → Output $-2,-1,0,1,2$."
+          ],
+          "prompt": "Find the inverse of this relation: Input $-2,-1,0,1,2$ → Output $4,1,0,1,4$.",
+          "minLength": 2
+        },
+        {
+          "title": "Example C — Your Turn",
+          "role": "independent",
+          "steps": [
+            "Switch coordinates: $(5,0),(10,1),(15,2),(20,3)$."
+          ],
+          "prompt": "Find the inverse of $(0,5),(1,10),(2,15),(3,20)$."
+        }
+      ]
+    },
+    {
+      "confusionCorner": {
+        "body": "Always switch x and y first, then solve for the new y. If you solve for x first and then switch, you'll still get the right answer, but the standard method is switch-then-solve.",
+        "title": "Switch THEN Solve"
+      },
+      "id": "finding-inverse-functions-algebraically",
+      "teacherCues": [
+        "Write $f(x) = 4x - 9$. Replace $f(x)$ with $y$. Now switch $x$ and $y$: $x = 4y - 9$. Solve for $y$.",
+        "The result $y = \\frac{x+9}{4}$ is the inverse function, $g(x)$."
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "variant": "colorful",
+            "title": "Finding the Inverse of $f(x)=4x-9$",
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action",
+              "Equation"
+            ],
+            "rows": [
+              {
+                "0": "1. Set y = f(x)",
+                "1": "Replace f(x) with y",
+                "2": "$y = 4x - 9$"
+              },
+              {
+                "0": "2. Switch x and y",
+                "1": "Swap variables",
+                "2": "$x = 4y - 9$"
+              },
+              {
+                "0": "3. Solve for y",
+                "1": "Add 9, divide by 4",
+                "2": "$y = \\frac{x+9}{4}$"
+              },
+              {
+                "0": "4. Write inverse",
+                "1": "Replace y with $f^{-1}(x)$",
+                "2": "$f^{-1}(x) = \\frac{x+9}{4}$"
+              }
+            ]
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ y = f(x) \\quad\\rightarrow\\quad x = f(y) \\quad\\rightarrow\\quad \\text{solve for } y $$",
+          "title": "Finding Inverse Algebraically",
+          "notes": [
+            "Switch x and y, then solve for y.",
+            "The inverse is a reflection of the graph across the line $y = x$."
+          ]
+        },
+        "explanation": [
+          "An [[kw:inverse function]] reverses the original function: if $f(a)=b$, then $f^{-1}(b)=a$.",
+          "To find the inverse algebraically:",
+          " 1. Write $y = f(x)$.",
+          " 2. Switch $x$ and $y$.",
+          " 3. Solve for $y$.",
+          " 4. Replace $y$ with $f^{-1}(x)$ (or $g(x)$).",
+          "Example: $f(x)=2x+1$ → $y=2x+1$ → $x=2y+1$ → $y=\\frac{x-1}{2}$. So $f^{-1}(x)=\\frac{x-1}{2}$.",
+          "[[imp:Inverse functions undo each other: $f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$.]]"
+        ]
+      },
+      "title": "Finding Inverses of Functions Algebraically",
+      "questions": [
+        {
+          "blanks": [
+            {
+              "accept": [
+                "switch",
+                "swap",
+                "interchange"
+              ]
+            }
+          ],
+          "hints": [
+            "The second step after writing $y=f(x)$.",
+            "Exchange the variables."
+          ],
+          "prompt": "To find the inverse of $f(x)$ algebraically, first set $y = f(x)$. Then ___ x and y in the equation.",
+          "feedbackIfWrong": "Switch (or swap) x and y.",
+          "id": "q2-1",
+          "type": "fill-blank"
+        },
+        {
+          "id": "q2-2",
+          "feedbackIfWrong": "The constant term is $\\frac{1}{4}$.",
+          "hints": [
+            "Solve $x = 4y - 1$ for $y$.",
+            "$y = \\frac{x+1}{4} = \\frac{1}{4}x + \\frac{1}{4}$."
+          ],
+          "prompt": "Find the inverse of $f(x) = 4x - 1$. What is the constant term in the inverse function?",
+          "type": "short-answer",
+          "answers": [
+            "1/4",
+            "0.25",
+            ".25"
+          ]
+        },
+        {
+          "feedbackIfWrong": "$f^{-1}(7) = \\frac{7-3}{2} = 2$.",
+          "hints": [
+            "Find the inverse function first: $f^{-1}(x) = \\frac{x-3}{2}$.",
+            "Plug in $x=7$."
+          ],
+          "answers": [
+            "2",
+            "two"
+          ],
+          "prompt": "If $f(x) = 2x + 3$, what is $f^{-1}(7)$?",
+          "type": "short-answer",
+          "id": "q2-3"
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "Find the inverse of $f(x) = 4x - 9$.",
+          "title": "Example A — Linear Function",
+          "role": "guided",
+          "steps": [
+            "Write $y = 4x - 9$.",
+            "Switch: $x = 4y - 9$.",
+            "Add 9: $x+9 = 4y$. Divide by 4: $y = \\frac{x+9}{4}$.",
+            "Inverse: $f^{-1}(x) = \\frac{x+9}{4}$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "minLength": 2,
+          "prompt": "Find the inverse of $f(x) = -\\frac{3}{2}x + \\frac{7}{2}$.",
+          "peerPrompt": "Explain to a partner: After switching x and y, what operations undo the original? Why is the order reversed?",
+          "steps": [
+            "$y = -\\frac{3}{2}x + \\frac{7}{2}$ → Switch: $x = -\\frac{3}{2}y + \\frac{7}{2}$.",
+            "Subtract $\\frac{7}{2}$: $x - \\frac{7}{2} = -\\frac{3}{2}y$. Multiply by $-\\frac{2}{3}$: $y = -\\frac{2}{3}(x - \\frac{7}{2}) = -\\frac{2}{3}x + \\frac{7}{3}$.",
+            "Inverse: $f^{-1}(x) = -\\frac{2}{3}x + \\frac{7}{3}$."
+          ],
+          "title": "Example B — Another Linear Function"
+        },
+        {
+          "role": "independent",
+          "prompt": "Find the inverse of $f(x) = 6x$.",
+          "steps": [
+            "$y = 6x$ → Switch: $x = 6y$ → $y = \\frac{x}{6}$.",
+            "Inverse: $f^{-1}(x) = \\frac{x}{6}$."
+          ],
+          "title": "Example C — Practice"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "An inverse function undoes the original. For $f(x)=2x+1$, if you plug in 3, you get 7. The inverse takes 7 back to 3. By switching x and y and solving for y, we can find the formula for this undo button."
+      }
+    },
+    {
+      "teacherCues": [
+        "Graph $f(x) = x^2$. Ask: 'If we reflect this in $y=x$, does the result pass the Vertical Line Test?'",
+        "Then restrict the domain to $x \\ge 0$. Now the inverse IS a function: $g(x) = \\sqrt{x}$."
+      ],
+      "examples": [
+        {
+          "prompt": "Find the inverse of $f(x) = x^2$, $x \\ge 0$.",
+          "title": "Example A — Quadratic with Restriction",
+          "steps": [
+            "$y = x^2$, $x \\ge 0$. Switch: $x = y^2$, $y \\ge 0$.",
+            "Take square root: $y = \\pm\\sqrt{x}$. Since $y \\ge 0$, keep positive: $y = \\sqrt{x}$.",
+            "Inverse: $f^{-1}(x) = \\sqrt{x}$, $x \\ge 0$."
+          ],
+          "role": "guided"
+        },
+        {
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why does the inverse have a restricted domain? What does $x \\ge 0$ mean for the inverse?",
+          "minLength": 2,
+          "steps": [
+            "Graph $f$; passes Horizontal Line Test → inverse is a function.",
+            "$y = \\sqrt{x+2}$ → $x = \\sqrt{y+2}$ → $x^2 = y+2$ → $y = x^2 - 2$.",
+            "Since range of $f$ is $y \\ge 0$, domain of inverse is $x \\ge 0$.",
+            "Inverse: $g(x) = x^2 - 2$, $x \\ge 0$."
+          ],
+          "prompt": "Find the inverse of $f(x) = \\sqrt{x+2}$. Is the inverse a function?",
+          "title": "Example B — Radical Function"
+        },
+        {
+          "steps": [
+            "$y = -x^2$, $x \\le 0$. Switch: $x = -y^2$, $y \\le 0$.",
+            "$y^2 = -x$. Since $y \\le 0$, $y = -\\sqrt{-x}$.",
+            "Inverse: $f^{-1}(x) = -\\sqrt{-x}$, $x \\le 0$."
+          ],
+          "role": "independent",
+          "title": "Example C — Practice",
+          "prompt": "Find the inverse of $f(x) = -x^2$, $x \\le 0$."
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The [[kw:Horizontal Line Test]]: The inverse of $f$ is a function if and only if no horizontal line intersects the graph of $f$ more than once.",
+          "If $f$ fails the Horizontal Line Test, you can restrict its domain so that the inverse becomes a function.",
+          "Example: $f(x) = x^2$ fails the test. Restrict to $x \\ge 0$; then the inverse is $g(x) = \\sqrt{x}$, a function.",
+          "For radical functions like $f(x) = \\sqrt{x+2}$, the graph passes the Horizontal Line Test, so its inverse (found by squaring) is a function, but its domain must be restricted to $x \\ge 0$."
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ],
+            "rows": [
+              {
+                "0": "Original",
+                "1": "$f(x)=x^2$, $x\\ge 0$",
+                "2": "Passes Horizontal Line Test"
+              },
+              {
+                "0": "Find inverse",
+                "1": "$y=x^2$ → $x=y^2$ → $y=\\sqrt{x}$",
+                "2": "$g(x)=\\sqrt{x}$, $x\\ge 0$"
+              },
+              {
+                "0": "Check",
+                "1": "$f(g(x)) = (\\sqrt{x})^2 = x$",
+                "2": "Inverses confirmed"
+              }
+            ],
+            "title": "Inverse of $f(x)=x^2$ (with domain restriction)"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Inverse of } f \\text{ is a function } \\iff \\text{ no horizontal line intersects } f \\text{ more than once.} $$",
+          "notes": [
+            "If $f$ fails, restrict its domain to make the inverse a function.",
+            "Quadratic functions typically need domain restrictions."
+          ],
+          "title": "Horizontal Line Test"
+        }
+      },
+      "confusionCorner": {
+        "body": "When finding inverses of functions with restricted domains or ranges, always check: the domain of the inverse is the range of the original, and vice versa. Don't forget to state the restriction.",
+        "title": "Domain of Inverse = Range of Original"
+      },
+      "title": "Horizontal Line Test and Domain Restrictions",
+      "discoveryHook": {
+        "scenario": "Not every function's inverse is itself a function. The Horizontal Line Test checks: if any horizontal line hits the graph more than once, the inverse will fail the vertical line test. But by restricting the domain, we can often force the inverse to be a function."
+      },
+      "questions": [
+        {
+          "prompt": "The inverse of a function $f$ is itself a function if and only if no ___ line intersects the graph of $f$ more than once.",
+          "blanks": [
+            {
+              "accept": [
+                "horizontal",
+                "Horizontal"
+              ]
+            }
+          ],
+          "id": "q3-1",
+          "hints": [
+            "It's a test involving lines parallel to the x-axis.",
+            "Not the Vertical Line Test."
+          ],
+          "feedbackIfWrong": "This is the Horizontal Line Test.",
+          "type": "fill-blank"
+        },
+        {
+          "prompt": "Does $f(x) = x^2 + 1$ have an inverse that is a function without restricting the domain? (Type 'yes' or 'no')",
+          "feedbackIfWrong": "No, it fails the Horizontal Line Test.",
+          "answers": [
+            "no",
+            "No"
+          ],
+          "id": "q3-2",
+          "type": "short-answer",
+          "hints": [
+            "Apply the Horizontal Line Test.",
+            "A horizontal line like $y=2$ hits the parabola twice."
+          ]
+        },
+        {
+          "id": "q3-3",
+          "feedbackIfWrong": "The inverse is $g(x) = \\sqrt{x}$.",
+          "answers": [
+            "sqrt(x)",
+            "√x"
+          ],
+          "prompt": "Find the inverse of $f(x) = x^2$, $x \\ge 0$. (Type the inverse function, e.g., sqrt(x))",
+          "type": "short-answer",
+          "hints": [
+            "Switch x and y, solve for y.",
+            "Take the positive square root."
+          ]
+        }
+      ],
+      "id": "horizontal-line-test-and-domain-restriction"
+    },
+    {
+      "title": "Inverses of Nonlinear Functions",
+      "questions": [
+        {
+          "feedbackIfWrong": "Cube both sides.",
+          "id": "q4-1",
+          "blanks": [
+            {
+              "accept": [
+                "cube",
+                "Cube"
+              ]
+            }
+          ],
+          "type": "fill-blank",
+          "hints": [
+            "The inverse of a cube root is the cube.",
+            "To undo $\\sqrt[3]{\\phantom{x}}$, raise to the 3rd power."
+          ],
+          "prompt": "To find the inverse of $f(x) = \\sqrt[3]{x-5}$, you would switch $x$ and $y$, then ___ both sides."
+        },
+        {
+          "answers": [
+            "1/2",
+            "0.5",
+            ".5"
+          ],
+          "id": "q4-2",
+          "type": "short-answer",
+          "feedbackIfWrong": "The coefficient inside the cube root is $\\frac{1}{2}$.",
+          "hints": [
+            "Solve $x = 2y^3$ for $y$.",
+            "$y^3 = \\frac{x}{2}$, so coefficient is $\\frac{1}{2}$."
+          ],
+          "prompt": "Find the inverse of $f(x) = 2x^3$. What is the coefficient inside the cube root?"
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "$f^{-1}(3) = 3^3 + 1 = 28$.",
+          "hints": [
+            "Plug $x=3$ into $x^3 + 1$.",
+            "$27 + 1 = 28$."
+          ],
+          "id": "q4-3",
+          "answers": [
+            "28",
+            "twenty-eight"
+          ],
+          "prompt": "If $f(x) = \\sqrt[3]{x-1}$, then $f^{-1}(x) = x^3 + 1$. What is $f^{-1}(3)$?"
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Find the inverse of $f(x) = 2x^3$.",
+          "steps": [
+            "$y = 2x^3$ → Switch: $x = 2y^3$.",
+            "Divide by 2: $\\frac{x}{2} = y^3$.",
+            "Cube root: $y = \\sqrt[3]{\\frac{x}{2}}$.",
+            "Inverse: $f^{-1}(x) = \\sqrt[3]{\\frac{x}{2}}$."
+          ],
+          "title": "Example A — Cubic Function"
+        },
+        {
+          "role": "peer-explain",
+          "steps": [
+            "$y = \\sqrt[3]{x-1}$ → Switch: $x = \\sqrt[3]{y-1}$.",
+            "Cube both sides: $x^3 = y - 1$.",
+            "Add 1: $y = x^3 + 1$.",
+            "Inverse: $f^{-1}(x) = x^3 + 1$."
+          ],
+          "peerPrompt": "Explain to a partner: Why is cubing the correct inverse operation? How does the inverse undo the original step by step?",
+          "title": "Example B — Cube Root Function",
+          "prompt": "Find the inverse of $f(x) = \\sqrt[3]{x-1}$.",
+          "minLength": 2
+        },
+        {
+          "title": "Example C — Practice",
+          "prompt": "Find the inverse of $f(x) = 8(x+2)^3$.",
+          "steps": [
+            "$y = 8(x+2)^3$ → Switch: $x = 8(y+2)^3$.",
+            "Divide by 8: $\\frac{x}{8} = (y+2)^3$.",
+            "Cube root: $\\sqrt[3]{\\frac{x}{8}} = y+2$. Subtract 2: $y = \\frac{\\sqrt[3]{x}}{2} - 2$.",
+            "Inverse: $f^{-1}(x) = \\frac{\\sqrt[3]{x}}{2} - 2$."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "inverse-of-radical-and-cubic-functions",
+      "discoveryHook": {
+        "scenario": "Radical and cubic functions often have inverses that are functions without any domain restrictions. The cube root undoes the cube, and vice versa — a perfect pair of inverse operations."
+      },
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ f^{-1}(x) \\text{ is the inverse of } f(x) $$",
+          "title": "Inverse Function Notation",
+          "notes": [
+            "The notation $f^{-1}$ does NOT mean $\\frac{1}{f}$.",
+            "Cubic and odd‑index radical functions have inverses that are functions without restrictions."
+          ]
+        },
+        "explanation": [
+          "For cubic functions $f(x) = ax^3 + b$, the inverse always passes the Horizontal Line Test, so it's a function.",
+          "For radical functions with odd indices (cube roots, etc.), the inverse is also a function.",
+          "To find the inverse, use the same algebraic method: switch $x$ and $y$, then undo the operations.",
+          "Example: $f(x) = 2x^3$ → $y = 2x^3$ → $x = 2y^3$ → $y^3 = \\frac{x}{2}$ → $y = \\sqrt[3]{\\frac{x}{2}}$.",
+          "Example: $f(x) = \\sqrt[3]{x-1}$ → $y = \\sqrt[3]{x-1}$ → $x = \\sqrt[3]{y-1}$ → $x^3 = y-1$ → $y = x^3 + 1$."
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Original $f(x)$",
+              "Inverse $f^{-1}(x)$",
+              "Domain Restriction?"
+            ],
+            "title": "Inverses of Nonlinear Functions",
+            "rows": [
+              {
+                "0": "$2x^3$",
+                "1": "$\\sqrt[3]{\\frac{x}{2}}$",
+                "2": "None"
+              },
+              {
+                "0": "$\\sqrt[3]{x-1}$",
+                "1": "$x^3 + 1$",
+                "2": "None"
+              },
+              {
+                "0": "$\\sqrt{x+2}$",
+                "1": "$x^2 - 2$",
+                "2": "$x \\ge 0$"
+              },
+              {
+                "0": "$x^2, x \\ge 0$",
+                "1": "$\\sqrt{x}$",
+                "2": "$x \\ge 0$"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "title": "$f^{-1}(x)$ Is NOT $\\frac{1}{f(x)}$",
+        "body": "The notation $f^{-1}(x)$ means the inverse function. It is NOT the reciprocal. $\\sin^{-1}(x)$ is the inverse sine, not $\\frac{1}{\\sin x}$. Same idea here."
+      },
+      "teacherCues": [
+        "Write $f(x) = \\sqrt[3]{x-1}$. Ask: 'How do we find its inverse? Switch x and y, then cube both sides.'",
+        "Show $f(x)=2x^3$: inverse involves a cube root. 'Cubic functions always have inverses that are functions.'"
+      ]
+    },
+    {
+      "discoveryHook": {
+        "scenario": "Finding an inverse is like building a reverse machine. The blueprint — write, switch, solve, verify — works for any function. Use it to convert currencies, undo formulas, or even reverse a free‑fall model to find time from height!"
+      },
+      "examples": [
+        {
+          "prompt": "The formula $E = 0.74683D$ converts U.S. dollars to euros. Find the inverse to convert euros to dollars.",
+          "role": "guided",
+          "title": "Example A — Currency Conversion",
+          "steps": [
+            "Write $E = 0.74683D$. Switch: $D = 0.74683E$? No, switch variables: $D = 0.74683E$ is not correct. Actually, $E$ is output, $D$ is input. We want $D$ in terms of $E$. Solve original for $D$: $D = \\frac{E}{0.74683}$.",
+            "So the inverse is $D(E) = \\frac{E}{0.74683}$.",
+            "For 250 euros: $D = \\frac{250}{0.74683} \\approx 334.75$ dollars."
+          ]
+        },
+        {
+          "prompt": "The height of a dropped walnut is $h = -16t^2 + 50$. Solve for $t$ to find when the walnut is 15 feet above ground.",
+          "steps": [
+            "Set $h=15$: $15 = -16t^2 + 50$ → $16t^2 = 35$ → $t^2 = \\frac{35}{16}$.",
+            "$t = \\sqrt{\\frac{35}{16}} \\approx 1.48$ seconds.",
+            "The inverse formula is $t(h) = \\sqrt{\\frac{50-h}{16}}$."
+          ],
+          "role": "peer-explain",
+          "minLength": 2,
+          "title": "Example B — Free Fall Inverse",
+          "peerPrompt": "Explain to a partner: Why is the inverse useful here? How does solving for $t$ answer the question?"
+        },
+        {
+          "prompt": "Height of equilateral triangle: $h = \\frac{\\sqrt{3}s}{2}$. Solve for side length $s$. Find $s$ when $h=16$ in.",
+          "role": "independent",
+          "title": "Example C — Equilateral Triangle Height",
+          "steps": [
+            "Multiply by 2: $2h = \\sqrt{3}s$.",
+            "Divide by $\\sqrt{3}$: $s = \\frac{2h}{\\sqrt{3}}$.",
+            "For $h=16$: $s = \\frac{32}{\\sqrt{3}} \\approx 18.48$ inches."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "q5-1",
+          "feedbackIfWrong": "Check by composition.",
+          "prompt": "To verify that two functions are inverses, check that $f(g(x)) = x$ and $g(f(x)) = x$. This process is called checking by ___.",
+          "hints": [
+            "You plug one function into the other.",
+            "It's the operation of combining functions."
+          ],
+          "blanks": [
+            {
+              "accept": [
+                "composition",
+                "Composition"
+              ]
+            }
+          ]
+        },
+        {
+          "prompt": "The formula $E = 0.74683D$ converts dollars to euros. Write the inverse formula for $D$ in terms of $E$. (Type an expression using E, e.g., E/0.74683)",
+          "type": "short-answer",
+          "feedbackIfWrong": "$D = \\frac{E}{0.74683}$.",
+          "answers": [
+            "E/0.74683",
+            "E / 0.74683"
+          ],
+          "id": "q5-2",
+          "hints": [
+            "Solve $E = 0.74683D$ for $D$.",
+            "Divide both sides by 0.74683."
+          ]
+        },
+        {
+          "answers": [
+            "1.48"
+          ],
+          "hints": [
+            "Set $h=15$, solve $16t^2 = 35$.",
+            "$t = \\sqrt{35/16} \\approx 1.479$."
+          ],
+          "id": "q5-3",
+          "type": "short-answer",
+          "prompt": "A walnut's height is $h = -16t^2 + 50$. After how many seconds is it 15 feet above ground? Round to the nearest hundredth.",
+          "feedbackIfWrong": "About 1.48 seconds."
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "**Understand:** Identify the function. Is it linear, quadratic, radical, cubic?",
+          "**Solve – Switch:** Write $y = f(x)$, then switch $x$ and $y$.",
+          "**Solve – Isolate:** Use inverse operations to solve for $y$. Remember to reverse the order of operations.",
+          "**Conclude – Verify:** Check that $f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$.",
+          "For real‑world problems, the inverse gives a way to find the input from the output (e.g., find time from height)."
+        ],
+        "visuals": [
+          {
+            "title": "Blueprint for $f(x)=4x-9$",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Linear function",
+                "2": "Operations: multiply by 4, subtract 9"
+              },
+              {
+                "0": "Switch",
+                "1": "$y=4x-9$ → $x=4y-9$",
+                "2": ""
+              },
+              {
+                "0": "Isolate",
+                "1": "Add 9, divide by 4",
+                "2": "$y = \\frac{x+9}{4}$"
+              },
+              {
+                "0": "Verify",
+                "1": "$f(f^{-1}(x)) = 4(\\frac{x+9}{4})-9 = x$",
+                "2": "✓"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action",
+              "Result"
+            ]
+          }
+        ],
+        "formulaCard": {
+          "notes": [
+            "Always verify by composition.",
+            "For quadratic functions, restrict the domain so the inverse is a function."
+          ],
+          "formula": "$$ y = f(x) \\quad\\rightarrow\\quad x = f(y) \\quad\\rightarrow\\quad \\text{solve for } y \\quad\\rightarrow\\quad f^{-1}(x) $$",
+          "title": "Inverse Blueprint"
+        }
+      },
+      "teacherCues": [
+        "Post the blueprint: 1) Write $y=f(x)$. 2) Switch $x$ and $y$. 3) Solve for $y$. 4) Verify with composition: $f(f^{-1}(x)) = x$.",
+        "For word problems, interpret the inverse in context (e.g., convert euros back to dollars)."
+      ],
+      "confusionCorner": {
+        "body": "In applied problems, you may solve for the input variable without literally switching variable names. The key is to isolate the original independent variable. The resulting formula is the inverse relationship.",
+        "title": "Switching Variables in Applications"
+      },
+      "id": "blueprint-finding-inverses",
+      "title": "Blueprint Aid: Find and Verify Inverses"
+    }
+  ],
+  "id": "chapter-10-4-inverse-of-a-function",
+  "schemaVersion": 2,
+  "type": "interactive-lesson",
+  "title": "Chapter 10.4 — Inverse of a Function",
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

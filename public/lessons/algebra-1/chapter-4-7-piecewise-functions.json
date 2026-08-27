@@ -1,0 +1,714 @@
+{
+  "presenterNotes": [
+    "Piecewise functions are a new and often intimidating concept. Start with the simple two-piece linear function and emphasize the process: check the condition, then evaluate.",
+    "When graphing, physically draw the two pieces in different colors and explicitly mark open/closed circles. Students often forget the circles.",
+    "Step functions are a great real-world connection. Use the karaoke/rental examples and have students explain why the graph looks like stairs.",
+    "Connecting absolute value functions to piecewise functions reinforces both topics. Show that the vertex is the split point, and the two linear pieces meet there."
+  ],
+  "standards": [
+    "HSF.IF.C.7b",
+    "HSA.CED.A.2"
+  ],
+  "type": "interactive-lesson",
+  "title": "Chapter 4.7 — Piecewise Functions",
+  "id": "chapter-4-7-piecewise-functions",
+  "schemaVersion": 2,
+  "blocks": [
+    {
+      "concept": {
+        "formulaCard": {
+          "formula": "$$ f(x) = \\begin{cases} \\text{expression}_1, & \\text{if condition}_1 \\\\ \\text{expression}_2, & \\text{if condition}_2 \\end{cases} $$",
+          "title": "Evaluating a Piecewise Function",
+          "notes": [
+            "Check conditions in order; use the first one that is true.",
+            "The domain of each piece is given by its condition."
+          ]
+        },
+        "explanation": [
+          "A [[kw:piecewise function]] is defined by two or more equations, each applying to a specific part of the domain.",
+          "To evaluate, first determine which condition the given x-value satisfies, then use the corresponding equation.",
+          "Use a closed circle (●) for inequalities with ≤ or ≥; open circle (○) for < or >.",
+          "The function can have gaps, jumps, or changes in direction between pieces.",
+          "Always check the boundary conditions carefully—an input at a boundary belongs to the piece with the 'equal to' part."
+        ],
+        "visuals": [
+          {
+            "title": "Evaluating f(x) = { x-2, if x≤0; 2x+1, if x>0 }",
+            "headers": [
+              "x-value",
+              "Condition satisfied?",
+              "Expression used",
+              "f(x)"
+            ],
+            "rows": [
+              {
+                "0": "0",
+                "1": "0 ≤ 0 → true",
+                "2": "x-2",
+                "3": "-2"
+              },
+              {
+                "0": "4",
+                "1": "4 > 0 → true",
+                "2": "2x+1",
+                "3": "9"
+              },
+              {
+                "0": "-3",
+                "1": "-3 ≤ 0 → true",
+                "2": "x-2",
+                "3": "-5"
+              }
+            ],
+            "type": "table",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Write a piecewise function on the board: f(x) = { x-2 if x≤0, 2x+1 if x>0 }. Ask: 'If x=0, which piece do we use? Why?'",
+        "Emphasize checking the condition first, then substituting into the correct expression."
+      ],
+      "discoveryHook": {
+        "scenario": "A piecewise function is like a multi-tool: different rules for different situations. If you're under 12, the movie ticket costs $8; 12 and over, it's $12. The rule depends on the input—just like a piecewise function where the equation you use depends on the x-value."
+      },
+      "title": "Evaluating Piecewise Functions",
+      "questions": [
+        {
+          "prompt": "A piecewise function is defined by two or more equations, each applying to a different part of the ___.",
+          "feedbackIfWrong": "Each piece applies to a different part of the domain.",
+          "blanks": [
+            {
+              "accept": [
+                "domain"
+              ]
+            }
+          ],
+          "hints": [
+            "It's the set of input values.",
+            "Starts with 'd'."
+          ],
+          "type": "fill-blank",
+          "id": "q1-1"
+        },
+        {
+          "feedbackIfWrong": "f(-1) = -1 - 2 = -3.",
+          "type": "short-answer",
+          "answer": "-3",
+          "id": "q1-2",
+          "prompt": "For f(x) = { x-2, if x≤0; 2x+1, if x>0 }, evaluate f(-1).",
+          "hints": [
+            "Check: -1 ≤ 0, so use the first piece.",
+            "x-2 = -1-2 = ?"
+          ]
+        },
+        {
+          "prompt": "In the three-piece function above, which piece gives f(10)? What is the value?",
+          "hints": [
+            "10 > 5, so third piece: 4x.",
+            "4(10) = ?"
+          ],
+          "feedbackIfWrong": "f(10) = 40.",
+          "id": "q1-3",
+          "answer": "40",
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "title": "A – Evaluating at x=0 and x=4",
+          "steps": [
+            "For x=0: condition 0≤0 is true → use x-2. f(0) = 0-2 = -2.",
+            "For x=4: condition 4>0 is true → use 2x+1. f(4) = 2(4)+1 = 9."
+          ],
+          "prompt": "Evaluate f(x) = { x-2, if x≤0; 2x+1, if x>0 } at x=0 and x=4.",
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Explain to a partner: How did you decide which piece to use for x = -2? Why not the first piece?",
+          "prompt": "Evaluate f(x) = { 3, if x<-2; x+2, if -2≤x≤5; 4x, if x>5 } at x = -8, -2, 0, 3, 5, 10.",
+          "title": "B – Three-piece function",
+          "minLength": 2,
+          "steps": [
+            "x=-8: -8 < -2 → first piece, f(-8)=3.",
+            "x=-2: -2 ≥ -2 and ≤5 → second piece, f(-2) = -2+2 = 0.",
+            "x=0: -2≤0≤5 → second piece, f(0)=2.",
+            "x=3: second piece, f(3)=5.",
+            "x=5: second piece, f(5)=7.",
+            "x=10: 10>5 → third piece, f(10)=40."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "title": "C – Distance traveled",
+          "prompt": "A trip's distance d(x) in miles is: d(x) = { 55x, if 0≤x≤2; 65x-20, if 2<x≤5 }. How far in 4 hours?",
+          "steps": [
+            "4 satisfies 2<4≤5 → use second piece.",
+            "d(4) = 65(4) - 20 = 260 - 20 = 240 miles."
+          ],
+          "role": "independent"
+        }
+      ],
+      "id": "evaluating-piecewise-functions",
+      "confusionCorner": {
+        "body": "If the condition is ≤ or ≥, the boundary value is included. In the example f(x) = { x-2, x≤0; 2x+1, x>0 }, 0 belongs to the first piece (≤). Always check which piece has the 'or equal to' at the boundary.",
+        "title": "Boundary points"
+      }
+    },
+    {
+      "title": "Graphing and Writing Piecewise Functions",
+      "concept": {
+        "explanation": [
+          "To graph a piecewise function, graph each piece within its specified domain interval.",
+          "Use an [[imp:open circle]] for endpoints that are not included (< or >).",
+          "Use a [[imp:closed circle]] for endpoints that are included (≤ or ≥).",
+          "The domain is the union of the domains of all pieces. The range is the set of all y-values produced.",
+          "To write a piecewise function from a graph, identify the equations of each line or curve and the x-intervals where they apply."
+        ],
+        "formulaCard": {
+          "formula": "$$ \\text{Graph each piece on its domain; use open/closed circles at boundaries} $$",
+          "notes": [
+            "Domain: all x-values covered by the pieces.",
+            "Range: read from the y-axis extent of the graph."
+          ],
+          "title": "Graphing a Piecewise Function"
+        },
+        "visuals": [
+          {
+            "rows": [
+              {
+                "0": "y = -x-4",
+                "1": "x < 0",
+                "2": "Line with slope -1, y-intercept -4",
+                "3": "Open circle at (0,-4)"
+              },
+              {
+                "0": "y = x",
+                "1": "x ≥ 0",
+                "2": "Line with slope 1, through origin",
+                "3": "Closed circle at (0,0)"
+              }
+            ],
+            "headers": [
+              "Piece",
+              "Interval",
+              "Graph",
+              "Endpoint at x=0"
+            ],
+            "title": "Graphing y = { -x-4, x<0; x, x≥0 }",
+            "type": "table",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "not"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Open circle for endpoints not included (strict inequalities).",
+          "prompt": "When graphing a piecewise function, use an open circle for endpoints that are ___ included in the interval.",
+          "hints": [
+            "It's the opposite of included.",
+            "For < or >."
+          ]
+        },
+        {
+          "answer": "closed",
+          "hints": [
+            "Look at the condition for the second piece.",
+            "x ≥ 0 means 0 is included."
+          ],
+          "feedbackIfWrong": "Closed circle, because x≥0 includes 0.",
+          "type": "short-answer",
+          "prompt": "In the graph of y = { -x-4, x<0; x, x≥0 }, what type of circle is at (0,0)?",
+          "id": "q2-2"
+        },
+        {
+          "answer": "-1",
+          "feedbackIfWrong": "f(0) = -1.",
+          "hints": [
+            "Use the piece that includes x=0 (x≥0).",
+            "2(0)-1 = -1."
+          ],
+          "type": "short-answer",
+          "prompt": "For the graph with y = x+3 (x<0) and y = 2x-1 (x≥0), what is the y-value at x=0?",
+          "id": "q2-3"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Graphing a piecewise function is like drawing two separate lines on the same grid, each with its own start and end points. One line might stop with an open circle, and the other picks up with a closed circle—creating a picture that can have sharp turns or gaps."
+      },
+      "teacherCues": [
+        "Graph y = { -x-4, if x<0; x, if x≥0 } step by step. Show open circle at (0,-4) for the first piece, closed at (0,0) for the second.",
+        "Ask: 'What is the domain? Range?'"
+      ],
+      "id": "graphing-piecewise-functions",
+      "examples": [
+        {
+          "title": "A – Graphing a two-piece function",
+          "prompt": "Graph y = { -x-4, if x<0; x, if x≥0 }. Describe domain and range.",
+          "steps": [
+            "First piece: y = -x-4 for x<0. Ray starting at open circle (0,-4) going up left.",
+            "Second piece: y = x for x≥0. Ray starting at closed circle (0,0) going up right.",
+            "Domain: all real numbers. Range: y > -4 (the lowest point is at the open circle, so -4 is not included)."
+          ],
+          "role": "guided"
+        },
+        {
+          "prompt": "A graph shows a line y = x+3 for x<0, and y = 2x-1 for x≥0. Write the piecewise function.",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: How did you determine the equation for each piece and the domain intervals?",
+          "title": "B – Writing a piecewise function from a graph",
+          "steps": [
+            "Left piece: line through (-3,0) and (0,3) with slope 1. Equation: y = x+3. Used for x<0 (open circle at (0,3) if strictly less, but here the second piece picks up at 0). Actually graph shows closed at (0,-1) for right piece. So f(x) = { x+3, if x<0; 2x-1, if x≥0 }."
+          ],
+          "role": "peer-explain"
+        },
+        {
+          "title": "C – Graph with constant piece",
+          "role": "independent",
+          "prompt": "Graph y = { x+8, if x<4; 4x-4, if x≥4 }.",
+          "steps": [
+            "First piece: line y = x+8 from left, open circle at (4,12).",
+            "Second piece: line y = 4x-4 from (4,12) with closed circle (since x≥4).",
+            "Domain: all real numbers. Range: y ≥ 12? Actually first piece goes down to -∞, second piece starts at 12 and goes up. Range: all real numbers."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Open vs. Closed at Boundaries",
+        "body": "At a boundary x = a, if one piece has ≤ or ≥ and the other has < or >, there will be a closed circle on the piece that includes the equal sign, and an open circle on the other piece. This can create a jump or a continuous connection."
+      }
+    },
+    {
+      "confusionCorner": {
+        "title": "Interval Overlap",
+        "body": "Step functions must define intervals that don't overlap. Use half-open intervals like (0,1], (1,2] to avoid ambiguity. The endpoint with the 'or equal' should be on one side only."
+      },
+      "discoveryHook": {
+        "scenario": "Parking garages often charge a flat rate for each hour or part of an hour. The cost jumps up in steps—$2 for the first hour, $4 for up to two hours, etc. These step functions look like staircases when graphed and model many real-world tiered pricing structures."
+      },
+      "title": "Step Functions",
+      "questions": [
+        {
+          "hints": [
+            "It does not change within the interval.",
+            "It's a flat horizontal segment."
+          ],
+          "type": "fill-blank",
+          "id": "q3-1",
+          "blanks": [
+            {
+              "accept": [
+                "constant"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "Each piece is a constant value.",
+          "prompt": "A step function is a piecewise function where each piece is a ___ value."
+        },
+        {
+          "id": "q3-2",
+          "feedbackIfWrong": "The cost is $100.",
+          "answer": "100",
+          "hints": [
+            "2.5 is between 2 and 3.",
+            "Use the interval (2,3]."
+          ],
+          "type": "short-answer",
+          "prompt": "In the karaoke rental step function, what is the cost for 2.5 days?"
+        },
+        {
+          "answers": [
+            "tiered pricing",
+            "rental costs",
+            "parking fees",
+            "shipping rates"
+          ],
+          "hints": [
+            "Think of the karaoke example.",
+            "Any cost that jumps in increments."
+          ],
+          "prompt": "How are step functions often used in real life?",
+          "id": "q3-3",
+          "feedbackIfWrong": "They are used for pricing that changes in steps, like rental or parking fees.",
+          "type": "short-answer"
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "Write and graph the step function for a karaoke rental: $50 for the first day, $25 for each additional day, up to 5 days.",
+          "title": "A – Karaoke Rental Graph",
+          "role": "guided",
+          "steps": [
+            "Table: 0<x≤1: 50; 1<x≤2: 75; 2<x≤3: 100; 3<x≤4: 125; 4<x≤5: 150.",
+            "Write the piecewise function with these constant values.",
+            "Graph: horizontal segments at y=50 from (0,50) open to (1,50) closed; then y=75, etc."
+          ]
+        },
+        {
+          "minLength": 2,
+          "prompt": "A wood chipper costs $100 for the first day, $50 for each additional day, up to 4 days. Write and graph the step function.",
+          "role": "peer-explain",
+          "peerPrompt": "Explain to a partner: Why are the intervals written as (0,1], (1,2], etc., with open on the left and closed on the right?",
+          "title": "B – Wood Chipper Rental",
+          "steps": [
+            "Cost: 0<x≤1: 100; 1<x≤2: 150; 2<x≤3: 200; 3<x≤4: 250.",
+            "Write as a step function with these constants.",
+            "Graph the four horizontal segments."
+          ]
+        },
+        {
+          "steps": [
+            "For p ≤ 5, cost = 180. For 5 < p ≤ 6: 210; 6 < p ≤ 7: 240; 7 < p ≤ 8: 270; 8 < p ≤ 9: 300.",
+            "Write the piecewise function with these intervals.",
+            "Graph the step function for the relevant domain."
+          ],
+          "role": "independent",
+          "prompt": "A league costs $180 for up to 5 people, plus $30 per additional person. You have 9 people. Write and graph the step function for total cost based on number of people p.",
+          "title": "C – Sports League Cost"
+        }
+      ],
+      "teacherCues": [
+        "Draw a staircase-like graph on the board. Ask: 'Why does this look like steps? What kind of function is this?'",
+        "Define step function: a piecewise constant function, often used for pricing tiers."
+      ],
+      "concept": {
+        "explanation": [
+          "A [[kw:step function]] is a piecewise function where each piece is a constant value.",
+          "The graph consists of horizontal segments that look like steps.",
+          "Each segment's domain is an interval. Pay attention to open/closed circles at the boundaries.",
+          "Step functions often model costs that increase in increments (e.g., per day, per hour, per person)."
+        ],
+        "visuals": [
+          {
+            "title": "Karaoke Rental ($50 first day, $25 each additional day)",
+            "headers": [
+              "Days, x",
+              "Cost, y"
+            ],
+            "rows": [
+              {
+                "0": "0 < x ≤ 1",
+                "1": "50"
+              },
+              {
+                "0": "1 < x ≤ 2",
+                "1": "75"
+              },
+              {
+                "0": "2 < x ≤ 3",
+                "1": "100"
+              },
+              {
+                "0": "3 < x ≤ 4",
+                "1": "125"
+              },
+              {
+                "0": "4 < x ≤ 5",
+                "1": "150"
+              }
+            ],
+            "variant": "colorful",
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$ f(x) = \\begin{cases} 50, & 0 < x \\le 1 \\\\ 75, & 1 < x \\le 2 \\\\ 100, & 2 < x \\le 3 \\\\ 125, & 3 < x \\le 4 \\\\ 150, & 4 < x \\le 5 \\end{cases} $$",
+          "notes": [
+            "Each interval is half-open (open on left, closed on right) to avoid overlap.",
+            "The graph is a series of horizontal segments."
+          ],
+          "title": "Step Function (Karaoke Rental)"
+        }
+      },
+      "id": "step-functions"
+    },
+    {
+      "id": "absolute-value-as-piecewise",
+      "examples": [
+        {
+          "steps": [
+            "Split where x-2 = 0 → x = 2.",
+            "If x < 2, then x-2 is negative, so |x-2| = -(x-2) = -x+2.",
+            "If x ≥ 2, then x-2 is non-negative, so |x-2| = x-2.",
+            "Piecewise: y = { -x+2, if x<2; x-2, if x≥2 }."
+          ],
+          "role": "guided",
+          "title": "A – Write |x-2| as a piecewise function",
+          "prompt": "Write y = |x-2| as a piecewise function."
+        },
+        {
+          "peerPrompt": "Explain to a partner: Why do we split at x = -3? What does the '2' multiply?",
+          "minLength": 2,
+          "role": "peer-explain",
+          "prompt": "Write y = 2|x+3| as a piecewise function.",
+          "steps": [
+            "Inside x+3 = 0 at x = -3.",
+            "x < -3: |x+3| = -(x+3) → y = 2(-(x+3)) = -2x-6.",
+            "x ≥ -3: |x+3| = x+3 → y = 2(x+3) = 2x+6.",
+            "Piecewise: y = { -2x-6, if x<-3; 2x+6, if x≥-3 }."
+          ],
+          "title": "B – Write 2|x+3| as a piecewise function"
+        },
+        {
+          "title": "C – Holography reference beam",
+          "steps": [
+            "Split at x=5.",
+            "x<5: g(x) = -1.6(-(x-5))+8 = 1.6x - 8 + 8 = 1.6x.",
+            "x≥5: g(x) = -1.6(x-5)+8 = -1.6x+8+8 = -1.6x+16.",
+            "Piecewise: g(x) = { 1.6x, if x<5; -1.6x+16, if x≥5 }."
+          ],
+          "prompt": "The reference beam path is modeled by g(x) = -1.6|x-5|+8. Write as a piecewise function.",
+          "role": "independent"
+        }
+      ],
+      "teacherCues": [
+        "Write f(x) = |x| and remind students that it's V-shaped. Ask: 'What are the two linear pieces that make up this graph?'",
+        "Demonstrate splitting at x=0: for x<0, |x| = -x; for x≥0, |x| = x."
+      ],
+      "questions": [
+        {
+          "prompt": "The absolute value function |x| can be written as a piecewise function with the split at x = ___.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "0"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "The split is at x = 0.",
+          "id": "q4-1",
+          "hints": [
+            "It's where the expression inside changes sign.",
+            "The vertex of |x| is at (0,0)."
+          ]
+        },
+        {
+          "answer": "y = { -x-5, if x<-5; x+5, if x≥-5 }",
+          "hints": [
+            "Split at x = -5.",
+            "For x<-5, the inside is negative, so use -(x+5)."
+          ],
+          "feedbackIfWrong": "y = { -x-5, if x<-5; x+5, if x≥-5 }.",
+          "prompt": "Write |x+5| as a piecewise function. (Use format: y = { -x-5, if x<-5; x+5, if x≥-5 })",
+          "id": "q4-2",
+          "type": "short-answer"
+        },
+        {
+          "hints": [
+            "For x ≥ -1, |x+1| = x+1.",
+            "Then y = -2(x+1)+3 = -2x -2 +3 = -2x+1."
+          ],
+          "answer": "-2x+1",
+          "feedbackIfWrong": "The expression is -2x+1.",
+          "id": "q4-3",
+          "prompt": "For the piecewise version of y = -2|x+1|+3, what is the expression for x ≥ -1?",
+          "type": "short-answer"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "The absolute value function is the most famous piecewise function in disguise! For negative inputs, it multiplies by -1 to 'flip' the sign; for non-negative inputs, it leaves them alone. Recognizing this helps you rewrite any absolute value function as a piecewise function and graph it as two linear pieces."
+      },
+      "title": "Writing Absolute Value Functions as Piecewise Functions",
+      "confusionCorner": {
+        "title": "Sign of a matters",
+        "body": "When writing a|x-h|+k as a piecewise, the a multiplies whatever replaces the absolute value. If a is positive, the left piece has negative slope and the right piece has positive slope (V shape). If a is negative, the left piece has positive slope and the right piece has negative slope (inverted V)."
+      },
+      "concept": {
+        "formulaCard": {
+          "title": "Absolute Value as Piecewise",
+          "notes": [
+            "Split where the inside equals zero.",
+            "Use the negative of the inside for the left piece, the inside itself for the right piece (if a > 0)."
+          ],
+          "formula": "$$ |x| = \\begin{cases} -x, & x < 0 \\\\ x, & x \\ge 0 \\end{cases} $$"
+        },
+        "visuals": [
+          {
+            "type": "table",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "$ y = |x| $",
+                "1": "(0,0)",
+                "2": "$ \\begin{cases} -x, & x<0 \\\\ x, & x\\ge 0 \\end{cases} $"
+              },
+              {
+                "0": "$ y = |x-2| $",
+                "1": "(2,0)",
+                "2": "$ \\begin{cases} -(x-2), & x<2 \\\\ x-2, & x\\ge 2 \\end{cases} $"
+              },
+              {
+                "0": "$ y = -2|x+1|+3 $",
+                "1": "(-1,3)",
+                "2": "$ \\begin{cases} -2(-(x+1))+3, & x<-1 \\\\ -2(x+1)+3, & x\\ge -1 \\end{cases} $"
+              }
+            ],
+            "headers": [
+              "Function",
+              "Vertex",
+              "Piecewise Definition"
+            ],
+            "title": "Splitting Absolute Value Functions"
+          }
+        ],
+        "explanation": [
+          "The absolute value function $ f(x) = |x| $ can be written as a piecewise function: $ f(x) = \\begin{cases} -x, & x < 0 \\\\ x, & x \\ge 0 \\end{cases} $.",
+          "Vertex form $ g(x) = a|x-h|+k $ can also be split at $ x = h $.",
+          "The split point is where the expression inside the absolute value changes sign ($ x-h = 0 $).",
+          "For $ a|x-h|+k $: if $ x-h < 0 $, then $ |x-h| = -(x-h) $; if $ x-h \\ge 0 $, then $ |x-h| = x-h $.",
+          "This allows you to graph absolute value functions as two lines meeting at the vertex."
+        ]
+      }
+    },
+    {
+      "examples": [
+        {
+          "title": "A – Full Blueprint from Graph",
+          "steps": [
+            "Understand: Two linear pieces, split at x=0.",
+            "Solve: Left: y=-x (slope -1). Right: y=x (slope 1). Domains: left x<0, right x≥0.",
+            "Conclude: f(x) = { -x, if x<0; x, if x≥0 }. This is the absolute value function."
+          ],
+          "prompt": "Graph shows a V-shape with vertex at (0,0), left line y=-x for x<0, right line y=x for x≥0. Use the blueprint to write the piecewise function.",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Understand: Step function with 4 pieces (1st hour, 2nd, 3rd, 4th).",
+            "Solve: 0<x≤1: 3; 1<x≤2: 5; 2<x≤3: 7; 3<x≤4: 9.",
+            "Conclude: Write as piecewise function with those constants and intervals."
+          ],
+          "title": "B – Step Function Blueprint",
+          "prompt": "Parking costs: first hour $3, each additional hour $2, max 4 hours. Use the blueprint.",
+          "role": "peer-explain",
+          "minLength": 2,
+          "peerPrompt": "Explain to a partner: How does the blueprint help you organize the constant pieces and their intervals?"
+        },
+        {
+          "title": "C – From Context to Piecewise",
+          "steps": [
+            "Understand: First mile (0<x≤1) costs $3. After that, each additional mile adds $2.",
+            "Solve: For 0<x≤1: C=3. For 1<x≤10: C = 3 + 2(x-1) = 2x+1.",
+            "Conclude: C(x) = { 3, if 0<x≤1; 2x+1, if 1<x≤10 }."
+          ],
+          "prompt": "A taxi charges $3 for the first mile and $2 per mile after that, up to 10 miles. Write the piecewise function for cost C(x) for distance x.",
+          "role": "independent"
+        }
+      ],
+      "concept": {
+        "explanation": [
+          "The blueprint for piecewise functions: [[imp:Understand]] – Look at the graph (or description) and identify how many pieces there are and the x-interval for each piece.",
+          "[[imp:Solve]] – For each piece, determine the type of function (linear, constant) and find its equation using the methods from earlier sections.",
+          "[[imp:Conclude]] – Write the piecewise function using the standard format, with the equation and its condition. Check endpoints for open/closed circles."
+        ],
+        "formulaCard": {
+          "formula": "$$ f(x) = \\begin{cases} \\text{eqn}_1, & \\text{condition}_1 \\\\ \\text{eqn}_2, & \\text{condition}_2 \\end{cases} $$",
+          "notes": [
+            "Order doesn't matter, but list from leftmost interval to rightmost.",
+            "Use correct inequality symbols with open/closed circles."
+          ],
+          "title": "Piecewise Blueprint"
+        },
+        "visuals": [
+          {
+            "headers": [
+              "Phase",
+              "Action"
+            ],
+            "type": "table",
+            "title": "Blueprint: Graph to Piecewise Function",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Identify pieces: left line, right line. Their domains: x<0 and x≥0."
+              },
+              {
+                "0": "Solve",
+                "1": "Left line: y=x+3. Right line: y=2x-1."
+              },
+              {
+                "0": "Conclude",
+                "1": "f(x) = { x+3, if x<0; 2x-1, if x≥0 }."
+              }
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "title": "Blueprint Aid – Mastering Piecewise Functions",
+      "confusionCorner": {
+        "body": "When writing a piecewise function from context, decide whether the boundary belongs to the lower or higher interval. Typically, for step functions, we use (a, b] to avoid overlap. For continuous functions, the boundary is included in one piece and not the other.",
+        "title": "Including/Excluding Boundaries"
+      },
+      "discoveryHook": {
+        "scenario": "Piecewise functions can look complex, but the blueprint breaks them down. Understand the pieces and their intervals, Solve for each piece's equation, and Conclude by putting them together in the standard piecewise notation. It's like assembling a puzzle!"
+      },
+      "id": "blueprint-aid-piecewise",
+      "teacherCues": [
+        "Display the Understand → Solve → Conclude framework. Use a problem that asks to write a piecewise function from a graph.",
+        "Emphasize: 'Understand' identifies the pieces and their domains; 'Solve' writes the equations; 'Conclude' assembles the piecewise function."
+      ],
+      "questions": [
+        {
+          "prompt": "In the blueprint, what is the first thing you identify when looking at a graph of a piecewise function?",
+          "feedbackIfWrong": "Identify the number of pieces and their domain intervals.",
+          "answers": [
+            "the pieces",
+            "number of pieces",
+            "intervals"
+          ],
+          "type": "short-answer",
+          "hints": [
+            "Look at how many different rules there are.",
+            "You need to know what you're dealing with."
+          ],
+          "id": "q5-1"
+        },
+        {
+          "id": "q5-2",
+          "hints": [
+            "It uses a large brace.",
+            "Each equation has its own condition."
+          ],
+          "feedbackIfWrong": "Write them in the piecewise notation (with the brace and conditions).",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "notation",
+                "form",
+                "format"
+              ]
+            }
+          ],
+          "prompt": "After finding the equation for each piece, the final step is to write them together in the piecewise ___."
+        },
+        {
+          "prompt": "For the taxi fare C(x) = { 3, if 0<x≤1; 2x+1, if 1<x≤10 }, what is the cost for a 2.5-mile trip?",
+          "feedbackIfWrong": "2(2.5)+1 = 6 dollars.",
+          "id": "q5-3",
+          "type": "short-answer",
+          "hints": [
+            "Use the second piece because 2.5 > 1.",
+            "2(2.5)+1 = ?"
+          ],
+          "answer": "6"
+        }
+      ]
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786194851,
+    "_nanoseconds": 620000000
+  }
+}

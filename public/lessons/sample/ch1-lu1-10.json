@@ -1,0 +1,820 @@
+{
+  "type": "interactive-lesson",
+  "schemaVersion": 2,
+  "id": "ch1-lu1-10",
+  "title": "Mathematical Modeling and Variation",
+  "standards": [
+    "HSF.BF.A.1",
+    "HSF.IF.C.7",
+    "HSA.CED.A.2"
+  ],
+  "blocks": [
+    {
+      "id": "linear-models",
+      "title": "1. Linear Models and Scatter Plots",
+      "teacherCues": [
+        "Ask: 'How can we find a line that best fits a set of data points?'",
+        "Show a scatter plot and draw a line through the data."
+      ],
+      "discoveryHook": {
+        "scenario": "The U.S. population from 2008 to 2015 can be approximated by a linear model $ y = 2.43t + 284.9 $. Each data point is close to the line, but not exactly on it. A [[kw:scatter plot]] shows the points, and a [[kw:linear model]] provides a simple equation to predict trends. We judge the fit by comparing actual and model values."
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:mathematical model]] is an equation that approximates real‑world data.",
+          "A [[kw:scatter plot]] is a graph of ordered pairs $(x,y)$ from a data set.",
+          "A [[kw:linear model]] has the form $ y = mx + b $; it is called a good fit when model values $y^*$ are close to actual values $y$.",
+          "To assess fit, compare $y$ (actual) and $y^*$ (model) in a table or by graphing both.",
+          "[[imp: A model is an approximation; it rarely hits every data point exactly.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "U.S. Population: Actual vs. Model",
+            "variant": "colorful",
+            "headers": [
+              "t",
+              "Actual y",
+              "Model y*"
+            ],
+            "rows": [
+              {
+                "0": "8 (2008)",
+                "1": "304.1",
+                "2": "304.3"
+              },
+              {
+                "0": "9 (2009)",
+                "1": "306.8",
+                "2": "306.8"
+              },
+              {
+                "0": "10 (2010)",
+                "1": "309.3",
+                "2": "309.2"
+              },
+              {
+                "0": "11 (2011)",
+                "1": "311.7",
+                "2": "311.6"
+              },
+              {
+                "0": "12 (2012)",
+                "1": "314.1",
+                "2": "314.1"
+              }
+            ],
+            "caption": "The model $y^* = 2.43t + 284.9$ closely tracks the actual population."
+          }
+        ]
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Compare model to data",
+          "prompt": "For the data point $(10, 309.3)$ and model $y=2.43t+284.9$, find the model value and the difference.",
+          "steps": [
+            "Model value: $y^* = 2.43(10) + 284.9 = 24.3 + 284.9 = 309.2$.",
+            "Difference: $309.3 - 309.2 = 0.1$ (very small).",
+            "So the model fits this data point closely."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why use linear models?",
+          "prompt": "Explain why we use straight‑line equations to model data even when the points are not perfectly collinear.",
+          "peerPrompt": "Think about simplicity and prediction.",
+          "minLength": 2,
+          "steps": [
+            "Linear models are simple: just two constants (slope and intercept).",
+            "They allow easy prediction of trends and interpolation between points.",
+            "Even if not perfect, they often capture the overall pattern well enough for decision‑making."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Interpret model",
+          "prompt": "A model $y = 5.96t + 125.5$ gives median home price $y$ (in thousands) for year $t$ ($t=9$ is 2009). What does the model predict for $t=16$ (2016)?",
+          "steps": [
+            "$y^* = 5.96(16) + 125.5 = 95.36 + 125.5 = 220.86$.",
+            "So the model predicts about $220,860 for a home in 2016."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "A model is only an estimate. [[imp: Extrapolating far beyond the given data range can lead to large errors.]]"
+      },
+      "questions": [
+        {
+          "id": "b1q1",
+          "type": "fill-blank",
+          "prompt": "A scatter plot is a graph of ___ pairs from a data set.",
+          "blanks": [
+            {
+              "accept": [
+                "ordered"
+              ]
+            }
+          ],
+          "hints": [
+            "(x, y) format.",
+            "Used to visualize relationships."
+          ],
+          "feedbackIfWrong": "ordered."
+        },
+        {
+          "id": "b1q2",
+          "type": "short-answer",
+          "prompt": "What is the model prediction $y^*$ for $t=11$ if the model is $y=2.43t+284.9$? (one decimal)",
+          "answers": [
+            "311.6"
+          ],
+          "hints": [
+            "2.43×11 = 26.73.",
+            "Add 284.9."
+          ],
+          "feedbackIfWrong": "311.6."
+        },
+        {
+          "id": "b1q3",
+          "type": "short-answer",
+          "prompt": "If the actual $y$ is 316.5 and the model $y^*$ is 316.5, the model fits that point ___ (perfectly or poorly).",
+          "answers": [
+            "perfectly"
+          ],
+          "hints": [
+            "No difference.",
+            "Exact."
+          ],
+          "feedbackIfWrong": "perfectly."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "Given the model $y=2.43t+284.9$, find the year (t) when the model predicts a population of 320 million.",
+        "type": "short-answer",
+        "answers": [
+          "t ≈ 14.44 (year 2014)"
+        ],
+        "hints": [
+          "Solve $ 2.43t + 284.9 = 320 $.",
+          "$ 2.43t = 35.1 $, $ t \\approx 14.44 $."
+        ]
+      }
+    },
+    {
+      "id": "least-squares",
+      "title": "2. Least Squares Regression and Correlation",
+      "teacherCues": [
+        "Ask: 'What method do statisticians use to find the best‑fitting line?'",
+        "Explain least squares regression and the r-value."
+      ],
+      "discoveryHook": {
+        "scenario": "Medicare enrollee data shows a strong linear trend. Using a graphing utility's [[kw:linear regression]] feature produces the [[kw:least squares regression line]] $E = 1.03t + 1.0$, which minimizes the sum of squared errors. The [[kw:correlation coefficient]] $r \\approx 0.992$ confirms an excellent fit."
+      },
+      "concept": {
+        "explanation": [
+          "The [[kw:least squares regression line]] is the line that minimizes the sum of the squares of the vertical distances (residuals) between the data points and the line.",
+          "In practice, this is found using a graphing utility or software (linear regression feature).",
+          "The [[kw:correlation coefficient]] $r$ measures the strength and direction of a linear relationship. $|r|$ close to 1 means strong linear correlation; close to 0 means weak.",
+          "When $r > 0$, the slope is positive; when $r < 0$, the slope is negative.",
+          "[[imp: The regression line is the best‑fitting line in the least‑squares sense, but it still may not fit if the data are not linear.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Medicare Enrollees: Actual vs. Regression",
+            "variant": "colorful",
+            "headers": [
+              "t",
+              "E (actual)",
+              "E* (model)"
+            ],
+            "rows": [
+              {
+                "0": "8",
+                "1": "9.7",
+                "2": "9.2"
+              },
+              {
+                "0": "9",
+                "1": "10.5",
+                "2": "10.3"
+              },
+              {
+                "0": "10",
+                "1": "11.1",
+                "2": "11.3"
+              },
+              {
+                "0": "11",
+                "1": "11.9",
+                "2": "12.3"
+              },
+              {
+                "0": "12",
+                "1": "13.1",
+                "2": "13.4"
+              }
+            ],
+            "caption": "$E=1.03t+1.0$ with $r\\approx0.992$ indicates a very strong linear fit."
+          }
+        ],
+        "formulaCard": {
+          "title": "Least Squares Regression",
+          "formula": "$$ \\text{Line: } y = mx + b \\text{ minimizes } \\sum (y_i - y_i^*)^2 $$",
+          "notes": [
+            "$r$ = correlation coefficient, $-1 \\le r \\le 1$.",
+            "Use technology to compute $m$, $b$, and $r$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Interpret r-value",
+          "prompt": "A regression yields $r = 0.992$. What does this tell you about the linear relationship?",
+          "steps": [
+            "$|r|$ is very close to 1, indicating a very strong positive linear correlation.",
+            "The points lie nearly on a straight line with positive slope."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why square the differences?",
+          "prompt": "Explain why least squares squares the vertical differences instead of just summing them.",
+          "peerPrompt": "Think about positive and negative errors.",
+          "minLength": 2,
+          "steps": [
+            "Raw differences can be positive or negative and would cancel each other out.",
+            "Squaring makes all terms positive, so large errors count more.",
+            "Minimizing the sum of squared errors gives a unique best‑fitting line."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Use regression output",
+          "prompt": "A graphing utility gives the regression line $y = 2.1x - 3.4$ with $r = 0.87$. Is this a strong fit?",
+          "steps": [
+            "$|r| = 0.87$ indicates a fairly strong positive linear relationship.",
+            "It's not as perfect as $r=0.99$, but still reliable."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "$r$ only measures linear correlation. [[imp: A low $r$ does not mean no relationship—the data could have a strong nonlinear pattern.]]"
+      },
+      "questions": [
+        {
+          "id": "b2q1",
+          "type": "fill-blank",
+          "prompt": "The line that minimizes the sum of squared vertical differences is called the ___ regression line.",
+          "blanks": [
+            {
+              "accept": [
+                "least squares",
+                "least‑squares"
+              ]
+            }
+          ],
+          "hints": [
+            "Best fit.",
+            "Minimizes squared errors."
+          ],
+          "feedbackIfWrong": "least squares."
+        },
+        {
+          "id": "b2q2",
+          "type": "short-answer",
+          "prompt": "What is the range of possible values for the correlation coefficient $r$? (e.g., -1 to 1)",
+          "answers": [
+            "-1 to 1",
+            "-1 and 1",
+            "[-1,1]"
+          ],
+          "hints": [
+            "Between -1 and 1.",
+            "Inclusive."
+          ],
+          "feedbackIfWrong": "-1 to 1."
+        },
+        {
+          "id": "b2q3",
+          "type": "short-answer",
+          "prompt": "If $r = -0.95$, the linear relationship is strong and the slope is ___ (positive or negative).",
+          "answers": [
+            "negative"
+          ],
+          "hints": [
+            "$r$ is negative.",
+            "Slope follows sign of $r$."
+          ],
+          "feedbackIfWrong": "negative."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "For the Medicare data, use the model $E = 1.03t + 1.0$ to predict enrollment when $t = 20$ (year 2020). Is this prediction reliable?",
+        "type": "short-answer",
+        "answers": [
+          "21.6 million; may be less reliable because 2020 is outside original data range (extrapolation)"
+        ],
+        "hints": [
+          "$ E = 1.03(20) + 1.0 = 21.6 $.",
+          "Extrapolation beyond data range can be risky."
+        ]
+      }
+    },
+    {
+      "id": "direct-variation",
+      "title": "3. Direct Variation",
+      "teacherCues": [
+        "Ask: 'What equation describes a relationship where one quantity is a constant multiple of another?'",
+        "Write $y = kx$ and explain the constant of variation."
+      ],
+      "discoveryHook": {
+        "scenario": "Pennsylvania state income tax is directly proportional to gross income: $y = 0.0307x$. If you earn twice as much, you pay twice the tax. This is [[kw:direct variation]]. The constant $k$ is the tax rate (3.07%). Direct variation always has a $y$-intercept of zero—the graph passes through the origin."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Direct variation]]: $y = kx$, where $k$ is a nonzero constant called the [[kw:constant of variation]] or proportionality.",
+          "Equivalent statements: $y$ varies directly as $x$; $y$ is directly proportional to $x$.",
+          "The graph is a straight line through the origin with slope $k$.",
+          "To find $k$, substitute a known pair $(x,y)$ and solve: $k = \\frac{y}{x}$.",
+          "[[imp: In direct variation, as $x$ increases, $y$ increases by the same factor only if $k>0$; if $k<0$, $y$ decreases.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Direct Variation Examples",
+            "variant": "colorful",
+            "headers": [
+              "Situation",
+              "Equation",
+              "$k$"
+            ],
+            "rows": [
+              {
+                "0": "PA income tax ($y$) on gross income ($x$)",
+                "1": "$y = 0.0307x$",
+                "2": "0.0307"
+              },
+              {
+                "0": "Distance $d$ fallen in time $t$ (free fall)",
+                "1": "$d = 16t^2$",
+                "2": "16 (note power $n=2$)"
+              },
+              {
+                "0": "Simple interest $I$ on principal $P$ at 5%",
+                "1": "$I = 0.05P$",
+                "2": "0.05"
+              }
+            ],
+            "caption": "All pass through the origin; slope = $k$."
+          }
+        ],
+        "formulaCard": {
+          "title": "Direct Variation",
+          "formula": "$$ y = kx $$",
+          "notes": [
+            "$k$ = constant of variation.",
+            "Solve for $k$: $ k = \\frac{y}{x} $.",
+            "Special case of $ y = kx^n $ with $n=1$."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Find constant of variation",
+          "prompt": "If $y$ varies directly as $x$, and $y = 15$ when $x = 3$, find $k$ and write the equation.",
+          "steps": [
+            "$y = kx$ → $15 = k(3)$ → $k = 5$.",
+            "Equation: $y = 5x$."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Why must the line go through the origin?",
+          "prompt": "Explain why a direct variation $y = kx$ must have a $y$-intercept of $(0,0)$.",
+          "peerPrompt": "What happens when $x = 0$?",
+          "minLength": 2,
+          "steps": [
+            "If $x=0$, then $y = k(0) = 0$ regardless of $k$.",
+            "So the point $(0,0)$ always satisfies the equation.",
+            "Thus the graph always passes through the origin."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Find y from variation",
+          "prompt": "If $y$ varies directly as $x$, and $y = 24$ when $x = 6$, find $y$ when $x = 10$.",
+          "steps": [
+            "First find $k$: $24 = k(6)$ → $k = 4$.",
+            "Equation: $y = 4x$.",
+            "When $x=10$: $y = 4(10) = 40$."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Direct variation $y = kx$ is a special linear model with $b=0$. [[imp: In many real situations, $b$ is not zero, so a general linear model is needed.]]"
+      },
+      "questions": [
+        {
+          "id": "b3q1",
+          "type": "fill-blank",
+          "prompt": "In direct variation, $y$ is ___ proportional to $x$.",
+          "blanks": [
+            {
+              "accept": [
+                "directly"
+              ]
+            }
+          ],
+          "hints": [
+            "Straight through origin.",
+            "Constant multiple."
+          ],
+          "feedbackIfWrong": "directly."
+        },
+        {
+          "id": "b3q2",
+          "type": "short-answer",
+          "prompt": "If $y = 35$ when $x = 7$ and $y$ varies directly, find $k$. (number only)",
+          "answers": [
+            "5"
+          ],
+          "hints": [
+            "$k = y/x$.",
+            "35/7 = 5."
+          ],
+          "feedbackIfWrong": "5."
+        },
+        {
+          "id": "b3q3",
+          "type": "short-answer",
+          "prompt": "Using $y = 5x$, find $y$ when $x = 12$. (number only)",
+          "answers": [
+            "60"
+          ],
+          "hints": [
+            "$5 \\times 12$.",
+            "Multiply."
+          ],
+          "feedbackIfWrong": "60."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "The distance a car travels at constant speed varies directly with time. If it travels 150 miles in 2.5 hours, find the equation and predict distance in 6 hours.",
+        "type": "short-answer",
+        "answers": [
+          "d = 60t; 360 miles"
+        ],
+        "hints": [
+          "Speed $k = 150/2.5 = 60$ mph.",
+          "Distance $d = 60t$; at $t=6$, $d=360$ miles."
+        ]
+      }
+    },
+    {
+      "id": "power-inverse-joint",
+      "title": "4. Direct Variation as an nth Power, Inverse, and Joint Variation",
+      "teacherCues": [
+        "Ask: 'What if $y$ varies with the square of $x$? Or inversely with $x$?'",
+        "Present the formulas: $ y = kx^n $, $ y = k/x $, $ y = kxz $."
+      ],
+      "discoveryHook": {
+        "scenario": "A ball rolling down a ramp travels farther in each successive second—distance is proportional to the square of time: $d = 8t^2$. Pressure of a gas is inversely proportional to volume: $P = \\frac{k}{V}$. The volume of a cylinder varies jointly with the square of radius and height: $V = k r^2 h$. These are all [[kw:variation]] models."
+      },
+      "concept": {
+        "explanation": [
+          "[[kw:Direct variation as an nth power]]: $ y = kx^n $ ($n$ a positive number). Example: $ d = 8t^2 $.",
+          "[[kw:Inverse variation]]: $ y = \\frac{k}{x} $. As $x$ increases, $y$ decreases. Graph is a hyperbola.",
+          "[[kw:Joint variation]]: $ y = kxz $ (or more variables). $y$ varies jointly as $x$ and $z$. Example: area of triangle $ A = \\frac{1}{2} b h $.",
+          "[[kw:Combined variation]]: mix of direct and inverse. Example: $ y = \\frac{kx}{z} $.",
+          "[[imp: In all variations, first find $k$ using given data, then write the specific model.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Types of Variation",
+            "variant": "colorful",
+            "headers": [
+              "Type",
+              "Form",
+              "Example",
+              "Constant $k$"
+            ],
+            "rows": [
+              {
+                "0": "Direct",
+                "1": "$ y = kx $",
+                "2": "Tax = 0.0307 × income",
+                "3": "0.0307"
+              },
+              {
+                "0": "Direct nth power",
+                "1": "$ y = kx^2 $",
+                "2": "$ d = 8t^2 $ (rolling ball)",
+                "3": "8"
+              },
+              {
+                "0": "Inverse",
+                "1": "$ y = \\frac{k}{x} $",
+                "2": "Pressure $ P = k/V $",
+                "3": "Depends on context"
+              },
+              {
+                "0": "Joint",
+                "1": "$ y = kxz $",
+                "2": "Area $ A = \\frac{1}{2} b h $",
+                "3": "$ \\frac{1}{2} $"
+              }
+            ],
+            "caption": "Each model requires finding $k$ from a data point."
+          }
+        ],
+        "formulaCard": {
+          "title": "Variation Models",
+          "formula": "$$ \\text{Direct: } y = kx $$ $$ \\text{Direct nth power: } y = kx^n $$ $$ \\text{Inverse: } y = \\frac{k}{x} $$ $$ \\text{Joint: } y = kxz $$",
+          "notes": [
+            "First find $k$ from a known pair.",
+            "Then use the model to predict other values."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Direct variation as nth power",
+          "prompt": "A ball rolls $d=8$ feet in $t=1$ second, with $d$ directly proportional to $t^2$. Write the model and find $d$ when $t=3$.",
+          "steps": [
+            "$ d = k t^2 $; $ 8 = k(1)^2 $ → $ k = 8 $.",
+            "Model: $ d = 8 t^2 $.",
+            "At $ t=3 $: $ d = 8(9) = 72 $ feet."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Inverse variation intuition",
+          "prompt": "If the time to paint a house varies inversely with the number of painters, explain why doubling painters halves the time.",
+          "peerPrompt": "Use the formula $ t = \\frac{k}{p} $.",
+          "minLength": 2,
+          "steps": [
+            "With $p$ painters, time $ t = \\frac{k}{p} $.",
+            "If $p$ doubles to $ 2p $, then $ t_{\\text{new}} = \\frac{k}{2p} = \\frac{1}{2} \\cdot \\frac{k}{p} = \\frac{1}{2} t_{\\text{old}} $.",
+            "So time is halved, matching the inverse relationship."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Joint variation",
+          "prompt": "The volume $V$ of a cylinder varies jointly as the square of the radius $r$ and the height $h$: $ V = k r^2 h $. For a particular cylinder, $ V = 100 $ when $ r = 2 $ and $ h = 5 $. Find $k$ and then $V$ for $ r=3 $, $ h=4 $.",
+          "steps": [
+            "$ 100 = k(2)^2(5) = k(4)(5) = 20k $ → $ k = 5 $.",
+            "Model: $ V = 5 r^2 h $.",
+            "At $ r=3 $, $ h=4 $: $ V = 5(9)(4) = 180 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "Direct variation as an nth power applies only to the specific power stated. [[imp: Do not confuse $ y = kx^2 $ with $ y = kx $; the relationship is different.]]"
+      },
+      "questions": [
+        {
+          "id": "b4q1",
+          "type": "fill-blank",
+          "prompt": "In inverse variation, $y$ is proportional to ___ of $x$.",
+          "blanks": [
+            {
+              "accept": [
+                "the reciprocal",
+                "1/x",
+                "one over x"
+              ]
+            }
+          ],
+          "hints": [
+            "As $x$ increases, $y$ decreases.",
+            "Formula is $ y = k/x $."
+          ],
+          "feedbackIfWrong": "the reciprocal (or $1/x$)."
+        },
+        {
+          "id": "b4q2",
+          "type": "short-answer",
+          "prompt": "If $y$ varies jointly as $x$ and $z$, and $y=60$ when $x=3$ and $z=4$, find $k$. (number only)",
+          "answers": [
+            "5"
+          ],
+          "hints": [
+            "$ y = k x z $.",
+            "$ 60 = k(3)(4) $, $k=5$."
+          ],
+          "feedbackIfWrong": "5."
+        },
+        {
+          "id": "b4q3",
+          "type": "short-answer",
+          "prompt": "If $y$ varies inversely as $x$, and $y=4$ when $x=9$, find $y$ when $x=12$. (number only, e.g., 3)",
+          "answers": [
+            "3"
+          ],
+          "hints": [
+            "$ k = xy = 36 $.",
+            "$ y = 36/12 = 3 $."
+          ],
+          "feedbackIfWrong": "3."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "The electrical resistance $R$ of a wire varies directly as its length $L$ and inversely as the square of its diameter $d$. Write the variation equation and find $R$ for $L=100$, $d=0.5$ if $R=20$ when $L=50$ and $d=0.8$.",
+        "type": "short-answer",
+        "answers": [
+          "R = kL/d^2; k ≈ 0.256; R ≈ 102.4"
+        ],
+        "hints": [
+          "$ 20 = k(50)/(0.8^2) $ → solve for $k$.",
+          "Then plug $ L=100, d=0.5 $ into $ R = kL/d^2 $."
+        ]
+      }
+    },
+    {
+      "id": "blueprint-variation",
+      "title": "5. Blueprint Aid for Variation Problems",
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that requires writing a variation model from given data and using it to predict."
+      ],
+      "discoveryHook": {
+        "scenario": "Given that $y$ varies directly as the cube of $x$, and $y=54$ when $x=3$. Use the blueprint to write the model and find $y$ when $x=5$. The blueprint helps organize: identify variation type, find $k$, form equation, predict, and check."
+      },
+      "concept": {
+        "explanation": [
+          "Apply the blueprint to variation problems:",
+          "1. **Understand**: Identify the type of variation (direct, inverse, joint, nth power) from the wording.",
+          "2. **Solve**: Write the general form (e.g., $ y = kx^n $). Substitute the given data to find $k$. Write the specific model. Use it to predict.",
+          "3. **Conclude**: State the model equation and the predicted value. Verify that the model makes sense (e.g., direct variation increases with $x$ if $k>0$).",
+          "[[imp: The constant $k$ is the link between the general formula and the specific situation.]]"
+        ],
+        "visuals": [
+          {
+            "type": "table",
+            "title": "Blueprint: $y$ varies directly as $x^3$",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "Direct variation, nth power $n=3$, $y=54$ at $x=3$",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Find $k$",
+                "1": "$ 54 = k(3)^3 = 27k $ → $ k = 2 $",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Model",
+                "1": "$ y = 2x^3 $",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Predict at $x=5$",
+                "1": "$ y = 2(5)^3 = 2(125) = 250 $",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Model: $ y=2x^3 $; when $ x=5 $, $ y=250 $.",
+                "2": ""
+              }
+            ],
+            "caption": "The blueprint ensures no step is missed."
+          }
+        ],
+        "formulaCard": {
+          "title": "Variation Blueprint",
+          "formula": "$$ \\text{General form } \\xrightarrow{\\text{given data}} \\text{find } k \\xrightarrow{} \\text{specific model } \\xrightarrow{} \\text{predict} $$",
+          "notes": [
+            "Direct: $y=kx$; Inverse: $y=k/x$; nth power: $y=kx^n$; Joint: $y=kxz$.",
+            "Always start by identifying the relationship from words."
+          ]
+        }
+      },
+      "examples": [
+        {
+          "role": "guided",
+          "title": "A – Full blueprint",
+          "prompt": "$y$ varies inversely as the square of $x$. If $y = 2$ when $x = 3$, find $y$ when $x = 6$.",
+          "steps": [
+            "Form: $ y = \\frac{k}{x^2} $.",
+            "Find $k$: $ 2 = \\frac{k}{3^2} = \\frac{k}{9} $ → $ k = 18 $.",
+            "Model: $ y = \\frac{18}{x^2} $.",
+            "At $ x=6 $: $ y = \\frac{18}{36} = 0.5 $."
+          ]
+        },
+        {
+          "role": "peer-explain",
+          "title": "B – Blueprint prevents confusion",
+          "prompt": "Explain how the blueprint helps distinguish between direct and inverse variation when setting up the equation.",
+          "peerPrompt": "Think about the position of $x$ in the formula.",
+          "minLength": 2,
+          "steps": [
+            "Direct variation has $x$ in the numerator (multiplying $k$).",
+            "Inverse variation has $x$ in the denominator ($k/x$).",
+            "The 'Understand' step explicitly identifies the type from the verbal description, preventing the wrong form."
+          ]
+        },
+        {
+          "role": "independent",
+          "title": "C – Joint variation practice",
+          "prompt": "$V$ varies jointly as $h$ and the square of $r$. If $V = 120$ when $r = 2$ and $h = 5$, write the model and find $V$ when $r = 3$ and $h = 10$.",
+          "steps": [
+            "Form: $ V = k r^2 h $.",
+            "Find $k$: $ 120 = k(4)(5) = 20k $ → $ k = 6 $.",
+            "Model: $ V = 6 r^2 h $.",
+            "At $ r=3 $, $ h=10 $: $ V = 6(9)(10) = 540 $."
+          ]
+        }
+      ],
+      "confusionCorner": {
+        "title": "Watch out!",
+        "body": "In inverse variation, don't forget to square the $x$ if it says 'inversely as the square of $x$.' [[imp: The exponent applies inside the denominator.]]"
+      },
+      "questions": [
+        {
+          "id": "b5q1",
+          "type": "fill-blank",
+          "prompt": "The first step in the blueprint is to ___ the variation type.",
+          "blanks": [
+            {
+              "accept": [
+                "understand",
+                "identify"
+              ]
+            }
+          ],
+          "hints": [
+            "Read the verbal description.",
+            "U in U‑S‑C."
+          ],
+          "feedbackIfWrong": "understand."
+        },
+        {
+          "id": "b5q2",
+          "type": "short-answer",
+          "prompt": "If $y$ varies directly as $x$ and $y=45$ when $x=9$, find $k$. (number only)",
+          "answers": [
+            "5"
+          ],
+          "hints": [
+            "$ k = y/x $.",
+            "45/9 = 5."
+          ],
+          "feedbackIfWrong": "5."
+        },
+        {
+          "id": "b5q3",
+          "type": "short-answer",
+          "prompt": "After finding $k$, you write the ___ model and use it to predict. (one word)",
+          "answers": [
+            "specific",
+            "particular"
+          ],
+          "hints": [
+            "Not the general form.",
+            "With the actual number for $k$."
+          ],
+          "feedbackIfWrong": "specific."
+        }
+      ],
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "The maximum load a beam can support varies jointly as the width and the square of the depth and inversely as the length. Write the equation and find $k$ if a beam with $w=4$, $d=6$, $L=12$ supports 500 pounds. Then predict the load for $w=6$, $d=8$, $L=10$.",
+        "type": "short-answer",
+        "answers": [
+          "L = k w d^2 / L; k ≈ 41.67; predicted load ≈ 1600 lbs"
+        ],
+        "hints": [
+          "Equation: $ \\text{Load} = k \\frac{w d^2}{L} $, then $ 500 = k(4)(36)/12 $ → $ k \\approx 41.67 $.",
+          "Then $ \\text{Load} = 41.67(6)(64)/10 \\approx 1600 $."
+        ]
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1786851423,
+    "_nanoseconds": 821000000
+  }
+}

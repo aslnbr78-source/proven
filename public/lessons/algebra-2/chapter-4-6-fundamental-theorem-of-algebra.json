@@ -1,0 +1,625 @@
+{
+  "title": "The Fundamental Theorem of Algebra",
+  "type": "interactive-lesson",
+  "blocks": [
+    {
+      "discoveryHook": {
+        "scenario": "In the previous section, we found some cubic equations had only one real solution. But what about the missing solutions? The Fundamental Theorem of Algebra guarantees that every polynomial equation has exactly as many complex solutions as its degree—unlocking a complete picture of all roots, real and imaginary."
+      },
+      "examples": [
+        {
+          "steps": [
+            "The equation is a cubic, degree 3.",
+            "By the Fundamental Theorem of Algebra, it must have exactly 3 complex solutions.",
+            "The solutions are $-3, 4i, -4i$ (one real, two imaginary).",
+            "Even though we only see one real solution, all three exist in the complex number system."
+          ],
+          "role": "guided",
+          "title": "Example A — Counting Solutions",
+          "prompt": "How many solutions does $x^3 + 3x^2 + 16x + 48 = 0$ have?"
+        },
+        {
+          "minLength": 8,
+          "title": "Example B — Zeros of a Function",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why does the number of zeros always equal the degree, even if some zeros are repeated or imaginary?",
+          "steps": [
+            "Degree is 4, so there are 4 zeros in the complex numbers.",
+            "Factoring yields $x(x+2)^3 = 0$.",
+            "Zeros: $0$ (once), $-2$ (three times). All are real, but total count with multiplicity = 4.",
+            "Thus, the function has exactly 4 zeros, matching the degree."
+          ],
+          "prompt": "How many zeros does $f(x) = x^4 + 6x^3 + 12x^2 + 8x$ have?",
+          "role": "peer-explain"
+        },
+        {
+          "role": "independent",
+          "prompt": "How many solutions does $x^4 + 7x^2 - 144 = 0$ have?",
+          "steps": [
+            "This is a quartic equation, degree 4.",
+            "The Fundamental Theorem guarantees exactly 4 complex solutions.",
+            "(They are $\\pm 3$, $\\pm 4i$, but you don't need to find them yet.)"
+          ],
+          "title": "Example C — Counting Solutions"
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "A polynomial of degree 5 has exactly how many complex solutions (counting multiplicities)?",
+          "type": "short-answer",
+          "hints": [
+            "The degree equals the number of solutions.",
+            "The Fundamental Theorem of Algebra."
+          ],
+          "answers": [
+            "5",
+            "five"
+          ],
+          "id": "q4-6-1",
+          "feedbackIfWrong": "An $n$th degree polynomial has exactly $n$ complex solutions."
+        },
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "The theorem says there is at least one complex solution (which includes real numbers).",
+          "hints": [
+            "It may be real or imaginary.",
+            "The theorem works in the set of complex numbers."
+          ],
+          "prompt": "The Fundamental Theorem of Algebra guarantees that every non‑constant polynomial equation has at least one ___ solution.",
+          "blanks": [
+            {
+              "accept": [
+                "complex"
+              ]
+            }
+          ],
+          "id": "q4-6-2"
+        },
+        {
+          "type": "short-answer",
+          "id": "q4-6-3",
+          "hints": [
+            "Total solutions = real + imaginary.",
+            "3 total, 2 imaginary, so real = 1."
+          ],
+          "answers": [
+            "1",
+            "one"
+          ],
+          "prompt": "A cubic equation has 3 complex solutions. If two are imaginary, how many real solutions does it have?",
+          "feedbackIfWrong": "3 total solutions – 2 imaginary = 1 real solution."
+        }
+      ],
+      "teacherCues": [
+        "Ask: How many solutions does $x^3 + 3x^2 + 16x + 48 = 0$ have? Reveal it has three, including imaginary ones.",
+        "Write $f(x)=x^4+6x^3+12x^2+8x$. Ask: How many zeros does this function have, counting multiplicities?"
+      ],
+      "title": "The Fundamental Theorem of Algebra",
+      "confusionCorner": {
+        "body": "Don't assume missing $x$-intercepts mean no solutions. The graph only shows [[imp:real zeros]]; imaginary zeros are invisible. The Fundamental Theorem guarantees they exist as complex numbers.",
+        "title": "Real vs. Imaginary — Seeing Is Not Believing"
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Number of Solutions by Degree",
+            "variant": "colorful",
+            "type": "table",
+            "rows": [
+              {
+                "0": "1 (linear)",
+                "1": "1"
+              },
+              {
+                "0": "2 (quadratic)",
+                "1": "2"
+              },
+              {
+                "0": "3 (cubic)",
+                "1": "3"
+              },
+              {
+                "0": "4 (quartic)",
+                "1": "4"
+              },
+              {
+                "0": "$n$",
+                "1": "$n$"
+              }
+            ],
+            "headers": [
+              "Degree",
+              "Number of complex solutions (counting multiplicities)"
+            ]
+          }
+        ],
+        "explanation": [
+          "The [[kw:Fundamental Theorem of Algebra]] states: If $f(x)$ is a polynomial of degree $n > 0$, then the equation $f(x)=0$ has at least one solution in the complex numbers.",
+          "A corollary: An $n$th-degree polynomial equation has exactly $n$ complex solutions, counting repeated solutions according to their multiplicity.",
+          "These solutions may be real or non‑real imaginary numbers. The graph only shows the real zeros as $x$-intercepts.",
+          "[[imp:Every polynomial function of degree $n$ has exactly $n$ zeros, provided we count each zero as many times as its multiplicity.]]",
+          "So a cubic equation always has exactly three complex solutions (some may be repeated, some imaginary). A quartic has four, and so on."
+        ],
+        "formulaCard": {
+          "legend": [
+            {
+              "symbol": "$n$",
+              "meaning": "degree of the polynomial",
+              "tone": "core"
+            },
+            {
+              "meaning": "include real and imaginary numbers",
+              "symbol": "complex solutions",
+              "tone": "subtle"
+            }
+          ],
+          "formula": "$$f(x)=0 \\text{ has exactly } n \\text{ complex solutions, } n=\\deg(f)$$"
+        }
+      },
+      "id": "fundamental-theorem"
+    },
+    {
+      "confusionCorner": {
+        "body": "The Complex Conjugates Theorem only applies to polynomials with [[imp:real coefficients]]. If a polynomial has non‑real coefficients (like $x^2 + ix + 1$), the theorem does not apply.",
+        "title": "When the Coefficient Is Imaginary"
+      },
+      "questions": [
+        {
+          "answers": [
+            "6i",
+            "+6i"
+          ],
+          "prompt": "If $f$ has real coefficients and $-6i$ is a zero, what other zero must $f$ have?",
+          "hints": [
+            "The conjugate of $-6i$ is the opposite sign.",
+            "Imaginary part changes sign, real part stays the same (0)."
+          ],
+          "id": "q4-6-4",
+          "feedbackIfWrong": "The conjugate of $-6i$ is $6i$.",
+          "type": "short-answer"
+        },
+        {
+          "id": "q4-6-5",
+          "blanks": [
+            {
+              "accept": [
+                "conjugate"
+              ]
+            }
+          ],
+          "prompt": "The Complex Conjugates Theorem guarantees that imaginary zeros of a polynomial with real coefficients always come in ___ pairs.",
+          "type": "fill-blank",
+          "feedbackIfWrong": "They appear in conjugate pairs.",
+          "hints": [
+            "Think of the pattern $a+bi$ and $a-bi$.",
+            "They are the same but with opposite imaginary sign."
+          ]
+        },
+        {
+          "type": "short-answer",
+          "feedbackIfWrong": "Yes, a cubic can have one real zero and one conjugate pair of imaginary zeros.",
+          "hints": [
+            "Two imaginary zeros form one conjugate pair.",
+            "Cubic total zeros = 3, so 2 imaginary + 1 real is possible."
+          ],
+          "prompt": "Can a cubic polynomial with real coefficients have exactly two imaginary zeros and one real zero? (yes/no)",
+          "id": "q4-6-6",
+          "answers": [
+            "yes"
+          ]
+        }
+      ],
+      "title": "Complex Conjugates Theorem",
+      "examples": [
+        {
+          "title": "Example A — Finding the Conjugate",
+          "steps": [
+            "Identify the real part $a=5$ and imaginary part $b=-2$ (so $5-2i$).",
+            "The conjugate is $5+2i$.",
+            "By the Complex Conjugates Theorem, $5+2i$ must also be a zero."
+          ],
+          "prompt": "If $f$ has real coefficients and a zero at $5-2i$, what other zero is guaranteed?",
+          "role": "guided"
+        },
+        {
+          "steps": [
+            "Since coefficients are real and $3+i$ is given, its conjugate $3-i$ must also be a zero.",
+            "Factors: $(x-2)$, $(x-(3+i))$, $(x-(3-i))$.",
+            "Multiply conjugates: $(x-3-i)(x-3+i) = (x-3)^2 - i^2 = x^2 - 6x + 10$.",
+            "Multiply by $(x-2)$: $(x-2)(x^2-6x+10) = x^3 - 8x^2 + 22x - 20$."
+          ],
+          "title": "Example B — Writing a Polynomial",
+          "minLength": 8,
+          "role": "peer-explain",
+          "prompt": "Write a polynomial of least degree with real coefficients and zeros $2$ and $3+i$.",
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: Why do we automatically include $3-i$ as a zero? What would happen if we didn't?"
+        },
+        {
+          "title": "Example C — Recognizing a Pair",
+          "prompt": "A cubic polynomial with real coefficients has zeros $-4$, $2i$. What is the third zero?",
+          "steps": [
+            "Imaginary zero $2i$ is $0+2i$, so its conjugate $-2i$ must also be a zero.",
+            "Thus the zeros are $-4$, $2i$, $-2i$.",
+            "Three zeros for a cubic — complete."
+          ],
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "Imaginary numbers often travel in pairs—like twins. If a polynomial with real coefficients has a zero like $2+3i$, its conjugate $2-3i$ is guaranteed to be a zero. This pairing helps us find all zeros and write polynomials with ease."
+      },
+      "id": "complex-conjugates",
+      "concept": {
+        "formulaCard": {
+          "legend": [
+            {
+              "tone": "core",
+              "meaning": "real part",
+              "symbol": "$a$"
+            },
+            {
+              "tone": "subtle",
+              "meaning": "imaginary part (b ≠ 0)",
+              "symbol": "$bi$"
+            }
+          ],
+          "formula": "$$\\text{If } a+bi \\text{ is a zero, then } a-bi \\text{ is also a zero.}$$"
+        },
+        "explanation": [
+          "[[kw:Complex conjugates]] are pairs of the form $a+bi$ and $a-bi$, where $a$ and $b$ are real, $b \\ne 0$.",
+          "The [[kw:Complex Conjugates Theorem]]: If $f$ is a polynomial function with real coefficients, and $a+bi$ is a zero, then its conjugate $a-bi$ is also a zero.",
+          "This theorem explains why imaginary zeros always appear in pairs. A cubic can have two imaginary zeros (a conjugate pair) and one real.",
+          "It is impossible for a polynomial with real coefficients to have an odd number of imaginary zeros.",
+          "When writing a polynomial from given imaginary zeros, [[imp:always include the conjugate]] to ensure real coefficients."
+        ],
+        "visuals": [
+          {
+            "variant": "colorful",
+            "headers": [
+              "Given zero",
+              "Its conjugate"
+            ],
+            "rows": [
+              {
+                "0": "$3 + i$",
+                "1": "$3 - i$"
+              },
+              {
+                "0": "$-2 + 5i$",
+                "1": "$-2 - 5i$"
+              },
+              {
+                "0": "$4i$ (which is $0+4i$)",
+                "1": "$-4i$"
+              },
+              {
+                "0": "$a+bi$",
+                "1": "$a-bi$"
+              }
+            ],
+            "title": "Complex Conjugate Pairs",
+            "type": "table"
+          }
+        ]
+      },
+      "teacherCues": [
+        "Write $2i$ and $-2i$ on the board. Ask: What do you notice about these two numbers?",
+        "Show that if $3+i$ is a zero, then $3-i$ must also be a zero. Ask: Why?"
+      ]
+    },
+    {
+      "examples": [
+        {
+          "title": "Example A — Counting Sign Changes",
+          "steps": [
+            "$f(x)$ coefficients: $1, -4, 8, 7$. Signs: +, –, +, +. Changes: + to – (1), – to + (2). So 2 sign changes.",
+            "Possible positive real zeros: 2 or 0 (2 minus an even number).",
+            "$f(-x) = (-x)^3 -4(-x)^2 +8(-x) +7 = -x^3 -4x^2 -8x +7$. Coeffs: –, –, –, +. Changes: – to + (1).",
+            "Possible negative real zeros: 1 (cannot be 1-2=negative, so only 1)."
+          ],
+          "role": "guided",
+          "prompt": "Determine the possible numbers of positive and negative real zeros for $f(x) = x^3 - 4x^2 + 8x + 7$."
+        },
+        {
+          "minLength": 8,
+          "prompt": "For $f(x)=x^5 - 3x^3 + 8x - 10$, explain why it must have at least 2 imaginary zeros.",
+          "role": "peer-explain",
+          "title": "Example B — Imaginary Zeros Count",
+          "peerPrompt": "Without looking back...\n\nDiscuss with a partner: After applying Descartes's Rule, you find max 3 positive and 2 negative real zeros. But the degree is 5. Where do the missing zeros go?",
+          "steps": [
+            "$f(x)$ sign changes: $x^5 (+), -3x^3 (-), +8x (+), -10 (-)$. Changes: 3. Possible positive real zeros: 3 or 1.",
+            "$f(-x) = -x^5 +3x^3 -8x -10$. Coefficients: –, +, –, –. Changes: 2. Possible negative real zeros: 2 or 0.",
+            "Max total real zeros = 3 + 2 = 5. If there are only 3 real (1 positive, 2 negative, say), then remaining 2 zeros must be imaginary.",
+            "Imaginary zeros always come in pairs, so a minimum of 0 or 2 imaginary zeros is possible here."
+          ]
+        },
+        {
+          "steps": [
+            "$f(x)$ coefficients: $1, 0, 1, 0, 1$. Signs: all +. Zero sign changes.",
+            "Therefore, $f$ has 0 positive real zeros.",
+            "All zeros must be non‑positive or imaginary."
+          ],
+          "prompt": "Use Descartes's Rule to determine the possible number of positive real zeros of $f(x) = x^4 + x^2 + 1$.",
+          "title": "Example C — Quick Application",
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "hints": [
+            "Replace $x$ with the opposite sign.",
+            "You substitute $-x$ into $f$."
+          ],
+          "answers": [
+            "f(-x)",
+            "f(-x)"
+          ],
+          "feedbackIfWrong": "Negative real zeros correspond to sign changes in $f(-x)$.",
+          "id": "q4-6-7",
+          "prompt": "Descartes's Rule of Signs predicts the number of positive real zeros by counting sign changes in $f(x)$. The number of negative real zeros is found by counting sign changes in which function?",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "3 sign changes → possible positive real zeros: 3 or 1 (3 minus 2).",
+          "prompt": "If $f(x)$ has 3 sign changes, what are the possible numbers of positive real zeros?",
+          "hints": [
+            "Possible counts are sign changes minus an even integer.",
+            "3 minus 2 gives 1."
+          ],
+          "answers": [
+            "3 or 1",
+            "3,1",
+            "3 or 1",
+            "1 or 3"
+          ],
+          "type": "short-answer",
+          "id": "q4-6-8"
+        },
+        {
+          "hints": [
+            "The rule isn't definite.",
+            "It narrows down the options."
+          ],
+          "type": "fill-blank",
+          "prompt": "Descartes's Rule of Signs only gives ___ numbers of real zeros, not exact values.",
+          "feedbackIfWrong": "The rule provides possible counts of positive and negative real zeros.",
+          "blanks": [
+            {
+              "accept": [
+                "possible"
+              ]
+            }
+          ],
+          "id": "q4-6-9"
+        }
+      ],
+      "concept": {
+        "formulaCard": {
+          "formula": "$$f(x): \\text{positive real zeros} = \\text{sign changes or less by even integer}$$ $$f(-x): \\text{negative real zeros} = \\text{sign changes or less by even integer}$$",
+          "legend": [
+            {
+              "symbol": "sign change",
+              "tone": "core",
+              "meaning": "signs of consecutive nonzero coefficients alternate (+ to – or – to +)"
+            },
+            {
+              "meaning": "2, 4, 6, … (cannot go below 0)",
+              "tone": "subtle",
+              "symbol": "even integer"
+            }
+          ]
+        },
+        "visuals": [
+          {
+            "title": "Applying Descartes's Rule of Signs",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "1. Write $f(x)$",
+                "1": "Count sign changes → possible # positive real zeros."
+              },
+              {
+                "0": "2. Find $f(-x)$",
+                "1": "Substitute $-x$, simplify, count sign changes → possible # negative real zeros."
+              },
+              {
+                "0": "3. Total real zeros",
+                "1": "Sum of max positive and max negative real zeros."
+              },
+              {
+                "0": "4. Imaginary zeros",
+                "1": "Degree minus total real zeros (must be even)."
+              }
+            ],
+            "variant": "colorful"
+          }
+        ],
+        "explanation": [
+          "[[kw:Descartes's Rule of Signs]] predicts the possible number of positive and negative real zeros of a polynomial with real coefficients.",
+          "For $f(x)$: The number of positive real zeros equals the number of sign changes between consecutive nonzero coefficients, or less than that by an even integer.",
+          "For $f(-x)$: Replace $x$ with $-x$, simplify, and count sign changes. The number of negative real zeros equals that count or less by an even integer.",
+          "Once you know the maximum positive and negative real zeros, the remaining zeros (to match the degree) are imaginary (complex non‑real) and come in conjugate pairs.",
+          "This rule only gives [[imp:possible]] counts, not exact numbers. Use it along with graphs or synthetic division."
+        ]
+      },
+      "title": "Descartes's Rule of Signs",
+      "teacherCues": [
+        "Write $f(x)=x^4 - 2x^3 + 3x^2 - 10x - 8$. Ask: How many times does the sign change?",
+        "Then write $f(-x)$ and count sign changes again. Ask: What do these counts tell us?"
+      ],
+      "confusionCorner": {
+        "body": "When counting sign changes, ignore terms with a coefficient of 0. Only consecutive nonzero coefficients determine a sign change. [[imp:Skip the zeros!]]",
+        "title": "Zero Coefficients Don't Count"
+      },
+      "discoveryHook": {
+        "scenario": "Before solving a complicated polynomial, wouldn't it be great to know how many positive and negative real zeros to expect? Descartes's Rule of Signs lets you peek at the possible counts just by looking at sign changes—like a roadmap for your root search."
+      },
+      "id": "descartes-rule-of-signs"
+    },
+    {
+      "id": "blueprint-aid-applications",
+      "confusionCorner": {
+        "title": "Context Filters Zeros",
+        "body": "When solving applied problems, always filter your mathematical solutions through the real‑world context. Dimensions, speeds, and counts cannot be negative or imaginary. [[imp:Only keep solutions that make sense in the scenario.]]"
+      },
+      "teacherCues": [
+        "Display the tachometer problem: $s(x)=0.00547x^3 - 0.225x^2 + 3.62x - 11.0$, find $x$ when speed is 15 mph.",
+        "Ask: Why can we ignore negative and imaginary zeros in this context?"
+      ],
+      "examples": [
+        {
+          "title": "Example A — Finding Tachometer Reading",
+          "prompt": "For the model $s(x) = 0.00547x^3 - 0.225x^2 + 3.62x - 11.0$, find the engine speed $x$ (in hundreds of RPMs) when the boat speed is 15 mph.",
+          "steps": [
+            "Set $s(x)=15$: $0.00547x^3 - 0.225x^2 + 3.62x - 26.0 = 0$.",
+            "Descartes's Rule on $f(x)$ shows 3 or 1 positive real zeros.",
+            "Graph shows only one real zero near $x \\approx 19.9$.",
+            "Only positive real zeros make sense; imaginary and negative are discarded.",
+            "Conclude: the tachometer reading is about 1990 RPMs."
+          ],
+          "role": "guided"
+        },
+        {
+          "peerPrompt": "Without looking back...\n\nExplain to a partner: What do negative RPMs or complex engine speeds represent in reality? Are they meaningful?",
+          "prompt": "Why do we ignore imaginary and negative solutions in the boat speed problem?",
+          "minLength": 8,
+          "title": "Example B — Why Discard Imaginary Solutions",
+          "role": "peer-explain",
+          "steps": [
+            "Engine speed (RPM) is a physical quantity that must be a positive real number.",
+            "Negative values would mean the engine runs in reverse, which isn't possible here.",
+            "Imaginary numbers like $2+3i$ have no physical meaning for a tachometer reading.",
+            "So, the domain restricts us to positive real solutions only."
+          ]
+        },
+        {
+          "steps": [
+            "Coefficients of $f(x)$: +, –, +, –. Sign changes: 3.",
+            "Possible positive real zeros: 3 or 1.",
+            "From the graph, we see exactly 1 positive real zero."
+          ],
+          "title": "Example C — A Quick Descartes Check",
+          "role": "independent",
+          "prompt": "The polynomial $f(x)=0.00547x^3 - 0.225x^2 + 3.62x - 26.0$ has how many positive real zeros according to Descartes's Rule?"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q4-6-10",
+          "answers": [
+            "19.9"
+          ],
+          "type": "short-answer",
+          "prompt": "In the boat speed model, what is the approximate tachometer reading (in hundreds of RPMs) when the speed is 15 mph? (Round to one decimal: 19.9)",
+          "hints": [
+            "It's the $x$-coordinate of the real zero.",
+            "From the example, it was about 19.9."
+          ],
+          "feedbackIfWrong": "The real zero is approximately $x=19.9$, so about 19.9 hundreds of RPMs."
+        },
+        {
+          "prompt": "When solving real‑world polynomial problems, we reject ___ and imaginary solutions that don't fit the physical context.",
+          "type": "fill-blank",
+          "blanks": [
+            {
+              "accept": [
+                "negative"
+              ]
+            }
+          ],
+          "hints": [
+            "Think of values that can't be a length or time.",
+            "They are less than zero."
+          ],
+          "id": "q4-6-11",
+          "feedbackIfWrong": "We reject negative solutions because they are not physically meaningful."
+        },
+        {
+          "feedbackIfWrong": "There are 3 sign changes, so possible positive zeros: 3 or 1.",
+          "answers": [
+            "3 or 1",
+            "3,1",
+            "1 or 3"
+          ],
+          "prompt": "Descartes's Rule of Signs for $f(x)=0.00547x^3 - 0.225x^2 + 3.62x - 26.0$ predicts how many possible positive real zeros? (enter a number)",
+          "hints": [
+            "Count sign changes in $f(x)$.",
+            "Coefficients: +, -, +, -."
+          ],
+          "type": "short-answer",
+          "id": "q4-6-12"
+        }
+      ],
+      "title": "Blueprint Aid — Polynomial Applications with Complex Zeros",
+      "discoveryHook": {
+        "scenario": "Real‑world polynomial models, like engine RPM vs. boat speed, produce equations with only one meaningful real solution. Descartes's Rule helps us know how many real solutions to expect, and the Fundamental Theorem confirms the rest exist but aren't relevant."
+      },
+      "concept": {
+        "visuals": [
+          {
+            "title": "Blueprint for Real‑World Polynomial Problems",
+            "rows": [
+              {
+                "0": "Understand",
+                "1": "Define variable, write equation $f(x)=0$."
+              },
+              {
+                "0": "Solve",
+                "1": "Apply Descartes's Rule, graph, use synthetic division to find real zeros."
+              },
+              {
+                "0": "Conclude",
+                "1": "Select the realistic solution(s), state with units."
+              }
+            ],
+            "type": "table",
+            "variant": "colorful",
+            "headers": [
+              "Step",
+              "Key Actions"
+            ]
+          }
+        ],
+        "explanation": [
+          "[[imp:Understand]]: Identify the real‑world variable and the given output. Set the polynomial equal to that output and rewrite as $f(x)=0$.",
+          "[[imp:Solve]]: Use Descartes's Rule of Signs to predict how many positive real solutions exist. Graph to approximate real zeros. Use the Rational Root Theorem if applicable. Discard negative, zero, or imaginary solutions based on context.",
+          "[[imp:Conclude]]: Report the meaningful real solution with correct units, and verify it satisfies the original scenario."
+        ],
+        "formulaCard": {
+          "formula": "$$s(x) = 0.00547x^3 - 0.225x^2 + 3.62x - 11.0$$",
+          "legend": [
+            {
+              "tone": "core",
+              "symbol": "$s(x)$",
+              "meaning": "speed in miles per hour"
+            },
+            {
+              "tone": "core",
+              "meaning": "engine speed in hundreds of RPMs",
+              "symbol": "$x$"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "schemaVersion": 2,
+  "id": "chapter-4-6-fundamental-theorem-of-algebra",
+  "presenterNotes": [
+    "The Fundamental Theorem of Algebra often surprises students—they think missing x-intercepts mean no solutions. Emphasize that complex numbers complete the picture.",
+    "When introducing Descartes's Rule, remind students to ignore zero coefficients. Do a couple of live examples on the board, exaggerating the 'sign change' gesture.",
+    "In the Blueprint block, the real-world context filtering is crucial. Many students will try to include negative or imaginary answers; ask 'Does a negative speed make sense?' to prompt discussion."
+  ],
+  "standards": [
+    "HSN.CN.C.9",
+    "HSA.APR.B.3",
+    "HSN.CN.A.2"
+  ],
+  "updatedAt": {
+    "_seconds": 1787681292,
+    "_nanoseconds": 451000000
+  }
+}

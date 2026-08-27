@@ -1,0 +1,819 @@
+{
+  "standards": [
+    "BUSMATH.13.3"
+  ],
+  "id": "ch13-lu13-3",
+  "schemaVersion": 2,
+  "type": "interactive-lesson",
+  "title": "Sinking Funds (Find Periodic Payments)",
+  "blocks": [
+    {
+      "questions": [
+        {
+          "type": "fill-blank",
+          "id": "b1q1",
+          "hints": [
+            "The target amount.",
+            "Not present value."
+          ],
+          "feedbackIfWrong": "future.",
+          "blanks": [
+            {
+              "accept": [
+                "future"
+              ]
+            }
+          ],
+          "prompt": "In a sinking fund, you know the ___ value and want to find the periodic payment."
+        },
+        {
+          "prompt": "The sinking fund factor is the reciprocal of the ___ annuity factor. (FV or PV?)",
+          "type": "short-answer",
+          "answers": [
+            "FV"
+          ],
+          "feedbackIfWrong": "FV.",
+          "id": "b1q2",
+          "hints": [
+            "Future value factor.",
+            "Not present value."
+          ]
+        },
+        {
+          "feedbackIfWrong": "0.1846.",
+          "type": "short-answer",
+          "answers": [
+            "0.1846"
+          ],
+          "prompt": "FV $5,000, FV annuity factor = 5.4163. Compute the sinking fund factor (4 decimals).",
+          "id": "b1q3",
+          "hints": [
+            "Factor = 1 / 5.4163.",
+            "≈ 0.1846."
+          ]
+        }
+      ],
+      "title": "1. Sinking Fund Concept",
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "Sinking fund factor = 1 / 3.2464 ≈ 0.30803.",
+            "Payment = $9,739.20 × 0.30803 ≈ $3,000.",
+            "So deposit $3,000 each year."
+          ],
+          "title": "A – Find sinking fund payment",
+          "prompt": "You want $9,739.20 in 3 years depositing at the end of each year at 8%. The FV annuity factor (n=3, i=8%) is 3.2464. Find the annual deposit."
+        },
+        {
+          "minLength": 2,
+          "title": "B – Why reciprocal?",
+          "steps": [
+            "From ordinary annuity: FV = Payment × FV factor.",
+            "Solving for payment: Payment = FV / FV factor = FV × (1 / FV factor).",
+            "So the sinking fund factor is just 1 divided by the FV annuity factor."
+          ],
+          "peerPrompt": "Think about the relationship: Payment = FV / FV factor.",
+          "prompt": "Explain why the sinking fund factor is the reciprocal of the FV annuity factor.",
+          "role": "peer-explain"
+        },
+        {
+          "title": "C – Using sinking fund table factor",
+          "prompt": "A company needs $100,000 in 10 years. The sinking fund factor (n=10, i=5%) from a table is 0.0795. Find the annual deposit.",
+          "steps": [
+            "Payment = 100,000 × 0.0795 = $7,950.",
+            "Deposit $7,950 at the end of each year."
+          ],
+          "role": "independent"
+        }
+      ],
+      "discoveryHook": {
+        "scenario": "A company needs $50,000 in 5 years to replace a machine. It will deposit a fixed amount at the end of each year into an account earning 6% compounded annually. This arrangement is called a [[kw:sinking fund]]. The periodic deposit is the unknown; we find it from the future value target."
+      },
+      "teacherCues": [
+        "Ask: 'If you want $10,000 in 3 years, how much must you save at the end of each year?'",
+        "Contrast with ordinary annuity: we knew payment and found FV; now we know FV and find payment."
+      ],
+      "id": "sinking-fund-concept",
+      "concept": {
+        "formulaCard": {
+          "notes": [
+            "The sinking fund factor is found in a sinking fund table, or computed as 1 / FV annuity factor.",
+            "Payments are assumed at the end of each period (ordinary)."
+          ],
+          "title": "Sinking Fund Payment",
+          "formula": "$$\\text{Payment} = \\frac{FV}{\\text{FV Annuity Factor}}$$ $$\\text{or}$$ $$\\text{Payment} = FV \\times \\text{Sinking Fund Factor}$$"
+        },
+        "explanation": [
+          "A [[kw:sinking fund]] is a fund established to accumulate a specific future sum by making equal periodic deposits.",
+          "It is the reverse of the future value of an ordinary annuity: you know the target FV, and you calculate the required periodic payment.",
+          "The payment is made at the end of each period (ordinary annuity) unless stated otherwise.",
+          "Formula: $$\\text{Payment} = \\frac{FV}{\\text{FV Annuity Factor}}$$ or using a sinking fund table factor: $$\\text{Payment} = FV \\times \\text{Sinking Fund Factor}$$.",
+          "[[imp:The sinking fund factor is the reciprocal of the ordinary annuity FV factor.]]"
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "",
+              "Ordinary Annuity (FV)",
+              "Sinking Fund"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "Knowns",
+                "1": "Payment, i, n",
+                "2": "FV, i, n"
+              },
+              {
+                "0": "Unknown",
+                "1": "FV",
+                "2": "Payment"
+              },
+              {
+                "0": "Formula",
+                "1": "$FV = \\text{Payment} \\times \\text{FV Factor}$",
+                "2": "$\\text{Payment} = FV \\times \\text{Sinking Fund Factor}$"
+              }
+            ],
+            "title": "Ordinary Annuity vs. Sinking Fund",
+            "caption": "Sinking fund factor = 1 / FV annuity factor.",
+            "variant": "colorful"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "body": "A sinking fund uses the same i and n as an ordinary annuity, but the factor is different. [[imp:Do not use the ordinary annuity FV factor directly; use its reciprocal or the sinking fund table.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "prompt": "A sinking fund needs $25,000 in 4 years at 7% annually. FV factor (n=4, i=7%) = 4.4399. Find the annual deposit.",
+        "answers": [
+          "5629.21",
+          "5,629.21"
+        ],
+        "hints": [
+          "Payment = 25,000 / 4.4399 ≈ 5,629.21.",
+          "Check the reciprocal factor."
+        ],
+        "type": "short-answer",
+        "optional": true
+      }
+    },
+    {
+      "teacherCues": [
+        "Display a sinking fund table; explain that the factor is smaller than 1.",
+        "Show that the factor equals 1 divided by the ordinary annuity FV factor."
+      ],
+      "title": "2. Using Sinking Fund Tables",
+      "examples": [
+        {
+          "steps": [
+            "Payment = 20,000 × 0.22859 = $4,571.80."
+          ],
+          "prompt": "Want $20,000 in 4 years at 6%. Sinking fund factor (n=4, i=6%) = 0.22859. Find annual deposit.",
+          "role": "guided",
+          "title": "A – Use sinking fund table"
+        },
+        {
+          "peerPrompt": "Think about the meaning of the factor: payment to accumulate $1.",
+          "role": "peer-explain",
+          "prompt": "Explain why all sinking fund factors are less than 1.",
+          "minLength": 2,
+          "title": "B – Why factor < 1?",
+          "steps": [
+            "If you make multiple deposits that grow with interest, the sum of deposits is less than the final accumulated amount.",
+            "So to accumulate $1 in future, you need to deposit less than $1 in total.",
+            "Thus the factor is less than 1."
+          ]
+        },
+        {
+          "title": "C – Without a sinking fund table",
+          "steps": [
+            "Sinking fund factor = 1 / 3.1525 ≈ 0.3172.",
+            "Payment = 10,000 × 0.3172 = $3,172."
+          ],
+          "role": "independent",
+          "prompt": "FV annuity factor (n=3, i=5%) is 3.1525. Find the sinking fund payment for a target of $10,000."
+        }
+      ],
+      "questions": [
+        {
+          "id": "b2q1",
+          "hints": [
+            "From the sinking fund table.",
+            "Not FV annuity factor."
+          ],
+          "prompt": "Sinking fund payment = FV × ___ factor.",
+          "blanks": [
+            {
+              "accept": [
+                "sinking fund"
+              ]
+            }
+          ],
+          "feedbackIfWrong": "sinking fund.",
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "0.31411"
+          ],
+          "type": "short-answer",
+          "id": "b2q2",
+          "hints": [
+            "Row n=3, column 6%.",
+            "0.31411."
+          ],
+          "prompt": "Using the table above, what is the sinking fund factor for n=3, i=6%? (5 decimals)",
+          "feedbackIfWrong": "0.31411."
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "30,000 × 0.22859.",
+            "= 6,857.70."
+          ],
+          "id": "b2q3",
+          "prompt": "FV $30,000, factor 0.22859. Find sinking fund payment. (number only, no $)",
+          "feedbackIfWrong": "6,857.70.",
+          "answers": [
+            "6857.70",
+            "6,857.70"
+          ]
+        }
+      ],
+      "id": "sinking-fund-table",
+      "discoveryHook": {
+        "scenario": "Financial publications provide [[kw:sinking fund tables]] that give the factor directly. For example, for n=5, i=6%, the factor is 0.1774. This means to accumulate $1, you must deposit $0.1774 at the end of each period. For a $50,000 goal, the payment = 50,000 × 0.1774 = $8,870."
+      },
+      "challengeCorner": {
+        "type": "short-answer",
+        "answers": [
+          "54264.10",
+          "54,264.10"
+        ],
+        "optional": true,
+        "prompt": "A city needs $500,000 in 8 years to build a park. Interest is 4% compounded annually. FV annuity factor (n=8, i=4%) = 9.2142. Find the required annual deposit.",
+        "hints": [
+          "Payment = 500,000 / 9.2142 ≈ 54,264.10.",
+          "Use reciprocal factor."
+        ]
+      },
+      "concept": {
+        "explanation": [
+          "A [[kw:sinking fund table]] lists factors that, when multiplied by the future value, give the required periodic payment.",
+          "Factor = $\\frac{i}{(1+i)^n - 1}$, the reciprocal of the FV ordinary annuity factor.",
+          "Steps: 1. Compute i and n. 2. Find the factor at the intersection of n (row) and i (column). 3. Payment = FV × Factor.",
+          "The factor is always less than 1 and decreases as i increases (due to compounding).",
+          "[[imp:If only the ordinary annuity table is available, the sinking fund factor = 1 ÷ FV annuity factor.]]"
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Payment} = FV \\times \\text{Sinking Fund Factor}$$",
+          "notes": [
+            "Factor is found in the sinking fund table.",
+            "Alternatively, compute factor = 1 / FV annuity factor from ordinary annuity table."
+          ],
+          "title": "Sinking Fund Payment by Table"
+        },
+        "visuals": [
+          {
+            "caption": "Factor = periodic deposit needed to accumulate $1.",
+            "title": "Sinking Fund Table (Excerpt) – Payment to Accumulate $1",
+            "headers": [
+              "n\\i",
+              "1%",
+              "2%",
+              "3%",
+              "...",
+              "6%"
+            ],
+            "type": "table",
+            "rows": [
+              {
+                "0": "1",
+                "1": "1.00000",
+                "2": "1.00000",
+                "3": "1.00000",
+                "4": "...",
+                "5": "1.00000"
+              },
+              {
+                "0": "2",
+                "1": "0.49751",
+                "2": "0.49505",
+                "3": "0.49261",
+                "4": "...",
+                "5": "0.48544"
+              },
+              {
+                "0": "3",
+                "1": "0.33002",
+                "2": "0.32675",
+                "3": "0.32353",
+                "4": "...",
+                "5": "0.31411"
+              },
+              {
+                "0": "4",
+                "1": "0.24628",
+                "2": "0.24262",
+                "3": "0.23903",
+                "4": "...",
+                "5": "0.22859"
+              }
+            ],
+            "variant": "colorful"
+          }
+        ]
+      },
+      "confusionCorner": {
+        "body": "Make sure to use the correct factor: sinking fund factor is for finding payment from FV. [[imp:Do not multiply FV by the FV annuity factor; that would give a much larger number.]]",
+        "title": "Watch out!"
+      }
+    },
+    {
+      "concept": {
+        "explanation": [
+          "To verify the sinking fund payment, create an accumulation schedule:",
+          "Start with $0.",
+          "For each period: 1. Add the sinking fund deposit. 2. Add interest on the previous balance (interest is calculated before the deposit for end-of-period deposits?). Wait, in a sinking fund, deposits are at the end, so interest is calculated on the balance before adding the new deposit. So the process: Interest = previous balance × i. New balance = previous balance + interest + deposit.",
+          "After n periods, the balance should equal the target FV.",
+          "[[imp:This check confirms that the payment correctly accumulates to the desired future sum.]]"
+        ],
+        "visuals": [
+          {
+            "headers": [
+              "Year End",
+              "Balance Before Deposit",
+              "Interest (8%)",
+              "Deposit",
+              "New Balance"
+            ],
+            "title": "Sinking Fund Accumulation Schedule ($3,000 deposit, 8%, 3 years, target $9,739.20)",
+            "caption": "Final balance equals target; payment is verified.",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1",
+                "1": "$0",
+                "2": "$0",
+                "3": "$3,000",
+                "4": "$3,000.00"
+              },
+              {
+                "0": "2",
+                "1": "$3,000.00",
+                "2": "$240.00",
+                "3": "$3,000",
+                "4": "$6,240.00"
+              },
+              {
+                "0": "3",
+                "1": "$6,240.00",
+                "2": "$499.20",
+                "3": "$3,000",
+                "4": "$9,739.20"
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{New Balance} = \\text{Previous Balance} + (\\text{Previous Balance} \\times i) + \\text{Deposit}$$",
+          "title": "Sinking Fund Verification",
+          "notes": [
+            "Interest is earned on the balance before the deposit.",
+            "After n periods, balance should equal the target FV."
+          ]
+        }
+      },
+      "id": "check-sinking-fund",
+      "examples": [
+        {
+          "role": "guided",
+          "prompt": "Payment = $5,000, i=6%, n=2, target FV = $10,300. Build schedule.",
+          "steps": [
+            "Year 1: Balance before = $0. Interest = $0. Deposit = $5,000. New = $5,000.",
+            "Year 2: Balance before = $5,000. Interest = $300. Deposit = $5,000. New = $10,300.",
+            "Matches target $10,300."
+          ],
+          "title": "A – Verify sinking fund payment"
+        },
+        {
+          "prompt": "Explain why interest is calculated on the previous balance before adding the new deposit.",
+          "role": "peer-explain",
+          "title": "B – Why interest before deposit?",
+          "peerPrompt": "Think about when the deposit is made.",
+          "steps": [
+            "The deposit is made at the end of the period.",
+            "Interest is earned on the balance that was present during the period (the balance before the new deposit).",
+            "Thus interest is computed on the old balance, then the new deposit is added."
+          ],
+          "minLength": 2
+        },
+        {
+          "title": "C – Verify with target mismatch",
+          "steps": [
+            "Shortfall = $10,000 − $9,915 = $85.",
+            "The payment is too low; increase slightly.",
+            "Recalculation needed."
+          ],
+          "prompt": "Computed payment = $2,300 for target $10,000, i=5%, n=4. After 4 periods, balance is $9,915. Is the payment correct?",
+          "role": "independent"
+        }
+      ],
+      "questions": [
+        {
+          "hints": [
+            "The deposit is at the end.",
+            "Not after."
+          ],
+          "feedbackIfWrong": "before.",
+          "prompt": "In a sinking fund schedule, interest is calculated on the balance ___ the deposit is added.",
+          "id": "b3q1",
+          "blanks": [
+            {
+              "accept": [
+                "before"
+              ]
+            }
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "answers": [
+            "10900",
+            "10,900"
+          ],
+          "hints": [
+            "8,000 + 400 + 2,500.",
+            "= 10,900."
+          ],
+          "feedbackIfWrong": "10,900.",
+          "id": "b3q2",
+          "prompt": "Balance before deposit $8,000, interest 5% = $400. Deposit $2,500. New balance? (number only, no $)",
+          "type": "short-answer"
+        },
+        {
+          "feedbackIfWrong": "future.",
+          "answers": [
+            "future",
+            "target"
+          ],
+          "hints": [
+            "The goal amount.",
+            "Not present."
+          ],
+          "prompt": "After the last deposit in a sinking fund, the final balance should equal the ___ value. (word)",
+          "id": "b3q3",
+          "type": "short-answer"
+        }
+      ],
+      "confusionCorner": {
+        "body": "In a sinking fund, the last deposit earns no interest because it is made at the end of the last period. [[imp:Don't add interest after the final deposit.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "prompt": "A sinking fund with deposits of $4,000, i=6%, n=3, target FV $12,744. After 2 periods, balance is $8,240. How much interest will be added in period 3? (number only)",
+        "hints": [
+          "Interest = $8,240 × 0.06 = $494.40.",
+          "Then deposit $4,000 gives $12,734.40, slightly off target; rounding is acceptable."
+        ],
+        "type": "short-answer",
+        "optional": true,
+        "answers": [
+          "494.40"
+        ]
+      },
+      "teacherCues": [
+        "Verify the payment by building the sinking fund schedule.",
+        "Start with $0, add deposit, add interest, repeat; after n periods should reach the target FV."
+      ],
+      "title": "3. Checking Sinking Fund by Accumulation",
+      "discoveryHook": {
+        "scenario": "After calculating the required annual deposit, you can verify it by simulating the fund: each year, add the deposit, then add interest on the previous balance. After the last deposit (which earns no interest), the total should equal the target."
+      }
+    },
+    {
+      "discoveryHook": {
+        "scenario": "If you know you can save $200/month for 18 years, an ordinary annuity tells you the future value. If you have a target of $50,000, a sinking fund tells you the required monthly deposit. They are two sides of the same coin."
+      },
+      "id": "sf-vs-annuity",
+      "concept": {
+        "visuals": [
+          {
+            "headers": [
+              "",
+              "Ordinary Annuity",
+              "Sinking Fund"
+            ],
+            "rows": [
+              {
+                "0": "What you know",
+                "1": "Payment, i, n",
+                "2": "FV, i, n"
+              },
+              {
+                "0": "What you find",
+                "1": "FV",
+                "2": "Payment"
+              },
+              {
+                "0": "Formula",
+                "1": "$FV = \\text{Payment} \\times \\text{FV Factor}$",
+                "2": "$\\text{Payment} = FV \\times \\text{SF Factor}$"
+              },
+              {
+                "0": "Factor relationship",
+                "1": "FV Factor",
+                "2": "SF Factor = 1 / FV Factor"
+              }
+            ],
+            "type": "table",
+            "caption": "They are inverse operations.",
+            "variant": "colorful",
+            "title": "Ordinary Annuity vs. Sinking Fund"
+          }
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{FV Annuity Factor} \\times \\text{Sinking Fund Factor} = 1$$ $$\\text{Payment (SF)} = \\frac{FV}{\\text{FV Annuity Factor}}$$",
+          "title": "Key Relationships",
+          "notes": [
+            "If you have the ordinary annuity table, you can find sinking fund payments.",
+            "If you have the sinking fund table, you can find FV of ordinary annuity."
+          ]
+        },
+        "explanation": [
+          "Ordinary annuity: $FV = \\text{Payment} \\times \\text{FV Annuity Factor}$ (unknown FV).",
+          "Sinking fund: $\\text{Payment} = FV \\times \\text{Sinking Fund Factor}$ (unknown payment).",
+          "The sinking fund factor is the reciprocal of the FV annuity factor: $\\text{SF Factor} = \\frac{1}{\\text{FV Annuity Factor}}$.",
+          "Both use end-of-period payments and the same i and n.",
+          "[[imp:Choose the correct formula based on whether FV or payment is the unknown.]]"
+        ]
+      },
+      "questions": [
+        {
+          "type": "fill-blank",
+          "feedbackIfWrong": "reciprocal.",
+          "hints": [
+            "1 divided by.",
+            "Mathematical inverse."
+          ],
+          "id": "b4q1",
+          "blanks": [
+            {
+              "accept": [
+                "reciprocal"
+              ]
+            }
+          ],
+          "prompt": "The sinking fund factor is the ___ of the FV annuity factor."
+        },
+        {
+          "type": "short-answer",
+          "id": "b4q2",
+          "answers": [
+            "0.1228"
+          ],
+          "prompt": "If FV annuity factor = 8.1420, what is the sinking fund factor? (4 decimals)",
+          "feedbackIfWrong": "0.1228.",
+          "hints": [
+            "1 / 8.1420.",
+            "≈ 0.1228."
+          ]
+        },
+        {
+          "prompt": "If a problem asks for periodic deposit given a future value, it is a ___ fund problem. (word)",
+          "answers": [
+            "sinking"
+          ],
+          "type": "short-answer",
+          "id": "b4q3",
+          "hints": [
+            "The fund 'sinks' into the future.",
+            "Not annuity."
+          ],
+          "feedbackIfWrong": "sinking."
+        }
+      ],
+      "examples": [
+        {
+          "role": "guided",
+          "steps": [
+            "You know payment, find FV → ordinary annuity problem.",
+            "Use FV = Payment × FV annuity factor."
+          ],
+          "prompt": "You deposit $500/quarter for 5 years at 6% quarterly. Find the accumulated amount. (type?)",
+          "title": "A – Identify the problem type"
+        },
+        {
+          "prompt": "Explain how you can use the ordinary annuity table to solve a sinking fund problem.",
+          "title": "B – Which table?",
+          "steps": [
+            "The sinking fund factor is 1 divided by the FV annuity factor.",
+            "First find the FV annuity factor for the given n and i.",
+            "Then compute the sinking fund factor and multiply by the target FV."
+          ],
+          "peerPrompt": "Think about reciprocals.",
+          "minLength": 2,
+          "role": "peer-explain"
+        },
+        {
+          "title": "C – Compute both ways",
+          "steps": [
+            "SF factor = 1 / 6.6330 ≈ 0.1508.",
+            "Payment = 30,000 × 0.1508 = $4,524."
+          ],
+          "prompt": "FV annuity factor (n=6, i=4%) = 6.6330. For a target of $30,000, find the sinking fund payment.",
+          "role": "independent"
+        }
+      ],
+      "confusionCorner": {
+        "body": "If you accidentally multiply the target FV by the FV annuity factor instead of the sinking fund factor, you'll get an absurdly high payment. [[imp:Always check: payment should be much less than the target.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "hints": [
+          "Payment = 75,000 × 0.0629 = 4,717.50.",
+          "This is the sinking fund payment."
+        ],
+        "answers": [
+          "4717.50",
+          "4,717.50"
+        ],
+        "optional": true,
+        "prompt": "You want $75,000 in 12 years. You find a sinking fund factor of 0.0629. What is the annual deposit? If instead you could use an ordinary annuity with the same factor, what's the relationship? (Just compute deposit)",
+        "type": "short-answer"
+      },
+      "teacherCues": [
+        "Stress that sinking fund finds payment given FV; ordinary annuity finds FV given payment.",
+        "Use reciprocal relationship."
+      ],
+      "title": "4. Sinking Fund vs. Ordinary Annuity"
+    },
+    {
+      "title": "5. Blueprint Aid for Sinking Fund Problems",
+      "id": "blueprint-sf",
+      "questions": [
+        {
+          "id": "b5q1",
+          "feedbackIfWrong": "understand.",
+          "prompt": "The first step of the sinking fund blueprint is to ___ the problem.",
+          "blanks": [
+            {
+              "accept": [
+                "understand"
+              ]
+            }
+          ],
+          "hints": [
+            "Identify FV, rate, n.",
+            "U in U-S-C."
+          ],
+          "type": "fill-blank"
+        },
+        {
+          "type": "short-answer",
+          "hints": [
+            "25,000 × 0.0872.",
+            "= 2,180."
+          ],
+          "id": "b5q2",
+          "feedbackIfWrong": "2,180.",
+          "answers": [
+            "2180",
+            "2,180"
+          ],
+          "prompt": "Sinking fund factor = 0.0872, FV = $25,000. Find quarterly payment. (number only, no $)"
+        },
+        {
+          "prompt": "After finding a sinking fund payment, you should ___ the result by accumulating. (one word)",
+          "feedbackIfWrong": "verify (or check).",
+          "answers": [
+            "verify",
+            "check"
+          ],
+          "id": "b5q3",
+          "hints": [
+            "Ensure it's correct.",
+            "Not just conclude."
+          ],
+          "type": "short-answer"
+        }
+      ],
+      "teacherCues": [
+        "Use the blueprint: Understand → Solve → Conclude.",
+        "Work through a problem that requires finding periodic deposits."
+      ],
+      "confusionCorner": {
+        "body": "If the problem states payments are at the beginning of the period, you have a sinking fund annuity due. [[imp:Adjust the factor by dividing the ordinary sinking fund factor by (1+i), or use the annuity due table.]]",
+        "title": "Watch out!"
+      },
+      "challengeCorner": {
+        "optional": true,
+        "prompt": "A retiree wants to leave $100,000 to charity in 15 years. The account earns 7% compounded annually. FV annuity factor (n=15, i=7%) = 25.1290. Find the required annual deposit.",
+        "type": "short-answer",
+        "answers": [
+          "3979.47",
+          "3,979.47"
+        ],
+        "hints": [
+          "SF factor = 1 / 25.1290 ≈ 0.0397947.",
+          "Payment = 100,000 × 0.0397947 ≈ 3,979.47."
+        ]
+      },
+      "discoveryHook": {
+        "scenario": "A condo association needs $200,000 in 10 years for roof replacement. They can earn 5% compounded quarterly. How much must they deposit at the end of each quarter? The blueprint will guide the calculation."
+      },
+      "examples": [
+        {
+          "title": "A – Full blueprint",
+          "steps": [
+            "Understand: FV=10,000, yearly, i=6%, n=8.",
+            "Solve: SF factor = 1 / 9.8975 ≈ 0.10104. Payment = 10,000 × 0.10104 = $1,010.40.",
+            "Conclude: Deposit $1,010.40 at end of each year."
+          ],
+          "role": "guided",
+          "prompt": "A parent wants $10,000 in 8 years for college, earning 6% compounded annually. FV annuity factor (n=8, i=6%) = 9.8975. Find annual deposit."
+        },
+        {
+          "peerPrompt": "Think about the step where you identify the unknown.",
+          "minLength": 2,
+          "title": "B – Blueprint vs. wrong factor",
+          "steps": [
+            "In 'Understand', you note that FV is given and payment is sought.",
+            "That triggers using the sinking fund factor, not the FV annuity factor.",
+            "The verification step would catch an error if the accumulated balance didn't match."
+          ],
+          "prompt": "Explain how the blueprint prevents using the FV annuity factor wrongly.",
+          "role": "peer-explain"
+        },
+        {
+          "steps": [
+            "Payment = 50,000 × 0.07456 = $3,728.00 per quarter."
+          ],
+          "role": "independent",
+          "title": "C – Quarterly sinking fund",
+          "prompt": "A company needs $50,000 in 3 years, 8% compounded quarterly. n=12, i=2%, sinking fund factor = 0.07456. Find quarterly deposit."
+        }
+      ],
+      "concept": {
+        "visuals": [
+          {
+            "caption": "Follow the blueprint in order.",
+            "headers": [
+              "Step",
+              "Action",
+              "Calculation"
+            ],
+            "title": "Blueprint: Condo Roof Fund ($200,000, 5% quarterly, 10 years)",
+            "variant": "colorful",
+            "rows": [
+              {
+                "0": "1. Understand",
+                "1": "FV=200,000, r=5%, quarterly, n=10×4=40, i=1.25% per quarter.",
+                "2": ""
+              },
+              {
+                "0": "2. Solve – Factor",
+                "1": "Sinking fund factor (n=40,i=1.25%) = ?",
+                "2": "Assume factor 0.0195 (illustrative)"
+              },
+              {
+                "0": "2. Solve – Payment",
+                "1": "Payment = 200,000 × 0.0195 = $3,900 per quarter.",
+                "2": ""
+              },
+              {
+                "0": "3. Conclude",
+                "1": "Verify accumulation over 40 quarters; final balance should be $200,000.",
+                "2": ""
+              }
+            ],
+            "type": "table"
+          }
+        ],
+        "explanation": [
+          "Apply the blueprint to sinking fund problems:",
+          "1. Understand: identify target FV, annual rate, compounding frequency, and number of years.",
+          "2. Solve: compute n and i; find sinking fund factor from table or compute as 1 / FV annuity factor; Payment = FV × Factor.",
+          "3. Conclude: verify by building an accumulation schedule; state the required periodic deposit.",
+          "This ensures you use the correct factor and check your result."
+        ],
+        "formulaCard": {
+          "formula": "$$\\text{Payment} = FV \\times \\text{Sinking Fund Factor}$$ $$\\text{Final check: Accumulate payments to verify FV}$$",
+          "title": "Sinking Fund Blueprint",
+          "notes": [
+            "Always compute i and n first.",
+            "If only FV annuity table is available, compute SF factor = 1 / FV annuity factor."
+          ]
+        }
+      }
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1787757252,
+    "_nanoseconds": 879000000
+  }
+}
