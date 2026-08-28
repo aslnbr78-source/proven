@@ -190,23 +190,67 @@ export function pickExitTicketItems(module, count = EXIT_TICKET_ITEM_COUNT) {
   })
 }
 
-export function serializeExitTicketItems(items = []) {
+function sanitizeShuffledOptions(options) {
+  if (!Array.isArray(options)) {
+    return null
+  }
+  return options.map(({ correct: _correct, isCorrect: _isCorrect, ...option }) => option)
+}
+
+function sanitizeBlanks(blanks) {
+  if (!Array.isArray(blanks)) {
+    return null
+  }
+  return blanks.map(({ accept: _accept, ...blank }) => blank)
+}
+
+export function serializeExitTicketItems(items = [], { includeAnswers = true } = {}) {
+  return items.map((item) => {
+    const serialized = {
+      exitItemId: item.exitItemId,
+      exitIndex: item.exitIndex,
+      source: item.source,
+      sourceId: item.sourceId,
+      id: item.id,
+      type: item.type,
+      prompt: item.prompt,
+      options: item.options ?? null,
+      correctIndex: item.correctIndex ?? null,
+      shuffledOptions: item.shuffledOptions ?? null,
+      answer: item.answer ?? null,
+      answers: item.answers ?? null,
+      blanks: item.blanks ?? null,
+      modified: Boolean(item.modified),
+      modification: item.modification ?? null,
+    }
+
+    if (includeAnswers) {
+      return serialized
+    }
+
+    return {
+      ...serialized,
+      correctIndex: null,
+      shuffledOptions: sanitizeShuffledOptions(serialized.shuffledOptions),
+      answer: null,
+      answers: null,
+      blanks: sanitizeBlanks(serialized.blanks),
+    }
+  })
+}
+
+export function serializeExitTicketAnswerKey(items = []) {
   return items.map((item) => ({
     exitItemId: item.exitItemId,
-    exitIndex: item.exitIndex,
     source: item.source,
     sourceId: item.sourceId,
     id: item.id,
     type: item.type,
-    prompt: item.prompt,
-    options: item.options ?? null,
     correctIndex: item.correctIndex ?? null,
     shuffledOptions: item.shuffledOptions ?? null,
     answer: item.answer ?? null,
     answers: item.answers ?? null,
     blanks: item.blanks ?? null,
-    modified: Boolean(item.modified),
-    modification: item.modification ?? null,
   }))
 }
 

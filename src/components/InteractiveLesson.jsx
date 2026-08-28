@@ -57,6 +57,9 @@ function ClassicInteractiveLesson({
     isLiveLessonSync,
     canSubmitLivePractice,
   })
+  const allPracticeComplete =
+    questions.length === 0 ||
+    questions.every((question, index) => Boolean(solvedMap[getQuestionId(question, index)]))
 
   useEffect(() => {
     if (!onBindFinalize) {
@@ -66,9 +69,9 @@ function ClassicInteractiveLesson({
       onBindFinalize(null)
       return () => onBindFinalize(null)
     }
-    onBindFinalize(finalizeLesson)
+    onBindFinalize(allPracticeComplete ? finalizeLesson : null)
     return () => onBindFinalize(null)
-  }, [finalizeLesson, isLiveLessonSync, onBindFinalize])
+  }, [allPracticeComplete, finalizeLesson, isLiveLessonSync, onBindFinalize])
 
   const showLessonContent = !isLiveLessonSync || livePhase === LIVE_PHASES.CONTENT
   const showSummary =

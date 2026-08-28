@@ -99,13 +99,20 @@ function SevenStepLesson({
       onBindFinalize(null)
       return () => onBindFinalize(null)
     }
-    if (!useBlockNav || isLastBlock) {
+    if (currentBlockComplete && (!useBlockNav || isLastBlock)) {
       onBindFinalize(finalizeLesson)
       return () => onBindFinalize(null)
     }
     onBindFinalize(null)
     return () => onBindFinalize(null)
-  }, [finalizeLesson, isLastBlock, isLiveLessonSync, onBindFinalize, useBlockNav])
+  }, [
+    currentBlockComplete,
+    finalizeLesson,
+    isLastBlock,
+    isLiveLessonSync,
+    onBindFinalize,
+    useBlockNav,
+  ])
 
   const firstBlock = blocks[0]
   const practiceContext =
@@ -130,7 +137,9 @@ function SevenStepLesson({
       goToNextBlock()
       return
     }
-    // Finishing the last section (even with practice incomplete) marks the module done.
+    if (!currentBlockComplete) {
+      return
+    }
     finalizeLesson()
     onAdvanceToNextModule?.()
   }

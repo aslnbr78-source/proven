@@ -49,9 +49,41 @@ export function ProgressProvider({ children }) {
     [progress],
   )
 
+  const saveExitTicket = useCallback(
+    (courseId, moduleId, result) => {
+      if (!courseId || !moduleId || !result) {
+        return
+      }
+      setProgress((previous) => {
+        const moduleProgress = previous[courseId]?.[moduleId] ?? {}
+        const exitTickets = [
+          ...(moduleProgress.exitTickets ?? []).slice(-4),
+          {
+            ...result,
+            savedAt: new Date().toISOString(),
+          },
+        ]
+        const next = {
+          ...previous,
+          [courseId]: {
+            ...previous[courseId],
+            [moduleId]: {
+              ...moduleProgress,
+              exitTicket: exitTickets[exitTickets.length - 1],
+              exitTickets,
+            },
+          },
+        }
+        localStorage.setItem(`${STORAGE_PREFIX}-${uid}`, JSON.stringify(next))
+        return next
+      })
+    },
+    [uid],
+  )
+
   const value = useMemo(
-    () => ({ progress, markComplete, isComplete }),
-    [progress, markComplete, isComplete],
+    () => ({ progress, markComplete, isComplete, saveExitTicket }),
+    [progress, markComplete, isComplete, saveExitTicket],
   )
 
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>
