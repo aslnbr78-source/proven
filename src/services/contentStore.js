@@ -88,7 +88,7 @@ function normalizeStoreShape(value) {
 }
 
 async function hydrateFromDisk() {
-  let fromIdb = null
+  let fromIdb
   try {
     fromIdb = await idbGet(IDB_CONTENT_KEY)
   } catch {
@@ -424,15 +424,12 @@ export async function loadOutline(courseId, { source = 'auto' } = {}) {
         const hubOutline = firestoreCourse
           ? outlineFromFirestoreCourse(courseId, firestoreCourse)
           : null
-        const healCandidates = [hubOutline, bundled].filter(
-          (candidate) => candidate && countModules(candidate) > 0,
-        )
         const healFrom =
-          healCandidates.length === 0
-            ? null
-            : healCandidates.reduce((best, next) =>
-                countModules(next) > countModules(best) ? next : best,
-              )
+          hubOutline && countModules(hubOutline) > 0
+            ? hubOutline
+            : bundled && countModules(bundled) > 0
+              ? bundled
+              : null
         if (healFrom) {
           const beforeCount = countModules(outline)
           const healed = healOutlineFromRicherSource(outline, healFrom)
@@ -443,8 +440,9 @@ export async function loadOutline(courseId, { source = 'auto' } = {}) {
           }
         }
         return outline
-      } catch {
-        await resetCourseToBundled(courseId)
+      } catch (error) {
+        console.warn('Draft outline heal failed; keeping local draft.', error)
+        return normalizeOutline(custom.outline)
       }
     }
   }

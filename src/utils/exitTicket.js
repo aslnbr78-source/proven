@@ -138,8 +138,8 @@ export function collectExitTicketPool(module) {
 }
 
 /**
- * Lightly modify when safe: shuffle MC options; swap simple numeric values in
- * short-answer / fill-blank templates. Leave symbolic/proof-style stems alone.
+ * Lightly modify when safe: shuffle MC options. Numeric stem rewrites are
+ * disabled because the answer often cannot be recomputed generically.
  */
 export function lightlyModifyExitItem(item) {
   const next = cloneQuestion(item)
@@ -167,68 +167,10 @@ export function lightlyModifyExitItem(item) {
   return next
 }
 
-function trySwapSimpleNumbers(question) {
-  const prompt = String(question.prompt ?? '')
-  // Only touch plain digit tokens outside LaTeX; skip proofs / symbolic stems.
-  if (/prove|show that|explain why|justify/i.test(prompt)) {
-    return null
-  }
-  if ((prompt.match(/\$/g) || []).length >= 4 && !/\d/.test(prompt.replace(/\$[^$]*\$/g, ''))) {
-    return null
-  }
-
-  const outsideMath = prompt.replace(/\$[^$]*\$/g, ' ')
-  const numbers = [...outsideMath.matchAll(/\b([1-9]\d{0,2})\b/g)].map((match) => match[1])
-  if (numbers.length < 1) {
-    return null
-  }
-
-  const unique = [...new Set(numbers)]
-  if (unique.length < 1) {
-    return null
-  }
-
-  const pick = unique[Math.floor(Math.random() * unique.length)]
-  const original = Number(pick)
-  if (!Number.isFinite(original) || original < 1 || original > 200) {
-    return null
-  }
-
-  // Small integer nudge that stays positive and readable.
-  const delta = original <= 3 ? 1 : original <= 20 ? (Math.random() < 0.5 ? 1 : 2) : 5
-  const replacement = String(original + delta)
-
-  const next = cloneQuestion(question)
-  const replaceToken = (text) =>
-    String(text ?? '').replace(new RegExp(`\\b${pick}\\b`), replacement)
-
-  next.prompt = replaceToken(next.prompt)
-  if (next.answer != null) {
-    next.answer = replaceToken(String(next.answer))
-  }
-  if (Array.isArray(next.answers)) {
-    next.answers = next.answers.map((value) => replaceToken(String(value)))
-  }
-  if (Array.isArray(next.blanks)) {
-    next.blanks = next.blanks.map((blank) => ({
-      ...blank,
-      accept: (blank.accept ?? []).map((value) => replaceToken(String(value))),
-    }))
-  }
-  if (next.feedbackIfWrong) {
-    next.feedbackIfWrong = replaceToken(next.feedbackIfWrong)
-  }
-
-  // Only keep the swap if the accepted answer also changed or the stem changed
-  // without breaking grading for non-numeric answers.
-  const stemChanged = next.prompt !== question.prompt
-  if (!stemChanged) {
-    return null
-  }
-
-  next.modified = true
-  next.modification = { kind: 'number-swap', from: pick, to: replacement }
-  return next
+function trySwapSimpleNumbers(_question) {
+  // Do not rewrite numeric stems unless the answer can be recomputed. A token
+  // replacement like "2 + 3" -> "3 + 3" silently leaves answer keys stale.
+  return null
 }
 
 export function pickExitTicketItems(module, count = EXIT_TICKET_ITEM_COUNT) {
