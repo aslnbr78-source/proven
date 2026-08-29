@@ -11,12 +11,30 @@ const MAX_AI_GAME_SAMPLES = 12
  */
 export function normalizeGameRoundToQuestion(round, index = 0) {
   const kind = round?.kind
-  if (kind === 'choice' || kind === 'true-false') {
+  if (kind === 'true-false') {
+    if (typeof round.answer !== 'boolean') {
+      return null
+    }
+    return {
+      id: round.id ?? `game-q${index + 1}`,
+      source: 'math-game',
+      sourceId: round.id ?? `game-q${index + 1}`,
+      type: 'multiple-choice',
+      prompt: round.prompt ?? round.question ?? '',
+      options: ['True', 'False'],
+      correctIndex: round.answer ? 0 : 1,
+      feedbackIfWrong: round.feedbackIfWrong ?? '',
+      hints: round.hints ?? [],
+      difficulty: round.difficulty,
+    }
+  }
+
+  if (kind === 'choice') {
     const choices = Array.isArray(round.choices) ? round.choices : []
-    const correctIndex = Math.max(
-      0,
-      choices.findIndex((choice) => choice.id === round.correctId),
-    )
+    const correctIndex = choices.findIndex((choice) => choice.id === round.correctId)
+    if (choices.length === 0 || correctIndex < 0) {
+      return null
+    }
     return {
       id: round.id ?? `game-q${index + 1}`,
       source: 'math-game',
@@ -24,7 +42,7 @@ export function normalizeGameRoundToQuestion(round, index = 0) {
       type: 'multiple-choice',
       prompt: round.prompt ?? round.question ?? '',
       options: choices.map((choice) => choice.label),
-      correctIndex: correctIndex >= 0 ? correctIndex : 0,
+      correctIndex,
       feedbackIfWrong: round.feedbackIfWrong ?? '',
       hints: round.hints ?? [],
       difficulty: round.difficulty,
