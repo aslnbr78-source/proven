@@ -1159,7 +1159,7 @@ function CourseBuilder() {
       const missing = pack.missingModuleIds?.length ?? 0
       if (missing > 0) {
         const confirmed = window.confirm(
-          `${missing} module(s) on your outline have no full JSON body in this browser (draft → Hub → bundled).\n\nPublishing will keep any existing Hub content for those modules, but new sections without imported JSON will stay empty.\n\nImport each lesson via Course Builder before publishing, or use Export to folder after import.\n\nPublish anyway?`,
+          `${missing} module(s) on your outline have no local JSON body in this browser.\n\nPublishing will keep any existing Hub content for those modules, but new sections without imported JSON will stay empty.\n\nImport each lesson via Course Builder before publishing, or use Export to folder after import.\n\nPublish anyway?`,
         )
         if (!confirmed) {
           setMessage('Publish cancelled — import lesson JSON for missing modules first.')
