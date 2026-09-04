@@ -367,23 +367,26 @@ export function healOutlineFromRicherSource(draftOutline, sourceOutline) {
   const draftCount = countModules(draftOutline)
 
   if (sourceCount > draftCount) {
-    const source = normalizeOutline(JSON.parse(JSON.stringify(sourceOutline)))
-    const draft = normalizeOutline(JSON.parse(JSON.stringify(draftOutline)))
+    const source = normalizeOutline(cloneOutlineNode(sourceOutline))
+    const draft = normalizeOutline(cloneOutlineNode(draftOutline))
     const sourceIds = new Set(
       (source.chapters ?? []).filter((chapter) => chapter?.id).map((chapter) => chapter.id),
     )
+    const draftById = new Map(
+      (draft.chapters ?? []).filter((chapter) => chapter?.id).map((chapter) => [chapter.id, chapter]),
+    )
 
-    // Prefer source chapter order + trees; keep draft-only chapters at the end.
+    // Prefer source chapter order + trees while keeping teacher-edited draft labels.
     const merged = (source.chapters ?? [])
       .filter((chapter) => chapter?.id)
-      .map((srcChapter) => JSON.parse(JSON.stringify(srcChapter)))
+      .map((srcChapter) => applyDraftOutlineDisplay(srcChapter, draftById.get(srcChapter.id)))
     for (const chapter of draft.chapters ?? []) {
       if (chapter?.id && !sourceIds.has(chapter.id)) {
-        merged.push(chapter)
+        merged.push(cloneOutlineNode(chapter))
       }
     }
 
-    let healed = normalizeOutline({ ...draft, ...source, chapters: merged })
+    let healed = normalizeOutline({ ...source, ...draft, chapters: merged })
     // Re-attach draft-only modules under shared chapter ids (local additions).
     healed = supplementOutlineFromBundled(healed, draft)
     return healed
@@ -480,6 +483,75 @@ export function supplementOutlineFromBundled(liveOutline, bundledOutline) {
   }
 
   return normalizeOutline(live)
+}
+
+function cloneOutlineNode(value) {
+  return JSON.parse(JSON.stringify(value))
+}
+
+function preserveDraftModuleDisplay(sourceModule, draftModule) {
+  const next = cloneOutlineNode(sourceModule)
+  if (draftModule && Object.prototype.hasOwnProperty.call(draftModule, 'title')) {
+    next.title = draftModule.title
+  }
+  return next
+}
+
+function applyDraftOutlineDisplay(sourceChapter, draftChapter) {
+  if (!draftChapter) {
+    return cloneOutlineNode(sourceChapter)
+  }
+
+  const source = cloneOutlineNode(sourceChapter)
+  const draftSubchapters = getChapterSubchapters(draftChapter)
+  const draftSubchapterById = new Map(
+    draftSubchapters.filter((subchapter) => subchapter?.id).map((subchapter) => [subchapter.id, subchapter]),
+  )
+  const sourceSubchapterIds = new Set()
+
+  const subchapters = getChapterSubchapters(source).map((sourceSubchapter) => {
+    sourceSubchapterIds.add(sourceSubchapter.id)
+    const draftSubchapter = draftSubchapterById.get(sourceSubchapter.id)
+    if (!draftSubchapter) {
+      return sourceSubchapter
+    }
+
+    const draftModuleById = new Map(
+      (draftSubchapter.modules ?? [])
+        .filter((module) => module?.id)
+        .map((module) => [module.id, module]),
+    )
+    const sourceModuleIds = new Set()
+    const modules = (sourceSubchapter.modules ?? []).map((sourceModule) => {
+      sourceModuleIds.add(sourceModule.id)
+      return preserveDraftModuleDisplay(sourceModule, draftModuleById.get(sourceModule.id))
+    })
+
+    for (const draftModule of draftSubchapter.modules ?? []) {
+      if (draftModule?.id && !sourceModuleIds.has(draftModule.id)) {
+        modules.push(cloneOutlineNode(draftModule))
+      }
+    }
+
+    return {
+      ...sourceSubchapter,
+      title: draftSubchapter.title ?? sourceSubchapter.title,
+      materials: draftSubchapter.materials ?? sourceSubchapter.materials ?? [],
+      modules,
+    }
+  })
+
+  for (const draftSubchapter of draftSubchapters) {
+    if (draftSubchapter?.id && !sourceSubchapterIds.has(draftSubchapter.id)) {
+      subchapters.push(cloneOutlineNode(draftSubchapter))
+    }
+  }
+
+  return {
+    ...source,
+    title: draftChapter.title ?? source.title,
+    subchapters,
+  }
 }
 
 export function nextChapterId(chapters) {
