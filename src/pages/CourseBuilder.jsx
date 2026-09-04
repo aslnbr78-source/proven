@@ -1007,17 +1007,24 @@ function CourseBuilder() {
         exported.modules,
       )
       const filenames = allocateMenuExportFilenames(selectedCourseId, outlineModules)
+      const moduleFiles = Object.entries(exported.modules).flatMap(([moduleId, data]) => {
+        const primary =
+          filenames.get(moduleId) ??
+          `${selectedCourseId}-${moduleId}.json`
+        const hosting = `${moduleId}.json`
+        return primary === hosting
+          ? [{ filename: primary, data }]
+          : [
+              { filename: primary, data },
+              { filename: hosting, data },
+            ]
+      })
       const files = [
         {
           filename: buildExportFilename(selectedCourseId),
           data: exported.courseJson,
         },
-        ...Object.entries(exported.modules).map(([moduleId, data]) => ({
-          filename:
-            filenames.get(moduleId) ??
-            `${selectedCourseId}-${moduleId}.json`,
-          data,
-        })),
+        ...moduleFiles,
       ]
 
       await downloadJsonBatch(files)
@@ -1025,7 +1032,7 @@ function CourseBuilder() {
       setDraftExportedAt(getCourseDraftExportedAt(selectedCourseId))
       const missing = exported.missingModuleIds?.length ?? 0
       setMessage(
-        `Downloaded ${files.length} file(s) (${moduleCount} lesson JSON + course outline) named from menu titles.` +
+        `Downloaded ${files.length} file(s) (${moduleCount} lesson JSON + course outline, menu-title names + moduleId hosting copies).` +
           (missing > 0 ? ` ${missing} outline module(s) had no JSON body to export.` : ''),
       )
     } catch (error) {

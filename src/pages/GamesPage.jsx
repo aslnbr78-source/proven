@@ -30,10 +30,11 @@ import {
   publishDraftGameCourseToHub,
 } from '../services/gameCatalogFirestore'
 import { loadOutline } from '../services/contentStore'
-import { downloadJson, downloadJsonBatch, isFolderExportSupported } from '../utils/courseEditor'
+import { downloadJsonBatch, isFolderExportSupported } from '../utils/courseEditor'
 import {
   allocateGameExportFilenames,
   buildGameDownloadName,
+  buildGameFilename,
   exportGamesToFolder,
   gameFolderName,
   gatherGameExports,
@@ -363,13 +364,19 @@ function CourseGamesPage() {
       const { files, failed, skipped } = await collectExports()
       const filenames = allocateGameExportFilenames(courseId, files)
       await downloadJsonBatch(
-        files.map(({ gameId, data }) => ({
-          filename: filenames.get(gameId) ?? buildGameDownloadName(courseId, gameId, null),
-          data,
-        })),
+        files.flatMap(({ gameId, data }) => {
+          const primary = filenames.get(gameId) ?? buildGameDownloadName(courseId, gameId, null)
+          const hosting = buildGameFilename(gameId)
+          return primary === hosting
+            ? [{ filename: primary, data }]
+            : [
+                { filename: primary, data },
+                { filename: hosting, data },
+              ]
+        }),
       )
       setStatusMessage(
-        `Downloaded ${files.length} game JSON file(s) from the course outline.${describeSkipped(failed, skipped)}`,
+        `Downloaded ${files.length} game JSON file(s) from the course outline (menu-title names + gameId hosting copies).${describeSkipped(failed, skipped)}`,
       )
     } catch (error) {
       setStatusError(error?.message || 'Export failed.')
@@ -420,11 +427,18 @@ function CourseGamesPage() {
     try {
       const body = await loadGameModuleAsync(courseId, game.id, { includeDraft: isAdmin })
       const menuTitle = linkedMenuTitles.get(game.id) || game.title
-      downloadJson(
-        buildGameDownloadName(courseId, game.id, menuTitle),
-        toExportableGame(body, { courseId, gameId: game.id }),
+      const data = toExportableGame(body, { courseId, gameId: game.id })
+      const primary = buildGameDownloadName(courseId, game.id, menuTitle)
+      const hosting = buildGameFilename(game.id)
+      await downloadJsonBatch(
+        primary === hosting
+          ? [{ filename: primary, data }]
+          : [
+              { filename: primary, data },
+              { filename: hosting, data },
+            ],
       )
-      setStatusMessage(`Exported “${menuTitle}”.`)
+      setStatusMessage(`Exported “${menuTitle}” (menu-title name + gameId hosting copy).`)
     } catch (error) {
       setStatusError(error?.message || 'Could not export that game.')
     }
