@@ -5,12 +5,28 @@ import { isGameCatalogOutlineModule } from './moduleImport'
 
 const MAX_AI_GAME_SAMPLES = 12
 
+function inferRoundKind(round) {
+  if (round?.kind) {
+    return round.kind
+  }
+  if (Array.isArray(round?.choices) && round.choices.length > 0 && round.correctId != null) {
+    return 'choice'
+  }
+  if (
+    Array.isArray(round?.accept) ||
+    (round?.answer != null && typeof round.answer !== 'boolean')
+  ) {
+    return 'input'
+  }
+  return null
+}
+
 /**
  * Convert a math-game round into a lesson/worksheet-shaped question.
  * Supports choice, true-false, and input rounds; other kinds return null.
  */
 export function normalizeGameRoundToQuestion(round, index = 0) {
-  const kind = round?.kind
+  const kind = inferRoundKind(round)
   if (kind === 'choice' || kind === 'true-false') {
     const choices = Array.isArray(round.choices) ? round.choices : []
     const correctIndex = Math.max(
@@ -53,13 +69,31 @@ export function normalizeGameRoundToQuestion(round, index = 0) {
   return null
 }
 
-export function extractGameQuestionsFromContent(moduleContent) {
+export function extractGameQuestionsFromContent(
+  moduleContent,
+  { moduleId = moduleContent?.id, namespaceIds = false } = {},
+) {
   if (!moduleContent) {
     return []
   }
 
   const rounds = normalizeRounds(moduleContent.rounds ?? moduleContent.config?.rounds ?? [])
-  return rounds.map((round, index) => normalizeGameRoundToQuestion(round, index)).filter(Boolean)
+  const questions = rounds
+    .map((round, index) => normalizeGameRoundToQuestion(round, index))
+    .filter(Boolean)
+
+  if (!namespaceIds || !moduleId) {
+    return questions
+  }
+
+  return questions.map((question) => {
+    const sourceId = question.sourceId ?? question.id
+    return {
+      ...question,
+      id: `${moduleId}::${sourceId}`,
+      sourceId,
+    }
+  })
 }
 
 /** Outline rows for math-game modules in the same subchapter as moduleId. */
