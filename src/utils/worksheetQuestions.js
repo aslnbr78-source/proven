@@ -140,7 +140,10 @@ export function extractQuestionsFromModule(moduleContent, moduleMeta) {
   const rows = []
 
   if (moduleMeta.moduleType === 'math-game') {
-    const gameQuestions = extractGameQuestionsFromContent(moduleContent)
+    const gameQuestions = extractGameQuestionsFromContent(moduleContent, {
+      moduleId: moduleMeta.moduleId,
+      namespaceIds: true,
+    })
     gameQuestions.forEach((question, index) => {
       rows.push(normalizeWorksheetQuestion(question, moduleMeta, index, gameQuestions.length))
     })
