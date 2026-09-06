@@ -132,7 +132,7 @@ export async function fetchCourseOutline(courseId) {
 
   // Published Hub outline is authoritative. Do not refill deleted sections from
   // bundled course.json (that made thinner publishes look like the old course).
-  let outline = null
+  let outline
   if (firestoreOutline && countModules(firestoreOutline) > 0) {
     outline = firestoreOutline
   } else if (bundledOutline && countModules(bundledOutline) > 0) {
@@ -268,7 +268,6 @@ async function loadBundledLessonModule(courseId, moduleId) {
 
 export async function fetchModuleContent(courseId, moduleId, options = {}) {
   const contentSource = options.contentSource
-  const moduleType = options.moduleType
   const includeDraft = Boolean(options.includeDraft)
   const isSample = Boolean(options.isSample)
 
@@ -276,7 +275,7 @@ export async function fetchModuleContent(courseId, moduleId, options = {}) {
     return loadBundledSampleModule(moduleId, { contentSource, includeDraft })
   }
 
-  if (contentSource === 'game-catalog' || moduleType === 'math-game') {
+  if (contentSource === 'game-catalog') {
     const { loadGameModuleAsync } = await import('../data/mathGames')
     return loadGameModuleAsync(courseId, moduleId, { includeDraft })
   }
