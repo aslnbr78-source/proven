@@ -527,7 +527,7 @@ function CourseBuilder() {
           ...sc,
           modules: currentModules.map((mod) =>
             mod.id === moduleData.id
-              ? buildOutlineModuleEntry(moduleData, { menuTitle: mod.title })
+              ? { ...mod, ...buildOutlineModuleEntry(moduleData, { menuTitle: mod.title }) }
               : mod,
           ),
         }
@@ -769,7 +769,7 @@ function CourseBuilder() {
           if (mod.id !== moduleData.id) {
             return mod
           }
-          const next = buildOutlineModuleEntry(moduleData, { menuTitle: mod.title })
+          const next = { ...mod, ...buildOutlineModuleEntry(moduleData, { menuTitle: mod.title }) }
           menuTitle = next.title
           return next
         }),
