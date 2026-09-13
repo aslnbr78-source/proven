@@ -416,6 +416,7 @@ export function supplementOutlineFromBundled(liveOutline, bundledOutline) {
       type: flat.type,
       title: flat.title,
       ...(flat.standards?.length ? { standards: flat.standards } : {}),
+      ...(flat.contentSource ? { contentSource: flat.contentSource } : {}),
     }
 
     let chapter = live.chapters.find((item) => item.id === flat.chapterId)
