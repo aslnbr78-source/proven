@@ -121,8 +121,10 @@ function CoursePlayer() {
   const isSample = isSamplePath(location.pathname)
   const courseId = isSample ? SAMPLE_COURSE_ID : params.courseId
   const moduleId = params.moduleId
-  const editorPreview = !isSample && isEditorPreviewSearch(searchParams.toString())
   const { user, profile, role } = useAuth()
+  const isTeacher = role === ROLES.TEACHER || role === ROLES.ADMIN
+  const requestedEditorPreview = !isSample && isEditorPreviewSearch(searchParams.toString())
+  const editorPreview = requestedEditorPreview && isTeacher
   const { markComplete, saveExitTicket, isComplete } = useProgress()
   const buildModulePath = (id) =>
     isSample ? sampleModulePath(id) : `/courses/${courseId}/modules/${id}`
@@ -294,7 +296,6 @@ function CoursePlayer() {
       )
   }, [courseId, moduleId])
 
-  const isTeacher = role === ROLES.TEACHER || role === ROLES.ADMIN
   const isStudent = role === ROLES.STUDENT || !role
   // Soft DRM: students + sample/anonymous; staff keep copy for notes/keys/editing
   useContentCopyGuard({
