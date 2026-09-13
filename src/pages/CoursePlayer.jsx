@@ -121,8 +121,10 @@ function CoursePlayer() {
   const isSample = isSamplePath(location.pathname)
   const courseId = isSample ? SAMPLE_COURSE_ID : params.courseId
   const moduleId = params.moduleId
-  const editorPreview = !isSample && isEditorPreviewSearch(searchParams.toString())
   const { user, profile, role } = useAuth()
+  const isTeacher = role === ROLES.TEACHER || role === ROLES.ADMIN
+  const requestedEditorPreview = !isSample && isEditorPreviewSearch(searchParams.toString())
+  const editorPreview = requestedEditorPreview && isTeacher
   const { markComplete, saveExitTicket, isComplete } = useProgress()
   const buildModulePath = (id) =>
     isSample ? sampleModulePath(id) : `/courses/${courseId}/modules/${id}`
@@ -294,7 +296,6 @@ function CoursePlayer() {
       )
   }, [courseId, moduleId])
 
-  const isTeacher = role === ROLES.TEACHER || role === ROLES.ADMIN
   const isStudent = role === ROLES.STUDENT || !role
   // Soft DRM: students + sample/anonymous; staff keep copy for notes/keys/editing
   useContentCopyGuard({
@@ -440,19 +441,24 @@ function CoursePlayer() {
     setSelfExitTicket({ items, required: false })
   }
 
-  const handleSelfExitSubmit = (result) => {
-    markExitTicketSeen(user?.uid, courseId, moduleId)
-    if (result) {
-      saveExitTicket(courseId, moduleId, result)
-    }
-  }
-
-  const handleSelfExitContinue = () => {
-    markExitTicketSeen(user?.uid, courseId, moduleId)
+  const continueAfterSelfExitTicket = () => {
     setSelfExitTicket(null)
     const pending = pendingAfterExitRef.current
     pendingAfterExitRef.current = null
     pending?.()
+  }
+
+  const handleSelfExitSubmit = (result) => {
+    markExitTicketSeen(user?.uid, courseId, moduleId)
+    if (result && typeof saveExitTicket === 'function') {
+      saveExitTicket(courseId, moduleId, result)
+    }
+    continueAfterSelfExitTicket()
+  }
+
+  const handleSelfExitContinue = () => {
+    markExitTicketSeen(user?.uid, courseId, moduleId)
+    continueAfterSelfExitTicket()
   }
 
   const handleLiveExitSubmit = (result) => {
