@@ -73,6 +73,7 @@ import {
   buildGameCatalogOutlineEntry,
   buildOutlineModuleEntry,
   isGameCatalogOutlineModule,
+  prepareModuleForImport,
 } from '../utils/moduleImport'
 import { getGameCourseByIdAsync } from '../data/mathGames'
 import { buildCourseVisualMeta } from '../utils/courseVisuals'
@@ -576,7 +577,11 @@ function CourseBuilder() {
       return { ok: false, error: result.errors?.[0] ?? 'Invalid JSON' }
     }
 
-    const committed = await commitModuleImport(result.data)
+    const moduleData = prepareModuleForImport(
+      result.data,
+      importTarget?.templateType ?? null,
+    )
+    const committed = await commitModuleImport(moduleData)
     if (!committed?.ok) {
       setImportErrors([committed?.error ?? 'Import failed.'])
     }
@@ -584,7 +589,8 @@ function CourseBuilder() {
   }
 
   const handleImportModule = async (moduleData) => {
-    const committed = await commitModuleImport(moduleData)
+    const prepared = prepareModuleForImport(moduleData, importTarget?.templateType ?? null)
+    const committed = await commitModuleImport(prepared)
     if (!committed?.ok) {
       setImportErrors([committed?.error ?? 'Import failed.'])
     }
@@ -592,13 +598,14 @@ function CourseBuilder() {
   }
 
   const handleImportModuleAndPreview = async (moduleData) => {
-    const committed = await commitModuleImport(moduleData)
+    const prepared = prepareModuleForImport(moduleData, importTarget?.templateType ?? null)
+    const committed = await commitModuleImport(prepared)
     if (!committed?.ok) {
       setImportErrors([committed?.error ?? 'Import failed.'])
       return committed
     }
     window.open(
-      courseModulePreviewPath(selectedCourseId, moduleData.id),
+      courseModulePreviewPath(selectedCourseId, prepared.id),
       '_blank',
       'noopener,noreferrer',
     )
