@@ -24,7 +24,7 @@ export function ProgressProvider({ children }) {
   }, [uid])
 
   const markComplete = useCallback(
-    (courseId, moduleId) => {
+    (courseId, moduleId, meta = {}) => {
       setProgress((previous) => {
         const next = {
           ...previous,
@@ -37,7 +37,9 @@ export function ProgressProvider({ children }) {
           },
         }
         localStorage.setItem(`${STORAGE_PREFIX}-${uid}`, JSON.stringify(next))
-        syncModuleCompletion(uid, courseId, moduleId).catch(() => {})
+        if (!meta?.localOnly) {
+          syncModuleCompletion(uid, courseId, moduleId).catch(() => {})
+        }
         return next
       })
     },
