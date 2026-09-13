@@ -441,19 +441,24 @@ function CoursePlayer() {
     setSelfExitTicket({ items, required: false })
   }
 
-  const handleSelfExitSubmit = (result) => {
-    markExitTicketSeen(user?.uid, courseId, moduleId)
-    if (result) {
-      saveExitTicket(courseId, moduleId, result)
-    }
-  }
-
-  const handleSelfExitContinue = () => {
-    markExitTicketSeen(user?.uid, courseId, moduleId)
+  const continueAfterSelfExitTicket = () => {
     setSelfExitTicket(null)
     const pending = pendingAfterExitRef.current
     pendingAfterExitRef.current = null
     pending?.()
+  }
+
+  const handleSelfExitSubmit = (result) => {
+    markExitTicketSeen(user?.uid, courseId, moduleId)
+    if (result && typeof saveExitTicket === 'function') {
+      saveExitTicket(courseId, moduleId, result)
+    }
+    continueAfterSelfExitTicket()
+  }
+
+  const handleSelfExitContinue = () => {
+    markExitTicketSeen(user?.uid, courseId, moduleId)
+    continueAfterSelfExitTicket()
   }
 
   const handleLiveExitSubmit = (result) => {
