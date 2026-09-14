@@ -516,8 +516,31 @@ function CourseBuilder() {
       }
     }
 
-    const modules = Array.isArray(subchapter.modules) ? subchapter.modules : []
-    const exists = modules.some((mod) => mod.id === moduleData.id)
+    const existingMatches = flattenModules(outline).filter((mod) => mod.id === moduleData.id)
+    const matchesInTarget = existingMatches.filter(
+      (mod) => mod.chapterId === chapterId && mod.subchapterId === subchapterId,
+    )
+    const matchOutsideTarget = existingMatches.find(
+      (mod) => mod.chapterId !== chapterId || mod.subchapterId !== subchapterId,
+    )
+    if (matchOutsideTarget) {
+      return {
+        ok: false,
+        error:
+          `Module id "${moduleData.id}" already exists in ` +
+          `"${matchOutsideTarget.subchapterTitle || matchOutsideTarget.chapterTitle || 'another section'}". ` +
+          'Change the JSON id or remove the existing outline entry before importing.',
+      }
+    }
+    if (matchesInTarget.length > 1) {
+      return {
+        ok: false,
+        error:
+          `Module id "${moduleData.id}" already appears multiple times in this section. ` +
+          'Remove duplicate outline entries before importing.',
+      }
+    }
+    const exists = matchesInTarget.length === 1
     const entry = buildOutlineModuleEntry(moduleData)
 
     const updatedChapters = mapSubchapter(outline.chapters, chapterId, subchapterId, (sc) => {
