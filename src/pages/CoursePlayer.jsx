@@ -972,11 +972,7 @@ function CoursePlayer() {
   }
 
   const bindLessonFinalize = (fn) => {
-    // Keep the last successful bind for this module visit (e.g. student reached final
-    // section, then went back). Cleared only when leaving the module.
-    if (typeof fn === 'function') {
-      finalizeLessonRef.current = fn
-    }
+    finalizeLessonRef.current = typeof fn === 'function' ? fn : null
   }
 
   const isFinalTest = moduleContent?.type === 'final-test'
