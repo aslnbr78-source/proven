@@ -1,5 +1,4 @@
 import { extractGameQuestionsFromContent } from './gameQuestionSource'
-import { getLessonQuestions } from './lessonContent'
 import { difficultyLabel, resolveQuestionDifficulty } from './questionDifficulty'
 import {
   describeMixTargets,
@@ -58,6 +57,43 @@ const QUESTION_MODULE_TYPES = new Set([
   'adaptive-mastery',
   'math-game',
 ])
+
+function getTopLevelQuestions(moduleContent) {
+  if (Array.isArray(moduleContent?.questions)) {
+    return moduleContent.questions
+  }
+  if (moduleContent?.question) {
+    return [moduleContent.question]
+  }
+  return []
+}
+
+function getBlockQuestions(moduleContent) {
+  if (!Array.isArray(moduleContent?.blocks)) {
+    return []
+  }
+
+  return moduleContent.blocks.flatMap((block, blockIndex) => {
+    if (!Array.isArray(block?.questions)) {
+      return []
+    }
+    return block.questions.map((question, questionIndex) => ({
+      ...question,
+      id:
+        question.id ??
+        `${block.id || `block-${blockIndex + 1}`}-q${questionIndex + 1}`,
+    }))
+  })
+}
+
+function getQuestionsFromModuleContent(moduleContent, moduleType) {
+  if (moduleType === 'interactive-lesson') {
+    const blockQuestions = getBlockQuestions(moduleContent)
+    return blockQuestions.length > 0 ? blockQuestions : getTopLevelQuestions(moduleContent)
+  }
+
+  return getTopLevelQuestions(moduleContent)
+}
 
 export function stripContentMarkup(text) {
   return String(text ?? '')
@@ -155,7 +191,7 @@ export function extractQuestionsFromModule(moduleContent, moduleMeta) {
     return rows
   }
 
-  const lessonQuestions = getLessonQuestions(moduleContent)
+  const lessonQuestions = getQuestionsFromModuleContent(moduleContent, moduleMeta.moduleType)
   lessonQuestions.forEach((question, index) => {
     rows.push(normalizeWorksheetQuestion(question, moduleMeta, index, lessonQuestions.length))
   })
