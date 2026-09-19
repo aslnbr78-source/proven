@@ -52,4 +52,10 @@ export default defineConfig([
       'no-unused-vars': ['error', { argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' }],
     },
   },
+  {
+    files: ['firebase/functions/**/*.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ])
