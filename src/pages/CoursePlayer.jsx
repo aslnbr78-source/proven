@@ -36,6 +36,7 @@ import {
   endLiveSession,
   startLiveExitTicket,
   submitLiveExitTicketResponse,
+  updateLiveModule,
   updateLiveSessionView,
 } from '../services/liveClassService'
 import { getAdjacentModules, findModuleLocation } from '../utils/courseOutline'
@@ -317,6 +318,9 @@ function CoursePlayer() {
     presenterMode,
     moduleId,
   })
+  const liveSyncModuleMeta =
+    courseOutline && moduleId ? findModuleInOutline(courseOutline, moduleId) : null
+  const liveSyncModuleTitle = liveSyncModuleMeta?.title ?? moduleContent?.title ?? ''
   const isChapterAccessible = useMemo(() => {
     if (isSample || isTeacher || editorPreview) {
       return () => true
@@ -357,6 +361,38 @@ function CoursePlayer() {
   )
   const isTeacherLiveView = Boolean(isTeacherLive && presenterMode && isInteractiveLesson)
   const canSubmitLivePractice = Boolean(isFollowingLive && isLiveOnThisModule && isInteractiveLesson)
+
+  useEffect(() => {
+    if (!isTeacherLive || !courseId || !moduleId) {
+      return
+    }
+
+    const moduleChanged = liveSession?.moduleId !== moduleId
+    const titleChanged =
+      !moduleChanged &&
+      Boolean(liveSyncModuleTitle) &&
+      liveSession?.moduleTitle !== liveSyncModuleTitle
+
+    if (!moduleChanged && !titleChanged) {
+      return
+    }
+
+    updateLiveModule({
+      courseId,
+      moduleId,
+      moduleTitle: liveSyncModuleTitle,
+      resetView: moduleChanged,
+    }).catch((error) => {
+      console.warn('Live module sync failed', error)
+    })
+  }, [
+    courseId,
+    isTeacherLive,
+    liveSession?.moduleId,
+    liveSession?.moduleTitle,
+    liveSyncModuleTitle,
+    moduleId,
+  ])
 
   useEffect(() => {
     setSelfExitTicket(null)
