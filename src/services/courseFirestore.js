@@ -10,6 +10,7 @@ import {
 } from 'firebase/firestore'
 import { db } from './firebase'
 import { exportCoursePackage, getCustomModule } from './contentStore'
+import { createCourseModulePublishPlan } from './coursePublishPlan'
 import { flattenModules } from '../utils/courseOutline'
 
 export async function listFirestoreCourses() {
@@ -95,6 +96,12 @@ export async function publishCourseToFirestore({ courseId, outline, modules, uid
   }
 
   const courseRef = doc(db, 'courses', courseId)
+  const modulesSnap = await getDocs(collection(db, 'courses', courseId, 'modules'))
+  const { modulesToWrite, moduleIdsToDelete } = createCourseModulePublishPlan(
+    outline,
+    modules,
+    modulesSnap.docs.map((item) => item.id),
+  )
   const batch = writeBatch(db)
 
   batch.set(
@@ -112,11 +119,15 @@ export async function publishCourseToFirestore({ courseId, outline, modules, uid
     { merge: true },
   )
 
-  Object.entries(modules).forEach(([moduleId, moduleData]) => {
+  Object.entries(modulesToWrite).forEach(([moduleId, moduleData]) => {
     batch.set(doc(db, 'courses', courseId, 'modules', moduleId), {
       ...moduleData,
       updatedAt: serverTimestamp(),
     })
+  })
+
+  moduleIdsToDelete.forEach((moduleId) => {
+    batch.delete(doc(db, 'courses', courseId, 'modules', moduleId))
   })
 
   await batch.commit()
