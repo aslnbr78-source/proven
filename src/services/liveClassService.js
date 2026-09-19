@@ -1,4 +1,4 @@
-import { doc, onSnapshot, serverTimestamp, setDoc } from 'firebase/firestore'
+import { deleteField, doc, onSnapshot, serverTimestamp, setDoc } from 'firebase/firestore'
 import { db } from './firebase'
 
 function liveSessionRef(courseId) {
@@ -34,18 +34,28 @@ export async function startLiveSession({ courseId, moduleId, moduleTitle, teache
   })
 }
 
-export async function updateLiveModule({ courseId, moduleId, moduleTitle }) {
+export async function updateLiveModule({ courseId, moduleId, moduleTitle, resetView = true }) {
   if (!db) {
     return
   }
 
+  const update = {
+    moduleId,
+    moduleTitle: moduleTitle ?? '',
+    updatedAt: serverTimestamp(),
+  }
+
+  if (resetView) {
+    Object.assign(update, {
+      blockIndex: 0,
+      livePhase: 'content',
+      exitTicket: deleteField(),
+    })
+  }
+
   await setDoc(
     liveSessionRef(courseId),
-    {
-      moduleId,
-      moduleTitle: moduleTitle ?? '',
-      updatedAt: serverTimestamp(),
-    },
+    update,
     { merge: true },
   )
 }
