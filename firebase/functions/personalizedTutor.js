@@ -5,6 +5,8 @@ require('./adminInit')
 
 const GEMINI_MODELS = ['gemini-2.5-flash-lite', 'gemini-2.5-flash']
 const GEMINI_BASE = 'https://generativelanguage.googleapis.com/v1beta/models'
+const MAX_HISTORY_MESSAGES = 10
+const MAX_STORED_MESSAGE_CHARS = 4000
 
 // API key in firebase/functions/.env as GOOGLE_AI_API_KEY
 
@@ -83,6 +85,84 @@ function normalizeAlternatingContents(contents) {
   }
 
   return normalized
+}
+
+function isSafePathSegment(value) {
+  return typeof value === 'string' && value.trim() && !value.includes('/')
+}
+
+function normalizeStoredMessage(message) {
+  const content = typeof message?.content === 'string' ? message.content.trim() : ''
+  if (!content || message?.createdBy !== 'server') {
+    return null
+  }
+
+  if (message.role === 'assistant' || message.role === 'model') {
+    return { role: 'assistant', content }
+  }
+  if (message.role === 'user') {
+    return { role: 'user', content }
+  }
+  return null
+}
+
+async function loadTrustedHistory(db, uid, sessionId) {
+  if (!sessionId) {
+    return []
+  }
+  if (!isSafePathSegment(sessionId)) {
+    throw new HttpsError('invalid-argument', 'Invalid tutor session id.')
+  }
+
+  const snap = await db
+    .collection(`users/${uid}/tutorSessions/${sessionId}/messages`)
+    .orderBy('createdAt', 'desc')
+    .limit(MAX_HISTORY_MESSAGES * 2)
+    .get()
+
+  return snap.docs
+    .map((item) => normalizeStoredMessage(item.data()))
+    .filter(Boolean)
+    .reverse()
+    .slice(-MAX_HISTORY_MESSAGES)
+}
+
+async function saveTrustedExchange({ db, uid, sessionId, courseId, moduleId, studentMessage, reply }) {
+  if (!sessionId) {
+    return
+  }
+  if (!isSafePathSegment(sessionId)) {
+    throw new HttpsError('invalid-argument', 'Invalid tutor session id.')
+  }
+
+  const sessionRef = db.doc(`users/${uid}/tutorSessions/${sessionId}`)
+  const messagesRef = sessionRef.collection('messages')
+  const batch = db.batch()
+  const createdAt = FieldValue.serverTimestamp()
+
+  batch.set(
+    sessionRef,
+    {
+      courseId: courseId ?? null,
+      moduleId: moduleId ?? null,
+      updatedAt: createdAt,
+    },
+    { merge: true },
+  )
+  batch.set(messagesRef.doc(), {
+    role: 'user',
+    content: studentMessage.slice(0, MAX_STORED_MESSAGE_CHARS),
+    createdAt,
+    createdBy: 'server',
+  })
+  batch.set(messagesRef.doc(), {
+    role: 'assistant',
+    content: reply.slice(0, MAX_STORED_MESSAGE_CHARS),
+    createdAt,
+    createdBy: 'server',
+  })
+
+  await batch.commit()
 }
 
 function sleep(ms) {
@@ -226,7 +306,6 @@ exports.personalizedTutor = onCall(async (request) => {
     questionContext,
     sessionId,
     skill,
-    recentMessages,
     tutorMode,
     allowFullAnswers,
     contextType,
@@ -281,10 +360,12 @@ exports.personalizedTutor = onCall(async (request) => {
     contextType: contextType ?? 'lesson',
   })
 
-  const contents = formatGeminiHistory(recentMessages, studentMessage.trim())
+  const trimmedStudentMessage = studentMessage.trim()
+  const recentMessages = await loadTrustedHistory(db, uid, sessionId)
+  const contents = formatGeminiHistory(recentMessages, trimmedStudentMessage)
   const { apiKey, suffix } = resolveGeminiApiKey()
 
-  let reply = null
+  let reply
   try {
     reply = await generateTutorReply({ apiKey, systemInstruction, contents })
   } catch (error) {
@@ -298,17 +379,15 @@ exports.personalizedTutor = onCall(async (request) => {
     throw toHttpsError(new Error('No response from Gemini.'))
   }
 
-  if (sessionId) {
-    const sessionRef = db.doc(`users/${uid}/tutorSessions/${sessionId}`)
-    await sessionRef.set(
-      {
-        courseId: courseId ?? null,
-        moduleId: moduleId ?? null,
-        updatedAt: FieldValue.serverTimestamp(),
-      },
-      { merge: true },
-    )
-  }
+  await saveTrustedExchange({
+    db,
+    uid,
+    sessionId,
+    courseId,
+    moduleId,
+    studentMessage: trimmedStudentMessage,
+    reply,
+  })
 
   return { reply, deployed: true, answerSeekingFlagged }
 })

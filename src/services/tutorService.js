@@ -1,12 +1,10 @@
 import { getFunctions, httpsCallable } from 'firebase/functions'
 import {
-  addDoc,
   collection,
   getDocs,
   limit,
   orderBy,
   query,
-  serverTimestamp,
 } from 'firebase/firestore'
 import { app, db } from './firebase'
 import { getSkillProfile } from './skillTracker'
@@ -36,18 +34,6 @@ export async function loadRecentTutorMessages(uid, sessionId, maxMessages = 12) 
     .reverse()
 }
 
-export async function saveTutorMessage(uid, sessionId, role, content) {
-  if (!db || !uid || !sessionId) {
-    return
-  }
-
-  await addDoc(collection(db, 'users', uid, 'tutorSessions', sessionId, 'messages'), {
-    role,
-    content,
-    createdAt: serverTimestamp(),
-  })
-}
-
 export async function askPersonalizedTutor({
   uid,
   courseId,
@@ -61,7 +47,6 @@ export async function askPersonalizedTutor({
   contextType = 'lesson',
 }) {
   const skill = uid ? await getSkillProfile(uid, courseId, moduleId) : null
-  const recentMessages = uid && sessionId ? await loadRecentTutorMessages(uid, sessionId) : []
 
   const fns = getFns()
   if (fns) {
@@ -75,7 +60,6 @@ export async function askPersonalizedTutor({
         questionContext,
         sessionId,
         skill,
-        recentMessages,
         tutorMode,
         allowFullAnswers,
         contextType,
