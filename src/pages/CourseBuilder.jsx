@@ -958,6 +958,10 @@ function CourseBuilder() {
       setMessage('Course title and ID are required.')
       return
     }
+    if (allCourseIds.includes(id)) {
+      setMessage(`Course ID "${id}" already exists. Choose a unique ID.`)
+      return
+    }
 
     const visual = buildCourseVisualMeta(id, newCourseTitle.trim())
     const newOutline = {
@@ -975,7 +979,12 @@ function CourseBuilder() {
       ],
     }
 
-    createCustomCourse(newOutline)
+    try {
+      createCustomCourse(newOutline)
+    } catch (error) {
+      setMessage(error.message || 'Could not create course.')
+      return
+    }
     setSelectedCourseId(id)
     setShowNewCourse(false)
     setNewCourseTitle('')
