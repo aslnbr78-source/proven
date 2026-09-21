@@ -405,6 +405,22 @@ function CoursePlayer() {
     navigate(editorPreview ? withEditorPreviewQuery(path) : path)
   }
 
+  const goToLiveModule = async (targetModule) => {
+    if (!targetModule) {
+      return
+    }
+    if (courseId && isLiveOnThisModule && livePhase === LIVE_PHASES.EXIT_TICKET) {
+      await updateLiveSessionView(courseId, {
+        moduleId: targetModule.id,
+        moduleTitle: targetModule.title ?? '',
+        blockIndex: 0,
+        livePhase: LIVE_PHASES.CONTENT,
+        clearExitTicket: true,
+      })
+    }
+    goToModule(targetModule)
+  }
+
   const launchLiveExitTicket = async () => {
     if (!courseId || !moduleContent || !moduleSupportsExitTicket(moduleContent)) {
       return false
@@ -636,7 +652,14 @@ function CoursePlayer() {
         if (slideNav?.next) {
           return {
             label: `Next lesson: ${slideNav.next.title}`,
-            run: () => goToModule(slideNav.next),
+            run: async () => {
+              setLiveBusy(true)
+              try {
+                await goToLiveModule(slideNav.next)
+              } finally {
+                setLiveBusy(false)
+              }
+            },
           }
         }
         return null
@@ -746,7 +769,9 @@ function CoursePlayer() {
     if (slideNav?.next) {
       return {
         label: `Next lesson: ${slideNav.next.title}`,
-        run: () => goToModule(slideNav.next),
+        run: () => {
+          goToLiveModule(slideNav.next)
+        },
       }
     }
 
