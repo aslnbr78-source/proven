@@ -18,6 +18,21 @@ service cloud.firestore {
       return isSignedIn() && userDoc().data.role in ['teacher', 'admin'];
     }
 
+    function isCourseTeacher(courseId) {
+      let course = get(/databases/$(database)/documents/courses/$(courseId)).data;
+      return isSignedIn()
+        && (
+          userDoc().data.role == 'admin'
+          || (
+            userDoc().data.role == 'teacher'
+            && (
+              course.updatedBy == request.auth.uid
+              || (course.ownerEmail != null && course.ownerEmail == request.auth.token.email)
+            )
+          )
+        );
+    }
+
     match /users/{uid} {
       allow read: if isSignedIn() && (request.auth.uid == uid || isTeacher());
       allow create: if isSignedIn() && request.auth.uid == uid;
@@ -87,19 +102,19 @@ service cloud.firestore {
       }
 
       match /tutorReviewQueue/{flagId} {
-        allow read: if isTeacher();
-        allow update: if isTeacher();
+        allow read: if isCourseTeacher(courseId);
+        allow update: if isCourseTeacher(courseId);
         allow create, delete: if false;
       }
 
       match /tutorActivity/{activityId} {
-        allow read: if isTeacher();
-        allow update: if isTeacher();
+        allow read: if isCourseTeacher(courseId);
+        allow update: if isCourseTeacher(courseId);
         allow create, delete: if false;
       }
 
       match /studentTutorSummaries/{studentUid} {
-        allow read: if isTeacher();
+        allow read: if isCourseTeacher(courseId);
         allow write: if false;
       }
     }
