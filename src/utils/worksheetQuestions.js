@@ -104,6 +104,11 @@ function formatAnswer(question) {
   return ''
 }
 
+function buildWorksheetQuestionId(question, moduleMeta, index) {
+  const sourceId = String(question.id ?? `q${index + 1}`)
+  return `${moduleMeta.moduleId}::${sourceId}::${index + 1}`
+}
+
 export function normalizeWorksheetQuestion(question, moduleMeta, index, totalInModule = 1) {
   const type = inferQuestionType(question)
   const difficulty = resolveQuestionDifficulty(question, {
@@ -113,7 +118,8 @@ export function normalizeWorksheetQuestion(question, moduleMeta, index, totalInM
   })
 
   return {
-    id: question.id ?? `${moduleMeta.moduleId}-q${index + 1}`,
+    id: buildWorksheetQuestionId(question, moduleMeta, index),
+    sourceId: question.id ?? `q${index + 1}`,
     prompt: stripContentMarkup(question.prompt),
     type,
     displayFormat: nativeDisplayFormat({ type, prompt: stripContentMarkup(question.prompt) }),
