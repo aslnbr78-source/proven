@@ -1,6 +1,12 @@
 import { doc, onSnapshot, serverTimestamp, setDoc } from 'firebase/firestore'
 import { db } from './firebase'
 
+const INITIAL_LIVE_VIEW = {
+  blockIndex: 0,
+  livePhase: 'content',
+  exitTicket: null,
+}
+
 function liveSessionRef(courseId) {
   return doc(db, 'liveSessions', courseId)
 }
@@ -30,6 +36,7 @@ export async function startLiveSession({ courseId, moduleId, moduleTitle, teache
     moduleTitle: moduleTitle ?? '',
     teacherUid,
     teacherName: teacherName ?? 'Teacher',
+    ...INITIAL_LIVE_VIEW,
     updatedAt: serverTimestamp(),
   })
 }
@@ -44,6 +51,7 @@ export async function updateLiveModule({ courseId, moduleId, moduleTitle }) {
     {
       moduleId,
       moduleTitle: moduleTitle ?? '',
+      ...INITIAL_LIVE_VIEW,
       updatedAt: serverTimestamp(),
     },
     { merge: true },
