@@ -322,6 +322,10 @@ function isUsableCustomOutline(outline) {
   return true
 }
 
+function outlinesDiffer(left, right) {
+  return JSON.stringify(normalizeOutline(left)) !== JSON.stringify(normalizeOutline(right))
+}
+
 async function fetchBundledOutline(courseId) {
   const response = await fetch(`/courses/${courseId}/course.json`)
   if (!response.ok) {
@@ -413,9 +417,8 @@ export async function loadOutline(courseId, { source = 'auto' } = {}) {
       await resetCourseToBundled(courseId)
     } else {
       try {
-        // Keep local lesson JSON bodies, but when Hub/bundled has MORE modules than the
-        // IndexedDB draft, rebuild the outline tree from the richer source (Statistics
-        // Ch 4–5 stubs with the same chapter ids used to no-op the chapter-only merge).
+        // Keep local lesson JSON bodies, but heal stale IndexedDB outlines from richer
+        // Hub/bundled trees (for example, Statistics Ch 4-5 stubs with existing ids).
         let outline = normalizeOutline(custom.outline)
         const [bundled, firestoreCourse] = await Promise.all([
           fetchBundledOutline(courseId),
@@ -434,10 +437,8 @@ export async function loadOutline(courseId, { source = 'auto' } = {}) {
                 countModules(next) > countModules(best) ? next : best,
               )
         if (healFrom) {
-          const beforeCount = countModules(outline)
           const healed = healOutlineFromRicherSource(outline, healFrom)
-          const afterCount = countModules(healed)
-          if (afterCount > beforeCount) {
+          if (outlinesDiffer(healed, outline)) {
             outline = healed
             await saveCustomOutline(courseId, outline)
           }

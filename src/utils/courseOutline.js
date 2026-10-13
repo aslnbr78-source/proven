@@ -301,6 +301,21 @@ export function countModules(courseOutline) {
   return flattenModules(courseOutline).length
 }
 
+function countPopulatedSubchapters(courseOutline) {
+  const outline = normalizeOutline(courseOutline)
+  if (!outline?.chapters) {
+    return 0
+  }
+
+  return outline.chapters.reduce(
+    (total, chapter) =>
+      total +
+      getChapterSubchapters(chapter).filter((subchapter) => (subchapter.modules ?? []).length > 0)
+        .length,
+    0,
+  )
+}
+
 /**
  * Append whole chapters from `source` that are missing in `draft`, preserving draft
  * chapter contents and draft-only chapters. Used to heal a stale browser draft that
@@ -387,6 +402,13 @@ export function healOutlineFromRicherSource(draftOutline, sourceOutline) {
     // Re-attach draft-only modules under shared chapter ids (local additions).
     healed = supplementOutlineFromBundled(healed, draft)
     return healed
+  }
+
+  if (
+    sourceCount === draftCount &&
+    countPopulatedSubchapters(sourceOutline) > countPopulatedSubchapters(draftOutline)
+  ) {
+    return supplementOutlineFromBundled(draftOutline, sourceOutline)
   }
 
   return mergeMissingChaptersFromSource(draftOutline, sourceOutline)
