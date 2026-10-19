@@ -1,15 +1,5 @@
-const MODULE_TYPES = ['interactive-lesson', 'quiz', 'flashcard', 'final-test', 'math-game']
+const MODULE_TYPES = ['interactive-lesson', 'quiz', 'flashcard', 'final-test']
 const QUESTION_TYPES = ['short-answer', 'fill-blank']
-const GAME_ROUND_TYPES = [
-  'choice',
-  'true-false',
-  'input',
-  'multi',
-  'match',
-  'sort',
-  'order',
-  'spot',
-]
 
 function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0
@@ -156,174 +146,6 @@ function validateFlashcard(data, errors) {
   })
 }
 
-function hasChoiceId(choices, id) {
-  return choices.some((choice) => choice?.id === id)
-}
-
-function validateGameChoices(round, roundPath, errors) {
-  if (!Array.isArray(round.choices) || round.choices.length < 2) {
-    errors.push(`${roundPath}.choices needs at least 2 items`)
-    return []
-  }
-
-  const ids = new Set()
-  round.choices.forEach((choice, choiceIndex) => {
-    const choicePath = `${roundPath}.choices[${choiceIndex}]`
-    if (!isNonEmptyString(choice?.id)) {
-      errors.push(`${choicePath}.id is required`)
-    } else if (ids.has(choice.id)) {
-      errors.push(`${choicePath}.id must be unique`)
-    } else {
-      ids.add(choice.id)
-    }
-    if (!isNonEmptyString(choice?.label)) {
-      errors.push(`${choicePath}.label is required`)
-    }
-  })
-
-  return round.choices
-}
-
-function validateMathGame(data, errors) {
-  const rounds = Array.isArray(data.rounds) ? data.rounds : data.config?.rounds
-  if (!Array.isArray(rounds) || rounds.length === 0) {
-    errors.push('rounds must be a non-empty array')
-    return
-  }
-
-  if (!isNonEmptyString(data.game ?? data.config?.game)) {
-    errors.push('game is required')
-  }
-
-  rounds.forEach((round, index) => {
-    const roundPath = `rounds[${index}]`
-    if (!round || typeof round !== 'object') {
-      errors.push(`${roundPath} must be an object`)
-      return
-    }
-
-    const kind =
-      round.kind ??
-      (Array.isArray(round.choices) && isNonEmptyString(round.correctId) ? 'choice' : null)
-
-    if (!GAME_ROUND_TYPES.includes(kind)) {
-      errors.push(`${roundPath}.kind must be one of: ${GAME_ROUND_TYPES.join(', ')}`)
-    }
-    if (!isNonEmptyString(round.prompt)) {
-      errors.push(`${roundPath}.prompt is required`)
-    }
-    if (!isNonEmptyString(round.explain)) {
-      errors.push(`${roundPath}.explain is required`)
-    }
-    if (!isNonEmptyString(round.missExplain)) {
-      errors.push(`${roundPath}.missExplain is required`)
-    }
-
-    if (kind === 'choice') {
-      const choices = validateGameChoices(round, roundPath, errors)
-      if (!isNonEmptyString(round.correctId)) {
-        errors.push(`${roundPath}.correctId is required`)
-      } else if (choices.length > 0 && !hasChoiceId(choices, round.correctId)) {
-        errors.push(`${roundPath}.correctId must match a choice id`)
-      }
-    } else if (kind === 'true-false') {
-      if (typeof round.answer !== 'boolean') {
-        errors.push(`${roundPath}.answer must be true or false`)
-      }
-    } else if (kind === 'input') {
-      const hasAnswer = isNonEmptyString(round.answer)
-      const hasAccept =
-        Array.isArray(round.accept) &&
-        round.accept.length > 0 &&
-        round.accept.every(isNonEmptyString)
-      if (!hasAnswer && !hasAccept) {
-        errors.push(`${roundPath} needs "answer" or "accept"`)
-      }
-    } else if (kind === 'multi') {
-      const choices = validateGameChoices(round, roundPath, errors)
-      if (!Array.isArray(round.correctIds) || round.correctIds.length === 0) {
-        errors.push(`${roundPath}.correctIds must be a non-empty array`)
-      } else if (choices.length > 0) {
-        round.correctIds.forEach((id) => {
-          if (!hasChoiceId(choices, id)) {
-            errors.push(`${roundPath}.correctIds contains unknown choice id "${id}"`)
-          }
-        })
-      }
-    } else if (kind === 'match') {
-      if (!Array.isArray(round.pairs) || round.pairs.length < 2) {
-        errors.push(`${roundPath}.pairs needs at least 2 items`)
-      }
-    } else if (kind === 'sort') {
-      const binIds = new Set()
-      if (!Array.isArray(round.bins) || round.bins.length < 2) {
-        errors.push(`${roundPath}.bins needs at least 2 items`)
-      } else {
-        round.bins.forEach((bin, binIndex) => {
-          if (!isNonEmptyString(bin?.id)) {
-            errors.push(`${roundPath}.bins[${binIndex}].id is required`)
-          } else {
-            binIds.add(bin.id)
-          }
-          if (!isNonEmptyString(bin?.label)) {
-            errors.push(`${roundPath}.bins[${binIndex}].label is required`)
-          }
-        })
-      }
-      if (!Array.isArray(round.items) || round.items.length < 2) {
-        errors.push(`${roundPath}.items needs at least 2 items`)
-      } else {
-        round.items.forEach((item, itemIndex) => {
-          if (!isNonEmptyString(item?.id)) {
-            errors.push(`${roundPath}.items[${itemIndex}].id is required`)
-          }
-          if (!isNonEmptyString(item?.label)) {
-            errors.push(`${roundPath}.items[${itemIndex}].label is required`)
-          }
-          if (!isNonEmptyString(item?.binId) || (binIds.size > 0 && !binIds.has(item.binId))) {
-            errors.push(`${roundPath}.items[${itemIndex}].binId must match a bin id`)
-          }
-        })
-      }
-    } else if (kind === 'order') {
-      const itemIds = new Set()
-      if (!Array.isArray(round.items) || round.items.length < 2) {
-        errors.push(`${roundPath}.items needs at least 2 items`)
-      } else {
-        round.items.forEach((item, itemIndex) => {
-          if (!isNonEmptyString(item?.id)) {
-            errors.push(`${roundPath}.items[${itemIndex}].id is required`)
-          } else {
-            itemIds.add(item.id)
-          }
-          if (!isNonEmptyString(item?.label)) {
-            errors.push(`${roundPath}.items[${itemIndex}].label is required`)
-          }
-        })
-      }
-      if (!Array.isArray(round.correctOrder) || round.correctOrder.length === 0) {
-        errors.push(`${roundPath}.correctOrder must be a non-empty array`)
-      } else if (itemIds.size > 0) {
-        round.correctOrder.forEach((id) => {
-          if (!itemIds.has(id)) {
-            errors.push(`${roundPath}.correctOrder contains unknown item id "${id}"`)
-          }
-        })
-      }
-    } else if (kind === 'spot') {
-      if (!isNonEmptyString(round.sentence)) {
-        errors.push(`${roundPath}.sentence is required`)
-      }
-      if (!isNonEmptyString(round.wrongWord) && typeof round.wrongIndex !== 'number') {
-        errors.push(`${roundPath} needs "wrongWord" or "wrongIndex"`)
-      }
-      if (!isNonEmptyString(round.fix)) {
-        errors.push(`${roundPath}.fix is required`)
-      }
-    }
-  })
-}
-
 export function validateModuleJson(data) {
   const errors = []
 
@@ -351,22 +173,14 @@ export function validateModuleJson(data) {
     validateFlashcard(data, errors)
   } else if (data.type === 'final-test') {
     validateFinalTest(data, errors)
-  } else if (data.type === 'math-game') {
-    validateMathGame(data, errors)
   }
 
-  return { valid: errors.length === 0, errors, warnings: [], data }
-}
-
-function stripMarkdownJsonFence(text) {
-  const trimmed = String(text ?? '').trim()
-  const match = trimmed.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i)
-  return match ? match[1].trim() : trimmed
+  return { valid: errors.length === 0, errors, data }
 }
 
 export function parseModuleJson(text) {
   try {
-    const data = JSON.parse(stripMarkdownJsonFence(text))
+    const data = JSON.parse(text)
     return validateModuleJson(data)
   } catch {
     return { valid: false, errors: ['Invalid JSON — check commas and quotes'] }
@@ -378,7 +192,6 @@ export const MODULE_TYPE_LABELS = {
   quiz: 'Quiz',
   flashcard: 'Flashcards',
   'final-test': 'Final Test',
-  'math-game': 'Math Game',
 }
 
 export const QUESTION_TYPE_LABELS = {
