@@ -57,11 +57,13 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
   const [maxAttempts, setMaxAttempts] = useState(1)
   const [attemptsUsed, setAttemptsUsed] = useState(0)
   const [showReview, setShowReview] = useState(false)
+  const [isStarting, setIsStarting] = useState(false)
   const [aiOptions, setAiOptions] = useState({
     finalTestHintOnly: true,
     finalTestAllowFullAnswers: false,
   })
   const finishingRef = useRef(false)
+  const startingRef = useRef(false)
   const answeredRef = useRef({})
 
   useEffect(() => {
@@ -174,12 +176,6 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     return () => window.clearInterval(timer)
   }, [phase, finished])
 
-  useEffect(() => {
-    if (phase === 'active' && secondsLeft === 0 && !finished && !finishingRef.current) {
-      finishTest(answeredRef.current)
-    }
-  }, [secondsLeft, phase, finished])
-
   const finishTest = async (finalAnswered) => {
     if (finished || finishingRef.current) {
       return
@@ -210,8 +206,16 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     setPhase('finished')
   }
 
+  useEffect(() => {
+    if (phase === 'active' && secondsLeft === 0 && !finished && !finishingRef.current) {
+      finishTest(answeredRef.current)
+    }
+  }, [secondsLeft, phase, finished])
+
   const resetForRetake = () => {
+    startingRef.current = false
     finishingRef.current = false
+    setIsStarting(false)
     setFinished(false)
     setSessionId(null)
     setCurrentIndex(0)
@@ -287,12 +291,20 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
   }
 
   const beginTest = async () => {
+    if (startingRef.current) {
+      return
+    }
+
+    startingRef.current = true
+    setIsStarting(true)
     setAccessError('')
     resetCounters()
 
     if (!hasAttemptsRemaining(attemptsUsed, maxAttempts)) {
       setAccessError(`You have used all ${maxAttempts} attempt${maxAttempts === 1 ? '' : 's'} for this test.`)
       setPhase('exhausted')
+      startingRef.current = false
+      setIsStarting(false)
       return
     }
 
@@ -300,6 +312,8 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
       await requestFullscreen()
     } catch {
       setAccessError('Fullscreen is required. Allow fullscreen in your browser and try again.')
+      startingRef.current = false
+      setIsStarting(false)
       return
     }
 
@@ -320,6 +334,8 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
     } catch (error) {
       setAccessError(error.message || 'Could not start session.')
       exitFullscreen()
+      startingRef.current = false
+      setIsStarting(false)
     }
   }
 
@@ -456,8 +472,8 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
         {accessError && (
           <p className="mt-4 rounded-xl bg-rose-50 px-4 py-2 text-sm text-rose-800">{accessError}</p>
         )}
-        <button type="button" onClick={beginTest} className="btn-primary mt-6">
-          Enter fullscreen & begin
+        <button type="button" onClick={beginTest} disabled={isStarting} className="btn-primary mt-6 disabled:opacity-60">
+          {isStarting ? 'Starting...' : 'Enter fullscreen & begin'}
         </button>
       </LessonSection>
     )
