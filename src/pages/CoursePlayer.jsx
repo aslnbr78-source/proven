@@ -1139,6 +1139,7 @@ function CoursePlayer() {
                 ) : null}
                 {!chapterLockedForModule && moduleContent && livePhase !== LIVE_PHASES.EXIT_TICKET && (
                   <ModuleRenderer
+                    key={`${courseId}:${moduleId}`}
                     module={moduleContent}
                     courseId={courseId}
                     moduleId={moduleId}
