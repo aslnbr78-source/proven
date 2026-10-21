@@ -17,6 +17,26 @@ function validateAcceptedAnswers(question, errors) {
   }
 }
 
+function validateStringArray(value, label, errors, { allowEmpty = false } = {}) {
+  if (!Array.isArray(value)) {
+    errors.push(`${label} must be an array`)
+    return false
+  }
+
+  if (!allowEmpty && value.length === 0) {
+    errors.push(`${label} must be a non-empty array`)
+    return false
+  }
+
+  value.forEach((item, index) => {
+    if (!isNonEmptyString(item)) {
+      errors.push(`${label}[${index}] must be a non-empty string`)
+    }
+  })
+
+  return true
+}
+
 function validateFillBlank(question, errors) {
   const blankCount = (question.prompt.match(/___/g) ?? []).length
 
@@ -45,21 +65,15 @@ function validateFillBlank(question, errors) {
 }
 
 function validateInteractiveLesson(data, errors) {
-  if (!Array.isArray(data.explanation) || data.explanation.length === 0) {
-    errors.push('explanation must be a non-empty array of strings')
-  }
-  if (!data.example?.prompt) {
+  validateStringArray(data.explanation, 'explanation', errors)
+  if (!isNonEmptyString(data.example?.prompt)) {
     errors.push('example.prompt is required')
   }
-  if (!Array.isArray(data.example?.steps) || data.example.steps.length === 0) {
-    errors.push('example.steps must be a non-empty array')
-  }
+  validateStringArray(data.example?.steps, 'example.steps', errors)
   if (!isNonEmptyString(data.question?.prompt)) {
     errors.push('question.prompt is required')
   }
-  if (!Array.isArray(data.question?.hints)) {
-    errors.push('question.hints must be an array')
-  }
+  validateStringArray(data.question?.hints, 'question.hints', errors, { allowEmpty: true })
 
   const questionType = data.question?.type ?? 'short-answer'
   if (!QUESTION_TYPES.includes(questionType)) {
@@ -92,6 +106,12 @@ function validateFinalTest(data, errors) {
     }
     if (!Array.isArray(question.options) || question.options.length < 2) {
       errors.push(`questions[${index}].options needs at least 2 items`)
+    } else {
+      question.options.forEach((option, optionIndex) => {
+        if (!isNonEmptyString(option)) {
+          errors.push(`questions[${index}].options[${optionIndex}] must be a non-empty string`)
+        }
+      })
     }
     if (typeof question.correctIndex !== 'number') {
       errors.push(`questions[${index}].correctIndex must be a number`)
@@ -117,13 +137,17 @@ function validateQuiz(data, errors) {
     }
     if (!Array.isArray(question.options) || question.options.length < 2) {
       errors.push(`questions[${index}].options needs at least 2 items`)
+    } else {
+      question.options.forEach((option, optionIndex) => {
+        if (!isNonEmptyString(option)) {
+          errors.push(`questions[${index}].options[${optionIndex}] must be a non-empty string`)
+        }
+      })
     }
     if (typeof question.correctIndex !== 'number') {
       errors.push(`questions[${index}].correctIndex must be a number`)
     }
-    if (!Array.isArray(question.hints)) {
-      errors.push(`questions[${index}].hints must be an array`)
-    }
+    validateStringArray(question.hints, `questions[${index}].hints`, errors, { allowEmpty: true })
     if (!isNonEmptyString(question.feedbackIfWrong)) {
       errors.push(`questions[${index}].feedbackIfWrong is required`)
     }
