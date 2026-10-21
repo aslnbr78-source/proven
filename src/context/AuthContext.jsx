@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import {
   GoogleAuthProvider,
+  linkWithRedirect,
   onAuthStateChanged,
   signInWithRedirect,
   signOut,
@@ -47,6 +48,9 @@ export function AuthProvider({ children }) {
       return Promise.reject(new Error('Firebase is not configured'))
     }
     const provider = new GoogleAuthProvider()
+    if (auth.currentUser?.isAnonymous) {
+      return linkWithRedirect(auth.currentUser, provider)
+    }
     return signInWithRedirect(auth, provider)
   }
 

@@ -11,7 +11,25 @@ export async function ensureUserProfile(firebaseUser) {
   const snap = await getDoc(ref)
 
   if (snap.exists()) {
-    return { uid: firebaseUser.uid, ...snap.data() }
+    const existing = snap.data()
+    const updates = {}
+
+    if (firebaseUser.email && existing.email !== firebaseUser.email) {
+      updates.email = firebaseUser.email
+    }
+    if (firebaseUser.displayName && existing.displayName !== firebaseUser.displayName) {
+      updates.displayName = firebaseUser.displayName
+    }
+    if (existing.isAnonymous !== firebaseUser.isAnonymous) {
+      updates.isAnonymous = firebaseUser.isAnonymous
+    }
+
+    if (Object.keys(updates).length > 0) {
+      updates.updatedAt = serverTimestamp()
+      await setDoc(ref, updates, { merge: true })
+    }
+
+    return { uid: firebaseUser.uid, ...existing, ...updates }
   }
 
   const profile = {
