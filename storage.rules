@@ -7,8 +7,12 @@ service firebase.storage {
         && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role in ['teacher', 'admin'];
     }
 
+    function isPublishedCourse(courseId) {
+      return firestore.get(/databases/(default)/documents/courses/$(courseId)).data.published == true;
+    }
+
     match /courses/{courseId}/{fileName} {
-      allow read: if request.auth != null;
+      allow read: if isPublishedCourse(courseId) || isTeacher();
       allow write: if isTeacher();
     }
   }
