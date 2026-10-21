@@ -98,13 +98,22 @@ function CourseAssets() {
     }
   }
 
-  const handleDelete = async (assetId) => {
+  const handleDelete = async (asset) => {
     if (!window.confirm('Remove this asset from the course?')) {
       return
     }
-    await deleteCourseAsset(selectedCourseId, assetId)
-    await loadAssets(selectedCourseId)
-    setMessage('Asset removed.')
+
+    setUploading(true)
+    setMessage('')
+    try {
+      await deleteCourseAsset(selectedCourseId, asset.id)
+      await loadAssets(selectedCourseId)
+      setMessage('Asset removed.')
+    } catch (error) {
+      setMessage(error.message || 'Could not remove asset. Try again.')
+    } finally {
+      setUploading(false)
+    }
   }
 
   return (
@@ -196,7 +205,8 @@ function CourseAssets() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => handleDelete(asset.id)}
+                  onClick={() => handleDelete(asset)}
+                  disabled={uploading}
                   className="text-xs text-red-600 hover:underline"
                 >
                   Remove

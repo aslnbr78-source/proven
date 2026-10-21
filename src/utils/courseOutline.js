@@ -7,9 +7,34 @@ function pad2(n) {
   return n.toString().padStart(2, '0')
 }
 
+function mergeLegacyModules(chapter, subchapters, legacyTitle = 'Chapter-level lessons') {
+  const normalizedSubchapters = (subchapters ?? []).map(normalizeSubchapter)
+  if (!chapter.modules?.length) {
+    return normalizedSubchapters
+  }
+
+  const existingIds = new Set(normalizedSubchapters.map((subchapter) => subchapter.id))
+  let legacyId = `${chapter.id}-legacy`
+  let suffix = 1
+  while (existingIds.has(legacyId)) {
+    suffix += 1
+    legacyId = `${chapter.id}-legacy-${suffix}`
+  }
+
+  return [
+    {
+      id: legacyId,
+      title: legacyTitle,
+      modules: chapter.modules,
+      materials: [],
+    },
+    ...normalizedSubchapters,
+  ]
+}
+
 export function getChapterSubchapters(chapter) {
   if (chapter.subchapters?.length) {
-    return chapter.subchapters
+    return mergeLegacyModules(chapter, chapter.subchapters)
   }
 
   if (chapter.modules?.length) {
@@ -45,7 +70,7 @@ export function normalizeChapter(chapter, chapterIndex) {
     return {
       ...rest,
       title,
-      subchapters: chapter.subchapters.map(normalizeSubchapter),
+      subchapters: mergeLegacyModules(chapter, chapter.subchapters),
     }
   }
 

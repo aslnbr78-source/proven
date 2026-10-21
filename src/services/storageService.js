@@ -1,4 +1,4 @@
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage'
 import { storage } from './firebase'
 
 export async function uploadCourseFile(courseId, file) {
@@ -29,4 +29,19 @@ export function inferAssetKind(file) {
     return 'pdf'
   }
   return 'file'
+}
+
+export async function deleteCourseFile(path) {
+  if (!storage || !path) {
+    return
+  }
+
+  try {
+    await deleteObject(ref(storage, path))
+  } catch (error) {
+    if (error?.code === 'storage/object-not-found') {
+      return
+    }
+    throw error
+  }
 }
