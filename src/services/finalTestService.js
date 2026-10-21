@@ -1,5 +1,4 @@
 import {
-  addDoc,
   collection,
   doc,
   getDoc,
@@ -8,7 +7,6 @@ import {
   query,
   serverTimestamp,
   setDoc,
-  updateDoc,
   where,
 } from 'firebase/firestore'
 import { getFunctions, httpsCallable } from 'firebase/functions'
@@ -192,26 +190,27 @@ export async function createFinalTestSession({
     throw new Error('Sign in required')
   }
 
-  const ref = await addDoc(sessionsCollection(courseId, moduleId), {
-    uid,
-    studentEmail: studentEmail ?? '',
-    studentName: studentName ?? '',
+  const fns = getFns()
+  if (!fns) {
+    throw new Error('Cloud Functions are not configured')
+  }
+
+  const callable = httpsCallable(fns, 'startFinalTestSession')
+  const result = await callable({
     courseId,
     moduleId,
     moduleTitle: moduleTitle ?? '',
-    startedAt: serverTimestamp(),
-    endedAt: null,
     timeLimitSeconds: timeLimitSeconds ?? null,
-    elapsedSeconds: 0,
-    fullscreenExits: 0,
-    tabSwitches: 0,
-    copyAttempts: 0,
-    scoreCorrect: null,
-    scoreTotal: null,
-    status: 'in-progress',
+    studentEmail: studentEmail ?? '',
+    studentName: studentName ?? '',
   })
 
-  return ref.id
+  const sessionId = result.data?.sessionId
+  if (!sessionId) {
+    throw new Error('Could not start session.')
+  }
+
+  return sessionId
 }
 
 export async function updateFinalTestSession(courseId, moduleId, sessionId, patch) {
@@ -219,7 +218,13 @@ export async function updateFinalTestSession(courseId, moduleId, sessionId, patc
     return
   }
 
-  await updateDoc(doc(db, 'courses', courseId, 'finalTests', moduleId, 'sessions', sessionId), patch)
+  const fns = getFns()
+  if (!fns) {
+    throw new Error('Cloud Functions are not configured')
+  }
+
+  const callable = httpsCallable(fns, 'updateFinalTestSession')
+  await callable({ courseId, moduleId, sessionId, patch })
 }
 
 export async function completeFinalTestSession({
@@ -237,15 +242,22 @@ export async function completeFinalTestSession({
     return
   }
 
-  await updateDoc(doc(db, 'courses', courseId, 'finalTests', moduleId, 'sessions', sessionId), {
-    endedAt: serverTimestamp(),
+  const fns = getFns()
+  if (!fns) {
+    throw new Error('Cloud Functions are not configured')
+  }
+
+  const callable = httpsCallable(fns, 'completeFinalTestSession')
+  await callable({
+    courseId,
+    moduleId,
+    sessionId,
     elapsedSeconds,
     scoreCorrect,
     scoreTotal,
     fullscreenExits,
     tabSwitches,
     copyAttempts,
-    status: 'completed',
   })
 }
 
