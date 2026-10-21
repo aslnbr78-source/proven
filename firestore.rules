@@ -18,6 +18,26 @@ service cloud.firestore {
       return isSignedIn() && userDoc().data.role in ['teacher', 'admin'];
     }
 
+    function ownsCourseData(data) {
+      return isSignedIn()
+        && (
+          data.ownerUid == request.auth.uid
+          || (
+            (!data.keys().hasAny(['ownerUid']) || data.ownerUid == null)
+            && data.ownerEmail == userDoc().data.email
+          )
+        );
+    }
+
+    function canManageExistingCourse() {
+      return isAdmin() || ownsCourseData(resource.data);
+    }
+
+    function canManageCourse(courseId) {
+      return isAdmin()
+        || ownsCourseData(getAfter(/databases/$(database)/documents/courses/$(courseId)).data);
+    }
+
     match /users/{uid} {
       allow read: if isSignedIn() && (request.auth.uid == uid || isTeacher());
       allow create: if isSignedIn() && request.auth.uid == uid;
@@ -49,24 +69,39 @@ service cloud.firestore {
 
     match /courses/{courseId} {
       allow read: if resource.data.published == true || isTeacher();
-      allow write: if isTeacher();
+      allow create: if isTeacher() && request.resource.data.ownerUid == request.auth.uid;
+      allow update: if isTeacher()
+        && canManageExistingCourse()
+        && (
+          isAdmin()
+          || (
+            resource.data.keys().hasAny(['ownerUid'])
+            && request.resource.data.ownerUid == resource.data.ownerUid
+          )
+          || (
+            (!resource.data.keys().hasAny(['ownerUid']) || resource.data.ownerUid == null)
+            && request.resource.data.ownerUid == request.auth.uid
+          )
+        );
+      allow delete: if isTeacher() && canManageExistingCourse();
 
       match /modules/{moduleId} {
         allow read: if get(/databases/$(database)/documents/courses/$(courseId)).data.published == true || isTeacher();
-        allow write: if isTeacher();
+        allow write: if isTeacher() && canManageCourse(courseId);
       }
 
       match /assets/{assetId} {
         allow read: if get(/databases/$(database)/documents/courses/$(courseId)).data.published == true || isTeacher();
-        allow write: if isTeacher();
+        allow write: if isTeacher() && canManageCourse(courseId);
       }
 
       match /finalTests/{moduleId} {
-        allow read, write: if isTeacher();
+        allow read: if isTeacher();
+        allow write: if isTeacher() && canManageCourse(courseId);
 
         match /permissions/{uid} {
           allow read: if isTeacher() || (isSignedIn() && request.auth.uid == uid);
-          allow write: if isTeacher();
+          allow write: if isTeacher() && canManageCourse(courseId);
         }
 
         match /sessions/{sessionId} {
@@ -78,12 +113,12 @@ service cloud.firestore {
 
       match /finalTestOptions/{moduleId} {
         allow read: if isSignedIn();
-        allow write: if isTeacher();
+        allow write: if isTeacher() && canManageCourse(courseId);
       }
 
       match /moduleAiOptions/{moduleId} {
         allow read: if isSignedIn();
-        allow write: if isTeacher();
+        allow write: if isTeacher() && canManageCourse(courseId);
       }
 
       match /tutorReviewQueue/{flagId} {
@@ -106,7 +141,7 @@ service cloud.firestore {
 
     match /liveSessions/{courseId} {
       allow read: if isSignedIn();
-      allow write: if isTeacher();
+      allow write: if isTeacher() && canManageCourse(courseId);
     }
   }
 }

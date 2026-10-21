@@ -95,6 +95,10 @@ export async function publishCourseToFirestore({ courseId, outline, modules, uid
   }
 
   const courseRef = doc(db, 'courses', courseId)
+  const existingCourse = await getDoc(courseRef)
+  const existingData = existingCourse.exists() ? existingCourse.data() : {}
+  const ownerUid = existingData.ownerUid ?? uid ?? null
+  const ownerEmail = existingData.ownerEmail ?? email ?? null
   const batch = writeBatch(db)
 
   batch.set(
@@ -107,7 +111,8 @@ export async function publishCourseToFirestore({ courseId, outline, modules, uid
       published: true,
       updatedAt: serverTimestamp(),
       updatedBy: uid ?? null,
-      ownerEmail: email ?? null,
+      ownerUid,
+      ownerEmail,
     },
     { merge: true },
   )
