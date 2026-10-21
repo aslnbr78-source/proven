@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import {
   GoogleAuthProvider,
   onAuthStateChanged,
@@ -42,13 +42,13 @@ export function AuthProvider({ children }) {
 
   const logout = () => (auth ? signOut(auth) : Promise.resolve())
 
-  const startGoogleSignIn = () => {
+  const startGoogleSignIn = useCallback(() => {
     if (!auth) {
       return Promise.reject(new Error('Firebase is not configured'))
     }
     const provider = new GoogleAuthProvider()
     return signInWithRedirect(auth, provider)
-  }
+  }, [])
 
   const getHomePath = () => getHomePathForRole(profile?.role)
 
