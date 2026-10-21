@@ -16,6 +16,7 @@ import {
 } from '../services/finalTestService'
 import { getModuleAiOptions } from '../services/aiInsightsService'
 import { recordWrongAnswer } from '../services/skillTracker'
+import { getFinalTestOptionClass } from '../utils/finalTestOptionClass'
 import AIPersonalizedTutor from './AIPersonalizedTutor'
 import LessonSection from './LessonSection'
 import MathBlock from './MathBlock'
@@ -556,19 +557,7 @@ function FinalTestModule({ data, courseId, moduleId, onComplete }) {
               <div className="mt-5 space-y-2">
                 {question.shuffledOptions.map((option, index) => {
                   const isSelected = selectedIndex === index
-                  const showResult = Boolean(result)
-                  const isCorrectOption = option.originalIndex === question.correctIndex
-
-                  let optionClass = 'quiz-option'
-                  if (showResult && isSelected && result.isCorrect) {
-                    optionClass = 'quiz-option quiz-option-correct'
-                  } else if (showResult && isSelected && !result.isCorrect) {
-                    optionClass = 'quiz-option quiz-option-wrong'
-                  } else if (showResult && isCorrectOption) {
-                    optionClass = 'quiz-option quiz-option-reveal'
-                  } else if (isSelected) {
-                    optionClass = 'quiz-option quiz-option-selected'
-                  }
+                  const optionClass = getFinalTestOptionClass({ isSelected })
 
                   return (
                     <button
