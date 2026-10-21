@@ -348,12 +348,9 @@ export function mergeMissingChaptersFromSource(draftOutline, sourceOutline) {
 }
 
 /**
- * When Hub/bundled has more modules than the IndexedDB draft, rebuild the editor outline
- * from the richer source while keeping draft-only chapters and draft-only module rows.
- * Lesson JSON bodies in the content store are never touched.
- *
- * Fixes the failure mode where mergeMissingChaptersFromSource no-ops because Ch 4–5
- * (or other sections) already exist as empty/thin chapter stubs with the same ids.
+ * Fill chapter stubs that have no local modules from a richer source. This keeps
+ * local deletions/renames in populated chapters intact instead of replacing the
+ * whole outline when Hub/bundled happens to have a higher module count.
  */
 export function healOutlineFromRicherSource(draftOutline, sourceOutline) {
   if (!sourceOutline?.chapters?.length) {
@@ -363,33 +360,34 @@ export function healOutlineFromRicherSource(draftOutline, sourceOutline) {
     return normalizeOutline(JSON.parse(JSON.stringify(sourceOutline)))
   }
 
-  const sourceCount = countModules(sourceOutline)
-  const draftCount = countModules(draftOutline)
+  const source = normalizeOutline(sourceOutline)
+  const draft = normalizeOutline(JSON.parse(JSON.stringify(draftOutline)))
+  const sourceById = new Map(
+    (source.chapters ?? []).filter((chapter) => chapter?.id).map((chapter) => [chapter.id, chapter]),
+  )
+  let changed = false
 
-  if (sourceCount > draftCount) {
-    const source = normalizeOutline(JSON.parse(JSON.stringify(sourceOutline)))
-    const draft = normalizeOutline(JSON.parse(JSON.stringify(draftOutline)))
-    const sourceIds = new Set(
-      (source.chapters ?? []).filter((chapter) => chapter?.id).map((chapter) => chapter.id),
-    )
-
-    // Prefer source chapter order + trees; keep draft-only chapters at the end.
-    const merged = (source.chapters ?? [])
-      .filter((chapter) => chapter?.id)
-      .map((srcChapter) => JSON.parse(JSON.stringify(srcChapter)))
-    for (const chapter of draft.chapters ?? []) {
-      if (chapter?.id && !sourceIds.has(chapter.id)) {
-        merged.push(chapter)
-      }
+  const chapters = (draft.chapters ?? []).map((chapter) => {
+    const sourceChapter = sourceById.get(chapter?.id)
+    if (!sourceChapter) {
+      return chapter
     }
 
-    let healed = normalizeOutline({ ...draft, ...source, chapters: merged })
-    // Re-attach draft-only modules under shared chapter ids (local additions).
-    healed = supplementOutlineFromBundled(healed, draft)
-    return healed
+    const hasLocalModules = countModules({ chapters: [chapter] }) > 0
+    const sourceHasModules = countModules({ chapters: [sourceChapter] }) > 0
+    if (hasLocalModules || !sourceHasModules) {
+      return chapter
+    }
+
+    changed = true
+    return JSON.parse(JSON.stringify(sourceChapter))
+  })
+
+  if (changed) {
+    return normalizeOutline({ ...draft, chapters })
   }
 
-  return mergeMissingChaptersFromSource(draftOutline, sourceOutline)
+  return draft
 }
 
 /**

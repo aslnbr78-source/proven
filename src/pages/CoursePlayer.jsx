@@ -51,6 +51,7 @@ import {
   markExitTicketSeen,
   moduleSupportsExitTicket,
   pickExitTicketItems,
+  serializeExitTicketAnswerKey,
   serializeExitTicketItems,
 } from '../utils/exitTicket'
 import { getLessonQuestions } from '../utils/lessonContent'
@@ -409,11 +410,13 @@ function CoursePlayer() {
     if (!courseId || !moduleContent || !moduleSupportsExitTicket(moduleContent)) {
       return false
     }
-    const items = serializeExitTicketItems(pickExitTicketItems(moduleContent))
+    const pickedItems = pickExitTicketItems(moduleContent)
+    const items = serializeExitTicketItems(pickedItems, { includeAnswers: false })
     if (items.length === 0) {
       return false
     }
-    await startLiveExitTicket(courseId, { items, durationSec: EXIT_TICKET_SECONDS })
+    const answerKey = serializeExitTicketAnswerKey(pickedItems)
+    await startLiveExitTicket(courseId, { items, answerKey, durationSec: EXIT_TICKET_SECONDS })
     return true
   }
 

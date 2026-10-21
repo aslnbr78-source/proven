@@ -1,8 +1,12 @@
-const MODULE_TYPES = ['interactive-lesson', 'quiz', 'flashcard', 'final-test']
+const MODULE_TYPES = ['interactive-lesson', 'quiz', 'flashcard', 'final-test', 'math-game']
 const QUESTION_TYPES = ['short-answer', 'fill-blank']
 
 function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0
+}
+
+function isAnswerValue(value) {
+  return isNonEmptyString(value) || (typeof value === 'number' && Number.isFinite(value))
 }
 
 function validateAcceptedAnswers(question, errors) {
@@ -146,6 +150,76 @@ function validateFlashcard(data, errors) {
   })
 }
 
+function validateGameChoiceRound(round, index, errors) {
+  if (!Array.isArray(round.choices) || round.choices.length < 2) {
+    errors.push(`rounds[${index}].choices needs at least 2 items`)
+    return
+  }
+
+  const choiceIds = new Set()
+  round.choices.forEach((choice, choiceIndex) => {
+    if (!isNonEmptyString(choice?.id)) {
+      errors.push(`rounds[${index}].choices[${choiceIndex}].id is required`)
+    } else {
+      choiceIds.add(choice.id)
+    }
+    if (!isNonEmptyString(choice?.label)) {
+      errors.push(`rounds[${index}].choices[${choiceIndex}].label is required`)
+    }
+  })
+
+  const correctIds = Array.isArray(round.correctIds)
+    ? round.correctIds
+    : isNonEmptyString(round.correctId)
+      ? [round.correctId]
+      : []
+  if (correctIds.length === 0) {
+    errors.push(`rounds[${index}] needs correctId or correctIds`)
+    return
+  }
+  correctIds.forEach((id) => {
+    if (!choiceIds.has(id)) {
+      errors.push(`rounds[${index}] correct answer "${id}" must match a choice id`)
+    }
+  })
+}
+
+function validateMathGame(data, errors) {
+  const rounds = Array.isArray(data.rounds)
+    ? data.rounds
+    : Array.isArray(data.config?.rounds)
+      ? data.config.rounds
+      : []
+  if (rounds.length === 0) {
+    errors.push('rounds must be a non-empty array')
+    return
+  }
+
+  rounds.forEach((round, index) => {
+    if (!round || typeof round !== 'object') {
+      errors.push(`rounds[${index}] must be an object`)
+      return
+    }
+    if (!isNonEmptyString(round.prompt) && !isNonEmptyString(round.question)) {
+      errors.push(`rounds[${index}].prompt is required`)
+    }
+
+    const kind = round.kind ?? (Array.isArray(round.choices) ? 'choice' : 'input')
+    if (kind === 'choice' || kind === 'true-false') {
+      validateGameChoiceRound(round, index, errors)
+    } else if (kind === 'input') {
+      const accepted = Array.isArray(round.accept)
+        ? round.accept
+        : round.answer != null
+          ? [round.answer]
+          : []
+      if (accepted.length === 0 || !accepted.every(isAnswerValue)) {
+        errors.push(`rounds[${index}] needs answer or accept values`)
+      }
+    }
+  })
+}
+
 export function validateModuleJson(data) {
   const errors = []
 
@@ -173,6 +247,8 @@ export function validateModuleJson(data) {
     validateFlashcard(data, errors)
   } else if (data.type === 'final-test') {
     validateFinalTest(data, errors)
+  } else if (data.type === 'math-game') {
+    validateMathGame(data, errors)
   }
 
   return { valid: errors.length === 0, errors, data }
@@ -180,7 +256,13 @@ export function validateModuleJson(data) {
 
 export function parseModuleJson(text) {
   try {
-    const data = JSON.parse(text)
+    const cleaned = String(text)
+      .trim()
+      .replace(/^```json\s*/i, '')
+      .replace(/^```\s*/i, '')
+      .replace(/```\s*$/i, '')
+      .trim()
+    const data = JSON.parse(cleaned)
     return validateModuleJson(data)
   } catch {
     return { valid: false, errors: ['Invalid JSON — check commas and quotes'] }
@@ -192,6 +274,7 @@ export const MODULE_TYPE_LABELS = {
   quiz: 'Quiz',
   flashcard: 'Flashcards',
   'final-test': 'Final Test',
+  'math-game': 'Math Game',
 }
 
 export const QUESTION_TYPE_LABELS = {

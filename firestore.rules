@@ -107,6 +107,16 @@ service cloud.firestore {
     match /liveSessions/{courseId} {
       allow read: if isSignedIn();
       allow write: if isTeacher();
+
+      match /private/{docId} {
+        allow read, write: if isTeacher();
+      }
+
+      match /exitResponses/{responseId} {
+        allow read: if isTeacher();
+        allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+        allow update, delete: if false;
+      }
     }
   }
 }

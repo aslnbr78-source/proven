@@ -132,7 +132,7 @@ export async function fetchCourseOutline(courseId) {
 
   // Published Hub outline is authoritative. Do not refill deleted sections from
   // bundled course.json (that made thinner publishes look like the old course).
-  let outline = null
+  let outline
   if (firestoreOutline && countModules(firestoreOutline) > 0) {
     outline = firestoreOutline
   } else if (bundledOutline && countModules(bundledOutline) > 0) {
@@ -173,15 +173,12 @@ export async function fetchStaffCourseOutline(courseId) {
     } catch {
       bundledOutline = null
     }
-    const healCandidates = [hubOutline, bundledOutline].filter(
-      (candidate) => candidate && countModules(candidate) > 0,
-    )
     const healFrom =
-      healCandidates.length === 0
-        ? null
-        : healCandidates.reduce((best, next) =>
-            countModules(next) > countModules(best) ? next : best,
-          )
+      hubOutline && countModules(hubOutline) > 0
+        ? hubOutline
+        : bundledOutline && countModules(bundledOutline) > 0
+          ? bundledOutline
+          : null
     if (healFrom) {
       const beforeCount = countModules(outline)
       const healed = healOutlineFromRicherSource(outline, healFrom)
