@@ -15,6 +15,8 @@ function QuestionReviewPanel({
   onClose,
   onSubmit,
   submitLabel = 'Submit',
+  submitDisabled = false,
+  submitDisabledMessage,
 }) {
   const answeredCount = questions.filter((item) => answered[item.id]).length
   const unansweredCount = questions.length - answeredCount
@@ -69,10 +71,18 @@ function QuestionReviewPanel({
         <button type="button" onClick={onClose} className="btn-secondary">
           Back to test
         </button>
-        <button type="button" onClick={onSubmit} className="btn-primary">
+        <button
+          type="button"
+          onClick={onSubmit}
+          disabled={submitDisabled}
+          className="btn-primary disabled:cursor-not-allowed disabled:opacity-50"
+        >
           {submitLabel}
         </button>
       </div>
+      {submitDisabled && submitDisabledMessage && (
+        <p className="mt-3 text-sm font-medium text-rose-700">{submitDisabledMessage}</p>
+      )}
     </div>
   )
 }
