@@ -20,7 +20,9 @@ service cloud.firestore {
 
     match /users/{uid} {
       allow read: if isSignedIn() && (request.auth.uid == uid || isTeacher());
-      allow create: if isSignedIn() && request.auth.uid == uid;
+      allow create: if isSignedIn()
+        && request.auth.uid == uid
+        && request.resource.data.role == 'student';
       allow update: if isAdmin() || (request.auth.uid == uid && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role']));
 
       match /skills/{skillId} {
