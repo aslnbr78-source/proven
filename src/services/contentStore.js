@@ -88,11 +88,11 @@ function normalizeStoreShape(value) {
 }
 
 async function hydrateFromDisk() {
-  let fromIdb = null
+  let fromIdb
   try {
     fromIdb = await idbGet(IDB_CONTENT_KEY)
   } catch {
-    fromIdb = null
+    /* keep legacy/local fallback below */
   }
 
   const legacy = readLegacyLocalStore()
@@ -285,7 +285,15 @@ export function deleteCustomCourse(courseId) {
 
 export function resetCourseToBundled(courseId) {
   const store = readStore()
-  delete store.courses[courseId]
+  const existing = store.courses[courseId]
+  if (!existing) {
+    return persistStore(store)
+  }
+  store.courses[courseId] = {
+    outline: null,
+    modules: existing.modules ?? {},
+    banks: existing.banks ?? {},
+  }
   return persistStore(store)
 }
 

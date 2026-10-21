@@ -29,6 +29,7 @@ function PracticeGenerator({
             courseId,
             outline,
             moduleId,
+            includeAnswers: false,
           })
         } catch {
           gameContext = ''

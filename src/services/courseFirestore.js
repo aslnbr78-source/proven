@@ -12,6 +12,31 @@ import { db } from './firebase'
 import { exportCoursePackage, getCustomModule } from './contentStore'
 import { flattenModules } from '../utils/courseOutline'
 
+const GAME_CATALOG_CONTENT_SOURCE = 'game-catalog'
+
+function moduleNeedsExportedBody(module) {
+  return module?.id && module.contentSource !== GAME_CATALOG_CONTENT_SOURCE
+}
+
+function buildPackageFromModuleMap(courseJson, sourceModules = {}) {
+  const modules = {}
+  const missingModuleIds = []
+
+  for (const module of flattenModules(courseJson)) {
+    if (!moduleNeedsExportedBody(module)) {
+      continue
+    }
+    const moduleData = sourceModules[module.id]
+    if (moduleData) {
+      modules[module.id] = moduleData
+    } else {
+      missingModuleIds.push(module.id)
+    }
+  }
+
+  return { courseJson, modules, missingModuleIds }
+}
+
 export async function listFirestoreCourses() {
   if (!db) {
     return []
@@ -59,10 +84,7 @@ export async function isFirestoreCourse(courseId) {
 export async function gatherCoursePackageForPublish(courseId, outlineOverride = null) {
   const customPack = exportCoursePackage(courseId)
   if (customPack?.courseJson) {
-    return {
-      courseJson: outlineOverride ?? customPack.courseJson,
-      modules: customPack.modules ?? {},
-    }
+    return buildPackageFromModuleMap(outlineOverride ?? customPack.courseJson, customPack.modules)
   }
 
   const outlineResponse = await fetch(`/courses/${courseId}/course.json`)
@@ -72,8 +94,12 @@ export async function gatherCoursePackageForPublish(courseId, outlineOverride = 
 
   const courseJson = outlineOverride ?? (await outlineResponse.json())
   const modules = {}
+  const missingModuleIds = []
 
   for (const module of flattenModules(courseJson)) {
+    if (!moduleNeedsExportedBody(module)) {
+      continue
+    }
     const customModule = getCustomModule(courseId, module.id)
     if (customModule) {
       modules[module.id] = customModule
@@ -83,10 +109,12 @@ export async function gatherCoursePackageForPublish(courseId, outlineOverride = 
     const response = await fetch(`/lessons/${courseId}/${module.id}.json`)
     if (response.ok) {
       modules[module.id] = await response.json()
+    } else {
+      missingModuleIds.push(module.id)
     }
   }
 
-  return { courseJson, modules }
+  return { courseJson, modules, missingModuleIds }
 }
 
 export async function publishCourseToFirestore({ courseId, outline, modules, uid, email }) {
