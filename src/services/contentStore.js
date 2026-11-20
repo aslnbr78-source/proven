@@ -50,8 +50,10 @@ function idbSet(key, value) {
       new Promise((resolve, reject) => {
         const tx = db.transaction(IDB_STORE, 'readwrite')
         const request = tx.objectStore(IDB_STORE).put(value, key)
-        request.onsuccess = () => resolve()
-        request.onerror = () => reject(request.error)
+        tx.oncomplete = () => resolve()
+        tx.onabort = () => reject(tx.error ?? request.error ?? new Error('IndexedDB write failed'))
+        tx.onerror = () => reject(tx.error ?? request.error ?? new Error('IndexedDB write failed'))
+        request.onerror = () => reject(request.error ?? tx.error ?? new Error('IndexedDB write failed'))
       }),
   )
 }
@@ -88,7 +90,7 @@ function normalizeStoreShape(value) {
 }
 
 async function hydrateFromDisk() {
-  let fromIdb = null
+  let fromIdb
   try {
     fromIdb = await idbGet(IDB_CONTENT_KEY)
   } catch {
@@ -96,22 +98,25 @@ async function hydrateFromDisk() {
   }
 
   const legacy = readLegacyLocalStore()
+  let legacyMigrated = false
 
   if (fromIdb) {
     memoryStore = normalizeStoreShape(fromIdb)
+    legacyMigrated = true
   } else if (legacy) {
     memoryStore = normalizeStoreShape(legacy)
     try {
       await idbSet(IDB_CONTENT_KEY, memoryStore)
+      legacyMigrated = true
     } catch {
-      // Keep memory even if first IDB write fails; caller can retry.
+      // Keep the legacy localStorage copy so a failed migration cannot lose drafts.
     }
   } else {
     memoryStore = { courses: {} }
   }
 
   // Free the old ~5MB localStorage quota once migrated.
-  if (legacy) {
+  if (legacy && legacyMigrated) {
     try {
       localStorage.removeItem(LEGACY_STORAGE_KEY)
     } catch {
