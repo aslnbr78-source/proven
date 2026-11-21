@@ -355,7 +355,7 @@ export function mergeMissingChaptersFromSource(draftOutline, sourceOutline) {
  * Fixes the failure mode where mergeMissingChaptersFromSource no-ops because Ch 4–5
  * (or other sections) already exist as empty/thin chapter stubs with the same ids.
  */
-export function healOutlineFromRicherSource(draftOutline, sourceOutline) {
+export function healOutlineFromRicherSource(draftOutline, sourceOutline, options = {}) {
   if (!sourceOutline?.chapters?.length) {
     return draftOutline
   }
@@ -384,8 +384,14 @@ export function healOutlineFromRicherSource(draftOutline, sourceOutline) {
     }
 
     let healed = normalizeOutline({ ...draft, ...source, chapters: merged })
-    // Re-attach draft-only modules under shared chapter ids (local additions).
-    healed = supplementOutlineFromBundled(healed, draft)
+    // Re-attach draft-only modules under shared chapter ids only when their JSON
+    // bodies still exist locally; otherwise stale thin-draft placeholders become
+    // broken ghost routes after the Hub/bundled tree is restored.
+    const draftModulesToPreserve = filterOutlineToModuleIds(
+      draft,
+      options.preserveDraftModuleIds,
+    )
+    healed = supplementOutlineFromBundled(healed, draftModulesToPreserve)
     return healed
   }
 
@@ -480,6 +486,26 @@ export function supplementOutlineFromBundled(liveOutline, bundledOutline) {
   }
 
   return normalizeOutline(live)
+}
+
+function filterOutlineToModuleIds(outline, moduleIds) {
+  if (!moduleIds) {
+    return outline
+  }
+
+  const allowed = moduleIds instanceof Set ? moduleIds : new Set(moduleIds)
+  const normalized = normalizeOutline(JSON.parse(JSON.stringify(outline)))
+
+  return {
+    ...normalized,
+    chapters: (normalized.chapters ?? []).map((chapter) => ({
+      ...chapter,
+      subchapters: getChapterSubchapters(chapter).map((subchapter) => ({
+        ...subchapter,
+        modules: (subchapter.modules ?? []).filter((module) => allowed.has(module.id)),
+      })),
+    })),
+  }
 }
 
 export function nextChapterId(chapters) {

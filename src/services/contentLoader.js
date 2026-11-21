@@ -184,7 +184,9 @@ export async function fetchStaffCourseOutline(courseId) {
           )
     if (healFrom) {
       const beforeCount = countModules(outline)
-      const healed = healOutlineFromRicherSource(outline, healFrom)
+      const healed = healOutlineFromRicherSource(outline, healFrom, {
+        preserveDraftModuleIds: Object.keys(custom.modules ?? {}),
+      })
       if (countModules(healed) > beforeCount) {
         outline = healed
         try {
