@@ -435,7 +435,9 @@ export async function loadOutline(courseId, { source = 'auto' } = {}) {
               )
         if (healFrom) {
           const beforeCount = countModules(outline)
-          const healed = healOutlineFromRicherSource(outline, healFrom)
+          const healed = healOutlineFromRicherSource(outline, healFrom, {
+            preserveDraftModuleIds: Object.keys(custom.modules ?? {}),
+          })
           const afterCount = countModules(healed)
           if (afterCount > beforeCount) {
             outline = healed
