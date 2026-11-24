@@ -87,8 +87,20 @@ function normalizeStoreShape(value) {
   return value
 }
 
+function hasDraftContent(store) {
+  return Object.values(store?.courses ?? {}).some((course) => {
+    if (course?.outline) {
+      return true
+    }
+    if (Object.keys(course?.modules ?? {}).length > 0) {
+      return true
+    }
+    return Object.keys(course?.banks ?? {}).length > 0
+  })
+}
+
 async function hydrateFromDisk() {
-  let fromIdb = null
+  let fromIdb
   try {
     fromIdb = await idbGet(IDB_CONTENT_KEY)
   } catch {
@@ -96,22 +108,27 @@ async function hydrateFromDisk() {
   }
 
   const legacy = readLegacyLocalStore()
+  const idbStore = fromIdb ? normalizeStoreShape(fromIdb) : null
+  const legacyStore = legacy ? normalizeStoreShape(legacy) : null
+  let legacyMigrated = false
 
-  if (fromIdb) {
-    memoryStore = normalizeStoreShape(fromIdb)
-  } else if (legacy) {
-    memoryStore = normalizeStoreShape(legacy)
+  if (idbStore && (!legacyStore || hasDraftContent(idbStore) || !hasDraftContent(legacyStore))) {
+    memoryStore = idbStore
+    legacyMigrated = true
+  } else if (legacyStore) {
+    memoryStore = legacyStore
     try {
       await idbSet(IDB_CONTENT_KEY, memoryStore)
+      legacyMigrated = true
     } catch {
-      // Keep memory even if first IDB write fails; caller can retry.
+      // Keep the legacy localStorage copy so a failed migration cannot lose drafts.
     }
   } else {
     memoryStore = { courses: {} }
   }
 
   // Free the old ~5MB localStorage quota once migrated.
-  if (legacy) {
+  if (legacy && legacyMigrated) {
     try {
       localStorage.removeItem(LEGACY_STORAGE_KEY)
     } catch {
